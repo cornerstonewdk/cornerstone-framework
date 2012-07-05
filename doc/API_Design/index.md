@@ -35,3 +35,9 @@
 	* JSONP Client
 	* SKT Open API Client
 		* OAuth
+
+# 기타 고려할 점
+
+* Form과 자동으로 Mapping되는 Model
+* Validation
+
