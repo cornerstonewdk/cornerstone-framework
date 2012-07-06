@@ -19,13 +19,12 @@
     <style type="text/css">
         * {
             outline: none;
-             /*No background, just iOS:*/
+            /*No background, just iOS:*/
             -webkit-tap-highlight-color: transparent;
 
             /*No background iOS + Android:*/
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
-
 
         #result-wrap {
             position: fixed;
@@ -122,166 +121,161 @@
 
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
 <div id="result-wrap">
-   <div class="row">
-       <div class="span4">
-           <div class="controls">
-               <label class="radio">
-                   <input name="testName" type="radio" value="-1" />
-                   BTS
-               </label>
-               <label class="radio">
-                   <input name="testName" type="radio" value="0" checked="checked" />
-                   No hover BTS
-               </label>
-               <label class="radio">
-                   <input name="testName" type="radio" value="1" />
-                   with FastButton
-               </label>
-           </div>
-       </div>
-       <div class="span4">
-           Button Responsive Time (No hover BTS <strong id="testTitle"></strong>) :
-           <span id="value"></span>
-       </div>
-   </div>
+    <div class="controls">
+        <label class="radio">
+            <input name="testName" type="radio" value="-1"/>
+            BTS
+        </label>
+        <label class="radio">
+            <input name="testName" type="radio" value="0" checked="checked"/>
+            No hover BTS
+        </label>
+        <label class="radio">
+            <input name="testName" type="radio" value="1"/>
+            with FastButton
+        </label>
+    </div>
+    Button Responsive Time (No hover BTS <strong id="testTitle"></strong>) :
+    <span id="value"></span>
 </div>
 <div class="container">
-    <!-- Buttons
-   ================================================== -->
-    <section>
-        <div class="page-header">
-            <h1>Buttons</h1>
+<!-- Buttons
+================================================== -->
+<section>
+    <div class="page-header">
+        <h1>Buttons</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Buttons for actions</h3>
+
+            <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
+                For instance, "Download" should be a button while "recent activity" should be a link.</p>
+
+            <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
+                you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
+            </p>
+
+            <h3>Cross browser compatibility</h3>
+
+            <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
+                disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
+                fix.</p>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <button class="btn" href="#">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary" href="#">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-info" href="#">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-success" href="#">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-warning" href="#">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-danger" href="#">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-inverse" href="#">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="span4">
+            <h3>Multiple sizes</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h3>Buttons for actions</h3>
+            <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or
+                <code>.btn-mini</code>
+                for two additional sizes.</p>
 
-                <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
-                    For instance, "Download" should be a button while "recent activity" should be a link.</p>
+            <p>
+                <button class="btn btn-large btn-primary">Primary action</button>
+                <button class="btn btn-large">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-small btn-primary">Primary action</button>
+                <button class="btn btn-small">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-mini btn-primary">Primary action</button>
+                <button class="btn btn-mini">Action</button>
+            </p>
+            <br>
 
-                <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
-                    you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
-                </p>
+            <h3>Disabled state</h3>
 
-                <h3>Cross browser compatibility</h3>
+            <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
+                attribute for <code>&lt;button&gt;</code> elements.</p>
 
-                <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
-                    disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
-                    fix.</p>
-            </div>
-            <div class="span4">
-                <h3>Multiple sizes</h3>
+            <p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+            </p>
 
-                <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>
-                    for two additional sizes.</p>
+            <p style="margin-bottom: 18px;">
+                <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button class="btn btn-large" disabled>Button</button>
+            </p>
+            <p>
+                <span class="label label-info">Heads up!</span>
+                We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
+                class, so no prefix is required.
+            </p>
+        </div>
+        <div class="span4">
+            <h3>One class, multiple tags</h3>
 
-                <p>
-                    <button class="btn btn-large btn-primary">Primary action</button>
-                    <button class="btn btn-large">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-small btn-primary">Primary action</button>
-                    <button class="btn btn-small">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-mini btn-primary">Primary action</button>
-                    <button class="btn btn-mini">Action</button>
-                </p>
-                <br>
+            <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
+                &lt;input&gt;</code> element.</p>
 
-                <h3>Disabled state</h3>
-
-                <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
-                    attribute for <code>&lt;button&gt;</code> elements.</p>
-
-                <p>
-                    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-                    <a href="#" class="btn btn-large disabled">Link</a>
-                </p>
-
-                <p style="margin-bottom: 18px;">
-                    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-                    <button class="btn btn-large" disabled>Button</button>
-                </p>
-                <p>
-                    <span class="label label-info">Heads up!</span>
-                    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
-                    class, so no prefix is required.
-                </p>
-            </div>
-            <div class="span4">
-                <h3>One class, multiple tags</h3>
-
-                <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
-                    &lt;input&gt;</code> element.</p>
-
-                <form>
-                    <a class="btn" href="">Link</a>
-                    <button class="btn" type="submit">Button</button>
-                    <input class="btn" type="button" value="Input">
-                    <input class="btn" type="submit" value="Submit">
-                </form>
+            <form>
+                <a class="btn" href="">Link</a>
+                <button class="btn" type="submit">Button</button>
+                <input class="btn" type="button" value="Input">
+                <input class="btn" type="submit" value="Submit">
+            </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;
@@ -292,147 +286,148 @@
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-                <p>As a best practice, try to match the element for you context to ensure matching cross-browser
-                    rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
-                    your button.</p>
-            </div>
+            <p>As a best practice, try to match the element for you context to ensure matching cross-browser
+                rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
+                your button.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section>
-        <div class="page-header">
-            <h1>Buttons</h1>
+<section>
+    <div class="page-header">
+        <h1>Buttons</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Buttons for actions</h3>
+
+            <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
+                For instance, "Download" should be a button while "recent activity" should be a link.</p>
+
+            <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
+                you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
+            </p>
+
+            <h3>Cross browser compatibility</h3>
+
+            <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
+                disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
+                fix.</p>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <button class="btn" href="#">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary" href="#">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-info" href="#">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-success" href="#">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-warning" href="#">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-danger" href="#">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-inverse" href="#">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="span4">
+            <h3>Multiple sizes</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h3>Buttons for actions</h3>
+            <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or
+                <code>.btn-mini</code>
+                for two additional sizes.</p>
 
-                <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
-                    For instance, "Download" should be a button while "recent activity" should be a link.</p>
+            <p>
+                <button class="btn btn-large btn-primary">Primary action</button>
+                <button class="btn btn-large">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-small btn-primary">Primary action</button>
+                <button class="btn btn-small">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-mini btn-primary">Primary action</button>
+                <button class="btn btn-mini">Action</button>
+            </p>
+            <br>
 
-                <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
-                    you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
-                </p>
+            <h3>Disabled state</h3>
 
-                <h3>Cross browser compatibility</h3>
+            <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
+                attribute for <code>&lt;button&gt;</code> elements.</p>
 
-                <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
-                    disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
-                    fix.</p>
-            </div>
-            <div class="span4">
-                <h3>Multiple sizes</h3>
+            <p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+            </p>
 
-                <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>
-                    for two additional sizes.</p>
+            <p style="margin-bottom: 18px;">
+                <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button class="btn btn-large" disabled>Button</button>
+            </p>
+            <p>
+                <span class="label label-info">Heads up!</span>
+                We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
+                class, so no prefix is required.
+            </p>
+        </div>
+        <div class="span4">
+            <h3>One class, multiple tags</h3>
 
-                <p>
-                    <button class="btn btn-large btn-primary">Primary action</button>
-                    <button class="btn btn-large">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-small btn-primary">Primary action</button>
-                    <button class="btn btn-small">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-mini btn-primary">Primary action</button>
-                    <button class="btn btn-mini">Action</button>
-                </p>
-                <br>
+            <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
+                &lt;input&gt;</code> element.</p>
 
-                <h3>Disabled state</h3>
-
-                <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
-                    attribute for <code>&lt;button&gt;</code> elements.</p>
-
-                <p>
-                    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-                    <a href="#" class="btn btn-large disabled">Link</a>
-                </p>
-
-                <p style="margin-bottom: 18px;">
-                    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-                    <button class="btn btn-large" disabled>Button</button>
-                </p>
-                <p>
-                    <span class="label label-info">Heads up!</span>
-                    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
-                    class, so no prefix is required.
-                </p>
-            </div>
-            <div class="span4">
-                <h3>One class, multiple tags</h3>
-
-                <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
-                    &lt;input&gt;</code> element.</p>
-
-                <form>
-                    <a class="btn" href="">Link</a>
-                    <button class="btn" type="submit">Button</button>
-                    <input class="btn" type="button" value="Input">
-                    <input class="btn" type="submit" value="Submit">
-                </form>
+            <form>
+                <a class="btn" href="">Link</a>
+                <button class="btn" type="submit">Button</button>
+                <input class="btn" type="button" value="Input">
+                <input class="btn" type="submit" value="Submit">
+            </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;
@@ -443,146 +438,147 @@
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-                <p>As a best practice, try to match the element for you context to ensure matching cross-browser
-                    rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
-                    your button.</p>
-            </div>
+            <p>As a best practice, try to match the element for you context to ensure matching cross-browser
+                rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
+                your button.</p>
         </div>
-    </section>
-    <section>
-        <div class="page-header">
-            <h1>Buttons</h1>
+    </div>
+</section>
+<section>
+    <div class="page-header">
+        <h1>Buttons</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Buttons for actions</h3>
+
+            <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
+                For instance, "Download" should be a button while "recent activity" should be a link.</p>
+
+            <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
+                you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
+            </p>
+
+            <h3>Cross browser compatibility</h3>
+
+            <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
+                disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
+                fix.</p>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <button class="btn" href="#">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary" href="#">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-info" href="#">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-success" href="#">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-warning" href="#">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-danger" href="#">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-inverse" href="#">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="span4">
+            <h3>Multiple sizes</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h3>Buttons for actions</h3>
+            <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or
+                <code>.btn-mini</code>
+                for two additional sizes.</p>
 
-                <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
-                    For instance, "Download" should be a button while "recent activity" should be a link.</p>
+            <p>
+                <button class="btn btn-large btn-primary">Primary action</button>
+                <button class="btn btn-large">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-small btn-primary">Primary action</button>
+                <button class="btn btn-small">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-mini btn-primary">Primary action</button>
+                <button class="btn btn-mini">Action</button>
+            </p>
+            <br>
 
-                <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
-                    you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
-                </p>
+            <h3>Disabled state</h3>
 
-                <h3>Cross browser compatibility</h3>
+            <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
+                attribute for <code>&lt;button&gt;</code> elements.</p>
 
-                <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
-                    disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
-                    fix.</p>
-            </div>
-            <div class="span4">
-                <h3>Multiple sizes</h3>
+            <p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+            </p>
 
-                <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>
-                    for two additional sizes.</p>
+            <p style="margin-bottom: 18px;">
+                <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button class="btn btn-large" disabled>Button</button>
+            </p>
+            <p>
+                <span class="label label-info">Heads up!</span>
+                We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
+                class, so no prefix is required.
+            </p>
+        </div>
+        <div class="span4">
+            <h3>One class, multiple tags</h3>
 
-                <p>
-                    <button class="btn btn-large btn-primary">Primary action</button>
-                    <button class="btn btn-large">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-small btn-primary">Primary action</button>
-                    <button class="btn btn-small">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-mini btn-primary">Primary action</button>
-                    <button class="btn btn-mini">Action</button>
-                </p>
-                <br>
+            <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
+                &lt;input&gt;</code> element.</p>
 
-                <h3>Disabled state</h3>
-
-                <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
-                    attribute for <code>&lt;button&gt;</code> elements.</p>
-
-                <p>
-                    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-                    <a href="#" class="btn btn-large disabled">Link</a>
-                </p>
-
-                <p style="margin-bottom: 18px;">
-                    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-                    <button class="btn btn-large" disabled>Button</button>
-                </p>
-                <p>
-                    <span class="label label-info">Heads up!</span>
-                    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
-                    class, so no prefix is required.
-                </p>
-            </div>
-            <div class="span4">
-                <h3>One class, multiple tags</h3>
-
-                <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
-                    &lt;input&gt;</code> element.</p>
-
-                <form>
-                    <a class="btn" href="">Link</a>
-                    <button class="btn" type="submit">Button</button>
-                    <input class="btn" type="button" value="Input">
-                    <input class="btn" type="submit" value="Submit">
-                </form>
+            <form>
+                <a class="btn" href="">Link</a>
+                <button class="btn" type="submit">Button</button>
+                <input class="btn" type="button" value="Input">
+                <input class="btn" type="submit" value="Submit">
+            </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;
@@ -593,146 +589,147 @@
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-                <p>As a best practice, try to match the element for you context to ensure matching cross-browser
-                    rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
-                    your button.</p>
-            </div>
+            <p>As a best practice, try to match the element for you context to ensure matching cross-browser
+                rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
+                your button.</p>
         </div>
-    </section>
-    <section>
-        <div class="page-header">
-            <h1>Buttons</h1>
+    </div>
+</section>
+<section>
+    <div class="page-header">
+        <h1>Buttons</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Buttons for actions</h3>
+
+            <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
+                For instance, "Download" should be a button while "recent activity" should be a link.</p>
+
+            <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
+                you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
+            </p>
+
+            <h3>Cross browser compatibility</h3>
+
+            <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
+                disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
+                fix.</p>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <button class="btn" href="#">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary" href="#">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-info" href="#">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-success" href="#">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-warning" href="#">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-danger" href="#">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-inverse" href="#">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="span4">
+            <h3>Multiple sizes</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h3>Buttons for actions</h3>
+            <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or
+                <code>.btn-mini</code>
+                for two additional sizes.</p>
 
-                <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
-                    For instance, "Download" should be a button while "recent activity" should be a link.</p>
+            <p>
+                <button class="btn btn-large btn-primary">Primary action</button>
+                <button class="btn btn-large">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-small btn-primary">Primary action</button>
+                <button class="btn btn-small">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-mini btn-primary">Primary action</button>
+                <button class="btn btn-mini">Action</button>
+            </p>
+            <br>
 
-                <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
-                    you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
-                </p>
+            <h3>Disabled state</h3>
 
-                <h3>Cross browser compatibility</h3>
+            <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
+                attribute for <code>&lt;button&gt;</code> elements.</p>
 
-                <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
-                    disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
-                    fix.</p>
-            </div>
-            <div class="span4">
-                <h3>Multiple sizes</h3>
+            <p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+            </p>
 
-                <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>
-                    for two additional sizes.</p>
+            <p style="margin-bottom: 18px;">
+                <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button class="btn btn-large" disabled>Button</button>
+            </p>
+            <p>
+                <span class="label label-info">Heads up!</span>
+                We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
+                class, so no prefix is required.
+            </p>
+        </div>
+        <div class="span4">
+            <h3>One class, multiple tags</h3>
 
-                <p>
-                    <button class="btn btn-large btn-primary">Primary action</button>
-                    <button class="btn btn-large">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-small btn-primary">Primary action</button>
-                    <button class="btn btn-small">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-mini btn-primary">Primary action</button>
-                    <button class="btn btn-mini">Action</button>
-                </p>
-                <br>
+            <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
+                &lt;input&gt;</code> element.</p>
 
-                <h3>Disabled state</h3>
-
-                <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
-                    attribute for <code>&lt;button&gt;</code> elements.</p>
-
-                <p>
-                    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-                    <a href="#" class="btn btn-large disabled">Link</a>
-                </p>
-
-                <p style="margin-bottom: 18px;">
-                    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-                    <button class="btn btn-large" disabled>Button</button>
-                </p>
-                <p>
-                    <span class="label label-info">Heads up!</span>
-                    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
-                    class, so no prefix is required.
-                </p>
-            </div>
-            <div class="span4">
-                <h3>One class, multiple tags</h3>
-
-                <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
-                    &lt;input&gt;</code> element.</p>
-
-                <form>
-                    <a class="btn" href="">Link</a>
-                    <button class="btn" type="submit">Button</button>
-                    <input class="btn" type="button" value="Input">
-                    <input class="btn" type="submit" value="Submit">
-                </form>
+            <form>
+                <a class="btn" href="">Link</a>
+                <button class="btn" type="submit">Button</button>
+                <input class="btn" type="button" value="Input">
+                <input class="btn" type="submit" value="Submit">
+            </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;
@@ -743,146 +740,147 @@
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-                <p>As a best practice, try to match the element for you context to ensure matching cross-browser
-                    rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
-                    your button.</p>
-            </div>
+            <p>As a best practice, try to match the element for you context to ensure matching cross-browser
+                rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
+                your button.</p>
         </div>
-    </section>
-    <section>
-        <div class="page-header">
-            <h1>Buttons</h1>
+    </div>
+</section>
+<section>
+    <div class="page-header">
+        <h1>Buttons</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Buttons for actions</h3>
+
+            <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
+                For instance, "Download" should be a button while "recent activity" should be a link.</p>
+
+            <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
+                you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
+            </p>
+
+            <h3>Cross browser compatibility</h3>
+
+            <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
+                disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
+                fix.</p>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <button class="btn" href="#">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary" href="#">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-info" href="#">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-success" href="#">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-warning" href="#">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-danger" href="#">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-inverse" href="#">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="span4">
+            <h3>Multiple sizes</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h3>Buttons for actions</h3>
+            <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or
+                <code>.btn-mini</code>
+                for two additional sizes.</p>
 
-                <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
-                    For instance, "Download" should be a button while "recent activity" should be a link.</p>
+            <p>
+                <button class="btn btn-large btn-primary">Primary action</button>
+                <button class="btn btn-large">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-small btn-primary">Primary action</button>
+                <button class="btn btn-small">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-mini btn-primary">Primary action</button>
+                <button class="btn btn-mini">Action</button>
+            </p>
+            <br>
 
-                <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
-                    you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
-                </p>
+            <h3>Disabled state</h3>
 
-                <h3>Cross browser compatibility</h3>
+            <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
+                attribute for <code>&lt;button&gt;</code> elements.</p>
 
-                <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
-                    disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
-                    fix.</p>
-            </div>
-            <div class="span4">
-                <h3>Multiple sizes</h3>
+            <p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+            </p>
 
-                <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>
-                    for two additional sizes.</p>
+            <p style="margin-bottom: 18px;">
+                <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button class="btn btn-large" disabled>Button</button>
+            </p>
+            <p>
+                <span class="label label-info">Heads up!</span>
+                We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
+                class, so no prefix is required.
+            </p>
+        </div>
+        <div class="span4">
+            <h3>One class, multiple tags</h3>
 
-                <p>
-                    <button class="btn btn-large btn-primary">Primary action</button>
-                    <button class="btn btn-large">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-small btn-primary">Primary action</button>
-                    <button class="btn btn-small">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-mini btn-primary">Primary action</button>
-                    <button class="btn btn-mini">Action</button>
-                </p>
-                <br>
+            <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
+                &lt;input&gt;</code> element.</p>
 
-                <h3>Disabled state</h3>
-
-                <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
-                    attribute for <code>&lt;button&gt;</code> elements.</p>
-
-                <p>
-                    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-                    <a href="#" class="btn btn-large disabled">Link</a>
-                </p>
-
-                <p style="margin-bottom: 18px;">
-                    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-                    <button class="btn btn-large" disabled>Button</button>
-                </p>
-                <p>
-                    <span class="label label-info">Heads up!</span>
-                    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
-                    class, so no prefix is required.
-                </p>
-            </div>
-            <div class="span4">
-                <h3>One class, multiple tags</h3>
-
-                <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
-                    &lt;input&gt;</code> element.</p>
-
-                <form>
-                    <a class="btn" href="">Link</a>
-                    <button class="btn" type="submit">Button</button>
-                    <input class="btn" type="button" value="Input">
-                    <input class="btn" type="submit" value="Submit">
-                </form>
+            <form>
+                <a class="btn" href="">Link</a>
+                <button class="btn" type="submit">Button</button>
+                <input class="btn" type="button" value="Input">
+                <input class="btn" type="submit" value="Submit">
+            </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;
@@ -893,146 +891,147 @@
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-                <p>As a best practice, try to match the element for you context to ensure matching cross-browser
-                    rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
-                    your button.</p>
-            </div>
+            <p>As a best practice, try to match the element for you context to ensure matching cross-browser
+                rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
+                your button.</p>
         </div>
-    </section>
-    <section>
-        <div class="page-header">
-            <h1>Buttons</h1>
+    </div>
+</section>
+<section>
+    <div class="page-header">
+        <h1>Buttons</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Buttons for actions</h3>
+
+            <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
+                For instance, "Download" should be a button while "recent activity" should be a link.</p>
+
+            <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
+                you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
+            </p>
+
+            <h3>Cross browser compatibility</h3>
+
+            <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
+                disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
+                fix.</p>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <button class="btn" href="#">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary" href="#">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-info" href="#">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-success" href="#">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-warning" href="#">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-danger" href="#">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-inverse" href="#">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="span4">
+            <h3>Multiple sizes</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h3>Buttons for actions</h3>
+            <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or
+                <code>.btn-mini</code>
+                for two additional sizes.</p>
 
-                <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects.
-                    For instance, "Download" should be a button while "recent activity" should be a link.</p>
+            <p>
+                <button class="btn btn-large btn-primary">Primary action</button>
+                <button class="btn btn-large">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-small btn-primary">Primary action</button>
+                <button class="btn btn-small">Action</button>
+            </p>
+            <p>
+                <button class="btn btn-mini btn-primary">Primary action</button>
+                <button class="btn btn-mini">Action</button>
+            </p>
+            <br>
 
-                <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically
-                    you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.
-                </p>
+            <h3>Disabled state</h3>
 
-                <h3>Cross browser compatibility</h3>
+            <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
+                attribute for <code>&lt;button&gt;</code> elements.</p>
 
-                <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies
-                    disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot
-                    fix.</p>
-            </div>
-            <div class="span4">
-                <h3>Multiple sizes</h3>
+            <p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+            </p>
 
-                <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>
-                    for two additional sizes.</p>
+            <p style="margin-bottom: 18px;">
+                <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button class="btn btn-large" disabled>Button</button>
+            </p>
+            <p>
+                <span class="label label-info">Heads up!</span>
+                We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
+                class, so no prefix is required.
+            </p>
+        </div>
+        <div class="span4">
+            <h3>One class, multiple tags</h3>
 
-                <p>
-                    <button class="btn btn-large btn-primary">Primary action</button>
-                    <button class="btn btn-large">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-small btn-primary">Primary action</button>
-                    <button class="btn btn-small">Action</button>
-                </p>
-                <p>
-                    <button class="btn btn-mini btn-primary">Primary action</button>
-                    <button class="btn btn-mini">Action</button>
-                </p>
-                <br>
+            <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
+                &lt;input&gt;</code> element.</p>
 
-                <h3>Disabled state</h3>
-
-                <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code>
-                    attribute for <code>&lt;button&gt;</code> elements.</p>
-
-                <p>
-                    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-                    <a href="#" class="btn btn-large disabled">Link</a>
-                </p>
-
-                <p style="margin-bottom: 18px;">
-                    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-                    <button class="btn btn-large" disabled>Button</button>
-                </p>
-                <p>
-                    <span class="label label-info">Heads up!</span>
-                    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code>
-                    class, so no prefix is required.
-                </p>
-            </div>
-            <div class="span4">
-                <h3>One class, multiple tags</h3>
-
-                <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>
-                    &lt;input&gt;</code> element.</p>
-
-                <form>
-                    <a class="btn" href="">Link</a>
-                    <button class="btn" type="submit">Button</button>
-                    <input class="btn" type="button" value="Input">
-                    <input class="btn" type="submit" value="Submit">
-                </form>
+            <form>
+                <a class="btn" href="">Link</a>
+                <button class="btn" type="submit">Button</button>
+                <input class="btn" type="button" value="Input">
+                <input class="btn" type="submit" value="Submit">
+            </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;
@@ -1043,29 +1042,30 @@
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-                <p>As a best practice, try to match the element for you context to ensure matching cross-browser
-                    rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
-                    your button.</p>
-            </div>
+            <p>As a best practice, try to match the element for you context to ensure matching cross-browser
+                rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for
+                your button.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer
-   ================================================== -->
-    <footer class="footer">
-        <p class="pull-right"><a href="#">Back to top</a></p>
+<!-- Footer
+================================================== -->
+<footer class="footer">
+    <p class="pull-right"><a href="#">Back to top</a></p>
 
-        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a>
-            by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat"
-                                                                                target="_blank">@fat</a>.</p>
+    <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter"
+                                                            target="_blank">@twitter</a>
+        by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat"
+                                                                            target="_blank">@fat</a>.</p>
 
-        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License
-            v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-        </p>
+    <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License
+        v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
 
-        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a
-                href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-    </footer>
+    <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a
+            href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+</footer>
 
 </div>
 <!-- /container -->
