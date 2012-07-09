@@ -1,5 +1,5 @@
 
-define( [ 'backbone', 'handlebars' ], function( Backbone ) {
+define( [ 'backbone', 'jquery', 'handlebars' ], function( Backbone, $ ) {
 
 	return Backbone.View.extend( {
 

@@ -1,5 +1,5 @@
 
-define( [ 'model/user', 'backbone', 'handlebars' ], function( User, Backbone ) {
+define( [ 'model/user', 'backbone', 'jquery', 'handlebars' ], function( User, Backbone, $ ) {
 
 	// TODO 입력 폼을 위한 View를 따로 만들어야 할까?
 	// TODO Validation

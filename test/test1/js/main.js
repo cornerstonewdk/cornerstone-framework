@@ -6,12 +6,17 @@ require.config( {
 		'underscore': 'lib/underscore-min',
 		'backbone': 'lib/backbone-min',
 		'text': 'lib/text',
-		'handlebars': 'lib/handlebars-1.0.0.beta.6',
+		'handlebars': 'lib/handlebars-1.0.0.beta',	// 잘못된 표기
 		'bootstrap': '../bootstrap/js/bootstrap.min'
 	},
 	// 의존성 및 모듈의 value를 정의한다.
-	// TODO 모든 모듈을 파라미터로 받아야 할까? 일부는 전역변수를 허용해야 할까?
+	// 기본적으로 주요 라이브러리들도 전역변수로는 사용하지 않는 것으로 한다.
 	shim: {
+		jquery: {
+			exports: function() {
+				return this.$.noConflict( true );
+			}
+		},
 		underscore: {
 			exports: function() {
 				return this._.noConflict();
@@ -26,6 +31,14 @@ require.config( {
 		bootstrap: {
 			deps: ['jquery']
 		}
+	}
+} );
+
+// config를 나눠서 해도 문제없다.
+// 그렇다면, Framework에서 기본 config를 제공하고 개발자에게 Override할 수 있도록 하자.
+require.config( {
+	paths: {
+		'handlebars': 'lib/handlebars-1.0.0.beta.6'	// 앞에서의 설정을 Override
 	}
 } );
 
