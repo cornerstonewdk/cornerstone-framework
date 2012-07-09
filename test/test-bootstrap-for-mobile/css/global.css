@@ -1,0 +1,169 @@
+@import "fonts/stylesheet.css";
+@import "reset.css";
+
+body {
+    font-family: "MoebiusRegular", sans-serif, dotum;
+    overflow-x: hidden;
+}
+
+input, button, select, textarea {
+    font-family: "MoebiusRegular", sans-serif, dotum;
+}
+
+header {
+    height: 40px;
+    width: 100%;
+}
+
+#view > section {
+    display: none;
+    padding: 20px;
+}
+
+#view > section.active {
+    display: block;
+}
+
+.collapse {
+    /* Optimization for android */
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+#view .btn-group .span12 {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#view .btn-group .btn-full-width {
+    width: 100%;
+    height: 50px;
+}
+
+.console {
+    display: none;
+    bottom: 0;
+    background-color: #FFF;
+    width: 98%;
+    padding: 10px;
+}
+
+.console .output {
+    width: 98%;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0 0 7px #000 inset;
+    padding: 10px 0 10px 10px;
+    overflow-y: scroll;
+}
+
+.navbar-inner {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Page Transition */
+.none {
+    display: none !important;
+}
+.current-page.none {
+    display: block !important;
+}
+@-webkit-keyframes flip-in{
+    from{
+        -webkit-transform:perspective(1000) rotateY(180deg);
+    }
+    to{
+        -webkit-transform:perspective(1000) rotateY(360deg);
+    }
+}
+@-webkit-keyframes flip-out{
+    from{
+        -webkit-transform:perspective(1000) rotateY(0deg);
+    }
+    to{
+        -webkit-transform:perspective(1000) rotateY(180deg);
+    }
+}
+.flip {
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: perspective(400px) rotateY(0deg);
+    margin: 0 auto;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateX(0);
+    position: absolute;
+    width: 97%;
+    height: 100px;
+}
+.flip.in {
+    -webkit-animation: flip-in 500ms;
+    opacity: 1;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip.out {
+    -webkit-animation: flip-out 500ms;
+    opacity: 0;
+    display: none !important;
+    -webkit-backface-visibility: hidden;
+}
+
+@-webkit-keyframes slide-in{
+    from {
+        -webkit-transform: translateX(100%);
+    }
+    to {
+        -webkit-transform: translateX(0);
+    }
+}
+@-webkit-keyframes slide-out{
+    from {
+        -webkit-transform: translateX(0);
+    }
+    to {
+        -webkit-transform: translateX(-100%);
+    }
+}
+.slide {
+    -webkit-transform: translateX(0);
+    position: absolute;
+    width: 97%;
+    -webkit-backface-visibility: hidden;
+}
+
+.slide.in {
+    -webkit-transform: translateX(0);
+    -webkit-animation: slide-in 300ms;
+}
+
+.slide.out {
+    -webkit-transform: translateX(-100%);
+    -webkit-animation: slide-out 200ms;
+}
+
+@media (min-width: 768px) {
+    #view .btn-group .span12 {
+        width: 99%;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 0;
+    }
+
+    .console .output {
+        width: 90%;
+    }
+
+    .flip, .slide {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .console .output {
+        width: 85%;
+    }
+}
