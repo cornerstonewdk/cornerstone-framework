@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>모바일 스타일링 성능향상 자료조사</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-nohover.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style type="text/css">
+        * {
+            /*No background, just iOS:*/
+            -webkit-tap-highlight-color: transparent;
+            /*No background iOS + Android:*/
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">모바일 성능 향상 테스트</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#page-transition">Page Transition</a></li>
+                    <li><a href="#hover-test">Hover Test</a></li>
+                    <li><a href="#option">Option</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="view">
+    <section id="main-section"></section>
+    <section id="page-transition-section"></section>
+    <section id="page-transition-flip-section"></section>
+    <section id="page-transition-slide-section"></section>
+    <section id="hover-test-section"></section>
+    <section id="option-section"></section>
+</div>
+
+<script id="main-template" type="text/x-handlebars-template">
+    <h1>모바일 성능 향상 테스트</h1>
+
+    <p>아래 버튼을 통해 테스트 페이지로 이동해주세요.</p>
+
+    <div class="btn-group">
+        <div class="span12">
+            <button class="btn btn-full-width" onclick="location.href='#';">Home</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-full-width" onclick="location.href='index.html';">HOVER가 있는 부트스트랩</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-full-width" onclick="location.href='#page-transition';">화면전환 테스트</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-full-width" onclick="location.href='#hover-test'">Hover 테스트</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-full-width" onclick="location.href='#option'">설정</button>
+        </div>
+    </div>
+</script>
+<script id="page-transition-template" type="text/x-handlebars-template">
+    <h1>화면전환</h1>
+
+    <p>화면전환 테스트를 위한 페이지</p>
+
+    <div class="btn-group">
+        <div class="span12">
+            <button class="btn btn-info btn-full-width" onclick="location.href='#page-transition-flip';">Flip</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-info btn-full-width" onclick="location.href='#page-transition-slide';">Slide</button>
+        </div>
+    </div>
+</script>
+<script id="page-transition-flip-template" type="text/x-handlebars-template">
+    <h1>화면전환</h1>
+
+    <p>화면전환 테스트를 위한 페이지</p>
+
+    <div class="btn-group">
+        <div class="span12">
+            <button class="btn btn-info btn-full-width" onclick="location.href='#page-transition-flip';">Flip</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-info btn-full-width" onclick="location.href='#page-transition-slide';">Slide</button>
+        </div>
+    </div>
+</script>
+<script id="page-transition-slide-template" type="text/x-handlebars-template">
+    <h1>화면전환</h1>
+
+    <p>화면전환 테스트를 위한 페이지</p>
+
+    <div class="btn-group">
+        <div class="span12">
+            <button class="btn btn-info btn-full-width" onclick="location.href='#page-transition-flip';">Flip</button>
+        </div>
+        <div class="span12">
+            <button class="btn btn-info btn-full-width" onclick="location.href='#page-transition-slide';">Slide</button>
+        </div>
+    </div>
+</script>
+<script id="hover-test-template" type="text/x-handlebars-template">
+    <h1>Button 반응 속도 측정 페이지</h1>
+
+    <div id="result" class="console">
+        <hr/>
+        <h4>Console Output</h4>
+
+        <div class="output"></div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Button</th>
+            <th>class=""</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <button class="btn" href="#">Default</button>
+            </td>
+            <td><code>btn</code></td>
+            <td>Standard gray button with gradient</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" href="#">Primary</button>
+            </td>
+            <td><code>btn btn-primary</code></td>
+            <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-info" href="#">Info</button>
+            </td>
+            <td><code>btn btn-info</code></td>
+            <td>Used as an alternative to the default styles</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success" href="#">Success</button>
+            </td>
+            <td><code>btn btn-success</code></td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning" href="#">Warning</button>
+            </td>
+            <td><code>btn btn-warning</code></td>
+            <td>Indicates caution should be taken with this action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-danger" href="#">Danger</button>
+            </td>
+            <td><code>btn btn-danger</code></td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-inverse" href="#">Inverse</button>
+            </td>
+            <td><code>btn btn-inverse</code></td>
+            <td>Alternate dark gray button, not tied to a semantic action or use</td>
+        </tr>
+        </tbody>
+    </table>
+</script>
+<script id="option-template" type="text/x-handlebars-template">
+    <h1>설정 페이지</h1>
+    준비중
+</script>
+
+<script type="text/javascript" data-main="app/main" src="libs/requirejs/require.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var index = 0;
+        var beforeTime = 0;
+        var afterTime = 0;
+        $("button").live("mouseover",function () {
+            console.log("hover");
+            beforeTime = new Date();
+        }).live("click",function () {
+                    console.log("click");
+                    afterTime = new Date();
+                    var time = (afterTime - beforeTime) / 1000 + 's';
+                    console.log(afterTime, beforeTime, "소요시간 = " + time);
+                    index++;
+                    $("#result .output").prepend("[" + index + "]" + time + "<br/>");
+                    beforeTime = new Date();
+                }).live("mousedown",function () {
+                    console.log("mousedown");
+                }).live("mouseup", function () {
+                    console.log("mouseup");
+                });
+    });
+</script>
+</body>
+</html>
