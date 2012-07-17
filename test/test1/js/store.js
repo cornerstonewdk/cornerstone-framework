@@ -16,7 +16,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 			if ( maxId ) newId = maxId + 1;
 		} );
 
-		// fetch, save 시에 데이터를 저장한다.
+		// fetch, save, destroy 시에 데이터를 저장한다.
 		Backbone.sync = function( method, model, options ) {
 
 			switch ( method ) {
