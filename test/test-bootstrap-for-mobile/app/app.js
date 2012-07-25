@@ -1,100 +1,101 @@
-define(['backbone', 'views/main', 'views/page-transition', 'views/page-transition-slide', 'views/page-transition-flip', 'views/hover-test', 'views/option', 'bootstrap'],
-    function (Backbone, MainView, PageTransitionView, PageTransitionSlideView, PageTransitionFlipView, HoverTestView, OptionView) {
+define(['backbone',
+    'views/main', 'views/page-transition', 'views/hover-test',
+    'views/fastbutton-test', 'views/scroll-view', 'views/option',
+    'bootstrap', 'jquery-aop', 'mobile', 'page-transition', 'stats'],
+    function (Backbone, MainView, PageTransitionView, HoverTestView, FastButtonTest, ScrollView, OptionView) {
         return {
+            aop:function () {
+
+            },
             init:function () {
                 // Router
                 var Routers = Backbone.Router.extend({
                     firstPage:true,
-                    transitionType:'slide',
+                    defaultTransitionType:'slide',
+                    transitionType:this.defaultTransitionType,
                     previousPage:"",
+                    currentRoute:"",
                     initialize:function () {
+                        var self = this;
                         console.log("start Routers");
                         this.mainView = new MainView();
                         this.pageTransitionView = new PageTransitionView();
-                        this.pageTransitionSlideView = new PageTransitionSlideView();
-                        this.pageTransitionFlipView = new PageTransitionFlipView();
                         this.hoverTestView = new HoverTestView();
+                        this.fastButtonTest = new FastButtonTest();
+                        this.scrollView = new ScrollView();
                         this.optionView = new OptionView();
                         Backbone.history.start();
+
+                        $.aop.before({target:Routers, method:'scrollViewRoute'},
+                            function (str) {
+                                self.log(str);
+                            }
+                        );
                     },
-                    currentRoute:"",
+                    'log':function (str) {
+                        console.log('Output = ' + str);
+                    },
                     routes:{
                         '':'main',
                         'main':'main',
-                        'page-transition':'pageTransition',
+                        'page-transition/:type':'pageTransition',
                         'page-transition-slide':'pageTransitionSlide',
                         'page-transition-flip':'pageTransitionFlip',
                         'hover-test':'hoverTest',
+                        'fastbutton-test':'fastbuttonTest',
+                        'scroll-view/:type':'scrollViewRoute',
                         'option':'option'
                     },
                     'main':function () {
                         this.previousPage = $("#view .current-page ");
-                        console.log(this.previousPage);
                         this.activePage(this.mainView.render().$el);
                     },
-                    'pageTransition':function () {
+                    'pageTransition':function (type) {
+                        this.transitionType = type;
                         this.previousPage = $("#view .current-page ");
-                        console.log(this.previousPage);
-                        this.activePage(this.pageTransitionView.render().$el);
-                    },
-                    'pageTransitionSlide':function () {
-                        this.previousPage = $("#view .current-page ");
-                        console.log(this.previousPage);
-                        this.transitionType = 'slide';
-                        this.activePage(this.pageTransitionSlideView.render().$el);
-                    },
-                    'pageTransitionFlip':function () {
-                        this.previousPage = $("#view .current-page ");
-                        console.log(this.previousPage);
-                        this.transitionType = 'flip';
-                        this.activePage(this.pageTransitionFlipView.render().$el);
+                        this.transitionType = type;
+                        this.activePage($(this.pageTransitionView.render(type).el));
                     },
                     'hoverTest':function () {
                         this.previousPage = $("#view .current-page ");
-                        console.log(this.previousPage);
                         this.activePage(this.hoverTestView.render().$el);
+                    },
+                    'fastbuttonTest':function () {
+                        this.previousPage = $("#view .current-page ");
+                        this.activePage(this.fastButtonTest.render().$el);
+                        $.cornerStoneMobile.fastButton();
+                    },
+                    'scrollViewRoute':function () {
+                        this.previousPage = $("#view .current-page ");
+                        this.activePage(this.scrollView.render().$el);
+                        this.scrollView.afterRender();
                     },
                     'option':function () {
                         this.previousPage = $("#view .current-page ");
-                        console.log(this.previousPage);
                         this.activePage(this.optionView.render().$el);
                     },
                     'activePage':function (view) {
-                        var currentPage = Backbone.history.fragment;
+                        var self = this,
+                            currentPage = Backbone.history.fragment;
 
-                        // TODO 모바일 터치 반응을 빠르기 위해 수동적으로 Dropdown 후 처리
-                        $(".nav-collapse").css('height', '0').removeClass('in');
+                        this.transitionType = 'slide'; // beforeNoneSlide   slide   pop filp    fade
+                        view.addClass('current-page');
 
-                        $('header .nav li').each(function (i) {
-                            $(this).removeClass("active");
-                            if (("#" + currentPage) == $("a", this).attr("href")) {
-                                $(this).addClass("active");
-                            }
-                        });
-
-                        $("#view section").attr("class", "");
-
-                        if (this.firstPage) {
-                            view.addClass("current-page active in");
-                        } else {
-                            console.log(this.previousPage);
-                            this.previousPage.addClass("active out " + this.transitionType);
-
-                            /**
-                             * TODO IE9에서 webkit-animation 미지원
-                             * 방안1) Fade효과로 대체
-                             * 방안2) -webkit-animation을 사용하지 않고 IE인 경우 $.animate로 대체
-                             */
-                            if ($.browser.msie) {
-                                this.previousPage.html("");
-                                alert(this.previousPage);
-                                view.fadeIn();
-                            } else {
-                                view.addClass("current-page active in " + this.transitionType);
-                            }
+                        if(!this.firstPage) {
+                            console.log("start activePage");
+                            $.cornerStoneTransition({
+                                transitionType: this.transitionType,
+                                inTarget: view,
+                                outTarget: this.previousPage,
+                                complete: function() {
+                                    this.outTarget.removeClass().html("");
+                                }
+                            });
+                            console.log("end activePage");
                         }
-                        this.transitionType = 'slide';
+
                         this.firstPage = false;
+                        this.transitionType = this.defaultTransitionType;
                     }
                 });
 

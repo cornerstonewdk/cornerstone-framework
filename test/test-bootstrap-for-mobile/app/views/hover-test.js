@@ -9,14 +9,30 @@ define(['backbone', 'handlebars'], function (Backbone) {
 
         },
         prepareActions:function () {
+            var self = this;
+            window.addEventListener('touchstart', function(e){
+                this.timeStart = e.timeStamp;
+            }, false);
 
+            window.addEventListener('click', function(e){
+                var time = 'Delay: ' + (e.timeStamp-this.timeStart) + 'ms';
+                $(".result", self.$el).html(time);
+            }, false);
         },
         render:function () {
+            this.prepareActions();
             console.log('start hoverTestView');
             this.$el.html( this.template() );
-            for(var i = 0; i < 20; i++) {
-                this.$el.append('<table class="table table-bordered table-striped">' + $("table", this.$el).html() + '</table>');
+            for(var i = 0; i < 10; i++) {
+                this.$el.append($('form', this.template()));
+                console.log($('form', this.template()));
             }
+
+            for(var i = 0; i < 10; i++) {
+                this.$el.append($('form', this.template()));
+            }
+
+            console.log(this.$el);
             return this;
         }
     });

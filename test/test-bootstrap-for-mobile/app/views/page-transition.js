@@ -1,7 +1,7 @@
 define(['backbone', 'handlebars'], function (Backbone) {
     return Backbone.View.extend({
         el:"#page-transition-section",
-        template:Handlebars.compile($('#page-transition-template').html()),
+        template:Handlebars.compile($('#page-transition-chlid-template').html()),
         events:{
 
         },
@@ -11,9 +11,9 @@ define(['backbone', 'handlebars'], function (Backbone) {
         prepareActions:function () {
 
         },
-        render:function () {
-            console.log('start pageTransitionView');
-            this.$el.html(this.template());
+        render:function (type) {
+            this.el = "#page-transition-" + type + "-section";
+            $(this.el).html(this.template());
             return this;
         }
     });
