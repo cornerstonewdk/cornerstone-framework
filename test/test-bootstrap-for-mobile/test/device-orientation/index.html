@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>모바일 가로/세로 방향 테스트</h1>
+
+<strong>Orientation : </strong> <span id="result"></span>
+<script type="text/javascript">
+    var target = document.getElementById("result");
+    window.addEventListener('deviceorientation', rotateScene, false);
+
+    function rotateScene(e) {
+        if(Math.abs(window.orientation) == 90) {
+            console.log("Orientation", "Landscape");
+            target.innerHTML = "Landscape(가로)";
+        } else if(window.orientation == 0) {
+            console.log("Orientation", "Portrait");
+            target.innerHTML = "Portrait(세로)";
+        } else {
+            console.log("Orientation", "?");
+            target.innerHTML = "-";
+        }
+
+    }
+</script>
+</body>
+</html>
