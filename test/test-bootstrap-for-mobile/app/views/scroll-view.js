@@ -20,7 +20,10 @@ define(['backbone', 'handlebars', 'iscroll'], function (Backbone) {
         },
         afterRender:function () {
 //            new iScroll('standard', { useTransition:true });
-            new iScroll('transition', { useTransition:false,
+
+            $("#transition").css("height", $(window).height() - $("footer").height() * 2);
+
+            new iScroll('transition', { useTransition:true,
                 onBeforeScrollStart:function (e) {
                     var target = e.target;
                     while (target.nodeType != 1) target = target.parentNode;

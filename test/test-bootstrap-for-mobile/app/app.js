@@ -4,9 +4,6 @@ define(['backbone',
     'bootstrap', 'jquery-aop', 'mobile', 'page-transition', 'stats'],
     function (Backbone, MainView, PageTransitionView, HoverTestView, FastButtonTest, ScrollView, OptionView) {
         return {
-            aop:function () {
-
-            },
             init:function () {
                 // Router
                 var Routers = Backbone.Router.extend({
@@ -15,9 +12,10 @@ define(['backbone',
                     transitionType:this.defaultTransitionType,
                     previousPage:"",
                     currentRoute:"",
+                    previousRoute:"",
+                    isReverse:false,
                     initialize:function () {
                         var self = this;
-                        console.log("start Routers");
                         this.mainView = new MainView();
                         this.pageTransitionView = new PageTransitionView();
                         this.hoverTestView = new HoverTestView();
@@ -28,12 +26,8 @@ define(['backbone',
 
                         $.aop.before({target:Routers, method:'scrollViewRoute'},
                             function (str) {
-                                self.log(str);
                             }
                         );
-                    },
-                    'log':function (str) {
-                        console.log('Output = ' + str);
                     },
                     routes:{
                         '':'main',
@@ -75,27 +69,36 @@ define(['backbone',
                         this.activePage(this.optionView.render().$el);
                     },
                     'activePage':function (view) {
-                        var self = this,
-                            currentPage = Backbone.history.fragment;
+                        var self = this;
+                        this.transitionType = "fade"; // beforeNoneSlide slide pop filp fade
 
-                        this.transitionType = 'slide'; // beforeNoneSlide   slide   pop filp    fade
-                        view.addClass('current-page');
+                        view.addClass("current-page");
 
-                        if(!this.firstPage) {
-                            console.log("start activePage");
+                        if (!this.firstPage) {
+
+                            $(this.previousPage).addClass("current-page");
                             $.cornerStoneTransition({
-                                transitionType: this.transitionType,
-                                inTarget: view,
-                                outTarget: this.previousPage,
-                                complete: function() {
-                                    this.outTarget.removeClass().html("");
-                                }
+                                transitionType:this.transitionType,
+                                fallbackType: "fade",
+                                inTarget:{
+                                    id:"#" + $(view).attr("id"),
+                                    done:function () {
+                                    }
+                                },
+                                outTarget:{
+                                    id:"#" + $(this.previousPage).attr("id"),
+                                    done:function () {
+                                        $(this.id).removeClass("current-page").html("");
+                                    }
+                                },
+                                isReverse:this.isReverse
                             });
-                            console.log("end activePage");
                         }
 
+                        this.previousPage = view;
                         this.firstPage = false;
                         this.transitionType = this.defaultTransitionType;
+                        this.isReverse = false;
                     }
                 });
 
