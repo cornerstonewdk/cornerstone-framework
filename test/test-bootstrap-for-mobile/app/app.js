@@ -42,6 +42,7 @@ define(['backbone',
                     },
                     'main':function () {
                         this.previousPage = $("#view .current-page ");
+                        this.transitionType = "flip"; // beforeNoneSlide slide pop filp fade
                         this.activePage(this.mainView.render().$el);
                     },
                     'pageTransition':function (type) {
@@ -55,28 +56,30 @@ define(['backbone',
                         this.activePage(this.hoverTestView.render().$el);
                     },
                     'fastbuttonTest':function () {
+                        this.transitionType = "fade"; // beforeNoneSlide slide pop filp fade
                         this.previousPage = $("#view .current-page ");
                         this.activePage(this.fastButtonTest.render().$el);
                         $.cornerStoneMobile.fastButton();
                     },
                     'scrollViewRoute':function () {
+                        this.transitionType = "flip"; // beforeNoneSlide slide pop filp fade
                         this.previousPage = $("#view .current-page ");
                         this.activePage(this.scrollView.render().$el);
                         this.scrollView.afterRender();
                     },
                     'option':function () {
+                        this.transitionType = "slide"; // beforeNoneSlide slide pop filp fade
                         this.previousPage = $("#view .current-page ");
                         this.activePage(this.optionView.render().$el);
                     },
                     'activePage':function (view) {
                         var self = this;
-                        this.transitionType = "fade"; // beforeNoneSlide slide pop filp fade
 
                         view.addClass("current-page");
+                        $(this.previousPage).addClass("current-page");
 
                         if (!this.firstPage) {
-
-                            $(this.previousPage).addClass("current-page");
+                            this.transitionType = "turn"; // beforeNoneSlide slide pop filp fade
                             $.cornerStoneTransition({
                                 transitionType:this.transitionType,
                                 fallbackType: "fade",
@@ -88,7 +91,7 @@ define(['backbone',
                                 outTarget:{
                                     id:"#" + $(this.previousPage).attr("id"),
                                     done:function () {
-                                        $(this.id).removeClass("current-page").html("");
+                                        $(this.id).removeClass("current-page")[0].innerHTML = "";
                                     }
                                 },
                                 isReverse:this.isReverse
