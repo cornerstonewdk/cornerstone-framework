@@ -1,250 +1,378 @@
 /*
  *  Project: SKT HTML5 Framework
  *  CodeName : CornerStone
- *  Description: ???�러그인???�면?�환 ?�과�?범용?�으�??�용?????�도�?구현???�러그인?�다.
- *  ???�러그인??jQuery Core Style Guide(http://docs.jquery.com/JQuery_Core_Style_Guidelines)�?�?��?�니??
- *  Author: �?��?? *  License: 
+ *  Description: 이 플러그인은 화면전환을 실행하기 위한 플러그인이며,
+ *  이 플러그인은 jQuery Core Style Guide(http://docs.jquery.com/JQuery_Core_Style_Guidelines)를 준수합니다.
+ *  Author: 김우섭
+ *  License :
  */
-
-// the semi-colon before function invocation is a safety net against concatenated
-// scripts and/or other plugins which may not be closed properly.
+// 세미콜론은 다른 스크립트가 닫지 않은 경우 오류를 사전에 방지하기 위해 작성
 ;
-(function ($, window, document, undefined) {
+(function ($, window, document) {
 
-    // undefined is used here as the undefined global variable in ECMAScript 3 is
-    // mutable (ie. it can be changed by someone else). undefined isn't really being
-    // passed in so we can ensure the value of it is truly undefined. In ES5, undefined
-    // can no longer be modified.
+    // 기본 변수값들을 설정
+    var pluginName = 'cornerStoneTransition';
 
-    // window is passed through as local variable rather than global
-    // as this (slightly) quickens the resolution process and can be more efficiently
-    // minified (especially when both are regularly referenced in your plugin).
-
-    // Create the defaults once
-    var pluginName = 'cornerStoneTransition',
-        defaults = {
-            transitionType:"none",
-            inTarget:null,
-            outTarget:null
-        };
-
-    // ?�러그인 ?�성??    function Plugin(element, options) {
-        this.element = element;
-
-        // jQuery has an extend method which merges the contents of two or 
-        // more objects, storing the result in the first object. The first object
-        // is generally empty as we don't want to alter the default options for
-        // future instances of the plugin
-        this.options = $.extend({}, defaults, options);
-
-        this._defaults = defaults;
-        this._name = pluginName;
-        this.init();
-    }
-
-    // ?�러그인 초기??    Plugin.prototype.init = function () {
-        console.log("init");
-        this.run();
+    var Plugin = function (options) {
+        this.options = options;
     };
 
-    // ?�면?�환 ?�행
-    Plugin.prototype.run = function () {
-        console.log("run");
-        console.log(this.options);
-        try {
-            this.effect.inTarget = "#" + $(this.options.inTarget).attr("id");
-            this.effect.outTarget = "#" + $(this.options.outTarget).attr("id");
-            this.effect[this.options.transitionType](this.options);
-        } catch (e) {
-            console.log(e);
-            this.effect.none();
-        }
-    };
-
-    // ?�면?�환 ?�과
-    Plugin.prototype.effect = {
-        inTarget:null,
-        outTarget:null,
-        isActive:false,
-
-        // ?�과�??�는 경우
-        none:function (opt) {
-            $(this.outTarget).hide();
-            $(this.inTarget).show();
-        },
-
-        // ?�립 ?�과
-        flip:function (opt) {
-            var self = this;
-
-            if (this.isActive) {
-                return false;
-            }
-
-            this.isActive = true;
-
-            // Fallback
-            if ($.browser.msie) {
-                this.fade(opt);
-                return false;
-            }
-
-            $("body").css({overflow:"hidden"});
-
-            $(this.outTarget).removeAttr("style").css({
-                position:"absolute",
-                width:$(this.outTarget).width(),
-                transform:"translate(0,0)",
-                opacity:1
-            }).transition({ x:'-100%', opacity:0 },
-                function () {
-                    $(this).removeAttr("style").hide();
-                });
-
-            $(this.inTarget).removeAttr("style").css({
-                position:"absolute",
-                width:$(this.inTarget).width(),
-                transform:"translate(100%,0)",
-                opacity:1
-            }).transition({ x:'0' },
-                function () {
-                    $(this).removeAttr("style");
-                    $("body").css({overflow:"auto"});
-                    opt.complete();
-                    self.isActive = false;
-                });
-        },
-
-        // ?�라?�드 ?�과
-        /**
-         * TODO Element�?무거??경우 ?�면 깜박???�상
-         * style ?�거�??�한 문제 고려
-         * 방안1) transition?�서 �?��??style�??�거?�는 방법 css json key값으�?구분???�거
-         */
-        slide:function (opt) {
-            var self = this;
-
-            if (this.isActive) {
-                return false;
-            }
-
-            this.isActive = true;
-
-            // Fallback
-            if ($.browser.msie) {
-                this.fade(opt);
-                return false;
-            }
-
-            $("body").css({overflow:"hidden"});
-
-            $(this.outTarget).removeAttr("style").css({
-                position:"absolute",
-                width:$(this.outTarget).width(),
-                transform:"translate(0,0)",
-                opacity:1
-            }).transition({ x:'-100%', opacity:0 },
-                function () {
-                    $(this).removeAttr("style").hide();
-                });
-
-            $(this.inTarget).removeAttr("style").css({
-                position:"absolute",
-                width:$(this.inTarget).width(),
-                transform:"translate(100%,0)",
-                opacity:1
-            }).transition({ x:'0' },
-                function () {
-                    $(this).removeAttr("style");
-                    $("body").css({overflow:"auto"});
-                    opt.complete();
-                    self.isActive = false;
-                });
-        },
-
-        beforeNoneSlide:function (opt) {
-            var self = this;
-
-            if (this.isActive) {
-                return false;
-            }
-
-            this.isActive = true;
-
-            // Fallback
-            if ($.browser.msie) {
-                this.fade(opt);
-                return false;
-            }
-
-            $("body").css({overflow:"hidden"});
-
-            $(this.outTarget).removeAttr("style").html("").css({
-                position:"absolute",
-                width:$(this.outTarget).width(),
-                transform:"translate(0,0)",
-                opacity:1
-            }).transition({ x:'-100%', opacity:0 },
-                function () {
-                    $(this).removeAttr("style").hide();
-                });
-
-            $(this.inTarget).removeAttr("style").css({
-                position:"absolute",
-                width:$(this.inTarget).width(),
-                transform:"translate(100%,0)",
-                opacity:1
-            }).transition({ x:'0' },
-                function () {
-                    $(this).removeAttr("style");
-                    $("body").css({overflow:"auto"});
-                    opt.complete();
-                    self.isActive = false;
-                });
-        },
-
-        // ???�과
-        pop:function (opt) {
-
-        },
-
-        // ?�이???�과
-        fade:function (opt) {
-            console.log('fade', this.inTarget, this.outTarget);
-            var self = this;
-
-            if (self.isActive) {
-                return false;
-            }
-
-            this.isActive = true;
-
-            console.log(1);
-            $(self.outTarget).hide(0, function () {
-                console.log(2);
-                $(self.inTarget).fadeIn(500, function () {
-                    console.log(3);
-                    opt.complete();
-                    self.isActive = false;
-                });
-            });
-        },
-
-        // ?�용???�의 ?�과
-        custom:function (opt) {
-            // Some ...
-        }
-    };
-
-    // A really lightweight plugin wrapper around the constructor, 
-    // preventing against multiple instantiations
+    // 플러그인 생성
     $[pluginName] = function (options) {
-        new Plugin(this, options);
-        return this;
-    }
+        return new Plugin(options).init();
+    };
 
-}(jQuery, window, document));
+    Plugin.prototype = {
+        defaults:{
+            transitionType:"none", // 화면전환 효과 기본 None(효과 없음)
+            fallbackType:"fade", // IE에서 임시로 사용할 효과
+            inTarget:{
+                id:undefined, // 들어오는 페이지의 ID 값
+                inA:undefined, // 들어오는 페이지의 시작점
+                inB:undefined, // 들어오는 페이지의 도착점
+                inDuration:undefined, // 들어오는 페이지의 애니메이션 시간
+                inTiming:"ease-in-out", // linear ease ease-in ease-out ease-in-out
+                done:function () {
 
+                }
+            },
+            outTarget:{
+                id:undefined, // 나가는 페이지의 ID 값
+                outA:undefined, // 나가는 페이지의 시작점
+                outB:undefined, // 나가는 페이지의 도착점
+                outDuration:undefined, // 나가는 페이지의 애니메이션 시간
+                outTiming:"ease-in-out",
+                done:function () {
+
+                }
+            },
+            isReverse:false, // 뒤로가기 여부
+            done:function () {
+
+            }
+        },
+        // 초기화
+        init:function () {
+            // 기본 설정과 사용자가 정의한 값을 병합
+            this.options.inTarget = $.extend({}, this.defaults.inTarget, this.options.inTarget);
+            this.options.outTarget = $.extend({}, this.defaults.outTarget, this.options.outTarget);
+            this.options = $.extend({}, this.defaults, this.options);
+
+            this.run();
+            return this;
+        },
+
+        // 화면전환 실행
+        run:function () {
+            try {
+                // 화면전환 실행전 함수
+                this._before(this.options);
+
+                // Fallback for MSIE
+                if(!$.support.transition) {
+                    $.fn.transition = $.fn.animate;
+                    console.log("MSIE");
+                    this.options.transitionType = this.options.fallbackType;
+                    this.options.inTarget.inTiming = "linear";
+                    this.options.outTarget.outTiming = "linear";
+                }
+
+                this.effect[this.options.transitionType](this.options);
+            } catch (e) {
+                console.log(e);
+                this.effect.none(this.options);
+            }
+        },
+
+        // 화면전환 시작하기 전 실행(변수 유효성 검사 및 사용자가 정의한 beforeStart 실행)
+        _before:function (opt) {
+            if (opt.inTarget == null) {
+                alert("들어오는 페이지의 ID값이 없습니다.");
+                return false;
+            }
+
+            if (opt.outTarget == null) {
+                alert("나가는 페이지의 ID값이 없습니다.");
+                return false;
+            }
+            $("body").css({overflow:"hidden"});
+        },
+
+        // 화면전환 완료시 실행
+        _done:function (opt) {
+            $("body").css({overflow:"auto"});
+            opt.done();
+            console.log("Done");
+        },
+
+        // 화면전환 효과
+        effect:{
+            inTargetCss:null,
+            outTargetCss:null,
+            // 초기화
+            init:function () {
+                this.inTargetCss = null;
+                this.outTargetCss = null;
+                return this;
+            },
+
+            // 페이지별 설정값 병합 유틸리티
+            extend: function(defaultValue, opt) {
+                opt.inTarget = $.extend({}, defaultValue.inTarget, opt.inTarget);
+                opt.outTarget = $.extend({}, defaultValue.outTarget, opt.outTarget);
+                return opt;
+            },
+
+            // 효과가 없는 경우
+            none:function (opt) {
+                $(this.outTarget).hide();
+                $(this.inTarget).show();
+            },
+
+            // 플립효과
+            flip:function (opt) {
+                var self = this;
+
+                // Fallback
+                if ($.browser.msie) {
+                    this.fade(opt);
+                    return false;
+                }
+
+                $(this.outTarget).removeAttr("style").css({
+                    position:"absolute",
+                    width:$(this.outTarget).width(),
+                    rotate3d:'0, 1, 0, 0'
+                }).transition({
+                        perspective:$(this.outTarget).width(),
+                        rotate3d:'0, 1, 0, -90deg',
+                        scale:.9
+                    }, function () {
+                        $(this).hide();
+                        $(self.inTarget).removeAttr("style").css({
+                            position:"absolute",
+                            width:$(self.inTarget).width(),
+                            rotate3d:'0, 1, 0, 90deg',
+                            opacity:0,
+                            zIndex:0,
+                            height:$(window).height()
+                        }).transition({
+                                perspective:$(self.inTarget).width(),
+                                rotate3d:'0, 1, 0, 0',
+                                opacity:1,
+                                scale:.9
+                            }, function () {
+                                opt.complete();
+                            });
+                    });
+            },
+
+            // 플립A효과
+            flipA:function (opt) {
+                var self = this;
+
+                // Fallback
+                if ($.browser.msie) {
+                    this.fade(opt);
+                    return false;
+                }
+
+                $(this.outTarget).removeAttr("style").css({
+                    position:"absolute",
+                    width:$(this.outTarget).width(),
+                    height:10,
+                    opacity:1
+                }).transition({
+                        perspective:$(this.outTarget).width(),
+                        rotate3d:'0, 0, 0, -180deg',
+                        opacity:0
+                    }, function () {
+                        $(this).hide();
+                    });
+
+                $(this.inTarget).removeAttr("style").css({
+                    position:"absolute",
+                    width:$(this.inTarget).width(),
+                    height:10,
+                    rotate3d:'0, 0, 0, 180deg',
+                    opacity:0
+                }).transition({
+                        perspective:$(this.inTarget).width(),
+                        rotate3d:'0, 0, 0, 0',
+                        opacity:1
+                    }, function () {
+                        opt.complete();
+                    });
+            },
+
+            // 슬라이드 효과
+            slide:function (opt) {
+                // 슬라이드 기본 좌표 값
+                var defaultValue = {
+                        inTarget:{
+                            inA:"100%",
+                            inB:"0"
+                        },
+                        outTarget:{
+                            outA:"0",
+                            outB:'-100%'
+                        }
+                    };
+
+                // 뒤로가기시 슬라이드 반대 효과 좌표 값
+                if (opt.isReverse) {
+                    defaultValue = {
+                        inTarget:{
+                            inA:"-100%",
+                            inB:"0",
+                            inDuration: 250,
+                            inTiming: "ease-in-out"
+                        },
+                        outTarget:{
+                            outA:"0",
+                            outB:'100%',
+                            outDuration: 250,
+                            inTiming: "ease-in-out"
+                        }
+                    };
+                }
+
+                // 기본값과 사용자 정의 값 병합
+                opt = this.extend(defaultValue, opt);
+
+                // 나가는 페이지 스타일 초기화
+                this.outTargetCss = {
+                    position:"absolute",
+                    width:$(opt.outTarget.id).width(),
+                    transform:"translate(" + opt.outTarget.outA + ",0)",
+                    opacity:1
+                };
+
+                // 들어오는 페이지 스타일 초기화
+                this.inTargetCss = {
+                    position:"absolute",
+                    width:$(opt.inTarget.id).width(),
+                    transform:"translate(" + opt.inTarget.inA + ",0)",
+                    opacity:1
+                };
+
+                // 나가는 페이지 슬라이드
+                $(opt.outTarget.id).css(this.outTargetCss).transition({
+                    x:opt.outTarget.outB,
+                    opacity:0
+                }, opt.outTarget.outDuration, opt.outTarget.outTiming, function () {
+                    opt.outTarget.done();
+                });
+
+                // 들어오는 페이지 슬라이드
+                $(opt.inTarget.id).css(this.inTargetCss).transition({
+                    x:opt.inTarget.inB
+                }, opt.inTarget.inDuration, opt.inTarget.inTiming, function () {
+                    opt.inTarget.done();
+                });
+
+            },
+            // 이전화면이 없이 슬라이드
+            beforeNoneSlide:function (opt) {
+                var self = this;
+
+                // Fallback
+                if ($.browser.msie) {
+                    this.fade(opt);
+                    return false;
+                }
+
+                $(opt.outTarget).removeAttr("style").html("").css({
+                    position:"absolute",
+                    width:$(this.outTarget).width(),
+                    transform:"translate(0,0)",
+                    opacity:1
+                }).transition({ x:'-100%', opacity:0 },
+                    function () {
+                        $(this).removeAttr("style").hide();
+                    });
+
+                $(opt.inTarget).removeAttr("style").css({
+                    position:"absolute",
+                    width:$(this.inTarget).width(),
+                    transform:"translate(100%,0)",
+                    opacity:1
+                }).transition({ x:'0' },
+                    function () {
+                        $(this).removeAttr("style");
+                        opt.complete(opt);
+                    });
+            },
+
+            // 팝 효과
+            pop:function (opt) {
+
+            },
+
+            // 페이드 효과
+            fade:function (opt) {
+                // 슬라이드 기본 좌표 값
+                var defaultValue = {
+                    inTarget:{
+                        inDuration: 350
+                    },
+                    outTarget:{
+                        outDuration: 250
+                    }
+                };
+
+                // 기본값과 사용자 정의 값 병합
+                opt = this.extend(defaultValue, opt);
+
+                console.log(opt);
+
+                // 나가는 페이지 스타일 초기화
+                this.outTargetCss = {
+                    position:"absolute",
+                    width:$(opt.outTarget.id).width(),
+                    opacity:1
+                };
+
+                // 들어오는 페이지 스타일 초기화
+                this.inTargetCss = {
+                    position:"absolute",
+                    width:$(opt.inTarget.id).width(),
+                    opacity:0
+                };
+
+                $(opt.inTarget.id).css(this.inTargetCss);
+                $(opt.outTarget.id).css(this.outTargetCss).transition({
+                    opacity:0
+                }, opt.outTarget.outDuration, opt.outTarget.outTiming, function () {
+                    opt.outTarget.done();
+                    $(opt.inTarget.id).transition({
+                        opacity:1
+                    }, opt.inTarget.inDuration, opt.inTarget.inTiming, function () {
+                        opt.inTarget.done();
+                        opt.done();
+                    });
+                });
+            },
+
+            // 사용자 정의
+            custom:function (opt) {
+                // Some ...
+            }
+        }
+    };
+
+
+})(jQuery, window, document);
+
+
+/*!
+ * jQuery Transit - CSS3 transitions and transformations
+ * Copyright(c) 2011 Rico Sta. Cruz <rico@ricostacruz.com>
+ * MIT Licensed.
+ *
+ * http://ricostacruz.com/jquery.transit
+ * http://github.com/rstacruz/jquery.transit
+ */
 
 (function ($) {
     "use strict";
@@ -950,5 +1078,4 @@
 
     // Export some functions for testable-ness.
     $.transit.getTransitionValue = getTransition;
-
 })(jQuery);
