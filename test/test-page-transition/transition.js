@@ -7,8 +7,7 @@
  *  License :
  */
 // 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 방지하기 위해 작성
-;
-(function ($, window, document) {
+;(function ($, window, document) {
 
     // 플러그인 이름 설정
     var pluginName = 'cornerStoneTransition';
