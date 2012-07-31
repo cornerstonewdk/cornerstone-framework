@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+body {
+    font-family: "MoebiusRegular", sans-serif, dotum;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background-image: url('../images/linen_bg_tile.jpg');
+    background-attachment: fixed;
+}
+
+input, button, select, textarea {
+    font-family: "MoebiusRegular", sans-serif, dotum;
+}
+
+#front .btn {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#front, #back {
+    display: none;
+    margin:0;
+}
+#back {
+    color:#FFF;
+}
+#back h3 {
+    padding: 10px;
+}
+#back .form-actions {
+    background-color: transparent;
+}
+#front.current, #back.current {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    #front, #back {
+        margin: 10px;
+    }
+
+    .navbar .brand {
+        margin: 0 auto;
+        width: 127px;
+        float: none;
+    }
+}
+
+@media (max-width: 500px) {
+    #front, #back {
+        margin: 10px;
+    }
+
+    .navbar .brand {
+        margin: 0 auto;
+        width: 127px;
+        float: none;
+    }
+}
