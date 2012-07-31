@@ -6,11 +6,17 @@
  * To change this template use File | Settings | File Templates.
  */
 $(function() {
+
+    // 주소 툴바 감추기
+    window.addEventListener('load', function(){
+        setTimeout(scrollTo, 0, 0, 1);
+    }, false);
+
     $("#front .btn").live("click", function (e) {
         var transitionType = $(this).attr("data-transition"),
             inTargetID = "#back",
             outTargetID = "#front";
-        $.cornerStoneTransition({
+        CSTransition.launcher({
             transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
             inTarget:{
                 id:inTargetID // 들어오는 페이지의 ID 값
@@ -30,7 +36,7 @@ $(function() {
         var transitionType = $(this).attr("data-transition"),
             outTargetID = "#back",
             inTargetID = "#front";
-        $.cornerStoneTransition({
+        CSTransition.launcher({
             inTarget:{
                 id:inTargetID // 들어오는 페이지의 ID 값
             },
