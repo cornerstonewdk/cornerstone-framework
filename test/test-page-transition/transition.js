@@ -7,25 +7,23 @@
  *  License :
  */
 
-// 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 방지하기 위해 작성
-;
+// 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 막기 위함
+;var Transition = {};
 (function ($, window) {
 
     var Launcher = function (options) {
         this.options = options;
     };
 
-    var Effect = function (options) {
+    var Effect = Transition.effect = function (options) {
         this.options = options;
-        return this;
     };
 
-    window.CSTransition = {
-        launcher:function (option) {
-            return new Launcher(option).init();
-        }
+    Transition.launcher = function (option) {
+        return new Launcher(option).init();
     };
 
+    // 화면전환 실행기
     Launcher.prototype = {
         defaults:{
             transitionType:"none", // 화면전환 효과 기본 None(효과 없음)
@@ -114,16 +112,6 @@
     };
 
     // 화면전환 효과
-    /**
-     * TODO
-     * 1. height를 유동적으로 할 방법 찾기
-     * 1) window 일때
-     * 2) nested 상태의 height
-     * 1/2번을 모두 사용할 수 있는 방법 필요
-     *
-     * 2. Width값의 경우 .width()로 크기를 알 순 있지만, 터치기반에서 가로/세로로 전환시 고정값의 경우 전환할때 다시
-     * 폭 값을 변경해야하는 문제가 발생.
-     */
     Effect.prototype = {
         inTargetCss:null,
         outTargetCss:null,
@@ -680,7 +668,7 @@
                 perspective:$(opt.inTarget.id).width(),
                 rotate3d:"0, 1, 0, " + opt.inTarget.from,
                 transformOrigin:"0 0",
-                opacity:0,
+                opacity:0 ,
                 height:$(window).height() > $(opt.outTarget.id).height() ?
                     $(opt.outTarget.id).height() : $(window).height(),
                 overflow:"hidden"
