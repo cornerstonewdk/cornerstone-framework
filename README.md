@@ -10,8 +10,8 @@
 	 +- src --- mvc
 	 |       +- ui
 	 |       +- misc
-	 +- doc --- API_Design --- images
-	         +- CSS_Design --- images
+	 +- doc --- 1. User_Document --- images
+	         +- 2. Reference ------- images
 
 * src : Framework 소스 코드들을 보관
 * lib : Framework이 의존하는 Open Source 제품들을 보관
