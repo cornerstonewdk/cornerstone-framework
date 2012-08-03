@@ -6,6 +6,63 @@
  * To change this template use File | Settings | File Templates.
  */
 $(function() {
+    var effect = Transition.effect.prototype;
+    effect.custom1= function (opt) {
+        // 회전 기본 값
+        var self = this,
+            defaultValue = {
+                inTarget:{
+                    duration:350
+                },
+                outTarget:{
+                    from:0,
+                    duration:150
+                }
+            };
+
+        // 기본값과 사용자 정의 값 병합
+        opt = this.extend(defaultValue, opt);
+
+        // 나가는 페이지 스타일 초기화 값
+        this.outTargetCss = {
+            position:"absolute",
+            width:$(opt.outTarget.id).width(),
+            scale:1,
+            opacity:1,
+            perspective:$(opt.outTarget.id).width(),
+            rotate3d:"0, 0, 0, 0",
+            overflow:"hidden"
+        };
+
+        // 들어오는 페이지 스타일 초기화 값
+        this.inTargetCss = {
+            position:"absolute",
+            width:$(opt.inTarget.id).width(),
+            scale:0.5,
+            opacity:0,
+            perspective:$(opt.outTarget.id).width(),
+            rotate3d:"0, 0, 0, 0",
+            overflow:"hidden"
+        };
+
+        $(opt.inTarget.id).css(this.inTargetCss);
+        $(opt.outTarget.id).css(this.outTargetCss).transition({
+            scale:0.5,
+            opacity:0
+        }, opt.outTarget.duration, opt.outTarget.timing, function () {
+            $(this).css({
+                scale:1
+            });
+            opt.outTarget.done();
+
+            $(opt.inTarget.id).transition({
+                scale:1,
+                opacity:1
+            }, opt.inTarget.duration, opt.inTarget.timing, function () {
+                self.plugin._done(opt);
+            });
+        });
+    };
 
     // 주소 툴바 감추기
     window.addEventListener('load', function(){
@@ -16,7 +73,7 @@ $(function() {
         var transitionType = $(this).attr("data-transition"),
             inTargetID = "#back",
             outTargetID = "#front";
-        CSTransition.launcher({
+        Transition.launcher({
             transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
             inTarget:{
                 id:inTargetID // 들어오는 페이지의 ID 값
@@ -36,7 +93,7 @@ $(function() {
         var transitionType = $(this).attr("data-transition"),
             outTargetID = "#back",
             inTargetID = "#front";
-        CSTransition.launcher({
+        Transition.launcher({
             inTarget:{
                 id:inTargetID // 들어오는 페이지의 ID 값
             },
