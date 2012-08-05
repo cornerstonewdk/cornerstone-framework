@@ -10,7 +10,7 @@
 ;
 (function ($, window, document) {
 
-    // 기본 변수값들을 설정
+    // 플러그인 이름 설정
     var pluginName = 'cornerStoneTransition';
 
     var Plugin = function (options) {
@@ -28,20 +28,20 @@
             fallbackType:"fade", // IE에서 임시로 사용할 효과
             inTarget:{
                 id:undefined, // 들어오는 페이지의 ID 값
-                inA:undefined, // 들어오는 페이지의 시작점
-                inB:undefined, // 들어오는 페이지의 도착점
-                inDuration:undefined, // 들어오는 페이지의 애니메이션 시간
-                inTiming:"ease-in-out", // linear ease ease-in ease-out ease-in-out
+                from:undefined, // 들어오는 페이지의 시작점
+                to:undefined, // 들어오는 페이지의 도착점
+                duration:undefined, // 들어오는 페이지의 애니메이션 시간
+                timing:"ease", // linear ease ease-in ease-out ease-in-out
                 done:function () {
 
                 }
             },
             outTarget:{
                 id:undefined, // 나가는 페이지의 ID 값
-                outA:undefined, // 나가는 페이지의 시작점
-                outB:undefined, // 나가는 페이지의 도착점
-                outDuration:undefined, // 나가는 페이지의 애니메이션 시간
-                outTiming:"ease-in-out",
+                from:undefined, // 나가는 페이지의 시작점
+                to:undefined, // 나가는 페이지의 도착점
+                duration:undefined, // 나가는 페이지의 애니메이션 시간
+                timing:"ease",
                 done:function () {
 
                 }
@@ -69,14 +69,15 @@
                 this._before(this.options);
 
                 // Fallback for MSIE
-                if(!$.support.transition) {
+                if (!$.support.transition) {
                     $.fn.transition = $.fn.animate;
                     console.log("MSIE");
                     this.options.transitionType = this.options.fallbackType;
-                    this.options.inTarget.inTiming = "linear";
-                    this.options.outTarget.outTiming = "linear";
+                    this.options.inTarget.timing = "linear";
+                    this.options.outTarget.timing = "linear";
                 }
 
+                this.effect.init();
                 this.effect[this.options.transitionType](this.options);
             } catch (e) {
                 console.log(e);
@@ -106,18 +107,25 @@
         },
 
         // 화면전환 효과
+        /**
+         * TODO height를 유동적으로 할 방법 찾기
+         * 1) window 일때
+         * 2) nested 상태의 height일때
+         * 1/2번을 모두 사용할 수 있는 방법 필요
+         */
         effect:{
             inTargetCss:null,
             outTargetCss:null,
+
             // 초기화
             init:function () {
                 this.inTargetCss = null;
                 this.outTargetCss = null;
-                return this;
+                console.log("effect init");
             },
 
             // 페이지별 설정값 병합 유틸리티
-            extend: function(defaultValue, opt) {
+            extend:function (defaultValue, opt) {
                 opt.inTarget = $.extend({}, defaultValue.inTarget, opt.inTarget);
                 opt.outTarget = $.extend({}, defaultValue.outTarget, opt.outTarget);
                 return opt;
@@ -131,40 +139,61 @@
 
             // 플립효과
             flip:function (opt) {
-                var self = this;
+                // 플립 기본 값
+                var self = this,
+                    defaultValue = {
+                        inTarget:{
+                            from:"90deg",
+                            to:0,
+                            duration:250
+                        },
+                        outTarget:{
+                            from:0,
+                            to:"-90deg",
+                            duration:250
+                        }
+                    };
 
-                // Fallback
-                if ($.browser.msie) {
-                    this.fade(opt);
-                    return false;
-                }
+                // 기본값과 사용자 정의 값 병합
+                opt = this.extend(defaultValue, opt);
 
-                $(this.outTarget).removeAttr("style").css({
+                console.log(opt);
+
+                // 나가는 페이지 스타일 초기화 값
+                this.outTargetCss = {
                     position:"absolute",
-                    width:$(this.outTarget).width(),
-                    rotate3d:'0, 1, 0, 0'
-                }).transition({
-                        perspective:$(this.outTarget).width(),
-                        rotate3d:'0, 1, 0, -90deg',
-                        scale:.9
+                    width:$(opt.outTarget.id).width(),
+                    height:200,
+                    perspective:$(opt.outTarget.id).width(),
+                    rotateY:opt.outTarget.from,
+                    opacity:1
+                };
+
+                // 들어오는 페이지 스타일 초기화 값
+                this.inTargetCss = {
+                    position:"absolute",
+                    width:$(opt.inTarget.id).width(),
+                    height:200,
+                    perspective:$(opt.inTarget.id).width(),
+                    rotateY:opt.inTarget.from,
+                    opacity:0
+                };
+
+                $(opt.inTarget.id).css(this.inTargetCss);
+                $(opt.outTarget.id).css(this.outTargetCss).transition({
+                    rotateY:opt.outTarget.to,
+                    opacity:0
+                }, opt.outTarget.duration, opt.outTarget.timing, function () {
+                    opt.outTarget.done();
+
+                    $(opt.inTarget.id).transition({
+                        rotateY:opt.inTarget.to,
+                        opacity:1
                     }, function () {
-                        $(this).hide();
-                        $(self.inTarget).removeAttr("style").css({
-                            position:"absolute",
-                            width:$(self.inTarget).width(),
-                            rotate3d:'0, 1, 0, 90deg',
-                            opacity:0,
-                            zIndex:0,
-                            height:$(window).height()
-                        }).transition({
-                                perspective:$(self.inTarget).width(),
-                                rotate3d:'0, 1, 0, 0',
-                                opacity:1,
-                                scale:.9
-                            }, function () {
-                                opt.complete();
-                            });
+                        opt.inTarget.done();
+                        opt.done();
                     });
+                });
             },
 
             // 플립A효과
@@ -209,30 +238,30 @@
             slide:function (opt) {
                 // 슬라이드 기본 좌표 값
                 var defaultValue = {
-                        inTarget:{
-                            inA:"100%",
-                            inB:"0"
-                        },
-                        outTarget:{
-                            outA:"0",
-                            outB:'-100%'
-                        }
-                    };
+                    inTarget:{
+                        from:"100%",
+                        to:"0",
+                        duration:550
+                    },
+                    outTarget:{
+                        from:"0",
+                        to:'-100%',
+                        duration:550
+                    }
+                };
 
                 // 뒤로가기시 슬라이드 반대 효과 좌표 값
                 if (opt.isReverse) {
                     defaultValue = {
                         inTarget:{
-                            inA:"-100%",
-                            inB:"0",
-                            inDuration: 250,
-                            inTiming: "ease-in-out"
+                            from:"-100%",
+                            to:"0",
+                            duration:550
                         },
                         outTarget:{
-                            outA:"0",
-                            outB:'100%',
-                            outDuration: 250,
-                            inTiming: "ease-in-out"
+                            from:"0",
+                            to:'100%',
+                            duration:550
                         }
                     };
                 }
@@ -244,7 +273,7 @@
                 this.outTargetCss = {
                     position:"absolute",
                     width:$(opt.outTarget.id).width(),
-                    transform:"translate(" + opt.outTarget.outA + ",0)",
+                    transform:"translate(" + opt.outTarget.from + ",0)",
                     opacity:1
                 };
 
@@ -252,72 +281,108 @@
                 this.inTargetCss = {
                     position:"absolute",
                     width:$(opt.inTarget.id).width(),
-                    transform:"translate(" + opt.inTarget.inA + ",0)",
+                    transform:"translate(" + opt.inTarget.from + ",0)",
                     opacity:1
                 };
 
                 // 나가는 페이지 슬라이드
                 $(opt.outTarget.id).css(this.outTargetCss).transition({
-                    x:opt.outTarget.outB,
+                    x:opt.outTarget.to,
                     opacity:0
-                }, opt.outTarget.outDuration, opt.outTarget.outTiming, function () {
+                }, opt.outTarget.duration, opt.outTarget.timing, function () {
+                    $(this).css({
+                        transform:"translate(0,0)"
+                    });
                     opt.outTarget.done();
                 });
 
                 // 들어오는 페이지 슬라이드
                 $(opt.inTarget.id).css(this.inTargetCss).transition({
-                    x:opt.inTarget.inB
-                }, opt.inTarget.inDuration, opt.inTarget.inTiming, function () {
+                    x:opt.inTarget.to
+                }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     opt.inTarget.done();
                 });
 
             },
-            // 이전화면이 없이 슬라이드
-            beforeNoneSlide:function (opt) {
-                var self = this;
 
-                // Fallback
-                if ($.browser.msie) {
-                    this.fade(opt);
-                    return false;
-                }
+            // 회전 효과
+            spin:function (opt) {
+                // 회전 기본 값
+                var self = this,
+                    defaultValue = {
+                        inTarget:{
+                            from:"720deg",
+                            to:0,
+                            duration:1000
+                        },
+                        outTarget:{
+                            from:0,
+                            to:"720deg",
+                            duration:1000
+                        }
+                    };
 
-                $(opt.outTarget).removeAttr("style").html("").css({
+                // 기본값과 사용자 정의 값 병합
+                opt = this.extend(defaultValue, opt);
+
+                console.log(opt);
+
+                // 나가는 페이지 스타일 초기화 값
+                this.outTargetCss = {
                     position:"absolute",
-                    width:$(this.outTarget).width(),
-                    transform:"translate(0,0)",
+                    width:$(opt.outTarget.id).width(),
+                    perspective:$(opt.outTarget.id).width(),
+                    rotate:opt.outTarget.from,
+                    height:300,
+                    overflow:"hidden",
+                    scale:1,
                     opacity:1
-                }).transition({ x:'-100%', opacity:0 },
-                    function () {
-                        $(this).removeAttr("style").hide();
+                };
+
+                // 들어오는 페이지 스타일 초기화 값
+                this.inTargetCss = {
+                    position:"absolute",
+                    width:$(opt.inTarget.id).width(),
+                    perspective:$(opt.inTarget.id).width(),
+                    rotate:opt.inTarget.from,
+                    height:300,
+                    overflow:"hidden",
+                    scale:0,
+                    opacity:0
+                };
+
+                $(opt.inTarget.id).css(this.inTargetCss);
+                $(opt.outTarget.id).css(this.outTargetCss).transition({
+                    rotate:opt.outTarget.to,
+                    scale:0
+                }, opt.outTarget.duration, opt.outTarget.timing, function () {
+                    $(this).css({
+                        opacity:0
                     });
 
-                $(opt.inTarget).removeAttr("style").css({
-                    position:"absolute",
-                    width:$(this.inTarget).width(),
-                    transform:"translate(100%,0)",
-                    opacity:1
-                }).transition({ x:'0' },
-                    function () {
-                        $(this).removeAttr("style");
-                        opt.complete(opt);
-                    });
-            },
+                    opt.outTarget.done();
 
-            // 팝 효과
-            pop:function (opt) {
-
+                    $(opt.inTarget.id).css({
+                        opacity:1
+                    }).transition({
+                            rotate:opt.inTarget.to,
+                            scale:1
+                        }, opt.inTarget.duration, opt.inTarget.timing, function () {
+                            opt.inTarget.done();
+                            opt.done();
+                        });
+                });
             },
 
             // 페이드 효과
             fade:function (opt) {
-                // 슬라이드 기본 좌표 값
+                // 페이드 기본 값
                 var defaultValue = {
                     inTarget:{
-                        inDuration: 350
+                        duration:350
                     },
                     outTarget:{
-                        outDuration: 250
+                        duration:250
                     }
                 };
 
@@ -326,33 +391,152 @@
 
                 console.log(opt);
 
-                // 나가는 페이지 스타일 초기화
+                // 나가는 페이지 스타일 초기화 값
                 this.outTargetCss = {
                     position:"absolute",
                     width:$(opt.outTarget.id).width(),
                     opacity:1
                 };
 
-                // 들어오는 페이지 스타일 초기화
+                // 들어오는 페이지 스타일 초기화 값
                 this.inTargetCss = {
                     position:"absolute",
                     width:$(opt.inTarget.id).width(),
                     opacity:0
                 };
 
+                // 페이지 스타일 초기화
                 $(opt.inTarget.id).css(this.inTargetCss);
                 $(opt.outTarget.id).css(this.outTargetCss).transition({
                     opacity:0
-                }, opt.outTarget.outDuration, opt.outTarget.outTiming, function () {
+                }, opt.outTarget.duration, opt.outTarget.timing, function () {
                     opt.outTarget.done();
                     $(opt.inTarget.id).transition({
                         opacity:1
-                    }, opt.inTarget.inDuration, opt.inTarget.inTiming, function () {
+                    }, opt.inTarget.duration, opt.inTarget.timing, function () {
                         opt.inTarget.done();
                         opt.done();
                     });
                 });
             },
+
+            // 팝 효과
+            pop:function (opt) {
+                // 회전 기본 값
+                var self = this,
+                    defaultValue = {
+                        inTarget:{
+                            duration:350
+                        },
+                        outTarget:{
+                            from:0,
+                            duration:150
+                        }
+                    };
+
+                // 기본값과 사용자 정의 값 병합
+                opt = this.extend(defaultValue, opt);
+
+                console.log(opt);
+
+                // 나가는 페이지 스타일 초기화 값
+                this.outTargetCss = {
+                    position:"absolute",
+                    width:$(opt.outTarget.id).width(),
+                    opacity:1,
+                    height:300,
+                    overflow:"hidden"
+                };
+
+                // 들어오는 페이지 스타일 초기화 값
+                this.inTargetCss = {
+                    position:"absolute",
+                    width:$(opt.inTarget.id).width(),
+                    scale:0,
+                    opacity:0,
+                    height:300,
+                    overflow:"hidden"
+                };
+
+                $(opt.inTarget.id).css(this.inTargetCss);
+                $(opt.outTarget.id).css(this.outTargetCss).transition({
+                    opacity:0
+                }, opt.outTarget.duration, opt.outTarget.timing, function () {
+                    opt.outTarget.done();
+
+                    $(opt.inTarget.id).transition({
+                            opacity:1,
+                            scale:1
+                        }, opt.inTarget.duration, opt.inTarget.timing, function () {
+                            opt.inTarget.done();
+                            opt.done();
+                        });
+                });
+            },
+
+            // 전환 효과
+            turn:function (opt) {
+                // 회전 기본 값
+                var self = this,
+                    defaultValue = {
+                        inTarget:{
+                            from:"90deg",
+                            to:0,
+                            duration:350
+                        },
+                        outTarget:{
+                            from:0,
+                            to:"-90deg",
+                            duration:350
+                        }
+                    };
+
+                // 기본값과 사용자 정의 값 병합
+                opt = this.extend(defaultValue, opt);
+
+                console.log(opt);
+
+                // 나가는 페이지 스타일 초기화 값
+                this.outTargetCss = {
+                    position:"absolute",
+                    width:$(opt.outTarget.id).width(),
+                    perspective:$(opt.outTarget.id).width(),
+                    rotate3d: "0, 1, 0, " + opt.outTarget.from,
+                    transformOrigin: "0 0",
+                    opacity:1,
+                    height:300,
+                    overflow:"hidden"
+                };
+
+                // 들어오는 페이지 스타일 초기화 값
+                this.inTargetCss = {
+                    position:"absolute",
+                    width:$(opt.inTarget.id).width(),
+                    perspective:$(opt.inTarget.id).width(),
+                    rotate3d: "0, 1, 0, " + opt.inTarget.from,
+                    transformOrigin: "0 0",
+                    opacity:0,
+                    height:300,
+                    overflow:"hidden"
+                };
+
+                $(opt.inTarget.id).css(this.inTargetCss);
+                $(opt.outTarget.id).css(this.outTargetCss).transition({
+                    rotate3d: "0, 1, 0, " + opt.outTarget.to,
+                    opacity:0
+                }, opt.outTarget.duration, opt.outTarget.timing, function () {
+                    opt.outTarget.done();
+
+                    $(opt.inTarget.id).transition({
+                        rotate3d: "0, 1, 0, " + opt.inTarget.to,
+                        opacity:1
+                    }, opt.inTarget.duration, opt.inTarget.timing, function () {
+                        opt.inTarget.done();
+                        opt.done();
+                    });
+                });
+            },
+
 
             // 사용자 정의
             custom:function (opt) {

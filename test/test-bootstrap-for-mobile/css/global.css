@@ -22,6 +22,7 @@ input, button, select, textarea {
 header {
     width: 100%;
     margin-top: -2px;
+    height: 41px;
 }
 .navbar {
     margin: 0;
@@ -61,7 +62,7 @@ header {
 }
 footer {
     position: fixed;
-    z-index: 2;
+    z-index: 2000;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -75,8 +76,6 @@ footer {
 }
 
 #view > section.current-page {
-    padding-top: 41px;
-    padding-bottom: 41px;
 }
 
 #view > section.active {
