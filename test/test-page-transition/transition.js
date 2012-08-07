@@ -8,9 +8,25 @@
  */
 
 // 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 막기 위함
-;var Transition = {};
-(function ($, window) {
+;(function ($, window) {
 
+    /**
+     * Transition class
+     * Transition 은 화면 전환를 구현 하기 위해 Launcher 와 Effect로 이뤄져 있다.
+     * @name Transition
+     * @class Transition
+     * @constructor
+     */
+    var Transition = window.Transition = {};
+
+    /**
+     * Launcher class
+     * Launcher 은 화면 전환를 구현 하기 위해 Launcher 와 Effect로 이뤄져 있다.
+     * @name Launcher
+     * @class Launcher
+     * @param {JSON}options
+     * @constructor
+     */
     var Launcher = function (options) {
         this.options = options;
     };
@@ -23,7 +39,6 @@
         return new Launcher(option).init();
     };
 
-    // 화면전환 실행기
     Launcher.prototype = {
         defaults:{
             transitionType:"none", // 화면전환 효과 기본 None(효과 없음)
@@ -53,6 +68,7 @@
 
             }
         },
+
         // 초기화
         init:function () {
             // 기본 설정과 사용자가 정의한 값을 병합
@@ -64,11 +80,17 @@
             return this;
         },
 
-        // 화면전환 실행
+        /**
+         * 화면 전환 실행 함수
+         * @name Launcher#run
+         * @function
+         * @example
+         * this.run();
+         */
         run:function () {
             var effect = new Effect(this.options);
             try {
-                this._before(this.options);
+                this._before();
 
                 // Fallback for MSIE
                 if (!$.support.transition) {
@@ -78,7 +100,7 @@
                     this.options.outTarget.timing = "linear";
                 }
 
-                effect.init();
+                effect.init(this);
                 effect[this.options.transitionType](this.options);
             } catch (e) {
                 console.log(e);
@@ -86,26 +108,38 @@
             }
         },
 
-        // 화면전환 시작하기 전 실행
-        _before:function (opt) {
+        /**
+         * 화면 전환 시작전 실행 함수
+         * @name Launcher#_before
+         * @function
+         * @example
+         * this._before();
+         */
+        _before:function () {
             console.log("_before");
 
             $("body").css({overflow:"hidden"});
-            $(opt.inTarget.id).show();
-            $(opt.outTarget.id).show();
+            $(this.options.inTarget.id).show();
+            $(this.options.outTarget.id).show();
 
-            if (opt.isReverse) {
+            if (this.options.isReverse) {
                 this.options.transitionType = $("body").attr("data-transition");
             }
         },
 
-        // 화면전환 완료시 실행
-        _done:function (opt) {
-            $("body").css({overflow:"auto"}).attr("data-transition", opt.transitionType);
-            $(opt.outTarget.id).removeAttr("style").hide();
-            $(opt.inTarget.id).removeAttr("style").show();
-            opt.inTarget.done();
-            opt.done();
+        /**
+         * 화면 전환 완료시 실행 함수
+         * @name Launcher#_done
+         * @function
+         * @example
+         * self.launcher._done();
+         */
+        _done:function () {
+            $("body").css({overflow:"auto"}).attr("data-transition", this.options.transitionType);
+            $(this.options.outTarget.id).removeAttr("style").hide();
+            $(this.options.inTarget.id).removeAttr("style").show();
+            this.options.inTarget.done();
+            this.options.done();
 
             console.log("_done");
         }
@@ -117,8 +151,8 @@
         outTargetCss:null,
 
         // 초기화
-        init:function () {
-            this.plugin = new Launcher(this.options);
+        init:function (launcher) {
+            this.launcher = launcher;
         },
 
         // 페이지별 설정값 병합 유틸리티
@@ -134,7 +168,7 @@
             $(opt.outTarget.id).hide(function () {
                 opt.outTarget.done();
                 $(opt.inTarget.id).show(function () {
-                    self.plugin._done(opt);
+                    self.launcher._done();
                 });
             });
         },
@@ -180,10 +214,11 @@
             this.outTargetCss = {
                 position:"absolute",
                 width:$(opt.outTarget.id).width(),
-                perspective:$(opt.outTarget.id).width(),
+                perspective:$(opt.outTarget.id).width() * 2,
                 rotate3d:"0, 1, 0, " + opt.outTarget.from,
                 height:$(window).height() > $(opt.outTarget.id).height() ?
                     $(opt.outTarget.id).height() : $(window).height(),
+                overflow:"hidden",
                 opacity:1
             };
 
@@ -191,10 +226,11 @@
             this.inTargetCss = {
                 position:"absolute",
                 width:$(opt.inTarget.id).width(),
-                perspective:$(opt.inTarget.id).width(),
+                perspective:$(opt.inTarget.id).width() * 2,
                 rotate3d:"0, 1, 0, " + opt.inTarget.from,
                 height:$(window).height() > $(opt.inTarget.id).height() ?
                     $(opt.inTarget.id).height() : $(window).height(),
+                overflow:"hidden",
                 opacity:0
             };
 
@@ -210,7 +246,7 @@
                     rotate3d:"0, 1, 0, " + opt.inTarget.to,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                    self.plugin._done(opt);
+                    self.launcher._done();
                 });
             });
 
@@ -218,7 +254,7 @@
 
         // 회전 효과
         spin:function (opt) {
-            // 플립 기본 값
+            // 회전 기본값
             var self = this,
                 defaultValue = {
                     inTarget:{
@@ -232,7 +268,6 @@
                         duration:550
                     }
                 };
-
             // 뒤로가기시 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
@@ -248,30 +283,32 @@
                     }
                 };
             }
-
             // 기본값과 사용자 정의 값 병합
             opt = this.extend(defaultValue, opt);
-
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
                 position:"absolute",
                 width:$(opt.outTarget.id).width(),
                 perspective:$(opt.outTarget.id).width(),
                 rotate3d:"0, 0, 0, " + opt.outTarget.from,
+                height:$(window).height() > $(opt.inTarget.id).height() ?
+                    $(opt.inTarget.id).height() : $(window).height(),
+                overflow:"hidden",
                 scale:1,
                 opacity:1
             };
-
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
                 position:"absolute",
                 width:$(opt.inTarget.id).width(),
                 perspective:$(opt.inTarget.id).width(),
                 rotate3d:"0, 0, 0, " + opt.inTarget.from,
+                height:$(window).height() > $(opt.inTarget.id).height() ?
+                    $(opt.inTarget.id).height() : $(window).height(),
+                overflow:"hidden",
                 scale:0,
                 opacity:0
             };
-
             $(opt.inTarget.id).css(this.inTargetCss);
             $(opt.outTarget.id).css(this.outTargetCss).transition({
                 rotate3d:"0, 0, 0, " + opt.outTarget.to,
@@ -282,13 +319,12 @@
                     scale:1
                 });
                 opt.outTarget.done();
-
                 $(opt.inTarget.id).transition({
                     rotate3d:"0, 0, 0, " + opt.inTarget.to,
                     scale:1,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                    self.plugin._done(opt);
+                    self.launcher._done();
                 });
             });
         },
@@ -361,7 +397,7 @@
             $(opt.inTarget.id).css(this.inTargetCss).transition({
                 x:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                self.plugin._done(opt);
+                self.launcher._done();
             });
 
         },
@@ -433,7 +469,7 @@
             $(opt.inTarget.id).css(this.inTargetCss).transition({
                 y:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                self.plugin._done(opt);
+                self.launcher._done();
             });
 
         },
@@ -505,7 +541,7 @@
             $(opt.inTarget.id).css(this.inTargetCss).transition({
                 y:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                self.plugin._done(opt);
+                self.launcher._done();
             });
 
         },
@@ -549,7 +585,7 @@
                 $(opt.inTarget.id).transition({
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                    self.plugin._done(opt);
+                    self.launcher._done();
                 });
             });
         },
@@ -607,7 +643,7 @@
                     scale:1,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                    self.plugin._done(opt);
+                    self.launcher._done();
                 });
             });
         },
@@ -668,7 +704,7 @@
                 perspective:$(opt.inTarget.id).width(),
                 rotate3d:"0, 1, 0, " + opt.inTarget.from,
                 transformOrigin:"0 0",
-                opacity:0 ,
+                opacity:0,
                 height:$(window).height() > $(opt.outTarget.id).height() ?
                     $(opt.outTarget.id).height() : $(window).height(),
                 overflow:"hidden"
@@ -685,14 +721,10 @@
                     rotate3d:"0, 1, 0, " + opt.inTarget.to,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                    self.plugin._done(opt);
+                    self.launcher._done();
                 });
             });
-        },
-
-        // 사용자 정의
-        custom:function (opt) {
-            // Some ...
         }
+
     }
 })(jQuery, window);
