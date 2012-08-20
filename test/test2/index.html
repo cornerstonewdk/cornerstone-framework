@@ -4,6 +4,8 @@
 		<meta charset="utf-8"/>
 		<title>TEST</title>
 
+		<link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../../lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 		<style>
 		body > .container {
 			margin-top: 50px;
@@ -73,19 +75,51 @@
 					<div class="control-group">
 						<label class="control-label" for="name">이름</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" id="name"/>
+							<input type="text" class="input-xlarge" id="name" name="name" data-placement="right"/>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="email">이메일</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" id="email"/>
+							<input type="text" class="input-xlarge" id="email" name="email" data-placement="right"/>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">비밀번호</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" id="password"/>
+							<input type="password" class="input-xlarge" id="password" name="password" data-placement="right"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="gender">성별</label>
+						<div class="controls">
+							<label class="radio">
+								<input type="radio" name="gender" value="M" checked="checked"/> 남
+							</label>
+							<label class="radio">
+								<input type="radio" name="gender" value="F"/> 여
+							</label>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="gender">관심분야</label>
+						<div class="controls">
+							<label class="checkbox">
+								<input type="checkbox" name="interest" value="1" data-placement="top"/> 영화
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="interest" value="2"/> 음악
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="interest" value="3"/> 스포츠
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="interest" value="4"/> 여행
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="interest" value="5"/> IT
+							</label>
+							<span class="help-inline"></span>
 						</div>
 					</div>
 					<div class="form-actions">
