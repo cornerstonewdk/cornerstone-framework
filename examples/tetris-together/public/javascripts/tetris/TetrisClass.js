@@ -21,6 +21,7 @@ var TetrisClass = Class.create({
 	board: null,	//배경
 	
 	current: null,	//현재 블럭
+	currnetBlockId: null,
 	currentX: null,	//현재 블럭의 좌표 X
 	currentY: null,	//현재 블럭의 좌표 Y
 	
@@ -161,6 +162,7 @@ var TetrisClass = Class.create({
 		//다음 블럭을 한개 생성한 후에 (그러니깐 여기서는 4개) 맨 앞에꺼 꺼내기
 		this.blockQueue.push(Math.floor(Math.random() * this.shapes.length));
 		var id = this.blockQueue.shift();
+		this.currnetBlockId = id;
 		
 		//블럭 그림 생성
 		var shape = this.shapes[id];
@@ -305,12 +307,48 @@ var TetrisClass = Class.create({
 	//블럭 가상 회전
 	rotate: function() {
 		var newCurrent = new Array();
+		
 		for(var y = 0; y < 4; y++) {
 			newCurrent[y] = new Array();
 			for(var x = 0; x < 4; x++) {
 				newCurrent[y][x] = this.current[3 - x][y];
 			}
 		}
+		
+		// console.log('before---------------------------');
+		// for(var y = 0; y < 4; y++) {
+			// console.log(newCurrent[y][0] + ', ' + newCurrent[y][1] + ', ' + newCurrent[y][2] + ', ' + newCurrent[y][3]);
+		// }
+				
+		//위 공백 없애기
+		for (;;) {
+			if(typeof(newCurrent[0]) != 'undefined' && newCurrent[0][0] == 0 && newCurrent[0][1] == 0 && newCurrent[0][2] == 0 && newCurrent[0][3] == 0) {
+				console.log('change---------------------------');
+				var tempArray = newCurrent.shift();
+				newCurrent.push(tempArray);
+			} else {
+				break;
+			}
+		}
+		
+		//좌측 공백 없애기
+		for(;;) {
+			if(newCurrent[0][0] == 0 && newCurrent[1][0] == 0 && newCurrent[2][0] == 0 && newCurrent[3][0] == 0) {
+			 	for(var i = 0; i < 4; i++) {
+			 		var tempVal = newCurrent[i].shift();
+			 		newCurrent[i].push(tempVal); 
+			 	}	
+			} else {
+				break;
+			}
+		}
+		
+		// console.log('after---------------------------');
+		// for(var y = 0; y < 4; y++) {
+			// console.log(newCurrent[y][0] + ', ' + newCurrent[y][1] + ', ' + newCurrent[y][2] + ', ' + newCurrent[y][3]);
+		// }
+		
+		//외쪽 공백 없애기
 		
 		return newCurrent;
 	},
