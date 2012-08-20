@@ -13,7 +13,10 @@ requirejs.config( {
 		'underscore': Cornerstone.PATH_LIB + 'underscore-min',
 		'backbone': Cornerstone.PATH_LIB + 'backbone-min',
 		'handlebars': Cornerstone.PATH_LIB + 'handlebars-1.0.0.beta.6',
-		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min'
+		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
+		'lawnchair': Cornerstone.PATH_LIB + 'lawnchair-0.6.1.min',
+		'form': Cornerstone.PATH + 'mvc/form',
+		'validation': Cornerstone.PATH + 'mvc/validation'
 	},
 	// 의존성 및 모듈의 value를 정의한다.
 	// 기본적으로 주요 라이브러리들도 전역변수로는 사용하지 않는 것으로 한다.
@@ -36,6 +39,12 @@ requirejs.config( {
 		},
 		bootstrap: {
 			deps: ['jquery']
+		},
+		lawnchair: {
+			exports: function() {
+				// 전역변수에 선언된 Lawnchair를 삭제하면 제대로 동작하지 않는다.
+				return this.Lawnchair;
+			}
 		}
 	}
 } );
