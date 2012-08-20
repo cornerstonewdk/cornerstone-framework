@@ -1,8 +1,8 @@
 
-define( [ 'model/user', 'backbone', 'jquery', 'handlebars' ], function( User, Backbone, $ ) {
+define( [ 'model/user', 'backbone', 'jquery', 'form', 'view/alert-validation', 'handlebars' ], function( User, Backbone, $, Form, AlertValidation ) {
 
 	// TODO 입력 폼을 위한 View를 따로 만들어야 할까?
-	// TODO Validation
+	// TODO Class를 넘기는 경우(AlertValidation, User)와 인스턴스를 넘기는 경우(new AlertValidation())의 명칭을 구분해야 할 듯
 	return Backbone.View.extend( {
 
 		el: $( 'section#add-section' ),
@@ -10,11 +10,12 @@ define( [ 'model/user', 'backbone', 'jquery', 'handlebars' ], function( User, Ba
 		template: Handlebars.compile( $( '#add-template' ).html() ),
 
 		initialize: function() {
-			this.form = $( '#add-form' );
 		},
 
 		render: function() {
 			this.$el.html( this.template() );
+			this.form = new Form( { el: this.$( '#add-form' ), model: User } );
+			this.form.setValidation( AlertValidation );
 			return this;
 		},
 
@@ -23,20 +24,8 @@ define( [ 'model/user', 'backbone', 'jquery', 'handlebars' ], function( User, Ba
 		},
 
 		addUser: function() {
-
-			var user = new User();
-
-			// Model의 validate는 set, save 시에만 동작한다.
-			// TODO Form의 elements들을 JSON으로 변환하는 방법, ValidationError
-			user.set( {
-				name: this.$( ':input#name' ).val(),
-				email: this.$( ':input#email' ).val(),
-				password: this.$( ':input#password' ).val()
-			}, {
-				error: function( model, err ) {
-					alert( err );
-				}
-			} );
+		
+			var user = this.form.toModel();
 
 			if ( user.isValid() ) {
 				this.collection.add( user );
