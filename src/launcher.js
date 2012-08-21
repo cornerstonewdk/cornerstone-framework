@@ -12,7 +12,7 @@
 		return {
 			path: url.substring( 0, url.lastIndexOf( '/' ) + 1 ),	// /로 끝나는 경로명
 			file: url.substring( url.lastIndexOf( '/' ) + 1 )		// 파일명
-		}
+		};
 	}
 	
 	/**

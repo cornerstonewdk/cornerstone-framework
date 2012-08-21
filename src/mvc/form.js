@@ -1,13 +1,43 @@
 
 define( [ 'backbone', 'underscore', 'jquery', 'validation', 'bootstrap' ], function( Backbone, _, $, Validation ) {
 
-	// TODO 이름뒤에 View를 붙여서 구분해야 할까? (FormView)
-	// 반대방향 동기화(Model이 변경되었을 때 Form 데이터 업데이트) 필요
-	// Validation success/fail 시에 이벤트 발생
+	// TODO Validation success/fail 시에 이벤트 발생
 	return Backbone.View.extend( {
+	
+		initialize: function() {
+			this.render();
+			this.model.on( 'change', this.render, this );	
+		},
 		
 		setValidation: function( CustomValidation ) {
 			this.validation = new CustomValidation( { el: this.$el } );	
+		},
+		
+		render: function() {
+		
+			var self = this;
+		
+			_.each( this.model.attributes, function( value, key ) {
+			
+				var input = self.$( ':input[name=' + key + ']:first' );
+				if ( !input || !input.length ) return;
+				
+				var type = input.attr( 'type' );
+				if ( type && type.toUpperCase() === 'CHECKBOX' ) {
+					self.$( ':input[name=' + key + ']' ).removeAttr( 'checked' );
+					
+					if ( _.isArray( value ) )
+						_.each( value, function( item, index ) {
+							self.$( ':input[name=' + key + '][value=' + item + ']' ).attr( 'checked', 'checked' );
+						} );
+					else
+						self.$( ':input[name=' + key + '][value=' + value + ']' ).attr( 'checked', 'checked' );
+				}
+				else if ( type && type.toUpperCase() === 'RADIO' )
+					self.$( ':input[name=' + key + '][value=' + value + ']' ).attr( 'checked', 'checked' );
+				else
+					input.val( value );
+			} );
 		},
 		
 		toModel: function() {
@@ -34,9 +64,9 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation', 'bootstrap' ], funct
 			} );
 			
 			var self = this;
-			var modelObj = new this.model();
 			
-			modelObj.set( values, {
+			this.model.clear( { silent: true } );
+			this.model.set( values, {
 				error: function( model, err ) {
 				
 					if ( _.isArray( err ) )
@@ -46,9 +76,9 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation', 'bootstrap' ], funct
 				}
 			} );
 			
-			if ( modelObj.isValid() ) self.validation.success();
+			if ( this.model.isValid() ) self.validation.success();
 			
-			return modelObj;
+			return this.model;
 		}
 	} );
 } );

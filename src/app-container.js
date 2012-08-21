@@ -15,7 +15,7 @@ requirejs.config( {
 		'handlebars': Cornerstone.PATH_LIB + 'handlebars-1.0.0.beta.6',
 		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
 		'lawnchair': Cornerstone.PATH_LIB + 'lawnchair-0.6.1.min',
-		'form': Cornerstone.PATH + 'mvc/form',
+		'form-view': Cornerstone.PATH + 'mvc/form',
 		'validation': Cornerstone.PATH + 'mvc/validation'
 	},
 	// 의존성 및 모듈의 value를 정의한다.
