@@ -1110,6 +1110,5 @@
 
         var widget = new Widget();
         widget.init();
-        return this;
     }(jQuery, this));
 }));
