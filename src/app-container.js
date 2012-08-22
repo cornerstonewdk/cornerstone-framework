@@ -16,7 +16,7 @@ requirejs.config( {
 		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
 		'lawnchair': Cornerstone.PATH_LIB + 'lawnchair-0.6.1.min',
 		'form-view': Cornerstone.PATH + 'mvc/form',
-		'validation': Cornerstone.PATH + 'mvc/validation'
+		'validation-view': Cornerstone.PATH + 'mvc/validation'
 	},
 	// 의존성 및 모듈의 value를 정의한다.
 	// 기본적으로 주요 라이브러리들도 전역변수로는 사용하지 않는 것으로 한다.
