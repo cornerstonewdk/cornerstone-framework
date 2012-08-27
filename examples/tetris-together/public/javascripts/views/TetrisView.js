@@ -167,16 +167,26 @@ define(
 					case 1:
 						dountDiv1.style.display = 'block';
 						dountDiv1.innerHTML = '3';
+						document.getElementById('commonAudio').play();
 						break;
 					case 2:
 						dountDiv1.innerHTML = '2';
+						document.getElementById('commonAudio').src = '/audio/2.wav';
+						document.getElementById('commonAudio').load();
+						document.getElementById('commonAudio').play();
 						break;
 					case 3:
 						dountDiv1.innerHTML = '1';
+						document.getElementById('commonAudio').src = '/audio/1.wav';
+						document.getElementById('commonAudio').load();
+						document.getElementById('commonAudio').play();
 						break;
 					case 4:
 						dountDiv1.style.display = 'none';
 						dountDiv2.style.display = 'block';
+						document.getElementById('commonAudio').src = '/audio/go.mp3';
+						document.getElementById('commonAudio').load();
+						document.getElementById('commonAudio').play();
 						break;
 					case 5:
 						dountDiv2.style.display = 'none';

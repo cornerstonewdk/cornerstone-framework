@@ -43,7 +43,6 @@ var TetrisClass = Class.create({
 	sendServerYn: false,	//이것이 true면 서버에 정보 보내기
 	
 	bgAudio: null,		//백그라운드 음악
-	bcAudio: null,		//블록 돌아갈때 음악
 	
 	gameSpeed: 1000,
 	
@@ -151,7 +150,6 @@ var TetrisClass = Class.create({
 		
 		this.bgAudio = new Audio('/audio/bg.mp3');
 		this.bgAudio.loop = true;
-		this.bcAudio = new Audio('/audio/blockChange.wav');
 		
 		
 	},
@@ -216,8 +214,6 @@ var TetrisClass = Class.create({
 	//블럭이 더 이상 이동할 수 있는지 여부 체크 후 정지 시키기 또한 맨 위까지 채울경우 게임 오버 시키기
 	freeze: function() {
 		var isGameOver = false;
-		
-		this.bcAudio.play();
 		
 		for(var y = 0; y < 4; y++) {
 			for( var x = 0; x < 4; x++) {			
@@ -358,6 +354,9 @@ var TetrisClass = Class.create({
 		var rotated = this.rotate();
 		if(this.valid(0, 0, rotated)) {
 			this.current = rotated;
+			document.getElementById('commonAudio').src = '/audio/blockChange.wav';
+			document.getElementById('commonAudio').load();
+			document.getElementById('commonAudio').play();
 		}
 	},
 	

@@ -47,7 +47,11 @@ define(
 			
 			//시작 버튼 눌렸을때 처리 내용
 			onKeyDown: function(key) {
-				if(key.keyCode != 13) return;	//엔터키가 올때까지 무시
+				if(key.keyCode != 13) {
+					return;	//엔터키가 올때까지 무시
+				}
+				
+				document.getElementById('commonAudio').load();
 				
 				var obj = this;
 				
