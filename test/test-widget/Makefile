@@ -18,4 +18,9 @@ build:
 	@uglifyjs -nc widget.js > widget.min.js
 	@echo "Widget successfully built at ${DATE}."
 	@echo "${HR}\n"
+	@echo "Building Widget Less... For DEMO"
+	@recess --compile demo/less/widget.less > demo/widget.css
+	@recess --compress demo/less/widget.less > demo/widget.min.css
+	@echo "Widget successfully built at ${DATE}."
+	@echo "${HR}\n"
 	@echo "Thanks for using Widget"
