@@ -1,0 +1,442 @@
+{
+    "project": {},
+    "files": {
+        "libs/jquery.motionCaptcha.0.2.js": {
+            "name": "libs/jquery.motionCaptcha.0.2.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "widget-checkbox.js": {
+            "name": "widget-checkbox.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "widget-radiobutton.js": {
+            "name": "widget-radiobutton.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "widget-rangeinput.js": {
+            "name": "widget-rangeinput.js",
+            "modules": {},
+            "classes": {
+                "RangeInput": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "widget-spinner.js": {
+            "name": "widget-spinner.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "widget-touch.js": {
+            "name": "widget-touch.js",
+            "modules": {},
+            "classes": {
+                "Touch": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "widget.js": {
+            "name": "widget.js",
+            "modules": {},
+            "classes": {
+                "Widget": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "RangeInput": {
+            "name": "RangeInput",
+            "shortname": "RangeInput",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "widget-rangeinput.js",
+            "line": 43,
+            "is_constructor": 1
+        },
+        "Touch": {
+            "name": "Touch",
+            "shortname": "Touch",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "widget-touch.js",
+            "line": 24,
+            "is_constructor": 1
+        },
+        "Widget": {
+            "name": "Widget",
+            "shortname": "Widget",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "widget.js",
+            "line": 43,
+            "description": "Widget 은 폼, 컴포넌트, 플러그인, 피처드플러그인, 제스처로 구성되어 있다.",
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "libs/jquery.motionCaptcha.0.2.js",
+            "line": 17,
+            "description": "Main plugin function definition",
+            "class": "RangeInput"
+        },
+        {
+            "file": "libs/jquery.motionCaptcha.0.2.js",
+            "line": 22,
+            "description": "Act on matched form element:\nThis could be set up to iterate over multiple elements, but tbh would it ever be useful?",
+            "class": "RangeInput"
+        },
+        {
+            "file": "libs/jquery.motionCaptcha.0.2.js",
+            "line": 224,
+            "description": "Get X/Y mouse position, relative to (/inside) the canvas\n\nHandles cross-browser quirks rather nicely, I feel.",
+            "todo": [
+                "For 1.0",
+                "if no way to obtain coordinates",
+                "don't activate MotionCAPTCHA."
+            ],
+            "class": "RangeInput"
+        },
+        {
+            "file": "libs/jquery.motionCaptcha.0.2.js",
+            "line": 256,
+            "description": "Exposed default plugin settings, which can be overridden in plugin call.",
+            "class": "RangeInput"
+        },
+        {
+            "file": "widget-checkbox.js",
+            "line": 1,
+            "description": "Created with JetBrains WebStorm.\nUser: azamara\nDate: 12. 8. 24.\nTime: 오후 2:35\nTo change this template use File | Settings | File Templates.",
+            "class": "RangeInput"
+        },
+        {
+            "file": "widget-radiobutton.js",
+            "line": 1,
+            "description": "Created with JetBrains WebStorm.\nUser: azamara\nDate: 12. 8. 24.\nTime: 오후 2:35\nTo change this template use File | Settings | File Templates.",
+            "class": "RangeInput"
+        },
+        {
+            "file": "widget-rangeinput.js",
+            "line": 126,
+            "description": "range 슬라이드 함수\n수직 슬라이드 구현예정",
+            "class": "RangeInput"
+        },
+        {
+            "file": "widget-rangeinput.js",
+            "line": 414,
+            "description": "### 사용법\n$().rangeinput\n\n### 플러그인 옵션\n\n설정 | 타입 | 기본값 | 설명\n:---- | :---- | :---- | :----\nmin | number | 0 | 범위 최소값\nmax | number | 100 | 범위 최대값\nvalue | number | 0 | 현재 값\nprogress | boolean | false | 범위 조절시 현재값까지 Bar 배경색 노출 여부\ninputShow | boolean | false | 입력 화면 노출 여부",
+            "itemtype": "method",
+            "name": "$().rangeinput",
+            "params": [
+                {
+                    "name": "option",
+                    "description": "사용자가 정의한 설정 설정값",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "chainable jQuery 클래스",
+                "type": "JQuery"
+            },
+            "class": "RangeInput"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 4,
+            "description": "Copyright (c) 2011 Felix Gnass [fgnass at neteye dot de]\nLicensed under the MIT license",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 13,
+            "description": "Utility function to create elements. If no tag name is given,\na DIV is created. Optionally properties can be passed.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 27,
+            "description": "Appends children and returns the parent.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 37,
+            "description": "Insert a new stylesheet to hold the @keyframe or VML rules.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 46,
+            "description": "Creates an opacity keyframe animation rule and returns its name.\nSince most mobile Webkits have timing issues with animation-delay,\nwe create separate rules for each line/segment.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 72,
+            "description": "Tries various vendor prefixes and returns the first supported property.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 88,
+            "description": "Sets multiple style properties at once.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 98,
+            "description": "Fills in default values.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 111,
+            "description": "Returns the absolute page-offset of the given element.",
+            "class": "Touch"
+        },
+        {
+            "file": "widget-spinner.js",
+            "line": 140,
+            "class": "Touch"
+        },
+        {
+            "file": "widget-touch.js",
+            "line": 42,
+            "description": "### 사용법\n       $().drag\n\n### 플러그인 옵션\n\n    |  이름  |   타입   | 기본값 | 설명\n    |:------|:-------:|:----:|:------------:\n    | x     | boolean | true | X축 드래그 활성화 여부\n    | y     | boolean | true | Y축 드래그 활성화 여부\n    | drag  | boolean | true | Drag 활성화 여부",
+            "itemtype": "method",
+            "name": "$().drag",
+            "params": [
+                {
+                    "name": "option",
+                    "description": "드래그 플러그인의 사용자 설정값",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "chainable jQuery 클래스",
+                "type": "JQuery"
+            },
+            "class": "Touch"
+        },
+        {
+            "file": "widget.js",
+            "line": 140,
+            "description": "드래그 이벤트\n설정:\nx: true, // 수평 드래그 활성화 여부\ny: true, // 수직 드래그 활성호 여부\ndrag: true // 드래그 이벤트 실행 여부\n\nEvents: dragStart, drag, dragEnd.\nExamples$(\".myelementent\").drag({y: false}).on(\"drag\", function(event, x, y) {\n // do your custom thing\n });",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 253,
+            "description": "alert 은 화면에 경고 메세지를 표현하기 위한 플러그인이다.",
+            "is_constructor": 1,
+            "name": "alert",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- 옵션값 (close)",
+                    "type": "String"
+                },
+                {
+                    "name": "element",
+                    "description": "- 타겟 엘리먼트",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n<pre>\n    $(\".alert\").alert();\n</pre>"
+            ],
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 286,
+            "description": "button 은 버튼에 toggle 기능을 추가한 플러그인이다.",
+            "is_constructor": 1,
+            "name": "button",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- 토글시 노출시킬 텍스트 (toggle, loading, reset, 사용자정의 문자)",
+                    "type": "String"
+                },
+                {
+                    "name": "element",
+                    "description": "- 타겟 엘리먼트",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n<pre>\n    $('.nav-tabs').button()\n</pre>"
+            ],
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 318,
+            "description": "캐러셀은 이미지 슬라이더 플러그인으로 CSS3 효과를 추가해 다양한 형태의 화면전환를 연출시킨다.",
+            "is_constructor": 1,
+            "name": "carousel",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- 이미지 슬라이더 옵션 지정 (cycle, pause, number, prev, next, default{interval: 4000, pause: \"hover\"})",
+                    "type": "Object, string"
+                },
+                {
+                    "name": "element",
+                    "description": "- 타겟 엘리먼트",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n    $('.carousel').carousel()\n\n    Event    Description\n    slide    슬라이드 이벤트가 시작할 때 발생\n    slid 슬리이드 이벤트가 완료했을 때 발생\n\n    TODO 반응형 웹사이트에 대응하기 위하 유동적으로 높이와 폭을 잡아야하며,\n    background-size 역시 그 비율에 맞게 조절이 필요하다."
+            ],
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 359,
+            "description": "콜라스는 아코디언으로 수직으로 접기/펼치기 기능을 하는 플러그인이다.",
+            "name": "collapse",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 382,
+            "description": "dropdown은 메뉴와 같은 네비게이션에서 하위 메뉴를 노출 시킬 때 사용 되는 플러그인이다.",
+            "name": "dropdown",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 406,
+            "description": "modal은 팝업 형태로 노출되는 플러그인이다.",
+            "name": "modal\nTODO 오페라 및 모바일에서 비정상적인 작동과, 성능이 저하되는 문제가 발생하므로 조치가 필요하다.",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 429,
+            "description": "popover",
+            "name": "popover",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 468,
+            "description": "scrollspy",
+            "name": "scrollspy",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 491,
+            "description": "탭은",
+            "name": "tab",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 514,
+            "description": "tooltip",
+            "name": "tooltip",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 537,
+            "description": "typeahead는 입력창에 텍스트 입력시 관련 단어들이 노출되는 플러그인이다.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- 이미지 슬라이더 옵션 지정 (cycle, pause, number, prev, next, default{interval: 4000, pause: \"hover\"})",
+                    "type": "Object, string"
+                },
+                {
+                    "name": "element",
+                    "description": "- 타겟 엘리먼트",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n    $('.carousel').carousel()\n\n    Event    Description\n    slide    This event fires immediately when the slide\n    instance method is invoked.\n\n    slid    This event is fired when the carousel has completed\n    its slide transition.\n\n    TODO 반응형 웹사이트에 대응하기 위하 유동적으로 높이와 폭을 잡아야하며,\n    background-size 역시 그 비율에 맞게 조절이 필요하다."
+            ],
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 575,
+            "description": "sign",
+            "name": "sign\nTODO 터치 이벤트 중복 문제 해결필",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 599,
+            "description": "Motion Capcha 은 Form 전송시(로그인, 회원가입 등) 스팸 방지를 위한 터치 기반 Capcha 플러그인이다.",
+            "name": "motioncapcha\nTODO 갤럭시 S3 기본 브라우저에서 로딩 후 첫화면이 아닌 스크롤로 이동해서 보여지는 경우 모션이 표현 되지 않는 문제.",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 623,
+            "description": "loading",
+            "name": "loading",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 646,
+            "description": "fixedbar",
+            "name": "fixedbar",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 671,
+            "description": "slider",
+            "name": "slider\nTODO input 태그에 pseudo 클래스 :before, :after를 사용은 유효성에 위배되므로 별개 UI(div)로 표현함.\nhttp://stackoverflow.com/questions/4574912/css-content-generation-before-input-elementents\n안드로이드 디바이스 GC로 인한 성능저하 문제 해결 필요 e.g. width 증감, input value 증감",
+            "class": "Widget"
+        },
+        {
+            "file": "widget.js",
+            "line": 788,
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "types include: click, keydown, blur and api (setValue call)"
+                },
+                {
+                    "name": "isSetValue",
+                    "description": "when called trough setValue() call (keydown, blur, api)\nrange 슬라이드 함수\n수직 슬라이드 구현예정"
+                }
+            ],
+            "class": "Widget"
+        }
+    ]
+}
