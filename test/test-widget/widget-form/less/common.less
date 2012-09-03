@@ -1,0 +1,246 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #4e4e4e;
+@grayLight:             #c0c0c0;
+@grayLighter:           #b0b0b0;
+@white:                 #fff;
+
+
+// Accent colors
+// -------------------------
+@blue:                  #2094b1;
+@blueDark:              #0a2e55;
+@skyBlue:								#5aafc4;
+@green:                 #089908;
+@red:                   #a90000;
+@yellow:                #8f8f06;
+@orange:                #da7c4a;
+@orangeDark:            #bc673a;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        #404347;
+@textColor:             @grayDark;
+
+
+// Links
+// -------------------------
+@linkColor:             #316b9d;
+@linkColorHover:        darken(@linkColor, 15%);
+
+
+// Typography
+// -------------------------
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+@calibriFontFamily:     Calibri, Dotum;
+
+@baseFontSize:          14px;
+@baseFontFamily:        @sansFontFamily;
+@baseLineHeight:        18px;
+@altFontFamily:         @serifFontFamily;
+
+@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+@tableBackground:                   transparent; // overall background-color
+@tableBackgroundAccent:             #f9f9f9; // for striping
+@tableBackgroundHover:              #f5f5f5; // for hover
+@tableBorder:                       #ddd; // table and cell border
+
+
+// Buttons [2012-08-29] Add
+// -------------------------
+@btnBackground:                     #42464b;
+@btnGradiant:												#3d4146;
+@btnBackgroundHighlight:            #56595e;
+@btnBorder:                         @black;
+@btnShadow:													rgba(0,0,0,.7);
+@btnActive:													#25272a;
+@btnActiveTxt:											#5ab0c5;
+
+@btnPrimaryBackground:              #2e6391;
+@btnPrimaryBackgroundHighlight:     #4b7da9;
+@btnPrimaryTxt:											@white;
+
+@btnBlueTxt:												@blueDark;
+@btnBlueActive:											#1f4164;
+@btnBlueActiveTxt:									#a2ecff;
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              @gray;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+@inputGradiantBg:										rgba(41,41,41,.52);
+@selectArrow:												#42464b;
+
+// Forms
+// -------------------------
+@inputBackground:               rgba(34,34,34,.64);
+@inputBorder:                   rgba(179,233,246,.5);
+@inputShadow:                   rgba(152,225,243,1);
+@inputShadowOrange:							rgba(255,205,178,.6);
+@inputBorderRadius:             5px;
+@inputDisabledBackground:       @grayLighter;
+@inputHeight:										26px;
+@formActionsBackground:         #f5f5f5;
+
+@selectBackground:              rgba(44,45,46,1);
+@selectHeight:									16px;
+
+@searchBorderRadius:             25px;
+
+@uneditableBackground:          rgba(34,34,34,.22);
+
+// Dropdowns
+// -------------------------
+@dropdownBackground:            @white;
+@dropdownBorder:                rgba(0,0,0,.2);
+@dropdownLinkColor:             @grayDark;
+@dropdownLinkColorHover:        @white;
+@dropdownLinkBackgroundHover:   @linkColor;
+@dropdownDividerTop:            #e5e5e5;
+@dropdownDividerBottom:         @white;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:          1000;
+@zindexPopover:           1010;
+@zindexTooltip:           1020;
+@zindexFixedNavbar:       1030;
+@zindexModalBackdrop:     1040;
+@zindexModal:             1050;
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+@placeholderText:         @grayLight;
+
+
+// Hr border color
+// -------------------------
+@hrBorder:                @grayDark;
+
+
+// Navbar
+// -------------------------
+@navbarHeight:                    51px;
+@navbarBackground:                @black;
+@navbarBackgroundHighlight:       @white;
+
+@navbarText:                      @grayLight;
+@navbarLinkColor:                 #a1a1a1;
+@navbarLinkColorHover:            #5bb0c5;
+@navbarLinkColorActive:           @navbarLinkColorHover;
+@navbarLinkBackgroundHover:       #2a2d30;
+@navbarLinkBackgroundActive:      @navbarBackground;
+
+@navbarSearchBackground:          lighten(@navbarBackground, 25%);
+@navbarSearchBackgroundFocus:     @white;
+@navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
+@navbarSearchPlaceholderColor:    #ccc;
+@navbarBrandColor:                @navbarLinkColor;
+
+
+// Hero unit
+// -------------------------
+@heroUnitBackground:              @grayLighter;
+@heroUnitHeadingColor:            inherit;
+@heroUnitLeadColor:               inherit;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:             #8f8f06;
+@warningBackground:       @inputBackground;
+@warningBorder:           rgba(143,143,6,.64);
+
+@errorText:               #a90000;
+@errorBackground:         @inputBackground;
+@errorBorder:             rgba(169,0,0,.64);
+
+@successText:             #089908;
+@successBackground:       @inputBackground;
+@successBorder:           rgba(8,153,8,.64);
+
+@infoText:                #3a87ad;
+@infoBackground:          @grayDarker;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+@disabledText:            #4e4e4e;
+
+// Slider
+@sliderBg:								#8f8f06;
+@sliderBtn:								#ececec;
+@sliderBoll:							@blue;
+
+@figureTxt:								@white;
+
+// Flip
+@flipOffBg:								rgba(47,47,47,80);
+@flipOnBg:								#28869e;
+@flipBoll:								#d3d3d3;
+@flipOffTxt:							@grayLighter;
+@flipOnTxt:								@white;
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         0;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;
+
+body {background:url('../img/bg_body.png') repeat left top ! important;}

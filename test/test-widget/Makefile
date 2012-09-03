@@ -7,20 +7,32 @@ HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\
 #
 
 build:
-	@echo "\n${HR}"
-	@echo "Building Bootstrap..."
-	@cat js/libs/bootstrap-transition.js js/libs/bootstrap-affix.js js/libs/bootstrap-alert.js js/libs/bootstrap-button.js js/libs/bootstrap-carousel.js js/libs/bootstrap-collapse.js js/libs/bootstrap-dropdown.js js/libs/bootstrap-modal.js js/libs/bootstrap-tooltip.js js/libs/bootstrap-popover.js js/libs/bootstrap-scrollspy.js js/libs/bootstrap-tab.js js/libs/bootstrap-typeahead.js > js/bootstrap.js
-	@uglifyjs -nc js/bootstrap.js > js/bootstrap.min.js
-	@echo "Bootstrap successfully built at ${DATE}."
 	@echo "${HR}\n"
-	@echo "Building Widget..."
-	@cat js/bootstrap.js js/libs/jquery.transit.js js/widget-bootstrap.js js/widget-motioncapcha.js js/widget-rangeinput.js js/widget-sign.js js/widget-spinner.js js/widget-switch.js js/widget-touch.js > widget.js
+	@echo "Building Widget Form Less... For DEMO"
+	@recess --compile widget-form/less/conerstone.less > widget-form/conerstone-form.css
+	@recess --compress widget-form/less/conerstone.less > widget-form/conerstone-form.min.css
+	@echo "Widget Less successfully built at ${DATE}."
+	@echo "${HR}\n"
+	@echo "Building Widget Form Less... For DEMO"
+	@recess --compile widget-plugin/less/plugin.less > widget-plugin/conerstone-plugin.css
+	@recess --compress widget-plugin/less/plugin.less > widget-plugin/conerstone-plugin.min.css
+	@echo "Widget Less successfully built at ${DATE}."
+	@echo "${HR}\n"
+	@echo "Building Widget Plugin..."
+	@cat libs/bootstrap/js/bootstrap.js widget-plugin/js/jquery.transit.js widget-plugin/js/plugin-bootstrap.js widget-plugin/js/plugin-touch.js widget-plugin/js/plugin-motioncapcha.js widget-plugin/js/plugin-rangeinput.js widget-plugin/js/plugin-sign.js widget-plugin/js/plugin-spinner.js widget-plugin/js/plugin-switch.js > widget-plugin/plugins.js
+	@uglifyjs -nc widget-plugin/plugins.js > widget-plugin/plugins.min.js
+	@echo "Widget Plugin successfully built at ${DATE}."
+	@echo "${HR}\n"
+	@echo "Building Widget Featured..."
+	@echo "Widget Featured successfully built at ${DATE}."
+	@echo "${HR}\n"
+	@echo "Building Widget JS..."
+# Featured 추후 추가 예정 widget-plugin/plugins.js widget-featured/featured.js > widget.js
+	@cat widget-plugin/plugins.js > widget.js
 	@uglifyjs -nc widget.js > widget.min.js
-	@echo "Widget successfully built at ${DATE}."
+	@echo "Widget JS successfully built at ${DATE}."
 	@echo "${HR}\n"
-	@echo "Building Widget Less... For DEMO"
-	@recess --compile demo/less/widget.less > demo/widget.css
-	@recess --compress demo/less/widget.less > demo/widget.min.css
-	@echo "Widget successfully built at ${DATE}."
+	@echo "Building CornerStone Less..."
+	@echo "Corne Less successfully built at ${DATE}."
 	@echo "${HR}\n"
 	@echo "Thanks for using Widget"
