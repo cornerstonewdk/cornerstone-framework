@@ -60,11 +60,8 @@ runTask( 'deploy', [ 'validate' ], function() {
 	// minify
 	j.files( PATH_SOURCE, '**/*.js' ).minify( PATH_DIST );
 	
-	// gzip 압축
-	j.files( PATH_DIST, '**/*.js' ).gzip( function( err, buffers ) {
-		if ( err ) fail( err );
-		complete();
-	} );
+	complete();
+	
 }, { async: true } );
 
 desc( '디폴트 작업으로 deploy를 수행한다.' );
