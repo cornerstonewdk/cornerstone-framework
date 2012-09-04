@@ -4,7 +4,12 @@ var TetrisClass = Class.create({
 	COLS: 10,	//가로
 	ROWS: 20,	//세로
 	
-	MAX_SPEED: 10,
+	imageBlockYn: false,	//블럭을 이미지를 사용할것인지 여부
+	
+	lineWidth: 2,
+	nextLineWidth: 1,
+	
+	MAX_SPEED: 300,
 	
 	W: null,		//켄버스 가로길이
 	H: null,		//켄버스 세로길이
@@ -89,9 +94,16 @@ var TetrisClass = Class.create({
 		this.mNextNextBlockHeight = nextNextBlocksCanvas.height / 8;
 		
 		this.context = this.canvas.getContext('2d');
+		this.context.lineWidth = this.lineWidth;
+		this.context.strokeStyle = '#000000';
 		
 		this.nextBlockContext = this.nextBlockCanvas.getContext('2d');
 		this.nextNextBlocksContext = this.nextNextBlocksCanvas.getContext('2d');
+		
+		this.nextBlockContext.lineWidth = this.nextLineWidth;
+		this.nextNextBlocksContext.lineWidth = this.nextLineWidth;
+		this.nextBlockContext.strokeStyle = '#000000';
+		this.nextNextBlocksContext.strokeStyle = '#000000';
 		
 		this.blockQueue = new Array();
 		for (var i = 0; i < 3; i++) {
@@ -180,6 +192,8 @@ var TetrisClass = Class.create({
 				}
 			}
 		}
+		
+		this.drawNextBlocks();	//무식한 방법이지만 귀찮음으로 패스 나중에 이것만 타임 변경하던지 적절한 위치로 이동하여 이넘들은 자주 안그려지게 수정하자
 		
 		this.currentX = 5;
 		this.currentY = 0;
@@ -357,6 +371,8 @@ var TetrisClass = Class.create({
 			document.getElementById('commonAudio').src = '/audio/blockChange.wav';
 			document.getElementById('commonAudio').load();
 			document.getElementById('commonAudio').play();
+			
+			this.render();
 		}
 	},
 	
@@ -365,8 +381,12 @@ var TetrisClass = Class.create({
 		for(var i = 0; i < offset; i++) {
 			if(this.valid(-1)) {
 				this.currentX--;
+				
+				this.render();
 			}	
 		}
+		
+		this.render();
 	},
 	
 	//우측 이동
@@ -374,6 +394,8 @@ var TetrisClass = Class.create({
 		for(var i = 0; i < offset; i++) {
 			if(this.valid(1)) {
 				this.currentX++;
+				
+				this.render();
 			}
 		}
 	},
@@ -383,6 +405,8 @@ var TetrisClass = Class.create({
 		for(var i = 0; i < offset; i++) {
 			if(this.valid(0, 1)) {
 				this.currentY++;
+				
+				this.render();
 			}
 		}
 	},
@@ -394,16 +418,20 @@ var TetrisClass = Class.create({
 		this.newShape();
 		
 		this.tickCnt = 0;
-		this.palyTime = 0;
+		this.playTime = 0;
 		this.gameSpeed = 1000;
 		
 		this.tickTimer = setInterval(function() {
 			obj.tick();
+			obj.render();
 		}, this.gameSpeed);
 		
+		
+		/*
 		this.renderTimer = setInterval(function() {
 			obj.render();
-		}, 30);
+		}, 40);
+		*/
 		
 		this.playTimer = setInterval(function() {
 			obj.oneSecondProc();
@@ -422,6 +450,7 @@ var TetrisClass = Class.create({
 			clearInterval(this.tickTimer);
 			this.tickTimer = setInterval(function() {
 				obj.tick();
+				obj.render();
 			}, this.gameSpeed);
 		}
 	},
@@ -475,23 +504,35 @@ var TetrisClass = Class.create({
 	
 	//블럭 그리기
 	drawBlock: function(x, y, idx) {
-		//아래 주석처리한건 기존의 네모 그리고 색칠하는방식
-		// this.context.fillRect(this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W - 1, this.BLOCK_H - 1);
-		// this.context.strokeRect(this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W - 1, this.BLOCK_H - 1);
-		this.context.drawImage(this.blockImages[idx], this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W, this.BLOCK_H);
 		
+		//아래 주석처리한건 기존의 네모 그리고 색칠하는방식
+		if (this.imageBlockYn) {
+			this.context.drawImage(this.blockImages[idx], this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W, this.BLOCK_H);
+		} else {
+			//socket.emit('print', this.context.fillStyle);
+			this.context.fillRect(this.BLOCK_W * x + this.lineWidth, this.BLOCK_H * y + this.lineWidth, this.BLOCK_W - this.lineWidth, this.BLOCK_H - this.lineWidth);
+			//this.context.strokeRect(this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W, this.BLOCK_H);
+		}
 	},
 	
 	//다음 블럭들 그리기
-	drawNextBlocks: function() {	
+	drawNextBlocks: function() {
+		
 		//바로 다음 블럭 그리기
 		this.nextBlockContext.clearRect(0, 0, this.nextBlockCanvas.width, this.nextBlockCanvas.height);
 		var shape = this.shapes[this.blockQueue[0]];
+		this.nextBlockContext.fillStyle = this.colors[this.blockQueue[0]];
+		
 		for(var y = 0; y < 4; y++) {
 			for(var x = 0; x < 4; x++) {
 				var i = 4 * y + x;
 				if(typeof(shape[i]) != 'undefined' && shape[i]) {
-					this.nextBlockContext.drawImage(this.blockImages[this.blockQueue[0]], this.mNextBlockWidht * x, this.mNextBlockHeight * y, this.mNextBlockWidht, this.mNextBlockHeight);	
+					if (this.imageBlockYn) {
+						this.nextBlockContext.drawImage(this.blockImages[this.blockQueue[0]], this.mNextBlockWidht * x, this.mNextBlockHeight * y, this.mNextBlockWidht, this.mNextBlockHeight);
+					} else{
+						this.nextBlockContext.fillRect(this.mNextBlockWidht * x + this.nextLineWidth, this.mNextBlockHeight * y + this.nextLineWidth, this.mNextBlockWidht - (this.nextLineWidth * 2), this.mNextBlockHeight - (this.nextLineWidth * 2));
+						//this.nextBlockContext.strokeRect(this.mNextBlockWidht * x, this.mNextBlockHeight * y, this.mNextBlockWidht, this.mNextBlockHeight);
+					};
 				}
 			}
 		}
@@ -500,11 +541,18 @@ var TetrisClass = Class.create({
 		this.nextNextBlocksContext.clearRect(0, 0, this.nextNextBlocksCanvas.width, this.nextNextBlocksCanvas.height);
 		for(var z = 0; z < 2; z++) {
 			shape = this.shapes[this.blockQueue[z + 1]];
+			this.nextNextBlocksContext.fillStyle = this.colors[this.blockQueue[z + 1]];
+			
 			for(var y = 0; y < 4; y++) {
 				for(var x = 0; x < 4; x++) {
 					var i = 4 * y + x;
 					if(typeof(shape[i]) != 'undefined' && shape[i]) {
-						this.nextNextBlocksContext.drawImage(this.blockImages[this.blockQueue[z + 1]], this.mNextNextBlockWidht * x, this.mNextNextBlockHeight * y + (this.mNextNextBlockHeight * z * 4), this.mNextNextBlockWidht, this.mNextNextBlockHeight);	
+						if (this.imageBlockYn) {
+							this.nextNextBlocksContext.drawImage(this.blockImages[this.blockQueue[z + 1]], this.mNextNextBlockWidht * x, this.mNextNextBlockHeight * y + (this.mNextNextBlockHeight * z * 4), this.mNextNextBlockWidht, this.mNextNextBlockHeight);
+						} else {
+							this.nextNextBlocksContext.fillRect(this.mNextNextBlockWidht * x + this.nextLineWidth, this.mNextNextBlockHeight * y + (this.mNextNextBlockHeight * z * 4) + this.nextLineWidth, this.mNextNextBlockWidht - (this.nextLineWidth * 2), this.mNextNextBlockHeight - (this.nextLineWidth * 2));
+							//this.nextNextBlocksContext.strokeRect(this.mNextNextBlockWidht * x, this.mNextNextBlockHeight * y + (this.mNextNextBlockHeight * z * 4), this.mNextNextBlockWidht, this.mNextNextBlockHeight);
+						}
 					}
 				}
 			}
@@ -514,30 +562,45 @@ var TetrisClass = Class.create({
 	//화면 갱신
 	render: function() {
 		this.context.clearRect(0, 0, this.W, this.H);
-		
-		this.context.strokeStyle = 'black';
+		/*
+		var matrix = '-----------------\n';
+		for(var y = 0; y < 20; y++) {
+			matrix += this.board[y][0] + ', ' + this.board[y][1] + ', ' + this.board[y][2] + ', ' + this.board[y][3] + ', ' + this.board[y][4] + ', ' + this.board[y][5] + ', ' + this.board[y][6] + ', ' + this.board[y][7] + ', ' + this.board[y][8] + ', ' + this.board[y][9] + '\n';
+		}
+		matrix += '-----------------';
+		socket.emit('print', matrix);
+		*/
 		
 		for(var x = 0; x < this.COLS; x++) {
 			for(var y = 0; y < this.ROWS; y++) {
-				if(this.board[y][x]) {
+				if(typeof(this.board[y][x]) != 'undefined' && this.board[y][x] != 0) {
 					this.context.fillStyle = this.colors[this.board[y][x] - 1];
 					this.drawBlock(x, y, this.board[y][x] - 1);
 				}
 			}
 		}
 		
-		this.context.fillStyle = 'red',
-		this.context.strokeStyle = 'black';
+		
+		/*
+		var matrix = '-----------------\n';
+		for(var y = 0; y < 4; y++) {
+			matrix += this.current[y][0] + ', ' + this.current[y][1] + ', ' + this.current[y][2] + ', ' + this.current[y][3] + '\n';
+		}
+		matrix += '-----------------';
+		socket.emit('print', matrix);
+		*/
+		
+		//socket.emit('print', '-------------------');
 		for(var y = 0; y < 4; y++) {
 			for(var x = 0; x < 4; x++) {
-				if(this.current[y][x]) {
+				if(typeof(this.current[y][x]) != 'undefined' && this.current[y][x] != 0) {
 					this.context.fillStyle = this.colors[this.current[y][x] - 1];
 					this.drawBlock(this.currentX + x, this.currentY + y, this.current[y][x] - 1);
 				}
 			}
 		}
 		
-		this.drawNextBlocks();	//무식한 방법이지만 귀찮음으로 패스 나중에 이것만 타임 변경하던지 적절한 위치로 이동하여 이넘들은 자주 안그려지게 수정하자
+		
 	},
 	
 	//현 블럭 상황을 서버에 전송
@@ -564,28 +627,7 @@ var TetrisClass = Class.create({
 			}
 		}
 		
+		this.render();
 		this.sendBoardStateToServer();
-// 		
-		// for(var y = this.ROWS - 1; y >= 0; y--) {
-			// var row = true;
-// 			
-			// for(var x = 0; x < this.COLS; x++) {
-				// if(this.board[y][x] == 0) {
-					// row = false;
-					// break;
-				// }
-			// }
-// 			
-			// if(row) {
-				// for(var yy = y; yy > 0; yy--) {
-					// for(var x = 0; x < this.COLS; x++) {
-						// this.board[yy][x] = this.board[yy - 1][x];
-						// this.sendServerYn = true;
-					// }
-				// }
-				// y++;
-				// clearLineCnt++;
-			// }
-		// }
 	},
 });

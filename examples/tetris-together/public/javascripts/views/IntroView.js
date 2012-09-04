@@ -35,11 +35,16 @@ define(
 				$(document).on('keydown', '#nickname', function(key) {
 					obj.onKeyDown(key);
 				});
+				
+				$(document).on('click', '#joinTtris', function() {
+					obj.enterProc();
+				});
 			},
 			
 			//화면이 끝나거나 이동하기전 여기서 사용했던 이벤트 리스너들 제거
 			unbindEvents: function() {
 				$(document).off('keydown', '#nickname');
+				$(document).off('click', '#joinTtris');
 				
 				//소켓 리스너 제거
 				socket.removeAllListeners('resultNickname');
@@ -51,6 +56,15 @@ define(
 					return;	//엔터키가 올때까지 무시
 				}
 				
+				this.enterProc();
+			},
+			
+			//방들어가기 화면으로 이동
+			gotoJoinRoom: function() {
+				document.location='#joinRoom';
+			},
+			
+			enterProc: function() {
 				document.getElementById('commonAudio').load();
 				
 				var obj = this;
@@ -62,6 +76,9 @@ define(
 					alert('별명을 입력해 주세요!');
 					return;
 				}
+				
+				nickname = this.convert(nickname);
+				console.log(nickname);
 				
 				socket.emit('setNickname', nickname);
 				
@@ -77,15 +94,20 @@ define(
 				});
 			},
 			
-			//방들어가기 화면으로 이동
-			gotoJoinRoom: function() {
-				document.location='#joinRoom';
-			},
-			
 			clickedTestBtn: function() {
 				this.unbindEvents();
 				document.location='#playTetris';
 			},
+			
+			convert: function(text) {
+				text = text.split('&').join('&amp;');
+				text = text.split('<').join('&lt;');
+				text = text.split('>').join('&gt;');
+				text = text.split(' ').join('&nbsp;');
+				text = text.split('\'').join('&quot;');
+				
+				return text;
+			}
 			
 		});
 		

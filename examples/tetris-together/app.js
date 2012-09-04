@@ -20,6 +20,27 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);    
   app.use(express.static(__dirname + '/public'));
+  
+  app.use(function(req, res, next){ 
+    res.render('400', { status: 400, url: req.url }); 
+  }); 
+  app.use(function(req, res, next){ 
+    res.render('401', { status: 401, url: req.url }); 
+  }); 
+  app.use(function(req, res, next){ 
+    res.render('403', { status: 403, url: req.url }); 
+  }); 
+  app.use(function(req, res, next){ 
+    res.render('404', { status: 404, url: req.url }); 
+  }); 
+  
+  app.use(function(err, req, res, next){ 
+    res.render('500', { 
+      status: err.status || 500 
+      , error: err 
+    }); 
+  }); 
+
 });
 
 app.configure('development', function(){
@@ -41,7 +62,7 @@ io.set('log level', 1);
 io.sockets.on('connection', function(socket) {
 	// console.log('connection...');
 	
-	socket.on('test', function(data) {
+	socket.on('print', function(data) {
 		console.log(data);
 	});
 	
@@ -487,6 +508,10 @@ io.sockets.on('connection', function(socket) {
 				
 				//현재 순위 판별
 				var gInfo = gameInfo[roomNum];
+				
+				if (typeof(gInfo) == 'undefined') {
+					return;
+				}
 				
 				// console.log(gInfo);
 				
