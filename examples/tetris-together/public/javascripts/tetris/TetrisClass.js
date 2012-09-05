@@ -4,12 +4,12 @@ var TetrisClass = Class.create({
 	COLS: 10,	//가로
 	ROWS: 20,	//세로
 	
-	imageBlockYn: false,	//블럭을 이미지를 사용할것인지 여부
+	imageBlockYn: true,	//블럭을 이미지를 사용할것인지 여부
 	
 	lineWidth: 2,
 	nextLineWidth: 1,
 	
-	MAX_SPEED: 300,
+	MAX_SPEED: 200,
 	
 	W: null,		//켄버스 가로길이
 	H: null,		//켄버스 세로길이
@@ -400,6 +400,15 @@ var TetrisClass = Class.create({
 		}
 	},
 	
+	//바닥까지 이동
+	moveBottom: function() {
+		while(this.valid(0, 1)) {
+			this.currentY++;
+		}
+		
+		this.render();
+	},
+	
 	//아래로 빠르게 이동
 	moveDown: function(offset) {
 		for(var i = 0; i < offset; i++) {
@@ -444,7 +453,7 @@ var TetrisClass = Class.create({
 		this.playTime++;
 		document.getElementById('timeTag').innerHTML = this.timeFormater(this.playTime);
 		
-		if(this.playTime % 10 == 0 && this.gameSpeed > this.MAX_SPEED) {
+		if(this.playTime % 20 == 0 && this.gameSpeed > this.MAX_SPEED) {
 			console.log('Speed UP!');
 			this.gameSpeed = this.gameSpeed - 100;
 			clearInterval(this.tickTimer);
@@ -616,7 +625,7 @@ var TetrisClass = Class.create({
 		console.log('add penalty : ' + lineCnt);
 		
 		//상대방이 없앤 수만큼 돌면서 현재 상태 추가
-		for(var i = 0; i < lineCnt; i++) {
+		for(var i = 1; i < lineCnt; i++) {
 			for(var y = 0; y < this.ROWS - 1; y++) {
 				for(var x = 0; x < this.COLS; x++) {
 					this.board[y][x] = this.board[y + 1][x];

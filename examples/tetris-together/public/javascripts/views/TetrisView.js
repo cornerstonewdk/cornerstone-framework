@@ -140,7 +140,8 @@ define(
 						this.tetris.moveRight(1);
 						break;
 					case 'downSwipe':
-						this.tetris.moveDown(1);
+						//this.tetris.moveDown(1);
+						this.tetris.moveBottom();
 						break;
 				};
 			},
@@ -223,6 +224,12 @@ define(
 						if(this.tetris != null){
 							event.preventDefault();
 							this.tetris.rotateBlock();
+						}
+						break;
+					case 32:
+						if(this.tetris != null) {
+							event.preventDefault();
+							this.tetris.moveBottom();
 						}
 						break;
 				}
