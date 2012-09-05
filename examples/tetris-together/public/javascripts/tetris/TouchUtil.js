@@ -7,9 +7,9 @@
 var TouchUtil = Class.create({
 	
 	//상수
-	tapTime: 500,	//탭인지 여부 가리기 위한 기준 시간 ms
+	tapTime: 400,	//탭인지 여부 가리기 위한 기준 시간 ms
 	tapDistance: 5,	//이 상수값 이하로 움직여도 tap 이벤트 처리
-	tapMaxWaitTime: 1000,	//거리가 짧을때는 이 시간까지는 탭으로 처리
+	tapMaxWaitTime: 600,	//거리가 짧을때는 이 시간까지는 탭으로 처리
 	
 	listeners: null,		//터치가 발생했을때 전달받을 리스너들
 	
@@ -120,7 +120,7 @@ var TouchUtil = Class.create({
 		//y 좌표 이동거리가 블럭의 높이보다 크고 그 크기가 0보다 크면 (블럭이 위로 이동하면 안되니깐) down 이벤트를 날림
 		var deltaY = last.y - first.y;
 		
-		if(deltaY > this.blockHeight) {
+		if(deltaY > this.blockHeight * 4) {
 			for (var i = 0; i < this.listeners.length; i++) {
 				var obj = this.listeners[i];
 				obj.targetObject[obj.targetMethod]({touchEvent: 'downSwipe'});

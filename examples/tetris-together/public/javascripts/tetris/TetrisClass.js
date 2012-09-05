@@ -25,6 +25,9 @@ var TetrisClass = Class.create({
 	
 	board: null,	//배경
 	
+	currentBoardState: null,	//현재 게임 블럭 상태
+	prevBoardState: null, 	//이전 게임 블럭 상태
+	
 	current: null,	//현재 블럭
 	currnetBlockId: null,
 	currentX: null,	//현재 블럭의 좌표 X
@@ -127,6 +130,9 @@ var TetrisClass = Class.create({
 				this.board[y][x] = 0;
 			}
 		}
+		
+		this.currentBoardState = this.board.slice();
+		this.prevBoardState = this.board.slice();
 		
 		this.blockImages = new Array();
 		
@@ -513,15 +519,18 @@ var TetrisClass = Class.create({
 	
 	//블럭 그리기
 	drawBlock: function(x, y, idx) {
-		
 		//아래 주석처리한건 기존의 네모 그리고 색칠하는방식
 		if (this.imageBlockYn) {
-			this.context.drawImage(this.blockImages[idx], this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W, this.BLOCK_H);
+			this.context.drawImage(this.blockImages[idx], this.BLOCK_W * x + 0.5, this.BLOCK_H * y + 0.5, this.BLOCK_W - 1, this.BLOCK_H - 1);
 		} else {
 			//socket.emit('print', this.context.fillStyle);
 			this.context.fillRect(this.BLOCK_W * x + this.lineWidth, this.BLOCK_H * y + this.lineWidth, this.BLOCK_W - this.lineWidth, this.BLOCK_H - this.lineWidth);
 			//this.context.strokeRect(this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W, this.BLOCK_H);
 		}
+	},
+	
+	clearBlock: function(x, y) {
+		this.context.clearRect(this.BLOCK_W * x, this.BLOCK_H * y, this.BLOCK_W, this.BLOCK_H);
 	},
 	
 	//다음 블럭들 그리기
@@ -568,49 +577,147 @@ var TetrisClass = Class.create({
 		}
 	},
 	
-	//화면 갱신
-	render: function() {
-		this.context.clearRect(0, 0, this.W, this.H);
-		/*
-		var matrix = '-----------------\n';
+	makeCurrentState: function() {
+		//this.prevBoardState = this.currentBoardState.slice();	//기존상태 백업
+		
+		this.prevBoardState = new Array();
 		for(var y = 0; y < 20; y++) {
-			matrix += this.board[y][0] + ', ' + this.board[y][1] + ', ' + this.board[y][2] + ', ' + this.board[y][3] + ', ' + this.board[y][4] + ', ' + this.board[y][5] + ', ' + this.board[y][6] + ', ' + this.board[y][7] + ', ' + this.board[y][8] + ', ' + this.board[y][9] + '\n';
-		}
-		matrix += '-----------------';
-		socket.emit('print', matrix);
-		*/
-		
-		for(var x = 0; x < this.COLS; x++) {
-			for(var y = 0; y < this.ROWS; y++) {
-				if(typeof(this.board[y][x]) != 'undefined' && this.board[y][x] != 0) {
-					this.context.fillStyle = this.colors[this.board[y][x] - 1];
-					this.drawBlock(x, y, this.board[y][x] - 1);
-				}
-			}
+			this.prevBoardState.push(this.currentBoardState[y].slice());
 		}
 		
-		
-		/*
-		var matrix = '-----------------\n';
-		for(var y = 0; y < 4; y++) {
-			matrix += this.current[y][0] + ', ' + this.current[y][1] + ', ' + this.current[y][2] + ', ' + this.current[y][3] + '\n';
+		this.currentBoardState = new Array();
+		for(var y = 0; y < 20; y++) {
+			this.currentBoardState.push(this.board[y].slice());
 		}
-		matrix += '-----------------';
-		socket.emit('print', matrix);
-		*/
 		
-		//socket.emit('print', '-------------------');
+		//this.currentBoardState = this.board.slice();	//기본적으로 보드 상태 정리
+
 		for(var y = 0; y < 4; y++) {
 			for(var x = 0; x < 4; x++) {
 				if(typeof(this.current[y][x]) != 'undefined' && this.current[y][x] != 0) {
-					this.context.fillStyle = this.colors[this.current[y][x] - 1];
-					this.drawBlock(this.currentX + x, this.currentY + y, this.current[y][x] - 1);
+					this.currentBoardState[this.currentY + y][this.currentX + x] = this.current[y][x];
 				}
 			}
 		}
 		
 		
 	},
+	
+	//화면 갱신
+	render: function() {
+		this.makeCurrentState();
+		
+		// console.log('___________ prev ____________');
+		// var pmsg = '';
+		// for(var y = 0; y < 20; y++) {
+			// for(var x = 0; x < 10; x++) {
+				// if(x != 0) {
+					// pmsg += ', ';
+				// }
+				// pmsg += this.prevBoardState[y][x];
+			// }
+			// pmsg += '\n';
+		// }
+		// console.log(pmsg);
+		// console.log('___________ current ____________');
+		// cmsg = '';
+		// for(var y = 0; y < 20; y++) {
+			// for(var x = 0; x < 10; x++) {
+				// if(x != 0) {
+					// cmsg += ', ';
+				// }
+				// cmsg += this.currentBoardState[y][x];
+			// }
+			// cmsg += '\n';
+		// }
+		// console.log(cmsg);
+		
+		for(var x = 0; x < this.COLS; x++) {
+			for(var y = 0; y < this.ROWS; y++) {
+				if (this.prevBoardState[y][x] != this.currentBoardState[y][x] ) {
+					if (this.currentBoardState[y][x] == 0) {
+						this.clearBlock(x, y);
+					} else {
+						if (!this.imageBlockYn) {
+							this.context.fillStyle = this.colors[this.currentBoardState[y][x] - 1];
+						}
+						
+						this.clearBlock(x, y);
+						this.drawBlock(x, y, this.currentBoardState[y][x] - 1);
+					}
+				};
+			}
+		}
+		
+		// for(var x = 0; x < this.COLS; x++) {
+			// for(var y = 0; y < this.ROWS; y++) {
+				// if (this.prevBoardState[y][x] != this.currentBoardState[y][x] ) {
+					// if (this.currentBoardState[y][x] == 0) {
+						// this.clearBlock(x, y);
+					// }
+				// };
+			// }
+		// }
+// 		
+		// for(var x = 0; x < this.COLS; x++) {
+			// for(var y = 0; y < this.ROWS; y++) {
+				// if (this.prevBoardState[y][x] != this.currentBoardState[y][x] ) {
+					// if (this.currentBoardState[y][x] != 0) {
+						// if (!this.imageBlockYn) {
+							// this.context.fillStyle = this.colors[this.currentBoardState[y][x] - 1];
+						// }
+// 						
+						// this.clearBlock(x, y);
+						// this.drawBlock(x, y, this.currentBoardState[y][x] - 1);
+					// }
+				// };
+			// }
+		// }
+	},
+	
+	// //화면 갱신
+	// render: function() {
+		// this.context.clearRect(0, 0, this.W, this.H);
+		// /*
+		// var matrix = '-----------------\n';
+		// for(var y = 0; y < 20; y++) {
+			// matrix += this.board[y][0] + ', ' + this.board[y][1] + ', ' + this.board[y][2] + ', ' + this.board[y][3] + ', ' + this.board[y][4] + ', ' + this.board[y][5] + ', ' + this.board[y][6] + ', ' + this.board[y][7] + ', ' + this.board[y][8] + ', ' + this.board[y][9] + '\n';
+		// }
+		// matrix += '-----------------';
+		// socket.emit('print', matrix);
+		// */
+// 		
+		// for(var x = 0; x < this.COLS; x++) {
+			// for(var y = 0; y < this.ROWS; y++) {
+				// if(typeof(this.board[y][x]) != 'undefined' && this.board[y][x] != 0 && this.prevBoard[y][x] != this.board[y][x]) {
+					// console.log('redraw', y, x);
+					// this.context.fillStyle = this.colors[this.board[y][x] - 1];
+					// this.drawBlock(x, y, this.board[y][x] - 1);
+				// }
+			// }
+		// }
+// 		
+// 		
+		// /*
+		// var matrix = '-----------------\n';
+		// for(var y = 0; y < 4; y++) {
+			// matrix += this.current[y][0] + ', ' + this.current[y][1] + ', ' + this.current[y][2] + ', ' + this.current[y][3] + '\n';
+		// }
+		// matrix += '-----------------';
+		// socket.emit('print', matrix);
+		// */
+// 		
+		// //socket.emit('print', '-------------------');
+		// for(var y = 0; y < 4; y++) {
+			// for(var x = 0; x < 4; x++) {
+				// if(typeof(this.current[y][x]) != 'undefined' && this.current[y][x] != 0) {
+					// this.context.fillStyle = this.colors[this.current[y][x] - 1];
+					// this.drawBlock(this.currentX + x, this.currentY + y, this.current[y][x] - 1);
+				// }
+			// }
+		// }
+// 		
+	// },
 	
 	//현 블럭 상황을 서버에 전송
 	sendBoardStateToServer: function() {
