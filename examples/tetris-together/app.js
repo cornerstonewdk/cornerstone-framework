@@ -21,36 +21,31 @@ app.configure(function(){
   app.use(app.router);    
   app.use(express.static(__dirname + '/public'));
   
-  app.use(function(req, res, next){ 
-    res.render('400', { status: 400, url: req.url }); 
-  }); 
-  app.use(function(req, res, next){ 
-    res.render('401', { status: 401, url: req.url }); 
-  }); 
-  app.use(function(req, res, next){ 
-    res.render('403', { status: 403, url: req.url }); 
-  }); 
-  app.use(function(req, res, next){ 
-    res.render('404', { status: 404, url: req.url }); 
-  }); 
-  
-  app.use(function(err, req, res, next){ 
-    res.render('500', { 
-      status: err.status || 500 
-      , error: err 
-    }); 
-  }); 
+  /* add by JHC , for error page rendering */
+  app.use(function(req, res, next){
+    res.render('', { });
+  });
 
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler());
+  /* replace by JHC , for error pages */
+  //app.use(express.errorHandler());
+  app.use(express.errorHandler({ dumpExceptions: false }));
 });
 
 app.get('/', routes.index);
 app.get('/watchRoom', routes.watchRoom);
 app.get('/t-tris', routes.index);
 app.get('/t-tris/watchRoom', routes.watchRoom);
+
+/* add by JHC , for 404 500 Error Pages */
+app.get('/errtest', function( req, res ) {
+  throw 'Internal Server Error .';
+});
+app.get('/t-tris/errtest', function( req, res ) {
+  throw 'Internal Server Error !';
+});
 
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
