@@ -1,16 +1,17 @@
 
-define( [ 'backbone', 'underscore', 'jquery', 'validation', 'bootstrap' ], function( Backbone, _, $, Validation ) {
+define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], function( Backbone, _, $, ValidationView ) {
 
 	// TODO Validation success/fail 시에 이벤트 발생
 	return Backbone.View.extend( {
 	
 		initialize: function() {
 			this.render();
-			this.model.on( 'change', this.render, this );	
-		},
-		
-		setValidation: function( CustomValidation ) {
-			this.validation = new CustomValidation( { el: this.$el } );	
+			this.model.on( 'change', this.render, this );
+			
+			if ( this.options.validationViewClass )
+				this.validation = new this.options.validationViewClass( { el: this.$el } );
+			else
+				this.validation = new ValidationView( { el: this.$el } );
 		},
 		
 		render: function() {
@@ -41,9 +42,6 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation', 'bootstrap' ], funct
 		},
 		
 		toModel: function() {
-		
-			// 지정된 validation이 없으면 기본을 사용한다.
-			if ( !this.validation ) this.validation = new Validation( { el: this.$el } );
 			
 			this.validation.reset();
 		
