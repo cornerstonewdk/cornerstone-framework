@@ -14,8 +14,6 @@ define( [ 'backbone', 'underscore', 'jquery', 'jquery.hammer' ], function( Backb
 					var match = key.match( /^(\S+)\s*(.*)$/ );
 					var eventName = match[ 1 ], selector = match[ 2 ];
 					
-					console.log( $el.__proto__ );
-					
 					// hammer.js에서 처리 가능한 이벤트를 정의한 selector들을 구한다.
 					if ( _.contains( [ 'hold', 'tap', 'doubletap', 'transformstart', 'transform', 'transformend', 'dragstart', 'drag', 'dragend', 'swipe', 'release' ], eventName ) ) selectors.push( selector );
 				} );
