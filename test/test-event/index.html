@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<title>TEST</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<link href="../../dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../../dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+		<style>
+		body > .container {
+			margin-top: 50px;
+		}
+		
+		div#gesture-area {
+			position: relative;
+			height: 300px;
+			overflow: hidden;
+		}
+		
+		div#gesture-obj {
+			position: relative;
+			border: 1px solid lightgrey;
+			display: inline-block;
+			top: 100px;
+			left: 20px;
+			font-size: 2em;
+			padding: 3px;
+			white-space: nowrap;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Event Test</h1>
+			<hr/>
+			<div id="gesture-area" class="well">
+				<div id="gesture-obj">Lorem ipsum</div>
+			</div>
+		</div>
+
+		<script src="../../dist/launcher.js" data-target="js/main"></script>
+	</body>
+</html>
