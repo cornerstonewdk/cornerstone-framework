@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+		<title>SKT Open API Client Sample</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/cornerstone.min.css" rel="stylesheet">
+		<style type="text/css">
+		a { cursor: pointer;}
+		label { color: #fff ! important; }
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand">SKT Open API Client Sample</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<p>
+						<label>
+							인증코드 상태 : 
+							<span class="label label-important" id="auth_status">undefined</span>
+						</label>
+						<ul class="nav nav-tabs">
+							<li class="active" name="auth">
+								<a>인증</a>
+							</li>
+							<li name="sms">
+								<a>메시지</a>
+							</li>
+							<li name="pay">
+								<a>과금</a>
+							</li>
+						</ul>
+					<p/>
+					<p>
+						<div class="innerDiv" name="auth">
+							<form id="authForm" class="form-horizontal">
+					            <fieldset>
+					                <div class="control-group">
+					                    <label class="control-label" for="clientId">Client ID</label>
+					                    <div class="controls">
+					                        <input id="clientId" class="input-xlarge" type="text" value="client"/>
+					                    </div>
+					                </div>
+					                <div class="control-group">
+					                    <label class="control-label" for="redirectUri">Redirect Uri</label>
+					                    <div class="controls">
+					                    	<input id="redirectUri" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
+					                <div class="form-actions" style="background:none;">
+					                    <button id="btn_auth" type="submit" class="btn btn-primary">인증 요청</button> 
+					                    <button type="reset" class="btn">다시입력</button>
+					                </div>
+					            </fieldset>
+					        </form>
+						</div>
+						<div class="innerDiv" name="sms" style="display:none;">
+							<form id="smsForm" class="form-horizontal">
+					            <fieldset>
+					                <div class="control-group">
+					                    <label class="control-label" for="from">보내는 사람</label>
+					                    <div class="controls">
+					                        <input id="from" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
+					                <div class="control-group">
+					                    <label class="control-label" for="to">받는 사람</label>
+					                    <div class="controls">
+					                    	<input id="to" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
+					                <div class="control-group">
+					                    <label class="control-label" for="message">메시지</label>
+					                    <div class="controls">
+					                    	<textarea id="message" style="width:270px;height:100px;"></textarea>
+					                    </div>
+					                </div>
+					                <div class="form-actions" style="background:none;">
+					                    <button type="submit" class="btn btn-primary">메시지 발송</button> 
+					                    <button type="reset" class="btn">다시입력</button>
+					                </div>
+					            </fieldset>
+					        </form>
+						</div>
+						<div class="innerDiv" name="pay" style="display:none;">
+							<form id="payForm" class="form-horizontal">
+					            <fieldset>
+					                <div class="control-group">
+					                    <label class="control-label" for="type">과금 형태</label>
+					                    <div class="controls">
+					                    	<div class="btn-group">
+  												<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">one-time</a>
+												<ul class="dropdown-menu">
+													<li><a>one-time</a></li>
+													<li><a>recurring</a></li>
+													<li><a>weekly-subscription</a></li>
+													<li><a>monthly-subscription</a></li>
+													<li><a>yearly-subscription</a></li>
+												</ul>
+											</div>
+					                    </div>
+					                </div>
+					            	
+					                <div id="paymentDiv" class="control-group" style="display:none;">
+					                    <label class="control-label" for="paymentDate">과금 일자</label>
+					                    <div class="controls">
+					                    	<input id="paymentDate" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
+					                <div class="control-group">
+					                    <label class="control-label" for="amount">과금할 금액(원)</label>
+					                    <div class="controls">
+					                    	<input id="amount" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
+					                <div class="form-actions" style="background:none;">
+					                    <button type="submit" class="btn btn-primary">과금 요청</button> 
+					                    <button type="reset" class="btn">다시입력</button>
+					                </div>
+					            </fieldset>
+					        </form>
+						</div>
+				</div>
+			</div>
+			<div class="alert" style="display:none;">
+				<a class="close">×</a>
+				<strong></strong>
+			</div>
+		</div>
+		<br/>
+		<script type="text/javascript" src="js/require.js" data-main="js/main"></script>
+	</body>
+</html>

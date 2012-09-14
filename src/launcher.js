@@ -12,15 +12,14 @@
 		return {
 			path: url.substring( 0, url.lastIndexOf( '/' ) + 1 ),	// /로 끝나는 경로명
 			file: url.substring( url.lastIndexOf( '/' ) + 1 )		// 파일명
-		}
+		};
 	}
 	
 	/**
 	 * Cornerstone Root Path로 Library Path를 구한다.
-	 * 현재는 Library가 Cornerstone Root Path 밖에 관리되고 있으나 추후에는 포함되어야 한다.
 	 */
 	function getLibPath( path ) {
-		return path + '../lib/';
+		return path + 'lib/';
 	}
 
 	// script 태그들을 검색하고, data-target 속성을 추출한다.

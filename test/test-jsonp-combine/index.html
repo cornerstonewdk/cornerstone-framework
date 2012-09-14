@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+		<style type="text/css">
+		button { width: 150px; height: 50px; }
+		img { height: 100px; float: left; }
+		</style>
+	</head>
+	<body>
+		<h1>Jsonp util with Flickr open API<h1/>
+		<p/>
+		<h3>requirejs 가 있으면 define 모듈 방식으로 동작, 없으면 jquery 방식으로 동작</h3>
+		<button onclick="getByRequirejs()">이미지 가져오기(requirejs)</button>
+		<button onclick="getByJquery()">이미지 가져오기(jquery)</button>
+		<p/>
+		<div id="images"></div>
+		<!--
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="jsonp.js"></script>
+		-->
+		<script type="text/javascript" src="require.js"></script>
+		<script type="text/javascript">
+
+		function getByRequirejs() {
+			require( [ 'jsonp' ], function ( Jsonp ) {
+				Jsonp.get( {
+					callback: 'define',
+					url: 'http://api.flickr.com/services/feeds/photos_public.gne',
+					data: {
+						tags: "cat",
+						tagmode: "any",
+						format: "json",
+						jsoncallback: 'define'
+					},
+					success: function ( data ){
+						for( var i = 0; i < data.items.length; i++ ){
+							var img = document.createElement( 'img' );
+							img.setAttribute( 'src', data.items[ i ].media.m );
+							document.getElementById( 'images' ).appendChild( img );
+							if ( i == 3 ) return false;
+						}
+					},
+					error: function ( err ) {
+						alert( err );
+					}
+				} );
+			} );
+		}
+
+		function getByJquery() {
+			Jsonp.get( {
+				url: 'http://api.flickr.com/services/feeds/photos_public.gne',
+				data: {
+					tags: "cat",
+					tagmode: "any",
+					format: "json"
+				},
+				success: function ( data ){
+					$.each( data.items, function( i, item ) {
+						$( '<img/>' ).attr( 'src', item.media.m ).appendTo( '#images' );
+						if ( i == 3 ) return false;
+					} );
+				},
+				error: function () {
+					alert( 'error' );
+				},
+				callback: 'jsonFlickrFeed',
+				timeout: 5000
+			} );
+		}
+		</script>
+	</body>
+</html>
