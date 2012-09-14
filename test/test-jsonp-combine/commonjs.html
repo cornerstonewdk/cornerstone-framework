@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+		<style type="text/css">
+		button { width: 150px; height: 50px; }
+		img { height: 100px; float: left; }
+		</style>
+	</head>
+	<body>
+		<h1>Jsonp util with Flickr open API<h1/>
+		<p/>
+		<button id="btn1">이미지 가져오기(commonjs)</button>
+		<p/>
+		<div id="images"></div>
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="jsonp.js"></script>
+		<script type="text/javascript">
+		$( '#btn1' ).click( function () {
+		Jsonp.get( {
+	        url: 'http://api.flickr.com/services/feeds/photos_public.gne',
+	        data: {
+	            tags: "cat",
+	            tagmode: "any",
+	            format: "json"
+	        },
+	        success: function ( data ){
+	            $.each( data.items, function( i, item ) {
+	                $( '<img/>' ).attr( 'src', item.media.m ).appendTo( '#images' );
+	                if ( i == 3 ) return false;
+	            } );
+	        },
+	        error: function () {
+	            alert( 'error' );
+	        },
+	        callback: 'jsonFlickrFeed',
+	        timeout: 5000
+	        } );	
+		} );
+		</script>
+	</body>
+</html>
