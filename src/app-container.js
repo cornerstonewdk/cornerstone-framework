@@ -52,6 +52,11 @@ requirejs.config( {
 		},
 		'jquery.hammer': {
 			deps: ['hammer', 'jquery']
+		},
+		'enquire': {
+			exports: function() {
+				return this.enquire;
+			}
 		}
 	}
 } );
