@@ -9,7 +9,7 @@ requirejs.config( {
 	baseUrl: Cornerstone.App.baseUrl,
 	// 긴 경로명 대신 사용할 수 있는 alias를 지정한다.
 	paths: {
-		'jquery': Cornerstone.PATH_LIB + 'jquery-1.7.2.min',
+		'jquery': Cornerstone.PATH_LIB + 'jquery-1.8.1.min',
 		'underscore': Cornerstone.PATH_LIB + 'underscore-min',
 		'backbone': Cornerstone.PATH_LIB + 'backbone-min',
 		'handlebars': Cornerstone.PATH_LIB + 'handlebars-1.0.0.beta.6',
@@ -17,6 +17,7 @@ requirejs.config( {
 		'lawnchair': Cornerstone.PATH_LIB + 'lawnchair-0.6.1.min',
 		'hammer': Cornerstone.PATH_LIB + 'hammer',
 		'jquery.hammer': Cornerstone.PATH_LIB + 'jquery.hammer',
+		'enquire': Cornerstone.PATH_LIB + 'enquire.min',
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
 		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture'
@@ -51,6 +52,11 @@ requirejs.config( {
 		},
 		'jquery.hammer': {
 			deps: ['hammer', 'jquery']
+		},
+		'enquire': {
+			exports: function() {
+				return this.enquire;
+			}
 		}
 	}
 } );
