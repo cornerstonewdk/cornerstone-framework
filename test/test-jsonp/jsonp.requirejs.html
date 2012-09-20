@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+		<script type="text/javascript" src="require.js"></script>
+		<style type="text/css">
+		button { width: 150px; height: 50px; }
+		img { height: 100px; float: left; }
+		</style>
+	</head>
+	<body>
+		<h1>Jsonp util ( requirejs ) with Flickr open API<h1/>
+		<p/>
+		<button id="btn" onclick="getImg()">?´ë?ì§?ê°? ¸?¤ê¸°</button>
+		<p/>
+		<div id="images"></div>
+
+		<script type="text/javascript">
+
+		function getImg(){
+			require( [ 'jsonp.requirejs' ], function ( jsonp ) {
+				jsonp.get( {
+					callback: 'define',
+					url: 'http://api.flickr.com/services/feeds/photos_public.gne',
+					data: {
+						tags: "cat",
+						tagmode: "any",
+						format: "json",
+						jsoncallback: 'define'
+					},
+					success: function ( data ){
+						for( var i = 0; i < data.items.length; i++ ){
+							var img = document.createElement( 'img' );
+							img.setAttribute( 'src', data.items[ i ].media.m );
+							document.getElementById( 'images' ).appendChild( img );
+							if ( i == 3 ) return false;
+						}
+					},
+					error: function ( err ) {
+						console.log( err );
+						alert( err );
+					}
+				} );
+			} );
+		}
+		</script>
+	</body>
+</html>
