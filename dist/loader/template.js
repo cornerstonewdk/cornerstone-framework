@@ -1,0 +1,1 @@
+define(["jquery","handlebars"],function(e,t){return{load:function(n,r,i,s){e.ajax({url:r.toUrl(n+".template"),success:function(e){i(t.compile(e))},error:function(e,t,n){i.error(n)}})}}})
