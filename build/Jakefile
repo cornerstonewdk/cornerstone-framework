@@ -44,6 +44,7 @@ runTask( 'init', function() {
 	
 	// 디렉토리 생성
 	j.mkdir( PATH_DIST + 'lib' );
+	j.mkdir( PATH_DIST + 'loader' );
 	j.mkdir( PATH_DIST + 'mvc/view' );
 } );
 
