@@ -1,11 +1,9 @@
 
-define( [ 'backbone', 'handlebars' ], function( Backbone ) {
+define( [ 'backbone', 'template!view/list' ], function( Backbone, template ) {
 
 	return Backbone.View.extend( {
 
 		el: $( 'section#list-section' ),
-
-		template: Handlebars.compile( $( '#list-template' ).html() ),
 
 		initialize: function() {
 			// collection에 변동이 있으면 다시 렌더링한다.
@@ -13,7 +11,7 @@ define( [ 'backbone', 'handlebars' ], function( Backbone ) {
 		},
 
 		render: function() {
-			this.$el.html( this.template( { users: this.collection.toJSON() } ) );
+			this.$el.html( template( { users: this.collection.toJSON() } ) );
 			return this;
 		}
 	} );

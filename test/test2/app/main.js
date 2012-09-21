@@ -3,7 +3,7 @@
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'bootstrap', 'handlebars', 'store' ], function( ListView, AddView, DetailView, Users, Backbone ) {
+define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'bootstrap', 'store' ], function( ListView, AddView, DetailView, Users, Backbone ) {
 	return {
 		launch: function() {
 
