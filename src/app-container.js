@@ -18,6 +18,7 @@ requirejs.config( {
 		'hammer': Cornerstone.PATH_LIB + 'hammer',
 		'jquery.hammer': Cornerstone.PATH_LIB + 'jquery.hammer',
 		'enquire': Cornerstone.PATH_LIB + 'enquire.min',
+		'template': Cornerstone.PATH + 'loader/template',
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
 		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture'
@@ -49,6 +50,11 @@ requirejs.config( {
 				// 전역변수에 선언된 Lawnchair를 삭제하면 제대로 동작하지 않는다.
 				return this.Lawnchair;
 			}
+		},
+		'handlebars': {
+			exports: function() {
+				return this.Handlebars;
+			}	
 		},
 		'jquery.hammer': {
 			deps: ['hammer', 'jquery']
