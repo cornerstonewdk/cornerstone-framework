@@ -3657,8 +3657,8 @@ jQuery.fn.motioncaptcha || (function ($) {
         css:{
             input:'range',
             slider:'slider',
-            progress:'progress',
-            handle:'handle'
+            progress:'slider-bar',
+            handle:'slide-handle'
         }
     };
 
@@ -3669,6 +3669,7 @@ jQuery.fn.motioncaptcha || (function ($) {
 
     function dim(el, key) {
         var v = parseInt(el.css(key), 10);
+
         if (v) {
             return v;
         }
@@ -3684,17 +3685,18 @@ jQuery.fn.motioncaptcha || (function ($) {
     function RangeInput(input, conf) {
         var self = this,
             css = conf.css,
-            root = $("<div><div/><a href='#'/></div>").data("rangeinput", self),
+
+            root = $("<div><div></div><button></button></div>").data("rangeinput", self),
             vertical,
             value, // current value
             origo, // handle's start point
             len, // length of the range
-            pos;				// current position of the handle
+            pos; // current position of the handle
 
         // UI 엘리먼트 생성
         input.before(root);
 
-        var handle = root.addClass(css.slider).find("a").addClass(css.handle),
+        var handle = root.addClass(css.slider).find("button").addClass(css.handle),
             progress = root.find("div").addClass(css.progress);
 
         $.each("min,max,step,value".split(","), function (i, key) {
@@ -3718,6 +3720,7 @@ jQuery.fn.motioncaptcha || (function ($) {
             var def = input.clone().wrap("<div/>").parent().html(),
                 clone = $(def.replace(/type/i, "type=tel data-orig-type"));
 
+            clone.addClass("figure");
             clone.val(conf.value);
             input.replaceWith(clone);
             input = clone;
@@ -3805,6 +3808,11 @@ jQuery.fn.motioncaptcha || (function ($) {
                     fire.trigger(evt, [val]);
                 } : null;
 
+
+            if(input[0].value == val) {
+                return self;
+            }
+
             if (vertical) {
                 this.progressHeight = len - x + handle.height() / 2;
                 if ($.browser.os === "IOS" && $.browser.version > 4) {
@@ -3829,8 +3837,8 @@ jQuery.fn.motioncaptcha || (function ($) {
                     }, speed, callback);
                 } else {
                     handle.transition({
-                            x:x
-                        }, speed, callback);
+                        x:x
+                    }, speed, callback);
                 }
                 if (conf.progress) {
                     progress.css({
@@ -3847,7 +3855,11 @@ jQuery.fn.motioncaptcha || (function ($) {
                 this.insertingValue = true;
                 input[0].value = val;
                 this.insertingValue = false;
+            } else {
+                return self;
             }
+
+            console.log(x, val);
 
             return self;
         }

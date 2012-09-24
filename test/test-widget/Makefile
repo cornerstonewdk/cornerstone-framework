@@ -9,8 +9,8 @@ HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\
 build:
 	@echo "${HR}\n"
 	@echo "Building Widget Form Less... For DEMO"
-	@recess --compile widget-form/less/conerstone.less > widget-form/conerstone-form.css
-	@recess --compress widget-form/less/conerstone.less > widget-form/conerstone-form.min.css
+	@recess --compile widget-form/less/cornerstone.less > widget-form/cornerstone-form.css
+	@recess --compress widget-form/less/cornerstone.less > widget-form/cornerstone-form.min.css
 	@echo "Widget Less successfully built at ${DATE}."
 	@echo "${HR}\n"
 	@echo "Building Widget Form Less... For DEMO"
@@ -19,7 +19,7 @@ build:
 	@echo "Widget Less successfully built at ${DATE}."
 	@echo "${HR}\n"
 	@echo "Building Widget Plugin..."
-	@cat libs/bootstrap/js/bootstrap.js widget-plugin/js/jquery.transit.js widget-plugin/js/plugin-bootstrap.js widget-plugin/js/plugin-touch.js widget-plugin/js/plugin-motioncapcha.js widget-plugin/js/plugin-rangeinput.js widget-plugin/js/plugin-sign.js widget-plugin/js/plugin-spinner.js widget-plugin/js/plugin-switch.js > widget-plugin/plugins.js
+	@cat libs/bootstrap/js/bootstrap.js widget-plugin/js/jquery.transit.js widget-plugin/js/plugin-cornerstone.js widget-plugin/js/plugin-touch.js widget-plugin/js/plugin-motioncapcha.js widget-plugin/js/plugin-rangeinput.js widget-plugin/js/plugin-sign.js widget-plugin/js/plugin-spinner.js widget-plugin/js/plugin-switch.js > widget-plugin/plugins.js
 	@uglifyjs -nc widget-plugin/plugins.js > widget-plugin/plugins.min.js
 	@echo "Widget Plugin successfully built at ${DATE}."
 	@echo "${HR}\n"
@@ -33,6 +33,10 @@ build:
 	@echo "Widget JS successfully built at ${DATE}."
 	@echo "${HR}\n"
 	@echo "Building CornerStone Less..."
-	@echo "Corne Less successfully built at ${DATE}."
+	@echo "CornerStone Less successfully built at ${DATE}."
+	@echo "${HR}\n"
+	@echo "Building Widget Document..."
+	@cat widget-header.md widget-form/form.md widget-component/component.md widget-plugin/plugin.md widget-featured/featured.md > README.md
+	@echo "Widget Document successfully built at ${DATE}."
 	@echo "${HR}\n"
 	@echo "Thanks for using Widget"

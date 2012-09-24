@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>미디어 테스트 페이지</title>
+	<meta name="description" content="CornetStone">
+	<meta name="author" content="William Kim">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../../style-dark.css"/>
+	<link rel="stylesheet" href="css/mediaelementplayer.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<style type="text/css">
+		body {
+			font-family: "Lucida Grande";
+		}
+
+		h1, h2, .dataTables_wrapper {
+			color: #FFF;
+		}
+
+		.featured-video {
+			width: 100%;
+			height: auto;
+		}
+
+		.span4 {
+			margin-bottom: 10px;
+		}
+
+		@media (max-width: 480px) {
+			.mejs-overlay-loading, .mejs-overlay-loading span {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h2>MP4 H.264 / WEBM / OGV 조합 미디어 TEST <span class="pluginType"></span></h2>
+
+	<div class="featured-video">
+		<video width="100%" height="100%" id="player0" preload="none" >
+			<!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+			<source type="video/mp4" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"/>
+			<!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
+			<source type="video/webm" src="http://azamara.io/media/The_Avengers_Trailer_480p.webm"/>
+			<!-- Ogg/Vorbis for older Firefox and Opera versions -->
+			<source type="video/ogg" src="http://azamara.io/media/The_Avengers_Trailer_480p.ogv"/>
+			<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+			<object width="320" height="240" type="application/x-shockwave-flash" data="flashmediaelement.swf">
+				<param name="movie" value="flashmediaelement.swf"/>
+				<param name="flashvars"
+					   value="controls=true&file=http://azamara.io/media/The_Avengers_Trailer_480p.mp4"/>
+				<!-- Image as a last resort
+					   <img src="myvideo.jpg" width="320" height="240" title="No video playback capabilities" />
+					   -->
+			</object>
+		</video>
+	</div>
+
+	<h2>MP4 H.264 미디어 TEST (3 GRID LAYOUT) <span class="pluginType"></span></h2>
+
+	<div class="row">
+		<div class="span4">
+			<div class="featured-video">
+				<video width="100%" height="100%" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"
+					   type="video/mp4"
+					   id="player1" preload="none" ></video>
+			</div>
+
+		</div>
+		<div class="span4">
+			<div class="featured-video">
+				<video width="100%" height="100%" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"
+					   type="video/mp4"
+					   id="player2" preload="none" ></video>
+			</div>
+		</div>
+		<div class="span4">
+			<div class="featured-video">
+				<video width="100%" height="100%" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"
+					   type="video/mp4"
+					   id="player3" preload="none" ></video>
+			</div>
+		</div>
+	</div>
+
+	<h2>MP4 H.264 미디어 TEST <span class="pluginType"></span></h2>
+
+	<div class="featured-video">
+		<video width="100%" height="100%" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4" type="video/mp4"
+			   id="player4" preload="none" ></video>
+	</div>
+</div>
+<script src="../../libs/jquery.js"></script>
+<script src="../../libs/mediaelement-and-player.js"></script>
+<script type="text/javascript" src="js/featured-media.js"></script>
+<script type="text/javascript">
+	$('audio,video').featuredMedia({
+		alwaysShowControls:true,
+		success:function (player, node) {
+			$('#' + node.id + '-mode').html('mode: ' + player.pluginType);
+			$(".pluginType").text("(" + player.pluginType.toUpperCase() + ")");
+		}
+	});
+</script>
+</body>
+</html>

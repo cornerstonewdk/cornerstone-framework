@@ -2,7 +2,6 @@
 
 ----------
 
-
 Form
 --------
 위젯 폼은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 위젯 플러그인을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(_typeahead_)같은 기능을 통해 사용자에게 편의를 제공할 수 있다.
@@ -19,12 +18,13 @@ __선택적 레이아웃__
 :-- | :--
 검색 폼 | form에 .form-search 클래스를 추가한다. 입력상자엔 .search-query 클래스를 추가하므로 입력상자 모서리를 둥글게 표현할 수 있다.
 인라인 폼 | 좌측에서 수평으로 라벨과 입력요소가 정렬되도록 form에 .form-inline 클래스를 추가하므로 간편한 레이아웃을 구성 할 수 있다.
-수평(Horizontal) 폼 | form에 .form-horizontal 클래스를 추가하면 라벨과 입력요소(.controls)가 한줄씩 수평으로 이뤄지고 다음 줄부턴 줄 바꿈(.control-group)되는 레이아웃. 라벨의 텍스트는 우측 정렬(.control-label)된다.
+수평 폼 | form에 .form-horizontal 클래스를 추가하면 라벨과 입력요소(.controls)가 한줄씩 수평으로 이뤄지고 다음 줄부턴 줄 바꿈(.control-group)되는 레이아웃. 라벨의 텍스트는 우측 정렬(.control-label)된다.
 
-__ 기본 폼 예시 __ [데모페이지](http://codepen.io/azamara/pen/otwjv)
+__기본 폼 예시__ [데모페이지](http://codepen.io/azamara/pen/otwjv)
 
 기본 폼 스타일은 form태그에 class 선언없이 기본적으로 표현되는 스타일이다.
 
+```
 	<form>
 		<label class="title">입력 상자 1</label>
 		<input name="text1" type="text" placeholder="입력해주세요.">
@@ -35,11 +35,13 @@ __ 기본 폼 예시 __ [데모페이지](http://codepen.io/azamara/pen/otwjv)
 		<label class="title">입력 상자 4</label>
 		<input name="text4" type="text" placeholder="입력해주세요.">
 	</form>
+```
 
 __검색 폼 예시__
 
 검색 폼 스타일은 form태그에 class `.form-search`를 form태그 내부 input태그에 `.search-query`를 추가해야한다.
 
+```
 	<!-- 돋보기 아이콘 검색버튼 -->
     <form class="form-search">
         <div class="input-append">
@@ -53,12 +55,13 @@ __검색 폼 예시__
         <input class="search-query" name="text1" type="text" placeholder="입력해주세요.">
         <button type="submit" class="btn">검색</button>
     </form>
-
+```
 
 __인라인 폼 예시__
 
 인라인 폼 스타일은 form태그에 class `.form-inline`를 추가해야하며 컴팩트한 레이아웃에 알맞는 레이아웃이다. 
 
+```
     <form class="form-inline">
         <input type="text" class="input-large" placeholder="이메일 주소">
         <input type="password" class="input-large" placeholder="비밀번호">
@@ -69,11 +72,13 @@ __인라인 폼 예시__
         </label>
         <button type="submit" class="btn">회원가입</button>
     </form>
+```
 
 __수평 폼 예시__
 
 수평 폼 스타일은 앞의 3가지 레이아웃은 form, label이 모드 좌측 정렬인 방면 이 스타일은 label은 우측으로 정렬되는 레이아웃을 가지고 있다. 수평 폼 스타일을 사용하기 위해 form태그에 class `.form-horizontal`를 추가하고 입력창을 한 줄씩 보여주기 위해 label과 컨트롤(input, select 등등)들을 class `.control-group`으로 랩핑한다. label태그에 `.control-label`를 추가하고 마지막으로 컨트롤들은 가지런한 정렬을 하기 위해 class `.controls`로 랩핑한다.
 
+```
     <form class="form-horizontal">
         <div class="control-group">
             <label class="control-label" for="inputEmail">이메일</label>
@@ -99,6 +104,7 @@ __수평 폼 예시__
             </div>
         </div>
     </form>
+```
 	
 ## Inputs(입력 상자) / Textarea
 
@@ -113,7 +119,9 @@ _e.g._ 범위 입력 상자의 경우 IE9, 파이어폭스, 안드로이드에�
 
 __input 사용 예시__
 
+```
 	<input class="input-large" type="text" placeholder="입력 상자"/>
+```
 
 __textarea 사용 예시__
 
@@ -126,6 +134,7 @@ checkbox(체크박스)는 단일뿐만 아니라 여러개 옵션을 선택할 �
 
 __기본 스타일 사용 예시(스택형태)__
 
+```
     <form>
         <label class="checkbox" for="inlineCheckbox1">
             <input type="checkbox" id="inlineCheckbox1" value="option2">
@@ -159,11 +168,13 @@ __기본 스타일 사용 예시(스택형태)__
             기본 라디오 버튼 3
         </label>
     </form>
+```
 
 __인라인 스타일 사용 예시__
 
 인라인 스타일은 기본 스타일에서 label태그에 class `.inline`를 추가해서 체크박스와 라디오버튼을 같은 라인에 보여준다.
 
+```
     <form>
         <label class="checkbox inline" for="inlineCheckbox4">
             <input type="checkbox" id="inlineCheckbox4" value="option2">
@@ -197,7 +208,7 @@ __인라인 스타일 사용 예시__
             인라인 라디오 버튼 3
         </label>
     </form>
-
+```
 
 ## 셀렉트박스
 
@@ -205,6 +216,7 @@ __인라인 스타일 사용 예시__
 
 __셀렉트박스 사용 예시__
 
+```
 	<form>
         <div class="select-area">
             <label class="blind">Select box</label>
@@ -223,13 +235,15 @@ __셀렉트박스 사용 예시__
             </div>
         </div>
     </form>
+```
 
-## 폼 컨트럴 확장
+## 폼 컨트롤 확장
 
 `prepend append 디자인 보류`
 
 __텍스트 대신 버튼__
 
+```
 	<div class="input-append">
 	  <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
 	</div>
@@ -237,9 +251,11 @@ __텍스트 대신 버튼__
 	<div class="input-append">
 	  <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
 	</div>
+```
 
 __검색 폼__
 
+```
 	<form class="form-search">
 	  <div class="input-append">
 	    <input type="text" class="span2 search-query">
@@ -250,22 +266,26 @@ __검색 폼__
 	    <input type="text" class="span2 search-query">
 	  </div>
 	</form>
+```
 
 __상대적인 크기(Relative Sizing)__
 
 상대적인 크기는 `.input-mini` ~ `.input-xxlarge` 6가지 크기의 클래스를 제공한다.
 
+```
 	<input class="input-mini" type="text" placeholder=".input-mini">
 	<input class="input-small" type="text" placeholder=".input-small">
 	<input class="input-medium" type="text" placeholder=".input-medium">
 	<input class="input-large" type="text" placeholder=".input-large">
 	<input class="input-xlarge" type="text" placeholder=".input-xlarge">
 	<input class="input-xxlarge" type="text" placeholder=".input-xxlarge">
+```
 	
 __그리드 크기(Gird Sizing)__
 
 그리드 크기는 `.span1` ~ `.span12` 12가지 크기의 클래스를 제공한다.
 
+```
 	<input class="span1" type="text" placeholder=".span1">
 	<input class="span2" type="text" placeholder=".span2">
 	<input class="span3" type="text" placeholder=".span3">
@@ -278,9 +298,11 @@ __그리드 크기(Gird Sizing)__
 	<select class="span3">
 	  ...
 	</select>
+```
 
 한 줄에 여러 그리드를 사용하기 위해 클래스 `controls-row` 클래스로 랩핑을 한다.
 
+```
 	<div class="controls">
 	  <input class="span5" type="text" placeholder=".span5">
 	</div>
@@ -288,52 +310,66 @@ __그리드 크기(Gird Sizing)__
 	  <input class="span4" type="text" placeholder=".span4">
 	  <input class="span1" type="text" placeholder=".span1">
 	</div>
+```
 	
 ## 수정불가 입력상자(Inputs)
 
 입력상자에 들어있는 값을 수정할 수 없는 형태.
 
+```
 	<span class="input-xlarge uneditable-input">Some value here</span>
+```
 
 ## 폼 액션(Form actions)
 
 `설명 추가필요`
 
+```
 	<div class="form-actions">
 	  <button type="submit" class="btn btn-primary">저장</button>
 	  <button type="button" class="btn">취소</button>
 	</div>
+```
 
 ## 도움말(Help text)
 
-도움말은 폼 컨트럴(e.g. 입력상자) 주변에 해당 컨트럴에 관련있는 도움말을 노출한다.
+도움말은 폼 컨트롤(e.g. 입력상자) 주변에 해당 컨트롤에 관련있는 도움말을 노출한다.
 
 __인라인 도움말__
 
+```
 	<input type="text"><span class="help-inline">인라인 도움말</span>
+```
 
 __블럭 도움말__
 
+```
 	<input type="text"><span class="help-block">블록 도움말</span>
+```
 
-## 폼 컨트럴 상태들
+## 폼 컨트롤 상태
 
 __입력상자 포커스(focus)__
 
 코너스톤은 기본적으로 outline 스타일을 제거한다. 하지만 입력상자 포커스에는 outline에 box-shadow를 통해 스타일이 적용된다.
 
+```
 	<input class="input-xlarge" id="focusedInput" type="text" value="This is focused...">
+```
 
 __비활성 입력상자__
 
 입력상자를 비활성화하기 위해 해당 입력상자에 disabled 속성을 추가해야 한다.
 
+```
 	<input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+```
 
 __유효성 상태__
 
 코너스톤은 유효성 검사를 통해 생기는 오류, 경고, 성공 메세지 스타일을 포함하고 있고 이 스타일을 사용하기 위해 `.control-group` 클래스로 랩핑해야 한다.
 
+```
 	<div class="control-group warning">
 	  <label class="control-label" for="inputWarning">Input with warning</label>
 	  <div class="controls">
@@ -355,17 +391,636 @@ __유효성 상태__
 	    <span class="help-inline">Woohoo!</span>
 	  </div>
 	</div>
-	
-	
+```
 
 컴포넌트
 --------
-위젯. 베이스에서 다루는 것은 아니지만 재사용 가능성이나 유용도가 높은 UI요소로 필수적 이지 않은것들. 기능이 없으며 플러그인과 함께 사용하여 기능을 적용 가능함. 기본적으로 컴포넌트의 스타일을 적용하려면 엘레멘트에서 스타일 클래스를 선언하여야 함. 아래의 구현, 기능, 느낌과 모양새에 관련한 방안과 범위는 테마중 Conor Stone을 기준으로 함
+위젯 컴포넌트는 위젯의 폼, 플러그인, 피처드 등 화면을 꾸밀때 재사용될 수 있는 요소들이며 기능이 없으며 플러그인과 함께 사용하여 기능을 적용 가능함. 기본적으로 컴포넌트의 스타일을 적용하려면 엘리멘트에서 스타일 클래스를 선언해서 사용해야 한다.
 
+
+## 드롭다운 
+
+### 마크업
+
+드롭다운 플러그인과 함께 사용되는 스타일로 Button dropdowns,Navbar등 각종 dropdown을 활용하는 위젯이 이것을 불러들여와 사용된다. 기본적으로 드롭다운 마크업은 화면상에 노출되지 않는다. 드롭다운 메뉴자체가 상위 메뉴를 통해 노출되는 형태이므로 상위 메뉴에서 트리거가 발생하면 노출이 된다.(플러그인 필요) 또한 드롭다운을 포함하는 상위 엘리먼트는 `position:relative` css 프로퍼티 선언을 해야한다.
+
+```
+    <div class="dropdown">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li><a tabindex="-1" href="#">메뉴1</a></li>
+            <li><a tabindex="-1" href="#">메뉴2</a></li>
+            <li><a tabindex="-1" href="#">메뉴3</a></li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">구분된 링크</a></li>
+        </ul>
+    </div>
+```
+
+<iframe style="width: 100%; height: 300px; border: none;overflow:hidden;" src="http://codepen.io/azamara/embed/yrbzo"></iframe>
+
+### 옵션
+
+드롭다운 컴포넌트는 우측 정렬 및 서브 드롭다운 등을 추가할 수 있는 옵션을 가지고 있다.
+
+__메뉴 정렬__
+
+`.dropdown-menu` 클래스에 `.pull-right` 클래스를 추가하면 드롭다운 메뉴는 우측으로 정렬된다.
+
+```
+    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+        ...
+    </ul>
+```
+
+__드롭다운에 서브메뉴 추가하기__
+
+서브메뉴를 추가할 `li` 태그에 `.dropdown-submenu`를 추가하고 그 안에 서브 메뉴로 사용할 드롭다운를 추가한다.
+
+```
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        ...
+        <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">More options</a>
+            <ul class="dropdown-menu">
+            ...
+            </ul>
+        </li>
+    </ul>
+```
+
+### 사용 예시  [데모페이지](http://codepen.io/azamara/pen/yrbzo)
+
+마크업에서 설명한 것처럼 드롭다운은 기본적으로 노출이 되지 않는다. 그래서 자바스크립트 플러그인을 통해 드롭다운을 노출시킬 수 있으며 메뉴 토글기능도 가능하다.
+
+```
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <li><a tabindex="-1" href="#">메뉴1</a></li>
+        <li><a tabindex="-1" href="#">메뉴2</a></li>
+        <li><a tabindex="-1" href="#">메뉴3</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">구분된 링크</a></li>
+    </ul>
+```
+
+## 버튼 그룹
+
+### 사용 예시  [데모페이지](http://codepen.io/azamara/pen/tDlCp)
+
+`adding description!`
+
+__단일 버튼 그룹__
+
+여러 `.btn` 클래스를 `.btn-group` 클래스로 랩핑한다.
+
+```
+    <div class="btn-group">
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button class="btn">3</button>
+    </div>
+```
+
+__여러 버튼 그룹__
+
+복잡한 요소를 위해 여러 `.btn-group` 클래스를 결합하여 `.btn-toolbar` 클래스로 랩핑한다.
+
+```
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">4</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn">7</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn">8</button>
+            <button class="btn">10</button>
+        </div>
+    </div>
+```
+
+__수직버튼 그룹__
+
+기본적으로 수평형태로 보여지는 버튼들을 수직(스택)형태로 보여지도록 하기 위해 `.btn-group` 클래스에  `.btn-group-vertical` 클래스를 추가해야 한다.
+
+```
+    <div class="btn-group btn-group-vertical">
+        <button type="button" class="btn"><i class="icon-align-left"></i></button>
+        <button type="button" class="btn"><i class="icon-align-right"></i></button>
+        <button type="button" class="btn"><i class="icon-align-center"></i></button>
+        <button type="button" class="btn"><i class="icon-align-justify"></i></button>
+    </div>
+```
+
+
+## 버튼 드롭다운
+
+### 사용예시
+
+__기본 버튼 드롭다운__
+
+버튼 드롭다운은 드롭다운을 보여 주기 위한 toggle형태의 버튼과 드롭다운이 필요하다. 이 2가지 요소를 `.btn-group` 클래스로 감싼다.
+
+```
+    <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            Action
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+        </ul>
+    </div>
+```
+
+__버튼 드롭다운의 toggle 버튼의 크기__
+
+버튼 드롭다운에 toggle 버튼은 `.btn-large`, `.btn-small`, `.btn-mini`  3가지 크기의 클래스로 표현 할 수 있다.
+
+__분리된 버튼 드롭다운__
+
+분리된 버튼 드롭다운은 버튼 텍스트와 역삼각형(caret)에 구분선을 보여준다. 기본 버튼 드롭다운에서는 `a` 태그 내부에 텍스트와 역삼각형(caret)를 같이 포함하지만 분리된 버튼 드롭다운에서는 텍스트와 역삼각형(caret) 부분을 분리하며 `button` 태그를 사용한다.
+
+```
+    <div class="btn-group">
+        <button class="btn">Action</button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+        </ul>
+    </div>
+```
+
+__드롭업 메뉴__
+
+드롭업은 드롭다운에서 트리거 역할을 하는 toggle 버튼 
+
+```
+    <div class="btn-group dropup">
+        <button class="btn">Dropup</button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+        </ul>
+    </div>
+```
+
+
+
+## 네비게이션 
+
+BtS은 경우에따라 div, ul엘레멘트를 사용하나 본 프레임워크에서 내용을 감쌀 필요가 있다면 nav 엘레멘트를 감싸서 사용하는것을 기본으로 하도록 함
+
+구현 : BtS에 있는것을 스타일 확장
+기능 : 플러그인 연계가능
+Bts > plugins > tabs로 기능확장 가능. Tabbable nav는 피쳐드중 list view, scroll view등 내용을 보여주는 형식의 위젯과 유연하게 함께 사용이 가능해야 함.
+느낌과 모양새 : 방향성에 맞추어 모바일에 알맞게 적용. Tabbable nav는 폰에서는 참고사항의 jQM의 navbar와 같이 각 li 엘레멘트의 너비가 동일하게 표현되도록 작성.
+
+참고사항
+
+jQM > toolbars > navbar참고
+
+
+## 네비게이션 바
+
+div 엘레멘트로 된 네비게이션 요소
+
+구현 : BtS에 있는것을 스타일 확장
+기능 : 플러그인 연계가능
+반응형 웹형식으로 사용하려면 BtS > Plugins > collapse,BtS responsive css file과 함께 사용
+드롭다운 기능을 사용하기 위해서는 BtS > Plugins > dropdowns플러그인을 사용하여 기능 확장 가능
+느낌과 모양새 : 방향성에 맞추어 모바일에 알맞게 적용. 특별히 폰에서는 앱으로써 사용하기는 불편한 UI임으로 폰을 위해 별도의 변형된 UI를 디자인 할 필요 없음
+
+## 순서(Breadcrumbs)
+
+Breadcrumbs는 `ul` 엘리멘트로 된 네비게이션 요소이다. 타블랫에서는 Navbar나, Header,footer의 네비게이션 역할을 대신하는 경우가 많은 UI요소이다.
+
+### 사용예시 
+
+```
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li><a href="#">Library</a> <span class="divider">/</span></li>
+        <li class="active">Data</li>
+    </ul>
+```
+
+## 페이지네이션(Pagination)
+
+`ul` 엘리먼트로된 네비게이션 요소. 기본적으로 폰에서는 이것 대신 리스트뷰를 사용하는것이 적합하나 네이버나 클리앙같은 게시판 류에서는 실제로는 상당히 자주 사용되고 있는 듯 하며 엔터프라이즈 환경에서도 상당히 자주 사용된다.
+
+### 기본 페이지네이션
+
+기본 페이지네이션에서는 큰 클릭 영역과 간단히 확장/축소가 가능하다. 기본적으로 `ul`, `li` 태그로 이뤄져 있고 `.pagination` 클래스로 감싸야 한다.
+
+```
+    <div class="pagination">
+        <ul>
+            <li><a href="#">이전</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">다음</a></li>
+        </ul>
+    </div>
+```
+
+### 옵션
+
+__비활성 / 활성 상태__
+
+비활성 페이지 번호인 경우 해당 `li` 태그에 `.disabled` 클래스를 추가하고 활성 페이지 번호인 경우 해당 `li` 태그에 `.active` 클래스를 추가하면 된다.
+
+```
+    <div class="pagination">
+        <ul>
+            <li class="disabled"><a href="#">이전</a></li>
+            <li class="active"><a href="#">1</a></li>
+            ...
+        </ul>
+    </div>
+```
+
+또한 비활성, 활성인 경우 `a` 태그의 클릭 함수를 제거하기 위해 `span` 태그로 변경할 수 있다.
+
+```
+    <div class="pagination">
+        <ul>
+            <li class="disabled"><span>이전</span></li>
+            <li class="active"><span>1</span></li>
+            ...
+        </ul>
+    </div>
+```
+
+__정렬__
+
+페이지네이션의 정렬은 3가지 종류가 있다. 좌측 정렬(기본), 중앙 정렬, 우측 정렬로 이뤄어 졌으며 좌측 정렬은 기본으로 적용되므로 별도의 클래스가 요구되지 않는다. 하지만
+중앙 정렬과 우측 정렬은 각각 정렬을 위해 클래스가 필요하다. 중앙 정렬의 경우  `.pagination` 클래스에 `.pagination-centered` 를 추가해야 하며 우측 정렬의 경우 `.pagination` 클래스에 `.pagination-right` 클래스를 추가해야 한다.
+
+```
+	<!-- 좌측 정렬 -->
+    <div class="pagination pagination-centered">
+    ...
+    </div>
+    
+	<!-- 중앙 정렬 -->
+    <div class="pagination pagination-centered">
+    ...
+    </div>
+
+	<!-- 우측 정렬 -->    
+    <div class="pagination pagination-right">
+    ...
+    </div>
+```
+
+### 페이저
+
+페이저는 매거진이나 블로그와 같은 사이트에서 많이 사용되는 형태로 페이지네이션과는 달리 이전 / 다음 버튼으로 이뤄져 있다.
+
+__기본 페이저__
+
+기본적으로 페이저는 중앙 정렬 상태이다.
+
+```
+    <ul class="pager">
+        <li><a href="#">이전</a></li>
+        <li><a href="#">다음</a></li>
+    </ul>
+```
+
+__링크 정렬하기__
+
+기본 페이저에서는 이전 / 다음 버튼이 같이 중앙에 정렬된 방면에 링크 정렬은 이전 / 다음의 `li` 태그에 클래스를 추가하므로  이전 버튼은 좌측으로, 다음 버튼은 우측으로 정렬 시킨다.
+
+```
+    <ul class="pager">
+        <li class="previous">
+            <a href="#">&larr; 이전</a>
+        </li>
+        <li class="next">
+            <a href="#">다음 &rarr;</a>
+        </li>
+    </ul>
+```
+
+__비활성 상태__
+
+페이저 링크 또한 페이저네이션처럼 비활성 클래스인 `.disabled` 클래스를 비활성하려는 버튼의 `li` 태그에  추가해서 사용 할 수 있다.
+
+```
+    <ul class="pager">
+        <li class="previous disabled">
+            <a href="#">&larr; Older</a>
+        </li>
+        ...
+    </ul>
+```
+
+
+## 이름표와 뱃지
+
+### 이름표
+
+```
+	코드삽입
+```
+
+### 뱃지
+
+```
+	코드삽입
+```
+
+## 타이포그라피
+
+### 히어로 유닛
+
+히어로 유닛은 사이트에서 중요한 컨텐츠를 보여주기 위해 사용되는 가볍고 유연한 요소이다. 일반적으로 컨텐츠의 제목과 태그 그리고 해당 컨텐츠를 상세하게 볼 수 있는 링크 정도로 구성되며 `.hero-unit` 클래스로 감싸야 한다.
+
+```
+    <div class="hero-unit">
+        <h1>Heading</h1>
+        <p>Tagline</p>
+        <p>
+            <a class="btn btn-primary btn-large">
+            Learn more
+            </a>
+        </p>
+    </div>
+```
+
+### 페이지 머리글
+
+페이지 머리글은 `h1`태그를 사용해서 제목글을 작성하며 제목글 내부에   `small` 등의 태그로 다른 스타일을 적용 할 수 있고 `.page-header` 클래스로 감싸야 한다.
+
+```
+    <div class="page-header">
+        <h1>Example page header <small>Subtext for header</small></h1>
+    </div>
+```
+
+
+## 썸네일
+
+썸네일은 기본적으로 최소한의 마크업만으로 링크된 이미지를 보여주도록 디자인 됐다.
+
+### 고급 사용자 정의 썸네일
+
+고급 사용자 정의 썸네일은 이미지 뿐만 아니라 썸네일에 보다 복잡한 컨텐츠를 넣을 수 있다. 예를들면 링크된 이미지, 컨텐츠 타이틀, 컨텐츠 설명, 버튼 등과 같은 다양한 요소들로 꾸밀 수 있다.
+
+__간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
+
+썸네일은 `ul` 태그와 여러 `li` 태그로 이뤄져 있다. 그리드 시스템의  `.span2`, `.span3` 과 같은 크기를 썸네일에서도 사용 할 수 있다.
+
+### 마크업
+
+썸네일을 꾸미기 위해 요구되는 마크업은 복잡하지 않고 가볍다. 
+
+```
+    <ul class="thumbnails">
+        <li class="span4">
+            <a href="#" class="thumbnail">
+            	<img src="http://placehold.it/300x200" alt="">
+            </a>
+        </li>
+        ...
+    </ul>
+```
+
+또한 위 마크업과 다르게 `a` 태그 대신 `div` 태그를 사용하므로 이미지뿐만 아니라 다양한 요소를 넣을 수 있다.
+```
+    <ul class="thumbnails">
+        <li class="span4">
+            <div class="thumbnail">
+                <img src="http://placehold.it/300x200" alt="">
+                <h3>썸네일 타이틀</h3>
+                <p>썸네일 간단한 설명</p>
+            </div>
+        </li>
+    ...
+    </ul>
+```
+
+## 경고창
+
+성공, 주의, 에러 메세지를 위한 스타일
+
+### 기본 경고창
+
+기본 경고창은 `.alert` 클래스로 경고를 보여줄 내용을 감싸준다. `.alert` 클래스 내부의  `닫기 버튼`은 옵션이므로 닫기 기능이 필요한 경우에 넣는다.
+
+```
+    <div class="alert">
+    	<!-- 기본 닫기 버튼  -->
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+    </div>
+```
+
+__닫기 버튼__
+
+닫기 버튼은 플러그인을 통해 작동이 가능하다. 작동방식은 html5 data-attribute를 사용하는 방법과 javascript를 이용하는 방법이 있다. javascript를 이용하는 방법은 플러그인에서 설명하므로 여기에서는 사용되는 예시와 설명은 data-attribute 방식이다. 닫기 버튼은 `a` 태그와 `button` 태그로 만들 수 있으며 `a` 태그인 경우 `href="#"` 속성이 필수적으로 들어가야 한다. `button` 태그의 경우 `form` 태그 안에서 사용되는 경우라면 `type="button"`  속성이 들어가야 한다.
+
+```
+    <a href="#" class="close" data-dismiss="alert">×</a>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+```
+
+### 옵션
+
+__경고 메세지가 긴 경우__
+
+경고 메세지가 긴 경우 `.alert` 클래스에 `.alert-block` 클래스를 추가해서 위, 아래 여백이 증가되므로 좀더 가독성이 높은 UI를 구성할 수 있다.
+
+```
+    <div class="alert alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4>Warning!</h4>
+        Best check yo self, you're not...
+    </div>
+```
+
+__에러 메세지__
+
+여러가지 에러에 대한 메세지를 표현 할때 `.alert-error` 클래스를 추가한다.
+
+```
+    <div class="alert alert-error">
+    ...
+    </div>
+```
+
+__성공 메세지__
+
+성공에 대한 메세지를 표현 할때 `.alert-success` 클래스를 추가한다.
+
+```
+    <div class="alert alert-success">
+    ...
+    </div>
+```
+
+__안내 메세지__
+
+안내에 대한 메세지를 표현 할때 `.alert-info` 클래스를 추가한다.
+
+```
+    <div class="alert alert-info">
+    ...
+    </div>
+```
+
+
+## 프레그레스 바
+
+프로그레스 바는 파일 업로드, 로딩과 같은 진행 상황을 표현할 때 사용되는 컴포넌트이다.
+
+### 마크업
+
+__기본 프로그레스 바__
+
+기본 프로그레스바는 수직 간단한 그라디언트 효과를 사용한다.
+
+```
+    <div class="progress">
+        <div class="bar" style="width: 60%;"></div>
+    </div>
+```
+
+__줄무늬 프로그레스 바__
+
+줄무늬 효과를 만들기 위해 그라디언트 효과를 사용하며 `.progress` 클래스에 `.progress-striped` 클래스를 추가 한다.
+
+```
+    <div class="progress progress-striped">
+        <div class="bar" style="width: 60%;"></div>
+    </div>
+```
+
+__애니메이션된 프로그레스 바__
+
+줄무늬에 애니메이션 효과를 주기 위해 `.active` 클래스를 추가 한다.
+
+```
+    <div class="progress progress-striped active">
+        <div class="bar" style="width: 60%;"></div>
+    </div>
+```
+
+__스택 프로그레스 바__
+
+프로그레스 바에 다양한 색의 바를 보여주기 위해 `.progress` 클래스에 내부에 `.bar` 클래스에 `.bar-success`,  `.bar-warning`, `.bar-danger`  등의 클래스를 추가해서 다양한 색의 바를 표현 할 수 있다.
+
+```
+    <div class="progress">
+        <div class="bar bar-success" style="width: 35%;"></div>
+        <div class="bar bar-warning" style="width: 20%;"></div>
+        <div class="bar bar-danger" style="width: 10%;"></div>
+    </div>
+```
+
+### 옵션
+
+__추가적인 색상__
+
+프로그레스 바의 색상은 버튼에서 사용되는 색상인  `info`, `success`, `warning`, `danger` 를 사용 한다.
+
+```
+    <div class="progress">
+        <div class="bar" style="width: 20%"></div>
+    </div>
+    <div class="progress progress-info">
+        <div class="bar" style="width: 20%"></div>
+    </div>
+    <div class="progress progress-success">
+        <div class="bar" style="width: 40%"></div>
+    </div>
+    <div class="progress progress-warning">
+        <div class="bar" style="width: 60%"></div>
+    </div>
+    <div class="progress progress-danger">
+        <div class="bar" style="width: 80%"></div>
+    </div>
+```
+
+
+__줄무늬 프로그레스 바__
+
+추가적인 색상에 줄무늬 클래스를 추가해서 다양한 색상의 줄무늬 프로그레스바를 만들 수 있다.
+
+```
+    <div class="progress progress-striped">
+        <div class="bar" style="width: 20%"></div>
+    </div>
+    <div class="progress progress-info progress-striped">
+        <div class="bar" style="width: 20%"></div>
+    </div>
+    <div class="progress progress-success progress-striped">
+        <div class="bar" style="width: 40%"></div>
+    </div>
+    <div class="progress progress-warning progress-striped">
+        <div class="bar" style="width: 60%"></div>
+    </div>
+    <div class="progress progress-danger progress-striped">
+        <div class="bar" style="width: 80%"></div>
+    </div>
+```
+
+
+## 기타 요소 (Miscellaneous)
+
+__Wells__
+
+Wells은 엘리먼트에 심플한 inset 효과를 주기 위해 사용한다.
+
+```
+    <div class="well">
+	    Hello World
+    </div>
+```
+
+__Close__
+
+모달창이나 경고창을 사라지게 하기 위해 공통적으로 close 아이콘을 사용한다.
+
+```
+    <a class="close">&times;</a>
+```
+
+__도움되는 클래스들(Helper classes)__
+
+__.pull-left__
+
+`.pull-left` 클래스가 선언된 엘리먼트는 `float: left;` 속성이 선언된다.
+
+
+__.pull_right__
+
+`.pull-right` 클래스가 선언된 엘리먼트는 `float: right;` 속성이 선언된다.
+
+_.clearfix__
+
+`float` 속성이 적용된 엘리먼트를 `Clear`  시킨다.
+
+__.muted__
+
+`.muted` 클래스가 선언된 엘리먼트의 텍스트 색을 `color: #999` 로 변경한다.
 
 플러그인
 -------
-위젯 중 플러그인은 재사용 가능성이나 유용도가 높은 UI요소나 느낌과 모양새를 순수 HTML/CSS구현이 어렵고 Javascript의 도움을 받아 콤포넌트와 유사하나 기능적인 면이 추가된것이나 터치로 작동하는 스크롤처럼 느낌과 모양새를 구현하기 위해서 HTML/CSS가 필요없이 Javascript만으로 작동하는 등의 기능을 제공하는 것이다. 
+위젯 중 플러그인은 재사용 가능성이나 유용도가 높은 UI요소나 느낌과 모양새를 순수 HTML/CSS구현이 어렵고 Javascript의 도움을 받아 콤포넌트와 유사하나 기능적인 면이 추가된것이나 터치로 작동하는 스크롤처럼 느낌과 모양새를 구현하기 위해서 HTML/CSS가 필요없이 Javascript만으로 작동하는 등의 기능을 제공하는 것이다.
 
 > 코너스톤의 위젯 플러그인은 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.
 
@@ -389,47 +1044,52 @@ __유효성 상태__
 - fixedbar : 모바일/패드 환경에서 헤더와 푸터를 고정시켜주는 플러그인
 - rangeinput : 폼에 범위 입력(슬라이더)을 만들어주는 플러그인 (터치무브 및 마우스 드래그가능)
 - drag(touch) : 지정요소에 터치, 마우스 드래그 기능을 부여하는 플러그인
-- swipe(touch) : 지정요소에 swipe기능을 부여한 플러그인.  
+- swipe(touch) : 지정요소에 swipe기능을 부여한 플러그인.
 
-	
+
 의존성 주입
 
+```
 	<!-- jQuery: 위젯 플러그인 사용을 위한 jquery.js  -->
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<!-- Widget Collection: 위젯의 각 플러그인들이 모여있는 widget.js  -->
 	<script type="text/javascript" src="widget.min.js"></script>
+```
 
-	
-## Drag 
+## Drag
 ### 사용법
 드래그를 사용할 요소에 아래와 같이 플러그인을 통해 선언
 
 $().drag(options);
-	
+
 __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/5JxVx/)
 
+```
 	$("#example").drag({
 		x: true,
 		y: true,
 		drag: true
 	});
-	
+```
+
 ### 옵션
-이름 | 타입 | 기본값 | 설명 
-:--|:-:|:-:|:-: 
-x | boolean | true | X축 드래그 활성화 여부 
-y | boolean | true | Y축 드래그 활성화 여부 
+이름 | 타입 | 기본값 | 설명
+:--|:-:|:-:|:-:
+x | boolean | true | X축 드래그 활성화 여부
+y | boolean | true | Y축 드래그 활성화 여부
 drag | boolean | true | Drag 활성화 여부
 
 ### 이벤트
-이벤트 이름 | 설명 
+이벤트 이름 | 설명
 :--|:--
 dragStart | 드래그 시작하기전에 발생
-drag | 드래그 중일 때 발생 
+drag | 드래그 중일 때 발생
 dragEnd | 드래그 완료 후 발생
 
 __실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/5JxVx/)
 
+
+```
 	$("#example").drag({
 		x: true,
 		y: true,
@@ -441,23 +1101,29 @@ __실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/5JxV
 	}).bind("dragEnd", function (e) {
 		console.log("end drag");
 	});
+```
 
-## Swipe 
+
+## Swipe
 ### 사용법
 스와이프를 사용할 요소에 아래와 같이 플러그인을 통해 선언
 
 $().swipe();
-	
+
 __실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/4ScM7)
 
+
+```
 	$("#example").swipe();
-	
+```
+
+
 ### 옵션
 `드래그와 같은 옵션 설정 기능 구현 예정`
 
 
 ### 이벤트
-이벤트 이름 | 설명 
+이벤트 이름 | 설명
 :--|:--
 swipe | 전 방향(상화좌우) 스와이프시 이벤트 발생
 swipeLeft | 왼쪽 스와이프시 이벤트 발생
@@ -471,12 +1137,12 @@ swipeDown | 아래쪽 스와이프시 이벤트 발생
 		originalEvent:event, // 일반 이벤트 객체
 		position:position, // x, y 값이 있는 객체
 		direction:_direction, // 방향 정보(left, right, up, down)
-		distance:_distance, // 대각선 이동거리  
-		distanceX:_distance_x, // y축 이동 거리 
+		distance:_distance, // 대각선 이동거리
+		distanceX:_distance_x, // y축 이동 거리
 		distanceY:_distance_y, // x축 이동 거리
 		angle:_angle // 각도값
 	}
-	
+
 	// 실제 객체 정보 예시
 	{
 		"angle": "-36.72222843798391",
@@ -493,21 +1159,22 @@ swipeDown | 아래쪽 스와이프시 이벤트 발생
 
 __실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/4ScM7)
 
+```
 	$("#example").swipe()
 	.bind("swipe", function(e, swipeEventObj) {
 		console.log("swipe");
 	}).bind("swipeLeft", function(e, swipeEventObj) {
 		console.log("swipe left");
-	)).bind("swipeRight", function(e, swipeEventObj){ 
+	)).bind("swipeRight", function(e, swipeEventObj){
 		console.log("swipe right");
-	}).bind("swipeUp", function(e, swipeEventObj){ 
+	}).bind("swipeUp", function(e, swipeEventObj){
 		console.log("swipe up");
-	}).bind("swipeDown", function(e, swipeEventObj){ 
+	}).bind("swipeDown", function(e, swipeEventObj){
 		console.log("swipe down");
 	});
-		 
-		
-## Alert 
+```
+
+## Alert
 ### 사용법
 경고 메세지등을 화면에 보여주거나 사용자가 해당 메시지를 닫는 기능.
 
@@ -517,28 +1184,31 @@ __마크업__
 
 data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
 
+```
 	<div class="alert">
 		<!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
-		<a class="close" data-dismiss="alert" href="#">×</a> 
+		<a class="close" data-dismiss="alert" href="#">×</a>
 		<strong>data-attribute를 통한 alert 닫기</strong>
 	</div>
+```
 
 javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
 
+```
 	<div class="alert">
 		<!-- javascript를 이용하므로 data-dismiss 속성 제거 -->
-	    <a class="close" href="#">×</a> 
+	    <a class="close" href="#">×</a>
 	    <strong>javascript를 통한 alert 닫기</strong>
 	</div>
-	
+
 	<script type="text/javascript">
 		// 닫기 이벤트를 발생 시키기 위해 a태그에 클릭 이벤트 바인딩
 		$("a.close").bind("click", function(e) {
 		    $(".alert").alert("close"); // a태그 클릭시 .alert클래스 영역을 닫는다.
 		});
 	</script>
+```
 
-	
 ### 이벤트
 
 이벤트 이름 | 설명
@@ -548,12 +1218,13 @@ closed | close가 완료될 때 발생하는 이벤트
 
 __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
 
+```
 	$(".alert").bind("close", function(e) {
 	    alert("닫기 전 이벤트");
 	}).bind("closed", function(e) {
 	    alert("닫기 완료시 CSS Transition 완료 후 이벤트");
 	});
-​
+```
 
 ## Button
 버튼을 클릭했을 때 버튼의 이름등을 바꾸는 토글 기능을 부여하는 플러그인.
@@ -564,32 +1235,39 @@ __마크업__
 
 data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
+```
 	<!-- data-toggle="button" 속성으로 토글 기능 부여. -->
 	<button type="button" class="btn" data-toggle="button">단일 토글</button>
-	
+```
+
 data-attribute를 이용한 버튼 그룹 checkbox 토글 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
+```
 	<!-- data-toggle="buttons-checkbox" 속성으로 checkbox형태의 토글 기능 부여. -->
 	<div class="btn-group" data-toggle="buttons-checkbox">
 		<button type="button" class="btn"><strong>B</strong></button>
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
+```
 
 data-attribute를 이용한 버튼 그룹 radio 토글 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
+```
 	<!-- data-toggle="buttons-radio" 속성으로 radio형태의 토글 기능 부여. -->
 	<div class="btn-group" data-toggle="buttons-radio">
 		<button type="button" class="btn"><strong>B</strong></button>
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-	
+```
+
 javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
+```
 	<!--  토글 후 보여줄 텍스르를 data-loading-text 속성에 정의 -->
 	<button type="button" class="btn btn-primary" data-loading-text="토글 후">토글 전</button>
-	
+
 	<script type="text/javascript">
 		// 첫번째 버튼은 javascript로 이벤트를 받아 토글 기능 부여.
 		$("button").eq(0).bind("click", function(e) {
@@ -599,19 +1277,20 @@ javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/corners
 		    // 3초 후 토글 전 상태로 리셋.
 		    window.setTimeout(function () {
 		      btn.button("reset")
-		    }, 3000)           
+		    }, 3000)
 		});​
 	</script>
-	
+```
+
 ### 옵션
-이름 | 설명 
+이름 | 설명
 :--|:--
 toggle | data-toggle="button"과 같이 토글 온/오프 형태의 기능
 loading | data-loading-text 속성에 정의된 텍스트를 버튼에 보여준다.
 reset | 토글 전에 노출된 텍스트로 보여준다.
 string(사용자가 정의) | data-string-text  string를 부분을 사용자가 정의한대로 사용 가능.(loading, reset형태)
-	
-	
+
+
 ## Carousel
 캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다.
 
@@ -621,6 +1300,7 @@ __마크업__
 
 이미지 영역 마크업 [데모 페이지](http://jsfiddle.net/cornerstone/wx8NQ/)
 
+```
 	<div class="carousel-inner">
         <div class="item active">
             <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
@@ -637,15 +1317,16 @@ __마크업__
             </div>
         </div>
     </div>
-	    
+```
+
 data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/wx8NQ/)
 
 `좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정`
 
-
+```
 	<div id="myCarousel" class="carousel slide">
 	    <!-- 이미지 영역 삽입 부분 -->
-	    
+
 	    <!-- data-slide 속성을 통해 javascript 없이 버튼에 기능 부여 -->
 	    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 	    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
@@ -655,12 +1336,14 @@ data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cor
 		    interval: 3000
 		});​
 	</script>
-	
+```
+
 javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/BMqzL/)
 
+```
 	<div id="myCarousel" class="carousel slide">
 	    <!-- 이미지 영역 삽입 부분 -->
-	    
+
 	    <!-- data-slide 속성을 통해 javascript 없이 버튼에 기능 부여 -->
 	    <a class="left carousel-control" href="#myCarousel">‹</a>
 	    <a class="right carousel-control" href="#myCarousel">›</a>
@@ -671,9 +1354,9 @@ javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/corners
 		}).swipe().bind("swipeRight", function(e) { // 모바일에서 swipe를 이용
 		    $(".carousel").carousel("prev");
 		}).bind("swipeLeft", function(e) {
-		    $(".carousel").carousel("next");    
+		    $(".carousel").carousel("next");
 		});
-		
+
 		$(".carousel .left").bind("click", function(e) {
 		    $(".carousel").carousel("prev");
 		});
@@ -681,34 +1364,36 @@ javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/corners
 		    $(".carousel").carousel("next");
 		});​
 	</script>
-	
+```
+
 ### 옵션
 설정 | 타입 | 기본값 | 설명
 :-- | :-: | :-: | :--
-interval | number | 5000 | 이미지 슬라이드 작동 시간 
-pause | string | "hover" | 이미지 일시 정지 방식 
-	
-### 메서드 
+interval | number | 5000 | 이미지 슬라이드 작동 시간
+pause | string | "hover" | 이미지 일시 정지 방식
+
+### 메서드
 $().collapse();
 
 설정 | 타입 | 설명
 :-- | :-: | :--
-option | object | 옵션에 설정된 정보를 json형식으로 넣는다. 
+option | object | 옵션에 설정된 정보를 json형식으로 넣는다.
 cycle | string | 순서대로 이미지를 보여준다.
 pause | string | 캐로셀을 일시 정지시킨다.
 prev | string | 이전 이미지로 이동
-next | string | 다음 이미지로 이동 
+next | string | 다음 이미지로 이동
 
 
 ### 이벤트
 
 이벤트 이름 | 설명
 :-- | :--
-slide | 이미지 이동 직전에 발생 
+slide | 이미지 이동 직전에 발생
 slid | 이미지 이동 완료 후 발생
 
 __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/tee87/)
 
+```
 	$('.carousel').carousel({
 	    interval: 10000
 	}).bind("slide", function(e) {
@@ -716,6 +1401,7 @@ __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/tee
 	}).bind("slid", function(e) {
 	    alert("이미지 이동완료 후");
 	});​
+```
 
 ### Collapse
 캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다.
@@ -723,30 +1409,30 @@ __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/tee
 $().collapse();
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 
 collapsible 엘리먼트에 대한 컨트롤을 자동으로 할당하기 위해 data-target 와 data-toggle="collapse" 를 추가합니다. data-target 속성은 collapse 할 대상을 지정하기 위해 css 셀럭터를 사용할 수 있습니다. collapsible 엘리먼트에 collapse class 를 추가해야 하는걸 잊지 마세요. 만약 기본적으로 열려있는 상태로 만들고 싶다면 추가적으로 in class 를 넣어주세요.
 
 
 `jsfiddle 테스트 소스 삽입 예정`
-	
-javascript를 이용하는 방식 
+
+javascript를 이용하는 방식
 
 
 $(".collapse").collapse();
 
 
 `jsfiddle 테스트 소스 삽입 예정`
-	
+
 ### 옵션
 설정 | 타입 | 기본값 | 설명
 :-- | :-: | :-: | :--
 parent | selector | false | 이 collapsible 아이템이 보여질때 parent 셀렉터를 부모로 하는 모든 다른 collapsible 엘리먼트들은 닫힌 상태가 되도록 합니다. (전통적인 아코디언의 행동처럼)
 toggle | boolean | true | collapsible 엘리먼트를 토글시킵니다
-	
-### 메서드 
+
+### 메서드
 
 사용법 | 설정 | 타입 | 설명
 :-- | :-- | :-: | :--
@@ -755,7 +1441,7 @@ $().collapse("toggle"); | toggle | string | collapsible 엘리먼트의 보임/�
 $().collapse("show"); | show | string | collapsible 엘리먼트를 보여줍니다.
 $().collapse("hide"); | hide | string | collapsible 엘리먼트를 감춥니다.
 
-__실제 사용 예시__  
+__실제 사용 예시__
 
 	$('#myCollapsible').collapse({
 	  toggle: false
@@ -770,11 +1456,13 @@ shown | collapse 엘리먼트가 사용자에게 보여지고 나서 호출됩�
 hide | hide 인스턴스 메소드가 호출되자마자 이벤트가 발생됩니다.
 hidden | collapse 엘리먼트가 사용자에게 감춰지고 나서 호출됩니다 (css 효과가 다 끝날때 까지 기다렸다가 호출됨).
 
-__실제 사용 예시__  
+__실제 사용 예시__
 
+```
 	$('#myCollapsible').on('hidden', function () {
 	  // do something…
 	})
+```
 
 ### Dropdown
 네비게이션, 메뉴 등에서 서브 메뉴를 노출 시킬 때 사용되는 드롭다운 플러그인.
@@ -782,19 +1470,19 @@ __실제 사용 예시__
 $(".dropdown-toggle").dropdown()
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 드롭다운 기능을 적용하려면 해당 엘리먼트에 data-toggle="dropdown" 을 추가하기만 하면 됩니다. 그러면 유효한 부트스트랩 드롭다운이 자동으로 활성화 될것입니다.
 
 > 특정 드롭다운이 열리도록 하려면 data-target="#fat" 또는 href="#fat" 를 사용합니다.
-	
-javascript를 이용하는 방식 
+
+javascript를 이용하는 방식
 
 $(".dropdown-toggle").dropdown()
 
-	
-### 메서드 
+
+### 메서드
 
 사용법 | 설명
 :-- | :--
@@ -810,18 +1498,20 @@ shown | collapse 엘리먼트가 사용자에게 보여지고 나서 호출됩�
 hide | hide 인스턴스 메소드가 호출되자마자 이벤트가 발생됩니다.
 hidden | collapse 엘리먼트가 사용자에게 감춰지고 나서 호출됩니다 (css 효과가 다 끝날때 까지 기다렸다가 호출됨).
 
-__실제 사용 예시__  
+__실제 사용 예시__
 
+```
 	$('#myCollapsible').on('hidden', function () {
 	  // do something…
 	})
-	
+```
+
 ## Modal
 컨텐츠를 모달창으로 보여주는 플러그인.
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 단 한줄의 javascript 코딩 없이도 모달창을 활성화 할 수 있습니다. 컨트롤러 엘리먼트에 data-toggle="modal" 과 함께 모달 엘리먼트의 id 와 일치하도록 data-target="#foo" 또는 href="#foo" 를 추가해주면, 이를 클릭했을때 모달창이 열리게 됩니다.
 
@@ -829,8 +1519,9 @@ data-attribute를 이용하는 방식
 
 > 모달이 나타나고 사라질때 에니메이션 효과를 주고 싶으면, 단지 .modal 엘리먼트에 .fade 클래스를 추가해주고 (데모를 참조하세요) bootstrap-transition.js 를 페이지에 포함시켜주면 됩니다.
 
+```
 	<a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>
-	
+
 	<div class="modal" id="myModal">
 	  <div class="modal-header">
 	    <a class="close" data-dismiss="modal">×</a>
@@ -844,8 +1535,9 @@ data-attribute를 이용하는 방식
 	    <a href="#" class="btn btn-primary">Save changes</a>
 	  </div>
 	</div>
-	
-javascript를 이용하는 방식 
+```
+
+javascript를 이용하는 방식
 
 $("#myModal").modal(options);
 
@@ -856,7 +1548,7 @@ backdrop | selector | false | modal-backdrop (배경) 엘리먼트를 포함하�
 keyboard | boolean | true | Esc 키가 눌렸을때 모달창을 닫는다.
 show | boolean | true | 초기화 되었을때 모달창을 보여준다.
 
-### 메서드 
+### 메서드
 
 사용법 | 설정 | 타입 | 설명
 :-- | :-- | :-: | :--
@@ -874,22 +1566,24 @@ shown | 모달창이 사용자에게 보여지고 나서 호출됩니다 (css �
 hide | hide 인스턴스 메소드가 호출되자마자 이벤트가 발생된다.
 hidden | 모달창이 사용자에게 감춰지고 나서 호출됩니다 (css 효과가 다 끝날때 까지 기다렸다가 호출됨).
 
-__실제 사용 예시__  
+__실제 사용 예시__
 
+```
 	$('#myModal').on('hidden', function () {
 	  // do something…
 	})
+```
 
 ## Popover
 버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인.
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있습니다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다.
-	
-javascript를 이용하는 방식 
+
+javascript를 이용하는 방식
 
 $("#example").popover(options)
 
@@ -907,7 +1601,7 @@ delay | number/object | 0 | 팝오버가 보여지고 숨겨질때 지연시간 
 
 > data 속성을 이용하여 각 팝오버에 대해 옵션을 따로 정할 수 있다.
 
-### 메서드 
+### 메서드
 
 사용법 | 설정 | 타입 | 설명
 :-- | :-- | :-: | :--
@@ -921,16 +1615,18 @@ $().popover("hide"); | hide | string | 엘리먼트의 팝오버를 숨긴다.
 스크롤의 현재 위치에 기반하여 navbar 의 현재 활성화된 링크를 자동으로 업데이트 하기 위해 scrollspy 를 사용한다. 또한  드롭다운의 서브아이템 역시 자동 선택 되어지는 것을 확인할 수 있습니다.
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶은 엘리먼트에 data-spy="scroll" 를 추가한다. (대부분의 경우 body 엘리먼트에 추가한다).
 
+```
 	<body data-spy="scroll" >...</body>
-	
+```
+
 >Navbar 링크는 찾아갈 수 있는 id 타겟이 반드시 필요합니다. 예를들어, `<a href="#home">home</a>` 는 `<div id="home"></div>` 처럼 dom 내에 어떤 엘리먼트와 일치해야한다.
 
-javascript를 이용하는 방식 
+javascript를 이용하는 방식
 
 $("#navbar").scrollspy()
 
@@ -944,19 +1640,21 @@ offset | number | 10 | 스크롤의 위치를 계산할때 Top 으로 부터의 
 여러 컨텐츠를 한 뷰페이지에 탭메뉴를 통해 선택된 컨텐츠만 보여주는 플러그인
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 한줄의 자바스크립트 코딩 없이도 tab 또는 pill 네비게이션을 활성화 시킬 수 있습니다. 해당 엘리먼트에 간단히 data-toggle="tab" 또는 data-toggle="pill" 를 기술해 주면 됩니다.
 
+```
 	<ul class="nav nav-tabs">
 	  <li><a href="#home" data-toggle="tab">Home</a></li>
 	  <li><a href="#profile" data-toggle="tab">Profile</a></li>
 	  <li><a href="#messages" data-toggle="tab">Messages</a></li>
 	  <li><a href="#settings" data-toggle="tab">Settings</a></li>
 	</ul>
+```
 
-javascript를 이용하는 방식 
+javascript를 이용하는 방식
 
 $("#myTab").tab("show")
 
@@ -964,32 +1662,34 @@ $("#myTab").tab("show")
 
 > data 속성을 이용하여 각 팝오버에 대해 옵션을 따로 정할 수 있다.
 
-### 메서드 
+### 메서드
 
 사용법 | 설명
 :-- | :--
 $().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활성화하고 탭은 dom 내에 타겟이 되는 컨테이너를 가리키는 `data-target` 또는 `href` 를 반드시 가져야한다.
 
+```
 	<ul class="nav nav-tabs">
 	  <li class="active"><a href="#home">Home</a></li>
 	  <li><a href="#profile">Profile</a></li>
 	  <li><a href="#messages">Messages</a></li>
 	  <li><a href="#settings">Settings</a></li>
 	</ul>
-	 
+
 	<div class="tab-content">
 	  <div class="tab-pane active" id="home">...</div>
 	  <div class="tab-pane" id="profile">...</div>
 	  <div class="tab-pane" id="messages">...</div>
 	  <div class="tab-pane" id="settings">...</div>
 	</div>
-	 
+
 	<script>
 	  $(function () {
 	    $(".tabs a:last").tab("show")
 	  })
 	</script>
-	
+```
+
 ### 이벤트
 
 이벤트 이름 | 설명
@@ -997,24 +1697,25 @@ $().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활
 show | 이 이벤트는 새로운 탭이 보여지기 직전에 발생한다. event.target 는 현재 활성화 탭, event.relatedTarget 는 이전 활성화 탭(가능한 경우)을 가리킨다.
 shown | 이 이벤트는 새로운 탭이 보여지고 난 후에 발생한다. event.target 는 현재 활성화 탭, event.relatedTarget 는 이전 활성화 탭(가능한 경우)을 가리킨다.
 
-__실제 사용 예시__  
+__실제 사용 예시__
 
+```
 	$('a[data-toggle="tab"]').on('shown', function (e) {
 	  e.target // 현재 활성화된 탭
 	  e.relatedTarget // 이전 탭
 	})
-
+```
 
 ## Tooltip
 링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인.
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있습니다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다.
-	
-javascript를 이용하는 방식 
+
+javascript를 이용하는 방식
 
 $("#example").tooltip(options)
 
@@ -1031,7 +1732,7 @@ delay | number/object | 0 | 툴팁이 보여지고 숨겨질때 지연시간 (ms
 
 > data 속성을 이용하여 각 툴팁에 대해 옵션을 따로 정할 수 있다.
 
-### 메서드 
+### 메서드
 
 사용법 | 설정 | 타입 | 설명
 :-- | :-- | :-: | :--
@@ -1044,14 +1745,16 @@ $().tooltip("hide"); | hide | string | 엘리먼트의 툴팁을 숨긴다.
 텍스트 입력상자에 typeahead (자동완성) 를 손쉽게 만들기 위한 플러그인.
 
 __마크업__
-	    
-data-attribute를 이용하는 방식 
+
+data-attribute를 이용하는 방식
 
 엘리먼트에 typeahead 기능을 부여하고 이를 등록하기 위해 data 속성을 추가한다.
 
+```
 	<input type="text" data-provide="typeahead">
-	
-javascript를 이용하는 방식 
+```
+
+javascript를 이용하는 방식
 
 $(".typeahead").typeahead()
 
@@ -1065,7 +1768,7 @@ sorter | function | exact match,case sensitive,case insensitive | 자동완성 �
 highlighter | function | highlights all default matches | 자동완성 결과를 하이라이트 하는데 사용되는 메소드. 하나의 items 전달인자를 받아들이고 typeahead 인스턴스의 범위를 가지고 있고, html을 리턴해야한다.
 
 
-### 메서드 
+### 메서드
 
 사용법 | 설정 | 타입 | 설명
 :-- | :-- | :-: | :--
@@ -1087,11 +1790,14 @@ loading 이미지 : [http://preloaders.net/](http://preloaders.net/)
 
 마크업
 
+```
 	<input type="range" value="10" min="0" max="100" />
+```
+
 Javascript 코드
 
 	$("input:range").rangeinput();
-	
+
 플러그인 옵션
 
 설정 | 타입 | 기본값 | 설명
@@ -1102,7 +1808,6 @@ value | number | 0 | 현재 값
 progress | boolean | false | 범위 조절시 현재값까지 Bar 배경색 노출 여부
 inputShow | boolean | false | 입력 화면 노출 여부
 
-	
 
 피처드
 ----------
