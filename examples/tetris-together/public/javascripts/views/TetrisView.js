@@ -240,7 +240,7 @@ define(
 				var obj = this;
 				
 				switch(event.type) {
-					case 'gameOver':
+					case 'gameOver':						
 						//내꺼인지 체크
 						if(this.myInfo.userId == event.playerId) {
 							if (event.playerRank == 1) {
@@ -252,12 +252,12 @@ define(
 								document.getElementById('gameResultNotWinnerTime').innerHTML = this.timeFormater(event.playTime);
 							}
 						} else {
-							//내꺼가 아니면 화면에 표시만 잠깐 해줌
-							this.gameOverNoti(event);
-							
 							//만약 게임오버 된놈이 2등이라면 내꺼 종료
-							if(event.playerRank == 2) {
-								obj.tetris.gameOver();
+							if(event.playerRank == 2 && !this.tetris.isGameOver) {
+								this.tetris.gameOver();
+							} else {
+								//내꺼가 아니면 화면에 표시만 잠깐 해줌
+								this.gameOverNoti(event);
 							}
 						}
 						
