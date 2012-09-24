@@ -254,6 +254,11 @@ define(
 						} else {
 							//내꺼가 아니면 화면에 표시만 잠깐 해줌
 							this.gameOverNoti(event);
+							
+							//만약 게임오버 된놈이 2등이라면 내꺼 종료
+							if(event.playerRank == 2) {
+								obj.tetris.gameOver();
+							}
 						}
 						
 						//게임이 끝났으면

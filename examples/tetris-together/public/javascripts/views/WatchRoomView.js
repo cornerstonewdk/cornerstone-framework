@@ -282,7 +282,7 @@ define(
 					var userId = userList[i].userId;
 					
 					userViewDiv[userId] = document.getElementById('user' + i);
-					userViewDiv[userId].className = 'player' + (i + 2);
+					userViewDiv[userId].className = 'player' + (i + 1);
 					userMsgDiv[userId] = document.getElementById('user' + i + 'MsgDiv');
 					userLampDiv[userId] = document.getElementById('lamp' + i + 'DivTag');
 					

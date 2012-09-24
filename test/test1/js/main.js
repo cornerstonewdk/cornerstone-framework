@@ -7,9 +7,10 @@ require.config( {
 		'backbone': 'lib/backbone-min',
 		'text': 'lib/text',
 		'handlebars': 'lib/handlebars-1.0.0.beta',	// 잘못된 표기
-		'bootstrap': '../bootstrap/js/bootstrap.min'
+		'bootstrap': '../bootstrap/js/bootstrap.min',
+		'lawnchair': 'lib/lawnchair-0.6.1.min'
 	},
-	// 의존성 및 모듈의 value를 정의한다.
+	// 의존성 및 모듈의 value를 정의한다. (브라우저에서 this는 window)
 	// 기본적으로 주요 라이브러리들도 전역변수로는 사용하지 않는 것으로 한다.
 	shim: {
 		jquery: {
@@ -30,6 +31,12 @@ require.config( {
 		},
 		bootstrap: {
 			deps: ['jquery']
+		},
+		lawnchair: {
+			exports: function() {
+				// 전역변수에 선언된 Lawnchair를 삭제하면 제대로 동작하지 않는다.
+				return this.Lawnchair;
+			}
 		}
 	}
 } );
