@@ -1,14 +1,14 @@
 
-define( [ 'backbone', 'jquery', 'handlebars' ], function( Backbone, $ ) {
+define( [ 'backbone', 'jquery', 'template!view/detail' ], function( Backbone, $, template ) {
 
 	return Backbone.View.extend( {
 
 		// Bootstrap modal
 		tagName: 'div',
 
-		template: Handlebars.compile( $( '#detail-template' ).html() ),
-
 		initialize: function() {
+		
+			console.log( 'kkkk' );
 
 			$( document ).append( this.render().el );
 
@@ -26,7 +26,7 @@ define( [ 'backbone', 'jquery', 'handlebars' ], function( Backbone, $ ) {
 
 			if ( this.model ) {
 				this.$el.addClass( 'modal fade' );
-				this.$el.html( this.template( { user: this.model.toJSON() } ) );
+				this.$el.html( template( { user: this.model.toJSON() } ) );
 			}
 
 			return this;
