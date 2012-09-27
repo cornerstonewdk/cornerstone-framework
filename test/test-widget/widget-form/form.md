@@ -1,0 +1,391 @@
+Form
+--------
+위젯 폼은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 위젯 플러그인을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(_typeahead_)같은 기능을 통해 사용자에게 편의를 제공할 수 있다.
+
+> 코너스톤의 위젯 폼은 사용자가 손쉽게 HTML/CSS를 통해 UI를 꾸밀 수 있는 것을 지향한다.
+
+__기본 스타일__
+
+폼 컨트롤은 스타일링을 받을 수 있지만 폼 또는 랩핑되는 마크업에 클래스가 없으면 폼 컨트롤은 좌측 상단을 기준으로 수직 정렬된다.
+
+__선택적 레이아웃__
+
+레이아웃 이름  | 설명 
+:-- | :--
+검색 폼 | form에 .form-search 클래스를 추가한다. 입력상자엔 .search-query 클래스를 추가하므로 입력상자 모서리를 둥글게 표현할 수 있다.
+인라인 폼 | 좌측에서 수평으로 라벨과 입력요소가 정렬되도록 form에 .form-inline 클래스를 추가하므로 간편한 레이아웃을 구성 할 수 있다.
+수평 폼 | form에 .form-horizontal 클래스를 추가하면 라벨과 입력요소(.controls)가 한줄씩 수평으로 이뤄지고 다음 줄부턴 줄 바꿈(.control-group)되는 레이아웃. 라벨의 텍스트는 우측 정렬(.control-label)된다.
+
+__기본 폼 예시__ [데모페이지](http://codepen.io/azamara/pen/otwjv)
+
+기본 폼 스타일은 form태그에 class 선언없이 기본적으로 표현되는 스타일이다.
+
+```
+	<form>
+		<label class="title">입력 상자 1</label>
+		<input name="text1" type="text" placeholder="입력해주세요.">
+		<label class="title">입력 상자 2</label>
+		<input name="text2" type="text" placeholder="입력해주세요.">
+		<label class="title">입력 상자 3</label>
+		<input name="text3" type="text" placeholder="입력해주세요.">
+		<label class="title">입력 상자 4</label>
+		<input name="text4" type="text" placeholder="입력해주세요.">
+	</form>
+```
+
+__검색 폼 예시__
+
+검색 폼 스타일은 form태그에 class `.form-search`를 form태그 내부 input태그에 `.search-query`를 추가해야한다.
+
+```
+	<!-- 돋보기 아이콘 검색버튼 -->
+    <form class="form-search">
+        <div class="input-append">
+            <input class="search-query" name="text1" type="text" placeholder="입력해주세요.">
+            <button type="submit"></button>
+        </div>
+    </form>
+
+	<!-- 텍스트 검색버튼 -->
+    <form class="form-search">
+        <input class="search-query" name="text1" type="text" placeholder="입력해주세요.">
+        <button type="submit" class="btn">검색</button>
+    </form>
+```
+
+__인라인 폼 예시__
+
+인라인 폼 스타일은 form태그에 class `.form-inline`를 추가해야하며 컴팩트한 레이아웃에 알맞는 레이아웃이다. 
+
+```
+    <form class="form-inline">
+        <input type="text" class="input-large" placeholder="이메일 주소">
+        <input type="password" class="input-large" placeholder="비밀번호">
+        <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox4" value="option3">
+            <span class="check"></span>
+            기억하기
+        </label>
+        <button type="submit" class="btn">회원가입</button>
+    </form>
+```
+
+__수평 폼 예시__
+
+수평 폼 스타일은 앞의 3가지 레이아웃은 form, label이 모드 좌측 정렬인 방면 이 스타일은 label은 우측으로 정렬되는 레이아웃을 가지고 있다. 수평 폼 스타일을 사용하기 위해 form태그에 class `.form-horizontal`를 추가하고 입력창을 한 줄씩 보여주기 위해 label과 컨트롤(input, select 등등)들을 class `.control-group`으로 랩핑한다. label태그에 `.control-label`를 추가하고 마지막으로 컨트롤들은 가지런한 정렬을 하기 위해 class `.controls`로 랩핑한다.
+
+```
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="inputEmail">이메일</label>
+
+            <div class="controls">
+                <input type="text" id="inputEmail" placeholder="이메일은 입력해주세요.">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputPassword">비밀번호</label>
+
+            <div class="controls">
+                <input type="password" id="inputPassword" placeholder="비밀번호를 입력해주세요.">
+            </div>
+        </div>
+        <div class="control-group">
+                <label class="checkbox inline">
+                    <input type="checkbox" value="option3">
+                    <span class="check"></span>
+                    기억하기
+                </label>
+                <button type="submit" class="btn">Sign in</button>
+            </div>
+        </div>
+    </form>
+```
+	
+## Inputs(입력 상자) / Textarea
+
+입력 상자는 가장 공통적으로 많이 쓰이는 폼 컨트롤이다. 입력상자는 `type`이라는 명시적인 설정값 꼭 사용해야 한다. html5에선 다음과 같은 type들이 존재한다.
+
+text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color 
+
+**이 type들은 브라우저에 따러 지원하지 않는 type도 존재한다.**
+
+_e.g._ 범위 입력 상자의 경우 IE9, 파이어폭스, 안드로이드에서 정상 동작하지 않는다. ([http://caniuse.com/#search=range input](http://caniuse.com/#search=range input)) 
+> 지원되지 않는 몇몇 요소에 대해서는 **코너스톤**은 플러그인 형태로 동일한 기능이 작동하도록 제공한다.
+
+__input 사용 예시__
+
+```
+	<input class="input-large" type="text" placeholder="입력 상자"/>
+```
+
+__textarea 사용 예시__
+
+textarea은 장문 입력을 하기 위해 `rows` 속성으로 입력창을 여러줄로 만들수 있다. 
+
+	<textarea class="input-large" rows="3">장문의 텍스트를 입력할 수 있는 Textarea</textarea>
+	
+## 체크박스와 라디오버튼 
+checkbox(체크박스)는 단일뿐만 아니라 여러개 옵션을 선택할 때 사용되는 컨트롤이고, radio(라디오버튼)은 단일 옵션만 선택할 때 사용되는 컨트롤이다.
+
+__기본 스타일 사용 예시(스택형태)__
+
+```
+    <form>
+        <label class="checkbox" for="inlineCheckbox1">
+            <input type="checkbox" id="inlineCheckbox1" value="option2">
+            <span class="check"></span>
+            기본 체크박스 1
+        </label>
+        <label class="checkbox" for="inlineCheckbox2">
+            <input type="checkbox" id="inlineCheckbox2" value="option2">
+            <span class="active"></span>
+            기본 체크박스 2
+        </label>
+        <label class="checkbox" for="inlineCheckbox3">
+            <input type="checkbox" id="inlineCheckbox3" value="option2">
+            <span class="check"></span>
+            기본 체크박스 2
+        </label>
+
+        <label class="radio" for="optionsRadios1">
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            <span class="checked"></span>
+            기본 라디오 버튼 1
+        </label>
+        <label class="radio" for="optionsRadios2">
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" checked="">
+            <span class="active"></span>
+            기본 라디오 버튼 2
+        </label>
+        <label class="radio" for="optionsRadios3">
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option1" checked="">
+            <span class="checked"></span>
+            기본 라디오 버튼 3
+        </label>
+    </form>
+```
+
+__인라인 스타일 사용 예시__
+
+인라인 스타일은 기본 스타일에서 label태그에 class `.inline`를 추가해서 체크박스와 라디오버튼을 같은 라인에 보여준다.
+
+```
+    <form>
+        <label class="checkbox inline" for="inlineCheckbox4">
+            <input type="checkbox" id="inlineCheckbox4" value="option2">
+            <span class="check"></span>
+            인라인 체크박스 1
+        </label>
+        <label class="checkbox inline" for="inlineCheckbox5">
+            <input type="checkbox" id="inlineCheckbox5" value="option2">
+            <span class="active"></span>
+            인라인 체크박스 2
+        </label>
+        <label class="checkbox inline" for="inlineCheckbox6">
+            <input type="checkbox" id="inlineCheckbox6" value="option2">
+            <span class="check"></span>
+            인라인 체크박스 2
+        </label>
+
+        <label class="radio inline" for="optionsRadios4">
+            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked="">
+            <span class="checked"></span>
+            인라인 라디오 버튼 1
+        </label>
+        <label class="radio inline" for="optionsRadios5">
+            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option1" checked="">
+            <span class="active"></span>
+            인라인 라디오 버튼 2
+        </label>
+        <label class="radio inline" for="optionsRadios6">
+            <input type="radio" name="optionsRadios" id="optionsRadios6" value="option1" checked="">
+            <span class="checked"></span>
+            인라인 라디오 버튼 3
+        </label>
+    </form>
+```
+
+## 셀렉트박스
+
+셀렉트박스는 기능적으로는 라디오버튼과 동일하지만 UI적으로는 선택된 값만 노출되는 차이점이 있다.
+
+__셀렉트박스 사용 예시__
+
+```
+	<form>
+        <div class="select-area">
+            <label class="blind">Select box</label>
+            <select class="select-value">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+
+            <div class="select-box">
+                <input type="text" value="">
+                <span class="arrow1"></span>
+                <span class="arrow2"></span>
+            </div>
+        </div>
+    </form>
+```
+
+## 폼 컨트롤 확장
+
+`prepend append 디자인 보류`
+
+__텍스트 대신 버튼__
+
+```
+	<div class="input-append">
+	  <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
+	</div>
+	 
+	<div class="input-append">
+	  <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
+	</div>
+```
+
+__검색 폼__
+
+```
+	<form class="form-search">
+	  <div class="input-append">
+	    <input type="text" class="span2 search-query">
+	    <button type="submit" class="btn">Search</button>
+	  </div>
+	  <div class="input-prepend">
+	    <button type="submit" class="btn">Search</button>
+	    <input type="text" class="span2 search-query">
+	  </div>
+	</form>
+```
+
+__상대적인 크기(Relative Sizing)__
+
+상대적인 크기는 `.input-mini` ~ `.input-xxlarge` 6가지 크기의 클래스를 제공한다.
+
+```
+	<input class="input-mini" type="text" placeholder=".input-mini">
+	<input class="input-small" type="text" placeholder=".input-small">
+	<input class="input-medium" type="text" placeholder=".input-medium">
+	<input class="input-large" type="text" placeholder=".input-large">
+	<input class="input-xlarge" type="text" placeholder=".input-xlarge">
+	<input class="input-xxlarge" type="text" placeholder=".input-xxlarge">
+```
+	
+__그리드 크기(Gird Sizing)__
+
+그리드 크기는 `.span1` ~ `.span12` 12가지 크기의 클래스를 제공한다.
+
+```
+	<input class="span1" type="text" placeholder=".span1">
+	<input class="span2" type="text" placeholder=".span2">
+	<input class="span3" type="text" placeholder=".span3">
+	<select class="span1">
+	  ...
+	</select>
+	<select class="span2">
+	  ...
+	</select>
+	<select class="span3">
+	  ...
+	</select>
+```
+
+한 줄에 여러 그리드를 사용하기 위해 클래스 `controls-row` 클래스로 랩핑을 한다.
+
+```
+	<div class="controls">
+	  <input class="span5" type="text" placeholder=".span5">
+	</div>
+	<div class="controls controls-row">
+	  <input class="span4" type="text" placeholder=".span4">
+	  <input class="span1" type="text" placeholder=".span1">
+	</div>
+```
+	
+## 수정불가 입력상자(Inputs)
+
+입력상자에 들어있는 값을 수정할 수 없는 형태.
+
+```
+	<span class="input-xlarge uneditable-input">Some value here</span>
+```
+
+## 폼 액션(Form actions)
+
+`설명 추가필요`
+
+```
+	<div class="form-actions">
+	  <button type="submit" class="btn btn-primary">저장</button>
+	  <button type="button" class="btn">취소</button>
+	</div>
+```
+
+## 도움말(Help text)
+
+도움말은 폼 컨트롤(e.g. 입력상자) 주변에 해당 컨트롤에 관련있는 도움말을 노출한다.
+
+__인라인 도움말__
+
+```
+	<input type="text"><span class="help-inline">인라인 도움말</span>
+```
+
+__블럭 도움말__
+
+```
+	<input type="text"><span class="help-block">블록 도움말</span>
+```
+
+## 폼 컨트롤 상태
+
+__입력상자 포커스(focus)__
+
+코너스톤은 기본적으로 outline 스타일을 제거한다. 하지만 입력상자 포커스에는 outline에 box-shadow를 통해 스타일이 적용된다.
+
+```
+	<input class="input-xlarge" id="focusedInput" type="text" value="This is focused...">
+```
+
+__비활성 입력상자__
+
+입력상자를 비활성화하기 위해 해당 입력상자에 disabled 속성을 추가해야 한다.
+
+```
+	<input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+```
+
+__유효성 상태__
+
+코너스톤은 유효성 검사를 통해 생기는 오류, 경고, 성공 메세지 스타일을 포함하고 있고 이 스타일을 사용하기 위해 `.control-group` 클래스로 랩핑해야 한다.
+
+```
+	<div class="control-group warning">
+	  <label class="control-label" for="inputWarning">Input with warning</label>
+	  <div class="controls">
+	    <input type="text" id="inputWarning">
+	    <span class="help-inline">Something may have gone wrong</span>
+	  </div>
+	</div>
+	<div class="control-group error">
+	  <label class="control-label" for="inputError">Input with error</label>
+	  <div class="controls">
+	    <input type="text" id="inputError">
+	    <span class="help-inline">Please correct the error</span>
+	  </div>
+	</div>
+	<div class="control-group success">
+	  <label class="control-label" for="inputSuccess">Input with success</label>
+	  <div class="controls">
+	    <input type="text" id="inputSuccess">
+	    <span class="help-inline">Woohoo!</span>
+	  </div>
+	</div>
+```
+

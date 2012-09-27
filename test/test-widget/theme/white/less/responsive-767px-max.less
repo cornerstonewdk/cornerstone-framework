@@ -1,0 +1,138 @@
+//
+// Responsive: Landscape phone to desktop/tablet
+// --------------------------------------------------
+
+
+@media (max-width: 767px) {
+
+  // Padding to set content in a bit
+  body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+	.navbar-inner {
+		padding: 0 10px;
+	}
+
+	.navbar .nav {
+		width: 100%;		
+	}
+
+	.navbar .nav > li {
+		float: none;
+		clear:both;
+		padding: 0;
+	}
+
+	.navbar .nav > li:first-child {
+		border-right: 0;
+		box-shadow: none;
+		margin-right: 0;	
+		padding: 0;
+	}
+
+	.navbar .nav > li > a {
+		text-align: left;
+		display: block;
+		padding: 7px 0 7px 10px;
+	}
+
+	// Active nav items
+	.navbar .nav > li > a:focus,
+	.navbar .nav > li > a:hover,
+	.navbar .nav > .active > a,
+	.navbar .nav > .active > a:hover,
+	.navbar .nav > .active > a:focus {
+		color: @white;
+		text-decoration: none;
+		text-shadow: none;
+		.border-radius(4px);
+		box-shadow: none;
+		border: 1px solid transparent;
+		background-color: @navbarLinkBackgroundActive;
+	}
+
+
+	.navbar .nav > li > a  i {
+		display: none;
+	}
+
+	.navbar .nav > li:first-child {
+		border-right: 0;
+	}
+
+	.navbar .nav > li:first-child a,
+	.navbar .nav > li:first-child > a:focus,
+	.navbar .nav > li:first-child > a:hover,
+	.navbar .nav > .active:first-child > a,
+	.navbar .nav > .active:first-child > a:hover,
+	.navbar .nav > .active:first-child > a:focus {
+		font-size: (@baseFontSize + 3);
+		color: @white;
+		text-shadow: none;
+		text-decoration: none;
+		.border-radius(4px);
+		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1)");
+		border: 1px solid @navbarDropdownBorder;
+		background-color: @navbarLinkBackgroundActive;
+	}
+
+	.navbar .navbar-search {
+		display: none;
+	}
+
+	.navbar .nav.pull-right {
+		display: none;
+	}
+
+	.nav-icon .nav > li a {
+		font-size: (@baseFontSize + 3);
+		line-height: @baseLineHeight + 3;
+	}
+
+	.nav-icon .nav > li:first-child a,
+	.nav-icon .nav > li:first-child > a:focus,
+	.nav-icon .nav > li:first-child > a:hover,
+	.nav-icon .nav > .active:first-child > a,
+	.nav-icon .nav > .active:first-child > a:hover,
+	.nav-icon .nav > .active:first-child > a:focus {
+		font-size: (@baseFontSize + 3);
+		line-height: @baseLineHeight + 3;
+		color: @white;
+		text-shadow: none;
+		text-decoration: none;
+		.border-radius(4px);
+		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1)");
+		border: 1px solid @navbarDropdownBorder;
+		background-color: @navbarLinkBackgroundActive;
+	}
+
+	.navbar .nav > li > .dropdown-menu {
+		padding-top: 5px;
+		&:before {
+			border: 0;
+		}
+		&:after {
+			border: 0;
+		}
+	}
+
+	.navbar .nav > li > .dropdown-menu > li {
+		border: 0;
+	}
+
+	.navbar .nav > li > .dropdown-menu > li > a {
+		border: 0;
+		box-shadow: none;
+		margin: 0;
+		padding: 5px 15px;
+	}
+	.navbar .nav > li > .dropdown-menu > li > a:hover,
+	.navbar .nav > li > .dropdown-menu > li > a:active {
+		border: 0;
+		box-shadow: none;
+		margin: 0;
+		.border-radius(5px);
+	}	
+}

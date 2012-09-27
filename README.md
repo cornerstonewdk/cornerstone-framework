@@ -1,6 +1,8 @@
-# SKT HTML5 Framework
+SKT HTML5 Framework
+===================
 
-디렉토리 구조는 아래와 같이 관리한다.
+디렉토리 구조
+-----------
 
 	--- dist
 	 +- test
