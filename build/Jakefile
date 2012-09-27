@@ -1,0 +1,69 @@
+
+/**
+ * Cornerstone Framework Build Script (using jake)
+ */
+
+var j = require( './job' );
+
+const PATH_SOURCE = process.env.source || '../src/';
+const PATH_LIB = process.env.lib || '../lib/';
+const PATH_DIST = process.env.dist || '../dist/';
+
+function runTask() {
+
+	var startTime;
+	var taskName = arguments[ 0 ].toUpperCase();
+	var actionIndex = typeof arguments[ 1 ] === 'function' ? 1 : 2;
+	var action = arguments[ actionIndex ];
+	
+	arguments[ actionIndex ] = function() {
+		j.log();
+		j.log( '  #yellow[' + taskName + '] 시작' );
+		
+		startTime = new Date().getTime();
+		
+		action.apply( this, arguments );
+	};
+	
+	task.apply( this, arguments ).addListener( 'complete', function() {
+		j.log( '  #green[' + taskName + '] 완료 (' + ( new Date().getTime() - startTime ) + ' ms)' );
+	} );
+}
+
+jake.addListener( 'complete', function() {
+	j.log();
+} );
+
+// --------------------------------------------------------------------
+
+desc( '배포 디렉토리를 초기화한다.' );
+runTask( 'init', function() {
+
+	// 배포 디렉토리 모두 삭제
+	j.files( PATH_DIST, '*' ).delete();
+	
+	// 디렉토리 생성
+	j.mkdir( PATH_DIST + 'lib' );
+	j.mkdir( PATH_DIST + 'loader' );
+	j.mkdir( PATH_DIST + 'mvc/view' );
+} );
+
+desc( '소스 파일들을 검증한다. 그 전에 init를 수행한다.' );
+runTask( 'validate', [ 'init' ], function() {
+} );
+
+desc( '소스 파일들을 최적화해서 결과를 배포 디렉토리에 넣는다. 그 전에 validate를 수행한다.' );
+runTask( 'deploy', [ 'validate' ], function() {
+	
+	// 외부 라이브러리 복사
+	j.copy( PATH_LIB, PATH_DIST + 'lib' );
+	
+	// minify
+	j.files( PATH_SOURCE, '**/*.js' ).minify( PATH_DIST );
+	
+	complete();
+	
+}, { async: true } );
+
+desc( '디폴트 작업으로 deploy를 수행한다.' );
+task( 'default', [ 'deploy' ], function() {} );
