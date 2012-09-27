@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+html {margin:0; padding:0;}
+body {font-family:Arial, 돋움, Dotum, sans-serif; color:#fff;  line-height:1.5em; font-size:100%; margin:0; padding:0;}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td	{ margin:0; padding:0;}
+
+h1, h2, h3, h4, h5, h6	{font-size:100%; font-weight:normal;}
+ul, ol, li	{list-style:none;}
+
+table	{border-spacing:0; padding:0px; border-collapse:collapse;}
+caption {text-align:left; font-weight:normal;}
+hr, caption {visibility:hidden; position:absolute; line-height:0; width:0; height:0; font-size:0; text-indent:-9999px; overflow:hidden;}
+
+fieldset, img, abbr, acronym {border:0 none;}
+img	{vertical-align: middle; font-size: 12px; }
+em { font-style: normal; }
+
+/* 텍스트 관련 요소 초기화 */
+address, caption, strong, em, cite {font-weight:normal; font-style:normal;}
+ins {text-decoration:none;}
+del {text-decoration:line-through;}
+
+/* form 및 기타*/
+input, select, button, textarea {color:#666; font-family:NanumGothicExtraBold, Arial, Dotum, sans-serif; vertical-align:middle;}
+legend {position:absolute; width:0; height:0; font-size:0; overflow:hidden;}
+label {cursor:pointer;}
+img {vertical-align:middle;}
+
+/* 링크 */
+a {color:#666;}
+a:focus	{ outline:none; }
+a:hover, a:active {color:#222;}
+a:link, a:hover, a:active, a:visited {text-decoration:none;}
+
+input.inText {padding:0 10px; height:1.5em; border:1px solid #c5cdd0 !important; font-family:nanumGothicWeb;}
+
+

@@ -59,7 +59,7 @@ $(function() {
                 scale:1,
                 opacity:1
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
-                self.plugin._done(opt);
+                self.launcher._done(opt);
             });
         });
     };
