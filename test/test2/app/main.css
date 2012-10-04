@@ -1,0 +1,11 @@
+body > .container {
+	margin-top: 50px;
+}
+
+section.page {
+	display: none;
+}
+
+section.page.active {
+	display: inherit;
+}
