@@ -19,6 +19,7 @@ requirejs.config( {
 		'jquery.hammer': Cornerstone.PATH_LIB + 'jquery.hammer',
 		'enquire': Cornerstone.PATH_LIB + 'enquire.min',
 		'template': Cornerstone.PATH + 'loader/template',
+		'style': Cornerstone.PATH + 'loader/style',
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
 		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture'
