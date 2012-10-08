@@ -70,10 +70,10 @@
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             rgba(51,51,51,.6); // for striping
-@tableBackgroundHover:              rgba(51,51,51,.6); // for hover
-@tableBorder:                       #232223; // table and cell border
-@tableColor:												@white;
+@tableBackgroundAccent:             rgba(51,51,51,.2); // for striping
+@tableBackgroundHover:              rgba(51,51,51,.2); // for hover
+@tableBorder:                       rgba(0,0,0,.1); // table and cell border
+@tableColor:												@black;
 
 
 // Buttons [2012-08-29] Add
@@ -206,7 +206,7 @@
 // -------------------------
 @navLink:													@grayLighter;
 
-@navTabLink:					            #c0c0c0;
+@navTabLink:					            @white;
 @navTabOver:					            @black;
 @navTabLine:					            @white;
 @navTabTop:												#fefefe;
@@ -255,7 +255,7 @@
 
 @navbarDropdownBorder:						#454545;
 
-@radioVertTxt:			              @white;
+@radioVertTxt:			              @black;
 
 //	Nav List
 @navListBg:												#ededee;
@@ -290,20 +290,20 @@
 
 // Form states and alerts
 // -------------------------
-@warningText:             #8f8f06;
-@warningBackground:       @inputBackground;
+@warningText:             @white;
+@warningBackground:       #ef923c;
 @warningBorder:           rgba(143,143,6,.64);
 
-@errorText:               #a90000;
-@errorBackground:         @inputBackground;
+@errorText:               @white;
+@errorBackground:         #e03c5b;
 @errorBorder:             rgba(169,0,0,.64);
 
-@successText:             #089908;
-@successBackground:       @inputBackground;
+@successText:             @white;
+@successBackground:       #67ab4f;
 @successBorder:           rgba(8,153,8,.64);
 
-@infoText:                #3a87ad;
-@infoBackground:          @grayDarker;
+@infoText:                @white;
+@infoBackground:          #52a4b8;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
 @disabledText:            #a4a4a4;
@@ -370,14 +370,14 @@
 @footTxtColor:            #424242;
 
 // popover
-@popoverBackground:				#454545;
-@popoverTitleBackground:	#343434;
-@popoverConBackground:		#212121;
+@popoverBackground:				#c4c4c4;
+@popoverTitleBackground:	#f7f7f7;
+@popoverConBackground:		@white;
 @popoverArrowColor:				@popoverConBackground;
-@popoverBorder:						#292929;
+@popoverBorder:						#c4c4c4;
 
-@popoverTitleTxt:					@white;
-@popoverConTxt:						#bcbcbc;
+@popoverTitleTxt:					@black;
+@popoverConTxt:						@black;
 
 // thumbnails
 @thumbnailsBg:						#d5d5d5;
@@ -385,11 +385,17 @@
 
 //accordion
 
-@accordionInner:					#232425;
-@accordionBorder:					#5d5d5d;
-@accordionInnerTxt:				#adadad;
+@accordionTabTxt:						#e6e6e6;
+@accordionInner:					@white;
+@accordionBorder:					transparent;
+@accordionInnerTxt:				#040404;
 
 @wellBackground:					#e7e9ea;
+
+//Lists
+@listHover:								#9e2222;
+@subGroupTit:							#f07118;
+@subGroupTxt:							@white;
 
 // GRID
 // --------------------------------------------------

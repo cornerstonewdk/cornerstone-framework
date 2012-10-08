@@ -1,9 +1,7 @@
-# 위젯 사용법
-
-----------
-
-Form
+Widget
 --------
+# Form
+
 위젯 폼은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 위젯 플러그인을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(_typeahead_)같은 기능을 통해 사용자에게 편의를 제공할 수 있다.
 
 > 코너스톤의 위젯 폼은 사용자가 손쉽게 HTML/CSS를 통해 UI를 꾸밀 수 있는 것을 지향한다.
@@ -20,7 +18,7 @@ __선택적 레이아웃__
 인라인 폼 | 좌측에서 수평으로 라벨과 입력요소가 정렬되도록 form에 .form-inline 클래스를 추가하므로 간편한 레이아웃을 구성 할 수 있다.
 수평 폼 | form에 .form-horizontal 클래스를 추가하면 라벨과 입력요소(.controls)가 한줄씩 수평으로 이뤄지고 다음 줄부턴 줄 바꿈(.control-group)되는 레이아웃. 라벨의 텍스트는 우측 정렬(.control-label)된다.
 
-__기본 폼 예시__ [데모페이지](http://codepen.io/azamara/pen/otwjv)
+__기본 폼 예시__
 
 기본 폼 스타일은 form태그에 class 선언없이 기본적으로 표현되는 스타일이다.
 
@@ -393,8 +391,8 @@ __유효성 상태__
 	</div>
 ```
 
-컴포넌트
---------
+# 컴포넌트
+
 위젯 컴포넌트는 위젯의 폼, 플러그인, 피처드 등 화면을 꾸밀때 재사용될 수 있는 요소들이며 기능이 없으며 플러그인과 함께 사용하여 기능을 적용 가능함. 기본적으로 컴포넌트의 스타일을 적용하려면 엘리멘트에서 스타일 클래스를 선언해서 사용해야 한다.
 
 
@@ -448,7 +446,7 @@ __드롭다운에 서브메뉴 추가하기__
     </ul>
 ```
 
-### 사용 예시  [데모페이지](http://codepen.io/azamara/pen/yrbzo)
+### 사용 예시
 
 마크업에서 설명한 것처럼 드롭다운은 기본적으로 노출이 되지 않는다. 그래서 자바스크립트 플러그인을 통해 드롭다운을 노출시킬 수 있으며 메뉴 토글기능도 가능하다.
 
@@ -464,7 +462,7 @@ __드롭다운에 서브메뉴 추가하기__
 
 ## 버튼 그룹
 
-### 사용 예시  [데모페이지](http://codepen.io/azamara/pen/tDlCp)
+### 사용 예시
 
 `adding description!`
 
@@ -1018,8 +1016,8 @@ __.muted__
 
 `.muted` 클래스가 선언된 엘리먼트의 텍스트 색을 `color: #999` 로 변경한다.
 
-플러그인
--------
+# 플러그인
+
 위젯 중 플러그인은 재사용 가능성이나 유용도가 높은 UI요소나 느낌과 모양새를 순수 HTML/CSS구현이 어렵고 Javascript의 도움을 받아 콤포넌트와 유사하나 기능적인 면이 추가된것이나 터치로 작동하는 스크롤처럼 느낌과 모양새를 구현하기 위해서 HTML/CSS가 필요없이 Javascript만으로 작동하는 등의 기능을 제공하는 것이다.
 
 > 코너스톤의 위젯 플러그인은 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.
@@ -1041,137 +1039,16 @@ __.muted__
 - sign : 터치기반의 싸인 플러그인
 - motioncapcha : 입력폼(회원가입, 로그인)에서 터치 모션으로 캡차 기능을 구현한 플러그인
 - loading : 페이지나 이미지 또는 특정 영역에 컨텐츠에 로딩을 표현하는 플러그인
-- fixedbar : 모바일/패드 환경에서 헤더와 푸터를 고정시켜주는 플러그인
 - rangeinput : 폼에 범위 입력(슬라이더)을 만들어주는 플러그인 (터치무브 및 마우스 드래그가능)
-- drag(touch) : 지정요소에 터치, 마우스 드래그 기능을 부여하는 플러그인
-- swipe(touch) : 지정요소에 swipe기능을 부여한 플러그인.
 
 
-의존성 주입
+의존성
 
 ```
 	<!-- jQuery: 위젯 플러그인 사용을 위한 jquery.js  -->
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<!-- Widget Collection: 위젯의 각 플러그인들이 모여있는 widget.js  -->
 	<script type="text/javascript" src="widget.min.js"></script>
-```
-
-## Drag
-### 사용법
-드래그를 사용할 요소에 아래와 같이 플러그인을 통해 선언
-
-$().drag(options);
-
-__실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/5JxVx/)
-
-```
-	$("#example").drag({
-		x: true,
-		y: true,
-		drag: true
-	});
-```
-
-### 옵션
-이름 | 타입 | 기본값 | 설명
-:--|:-:|:-:|:-:
-x | boolean | true | X축 드래그 활성화 여부
-y | boolean | true | Y축 드래그 활성화 여부
-drag | boolean | true | Drag 활성화 여부
-
-### 이벤트
-이벤트 이름 | 설명
-:--|:--
-dragStart | 드래그 시작하기전에 발생
-drag | 드래그 중일 때 발생
-dragEnd | 드래그 완료 후 발생
-
-__실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/5JxVx/)
-
-
-```
-	$("#example").drag({
-		x: true,
-		y: true,
-		drag: true
-	}).bind("dragStart",function (e) {
-		console.log("start drag");
-	}).bind("drag",function (e) {
-		console.log("dragging");
-	}).bind("dragEnd", function (e) {
-		console.log("end drag");
-	});
-```
-
-
-## Swipe
-### 사용법
-스와이프를 사용할 요소에 아래와 같이 플러그인을 통해 선언
-
-$().swipe();
-
-__실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/4ScM7)
-
-
-```
-	$("#example").swipe();
-```
-
-
-### 옵션
-`드래그와 같은 옵션 설정 기능 구현 예정`
-
-
-### 이벤트
-이벤트 이름 | 설명
-:--|:--
-swipe | 전 방향(상화좌우) 스와이프시 이벤트 발생
-swipeLeft | 왼쪽 스와이프시 이벤트 발생
-swipeRight| 오른쪽 스와이프시 이벤트 발생
-swipeUp | 위쪽 스와이프시 이벤트 발생
-swipeDown | 아래쪽 스와이프시 이벤트 발생
-
->스와이프 이벤트는 발생시 swipeEvent 객체를 받을 수 있다. 해당 객체는 아래와 같은 상태값을 가지고 있다.
-
-	swipeEventObj = {
-		originalEvent:event, // 일반 이벤트 객체
-		position:position, // x, y 값이 있는 객체
-		direction:_direction, // 방향 정보(left, right, up, down)
-		distance:_distance, // 대각선 이동거리
-		distanceX:_distance_x, // y축 이동 거리
-		distanceY:_distance_y, // x축 이동 거리
-		angle:_angle // 각도값
-	}
-
-	// 실제 객체 정보 예시
-	{
-		"angle": "-36.72222843798391",
-		"direction": "right",
-		"distance": "388.0012886576538",
-		"distanceX": 311,
-		"distanceY": "-232",
-		"originalEvent": "TouchEvent 객체",
-		"position": {
-     	   "x": "680.5",
-      	  "y": 92
-    	}
-	}
-
-__실제 사용 예시__ [데모 페이지](http://jsfiddle.net/cornerstone/4ScM7)
-
-```
-	$("#example").swipe()
-	.bind("swipe", function(e, swipeEventObj) {
-		console.log("swipe");
-	}).bind("swipeLeft", function(e, swipeEventObj) {
-		console.log("swipe left");
-	)).bind("swipeRight", function(e, swipeEventObj){
-		console.log("swipe right");
-	}).bind("swipeUp", function(e, swipeEventObj){
-		console.log("swipe up");
-	}).bind("swipeDown", function(e, swipeEventObj){
-		console.log("swipe down");
-	});
 ```
 
 ## Alert
@@ -1403,7 +1280,7 @@ __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/tee
 	});​
 ```
 
-### Collapse
+## Collapse
 캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다.
 
 $().collapse();
@@ -1774,16 +1651,6 @@ highlighter | function | highlights all default matches | 자동완성 결과를
 :-- | :-- | :-: | :--
 $().typeahead(options); | option | object | input 엘리먼트를 typeahead 기능과 함께 초기화한다.
 
-## Sign
-
-## Motioncapcha
-
-## Loading
-
-loading 이미지 : [http://preloaders.net/](http://preloaders.net/)
-
-## Fixedbar
-
 ## RangeInput
 
 데모페이지 [보기](http://tinyurl.com/9uc6kvt)
@@ -1808,6 +1675,15 @@ value | number | 0 | 현재 값
 progress | boolean | false | 범위 조절시 현재값까지 Bar 배경색 노출 여부
 inputShow | boolean | false | 입력 화면 노출 여부
 
+## Sign
+
+## Motioncapcha
+
+## Loading
+
+loading 이미지 : [http://preloaders.net/](http://preloaders.net/)
+
+
 
 피처드
 ----------
@@ -1816,23 +1692,329 @@ json data 검증 : [http://jsonlint.com/](http://jsonlint.com/)
 
 json editor : [http://jsoneditor.net/](http://jsoneditor.net/)
 
-### ScrollView
-스크롤뷰 사용 방법
+### Scroll View
 
-### 미디어
-미디어 사용 방법
+Webkit 기반의 브라우저(Android, Chrome)는 고정 폭/높이 엘리먼트 내부에 컨텐츠를 스크롤 할 수 있는 기능을 기본적으로 제공하지 않기 때문에 javascript를 통한 구현이 필요하다.   스크롤뷰는 아래와 같은 기능을 제공하고 있다.
 
-### 에디터
-에디터 사용 방법
+- 기본 스크롤뷰
+- 폼 요소를 포함하는 스크롤뷰
+- Pull to refresh 기능을 제공하는 스크롤뷰
 
-### Datatables
-데이터테이블 사용 방법
+의존성
 
-### Datepicker
-데이터픽커 사용 방법
+```
+	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!-- ScrollView 위젯 피처드 -->
+	<script type="text/javascript" src="featured-scrollview.min.js"></script>
+```
+
+### 사용법
+
+DATA-API(data-attribute) 또는 $('#example').featuredScrollView();
+
+__마크업__
+
+DATA-API(data-attribute) 를 이용하는 방식
+
+```
+<!-- data-featurd="scrollView"를 정의하므로 스크롤뷰을 적용한다. -->
+<div data-featured="scrollView" class="scrollview">
+	<div class="lists scroller">
+		<ul id="thelist">
+			<li><a href="#">테스트 레코드 1</a></li>
+			<li><a href="#">테스트 레코드 2</a></li>
+			<li><a href="#">테스트 레코드 3</a></li>
+			<li><a href="#">테스트 레코드 4</a></li>
+			<li><a href="#">테스트 레코드 5</a></li>
+			<li><a href="#">테스트 레코드 6</a></li>
+			<li><a href="#">테스트 레코드 7</a></li>
+		</ul>
+	</div>
+</div>
+```
+
+javascript를 이용하는 방식 [데모 페이지]
+
+```
+<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
+<div id="example" class="scrollview">
+	<div class="lists scroller">
+		<ul id="thelist">
+			<li><a href="#">테스트 레코드 1</a></li>
+			<li><a href="#">테스트 레코드 2</a></li>
+			<li><a href="#">테스트 레코드 3</a></li>
+			<li><a href="#">테스트 레코드 4</a></li>
+			<li><a href="#">테스트 레코드 5</a></li>
+			<li><a href="#">테스트 레코드 6</a></li>
+			<li><a href="#">테스트 레코드 7</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#example").featuredScrollView();
+</script>
+```
+
+### 기능
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+formFields | array | undefined | 드래그로 인해 입력박스 터치가 불가능한 경우 예외처리를 할 폼 요소의 태그 이름을 배열로 입력한다. ex. ["INPUT", "TEXTAREA"]
+pullDownID | string | undefined | 아래로 당기는 UI 엘리먼트의 ID값
+pullUpID | string | undefined | 위로 당기는 UI 엘리먼트의 ID값
+pullDownAction | function | undefined | 아래로 당기는 액션시 처리하는 함수
+pullUpAction | function | undefined | 위로 당기는 액션시 처리하는 함수
+
+
+### 이벤트
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+onRefresh | function | null | 스크롤뷰 컨텐츠 및 높이 등 새로고침
+onBeforeScrollStart | function | e.preventDefault(); | 스크롤 이벤트가 시작하기전 발생
+onScrollStart | function | null | 스크롤 이벤트가 시작할 때 발생
+onBeforeScrollMove | function | null | 스크롤 이벤트가 시작할 때 발생
+onScrollMove | function | null | 스크롤 이동시 때 발생
+onBeforeScrollEnd | function | null | 스크롤 이벤트가 끝나기 전 발생
+onScrollEnd | function | null | 스크롤 이벤트가 끝날 때 발생
+onTouchEnd | function | null | 터치 이벤트가 끝날 때 발생
+onDestroy | function | null | 스크롤뷰를 제거할 때 발생
+
+
 
 ### List View
 리스트뷰 사용 방법
+### 미디어
+HTML5 audio and video players in pure HTML and CSS.
+Custom Flash and Silverlight players that mimic the HTML5 MediaElement API for older browsers
+Accessibility standards including WebVTT
+Plugins for Wordpress, Drupal, Joomla, jQuery, and BlogEngine.NET, ruby gem, plone
+See the MediaElement.js Github page
 
+
+![<미디어 지원표>](<http://azamara.io/img/media-support.png>)
+
+의존성
+
+```
+	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!-- Datatables 라이브러리 -->
+	<script type="text/javascript" src="mediaelement-and-player.js"></script>
+	<!-- 코너스톤 UI 기본 설정(반응형 웹), DATA-API 기능 추가,  화면비율 옵션 추가 -->
+	<script type="text/javascript" src="featured-media.js"></script>
+```
+
+### 사용법
+
+DATA-API(data-attribute) 또는 $('#example').featuredDataTable();
+
+__마크업__
+
+DATA-API(data-attribute) 를 이용하는 방식
+
+```
+<!-- data-featured="media"를 정의하므로 미디어를 적용한다. -->
+<div class="featured-video">
+	<video width="100%" height="100%" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"
+				type="video/mp4" data-featured="media"
+				preload="none" ></video>
+</div>
+```
+
+javascript를 이용하는 방식 [데모 페이지]
+
+```
+<!-- id값을 정의하고 해당 id값에 $('#example').featuredMedia(); 스크립트를 통해 미디어를 적용한다.  -->
+<div class="featured-video">
+	<video width="100%" height="100%" id="example" preload="none" >
+		<!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+		<source type="video/mp4" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"/>
+		<!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
+		<source type="video/webm" src="http://azamara.io/media/The_Avengers_Trailer_480p.webm"/>
+		<!-- Ogg/Vorbis for older Firefox and Opera versions -->
+		<source type="video/ogg" src="http://azamara.io/media/The_Avengers_Trailer_480p.ogv"/>
+		<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+		<object width="320" height="240" type="application/x-shockwave-flash" data="flashmediaelement.swf">
+			<param name="movie" value="flashmediaelement.swf"/>
+			<param name="flashvars"
+					  value="controls=true&file=http://azamara.io/media/The_Avengers_Trailer_480p.mp4"/>
+			<!-- Image as a last resort
+					  <img src="myvideo.jpg" width="320" height="240" title="No video playback capabilities" />
+					  -->
+		</object>
+	</video>
+</div>
+```
+
+### 기능
+
+HTML5 | MediaElement | 설명
+:-- | :-- |:--
+play | play | 미디어를 플레이하는 기능
+pause | pause | 미디어를 정지시키는 기능
+load | load | 미디어를 로드하는 기능
+
+
+### 옵션
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+rate | string | "16:9" | 화면비율을 지정하는 옵션
+defaultVideoWidth | int | 480 | 기본 비디오의 폭을 지정하는 옵션
+defaultVideoHeight | int | 270 | 기본 비디오의 높이를 지정하는 옵션
+videoWidth | int | -1 | 비디오의 폭을 지정하는 옵션
+videoHeight | int | -1 | 비디오의 높이를 지정하는 옵션
+audioWidth | int | 400 | 오디오의 폭을 지정하는 옵션
+audioHeight | int | 30 | 오디오의 높이를 지정하는 옵션
+startVolume | int | 0.8 | 초기 볼륨의 크기를 지정하는 옵션
+loop | boolean | false |  미디어 반복을 지정하는 옵션
+enableAutosize | boolean | true | 자동으로 크기를 조절할지 여부를 지정하는 옵션
+features | array | 설명참고 | 플레이어에 기능을 지정하는 옵션 (기본값 : ['playpause','progress','current','duration','tracks','volume','fullscreen'])
+alwaysShowControls | boolean | false | 플레이어의 컨트롤 UI를 항상 노출할지를 지정하는 옵션
+iPadUseNativeControls | boolean | false | iPad 네이티브 UI를 사용할지 여부를 지정하는 옵션
+iPhoneUseNativeControls | boolean | false | iPhone 네이티브 UI를 사용할지 여부를 지정하는 옵션
+AndroidUseNativeControls | boolean | false | Android 네이티브 UI를 사용할지 여부를 지정하는 옵션
+framesPerSecond | int | 25 | 초당 프레임을 지정하는 옵션
+pauseOtherPlayers | boolean | true | 다른 플레이어가 실행될때 정지 여부를 지정하는 옵션
+
+### 이벤트 
+HTML5 | MediaElement | 설명
+:-- | :-- |:--
+loadeddata | loadeddata | ...
+progress | progress | …
+timeupdate | timeupdate | ...
+seeked | seeked | …
+canplay | canplay | ...
+play | play | 플레이할때 발생하는 이벤트
+playing | playing | 플레이 중일 때 발생하는 이벤트
+pause | pause | 정지할때 발생하는 이벤트
+ended | ended | 종료될때 발생하는 이벤트
+volumechange | volumechange | 볼륨크기를 조절할 때 발생하는 이벤트
+### 에디터
+에디터 사용 방법
+### Datatables
+
+ 데이터테이블은 사용자에게 마크업에서 보여지는 정적인 테이블을 보다 향상되고 상호작용적인 테이블로 쉽게 만들어준다. 데이터테이블은 기본적으로 마크업을 통해 `table`태그로
+레코드를 작성한 경우 볼 수만 있지만 상호작용적인 기능을 사용할 수 있도록 아래와 같은 기능을 추가적으로 생성해준다.
+
+- 한 페이지에 보여줄 레코드 수 : 10,25,50,100개 레코드를 선택할 수 있는 기능을 제공한다.(선택한 옵션에 따라 자동적으로 그에 맞는 4번 페이지네이션 처리를 한다.)
+- 검색 : 데이터테이블은 정의된 테이블의 레코드에 모든 필드를 대상으로 검색 기능을 제공한다.
+- 정렬 : 테이블의 머리글을 클릭 또는 탭 하므로 해당 필드를 오름/내름차순 정렬 기능을 제공한다.
+- 페이지네이션 : 데이터테이블은 테이블에 정의된 레코드 전체 수와 1번 기능의 기본값인 10개 레코드를 통해 자동적으로 페이징 처리를 해주는 기능을 제공한다.
+
+데이터테이블은 단순히 마크업에 `table`태그에 레코드를 작성해서 사용하는 방법뿐만 아니라 아래와 같은 다양한 Data Sources를 지원한다.
+
+- DOM에 직접 데이터를 `table`내에 `tr` 태그로 정의해서 사용하는 방식
+- 자바스크립트에 데이터를 배열로 정의해서 가져오는 방식
+- 서버사이드 JSON 파일을 Ajax를 통해 가져오는 방식
+- 서버사이드 데이터베이스와 직접 연동해서 가져오는 방식 (동적인 데이터 연동이 가능)
+
+
+의존성
+
+```
+	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!-- Datatables 라이브러리 -->
+	<script type="text/javascript" src="jquery.dataTables.min.js"></script>
+	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
+	<script type="text/javascript" src="featured-datatable.js"></script>
+```
+
+### 사용법
+
+DATA-API(data-attribute) 또는 $('#example').featuredDataTable(); 
+
+__마크업__
+
+DATA-API(data-attribute) 를 이용하는 방식
+
+```
+<!-- data-featured="datatable"를 정의하므로 데이터테이블을 적용한다. -->
+<table class="table table-striped" data-featured="datatable">
+    <!-- 머리글 정의 -->
+    <thead>
+        <tr>
+	        <th>Rendering engine</th>
+	        <th>Browser</th>
+	        <th>Platform(s)</th>
+	        <th>Engine version</th>
+	        <th>CSS grade</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr class="odd gradeX">
+	        <td>Trident</td>
+	        <td>Internet Explorer 4.0</td>
+	        <td>Win 95+</td>
+	        <td class="center"> 4</td>
+	        <td class="center">X</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+javascript를 이용하는 방식 [데모 페이지]
+
+```
+<!-- id값을 정의하고 해당 id값에 $('#example').featuredDataTable(); 스크립트를 통해 데이터테이블을 적용한다.  -->
+<table id="example" class="table table-striped" >
+    <!-- 머리글 정의 -->
+    <thead>
+        <tr>
+	        <th>Rendering engine</th>
+	        <th>Browser</th>
+	        <th>Platform(s)</th>
+	        <th>Engine version</th>
+	        <th>CSS grade</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr class="odd gradeX">
+	        <td>Trident</td>
+	        <td>Internet Explorer 4.0</td>
+	        <td>Win 95+</td>
+	        <td class="center"> 4</td>
+	        <td class="center">X</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+### 기능 
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+bAutoWidth | boolean | true | 자동 컬럼 폭 계산 사용 여부
+bDeferRender | boolean | false | 테이블 렌더링을 연기 시키는 기능 사용 여부
+bFilter | boolean | true | 검색(필터링) 기능 사용 여부
+bInfo | boolean | true | 테이블에 적용된 데이터에 대한 정보를 노출시킬지 사용 여부
+bLengthChange | boolean | true | 한페이지에 보여지는 레코드 수를 선택하는 기능 사용 여부
+bPaginate | boolean | true | 페이지네이션 기능 사용 여부
+bProcessing | boolean | false | 데이터 로딩 시 테이블 가운데 프로그레스 UI를 노출시킬지 여부
+bScrollInfinite | boolean | false | Y축 스크롤을 통해 마지막 레코드일때 지속적으로 데이터 로딩을 할지 사용 여부
+bServerSide | boolean | false | 서버사이드 사용 여부 (ajax 옵션 필요)
+bSort | boolean | true | 머리글 클릭 또는 탭으로 자동 정렬 사용 여부
+
+![<데이터테이블 기능>](<http://azamara.io/img/datatables-features.png>)
+
+[자세히 보기](http://datatables.net/usage/features)
+
+
+### 옵션
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+iDisplayLength | int | 10 | 한페이지당 몇 개의 레코드를 노출시킬지 지정하는 옵션 
+iDisplayStart | int | 0 | 지정된 레코드의 수에 해당하는 페이지로 초기에 보여주는 옵션 
+sAjaxDataProp | string | aaData | ajax로 가져온 데이터의 객체에서 어느 depth에 데이터를 가져올지 지정하는 옵션
+sAjaxSource | string | null | datasource를 ajax로 가져오기 위한 서버사이드 호출 URL
+sDom | string | 설명참고 | 기능에 사용되는 UI들을 어떤 DOM구조로 사용할지 지정하는 옵션 (기본값: "<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>")[자세히](http://datatables.net/usage/options#sDom)
+sPaginationType | string | bootstrap | 페이지네이션 UI 타입을 지정하는 옵션 ('bootstrap', 'twobutton',  'fullnumbers')
+sServerMethod | string | GET | ajax로 데이터를 가져올 때 메서드 방식을  GET, POST로 지정하는 옵션
+
+[자세히 보기](http://datatables.net/usage/options)
 ### Chart
 차트 사용 방법

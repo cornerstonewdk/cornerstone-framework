@@ -50,29 +50,73 @@
 .nav-list {
   padding-left: 15px;
   padding-right: 15px;
-  margin-bottom: 0;
 }
-.nav-list > li > a,
-.nav-list .nav-header {
-  margin-left:  -15px;
-  margin-right: -15px;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-}
+
 .nav-list > li > a {
-  padding: 3px 15px;
+  margin-left:  -15px;
+  margin-right: -15px;	
+	margin-top: 1px;
+  text-shadow: none;
+	color: @black;
+	background-color: @navListBg;
+  padding: 10px 15px;
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	.box-shadow(~"0 1px 0 rgba(255,255,255,1)");
 }
+
+.nav-list > li > a:hover {
+	color: @white;
+	background-color: @navListHover;
+	.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	margin-top: 1px;
+}
+
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
   color: @white;
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  background-color: @linkColor;
+  background-color: @navListActive;
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,1)");
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	margin-top: 1px;
 }
+
 .nav-list [class^="icon-"] {
   margin-right: 2px;
 }
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider {
   .nav-divider();
+}
+
+.nav-list > li:first-child > a {
+	.border-radius(4px 4px 0 0);
+	border-top: 0;
+}
+
+.nav-list > .nav-header {
+  display: block;
+	font-size: (@baseFontSize + 4);
+	color: @navListHeader;
+	text-shadow: 0 1px 1px rgba(0,0,0,.5) ! important;
+  font-weight: normal;
+  line-height: @baseLineHeight;
+  text-transform: uppercase;
+	.border-radius(4px 4px 0 0);
+	#gradient > .tab-grd(rgba(255,255,255,.2), rgba(255,255,255,.02));
+	background-color: rgba(0,0,0,.7);
+	.box-shadow(~"inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4)");
+	padding: 15px 20px;	
+}
+
+.nav-list > li:last-child > a {
+	.border-radius(0 0 4px 4px);
+	border-bottom: 0;
+	box-shadow: none;
+}
+.nav-list > li:last-child > a:hover {
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
 }
 
 
@@ -100,113 +144,59 @@
 // TABS UP
 // ----
 
-.tab-up {
-	padding:0 0 4px;
-	background:url('../img/bg_tab_on.png') repeat-x left bottom;
-	background-size:4px 4px;
-	.box-shadow(0px 8px 8px -6px rgba(0,0,0,.5));
-}
-
 // Give the tabs something to sit on
 .nav-tabs {
 	margin:0;
-	border:0;
-	padding:10px 0 0;
-	border-bottom: 1px solid @navTabLine;
+	border-bottom: 0;
+	.box-shadow(~"inset 0 -1px 0 rgba(255,255,255,.3), 0 3px 2px rgba(0,0,0,.2)");
+}
+.nav-tabs:after {
+	content: "";
+	display: block;
+	border-top: 1px solid @white;
+	height:3px;
+	background: url('../img/bg_top.png') repeat-x left top;
+	background-size: 4px;
 }
 
 // Make the list-items overlay the bottom border
 .nav-tabs > li {
-	width: 32.5%;
 	margin: 0;
-	padding:0 0 0 0.7%;
+	padding:0 0 1px 0.7%;
 }
+
 // Actual tabs (as links)
 .nav-tabs > li > a {
 	color: @navTabLink;
 	font-size: (@baseFontSize + 3);
 	text-align: center;
 	text-shadow: 0 2px 2px rgba(0,0,0,.7);
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   line-height: @baseLineHeight;
   border:0;
-	border-top:1px solid rgba(255,255,255,.5);
 	#gradient > .tab-grd();
   .border-radius(4px 4px 0 0);
-	.box-shadow(~"inset 0 -2px 3px rgba(0,0,0,.3), 0 -2px 7px rgba(0,0,0,.3)");
+	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.15)");
 	overflow:hidden;
   &:hover {
-		color: @black;
-		text-shadow: 0 1px 1px rgba(255,255,255,.7);
+		color: @navTabLink;
     border-color: @navTabTop @navTabLeft @navTabRight;
-		background:url('../img/bg_tab_on.png') repeat left top;
-		background-size:4px 4px;
+		#gradient > .tab-grd(#b3b3b3, #a4a4a4);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.4), 0 -2px 3px rgba(0,0,0,.15)");
   }
 }
 // Active state, and it's :hover to override normal :hover
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
   color: @navTabOver;
-	text-shadow: 0 1px 1px rgba(255,255,255,.7);
-	background: url('../img/bg_tab_on.png') repeat left top;
-	background-size: 4px 4px;
+	text-shadow: 0 2px 2px rgba(0,0,0,.3);
   border: 0;
-	border-top: 1px solid rgba(255,255,255,.5);
-  border-bottom-color: transparent;
-  cursor: default;
-}
-
-// TABS DOWN
-// ----
-
-.tab-down {
-	padding: 4px 0 0;
-	background: url('../img/bg_tab_on.png') repeat-x left top;
-	background-size: 4px 4px;	
-	.box-shadow(0px -6px 6px -6px rgba(0,0,0,.5));
-}
-
-.tab-down .nav-tabs {
-	border-top: 1px solid @navTabLine;	
-	border-bottom: 0;
-	padding: 0 0 10px;
-}
-
-// Actual tabs (as links)
-.tab-down > .nav-tabs > li > a {
-	color: @navTabLink;
-	font-size: (@baseFontSize + 3);
-	text-align:center;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  line-height: @baseLineHeight;
-  border:0;
-	#gradient > .tab-grd();
-  .border-radius(0 0 4px 4px);
-	.box-shadow(~"inset 0 2px 3px rgba(0,0,0,.3), 0 2px 7px rgba(0,0,0,.3)");
-  &:hover {
-		color: @black;
-		text-shadow: 0 1px 1px rgba(255,255,255,.7);
-    border-color: @navTabTop @navTabLeft @navTabRight;
-		background:url('../img/bg_tab_on.png') repeat left top;
-		background-size:4px 4px;
-  }
-}
-// Active state, and it's :hover to override normal :hover
-.tab-down > .nav-tabs > .active > a,
-.tab-down > .nav-tabs > .active > a:hover {
-  color: @black;
-	text-shadow: 0 1px 1px rgba(255,255,255,.7);
 	background: url('../img/bg_tab_on.png') repeat left top;
-	background-size: 4px 4px;
-	border: 0;
-  border-bottom-color: transparent;
+	background-size: 4px;
+	.box-shadow(~"inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3)");
   cursor: default;
 }
-
-
 // PILLS
 // -----
 
@@ -290,6 +280,7 @@
 .nav-stacked > li {
 	width:98%;
   float: none;
+	padding: 0;
 }
 .nav-stacked > li > a {	
   margin-right: 0; // no need for the gap between nav items	
@@ -299,41 +290,46 @@
 .nav-tabs.nav-stacked {
 	padding:0 1%;
   border: 0;
+	box-shadow: none;
 }
+.nav-tabs.nav-stacked:after {
+	background: none;
+	height: 0;
+	border: 0;
+}
+
 .nav-tabs.nav-stacked > li > a {
-	font-size: ((@baseFontSize *2) - 3); 
-	color: @navStackedLink;
-	text-shadow: 0 1px 1px rgba(255,255,255,.3);
-	z-index: 2;
-	#gradient > .vertical-nav;
-	padding:15px 0;
-  border: 1px solid @navStackedBorder;
-	border-top:0;
-	border-bottom:1px solid @navStackedBackground;
-  .border-radius(0);	
-	background-color: @navStackedBackground;
-	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.35), inset 0 -1px 1px rgba(0,0,0,.5), inset 1px 0 2px rgba(255,255,255,.2), inset -1px 0 2px rgba(255,255,255,.2)");
+	color: @navTabLink;
+	font-size: (@baseFontSize + 3);
+	text-align: center;
+	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: @baseLineHeight;
+  border:0;
+	#gradient > .tab-grd();
+  .border-radius(0);
+	.box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
+	overflow:hidden;
 }
-.nav-tabs.nav-stacked > li:first-child > a {
-  .border-top-radius(4px);
-	border-top: 1px solid @navStackedBorder;
+.nav-tabs.nav-stacked > li > a:hover {
+  color: @navTabLink;
+  border-color: @navTabTop @navTabLeft @navTabRight;
+  border-color: @navTabTop @navTabLeft @navTabRight;
+	background-color: #a5a5a5;
 }
-.nav-tabs.nav-stacked > li:last-child > a {
-  .border-bottom-radius(4px);
-	border-bottom: 1px solid @navStackedBorder;
-}
-.nav-tabs.nav-stacked > li > a:hover,
+
 .nav-tabs.nav-stacked > li.active > a,
 .nav-tabs.nav-stacked > li.active > a:hover{
-  border-color: #ddd;
-	#font > #effect > .txt-over();
-  z-index: 100;
-	border:0;
-	background-color: @navStackedBackground;
-	#gradient > .vertical-nav(rgba(0,0,0,0), @navPillActive);
-	.box-shadow(~"inset 0 5px 7px rgba(0,0,0,.5)");
-	padding:15px 0;
+  color: @navTabOver;
+	text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  border: 0;
+	background: url('../img/bg_tab_on.png') repeat left top;
+	background-size: 4px;
+	.box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
+  cursor: default;
 }
+
 
 // Pills
 .nav-pills.nav-stacked > li > a {
@@ -427,8 +423,8 @@
 .tab-content {
 	position: relative;
 	z-index: 10;
-	background: url('../img/bg_tab_on.png') repeat left top;
-	background-size: 4px 4px;
+	padding: 20px;
+	color: @navTabOver;
   overflow: auto; // prevent content from running below tabs
 }
 
@@ -454,22 +450,56 @@
 // ------
 
 .tabs-below > .nav-tabs {
-  border-top: 1px solid #ddd;
+	border-top: 0;
+	.box-shadow(~"0 3px 2px rgba(0,0,0,.4), 0 -1px 0 rgba(255,255,255,.3)");
+	position: relative;
+	padding-top:3px;
+}
+.tabs-below > .nav-tabs:after {
+	content: "";
+	display: block;
+	width: 100%;
+	border-bottom: 1px solid @white;
+	border-top: 0;
+	height:3px;
+	background: url('../img/bg_top.png') repeat-x left bottom;
+	background-size: 4px;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 .tabs-below > .nav-tabs > li {
-  margin-top: -1px;
-  margin-bottom: 0;
+	padding: 1px 0 0 0.7%;
 }
 .tabs-below > .nav-tabs > li > a {
+	color: @navTabLink;
+	font-size: (@baseFontSize + 3);
+	text-align: center;
+	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: @baseLineHeight;
+  border:0;
+	#gradient > .tab-grd();
   .border-radius(0 0 4px 4px);
+	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+	overflow:hidden;
   &:hover {
-    border-bottom-color: transparent;
-    border-top-color: #ddd;
+		color: @navTabLink;
+    border-color: @navTabTop @navTabLeft @navTabRight;
+		background-color: #a5a5a5;
   }
 }
+
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover {
-  border-color: transparent #ddd #ddd #ddd;
+	color: @navTabOver;
+	text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  border: 0;
+	background: url('../img/bg_tab_on.png') repeat left top;
+	background-size: 4px;
+	.box-shadow(~"inset 1px -1px 2px rgba(255,255,255,.15), 0 2px 5px rgba(0,0,0,.3)");
+  cursor: default;
 }
 
 // LEFT & RIGHT
@@ -482,17 +512,27 @@
 }
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {
-  min-width: 74px;
+  min-width: 120px;
   margin-right: 0;
   margin-bottom: 3px;
+	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
 }
 
 // Tabs on the left
 .tabs-left > .nav-tabs {
   float: left;
-  margin-right: 19px;
-  border-right: 1px solid #ddd;
+	border-right: 1px solid rgba(0,0,0,.3);
+	box-shadow: none;
+	padding: 5px 2px 5px 0;
+	margin: 0;
 }
+
+.tabs-left > .nav-tabs:after {
+	background: none;
+	border: 0;
+	height: 0;
+}
+
 .tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
   .border-radius(4px 0 0 4px);
@@ -504,6 +544,7 @@
 .tabs-left > .nav-tabs .active > a:hover {
   border-color: #ddd transparent #ddd #ddd;
   *border-right-color: @white;
+	.box-shadow(~"inset 0 0 0 rgba(0,0,0,0), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
 }
 
 // Tabs on the right
@@ -546,18 +587,25 @@
 .nav-bot {
 	overflow:hidden;
 	padding:0 0 10px;
+	display: -webkit-box;
+  display: -moz-box;
+	display: -webkit-flexbox;	
 }
 
 .nav-bot li {	
 	text-align:center;
-	width:20%;
-	float:left;
+	/* Old Syntax */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+
+  /* New Syntax */
+  -webkit-flex: 1;
 }
 
 .nav-bot li a {	
 	color: @navBotLink;
 	font-size: (@baseFontSize - 1);
-	font-weight:bold;
+	font-weight:bold;	
 	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
 	#gradient > .vertical-navbot();
 	.box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,1), 0 5px 4px rgba(0,0,0,.5)");
@@ -608,6 +656,7 @@
 .v-blue li a:active,
 .v-blue li a.active {
 	color: @navBotBlueActive;
+	text-overflow: ellipsis;
 	padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
 	background: @navBotBlueOver;
 	.box-shadow(~"inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15)");
@@ -617,6 +666,13 @@
 	position: relative;
 	z-index: 100;
 	margin-top: 1px;
+}
+
+.nav.nav-bot li a span {
+	text-overflow: ellipsis;
+	display: block;
+	padding: 0 5px;
+	overflow: hidden;
 }
 
 .nav-bot li i {

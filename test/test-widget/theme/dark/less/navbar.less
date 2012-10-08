@@ -48,7 +48,7 @@
 .navbar .brand {
 	clear:both;
   float: none;
-  display: inline-block;
+  display: none;
   // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
   margin-left: 0; // negative indent to left-align the text down the page
@@ -59,6 +59,10 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.navbar .btn-navbar {
+	display: none;
 }
 
 // Plain text in topbar
@@ -624,7 +628,7 @@
 
 // Menu position and menu carets
 .navbar .nav > li > .dropdown-menu {
-	display: block;
+	display: none;
 	top: 42px;
 	left: 3px;
 	z-index: 10;
@@ -685,6 +689,7 @@
   border-bottom-color: @navbarLinkColor;
 	margin-top: -1px;
 }
+.navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {

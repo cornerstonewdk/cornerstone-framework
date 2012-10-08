@@ -190,10 +190,6 @@
   cursor: default;
 }
 
-// TABS DOWN
-// ----
-
-
 // PILLS
 // -----
 
@@ -555,12 +551,19 @@
 .nav-bot {
 	overflow:hidden;
 	padding:0 0 10px;
+	display: -webkit-box;
+  display: -moz-box;
+	display: -webkit-flexbox;	
 }
 
 .nav-bot li {	
 	text-align:center;
-	width:20%;
-	float:left;
+	/* Old Syntax */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+
+  /* New Syntax */
+  -webkit-flex: 1;
 }
 
 .nav-bot li a {	
@@ -624,6 +627,13 @@
 	position: relative;
 	z-index: 100;
 	margin-top: 1px;
+}
+
+.nav.nav-bot li a span {
+	text-overflow: ellipsis;
+	display: block;
+	padding: 0 5px;
+	overflow: hidden;
 }
 
 .nav-bot li i {
