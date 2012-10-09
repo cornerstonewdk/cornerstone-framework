@@ -162,7 +162,8 @@
 </div>
 
 <script type="text/javascript" src="../../libs/jquery.js"></script>
-<script type="text/javascript" src="../../dist/featured-scrollview.js"></script>
+<script type="text/javascript" src="../../src/featured/scroll-view/iscroll.js"></script>
+<script type="text/javascript" src="../../src/featured/scroll-view/featured-scrollview.js"></script>
 <script type="text/javascript">
 	var generatedCount = 0;
 	$("#wrapper").featuredScrollView({
@@ -171,7 +172,7 @@
 		pullDownAction:function () {
 			// 일반적으로 pullDown은 새로고침 액션으로 이용된다.
 			setTimeout(function() {
-				$("#wrapper").trigger("scrollview.refresh");
+				$("#wrapper").featuredScrollView("refresh");
 			}, 500);
 		},
 		pullUpAction:function () {
@@ -185,7 +186,7 @@
 					li.innerHTML = '<a href="#">신규 레코드 ' + (++generatedCount) + '</a>';
 					el.appendChild(li, el.childNodes[0]);
 				}
-				$("#wrapper").trigger("scrollview.refresh");
+				$("#wrapper").featuredScrollView("refresh");
 			}, 500);
 		}
 	});

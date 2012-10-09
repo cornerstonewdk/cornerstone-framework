@@ -10,7 +10,9 @@
 
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
-        // AMD Hybrid 포맷
+        /**
+         * ListView는 Handlebar.js와 Infinity.js를 사용한다.
+         */
         define(function (require, exports, module) {
             var $ = require("jquery");
             return factory($, root, doc);
@@ -20,30 +22,80 @@
         factory(root.jQuery, root, doc);
     }
 }(this, document, function ($, window, document) {
-    var pluginName = "featuredScrollView";
-
-    // 데이터테이블 플러그인 랩핑 및 기본값 설정
-    $.fn[pluginName] = function (options) {
-        var defaultOptions = {
-            "bProcessing": false,
-            sPaginationType:"bootstrap",
-            sDom:"<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>",
-            oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수"}
+    var pluginName = "featuredListView",
+        ListView,
+        ListItem,
+        listTemplate,
+        template,
+        defaultOptions = {
+            optimization: true,
+            SCROLL_THROTTLE: 100
         };
 
-        options = $.extend(true, defaultOptions, options);
+    var Plugin = function (element, options) {
+        var self = this;
+        this.$el = $(element);
+        this.options = options = $.extend(true, defaultOptions, options);
 
-        return this.each(function () {
-            $(this).dataTable(options);
+        infinity.config.SCROLL_THROTTLE = this.options.SCROLL_THROTTLE;
+        ListView = infinity.ListView;
+        ListItem = infinity.ListItem;
+
+        this.$el.each(function () {
+            if(options.optimization) {
+                html = self.$el.html();
+                self.$el.html("");
+
+                // 리스트뷰 최적화를 위해 Infinity 적용
+                listView = new ListView($(this));
+                $(this).data('listView', listView);
+                self.$el.data('listView').append(html);
+
+                // HTML 초기화
+                html = "";
+            }
         });
     };
+
+    Plugin.prototype.addItem = function (options, html) {
+        if(options.optimization) {
+            this.$el.data('listView').append(html);
+        } else {
+            this.$el.append(html);
+        }
+
+        // 리스트 아이템을 완료할때 이벤트를 발생시킨다.
+        this.$el.trigger("listView.addItem.done");
+    };
+
+    Plugin.prototype.scrollHandler = function (options) {
+        this.$el.data('listView').scrollHandler();
+    };
+
+    // 프로토타입 클래스로 정의된 객체를 플러그인과 연결시킨다.
+    $.fn[pluginName] = function (options, html) {
+        return this.each(function () {
+            var $this = $(this);
+            var data = $this.data(pluginName);
+
+            // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
+            if (!data) {
+                $this.data(pluginName, (data = new Plugin(this, options)))
+            }
+
+            // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
+            if (typeof options == 'string') {
+                data[options](data.options, html);
+            }
+        });
+    };
+
+    $.fn[pluginName].Constructor = Plugin;
 
     /**
      * DATA API (HTML5 Data Attribute)
      */
-    $("[data-featured=scrollview]").each(function (i) {
-        $(this)[pluginName]({
-            "sAjaxSource":$(this).data("datatableBind")
-        });
+    $("[data-featured=listView]").each(function (i) {
+        $(this)[pluginName]();
     });
 }));

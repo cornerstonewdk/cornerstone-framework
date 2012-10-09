@@ -10,9 +10,7 @@
 
 	<title>리스트 뷰</title>
 	<link rel="stylesheet" type="text/css" href="../../style.css"/>
-	<style type="text/css">
-
-	</style>
+	<link rel="stylesheet" href="css/list-view.css">
 </head>
 <body>
 
@@ -79,33 +77,170 @@
 <div class="container-fluid" id="wrapper">
 	<div class="row-fluid">
 		<div class="lists">
-			<ul id="listView">
-
-			</ul>
+			<div id="listView">
+				<ul>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="endless-loader" class="endless-loader">
+			<span class="icon-endless-loader">Loading...</span>
 		</div>
 	</div>
 </div>
 
-<script id="entry-template" type="text/x-handlebars-template">
-	<li data-page="{{page}}" data-index="{{index}}">
-		<a href="#">
-			<img src="{{imgPath}}/{{thumbnail}}" alt="">
-			<strong>{{title}}</strong>
-			<small>{{published}}</small>
-		</a>
-	</li>
-</script>
 <script type="text/javascript" src="../../libs/jquery.js"></script>
-<script type="text/javascript" src="../../libs/handlebars-1.0.rc.1.js"></script>
-<script type="text/javascript" src="js/jquery.endless-scroll.js"></script>
+<script type="text/javascript" src="../../src/featured/list-view/infinity.js"></script>
+<script type="text/javascript" src="../../src/featured/list-view/featured-listview.js"></script>
 <script type="text/javascript">
-	var source = $("#entry-template").html();
-	var template = Handlebars.compile(source);
 	var $el = $('#listView');
-	var page = 1;
 	var isLoading = false;
 
-	// 아이템 추가
+	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+	$el.featuredListView({
+		optimization:true
+	});
+
+	// AJAX로 데이터를 가져오는 함수
 	function getItem() {
 		if (isLoading) {
 			return false;
@@ -119,18 +254,21 @@
 			dataType:"json"
 		});
 
-		request.done(function (msg) {
-			if (typeof msg === "object" && msg.items.length > 0) {
-				$(msg.items).each(function (i) {
-					this.page = page;
-					this.index = i;
-					this.imgPath = msg.imgPath;
-					$("#listView").append(template(this));
+		request.done(function (json) {
+			html = "<ul>";
+			if (typeof json === "object" && json.items.length > 0) {
+				$(json.items).each(function (i) {
+					html += "<li>";
+					html += "	<div>";
+					html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+					html += "	</div>";
+					html += "</li>";
 				});
+				html += "</ul>";
+				$el.featuredListView("addItem", html);
 			}
-
+			html = "";
 			isLoading = false;
-			page++;
 		});
 
 		request.fail(function (jqXHR, textStatus) {
@@ -139,20 +277,22 @@
 		});
 	}
 
-	getItem();
-
-	// using default options
-	$(window).endlessScroll();
-	// using some custom options
-	$el.endlessScroll({
-		fireOnce: false,
-		fireDelay: false,
-		loader: '<div class="loading"><div>',
-		content: function(i, p, d) {
-			console.log(i, p, d);
-		},
-		callback: function(p){
-			alert("test");
+	var $spinner = $("#endless-loader");
+	var updateScheduled = false;
+	function onscreen($el) {
+		var viewportBottom = $(window).scrollTop() + $(window).height();
+		$spinner.show();
+		return $el.offset().top <= viewportBottom;
+	}
+	$(window).on('scroll', function () {
+		if (!updateScheduled) {
+			setTimeout(function () {
+				if (onscreen($spinner)) {
+					getItem();
+				}
+				updateScheduled = false;
+			}, 500);
+			updateScheduled = true;
 		}
 	});
 </script>

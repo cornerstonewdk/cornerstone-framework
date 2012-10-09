@@ -34,18 +34,14 @@
 
     var Plugin = function (element, options) {
         var self = this;
-        this.options = options;
+        this.options = options = $.extend(true, defaultOptions, options);
         this.$el = $(element);
 
         this.formCheck();
         this.pullToRefresh();
 
-        options = $.extend(true, defaultOptions, options);
         this.iscroll = new iScroll(this.$el[0], options);
 
-        this.$el.on("scrollview.refresh", function(e) {
-            self.refresh();
-        });
     };
 
     Plugin.prototype.refresh = function () {
@@ -132,7 +128,18 @@
     // 스크롤뷰 플러그인 랩핑 및 기본값 설정
     $.fn[pluginName] = function (options) {
         return this.each(function () {
-            myScroll = new Plugin(this, options);
+            var $this = $(this);
+            var data = $this.data(pluginName);
+
+            // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
+            if (!data) {
+                $this.data(pluginName, (data = new Plugin(this, options)))
+            }
+
+            // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
+            if (typeof options == 'string') {
+                data[options](data.options);
+            }
         });
     };
 

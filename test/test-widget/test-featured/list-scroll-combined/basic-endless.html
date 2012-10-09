@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="description" content="CornetStone">
-	<meta name="author" content="William Kim">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport"
-		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes"/>
-
-	<title>리스트 뷰</title>
-	<link rel="stylesheet" type="text/css" href="../../style.css"/>
+		  content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>스크롤뷰</title>
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="css/scroll-view.css">
+	<link rel="stylesheet" href="css/list-view.css">
 	<style type="text/css">
+		#pullDown {
+			display: none;;
+		}
+
 		#addItem {
 			width: 100%;
 		}
@@ -78,9 +82,12 @@
 	</div>
 </div>
 
-<div class="container-fluid" id="wrapper">
+<div class="container-fluid scrollview" id="wrapper">
 	<div class="row-fluid">
 		<div class="lists">
+			<div id="pullDown">
+				<span class="pullDownIcon"></span><span class="pullDownLabel">아래로 당겨서 새로고침...</span>
+			</div>
 			<div id="listView">
 				<ul>
 					<li>
@@ -225,25 +232,81 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-		<div>
-			<button id="addItem" class="btn">더보기</button>
+			<div id="pullUp">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">위로 당겨서 가져오기...</span>
+			</div>
 		</div>
 	</div>
 </div>
 
+<div id="footer">
+	<ul class="nav nav-bot">
+		<li>
+			<a href="#">
+				<i class="about"></i>
+				<span>about</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="favorites"></i>
+				<span>favorites</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="active">
+				<i class="downloads"></i>
+				<span>downloads</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="settings"></i>
+				<span>settings</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="user"></i>
+				<span>user</span>
+			</a>
+		</li>
+	</ul>
+</div>
 <script type="text/javascript" src="../../libs/jquery.js"></script>
-<script type="text/javascript" src="../../libs/handlebars-1.0.rc.1.js"></script>
+<script type="text/javascript" src="../../src/featured/scroll-view/iscroll.js"></script>
+<script type="text/javascript" src="../../src/featured/scroll-view/featured-scrollview.js"></script>
 <script type="text/javascript" src="../../src/featured/list-view/infinity.js"></script>
 <script type="text/javascript" src="../../src/featured/list-view/featured-listview.js"></script>
 <script type="text/javascript">
 	var $el = $('#listView');
 	var isLoading = false;
+	var updateScheduled = false;
 	var html;
+
+	$("#wrapper").featuredScrollView({
+		pullDownID:"pullDown",
+		pullUpID:"pullUp",
+		pullDownAction:function () {
+			// 일반적으로 pullDown은 새로고침 액션으로 이용된다.
+			setTimeout(function () {
+				$("#wrapper").featuredScrollView("refresh");
+			}, 500);
+		},
+		pullUpAction:function () {
+			if (!updateScheduled) {
+				setTimeout(function () {
+					getItem();
+					updateScheduled = false;
+				}, 500);
+			}
+			updateScheduled = true;
+		}
+	});
 
 	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
 	$el.featuredListView({
-		optimization: true
+		optimization:false
 	});
 
 	// AJAX로 데이터를 가져오는 함수
@@ -272,6 +335,8 @@
 				});
 				html += "</ul>";
 				$el.featuredListView("addItem", html);
+				console.log($el.data("listView"));
+				$("#wrapper").featuredScrollView("refresh");
 			}
 			html = "";
 			isLoading = false;
@@ -281,13 +346,8 @@
 			console.log("Request failed: " + textStatus);
 			isLoading = false;
 		});
-
 	}
 
-	// 아이템 추가
-	$("#addItem").on("click", function (e) {
-		getItem();
-	});
 </script>
 </body>
 </html>
