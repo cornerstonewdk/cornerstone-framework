@@ -12,7 +12,7 @@ build:
 # widget-plugin/js/jquery.transit.js -> 라이브러리로 별도 호출필요
 # 부트스트랩 플러그인과 코너스톤 플러그인 머지
 	@echo "Building Widget Plugin..."
-	@cat libs/bootstrap/js/bootstrap.js src/plugins/plugin-cornerstone.js src/plugins/plugin-touch.js src/plugins/plugin-motioncapcha.js src/plugins/plugin-rangeinput.js src/plugins/plugin-sign.js src/plugins/plugin-spinner.js > dist/widget-plugins.js
+	@cat libs/bootstrap/js/bootstrap.js src/plugins/plugin-cornerstone.js src/plugins/plugin-touch.js src/plugins/plugin-motioncapcha.js src/plugins/plugin-rangeinput.js src/plugins/plugin-sign.js src/plugins/plugin-spinner.js src/plugins/plugin-datepicker.js > dist/widget-plugins.js
 	@uglifyjs -nc dist/widget-plugins.js > dist/widget-plugins.min.js
 	@echo "Widget Plugin successfully built at ${DATE}."
 	@echo "${HR}\n"
