@@ -1,34 +1,39 @@
 [
     {
-        "label":"A",
-        "value0":"219.81"
-    },
-    {
-        "label":"B",
-        "value0":"216.35"
-    },
-    {
-        "label":"C",
-        "value0":"343.22"
-    },
-    {
-        "label":"가",
-        "value0":"428.37"
-    },
-    {
-        "label":"나",
-        "value0":"525.45"
-    },
-    {
-        "label":"다",
-        "value0":"632.54"
-    },
-    {
-        "label":"홍길동",
-        "value0":"728.4"
-    },
-    {
-        "label":"이순신",
-        "value0":"828.4"
+        "key":"Cumulative Return",
+        "values":[
+            {
+                "label":"CDS / Options",
+                "value":29.765957771107
+            } ,
+            {
+                "label":"Cash",
+                "value":0
+            } ,
+            {
+                "label":"Corporate Bonds",
+                "value":32.807804682612
+            } ,
+            {
+                "label":"Equity",
+                "value":196.45946739256
+            } ,
+            {
+                "label":"Index Futures",
+                "value":0.19434030906893
+            } ,
+            {
+                "label":"Options",
+                "value":98.079782601442
+            } ,
+            {
+                "label":"Preferred",
+                "value":13.925743130903
+            } ,
+            {
+                "label":"Not Available",
+                "value":5.1387322875705
+            }
+        ]
     }
 ]
