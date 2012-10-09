@@ -1,3 +1,15 @@
+// 데이터픽커
+var HAS_TOUCH = ('ontouchstart' in window);
+if(!HAS_TOUCH) {
+    $('.datepicker').datepicker({
+        language: "ko"
+    });
+} else {
+    $('.datepicker').each(function() {
+
+    });
+}
+
 // 싸인
 $("#signature").sign();
 
