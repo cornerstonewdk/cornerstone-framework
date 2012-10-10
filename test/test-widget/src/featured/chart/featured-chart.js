@@ -20,6 +20,13 @@
 }(this, document, function ($, window, document, d3, undefined) {
     var pluginName = "featuredChart",
         featuredChart,
+        defaultOptions;
+
+    FeaturedChart.name = 'FeaturedChart';
+
+    function FeaturedChart(element, options) {
+        var self = this;
+        var target = d3.select(element);
         defaultOptions = {
             chartType:"bar",
             lineType:"basis",
@@ -32,14 +39,10 @@
             color:d3.scale.category10()
         };
 
-    FeaturedChart.name = 'FeaturedChart';
-
-    function FeaturedChart(element, options) {
-        var self = this;
-        var target = d3.select(element);
         this.options = options = $.extend(true, defaultOptions, options);
         this.$el = $(element);
 
+        nv.dev = false;
         this[options.chartType + "Chart"](target, options);
 
         // 배열로 넘어온 색상을 d3 색상 카테고리로 변환
@@ -180,10 +183,9 @@
         return this.each(function (i) {
             var $this = $(this);
             var data = $this.data(pluginName);
-
             // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
             if (!data) {
-                $this.data(pluginName, (data = new FeaturedChart(this, options)))
+                $this.data(pluginName, (data = new FeaturedChart(this, options)));
             }
 
             // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
@@ -203,8 +205,8 @@
             dataUrl = $(this).data("chartBind");
 
         $.getJSON(dataUrl).success(function (json) {
-            var featuredChart = new FeaturedChart();
-            featuredChart[$(self).data("chartType") + "Chart"](d3.select(self), {
+            $(self)[pluginName]({
+                chartType:$(self).data("chartType"),
                 data:json
             });
         }).error(function (jqXHR, textStatus, errorThrown) {
