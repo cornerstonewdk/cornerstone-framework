@@ -8,12 +8,11 @@ define( [ 'model/user', 'backbone', 'jquery', 'form-view', 'view/alert-validatio
 		el: $( 'section#add-section' ),
 
 		initialize: function() {
-			this.model = new User( { name: '홍길동', email: 'default@gmail.com' } );
 		},
 
 		render: function() {
 			this.$el.html( template() );
-			this.formView = new FormView( { el: this.$( '#add-form' ), model: this.model } );
+			this.formView = new FormView( { el: this.$( '#add-form' ), model: new User( { name: '홍길동', email: 'default@gmail.com' } ) } );
 			return this;
 		},
 
