@@ -1,4 +1,328 @@
-.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}.clearfix:after{clear:both}.hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.widget-carousel .carousel{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.widget-carousel .carousel img{width:100%;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.widget-carousel .carousel .carousel-control.left{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.widget-carousel .carousel .carousel-control.right{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}@media (max-width: 767px){.widget-carousel .carousel .carousel-control.left,.widget-carousel .carousel .carousel-control.right{ display:none}}.widget-sign .sign canvas{border:1px solid #CCC!important}@media (max-width: 480px){.widget-sign .sign canvas{ height:100px!important}}.widget-motioncapcha canvas{border:0}.widget-motioncapcha #mc-canvas{width:220px;height:154px;background:#fff -9999px -9999px no-repeat;background-image:url('../img/motionCaptcha-shapes.jpg')!important;display:block;margin:0 auto}.widget-motioncapcha #mc-canvas.triangle{background-position:10px 10px}.widget-motioncapcha #mc-canvas.x{background-position:-200px 10px}.widget-motioncapcha #mc-canvas.rectangle{background-position:-400px 10px}.widget-motioncapcha #mc-canvas.circle{background-position:-600px 10px}.widget-motioncapcha #mc-canvas.check{background-position:10px -150px}.widget-motioncapcha #mc-canvas.caret{background-position:-200px -150px}.widget-motioncapcha #mc-canvas.zigzag{background-position:-400px -150px}.widget-motioncapcha #mc-canvas.arrow{background-position:-600px -150px}.widget-motioncapcha #mc-canvas.leftbracket{background-position:10px -300px}.widget-motioncapcha #mc-canvas.rightbracket{background-position:-200px -300px}.widget-motioncapcha #mc-canvas.v{background-position:-400px -300px}.widget-motioncapcha #mc-canvas.delete{background-position:-600px -300px}.widget-motioncapcha #mc-canvas.leftbrace{background-position:10px -450px}.widget-motioncapcha #mc-canvas.rightbrace{background-position:-200px -450px}.widget-motioncapcha #mc-canvas.star{background-position:-400px -450px}.widget-motioncapcha #mc-canvas.pigtail{background-position:-600px -450px}.widget-motioncapcha .mc-noselect{-webkit-user-select:none;-moz-user-select:none;user-select:none}.widget-motioncapcha canvas{border:0}.widget-motioncapcha #mc-canvas{width:220px;height:154px;background:#fff -9999px -9999px no-repeat;background-image:url('../img/motionCaptcha-shapes.jpg')!important;display:block;margin:0 auto}.widget-motioncapcha #mc-canvas.triangle{background-position:10px 10px}.widget-motioncapcha #mc-canvas.x{background-position:-200px 10px}.widget-motioncapcha #mc-canvas.rectangle{background-position:-400px 10px}.widget-motioncapcha #mc-canvas.circle{background-position:-600px 10px}.widget-motioncapcha #mc-canvas.check{background-position:10px -150px}.widget-motioncapcha #mc-canvas.caret{background-position:-200px -150px}.widget-motioncapcha #mc-canvas.zigzag{background-position:-400px -150px}.widget-motioncapcha #mc-canvas.arrow{background-position:-600px -150px}.widget-motioncapcha #mc-canvas.leftbracket{background-position:10px -300px}.widget-motioncapcha #mc-canvas.rightbracket{background-position:-200px -300px}.widget-motioncapcha #mc-canvas.v{background-position:-400px -300px}.widget-motioncapcha #mc-canvas.delete{background-position:-600px -300px}.widget-motioncapcha #mc-canvas.leftbrace{background-position:10px -450px}.widget-motioncapcha #mc-canvas.rightbrace{background-position:-200px -450px}.widget-motioncapcha #mc-canvas.star{background-position:-400px -450px}.widget-motioncapcha #mc-canvas.pigtail{background-position:-600px -450px}.widget-motioncapcha .mc-noselect{-webkit-user-select:none;-moz-user-select:none;user-select:none}.widget-spinner{display:none;background:rgba(3,3,3,.6);width:220px;height:220px;margin:0 auto;z-index:10000;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;position:fixed;top:50%;left:50%;margin-left:-110px;margin-top:-110px}.widget-spinner .spinner-center{position:relative;width:15%;height:50%;padding-top:42.5%;margin:0 auto}.widget-spinner .spinner-center img{width:100%}.widget-spinner .spinner-center:after{content:attr(data-content);display:inline-block;color:#fff;margin-top:20px;margin-left:-110px;width:220px;text-align:center}.widget-spinner.all{background:transparent;width:220px;height:220px;margin:0 auto;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;position:fixed;top:50%;left:50%;margin-left:-110px;margin-top:-110px}.widget-spinner.all:before{content:"";background:rgba(3,3,3,.6);width:100%;height:100%;position:fixed;top:0;left:0;margin-left:0;margin-top:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}/*!
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.widget-carousel .carousel {
+  -webkit-user-select: none;
+  /* Safari, Chrome */
+
+  -khtml-user-select: none;
+  /* Konqueror */
+
+  -moz-user-select: none;
+  /* Firefox */
+
+  -ms-user-select: none;
+  /* IE */
+
+  user-select: none;
+  /* CSS3 */
+
+}
+.widget-carousel .carousel img {
+  width: 100%;
+  -webkit-user-select: none;
+  /* Safari, Chrome */
+
+  -khtml-user-select: none;
+  /* Konqueror */
+
+  -moz-user-select: none;
+  /* Firefox */
+
+  -ms-user-select: none;
+  /* IE */
+
+  user-select: none;
+  /* CSS3 */
+
+}
+.widget-carousel .carousel .carousel-control.left {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.widget-carousel .carousel .carousel-control.right {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 767px) {
+  .widget-carousel .carousel .carousel-control.left,
+  .widget-carousel .carousel .carousel-control.right {
+    display: none;
+  }
+}
+.widget-sign .sign canvas {
+  border: 1px solid #CCC !important;
+}
+@media (max-width: 480px) {
+  .widget-sign .sign canvas {
+    height: 100px !important;
+  }
+}
+.widget-motioncapcha {
+  /**
+ * jQuery MotionCAPTCHA Plugin CSS
+ * josscrowcroft.com/projects/motioncaptcha-jquery-plugin/
+ *
+ * Only these rules are absolutely necessary for the plugin.
+ * NB. The width & height of the canvas can be flexible to fit your layout but there's a recommended min/max
+ * - if you need it much bigger/smaller, you could tweak the background-positions of the shape classes.
+ */
+
+  /* The canvas: */
+
+  /* The shapes: */
+
+  /* Disable mouse-selection on the page (only while user is actively drawing on the canvas): */
+
+}
+.widget-motioncapcha canvas {
+  border: none;
+}
+.widget-motioncapcha #mc-canvas {
+  width: 220px;
+  /* For best results, set width to between 210px and 240px */
+
+  height: 154px;
+  /* For best results, set height to between 140px and 170px */
+
+  background: #ffffff -9999px -9999px no-repeat;
+  background-image: url('../img/motionCaptcha-shapes.jpg') !important;
+  display: block;
+  margin: 0 auto;
+}
+.widget-motioncapcha #mc-canvas.triangle {
+  background-position: 10px 10px;
+}
+.widget-motioncapcha #mc-canvas.x {
+  background-position: -200px 10px;
+}
+.widget-motioncapcha #mc-canvas.rectangle {
+  background-position: -400px 10px;
+}
+.widget-motioncapcha #mc-canvas.circle {
+  background-position: -600px 10px;
+}
+.widget-motioncapcha #mc-canvas.check {
+  background-position: 10px -150px;
+}
+.widget-motioncapcha #mc-canvas.caret {
+  background-position: -200px -150px;
+}
+.widget-motioncapcha #mc-canvas.zigzag {
+  background-position: -400px -150px;
+}
+.widget-motioncapcha #mc-canvas.arrow {
+  background-position: -600px -150px;
+}
+.widget-motioncapcha #mc-canvas.leftbracket {
+  background-position: 10px -300px;
+}
+.widget-motioncapcha #mc-canvas.rightbracket {
+  background-position: -200px -300px;
+}
+.widget-motioncapcha #mc-canvas.v {
+  background-position: -400px -300px;
+}
+.widget-motioncapcha #mc-canvas.delete {
+  background-position: -600px -300px;
+}
+.widget-motioncapcha #mc-canvas.leftbrace {
+  background-position: 10px -450px;
+}
+.widget-motioncapcha #mc-canvas.rightbrace {
+  background-position: -200px -450px;
+}
+.widget-motioncapcha #mc-canvas.star {
+  background-position: -400px -450px;
+}
+.widget-motioncapcha #mc-canvas.pigtail {
+  background-position: -600px -450px;
+}
+.widget-motioncapcha .mc-noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.widget-motioncapcha {
+  /**
+ * jQuery MotionCAPTCHA Plugin CSS
+ * josscrowcroft.com/projects/motioncaptcha-jquery-plugin/
+ *
+ * Only these rules are absolutely necessary for the plugin.
+ * NB. The width & height of the canvas can be flexible to fit your layout but there's a recommended min/max
+ * - if you need it much bigger/smaller, you could tweak the background-positions of the shape classes.
+ */
+
+  /* The canvas: */
+
+  /* The shapes: */
+
+  /* Disable mouse-selection on the page (only while user is actively drawing on the canvas): */
+
+}
+.widget-motioncapcha canvas {
+  border: none;
+}
+.widget-motioncapcha #mc-canvas {
+  width: 220px;
+  /* For best results, set width to between 210px and 240px */
+
+  height: 154px;
+  /* For best results, set height to between 140px and 170px */
+
+  background: #ffffff -9999px -9999px no-repeat;
+  background-image: url('../img/motionCaptcha-shapes.jpg') !important;
+  display: block;
+  margin: 0 auto;
+}
+.widget-motioncapcha #mc-canvas.triangle {
+  background-position: 10px 10px;
+}
+.widget-motioncapcha #mc-canvas.x {
+  background-position: -200px 10px;
+}
+.widget-motioncapcha #mc-canvas.rectangle {
+  background-position: -400px 10px;
+}
+.widget-motioncapcha #mc-canvas.circle {
+  background-position: -600px 10px;
+}
+.widget-motioncapcha #mc-canvas.check {
+  background-position: 10px -150px;
+}
+.widget-motioncapcha #mc-canvas.caret {
+  background-position: -200px -150px;
+}
+.widget-motioncapcha #mc-canvas.zigzag {
+  background-position: -400px -150px;
+}
+.widget-motioncapcha #mc-canvas.arrow {
+  background-position: -600px -150px;
+}
+.widget-motioncapcha #mc-canvas.leftbracket {
+  background-position: 10px -300px;
+}
+.widget-motioncapcha #mc-canvas.rightbracket {
+  background-position: -200px -300px;
+}
+.widget-motioncapcha #mc-canvas.v {
+  background-position: -400px -300px;
+}
+.widget-motioncapcha #mc-canvas.delete {
+  background-position: -600px -300px;
+}
+.widget-motioncapcha #mc-canvas.leftbrace {
+  background-position: 10px -450px;
+}
+.widget-motioncapcha #mc-canvas.rightbrace {
+  background-position: -200px -450px;
+}
+.widget-motioncapcha #mc-canvas.star {
+  background-position: -400px -450px;
+}
+.widget-motioncapcha #mc-canvas.pigtail {
+  background-position: -600px -450px;
+}
+.widget-motioncapcha .mc-noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.widget-spinner {
+  display: none;
+  background: rgba(3, 3, 3, 0.6);
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  z-index: 10000;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -110px;
+  margin-top: -110px;
+}
+.widget-spinner .spinner-center {
+  position: relative;
+  width: 15%;
+  height: 50%;
+  padding-top: 42.5%;
+  margin: 0 auto;
+}
+.widget-spinner .spinner-center img {
+  width: 100%;
+}
+.widget-spinner .spinner-center:after {
+  content: attr(data-content);
+  display: inline-block;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-left: -110px;
+  width: 220px;
+  text-align: center;
+}
+.widget-spinner.all {
+  background: transparent;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -110px;
+  margin-top: -110px;
+}
+.widget-spinner.all:before {
+  content: "";
+  background: rgba(3, 3, 3, 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  margin-top: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+/*!
  * Datepicker for Bootstrap
  *
  * Copyright 2012 Stefan Petre
@@ -6,5 +330,331 @@
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- */.datepicker{top:0;left:0;padding:4px;margin-top:1px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.datepicker:before{content:'';display:inline-block;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #ccc;border-bottom-color:rgba(0,0,0,.2);position:absolute;top:-7px;left:6px}.datepicker:after{content:'';display:inline-block;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;position:absolute;top:-6px;left:7px}.datepicker>div{display:none}.datepicker.days div.datepicker-days{display:block}.datepicker.months div.datepicker-months{display:block}.datepicker.years div.datepicker-years{display:block}.datepicker table{margin:0}.datepicker td,.datepicker th{text-align:center;width:20px;height:20px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.datepicker td.day:hover{background:#eee;cursor:pointer}.datepicker td.old,.datepicker td.new{color:#999}.datepicker td.disabled,.datepicker td.disabled:hover{background:0;color:#999;cursor:default}.datepicker td.today,.datepicker td.today:hover,.datepicker td.today.disabled,.datepicker td.today.disabled:hover{color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25);background-color:#fde19a;background-image:-moz-linear-gradient(top, #fdd49a, #fdf59a);background-image:-webkit-gradient(linear,0 0,0 100%,from( #fdd49a),to( #fdf59a));background-image:-webkit-linear-gradient(top, #fdd49a, #fdf59a);background-image:-o-linear-gradient(top, #fdd49a, #fdf59a);background-image:linear-gradient(to bottom, #fdd49a, #fdf59a);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdd49a', endColorstr='#fffdf59a', GradientType=0);border-color:#fdf59a #fdf59a #fbed50;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);*background-color:#fdf59a;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}.datepicker td.today:hover,.datepicker td.today:hover:hover,.datepicker td.today.disabled:hover,.datepicker td.today.disabled:hover:hover,.datepicker td.today:active,.datepicker td.today:hover:active,.datepicker td.today.disabled:active,.datepicker td.today.disabled:hover:active,.datepicker td.today.active,.datepicker td.today:hover.active,.datepicker td.today.disabled.active,.datepicker td.today.disabled:hover.active,.datepicker td.today.disabled,.datepicker td.today:hover.disabled,.datepicker td.today.disabled.disabled,.datepicker td.today.disabled:hover.disabled,.datepicker td.today[disabled],.datepicker td.today:hover[disabled],.datepicker td.today.disabled[disabled],.datepicker td.today.disabled:hover[disabled]{color:#fff;background-color:#fdf59a;*background-color:#fcf282}.datepicker td.today:active,.datepicker td.today:hover:active,.datepicker td.today.disabled:active,.datepicker td.today.disabled:hover:active,.datepicker td.today.active,.datepicker td.today:hover.active,.datepicker td.today.disabled.active,.datepicker td.today.disabled:hover.active{background-color:#fbf069 \9}.datepicker td.active,.datepicker td.active:hover,.datepicker td.active.disabled,.datepicker td.active.disabled:hover{color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25);background-color:#006dcc;background-image:-moz-linear-gradient(top, #08c, #04c);background-image:-webkit-gradient(linear,0 0,0 100%,from( #08c),to( #04c));background-image:-webkit-linear-gradient(top, #08c, #04c);background-image:-o-linear-gradient(top, #08c, #04c);background-image:linear-gradient(to bottom, #08c, #04c);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);border-color:#04c #0044cc #002a80;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);*background-color:#04c;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25)}.datepicker td.active:hover,.datepicker td.active:hover:hover,.datepicker td.active.disabled:hover,.datepicker td.active.disabled:hover:hover,.datepicker td.active:active,.datepicker td.active:hover:active,.datepicker td.active.disabled:active,.datepicker td.active.disabled:hover:active,.datepicker td.active.active,.datepicker td.active:hover.active,.datepicker td.active.disabled.active,.datepicker td.active.disabled:hover.active,.datepicker td.active.disabled,.datepicker td.active:hover.disabled,.datepicker td.active.disabled.disabled,.datepicker td.active.disabled:hover.disabled,.datepicker td.active[disabled],.datepicker td.active:hover[disabled],.datepicker td.active.disabled[disabled],.datepicker td.active.disabled:hover[disabled]{color:#fff;background-color:#04c;*background-color:#003bb3}.datepicker td.active:active,.datepicker td.active:hover:active,.datepicker td.active.disabled:active,.datepicker td.active.disabled:hover:active,.datepicker td.active.active,.datepicker td.active:hover.active,.datepicker td.active.disabled.active,.datepicker td.active.disabled:hover.active{background-color:#039 \9}.datepicker td span{display:block;width:23%;height:54px;line-height:54px;float:left;margin:1%;cursor:pointer;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.datepicker td span:hover{background:#eee}.datepicker td span.disabled,.datepicker td span.disabled:hover{background:0;color:#999;cursor:default}.datepicker td span.active,.datepicker td span.active:hover,.datepicker td span.active.disabled,.datepicker td span.active.disabled:hover{color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25);background-color:#006dcc;background-image:-moz-linear-gradient(top, #08c, #04c);background-image:-webkit-gradient(linear,0 0,0 100%,from( #08c),to( #04c));background-image:-webkit-linear-gradient(top, #08c, #04c);background-image:-o-linear-gradient(top, #08c, #04c);background-image:linear-gradient(to bottom, #08c, #04c);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);border-color:#04c #0044cc #002a80;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);*background-color:#04c;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25)}.datepicker td span.active:hover,.datepicker td span.active:hover:hover,.datepicker td span.active.disabled:hover,.datepicker td span.active.disabled:hover:hover,.datepicker td span.active:active,.datepicker td span.active:hover:active,.datepicker td span.active.disabled:active,.datepicker td span.active.disabled:hover:active,.datepicker td span.active.active,.datepicker td span.active:hover.active,.datepicker td span.active.disabled.active,.datepicker td span.active.disabled:hover.active,.datepicker td span.active.disabled,.datepicker td span.active:hover.disabled,.datepicker td span.active.disabled.disabled,.datepicker td span.active.disabled:hover.disabled,.datepicker td span.active[disabled],.datepicker td span.active:hover[disabled],.datepicker td span.active.disabled[disabled],.datepicker td span.active.disabled:hover[disabled]{color:#fff;background-color:#04c;*background-color:#003bb3}.datepicker td span.active:active,.datepicker td span.active:hover:active,.datepicker td span.active.disabled:active,.datepicker td span.active.disabled:hover:active,.datepicker td span.active.active,.datepicker td span.active:hover.active,.datepicker td span.active.disabled.active,.datepicker td span.active.disabled:hover.active{background-color:#039 \9}.datepicker td span.old{color:#999}.datepicker th.switch{width:145px}.datepicker thead tr:first-child th,.datepicker tfoot tr:first-child th{cursor:pointer}.datepicker thead tr:first-child th:hover,.datepicker tfoot tr:first-child th:hover{background:#eee}.input-append.date .add-on i,.input-prepend.date .add-on i{display:block;cursor:pointer;width:16px;height:16px}
-/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
+ */
+.datepicker {
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin-top: 1px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  /*.dow {
+		border-top: 1px solid #ddd !important;
+	}*/
+
+}
+.datepicker:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #cccccc;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -7px;
+  left: 6px;
+}
+.datepicker:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  position: absolute;
+  top: -6px;
+  left: 7px;
+}
+.datepicker > div {
+  display: none;
+}
+.datepicker.days div.datepicker-days {
+  display: block;
+}
+.datepicker.months div.datepicker-months {
+  display: block;
+}
+.datepicker.years div.datepicker-years {
+  display: block;
+}
+.datepicker table {
+  margin: 0;
+  background: #ffffff;
+}
+.datepicker td,
+.datepicker th {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.datepicker td {
+  color: #8b8b8b;
+}
+.datepicker td.day:hover {
+  background: none;
+  cursor: pointer;
+}
+.datepicker td.old,
+.datepicker td.new {
+  color: #c5c5c5;
+}
+.datepicker td.disabled,
+.datepicker td.disabled:hover {
+  background: none;
+  color: #c5c5c5;
+  cursor: default;
+}
+.datepicker td.today,
+.datepicker td.today:hover,
+.datepicker td.today.disabled,
+.datepicker td.today.disabled:hover {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #f4dec9;
+  background-image: -moz-linear-gradient(top, #f4d8c9, #f4e6c9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4d8c9), to(#f4e6c9));
+  background-image: -webkit-linear-gradient(top, #f4d8c9, #f4e6c9);
+  background-image: -o-linear-gradient(top, #f4d8c9, #f4e6c9);
+  background-image: linear-gradient(to bottom, #f4d8c9, #f4e6c9);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff4d8c9', endColorstr='#fff4e6c9', GradientType=0);
+  border-color: #f4e6c9 #f4e6c9 #e7c98a;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f4e6c9;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.datepicker td.today:hover,
+.datepicker td.today:hover:hover,
+.datepicker td.today.disabled:hover,
+.datepicker td.today.disabled:hover:hover,
+.datepicker td.today:active,
+.datepicker td.today:hover:active,
+.datepicker td.today.disabled:active,
+.datepicker td.today.disabled:hover:active,
+.datepicker td.today.active,
+.datepicker td.today:hover.active,
+.datepicker td.today.disabled.active,
+.datepicker td.today.disabled:hover.active,
+.datepicker td.today.disabled,
+.datepicker td.today:hover.disabled,
+.datepicker td.today.disabled.disabled,
+.datepicker td.today.disabled:hover.disabled,
+.datepicker td.today[disabled],
+.datepicker td.today:hover[disabled],
+.datepicker td.today.disabled[disabled],
+.datepicker td.today.disabled:hover[disabled] {
+  color: #ffffff;
+  background-color: #f4e6c9;
+  *background-color: #f0ddb4;
+}
+.datepicker td.today:active,
+.datepicker td.today:hover:active,
+.datepicker td.today.disabled:active,
+.datepicker td.today.disabled:hover:active,
+.datepicker td.today.active,
+.datepicker td.today:hover.active,
+.datepicker td.today.disabled.active,
+.datepicker td.today.disabled:hover.active {
+  background-color: #ebd39f \9;
+}
+.datepicker td.active,
+.datepicker td.active:hover,
+.datepicker td.active.disabled,
+.datepicker td.active.disabled:hover {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #f44512;
+  background-image: -moz-linear-gradient(top, #f42712, #f47212);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f42712), to(#f47212));
+  background-image: -webkit-linear-gradient(top, #f42712, #f47212);
+  background-image: -o-linear-gradient(top, #f42712, #f47212);
+  background-image: linear-gradient(to bottom, #f42712, #f47212);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff42712', endColorstr='#fff47212', GradientType=0);
+  border-color: #f47212 #f47212 #b15008;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f47212;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.datepicker td.active:hover,
+.datepicker td.active:hover:hover,
+.datepicker td.active.disabled:hover,
+.datepicker td.active.disabled:hover:hover,
+.datepicker td.active:active,
+.datepicker td.active:hover:active,
+.datepicker td.active.disabled:active,
+.datepicker td.active.disabled:hover:active,
+.datepicker td.active.active,
+.datepicker td.active:hover.active,
+.datepicker td.active.disabled.active,
+.datepicker td.active.disabled:hover.active,
+.datepicker td.active.disabled,
+.datepicker td.active:hover.disabled,
+.datepicker td.active.disabled.disabled,
+.datepicker td.active.disabled:hover.disabled,
+.datepicker td.active[disabled],
+.datepicker td.active:hover[disabled],
+.datepicker td.active.disabled[disabled],
+.datepicker td.active.disabled:hover[disabled] {
+  color: #ffffff;
+  background-color: #f47212;
+  *background-color: #e2660a;
+}
+.datepicker td.active:active,
+.datepicker td.active:hover:active,
+.datepicker td.active.disabled:active,
+.datepicker td.active.disabled:hover:active,
+.datepicker td.active.active,
+.datepicker td.active:hover.active,
+.datepicker td.active.disabled.active,
+.datepicker td.active.disabled:hover.active {
+  background-color: #ca5b09 \9;
+}
+.datepicker td span {
+  display: block;
+  width: 23%;
+  height: 54px;
+  line-height: 54px;
+  float: left;
+  margin: 1%;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.datepicker td span:hover {
+  background: #b0b0b0;
+}
+.datepicker td span.disabled,
+.datepicker td span.disabled:hover {
+  background: none;
+  color: #808080;
+  cursor: default;
+}
+.datepicker td span.active,
+.datepicker td span.active:hover,
+.datepicker td span.active.disabled,
+.datepicker td span.active.disabled:hover {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #f44512;
+  background-image: -moz-linear-gradient(top, #f42712, #f47212);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f42712), to(#f47212));
+  background-image: -webkit-linear-gradient(top, #f42712, #f47212);
+  background-image: -o-linear-gradient(top, #f42712, #f47212);
+  background-image: linear-gradient(to bottom, #f42712, #f47212);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff42712', endColorstr='#fff47212', GradientType=0);
+  border-color: #f47212 #f47212 #b15008;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f47212;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.datepicker td span.active:hover,
+.datepicker td span.active:hover:hover,
+.datepicker td span.active.disabled:hover,
+.datepicker td span.active.disabled:hover:hover,
+.datepicker td span.active:active,
+.datepicker td span.active:hover:active,
+.datepicker td span.active.disabled:active,
+.datepicker td span.active.disabled:hover:active,
+.datepicker td span.active.active,
+.datepicker td span.active:hover.active,
+.datepicker td span.active.disabled.active,
+.datepicker td span.active.disabled:hover.active,
+.datepicker td span.active.disabled,
+.datepicker td span.active:hover.disabled,
+.datepicker td span.active.disabled.disabled,
+.datepicker td span.active.disabled:hover.disabled,
+.datepicker td span.active[disabled],
+.datepicker td span.active:hover[disabled],
+.datepicker td span.active.disabled[disabled],
+.datepicker td span.active.disabled:hover[disabled] {
+  color: #ffffff;
+  background-color: #f47212;
+  *background-color: #e2660a;
+}
+.datepicker td span.active:active,
+.datepicker td span.active:hover:active,
+.datepicker td span.active.disabled:active,
+.datepicker td span.active.disabled:hover:active,
+.datepicker td span.active.active,
+.datepicker td span.active:hover.active,
+.datepicker td span.active.disabled.active,
+.datepicker td span.active.disabled:hover.active {
+  background-color: #ca5b09 \9;
+}
+.datepicker td span.old {
+  color: #808080;
+}
+.datepicker th.switch {
+  width: 145px;
+}
+.datepicker thead tr th {
+  color: #000000;
+  height: 25px;
+}
+.datepicker thead tr:first-child th {
+  height: 25px;
+  background: #f7f7f7;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #cccccc;
+}
+.datepicker thead tr:first-child th,
+.datepicker tfoot tr:first-child th {
+  cursor: pointer;
+}
+.datepicker thead tr:first-child th:hover,
+.datepicker tfoot tr:first-child th:hover {
+  background: #f7f7f7;
+}
+.datepicker thead tr:first-child th:first-child {
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+}
+.datepicker thead tr:first-child th:last-child {
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
+}
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+  display: block;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}

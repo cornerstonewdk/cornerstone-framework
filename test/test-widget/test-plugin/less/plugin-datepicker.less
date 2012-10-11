@@ -11,7 +11,7 @@
 .datepicker {
 	top: 0;
 	left: 0;
-	padding: 4px;
+	padding: 0;
 	margin-top: 1px;
 	.border-radius(4px);
 	&:before {
@@ -19,7 +19,7 @@
 		display: inline-block;
 		border-left:   7px solid transparent;
 		border-right:  7px solid transparent;
-		border-bottom: 7px solid #ccc;
+		border-bottom: 7px solid @datepickerArrowBack;
 		border-bottom-color: rgba(0,0,0,.2);
 		position: absolute;
 		top: -7px;
@@ -30,7 +30,7 @@
 		display: inline-block;
 		border-left:   6px solid transparent;
 		border-right:  6px solid transparent;
-		border-bottom: 6px solid @white;
+		border-bottom: 6px solid @datepickerArrow;
 		position: absolute;
 		top: -6px;
 		left: 7px;
@@ -40,15 +40,17 @@
 	}
 	&.days div.datepicker-days {
 		display: block;
+		
 	}
 	&.months div.datepicker-months {
 		display: block;
 	}
 	&.years div.datepicker-years {
-		display: block;
+		display: block;		
 	}
 	table{
-		margin: 0;
+		margin: 0;	
+		background: @datepickerBackground;
 	}
 	td,
 	th{
@@ -58,18 +60,19 @@
 		.border-radius(4px);
 	}
 	td {
+		color: @dateColor;
 		&.day:hover {
-			background: @grayLighter;
+			background: none;
 			cursor: pointer;
 		}
 		&.old,
 		&.new {
-			color: @grayLight;
+			color: @dateDisabled;
 		}
 		&.disabled,
 		&.disabled:hover {
 			background: none;
-			color: @grayLight;
+			color: @dateDisabled;
 			cursor: default;
 		}
 		&.today,
@@ -83,7 +86,7 @@
 		&.active:hover,
 		&.active.disabled,
 		&.active.disabled:hover {
-			.buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
+			.buttonBackground(@activeDate, spin(@activeDate, 20));
 			color: #fff;
 			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 		}
@@ -109,7 +112,7 @@
 			&.active:hover,
 			&.active.disabled,
 			&.active.disabled:hover {
-				.buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
+				.buttonBackground(@activeDate, spin(@activeDate, 20));
 				color: #fff;
 				text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 			}
@@ -123,12 +126,30 @@
 		width: 145px;
 	}
 
+	thead tr th {
+		color: @dateHeaderTxt;
+		height: 25px;
+	}
+
+	thead tr:first-child th {
+		height: 25px;
+		background: @dateHeader;	
+		.border-radius(0);
+		border-bottom: 1px solid @datepickerArrowBack;
+	}
+
 	thead tr:first-child th,
 	tfoot tr:first-child th {
-		cursor: pointer;
+		cursor: pointer;			
 		&:hover{
-			background: @grayLighter;
-		}
+			background: @dateHeader;
+		}	
+	}
+	thead tr:first-child th:first-child {
+		.border-radius(4px 0 0 0);
+	}
+	thead tr:first-child th:last-child {
+		.border-radius(0 4px 0 0);
 	}
 	/*.dow {
 		border-top: 1px solid #ddd !important;
