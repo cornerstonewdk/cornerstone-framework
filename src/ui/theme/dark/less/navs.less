@@ -331,7 +331,7 @@
 // ---------
 
 .nav-tabs .dropdown-menu {
-  .border-radius(0 0 6px 6px); // remove the top rounded corners here since there is a hard edge above the menu
+  .border-radius(8px); // remove the top rounded corners here since there is a hard edge above the menu
 }
 .nav-pills .dropdown-menu {
   .border-radius(6px); // make rounded corners match the pills
@@ -641,120 +641,75 @@
 	width: 32px;
 	height: 25px;
 	margin: 0 auto 3px auto;
-	background: url(../img/icon.png) no-repeat left center;
-	background-size: 138px;
+	background: url(../img/icon_black02.png);
+	background-size: 287px;
 }
 
-.nav-bot li a .about {
-	width:26px;
-	background-position: -53px -810px;
+.nav-bot li a:hover i,
+.nav-bot li a:active i,
+.nav-bot li a.active i {
+	width: 32px;
+	height: 25px;
+	background: url(../img/icon_black03.png);
+	background-size: 287px;
 }
 
-.nav-bot li a .favorites {
-	width:25px;
-	background-position: -53px -912px;
+.v-blue li i {
+	width: 32px;
+	height: 25px;
+	background: url(../img/icon_blue01.png);
+	background-size: 287px;
 }
 
-.nav-bot li a .downloads {
-	width:25px;
-	background-position: -106px 0;
+.v-blue li a:hover i,
+.v-blue li a:active i,
+.v-blue li a.active i {
+	width: 32px;
+	height: 25px;
+	background: url(../img/icon_blue02.png);
+	background-size: 287px;
 }
 
-.nav-bot li a .settings {
-	width:31px;
-	background-position: -106px -99px;
-}
-
-.nav-bot li a .user {
-	width:32px;
-	background-position: -106px -197px;
-}
-
+.nav-bot li a .about,
 .nav-bot li a:hover .about,
 .nav-bot li a:active .about,
-.nav-bot li a.active .about {
-	background-position: -53px -861px;
+.nav-bot li.active .about {
+	width:26px;
+	background-position: -1px 0;
 }
 
+.nav-bot li a .favorites,
 .nav-bot li a:hover .favorites,
 .nav-bot li a:active .favorites,
 .nav-bot li a.active .favorites {
-	background-position: -53px -963px;
+	width:26px;
+	background-position: -65px 0;
 }
 
+.nav-bot li a .downloads,
 .nav-bot li a:hover .downloads,
 .nav-bot li a:active .downloads,
 .nav-bot li a.active .downloads {
-	background-position: -106px -50px;
+	width:21px;
+	background-position: -132px 0;
 }
 
+.nav-bot li a .settings,
 .nav-bot li a:hover .settings,
 .nav-bot li a:active .settings,
 .nav-bot li a.active .settings {
-	background-position: -106px -148px;
+	width:23px;
+	background-position: -196px 0;
 }
 
+.nav-bot li a .user,
 .nav-bot li a:hover .user,
 .nav-bot li a:active .user,
 .nav-bot li a.active .user {
-	background-position: -106px -249px;
+	width:32px;
+	background-position: -255px 0;
 }
 
-// blue vision
-
-.v-blue li a .about {
-	width:25px;
-	background-position: -106px -302px;
-}
-
-.v-blue li a .favorites {
-	width:25px;
-	background-position: -106px -402px;
-}
-
-.v-blue li a .downloads {
-	width:25px;
-	background-position: -106px -502px;
-}
-
-.v-blue li a .settings {
-	width:25px;
-	background-position: -106px -602px;
-}
-
-.v-blue li a .user {
-	background-position: -106px -702px;
-}
-
-.v-blue li a:hover .about,
-.v-blue li a:active .about,
-.v-blue li a.active .about {
-	background-position: -106px -353px;
-}
-
-.v-blue li a:hover .favorites,
-.v-blue li a:active .favorites,
-.v-blue li a.active .favorites {
-	background-position: -106px -454px;
-}
-
-.v-blue li a:hover .downloads,
-.v-blue li a:active .downloads,
-.v-blue li a.active .downloads {
-	background-position: -106px -552px;
-}
-
-.v-blue li a:hover .settings,
-.v-blue li a:active .settings,
-.v-blue li a.active .settings {
-	background-position: -106px -652px;
-}
-
-.v-blue li a:hover .user,
-.v-blue li a:active .user, 
-.v-blue li a.active .user {
-	background-position: -106px -752px;
-}
 
 // Radio,Checkbox Vertical List
 

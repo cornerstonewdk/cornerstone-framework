@@ -20,12 +20,16 @@
 	}
 
 	.navbar-inner {
-		padding: 10px 10px;		
+		min-height: (@navbarHeight - 10);
+		padding: 10px 10px 0 10px;		
+	}	
+	
+	.navbar .nav-collapse {
+		padding: 10px 0;
 	}
 
-	.navbar .nav {
+	.navbar ul.nav {
 		width: 100%;
-		margin: 0;
 		padding: 0;
 	}
 
@@ -69,7 +73,7 @@
 
 	.nav-icon .nav > li a {
 		font-size: (@baseFontSize + 3);
-		line-height: @baseLineHeight + 3;
+		line-height: (@baseLineHeight + 3);
 	}
 
 	.navbar .nav > li:first-child a,
@@ -227,5 +231,13 @@
 		border: 0;
 		box-shadow: none;
 		margin: 0;
+	}
+
+	.navbar .brand {
+		display: block;
+	}
+
+	.navbar .btn-navbar {
+		display: block;
 	}
 }

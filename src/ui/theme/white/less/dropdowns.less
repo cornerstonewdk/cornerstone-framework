@@ -43,7 +43,7 @@
   top: 100%;
   left: 0;
   z-index: @zindexDropdown;
-  display: none; // none by default, but block on "open" of the menu
+  display: block; // none by default, but block on "open" of the menu
   float: left;
   min-width: 160px;
   padding: 0;
@@ -66,6 +66,30 @@
     left: auto;
   }
 
+	&:before {
+    content: '';
+    display: inline-block;
+    border-left:   7px solid transparent;
+    border-right:  7px solid transparent;
+    border-bottom: 9px solid @dropdownBorder;
+    border-bottom-color: @dropdownBorder;
+    position: absolute;
+    top: -9px;
+    left: 15px;
+		z-index: 10;
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    border-left:   6px solid transparent;
+    border-right:  6px solid transparent;
+    border-bottom: 8px solid @dropdownBackground;
+    position: absolute;
+    top: -8px;
+    left: 16px;
+		z-index: 10;
+  }
+
   // Dividers (basically an hr) within the dropdown
   .divider {
     .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
@@ -81,11 +105,16 @@
     color: @dropdownLinkColor;
     white-space: nowrap;	
 		border-top: 1px solid rgba(255,255,255,.07);
+		font-size: (@baseFontSize + 2);
   }
 }
 
 .dropdown-menu li {
 	border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.dropdown-menu li i {
+	margin: 2px 2px 0 0;
 }
 
 .dropdown-menu li:first-child {

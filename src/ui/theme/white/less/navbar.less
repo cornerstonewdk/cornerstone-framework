@@ -49,7 +49,7 @@
   float: none;
   display: none;
   // Vertically center the text given @navbarHeight
-  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+  padding: 5px 20px;
   margin-left: 0; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
@@ -74,10 +74,6 @@
   &:hover {
     color: @navbarLinkColorHover;
   }
-}
-
-.navbar .btn.btn-navbar {
-	display: none;
 }
 
 // Dividers in navbar
@@ -424,10 +420,6 @@
 
 // Icon Navigation 
 
-.nav-icon .brand {
-	text-align:center;
-}
-
 .nav-icon .nav > li a {
 	font-size: 0;
 	line-height: 0;	
@@ -495,7 +487,7 @@
 	left: 10px; 
 	top: 0;
 	margin:8px 0 0;
-	display:block;
+	display: none;
 	.box-shadow(inset 0 0 7px rgba(0,0,0,.7));
 	border:1px solid rgba(255,255,255,.1);
 	border-bottom:1px solid rgba(255,255,255,.3);
@@ -547,30 +539,7 @@
 	top: 42px;
 	left: 3px;
 	z-index: 1;
-	text-align:left;	
-  &:before {
-    content: '';
-    display: inline-block;
-    border-left:   7px solid transparent;
-    border-right:  7px solid transparent;
-    border-bottom: 9px solid @dropdownBorder;
-    border-bottom-color: @dropdownBorder;
-    position: absolute;
-    top: -8px;
-    left: 9px;
-		z-index: 10;
-  }
-  &:after {
-    content: '';
-    display: inline-block;
-    border-left:   6px solid transparent;
-    border-right:  6px solid transparent;
-    border-bottom: 8px solid @dropdownBackground;
-    position: absolute;
-    top: -7px;
-    left: 10px;
-		z-index: 10;
-  }
+	text-align:left;  
 }
 
 // Menu position and menu caret support for dropups via extra dropup class

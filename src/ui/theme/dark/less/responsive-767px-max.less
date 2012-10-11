@@ -19,11 +19,17 @@
 	}
 
 	.navbar-inner {
-		padding: 10px 10px;	
+		min-height: (@navbarHeight - 10);
+		padding: 10px 10px 0 10px;	
 	}
 
-	.navbar .nav {
+	.navbar .nav-collapse {
+		padding: 10px 0;
+	}
+
+	.navbar ul.nav {
 		width: 100%;
+		padding: 0;
 	}
 
 	.navbar .nav > li {
@@ -66,7 +72,7 @@
 
 	.nav-icon .nav > li a {
 		font-size: (@baseFontSize + 3);
-		line-height: @baseLineHeight + 3;
+		line-height: (@baseLineHeight + 3);
 	}
 
 	.navbar .nav > li:first-child a,
@@ -86,19 +92,6 @@
 		background-color: @navbarLinkBackgroundActive;
 	}
 
-	.navbar .navbar-search {
-		display: none;
-	}
-
-	.navbar .nav.pull-right {
-	
-	}
-
-	.nav-icon .nav > li a {
-		font-size: (@baseFontSize + 3);
-		line-height: @baseLineHeight + 3;
-	}	
-
 	.navbar .nav > li > .dropdown-menu {
 		padding-top: 5px;
 		&:before {
@@ -114,17 +107,21 @@
 	}
 
 	.navbar .nav > li > .dropdown-menu > li > a {
+		color: @navbarLinkColor;
 		border: 0;
 		box-shadow: none;
 		margin: 0;
 		padding: 5px 15px;
 	}
+
 	.navbar .nav > li > .dropdown-menu > li > a:hover,
 	.navbar .nav > li > .dropdown-menu > li > a:active {
+		#font > #effect > .txt-over();
 		border: 0;
 		box-shadow: none;
 		margin: 0;
 		.border-radius(5px);
+		background: @navbarLinkBackgroundActive;
 	}
 
 	.nav-icon .nav > li:first-child a,
@@ -243,5 +240,13 @@
 		border: 0;
 		box-shadow: none;
 		margin: 0;
+	}
+
+	.navbar .brand {
+		display: block;
+	}
+
+	.navbar .btn-navbar {
+		display: block;
 	}
 }
