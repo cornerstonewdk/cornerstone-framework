@@ -19,12 +19,21 @@
 	}
 
 	.navbar-inner {
-		min-height: (@navbarHeight - 10);
-		padding: 10px 10px 0 10px;	
+		min-height: @navbarHeight;
+		padding: 0 10px;		
+	}	
+
+	.navbar-fixed-top {
+		margin: 0;
+	}
+
+	.navbar-fixed-top .container {
+		width: auto;
+		padding: 0;
 	}
 
 	.navbar .nav-collapse {
-		margin: 10px 0;
+		margin: 10px 0 0;
 		height: 0;
 	}
 
@@ -245,13 +254,10 @@
 
 	.navbar .brand {
 		display: block;
+		padding-top: 15px;
 	}
 
 	.navbar .btn-navbar {
 		display: block;
-	}
-
-	.navbar-form {
-		margin: -8px 0 8px;
 	}
 }

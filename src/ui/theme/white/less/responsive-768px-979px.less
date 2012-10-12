@@ -17,10 +17,24 @@
   // No need to reset .thumbnails here since it's the same @gridGutterWidth
 
 	.navbar-inner {
-		min-height: 30px;
-		padding: 10px 10px 0 10px;		
+		min-height: @navbarHeight;
+		padding: 0 10px;		
 	}	
 
+	.navbar-inner {
+		min-height: @navbarHeight;
+		padding: 0 10px;
+	}	
+
+	.navbar-fixed-top {
+		margin: 0;
+	}
+
+	.navbar-fixed-top .container {
+		width: auto;
+		padding: 0;
+	}
+	
 	.navbar .nav-collapse {
 		margin: 10px 0 0;
 		height: 0;
@@ -232,14 +246,12 @@
 	}
 
 	.navbar .brand {
-		display: block;
+		min-width: 320px;
+		display: inline-block;
+		padding-top: 15px;
 	}
 
 	.navbar .btn-navbar {
 		display: block;
-	}
-
-	.navbar-form {
-		margin: -8px 0 8px;
 	}
 }
