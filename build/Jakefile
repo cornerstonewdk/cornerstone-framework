@@ -114,7 +114,8 @@ runTask( 'deploy', [ 'validate' ], function() {
 	j.files( PATH_DIST + 'ui', '**/*.js' ).minify( PATH_DIST + 'ui' );
 	j.files( PATH_SOURCE, '*.js' ).minify( PATH_DIST );
 	j.files( PATH_SOURCE + 'loader', '**/*.js' ).minify( PATH_DIST + 'loader' );
-	j.files( PATH_SOURCE + 'mvc', '**/*.js' ).minify( PATH_DIST + 'mvc' );
+	j.files( PATH_SOURCE + 'mvc/model', '**/*.js' ).minify( PATH_DIST + 'mvc/model' );
+	j.files( PATH_SOURCE + 'mvc/view', '**/*.js' ).minify( PATH_DIST + 'mvc/view' );
 	j.files( PATH_SOURCE + 'util', '**/*.js' ).minify( PATH_DIST + 'util' );
 	
 	// 이미지 파일 복사
