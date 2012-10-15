@@ -1,0 +1,59 @@
+#view {
+	width: 160px;
+	height: 160px;
+	margin: 80px auto 0 auto;
+}
+
+#box div {
+	position: absolute;
+	height: 160px;
+	width: 160px;
+	border: 3px solid #000;
+	background: rgba(255,200,100,0.8);
+	text-align: center;
+	font-size: 130px;
+	line-height: 170px;
+}
+
+#box {
+	-webkit-animation-name: animation;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-duration: 3s;
+	margin: 80;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform-origin: 80px 80px 0;
+}
+
+#box .m1 {
+	-webkit-transform: translateZ(80px);
+}
+
+#box .m2 {
+	-webkit-transform: rotateX(-90deg) translateZ(80px);
+}
+
+#box .m3 {
+	-webkit-transform: rotateY(90deg) rotateX(90deg) translateZ(80px);
+}
+
+#box .m4 {
+	-webkit-transform: rotateY(180deg) rotateZ(90deg) translateZ(80px);
+}
+
+#box .m5 {
+	-webkit-transform: rotateY(-90deg) rotateZ(90deg) translateZ(80px);
+}
+
+#box .m6 {
+	-webkit-transform: rotateY(90deg) translateZ(80px);
+}
+
+@-webkit-keyframes animation {
+	from,to{}
+	16% { -webkit-transform: rotateY(-90deg);}
+    33% { -webkit-transform: rotateY(-90deg) rotateZ(135deg);}
+    50% { -webkit-transform: rotateY(225deg) rotateZ(135deg);}
+    66% { -webkit-transform: rotateY(135deg) rotateX(135deg);}
+    83% { -webkit-transform: rotateX(135deg);}
+}

@@ -1,0 +1,16 @@
+div#gesture-area {
+	position: relative;
+	height: 300px;
+	overflow: hidden;
+}
+
+div#gesture-obj {
+	position: relative;
+	border: 1px solid lightgrey;
+	display: inline-block;
+	top: 100px;
+	left: 20px;
+	font-size: 2em;
+	padding: 3px;
+	white-space: nowrap;
+}
