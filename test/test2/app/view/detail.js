@@ -7,8 +7,6 @@ define( [ 'backbone', 'jquery', 'template!view/detail' ], function( Backbone, $,
 		tagName: 'div',
 
 		initialize: function() {
-		
-			console.log( 'kkkk' );
 
 			$( document ).append( this.render().el );
 

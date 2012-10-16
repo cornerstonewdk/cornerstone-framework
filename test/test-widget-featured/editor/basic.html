@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>에디터</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="images/style.css">
+	<link rel="stylesheet" href="markitup/skins/markitup/style.css">
+	<link rel="stylesheet" href="markitup/sets/default/style.css">
+	<style type="text/css">
+		.editor {
+			width: 100%;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+
+<div id="header">
+	<div class="navbar nav-icon">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<i></i>
+				</button>
+				<a class="brand" href="#">CornerStone</a>
+
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-left">
+						<li class="">
+							<a href="#">
+								<i class="home"></i>
+								Home
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<i class="message"></i>
+								Link1
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<i class="mail"></i>
+								Link2
+							</a>
+						</li>
+						<li class="active">
+							<a href="#">
+								<i class="save"></i>
+								Link3
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<i class="user2"></i>
+								Link4
+							</a>
+						</li>
+					</ul>
+
+					<ul class="nav pull-right">
+						<li class="">
+							<a href="#"><i class="connect"></i></a>
+						</li>
+						<li class="">
+							<a href="#"><i class="search"></i></a>
+						</li>
+						<li class="">
+							<a href="#"><i class="write"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="wrapper" class="container">
+	<div class="row">
+		<div class="span12">
+			<textarea id="markItUp" rows="20" class="editor"></textarea>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../lib/jquery.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/editor/jquery.markitup.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/editor/featured-editor.js"></script>
+<script type="text/javascript">
+	var mySettings = {
+		onShiftEnter:  	{keepDefault:false, replaceWith:'<br />\n'},
+		onCtrlEnter:  	{keepDefault:false, openWith:'\n<p>', closeWith:'</p>'},
+		onTab:    		{keepDefault:false, replaceWith:'    '},
+		markupSet:  [
+			{name:'Bold', key:'B', openWith:'(!(<strong>|!|<b>)!)', closeWith:'(!(</strong>|!|</b>)!)' },
+			{name:'Italic', key:'I', openWith:'(!(<em>|!|<i>)!)', closeWith:'(!(</em>|!|</i>)!)'  },
+			{name:'Stroke through', key:'S', openWith:'<del>', closeWith:'</del>' },
+			{separator:'---------------' },
+			{name:'Bulleted List', openWith:'    <li>', closeWith:'</li>', multiline:true, openBlockWith:'<ul>\n', closeBlockWith:'\n</ul>'},
+			{name:'Numeric List', openWith:'    <li>', closeWith:'</li>', multiline:true, openBlockWith:'<ol>\n', closeBlockWith:'\n</ol>'},
+			{separator:'---------------' },
+			{name:'Picture', key:'P', replaceWith:'<img src="[![Source:!:http://]!]" alt="[![Alternative text]!]" />' },
+			{name:'Link', key:'L', openWith:'<a href="[![Link:!:http://]!]"(!( title="[![Title]!]")!)>', closeWith:'</a>', placeHolder:'Your text to link...' },
+			{separator:'---------------' },
+			{name:'Clean', className:'clean', replaceWith:function(markitup) { return markitup.selection.replace(/<(.*?)>/g, "") } },
+			{name:'Preview', className:'preview',  call:'preview'}
+		]
+	}
+
+	$(function() {
+		// Add markItUp! to your textarea in one line
+		// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+		$('#markItUp').markItUp(mySettings);
+
+
+
+		// You can add content from anywhere in your page
+		// $.markItUp( { Settings } );
+		$('.add').click(function() {
+			$('#markItUp').markItUp('insert',
+					{ 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+			);
+			return false;
+		});
+
+		// And you can add/remove markItUp! whenever you want
+		// $(textarea).markItUpRemove();
+		$('.toggle').click(function() {
+			if ($("#markItUp.markItUpEditor").length === 1) {
+				$("#markItUp").markItUp('remove');
+				$("span", this).text("get markItUp! back");
+			} else {
+				$('#markItUp').markItUp(mySettings);
+				$("span", this).text("remove markItUp!");
+			}
+			return false;
+		});
+	});
+</script>
+</body>
+</html>

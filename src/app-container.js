@@ -20,6 +20,7 @@ requirejs.config( {
 		'enquire': Cornerstone.PATH_LIB + 'enquire.min',
 		'template': Cornerstone.PATH + 'loader/template',
 		'style': Cornerstone.PATH + 'loader/style',
+		'sync': Cornerstone.PATH + 'mvc/model/sync',
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
 		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture'

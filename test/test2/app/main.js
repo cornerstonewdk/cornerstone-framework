@@ -3,7 +3,7 @@
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'bootstrap', 'store', 'style!main' ], function( ListView, AddView, DetailView, Users, Backbone ) {
+define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sync', 'bootstrap', 'style!main' ], function( ListView, AddView, DetailView, Users, Backbone, Sync ) {
 	return {
 		launch: function() {
 
@@ -62,6 +62,7 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'bo
 				}
 			} );
 
+			Backbone.sync = Sync.local;
 			new MainRouter();
 			Backbone.history.start();
 		}	
