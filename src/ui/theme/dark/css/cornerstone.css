@@ -3328,6 +3328,7 @@ input.search-query {
   margin-bottom: 0;
 }
 .navbar-search .search-query {
+  line-height: 23px;
   background-color: rgba(34, 34, 34, 0.64);
   border: 1px solid transparent;
   -webkit-border-radius: 25px;
@@ -3341,7 +3342,7 @@ input.search-query {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
   color: #c0c0c0;
-  padding: 10px 10px;
+  padding: 5px 15px;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
@@ -3373,7 +3374,7 @@ input.search-query {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
   color: #c0c0c0;
-  padding: 10px 10px;
+  padding: 5px 15px;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
@@ -6760,7 +6761,7 @@ address {
     top: 25%;
   }
   .navbar-inner {
-    min-height: 51px;
+    min-height: 41px;
     padding: 0 10px;
   }
   .navbar-fixed-top {
@@ -6989,7 +6990,7 @@ address {
   }
   .navbar .brand {
     display: block;
-    padding-top: 15px;
+    padding-top: 10px;
   }
   .navbar .btn-navbar {
     display: block;
@@ -7307,7 +7308,7 @@ address {
     width: 28px;
   }
   .navbar-inner {
-    min-height: 51px;
+    min-height: 41px;
     padding: 0 10px;
   }
   .navbar-fixed-top {
@@ -7536,7 +7537,7 @@ address {
   }
   .navbar .brand {
     display: block;
-    padding-top: 15px;
+    padding-top: 10px;
   }
   .navbar .btn-navbar {
     display: block;

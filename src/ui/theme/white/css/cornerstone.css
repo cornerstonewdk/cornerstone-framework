@@ -6777,8 +6777,7 @@ address {
 }
 @media (max-width: 767px) {
   body {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px;
   }
   .modal.fade {
     -webkit-transform: translate3d(0, 0, 0);
@@ -6787,7 +6786,7 @@ address {
     top: 25%;
   }
   .navbar-inner {
-    min-height: 51px;
+    min-height: 41px;
     padding: 0 10px;
   }
   .navbar-fixed-top {
@@ -6992,7 +6991,7 @@ address {
   .navbar .brand {
     min-width: 320px;
     display: inline-block;
-    padding-top: 15px;
+    padding-top: 10px;
   }
   .navbar .btn-navbar {
     display: block;
@@ -7310,11 +7309,7 @@ address {
     width: 28px;
   }
   .navbar-inner {
-    min-height: 51px;
-    padding: 0 10px;
-  }
-  .navbar-inner {
-    min-height: 51px;
+    min-height: 41px;
     padding: 0 10px;
   }
   .navbar-fixed-top {
@@ -7519,7 +7514,7 @@ address {
   .navbar .brand {
     min-width: 320px;
     display: inline-block;
-    padding-top: 15px;
+    padding-top: 10px;
   }
   .navbar .btn-navbar {
     display: block;
@@ -7846,6 +7841,9 @@ address {
     margin-left: 0;
   }
   .navbar .brand {
+    display: none;
+  }
+  .navbar .btn-navbar {
     display: none;
   }
   .lists ul li:hover,

@@ -42,7 +42,6 @@
   height: auto;
 }
 
-
 // Brand: website or project name
 // -------------------------
 .navbar .brand {
@@ -150,6 +149,7 @@
 		.navbarVerticalAlign(30px); // Vertically center in navbar
 		margin-bottom: 0;
     .search-query {
+			line-height: (@baseLineHeight + 5);
       background-color: @inputBackground;
 			border:1px solid transparent;
 			.border-radius(@searchBorderRadius);
@@ -157,7 +157,7 @@
 			@transition: border linear .2s, box-shadow linear .2s;
 			.transition(@transition);
 			color: @searchTxt;
-			padding: 10px 10px;
+			padding: 5px 15px;
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
 			vertical-align: middle;
@@ -173,7 +173,7 @@
 				@transition: border linear .2s, box-shadow linear .2s;
 				.transition(@transition);
 				color: @searchTxt;
-				padding: 10px 10px;
+				padding: 5px 15px;
 				.transition(none);
 				.placeholder(@navbarInverseSearchPlaceholderColor);
 				vertical-align: middle;
