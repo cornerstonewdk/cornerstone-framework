@@ -10,7 +10,7 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define("FeaturedChart", [ "jquery", "d3" ], function ($, d3) {
+        define([ "jquery"], function ($) {
             return factory($, root, doc, d3);
         });
     } else {
@@ -42,9 +42,10 @@
         };
 
         // 배열로 넘어온 색상을 d3 색상 카테고리로 변환
-        if (typeof options.color === "array" && options.color.length > 0) {
+        if (typeof options === "object" && typeof options.color === "object" && options.color.length > 0) {
             options.color = d3.scale.ordinal().range(options.color);
         }
+
 
         this.options = options = $.extend(true, defaultOptions, options);
         this.$el = $(element);
@@ -90,7 +91,6 @@
                 .axisLabel(options.yAxisLabel)
                 .tickFormat(d3.format(',.1f'));
 
-            console.log(options.lineType);
             chart.color(options.color.range());
 
             target.append("svg:svg")
