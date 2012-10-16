@@ -1,6 +1,8 @@
 
 /**
  * Cornerstone Framework Build Script (using jake)
+ *
+ * ex) jake source=/home/user/src lib=/home/user/lib dist=/home/user/dist
  */
 
 var j = require( './job' );
@@ -47,6 +49,10 @@ runTask( 'init', function() {
 	j.mkdir( PATH_DIST + 'loader' );
 	j.mkdir( PATH_DIST + 'mvc/model' );
 	j.mkdir( PATH_DIST + 'mvc/view' );
+	j.mkdir( PATH_DIST + 'ui' );
+	j.mkdir( PATH_DIST + 'ui/theme/dark/css' );
+	j.mkdir( PATH_DIST + 'ui/theme/white/css' );
+	j.mkdir( PATH_DIST + 'util' );
 } );
 
 desc( '소스 파일들을 검증한다. 그 전에 init를 수행한다.' );
@@ -59,10 +65,73 @@ runTask( 'deploy', [ 'validate' ], function() {
 	// 외부 라이브러리 복사
 	j.copy( PATH_LIB, PATH_DIST + 'lib' );
 	
-	// minify
-	j.files( PATH_SOURCE, '**/*.js' ).minify( PATH_DIST );
+	// Plugin 파일 통합
+	j.concat(
+		PATH_LIB + 'bootstrap/js/bootstrap.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-cornerstone.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-touch.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-motioncapcha.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-rangeinput.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-sign.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-spinner.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-datepicker.js',
+		PATH_DIST + 'ui/widget-plugins.js'
+	);
 	
-	complete();
+	// Featured 파일 통합
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/chart/d3.v2.js',
+		PATH_SOURCE + 'ui/widget/featured/chart/nv.d3.js',
+		PATH_SOURCE + 'ui/widget/featured/chart/featured-chart.js',
+		PATH_DIST + 'ui/widget-chart.js'
+	);
+	
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/datatable/jquery.dataTables.min.js',
+		PATH_SOURCE + 'ui/widget/featured/datatable/featured-datatable.js',
+		PATH_DIST + 'ui/widget-datatable.js'
+	);
+	
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/list-view/infinity.js',
+		PATH_SOURCE + 'ui/widget/featured/list-view/featured-listview.js',
+		PATH_DIST + 'ui/widget-listview.js'
+	);
+	
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/media/mediaelement-and-player.js',
+		PATH_SOURCE + 'ui/widget/featured/media/featured-media.js',
+		PATH_DIST + 'ui/widget-media.js'
+	);
+	
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/scroll-view/iscroll.js',
+		PATH_SOURCE + 'ui/widget/featured/scroll-view/featured-scrollview.js',
+		PATH_DIST + 'ui/widget-scrollview.js'
+	);
+	
+	// minify
+	j.files( PATH_DIST + 'ui', '**/*.js' ).minify( PATH_DIST + 'ui' );
+	j.files( PATH_SOURCE, '*.js' ).minify( PATH_DIST );
+	j.files( PATH_SOURCE + 'loader', '**/*.js' ).minify( PATH_DIST + 'loader' );
+	j.files( PATH_SOURCE + 'mvc/model', '**/*.js' ).minify( PATH_DIST + 'mvc/model' );
+	j.files( PATH_SOURCE + 'mvc/view', '**/*.js' ).minify( PATH_DIST + 'mvc/view' );
+	j.files( PATH_SOURCE + 'util', '**/*.js' ).minify( PATH_DIST + 'util' );
+	
+	// 이미지 파일 복사
+	j.copy( PATH_SOURCE + 'ui/theme/dark/img', PATH_DIST + 'ui/theme/dark/img' );
+	j.copy( PATH_SOURCE + 'ui/theme/white/img', PATH_DIST + 'ui/theme/white/img' );
+	
+	// less 컴파일
+	j.less( PATH_SOURCE + 'ui/theme/dark/less/cornerstone.less', PATH_DIST + 'ui/theme/dark/css/cornerstone.css', function( err ) {
+		if ( err ) fail( err );
+		
+		j.less( PATH_SOURCE + 'ui/theme/white/less/cornerstone.less', PATH_DIST + 'ui/theme/white/css/cornerstone.css', function( err ) {
+			if ( err ) fail( err );
+			
+			complete();
+		} );
+	} );
 	
 }, { async: true } );
 

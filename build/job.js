@@ -9,6 +9,7 @@ var glob = require( 'glob' );
 var colorize = require( 'colorize' );
 var jsp = require( 'uglify-js' ).parser;
 var pro = require( 'uglify-js' ).uglify;
+var less = require( 'less' );
 var Step = require( 'step' );
 
 const ENCODING = 'utf-8';
@@ -18,17 +19,58 @@ var log = exports.log = function( msg ) {
 };
 
 var action = exports.action = function( action, file ) {
+
+	// 줄맞춤을 위해 공백을 추가한다.
+	const MAX_ACTION_LENGTH = 13;
+	var actionLength = action.length;
+	if ( actionLength < MAX_ACTION_LENGTH )
+		for ( var i = 0; i < MAX_ACTION_LENGTH - actionLength; i++ ) action += ' ';
+	
 	colorize.console.log( '    - #cyan[(' + action + ')]: ' + file );
 };
 
 exports.mkdir = function( path ) {
 	wrench.mkdirSyncRecursive( path );
-	action( 'Created ', path );
+	action( 'Created', path );
 };
 
 exports.copy = function( src, dest ) {
 	wrench.copyDirSyncRecursive( src, dest );
-	action( 'Copied   ', src + ' => ' + dest );
+	action( 'Copied', src + ' => ' + dest );
+};
+
+exports.concat = function() {
+
+	var out = arguments[ arguments.length - 1 ];
+	
+	for ( var i = 0; i < arguments.length - 1; i++ ) {
+		action( 'Concatenating', arguments[ i ] );
+		fs.appendFileSync( out, fs.readFileSync( arguments[ i ] ) );
+	}
+	
+	action( 'Concatenated', out );
+};
+
+exports.less = function( src, dest, cb ) {
+
+	action( 'Compiling', src + ' => ' + dest );
+	
+	var parser = new( less.Parser )( {
+		paths: [ src.substring( 0, src.lastIndexOf( '/' ) ) ]
+	} );
+	
+	parser.parse( fs.readFileSync( src, ENCODING ), function( err, tree ) {
+		if ( err ) {
+			console.log( err );
+			cb( err );
+			return;
+		}
+		
+		fs.writeFileSync( dest, tree.toCSS(), ENCODING );
+		action( 'Compiled', src + ' => ' + dest );
+		
+		cb();
+	} );
 };
 
 exports.files = function( base, pattern ) {
@@ -45,7 +87,7 @@ exports.files = function( base, pattern ) {
 			this._files.forEach( function( file, index, array ) {
 				action( 'Deleting', base + file );
 				fs.lstatSync( base + file ).isDirectory() ? wrench.rmdirSyncRecursive( base + file ) : fs.unlinkSync( base + file );
-				action( 'Deleted ', base + file );
+				action( 'Deleted', base + file );
 			} );
 		},
 		
@@ -58,7 +100,7 @@ exports.files = function( base, pattern ) {
 				ast = pro.ast_mangle( ast );
 				ast = pro.ast_squeeze( ast );
 				fs.writeFileSync( dest + file, pro.gen_code( ast ), ENCODING );
-				action( 'Minified ', dest + file );
+				action( 'Minified', dest + file );
 			} );
 		},
 		
@@ -82,7 +124,7 @@ exports.files = function( base, pattern ) {
 					
 					fs.writeFileSync( base + file, buffer );
 					
-					action( 'Gzipped ', base + file + '.gzip' );
+					action( 'Gzipped', base + file + '.gzip' );
 					
 					if ( --count === 0 )
 						cb();
