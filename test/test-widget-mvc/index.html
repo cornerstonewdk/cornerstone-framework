@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<title>T-Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Le styles : bootstrap -> cornerstone -->
+	<link href="../../dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="../../dist/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+	<!-- 코너스톤 스타일 -->
+	<link href="../../dist/ui/theme/white/css/cornerstone.css" rel="stylesheet"/>
+
+	<style type="text/css">
+		body > .container {
+			margin-top: 70px;
+		}
+	</style>
+</head>
+<body>
+
+<!-- 코너스톤 네비게이션 -->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<i></i>
+			</button>
+			<a class="brand" href="/">T-Dashboard</a>
+
+			<div class="nav-collapse collapse in">
+				<ul class="nav">
+					<li class=""> <!-- class="active" -->
+						<a href="#index">Home</a>
+					</li>
+					<li class="">
+						<a href="#form">Form</a>
+					</li>
+					<li class="">
+						<a href="#component">Component</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugin</a>
+						<ul class="dropdown-menu" >
+							<li><a href="#">Plugin1</a></li>
+							<li><a href="#">Plugin2</a></li>
+							<li><a href="#">Plugin3</a></li>
+							<li><a href="#">Plugin4</a></li>
+						</ul>
+					</li>
+					<li class="">
+						<a href="#Featured">Featured</a>
+					</li>
+				</ul>
+
+				<form class="navbar-search pull-left">
+					<label>Sign in</label>
+					<input type="text" class="search-query" placeholder="SEARCH">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div id="front" class="current">
+		<div id="contentsView">
+		</div>
+	</div>
+	<div id="back" class="span12">
+
+	</div>
+
+	<footer>
+		<p>&copy; Company 2012</p>
+	</footer>
+</div>
+
+<script src="../../dist/launcher.js" data-target="script/main"></script>
+</body>
+</html>

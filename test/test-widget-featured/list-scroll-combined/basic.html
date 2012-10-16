@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>스크롤뷰</title>
+	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap-responsive.css"/>
+	<link rel="stylesheet" href="../../../dist/ui/theme/white/css/cornerstone.css"/>
+	<link rel="stylesheet" href="css/scroll-view.css">
+	<link rel="stylesheet" href="css/list-view.css">
+	<style type="text/css">
+		#addItem {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+<div id="header">
+	<div class="navbar nav-icon">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<i></i>
+				</button>
+				<a class="brand" href="#">CornerStone</a>
+
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-left">
+						<li class="">
+							<a href="#">
+								<i class="home"></i>
+								Home
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<i class="message"></i>
+								Link1
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<i class="mail"></i>
+								Link2
+							</a>
+						</li>
+						<li class="active">
+							<a href="#">
+								<i class="save"></i>
+								Link3
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<i class="user2"></i>
+								Link4
+							</a>
+						</li>
+					</ul>
+
+					<ul class="nav pull-right">
+						<li class="">
+							<a href="#"><i class="connect"></i></a>
+						</li>
+						<li class="">
+							<a href="#"><i class="search"></i></a>
+						</li>
+						<li class="">
+							<a href="#"><i class="write"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid scrollview" id="wrapper"  >
+	<div class="row-fluid">
+		<div class="lists">
+			<div id="listView">
+				<ul>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<button id="addItem" class="btn">더보기</button>
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<ul class="nav nav-bot">
+		<li>
+			<a href="#">
+				<i class="about"></i>
+				<span>about</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="favorites"></i>
+				<span>favorites</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="active">
+				<i class="downloads"></i>
+				<span>downloads</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="settings"></i>
+				<span>settings</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="user"></i>
+				<span>user</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript" src="../../../dist/lib/jquery.js"></script>
+<script type="text/javascript" src="../../../dist/ui/widget-listview.js"></script>
+<script type="text/javascript" src="../../../dist/ui/widget-scrollview.js"></script>
+<script type="text/javascript">
+	var $el = $('#listView');
+	var isLoading = false;
+	var html;
+
+	$("#wrapper").featuredScrollView();
+
+	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+	$el.featuredListView({
+		optimization: false
+	});
+
+	// AJAX로 데이터를 가져오는 함수
+	function getItem() {
+		if (isLoading) {
+			return false;
+		}
+
+		isLoading = true;
+
+		var request = $.ajax({
+			url:"data/sample.json",
+			type:"POST",
+			dataType:"json"
+		});
+
+		request.done(function (json) {
+			html = "<ul>";
+			if (typeof json === "object" && json.items.length > 0) {
+				$(json.items).each(function (i) {
+					html += "<li>";
+					html += "	<div>";
+					html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+					html += "	</div>";
+					html += "</li>";
+				});
+				html += "</ul>";
+				$el.featuredListView("addItem", html);
+				console.log($el.data("listView"));
+				$("#wrapper").featuredScrollView("refresh");
+			}
+			html = "";
+			isLoading = false;
+		});
+
+		request.fail(function (jqXHR, textStatus) {
+			console.log("Request failed: " + textStatus);
+			isLoading = false;
+		});
+
+	}
+
+	// 아이템 추가
+	$("#addItem").on("click", function (e) {
+		getItem();
+	});
+</script>
+</body>
+</html>
