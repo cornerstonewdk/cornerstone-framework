@@ -33,6 +33,7 @@
 		"npm": "1.1.x"
 	},
 	"dependencies": {
+        "underscore" : "1.x.x",
 		"docpad": "6.x",
 		"docpad-plugin-cachr": "2.x",
 		"docpad-plugin-cleanurls": "2.x",
