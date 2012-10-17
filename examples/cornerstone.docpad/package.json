@@ -14,13 +14,13 @@
 		"bootstrap",
 		"twitter bootstrap"
 	],
-    "author": "Bevry Pty Ltd <us@bevry.me> (http://bevry.me)",
-    "maintainers": [
+	"author": "Bevry Pty Ltd <us@bevry.me> (http://bevry.me)",
+	"maintainers": [
         "Benjamin Lupton <b@lupton.cc> (http://balupton.com)"
-    ],
-    "contributors": [
-        "Benjamin Lupton <b@lupton.cc> (http://balupton.com)"
-    ],
+	],
+	"contributors": [
+		"Benjamin Lupton <b@lupton.cc> (http://balupton.com)"
+	],
 	"bugs": {
 		"url": "https://github.com/bevry/website.docpad/issues"
 	},
@@ -33,7 +33,7 @@
 		"npm": "1.1.x"
 	},
 	"dependencies": {
-        "underscore" : "1.x.x",
+		"underscore" : "1.x.x",
 		"docpad": "6.x",
 		"docpad-plugin-cachr": "2.x",
 		"docpad-plugin-cleanurls": "2.x",
