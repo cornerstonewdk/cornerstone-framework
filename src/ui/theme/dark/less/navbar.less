@@ -23,7 +23,7 @@
 .navbar-inner {
 	text-align:center;
   min-height: @navbarHeight;
-  padding: 0 20px;	
+  padding: 0 10px;	
   #gradient > .vertical-nav();
 	border:none;
   .border-radius(0);
@@ -259,10 +259,6 @@
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 	border: 1px solid transparent;
 }
-.navbar .nav .dropdown-toggle .caret {
-  margin-top: 3px;
-}
-
 
 
 // Active nav items
@@ -293,6 +289,38 @@
 	font-size: ((@baseFontSize * 2 ) - 6);	
 }
 
+.navbar .nav.pull-right > li:first-child,
+.navbar .nav.pull-right > li:last-child {
+	border: 0;
+	box-shadow: none;
+	margin: 0;	
+	padding: 0 3px;
+}
+
+.navbar .nav.pull-right > li:first-child a {
+	float: none;
+  // Vertically center the text given @navbarHeight
+  padding: 7px 13px;
+	margin: 0;
+  color: @navbarLinkColor;
+	font-size: (@baseFontSize + 3);
+  text-decoration: none;
+  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+	border: 1px solid transparent;
+}
+
+.navbar .nav.pull-right > li:first-child a:focus,
+.navbar .nav.pull-right > li:first-child a:hover,
+.navbar .nav.pull-right > li:first-child .active > a,
+.navbar .nav.pull-right > li:first-child .active > a:hover,
+.navbar .nav.pull-right > li:first-child .active > a:focus {
+  #font > #effect > .txt-over();
+  text-decoration: none;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+}
 
 .navbar .nav > li a i {
 	display: inline-block;
@@ -312,9 +340,9 @@
 
 // Icon + Text Navigation 
 
-.nav.pull-right > li:last-child a,
-.ico-txt .nav > li:first-child a {
-  padding: 6px 13px 2px;
+.ico-txt .nav > li:first-child a,
+.nav-icon .pull-right > li:last-child a {
+  padding: 4px 13px;
 	margin: 0;
 	border: 1px solid transparent;
 }
@@ -323,22 +351,22 @@
 	margin: 0;
 }
 
-.nav.pull-right > li:last-child a:hover,
-.nav.pull-right > li:last-child a:active,
 .ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active {
+.ico-txt .nav > li:first-child a:active,
+.nav-icon .nav.pull-right > li:last-child a:hover,
+.nav-icon .nav.pull-right > li:last-child a:active {
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
   background-color: @navbarLinkBackgroundActive;
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav > li a,
 .ico-txt .nav > li a:hover,
 .ico-txt .nav > li a:active,
 .ico-txt .nav > li.active a {
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav > li a i {
@@ -348,7 +376,7 @@
 .ico-txt .nav > li:first-child a {
 	color: @navbarLinkColor;
 	font-size: (@baseFontSize + 3);
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav > li:first-child a:hover, 
@@ -356,45 +384,32 @@
 .ico-txt .nav > li:first-child.active a {
 	#font > #effect > .txt-over();
 	font-size: (@baseFontSize + 3);
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav, .nav-icon .nav {
-	padding: 7px 0 0;
-}
-
-.ico-txt .nav.pull-right > li:first-child {
-	border: 0;
-	box-shadow: none;
-	padding: 0;
-	margin: 0;
-}
-
-.ico-txt .nav.pull-right > li:first-child a {
-	font-size: 0;
-	line-height: 0;	
-	padding: 6px 14px 2px;
+	padding: 9px 0 0;
 }
 
 // Icon Navigation 
 
-.nav-icon .nav > li a {
-	font-size: 0;
-	line-height: 0;
-}
 
+.nav-icon .nav > li a,
 .nav-icon .nav > li a:hover,
 .nav-icon .nav > li a:active,
 .nav-icon .nav > li.active a {
-	padding: 6px 13px 2px;
+	font-size: 0;
+	line-height: 0;
+	padding: 4px 13px;
 }
 
-.nav-icon .nav > li:first-child a {	
+.nav-icon .nav > li:first-child a,
+.nav-icon .nav.pull-right > li:first-child a {	
 	visibility: visible;
 	font-size: 0;
 	line-height: 0;
   text-decoration: none;
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
@@ -407,11 +422,251 @@
 	visibility: visible;
 	font-size: 0;
 	line-height: 0;
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
   background-color: @navbarLinkBackgroundActive;
+}
+
+.nav.pull-right > li:first-child {
+	padding: 0 3px;
+	border-right: 0;
+	box-shadow: none;
+}
+
+.nav.pull-right > li:last-child {
+	border-left: 1px solid rgba(255,255,255,.1);
+	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
+	margin-left: 10px;
+	padding: 0 0 0 5px;
+}
+
+.ico-txt .nav.pull-right > li:first-child a,
+.ico-txt .nav.pull-right > li:last-child a,
+.nav-icon .nav.pull-right > li:last-child a,
+.nav-icon .nav.pull-right > li:last-child a:hover,
+.nav-icon .nav.pull-right > li:last-child a:active {
+	font-size: 0;
+	line-height: 0;	
+	padding: 3px 13px 3px 13px;
+}
+
+// Navbar button for toggling navbar items in responsive layouts
+// These definitions need to come after '.navbar .btn'
+.navbar .btn-navbar, 
+.navbar .btn-navbar:hover,
+.navbar .btn-navbar:active {
+  position: absolute;
+	left: 10px; 
+	top: 0;
+	margin:8px 0 0;
+	.box-shadow(inset 0 0 7px rgba(0,0,0,.7));
+	border:1px solid rgba(255,255,255,.1);
+	border-bottom:1px solid rgba(255,255,255,.3);
+	.border-radius(4px);	
+	background: #212121;
+	padding: 6px 10px;
+}
+
+.btn-navbar i {
+	width: 26px;
+	height: 22px;
+	padding: 0;
+	display: block;
+	background:url('../img/icon.png') no-repeat -53px -47px;
+	background-size: 139px;
+}
+
+.btn-write, 
+.btn-write:hover, 
+.btn-write:active {
+	float:right;
+	width:28px;
+	height:29px;
+	display:block;
+	background:url('../img/icon.png') no-repeat -53px -86px;
+	background-size: 139px;
+	margin:14px 0 0;
+	cursor: pointer;
+}
+
+.btn-top, 
+.btn-top:hover, 
+.btn-top:active {
+	float:right;
+	width:25px;
+	height:22px;
+	display:block;
+	background:url('../img/icon.png') no-repeat center center;
+	background-size: 139px;
+	margin:14px 0 0;
+	cursor: pointer;
+}
+
+// Dropdown menus
+// --------------
+
+// Menu position and menu carets
+.navbar .nav > li > .dropdown-menu {
+	top: 42px;
+	left: 3px;
+	z-index: 10;
+	text-align:left;
+	&:before {
+    border-bottom-color: @dropdownBorder;
+    position: absolute;
+    top: -9px;
+    left: 9px;
+  }
+  &:after {
+    border-bottom: 8px solid @dropdownBackground;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+  }
+}
+
+// Menu position and menu caret support for dropups via extra dropup class
+.navbar-fixed-bottom .nav > li > .dropdown-menu {
+  &:before {
+    border-top: 7px solid #ccc;
+    border-top-color: @dropdownBorder;
+    border-bottom: 0;
+    bottom: -7px;
+    top: auto;
+  }
+  &:after {
+    border-top: 6px solid @dropdownBackground;
+    border-bottom: 0;
+    bottom: -6px;
+    top: auto;
+  }
+}
+
+// Remove background color from open dropdown
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+	#font > #effect > .txt-over();
+  text-decoration: none;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: @navbarLinkColor;
+  border-bottom-color: @navbarLinkColor;
+}
+.navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  border-top-color: @navbarLinkColorActive;
+  border-bottom-color: @navbarLinkColorActive;
+}
+
+// Right aligned menus need alt position
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
+  left: auto;
+  right: 0;
+  &:before {
+    left: auto;
+    right: 12px;
+  }
+  &:after {
+    left: auto;
+    right: 13px;
+  }
+  .dropdown-menu {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: -1px;
+    .border-radius(6px 0 6px 6px);
+  }
+}
+
+
+// Inverted navbar
+// -------------------------
+
+.navbar-inverse {
+  color: @navbarInverseText;
+
+  .navbar-inner {
+    #gradient > .tab-grd (@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+    border-color: @navbarInverseBorder;
+  }
+
+  .brand,
+  .nav > li > a {
+    color: @navbarInverseLinkColor;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    &:hover {
+      color: @navbarInverseLinkColorHover;
+    }
+  }
+
+  .nav > li > a:focus,
+  .nav > li > a:hover {
+    background-color: @navbarInverseLinkBackgroundHover;
+    color: @navbarInverseLinkColorHover;
+  }
+
+  .nav .active > a,
+  .nav .active > a:hover,
+  .nav .active > a:focus {
+    color: @navbarInverseLinkColorActive;
+    background-color: @navbarInverseLinkBackgroundActive;
+  }
+
+  // Inline text links
+  .navbar-link {
+    color: @navbarInverseLinkColor;
+    &:hover {
+      color: @navbarInverseLinkColorHover;
+    }
+  }
+
+  // Dividers in navbar
+  .divider-vertical {
+    border-left-color: @navbarInverseBackground;
+    border-right-color: @navbarInverseBackgroundHighlight;
+  }
+
+  // Dropdowns
+  .nav li.dropdown.open > .dropdown-toggle,
+  .nav li.dropdown.active > .dropdown-toggle,
+  .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: @navbarInverseLinkBackgroundActive;
+    color: @navbarInverseLinkColorActive;
+  }
+  .nav li.dropdown > .dropdown-toggle .caret {
+    border-top-color: @navbarInverseLinkColor;
+    border-bottom-color: @navbarInverseLinkColor;
+  }
+  .nav li.dropdown.open > .dropdown-toggle .caret,
+  .nav li.dropdown.active > .dropdown-toggle .caret,
+  .nav li.dropdown.open.active > .dropdown-toggle .caret {
+    border-top-color: @navbarInverseLinkColorActive;
+    border-bottom-color: @navbarInverseLinkColorActive;
+  }
+
+ .nav.pull-right li.dropdown .dropdown-toggle {
+		padding: 7px 13px;
+	}
+
+
+  // Navbar collapse button
+  .btn-navbar {
+    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+		background:#212121 url('../img/icon.png') no-repeat 0 -935;
+		background-size: 139px;
+  }
+
 }
 
 
@@ -518,222 +773,4 @@
 .nav-icon .nav > li:first-child.active a .connect {
 	background-position: 0 -142px;
 }
-
-.nav.pull-right > li:first-child {
-	padding: 0 3px;
-	border-right: 0;
-	box-shadow: none;
-}
-
-.nav.pull-right > li:last-child {
-	border-left: 1px solid rgba(255,255,255,.1);
-	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
-	margin-left: 10px;
-	padding: 0 0 0 5px;
-}
-
-// Navbar button for toggling navbar items in responsive layouts
-// These definitions need to come after '.navbar .btn'
-.navbar .btn-navbar, 
-.navbar .btn-navbar:hover,
-.navbar .btn-navbar:active {
-  position: absolute;
-	left: 10px; 
-	top: 0;
-	margin:8px 0 0;
-	.box-shadow(inset 0 0 7px rgba(0,0,0,.7));
-	border:1px solid rgba(255,255,255,.1);
-	border-bottom:1px solid rgba(255,255,255,.3);
-	.border-radius(4px);	
-	background: #212121;
-	padding: 6px 10px;
-}
-
-.btn-navbar i {
-	width: 26px;
-	height: 22px;
-	padding: 0;
-	display: block;
-	background:url('../img/icon.png') no-repeat -53px -47px;
-	background-size: 139px;
-}
-
-.btn-write, 
-.btn-write:hover, 
-.btn-write:active {
-	float:right;
-	width:28px;
-	height:29px;
-	display:block;
-	background:url('../img/icon.png') no-repeat -53px -86px;
-	background-size: 139px;
-	margin:14px 0 0;
-	cursor: pointer;
-}
-
-.btn-top, 
-.btn-top:hover, 
-.btn-top:active {
-	float:right;
-	width:25px;
-	height:22px;
-	display:block;
-	background:url('../img/icon.png') no-repeat center center;
-	background-size: 139px;
-	margin:14px 0 0;
-	cursor: pointer;
-}
-
-// Dropdown menus
-// --------------
-
-// Menu position and menu carets
-.navbar .nav > li > .dropdown-menu {
-	top: 42px;
-	left: 3px;
-	z-index: 10;
-	text-align:left;	  
-}
-
-// Menu position and menu caret support for dropups via extra dropup class
-.navbar-fixed-bottom .nav > li > .dropdown-menu {
-  &:before {
-    border-top: 7px solid #ccc;
-    border-top-color: @dropdownBorder;
-    border-bottom: 0;
-    bottom: -7px;
-    top: auto;
-  }
-  &:after {
-    border-top: 6px solid @dropdownBackground;
-    border-bottom: 0;
-    bottom: -6px;
-    top: auto;
-  }
-}
-
-// Remove background color from open dropdown
-.navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
-	#font > #effect > .txt-over();
-  text-decoration: none;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-}
-.navbar .nav li.dropdown > .dropdown-toggle .caret {
-  border-top-color: @navbarLinkColor;
-  border-bottom-color: @navbarLinkColor;
-	margin-top: -1px;
-}
-.navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
-  border-top-color: @navbarLinkColorActive;
-  border-bottom-color: @navbarLinkColorActive;
-}
-
-// Right aligned menus need alt position
-.navbar .pull-right > li > .dropdown-menu,
-.navbar .nav > li > .dropdown-menu.pull-right {
-  left: auto;
-  right: 0;
-  &:before {
-    left: auto;
-    right: 12px;
-  }
-  &:after {
-    left: auto;
-    right: 13px;
-  }
-  .dropdown-menu {
-    left: auto;
-    right: 100%;
-    margin-left: 0;
-    margin-right: -1px;
-    .border-radius(6px 0 6px 6px);
-  }
-}
-
-
-// Inverted navbar
-// -------------------------
-
-.navbar-inverse {
-  color: @navbarInverseText;
-
-  .navbar-inner {
-    #gradient > .tab-grd (@navbarInverseBackgroundHighlight, @navbarInverseBackground);
-    border-color: @navbarInverseBorder;
-  }
-
-  .brand,
-  .nav > li > a {
-    color: @navbarInverseLinkColor;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    &:hover {
-      color: @navbarInverseLinkColorHover;
-    }
-  }
-
-  .nav > li > a:focus,
-  .nav > li > a:hover {
-    background-color: @navbarInverseLinkBackgroundHover;
-    color: @navbarInverseLinkColorHover;
-  }
-
-  .nav .active > a,
-  .nav .active > a:hover,
-  .nav .active > a:focus {
-    color: @navbarInverseLinkColorActive;
-    background-color: @navbarInverseLinkBackgroundActive;
-  }
-
-  // Inline text links
-  .navbar-link {
-    color: @navbarInverseLinkColor;
-    &:hover {
-      color: @navbarInverseLinkColorHover;
-    }
-  }
-
-  // Dividers in navbar
-  .divider-vertical {
-    border-left-color: @navbarInverseBackground;
-    border-right-color: @navbarInverseBackgroundHighlight;
-  }
-
-  // Dropdowns
-  .nav li.dropdown.open > .dropdown-toggle,
-  .nav li.dropdown.active > .dropdown-toggle,
-  .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: @navbarInverseLinkBackgroundActive;
-    color: @navbarInverseLinkColorActive;
-  }
-  .nav li.dropdown > .dropdown-toggle .caret {
-    border-top-color: @navbarInverseLinkColor;
-    border-bottom-color: @navbarInverseLinkColor;
-  }
-  .nav li.dropdown.open > .dropdown-toggle .caret,
-  .nav li.dropdown.active > .dropdown-toggle .caret,
-  .nav li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @navbarInverseLinkColorActive;
-    border-bottom-color: @navbarInverseLinkColorActive;
-  }
-
- 
-
-  // Navbar collapse button
-  .btn-navbar {
-    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
-		background:#212121 url('../img/icon.png') no-repeat 0 -935;
-		background-size: 139px;
-  }
-
-}
-
-
 
