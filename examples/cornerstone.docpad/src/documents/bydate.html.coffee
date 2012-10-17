@@ -1,0 +1,13 @@
+---
+name: '작성순모음'
+linkTitle: 'View articles'
+pageOrder: 4
+layout: 'page'
+url: './bydate.html'
+---
+
+# Post Listing
+text @partial 'list-document-bydate.html.coffee', {
+	documents: @getCollection('posts').toJSON()
+}
+
