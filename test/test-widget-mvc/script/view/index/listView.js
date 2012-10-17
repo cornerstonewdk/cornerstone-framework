@@ -27,7 +27,7 @@ define(function (require) {
 
             var request = $.ajax({
                 url:"data/sample.json",
-                type:"POST",
+                type:"get",
                 dataType:"json"
             });
 
@@ -38,8 +38,10 @@ define(function (require) {
                         this.index = (i + 1);
                         html += (template(this));
                     });
-                    self.$el.find("#listView").append(html);
+
                     html += "</ul>";
+
+                    Widget.listView(self.$el.find("#listView"), "addItem", html);
                 }
                 html = "";
                 self.pageID++;
@@ -54,6 +56,9 @@ define(function (require) {
 
         render:function () {
             var self = this;
+            Widget.listView(self.$el.find("#listView"), {
+               optimization:true
+            });
 
             this.getItem();
         }
