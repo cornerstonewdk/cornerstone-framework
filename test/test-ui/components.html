@@ -573,13 +573,13 @@
 				<hr>
 
 				<h2 class="title">Grouped buttons</h2>
-				<div class="btn-group t-group">
+				<div class="btn-group">
 					<button class="btn up"></button>
 					<button class="btn down"></button>
 					<button class="btn set"></button>
 				</div>
 
-				<div class="btn-group t-blue inline">
+				<div class="btn-group t-blue">
 					<button class="btn up"></button>
 					<button class="btn down"></button>
 					<button class="btn set"></button>
@@ -587,13 +587,13 @@
 				<hr>
 
 				<h2 class="title">Horizontal toggle checkbox</h2>
-				<div class="btn-group t-group">
+				<div class="btn-group hor-toggle">
 					<button class="btn">b</button>
 					<button class="btn"><i>i</i></button>
 					<button class="btn">u</button>
 				</div>
 
-				<div class="btn-group t-blue">
+				<div class="btn-group hor-toggle t-blue">
 					<button class="btn">b</button>
 					<button class="btn"><i>i</i></button>
 					<button class="btn">u</button>
@@ -602,7 +602,7 @@
 				<hr>
 
 				<h2 class="title">Horizontal radio</h2>
-				<div class="btn-group t-group">
+				<div class="btn-group">
 					<button class="btn active">List</button>
 					<button class="btn">Grid</button>
 					<button class="btn">Gallery</button>
@@ -610,7 +610,8 @@
 
 				<hr>
 
-				<div class="btn-group t-drop inline">
+				<h2 class="title">Button dropdown menus</h2>
+				<div class="btn-group inline">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						DOWN
 						<span class="caret"></span>
@@ -620,7 +621,7 @@
 					</ul>
 				</div>
 
-				<div class="btn-group t-drop inline">
+				<div class="btn-group inline">
 					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
 						DOWN
 						<span class="caret"></span>
@@ -632,7 +633,8 @@
 
 				<hr>
 
-				<div class="btn-group split">
+				<h2 class="title">Split button dropdowns</h2>
+				<div class="btn-group">
 					<button class="btn">SPLIT</button>
 					<button class="btn dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
@@ -642,7 +644,30 @@
 					</ul>
 				</div>
 
-				<div class="btn-group split inline">
+				<div class="btn-group inline">
+					<button class="btn btn-primary">SPLIT</button>
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<!-- dropdown menu links -->
+					</ul>
+				</div>
+
+				<hr>
+
+				<h2 class="title">Split button dropup</h2>
+				<div class="btn-group dropup">
+					<button class="btn">SPLIT</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<!-- dropdown menu links -->
+					</ul>
+				</div>
+
+				<div class="btn-group dropup inline">
 					<button class="btn btn-primary">SPLIT</button>
 					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
@@ -912,7 +937,7 @@
 				<h2 class="title">Lists</h2>
 				<div class="lists">
 					<header>List1</header>
-					<ul>
+					<ul class="lists-con">
 						<li>
 							<a href="">Profile</a>
 							<i></i>
@@ -943,7 +968,7 @@
 				<h2 class="title">Lists Group</h2>
 				<div class="lists group">
 					<header>Grouped Lists</header>
-					<ul>
+					<ul class="lists-con">
 						<li>
 							Profile
 							<i></i>
@@ -966,7 +991,7 @@
 						</li>
 						<li class="sub-group">
 							<a href="" class="group-tit">Location</a>
-							<ul>
+							<ul class="lists-con">
 								<li>
 									<a href="">South Korea</a>
 									<i></i>

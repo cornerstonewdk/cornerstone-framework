@@ -19,12 +19,17 @@
 	}
 
 	.navbar-inner {
-		min-height: (@navbarHeight - 10);
+		min-height: @navbarHeight;
 		padding: 0 10px;
 	}	
 
 	.navbar-fixed-top {
 		margin: 0;
+	}
+
+	.navbar-fixed-top .navbar-inner {
+		min-height: @navbarHeight;
+		padding: 0;
 	}
 
 	.navbar-fixed-top .container {
@@ -245,7 +250,7 @@
 	.navbar .brand {
 		min-width: 320px;
 		display: inline-block;
-		padding-top: 10px;
+		padding-top: 15px;
 	}
 
 	.navbar .btn-navbar {

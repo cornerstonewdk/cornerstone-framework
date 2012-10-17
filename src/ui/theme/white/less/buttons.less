@@ -75,7 +75,10 @@
   }
 }
 
-.btn i {padding:0 3px;}
+.btn i {
+	display: inline-block;
+	line-height: @baseLineHeight - 2;
+}
 
 // Set the backgrounds
 // -------------------------
@@ -151,8 +154,4 @@
   color: @linkColorHover;
   text-decoration: underline;
   background-color: transparent;
-}
-
-.btn-g2 .btn {
-	font-size:24px; font-weight:bold;
 }
