@@ -11,7 +11,6 @@ define(function (require) {
         },
 
         render:function () {
-
             var self = this;
             $.getJSON("data/line.json", function (json) {
                 Widget.chart(self.$el.find("#lineChart"), {
@@ -21,7 +20,6 @@ define(function (require) {
                     color:["lightpink", "darkgray", "lightblue"]
                 });
             });
-
 
             $.getJSON("data/bar.json", function (json) {
                 Widget.chart(self.$el.find("#barChart"), {

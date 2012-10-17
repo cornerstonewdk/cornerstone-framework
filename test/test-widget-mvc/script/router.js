@@ -6,9 +6,6 @@ define(function(require) {
 		routes: {
 			'': 'index',
 			'index': 'index',
-			'second': 'second',
-			'pricePolicy': 'pricePolicyRoute',
-			
 			'*actions': 'defaultAction'
 		},
 
@@ -18,15 +15,15 @@ define(function(require) {
                 chart:function ($el, options1, options2) {
                     if (typeof $el === "object" && $el.length > 0) {
                         var Featured = require("../../dist/ui/widget-chart.js");
-                        var featured = new Featured($el[0], options1, options2);
-                        var style = require('style!../../../dist/ui/widget-chart');
+                        var style = require('style!../../../src/ui/widget/featured/chart/featured-chart');
+                        $el.featuredChart(options1, options2);
                     }
                     return $el;
                 },
                 listView :function ($el, options1, options2) {
                     if (typeof $el === "object" && $el.length > 0) {
                         var Featured = require("../../dist/ui/widget-listview.js");
-                        var featured = new Featured($el[0], options1, options2);
+                        $el.featuredListView(options1, options2);
                     }
                     return $el;
                 }
@@ -40,14 +37,6 @@ define(function(require) {
             this.indexView.render();
 		},
 
-		dashboardRoute: function() {
-            var indexView = require("view/indexView");
-		},
-		
-		pricePolicyRoute: function() {
-            var indexView = require("view/indexView");
-		},
-		
 		defaultAction: function(actions) {
             console.log('default route : ' + actions);
 		},
