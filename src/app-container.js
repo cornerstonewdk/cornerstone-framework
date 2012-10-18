@@ -13,7 +13,10 @@ requirejs.config( {
 		'underscore': Cornerstone.PATH_LIB + 'underscore-min',
 		'backbone': Cornerstone.PATH_LIB + 'backbone-min',
 		'handlebars': Cornerstone.PATH_LIB + 'handlebars-1.0.0.beta.6',
-		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
+
+//      Widget Plugin에 포함
+//		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
+
 		'lawnchair': Cornerstone.PATH_LIB + 'lawnchair-0.6.1.min',
 		'hammer': Cornerstone.PATH_LIB + 'hammer',
 		'jquery.hammer': Cornerstone.PATH_LIB + 'jquery.hammer',
@@ -23,7 +26,16 @@ requirejs.config( {
 		'sync': Cornerstone.PATH + 'mvc/model/sync',
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
-		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture'
+		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture',
+
+        // Widget Alias 추가
+        'widget-plugins' : Cornerstone.PATH + 'ui/widget-plugins',
+        'widget-chart' : Cornerstone.PATH + 'ui/widget-chart',
+        'widget-datatable' : Cornerstone.PATH + 'ui/widget-datatable',
+        'widget-editor' : Cornerstone.PATH + 'ui/widget-editor',
+        'widget-listview' : Cornerstone.PATH + 'ui/widget-listview',
+        'widget-media' : Cornerstone.PATH + 'ui/widget-media',
+        'widget-scrollview' : Cornerstone.PATH + 'ui/widget-scrollview'
 	},
 	// 의존성 및 모듈의 value를 정의한다.
 	// 기본적으로 주요 라이브러리들도 전역변수로는 사용하지 않는 것으로 한다.
@@ -44,9 +56,9 @@ requirejs.config( {
 				return this.Backbone.noConflict();
 			}
 		},
-		'bootstrap': {
-			deps: ['jquery']
-		},
+//		'bootstrap': {
+//			deps: ['jquery']
+//		},
 		'lawnchair': {
 			exports: function() {
 				// 전역변수에 선언된 Lawnchair를 삭제하면 제대로 동작하지 않는다.
@@ -56,7 +68,7 @@ requirejs.config( {
 		'handlebars': {
 			exports: function() {
 				return this.Handlebars;
-			}	
+			}
 		},
 		'jquery.hammer': {
 			deps: ['hammer', 'jquery']
@@ -65,7 +77,28 @@ requirejs.config( {
 			exports: function() {
 				return this.enquire;
 			}
-		}
+		},
+        'widget-plugins' : {
+            deps: ['jquery']
+        },
+        'widget-chart' : {
+            deps: ['jquery']
+        },
+        'widget-datatable' : {
+            deps: ['jquery']
+        },
+        'widget-editor' : {
+            deps: ['jquery']
+        },
+        'widget-listview' : {
+            deps: ['jquery']
+        },
+        'widget-media' : {
+            deps: ['jquery']
+        },
+        'widget-scrollview' : {
+            deps: ['jquery']
+        }
 	}
 } );
 
