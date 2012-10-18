@@ -8,9 +8,10 @@
  */
 
 (function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
+    // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
+    if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define([ "jquery"], function ($) {
+        define([ "jquery", "style!" + Cornerstone.PATH +  "ui/widget-chart"], function ($) {
             return factory($, root, doc, d3);
         });
     } else {

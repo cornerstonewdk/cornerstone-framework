@@ -13,8 +13,7 @@
         /**
          * ListView는 Handlebar.js와 Infinity.js를 사용한다.
          */
-        define(function (require, exports, module) {
-            var $ = require("jquery");
+        define([ "jquery"], function ($) {
             return factory($, root, doc);
         });
     } else {
@@ -177,4 +176,6 @@
     $("[data-featured=listView]").each(function (i) {
         $(this)[pluginName]();
     });
+
+    return Plugin;
 }));
