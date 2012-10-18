@@ -14,7 +14,7 @@ requirejs.config({
 	}
 });
 
-define(['router', 'bootstrap'], function(Router) {
+define(['router'], function(Router) {
 	return {
 		launch: function() {
 			// 애플리게이션의 시작점

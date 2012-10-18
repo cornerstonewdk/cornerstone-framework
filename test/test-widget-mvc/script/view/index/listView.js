@@ -32,7 +32,7 @@ define(function (require) {
             });
 
             request.done(function (json) {
-                html = "<ul data-list-pageid='" + self.pageID + "'>";
+                html = "<ul data-list-pageid='" + self.pageID + "' >";
                 if (typeof json === "object" && json.items.length > 0) {
                     $(json.items).each(function (i) {
                         this.index = (i + 1);
