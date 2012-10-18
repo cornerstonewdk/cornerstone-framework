@@ -2,7 +2,8 @@ define(
 	[
 		'gesture-view',
 		'jquery', 
-		'backbone', 
+		'backbone',
+		'view/dashboard/twitterWidget', 
 		'template!/template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
@@ -12,6 +13,7 @@ define(
 		GestureView,
 		$, 
 		Backbone, 
+		TwitterWidget,
 		template
 	){
 	var DashboardView = GestureView.extend({
@@ -74,6 +76,10 @@ define(
 					data : json
 				});
 			});
+			
+			//트위터 그리기
+			var twitterWidget = new TwitterWidget();
+			twitterWidget.render();
 		},
 		
 	});

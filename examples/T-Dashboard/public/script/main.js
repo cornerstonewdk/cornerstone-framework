@@ -6,6 +6,7 @@ requirejs.config({
 		"navigation":"../lib/navigation",
 		"isotope": "../lib/jquery.isotope",
 		"observer": "util/resizeObserver",
+		"jsonp": Cornerstone.PATH + "util/jsonp"
 	},
 	
 	shim: {

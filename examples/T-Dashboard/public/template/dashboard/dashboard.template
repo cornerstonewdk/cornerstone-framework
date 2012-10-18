@@ -51,54 +51,7 @@
 				<h1>트위터</h1>
 			</div>
 		</div>
-		<div class="row-fluid">
-			<div data-featured="scrollView" class="scrollview">
-				<div class="lists scroller">
-					<ul id="thelist" class="lists-con">
-						<li><a href="#">테스트 레코드 1</a></li>
-						<li><a href="#">테스트 레코드 2</a></li>
-						<li><a href="#">테스트 레코드 3</a></li>
-						<li><a href="#">테스트 레코드 4</a></li>
-						<li><a href="#">테스트 레코드 5</a></li>
-						<li><a href="#">테스트 레코드 6</a></li>
-						<li><a href="#">테스트 레코드 7</a></li>
-						<li><a href="#">테스트 레코드 8</a></li>
-						<li><a href="#">테스트 레코드 9</a></li>
-						<li><a href="#">테스트 레코드 10</a></li>
-						<li><a href="#">테스트 레코드 11</a></li>
-						<li><a href="#">테스트 레코드 12</a></li>
-						<li><a href="#">테스트 레코드 13</a></li>
-						<li><a href="#">테스트 레코드 14</a></li>
-						<li><a href="#">테스트 레코드 15</a></li>
-						<li><a href="#">테스트 레코드 16</a></li>
-						<li><a href="#">테스트 레코드 17</a></li>
-						<li><a href="#">테스트 레코드 18</a></li>
-						<li><a href="#">테스트 레코드 19</a></li>
-						<li><a href="#">테스트 레코드 20</a></li>
-						<li><a href="#">테스트 레코드 21</a></li>
-						<li><a href="#">테스트 레코드 22</a></li>
-						<li><a href="#">테스트 레코드 23</a></li>
-						<li><a href="#">테스트 레코드 24</a></li>
-						<li><a href="#">테스트 레코드 25</a></li>
-						<li><a href="#">테스트 레코드 26</a></li>
-						<li><a href="#">테스트 레코드 27</a></li>
-						<li><a href="#">테스트 레코드 28</a></li>
-						<li><a href="#">테스트 레코드 29</a></li>
-						<li><a href="#">테스트 레코드 30</a></li>
-						<li><a href="#">테스트 레코드 31</a></li>
-						<li><a href="#">테스트 레코드 32</a></li>
-						<li><a href="#">테스트 레코드 33</a></li>
-						<li><a href="#">테스트 레코드 34</a></li>
-						<li><a href="#">테스트 레코드 35</a></li>
-						<li><a href="#">테스트 레코드 36</a></li>
-						<li><a href="#">테스트 레코드 37</a></li>
-						<li><a href="#">테스트 레코드 38</a></li>
-						<li><a href="#">테스트 레코드 39</a></li>
-						<li><a href="#">테스트 레코드 40</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		<div class="row-fluid" id="twitterWedget"></div>
 	</div>
 	
 	<div class="dashboardItem height2x" id="3">
