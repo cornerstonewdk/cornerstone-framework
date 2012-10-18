@@ -11,8 +11,7 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD Hybrid 포맷
-        define(function (require, exports, module) {
-            var $ = require("jquery");
+        define(["jquery", "style!" + Cornerstone.PATH +  "ui/widget-scrollview"], function ($) {
             return factory($, root, doc);
         });
     } else {
