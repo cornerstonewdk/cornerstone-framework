@@ -71,6 +71,68 @@
         });
     };
 
+    FeaturedChart.prototype.stackedBarChart = function (target, options) {
+        nv.addGraph(function () {
+            var chart = nv.models.multiBarChart();
+
+            chart.stacked(true);
+
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
+
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
+
+            chart.color(options.color.range());
+
+            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
+
+            target.datum(options.data)
+                .transition().duration(500).call(chart);
+
+            nv.utils.windowResize(chart.update);
+
+            return chart;
+        });
+    };
+
+    FeaturedChart.prototype.groupedBarChart = function (target, options) {
+        nv.addGraph(function () {
+            var chart = nv.models.multiBarChart();
+
+            chart.stacked(false);
+
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
+
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
+
+            chart.color(options.color.range());
+
+            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
+
+            target.datum(options.data)
+                .transition().duration(500).call(chart);
+
+            nv.utils.windowResize(chart.update);
+
+            return chart;
+        });
+    };
+
     FeaturedChart.prototype.lineChart = function (target, options) {
         // Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
         nv.addGraph(function () {
@@ -236,38 +298,6 @@
         });
     };
 
-    FeaturedChart.prototype.resizeChart = function (target, chart, fitScreen, width, height) {
-        var svg = target.select('svg');
-
-        if (fitScreen) {
-            // resize based on container's width AND HEIGHT
-            var windowSize = nv.utils.windowSize();
-            svg.attr("width", windowSize.width);
-            svg.attr("height", windowSize.height);
-        } else {
-            // resize based on container's width
-            var aspect = chart.width() / chart.height();
-            var targetWidth = parseInt(target.style('width'));
-            svg.attr("width", targetWidth);
-            svg.attr("height", Math.round(targetWidth / aspect));
-        }
-    };
-
-    FeaturedChart.prototype.setChartViewBox = function (target, chart, width, height, zoom) {
-        var w = width * zoom,
-            h = height * zoom;
-
-        chart
-            .width(w)
-            .height(h);
-
-        target.select('svg')
-            .attr('viewBox', '0 0 ' + w + ' ' + h)
-            .transition().duration(500)
-            .call(chart);
-    };
-
-
     $.fn.featuredChart = function (options, methodOptions) {
         defaultOptions = {
             chartType:"bar",
@@ -280,7 +310,8 @@
             padding:[0, 0, 0, 0],
             data:{},
             animate:false,
-            filtering: false,
+            controlBar: false,
+            filtering: true,
             color:d3.scale.category10()
         };
 
@@ -305,6 +336,12 @@
                 $this.removeClass("filtering");
             } else {
                 $this.addClass("filtering");
+            }
+
+            if(!options.controlBar) {
+                $this.removeClass("control-bar");
+            } else {
+                $this.addClass("control-bar");
             }
         });
     };
