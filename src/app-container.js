@@ -78,26 +78,29 @@ requirejs.config( {
 				return this.enquire;
 			}
 		},
+        'gesture-view' : {
+            deps: ['backbone', 'jquery.hammer']
+        },
         'widget-plugins' : {
-            deps: ['jquery']
+            deps: ['backbone']
         },
         'widget-chart' : {
-            deps: ['jquery']
+            deps: ['backbone']
         },
         'widget-datatable' : {
-            deps: ['jquery']
+            deps: ['backbone']
         },
         'widget-editor' : {
-            deps: ['jquery']
+            deps: ['backbone']
         },
         'widget-listview' : {
-            deps: ['jquery']
+            deps: ['backbone']
         },
         'widget-media' : {
-            deps: ['jquery']
+            deps: ['backbone']
         },
         'widget-scrollview' : {
-            deps: ['jquery']
+            deps: ['backbone']
         }
 	}
 } );
