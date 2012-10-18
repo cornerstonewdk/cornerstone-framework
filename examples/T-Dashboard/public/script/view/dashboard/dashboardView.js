@@ -3,7 +3,7 @@ define(
 		'gesture-view',
 		'jquery', 
 		'backbone', 
-		'template!/template/dashboard',
+		'template!/template/dashboard/dashboard',
 		'isotope', 
 		'chart',
 		'style!/style/dashboard/dashboardStyle',
@@ -14,7 +14,7 @@ define(
 		Backbone, 
 		template
 	){
-	var IsotopeView = GestureView.extend({
+	var DashboardView = GestureView.extend({
 		el : '#contentsView',
 		
 		initialize: function() {
@@ -31,33 +31,33 @@ define(
 		},
 		
 		lteClick: function(e) {
-			
+			document.location = '#lteReport';
 		},
 		
 		vocClick: function(e) {
-			
+			document.location = '#voc';
 		},
 		
 		policyClick: function(e) {
-			document.location='#pricePolicy';
+			document.location = '#pricePolicy';
 		},
 		
 		snsClick: function(e) {
-			
+			document.location = '#sns';
 		},
 		
 		facebookClick: function(e) {
-			
+			document.location = '#facebook';
 		},
 		
 		youtubeClick: function(e) {
-			
+			document.location = '#youtube';
 		},
 		
 		render: function() {
 			this.$el.html(template());
 			
-			$('ul.nav > li').removeClass('active');	//dashboard는 index 이므로 active 상태가 없다
+			$('.nav:not(.nav-list) > li').removeClass('active');	//dashboard는 index 이므로 active 상태가 없다
 			
 			$(function() {
 				var $container = $('#dashboard_container');
@@ -77,5 +77,5 @@ define(
 		
 	});
 	
-	return IsotopeView;
+	return new DashboardView;
 });

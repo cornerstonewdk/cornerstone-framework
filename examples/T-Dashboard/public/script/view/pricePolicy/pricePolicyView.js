@@ -1,4 +1,15 @@
-define(['jquery', 'backbone', 'template!/template/pricePolicy', 'view/pricePolicy/gesture-area', 'style!/style/pricePolicy/pricePolicyStyle'], function($, Backbone, template, GestureAreaView){
+define([
+		'jquery', 
+		'backbone', 
+		'template!/template/policy/pricePolicy', 
+		'view/pricePolicy/gesture-area', 
+		'style!/style/pricePolicy/pricePolicyStyle'
+], function(
+		$, 
+		Backbone, 
+		template, 
+		GestureAreaView
+){
 	var PricePolicyView = Backbone.View.extend({
 		el : $('#contentsView'),
 		
@@ -9,7 +20,7 @@ define(['jquery', 'backbone', 'template!/template/pricePolicy', 'view/pricePolic
 		render: function() {
 			this.$el.html(template());
 			
-			$('ul.nav > li').removeClass('active');
+			$('.nav:not(.nav-list) > li').removeClass('active');
 			$('#price_policy_menu').addClass('active');
 			
 			new GestureAreaView();
@@ -17,5 +28,5 @@ define(['jquery', 'backbone', 'template!/template/pricePolicy', 'view/pricePolic
 		
 	});
 	
-	return PricePolicyView;
+	return new PricePolicyView;
 });

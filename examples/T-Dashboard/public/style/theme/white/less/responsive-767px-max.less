@@ -7,8 +7,7 @@
 
   // Padding to set content in a bit
   body {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px;
   }
 
 	.modal.fade {
@@ -26,6 +25,11 @@
 
 	.navbar-fixed-top {
 		margin: 0;
+	}
+
+	.navbar-fixed-top .navbar-inner {
+		min-height: @navbarHeight;
+		padding: 0;
 	}
 
 	.navbar-fixed-top .container {

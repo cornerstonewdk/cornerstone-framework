@@ -11,12 +11,6 @@
   .ie7-restore-left-whitespace();
 }
 
-// Space out series of button groups
-.btn-group + .btn-group {
-  margin-left: 0;
-	margin-right: 5px;
-}
-
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
   font-size: 0; // Hack to remove whitespace that results from using inline-block
@@ -40,10 +34,6 @@
 }
 .btn-group > .btn + .btn {
   margin-left: -1px;
-}
-.btn-group > .btn,
-.btn-group > .dropdown-menu {
-  font-size: ((@baseFontSize * 2) - 4); // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
@@ -126,8 +116,6 @@
   outline: 0;
 }
 
-
-
 // Split button dropdowns
 // ----------------------
 
@@ -138,7 +126,6 @@
   .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4)");
   *padding-top: 5px;
   *padding-bottom: 5px;
-	font-size: (@baseFontSize + 4);
 }
 .btn-group > .btn-mini + .dropdown-toggle {
   padding-left: 5px;
@@ -190,7 +177,6 @@
   }
 }
 
-
 // Reposition the caret [2012-08-29] Add
 .btn .caret {
   margin-top: 8px;
@@ -214,8 +200,6 @@
   border-top: 0;
 }
 
-
-
 // Account for other colors
 .btn-primary,
 .btn-warning,
@@ -233,21 +217,40 @@
 	border-top:   4px solid @caretColorActive;
 }
 
+.dropup .dropdown-toggle .caret {
+  border-bottom: 4px solid @caretColorActive;
+  border-top: 0;
+}
+
+.dropup .dropdown-menu {
+	&:before {
+    border: 0;
+  }
+  &:after {
+     border: 0;
+  }
+}
 
 .btn-group {
 	display:inline-block; 
 }
 
 .btn-group .btn {
-	// Hover state
-  &:hover {
+	color: @btnGroupTxt;
+	text-shadow: 0 1px 0 rgba(255,255,255,.2);
+	border: 0;
+	border-top: 1px solid @btnBorder;
+	border-bottom: 1px solid @btnBorder;
+
+	&:hover {
+		#font > #effect > .txt-over();
 		border-left: 0;
 		border-right: 0;
   }
-
   // Active state
   &.active,
   &:active {
+		#font > #effect > .txt-over();
 		border-left: 0;
 		border-right: 0;
 	}
@@ -320,24 +323,11 @@
 	background-position: 1px -887px;
 }
 
-// Button Group Type Add
-
-.t-group .btn {
-	color: @btnGroupTxt;
-	text-shadow: 0 1px 0 rgba(255,255,255,.2);
-	border: 0;
-	border-top: 1px solid @btnBorder;
-	border-bottom: 1px solid @btnBorder;
-
-	&:hover {
-		#font > #effect > .txt-over();
-  }
-  // Active state
-  &.active,
-  &:active {
-		#font > #effect > .txt-over();
-	}
+.btn-group .dropdown-toggle {
+	border-right: 1px solid @btnBorder;
 }
+
+// Button Group Type Add
 
 .t-blue .btn {
   .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground, @btnBlueTxt, @btnShadow);
@@ -427,17 +417,6 @@
 	background-position: 1px -606px;
 }
 
-.t-drop .btn, .split .btn {
-	font-size: (@baseFontSize + 4);
-	padding: 10px 15px;
-}
-
-.split .dropdown-toggle {
-	padding: 10px 5px;
-}
-
-
-
 // Vertical button groups
 // ----------------------
 
@@ -504,7 +483,6 @@
 	}
 }
 
-
 .btn-group-vertical .btn + .btn {
   margin-left: 0;
   margin-top: 0;
@@ -535,4 +513,11 @@
 .btn-group-vertical .btn:active:last-child {
 	color: @white;
 	border: 0;
+}
+
+.hor-toggle .btn {
+	font-size: @baseFontSize + 10 ! important;
+	font-weight: 600;
+	line-height: @baseLineHeight + 8;
+	padding: 9px 17px;
 }

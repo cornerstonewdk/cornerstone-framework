@@ -7,6 +7,7 @@ requirejs.config({
 		"gridster": "../lib/gridster/jquery.gridster",
 		"chart": "../lib/featured-chart",
 		"isotope": "../lib/jquery.isotope",
+		"observer": "util/resizeObserver",
 	},
 	
 	shim: {
@@ -34,14 +35,18 @@ requirejs.config({
         "isotope": {
         	deps:["jquery"]
         },
+        
+        "observer": {
+        	deps:["enquire"]
+        },
 	}
 });
 
-define(['router', 'bootstrap'], function(Router) {
+define(['router', 'observer', 'bootstrap'], function(Router, Observer) {
 	return {
 		launch: function() {
 			// 애플리게이션의 시작점
-			
+			Observer.resize.listen();
 		}
 	}
 });

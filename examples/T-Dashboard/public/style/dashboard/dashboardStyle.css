@@ -48,12 +48,21 @@
           transition-duration: 0s;
 }
 
+#dashboard_container {
+	border: solid 1px;
+}
+
 #dashboard_container > .dashboardItem {
 	border: 0;
+	padding: 5px;
 	margin: 5px;
-	width: 310px;
-	height: 300px;
-	background: rgba(255, 123, 56, 0.6);
+	width: 260px;
+	height: 260px;
+	background: #F6F6F6;
+}
+
+#dashboard_container > .dashboardItem.height2x {
+	height: 520px;
 }
 
 #dashboard_container > .draggin {

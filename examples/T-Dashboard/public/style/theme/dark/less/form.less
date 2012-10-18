@@ -31,7 +31,7 @@ textarea {
 input,
 button,
 textarea {
-  font-family: @calibriFontFamily; // And only set font-family here for those that need it (note the missing label element)
+  font-family: @sansFontFamily; // And only set font-family here for those that need it (note the missing label element)
 }
 
 // Shared size and type resets
@@ -437,14 +437,6 @@ select {
 
 // Button
 
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-	color: @grayLighter;
-	border-radius:4px;
-	.box-shadow(~"inset 0 2px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
-	}
-
 .uneditable-input {
 	font-size: (@baseFontSize + 4);
   line-height: @baseLineHeight;
@@ -452,16 +444,6 @@ input[type="reset"] {
 	color: @grayLighter;
 	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
 	background: @uneditableBackground;
-}
-
-.btn-l {
-	border-radius:3px 0 0 3px;
-}
-.btn-c {
-	border-radius:0; margin-left:-1px;
-}
-.btn-r {
-	border-radius:0 3px 3px 0; margin-left:-1px;
 }
 
 // Radios and checkboxes on same line
