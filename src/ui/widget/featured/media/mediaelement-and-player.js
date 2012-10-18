@@ -3466,7 +3466,7 @@ if (typeof jQuery != 'undefined') {
 			// store sizing
 			normalHeight = t.container.height();
 			normalWidth = t.container.width();
-			console.log(normalHeight, normalWidth);
+//			console.log(normalHeight, normalWidth);
 			// attempt to do true fullscreen (Safari 5.1 and Firefox Nightly only for now)
 			if (t.media.pluginType === 'native') {
 				if (mejs.MediaFeatures.hasTrueNativeFullScreen) {

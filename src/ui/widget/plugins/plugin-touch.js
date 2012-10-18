@@ -229,7 +229,7 @@
                     var now = new Date().getTime();
                     var touchTime = now - _touch_start_time;
 
-                    console.log(swipeTime, touchTime, _distance, swipeMinDistance);
+//                    console.log(swipeTime, touchTime, _distance, swipeMinDistance);
                     if ((swipeTime > touchTime) && (_distance > swipeMinDistance)) {
                         // calculate the angle
                         _angle = self.getAngle(_pos.start[0], _pos.move[0]);

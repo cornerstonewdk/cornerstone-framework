@@ -98,7 +98,6 @@
         options = $.extend(true, defaultOptions, options);
         this.iscroll = new iScroll(this.$el.attr("id"), options);
 
-        console.log(this.$el);
     };
 
     Plugin.prototype.refresh = function () {
