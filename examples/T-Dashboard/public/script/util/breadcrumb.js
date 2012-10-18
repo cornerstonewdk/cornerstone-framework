@@ -32,9 +32,16 @@
 		if(!alreadyRoute) {
 			this.itemList.push({'route': route, 'title': title});
 			this.draw();
+			
+			return ">";
 		} else {
-			this.itemList = this.itemList.slice(sameIdx, this.itemList.length - 1);
+			for(var i = sameIdx + 1; i < this.itemList.length; i++) {
+				 this.itemList.pop();
+			}
+			
 			this.draw();
+			
+			return "<";
 		}
 	};
 	// <span class="divider">/</span>
@@ -46,7 +53,6 @@
 			this.el.append('<li><a href="#' + item['route'] + '">' + item['title'] + '</a>' + (i == (this.itemList.length - 1) ? '' : '<span class="divider">/</span>') + '</li>');	
 		}
 		
-		console.log($('ul.breadcrumb:last-child'));
 		$('ul.breadcrumb > li:last-child > a').addClass('active');
 	};
 	

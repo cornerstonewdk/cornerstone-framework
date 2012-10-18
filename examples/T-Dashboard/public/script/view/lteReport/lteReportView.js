@@ -4,8 +4,7 @@ define([
 		'backbone',
 		'template!/template/lteReport/lteReport',
 		'observer',
-		'chart',
-		'style!/style/chart/nv.d3',
+		'widget-chart',
 		'style!/style/lteReport/lteReportStyle'
 	], function(
 		GestureView,
@@ -143,8 +142,6 @@ define([
 			
 			$('h2[data-branchname]').html(branchInfo['name']);
 			$('p[data-branchresult]').html('오늘 현재까지 개통수 ' + branchInfo['result'] + '대');
-			
-			console.log(branchInfo['timeData']);
 			
 			$('div[data-timechart]').featuredChart({
 				chartType : "bar",

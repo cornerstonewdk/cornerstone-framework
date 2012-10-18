@@ -4,8 +4,6 @@ requirejs.config({
 		"jquery-transit": "../lib/jquery.transit",
 		"transition":"../lib/transition",
 		"navigation":"../lib/navigation",
-		"gridster": "../lib/gridster/jquery.gridster",
-		"chart": "../lib/featured-chart",
 		"isotope": "../lib/jquery.isotope",
 		"observer": "util/resizeObserver",
 	},
@@ -24,14 +22,6 @@ requirejs.config({
         	deps:["transition"]
         },
         
-        "gridster": {
-        	deps:["jquery"]
-        },
-        
-        "chart": {
-        	deps:["jquery"]
-        },
-        
         "isotope": {
         	deps:["jquery"]
         },
@@ -42,7 +32,7 @@ requirejs.config({
 	}
 });
 
-define(['router', 'observer', 'bootstrap'], function(Router, Observer) {
+define(['router', 'observer', 'widget-plugins'], function(Router, Observer) {
 	return {
 		launch: function() {
 			// 애플리게이션의 시작점

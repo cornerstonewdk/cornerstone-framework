@@ -68,3 +68,9 @@
 #dashboard_container > .draggin {
 	display: none;	
 }
+
+/* Dashboard barchart style */
+div#reportChart {
+	height: 200px;
+	min-height: 200px;
+} 

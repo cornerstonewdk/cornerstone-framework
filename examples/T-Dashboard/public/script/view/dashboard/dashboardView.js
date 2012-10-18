@@ -5,9 +5,9 @@ define(
 		'backbone', 
 		'template!/template/dashboard/dashboard',
 		'isotope', 
-		'chart',
-		'style!/style/dashboard/dashboardStyle',
-		'style!/style/chart/nv.d3',
+		'widget-chart',
+		'widget-scrollview',
+		'style!/style/dashboard/dashboardStyle'
 	], function(
 		GestureView,
 		$, 
@@ -67,8 +67,9 @@ define(
 				});
 			});
 			
+			//LTE 계통현황 차트 그려주기
 			$.getJSON("data/bar.json").success(function(json) {
-				$("#example").featuredChart({
+				$("#reportChart").featuredChart({
 					chartType : "bar",
 					data : json
 				});
