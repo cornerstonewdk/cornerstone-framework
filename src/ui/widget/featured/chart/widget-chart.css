@@ -2,11 +2,6 @@
 /********************
  * HTML CSS
  */
-
-svg {
-	min-height: 300px;
-}
-
 .chartWrap {
   margin: 0;
   padding: 0;
@@ -626,6 +621,17 @@ svg .title {
   /*
   cursor: s-resize;
   */
+}
+
+/*
+Custom
+*/
+.nv-legendWrap {
+	display: none;
+}
+
+.filtering .nv-legendWrap {
+	display: block;
 }
 
 

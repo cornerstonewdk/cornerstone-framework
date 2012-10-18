@@ -302,8 +302,10 @@
             }
 
             if(!options.filtering) {
-                console.log($this.find(".nv-legendWrap"), $this, $this[0]);
-                $this.find(".nv-legendWrap").hide();
+                console.log($this);
+                $this.removeClass("filtering");
+            } else {
+                $this.addClass("filtering");
             }
         });
     };
