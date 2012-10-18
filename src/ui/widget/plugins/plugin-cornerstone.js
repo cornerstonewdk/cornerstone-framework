@@ -22,7 +22,7 @@
         Alert = $.fn.alert.Constructor;
 
         Alert.prototype.hide = function (type, next) {
-            console.log("alert hello world");
+//            console.log("alert hello world");
         };
 
         $.fn.alert.Constructor = Alert;
@@ -131,13 +131,13 @@
     })();
 
 
-    console.log("collapse1");
+//    console.log("collapse1");
     /**
      * Collapse 최적화
      */
     this.Collapse = (function () {
         var Collapse;
-        console.log("collapse2");
+//        console.log("collapse2");
         function Collapse() {
         }
 
@@ -189,7 +189,7 @@
         };
 
         Collapse.prototype.hide = function () {
-            console.log("hide");
+//            console.log("hide");
             var dimension
             if (this.transitioning) return
             dimension = this.dimension()
@@ -204,7 +204,7 @@
          * ==================== */
 
         $(function () {
-            console.log("event on");
+//            console.log("event on");
             $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function (e) {
                 var $this = $(this), href
                     , target = $this.attr('data-target')

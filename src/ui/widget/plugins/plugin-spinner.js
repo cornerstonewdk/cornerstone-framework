@@ -47,7 +47,6 @@
     };
 
     Spinner.prototype.toggle = function () {
-        console.log("toggle");
         var $parent = this.$element.parent("[data-toggle='buttons-radio']");
 
         $parent && $parent
@@ -77,7 +76,6 @@
         $("div.widget-spinner div.spinner-center").attr({
             "data-content": text
         });
-        console.log(text);
     };
 
     Spinner.prototype.removeText = function () {

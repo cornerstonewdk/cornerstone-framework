@@ -7,11 +7,11 @@
  *  License :
  */
 
-(function (root, doc, factory) {
+;(function (root, doc, factory) {
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
     if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define([ "jquery", "style!" + Cornerstone.PATH +  "ui/widget-chart"], function ($) {
+        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH +  "ui/widget-chart"], function (Backbone, _ , $) {
             return factory($, root, doc, d3);
         });
     } else {
@@ -302,7 +302,6 @@
             }
 
             if(!options.filtering) {
-                console.log($this);
                 $this.removeClass("filtering");
             } else {
                 $this.addClass("filtering");
