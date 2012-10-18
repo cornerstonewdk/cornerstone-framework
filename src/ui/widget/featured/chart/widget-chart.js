@@ -28,27 +28,14 @@
     function FeaturedChart(element, options) {
         var self = this;
         var target = d3.select(element);
-        defaultOptions = {
-            chartType:"bar",
-            lineType:"basis",
-            xAxisLabel: null,
-            yAxisLabel: null,
-            width:960,
-            height:600,
-            margin:[0, 0, 0, 0],
-            padding:[0, 0, 0, 0],
-            data:{},
-            animate:false,
-            color:d3.scale.category10()
-        };
 
         // 배열로 넘어온 색상을 d3 색상 카테고리로 변환
         if (typeof options === "object" && typeof options.color === "object" && options.color.length > 0) {
             options.color = d3.scale.ordinal().range(options.color);
         }
 
+        this.options = options;
 
-        this.options = options = $.extend(true, defaultOptions, options);
         this.$el = $(element);
 
         nv.dev = false;
@@ -69,8 +56,13 @@
 
             chart.color(options.color.range());
 
-            target.append("svg:svg")
-                .datum(options.data)
+            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
+
+            target.datum(options.data)
                 .transition().duration(500).call(chart);
 
             nv.utils.windowResize(chart.update);
@@ -94,8 +86,13 @@
 
             chart.color(options.color.range());
 
-            target.append("svg:svg")
-                .datum(options.data)
+            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
+
+            target.datum(options.data)
                 .transition().duration(500)
                 .call(chart);
 
@@ -199,9 +196,12 @@
                 .color(options.color.range())
                 .width(width)
                 .height(height);
-
-            target.append("svg:svg")
-                .datum(options.data)
+            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
+            target.datum(options.data)
                 .transition().duration(1200)
                 .attr('width', width)
                 .attr('height', height)
@@ -278,18 +278,36 @@
     };
 
 
-    $.fn.featuredChart = function (options) {
+    $.fn.featuredChart = function (options, methodOptions) {
+        defaultOptions = {
+            chartType:"bar",
+            lineType:"basis",
+            xAxisLabel: null,
+            yAxisLabel: null,
+            width:960,
+            height:600,
+            margin:[0, 0, 0, 0],
+            padding:[0, 0, 0, 0],
+            data:{},
+            animate:false,
+            color:d3.scale.category10()
+        };
+
+        options = $.extend(true, defaultOptions, options);
+
         return this.each(function (i) {
             var $this = $(this);
             var data = $this.data(pluginName);
             // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
-            if (!data) {
-                $this.data(pluginName, (data = new FeaturedChart(this, options)));
-            }
+//            if (!data) {
+//
+//            }
 
             // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
             if (typeof options == 'string') {
                 data[options](data.options);
+            } else {
+                $this.data(pluginName, (data = new FeaturedChart(this, options)));
             }
         });
     };
