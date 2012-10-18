@@ -181,11 +181,6 @@
     FeaturedChart.prototype.pieChart = function (target, options) {
         var self = this;
         nv.addGraph(function () {
-            var width = 500;
-            var height = 500;
-            var fitScreen = false;
-            var zoom = 1;
-
             var chart = nv.models.pieChart()
                 .x(function (d) {
                     return d.label
@@ -193,9 +188,8 @@
                 .y(function (d) {
                     return d.value
                 })
-                .color(options.color.range())
-                .width(width)
-                .height(height);
+                .color(options.color.range());
+
             if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                 target = target.append("svg:svg")
             } else {
@@ -203,13 +197,9 @@
             }
             target.datum(options.data)
                 .transition().duration(1200)
-                .attr('width', width)
-                .attr('height', height)
                 .call(chart);
 
-            self.setChartViewBox(target, chart, width, height, zoom);
-            self.resizeChart(target, chart, fitScreen, width, height);
-            nv.utils.windowResize(this.resizeChart);
+            nv.utils.windowResize(chart.update);
 
             return chart;
         });
@@ -290,6 +280,7 @@
             padding:[0, 0, 0, 0],
             data:{},
             animate:false,
+            filtering: false,
             color:d3.scale.category10()
         };
 
@@ -308,6 +299,11 @@
                 data[options](data.options);
             } else {
                 $this.data(pluginName, (data = new FeaturedChart(this, options)));
+            }
+
+            if(!options.filtering) {
+                console.log($this.find(".nv-legendWrap"), $this, $this[0]);
+                $this.find(".nv-legendWrap").hide();
             }
         });
     };
