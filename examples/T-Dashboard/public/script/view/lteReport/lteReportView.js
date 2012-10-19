@@ -14,7 +14,7 @@ define([
 		Observer
 	){
 	var LteReportView = GestureView.extend({
-		el : '#contentsView',
+		el : 'div#contentsView',
 		
 		branchList: null,
 		
@@ -104,7 +104,7 @@ define([
 		render: function() {
 			var self = this;
 			
-			this.$el.html(template());
+			$(this.el).html(template());
 			
 			$('.nav:not(.nav-list) > li').removeClass('active');
 			$('#lte_report_menu').addClass('active');

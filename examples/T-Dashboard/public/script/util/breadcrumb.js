@@ -19,6 +19,7 @@
 	BreadcrumbManager.prototype.route = function(route, title) {
 		var alreadyRoute = false;
 		var sameIdx = 0;
+		var isRoot = this.itemList.length == 0 ? true : false;
 		
 		for(var i = 0; i < this.itemList.length; i++) {
 			var item = this.itemList[i];
@@ -33,7 +34,7 @@
 			this.itemList.push({'route': route, 'title': title});
 			this.draw();
 			
-			return ">";
+			return isRoot ? "=" : ">";
 		} else {
 			for(var i = sameIdx + 1; i < this.itemList.length; i++) {
 				 this.itemList.pop();
@@ -44,7 +45,7 @@
 			return "<";
 		}
 	};
-	// <span class="divider">/</span>
+
 	BreadcrumbManager.prototype.draw = function() {
 		this.el.children().remove();
 		

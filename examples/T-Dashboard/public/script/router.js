@@ -1,23 +1,19 @@
 define(['backbone',
 		'util/breadcrumb', 
+		'util/pageTransition',
 		'view/pricePolicy/pricePolicyView',
 		'view/dashboard/dashboardView',
 		'view/lteReport/lteReportView',
-		'view/youtube/youtubeView',
 		'view/voc/vocView',
-		'view/sns/snsView',
-		'view/facebook/faceBookView',
 		], 
 function(
 		Backbone,
 		BreadCrumb, 
+		PageTransition, 
 		PricePolicyView,
 		DashboardView,
 		LteReportView,
-		YoutubeView,
-		VocView,
-		SnsView,
-		FacebookView
+		VocView
 ) {
 	var MainRouter = Backbone.Router.extend({
 		routes: {
@@ -25,42 +21,29 @@ function(
 			'index': 'dashboardRoute',
 			'pricePolicy': 'pricePolicyRoute',
 			'lteReport': 'lteReportRoute',
-			'youtube': 'youtubeRoute',
 			'voc': 'vocRoute',
-			'sns': 'snsRoute',
-			'facebook': 'facebookRoute',
 			
 			'*actions': 'defaultAction'
 		},
 
 		dashboardRoute: function() {
-			BreadCrumb.manager.route('index', 'T-Dashboard');
-			DashboardView.render();
+			var direction = BreadCrumb.manager.route('index', 'T-Dashboard');
+			PageTransition.page.transition(direction, DashboardView);
 		},
 		
 		lteReportRoute: function() {
-			BreadCrumb.manager.route('lteReport', 'LTE 개통 통계');
-			LteReportView.render();
+			var direction = BreadCrumb.manager.route('lteReport', 'LTE 개통 통계');
+			PageTransition.page.transition(direction, LteReportView);
 		},
 		
 		pricePolicyRoute: function() {
-			PricePolicyView.render();
-		},
-		
-		youtubeRoute: function() {
-			YoutubeView.render();
+			var direction = BreadCrumb.manager.route('pricePolicy', '정책');
+			PageTransition.page.transition(direction, PricePolicyView);
 		},
 		
 		vocRoute: function() {
-			VocView.render();
-		},
-		
-		snsRoute: function() {
-			SnsView.render();
-		},
-		
-		facebookRoute: function() {
-			FacebookView.render();
+			var direction = BreadCrumb.manager.route('voc', 'VOC');
+			PageTransition.page.transition(direction, VocView);
 		},
 		
 		defaultAction: function(actions) {

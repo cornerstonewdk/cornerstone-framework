@@ -11,19 +11,19 @@ define([
 		GestureAreaView
 ){
 	var PricePolicyView = Backbone.View.extend({
-		el : $('#contentsView'),
+		el : 'div#contentsView',
 		
 		initialize: function() {
 			
 		},
 		
 		render: function() {
-			this.$el.html(template());
+			$(this.el).html(template());
 			
 			$('.nav:not(.nav-list) > li').removeClass('active');
 			$('#price_policy_menu').addClass('active');
 			
-			new GestureAreaView();
+			// new GestureAreaView();
 		},
 		
 	});

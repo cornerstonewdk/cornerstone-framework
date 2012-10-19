@@ -626,6 +626,13 @@ svg .title {
 /*
 Custom
 */
+.nv-controlsWrap {
+	display: none;
+}
+
+.control-bar .nv-controlsWrap {
+	display: block;
+}
 .nv-legendWrap {
 	display: none;
 }

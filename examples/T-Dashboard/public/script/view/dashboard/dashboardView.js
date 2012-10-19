@@ -4,6 +4,7 @@ define(
 		'jquery', 
 		'backbone',
 		'view/dashboard/twitterWidget', 
+		'view/dashboard/youtubeWidget', 
 		'template!/template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
@@ -14,10 +15,11 @@ define(
 		$, 
 		Backbone, 
 		TwitterWidget,
+		YoutubeWidget, 
 		template
 	){
 	var DashboardView = GestureView.extend({
-		el : '#contentsView',
+		el : 'div#contentsView',
 		
 		initialize: function() {
 			
@@ -25,7 +27,7 @@ define(
 		
 		events: {
 			'click div#dashboard_lte': 'lteClick',
-			'click div#dashboard_voc': 'vocClick',
+			'click div[data-widgettitle="dashboard_voc"]': 'vocClick',
 			'click div#dashboard_policy': 'policyClick',
 			'click div#dashboard_sns': 'snsClick',
 			'click div#dashboard_facebook': 'facebookClick',
@@ -57,22 +59,14 @@ define(
 		},
 		
 		render: function() {
-			this.$el.html(template());
+			$(this.el).html(template());
 			
 			$('.nav:not(.nav-list) > li').removeClass('active');	//dashboard는 index 이므로 active 상태가 없다
-			
-			$(function() {
-				var $container = $('#dashboard_container');
-
-				$container.isotope({
-					itemSelector : '.dashboardItem'
-				});
-			});
 			
 			//LTE 계통현황 차트 그려주기
 			$.getJSON("data/bar.json").success(function(json) {
 				$("#reportChart").featuredChart({
-					chartType : "bar",
+					chartType : "stackedBar",
 					data : json
 				});
 			});
@@ -80,6 +74,19 @@ define(
 			//트위터 그리기
 			var twitterWidget = new TwitterWidget();
 			twitterWidget.render();
+			
+			//유투부 그리기
+			var youtubeWidget = new YoutubeWidget();
+			youtubeWidget.render();
+			
+			//isotope 처리
+			$(function() {
+				var $container = $('#dashboard_container');
+
+				$container.isotope({
+					itemSelector : '.dashboardItem'
+				});
+			});
 		},
 		
 	});

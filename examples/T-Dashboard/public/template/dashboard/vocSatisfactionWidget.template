@@ -1,0 +1,4 @@
+<div class="span12 hero-unit">
+	<h4>현재까지 총 {{vocCnt}}건 접수중</h4>
+	<h4>{{vocSatisfaction}}% 만족</h4>
+</div>

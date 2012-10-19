@@ -8,7 +8,7 @@
 		<div class="row-fluid" id="reportChart"></div>
 	</div>
 
-	<div class="dashboardItem height2x" id="dashboard_voc">
+	<div class="dashboardItem height2x" data-widgettitle="dashboard_voc">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>접수 VOC</h1>
@@ -21,12 +21,13 @@
 		</div>
 	</div>
 	
-	<div class="dashboardItem" id="1">
+	<div class="dashboardItem" data-widgettitle="dashboard_voc">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>금일 VOC 만족율</h1>
 			</div>
 		</div>
+		<div class="row-fluid"></div>
 	</div>
 	
 	<div class="dashboardItem" id="dashboard_policy">
@@ -37,7 +38,7 @@
 		</div>
 	</div>
 	
-	<div class="dashboardItem height2x" id="dashboard_sns">
+	<div class="dashboardItem height2x">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>블로그</h1>
@@ -45,7 +46,7 @@
 		</div>
 	</div>
 	
-	<div class="dashboardItem height2x" id="2">
+	<div class="dashboardItem height2x">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>트위터</h1>
@@ -54,7 +55,7 @@
 		<div class="row-fluid" id="twitterWedget"></div>
 	</div>
 	
-	<div class="dashboardItem height2x" id="3">
+	<div class="dashboardItem height2x">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>구글 플러스</h1>
@@ -62,15 +63,16 @@
 		</div>
 	</div>
 	
-	<div class="dashboardItem" id="dashboard_youtube">
+	<div class="dashboardItem">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>유튜브</h1>
 			</div>
 		</div>
+		<div class="row-fluid" id="youtubeWedget"></div>
 	</div>
 	
-	<div class="dashboardItem" id="4">
+	<div class="dashboardItem">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>페이스북 좋아요</h1>
@@ -78,7 +80,7 @@
 		</div>
 	</div>
 	
-	<div class="dashboardItem height2x" id="dashboard_facebook">
+	<div class="dashboardItem height2x">
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>페이스북</h1>
