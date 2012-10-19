@@ -14,8 +14,7 @@ requirejs.config( {
 		'backbone': Cornerstone.PATH_LIB + 'backbone-min',
 		'handlebars': Cornerstone.PATH_LIB + 'handlebars-1.0.0.beta.6',
 
-//      Widget Plugin에 포함
-//		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
+		'bootstrap': Cornerstone.PATH_LIB + 'bootstrap/js/bootstrap.min',
 
 		'lawnchair': Cornerstone.PATH_LIB + 'lawnchair-0.6.1.min',
 		'hammer': Cornerstone.PATH_LIB + 'hammer',
@@ -70,6 +69,9 @@ requirejs.config( {
 				return this.Handlebars;
 			}
 		},
+        'template': {
+            deps: ['handlebars']
+        },
 		'jquery.hammer': {
 			deps: ['hammer', 'jquery']
 		},

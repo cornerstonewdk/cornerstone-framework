@@ -11,7 +11,7 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define([ "jquery" ], function ($) {
+        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH +  "ui/widget-media"], function (Backbone, _ , $) {
             return factory($, root, doc);
         });
     } else {
