@@ -27,7 +27,7 @@
 				<h1>금일 VOC 만족율</h1>
 			</div>
 		</div>
-		<div class="row-fluid"></div>
+		<div class="row-fluid" id="vocSatisfactionWidget"></div>
 	</div>
 	
 	<div class="dashboardItem" id="dashboard_policy">

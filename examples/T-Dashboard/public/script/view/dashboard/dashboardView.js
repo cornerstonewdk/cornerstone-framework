@@ -5,6 +5,7 @@ define(
 		'backbone',
 		'view/dashboard/twitterWidget', 
 		'view/dashboard/youtubeWidget', 
+		'view/dashboard/vocSatisfactionWidget', 
 		'template!/template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
@@ -16,6 +17,7 @@ define(
 		Backbone, 
 		TwitterWidget,
 		YoutubeWidget, 
+		VocSatisfactionWidget, 
 		template
 	){
 	var DashboardView = GestureView.extend({
@@ -78,6 +80,10 @@ define(
 			//유투부 그리기
 			var youtubeWidget = new YoutubeWidget();
 			youtubeWidget.render();
+			
+			//VOC 만족률 위젯 그리기
+			var vocSatisfactionWidget = new VocSatisfactionWidget();
+			vocSatisfactionWidget.render();
 			
 			//isotope 처리
 			$(function() {

@@ -1,13 +1,20 @@
-(function (root, doc, factory) {
-	define(function (require) {
-		var $ = require("jquery");
-		var backbone = require("backbone");
-		var breadCrumb = require("util/breadcrumb");
-		var pageTransition = require("util/pageTransition");
-		
-		factory(root, doc, $, backbone, breadCrumb, pageTransition, require);
-	});
-}(window, document, function (window, document, $, Backbone,  BreadCrumb, PageTransition, require) {
+define(['backbone',
+		'util/breadcrumb', 
+		'util/pageTransition',
+		'view/pricePolicy/pricePolicyView',
+		'view/dashboard/dashboardView',
+		'view/lteReport/lteReportView',
+		'view/voc/vocView',
+		], 
+function(
+		Backbone,
+		BreadCrumb, 
+		PageTransition, 
+		PricePolicyView,
+		DashboardView,
+		LteReportView,
+		VocView
+) {
 	var MainRouter = Backbone.Router.extend({
 		routes: {
 			'': 'dashboardRoute',
@@ -18,17 +25,8 @@
 			
 			'*actions': 'defaultAction'
 		},
-		
-		DashboardView: null,
-		PricePolicyView: null,
-		LteReportView: null,
-		VocView: null,
 
 		dashboardRoute: function() {
-			if (this.DashboardView == null) {
-				this.DashboardView = require("view/dashboard/dashboardView");
-			}
-			
 			var direction = BreadCrumb.manager.route('index', 'T-Dashboard');
 			PageTransition.page.transition(direction, DashboardView);
 		},
@@ -56,4 +54,4 @@
 	new MainRouter();
 	
 	Backbone.history.start();
-}));
+});

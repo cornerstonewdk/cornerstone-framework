@@ -6,7 +6,8 @@ requirejs.config({
 		"navigation":"../lib/navigation",
 		"isotope": "../lib/jquery.isotope",
 		"observer": "util/resizeObserver",
-		"jsonp": Cornerstone.PATH + "util/jsonp"
+		"jsonp": Cornerstone.PATH + "util/jsonp",
+		"route": "router",
 	},
 	
 	shim: {
@@ -30,10 +31,14 @@ requirejs.config({
         "observer": {
         	deps:["enquire"]
         },
+        
+        "route": {
+        	deps:["backbone"],
+        },
 	}
 });
 
-define(['router', 'observer', 'widget-plugins'], function(Router, Observer) {
+define(['route', 'observer', 'widget-plugins'], function(Router, Observer) {
 	return {
 		launch: function() {
 			// 애플리게이션의 시작점
