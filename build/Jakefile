@@ -109,6 +109,13 @@ runTask( 'deploy', [ 'validate' ], function() {
 		PATH_SOURCE + 'ui/widget/featured/media/widget-media.js',
 		PATH_DIST + 'ui/widget-media.js'
 	);
+
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/media/widget-media.css',
+		PATH_DIST + 'ui/widget-media.css'
+	);
+
+	j.copy( PATH_SOURCE + 'ui/widget/featured/media/img', PATH_DIST + 'ui/img' );
 	
 	j.concat(
 		PATH_SOURCE + 'ui/widget/featured/scroll-view/iscroll.js',
@@ -120,8 +127,6 @@ runTask( 'deploy', [ 'validate' ], function() {
    		PATH_SOURCE + 'ui/widget/featured/scroll-view/widget-scrollview.css',
 		PATH_DIST + 'ui/widget-scrollview.css'
 	);
-
-	j.copy( PATH_SOURCE + 'ui/widget/featured/scroll-view/img', PATH_DIST + 'ui/img' );
 
 	j.concat(
 		PATH_SOURCE + 'ui/widget/featured/editor/wysihtml5.js',
