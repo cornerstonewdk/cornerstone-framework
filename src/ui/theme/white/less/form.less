@@ -53,9 +53,9 @@ input[type="color"],
 .uneditable-input {
 	height: auto;
   display: inline-block;
-  padding: 9px 6px;
+  padding: 10px 6px;
   margin-bottom: 9px;
-  font-size: (@baseFontSize + 4);
+  font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
   .border-radius(@inputBorderRadius);
@@ -147,10 +147,9 @@ textarea {
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
 		margin: 0 1px;
-    font-size: (@baseFontSize + 4);
+    font-size: @baseFontSize;
 		line-height: @baseLineHeight;
     vertical-align: top;
-		padding: 9px 5px;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
     &:focus {
@@ -163,8 +162,8 @@ textarea {
     width: auto;
     height: @baseLineHeight;
     min-width: 16px;
-		padding: 10px;
-    font-size: (@baseFontSize + 4);
+		padding: 11px 10px;
+    font-size: @baseFontSize;
     font-weight: normal;
     line-height: @baseLineHeight;
     text-align: center;
@@ -418,7 +417,7 @@ select {
 }
 // Disabled input  ---- [2012-08-28] Add
 input.input-disa {
-	font-size: (@baseFontSize + 4);
+	font-size: @baseFontSize;
 	line-height: (@baseLineHeight + 4);
 	padding: 7px 5px;
 	background: @disabledInput url('../img/bg_input.png') repeat-x left top;
@@ -441,7 +440,7 @@ input.input-disa {
 // Button
 
 .uneditable-input {
-	font-size: (@baseFontSize + 4);
+	font-size: @baseFontSize;
   line-height: @baseLineHeight;
 	padding: 11px 7px;
 	color: @uneditableTxt;

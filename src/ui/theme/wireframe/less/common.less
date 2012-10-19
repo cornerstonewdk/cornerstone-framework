@@ -82,7 +82,7 @@
 @btnBackground:                     #42464b;
 @btnGradiant:												#3d4146;
 @btnBackgroundHighlight:            #56595e;
-@btnBorder:                         @black;
+@btnBorder:                         @grayLight;
 @btnShadow:													rgba(0,0,0,.7);
 @btnHover:													#1e2023;
 @btnActive:													@white;
@@ -133,7 +133,7 @@
 
 // Forms
 // -------------------------
-@inputBackground:               rgba(34,34,34,.64);
+@inputBackground:               @white;
 @inputBorder:                   rgba(179,233,246,.5);
 @inputShadow:                   rgba(152,225,243,1);
 @inputShadowOrange:							rgba(255,205,178,.6);
@@ -145,10 +145,10 @@
 @addonTopColor:									#5a5d61;
 @addonBotColor:									#3d4146;
 
-@selectBackground:              rgba(44,45,46,1);
+@selectBackground:              @white;
 @selectHeight:									16px;
 
-@searchBorderRadius:             25px;
+@searchBorderRadius:            4px;
 @searchBackground:							@white;
 @searchTxt:											@grayLight;
 
@@ -201,27 +201,27 @@
 // -------------------------
 @navLink:													@grayLighter;
 
-@navTabLink:					            #c0c0c0;
-@navTabOver:					            @white;
+@navTabLink:					            @grayLight;
+@navTabOver:					            @grayLight;
 @navTabLine:					            rgba(255,255,255,.02);
 @navTabTop:												#fefefe;
 @navTabLeft:											@grayLighter;
 @navTabRight:											#b4b4b4;
 @navPillLink:					            @grayLight;
-@navPillActive:					          @white;
-@navPillBackground:					      rgba(84,84,82,.8);
+@navPillActive:					          @black;
+@navPillBackground:					      @white;
 @navPillBgActive:									rgba(0,0,0,.2);
-@navPillBorder:					          @black;
-@navPillBorderOver:				        #454646;
+@navPillBorder:					          @grayLight;
+@navPillBorderOver:				        @grayLight;
 @navStackedLink:					        @black;
 @navStackedBorder:								#0c0c0c;
 @navStackedBackground:						#2a2d30;
 
 @navBotActive:										#292c2f;
 @navBotBlueBg:										#316b9d;
-@navBotBlueOver:								#234a71;
-@navBotBorder:										@black;
-@navBotLink:											@white;
+@navBotBlueOver:									#234a71;
+@navBotBorder:										@grayLight;
+@navBotLink:											@grayDark;
 @navBotBlueLink:									#0d3259;
 @navBotBlueActive:								#a1eafd;
 
@@ -234,7 +234,7 @@
 
 @navbarText:                      @grayLight;
 @navbarLinkColor:                 #a1a1a1;
-@navbarLinkHome:									@white;
+@navbarLinkHome:									@grayDark;
 @navbarLinkColorHover:            #82e6ff;
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       #202020;
@@ -274,7 +274,7 @@
 
 // BreadcrumbsTxt
 // -------------------------
-@breadcrumbsTxt:                  @white;
+@breadcrumbsTxt:                  @black;
 
 // Hero unit
 // -------------------------
@@ -285,19 +285,19 @@
 
 // Form states and alerts
 // -------------------------
-@warningText:             @white;
+@warningText:             @grayLight;
 @warningBackground:       #c76b16;
 @warningBorder:           rgba(143,143,6,.64);
 
-@errorText:               @white;
+@errorText:               @grayLight;
 @errorBackground:         #b91636;
 @errorBorder:             rgba(169,0,0,.64);
 
-@successText:             @white;
+@successText:             @grayLight;
 @successBackground:       #3f842a;
 @successBorder:           rgba(8,153,8,.64);
 
-@infoText:                @white;
+@infoText:                @grayLight;
 @infoBackground:          #287a8f;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
