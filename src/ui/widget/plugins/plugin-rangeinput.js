@@ -205,37 +205,50 @@
                 return self;
             }
 
+//            if (vertical) {
+//                this.progressHeight = len - x + handle.height() / 2;
+//                if ($.browser.os === "IOS" && $.browser.version > 4) {
+//                    handle.animate({
+//                        top:x
+//                    }, speed, callback);
+//                } else {
+//                    handle.transition({
+//                        y:x
+//                    }, speed, callback);
+//                }
+//                if (false && conf.progress) {
+//                    progress.css({
+//                        height:this.progressHeight
+//                    });
+//                }
+//            } else {
+//                this.progressWidth = x + handle.width() / 2;
+//                if ($.browser.os === "IOS" && $.browser.version > 4) {
+//                    handle.animate({
+//                        left:x
+//                    }, speed, callback);
+//                } else {
+//                    handle.transition({
+//                        x:x
+//                    }, speed, callback);
+//                }
+//                if (conf.progress) {
+//                    progress.css({
+//                        width:this.progressWidth
+//                    });
+//                }
+//            }
+
             if (vertical) {
-                this.progressHeight = len - x + handle.height() / 2;
-                if ($.browser.os === "IOS" && $.browser.version > 4) {
-                    handle.animate({
-                        top:x
-                    }, speed, callback);
-                } else {
-                    handle.transition({
-                        y:x
-                    }, speed, callback);
-                }
-                if (false && conf.progress) {
-                    progress.css({
-                        height:this.progressHeight
-                    });
-                }
-            } else {
-                this.progressWidth = x + handle.width() / 2;
-                if ($.browser.os === "IOS" && $.browser.version > 4) {
-                    handle.animate({
-                        left:x
-                    }, speed, callback);
-                } else {
-                    handle.transition({
-                        x:x
-                    }, speed, callback);
-                }
+                handle.animate({top: x}, speed, callback);
                 if (conf.progress) {
-                    progress.css({
-                        width:this.progressWidth
-                    });
+                    progress.animate({height: len - x + handle.height() / 2}, speed);
+                }
+
+            } else {
+                handle.animate({left: x}, speed, callback);
+                if (conf.progress) {
+                    progress.animate({width: x + handle.width() / 2}, speed);
                 }
             }
 
