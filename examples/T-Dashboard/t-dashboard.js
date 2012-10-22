@@ -35,6 +35,16 @@ app.get('/', function(req, res){
 	});
 });
 
+app.get('/t-dashboard', function(req, res){
+	fs.readFile('views/index.html', function(err, data){
+		if(err){
+			res.end(err);
+		} else {
+			res.end(data);	
+		}
+	});
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
