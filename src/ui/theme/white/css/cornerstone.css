@@ -4107,6 +4107,7 @@ input.search-query {
   background-size: 4px;
 }
 .nav-tabs > li {
+  width: auto;
   margin: 0;
   padding: 0 0 1px 0.7%;
 }
