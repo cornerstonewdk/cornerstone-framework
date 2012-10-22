@@ -29,12 +29,9 @@
 	position:relative;
   padding: 9px 10px;
   line-height: @baseLineHeight;
-  border: 0;
+  border: 1px solid @grayLight;
   .border-radius(4px);
-  .box-shadow(0 0 8px rgba(0,0,0,.7));
   .transition(all .2s ease-in-out);
-	background: url('../img/bg_tab_on.png') repeat left top;
-	background-size: 4px;
 }
 // Add a hover state for linked versions only
 
@@ -69,10 +66,7 @@ a.thumbnail:hover:after {
   display: block;
   padding: 9px 10px;
   line-height: @baseLineHeight;
-  border: 0;
   .border-radius(4px);
-  .box-shadow(0 1px 3px rgba(0,0,0,.055));
   .transition(all .2s ease-in-out);
-	background: url('../img/bg_dot_black.png') repeat left top;
-	background-size: 4px;
+	background: @grayLighter;
 }

@@ -4,17 +4,14 @@
 
 
 .pagination {
-	background-color: @pagingBackground;
-	.border-radius(3px);
-	padding: 3px 0 5px 3px;
 	text-align: center;
+	.border-radius(3px);
  }
 .pagination ul {
   display: inline-block;
   .ie7-inline-block();
   margin: 0 auto;
   .border-radius(3px);
-  .box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
 .pagination ul li {
   display: inline-block;
@@ -37,23 +34,18 @@
 	line-height: @baseLineHeight;
 	width: 30px;
 	padding: 7px 0 7px 0;
-	background: @pagingArrow;
-  border: 1px solid rgba(255,255,255,0.05);
-	border-top: 1px solid rgba(255,255,255,0.2);
-	border-bottom: 0;
-  .border-radius(4px);
+	background: @white;
+  border: 0;
 	vertical-align: middle;
 	display:block;
-  .box-shadow(~"inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4)");
 }
 .pagination ul li a:hover,
 .pagination ul li .active a {
 	color: @pagingActive;
 	text-decoration:none;
+	padding: 7px 0 7px 0;
 	border-top: none;
-	border-bottom: 1px solid rgba(255,255,255,.15);
-  background-color: @pagingNumBg;
-	.box-shadow(~"inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15)");
+  background-color: none;
 }
 
 .pagination ul li:first-child a, .pagination ul li:last-child a {
@@ -61,11 +53,8 @@
 	height: auto;
 	padding: 5px 11px;
 	background: @pagingArrow;
-  border: 1px solid rgba(255,255,255,0.1);
-	border-top: 1px solid rgba(255,255,255,0.15);
-	border-bottom: none;
+  border: 1px solid @grayLight;
   .border-radius(4px);
-  .box-shadow(~"inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4)");
 }
 
 .pagination ul li:first-child a span, 
@@ -80,7 +69,6 @@
   background-color: @pagingNextBtn;
 	vertical-align: middle;
   border: none;
-  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4)");
 }
 
 .pagination ul li:first-child a:hover span, 
@@ -93,9 +81,9 @@
 	position: relative;
 	.border-radius(50px);
 	border:none;
+	background-color: @black;
 	vertical-align:middle;
   box-shadow:none;
-	#gradient > .vertical-paging;
 }
 
 

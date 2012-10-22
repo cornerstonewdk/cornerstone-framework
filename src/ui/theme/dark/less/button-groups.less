@@ -236,10 +236,6 @@
   }
 }
 
-.btn-group {
-	display:inline-block; 
-}
-
 .btn-group .btn {
 	color: @btnGroupTxt;
 	text-shadow: 0 1px 0 rgba(255,255,255,.2);
@@ -330,96 +326,6 @@
 
 .btn-group .dropdown-toggle {
 	border-right: 1px solid @btnBorder;
-}
-
-// Button Group Type Add
-
-.t-blue .btn {
-  .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground, @btnBlueTxt, @btnShadow);
-	border: 0;
-	border-top: 1px solid @black;
-	border-bottom: 1px solid @black;
-	text-shadow: 0 1px 0 rgba(255,255,255,.2);
-
-  // Hover state
-  &:hover {
-    color: @btnBlueActiveTxt;
-		border: 0;
-		border-top: 1px solid transparent;
-		border-bottom: 1px solid transparent;
-		background-color: @btnBlueActive;
-		background-image:none;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
-  }
-
-  // Focus state for keyboard and accessibility
-  &:focus {
-    .tab-focus();
-  }
-
-  // Active state
-  &.active,
-  &:active {
-    color: @btnBlueActiveTxt;
-    text-shadow:inset 0 0 2px rgba(255,255,255,.5);
-    background-color: @btnBlueActive;
-		background-image:none;
-    border:0;
-  }
-
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
-    background-color: darken(@white, 10%);
-    background-image: none;
-    .opacity(65);
-    .box-shadow(none);
-  }
-
-}
-
-.t-blue .btn:first-child {
-	border-left: 1px solid @black;
-}
-
-.t-blue .btn:last-child {
-	border-right: 1px solid @black;
-}
-
-.t-blue .up:after,
-.t-blue .down:after,
-.t-blue .set:after{
-	background-position: 1px -370px;
-}
-
-.t-blue .down:after {
-	background-position: 1px -463px;
-}
-
-.t-blue .set:after {
-	background-position: 1px -557px;
-}
-
-.t-blue .up:hover:after,
-.t-blue .up:active:after,
-.t-blue .up.active:after{
-	background-position: 1px -416px;
-}
-
-.t-blue .down:hover:after,
-.t-blue .down:active:after,
-.t-blue .down.active:after {
-	background-position: 1px -511px;
-}
-
-.t-blue .set:hover:after,
-.t-blue .set:active:after,
-.t-blue .active:after {
-	background-position: 1px -606px;
 }
 
 // Vertical button groups

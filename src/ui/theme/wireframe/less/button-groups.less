@@ -52,7 +52,6 @@
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
-		border-left: 1px solid @btnBorder;
      -webkit-border-top-left-radius: 4px;
          -moz-border-radius-topleft: 4px;
              border-top-left-radius: 4px;
@@ -63,7 +62,6 @@
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-		border-right: 1px solid @btnBorder;
      -webkit-border-top-right-radius: 4px;
          -moz-border-radius-topright: 4px;
              border-top-right-radius: 4px;
@@ -189,64 +187,9 @@
   border-top: 0;
 }
 
-// Account for other colors
-.btn-primary,
-.btn-warning,
-.btn-danger,
-.btn-info,
-.btn-success,
-.btn-inverse {
-  .caret {
-    border-top-color: @caretColorActive;
-    border-bottom-color: @caretColorActive;
-  }
-}
-
-.dropdown-toggle .caret {
-	border-top: 4px solid @caretColorActive;
-}
-
 
 .dropup .dropdown-toggle .caret {
-  border-bottom: 4px solid @caretColorActive;
   border-top: 0;
-}
-
-.dropup .dropdown-menu {
-	&:before {
-    border: 0;
-  }
-  &:after {
-     border: 0;
-  }
-}
-
-.btn-group {
-	display:inline-block; 
-}
-
-.btn-group .btn {
-	color: @btnGroupTxt;
-	border: 1px solid @btnBorder;
-
-	&:hover {
-		color: @btnHoverTxt;
-		text-shadow: none;
-		.caret {
-			border-top-color: @black;
-		}
-  }
-  // Active state
-  &.active,
-  &:active {
-		color: @white;
-		background-color: @grayDark;
-		text-shadow: none;
-		.box-shadow(none);
-		.caret {
-			border-top-color: @white;
-		}
-	}
 }
 
 .btn-group .up:after,
@@ -284,95 +227,6 @@
 .btn-group .set:active:after,
 .btn-group .set.active:after {
 	background-position: 1px -887px;
-}
-
-.btn-group .dropdown-toggle {
-	border-right: 1px solid @btnBorder;
-}
-
-// Button Group Type Add
-
-.t-blue .btn {
-	color: @btnBlueTxt;
-  background-color: @skyBlue;
-	border: 1px solid @black;
-	text-shadow: none;
-
-  // Hover state
-  &:hover {
-    color: @btnBlueHoverTxt;
-		background-color: @btnBlueHover;
-		background-image:none;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
-  }
-
-  // Focus state for keyboard and accessibility
-  &:focus {
-    .tab-focus();
-  }
-
-  // Active state
-  &.active,
-  &:active {
-    color: @btnBlueActiveTxt;
-    background-color: @btnBlueActive;
-		background-image:none;
-		.box-shadow(none);
-  }
-
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
-    background-color: darken(@white, 10%);
-    background-image: none;
-    .opacity(65);
-    .box-shadow(none);
-  }
-
-}
-
-.t-blue .btn:first-child {
-	border-left: 1px solid @black;
-}
-
-.t-blue .btn:last-child {
-	border-right: 1px solid @black;
-}
-
-.t-blue .up:after,
-.t-blue .down:after,
-.t-blue .set:after{
-	background-position: 1px -370px;
-}
-
-.t-blue .down:after {
-	background-position: 1px -463px;
-}
-
-.t-blue .set:after {
-	background-position: 1px -557px;
-}
-
-.t-blue .up:hover:after,
-.t-blue .up:active:after,
-.t-blue .up.active:after{
-	background-position: 1px -416px;
-}
-
-.t-blue .down:hover:after,
-.t-blue .down:active:after,
-.t-blue .down.active:after {
-	background-position: 1px -511px;
-}
-
-.t-blue .set:hover:after,
-.t-blue .set:active:after,
-.t-blue .active:after {
-	background-position: 1px -606px;
 }
 
 // Vertical button groups

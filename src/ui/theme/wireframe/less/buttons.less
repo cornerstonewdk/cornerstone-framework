@@ -28,13 +28,16 @@
   // Hover state
   &:hover {
 		color: @btnLinkTxt;
-    text-decoration: none;   
+    text-decoration: none; 
 		 *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
 		margin: 0;
 
     // transition is only when going to hover, otherwise the background
     // behind the gradient (there for IE<=9 fallback) gets mismatched
     .transition(background-position .1s linear);
+		.caret {
+			border-top-color: @btnLinkTxt;
+		}
   }
 
   // Focus state for keyboard and accessibility
@@ -47,6 +50,10 @@
   &:active {
 		color: @btnActiveTxt;
 		margin: 0;
+		.box-shadow(none);
+		.caret {
+			border-top-color: @btnActiveTxt;
+		}
   }
 
   // Disabled state
@@ -72,20 +79,31 @@
 // -------------------------
 
 .btn-primary { 
-	 border:1px solid @btnBorder;
+	 border:1px solid @btnPrimaryBorder;
 	 background: @skyBlue;
 	 color: @btnBlueTxt;
-	 text-shadow: none;
+	 .caret {
+		border-top-color: @btnBlueTxt;
+	}
   // Hover state
   &:hover {
-    color: @btnBlueActiveTxt;		
-		border:1px solid @btnBorder;
+    color: @btnBlueHoverTxt;	
+		background: @blue;
+		border:1px solid @btnPrimaryBorder;
+		.caret {
+			border-top-color: @btnBlueHoverTxt;
+		}
   }
   // Active state
   &.active,
   &:active {
+		color: @btnBlueActiveTxt;	
     text-shadow: inset 0 0 2px rgba(255,255,255,.5);
-		border:1px solid @btnBorder;
+		border:1px solid @btnPrimaryBorder;
+		background: @blueDark;
+		.caret {
+			border-top-color: @btnBlueActiveTxt;
+		}
   }
 	// Disabled state
   &.disabled,
@@ -93,7 +111,7 @@
     cursor: default;		
 		text-shadow: none;
     background-image: none;
-		border:1px solid @btnBorder;
+		border:1px solid @btnPrimaryBorder;
     .opacity(100);
     .box-shadow(none);
   }
