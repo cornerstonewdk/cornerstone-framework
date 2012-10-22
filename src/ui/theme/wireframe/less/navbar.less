@@ -11,7 +11,6 @@
   overflow: visible;
   margin-bottom: @baseLineHeight;
   color: @navbarText;
-	background: url('../img/bg_nav.png') repeat left top;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
@@ -23,11 +22,11 @@
 .navbar-inner {
 	text-align:center;
   min-height: @navbarHeight;
-  padding: 0 10px;	
-  #gradient > .vertical-nav();
-	border:none;
-  .border-radius(0);
-  .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)");
+  padding: 0 10px;
+	background: @white;
+	border: 1px solid @grayLight;
+  .border-radius(4px);
+	box-shadow: none;
 	position:relative;
 }
 
@@ -54,7 +53,6 @@
   font-size: 20px;
   font-weight: 200;
   color: @navbarBrandColor;
-  text-shadow: 0 2px 1px rgba(0,0,0,.5);
   &:hover {
     text-decoration: none;
   }
@@ -152,9 +150,8 @@
     .search-query {
 			line-height: (@baseLineHeight + 5);
       background-color: @inputBackground;
-			border:1px solid transparent;
+			border:1px solid @grayLight;
 			.border-radius(@searchBorderRadius);
-			.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
 			@transition: border linear .2s, box-shadow linear .2s;
 			.transition(@transition);
 			color: @searchTxt;
@@ -168,9 +165,8 @@
       &.focused {
         color: @white;
 				background-color: @inputBackground;
-				border:1px solid transparent;
+				border:1px solid @grayLight;
 				.border-radius(@searchBorderRadius);
-				.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
 				@transition: border linear .2s, box-shadow linear .2s;
 				.transition(@transition);
 				color: @searchTxt;
@@ -241,7 +237,7 @@
 }
 
 .navbar .nav > li:first-child {
-	border-right: 1px solid rgba(33,33,34,.85);
+	border-right: 1px solid @grayLight;
 	.box-shadow(~"1px 0 0 rgba(255,255,255,.1)");
 	margin-right: 5px;	
 	padding: 0 15px 0 20px;
@@ -256,7 +252,6 @@
   color: @navbarLinkColor;
 	font-size: (@baseFontSize + 3);
   text-decoration: none;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 	border: 1px solid transparent;
 }
 
@@ -285,8 +280,9 @@
 	border: 0;
 	box-shadow: none;
 	background: none;
-	color: @white;
-	font-size: ((@baseFontSize * 2 ) - 6);	
+	color: @black;
+	font-size: ((@baseFontSize * 2 ) - 6);
+	text-shadow: none;
 }
 
 .navbar .nav.pull-right > li:first-child,
@@ -305,7 +301,6 @@
   color: @navbarLinkColor;
 	font-size: (@baseFontSize + 3);
   text-decoration: none;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 	border: 1px solid transparent;
 }
 
@@ -329,13 +324,6 @@
 	background-size: 138px;
 	padding-right: 0;
 	margin-top: -2px;
-}
-
-.navbar .nav > li:first-child {
-	border-right: 1px solid rgba(33,33,34,.85);
-	.box-shadow(~"1px 0 0 rgba(255,255,255,.1)");
-	margin-right: 5px;	
-	padding: 0 15px 0 0;
 }
 
 // Icon + Text Navigation 

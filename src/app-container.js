@@ -26,8 +26,16 @@ requirejs.config( {
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
 		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture',
+		
+		'socket.io': '/socket.io/socket.io',
+		
+		// Utils
+		'transition': Cornerstone.PATH + 'util/transition',
+		'runtime': Cornerstone.PATH + 'util/srt-1.0',
+		'jsonp': Cornerstone.PATH + 'util/jsonp',
+		'skt': Cornerstone.PATH + 'util/skt',
 
-        // Widget Alias 추가
+        // Widget Alias
         'widget-plugins' : Cornerstone.PATH + 'ui/widget-plugins',
         'widget-chart' : Cornerstone.PATH + 'ui/widget-chart',
         'widget-datatable' : Cornerstone.PATH + 'ui/widget-datatable',
@@ -55,9 +63,9 @@ requirejs.config( {
 				return this.Backbone.noConflict();
 			}
 		},
-//		'bootstrap': {
-//			deps: ['jquery']
-//		},
+		'bootstrap': {
+			deps: ['jquery']
+		},
 		'lawnchair': {
 			exports: function() {
 				// 전역변수에 선언된 Lawnchair를 삭제하면 제대로 동작하지 않는다.
@@ -79,6 +87,20 @@ requirejs.config( {
 			exports: function() {
 				return this.enquire;
 			}
+		},
+		'socket.io': {
+			exports: function() {
+				return this.io;
+			}
+		},
+		'transition': {
+			deps: ['jquery']
+		},
+		'jsonp': {
+			deps: ['jquery']
+		},
+		'skt': {
+			deps: ['jquery']
 		},
         'gesture-view' : {
             deps: ['backbone', 'jquery.hammer']

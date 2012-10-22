@@ -14,8 +14,8 @@
 @grayDarker:            #222;
 @grayDark:              #333;
 @gray:                  #4e4e4e;
-@grayLight:             #c0c0c0;
-@grayLighter:           #b0b0b0;
+@grayLight:             #b0b0b0;
+@grayLighter:           #ddd;
 @white:                 #fff;
 
 
@@ -71,10 +71,10 @@
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             rgba(51,51,51,.6); // for striping
-@tableBackgroundHover:              rgba(51,51,51,.6); // for hover
-@tableBorder:                       #232223; // table and cell border
-@tableColor:												@white;
+@tableBackgroundAccent:             rgba(51,51,51,.1); // for striping
+@tableBackgroundHover:              rgba(51,51,51,.1); // for hover
+@tableBorder:                       @grayLighter; // table and cell border
+@tableColor:												@gray;
 
 
 // Buttons [2012-08-29] Add
@@ -82,30 +82,33 @@
 @btnBackground:                     #42464b;
 @btnGradiant:												#3d4146;
 @btnBackgroundHighlight:            #56595e;
-@btnBorder:                         @black;
+@btnBorder:                         @grayLight;
 @btnShadow:													rgba(0,0,0,.7);
 @btnHover:													#1e2023;
+@btnHoverTxt:												@grayDark;
 @btnActive:													@white;
-@btnActiveTxt:											#2094b1;
+@btnActiveTxt:											@blue;
 @btnActiveBorder:                   #333;
 @btnLinkTxt:												@black;
 @btnDisabled:												#858e98;
 @btnDisabledTxt:										#ccc;
 
 @btnPrimaryBackground:              #316b9d;
+@btnPrimaryBorder:                  @grayLight;
 @btnPrimaryBackgroundHighlight:     #4176a5;
 @btnPrimaryTxt:											@white;
 
 @btnBlueTxt:												@blueDark;
-@btnBlueHover:											#113a5e;
+@btnBlueHover:											@blue;
+@btnBlueHoverTxt:										@white;
 @btnBlueHoverHighlight:							#244e72;
-@btnBlueActive:											#1d3c5c;
+@btnBlueActive:											@blueDark;
 @btnBlueActiveHighlight:						#234a71;
-@btnBlueActiveTxt:									#a2ecff;
+@btnBlueActiveTxt:									@white;
 @btnBlueDisabled:										#87abca;
 @btnBlueDisabledTxt:								#ddd;
 
-@btnGroupTxt:												@black;
+@btnGroupTxt:												@grayLight;
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -125,15 +128,15 @@
 @inputGradiantBg:										rgba(41,41,41,.52);
 @selectArrow:												#42464b;
 @caretColor:												@gray;
-@caretColorActive:									@white;
+@caretColorActive:									@black;
 
 // Radio, Checkbox List 
-@listBackground:                    rgba(40,40,40,.31);
+@listBackground:                    @white;
 
 
 // Forms
 // -------------------------
-@inputBackground:               rgba(34,34,34,.64);
+@inputBackground:               @white;
 @inputBorder:                   rgba(179,233,246,.5);
 @inputShadow:                   rgba(152,225,243,1);
 @inputShadowOrange:							rgba(255,205,178,.6);
@@ -145,10 +148,10 @@
 @addonTopColor:									#5a5d61;
 @addonBotColor:									#3d4146;
 
-@selectBackground:              rgba(44,45,46,1);
+@selectBackground:              @white;
 @selectHeight:									16px;
 
-@searchBorderRadius:             25px;
+@searchBorderRadius:            4px;
 @searchBackground:							@white;
 @searchTxt:											@grayLight;
 
@@ -201,27 +204,27 @@
 // -------------------------
 @navLink:													@grayLighter;
 
-@navTabLink:					            #c0c0c0;
-@navTabOver:					            @white;
+@navTabLink:					            @grayLight;
+@navTabOver:					            @grayLight;
 @navTabLine:					            rgba(255,255,255,.02);
 @navTabTop:												#fefefe;
 @navTabLeft:											@grayLighter;
 @navTabRight:											#b4b4b4;
 @navPillLink:					            @grayLight;
-@navPillActive:					          @white;
-@navPillBackground:					      rgba(84,84,82,.8);
+@navPillActive:					          @black;
+@navPillBackground:					      @white;
 @navPillBgActive:									rgba(0,0,0,.2);
-@navPillBorder:					          @black;
-@navPillBorderOver:				        #454646;
+@navPillBorder:					          @grayLight;
+@navPillBorderOver:				        @grayLight;
 @navStackedLink:					        @black;
 @navStackedBorder:								#0c0c0c;
 @navStackedBackground:						#2a2d30;
 
 @navBotActive:										#292c2f;
 @navBotBlueBg:										#316b9d;
-@navBotBlueOver:								#234a71;
-@navBotBorder:										@black;
-@navBotLink:											@white;
+@navBotBlueOver:									#234a71;
+@navBotBorder:										@grayLight;
+@navBotLink:											@grayDark;
 @navBotBlueLink:									#0d3259;
 @navBotBlueActive:								#a1eafd;
 
@@ -234,7 +237,7 @@
 
 @navbarText:                      @grayLight;
 @navbarLinkColor:                 #a1a1a1;
-@navbarLinkHome:									@white;
+@navbarLinkHome:									@grayDark;
 @navbarLinkColorHover:            #82e6ff;
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       #202020;
@@ -245,36 +248,36 @@
 @navbarSearchBackgroundFocus:     @white;
 @navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
 @navbarSearchPlaceholderColor:    #ccc;
-@navbarBrandColor:                @white;
+@navbarBrandColor:                @black;
 
 @navbarDropdownBorder:						#454545;
 
-@radioVertTxt:			              @white;
+@radioVertTxt:			              @grayLight;
 
 //	Nav List
-@navListBg:												#ededee;
+@navListBg:												@white;
 @navListHeader:										@white;
-@navListHover:										#525252;
-@navListActive:										#9e2222;
+@navListHover:										@grayLighter;
+@navListActive:										@grayLighter;
 
 
 
 // Pagination
 // -------------------------
 @pagingBackground:								rgba(0,0,0,.2);
-@pagingNum:												#2c2c2c;
-@pagingNumBg:											#282b2e;
+@pagingNum:												@grayLight;
+@pagingNumBg:											@white;
 @pagingBtn:												#2094b1;
-@pagingNextBtn:										#242424;
-@pagingTxt:												@white;
-@pagingActive:										#82e6ff;
-@pagingArrow:											#42464b;
-@pagingArrowActive:								#2a2d30;
+@pagingNextBtn:										@grayLight;
+@pagingTxt:												@grayLight;
+@pagingActive:										@black;
+@pagingArrow:											@white;
+@pagingArrowActive:								@skyBlue;
 
 
 // BreadcrumbsTxt
 // -------------------------
-@breadcrumbsTxt:                  @white;
+@breadcrumbsTxt:                  @black;
 
 // Hero unit
 // -------------------------
@@ -306,8 +309,8 @@
 
 // Tooltips and popovers
 // -------------------------
-@tooltipColor:            #fff;
-@tooltipBackground:       #282b2e;
+@tooltipColor:            @grayDark;
+@tooltipBackground:       @grayLighter;
 @tooltipArrowWidth:       5px;
 @tooltipArrowColor:       @tooltipBackground;
 
@@ -318,7 +321,6 @@
 @popoverBackground:       #fff;
 @popoverArrowWidth:       10px;
 @popoverArrowColor:       #fff;
-@popoverTitleBackground:  darken(@popoverBackground, 3%);
 
 // Special enhancement for popovers
 @popoverArrowOuterWidth:  @popoverArrowWidth + 1;
@@ -350,11 +352,11 @@
 @labelInverse:						#272727;
 
 // Pager
-@pagerBg:									@btnBackground;
+@pagerBg:									@white;
 @pagerTxt:								#bcbcbc;
-@pagerHoverBg:						#2a2d30;
+@pagerHoverBg:						@gray;
 @pagerActiveBg:						#212121;
-@pagerDisabledTxt:				#646972;
+@pagerDisabledTxt:				@grayLighter;
 
 
 // Page Title
@@ -367,13 +369,13 @@
 
 
 // popover
-@popoverBackground:				#454545;
-@popoverTitleBackground:	#343434;
-@popoverConBackground:		#212121;
+@popoverBackground:				@white;
+@popoverTitleBackground:	#f8f8f8;
+@popoverConBackground:		@white;
 @popoverArrowColor:				@popoverConBackground;
 @popoverBorder:						#292929;
 
-@popoverTitleTxt:					@white;
+@popoverTitleTxt:					@gray;
 @popoverConTxt:						#bcbcbc;
 
 // thumbnails
@@ -383,14 +385,14 @@
 //accordion
 
 @accordionInner:					#232425;
-@accordionBorder:					#5d5d5d;
+@accordionBorder:					@grayLight;
 @accordionInnerTxt:				#adadad;
 
-@wellBackground:					#e7e9ea;
+@wellBackground:					@white;
 
 //Lists
-@listHover:								#2a6b8d;
-@subGroupTit:							#6f9820;
+@listHover:								@grayLighter;
+@subGroupTit:							@grayLight;
 @subGroupTxt:							@white;
 
 

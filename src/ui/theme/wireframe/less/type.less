@@ -254,45 +254,38 @@ address {
 
 // Lists
 .lists {
-	background:url('../img/bg_top.png') repeat left top;
-	background-size: 4px;
+	background: @white;
 	padding: 10px;
+	border: 1px solid @grayLight;
 	.border-radius(6px);
 }
 
 .lists header {
-	background: url('../img/bg_list_header.png') repeat left top;
-	background-size: 49px;
+	background: @grayDark;
 	.border-radius(6px 6px 0 0);
-	.box-shadow(~"0 0 5px rgba(0,0,0,.5), inset 0 -4px 4px rgba(0,0,0,.2)");
 	position: relative;
 	z-index: 100;
 	padding: 10px;
 	color: @white;
-	font-size: @baseFontSize + 4;
-	text-shadow: 0 2px 1px rgba(0,0,0,.7);
+	font-size: @baseFontSize;
 }
 
 .lists.group header {
-	background: url('../img/bg_list_group.png') repeat left top;
-	background-size: 49px;
+	background: @grayDark;
 	.border-radius(6px 6px 0 0);
-	.box-shadow(~"0 0 5px rgba(0,0,0,.5), inset 0 -4px 4px rgba(0,0,0,.2)");
 	position: relative;
 	z-index: 100;
 	padding: 10px;
 	color: @white;
-	font-size: @baseFontSize + 4;
-	text-shadow: 0 2px 1px rgba(0,0,0,.7);
+	font-size: @baseFontSize;
 }
 
 .lists .lists-con {
-	background-color: #ededed;
+	background-color: @white;
 	.border-radius(0 0 6px 6px);
 	padding: 0;
 	margin: 0;	
 	list-style: none;
-	.box-shadow(0 0 5px rgba(0,0,0,.5));
 	position: relative;
 	z-index: 1;
 }
@@ -301,7 +294,7 @@ address {
 	padding: 0;
 	margin: 0;
 	color: @black;
-	font-size: @baseFontSize + 4;
+	font-size: @baseFontSize;
 	border-bottom: 1px solid #cdcdcd;
 	.box-shadow(0 1px 1px rgba(255,255,255,1));	
 	padding: 10px;
@@ -324,17 +317,15 @@ address {
 
 .lists .lists-con li a {
 	background: none;	
-	color: @black;
+	color: @grayLight;
 	text-decoration: none;	
 }
 
 .lists .lists-con li a.group-tit {
 	display: block;
 	color: @subGroupTxt;
-	text-shadow: 0 1px 1px rgba(0,0,0,.8);
 	padding: 5px 10px;
 	background-color: @subGroupTit;
-	.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.5), inset 0 4px 4px rgba(255,255,255,.1)");	
 }
 
 .lists .lists-con li.sub-group {
@@ -342,7 +333,7 @@ address {
 }
 
 .lists .lists-con li.sub-group ul li a {
-	color: @black;
+	color: @grayLight;
 }
 
 // Emphasis classes

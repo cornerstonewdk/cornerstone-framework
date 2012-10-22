@@ -53,9 +53,9 @@ input[type="color"],
 .uneditable-input {
 	height: auto;
   display: inline-block;
-  padding: 9px 6px;
+  padding: 10px 6px;
   margin-bottom: 9px;
-  font-size: (@baseFontSize + 4);
+  font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
   .border-radius(@inputBorderRadius);	
@@ -84,7 +84,7 @@ input[type="color"],
 	color: @grayLight;
 	&:focus {
 			color: @blue;
-	   .inp-focus(@inputShadow, @inputBackground);
+			.inp-focus(@inputShadow, @inputBackground);
 	  }
 	}
 
@@ -145,7 +145,7 @@ textarea {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
-    font-size: (@baseFontSize + 4);
+    font-size: @baseFontSize;
 		line-height: @baseLineHeight;
     vertical-align: top;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
@@ -155,21 +155,19 @@ textarea {
     }
   }
   .add-on {
-		color: @white;
+		color: @gray;
     display: inline-block;
     width: auto;
     height: @baseLineHeight;
     min-width: 16px;    
-    padding: 12px 10px 11px 10px;
-    font-size: (@baseFontSize + 4);
+    padding: 10px;
+    font-size: @baseFontSize;
     font-weight: normal;
     line-height: @baseLineHeight;
     text-align: center;
-    text-shadow: 0 1px 0 @white;
-    background-color: @grayLighter;
-		#gradient > .vertical-btn(@addonTopColor, @addonBotColor);
+    background-color: @white;
     border: 1px solid @btnBorder;
-		.box-shadow(~"inset 0 0 1px rgba(255,255,255,.5), inset 0 1px 1px rgba(255,255,255,.5), 0 3px 3px rgba(0,0,0,.5)");
+		text-shadow: none;
   }
   .add-on,
   .btn {
@@ -226,9 +224,8 @@ select {
 	padding: 5px;
   margin: 0;
 	background-color: @selectBackground;
-	border: 0;
+	border: 1px solid @grayLight;
 	.border-radius(@inputBorderRadius);
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.27)");
    color: @grayLight;
    outline: none;
    display: inline-block;
@@ -237,7 +234,6 @@ select {
    appearance: none;
    cursor: pointer;
 	 &:focus {
-    border: 0;
     outline: 0;
     outline: thin dotted \9; /* IE6-9 */
   }
@@ -245,7 +241,7 @@ select {
 
 .select-box { position:relative }
 .select-box:after {
-  content:'<';
+  content:'';
   display:block;
 	position:absolute;
 	right:10px; 
@@ -415,7 +411,7 @@ select {
 }
 // Disabled input  ---- [2012-08-28] Add
 .input-disa {
-	font-size: (@baseFontSize + 4);
+	font-size: @baseFontSize;
 	line-height: (@baseLineHeight + 4);
 	background:url('../img/bg_input.png') repeat-x left top;
 }
@@ -428,15 +424,17 @@ select {
 
 
 .control-group .controls input {
+	border: 1px solid @grayLight;
+	box-shadow: none;
 	&:focus {
-		border-bottom: 1px solid transparent;
+		border: 1px solid @grayLight;
 	}
 }
 
 // Button
 
 .uneditable-input {
-	font-size: (@baseFontSize + 4);
+	font-size: @baseFontSize;
   line-height: @baseLineHeight;
 	padding: 11px 7px;
 	color: @grayLighter;
@@ -458,90 +456,6 @@ select {
 .checkbox.inline + .checkbox.inline {
   margin-left: 5px; // space out consecutive inline controls
 	padding-left:0;
-}
-
-// Checkbox, radio Add
-
-.checkbox input[type="checkbox"],
-.radio input[type="radio"]{
-	position:absolute;
-	left:-100000px;
-}
-.checkbox span {
-	display: inline-block;
-	border-radius:4px;
-	width: 34px;
-	height: 34px;
-	padding:5px;
-	margin: 0;
-	cursor:pointer;
-	background-color: @inputGradiantBg;
-	#gradient > .vertical(rgba(0,0,0,.2), rgba(255,255,255,.05));
-	vertical-align: middle;
-}
-
-
-.checkbox span:after {
-	border-radius:4px;
-	width: 34px;
-	height: 34px;
-	background:#292929;
-	background-size:138px;
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7)");
-	display:inline-block;
-	content:"";
-}
-
-.checkbox span.disabled:after {
-	background:#292929 url('../img/bg_checkbox.png') repeat left top;
-}
-
-
-.checkbox span.check:after {
-	background:#292929 url('../img/icon.png') no-repeat 4px 6px;
-	background-size:138px;
-}
-
-.checkbox .checkBtn:checked:active + .checkbox span:active {
-	background:#292929 url('../img/icon.png') no-repeat 4px 6px;
-	background-size:138px;
-}
-
-.radio span, {
-	display: inline-block;
-	border-radius:25px;
-	width: 34px;
-	height: 34px;
-	padding:5px;
-	margin: 0;
-	cursor:pointer;
-	background-color: @inputGradiantBg;
-	#gradient > .vertical(rgba(0,0,0,.2), rgba(255,255,255,.05));
-	vertical-align: middle;
-}
-
-.radio span:after {
-	border-radius:25px;
-	width: 34px;
-	height: 34px;
-	background:#292929;
-	background-size:138px;
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.5)");
-	display:inline-block;	
-	content:"";
-}
-
-input:checked + .inp-check:after {
-	background:#292929 url('../img/icon.png') no-repeat 4px -40px;
-	background-size:138px;
-}
-
-input:disabled + .inp-check:after {
-}
-
-input:checked + .inp-radio:after {
-	background:#292929 url('../img/icon.png') no-repeat -47px -426px;
-	background-size:138px;
 }
 
 
@@ -586,9 +500,8 @@ input.search-query {
 
 .form-search input {
 	background-color: @inputBackground;
-	border:1px solid transparent;
+	border:1px solid @grayLight;
 	.border-radius(@searchBorderRadius);
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
 	@transition: border linear .2s, box-shadow linear .2s;
 	.transition(@transition);
 	color: @searchTxt;
@@ -601,8 +514,8 @@ input.search-query {
 .form-search button,
 .form-search button:hover,
 .form-search button:active {
-	font-size: @baseFontSize + 4;
-	padding: 12px 10px;
+	font-size: @baseFontSize;
+	padding: 9px 10px;
 }
 
 .form-search {
