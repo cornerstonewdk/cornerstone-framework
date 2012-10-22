@@ -1,0 +1,10 @@
+#voc .sidebar-nav {
+	position: relative;
+	height: 350px;	/* 사이드 메뉴리스트의 높이 */
+}
+
+#voc .sidebar-nav .scrollview {
+	top: 0;
+	left :0;
+	bottom: 0;
+}

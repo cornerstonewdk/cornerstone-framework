@@ -34,7 +34,7 @@
 			this.itemList.push({'route': route, 'title': title});
 			this.draw();
 			
-			return isRoot ? "=" : ">";
+			return isRoot ? "|" : ">";
 		} else {
 			for(var i = sameIdx + 1; i < this.itemList.length; i++) {
 				 this.itemList.pop();

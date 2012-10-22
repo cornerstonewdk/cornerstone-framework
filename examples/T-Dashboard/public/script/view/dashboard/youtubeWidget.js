@@ -3,7 +3,6 @@ define(
 		'jquery', 
 		'backbone', 
 		'template!/template/dashboard/youtubeWidget',
-		'style!/style/dashboard/css/featured-media',
 		'style!/style/dashboard/youtubeWidgetStyle',
 		'jsonp',
 		'widget-media'

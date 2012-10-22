@@ -4,11 +4,9 @@
 		<div class="span3">
 			<div class="well sidebar-nav">
 				<ul class="nav nav-list" data-branchlist>
-					<li class="nav-header">
-						지점
-					</li>
+					<li class="nav-header">지점</li>
 				</ul>
-			</div><!--/.well -->
+			</div>
 		</div>
 		
 		<!-- desktop contents -->

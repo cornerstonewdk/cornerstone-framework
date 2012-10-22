@@ -6,6 +6,8 @@ define(
 		'view/dashboard/twitterWidget', 
 		'view/dashboard/youtubeWidget', 
 		'view/dashboard/vocSatisfactionWidget', 
+		'view/dashboard/vocWidget', 
+		'view/dashboard/facebookFeedWidget', 
 		'template!/template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
@@ -18,6 +20,8 @@ define(
 		TwitterWidget,
 		YoutubeWidget, 
 		VocSatisfactionWidget, 
+		VocWidget, 
+		FacebookFeedWidget, 
 		template
 	){
 	var DashboardView = GestureView.extend({
@@ -63,7 +67,35 @@ define(
 		render: function() {
 			$(this.el).html(template());
 			
-			$('.nav:not(.nav-list) > li').removeClass('active');	//dashboard는 index 이므로 active 상태가 없다
+			//isotope 처리
+			$(function() {
+				var $container = $('#dashboard_container');
+
+				$container.isotope({
+					itemSelector : '.dashboardItem'
+				});
+			});
+		},
+		
+		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
+		viewDidAppear: function() {
+			//가벼운 순서대로 위젯 그려주는걸 추천
+			
+			//VOC 만족률 위젯 그리기
+			var vocSatisfactionWidget = new VocSatisfactionWidget();
+			vocSatisfactionWidget.render();
+			
+			//VOC 위젯 그리기
+			var vocWidget = new VocWidget();
+			vocWidget.render();
+			
+			//유투부 그리기
+			var youtubeWidget = new YoutubeWidget();
+			youtubeWidget.render();
+			
+			//facebook feed
+			var facebookFeedWidget = new FacebookFeedWidget();
+			facebookFeedWidget.render();
 			
 			//LTE 계통현황 차트 그려주기
 			$.getJSON("data/bar.json").success(function(json) {
@@ -76,23 +108,11 @@ define(
 			//트위터 그리기
 			var twitterWidget = new TwitterWidget();
 			twitterWidget.render();
-			
-			//유투부 그리기
-			var youtubeWidget = new YoutubeWidget();
-			youtubeWidget.render();
-			
-			//VOC 만족률 위젯 그리기
-			var vocSatisfactionWidget = new VocSatisfactionWidget();
-			vocSatisfactionWidget.render();
-			
-			//isotope 처리
-			$(function() {
-				var $container = $('#dashboard_container');
-
-				$container.isotope({
-					itemSelector : '.dashboardItem'
-				});
-			});
+		
+		},
+		
+		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
+		viewDidDisappear: function() {
 		},
 		
 	});

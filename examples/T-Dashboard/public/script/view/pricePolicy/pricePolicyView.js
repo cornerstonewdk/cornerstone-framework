@@ -17,13 +17,19 @@ define([
 			
 		},
 		
+		//이벤트 정의
+		events: {
+			'click div#pricePolicy a[data-plan]': 'planSelect',
+		},
+		
+		planSelect: function(e) {
+			alert(e);
+		},
+		
 		render: function() {
 			$(this.el).html(template());
 			
-			$('.nav:not(.nav-list) > li').removeClass('active');
-			$('#price_policy_menu').addClass('active');
-			
-			// new GestureAreaView();
+			new GestureAreaView();
 		},
 		
 	});

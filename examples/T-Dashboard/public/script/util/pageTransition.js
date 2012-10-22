@@ -15,15 +15,12 @@
 		this.className = 'PageTransition';
 		this.currentId = '';
 		this.prevId = '';
+		this.prevView = null;
 	};
 	
 	PageTransition.prototype.transition = function(direction, View) {
-		//트렌지션 사용시 아래 두줄 제거 후 사용 위에 require 도 주석 풀어줘야함
-		// View.render();
-		// return;
-		
 		switch (direction) {
-			case '=':
+			case '|':
 				var self = this;
 				
 				this.prevId = 'default';
@@ -35,7 +32,7 @@
 				$('div#' + this.currentId).hide();
 				
 				Transition.launcher({
-					transitionType:"slide",
+					transitionType:"flip",
 					inTarget: {
 						id: '#' + this.currentId
 					},
@@ -45,12 +42,17 @@
 					isReverse: false,
 					done: function() {
 						$('div#' + self.prevId).remove();
+						if(typeof(View['viewDidAppear']) != 'undefined') View['viewDidAppear']();
 					}
 				});
 				
 				break;
 			case '>':
 				var self = this;
+				
+				if(this.prevView != null && typeof(this.prevView['viewDidDisappear']) != 'undefined') {
+					this.prevView['viewDidDisappear']();
+				}
 
 				this.prevId = this.currentId;
 				this.currentId = this.makeUuid();
@@ -71,6 +73,7 @@
 					isReverse: false,
 					done: function() {
 						$('div#' + self.prevId).remove();
+						if(typeof(View['viewDidAppear']) != 'undefined') View['viewDidAppear']();
 					}
 				});
 				
@@ -82,6 +85,10 @@
 				this.currentId = this.makeUuid();
 				$('div#contentsView').append('<div id="' + this.currentId + '"></div>');
 				
+				if(this.prevView != null && typeof(this.prevView['viewDidDisappear']) != 'undefined') {
+					this.prevView['viewDidDisappear']();
+				}
+
 				View['el'] = $('div#' + this.currentId);
 				View.render();
 				$('div#' + this.currentId).hide();
@@ -97,13 +104,14 @@
 					isReverse: true,
 					done: function() {
 						$('div#' + self.prevId).remove();
+						if(typeof(View['viewDidAppear']) != 'undefined') View['viewDidAppear']();
 					}
 				});
 				
 				break;
 		}
 		
-		
+		this.prevView = View;
 	};
 	
 	PageTransition.prototype.makeUuid = function() {
@@ -116,24 +124,12 @@
 		for (var i = 0; i < 36; i++) {
 			if (!uuid[i]) {
 				r = 0 | rnd()*16;
-	
-	
 				uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r & 0xf];
 			}
 		}
 	
 		return uuid.join('');
 	};
-	
-
-	PageTransition.prototype.wait = function(msecs) {
-		var start = new Date().getTime();
-		var cur = start;
-		while (cur - start < msecs) {
-			cur = new Date().getTime();
-		}
-	};
-
 	
 	return new PageTransition();
 	

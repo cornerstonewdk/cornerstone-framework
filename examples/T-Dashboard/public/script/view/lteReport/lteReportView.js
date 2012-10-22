@@ -2,6 +2,7 @@ define([
 		'gesture-view',
 		'jquery', 
 		'backbone',
+		'util/dummyDataUtil', 
 		'template!/template/lteReport/lteReport',
 		'observer',
 		'widget-chart',
@@ -10,6 +11,7 @@ define([
 		GestureView,
 		$, 
 		Backbone, 
+		DummyDataUtil, 
 		template,
 		Observer
 	){
@@ -21,93 +23,14 @@ define([
 		selectedBranch: '1',
 		
 		initialize: function() {
-			//지점 데이터 생성
-			this.branchList = {
-				'1': {'name': '강남지점(신)'},
-				'2': {'name': '강북지점(신)'},
-				'3': {'name': '보라매지점(신)'},
-				'4': {'name': '테크노마트지점(신)'},
-				'5': {'name': '부산지점'},
-				'6': {'name': '대구지점'},
-				'7': {'name': '목포지점'},
-				'8': {'name': '대전지점'},
-				'9': {'name': '속초점'},
-			};
-			
-			//각 지점들 현재까지 개통수 임시 생성
-			for(var branchCode in this.branchList) {
-				var branchInfo = this.branchList[branchCode];
-				
-				branchInfo['result'] = this.randomNumber(100, 500);
-			}
-			
-			var currentHour = new Date().getHours();
-			currentHour = Math.min(currentHour, 17);
-			
-			//각 지점들 차트용 임시 데이터 생성
-			for(var branchCode in this.branchList) {
-				var branchInfo = this.branchList[branchCode];
-				
-				var values = new Array();
-				for(var i = 9; i < currentHour; i++) {
-					values.push({
-						'x': i,
-						'y': this.randomNumber(10, 50)
-					});
-				}
-				
-				var timeData = new Array();
-				timeData.push({
-					'key': '개통수',
-					'values': values
-				});
-				
-				branchInfo['timeData'] = timeData;
-			}
-			
-			//각 지점들 차트용 임시 데이터 생성
-			for(var branchCode in this.branchList) {
-				var branchInfo = this.branchList[branchCode];
-				
-				var values = new Array();
-					values.push({
-						'label': '겔럭시S3',
-						'value': this.randomNumber(50, 200)
-					});
-					values.push({
-						'label': '겔럭시노트2',
-						'value': this.randomNumber(50, 200)
-					});
-					values.push({
-						'label': '아이폰5',
-						'value': this.randomNumber(50, 200)
-					});
-					values.push({
-						'label': '옵티머스G',
-						'value': this.randomNumber(50, 200)
-					});
-					values.push({
-						'label': '기타',
-						'value': this.randomNumber(50, 200)
-					});
-				
-				var pieData = new Array();
-				pieData.push({
-					'key': '개통단말기',
-					'values': values
-				});
-				
-				branchInfo['deviceData'] = pieData;
-			}
+			//지점 데이터 생성			
+			this.branchList = DummyDataUtil.makeBranchData();
 		},
 		
 		render: function() {
 			var self = this;
 			
 			$(this.el).html(template());
-			
-			$('.nav:not(.nav-list) > li').removeClass('active');
-			$('#lte_report_menu').addClass('active');
 			
 			for(var branchCode in this.branchList) {
 				var branchInfo = this.branchList[branchCode];
@@ -151,11 +74,6 @@ define([
 				chartType : "pie",
 				data : branchInfo['deviceData']
 			});
-		},
-		
-		//랜덤 숫자 생성
-		randomNumber: function(n1, n2) {
-			return Math.floor( (Math.random() * (n2 - n1 + 1)) + n1 );
 		},
 	});
 	
