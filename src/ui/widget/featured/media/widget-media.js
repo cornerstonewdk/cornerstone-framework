@@ -30,10 +30,11 @@
                     $.each(this.model.toJSON(), function (i, obj) {
                         data.push(obj);
                     });
-
-                    console.log(data);
-
-                    this.$el.featuedMedia();
+                    this.options = $.extend({}, {
+                        flashName: Cornerstone.PATH + "ui/flashmediaelement.swf",
+                        silverlightName: Cornerstone.PATH + "ui/silverlightmediaelement.xap"
+                    }, this.options);
+                    this.$el.featuredMedia(this.options);
 
                     return this;
                 }
@@ -51,7 +52,7 @@
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
             rate: "16:9"
-        }
+        };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
             // 4:3, 16:9, 16:10 비율 옵션 추가
