@@ -90,6 +90,7 @@
     color: @btnBlueHoverTxt;	
 		background: @blue;
 		border:1px solid @btnPrimaryBorder;
+		text-shadow: none;
 		.caret {
 			border-top-color: @btnBlueHoverTxt;
 		}
@@ -108,9 +109,10 @@
 	// Disabled state
   &.disabled,
   &[disabled] {
-    cursor: default;		
+    cursor: default;	
+		color: @btnDisabledTxt;
 		text-shadow: none;
-    background-image: none;
+    background-color: @btnDisabled;
 		border:1px solid @btnPrimaryBorder;
     .opacity(100);
     .box-shadow(none);

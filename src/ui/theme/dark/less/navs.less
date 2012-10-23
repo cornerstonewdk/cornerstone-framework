@@ -514,7 +514,10 @@
 .tabs-right > .nav-tabs {
   float: right;
   margin-left: 19px;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid rgba(0,0,0,.3);
+	box-shadow: none;
+	padding: 5px 2px 5px 0;
+	margin: 0;
 }
 .tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
@@ -640,73 +643,63 @@
 	width: 32px;
 	height: 25px;
 	margin: 0 auto 3px auto;
-	background: url(../img/icon_black02.png);
-	background-size: 287px;
+	background: url(../img/icon.png) no-repeat left center;
+	background-size: 138px;
 }
 
-.nav-bot li a:hover i,
-.nav-bot li a:active i,
-.nav-bot li a.active i {
-	width: 32px;
-	height: 25px;
-	background: url(../img/icon_black03.png);
-	background-size: 287px;
+.nav-bot li a .icon-about {
+	width:26px;
+	background-position: -53px -810px;
 }
 
-.v-blue li i {
-	width: 32px;
-	height: 25px;
-	background: url(../img/icon_blue01.png);
-	background-size: 287px;
+.nav-bot li a .icon-favorites {
+	width:25px;
+	background-position: -53px -912px;
 }
 
-.v-blue li a:hover i,
-.v-blue li a:active i,
-.v-blue li a.active i {
-	width: 32px;
-	height: 25px;
-	background: url(../img/icon_blue02.png);
-	background-size: 287px;
+.nav-bot li a .icon-downloads {
+	width:25px;
+	background-position: -106px 0;
 }
 
-.nav-bot li a .about,
+.nav-bot li a .icon-settings {
+	width:31px;
+	background-position: -106px -99px;
+}
+
+.nav-bot li a .icon-user {
+	width:32px;
+	background-position: -106px -197px;
+}
+
 .nav-bot li a:hover .about,
 .nav-bot li a:active .about,
-.nav-bot li.active .about {
-	width:26px;
-	background-position: -1px 0;
+.nav-bot li a.active .about {
+	background-position: -53px -861px;
 }
 
-.nav-bot li a .favorites,
 .nav-bot li a:hover .favorites,
 .nav-bot li a:active .favorites,
 .nav-bot li a.active .favorites {
-	width:26px;
-	background-position: -65px 0;
+	background-position: -53px -963px;
 }
 
-.nav-bot li a .downloads,
 .nav-bot li a:hover .downloads,
 .nav-bot li a:active .downloads,
 .nav-bot li a.active .downloads {
-	width:21px;
-	background-position: -132px 0;
+	background-position: -106px -50px;
 }
 
-.nav-bot li a .settings,
 .nav-bot li a:hover .settings,
 .nav-bot li a:active .settings,
 .nav-bot li a.active .settings {
-	width:23px;
-	background-position: -196px 0;
+	background-position: -106px -148px;
 }
 
-.nav-bot li a .user,
 .nav-bot li a:hover .user,
 .nav-bot li a:active .user,
 .nav-bot li a.active .user {
-	width:32px;
-	background-position: -255px 0;
+	background-position: -106px -249px;
 }
 
 
