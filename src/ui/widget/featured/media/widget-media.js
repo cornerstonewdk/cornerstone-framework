@@ -12,7 +12,32 @@
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
         define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH +  "ui/widget-media"], function (Backbone, _ , $) {
-            return factory($, root, doc);
+            factory($, root, doc);
+            return Backbone.View.extend({
+                tagName:'div',
+
+                className:'featured-media',
+
+                model:new Backbone.Model(),
+
+                initialize:function () {
+                    _.bindAll(this, "render");
+                    this.model.on("change", this.render);
+                },
+
+                render:function () {
+                    var data = [];
+                    $.each(this.model.toJSON(), function (i, obj) {
+                        data.push(obj);
+                    });
+
+                    console.log(data);
+
+                    this.$el.featuedMedia();
+
+                    return this;
+                }
+            });
         });
     } else {
         // Browser globals
