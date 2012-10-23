@@ -49,8 +49,6 @@
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
             rate: "16:9",
-            iPhoneUseNativeControls: true,
-            AndroidUseNativeControls: true,
             flashName: Cornerstone.PATH + "ui/flashmediaelement.swf",
             silverlightName: Cornerstone.PATH + "ui/silverlightmediaelement.xap"
         };
