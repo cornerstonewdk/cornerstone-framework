@@ -30,10 +30,7 @@
                     $.each(this.model.toJSON(), function (i, obj) {
                         data.push(obj);
                     });
-                    this.options = $.extend({}, {
-                        flashName: Cornerstone.PATH + "ui/flashmediaelement.swf",
-                        silverlightName: Cornerstone.PATH + "ui/silverlightmediaelement.xap"
-                    }, this.options);
+
                     this.$el.featuredMedia(this.options);
 
                     return this;
@@ -51,7 +48,11 @@
     $.fn[pluginName] = function (options) {
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
-            rate: "16:9"
+            rate: "16:9",
+            iPhoneUseNativeControls: true,
+            AndroidUseNativeControls: true,
+            flashName: Cornerstone.PATH + "ui/flashmediaelement.swf",
+            silverlightName: Cornerstone.PATH + "ui/silverlightmediaelement.xap"
         };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
