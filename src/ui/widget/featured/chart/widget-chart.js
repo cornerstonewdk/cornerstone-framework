@@ -7,18 +7,56 @@
  *  License :
  */
 
-;(function (root, doc, factory) {
+;
+(function (root, doc, factory) {
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
     if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH +  "ui/widget-chart"], function (Backbone, _ , $) {
-            return factory($, root, doc, d3);
+        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-chart"], function (Backbone, _, $) {
+            factory($, root, doc, d3);
+            return Backbone.View.extend({
+                tagName:'div',
+
+                className:'featured-chart',
+
+                model:new Backbone.Model(),
+
+                template:Handlebars.compile($('#tpl_message').html()),
+
+                initialize:function () {
+                    _.bindAll(this, "render");
+                    this.model.on("change", this.render);
+                },
+
+                render:function () {
+                    var data = [];
+                    $.each(this.model.toJSON(), function (i, obj) {
+                        data.push(obj);
+                    });
+
+                    console.log(data);
+
+                    this.$el.featuredChart({
+                        chartType:this.chartType,
+                        lineType:"basis",
+                        xAxisLabel:null,
+                        yAxisLabel:null,
+                        data:data,
+                        animate:false,
+                        controlBar:false,
+                        filtering:true,
+                        color:d3.scale.category10()
+                    });
+
+                    return this;
+                }
+            });
         });
     } else {
         // Browser globals
         factory(root.jQuery, root, doc, root.d3);
     }
-}(this, document, function ($, window, document, d3, undefined) {
+}(window, document, function ($, window, document, d3, undefined) {
     var pluginName = "featuredChart",
         featuredChart,
         defaultOptions;
@@ -56,7 +94,7 @@
 
             chart.color(options.color.range());
 
-            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                 target = target.append("svg:svg")
             } else {
                 target = target.select("svg");
@@ -87,7 +125,7 @@
 
             chart.color(options.color.range());
 
-            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                 target = target.append("svg:svg")
             } else {
                 target = target.select("svg");
@@ -118,7 +156,7 @@
 
             chart.color(options.color.range());
 
-            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                 target = target.append("svg:svg")
             } else {
                 target = target.select("svg");
@@ -148,7 +186,7 @@
 
             chart.color(options.color.range());
 
-            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                 target = target.append("svg:svg")
             } else {
                 target = target.select("svg");
@@ -168,18 +206,24 @@
      * @param target
      * @param options
      */
-    FeaturedChart.prototype.cumulativeLineChart = function(target, options) {
-        var data = [{
-            "key": "Long",
-            "values": getData()
-        }];
+    FeaturedChart.prototype.cumulativeLineChart = function (target, options) {
+        var data = [
+            {
+                "key":"Long",
+                "values":getData()
+            }
+        ];
         var chart;
 
         function redraw(target) {
             nv.addGraph(function () {
                 chart = nv.models.cumulativeLineChart()
-                    .x(function (d) { return d.x })
-                    .y(function (d) { return d.y / 100 })
+                    .x(function (d) {
+                        return d.x
+                    })
+                    .y(function (d) {
+                        return d.y / 100
+                    })
                     .color(options.color.range());
 
 
@@ -194,7 +238,7 @@
                     .tickFormat(d3.format(',.1%'));
 
 
-                if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                     target = target.append("svg:svg")
                 } else {
                     target = target.select("svg");
@@ -216,16 +260,16 @@
             var arr = [];
             var theDate = new Date(2012, 01, 01, 0, 0, 0, 0);
             for (var x = 0; x < 30; x++) {
-                arr.push({x: new Date(theDate.getTime()), y: Math.random() * 100});
+                arr.push({x:new Date(theDate.getTime()), y:Math.random() * 100});
                 theDate.setDate(theDate.getDate() + 1);
             }
             return arr;
         }
 
         var isOver = false;
-        this.$el.on("mouseover", function() {
-           isOver = true;
-        }).on("mouseout", function() {
+        this.$el.on("mouseover",function () {
+            isOver = true;
+        }).on("mouseout", function () {
                 isOver = false;
             });
         setInterval(function () {
@@ -234,7 +278,7 @@
             next.setDate(next.getDate() + 1)
             long.shift();
             long.push({x:next.getTime(), y:Math.random() * 100});
-            if(!isOver) {
+            if (!isOver) {
                 redraw(target);
             }
         }, 1500);
@@ -252,7 +296,7 @@
                 })
                 .color(options.color.range());
 
-            if(target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                 target = target.append("svg:svg")
             } else {
                 target = target.select("svg");
@@ -302,16 +346,16 @@
         defaultOptions = {
             chartType:"bar",
             lineType:"basis",
-            xAxisLabel: null,
-            yAxisLabel: null,
+            xAxisLabel:null,
+            yAxisLabel:null,
             width:960,
             height:600,
             margin:[0, 0, 0, 0],
             padding:[0, 0, 0, 0],
             data:{},
             animate:false,
-            controlBar: false,
-            filtering: true,
+            controlBar:false,
+            filtering:true,
             color:d3.scale.category10()
         };
 
@@ -329,16 +373,17 @@
             if (typeof options == 'string') {
                 data[options](data.options);
             } else {
-                $this.data(pluginName, (data = new FeaturedChart(this, options)));
+                data = new FeaturedChart(this, options)
+                $this.data(pluginName, data);
             }
 
-            if(!options.filtering) {
+            if (!options.filtering) {
                 $this.removeClass("filtering");
             } else {
                 $this.addClass("filtering");
             }
 
-            if(!options.controlBar) {
+            if (!options.controlBar) {
                 $this.removeClass("control-bar");
             } else {
                 $this.addClass("control-bar");
