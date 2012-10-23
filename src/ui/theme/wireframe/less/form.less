@@ -276,7 +276,6 @@ select {
   display: block;
   visibility: visible;
   padding: 0;
-  font-size: 11px;
   .opacity(100);
 }
 
@@ -328,17 +327,14 @@ select {
 
 .controls .help-inline .help-inner {
 	font-size: (@baseFontSize + 2);
-	.box-shadow(0 1px 1px rgba(0,0,0,0.7));	
 	padding: 9px 10px 8px 10px;	
 	border:1px solid @black;
 	text-align:left;
-	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.3), inset 0 -1px 1px rgba(255,255,255,.15), inset -1px 0 1px rgba(255,255,255,.15)");
-	text-shadow: 0 1px 1px rgba(255,255,255,.2);
 	font-weight:bold;
 	display:inline-block;
 	vertical-align:middle;
-	#gradient > .vertical(#5c6267, #41474c);	
-	color:#282828;
+	background: @disabledBackground;
+	color: @disabledText;
 }
 
 
@@ -360,12 +356,12 @@ select {
 }
 
 .error .help-inline .help-inner {	
-	#gradient > .vertical(#bf5455, #9c3a3b);
-	color:#8a2627;
+	background: @errorBackground;
+	color: @errorText;
 }
 
 .error .controls .help-inline .help-arrow {
-	border-right-color: #ae4748;
+	border-right-color: @errorBackground;
 }
 
 .error .help-inline .help-inner i {	
@@ -374,12 +370,12 @@ select {
 }
 
 .success .help-inline .help-inner {
-	#gradient > .vertical(#669357, #557a48);
-	color:#34591b;
+	background: @successBackground;
+	color: @successText;
 }
 
 .success .help-inline .help-arrow {
-	border-right-color: #5d864f;
+	border-right-color: @successBackground;
 }
 
 .success .help-inline .help-inner i {	
@@ -437,8 +433,7 @@ select {
 	font-size: @baseFontSize;
   line-height: @baseLineHeight;
 	padding: 11px 7px;
-	color: @grayLighter;
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
+	color: @gray;
 	background: @uneditableBackground;
 }
 
@@ -605,14 +600,6 @@ input.search-query {
 
 .slider {
 	position: relative;
-	border-radius: 15px;
-	padding: 6px;
-	margin: 0;
-	background-color: @inputGradiantBg;
-	#gradient > .vertical(rgba(0,0,0,.2), rgba(255,255,255,.05));
-}
-
-.slider:after {
 	width: 100%;
 	height: 7px;
 	content:"";
@@ -629,30 +616,15 @@ input.search-query {
 }
 
 .slide-handle {
-	width: 31px;
-	height: 31px;
+	width: 20px;
+	height: 20px;
 	.border-radius(50px);
 	border: 0;
 	background-color: @sliderBtn;
-	.box-shadow(~"inset 0 -1px 2px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,1), 0 1px 3px rgba(0,0,0,.27)");	
 	position:absolute;	
 	left: 0; 
 	top: -8px;
 	z-index: 100;
-}
-
-.slide-handle:after {
-	content:"";
-	width: 17px;
-	height: 17px;
-	.border-radius(50px);
-	border: 0;
-	background-color: @sliderBoll;
-	.box-shadow(~"inset 0 0 3px rgba(0,0,0,.8)");
-	position:absolute;	
-	left: 7px; 
-	top: 7px;
-	z-index: 1000;
 }
 
 .slider-box {
@@ -671,37 +643,10 @@ input.search-query {
 	.user-select(none);
 	position:relative;
 	display: inline-block;
+	border: 1px solid @grayLight;
 	.border-radius(25px);
-	padding: 7px;
 	margin: 0;
 	background-color: @inputGradiantBg;
-	#gradient > .vertical(rgba(0,0,0,.2), rgba(255,255,255,.05));
-}
-
-.flip-btn {
-	position: relative;
-	width: 31px;
-	height: 31px;
-	.border-radius(50px);
-	border: 0;
-	background-color: @sliderBtn;
-	.box-shadow(~"inset 0 -1px 2px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,1), 0 1px 3px rgba(0,0,0,.27)");
-	float: left;
-	margin-right: 15px;
-}
-
-.flip-btn:after {
-	content:"";
-	width: 17px;
-	height: 17px;
-	.border-radius(50px);
-	border: 0;	
-	.box-shadow(~"inset 0 0 4px rgba(0,0,0,.4), inset 0 3px 4px rgba(255,255,255,.7), inset 0 -6px 4px rgba(0,0,0,.25)");
-	position:absolute;	
-	left: 7px; 
-	top: 7px;
-	z-index: 1000;
-	background-color: @flipBoll;
 }
 
 .flip-check {
@@ -710,37 +655,33 @@ input.search-query {
 }
 
 .flip-check + .flip-txt {	
-	text-align: left;
-	padding: 0 15px 0 0;
+	text-align: center;
+	padding: 3px 15px 7px;
 	color: @flipOffTxt;
 	font-size: @baseFontSize + 2;
 	line-height: @baseLineHeight;
 	font-weight:bold;
 	display: inline-block;
 	.border-radius(20px);
-	text-shadow: 0 2px 2px rgba(0,0,0,0.7);
 	background-color: @flipOffBg;
-	border:2px solid @grayDarker;
 }
 
 .flip-check:checked + .flip-txt {
 	text-align: right;
-	padding: 0 0 0 15px;
+	padding: 3px 15px 7px;
 	color: @flipOnTxt;
 	font-size: @baseFontSize + 2;
 	line-height: @baseLineHeight;
 	font-weight:bold;
 	display: inline-block;
 	.border-radius(20px);
-	text-shadow: 0 2px 2px rgba(0,0,0,0.7);
 	background-color: @flipOnBg;
-	border:2px solid @grayDarker;
 }
 
 .flip-check + .flip-txt:after {	
 	display: inline-block;
 	content: attr(data-off);
-	color: @flipOnTxt;
+	color: @flipOffTxt;
 	margin-top: 8px;
 }
 

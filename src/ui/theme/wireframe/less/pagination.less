@@ -29,23 +29,24 @@
 	margin-left: 2px;
 }
 
-.pagination ul li a {
+.pagination a {
 	color: @pagingTxt;
 	line-height: @baseLineHeight;
 	width: 30px;
 	padding: 7px 0 7px 0;
-	background: @white;
+	background-color: @white;
   border: 0;
 	vertical-align: middle;
 	display:block;
 }
-.pagination ul li a:hover,
-.pagination ul li .active a {
+
+.pagination a:hover,
+.pagination .active a {
 	color: @pagingActive;
 	text-decoration:none;
 	padding: 7px 0 7px 0;
 	border-top: none;
-  background-color: none;
+  background-color: @white;
 }
 
 .pagination ul li:first-child a, .pagination ul li:last-child a {
