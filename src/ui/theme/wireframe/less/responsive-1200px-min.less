@@ -84,4 +84,327 @@
 		.border-radius(0 0 6px 6px);
 	}
 
+	// Pagination
+	.pagination a:hover,
+	.pagination .active a {
+		color: @pagingActive;
+		text-decoration:none;
+		padding: 7px 0 7px 0;
+		border-top: none;
+		background-color: @white;
+	}
+
+	.pagination li:first-child a:hover,
+	.pagination li:last-child a:hover {
+		margin: 0;
+		text-decoration: none;
+		background-color: @pagingNumBg;
+	}
+
+	.pagination ul li:first-child a:hover span, 
+	.pagination ul li:last-child a:hover span {	
+		width: 22px;
+		height: 22px;
+		padding: 0;
+		margin: 0 auto;
+		display: block;
+		position: relative;
+		.border-radius(50px);
+		border:none;
+		background-color: @black;
+		vertical-align:middle;
+		box-shadow:none;
+	}
+
+	.pagination ul li:last-child a:hover span:after {
+		border-color: transparent transparent transparent @pagingArrowActive;
+		position: absolute;
+		left: 8px;
+		top: 4px;
+	}
+
+	.pagination2 a:hover,
+	.pagination2 .active a,
+	.pagination2 .active span {
+		width: 15px;
+		height: 15px;
+		margin: -4px 0 0 -4px;
+		background: @grayDark;
+	}
+
+	.pagination2 li:first-child a:hover,
+	.pagination2 li:last-child a:hover {
+		margin: 0;
+		text-decoration: none;
+		background-color: @pagingNumBg;
+	}
+
+	.pagination2 li:first-child a:hover span,
+	.pagination2 li:last-child a:hover span {	
+		width: 22px;
+		height: 22px;
+		padding: 0;
+		margin: 0;
+		display: block;
+		position: realtive;
+		.border-radius(20px);
+		border: none;
+		vertical-align: middle;
+		background-color: @black;
+		box-shadow: none;
+	}
+
+	.pagination2 li:first-child a:hover span:after, 
+	.pagination2 li:last-child a:hover span:after {
+		content:"";
+		border-color: transparent @pagingArrowActive transparent transparent;
+		border-style: solid;
+		border-width: 7px 9px 7px 9px;
+		background: none ! important;
+		height: 0px ! important;
+		width: 0px ! important;
+		.border-radius(0);
+		box-shadow: none;
+		position: absolute;
+		left: -3px;
+		top: 4px;
+	}
+
+	.pagination2 li:last-child a:hover span:after {
+		border-color: transparent transparent transparent @pagingArrowActive;
+		left: 8px;
+		top: 4px;
+	}
+
+	// Tab
+	.nav-tabs > li > a {
+		color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border: 1px solid @grayLight;
+		border-bottom: none;
+		.border-radius(4px 4px 0 0);
+		overflow:hidden;
+		&:hover {
+			color: @grayDark;
+			background: @white;
+			border: 1px solid @grayDark;
+			border-bottom: none;
+		}
+	}
+
+	.tabs-below > .nav-tabs > li > a {
+		color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border: 1px solid @grayLight;
+		border-top: 0;
+		.border-radius(0 0 4px 4px);
+		overflow:hidden;
+		&:hover {
+			color: @grayDark;
+			border-color: @grayDark;
+		}
+	}
+
+	.nav-tabs.nav-stacked > li > a:hover {
+		color: @grayDark;
+	}
+
+	.tabs-left > .nav-tabs > li > a:hover {
+		border-color: @grayLight;
+		color: @grayDark;
+		border: 1px solid @grayLight;
+		border-right: 0;
+	}
+
+	.tabs-right > .nav-tabs > li > a:hover {
+		border-color: @grayLight;
+		color: @grayDark;
+		border: 1px solid @grayLight;
+		border-left: 0;
+	}
+
+	// Nav
+	.nav-list > li > a:hover {
+		color: @black;
+		background-color: @navListHover;
+		border-bottom: 1px solid @grayLight;
+	}
+
+	.nav-bot li a {	
+		color: @navBotLink;
+		font-size: @baseFontSize;
+		padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+		border:1px solid @navBotBorder;
+		border-left: 0;
+		position:relative;
+		z-index:10;
+		&:hover {
+			background: @grayLighter;
+		}
+	}
+
+	.nav-bot li a:hover i,
+	.nav-bot li a:active i,
+	.nav-bot li a.active i {
+		width: 32px;
+		height: 25px;
+		background: url(../img/icon_black03.png);
+		background-size: 287px;
+	}
+
+	// Button
+	.btn {
+		// Hover state
+		&:hover {
+			color: @btnLinkTxt;
+			text-decoration: none;   
+			 background-color: @btnHover;
+			 *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			margin: 0;
+			text-shadow: none;
+
+			// transition is only when going to hover, otherwise the background
+			// behind the gradient (there for IE<=9 fallback) gets mismatched
+			.transition(background-position .1s linear);
+		}
+
+		// Focus state for keyboard and accessibility
+		&:focus {
+			.tab-focus();
+		}
+
+		// Active state
+		&.active,
+		&:active {
+			color: @btnActiveTxt;
+			text-decoration: none;
+			text-shadow: none;
+			background-color: @btnActive;
+			*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			background-position: 0 0;
+			border:1px solid transparent;
+		}
+
+		// Disabled state
+		&.disabled,
+		&[disabled] {
+			cursor: default;
+			color: @btnDisabledTxt;
+			text-shadow: none;
+			background-color: @btnDisabled;
+			background-image: none;
+			border:1px solid @btnBorder;
+			.opacity(100);
+			.box-shadow(none);
+		}
+	}
+
+	.btn-primary { 
+		// Hover state
+		&:hover {
+			color: @btnBlueActiveTxt;
+			background: @blue;
+			border:1px solid @btnBorder;
+			text-shadow: none;
+		}
+
+		// Active state
+		&.active,
+		&:active {
+			text-shadow: none;
+			border: 1px solid transparent;
+			background: @blueDark;
+		}
+		// Disabled state
+		&.disabled,
+		&[disabled] {
+			cursor: default;		
+			.buttonBackground(@btnBlueDisabled, @btnBlueDisabled, @btnBlueDisabledTxt);	
+			text-shadow: none;
+			background-image: none;
+			border:1px solid @btnBorder;
+			.opacity(100);
+			.box-shadow(none);
+		}
+	}
+
+	.btn-group-vertical .btn {
+		display: block;
+		float: none;
+		width: 100%;
+		color: @btnGroupTxt;
+		font-size: @baseFontSize;
+		border: 1px solid @grayLight;
+
+		// Hover state
+		&:hover {
+			color: @grayDark;
+			text-decoration: none;
+			*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			background: @grayLight;
+			box-shadow: none;
+			text-shadow: none;
+			border: 1px solid @grayLight;
+
+			// transition is only when going to hover, otherwise the background
+			// behind the gradient (there for IE<=9 fallback) gets mismatched
+			.transition(background-position .1s linear);
+		}
+
+		// Focus state for keyboard and accessibility
+		&:focus {
+			.tab-focus();
+		}
+
+		// Active state
+		&.active,
+		&:active {
+			color: @grayDark;
+			text-decoration: none;
+			text-shadow: none;
+			background: @grayLight;
+			border: 1px solid @grayLight;
+		}
+	}
+
+	// Table	
+	.table {
+		tbody {
+			tr:hover td,
+			tr:hover th {
+				background-color: @tableBackgroundHover;
+			}
+		}
+	}
+
+	.table-hover {
+		tbody {
+			tr:hover td,
+			tr:hover th {
+				background-color: @tableBackgroundHover;
+			}
+		}
+	}
+
+	//Thumbnails
+	a.thumbnail:hover:after {
+		content: "";
+		display:block;
+		position: absolute;
+		left: -3px;
+		top: -2px;
+		width: 100%;
+		height: 100%;
+		border: 3px solid #ea002c;
+		.border-radius(8px);
+	}
+
 }

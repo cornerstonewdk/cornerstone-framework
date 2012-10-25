@@ -34,7 +34,7 @@
   background: @pagingNum;
   border: none;
 }
-.pagination2 a:hover,
+
 .pagination2 .active a,
 .pagination2 .active span {
 	width: 15px;
@@ -42,6 +42,7 @@
 	margin: -4px 0 0 -4px;
 	background: @grayDark;
 }
+
 .pagination2 .active a,
 .pagination2 .active span {
   cursor: default;
@@ -57,8 +58,8 @@
   .border-radius(4px);
 }
 
-.pagination2 li:first-child a:hover,
-.pagination2 li:last-child a:hover {
+.pagination2 li:first-child a:active,
+.pagination2 li:last-child a:active {
 	margin: 0;
 	text-decoration: none;
   background-color: @pagingNumBg;
@@ -76,8 +77,8 @@
   border: none;
 }
 
-.pagination2 li:first-child a:hover span,
-.pagination2 li:last-child a:hover span {	
+.pagination2 li:first-child a:active span,
+.pagination2 li:last-child a:active span {	
 	width: 22px;
 	height: 22px;
 	padding: 0;
@@ -107,8 +108,8 @@
 	top: 4px;
 }
 
-.pagination2 li:first-child a:hover span:after, 
-.pagination2 li:last-child a:hover span:after {
+.pagination2 li:first-child a:active span:after, 
+.pagination2 li:last-child a:active span:after {
 	content:"";
 	border-color: transparent @pagingArrowActive transparent transparent;
   border-style: solid;
@@ -130,7 +131,7 @@
 	top: 4px;
 }
 
-.pagination2 li:last-child a:hover span:after {
+.pagination2 li:last-child a:active span:after {
 	border-color: transparent transparent transparent @pagingArrowActive;
 	left: 8px;
 	top: 4px;

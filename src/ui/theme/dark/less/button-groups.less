@@ -91,26 +91,14 @@
 }
 
 // On hover/focus/active, bring the proper btn to front
-.btn-group > .btn:hover,
+.btn-group > .btn:hover {
+  z-index: 0;
+}
+
 .btn-group > .btn:focus,
 .btn-group > .btn:active,
 .btn-group > .btn.active {
   z-index: 2;
-	border: 1px solid transparent;
-}
-
-.btn-group > .btn:first-child:hover,
-.btn-group > .btn:first-child:focus,
-.btn-group > .btn:first-child:active,
-.btn-group > .btn:first-child.active {
-	border-left: 0;
-}
-
-.btn-group > .btn:last-child:hover,
-.btn-group > .btn:last-child:focus,
-.btn-group > .btn:last-child:active,
-.btn-group > .btn:last-child.active {
-	border-right: 0;
 }
 
 // On active and open, don't show outline
@@ -243,7 +231,6 @@
 	border-top: 1px solid @btnBorder;
 	border-bottom: 1px solid @btnBorder;
 	&:hover {
-		#font > #effect > .txt-over();
 		border-left: 0;
 		border-right: 0;
   }
@@ -259,7 +246,7 @@
 .btn-group .btn:first-child {
 	// Hover state
   &:hover {
-		border-left: 1px solid transparent;
+		border-left: 1px solid @btnBorder;
 		border-right: 0;
   }
 
@@ -275,7 +262,7 @@
 	// Hover state
   &:hover {
 		border-left: 0;
-		border-right: 1px solid transparent;
+		border-right: 1px solid @btnBorder;
   }
 
   // Active state
@@ -284,6 +271,12 @@
 		border-left: 0;
 		border-right: 1px solid transparent;
 	}
+}
+
+.btn-group .btn.btn-primary {
+	&:hover {
+		color: @btnGroupTxt;
+  }
 }
 
 .btn-group .icon-up,
@@ -323,7 +316,8 @@
 	background-position: 1px -887px;
 }
 
-.btn-group .dropdown-toggle {
+.btn-group .btn.dropdown-toggle,
+.btn-group .btn.dropdown-toggle:first-child {
 	border-right: 1px solid @btnBorder;
 }
 
@@ -331,6 +325,7 @@
 // ----------------------
 
 .btn-group-vertical {
+	display: inline-block;
   overflow:hidden; // makes buttons only take up the width they need
   .ie7-inline-block();
 	.border-radius(6px);
@@ -342,7 +337,7 @@
   float: none;
   width: 100%;
 	color: @btnGroupTxt;
-	font-size: (@baseFontSize * 2) - 3;
+	font-size: @baseFontSize + 3;
 	text-shadow: 0 1px 0 rgba(255,255,255,.2);
 	border: 0;
 	border-left: 1px solid #000;
@@ -353,22 +348,18 @@
 
 	// Hover state
   &:hover {
-		#font > #effect > .txt-over();
-    text-decoration: none;
-    background-color: none;		
-    *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
-		#gradient > .vertical-btn;
-    background-position: 0 0;
+		display: block;
+		float: none;
+		width: 100%;
+		color: @btnGroupTxt;
+		font-size: @baseFontSize + 3;
+		text-shadow: 0 1px 0 rgba(255,255,255,.2);
 		border: 0;
-		border-left: 1px solid transparent;
-		border-right: 1px solid transparent;
-		box-shadow: none;
-		.box-shadow(~"inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3)"); 
+		border-left: 1px solid #000;
+		border-right: 1px solid #000;
+		.box-shadow(~"inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4)");
+		background: transparent;
 		margin: 0;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
   }
 
   // Focus state for keyboard and accessibility
@@ -417,14 +408,23 @@
   .border-radius(0 0 6px 6px);
 }
 
-.btn-group-vertical .btn:hover:first-child,
-.btn-group-vertical .btn:active:first-child {
-	#font > #effect > .txt-over();
-	border: 1px solid transparent;
+.btn-group-vertical .btn:hover:first-child {
+	border: 1px solid @btnBorder;
 	border-bottom: 0;
 }
 
-.btn-group-vertical .btn:hover:last-child,
+.btn-group-vertical .btn:hover:last-child {
+	border: 1px solid @btnBorder;
+	border-top: 0;
+}
+
+
+.btn-group-vertical .btn:active:first-child {
+	#font > #effect > .txt-over();
+	border: 1px solid @btnBorder;
+	border-bottom: 0;
+}
+
 .btn-group-vertical .btn:active:last-child {
 	#font > #effect > .txt-over();
 	border: 1px solid transparent;
@@ -432,8 +432,8 @@
 }
 
 .hor-toggle .btn {
-	font-size: @baseFontSize + 10;
+	font-size: @baseFontSize + 6;
 	font-weight: 600;
-	line-height: @baseLineHeight + 8;
+	line-height: @baseLineHeight + 6;
 	padding: 9px 17px;
 }

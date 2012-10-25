@@ -29,7 +29,7 @@
 	margin-left: 2px;
 }
 
-.pagination a {
+.pagination a, .pagination a:hover {
 	color: @pagingTxt;
 	line-height: @baseLineHeight;
 	width: 30px;
@@ -40,7 +40,7 @@
 	display:block;
 }
 
-.pagination a:hover,
+.pagination a:active,
 .pagination .active a {
 	color: @pagingActive;
 	text-decoration:none;
@@ -58,6 +58,13 @@
   .border-radius(4px);
 }
 
+.pagination li:first-child a:active,
+.pagination li:last-child a:active {
+	margin: 0;
+	text-decoration: none;
+  background-color: @pagingNumBg;
+}
+
 .pagination ul li:first-child a span, 
 .pagination ul li:last-child a span {
 	width: 22px;
@@ -72,8 +79,8 @@
   border: none;
 }
 
-.pagination ul li:first-child a:hover span, 
-.pagination ul li:last-child a:hover span {	
+.pagination ul li:first-child a:active span, 
+.pagination ul li:last-child a:active span {	
 	width: 22px;
 	height: 22px;
 	padding: 0;
@@ -104,8 +111,8 @@
 	top: 4px;
 }
 
-.pagination ul li:first-child a:hover span:after, 
-.pagination ul li:last-child a:hover span:after {
+.pagination ul li:first-child a:active span:after, 
+.pagination ul li:last-child a:active span:after {
 	content:"";
 	border-color: transparent @pagingArrowActive transparent transparent;
   border-style: solid;
@@ -128,7 +135,7 @@
 	top: 4px;
 }
 
-.pagination ul li:last-child a:hover span:after {
+.pagination ul li:last-child a:active span:after {
 	border-color: transparent transparent transparent @pagingArrowActive;
 	position: absolute;
 	left: 8px;

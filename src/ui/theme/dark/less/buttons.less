@@ -12,7 +12,7 @@
   .ie7-inline-block();
   padding: 12px 17px;
   margin-bottom: 0; // For input.btn
-  font-size: @baseFontSize + 4;
+  font-size: @baseFontSize;
   line-height: @baseLineHeight;
   *line-height: @baseLineHeight;
   text-align: center;
@@ -24,22 +24,12 @@
   border-bottom-color: darken(@btnBorder, 100%);
   .border-radius(3px);
   .ie7-restore-left-whitespace(); // Give IE7 some love
-  .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4)");
+  .box-shadow(~"inset 0 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4)");
   text-shadow: 0 -1px 0 rgba(0,0,0,0.7);
 
   // Hover state
   &:hover {
-		color: @btnLinkTxt;
-    text-decoration: none;       
-		#gradient > .vertical(rgba(255,255,255,.2), rgba(255,255,255,.01));
-		 background-color: @btnHover;
-		 *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
-		.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4)");
-		margin: 0;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
+    background-position: 0;
   }
 
   // Focus state for keyboard and accessibility
@@ -88,9 +78,8 @@
 	 border:1px solid @btnBorder;
   // Hover state
   &:hover {
-    color: @btnBlueActiveTxt;		
-		.buttonBackground(@btnBlueHoverHighlight, @btnBlueHover, @btnPrimaryTxt, @btnShadow);		
-		border:1px solid @btnBorder;
+   .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground, @btnPrimaryTxt, @btnShadow);
+	 border:1px solid @btnBorder;
   }
   // Active state
   &.active,

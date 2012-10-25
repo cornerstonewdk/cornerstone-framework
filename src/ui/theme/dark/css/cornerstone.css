@@ -116,6 +116,7 @@
   padding: 5px 20px;
   clear: both;
   font-weight: normal;
+  font-size: 16px;
   line-height: 18px;
   color: #bcbcbc;
   white-space: nowrap;
@@ -247,8 +248,8 @@ legend {
   display: block;
   width: 100%;
   margin-bottom: 18px;
-  font-size: 26px;
-  line-height: 36px;
+  font-size: 22px;
+  line-height: 22px;
   color: #222222;
   border: 0;
   border-bottom: 0;
@@ -513,7 +514,7 @@ select:focus {
   position: relative;
 }
 .select-box:after {
-  content: '<';
+  content: '';
   display: block;
   position: absolute;
   right: 10px;
@@ -1171,9 +1172,8 @@ input.search-query {
   color: #ffffff;
 }
 .form-search button,
-.form-search button:hover,
 .form-search button:active {
-  font-size: 22px;
+  font-size: 18px;
   padding: 12px 10px;
 }
 .form-search .input-append input.search-query {
@@ -1396,7 +1396,7 @@ input.search-query {
   text-align: left;
   padding: 0 15px 0 0;
   color: #b0b0b0;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 18px;
   font-weight: bold;
   display: inline-block;
@@ -1411,7 +1411,7 @@ input.search-query {
   text-align: right;
   padding: 0 0 0 15px;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 18px;
   font-weight: bold;
   display: inline-block;
@@ -1467,7 +1467,7 @@ input.search-query {
   *zoom: 1;
   padding: 12px 17px;
   margin-bottom: 0;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 18px;
   *line-height: 18px;
   text-align: center;
@@ -1512,9 +1512,9 @@ input.search-query {
   -moz-border-radius: 3px;
   border-radius: 3px;
   *margin-left: .3em;
-  -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4);
-  -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4);
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4);
+  -webkit-box-shadow: inset 0 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4);
+  -moz-box-shadow: inset 0 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4);
+  box-shadow: inset 0 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
 }
 .btn:hover,
@@ -1547,28 +1547,7 @@ input.search-query {
   *margin-left: 0;
 }
 .btn:hover {
-  color: #ffffff;
-  text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.124);
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.01)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33ffffff', endColorstr='#03ffffff', GradientType=0);
-  background-color: #1e2023;
-  *background-color: none;
-  /* Buttons in IE7 don't get borders, so darken on hover */
-
-  -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4);
-  -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4);
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4);
-  margin: 0;
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
+  background-position: 0;
 }
 .btn:focus {
   outline: thin dotted #333;
@@ -1678,36 +1657,35 @@ input.search-query {
   background-color: #255176 \9;
 }
 .btn-primary:hover {
-  color: #a2ecff;
   color: #ffffff;
   text-shadow: rgba(0, 0, 0, 0.7);
-  background-color: #1c466a;
-  background-image: -moz-linear-gradient(top, #244e72, #113a5e);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#244e72), to(#113a5e));
-  background-image: -webkit-linear-gradient(top, #244e72, #113a5e);
-  background-image: -o-linear-gradient(top, #244e72, #113a5e);
-  background-image: linear-gradient(to bottom, #244e72, #113a5e);
+  background-color: #3b72a2;
+  background-image: -moz-linear-gradient(top, #4176a5, #316b9d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4176a5), to(#316b9d));
+  background-image: -webkit-linear-gradient(top, #4176a5, #316b9d);
+  background-image: -o-linear-gradient(top, #4176a5, #316b9d);
+  background-image: linear-gradient(to bottom, #4176a5, #316b9d);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff244e72', endColorstr='#ff113a5e', GradientType=0);
-  border-color: #113a5e #113a5e #05121d;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4176a5', endColorstr='#ff316b9d', GradientType=0);
+  border-color: #316b9d #316b9d #1f4363;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #113a5e;
+  *background-color: #316b9d;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   color: #ffffff;
   text-shadow: rgba(0, 0, 0, 0.7);
-  background-color: #1c466a;
-  background-image: -moz-linear-gradient(top, #244e72, #113a5e);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#244e72), to(#113a5e));
-  background-image: -webkit-linear-gradient(top, #244e72, #113a5e);
-  background-image: -o-linear-gradient(top, #244e72, #113a5e);
-  background-image: linear-gradient(to bottom, #244e72, #113a5e);
+  background-color: #3b72a2;
+  background-image: -moz-linear-gradient(top, #4176a5, #316b9d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4176a5), to(#316b9d));
+  background-image: -webkit-linear-gradient(top, #4176a5, #316b9d);
+  background-image: -o-linear-gradient(top, #4176a5, #316b9d);
+  background-image: linear-gradient(to bottom, #4176a5, #316b9d);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff244e72', endColorstr='#ff113a5e', GradientType=0);
-  border-color: #113a5e #113a5e #05121d;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4176a5', endColorstr='#ff316b9d', GradientType=0);
+  border-color: #316b9d #316b9d #1f4363;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #113a5e;
+  *background-color: #316b9d;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -1719,12 +1697,12 @@ input.search-query {
 .btn-primary:hover.disabled,
 .btn-primary:hover[disabled] {
   color: #ffffff;
-  background-color: #113a5e;
-  *background-color: #0d2d48;
+  background-color: #316b9d;
+  *background-color: #2b5e8a;
 }
 .btn-primary:hover:active,
 .btn-primary:hover.active {
-  background-color: #091f33 \9;
+  background-color: #255176 \9;
 }
 .btn-primary:hover:hover,
 .btn-primary:hover:active,
@@ -1732,12 +1710,12 @@ input.search-query {
 .btn-primary:hover.disabled,
 .btn-primary:hover[disabled] {
   color: #ffffff;
-  background-color: #113a5e;
-  *background-color: #0d2d48;
+  background-color: #316b9d;
+  *background-color: #2b5e8a;
 }
 .btn-primary:hover:active,
 .btn-primary:hover.active {
-  background-color: #091f33 \9;
+  background-color: #255176 \9;
 }
 .btn-primary.active,
 .btn-primary:active {
@@ -2308,24 +2286,13 @@ input.search-query {
   -moz-border-radius-bottomright: 6px;
   border-bottom-right-radius: 6px;
 }
-.btn-group > .btn:hover,
+.btn-group > .btn:hover {
+  z-index: 0;
+}
 .btn-group > .btn:focus,
 .btn-group > .btn:active,
 .btn-group > .btn.active {
   z-index: 2;
-  border: 1px solid transparent;
-}
-.btn-group > .btn:first-child:hover,
-.btn-group > .btn:first-child:focus,
-.btn-group > .btn:first-child:active,
-.btn-group > .btn:first-child.active {
-  border-left: 0;
-}
-.btn-group > .btn:last-child:hover,
-.btn-group > .btn:last-child:focus,
-.btn-group > .btn:last-child:active,
-.btn-group > .btn:last-child.active {
-  border-right: 0;
 }
 .btn-group .dropdown-toggle:active,
 .btn-group.open .dropdown-toggle {
@@ -2432,9 +2399,6 @@ input.search-query {
   border-bottom: 1px solid #000000;
 }
 .btn-group .btn:hover {
-  color: #82e6ff;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  text-decoration: none;
   border-left: 0;
   border-right: 0;
 }
@@ -2447,7 +2411,7 @@ input.search-query {
   border-right: 0;
 }
 .btn-group .btn:first-child:hover {
-  border-left: 1px solid transparent;
+  border-left: 1px solid #000000;
   border-right: 0;
 }
 .btn-group .btn:first-child.active,
@@ -2457,12 +2421,15 @@ input.search-query {
 }
 .btn-group .btn:last-child:hover {
   border-left: 0;
-  border-right: 1px solid transparent;
+  border-right: 1px solid #000000;
 }
 .btn-group .btn:last-child.active,
 .btn-group .btn:last-child:active {
   border-left: 0;
   border-right: 1px solid transparent;
+}
+.btn-group .btn.btn-primary:hover {
+  color: #000000;
 }
 .btn-group .icon-up,
 .btn-group .icon-down,
@@ -2495,10 +2462,12 @@ input.search-query {
 .btn-group .icon-set.active {
   background-position: 1px -887px;
 }
-.btn-group .dropdown-toggle {
+.btn-group .btn.dropdown-toggle,
+.btn-group .btn.dropdown-toggle:first-child {
   border-right: 1px solid #000000;
 }
 .btn-group-vertical {
+  display: inline-block;
   overflow: hidden;
   *display: inline;
   /* IE7 inline-block hack */
@@ -2524,7 +2493,7 @@ input.search-query {
   float: none;
   width: 100%;
   color: #000000;
-  font-size: 33px;
+  font-size: 21px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   border: 0;
   border-left: 1px solid #000;
@@ -2536,35 +2505,20 @@ input.search-query {
   margin: 0;
 }
 .btn-group-vertical .btn:hover {
-  color: #82e6ff;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  text-decoration: none;
-  text-decoration: none;
-  background-color: none;
-  *background-color: none;
-  /* Buttons in IE7 don't get borders, so darken on hover */
-
-  background-color: #393d42;
-  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.1)));
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#1a000000', GradientType=0);
-  background-position: 0 0;
+  display: block;
+  float: none;
+  width: 100%;
+  color: #000000;
+  font-size: 21px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   border: 0;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  box-shadow: none;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
-  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
-  box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  -webkit-box-shadow: inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4);
+  -moz-box-shadow: inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4);
+  box-shadow: inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4);
+  background: transparent;
   margin: 0;
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
 }
 .btn-group-vertical .btn:focus {
   outline: thin dotted #333;
@@ -2628,15 +2582,21 @@ input.search-query {
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
 }
-.btn-group-vertical .btn:hover:first-child,
+.btn-group-vertical .btn:hover:first-child {
+  border: 1px solid #000000;
+  border-bottom: 0;
+}
+.btn-group-vertical .btn:hover:last-child {
+  border: 1px solid #000000;
+  border-top: 0;
+}
 .btn-group-vertical .btn:active:first-child {
   color: #82e6ff;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   text-decoration: none;
-  border: 1px solid transparent;
+  border: 1px solid #000000;
   border-bottom: 0;
 }
-.btn-group-vertical .btn:hover:last-child,
 .btn-group-vertical .btn:active:last-child {
   color: #82e6ff;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
@@ -2645,12 +2605,13 @@ input.search-query {
   border-top: 0;
 }
 .hor-toggle .btn {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
-  line-height: 26px;
+  line-height: 24px;
   padding: 9px 17px;
 }
 .breadcrumb {
+  font-size: 16px;
   padding: 0 15px 0 25px;
   margin: 0 0 18px;
   list-style: none;
@@ -2735,7 +2696,8 @@ input.search-query {
 .pagination ul li:last-child {
   margin-left: 2px;
 }
-.pagination ul li a {
+.pagination a,
+.pagination a:hover {
   color: #ffffff;
   line-height: 18px;
   width: 30px;
@@ -2753,8 +2715,7 @@ input.search-query {
   -moz-box-shadow: inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4);
   box-shadow: inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4);
 }
-.pagination ul li a:hover,
-.pagination ul li .active a {
+.pagination .active a {
   color: #82e6ff;
   text-decoration: none;
   border-top: none;
@@ -2780,6 +2741,17 @@ input.search-query {
   -moz-box-shadow: inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4);
   box-shadow: inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4);
 }
+.pagination li:first-child a:active,
+.pagination li:last-child a:active {
+  margin: 0;
+  text-decoration: none;
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #282b2e;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+  -moz-box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+  box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+}
 .pagination ul li:first-child a span,
 .pagination ul li:last-child a span {
   width: 22px;
@@ -2798,8 +2770,8 @@ input.search-query {
   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
   box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
 }
-.pagination ul li:first-child a:hover span,
-.pagination ul li:last-child a:hover span {
+.pagination ul li:first-child a:active span,
+.pagination ul li:last-child a:active span {
   width: 22px;
   height: 22px;
   padding: 0;
@@ -2838,8 +2810,8 @@ input.search-query {
   left: -3px;
   top: 4px;
 }
-.pagination ul li:first-child a:hover span:after,
-.pagination ul li:last-child a:hover span:after {
+.pagination ul li:first-child a:active span:after,
+.pagination ul li:last-child a:active span:after {
   content: "";
   border-color: transparent #2a2d30 transparent transparent;
   border-style: solid;
@@ -2861,7 +2833,7 @@ input.search-query {
   left: 8px;
   top: 4px;
 }
-.pagination ul li:last-child a:hover span:after {
+.pagination ul li:last-child a:active span:after {
   border-color: transparent transparent transparent #2a2d30;
   position: absolute;
   left: 8px;
@@ -2918,7 +2890,6 @@ input.search-query {
   -moz-box-shadow: inset 0 2px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1);
   box-shadow: inset 0 2px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1);
 }
-.pagination2 a:hover,
 .pagination2 .active a,
 .pagination2 .active span {
   width: 15px;
@@ -2954,8 +2925,8 @@ input.search-query {
   -moz-box-shadow: inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4);
   box-shadow: inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4);
 }
-.pagination2 li:first-child a:hover,
-.pagination2 li:last-child a:hover {
+.pagination2 li:first-child a:active,
+.pagination2 li:last-child a:active {
   margin: 0;
   text-decoration: none;
   border-top: none;
@@ -2981,14 +2952,14 @@ input.search-query {
   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
   box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
 }
-.pagination2 li:first-child a:hover span,
-.pagination2 li:last-child a:hover span {
+.pagination2 li:first-child a:active span,
+.pagination2 li:last-child a:active span {
   width: 22px;
   height: 22px;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   display: block;
-  position: realtive;
+  position: relative;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
@@ -3021,8 +2992,8 @@ input.search-query {
   left: -3px;
   top: 4px;
 }
-.pagination2 li:first-child a:hover span:after,
-.pagination2 li:last-child a:hover span:after {
+.pagination2 li:first-child a:active span:after,
+.pagination2 li:last-child a:active span:after {
   content: "";
   border-color: transparent #2a2d30 transparent transparent;
   border-style: solid;
@@ -3043,7 +3014,7 @@ input.search-query {
   left: 8px;
   top: 4px;
 }
-.pagination2 li:last-child a:hover span:after {
+.pagination2 li:last-child a:active span:after {
   border-color: transparent transparent transparent #2a2d30;
   left: 8px;
   top: 4px;
@@ -3254,7 +3225,7 @@ input.search-query {
 .navbar-search label {
   display: inline-block;
   padding: 0 10px 0 0;
-  font-size: 21px;
+  font-size: 18px;
 }
 .navbar-fixed-top,
 .navbar-fixed-bottom {
@@ -3308,7 +3279,7 @@ input.search-query {
   padding: 7px 13px;
   margin: 0;
   color: #a1a1a1;
-  font-size: 21px;
+  font-size: 18px;
   text-decoration: none;
   text-shadow: 0 1px 0 #000000;
   border: 1px solid transparent;
@@ -3341,7 +3312,7 @@ input.search-query {
   box-shadow: none;
   background: none;
   color: #ffffff;
-  font-size: 30px;
+  font-size: 22px;
 }
 .navbar .nav.pull-right > li:first-child,
 .navbar .nav.pull-right > li:last-child {
@@ -3355,7 +3326,7 @@ input.search-query {
   padding: 7px 13px;
   margin: 0;
   color: #a1a1a1;
-  font-size: 21px;
+  font-size: 18px;
   text-decoration: none;
   text-shadow: 0 1px 0 #000000;
   border: 1px solid transparent;
@@ -3428,7 +3399,7 @@ input.search-query {
 }
 .ico-txt .nav > li:first-child a {
   color: #a1a1a1;
-  font-size: 21px;
+  font-size: 18px;
   padding: 4px 13px;
 }
 .ico-txt .nav > li:first-child a:hover,
@@ -3437,7 +3408,7 @@ input.search-query {
   color: #82e6ff;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   text-decoration: none;
-  font-size: 21px;
+  font-size: 18px;
   padding: 4px 13px;
 }
 .ico-txt .nav,
@@ -3881,7 +3852,8 @@ input.search-query {
   padding-left: 15px;
   padding-right: 15px;
 }
-.nav-list > li > a {
+.nav-list > li > a,
+.nav-list > li > a:hover {
   margin-left: -15px;
   margin-right: -15px;
   margin-top: 1px;
@@ -3894,7 +3866,7 @@ input.search-query {
   -moz-box-shadow: 0 1px 0 rgba(255,255,255,1);
   box-shadow: 0 1px 0 rgba(255,255,255,1);
 }
-.nav-list > li > a:hover {
+.nav-list > li > a:active {
   color: #ffffff;
   background-color: #525252;
   -webkit-box-shadow: inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1);
@@ -3934,7 +3906,7 @@ input.search-query {
 }
 .nav-list > .nav-header {
   display: block;
-  font-size: 22px;
+  font-size: 18px;
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) ! important;
   font-weight: normal;
@@ -3957,14 +3929,15 @@ input.search-query {
   box-shadow: inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4);
   padding: 15px 20px;
 }
-.nav-list > li:last-child > a {
+.nav-list > li:last-child > a,
+.nav-list > li:last-child > a:hover {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
   border-bottom: 0;
   box-shadow: none;
 }
-.nav-list > li:last-child > a:hover {
+.nav-list > li:last-child > a:active {
   -webkit-box-shadow: inset 0 0 7px rgba(0,0,0,.7);
   -moz-box-shadow: inset 0 0 7px rgba(0,0,0,.7);
   box-shadow: inset 0 0 7px rgba(0,0,0,.7);
@@ -4011,7 +3984,7 @@ input.search-query {
 }
 .nav-tabs > li > a {
   color: #c0c0c0;
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
   padding-top: 12px;
@@ -4035,6 +4008,31 @@ input.search-query {
   overflow: hidden;
 }
 .nav-tabs > li > a:hover {
+  color: #c0c0c0;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 18px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.05)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1affffff', endColorstr='#0dffffff', GradientType=0);
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  -webkit-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3);
+  -moz-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3);
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3);
+  overflow: hidden;
+}
+.nav-tabs > li > a:active {
   color: #c0c0c0;
   border-color: #fefefe #b0b0b0 #b4b4b4;
   background-color: rgba(0, 0, 0, 0.7);
@@ -4063,7 +4061,7 @@ input.search-query {
 }
 .nav-pills > li > a {
   color: #c0c0c0;
-  font-size: 21px;
+  font-size: 18px;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   padding: 15px 35px;
   margin-top: 2px;
@@ -4078,6 +4076,22 @@ input.search-query {
   box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
 }
 .nav-pills > li > a:hover {
+  color: #c0c0c0;
+  font-size: 18px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  padding: 15px 35px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  background-color: rgba(84, 84, 82, 0.8);
+  -webkit-box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
+}
+.nav-pills > li > a:active {
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.2);
   border: 1px solid #454646;
@@ -4087,7 +4101,7 @@ input.search-query {
   box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
 }
 .nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a:active {
   color: #ffffff;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
   background-color: rgba(0, 0, 0, 0.2);
@@ -4151,7 +4165,7 @@ input.search-query {
 }
 .nav-tabs.nav-stacked > li > a {
   color: #c0c0c0;
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
   padding-top: 12px;
@@ -4174,7 +4188,7 @@ input.search-query {
   box-shadow: inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15);
   overflow: hidden;
 }
-.nav-tabs.nav-stacked > li > a:hover {
+.nav-tabs.nav-stacked > li > a:active {
   color: #c0c0c0;
   border-color: #fefefe #b0b0b0 #b4b4b4;
   background-color: rgba(0, 0, 0, 0.7);
@@ -4298,7 +4312,7 @@ input.search-query {
 }
 .tabs-below > .nav-tabs > li > a {
   color: #c0c0c0;
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
   padding-top: 12px;
@@ -4322,6 +4336,31 @@ input.search-query {
   overflow: hidden;
 }
 .tabs-below > .nav-tabs > li > a:hover {
+  color: #c0c0c0;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 18px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.05)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1affffff', endColorstr='#0dffffff', GradientType=0);
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3);
+  -moz-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3);
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3);
+  overflow: hidden;
+}
+.tabs-below > .nav-tabs > li > a:active {
   color: #c0c0c0;
   border-color: #fefefe #b0b0b0 #b4b4b4;
   background-color: rgba(0, 0, 0, 0.7);
@@ -4429,9 +4468,10 @@ input.search-query {
 
   -webkit-flex: 1;
 }
-.nav-bot li a {
+.nav-bot li a,
+.nav-bot li a:hover {
   color: #ffffff;
-  font-size: 17px;
+  font-size: 13px;
   font-weight: bold;
   padding: 12.75px 0 10.2px 0;
   background-color: #42464b;
@@ -4451,7 +4491,8 @@ input.search-query {
   position: relative;
   z-index: 10;
 }
-.v-blue li a {
+.v-blue li a,
+.v-blue li a:hover {
   color: #0d3259;
   font-weight: bold;
   padding: 12.75px 0 10.2px 0;
@@ -4478,11 +4519,10 @@ input.search-query {
   -moz-box-shadow: inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px @navPillActive, 0 7px 7px rgba(0,0,0,.5);
   box-shadow: inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px @navPillActive, 0 7px 7px rgba(0,0,0,.5);
 }
-.nav-bot li a:hover,
 .nav-bot li a:active,
 .nav-bot li a.active {
   color: #82e6ff;
-  font-size: 17px;
+  font-size: 13px;
   padding: 12.75px 0 10.2px 0;
   background: #292c2f;
   -webkit-box-shadow: inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15);
@@ -4495,7 +4535,6 @@ input.search-query {
   z-index: 100;
   margin-top: 1px;
 }
-.v-blue li a:hover,
 .v-blue li a:active,
 .v-blue li a.active {
   color: #a1eafd;
@@ -4597,8 +4636,8 @@ input.search-query {
   padding: 0;
   margin: 0 0 0 10px;
   vertical-align: middle;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 26px;
+  line-height: 26px;
 }
 .radio-vertical > li:first-child {
   -webkit-border-radius: 4px 4px 0 0;
@@ -4614,7 +4653,7 @@ input.search-query {
 }
 .label,
 .badge {
-  font-size: 19px;
+  font-size: 13px;
   color: #ffffff;
   text-shadow: none;
   background-color: #656565;
@@ -4700,7 +4739,7 @@ a.badge:hover {
 }
 .pager a {
   color: #bcbcbc;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
   display: inline-block;
   padding: 10px 15px;
@@ -4714,11 +4753,19 @@ a.badge:hover {
   box-shadow: inset 0 1px 1px rgba(255,255,255,.15), 0 4px 6px rgba(0,0,0,.71);
 }
 .pager a:hover {
-  text-decoration: none;
-  background-color: #2a2d30;
-  -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71);
-  -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71);
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71);
+  color: #bcbcbc;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #42464b;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.15), 0 4px 6px rgba(0,0,0,.71);
+  -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.15), 0 4px 6px rgba(0,0,0,.71);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.15), 0 4px 6px rgba(0,0,0,.71);
 }
 .pager a:active {
   text-decoration: none;
@@ -5043,15 +5090,15 @@ table {
 }
 .table-striped tbody tr:nth-child(odd) td,
 .table-striped tbody tr:nth-child(odd) th {
-  background-color: rgba(51, 51, 51, 0.6);
+  background-color: transparent;
 }
 .table tbody tr:hover td,
 .table tbody tr:hover th {
-  background-color: rgba(51, 51, 51, 0.6);
+  background-color: transparent;
 }
 .table-hover tbody tr:hover td,
 .table-hover tbody tr:hover th {
-  background-color: rgba(51, 51, 51, 0.6);
+  background-color: transparent;
 }
 table [class*=span],
 .row-fluid table [class*=span] {
@@ -5229,18 +5276,15 @@ table .span24 {
   background: url('../img/bg_tab_on.png') repeat left top;
   background-size: 4px;
 }
-a.thumbnail:hover:after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: -3px;
-  top: -2px;
-  width: 100%;
-  height: 100%;
-  border: 3px solid #ea002c;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
+a.thumbnail:hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  background-position: 0;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
 .thumbnail > img {
   display: block;
@@ -5252,7 +5296,7 @@ a.thumbnail:hover:after {
   padding: 9px;
   color: #4e4e4e;
 }
-.gray .thumbnail {
+.gray a.thumbnail {
   display: block;
   padding: 9px 10px;
   line-height: 18px;
@@ -5269,6 +5313,11 @@ a.thumbnail:hover:after {
   transition: all 0.2s ease-in-out;
   background: url('../img/bg_dot_black.png') repeat left top;
   background-size: 4px;
+}
+.gray a.thumbnail:hover {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 .tooltip-area {
   position: relative;
@@ -5382,7 +5431,7 @@ a.thumbnail:hover:after {
   top: 0;
 }
 .controls .tooltip .tooltip-inner {
-  font-size: 20px;
+  font-size: 18px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
@@ -5674,8 +5723,8 @@ address {
 .title {
   display: block;
   margin-bottom: 18px;
-  font-size: 26px;
-  line-height: 36px;
+  font-size: 22px;
+  line-height: 72px;
   color: #222222;
   border: 0;
   border-bottom: 0;
@@ -5725,7 +5774,7 @@ address {
   z-index: 100;
   padding: 10px;
   color: #ffffff;
-  font-size: 22px;
+  font-size: 18px;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.7);
 }
 .lists.group header {
@@ -5741,7 +5790,7 @@ address {
   z-index: 100;
   padding: 10px;
   color: #ffffff;
-  font-size: 22px;
+  font-size: 18px;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.7);
 }
 .lists .lists-con {
@@ -5762,7 +5811,7 @@ address {
   padding: 0;
   margin: 0;
   color: #000000;
-  font-size: 22px;
+  font-size: 18px;
   border-bottom: 1px solid #cdcdcd;
   -webkit-box-shadow: 0 1px 1px #ffffff;
   -moz-box-shadow: 0 1px 1px #ffffff;
@@ -5849,7 +5898,7 @@ address {
   -moz-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3);
   box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3);
   padding: 15px;
-  font-size: 24px;
+  font-size: 18px;
 }
 .accordion-group:first-child .accordion-heading .accordion-toggle {
   border-top: 1px solid #5d5d5d;
@@ -6679,7 +6728,7 @@ address {
     display: none;
   }
   .nav-icon .nav > li a {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
   }
   .navbar .nav > li:first-child a,
@@ -6688,7 +6737,7 @@ address {
   .navbar .nav > .active:first-child > a,
   .navbar .nav > .active:first-child > a:hover,
   .navbar .nav > .active:first-child > a:focus {
-    font-size: 21px;
+    font-size: 18px;
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -6742,7 +6791,7 @@ address {
   .nav-icon .nav > .active:first-child > a,
   .nav-icon .nav > .active:first-child > a:hover,
   .nav-icon .nav > .active:first-child > a:focus {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
@@ -6767,7 +6816,7 @@ address {
     padding-left: 0;
     margin: 0;
     background: none;
-    font-size: 21px;
+    font-size: 18px;
     text-shadow: none;
     text-decoration: none;
     padding: 7px 0 7px 10px;
@@ -6796,7 +6845,7 @@ address {
   }
   .ico-txt .nav.pull-right > li:first-child a:hover,
   .nav-icon .nav.pull-right > li:first-child a:hover {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
     padding: 7px 0 7px 10px;
     box-shadow: none;
@@ -6806,7 +6855,7 @@ address {
   .nav-icon .nav > li:first-child a:hover,
   .nav-icon .nav > li:first-child a:active,
   .nav-icon .nav > li:first-child.active a {
-    font-size: 21px;
+    font-size: 18px;
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -6830,7 +6879,7 @@ address {
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none;
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
     text-decoration: none;
     padding: 7px 0 7px 10px;
@@ -7230,7 +7279,7 @@ address {
     display: none;
   }
   .nav-icon .nav > li a {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
   }
   .navbar .nav > li:first-child a,
@@ -7239,7 +7288,7 @@ address {
   .navbar .nav > .active:first-child > a,
   .navbar .nav > .active:first-child > a:hover,
   .navbar .nav > .active:first-child > a:focus {
-    font-size: 21px;
+    font-size: 18px;
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -7293,7 +7342,7 @@ address {
   .nav-icon .nav > .active:first-child > a,
   .nav-icon .nav > .active:first-child > a:hover,
   .nav-icon .nav > .active:first-child > a:focus {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
@@ -7318,7 +7367,7 @@ address {
     padding-left: 0;
     margin: 0;
     background: none;
-    font-size: 21px;
+    font-size: 18px;
     text-shadow: none;
     text-decoration: none;
     padding: 7px 0 7px 10px;
@@ -7347,7 +7396,7 @@ address {
   }
   .ico-txt .nav.pull-right > li:first-child a:hover,
   .nav-icon .nav.pull-right > li:first-child a:hover {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
     padding: 7px 0 7px 10px;
     box-shadow: none;
@@ -7357,7 +7406,7 @@ address {
   .nav-icon .nav > li:first-child a:hover,
   .nav-icon .nav > li:first-child a:active,
   .nav-icon .nav > li:first-child.active a {
-    font-size: 21px;
+    font-size: 18px;
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -7381,7 +7430,7 @@ address {
     color: #82e6ff;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     text-decoration: none;
-    font-size: 21px;
+    font-size: 18px;
     line-height: 21px;
     text-decoration: none;
     padding: 7px 0 7px 10px;
@@ -7722,6 +7771,416 @@ address {
   input.span1, textarea.span1, .uneditable-input.span1 {
     width: 56px;
   }
+  .btn:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.124);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.01)));
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33ffffff', endColorstr='#03ffffff', GradientType=0);
+    background-color: #1e2023;
+    *background-color: none;
+    /* Buttons in IE7 don't get borders, so darken on hover */
+  
+    -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4);
+    margin: 0;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+  }
+  .btn:focus {
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+  .btn.active,
+  .btn:active {
+    color: #2094b1;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.42);
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.3)));
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#4d000000', GradientType=0);
+    background-color: #393d42;
+    *background-color: none;
+    /* Buttons in IE7 don't get borders, so darken on hover */
+  
+    background-position: 0 0;
+    border: 1px solid transparent;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
+    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
+    box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
+    margin: 0;
+  }
+  .btn.disabled,
+  .btn[disabled] {
+    cursor: default;
+    color: #cccccc;
+    text-shadow: none;
+    background-color: #858e98;
+    background-image: none;
+    border: 1px solid #000000;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  .btn-primary:hover {
+    color: #a2ecff;
+    color: #ffffff;
+    text-shadow: rgba(0, 0, 0, 0.7);
+    background-color: #1c466a;
+    background-image: -moz-linear-gradient(top, #244e72, #113a5e);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#244e72), to(#113a5e));
+    background-image: -webkit-linear-gradient(top, #244e72, #113a5e);
+    background-image: -o-linear-gradient(top, #244e72, #113a5e);
+    background-image: linear-gradient(to bottom, #244e72, #113a5e);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff244e72', endColorstr='#ff113a5e', GradientType=0);
+    border-color: #113a5e #113a5e #05121d;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #113a5e;
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    color: #ffffff;
+    text-shadow: rgba(0, 0, 0, 0.7);
+    background-color: #1c466a;
+    background-image: -moz-linear-gradient(top, #244e72, #113a5e);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#244e72), to(#113a5e));
+    background-image: -webkit-linear-gradient(top, #244e72, #113a5e);
+    background-image: -o-linear-gradient(top, #244e72, #113a5e);
+    background-image: linear-gradient(to bottom, #244e72, #113a5e);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff244e72', endColorstr='#ff113a5e', GradientType=0);
+    border-color: #113a5e #113a5e #05121d;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #113a5e;
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    border: 1px solid #000000;
+  }
+  .btn-primary:hover:hover,
+  .btn-primary:hover:active,
+  .btn-primary:hover.active,
+  .btn-primary:hover.disabled,
+  .btn-primary:hover[disabled] {
+    color: #ffffff;
+    background-color: #113a5e;
+    *background-color: #0d2d48;
+  }
+  .btn-primary:hover:active,
+  .btn-primary:hover.active {
+    background-color: #091f33 \9;
+  }
+  .btn-primary:hover:hover,
+  .btn-primary:hover:active,
+  .btn-primary:hover.active,
+  .btn-primary:hover.disabled,
+  .btn-primary:hover[disabled] {
+    color: #ffffff;
+    background-color: #113a5e;
+    *background-color: #0d2d48;
+  }
+  .btn-primary:hover:active,
+  .btn-primary:hover.active {
+    background-color: #091f33 \9;
+  }
+  .btn-primary.active,
+  .btn-primary:active {
+    text-shadow: inset 0 0 2px rgba(255, 255, 255, 0.5);
+    color: #a2ecff;
+    text-shadow: rgba(0, 0, 0, 0.7);
+    background-color: #214469;
+    background-image: -moz-linear-gradient(top, #234a71, #1d3c5c);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#234a71), to(#1d3c5c));
+    background-image: -webkit-linear-gradient(top, #234a71, #1d3c5c);
+    background-image: -o-linear-gradient(top, #234a71, #1d3c5c);
+    background-image: linear-gradient(to bottom, #234a71, #1d3c5c);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff234a71', endColorstr='#ff1d3c5c', GradientType=0);
+    border-color: #1d3c5c #1d3c5c #0b1622;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #1d3c5c;
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    color: #a2ecff;
+    text-shadow: rgba(0, 0, 0, 0.7);
+    background-color: #214469;
+    background-image: -moz-linear-gradient(top, #234a71, #1d3c5c);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#234a71), to(#1d3c5c));
+    background-image: -webkit-linear-gradient(top, #234a71, #1d3c5c);
+    background-image: -o-linear-gradient(top, #234a71, #1d3c5c);
+    background-image: linear-gradient(to bottom, #234a71, #1d3c5c);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff234a71', endColorstr='#ff1d3c5c', GradientType=0);
+    border-color: #1d3c5c #1d3c5c #0b1622;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #1d3c5c;
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    border: 1px solid transparent;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
+    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
+    box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
+  }
+  .btn-primary.active:hover,
+  .btn-primary:active:hover,
+  .btn-primary.active:active,
+  .btn-primary:active:active,
+  .btn-primary.active.active,
+  .btn-primary:active.active,
+  .btn-primary.active.disabled,
+  .btn-primary:active.disabled,
+  .btn-primary.active[disabled],
+  .btn-primary:active[disabled] {
+    color: #a2ecff;
+    background-color: #1d3c5c;
+    *background-color: #172f49;
+  }
+  .btn-primary.active:active,
+  .btn-primary:active:active,
+  .btn-primary.active.active,
+  .btn-primary:active.active {
+    background-color: #112335 \9;
+  }
+  .btn-primary.active:hover,
+  .btn-primary:active:hover,
+  .btn-primary.active:active,
+  .btn-primary:active:active,
+  .btn-primary.active.active,
+  .btn-primary:active.active,
+  .btn-primary.active.disabled,
+  .btn-primary:active.disabled,
+  .btn-primary.active[disabled],
+  .btn-primary:active[disabled] {
+    color: #a2ecff;
+    background-color: #1d3c5c;
+    *background-color: #172f49;
+  }
+  .btn-primary.active:active,
+  .btn-primary:active:active,
+  .btn-primary.active.active,
+  .btn-primary:active.active {
+    background-color: #112335 \9;
+  }
+  .btn-primary.disabled,
+  .btn-primary[disabled] {
+    cursor: default;
+    color: #dddddd;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #87abca;
+    background-image: -moz-linear-gradient(top, #87abca, #87abca);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#87abca), to(#87abca));
+    background-image: -webkit-linear-gradient(top, #87abca, #87abca);
+    background-image: -o-linear-gradient(top, #87abca, #87abca);
+    background-image: linear-gradient(to bottom, #87abca, #87abca);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff87abca', endColorstr='#ff87abca', GradientType=0);
+    border-color: #87abca #87abca #5286b3;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #87abca;
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    color: #dddddd;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #87abca;
+    background-image: -moz-linear-gradient(top, #87abca, #87abca);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#87abca), to(#87abca));
+    background-image: -webkit-linear-gradient(top, #87abca, #87abca);
+    background-image: -o-linear-gradient(top, #87abca, #87abca);
+    background-image: linear-gradient(to bottom, #87abca, #87abca);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff87abca', endColorstr='#ff87abca', GradientType=0);
+    border-color: #87abca #87abca #5286b3;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #87abca;
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    text-shadow: none;
+    background-image: none;
+    border: 1px solid #000000;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  .btn-primary.disabled:hover,
+  .btn-primary[disabled]:hover,
+  .btn-primary.disabled:active,
+  .btn-primary[disabled]:active,
+  .btn-primary.disabled.active,
+  .btn-primary[disabled].active,
+  .btn-primary.disabled.disabled,
+  .btn-primary[disabled].disabled,
+  .btn-primary.disabled[disabled],
+  .btn-primary[disabled][disabled] {
+    color: #dddddd;
+    background-color: #87abca;
+    *background-color: #759fc2;
+  }
+  .btn-primary.disabled:active,
+  .btn-primary[disabled]:active,
+  .btn-primary.disabled.active,
+  .btn-primary[disabled].active {
+    background-color: #6492ba \9;
+  }
+  .btn-primary.disabled:hover,
+  .btn-primary[disabled]:hover,
+  .btn-primary.disabled:active,
+  .btn-primary[disabled]:active,
+  .btn-primary.disabled.active,
+  .btn-primary[disabled].active,
+  .btn-primary.disabled.disabled,
+  .btn-primary[disabled].disabled,
+  .btn-primary.disabled[disabled],
+  .btn-primary[disabled][disabled] {
+    color: #dddddd;
+    background-color: #87abca;
+    *background-color: #759fc2;
+  }
+  .btn-primary.disabled:active,
+  .btn-primary[disabled]:active,
+  .btn-primary.disabled.active,
+  .btn-primary[disabled].active {
+    background-color: #6492ba \9;
+  }
+  .btn-group .btn:hover {
+    color: #82e6ff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border-left: 0;
+    border-right: 0;
+  }
+  .btn-group .btn:first-child:hover {
+    border-left: 1px solid transparent;
+    border-right: 0;
+  }
+  .btn-group .btn:last-child:hover {
+    border-left: 0;
+    border-right: 1px solid transparent;
+  }
+  .btn-group .btn.dropdown-toggle,
+  .btn-group .btn.dropdown-toggle:first-child {
+    border-right: 1px solid #000000;
+  }
+  .btn-group .btn.dropdown-toggle:hover {
+    border-right: 1px solid transparent;
+  }
+  .btn-group-vertical .btn {
+    display: block;
+    float: none;
+    width: 100%;
+    color: #000000;
+    font-size: 21px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 0;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    -webkit-box-shadow: inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4);
+    -moz-box-shadow: inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4);
+    box-shadow: inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4);
+    background: transparent;
+    margin: 0;
+  }
+  .btn-group-vertical .btn:hover {
+    color: #82e6ff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    text-decoration: none;
+    background-color: none;
+    *background-color: none;
+    /* Buttons in IE7 don't get borders, so darken on hover */
+  
+    background-color: #393d42;
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.1)));
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#1a000000', GradientType=0);
+    background-position: 0 0;
+    border: 0;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    box-shadow: none;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+    margin: 0;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+  }
+  .btn-group-vertical .btn:focus {
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+  .btn-group-vertical .btn.active,
+  .btn-group-vertical .btn:active {
+    color: #82e6ff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    text-decoration: none;
+    background-color: none;
+    *background-color: none;
+    /* Buttons in IE7 don't get borders, so darken on hover */
+  
+    background-color: #393d42;
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.1)));
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#1a000000', GradientType=0);
+    background-position: 0 0;
+    border: 0;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    box-shadow: none;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3);
+    margin: 0;
+  }
+  .btn-group-vertical .btn:hover:first-child,
+  .btn-group-vertical .btn:active:first-child {
+    color: #82e6ff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: 0;
+  }
+  .btn-group-vertical .btn:hover:last-child,
+  .btn-group-vertical .btn:active:last-child {
+    color: #82e6ff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-top: 0;
+  }
   .thumbnails {
     margin-left: -30px;
   }
@@ -7791,5 +8250,300 @@ address {
     -webkit-border-radius: 0 0 6px 6px;
     -moz-border-radius: 0 0 6px 6px;
     border-radius: 0 0 6px 6px;
+  }
+  .pagination a:hover,
+  .pagination .active a {
+    color: #82e6ff;
+    text-decoration: none;
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: #282b2e;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+    -moz-box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+    box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+  }
+  .pagination ul li:first-child a:hover span,
+  .pagination ul li:last-child a:hover span {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    border: none;
+    vertical-align: middle;
+    box-shadow: none;
+    background-color: #28C2F3;
+    background-image: -moz-linear-gradient(top, #28c2f3, #0096db);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28c2f3), to(#0096db));
+    background-image: -webkit-linear-gradient(top, #28c2f3, #0096db);
+    background-image: -o-linear-gradient(top, #28c2f3, #0096db);
+    background-image: linear-gradient(to bottom, #28c2f3, #0096db);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff28c2f3', endColorstr='#ff0096db', GradientType=0);
+  }
+  .pagination ul li:first-child a:hover span:after,
+  .pagination ul li:last-child a:hover span:after {
+    content: "";
+    border-color: transparent #2a2d30 transparent transparent;
+    border-style: solid;
+    border-width: 7px 9px 7px 9px;
+    background: none ! important;
+    height: 0px ! important;
+    width: 0px ! important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    box-shadow: none;
+    position: absolute;
+    left: -3px;
+    top: 4px;
+  }
+  .pagination ul li:last-child a:hover span:after {
+    border-color: transparent transparent transparent #2a2d30;
+    position: absolute;
+    left: 8px;
+    top: 4px;
+  }
+  .pagination2 a:hover,
+  .pagination2 .active a,
+  .pagination2 .active span {
+    width: 15px;
+    height: 15px;
+    margin: -4px 0 0 -4px;
+    background-color: #2094b1;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(rgba(255, 255, 255, 0.5)), to(rgba(0, 0, 0, 0.1)));
+    background-image: -webkit-radial-gradient(top, circle cover, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+    background-image: -moz-radial-gradient(top, circle cover, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+    background-image: -o-radial-gradient(top, circle cover, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+    background-repeat: no-repeat;
+    -webkit-box-shadow: inset 0 0 2px rgba(255,255,255,.2), 0 3px 5px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 0 2px rgba(255,255,255,.2), 0 3px 5px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 2px rgba(255,255,255,.2), 0 3px 5px rgba(0,0,0,.3);
+  }
+  .pagination2 li:first-child a:hover,
+  .pagination2 li:last-child a:hover {
+    margin: 0;
+    text-decoration: none;
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: #282b2e;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+    -moz-box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+    box-shadow: inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15);
+  }
+  .pagination2 li:first-child a:hover span,
+  .pagination2 li:last-child a:hover span {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0;
+    display: block;
+    position: realtive;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    border: none;
+    vertical-align: middle;
+    box-shadow: none;
+    background-color: #28C2F3;
+    background-image: -moz-linear-gradient(top, #28c2f3, #0096db);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28c2f3), to(#0096db));
+    background-image: -webkit-linear-gradient(top, #28c2f3, #0096db);
+    background-image: -o-linear-gradient(top, #28c2f3, #0096db);
+    background-image: linear-gradient(to bottom, #28c2f3, #0096db);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff28c2f3', endColorstr='#ff0096db', GradientType=0);
+  }
+  .pagination2 li:first-child a:hover span:after,
+  .pagination2 li:last-child a:hover span:after {
+    content: "";
+    border-color: transparent #2a2d30 transparent transparent;
+    border-style: solid;
+    border-width: 7px 9px 7px 9px;
+    background: none ! important;
+    height: 0px ! important;
+    width: 0px ! important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    box-shadow: none;
+    position: absolute;
+    left: -3px;
+    top: 4px;
+  }
+  .pagination2 li:last-child a:hover span:after {
+    border-color: transparent transparent transparent #2a2d30;
+    left: 8px;
+    top: 4px;
+  }
+  .nav-pills > li > a {
+    color: #c0c0c0;
+    font-size: 18px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    padding: 15px 35px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: rgba(84, 84, 82, 0.8);
+    -webkit-box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
+    -moz-box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15);
+  }
+  .nav-pills > li > a:hover {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #454646;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
+    -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
+  }
+  .nav-pills > .active > a,
+  .nav-pills > .active > a:hover {
+    color: #ffffff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #454646;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
+    -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.7);
+  }
+  .nav-tabs > li > a {
+    color: #c0c0c0;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 18px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.05)));
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1affffff', endColorstr='#0dffffff', GradientType=0);
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3);
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3);
+    overflow: hidden;
+  }
+  .nav-tabs > li > a:hover {
+    color: #c0c0c0;
+    border-color: #fefefe #b0b0b0 #b4b4b4;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover {
+    color: #ffffff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.06)), to(rgba(255, 255, 255, 0.02)));
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0fffffff', endColorstr='#05ffffff', GradientType=0);
+    background-color: transparent;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3);
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3);
+    cursor: default;
+  }
+  .nav-tabs.nav-stacked > li > a:hover {
+    color: #c0c0c0;
+    border-color: #fefefe #b0b0b0 #b4b4b4;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .tabs-below > .nav-tabs > li > a {
+    color: #c0c0c0;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 18px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.05)));
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1affffff', endColorstr='#0dffffff', GradientType=0);
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+    -webkit-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3);
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3);
+    overflow: hidden;
+  }
+  .tabs-below > .nav-tabs > li > a:hover {
+    color: #c0c0c0;
+    border-color: #fefefe #b0b0b0 #b4b4b4;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .pager a:hover {
+    text-decoration: none;
+    background-color: #2a2d30;
+    -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71);
+    -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71);
+  }
+  .table-striped tbody tr:nth-child(odd) td,
+  .table-striped tbody tr:nth-child(odd) th {
+    background-color: rgba(51, 51, 51, 0.6);
+  }
+  .table tbody tr:hover td,
+  .table tbody tr:hover th {
+    background-color: rgba(51, 51, 51, 0.6);
+  }
+  .table-hover tbody tr:hover td,
+  .table-hover tbody tr:hover th {
+    background-color: rgba(51, 51, 51, 0.6);
+  }
+  .nav-list > li > a:hover {
+    color: #ffffff;
+    background-color: #525252;
+    -webkit-box-shadow: inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1);
+    -moz-box-shadow: inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1);
+    box-shadow: inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 1px;
+  }
+  .nav-list > li:last-child > a:hover {
+    -webkit-box-shadow: inset 0 0 7px rgba(0,0,0,.7);
+    -moz-box-shadow: inset 0 0 7px rgba(0,0,0,.7);
+    box-shadow: inset 0 0 7px rgba(0,0,0,.7);
+  }
+  a.thumbnail:hover:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -3px;
+    top: -2px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #ea002c;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
   }
 }

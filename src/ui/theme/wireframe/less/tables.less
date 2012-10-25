@@ -154,6 +154,10 @@ table {
     tr:nth-child(odd) th {
       background-color: @tableBackgroundAccent;
     }
+		tr:nth-child(odd):hover td,
+    tr:nth-child(odd):hover th {
+      background-color: @tableBackgroundAccent;
+    }
   }
 }
 
@@ -165,7 +169,7 @@ table {
   tbody {
     tr:hover td,
     tr:hover th {
-      background-color: @tableBackgroundHover;
+      background: none;
     }
   }
 }
@@ -174,7 +178,7 @@ table {
   tbody {
     tr:hover td,
     tr:hover th {
-      background-color: @tableBackgroundHover;
+      background: none;
     }
   }
 }

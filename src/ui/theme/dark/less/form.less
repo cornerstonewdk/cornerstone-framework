@@ -3,8 +3,8 @@ legend {
   display: block;
   width: 100%;
   margin-bottom: @baseLineHeight;
-  font-size: (@baseFontSize * 1.5) - 1;
-  line-height: @baseLineHeight * 2;
+  font-size: @baseFontSize + 4;
+  line-height: @baseLineHeight + 4;
   color: @grayDarker;
   border: 0;
   border-bottom: 0;
@@ -247,7 +247,7 @@ select {
 
 .select-box { position:relative }
 .select-box:after {
-  content:'<';
+  content:'';
   display:block;
 	position:absolute;
 	right:10px; 
@@ -601,9 +601,8 @@ input.search-query {
 }
 
 .form-search button,
-.form-search button:hover,
 .form-search button:active {
-	font-size: @baseFontSize + 4;
+	font-size: @baseFontSize;
 	padding: 12px 10px;
 }
 
@@ -802,7 +801,7 @@ input.search-query {
 	text-align: left;
 	padding: 0 15px 0 0;
 	color: @flipOffTxt;
-	font-size: @baseFontSize + 2;
+	font-size: @baseFontSize - 2;
 	line-height: @baseLineHeight;
 	font-weight:bold;
 	display: inline-block;
@@ -816,7 +815,7 @@ input.search-query {
 	text-align: right;
 	padding: 0 0 0 15px;
 	color: @flipOnTxt;
-	font-size: @baseFontSize + 2;
+	font-size: @baseFontSize - 2;
 	line-height: @baseLineHeight;
 	font-weight:bold;
 	display: inline-block;

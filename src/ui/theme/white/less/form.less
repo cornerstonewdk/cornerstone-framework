@@ -3,8 +3,8 @@ legend {
   display: block;
   width: 100%;
   margin-bottom: @baseLineHeight;
-  font-size: (@baseFontSize * 1.5) - 1;
-  line-height: @baseLineHeight * 2;
+  font-size: @baseFontSize + 4;
+  line-height: @baseLineHeight + 4;
   color: @grayDarker;
   border: 0;
   border-bottom: 0;
@@ -333,7 +333,7 @@ select {
 }
 
 .controls .help-inline .help-inner {
-	font-size: (@baseFontSize + 2);
+	font-size: @baseFontSize - 2;
 	.box-shadow(0 1px 1px rgba(0,0,0,0.7));	
 	padding: 9px 10px 8px 10px;	
 	border:1px solid @black;
@@ -418,7 +418,7 @@ select {
 // Disabled input  ---- [2012-08-28] Add
 input.input-disa {
 	font-size: @baseFontSize;
-	line-height: (@baseLineHeight + 4);
+	line-height: @baseLineHeight;
 	padding: 7px 5px;
 	background: @disabledInput url('../img/bg_input.png') repeat-x left top;
 	background-size: 49px 38px;
@@ -607,7 +607,7 @@ input.search-query {
 .form-search button,
 .form-search button:hover,
 .form-search button:active {
-	font-size: @baseFontSize + 4;
+	font-size: @baseFontSize;
 	padding: 12px 10px;
 }
 
@@ -756,7 +756,7 @@ input.search-query {
 	box-shadow : none;
 	text-align: right;
 	color: @figureTxt;
-	font-size: (@baseFontSize - 2);
+	font-size: (@baseFontSize - 4);
 	&:focus {
     border: 0;
 		padding: 5px;
@@ -825,7 +825,7 @@ input.search-query {
 	text-align: left;
 	padding: 0 15px 0 0;
 	color: @flipOffTxt;
-	font-size: @baseFontSize + 2;
+	font-size: @baseFontSize - 2;
 	line-height: @baseLineHeight;
 	font-weight:bold;
 	display: inline-block;
@@ -839,7 +839,7 @@ input.search-query {
 	text-align: right;
 	padding: 0 0 0 15px;
 	color: @flipOnTxt;
-	font-size: @baseFontSize + 2;
+	font-size: @baseFontSize - 2;
 	line-height: @baseLineHeight;
 	font-weight:bold;
 	display: inline-block;
