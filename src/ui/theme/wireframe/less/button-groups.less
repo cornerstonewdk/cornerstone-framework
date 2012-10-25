@@ -247,17 +247,12 @@
 
 	// Hover state
   &:hover {
-		color: @grayDark;
-    text-decoration: none;
-    *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
-    background: @grayLight;
-		box-shadow: none;
-		text-shadow: none;
+		display: block;
+		float: none;
+		width: 100%;
+		color: @btnGroupTxt;
+		font-size: @baseFontSize;
 		border: 1px solid @grayLight;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
   }
 
   // Focus state for keyboard and accessibility
@@ -270,6 +265,7 @@
   &:active {
 		color: @grayDark;
     text-decoration: none;
+		text-shadow: none;
 		background: @grayLight;
 		border: 1px solid @grayLight;
 	}

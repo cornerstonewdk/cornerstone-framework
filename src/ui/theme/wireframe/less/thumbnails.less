@@ -31,11 +31,22 @@
   line-height: @baseLineHeight;
   border: 1px solid @grayLight;
   .border-radius(4px);
-  .transition(all .2s ease-in-out);
+  .transition(none);
+}
+
+a.thumbnail:hover {
+	display: block;
+	position:relative;
+  padding: 9px 10px;
+  line-height: @baseLineHeight;
+  border: 1px solid @grayLight;
+  .border-radius(4px);
+	.transition(none);
+	.box-shadow(none);
 }
 // Add a hover state for linked versions only
 
-a.thumbnail:hover:after {
+a.thumbnail:active:after {
 	content: "";
 	display:block;
 	position: absolute;

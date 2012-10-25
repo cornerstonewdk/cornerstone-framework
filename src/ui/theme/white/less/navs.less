@@ -52,7 +52,7 @@
   padding-right: 15px;
 }
 
-.nav-list > li > a {
+.nav-list > li > a, .nav-list > li > a:hover {
   margin-left:  -15px;
   margin-right: -15px;	
 	margin-top: 1px;
@@ -64,7 +64,7 @@
 	.box-shadow(~"0 1px 0 rgba(255,255,255,1)");
 }
 
-.nav-list > li > a:hover {
+.nav-list > li > a:active {
 	color: @white;
 	background-color: @navListHover;
 	.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
@@ -97,7 +97,7 @@
 
 .nav-list > .nav-header {
   display: block;
-	font-size: (@baseFontSize + 4);
+	font-size: @baseFontSize;
 	color: @navListHeader;
 	text-shadow: 0 1px 1px rgba(0,0,0,.5) ! important;
   font-weight: normal;
@@ -115,7 +115,7 @@
 	border-bottom: 0;
 	box-shadow: none;
 }
-.nav-list > li:last-child > a:hover {
+.nav-list > li:last-child > a:active {
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
 }
 
@@ -169,7 +169,7 @@
 // Actual tabs (as links)
 .nav-tabs > li > a {
 	color: @navTabLink;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
 	text-align: center;
 	text-shadow: 0 2px 2px rgba(0,0,0,.7);
   padding-top: 12px;
@@ -181,6 +181,24 @@
 	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.15)");
 	overflow:hidden;
   &:hover {
+		color: @navTabLink;
+    border-color: @navTabTop @navTabLeft @navTabRight;
+		#gradient > .tab-grd(#b3b3b3, #a4a4a4);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.4), 0 -2px 3px rgba(0,0,0,.15)");color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		text-shadow: 0 2px 2px rgba(0,0,0,.7);
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border:0;
+		#gradient > .tab-grd();
+		.border-radius(4px 4px 0 0);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.15)");
+		overflow:hidden;
+  }
+
+	&:active {
 		color: @navTabLink;
     border-color: @navTabTop @navTabLeft @navTabRight;
 		#gradient > .tab-grd(#b3b3b3, #a4a4a4);
@@ -208,7 +226,7 @@
 // Links rendered as pills
 .nav-pills > li > a {
 	color: @navPillLink;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
 	text-shadow: 0 2px 2px rgba(0,0,0,.5);
   padding: 15px 35px;
   margin-top: 2px;
@@ -219,6 +237,19 @@
 	.box-shadow(~"inset 0 1px 3px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.7)");
 	&:hover {
 		color: @navPillLink;
+		font-size: @baseFontSize;
+		text-shadow: 0 2px 2px rgba(0,0,0,.5);
+		padding: 15px 35px;
+		margin-top: 2px;
+		margin-bottom: 2px;
+		.border-radius(5px);
+		border: 0;	
+		#gradient > .pills-btn;
+		.box-shadow(~"inset 0 1px 3px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.7)");
+  }
+
+	&:active {
+		color: @navPillLink;
 		background-color: @navPillActive;
 		border: 0;
 		border-bottom:1px solid rgba(255,255,255,.25);
@@ -228,7 +259,7 @@
 
 // Active state
 .nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a:active {
   color: @white;
 	text-shadow: 0 2px 2px rgba(0,0,0,.7);
   background-color: @navPillActive;
@@ -301,7 +332,7 @@
 
 .nav-tabs.nav-stacked > li > a {
 	color: @navTabLink;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
 	text-align: center;
 	text-shadow: 0 2px 2px rgba(0,0,0,.7);
   padding-top: 12px;
@@ -313,7 +344,8 @@
 	.box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
 	overflow:hidden;
 }
-.nav-tabs.nav-stacked > li > a:hover {
+
+.nav-tabs.nav-stacked > li > a:active {
   color: @navTabLink;
   border-color: @navTabTop @navTabLeft @navTabRight;
   border-color: @navTabTop @navTabLeft @navTabRight;
@@ -473,7 +505,7 @@
 }
 .tabs-below > .nav-tabs > li > a {
 	color: @navTabLink;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
 	text-align: center;
 	text-shadow: 0 2px 2px rgba(0,0,0,.7);
   padding-top: 12px;
@@ -485,6 +517,21 @@
 	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
 	overflow:hidden;
   &:hover {
+		color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		text-shadow: 0 2px 2px rgba(0,0,0,.7);
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border:0;
+		#gradient > .tab-grd();
+		.border-radius(0 0 4px 4px);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+		overflow:hidden;
+  }
+
+	&:active {
 		color: @navTabLink;
     border-color: @navTabTop @navTabLeft @navTabRight;
 		background-color: #a5a5a5;
@@ -605,9 +652,9 @@
   -webkit-flex: 1;
 }
 
-.nav-bot li a {	
+.nav-bot li a, .nav-bot li a:hover {	
 	color: @navBotLink;
-	font-size: (@baseFontSize - 1);
+	font-size: @baseFontSize - 5;
 	font-weight:bold;	
 	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
 	#gradient > .vertical-navbot();
@@ -619,7 +666,7 @@
 	z-index:10;
 }
 
-.v-blue li a {	
+.v-blue li a, .v-blue li a:hover  {	
 	color: @navBotBlueLink;
 	font-weight:bold;
 	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
@@ -637,13 +684,12 @@
 	.box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px @navPillActive, 0 7px 7px rgba(0,0,0,.5)");
 }
 
-.nav-bot li a:hover,
 .nav-bot li a:active,
 .nav-bot li a.active {
 	color: @navbarLinkColorHover;
 	text-shadow: 0 1px 2px rgba(0,0,0,.7);
 	text-shadow: inset 0 0 2px rgba(255,255,255,.7);
-	font-size: (@baseFontSize - 1);
+	font-size: @baseFontSize - 5;
 	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
 	background: @navBotActive;
 	.box-shadow(~"inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15)");
@@ -655,7 +701,6 @@
 	margin-top:1px;
 }
 
-.v-blue li a:hover,
 .v-blue li a:active,
 .v-blue li a.active {
 	color: @navBotBlueActive;
@@ -823,8 +868,8 @@
 	padding: 0;
 	margin: 0 0 0 10px;
 	vertical-align: middle;
-	font-size: (@baseFontSize * 2); 
-	line-height: (@baseLineHeight * 2);
+	font-size: @baseFontSize + 8; 
+	line-height: @baseLineHeight + 8;
 }
 
 .radio-vertical > li:first-child {
