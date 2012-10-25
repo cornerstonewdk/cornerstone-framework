@@ -12,12 +12,25 @@ define( [ 'gesture-view' ], function( GestureView ) {
 
 		events: {
 			'doubletap div#gesture-obj': 'doubletap',
-			'dragstart div#gesture-obj': 'dragstart',
-			'drag div#gesture-obj': 'drag',
-			'dragend div#gesture-obj': 'dragend',
+			'dragstart': 'dragstart',
+			'drag': 'drag',
+			'dragend': 'dragend',
 			'transformstart': 'transformstart',
 			'transform': 'transform',
 			'transformend': 'transformend'
+		},
+		
+		// 이벤트가 발생한 클릭(터치) 위치가 #gesture-obj 위인지를 검사한다.	
+		isOnGestureObj: function( position ) {
+		
+			var objPosition = this.$obj.position();
+			
+			if ( position.x < objPosition.left ) return false;
+			if ( position.y < objPosition.top ) return false;
+			if ( position.x > objPosition.left + this.$obj.width() ) return false;
+			if ( position.y > objPosition.top + this.$obj.height() ) return false;
+			
+			return true;
 		},
 		
 		doubletap: function( event ) {
@@ -25,10 +38,19 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		dragstart: function( event ) {
-			this.position = this.$obj.position();
+		
+			if ( this.isOnGestureObj( event.position ) ) {
+				this.position = this.$obj.position();
+				
+				// position()으로 구한 위치는 padding(19px)을 포함하고 있으므로 제외한다.
+				this.position.left -= 19;
+				this.position.top -= 19;
+			}
 		},
 		
 		drag: function( event ) {
+		
+			if ( !this.position ) return;
 		
 			var newPosition = {
 				left: this.position.left + event.distanceX,
@@ -44,7 +66,7 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		dragend: function( event ) {
-			
+			this.position = null;
 		},
 		
 		transformstart: function( event ) {
