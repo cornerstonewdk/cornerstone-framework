@@ -1997,21 +1997,21 @@ input.search-query {
 .pagination ul li {
   display: inline-block;
   margin-left: -4px;
-  padding: 0 4px;
+  padding: 0 4px 0 1px;
   text-align: center;
   vertical-align: middle;
 }
 .pagination ul li:first-child {
-  margin-right: 6px;
+  margin-right: 5px;
 }
 .pagination ul li:last-child {
-  margin-left: 2px;
+  margin-left: -1px;
 }
 .pagination a,
 .pagination a:hover {
   color: #b0b0b0;
   line-height: 18px;
-  width: 30px;
+  width: 26px;
   padding: 7px 0 7px 0;
   background-color: #ffffff;
   border: 0;
@@ -2030,7 +2030,7 @@ input.search-query {
 .pagination ul li:last-child a {
   width: auto;
   height: auto;
-  padding: 5px 11px;
+  padding: 5px 8px;
   background: #ffffff;
   border: 1px solid #b0b0b0;
   -webkit-border-radius: 4px;
@@ -2147,7 +2147,7 @@ input.search-query {
 }
 .pagination2 li {
   width: 9px;
-  padding: 0 6px 0 10px;
+  padding: 0 6px 0 8px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -2172,7 +2172,7 @@ input.search-query {
 .pagination2 .active span {
   width: 15px;
   height: 15px;
-  margin: -4px 0 0 -4px;
+  margin: 0 0 0 -4px;
   background: #333333;
 }
 .pagination2 .active a,
@@ -2183,7 +2183,7 @@ input.search-query {
 .pagination2 li:last-child a {
   width: auto;
   height: auto;
-  padding: 5px 11px;
+  padding: 5px 8px;
   background: #ffffff;
   border: 1px solid #b0b0b0;
   -webkit-border-radius: 4px;

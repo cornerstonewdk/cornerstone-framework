@@ -16,23 +16,23 @@
 .pagination ul li {
   display: inline-block;
 	margin-left: -4px;
-	padding: 0 4px;
+	padding: 0 4px 0 1px;
 	text-align: center;
 	vertical-align: middle;
   }
 
 .pagination ul li:first-child {
-	margin-right: 6px;
+	margin-right: 5px;
 }
 
 .pagination ul li:last-child {
-	margin-left: 2px;
+	margin-left: -1px;
 }
 
 .pagination a, .pagination a:hover {
 	color: @pagingTxt;
 	line-height: @baseLineHeight;
-	width: 30px;
+	width: 26px;
 	padding: 7px 0 7px 0;
 	background-color: @white;
   border: 0;
@@ -52,7 +52,7 @@
 .pagination ul li:first-child a, .pagination ul li:last-child a {
 	width: auto;
 	height: auto;
-	padding: 5px 11px;
+	padding: 5px 8px;
 	background: @pagingArrow;
   border: 1px solid @grayLight;
   .border-radius(4px);
