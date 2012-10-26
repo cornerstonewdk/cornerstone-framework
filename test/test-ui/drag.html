@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="CornetStone">
+	<meta name="author" content="William Kim">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+
+	<title>CornerStone | Plugin</title>
+
+	<!--<li role="menuitem" nk rel="shortcut icon" href="img/favicon.png">-->
+	<link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap-responsive.css"/>
+	<link rel="stylesheet" href="../../dist/ui/theme/white/css/cornerstone.css"/>
+	<style type="text/css">
+		.content {
+			height: 10000px;
+		}
+
+		div.drag {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			background-color: #FFF;
+			z-index: 1000;
+		}
+		div.drag.two {
+			top: 120px;
+			background-color: #777;
+		}
+		div.drag.three {
+			top: 240px;
+			background-color: #333;
+		}
+	</style>
+</head>
+<body>
+<div id="page">
+	<header class="header navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="#">CornerStone</a>
+			</div>
+		</div>
+	</header>
+	<div class="container content">
+		<div class="drag one"></div>
+		<div class="drag two"></div>
+		<div class="drag three"></div>
+
+		<div id="drop"
+			 style="position: relative; top:100px; left:100px; width: 600px; height: 500px; background-color: lightblue;"></div>
+	</div>
+
+	<footer class="container">
+		<div>
+		</div>
+		&copy; COPYRIGHT 2012
+
+		<nav class="pull-right">
+			<a class="btn" href="#">TOP</a>
+		</nav>
+	</footer>
+</div>
+
+<div id="widget-spinner" class="widget-spinner">
+	<div class="spinner-center">
+		<img src="img/loader/159.gif" alt=""/>
+	</div>
+</div>
+<script type="text/javascript" src="../../dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../../dist/ui/widget-plugins.js"></script>
+<script type="text/javascript">
+	var $drop = $("#drop");
+	$("div.drag").drag().on("dragEnd", function(e) {
+		var horisizon = $(this).offset().left - $drop.offset().left;
+		var vertical = $(this).offset().top - $drop.offset().top;
+		if(horisizon > 0 && vertical > 0) {
+			$(this).animate({
+				top:$drop.offset().top,
+				left:$drop.offset().left
+			}, function() {
+				console.log("drop animate done");
+			});
+		} else {
+			$(this).animate({
+				top:0,
+				left: 0
+			}, function() {
+				console.log("no drop animate done");
+			});
+		}
+	});
+</script>
+</body>
+</html>
