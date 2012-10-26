@@ -1160,3 +1160,5 @@ examples/T-Dashboard/node_modules/express/node_modules/send/node_modules/mime/ty
 examples/T-Dashboard/node_modules/express/node_modules/send/package.json
 examples/T-Dashboard/node_modules/express/package.json
 examples/T-Dashboard/node_modules/express/test.js
+examples/cornerstone.docpad/node_modules
+examples/cornerstone.docpad/out
