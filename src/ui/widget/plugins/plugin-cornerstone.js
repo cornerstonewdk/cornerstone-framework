@@ -66,8 +66,8 @@
 
         $.fn.carousel.Constructor = Carousel;
 
-        /*
-         터치기반인 경우 Swipe 활성화
+        /**
+         * 터치기반인 경우 Swipe 활성화
          */
         $(function () {
             $('[data-slide="swipe"]').carousel("activeSwipe");
@@ -89,9 +89,7 @@
         Popover = $.fn.popover.Constructor;
 
         /* 확장 코딩 */
-
         $.fn.popover.Constructor = Popover;
-
 
         /*
          DATA API 기능 추가 예정
@@ -219,3 +217,6 @@
     })();
 
 }).call(this);
+
+
+

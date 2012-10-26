@@ -844,7 +844,7 @@
             $(this.options.inTarget.id).show();
             $(this.options.outTarget.id).show();
 
-            if (this.options.isReverse) {
+            if (this.options.isReverse && $("body").attr("data-transition") !== undefined) {
                 this.options.transitionType = $("body").attr("data-transition");
             }
         },

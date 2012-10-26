@@ -94,7 +94,8 @@ requirejs.config( {
 			}
 		},
 		'transition': {
-			deps: ['jquery']
+			deps: ['jquery'],
+            exports: "Transition"
 		},
 		'jsonp': {
 			deps: ['jquery']
@@ -106,7 +107,16 @@ requirejs.config( {
             deps: ['backbone', 'jquery.hammer']
         },
         'widget-plugins' : {
-            deps: ['backbone']
+            deps: ['jquery']
+        },
+        'widget-editor' : {
+            deps: ['jquery']
+        },
+        'widget-media' : {
+            deps: ['jquery']
+        },
+        'widget-scrollview' : {
+            deps: ['jquery']
         },
         'widget-chart' : {
             deps: ['backbone']
@@ -114,16 +124,7 @@ requirejs.config( {
         'widget-datatable' : {
             deps: ['backbone']
         },
-        'widget-editor' : {
-            deps: ['backbone']
-        },
         'widget-listview' : {
-            deps: ['backbone']
-        },
-        'widget-media' : {
-            deps: ['backbone']
-        },
-        'widget-scrollview' : {
             deps: ['backbone']
         }
 	}

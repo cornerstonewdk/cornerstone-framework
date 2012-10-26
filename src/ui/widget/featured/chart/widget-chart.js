@@ -15,13 +15,8 @@
         define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-chart"], function (Backbone, _, $) {
             factory($, root, doc, d3);
             return Backbone.View.extend({
-                tagName:'div',
-
-                className:'featured-chart',
 
                 model:new Backbone.Model(),
-
-                template:Handlebars.compile($('#tpl_message').html()),
 
                 initialize:function () {
                     _.bindAll(this, "render");
@@ -34,19 +29,11 @@
                         data.push(obj);
                     });
 
-                    console.log(data);
-
-                    this.$el.featuredChart({
-                        chartType:this.chartType,
-                        lineType:"basis",
-                        xAxisLabel:null,
-                        yAxisLabel:null,
-                        data:data,
-                        animate:false,
-                        controlBar:false,
-                        filtering:true,
-                        color:d3.scale.category10()
+                    this.options = $.extend({}, this.options, {
+                        data: data
                     });
+
+                    this.$el.featuredChart(this.options);
 
                     return this;
                 }
