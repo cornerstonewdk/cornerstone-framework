@@ -2666,7 +2666,7 @@ input.search-query {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  padding: 3px 0 5px 3px;
+  padding: 3px 0 5px 6px;
   text-align: center;
 }
 .pagination ul {
@@ -2686,21 +2686,21 @@ input.search-query {
 .pagination ul li {
   display: inline-block;
   margin-left: -4px;
-  padding: 0 4px;
+  padding: 0 4px 0 1px;
   text-align: center;
   vertical-align: middle;
 }
 .pagination ul li:first-child {
-  margin-right: 6px;
+  margin-right: 5px;
 }
 .pagination ul li:last-child {
-  margin-left: 2px;
+  margin-left: -1px;
 }
 .pagination a,
 .pagination a:hover {
   color: #ffffff;
   line-height: 18px;
-  width: 30px;
+  width: 26px;
   padding: 7px 0 7px 0;
   background: #42464b;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -2729,7 +2729,7 @@ input.search-query {
 .pagination ul li:last-child a {
   width: auto;
   height: auto;
-  padding: 5px 11px;
+  padding: 5px 8px;
   background: #42464b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -2866,7 +2866,7 @@ input.search-query {
 }
 .pagination2 li {
   width: 9px;
-  padding: 0 6px 0 10px;
+  padding: 0 6px 0 8px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -2894,7 +2894,7 @@ input.search-query {
 .pagination2 .active span {
   width: 15px;
   height: 15px;
-  margin: -4px 0 0 -4px;
+  margin: 0 0 0 -4px;
   background-color: #2094b1;
   background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(rgba(255, 255, 255, 0.5)), to(rgba(0, 0, 0, 0.1)));
   background-image: -webkit-radial-gradient(top, circle cover, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
@@ -2913,7 +2913,7 @@ input.search-query {
 .pagination2 li:last-child a {
   width: auto;
   height: auto;
-  padding: 5px 11px;
+  padding: 5px 8px;
   background: #42464b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
