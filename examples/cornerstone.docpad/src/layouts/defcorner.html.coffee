@@ -55,16 +55,6 @@ html lang: 'ko', ->
                 color:#000;
           background-color:#EAF2D3;
           }
-        #  table {
-        #    width: 49%;
-        #    float: left;
-        #    height: 300px;
-        #    border: 1px solid black;
-        #    border-left: 0px;
-        #  }
-          textarea {
-                background-color:#A7C942;
-          }
         '''
 
 		script src: './dist/lib/jquery-1.8.1.min.js'
