@@ -7,8 +7,6 @@ nav '.list-documents', 'typeof':'dc:collection', ->
 		li '.list-documents-document', 'typeof':'soic:post', about:document.url, ->
 			# Display a header link
 			h3 ->
-				#a '.list-documents-link', href:document.url, ->
-				#a '.list-documents-link', href:'./livedoc.0.3'+document.url+'.html', ->
 				a '.list-documents-link', href:'.'+document.url+'.html', ->
 					small '.list-documents-date', property:'dc:date', ->
 						document.date.toShortDateString()
@@ -37,3 +35,11 @@ nav '.list-documents', 'typeof':'dc:collection', ->
 				p '.list-documents-description', property:'dc:description', ->
 					document.description
 
+    div '.row', ->
+	    @documents.forEach (document) ->
+			div '.span2', ->
+				a '.list-documents-link', href:'.'+document.url+'.html', ->
+					strong '.list-documents-title', property:'dc:title', ->
+						document.title
+				p '.list-documents-outline', property:'dc:outline', ->
+					document.outline

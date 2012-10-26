@@ -1,6 +1,6 @@
 ---
 name: '작성순모음'
-linkTitle: 'View articles'
+linkTitle: 'bydate'
 pageOrder: 4
 layout: 'page'
 url: './bydate.html'

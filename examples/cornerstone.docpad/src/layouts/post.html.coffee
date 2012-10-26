@@ -3,16 +3,16 @@ layout: defcorner
 ---
 
 # Title
-if @document.title
-	header '.page-header', ->
-		h1 ->
-			#a '.page-link', href:'.' + @document.url, ->
-			#a '.page-link', href:'./livedoc.0.3' + @document.url + '.html', ->
-			a '.page-link', href:'.' + @document.url + '.html', ->
-				strong '.page-title', property:'dcterms:title', ->
-					@document.title
-				small '.page-date', property:'dc:date', ->
-					" #{@document.date.toShortDateString()}"
+#if @document.title
+#	header '.page-header', ->
+#		h1 ->
+#			#a '.page-link', href:'.' + @document.url, ->
+#			#a '.page-link', href:'./livedoc.0.3' + @document.url + '.html', ->
+#			a '.page-link', href:'.' + @document.url + '.html', ->
+#				strong '.page-title', property:'dcterms:title', ->
+#					@document.title
+#				small '.page-date', property:'dc:date', ->
+#					" #{@document.date.toShortDateString()}"
 
 # Content
 div '.page-content', property: 'sioc:content',

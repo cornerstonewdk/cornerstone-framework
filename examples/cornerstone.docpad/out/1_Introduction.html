@@ -1,32 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="cornerstone/bootstrap.css" />
-    <link rel="stylesheet" href="cornerstone/bootstrap-responsive.css" />
-    <link rel="stylesheet" href="cornerstone/theme/white/css/cornerstone.css" />
-    <script src="lib/codemirror.js"></script>
-    <script src="mode/xml/xml.js"></script>
-    <script src="mode/javascript/javascript.js"></script>
-    <script src="mode/css/css.js"></script>
-    <script src="mode/htmlmixed/htmlmixed.js"></script>
-    <link rel="stylesheet" href="lib/codemirror.css" />
-    <link rel="stylesheet" href="doc/docs.css" />
-    <style>.CodeMirror {
-  float: left;
-  width: 50%;
-  border: 1px solid black;
-}
-iframe {
-  width: 49%;
-  float: left;
-  height: 300px;
-  border: 1px solid black;
-  border-left: 0px;
-}</style>
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <style>  #customers
+  #{
+  #      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  #      width:100%;
+  #      border-collapse:collapse;
+  #}
+  td, th 
+  {
+        font-size:1.2em;
+        border:1px solid #98bf21;
+        padding:3px 7px 2px 7px;
+  }
+  th 
+  {
+        font-size:1.4em;
+        text-align:left;
+        padding-top:5px;
+        padding-bottom:4px;
+        background-color:#A7C942;
+        color:#fff;
+  }
+  tr.alt td 
+  {
+        color:#000;
+  background-color:#EAF2D3;
+  }
+#  table {
+#    width: 49%;
+#    float: left;
+#    height: 300px;
+#    border: 1px solid black;
+#    border-left: 0px;
+#  }
+  textarea {
+        background-color:#A7C942;
+  }</style>
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
   </head>
   <body>
-    <div class="navbar">
+    <div class="navbar ico-txt">
       <div class="navbar-inner">
         <div class="container">
           <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
@@ -41,24 +60,24 @@ iframe {
             Cornerstone
           </a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="./index.html" title="View articles">
-                  처음
+            <ul class="nav pull-left">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  HOME
                 </a>
               </li>
-              <li>
-                <a href="./toc.html" title="View articles">
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
                   목차
                 </a>
               </li>
-              <li>
-                <a href="./bytag.html" title="View articles">
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
                   태그별모음
                 </a>
               </li>
-              <li>
-                <a href="./bydate.html" title="View articles">
+              <li class="inactive" id="bydate">
+                <a href="./bydate.html" title="bydate">
                   작성순모음
                 </a>
               </li>
@@ -70,22 +89,10 @@ iframe {
     <div class="container">
     </div>
     <article class="page" typeof="sioc:page" about="/1_Introduction">
-      <header class="page-header">
-  <h1>
-    <a class="page-link" href="./1_Introduction.html">
-      <strong class="page-title" property="dcterms:title">
-        LiveDocument: 1. Introduction
-      </strong>
-      <small class="page-date" property="dc:date">
-         Oct 04 2012
-      </small>
-    </a>
-  </h1>
-</header>
-<div class="page-content" property="sioc:content">
+      <div class="page-content" property="sioc:content">
   <h1>개요</h1>
 
-<hr />
+<hr>
 
 <h2>목표</h2>
 
@@ -103,7 +110,11 @@ iframe {
 
 <h2>철학    </h2>
 
-<p>Framework의 철학<br />- HTML / CSS / JS</p>
+<p>Framework의 철학</p>
+
+<ul>
+<li>HTML / CSS / JS</li>
+</ul>
 
 <h2>원칙    </h2>
 
@@ -123,11 +134,109 @@ iframe {
 
 <p>Framework은 직/간접적으로 다음 제품들을 사용한다.</p>
 
-<p>구분 | 제품명 | 역할 | 라이선스<br />--- | ----- | --- | ------<br />Helper | RequireJS | 자바스크립트를 모듈로 분리해서 관리할 수 있게 한다. 모듈별로 독자적인 Namespace를 제공하고 의존성을 관리한다. | BSD/MIT<br />Helper | jQuery | HTML Documenet를 탐색하고 조작하기 편한 방법을 제공한다. | MIT/GPL<br />Helper | Underscore | Functional Programming을 지원해 Collection/Array의 제어를 쉽게 한다. | MIT<br />MVC | Backbone | 애플리케이션에서 Model-View-Controller 패턴을 사용할 수 있도록 지원한다. | MIT<br />UI | Bootstrap | 웹 페이지의 기본 스타일, 레이아웃, Widget들을 제공한다. | Apache v2<br />UI | Handlebars | HTML Template을 데이터와 제어문들을 사용해 렌더링한다. | MIT<br />UI | Harvey | Media Query의 상태를 관리하고 Media가 변경되면 알려준다. | MIT<br />UI Widget | gRaphael | Chart Widget | MIT<br />UI Widget | DataTables | DataTable Widget | GPLv2/BSD<br />UI Widget | TinyMCE | Editor Widget | LGPL<br />UI Widget | MediaElement.js | Video/Audio Player Widget | GPLv2/MIT<br />UI Widget | MotionCAPTCHA | CAPTCHA Widget | MIT/BSD<br />UI Widget | jSignature | 서명 Widget | MIT<br />Network | Socket.io | 애플리케이션이 서버와 실시간 양방향 통신을 할 수 있게 한다. | MIT<br />Storage | Lawnchair | LocalStorage, IndexedDB, Memory 등 여러 저장소를 동일한 방법으로 사용할 수 있도록 한다. | MIT</p>
+<table><thead>
+<tr>
+<th>구분</th>
+<th>제품명</th>
+<th>역할</th>
+<th>라이선스</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Helper</td>
+<td>RequireJS</td>
+<td>자바스크립트를 모듈로 분리해서 관리할 수 있게 한다. 모듈별로 독자적인 Namespace를 제공하고 의존성을 관리한다.</td>
+<td>BSD/MIT</td>
+</tr>
+<tr>
+<td>Helper</td>
+<td>jQuery</td>
+<td>HTML Documenet를 탐색하고 조작하기 편한 방법을 제공한다.</td>
+<td>MIT/GPL</td>
+</tr>
+<tr>
+<td>Helper</td>
+<td>Underscore</td>
+<td>Functional Programming을 지원해 Collection/Array의 제어를 쉽게 한다.</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>MVC</td>
+<td>Backbone</td>
+<td>애플리케이션에서 Model-View-Controller 패턴을 사용할 수 있도록 지원한다.</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>Bootstrap</td>
+<td>웹 페이지의 기본 스타일, 레이아웃, Widget들을 제공한다.</td>
+<td>Apache v2</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>Handlebars</td>
+<td>HTML Template을 데이터와 제어문들을 사용해 렌더링한다.</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>Harvey</td>
+<td>Media Query의 상태를 관리하고 Media가 변경되면 알려준다.</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>UI Widget</td>
+<td>gRaphael</td>
+<td>Chart Widget</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>UI Widget</td>
+<td>DataTables</td>
+<td>DataTable Widget</td>
+<td>GPLv2/BSD</td>
+</tr>
+<tr>
+<td>UI Widget</td>
+<td>TinyMCE</td>
+<td>Editor Widget</td>
+<td>LGPL</td>
+</tr>
+<tr>
+<td>UI Widget</td>
+<td>MediaElement.js</td>
+<td>Video/Audio Player Widget</td>
+<td>GPLv2/MIT</td>
+</tr>
+<tr>
+<td>UI Widget</td>
+<td>MotionCAPTCHA</td>
+<td>CAPTCHA Widget</td>
+<td>MIT/BSD</td>
+</tr>
+<tr>
+<td>UI Widget</td>
+<td>jSignature</td>
+<td>서명 Widget</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Socket.io</td>
+<td>애플리케이션이 서버와 실시간 양방향 통신을 할 수 있게 한다.</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Lawnchair</td>
+<td>LocalStorage, IndexedDB, Memory 등 여러 저장소를 동일한 방법으로 사용할 수 있도록 한다.</td>
+<td>MIT</td>
+</tr>
+</tbody></table>
 
 <h2>구조</h2>
 
-<p><img src="images/architecture.png?raw=true" alt="" title="" /></p>
+<p><img src="images/architecture.png?raw=true" alt=""></p>
 
 <h2>동작환경</h2>
 
@@ -136,19 +245,27 @@ iframe {
 <ul>
 <li><p>Desktop 브라우저</p>
 
-<ul><li>Google Chrome 14 이상</li>
+<ul>
+<li>Google Chrome 14 이상</li>
 <li>Mozilla Firefox 5 이상</li>
 <li>Apple Safari 5 이상</li>
 <li><p>MS Internet Explorer 9 이상</p>
 
-<p><em>IE 9에서는 일부 스타일이 다르게 표시될 수 있다.</em></p></li></ul></li>
+<p><em>IE 9에서는 일부 스타일이 다르게 표시될 수 있다.</em></p></li>
+</ul></li>
 <li><p>Mobile 브라우저</p>
 
-<ul><li>iOS 5 이상의 기본 브라우저</li>
-<li>Android 4.0 (ICS) 이상의 기본 브라우저</li></ul></li>
+<ul>
+<li>iOS 5 이상의 기본 브라우저</li>
+<li>Android 4.0 (ICS) 이상의 기본 브라우저</li>
+</ul></li>
 </ul>
+
 </div>
 
     </article>
-  </body>
+<script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
+socket.on('regenerated',function(){
+	document.location.reload();
+});</script><script defer="defer"  src="./script.js"></script>  </body>
 </html>

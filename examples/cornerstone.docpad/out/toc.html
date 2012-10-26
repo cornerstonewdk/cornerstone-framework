@@ -1,32 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="cornerstone/bootstrap.css" />
-    <link rel="stylesheet" href="cornerstone/bootstrap-responsive.css" />
-    <link rel="stylesheet" href="cornerstone/theme/white/css/cornerstone.css" />
-    <script src="lib/codemirror.js"></script>
-    <script src="mode/xml/xml.js"></script>
-    <script src="mode/javascript/javascript.js"></script>
-    <script src="mode/css/css.js"></script>
-    <script src="mode/htmlmixed/htmlmixed.js"></script>
-    <link rel="stylesheet" href="lib/codemirror.css" />
-    <link rel="stylesheet" href="doc/docs.css" />
-    <style>.CodeMirror {
-  float: left;
-  width: 50%;
-  border: 1px solid black;
-}
-iframe {
-  width: 49%;
-  float: left;
-  height: 300px;
-  border: 1px solid black;
-  border-left: 0px;
-}</style>
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <style>  #customers
+  #{
+  #      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  #      width:100%;
+  #      border-collapse:collapse;
+  #}
+  td, th 
+  {
+        font-size:1.2em;
+        border:1px solid #98bf21;
+        padding:3px 7px 2px 7px;
+  }
+  th 
+  {
+        font-size:1.4em;
+        text-align:left;
+        padding-top:5px;
+        padding-bottom:4px;
+        background-color:#A7C942;
+        color:#fff;
+  }
+  tr.alt td 
+  {
+        color:#000;
+  background-color:#EAF2D3;
+  }
+#  table {
+#    width: 49%;
+#    float: left;
+#    height: 300px;
+#    border: 1px solid black;
+#    border-left: 0px;
+#  }
+  textarea {
+        background-color:#A7C942;
+  }</style>
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
   </head>
   <body>
-    <div class="navbar">
+    <div class="navbar ico-txt">
       <div class="navbar-inner">
         <div class="container">
           <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
@@ -41,28 +60,40 @@ iframe {
             Cornerstone
           </a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="./index.html" title="View articles">
-                  처음
+            <ul class="nav pull-left">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  HOME
                 </a>
               </li>
-              <li>
-                <a href="./toc.html" title="View articles">
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
                   목차
                 </a>
               </li>
-              <li>
-                <a href="./bytag.html" title="View articles">
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
                   태그별모음
                 </a>
               </li>
-              <li>
-                <a href="./bydate.html" title="View articles">
+              <li class="inactive" id="bydate">
+                <a href="./bydate.html" title="bydate">
                   작성순모음
                 </a>
               </li>
             </ul>
+            <ul class="nav pull-right">
+              <li>
+                <a href="#">
+                  <i class="icon-write" id="tag-search">
+                    
+                  </i>
+                </a>
+              </li>
+            </ul>
+            <form class="navbar-search pull-rigth" id="searchForm">
+              <label class="blind"> Tag Search </label><input class="search-query" type="text" placeholder="TAG" data-provide="typeahead" data-source='["corner","even","odd","post","prime","reference","runtime",""]'>
+            </form>
           </div>
         </div>
       </div>
@@ -72,106 +103,153 @@ iframe {
     <article class="page" typeof="sioc:page" about="/toc">
       <div class="page-content" property="sioc:content">
   <nav class="list-documents" typeof="dc:collection">
-  <li class="list-documents-document" typeof="soic:post" about="/1_Introduction">
-    <h3>
-      <a class="list-documents-link" href="./1_Introduction.html">
-        <strong class="list-documents-title" property="dc:title">
-          LiveDocument: 1. Introduction
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 04 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/2_Application">
-    <h3>
-      <a class="list-documents-link" href="./2_Application.html">
-        <strong class="list-documents-title" property="dc:title">
-          LiveDocument: 2. Application
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 04 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/3_Style">
-    <h3>
-      <a class="list-documents-link" href="./3_Style.html">
-        <strong class="list-documents-title" property="dc:title">
-          LiveDocument: 3. Style
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 04 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/4_Widget">
-    <h3>
-      <a class="list-documents-link" href="./4_Widget.html">
-        <strong class="list-documents-title" property="dc:title">
-          LiveDocument: 4. Widget
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 04 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/5_Util">
-    <h3>
-      <a class="list-documents-link" href="./5_Util.html">
-        <strong class="list-documents-title" property="dc:title">
-          LiveDocument: 5. Util
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 04 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/6_Appendix">
-    <h3>
-      <a class="list-documents-link" href="./6_Appendix.html">
-        <strong class="list-documents-title" property="dc:title">
-          LiveDocument: 6. Applendix
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 04 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/1_FeelAndAppearance">
-    <h3>
-      <a class="list-documents-link" href="./1_FeelAndAppearance.html">
-        <strong class="list-documents-title" property="dc:title">
-          Reference: 1. Feel And Appearance
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 03 2012
-        </small>
-      </a>
-    </h3>
-  </li>
-  <li class="list-documents-document" typeof="soic:post" about="/2_Optimization">
-    <h3>
-      <a class="list-documents-link" href="./2_Optimization.html">
-        <strong class="list-documents-title" property="dc:title">
-          Reference: 2. Optimization
-        </strong>
-        <small class="list-documents-date" property="dc:date">
-          Oct 03 2012
-        </small>
-      </a>
-    </h3>
-  </li>
+  <div tags="post corner prime odd">
+    <li class="list-documents-document" typeof="soic:post" about="/1_Introduction">
+      <h3>
+        <a class="list-documents-link" href="./1_Introduction.html">
+          <strong class="list-documents-title" property="dc:title">
+            LiveDocument: 1. Introduction
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner prime odd
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner prime even">
+    <li class="list-documents-document" typeof="soic:post" about="/2_Application">
+      <h3>
+        <a class="list-documents-link" href="./2_Application.html">
+          <strong class="list-documents-title" property="dc:title">
+            LiveDocument: 2. Application
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner prime even
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner prime odd">
+    <li class="list-documents-document" typeof="soic:post" about="/3_Style">
+      <h3>
+        <a class="list-documents-link" href="./3_Style.html">
+          <strong class="list-documents-title" property="dc:title">
+            LiveDocument: 3. Style
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner prime odd
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner even">
+    <li class="list-documents-document" typeof="soic:post" about="/4_Widget">
+      <h3>
+        <a class="list-documents-link" href="./4_Widget.html">
+          <strong class="list-documents-title" property="dc:title">
+            LiveDocument: 4. Widget
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner even
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner prime odd">
+    <li class="list-documents-document" typeof="soic:post" about="/5_Util">
+      <h3>
+        <a class="list-documents-link" href="./5_Util.html">
+          <strong class="list-documents-title" property="dc:title">
+            LiveDocument: 5. Util
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner prime odd
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner even">
+    <li class="list-documents-document" typeof="soic:post" about="/6_Appendix">
+      <h3>
+        <a class="list-documents-link" href="./6_Appendix.html">
+          <strong class="list-documents-title" property="dc:title">
+            LiveDocument: 6. Applendix
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner even
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner reference">
+    <li class="list-documents-document" typeof="soic:post" about="/R1_FeelAndAppearance">
+      <h3>
+        <a class="list-documents-link" href="./R1_FeelAndAppearance.html">
+          <strong class="list-documents-title" property="dc:title">
+            Reference: 1. Feel And Appearance
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner reference
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post corner reference">
+    <li class="list-documents-document" typeof="soic:post" about="/R2_Optimization">
+      <h3>
+        <a class="list-documents-link" href="./R2_Optimization.html">
+          <strong class="list-documents-title" property="dc:title">
+            Reference: 2. Optimization
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post corner reference
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post runtime">
+    <li class="list-documents-document" typeof="soic:post" about="/forPlugIn">
+      <h3>
+        <a class="list-documents-link" href="./forPlugIn.html">
+          <strong class="list-documents-title" property="dc:title">
+            Runtime: Cornerstone Runtime 기본구조 (PlugIn)
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post runtime
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
+  <div tags="post runtime">
+    <li class="list-documents-document" typeof="soic:post" about="/forWebApp">
+      <h3>
+        <a class="list-documents-link" href="./forWebApp.html">
+          <strong class="list-documents-title" property="dc:title">
+            Runtime: Cornerstone Runtime 기본구조 (WebApp)
+          </strong>
+          <small class="list-documents-tagstr" property="dc:tagstr">
+            post runtime
+          </small>
+        </a>
+      </h3>
+    </li>
+  </div>
 </nav>
 
 </div>
 
     </article>
-  </body>
+<script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
+socket.on('regenerated',function(){
+	document.location.reload();
+});</script><script defer="defer"  src="./script.js"></script>  </body>
 </html>

@@ -1,6 +1,6 @@
 ---
 name: '태그별모음'
-linkTitle: 'View articles'
+linkTitle: 'bytag'
 pageOrder: 3
 layout: 'page'
 url: './bytag.html'
@@ -45,5 +45,5 @@ section ".tagmap", ->
           h4 tag.name
           ul ->
             tag.documents.forEach (documentModel)->
-              li -> a href: "#{documentModel.get('url')}", "#{documentModel.get('title')}"
+              li -> a href: "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
 

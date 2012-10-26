@@ -4,6 +4,7 @@ nav '.list-documents', 'typeof':'dc:collection', ->
 		p '.list-documents-none', -> 'nothing found'
 		return
 	@documents.forEach (document) ->
+      div 'tags':document.tagstr, ->
 		li '.list-documents-document', 'typeof':'soic:post', about:document.url, ->
 			# Display a header link
 			h3 ->

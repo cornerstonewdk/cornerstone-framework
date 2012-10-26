@@ -1,32 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="cornerstone/bootstrap.css" />
-    <link rel="stylesheet" href="cornerstone/bootstrap-responsive.css" />
-    <link rel="stylesheet" href="cornerstone/theme/white/css/cornerstone.css" />
-    <script src="lib/codemirror.js"></script>
-    <script src="mode/xml/xml.js"></script>
-    <script src="mode/javascript/javascript.js"></script>
-    <script src="mode/css/css.js"></script>
-    <script src="mode/htmlmixed/htmlmixed.js"></script>
-    <link rel="stylesheet" href="lib/codemirror.css" />
-    <link rel="stylesheet" href="doc/docs.css" />
-    <style>.CodeMirror {
-  float: left;
-  width: 50%;
-  border: 1px solid black;
-}
-iframe {
-  width: 49%;
-  float: left;
-  height: 300px;
-  border: 1px solid black;
-  border-left: 0px;
-}</style>
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <style>  #customers
+  #{
+  #      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  #      width:100%;
+  #      border-collapse:collapse;
+  #}
+  td, th 
+  {
+        font-size:1.2em;
+        border:1px solid #98bf21;
+        padding:3px 7px 2px 7px;
+  }
+  th 
+  {
+        font-size:1.4em;
+        text-align:left;
+        padding-top:5px;
+        padding-bottom:4px;
+        background-color:#A7C942;
+        color:#fff;
+  }
+  tr.alt td 
+  {
+        color:#000;
+  background-color:#EAF2D3;
+  }
+#  table {
+#    width: 49%;
+#    float: left;
+#    height: 300px;
+#    border: 1px solid black;
+#    border-left: 0px;
+#  }
+  textarea {
+        background-color:#A7C942;
+  }</style>
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
   </head>
   <body>
-    <div class="navbar">
+    <div class="navbar ico-txt">
       <div class="navbar-inner">
         <div class="container">
           <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
@@ -41,24 +60,24 @@ iframe {
             Cornerstone
           </a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="./index.html" title="View articles">
-                  처음
+            <ul class="nav pull-left">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  HOME
                 </a>
               </li>
-              <li>
-                <a href="./toc.html" title="View articles">
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
                   목차
                 </a>
               </li>
-              <li>
-                <a href="./bytag.html" title="View articles">
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
                   태그별모음
                 </a>
               </li>
-              <li>
-                <a href="./bydate.html" title="View articles">
+              <li class="inactive" id="bydate">
+                <a href="./bydate.html" title="bydate">
                   작성순모음
                 </a>
               </li>
@@ -73,32 +92,138 @@ iframe {
       <div class="page-content" property="sioc:content">
   <section class="tagmap">
   <div id="tagmap" class="row">
+    <div id="corner" class="span4">
+      <h4>corner</h4>
+      <ul>
+        <li>
+          <a href="./1_Introduction.html">LiveDocument: 1. Introduction</a>
+        </li>
+        <li>
+          <a href="./2_Application.html">LiveDocument: 2. Application</a>
+        </li>
+        <li>
+          <a href="./3_Style.html">LiveDocument: 3. Style</a>
+        </li>
+        <li>
+          <a href="./4_Widget.html">LiveDocument: 4. Widget</a>
+        </li>
+        <li>
+          <a href="./5_Util.html">LiveDocument: 5. Util</a>
+        </li>
+        <li>
+          <a href="./6_Appendix.html">LiveDocument: 6. Applendix</a>
+        </li>
+        <li>
+          <a href="./R1_FeelAndAppearance.html">Reference: 1. Feel And Appearance</a>
+        </li>
+        <li>
+          <a href="./R2_Optimization.html">Reference: 2. Optimization</a>
+        </li>
+      </ul>
+    </div>
+    <div id="even" class="span4">
+      <h4>even</h4>
+      <ul>
+        <li>
+          <a href="./2_Application.html">LiveDocument: 2. Application</a>
+        </li>
+        <li>
+          <a href="./4_Widget.html">LiveDocument: 4. Widget</a>
+        </li>
+        <li>
+          <a href="./6_Appendix.html">LiveDocument: 6. Applendix</a>
+        </li>
+      </ul>
+    </div>
+    <div id="odd" class="span4">
+      <h4>odd</h4>
+      <ul>
+        <li>
+          <a href="./1_Introduction.html">LiveDocument: 1. Introduction</a>
+        </li>
+        <li>
+          <a href="./3_Style.html">LiveDocument: 3. Style</a>
+        </li>
+        <li>
+          <a href="./5_Util.html">LiveDocument: 5. Util</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="post" class="span4">
       <h4>post</h4>
       <ul>
         <li>
-          <a href="/6_Appendix">LiveDocument: 6. Applendix</a>
+          <a href="./1_Introduction.html">LiveDocument: 1. Introduction</a>
         </li>
         <li>
-          <a href="/5_Util">LiveDocument: 5. Util</a>
+          <a href="./2_Application.html">LiveDocument: 2. Application</a>
         </li>
         <li>
-          <a href="/4_Widget">LiveDocument: 4. Widget</a>
+          <a href="./3_Style.html">LiveDocument: 3. Style</a>
         </li>
         <li>
-          <a href="/2_Application">LiveDocument: 2. Application</a>
+          <a href="./4_Widget.html">LiveDocument: 4. Widget</a>
         </li>
         <li>
-          <a href="/1_Introduction">LiveDocument: 1. Introduction</a>
+          <a href="./5_Util.html">LiveDocument: 5. Util</a>
         </li>
         <li>
-          <a href="/3_Style">LiveDocument: 3. Style</a>
+          <a href="./6_Appendix.html">LiveDocument: 6. Applendix</a>
         </li>
         <li>
-          <a href="/1_FeelAndAppearance">Reference: 1. Feel And Appearance</a>
+          <a href="./R1_FeelAndAppearance.html">Reference: 1. Feel And Appearance</a>
         </li>
         <li>
-          <a href="/2_Optimization">Reference: 2. Optimization</a>
+          <a href="./R2_Optimization.html">Reference: 2. Optimization</a>
+        </li>
+        <li>
+          <a href="./forPlugIn.html">Runtime: Cornerstone Runtime 기본구조 (PlugIn)</a>
+        </li>
+        <li>
+          <a href="./forWebApp.html">Runtime: Cornerstone Runtime 기본구조 (WebApp)</a>
+        </li>
+      </ul>
+    </div>
+    <div id="prime" class="span4">
+      <h4>prime</h4>
+      <ul>
+        <li>
+          <a href="./1_Introduction.html">LiveDocument: 1. Introduction</a>
+        </li>
+        <li>
+          <a href="./2_Application.html">LiveDocument: 2. Application</a>
+        </li>
+        <li>
+          <a href="./3_Style.html">LiveDocument: 3. Style</a>
+        </li>
+        <li>
+          <a href="./5_Util.html">LiveDocument: 5. Util</a>
+        </li>
+      </ul>
+    </div>
+    <div id="reference" class="span4">
+      <h4>reference</h4>
+      <ul>
+        <li>
+          <a href="./R1_FeelAndAppearance.html">Reference: 1. Feel And Appearance</a>
+        </li>
+        <li>
+          <a href="./R2_Optimization.html">Reference: 2. Optimization</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="tagmap" class="row">
+    <div id="runtime" class="span4">
+      <h4>runtime</h4>
+      <ul>
+        <li>
+          <a href="./forPlugIn.html">Runtime: Cornerstone Runtime 기본구조 (PlugIn)</a>
+        </li>
+        <li>
+          <a href="./forWebApp.html">Runtime: Cornerstone Runtime 기본구조 (WebApp)</a>
         </li>
       </ul>
     </div>
@@ -108,5 +233,8 @@ iframe {
 </div>
 
     </article>
-  </body>
+<script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
+socket.on('regenerated',function(){
+	document.location.reload();
+});</script><script defer="defer"  src="./script.js"></script>  </body>
 </html>

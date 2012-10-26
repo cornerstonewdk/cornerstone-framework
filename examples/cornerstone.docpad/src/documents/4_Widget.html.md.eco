@@ -1,10 +1,25 @@
----
-title: "LiveDocument: 4. Widget"
-date: "2012-10-04"
-layout: "post"
-tags: 'post'
-outline: "위젯 사용법"
----
+---                                                                         
+title1: 'LiveDocument: 1. Introduction'                                     
+title2: 'LiveDocument: 2. Application'                                      
+title3: 'LiveDocument: 3. Style'                                            
+title: 'LiveDocument: 4. Widget'                                           
+title5: 'LiveDocument: 5. Util'                                             
+title6: 'LiveDocument: 6. Applendix'                                        
+title7: 'Reference: 1. Feel And Appearance'                                 
+title8: 'Reference: 2. Optimization'                                        
+outline1: 'Framework 사용했을 때 얻을 수 있는 이점들에 대한 설명'           
+outline2: '애플리케이션 작성법'                                             
+outline3: '스타일 작성법'                                                   
+outline: '위젯 사용법'                                                     
+outline5: '유틸리티 사용법'                                                 
+outline6: '부록'                                                            
+outline7: '구현을 위한 설계문서로써 제품의 모양새와 느낌을 정의하고 설명함' 
+outline8: '최적화'                                                          
+date: '2012-10-03'                                                          
+layout: 'post'                                                              
+tags: ['post','corner','even']
+tagstr: 'post corner even'
+---                                                                         
 
 Widget
 --------
@@ -31,7 +46,21 @@ __기본 폼 예시__
 
 기본 폼 스타일은 form태그에 class 선언없이 기본적으로 표현되는 스타일이다.
 
-<% codeBlock = (obj) => %>                                                                                        
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css' />                                                               
+<style>                                                                                                           
+.CodeMirror { float: left; width: 50%; border: 1px solid black; }                                                 
+iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                     
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                 
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
@@ -39,6 +68,23 @@ __기본 폼 예시__
 <html>                                                                                                            
   <head>                                                                                                          
     <meta charset=utf-8>                                                                                          
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />
+
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+
+    <script src='./dist/ui/widget-chart.js'></script>
+    <script src='./dist/ui/widget-datatable.js'></script>
+    <script src='./dist/ui/widget-editor.js'></script>
+    <script src='./dist/ui/widget-listview.js'></script>
+    <script src='./dist/ui/widget-media.js'></script>
+    <script src='./dist/ui/widget-plugins.js'></script>
+    <script src='./dist/ui/widget-scrollview.js'></script>
   </head>                                                                                                         
   <body>                                                                                                          
     <%- obj.func '1' %>                                                                                           
@@ -80,7 +126,7 @@ __기본 폼 예시__
 		<label class="title">입력 상자 4</label>
 		<input name="text4" type="text" placeholder="입력해주세요.">
 	</form>
-<% end %><%- codeBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
 __검색 폼 예시__
 
@@ -100,7 +146,7 @@ __검색 폼 예시__
         <input class="search-query" name="text1" type="text" placeholder="입력해주세요.">
         <button type="submit" class="btn">검색</button>
     </form>
-<% end %><%- codeBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
 
 __인라인 폼 예시__
 
@@ -117,7 +163,7 @@ __인라인 폼 예시__
         </label>
         <button type="submit" class="btn">회원가입</button>
     </form>
-<% end %><%- codeBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
 
 __수평 폼 예시__
 
@@ -149,7 +195,7 @@ __수평 폼 예시__
             </div>
         </div>
     </form>
-<% end %><%- codeBlock {func : prv_4 , funcname : 'prv_4'} %>
+<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
 	
 ## Inputs(입력 상자) / Textarea
 
@@ -166,7 +212,7 @@ __input 사용 예시__
 
 <% prv_5 = (contents) => %>
 	<input class="input-large" type="text" placeholder="입력 상자"/>
-<% end %><%- codeBlock {func : prv_5 , funcname : 'prv_5'} %>
+<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
 
 __textarea 사용 예시__
 
@@ -213,7 +259,7 @@ __기본 스타일 사용 예시(스택형태)__
             기본 라디오 버튼 3
         </label>
     </form>
-<% end %><%- codeBlock {func : prv_6 , funcname : 'prv_6'} %>
+<% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>
 
 __인라인 스타일 사용 예시__
 
@@ -253,7 +299,7 @@ __인라인 스타일 사용 예시__
             인라인 라디오 버튼 3
         </label>
     </form>
-<% end %><%- codeBlock {func : prv_7 , funcname : 'prv_7'} %>
+<% end %><%- codeMirrorBlock {func : prv_7 , funcname : 'prv_7'} %>
 
 ## 셀렉트박스
 
@@ -280,7 +326,7 @@ __셀렉트박스 사용 예시__
             </div>
         </div>
     </form>
-<% end %><%- codeBlock {func : prv_8 , funcname : 'prv_8'} %>
+<% end %><%- codeMirrorBlock {func : prv_8 , funcname : 'prv_8'} %>
 
 ## 폼 컨트롤 확장
 
@@ -296,7 +342,7 @@ __텍스트 대신 버튼__
 	<div class="input-append">
 	  <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
 	</div>
-<% end %><%- codeBlock {func : prv_9 , funcname : 'prv_9'} %>
+<% end %><%- codeMirrorBlock {func : prv_9 , funcname : 'prv_9'} %>
 
 __검색 폼__
 
@@ -311,7 +357,7 @@ __검색 폼__
 	    <input type="text" class="span2 search-query">
 	  </div>
 	</form>
-<% end %><%- codeBlock {func : prv_10 , funcname : 'prv_10'} %>
+<% end %><%- codeMirrorBlock {func : prv_10 , funcname : 'prv_10'} %>
 
 __상대적인 크기(Relative Sizing)__
 
@@ -324,7 +370,7 @@ __상대적인 크기(Relative Sizing)__
 	<input class="input-large" type="text" placeholder=".input-large">
 	<input class="input-xlarge" type="text" placeholder=".input-xlarge">
 	<input class="input-xxlarge" type="text" placeholder=".input-xxlarge">
-<% end %><%- codeBlock {func : prv_11 , funcname : 'prv_11'} %>
+<% end %><%- codeMirrorBlock {func : prv_11 , funcname : 'prv_11'} %>
 	
 __그리드 크기(Gird Sizing)__
 
@@ -343,7 +389,7 @@ __그리드 크기(Gird Sizing)__
 	<select class="span3">
 	  ...
 	</select>
-<% end %><%- codeBlock {func : prv_12 , funcname : 'prv_12'} %>
+<% end %><%- codeMirrorBlock {func : prv_12 , funcname : 'prv_12'} %>
 
 한 줄에 여러 그리드를 사용하기 위해 클래스 `controls-row` 클래스로 랩핑을 한다.
 
@@ -355,7 +401,7 @@ __그리드 크기(Gird Sizing)__
 	  <input class="span4" type="text" placeholder=".span4">
 	  <input class="span1" type="text" placeholder=".span1">
 	</div>
-<% end %><%- codeBlock {func : prv_13 , funcname : 'prv_13'} %>
+<% end %><%- codeMirrorBlock {func : prv_13 , funcname : 'prv_13'} %>
 	
 ## 수정불가 입력상자(Inputs)
 
@@ -363,7 +409,7 @@ __그리드 크기(Gird Sizing)__
 
 <% prv_14 = (contents) => %>
 	<span class="input-xlarge uneditable-input">Some value here</span>
-<% end %><%- codeBlock {func : prv_14 , funcname : 'prv_14'} %>
+<% end %><%- codeMirrorBlock {func : prv_14 , funcname : 'prv_14'} %>
 
 ## 폼 액션(Form actions)
 
@@ -374,7 +420,7 @@ __그리드 크기(Gird Sizing)__
 	  <button type="submit" class="btn btn-primary">저장</button>
 	  <button type="button" class="btn">취소</button>
 	</div>
-<% end %><%- codeBlock {func : prv_15 , funcname : 'prv_15'} %>
+<% end %><%- codeMirrorBlock {func : prv_15 , funcname : 'prv_15'} %>
 
 ## 도움말(Help text)
 
@@ -384,13 +430,13 @@ __인라인 도움말__
 
 <% prv_16 = (contents) => %>
 	<input type="text"><span class="help-inline">인라인 도움말</span>
-<% end %><%- codeBlock {func : prv_16 , funcname : 'prv_16'} %>
+<% end %><%- codeMirrorBlock {func : prv_16 , funcname : 'prv_16'} %>
 
 __블럭 도움말__
 
 <% prv_17 = (contents) => %>
 	<input type="text"><span class="help-block">블록 도움말</span>
-<% end %><%- codeBlock {func : prv_17 , funcname : 'prv_17'} %>
+<% end %><%- codeMirrorBlock {func : prv_17 , funcname : 'prv_17'} %>
 
 ## 폼 컨트롤 상태
 
@@ -400,7 +446,7 @@ __입력상자 포커스(focus)__
 
 <% prv_18 = (contents) => %>
 	<input class="input-xlarge" id="focusedInput" type="text" value="This is focused...">
-<% end %><%- codeBlock {func : prv_18 , funcname : 'prv_18'} %>
+<% end %><%- codeMirrorBlock {func : prv_18 , funcname : 'prv_18'} %>
 
 __비활성 입력상자__
 
@@ -408,7 +454,7 @@ __비활성 입력상자__
 
 <% prv_19 = (contents) => %>
 	<input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-<% end %><%- codeBlock {func : prv_19 , funcname : 'prv_19'} %>
+<% end %><%- codeMirrorBlock {func : prv_19 , funcname : 'prv_19'} %>
 
 __유효성 상태__
 
@@ -436,7 +482,7 @@ __유효성 상태__
 	    <span class="help-inline">Woohoo!</span>
 	  </div>
 	</div>
-<% end %><%- codeBlock {func : prv_20 , funcname : 'prv_20'} %>
+<% end %><%- codeMirrorBlock {func : prv_20 , funcname : 'prv_20'} %>
 
 # 컴포넌트
 
@@ -459,7 +505,7 @@ __유효성 상태__
             <li><a tabindex="-1" href="#">구분된 링크</a></li>
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_21 , funcname : 'prv_21'} %>
+<% end %><%- codeMirrorBlock {func : prv_21 , funcname : 'prv_21'} %>
 
 ### 옵션
 
@@ -473,7 +519,7 @@ __메뉴 정렬__
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
         ...
     </ul>
-<% end %><%- codeBlock {func : prv_22 , funcname : 'prv_22'} %>
+<% end %><%- codeMirrorBlock {func : prv_22 , funcname : 'prv_22'} %>
 
 __드롭다운에 서브메뉴 추가하기__
 
@@ -489,7 +535,7 @@ __드롭다운에 서브메뉴 추가하기__
             </ul>
         </li>
     </ul>
-<% end %><%- codeBlock {func : prv_23 , funcname : 'prv_23'} %>
+<% end %><%- codeMirrorBlock {func : prv_23 , funcname : 'prv_23'} %>
 
 ### 사용 예시
 
@@ -503,7 +549,7 @@ __드롭다운에 서브메뉴 추가하기__
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">구분된 링크</a></li>
     </ul>
-<% end %><%- codeBlock {func : prv_24 , funcname : 'prv_24'} %>
+<% end %><%- codeMirrorBlock {func : prv_24 , funcname : 'prv_24'} %>
 
 ## 버튼 그룹
 
@@ -521,7 +567,7 @@ __단일 버튼 그룹__
     <button class="btn">2</button>
     <button class="btn">3</button>
     </div>
-<% end %><%- codeBlock {func : prv_25 , funcname : 'prv_25'} %>
+<% end %><%- codeMirrorBlock {func : prv_25 , funcname : 'prv_25'} %>
 
 __여러 버튼 그룹__
 
@@ -545,7 +591,7 @@ __여러 버튼 그룹__
             <button class="btn">10</button>
         </div>
     </div>
-<% end %><%- codeBlock {func : prv_26 , funcname : 'prv_26'} %>
+<% end %><%- codeMirrorBlock {func : prv_26 , funcname : 'prv_26'} %>
 
 __수직버튼 그룹__
 
@@ -558,7 +604,7 @@ __수직버튼 그룹__
         <button type="button" class="btn"><i class="icon-align-center"></i></button>
         <button type="button" class="btn"><i class="icon-align-justify"></i></button>
     </div>
-<% end %><%- codeBlock {func : prv_27 , funcname : 'prv_27'} %>
+<% end %><%- codeMirrorBlock {func : prv_27 , funcname : 'prv_27'} %>
 
 
 ## 버튼 드롭다운
@@ -579,7 +625,7 @@ __기본 버튼 드롭다운__
             <!-- dropdown menu links -->
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_28 , funcname : 'prv_28'} %>
+<% end %><%- codeMirrorBlock {func : prv_28 , funcname : 'prv_28'} %>
 
 __버튼 드롭다운의 toggle 버튼의 크기__
 
@@ -599,7 +645,7 @@ __분리된 버튼 드롭다운__
             <!-- dropdown menu links -->
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_29 , funcname : 'prv_29'} %>
+<% end %><%- codeMirrorBlock {func : prv_29 , funcname : 'prv_29'} %>
 
 __드롭업 메뉴__
 
@@ -615,7 +661,7 @@ __드롭업 메뉴__
             <!-- dropdown menu links -->
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_30 , funcname : 'prv_30'} %>
+<% end %><%- codeMirrorBlock {func : prv_30 , funcname : 'prv_30'} %>
 
 
 
@@ -673,7 +719,7 @@ Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, <i> 태그를
             <li><a href="#">Help</a></li>
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_31 , funcname : 'prv_31'} %>
+<% end %><%- codeMirrorBlock {func : prv_31 , funcname : 'prv_31'} %>
 
 #### 아이콘 추가 예제
 같은 방법이지만, 단지 아이콘을 위해 <i> 태그를 추가한다.
@@ -705,7 +751,7 @@ Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, <i> 태그를
             <li><a href="#"><i class="icon-flag"></i> Help</a></li>
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_32 , funcname : 'prv_32'} %>
+<% end %><%- codeMirrorBlock {func : prv_32 , funcname : 'prv_32'} %>
 
 ### tab nav
 
@@ -733,7 +779,7 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
           </div>
         </div>
     </div>
-<% end %><%- codeBlock {func : prv_33 , funcname : 'prv_33'} %>
+<% end %><%- codeMirrorBlock {func : prv_33 , funcname : 'prv_33'} %>
 
 #### 커스텀 jQuery 플러그인
 모든 동적 Tab 는 우리의 경량 jQuery 플러그인에 의해 작동된다. Tab에 대한 더 자세한 내용은 플러그인 챕터에서 확인할 수 있다.
@@ -780,7 +826,7 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
         <li><a href="#B" data-toggle="tab">Section 2</a></li>
         <li><a href="#C" data-toggle="tab">Section 3</a></li>
     </ul>
-<% end %><%- codeBlock {func : prv_34 , funcname : 'prv_34'} %>
+<% end %><%- codeMirrorBlock {func : prv_34 , funcname : 'prv_34'} %>
 
 ##### 좌측 탭
 
@@ -803,7 +849,7 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
         <li><a href="#lB" data-toggle="tab">Section 2</a></li>
         <li><a href="#lC" data-toggle="tab">Section 3</a></li>
     </ul>
-<% end %><%- codeBlock {func : prv_35 , funcname : 'prv_35'} %>
+<% end %><%- codeMirrorBlock {func : prv_35 , funcname : 'prv_35'} %>
 
 
 ##### 우측 탭
@@ -827,7 +873,7 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
         <li><a href="#rB" data-toggle="tab">Section 2</a></li>
         <li><a href="#rC" data-toggle="tab">Section 3</a></li>
     </ul>
-<% end %><%- codeBlock {func : prv_36 , funcname : 'prv_36'} %>
+<% end %><%- codeMirrorBlock {func : prv_36 , funcname : 'prv_36'} %>
 
 
 
@@ -889,7 +935,7 @@ div 엘레멘트로 된 네비게이션 요소
         </div>
         </div><!-- /navbar-inner -->
     </div>
-<% end %><%- codeBlock {func : prv_37 , funcname : 'prv_37'} %>
+<% end %><%- codeMirrorBlock {func : prv_37 , funcname : 'prv_37'} %>
 
 ### Navbar 기반 구조 (scaffolding)
 
@@ -1047,7 +1093,7 @@ Breadcrumbs는 `ul` 엘리멘트로 된 네비게이션 요소이다. 타블랫�
         <li><a href="#">Library</a> <span class="divider">/</span></li>
         <li class="active">Data</li>
     </ul>
-<% end %><%- codeBlock {func : prv_38 , funcname : 'prv_38'} %>
+<% end %><%- codeMirrorBlock {func : prv_38 , funcname : 'prv_38'} %>
 
 ## 페이지네이션(Pagination)
 
@@ -1068,7 +1114,7 @@ Breadcrumbs는 `ul` 엘리멘트로 된 네비게이션 요소이다. 타블랫�
             <li><a href="#">다음</a></li>
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_39 , funcname : 'prv_39'} %>
+<% end %><%- codeMirrorBlock {func : prv_39 , funcname : 'prv_39'} %>
 
 ### 옵션
 
@@ -1084,7 +1130,7 @@ __비활성 / 활성 상태__
             ...
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_40 , funcname : 'prv_40'} %>
+<% end %><%- codeMirrorBlock {func : prv_40 , funcname : 'prv_40'} %>
 
 또한 비활성, 활성인 경우 `a` 태그의 클릭 함수를 제거하기 위해 `span` 태그로 변경할 수 있다.
 
@@ -1096,7 +1142,7 @@ __비활성 / 활성 상태__
             ...
         </ul>
     </div>
-<% end %><%- codeBlock {func : prv_41 , funcname : 'prv_41'} %>
+<% end %><%- codeMirrorBlock {func : prv_41 , funcname : 'prv_41'} %>
 
 __정렬__
 
@@ -1118,7 +1164,7 @@ __정렬__
     <div class="pagination pagination-right">
     ...
     </div>
-<% end %><%- codeBlock {func : prv_42 , funcname : 'prv_42'} %>
+<% end %><%- codeMirrorBlock {func : prv_42 , funcname : 'prv_42'} %>
 
 ### 페이저
 
@@ -1133,7 +1179,7 @@ __기본 페이저__
         <li><a href="#">이전</a></li>
         <li><a href="#">다음</a></li>
     </ul>
-<% end %><%- codeBlock {func : prv_43 , funcname : 'prv_43'} %>
+<% end %><%- codeMirrorBlock {func : prv_43 , funcname : 'prv_43'} %>
 
 __링크 정렬하기__
 
@@ -1148,7 +1194,7 @@ __링크 정렬하기__
             <a href="#">다음 &rarr;</a>
         </li>
     </ul>
-<% end %><%- codeBlock {func : prv_44 , funcname : 'prv_44'} %>
+<% end %><%- codeMirrorBlock {func : prv_44 , funcname : 'prv_44'} %>
 
 __비활성 상태__
 
@@ -1161,7 +1207,7 @@ __비활성 상태__
         </li>
         ...
     </ul>
-<% end %><%- codeBlock {func : prv_45 , funcname : 'prv_45'} %>
+<% end %><%- codeMirrorBlock {func : prv_45 , funcname : 'prv_45'} %>
 
 
 ## 이름표와 뱃지
@@ -1204,7 +1250,7 @@ Inverse | <span class="badge badge-inverse">10</span> | `<span class="badge badg
             </a>
         </p>
     </div>
-<% end %><%- codeBlock {func : prv_46 , funcname : 'prv_46'} %>
+<% end %><%- codeMirrorBlock {func : prv_46 , funcname : 'prv_46'} %>
 
 ### 페이지 머리글
 
@@ -1214,7 +1260,7 @@ Inverse | <span class="badge badge-inverse">10</span> | `<span class="badge badg
     <div class="page-header">
         <h1>Example page header <small>Subtext for header</small></h1>
     </div>
-<% end %><%- codeBlock {func : prv_47 , funcname : 'prv_47'} %>
+<% end %><%- codeMirrorBlock {func : prv_47 , funcname : 'prv_47'} %>
 
 
 ## 썸네일
@@ -1242,7 +1288,7 @@ __간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
         </li>
         ...
     </ul>
-<% end %><%- codeBlock {func : prv_48 , funcname : 'prv_48'} %>
+<% end %><%- codeMirrorBlock {func : prv_48 , funcname : 'prv_48'} %>
 
 또한 위 마크업과 다르게 `a` 태그 대신 `div` 태그를 사용하므로 이미지뿐만 아니라 다양한 요소를 넣을 수 있다.
 <% prv_49 = (contents) => %>
@@ -1256,7 +1302,7 @@ __간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
         </li>
     ...
     </ul>
-<% end %><%- codeBlock {func : prv_49 , funcname : 'prv_49'} %>
+<% end %><%- codeMirrorBlock {func : prv_49 , funcname : 'prv_49'} %>
 
 ## 경고창
 
@@ -1272,7 +1318,7 @@ __간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
         <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>Warning!</strong> Best check yo self, you're not looking too good.
     </div>
-<% end %><%- codeBlock {func : prv_50 , funcname : 'prv_50'} %>
+<% end %><%- codeMirrorBlock {func : prv_50 , funcname : 'prv_50'} %>
 
 __닫기 버튼__
 
@@ -1281,7 +1327,7 @@ __닫기 버튼__
 <% prv_51 = (contents) => %>
     <a href="#" class="close" data-dismiss="alert">×</a>
     <button type="button" class="close" data-dismiss="alert">×</button>
-<% end %><%- codeBlock {func : prv_51 , funcname : 'prv_51'} %>
+<% end %><%- codeMirrorBlock {func : prv_51 , funcname : 'prv_51'} %>
 
 ### 옵션
 
@@ -1295,7 +1341,7 @@ __경고 메세지가 긴 경우__
         <h4>Warning!</h4>
         Best check yo self, you're not...
     </div>
-<% end %><%- codeBlock {func : prv_52 , funcname : 'prv_52'} %>
+<% end %><%- codeMirrorBlock {func : prv_52 , funcname : 'prv_52'} %>
 
 __에러 메세지__
 
@@ -1305,7 +1351,7 @@ __에러 메세지__
     <div class="alert alert-error">
     ...
     </div>
-<% end %><%- codeBlock {func : prv_53 , funcname : 'prv_53'} %>
+<% end %><%- codeMirrorBlock {func : prv_53 , funcname : 'prv_53'} %>
 
 __성공 메세지__
 
@@ -1315,7 +1361,7 @@ __성공 메세지__
     <div class="alert alert-success">
     ...
     </div>
-<% end %><%- codeBlock {func : prv_54 , funcname : 'prv_54'} %>
+<% end %><%- codeMirrorBlock {func : prv_54 , funcname : 'prv_54'} %>
 
 __안내 메세지__
 
@@ -1325,7 +1371,7 @@ __안내 메세지__
     <div class="alert alert-info">
     ...
     </div>
-<% end %><%- codeBlock {func : prv_55 , funcname : 'prv_55'} %>
+<% end %><%- codeMirrorBlock {func : prv_55 , funcname : 'prv_55'} %>
 
 
 ## 프레그레스 바
@@ -1342,7 +1388,7 @@ __기본 프로그레스 바__
     <div class="progress">
         <div class="bar" style="width: 60%;"></div>
     </div>
-<% end %><%- codeBlock {func : prv_56 , funcname : 'prv_56'} %>
+<% end %><%- codeMirrorBlock {func : prv_56 , funcname : 'prv_56'} %>
 
 __줄무늬 프로그레스 바__
 
@@ -1352,7 +1398,7 @@ __줄무늬 프로그레스 바__
     <div class="progress progress-striped">
         <div class="bar" style="width: 60%;"></div>
     </div>
-<% end %><%- codeBlock {func : prv_57 , funcname : 'prv_57'} %>
+<% end %><%- codeMirrorBlock {func : prv_57 , funcname : 'prv_57'} %>
 
 __애니메이션된 프로그레스 바__
 
@@ -1362,7 +1408,7 @@ __애니메이션된 프로그레스 바__
     <div class="progress progress-striped active">
         <div class="bar" style="width: 60%;"></div>
     </div>
-<% end %><%- codeBlock {func : prv_58 , funcname : 'prv_58'} %>
+<% end %><%- codeMirrorBlock {func : prv_58 , funcname : 'prv_58'} %>
 
 __스택 프로그레스 바__
 
@@ -1374,7 +1420,7 @@ __스택 프로그레스 바__
         <div class="bar bar-warning" style="width: 20%;"></div>
         <div class="bar bar-danger" style="width: 10%;"></div>
     </div>
-<% end %><%- codeBlock {func : prv_59 , funcname : 'prv_59'} %>
+<% end %><%- codeMirrorBlock {func : prv_59 , funcname : 'prv_59'} %>
 
 ### 옵션
 
@@ -1398,7 +1444,7 @@ __추가적인 색상__
     <div class="progress progress-danger">
         <div class="bar" style="width: 80%"></div>
     </div>
-<% end %><%- codeBlock {func : prv_60 , funcname : 'prv_60'} %>
+<% end %><%- codeMirrorBlock {func : prv_60 , funcname : 'prv_60'} %>
 
 
 __줄무늬 프로그레스 바__
@@ -1421,7 +1467,7 @@ __줄무늬 프로그레스 바__
     <div class="progress progress-danger progress-striped">
         <div class="bar" style="width: 80%"></div>
     </div>
-<% end %><%- codeBlock {func : prv_61 , funcname : 'prv_61'} %>
+<% end %><%- codeMirrorBlock {func : prv_61 , funcname : 'prv_61'} %>
 
 
 ## 기타 요소 (Miscellaneous)
@@ -1434,7 +1480,7 @@ Wells은 엘리먼트에 심플한 inset 효과를 주기 위해 사용한다.
     <div class="well">
 	    Hello World
     </div>
-<% end %><%- codeBlock {func : prv_62 , funcname : 'prv_62'} %>
+<% end %><%- codeMirrorBlock {func : prv_62 , funcname : 'prv_62'} %>
 
 __Close__
 
@@ -1442,7 +1488,7 @@ __Close__
 
 <% prv_63 = (contents) => %>
     <a class="close">&times;</a>
-<% end %><%- codeBlock {func : prv_63 , funcname : 'prv_63'} %>
+<% end %><%- codeMirrorBlock {func : prv_63 , funcname : 'prv_63'} %>
 
 __도움되는 클래스들(Helper classes)__
 
@@ -1514,7 +1560,7 @@ data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cor
 		<a class="close" data-dismiss="alert" href="#">×</a>
 		<strong>data-attribute를 통한 alert 닫기</strong>
 	</div>
-<% end %><%- codeBlock {func : prv_64 , funcname : 'prv_64'} %>
+<% end %><%- codeMirrorBlock {func : prv_64 , funcname : 'prv_64'} %>
 
 javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
 
@@ -1531,7 +1577,7 @@ javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/corners
 		    $(".alert").alert("close"); // a태그 클릭시 .alert클래스 영역을 닫는다.
 		});
 	</script>
-<% end %><%- codeBlock {func : prv_65 , funcname : 'prv_65'} %>
+<% end %><%- codeMirrorBlock {func : prv_65 , funcname : 'prv_65'} %>
 
 ### 이벤트
 
@@ -1548,7 +1594,7 @@ __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/8ke
 	}).bind("closed", function(e) {
 	    alert("닫기 완료시 CSS Transition 완료 후 이벤트");
 	});
-<% end %><%- codeBlock {func : prv_66 , funcname : 'prv_66'} %>
+<% end %><%- codeMirrorBlock {func : prv_66 , funcname : 'prv_66'} %>
 
 ## Button
 버튼을 클릭했을 때 버튼의 이름등을 바꾸는 토글 기능을 부여하는 플러그인.
@@ -1562,7 +1608,7 @@ data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cor
 <% prv_67 = (contents) => %>
 	<!-- data-toggle="button" 속성으로 토글 기능 부여. -->
 	<button type="button" class="btn" data-toggle="button">단일 토글</button>
-<% end %><%- codeBlock {func : prv_67 , funcname : 'prv_67'} %>
+<% end %><%- codeMirrorBlock {func : prv_67 , funcname : 'prv_67'} %>
 
 data-attribute를 이용한 버튼 그룹 checkbox 토글 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
@@ -1573,7 +1619,7 @@ data-attribute를 이용한 버튼 그룹 checkbox 토글 [데모 페이지](htt
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-<% end %><%- codeBlock {func : prv_68 , funcname : 'prv_68'} %>
+<% end %><%- codeMirrorBlock {func : prv_68 , funcname : 'prv_68'} %>
 
 data-attribute를 이용한 버튼 그룹 radio 토글 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
@@ -1584,7 +1630,7 @@ data-attribute를 이용한 버튼 그룹 radio 토글 [데모 페이지](http:/
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-<% end %><%- codeBlock {func : prv_69 , funcname : 'prv_69'} %>
+<% end %><%- codeMirrorBlock {func : prv_69 , funcname : 'prv_69'} %>
 
 javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
 
@@ -1604,7 +1650,7 @@ javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/corners
 		    }, 3000)
 		});​
 	</script>
-<% end %><%- codeBlock {func : prv_70 , funcname : 'prv_70'} %>
+<% end %><%- codeMirrorBlock {func : prv_70 , funcname : 'prv_70'} %>
 
 ### 옵션
 이름 | 설명
@@ -1641,7 +1687,7 @@ __마크업__
             </div>
         </div>
     </div>
-<% end %><%- codeBlock {func : prv_71 , funcname : 'prv_71'} %>
+<% end %><%- codeMirrorBlock {func : prv_71 , funcname : 'prv_71'} %>
 
 data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/wx8NQ/)
 
@@ -1660,7 +1706,7 @@ data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cor
 		    interval: 3000
 		});​
 	</script>
-<% end %><%- codeBlock {func : prv_72 , funcname : 'prv_72'} %>
+<% end %><%- codeMirrorBlock {func : prv_72 , funcname : 'prv_72'} %>
 
 javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/BMqzL/)
 
@@ -1688,7 +1734,7 @@ javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/corners
 		    $(".carousel").carousel("next");
 		});​
 	</script>
-<% end %><%- codeBlock {func : prv_73 , funcname : 'prv_73'} %>
+<% end %><%- codeMirrorBlock {func : prv_73 , funcname : 'prv_73'} %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -1725,7 +1771,7 @@ __실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/tee
 	}).bind("slid", function(e) {
 	    alert("이미지 이동완료 후");
 	});​
-<% end %><%- codeBlock {func : prv_74 , funcname : 'prv_74'} %>
+<% end %><%- codeMirrorBlock {func : prv_74 , funcname : 'prv_74'} %>
 
 ## Collapse
 캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다.
@@ -1772,7 +1818,7 @@ __실제 사용 예시__
           toggle: false
         });
 	</script>
-<% end %><%- codeBlock {func : prv_75 , funcname : 'prv_75'} %>
+<% end %><%- codeMirrorBlock {func : prv_75 , funcname : 'prv_75'} %>
 
 ### 이벤트
 
@@ -1789,7 +1835,7 @@ __실제 사용 예시__
 	$('#myCollapsible').on('hidden', function () {
 	  // do something…
 	})
-<% end %><%- codeBlock {func : prv_76 , funcname : 'prv_76'} %>
+<% end %><%- codeMirrorBlock {func : prv_76 , funcname : 'prv_76'} %>
 
 ### Dropdown
 네비게이션, 메뉴 등에서 서브 메뉴를 노출 시킬 때 사용되는 드롭다운 플러그인.
@@ -1831,7 +1877,7 @@ __실제 사용 예시__
 	$('#myCollapsible').on('hidden', function () {
 	  // do something…
 	})
-<% end %><%- codeBlock {func : prv_77 , funcname : 'prv_77'} %>
+<% end %><%- codeMirrorBlock {func : prv_77 , funcname : 'prv_77'} %>
 
 ## Modal
 컨텐츠를 모달창으로 보여주는 플러그인.
@@ -1862,7 +1908,7 @@ data-attribute를 이용하는 방식
 	    <a href="#" class="btn btn-primary">Save changes</a>
 	  </div>
 	</div>
-<% end %><%- codeBlock {func : prv_78 , funcname : 'prv_78'} %>
+<% end %><%- codeMirrorBlock {func : prv_78 , funcname : 'prv_78'} %>
 
 javascript를 이용하는 방식
 
@@ -1899,7 +1945,7 @@ __실제 사용 예시__
 	$('#myModal').on('hidden', function () {
 	  // do something…
 	})
-<% end %><%- codeBlock {func : prv_79 , funcname : 'prv_79'} %>
+<% end %><%- codeMirrorBlock {func : prv_79 , funcname : 'prv_79'} %>
 
 ## Popover
 버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인.
@@ -1949,7 +1995,7 @@ topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶�
 
 <% prv_80 = (contents) => %>
 	<body data-spy="scroll" >...</body>
-<% end %><%- codeBlock {func : prv_80 , funcname : 'prv_80'} %>
+<% end %><%- codeMirrorBlock {func : prv_80 , funcname : 'prv_80'} %>
 
 >Navbar 링크는 찾아갈 수 있는 id 타겟이 반드시 필요합니다. 예를들어, `<a href="#home">home</a>` 는 `<div id="home"></div>` 처럼 dom 내에 어떤 엘리먼트와 일치해야한다.
 
@@ -1979,7 +2025,7 @@ data-attribute를 이용하는 방식
 	  <li><a href="#messages" data-toggle="tab">Messages</a></li>
 	  <li><a href="#settings" data-toggle="tab">Settings</a></li>
 	</ul>
-<% end %><%- codeBlock {func : prv_81 , funcname : 'prv_81'} %>
+<% end %><%- codeMirrorBlock {func : prv_81 , funcname : 'prv_81'} %>
 
 javascript를 이용하는 방식
 
@@ -2015,7 +2061,7 @@ $().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활
 	    $(".tabs a:last").tab("show")
 	  })
 	</script>
-<% end %><%- codeBlock {func : prv_82 , funcname : 'prv_82'} %>
+<% end %><%- codeMirrorBlock {func : prv_82 , funcname : 'prv_82'} %>
 
 ### 이벤트
 
@@ -2031,7 +2077,7 @@ __실제 사용 예시__
 	  e.target // 현재 활성화된 탭
 	  e.relatedTarget // 이전 탭
 	})
-<% end %><%- codeBlock {func : prv_83 , funcname : 'prv_83'} %>
+<% end %><%- codeMirrorBlock {func : prv_83 , funcname : 'prv_83'} %>
 
 ## Tooltip
 링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인.
@@ -2079,7 +2125,7 @@ data-attribute를 이용하는 방식
 
 <% prv_84 = (contents) => %>
 	<input type="text" data-provide="typeahead">
-<% end %><%- codeBlock {func : prv_84 , funcname : 'prv_84'} %>
+<% end %><%- codeMirrorBlock {func : prv_84 , funcname : 'prv_84'} %>
 
 javascript를 이용하는 방식
 
@@ -2109,7 +2155,7 @@ $().typeahead(options); | option | object | input 엘리먼트를 typeahead 기�
 
 <% prv_85 = (contents) => %>
 	<input type="range" value="10" min="0" max="100" />
-<% end %><%- codeBlock {func : prv_85 , funcname : 'prv_85'} %>
+<% end %><%- codeMirrorBlock {func : prv_85 , funcname : 'prv_85'} %>
 
 Javascript 코드
 
@@ -2141,7 +2187,7 @@ javascript를 이용하는 방식
 	<script>
 		$("#example").sign();
 	</script>
-<% end %><%- codeBlock {func : prv_86 , funcname : 'prv_86'} %>
+<% end %><%- codeMirrorBlock {func : prv_86 , funcname : 'prv_86'} %>
 
 ### 메서드
 
@@ -2160,7 +2206,7 @@ data-attribute 방식
 <% prv_87 = (contents) => %>
 	<input type="range" value="10" min="0" max="100" class="widget-range btn-block inline"
 		data-range-options='{"inputShow":true,"progress":true}'/>
-<% end %><%- codeBlock {func : prv_87 , funcname : 'prv_87'} %>
+<% end %><%- codeMirrorBlock {func : prv_87 , funcname : 'prv_87'} %>
 
 
 javascript 코드
@@ -2172,7 +2218,7 @@ javascript 코드
 				"progress":true
 			});
 	</script>
-<% end %><%- codeBlock {func : prv_88 , funcname : 'prv_88'} %>
+<% end %><%- codeMirrorBlock {func : prv_88 , funcname : 'prv_88'} %>
 
 ### 옵션
 
@@ -2206,7 +2252,7 @@ javascript를 이용하는 방식
 	<script>
 		$("#example").motioncaptcha();
 	</script>
-<% end %><%- codeBlock {func : prv_89 , funcname : 'prv_89'} %>
+<% end %><%- codeMirrorBlock {func : prv_89 , funcname : 'prv_89'} %>
 
 ### 메서드
 
@@ -2240,7 +2286,7 @@ data-attribute를 이용하는 방식
 		<img src="img/loader/159.gif" alt=""/>
 	</div>
 </div>
-<% end %><%- codeBlock {func : prv_90 , funcname : 'prv_90'} %>
+<% end %><%- codeMirrorBlock {func : prv_90 , funcname : 'prv_90'} %>
 
 javascript를 이용하는 방식
 
@@ -2266,7 +2312,7 @@ javascript를 이용하는 방식
 		loadingText: "Hello World…"
 	});
 </script>
-<% end %><%- codeBlock {func : prv_91 , funcname : 'prv_91'} %>
+<% end %><%- codeMirrorBlock {func : prv_91 , funcname : 'prv_91'} %>
 
 ### 메서드
 
@@ -2330,7 +2376,7 @@ DATA-API(data-attribute) 를 이용하는 방식
 		</ul>
 	</div>
 </div>
-<% end %><%- codeBlock {func : prv_92 , funcname : 'prv_92'} %>
+<% end %><%- codeMirrorBlock {func : prv_92 , funcname : 'prv_92'} %>
 
 javascript를 이용하는 방식 [데모 페이지]
 
@@ -2352,7 +2398,7 @@ javascript를 이용하는 방식 [데모 페이지]
 <script type="text/javascript">
 	$("#example").featuredScrollView();
 </script>
-<% end %><%- codeBlock {func : prv_93 , funcname : 'prv_93'} %>
+<% end %><%- codeMirrorBlock {func : prv_93 , funcname : 'prv_93'} %>
 
 ### 기능
 
@@ -2493,7 +2539,7 @@ javascript를 이용하는 방식
 		    getItem();
 	    });
     </script>
-<% end %><%- codeBlock {func : prv_94 , funcname : 'prv_94'} %>
+<% end %><%- codeMirrorBlock {func : prv_94 , funcname : 'prv_94'} %>
 
 ### 기능
 
@@ -2539,7 +2585,7 @@ DATA-API(data-attribute) 를 이용하는 방식
 				type="video/mp4" data-featured="media"
 				preload="none" ></video>
 </div>
-<% end %><%- codeBlock {func : prv_95 , funcname : 'prv_95'} %>
+<% end %><%- codeMirrorBlock {func : prv_95 , funcname : 'prv_95'} %>
 
 javascript를 이용하는 방식 [데모 페이지]
 
@@ -2564,7 +2610,7 @@ javascript를 이용하는 방식 [데모 페이지]
 		</object>
 	</video>
 </div>
-<% end %><%- codeBlock {func : prv_96 , funcname : 'prv_96'} %>
+<% end %><%- codeMirrorBlock {func : prv_96 , funcname : 'prv_96'} %>
 
 ### 기능
 
@@ -2672,7 +2718,7 @@ DATA-API(data-attribute) 를 이용하는 방식
         </tr>
     </tbody>
 </table>
-<% end %><%- codeBlock {func : prv_97 , funcname : 'prv_97'} %>
+<% end %><%- codeMirrorBlock {func : prv_97 , funcname : 'prv_97'} %>
 
 javascript를 이용하는 방식 [데모 페이지]
 
@@ -2699,7 +2745,7 @@ javascript를 이용하는 방식 [데모 페이지]
         </tr>
     </tbody>
 </table>
-<% end %><%- codeBlock {func : prv_98 , funcname : 'prv_98'} %>
+<% end %><%- codeMirrorBlock {func : prv_98 , funcname : 'prv_98'} %>
 
 ### 기능 
 
@@ -2764,7 +2810,7 @@ DATA-API(data-attribute)를 이용하는 방식
     
 	<!-- data-featurd="chart"를 정의하므로 차트를 적용한다. 옵션: 파이차트, 데이터URL data/pie.json -->
     <div data-featured="chart" data-chart-type="pie" data-chart-bind="data/pie.json"></div>
-<% end %><%- codeBlock {func : prv_99 , funcname : 'prv_99'} %>
+<% end %><%- codeMirrorBlock {func : prv_99 , funcname : 'prv_99'} %>
 
 javascript를 이용하는 방식
 
@@ -2801,7 +2847,7 @@ javascript를 이용하는 방식
 		    });
 	    });
     </script>
-<% end %><%- codeBlock {func : prv_100 , funcname : 'prv_100'} %>
+<% end %><%- codeMirrorBlock {func : prv_100 , funcname : 'prv_100'} %>
 
 ### 기능
 
