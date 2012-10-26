@@ -28,7 +28,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 					funcs.update && funcs.update( model, options );
 					break;
 				case 'delete':
-					funcs.delete && funcs.delete( model, options );
+					funcs[ 'delete' ] && funcs[ 'delete' ]( model, options );
 					break;
 			}
 		};
@@ -36,7 +36,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 	
 	sync.local = sync.createSync( {
 	
-		readAll: function( collection, options ) {
+		'readAll': function( collection, options ) {
 		
 			// 해당 Collection에 속해있던 Model인지 판별하기 위해 Collection의 url이 일치하는지를 확인한다.
 			new Lawnchair( function() {
@@ -52,7 +52,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 			} );
 		},
 		
-		read: function( model, options ) {
+		'read': function( model, options ) {
 			new Lawnchair( function() {
 				this.get( model.id, function( obj ) {
 
@@ -63,7 +63,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 			} );
 		},
 		
-		create: function( model, options ) {
+		'create': function( model, options ) {
 			new Lawnchair( function() {
 			
 				// id가 지정되어 있지 않으면 cid를 id로 사용한다.
@@ -78,7 +78,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 			} );
 		},
 		
-		update: function( model, options ) {
+		'update': function( model, options ) {
 			new Lawnchair( function() {
 				this.save( { key: model.id, model: model.toJSON() }, function( obj ) {
 					options.success( model );
@@ -86,7 +86,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 			} );
 		},
 		
-		delete: function( model, options ) {
+		'delete': function( model, options ) {
 			new Lawnchair( function() {
 				this.remove( model.id, function() {
 					options.success();
