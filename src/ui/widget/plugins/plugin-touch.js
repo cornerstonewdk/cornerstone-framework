@@ -8,15 +8,7 @@
  */
 
 ;(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([ "jquery" ], function ($) {
-            factory($, root, doc);
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
+    factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
     var _pos = {}, _offset, _touch_start_time, swipeTime = 350, swipeMinDistance = 10, _has_touch = ('ontouchstart' in window);
 

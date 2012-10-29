@@ -10,15 +10,8 @@
 // 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 막기 위함
 ;
 (function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([ "jquery" ], function ($) {
-            factory($, root, doc);
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
+    // Browser globals
+    factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
     /**
      Provides more functionality for the widget module..
@@ -122,8 +115,8 @@
         } else {
             root.addClass("inline");
             root.css({
-                width: root.width() - (input.width() * 2),
-                marginRight: input.width() * 0.25,
+                width:root.width() - (input.width() * 2),
+                marginRight:input.width() * 0.25,
                 float:"left"
             });
         }
@@ -240,15 +233,15 @@
 //            }
 
             if (vertical) {
-                handle.animate({top: x}, speed, callback);
+                handle.animate({top:x}, speed, callback);
                 if (conf.progress) {
-                    progress.animate({height: len - x + handle.height() / 2}, speed);
+                    progress.animate({height:len - x + handle.height() / 2}, speed);
                 }
 
             } else {
-                handle.animate({left: x}, speed, callback);
+                handle.animate({left:x}, speed, callback);
                 if (conf.progress) {
-                    progress.animate({width: x + handle.width() / 2}, speed);
+                    progress.animate({width:x + handle.width() / 2}, speed);
                 }
             }
 
@@ -477,8 +470,8 @@
 
                 $rangeTarget.addClass("inline");
                 $rangeTarget.css({
-                    width: $rangeTarget.width() - ($numTarget.width() * 2),
-                    marginRight: $numTarget.width() * 0.2,
+                    width:$rangeTarget.width() - ($numTarget.width() * 2),
+                    marginRight:$numTarget.width() * 0.2,
                     float:"left"
                 });
 

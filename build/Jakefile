@@ -109,7 +109,14 @@ runTask( 'deploy', [ 'validate' ], function() {
 		PATH_SOURCE + 'ui/widget/featured/media/widget-media.js',
 		PATH_DIST + 'ui/widget-media.js'
 	);
-
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/media/flashmediaelement.swf',
+		PATH_DIST + 'ui/flashmediaelement.swf'
+	);
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/media/silverlightmediaelement.xap',
+		PATH_DIST + 'ui/silverlightmediaelement.xap'
+	);
 	j.concat(
 		PATH_SOURCE + 'ui/widget/featured/media/widget-media.css',
 		PATH_DIST + 'ui/widget-media.css'
