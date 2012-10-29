@@ -1,0 +1,127 @@
+<div class="container-fluid" id="makePricePlan">
+	<div class="row-fluid">
+		<!-- Left menu -->
+		<div class="span3">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list" id="dragMenu">
+					<li class="nav-header">고객 조건</li>
+					<li data-menu-customertype="basic">
+						<div data-dragObject="customertype" data-customertype="basic">일반</div>
+					</li>
+					<li data-menu-customertype="woman">
+						<div data-dragObject="customertype" data-customertype="woman">여성</div>
+					</li>
+					<li data-menu-customertype="ting">
+						<div data-dragObject="customertype" data-customertype="ting">팅</div>
+					</li>
+					<li data-menu-customertype="silver">
+						<div data-dragObject="customertype" data-customertype="silver">실버</div>
+					</li>
+					<li class="nav-header">상품 조건</li>
+					<li data-menu-producttype="voice">
+						<div data-dragObject="producttype" data-producttype="voice">음성</div>
+					</li>
+					<li data-menu-producttype="data">
+						<div data-dragObject="producttype" data-producttype="data">데이터</div>
+					</li>
+					<li data-menu-producttype="message">
+						<div data-dragObject="producttype" data-producttype="message">메세징</div>
+					</li>
+					<li data-menu-producttype="roaming">
+						<div data-dragObject="producttype" data-producttype="roaming">로밍</div>
+					</li>
+					<li class="nav-header">회선 조건</li>
+					<li data-menu-commtype="3g">
+						<div data-dragObject="commtype" data-commtype="3g">3G</div>
+					</li>
+					<li data-menu-commtype="lte">
+						<div data-dragObject="commtype" data-commtype="lte">LTE</div>
+					</li>
+					<li class="nav-header">할인 조건</li>
+					<li data-menu-discounttype="double">
+						<div data-dragObject="discounttype" data-discounttype="double">더블할인</div>
+					</li>
+					<li data-menu-discounttype="special">
+						<div data-dragObject="discounttype" data-discounttype="special">스페셜할인</div>
+					</li>
+					<li data-menu-discounttype="good">
+						<div data-dragObject="discounttype" data-discounttype="good">우량할인</div>
+					</li>
+					<li data-menu-discounttype="tfamily">
+						<div data-dragObject="discounttype" data-discounttype="tfamily">T끼리 온가족할인</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- contents -->
+		<div class="span9">
+			<div class="row-fluid">
+				<div class="span2">
+					<label>상품명 : </label>
+				</div>
+				<div class="span8">
+					<input type="text" id="pricePlanName" />
+				</div>
+				<div class="span2">
+					<button class="btn" id="saveButton">저장</button>
+				</div>
+			</div>
+			
+			<div class="row-fluid">
+				<h3>고객 조건</h3>
+				<div id="dropCustomerTypeZone" class="dropZone"></div>
+			</div>
+			
+			<div class="row-fluid">
+				<h3>상품 조건</h3>
+				<div id="dropProductTypeZone" class="dropZone"></div>
+			</div>
+			
+			<div class="row-fluid">
+				<h3>회선 조건</h3>
+				<div id="dropCommTypeZone" class="dropZone"></div>
+			</div>
+			
+			<div class="row-fluid">
+				<h3>할인 조건</h3>
+				<div id="dropDiscountTypeZone" class="dropZone"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- START Modal -->
+<div id="modal" title="Modal" class="widget-container">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="dash-widget no-padding">
+				<!-- 음성 (분) 선택 모달 -->
+				<div class="modal fade" id="voiceModal" role="dialog" aria-labelledby="myModalLabel"
+					 aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3>상품조건 > 음성</h3>
+					</div>
+					<div class="modal-body">
+						<div id="inputRange" title="Input Range" class="widget-container">
+							<div class="span4">
+								<div class="dash-widget no-padding widget-rangeinput">
+									<label>
+										<input type="range" value="10" min="0" max="100"
+											   class="widget-range btn-block"/>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+						<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //END Modal -->

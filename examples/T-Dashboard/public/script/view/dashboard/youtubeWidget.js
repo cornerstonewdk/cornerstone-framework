@@ -29,23 +29,7 @@ define(
 					$('#' + node.id + '-mode').html('mode: ' + player.pluginType);
 					$(".pluginType").text("(" + player.pluginType.toUpperCase() + ")");
 				}
-			}); 
-
-			
-			// Jsonp.get({
-				// url: 'http://search.twitter.com/search.json',
-				// data: {
-					// q: 'SKtelecom'
-				// },
-				// success: function(data) {
-					// self.drawList(data.results);
-				// },
-				// error: function() {
-					// alert('오류가 발생하였습니다.');
-				// },
-				// callback: 'jsonFlickrFeed',
-				// timeout: 5000
-			// });
+			});
 		},
 		
 	});

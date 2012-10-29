@@ -25,15 +25,13 @@ requirejs.config({
         "observer": {
         	deps:["enquire"]
         },
-
 	}
 });
 
-define(['router', 'observer', 'widget-plugins'], function(Router, Observer) {
+define(['router'], function(Router) {
 	return {
 		launch: function() {
 			// 애플리게이션의 시작점
-			Observer.resize.listen();
 		}
 	}
 });

@@ -19,6 +19,8 @@
 	};
 	
 	PageTransition.prototype.transition = function(direction, View) {
+		if(direction == '-') return;
+		
 		switch (direction) {
 			case '|':
 				var self = this;

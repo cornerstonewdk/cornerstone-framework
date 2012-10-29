@@ -1,6 +1,5 @@
 define(
 	[
-		'gesture-view',
 		'jquery', 
 		'backbone',
 		'view/dashboard/twitterWidget', 
@@ -8,13 +7,14 @@ define(
 		'view/dashboard/vocSatisfactionWidget', 
 		'view/dashboard/vocWidget', 
 		'view/dashboard/facebookFeedWidget', 
+		'view/dashboard/facebookLikeWidget', 
+		'view/dashboard/blogWidget', 
 		'template!/template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
 		'widget-scrollview',
 		'style!/style/dashboard/dashboardStyle'
 	], function(
-		GestureView,
 		$, 
 		Backbone, 
 		TwitterWidget,
@@ -22,9 +22,11 @@ define(
 		VocSatisfactionWidget, 
 		VocWidget, 
 		FacebookFeedWidget, 
+		FacebookLikeWidget, 
+		BlogWidget, 
 		template
 	){
-	var DashboardView = GestureView.extend({
+	var DashboardView = Backbone.View.extend({
 		el : 'div#contentsView',
 		
 		initialize: function() {
@@ -49,7 +51,7 @@ define(
 		},
 		
 		policyClick: function(e) {
-			document.location = '#pricePolicy';
+			document.location = '#pricePlan';
 		},
 		
 		snsClick: function(e) {
@@ -94,8 +96,12 @@ define(
 			youtubeWidget.render();
 			
 			//facebook feed
-			var facebookFeedWidget = new FacebookFeedWidget();
-			facebookFeedWidget.render();
+			// var facebookFeedWidget = new FacebookFeedWidget();
+			// facebookFeedWidget.render();
+			
+			//facebook like widget
+			var facebookLikeWidget = new FacebookLikeWidget();
+			facebookLikeWidget.render();
 			
 			//LTE 계통현황 차트 그려주기
 			$.getJSON("data/bar.json").success(function(json) {
@@ -108,7 +114,10 @@ define(
 			//트위터 그리기
 			var twitterWidget = new TwitterWidget();
 			twitterWidget.render();
-		
+			
+			//blog 그리기
+			var blogWidget = new BlogWidget();
+			blogWidget.render();
 		},
 		
 		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)

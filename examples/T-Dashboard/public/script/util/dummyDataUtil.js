@@ -2,12 +2,38 @@ define(function(require) {
 	var $ = require("jquery");
 
 	var DummyDataUtil = function(){
-		
+		this.pricePlanList = {};	//요금상품 리스트
 	};
 	
 	//랜덤 숫자 생성
 	DummyDataUtil.prototype.randomNumber = function(n1, n2) {
 		return Math.floor( (Math.random() * (n2 - n1 + 1)) + n1 );
+	};
+	
+	//UUID 생성
+	DummyDataUtil.prototype.makeUuid = function() {
+		var chars = '0123456789abcdef'.split('');
+	
+		var uuid = [], rnd = Math.random, r;
+		uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+		uuid[14] = '4'; // version 4
+	
+		for (var i = 0; i < 36; i++) {
+			if (!uuid[i]) {
+				r = 0 | rnd()*16;
+				uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r & 0xf];
+			}
+		}
+	
+		return uuid.join('');
+	};
+	
+	DummyDataUtil.prototype.getPricePlan = function() {
+		return this.pricePlanList;
+	};
+	
+	DummyDataUtil.prototype.addPricePlan = function(obj) {
+		this.pricePlanList[obj['pricePlanId']] = obj;
 	};
 	
 	//지점 정보 생성

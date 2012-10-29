@@ -637,7 +637,8 @@ Custom
 	display: none;
 }
 
-.filtering .nv-legendWrap {
+.filtering .nv-legendWrap,
+.chart.filtering .nv-legendWrap{
 	display: block;
 }
 

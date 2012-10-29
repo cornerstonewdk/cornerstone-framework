@@ -14,12 +14,22 @@
 		this.el = $('ul.breadcrumb');
 		this.className = 'Breadcrumb';
 		this.itemList = new Array();
+		this.prevRoute = null;
 	};
 	
 	BreadcrumbManager.prototype.route = function(route, title) {
 		var alreadyRoute = false;
 		var sameIdx = 0;
 		var isRoot = this.itemList.length == 0 ? true : false;
+		
+		if(this.prevRoute != null) {
+			if(this.prevRoute == route) {
+				this.prevRoute = route;
+				return '-';	
+			}
+		}
+		
+		this.prevRoute = route;
 		
 		for(var i = 0; i < this.itemList.length; i++) {
 			var item = this.itemList[i];
@@ -38,6 +48,7 @@
 		} else {
 			for(var i = sameIdx + 1; i < this.itemList.length; i++) {
 				 this.itemList.pop();
+				 i--;
 			}
 			
 			this.draw();

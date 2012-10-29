@@ -24,6 +24,10 @@
 		callback(this.screenState);
 	};
 	
+	ResizeObserver.prototype.removeListener = function(selector) {
+		delete this.listener[selector];
+	};
+	
 	ResizeObserver.prototype.getListener = function() {
 		return this.listener;
 	};
@@ -47,23 +51,23 @@
 		
 		enquire.register("screen and (min-width:1200px)", {
 			match: function() {
-				// console.log('Large desktop');
-				self.resizeOccurred('desktop');
+				self.resizeOccurred('desktopL-l');
+			},
+		}).register("screen and (min-width:978px) and (max-width:1199px)", {
+			match: function() {
+				self.resizeOccurred('desktop-s');
 			},
 		}).register("screen and (min-width:768px) and (max-width:979px)", {
 			match: function() {
-				// console.log('Portrait tablet to landscape and desktop');
 				self.resizeOccurred('tablet');
 			},
 		}).register("screen and (min-width:481px) and (max-width:767px)", {
 			match: function() {
-				// console.log('Landscape phone to portrait tablet');
-				self.resizeOccurred('phone');
+				self.resizeOccurred('phone-l');
 			},
 		}).register("screen and (max-width:480px)", {
 			match: function() {
-				// console.log('Landscape phone and down');
-				self.resizeOccurred('phone');
+				self.resizeOccurred('phone-s');
 			},
 		}).listen(5);
 	};

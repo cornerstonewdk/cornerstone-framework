@@ -10,6 +10,8 @@ var express = require('express')
 
 var app = express();
 
+var YQL = require('yql');
+
 app.configure(function(){
   app.set('port', process.env.PORT || 8089);
   app.set('views', __dirname + '/views');
@@ -32,6 +34,24 @@ app.get('/', function(req, res){
 		} else {
 			res.end(data);	
 		}
+	});
+});
+
+app.get('/getSktBlogRss', function(req, res){
+	new YQL.exec("SELECT * FROM rss where url = 'http://blog.sktworld.co.kr/rss'", function(response) {
+	
+		if (response.error) {
+			console.log("Example #1... Error: " + response.error.description);
+			res.writeHead(200, {'Content-Type': 'text/javascript'});
+			res.end(response.error.description);
+		} 
+		else {
+			var result = JSON.stringify(response.query.results);
+			
+			res.writeHead(200, {'Content-Type': 'text/javascript'});
+	        res.end(result)
+		}
+	
 	});
 });
 
