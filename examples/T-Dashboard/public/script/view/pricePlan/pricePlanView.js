@@ -110,6 +110,10 @@ define([
 			this.planSelectProc($firstObj);
 		},
 		
+		viewDidAppear: function() {
+			
+		},
+		
 	});
 	
 	return new PricePolicyView;

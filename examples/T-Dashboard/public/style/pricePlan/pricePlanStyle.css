@@ -2,7 +2,7 @@
 /*
  * 드랍존의 스타일
  */
-#pricePlan div.dropZone {
+div#pricePlan div.dropZone {
 	position: relative;
 	width: 100%;
 	height: 80px;
@@ -15,7 +15,7 @@
 /*
  * 드레그 오브젝트가 드랍존으로 왔을때의 스타일 변경
  */
-#pricePlan div.dropZone > div {
+div#pricePlan div.dropZone > div {
 	position: relative;
 	left:0 ! important; top:0 ! important;
 	float: left;
@@ -31,38 +31,38 @@
 	font-size:16px;
 	font-weight:bold;
 }
-#pricePlan div.dropZone > div > p {
+div#pricePlan div.dropZone > div > p {
 	padding-top:3px;
 	font-size:14px;
 	font-weight:normal;
 	display: block;
 }
 
-#pricePlan .prod-name2 {
+div#pricePlan .prod-name2 {
 	text-align:left;
 }
-#pricePlan .prod-name2 label {
+div#pricePlan .prod-name2 label {
 	line-height:180%; 
 	font-size:26px;
 	padding-right:10px;
 }
 
-#pricePlan .prod-form input, .prod-form .btn {
+div#pricePlan .prod-form input, .prod-form .btn {
 	vertical-align: top;
 }
 
-#pricePlan #dropCustomerTypeZone > div {
+div#pricePlan #dropCustomerTypeZone > div {
 	display: none;
 }
 
-#pricePlan #dropProductTypeZone > div {
+div#pricePlan #dropProductTypeZone > div {
 	display: none;
 }
 
-#pricePlan #dropCommTypeZone > div {
+div#pricePlan #dropCommTypeZone > div {
 	display: none;
 }
 
-#pricePlan #dropDiscountTypeZone > div {
+div#pricePlan #dropDiscountTypeZone > div {
 	display: none;
 }

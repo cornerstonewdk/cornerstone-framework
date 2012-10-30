@@ -71,8 +71,9 @@ define([
 			}
 			
 			$(this.el).html(template(handleBarParams));
-			
-
+		},
+		
+		viewDidAppear: function() {
 			//드래그앤 드롭 설정
 			this.$dropCustomerTypeZone = $('div#dropCustomerTypeZone');		//고객조건 드랍존
 			this.$dropProductTypeZone = $('div#dropProductTypeZone');		//상품조건 드랍존
