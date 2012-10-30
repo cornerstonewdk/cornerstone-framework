@@ -1,0 +1,19 @@
+<div class="container" id="voc">
+	<div class="row">
+		<!-- left menu -->
+		<div class="span3">
+			<div class="well sidebar-nav" >
+				<div id="vocScrollView" class="scrollview" >
+					<div class="lists scroller">
+						<ul id="vocList" class="lists-con">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- desktop contents -->
+		<div class="span9" id="vocData">
+		</div>
+	</div>
+</div>
