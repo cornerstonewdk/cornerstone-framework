@@ -146,7 +146,7 @@ define([
 		events: {
 			'click button#saveButton': 'clickedSaveButton',
 			'click button.removeButton': 'clickedRemoveButton',
-			'click button.btn.btn-primary': 'change',
+			// 'click button.btn.btn-primary': 'change',
 		},
 		
 		//저장 버튼 눌렸을때
