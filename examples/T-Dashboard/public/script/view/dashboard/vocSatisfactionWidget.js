@@ -3,8 +3,8 @@ define(
 		'jquery', 
 		'backbone', 
 		'util/dummyDataUtil', 
-		'template!/template/dashboard/vocSatisfactionWidget',
-		'style!/style/dashboard/vocSatisfactionWidgetStyle',
+		'template!../../../template/dashboard/vocSatisfactionWidget',
+		'style!../../../style/dashboard/vocSatisfactionWidgetStyle',
 	], function(
 		$, 
 		Backbone, 

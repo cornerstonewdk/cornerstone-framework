@@ -2,10 +2,10 @@ define(
 	[
 		'jquery', 
 		'backbone', 
-		'template!/template/dashboard/twitterWidget',
-		'template!/template/dashboard/twitterTimeline',
+		'template!../../../template/dashboard/twitterWidget',
+		'template!../../../template/dashboard/twitterTimeline',
 		'widget-scrollview',
-		'style!/style/dashboard/twitterWidgetStyle',
+		'style!../../../style/dashboard/twitterWidgetStyle',
 		'jsonp'
 	], function(
 		$, 

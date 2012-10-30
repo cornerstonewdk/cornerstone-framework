@@ -2,8 +2,8 @@
 		'jquery', 
 		'backbone',
 		'util/dummyDataUtil',  
-		'template!/template/dashboard/vocWidget',
-		'template!/template/voc/vocListCell'
+		'template!../../../template/dashboard/vocWidget',
+		'template!../../../template/voc/vocListCell'
 ], function(
 		$, 
 		Backbone, 

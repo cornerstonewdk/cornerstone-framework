@@ -2,8 +2,8 @@
 	[
 		'jquery', 
 		'backbone', 
-		'template!/template/dashboard/blogWidget',
-		'template!/template/dashboard/blogCell'
+		'template!../../../template/dashboard/blogWidget',
+		'template!../../../template/dashboard/blogCell'
 	], function(
 		$, 
 		Backbone, 

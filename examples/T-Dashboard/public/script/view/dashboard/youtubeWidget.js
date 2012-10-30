@@ -2,8 +2,8 @@ define(
 	[
 		'jquery', 
 		'backbone', 
-		'template!/template/dashboard/youtubeWidget',
-		'style!/style/dashboard/youtubeWidgetStyle',
+		'template!../../../template/dashboard/youtubeWidget',
+		'style!../../../style/dashboard/youtubeWidgetStyle',
 		'jsonp',
 		'widget-media'
 	], function(

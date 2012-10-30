@@ -1,7 +1,7 @@
 ;define([
 		'jquery', 
 		'backbone',
-		'template!/template/dashboard/facebookLikeWidget'
+		'template!../../../template/dashboard/facebookLikeWidget'
 ], function(
 		$, 
 		Backbone, 

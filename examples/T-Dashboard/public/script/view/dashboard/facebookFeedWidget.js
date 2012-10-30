@@ -1,7 +1,7 @@
 ;define([
 		'jquery', 
 		'backbone',
-		'template!/template/dashboard/facebookFeedWidget'
+		'template!../../../template/dashboard/facebookFeedWidget'
 ], function(
 		$, 
 		Backbone, 
