@@ -22,7 +22,7 @@
 			
 			$(this.el).html(template());
 			
-			$.getJSON("/getSktBlogRss").success(function(json) {
+			$.getJSON("/t-dashboard/getSktBlogRss").success(function(json) {
 				self.drawList(json.item);
 			});
 		},

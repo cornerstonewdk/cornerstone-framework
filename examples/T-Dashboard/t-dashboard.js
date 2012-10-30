@@ -37,7 +37,7 @@ app.get('/', function(req, res){
 	});
 });
 
-app.get('/getSktBlogRss', function(req, res){
+app.get('/t-dashboard/getSktBlogRss', function(req, res){
 	new YQL.exec("SELECT * FROM rss where url = 'http://blog.sktworld.co.kr/rss'", function(response) {
 	
 		if (response.error) {
