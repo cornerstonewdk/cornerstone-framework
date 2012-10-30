@@ -294,41 +294,69 @@
 	}
 }
 
-.btn-group .icon-up,
-.btn-group .icon-down,
-.btn-group .icon-set{
+.btn-group .btn i.icon-up,
+.btn-group .btn i.icon-down,
+.btn-group .btn i.icon-set, {
 	width:24px;
 	height:24px;
 	display:block;
 	content:"";
-	background:url('../img/icon.png') no-repeat 1px -652px;
-	background-size:138px;
+	background-image:url('../img/icon.png');
+	background-size: 320px;
 }
 
-.btn-group .icon-down {
-	background-position: 1px -745px;
+.btn-group .btn .icon-up {
+	background-position: -105px -380px;
 }
 
-.btn-group .icon-set {
-	background-position: 1px -840px;
+.btn-group .btn .icon-down {
+	background-position: -105px -425px;
 }
 
-.btn-group .icon-up:hover,
-.btn-group .icon-up:active,
-.btn-group .icon-up.active{
-	background-position: 1px -699px;
+.btn-group .btn .icon-set {
+	background-position: -105px -336px;
 }
 
-.btn-group .icon-down:hover,
-.btn-group .icon-down:active,
-.btn-group .icon-down.active {
-	background-position: 1px -793px;
+.btn-group .btn:active .icon-up,
+.btn-group .btn.active .icon-up{
+	background-position: -149px -380px;
 }
 
-.btn-group .icon-set:hover,
-.btn-group .icon-set:active,
-.btn-group .icon-set.active {
-	background-position: 1px -887px;
+.btn-group .btn:active .icon-down,
+.btn-group .btn.active .icon-down {
+	background-position: -149px -425px;
+}
+
+.btn-group .btn:active .icon-set,
+.btn-group .btn.active .icon-set {
+	background-position: -149px -336px;
+}
+
+.btn-group .btn-primary .icon-up {
+	background-position: -17px -380px;
+}
+
+.btn-group .btn-primary .icon-down {
+	background-position: -17px -425px;
+}
+
+.btn-group .btn-primary .icon-set {
+	background-position: -16px -336px;
+}
+
+.btn-group .btn-primary:active .icon-up,
+.btn-group .btn-primary.active .icon-up{
+	background-position: -61px -380px;
+}
+
+.btn-group .btn-primary:active .icon-down,
+.btn-group .btn-primary.active .icon-down {
+	background-position: -61px -425px;
+}
+
+.btn-group .btn-primary:active .icon-set,
+.btn-group .btn-primary.active .icon-set {
+	background-position: -60px -336px;
 }
 
 .btn-group .btn.dropdown-toggle,

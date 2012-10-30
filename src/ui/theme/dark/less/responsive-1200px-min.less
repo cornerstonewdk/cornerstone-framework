@@ -231,14 +231,16 @@
 		background: none;
 	}
 
-	.lists ul li:hover i {
+	.lists ul li:hover i,
+	.lists ul li.active i,
+	.lists .lists-con li.sub-group ul li:hover i,
+	.lists .lists-con li.sub-group ul li.active i {
 		display: block;
 		width: 25px;
 		height: 25px;
 		float: right;
-		background: url('../img/icon_blue03.png') no-repeat left top;
-		background-size: 287px;
-		background-position: -135px -55px;
+		background: url('../img/icon.png') no-repeat -66px -27px;
+		background-size: 320px;
 	}
 
 	.lists ul li:last-child:hover {
@@ -521,5 +523,53 @@
 		height: 100%;
 		border: 3px solid #ea002c;
 		.border-radius(8px);
+	}
+
+	.btn-group .btn:hover .icon-up,
+	.btn-group .btn:active .icon-up,
+	.btn-group .btn.active .icon-up{
+		background-position: -149px -380px;
+	}
+
+	.btn-group .btn:hover .icon-down,
+	.btn-group .btn:active .icon-down,
+	.btn-group .btn.active .icon-down {
+		background-position: -149px -425px;
+	}
+
+	.btn-group .btn:hover .icon-set,
+	.btn-group .btn:active .icon-set,
+	.btn-group .btn.active .icon-set {
+		background-position: -149px -336px;
+	}
+
+	.btn-group .btn-primary .icon-up {
+		background-position: -17px -380px;
+	}
+
+	.btn-group .btn-primary .icon-down {
+		background-position: -17px -425px;
+	}
+
+	.btn-group .btn-primary .icon-set {
+		background-position: -16px -336px;
+	}
+
+	.btn-group .btn-primary:hover .icon-up,
+	.btn-group .btn-primary:active .icon-up,
+	.btn-group .btn-primary.active .icon-up{
+		background-position: -61px -380px;
+	}
+
+	.btn-group .btn-primary:hover .icon-down,
+	.btn-group .btn-primary:active .icon-down,
+	.btn-group .btn-primary.active .icon-down {
+		background-position: -61px -425px;
+	}
+
+	.btn-group .btn-primary:hover .icon-set,
+	.btn-group .btn-primary:active .icon-set,
+	.btn-group .btn-primary.active .icon-set {
+		background-position: -60px -336px;
 	}
 }
