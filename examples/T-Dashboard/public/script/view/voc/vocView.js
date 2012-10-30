@@ -3,11 +3,11 @@
 		'jquery', 
 		'backbone',
 		'util/dummyDataUtil',  
-		'template!/template/voc/voc',
-		'template!/template/voc/vocListCell',
-		'template!/template/voc/vocInfo', 
+		'template!../../../template/voc/voc',
+		'template!../../../template/voc/vocListCell',
+		'template!../../../template/voc/vocInfo', 
 		'widget-scrollview', 
-		'style!/style/voc/vocStyle'
+		'style!../../../style/voc/vocStyle'
 ], function(
 		GestureView,
 		$, 
