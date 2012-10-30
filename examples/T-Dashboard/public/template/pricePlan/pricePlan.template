@@ -9,8 +9,7 @@
 		</div>
 		
 		<!-- contents -->
-		<div class="span9">
-			test
+		<div class="span9" id="pricePlanContents"			
 		</div>
 	</div>
 </div>

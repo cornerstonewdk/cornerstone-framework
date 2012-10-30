@@ -9,6 +9,7 @@ define(
 		'view/dashboard/facebookFeedWidget', 
 		'view/dashboard/facebookLikeWidget', 
 		'view/dashboard/blogWidget', 
+		'view/dashboard/pricePlanWidget', 
 		'template!../../../template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
@@ -24,6 +25,7 @@ define(
 		FacebookFeedWidget, 
 		FacebookLikeWidget, 
 		BlogWidget, 
+		PricePlanWidget, 
 		template
 	){
 	var DashboardView = Backbone.View.extend({
@@ -94,6 +96,10 @@ define(
 			//유투부 그리기
 			var youtubeWidget = new YoutubeWidget();
 			youtubeWidget.render();
+			
+			//정책 그리기
+			var pricePlanWidget = new PricePlanWidget();
+			pricePlanWidget.render();
 			
 			//facebook feed
 			// var facebookFeedWidget = new FacebookFeedWidget();

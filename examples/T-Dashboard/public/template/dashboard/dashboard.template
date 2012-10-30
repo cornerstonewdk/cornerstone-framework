@@ -25,6 +25,7 @@
 			<div class="sbox">
 				<h1 class="title">정책</h1>
 			</div>
+			<div class="widget" id="planWidget"></div>
 		</div>
 		
 		<div class="dashboardItem">
