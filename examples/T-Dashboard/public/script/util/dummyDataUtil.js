@@ -2,7 +2,78 @@ define(function(require) {
 	var $ = require("jquery");
 
 	var DummyDataUtil = function(){
-		this.pricePlanList = {};	//요금상품 리스트
+		this.pricePlanList = {
+			"1": {
+				"pricePlanId": "1",
+				"makeDate": "2011-05-01",
+				"applyDate": "2011-06-01",
+				"pricePlanName": "LTE34",
+				"customertype": [
+					{
+						"value": "basic"
+					}
+				],
+				"producttype": [
+					{
+						"value": "voice",
+						"extraData": "120"
+					},
+					{
+						"value": "data",
+						"extraData": "0.55"
+					},
+					{
+						"value": "message",
+						"extraData": "200"
+					}
+				],
+				"commtype": [
+					{
+						"value": "lte"
+					}
+				],
+				"discounttype": [
+					{
+						"value": "lteplus"
+					}
+				]
+			},
+			"2": {
+				"pricePlanId": "2",
+				"makeDate": "2011-07-01",
+				"applyDate": "2011-08-01",
+				"pricePlanName": "LTE42",
+				"customertype": [
+					{
+						"value": "basic"
+					}
+				],
+				"producttype": [
+					{
+						"value": "voice",
+						"extraData": "180"
+					},
+					{
+						"value": "data",
+						"extraData": "1.1"
+					},
+					{
+						"value": "message",
+						"extraData": "200"
+					}
+				],
+				"commtype": [
+					{
+						"value": "lte"
+					}
+				],
+				"discounttype": [
+					{
+						"value": "lteplus"
+					}
+				]
+			}
+		};	//요금상품 리스트
 	};
 	
 	//랜덤 숫자 생성

@@ -13,7 +13,7 @@
 		</div>
 		
 		<!-- desktop contents -->
-		<div class="span9" id="vocData">
+		<div class="span9 voc-area" id="vocData">
 		</div>
 	</div>
 </div>

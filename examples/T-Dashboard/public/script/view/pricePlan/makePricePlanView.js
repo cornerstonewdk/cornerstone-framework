@@ -15,6 +15,7 @@ define([
 		
 		//선택된 상품 데이터
 		selectPlanData: null,
+		isNew: false,
 		
 		el : 'div#contentsView',
 		
@@ -32,25 +33,63 @@ define([
 		render: function() {
 			var self = this;
 			
-			$(this.el).html(template());
-			$("input[type=range]").rangeinput();
+			var handleBarParams = {};
+			
+			var today = new Date();
+			today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+			
+			if(this.selectPlanData != null) {
+				this.isNew = false;
+				this.selectPlanData = JSON.parse(decodeURIComponent(this.selectPlanData));
+				
+				handleBarParams['pricePlanName'] = this.selectPlanData['pricePlanName']
+				handleBarParams['applyDate'] = this.selectPlanData['applyDate'];
+				handleBarParams['makeData'] = this.selectPlanData['makeData'];
+				
+				handleBarParams['voiceData'] = 0;
+				handleBarParams['dataData'] = 0;
+				handleBarParams['messageData'] = 0;
+				handleBarParams['roamingData'] = 0;
+				
+				var producTypeList = this.selectPlanData['producttype'];
+				for(var i = 0; i < producTypeList.length; i++) {
+					var ptype = producTypeList[i];
+					handleBarParams[ptype['value'] + 'Data'] = ptype['extraData'];
+				}
+				
+			} else {
+				this.isNew = true;
+				
+				handleBarParams['pricePlanName'] = '';
+				handleBarParams['applyDate'] = today;
+				handleBarParams['makeData'] = today;
+				
+				handleBarParams['voiceData'] = 0;
+				handleBarParams['dataData'] = 0;
+				handleBarParams['messageData'] = 0;
+				handleBarParams['roamingData'] = 0;
+			}
+			
+			$(this.el).html(template(handleBarParams));
+			
 
 			//드래그앤 드롭 설정
 			this.$dropCustomerTypeZone = $('div#dropCustomerTypeZone');		//고객조건 드랍존
 			this.$dropProductTypeZone = $('div#dropProductTypeZone');		//상품조건 드랍존
 			this.$dropDiscountTypeZone = $('div#dropDiscountTypeZone');		//할인조건 드랍존
 			this.$dropCommTypeZone = $('div#dropCommTypeZone');				//회선조건 드랍존
-			$('div[ data-dragObject]').drag().on("dragEnd", function(e){	//드레그 오브젝트 설정
+			$('div[ data-dragObject]').drag({drag:false}).on("drag",function (e, y, x) {
+                $(this).css({
+                    top: y,
+                    left: x
+                });
+            }).on("dragEnd", function(e){	//드레그 오브젝트 설정
 				self.dropEvent(e);
 			});
 			
-			if(this.selectPlanData != null) {
-				this.selectPlanData = JSON.parse(decodeURIComponent(this.selectPlanData));
-			}
-			
 			//조건에 따라 새로 만들던지 기존것 재현하여 편집할 수 있도록 처리
 			if(this.selectPlanData != null) {	//수정일때 데이터서 로딩
-				$('#pricePlanName').val(this.selectPlanData['pricePlanName']);
+				$('#makeDate').show();
 				
 				var customerTypeList = this.selectPlanData['customertype'];
 				for(var i = 0; i < customerTypeList.length; i++) {
@@ -62,6 +101,21 @@ define([
 				for(var i = 0; i < producTypeList.length; i++) {
 					var ptype = producTypeList[i];
 					this.moveToDropZone($('div[data-producttype="' + ptype['value'] + '"]'), this.$dropProductTypeZone);
+					$('div[data-producttype="' + ptype['value'] + '"]').attr('data-extradata', ptype['extraData']);
+					switch(ptype['value']) {
+						case 'voice':
+							$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 분)');
+							break;
+						case 'data':
+							$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' GB)');
+							break;
+						case 'message':
+							$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 건)');
+							break;
+						case 'roaming':
+							$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 분)');
+							break;
+					}
 				}
 				
 				var commTypeList = this.selectPlanData['commtype'];
@@ -77,18 +131,22 @@ define([
 				}
 				
 			} else {	//새로 만들기일때 기본 셋팅
+				$('#makeDate').hide();
+				
 				//일반을 기본적으로 선택되게 이동
 				this.moveToDropZone($('div[data-customertype="basic"]'), this.$dropCustomerTypeZone);
 				this.moveToDropZone($('div[data-producttype="voice"]'), this.$dropProductTypeZone);
 			}
 			
+			$("input[type=range]").rangeinput({"inputShow":true,"progress":true});
+			$('.datepicker').datepicker({language: "ko"});
 		},
 		
 		//이벤트 정의
 		events: {
 			'click button#saveButton': 'clickedSaveButton',
 			'click button.removeButton': 'clickedRemoveButton',
-			'click button.btn.btn-primary': 'clickedSaveButton',
+			'click button.btn.btn-primary': 'change',
 		},
 		
 		//저장 버튼 눌렸을때
@@ -121,7 +179,18 @@ define([
 			var data = {};
 			
 			//아이디 생성 및 상품명 취합
-			data['pricePlanId'] = DummyDataUtil.makeUuid();
+			if(this.isNew) {
+				data['pricePlanId'] = DummyDataUtil.makeUuid();
+				
+				var today = new Date();
+				data['makeDate'] = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+				data['applyDate'] = $('#applyDate').val();
+			} else {
+				data['pricePlanId'] = this.selectPlanData['pricePlanId'];
+				data['makeDate'] = this.selectPlanData['makeDate'];
+				data['applyDate'] = this.selectPlanData['applyDate'];
+			}
+			
 			data['pricePlanName'] = pricePlanName;
 			
 			//고객 조건 취합
@@ -140,9 +209,10 @@ define([
 			for(var i = 0; i < productList.length; i++) {
 				var $pdata = $(productList[i]);
 				var ptype = $pdata.attr('data-producttype');
+				var pdata = $('#'+ ptype+ 'Data').val();
 				productType.push({
 					'value': ptype,
-					'extraData': '90',
+					'extraData': pdata,
 				});
 			}
 			data['producttype'] = productType;
@@ -211,7 +281,7 @@ define([
 			//기본 위치로 설정
 			$obj.css({
 				top: 0,
-				left: 0
+				left: -12
 			});
 			
 			//객체 이동
@@ -313,7 +383,7 @@ define([
 		reverseObject: function($dragObj) {
 			$dragObj.animate({
 				top:0,
-				left:0
+				left:-12,
 			}, function () {
 				// console.log('ani done!');
 			});	
@@ -337,10 +407,13 @@ define([
 							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#voiceModal">내용편집</button>');
 							break;
 						case 'data':
+							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#dataModal">내용편집</button>');
 							break;
 						case 'message':
+							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#messageModal">내용편집</button>');
 							break;
 						case 'roaming':
+							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#roamingModal">내용편집</button>');
 							break;
 					}
 					break;

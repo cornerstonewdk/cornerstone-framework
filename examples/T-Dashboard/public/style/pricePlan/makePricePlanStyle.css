@@ -5,6 +5,8 @@ ul#dragMenu > li:not(.nav-header) {
 	list-style: none;
 	position: relative;
 	height: 40px;
+	padding:0;
+	margin:5px 0;
 }
 
 /*
@@ -13,13 +15,24 @@ ul#dragMenu > li:not(.nav-header) {
 ul#dragMenu > li:not(.nav-header) > div {
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: -12px;
 	z-index: 1000;
-	width: 100%;
 	height: 40px;
+	line-height: 38px;
 	border: solid 1px;
 	margin: 1px;
 	background-color: #FFF;
+	border-radius:4px;
+	width: 100%;
+	padding:0 12px;
+	margin:0;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+ul#dragMenu > li:not(.nav-header) > div > p {
+	display: none;
 }
 
 /*
@@ -29,22 +42,62 @@ div.dropZone {
 	position: relative;
 	width: 100%;
 	height: 80px;
-	padding-top: 10px;
-	background-color: #999;
+	padding: 5px;
+	background-color: #666;
 	border: solid 1px;
+	border-radius:4px;
 }
 
 /*
  * 드레그 오브젝트가 드랍존으로 왔을때의 스타일 변경
  */
 div.dropZone > div {
-	position: static;
+	position: relative;
+	left:0 ! important; top:0 ! important;
 	float: left;
 	z-index: 1000;
 	width: 120px;
-	height: 60px;
+	height: 37px;
 	border: solid 1px;
 	margin: 1px;
 	background-color: #FFF;
+	border-radius:4px;
+	padding:33px 5px 5px 5px;
+	text-align:center;
+	font-size:16px;
+	font-weight:bold;
+}
+div.dropZone > div > p {
+	padding-top:3px;
+	font-size:14px;
+	font-weight:normal;
+	display: block;
 }
 
+.prod-name {
+	text-align:right;
+}
+.prod-name label {
+	line-height:180%; 
+	font-size:26px;
+	padding-right:10px;
+}
+
+.prod-form input, .prod-form .btn {
+	vertical-align: top;
+}
+
+.removeButton {
+	position:absolute;
+	right:3px; 
+	top:3px;
+	padding:7px 7px;
+	font-size:14px;
+}
+.modifyButton{
+	position:absolute;
+	left:3px; 
+	top:3px;	
+	padding:7px 10px;
+	font-size:14px;
+}

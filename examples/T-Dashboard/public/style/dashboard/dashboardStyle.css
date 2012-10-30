@@ -50,14 +50,16 @@
 
 #dashboard_container {
 	border: solid 1px;
+	padding:5px;
+	text-align:center;
 }
 
 #dashboard_container > .dashboardItem {
 	border: 0;
 /*	padding: 5px;*/
 	margin: 5px;
-	width: 260px;
-	height: 260px;
+	width: 279px;
+	height: 279px;
 	background: #F6F6F6;
 }
 
@@ -76,5 +78,56 @@ div#reportChart {
 }
 
 div[data-featured="scrollView"] {
-	height: 465px;
+	height: 220px;
 }
+
+
+
+
+.dashboard_wrapper {
+	border: 1px solid;
+}
+#dashboard_container {
+	width: 867px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
+	margin: 0 auto;
+	border: none !important;
+}
+@media (min-width: 1200px) {
+	#dashboard_container {
+		width: 1156px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
+		margin: 0 auto;
+	}
+}
+@media (max-width: 979px) and (min-width: 768px) {
+	#dashboard_container {
+		width: 581px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
+		margin: 0 auto;
+	}
+}
+@media (max-width: 767px) {
+	#dashboard_container {
+		width: 289px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
+		margin: 0 auto;
+	}
+}
+
+
+
+
+
+
+/**/
+ .title {font-size:22px; padding:20px 0 0 0; margin:0; line-height:100%;}
+ 
+ .widget {padding:10px 5px 5px 5px;}
+ .widget  .lists li {font-size:14px; text-align:left;}
+ .widget2 {padding:0;}
+ .lists li .name {width:60px; display:inline-block;}
+ .lists li .txt-con {width:150px; line-height:100%; display:inline-block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+ .lists li .txt-con2 {width:220px; line-height:100%; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+ 
+ .scrollview {width:272px ! important;}
+ .twitter .lists {width:250px;}
+ .tweet h2 {font-size:20px; line-height:24px;}
+ 
+ .hero-unit {min-height:326px;}
