@@ -9,11 +9,11 @@ define(
 		'view/dashboard/facebookFeedWidget', 
 		'view/dashboard/facebookLikeWidget', 
 		'view/dashboard/blogWidget', 
-		'template!/template/dashboard/dashboard',
+		'template!../../../template/dashboard/dashboard',
 		'isotope', 
 		'widget-chart',
 		'widget-scrollview',
-		'style!/style/dashboard/dashboardStyle'
+		'style!../../../style/dashboard/dashboardStyle'
 	], function(
 		$, 
 		Backbone, 
