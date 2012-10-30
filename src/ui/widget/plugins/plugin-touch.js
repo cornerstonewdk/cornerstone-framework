@@ -10,17 +10,13 @@
 ;(function (root, doc, factory) {
     factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
-    var _pos = {}, _offset, _touch_start_time, swipeTime = 350, swipeMinDistance = 10, _has_touch = ('ontouchstart' in window);
+    var doc, draggable, _pos = {}, _offset, _touch_start_time, swipeTime = 350, swipeMinDistance = 10, _has_touch = ('ontouchstart' in window);
 
     /**
      * @class Touch
      * @constructor
      */
     var Touch = function () {
-        var self = this;
-        $(document).on("touchstart mousedown touchmove mousemove touchend mouseup", function (e) {
-
-        });
     };
 
     Touch.prototype = {
@@ -123,7 +119,7 @@
         },
 
         drag:function (element, option) {
-            var doc, draggable, el, self = this;
+            var el, self = this;
             option = $.extend({x:true, y:true, drag:true}, option);
             doc = doc || $(document).on("mousedown mouseup touchstart touchend", function (e) {
                 self.getTouchPageXY(e);
@@ -161,7 +157,6 @@
 
                     e.preventDefault();
                 } else {
-
                     try {
                         if (draggable) {
                             draggable.trigger("dragEnd");
@@ -173,7 +168,6 @@
                     }
                 }
             });
-
             return element.data("drag", true);
         },
 
@@ -297,5 +291,4 @@
         return touch.swipe($(this), option);
     };
 
-}))
-;
+}));

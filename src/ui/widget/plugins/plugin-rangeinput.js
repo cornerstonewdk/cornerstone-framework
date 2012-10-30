@@ -13,13 +13,6 @@
     // Browser globals
     factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
-    /**
-     Provides more functionality for the widget module..
-
-     @module widget
-     @submodule widget-foo
-     @main widget
-     **/
     var defaultOptions = {
         min:0,
         max:100,
