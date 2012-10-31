@@ -26,7 +26,6 @@ define([
 		$dropDiscountTypeZone: null,
 		
 		initialize: function() {
-				
 		},
 
 		//그리기
@@ -74,6 +73,8 @@ define([
 		},
 		
 		viewDidAppear: function() {
+			var self = this;
+			
 			//드래그앤 드롭 설정
 			this.$dropCustomerTypeZone = $('div#dropCustomerTypeZone');		//고객조건 드랍존
 			this.$dropProductTypeZone = $('div#dropProductTypeZone');		//상품조건 드랍존
