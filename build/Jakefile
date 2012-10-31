@@ -97,6 +97,10 @@ runTask( 'deploy', [ 'validate' ], function() {
 		PATH_SOURCE + 'ui/widget/featured/datatable/widget-datatable.js',
 		PATH_DIST + 'ui/widget-datatable.js'
 	);
+	j.concat(
+		PATH_SOURCE + 'ui/widget/featured/datatable/widget-datatable.css',
+		PATH_DIST + 'ui/widget-datatable.css'
+	);
 	
 	j.concat(
 		PATH_SOURCE + 'ui/widget/featured/list-view/infinity.js',

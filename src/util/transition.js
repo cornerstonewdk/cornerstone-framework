@@ -766,7 +766,7 @@
             fallbackType:"fade", // IE에서 임시로 사용할 효과
             autoDisplay:true, // 완료시 자동으로 이전페이지를 감출지 여부
             inTarget:{
-                id:undefined, // 들어오는 페이지의 ID 값
+                el:undefined, // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
                 from:undefined, // 들어오는 페이지의 시작점
                 to:undefined, // 들어오는 페이지의 도착점
                 duration:undefined, // 들어오는 페이지의 애니메이션 시간
@@ -776,7 +776,7 @@
                 }
             },
             outTarget:{
-                id:undefined, // 나가는 페이지의 ID 값
+                el:undefined, // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
                 from:undefined, // 나가는 페이지의 시작점
                 to:undefined, // 나가는 페이지의 도착점
                 duration:undefined, // 나가는 페이지의 애니메이션 시간
@@ -841,8 +841,8 @@
 //            console.log("_before");
 
             $("body").css({overflow:"hidden"});
-            $(this.options.inTarget.id).show();
-            $(this.options.outTarget.id).show();
+            $(this.options.inTarget.el).show();
+            $(this.options.outTarget.el).show();
 
             if (this.options.isReverse && $("body").attr("data-transition") !== undefined) {
                 this.options.transitionType = $("body").attr("data-transition");
@@ -858,8 +858,8 @@
          */
         _done:function () {
             $("body").css({overflow:"auto"}).attr("data-transition", this.options.transitionType);
-            var $outTargetEl = $(this.options.outTarget.id).removeAttr("style");
-            var $inTargetEl = $(this.options.inTarget.id).removeAttr("style");
+            var $outTargetEl = $(this.options.outTarget.el).removeAttr("style");
+            var $inTargetEl = $(this.options.inTarget.el).removeAttr("style");
 
             // 자동으로 이전페이지를 숨기기
             if (this.options.autoDisplay) {
@@ -894,9 +894,9 @@
         // 효과가 없는 경우
         none:function (opt) {
             var self = this;
-            $(opt.outTarget.id).hide(function () {
+            $(opt.outTarget.el).hide(function () {
                 opt.outTarget.done();
-                $(opt.inTarget.id).show(function () {
+                $(opt.inTarget.el).show(function () {
                     self.launcher._done();
                 });
             });
@@ -938,15 +938,15 @@
             // 기본값과 사용자 정의 값 병합
             opt = this.extend(defaultValue, opt);
 
-            $(opt.outTarget.id).height();
+            $(opt.outTarget.el).height();
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
-                perspective:$(opt.outTarget.id).width() * 2,
+                width:$(opt.outTarget.el).width(),
+                perspective:$(opt.outTarget.el).width() * 2,
                 rotate3d:"0, 1, 0, " + opt.outTarget.from,
-                height:$(window).height() > $(opt.outTarget.id).height() ?
-                    $(opt.outTarget.id).height() : $(window).height(),
+                height:$(window).height() > $(opt.outTarget.el).height() ?
+                    $(opt.outTarget.el).height() : $(window).height(),
                 overflow:"hidden",
                 opacity:1
             };
@@ -954,24 +954,24 @@
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
-                perspective:$(opt.inTarget.id).width() * 2,
+                width:$(opt.inTarget.el).width(),
+                perspective:$(opt.inTarget.el).width() * 2,
                 rotate3d:"0, 1, 0, " + opt.inTarget.from,
-                height:$(window).height() > $(opt.inTarget.id).height() ?
-                    $(opt.inTarget.id).height() : $(window).height(),
+                height:$(window).height() > $(opt.inTarget.el).height() ?
+                    $(opt.inTarget.el).height() : $(window).height(),
                 overflow:"hidden",
                 opacity:0
             };
 
             $.transition = $.transit;
-            $(opt.inTarget.id).css(this.inTargetCss);
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss);
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 rotate3d:"0, 1, 0, " + opt.outTarget.to,
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
-                $(opt.inTarget.id).transition({
+                $(opt.inTarget.el).transition({
                     rotate3d:"0, 1, 0, " + opt.inTarget.to,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
@@ -1017,11 +1017,11 @@
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
-                perspective:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
+                perspective:$(opt.outTarget.el).width(),
                 rotate3d:"0, 0, 0, " + opt.outTarget.from,
-                height:$(window).height() > $(opt.inTarget.id).height() ?
-                    $(opt.inTarget.id).height() : $(window).height(),
+                height:$(window).height() > $(opt.inTarget.el).height() ?
+                    $(opt.inTarget.el).height() : $(window).height(),
                 overflow:"hidden",
                 scale:1,
                 opacity:1
@@ -1029,17 +1029,17 @@
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
-                perspective:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
+                perspective:$(opt.inTarget.el).width(),
                 rotate3d:"0, 0, 0, " + opt.inTarget.from,
-                height:$(window).height() > $(opt.inTarget.id).height() ?
-                    $(opt.inTarget.id).height() : $(window).height(),
+                height:$(window).height() > $(opt.inTarget.el).height() ?
+                    $(opt.inTarget.el).height() : $(window).height(),
                 overflow:"hidden",
                 scale:0,
                 opacity:0
             };
-            $(opt.inTarget.id).css(this.inTargetCss);
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss);
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 rotate3d:"0, 0, 0, " + opt.outTarget.to,
                 scale:0,
                 opacity:0
@@ -1048,7 +1048,7 @@
                     scale:1
                 });
                 opt.outTarget.done();
-                $(opt.inTarget.id).transition({
+                $(opt.inTarget.el).transition({
                     rotate3d:"0, 0, 0, " + opt.inTarget.to,
                     scale:1,
                     opacity:1
@@ -1097,7 +1097,7 @@
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
                 transform:"translate(" + opt.outTarget.from + ",0)",
                 opacity:1
             };
@@ -1105,13 +1105,13 @@
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
                 transform:"translate(" + opt.inTarget.from + ",0)",
                 opacity:1
             };
 
             // 나가는 페이지 슬라이드
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 x:opt.outTarget.to,
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1123,7 +1123,7 @@
             });
 
             // 들어오는 페이지 슬라이드
-            $(opt.inTarget.id).css(this.inTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss).transition({
                 x:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
@@ -1170,7 +1170,7 @@
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
                 transform:"translate(0, " + opt.outTarget.from + ")",
                 opacity:1
             };
@@ -1178,13 +1178,13 @@
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
                 transform:"translate(0, " + opt.inTarget.from + ")",
                 opacity:1
             };
 
             // 나가는 페이지 슬라이드
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 y:opt.outTarget.to,
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1195,7 +1195,7 @@
             });
 
             // 들어오는 페이지 슬라이드
-            $(opt.inTarget.id).css(this.inTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss).transition({
                 y:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
@@ -1242,7 +1242,7 @@
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
                 transform:"translate(0, " + opt.outTarget.from + ")",
                 opacity:1
             };
@@ -1250,13 +1250,13 @@
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
                 transform:"translate(0, " + opt.inTarget.from + ")",
                 opacity:1
             };
 
             // 나가는 페이지 슬라이드
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 y:opt.outTarget.to,
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1267,7 +1267,7 @@
             });
 
             // 들어오는 페이지 슬라이드
-            $(opt.inTarget.id).css(this.inTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss).transition({
                 y:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
@@ -1294,24 +1294,24 @@
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
                 opacity:1
             };
 
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
                 opacity:0
             };
 
             // 페이지 스타일 초기화
-            $(opt.inTarget.id).css(this.inTargetCss);
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss);
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
-                $(opt.inTarget.id).transition({
+                $(opt.inTarget.el).transition({
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
@@ -1339,10 +1339,10 @@
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
                 scale:1,
                 opacity:1,
-                perspective:$(opt.outTarget.id).width(),
+                perspective:$(opt.outTarget.el).width(),
                 rotate3d:"0, 0, 0, 0",
                 overflow:"hidden"
             };
@@ -1350,16 +1350,16 @@
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
                 scale:0.5,
                 opacity:0,
-                perspective:$(opt.outTarget.id).width(),
+                perspective:$(opt.outTarget.el).width(),
                 rotate3d:"0, 0, 0, 0",
                 overflow:"hidden"
             };
 
-            $(opt.inTarget.id).css(this.inTargetCss);
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss);
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 scale:0.5,
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1368,7 +1368,7 @@
                 });
                 opt.outTarget.done();
 
-                $(opt.inTarget.id).transition({
+                $(opt.inTarget.el).transition({
                     scale:1,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
@@ -1416,37 +1416,37 @@
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.id).width(),
-                perspective:$(opt.outTarget.id).width(),
+                width:$(opt.outTarget.el).width(),
+                perspective:$(opt.outTarget.el).width(),
                 rotate3d:"0, 1, 0, " + opt.outTarget.from,
                 transformOrigin:"0 0",
                 opacity:1,
-                height:$(window).height() > $(opt.outTarget.id).height() ?
-                    $(opt.outTarget.id).height() : $(window).height(),
+                height:$(window).height() > $(opt.outTarget.el).height() ?
+                    $(opt.outTarget.el).height() : $(window).height(),
                 overflow:"hidden"
             };
 
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.id).width(),
-                perspective:$(opt.inTarget.id).width(),
+                width:$(opt.inTarget.el).width(),
+                perspective:$(opt.inTarget.el).width(),
                 rotate3d:"0, 1, 0, " + opt.inTarget.from,
                 transformOrigin:"0 0",
                 opacity:0,
-                height:$(window).height() > $(opt.outTarget.id).height() ?
-                    $(opt.outTarget.id).height() : $(window).height(),
+                height:$(window).height() > $(opt.outTarget.el).height() ?
+                    $(opt.outTarget.el).height() : $(window).height(),
                 overflow:"hidden"
             };
 
-            $(opt.inTarget.id).css(this.inTargetCss);
-            $(opt.outTarget.id).css(this.outTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss);
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
                 rotate3d:"0, 1, 0, " + opt.outTarget.to,
                 opacity:0
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
-                $(opt.inTarget.id).transition({
+                $(opt.inTarget.el).transition({
                     rotate3d:"0, 1, 0, " + opt.inTarget.to,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
