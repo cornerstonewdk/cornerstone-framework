@@ -12,3 +12,4 @@ div '.row', ->
 				document.outline
 			#p '.list-documents-tagstr', property:'dc:tagstr', ->
 			#	document.tagstr
+

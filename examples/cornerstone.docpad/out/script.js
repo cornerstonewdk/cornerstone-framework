@@ -34,4 +34,8 @@
     return false;
   });
 
+  $('.search-query').click(function() {
+    return $('.search-query').select();
+  });
+
 }).call(this);

@@ -19,6 +19,8 @@ date: '2012-10-03'
 layout: 'post'                                                              
 tags: ['post','corner','even']
 tagstr: 'post corner even'
+section: 'Live Document'
+sections: ['Live Document']
 ---                                                                         
 
 # 부록

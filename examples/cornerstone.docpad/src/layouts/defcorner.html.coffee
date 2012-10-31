@@ -53,7 +53,7 @@ html lang: 'ko', ->
           tr.alt td 
           {
                 color:#000;
-          background-color:#EAF2D3;
+                background-color:#EAF2D3;
           }
         '''
 
@@ -180,13 +180,14 @@ html lang: 'ko', ->
                         #       '<input class="search-query" type="text" placeholder="TAG" disabled="true" data-provide="typeahead" data-source=\'' + tagstr + '\'>'
 
         div '.container', ->
-
-		# Document
-		article '.page',
-			'typeof': 'sioc:page'
-			about: h @document.url
-		#	datetime: h @document.date.toISOString()
-			-> @content
+          div '.row-fluid', ->
+            div '.span12', ->
+                # Document
+                article '.page',
+                    'typeof': 'sioc:page'
+                    about: h @document.url
+                #	datetime: h @document.date.toISOString()
+                    -> @content
 
 		# Include our scripts
 		# [신용후] jquery와 script.js를 로딩한다.

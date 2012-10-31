@@ -39,3 +39,7 @@ $('#tag-search').click ->
     #    alert("검색된 문서가 없습니다.")
         
     return false
+
+$('.search-query').click ->
+    #alert("hi")
+    $('.search-query').select()

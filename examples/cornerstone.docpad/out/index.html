@@ -5,42 +5,32 @@
     <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
     <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
-    <style>  #customers
-  #{
-  #      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-  #      width:100%;
-  #      border-collapse:collapse;
-  #}
-  td, th 
-  {
-        font-size:1.2em;
-        border:1px solid #98bf21;
-        padding:3px 7px 2px 7px;
-  }
-  th 
-  {
-        font-size:1.4em;
-        text-align:left;
-        padding-top:5px;
-        padding-bottom:4px;
-        background-color:#A7C942;
-        color:#fff;
-  }
-  tr.alt td 
-  {
-        color:#000;
-  background-color:#EAF2D3;
-  }
-#  table {
-#    width: 49%;
-#    float: left;
-#    height: 300px;
-#    border: 1px solid black;
-#    border-left: 0px;
-#  }
-  textarea {
-        background-color:#A7C942;
-  }</style>
+    <style>#customers
+#{
+#      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+#      width:100%;
+#      border-collapse:collapse;
+#}
+td, th 
+{
+      font-size:1.2em;
+      border:1px solid #98bf21;
+      padding:3px 7px 2px 7px;
+}
+th 
+{
+      font-size:1.4em;
+      text-align:left;
+      padding-top:5px;
+      padding-bottom:4px;
+      background-color:#A7C942;
+      color:#fff;
+}
+tr.alt td 
+{
+      color:#000;
+      background-color:#EAF2D3;
+}</style>
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
   </head>
@@ -99,20 +89,11 @@
       </div>
     </div>
     <div class="container">
-    </div>
-    <article class="page" typeof="sioc:page" about="/">
-      <div class="page-content" property="sioc:content">
+      <div class="row-fluid">
+        <div class="span12">
+          <article class="page" typeof="sioc:page" about="/">
+            <div class="page-content" property="sioc:content">
   <div class="row">
-  <div class="span2" tags="post corner prime odd">
-    <a class="list-documents-link" href="./1_Introduction.html">
-      <strong class="list-documents-title" property="dc:title">
-        LiveDocument: 1. Introduction
-      </strong>
-    </a>
-    <p class="list-documents-outline" property="dc:outline">
-      Framework 사용했을 때 얻을 수 있는 이점들에 대한 설명
-    </p>
-  </div>
   <div class="span2" tags="post corner prime even">
     <a class="list-documents-link" href="./2_Application.html">
       <strong class="list-documents-title" property="dc:title">
@@ -121,6 +102,16 @@
     </a>
     <p class="list-documents-outline" property="dc:outline">
       애플리케이션 작성법
+    </p>
+  </div>
+  <div class="span2" tags="post corner prime odd">
+    <a class="list-documents-link" href="./1_Introduction.html">
+      <strong class="list-documents-title" property="dc:title">
+        LiveDocument: 1. Introduction
+      </strong>
+    </a>
+    <p class="list-documents-outline" property="dc:outline">
+      Framework 사용했을 때 얻을 수 있는 이점들에 대한 설명
     </p>
   </div>
   <div class="span2" tags="post corner prime odd">
@@ -184,7 +175,7 @@
     </p>
   </div>
   <div class="span2" tags="post runtime">
-    <a class="list-documents-link" href="./forPlugIn.html">
+    <a class="list-documents-link" href="./RT_forPlugIn.html">
       <strong class="list-documents-title" property="dc:title">
         Runtime: Cornerstone Runtime 기본구조 (PlugIn)
       </strong>
@@ -194,7 +185,7 @@
     </p>
   </div>
   <div class="span2" tags="post runtime">
-    <a class="list-documents-link" href="./forWebApp.html">
+    <a class="list-documents-link" href="./RT_forWebApp.html">
       <strong class="list-documents-title" property="dc:title">
         Runtime: Cornerstone Runtime 기본구조 (WebApp)
       </strong>
@@ -207,7 +198,10 @@
 
 </div>
 
-    </article>
+          </article>
+        </div>
+      </div>
+    </div>
 <script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
 socket.on('regenerated',function(){
 	document.location.reload();

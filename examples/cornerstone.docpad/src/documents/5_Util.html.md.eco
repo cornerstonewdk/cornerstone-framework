@@ -19,6 +19,8 @@ date: '2012-10-03'
 layout: 'post'                                                              
 tags: ['post','corner','prime','odd']
 tagstr: 'post corner prime odd'
+section: 'Live Document'
+sections: ['Live Document']
 ---                                                                         
 
 유틸리티 사용법

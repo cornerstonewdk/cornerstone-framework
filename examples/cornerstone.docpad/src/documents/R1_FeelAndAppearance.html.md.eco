@@ -19,6 +19,8 @@ date: '2012-10-03'
 layout: 'post'                                                              
 tags: ['post','corner','reference']                                                     
 tagstr: 'post corner reference'                                                       
+section: 'Reference'
+sections: ['Reference']
 ---                                                                         
 
 느낌과 모양새 
