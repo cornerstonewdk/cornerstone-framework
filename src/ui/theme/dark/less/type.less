@@ -304,17 +304,27 @@ address {
 	font-size: @baseFontSize;
 	border-bottom: 1px solid #cdcdcd;
 	.box-shadow(0 1px 1px rgba(255,255,255,1));	
-	padding: 10px;
+	padding: 10px 0 10px 10px;
 }
 
-.lists .lists-con li i {
+.lists .lists-con li i,
+.lists .lists-con li.sub-group ul li i {
 	display: block;
 	width: 25px;
 	height: 25px;
 	float: right;
-	background: url('../img/icon_silver01.png') no-repeat left top;
-	background-size: 287px;
-	background-position: -135px -55px;
+	background: url('../img/icon.png') no-repeat -21px -27px;
+	background-size: 320px;
+}
+
+.lists ul li.active i,
+.lists .lists-con li.sub-group ul li.active i {
+	display: block;
+	width: 25px;
+	height: 25px;
+	float: right;
+	background: url('../img/icon.png') no-repeat -66px -27px;
+	background-size: 320px;
 }
 
 .lists .lists-con li:last-child {
