@@ -4,7 +4,10 @@
     <title>CornerStone :: Page Transiton 화면전환</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, height=device-height">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes">
 
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-responsive.css">
@@ -15,27 +18,34 @@
             overflow: hidden !important;
         }
 
+        .container-fluid {
+            padding: 0 20px;
+        }
+
         .header {
-            color:#717880;
-            font-size:18px;
-            text-align:center;
+            color: #717880;
+            font-size: 18px;
+            text-align: center;
             margin: 0;
         }
+
         footer {
-            position:absolute;
-            bottom:0; left:0;
-            width:100%;
-            height:48px;
-            background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
-            background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
-            background-image:-o-linear-gradient(top, #999, #666 2%, #222);
-            padding:0;
-            border-top:1px solid #444;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+            background-image: -moz-linear-gradient(top, #999, #666 2%, #222);
+            background-image: -o-linear-gradient(top, #999, #666 2%, #222);
+            padding: 0;
+            border-top: 1px solid #444;
+            display: none;
         }
 
         #front, #back {
             position: relative;
-            height: 500px;
+            height: 375px;
             overflow: hidden;
         }
 
@@ -160,15 +170,17 @@
 <footer></footer>
 <script type="text/javascript" src="libs/jquery/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="libs/jquery/plugins/jquery.transit.js"></script>
-<script type="text/javascript" src="../transition.js"></script>
+<script type="text/javascript" src="js/transition.js"></script>
 <script type="text/javascript" src="libs/iscroll/iscroll.js"></script>
 <script type="text/javascript">
     var scroll1, scroll2;
     function destroyScroll() {
-        if(typeof(scroll1) == "object") {
+        // 주소 툴바 감추기
+        setTimeout(scrollTo, 0, 0, 1);
+        if (typeof(scroll1) == "object") {
             scroll1.destroy();
         }
-        if(typeof(scroll2) == "object") {
+        if (typeof(scroll2) == "object") {
             scroll2.destroy();
         }
     }
@@ -202,11 +214,6 @@
 
     document.addEventListener('DOMContentLoaded', loaded, false);
 
-    // 주소 툴바 감추기
-    window.addEventListener('load', function () {
-        setTimeout(scrollTo, 0, 0, 1);
-    }, false);
-
     $("#front .btn").live("click", function (e) {
         var transitionType = $(this).attr("data-transition"),
                 inTargetID = "#back",
@@ -215,10 +222,10 @@
         Transition.launcher({
             transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
             inTarget:{
-                id:inTargetID // 들어오는 페이지의 ID 값
+                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             outTarget:{
-                id:outTargetID // 나가는 페이지의 ID 값
+                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             isReverse:false, // 뒤로가기 여부
             done:function () {
@@ -236,10 +243,10 @@
         destroyScroll();
         Transition.launcher({
             inTarget:{
-                id:inTargetID // 들어오는 페이지의 ID 값
+                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             outTarget:{
-                id:outTargetID // 나가는 페이지의 ID 값
+                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             isReverse:true, // 뒤로가기 여부
             done:function () {

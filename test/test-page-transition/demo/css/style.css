@@ -6,9 +6,7 @@ body {
     padding: 0;
     margin: 0;
     background: url('../images/linen_bg_tile.jpg') repeat center top;
-    background-attachment: fixed;
-    /* 아이폰 글자 크기 자동조정 방지 */
-    -webkit-text-size-adjust:none;
+    /* background-color: #333; */
 }
 
 input, button, select, textarea {
@@ -28,6 +26,10 @@ input, button, select, textarea {
     display: none;
     margin:0;
 }
+#front.current, #back.current {
+	display: block;
+}
+
 #back {
     color:#FFF;
 }
@@ -37,9 +39,7 @@ input, button, select, textarea {
 #back .form-actions {
     background-color: transparent;
 }
-#front.current, #back.current {
-    display: block;
-}
+
 
 @media (max-width: 767px) {
     #front, #back {

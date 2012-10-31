@@ -4,15 +4,27 @@
     <title>CornerStone :: Page Transiton 화면전환</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes">
 
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-responsive.css">
     <link rel="stylesheet" href="css/fonts/stylesheet.css">
     <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+        #front, #back {
+            -webkit-transform: translate3d(0, 0, 0);
+			-webkit-backface-visibility:hidden;
+			-webkit-transform:translateX(0); /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+			-moz-backface-visibility:hidden;
+			-moz-transform:translateX(0);
+        }
+    </style>
 </head>
 <body>
-<div class="container-fluid">
+<div id="page" class="container">
     <div class="row-fluid">
         <div id="front" class="current span12">
             <div class="header navbar">
@@ -22,7 +34,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row-fluid">
                 <div class="span6">
                     <button class="full-width btn " data-transition="flip">Flip</button>
@@ -66,6 +77,7 @@
             </div>
 
             <h3>화면전환용 테스트 페이지2</h3>
+
             <form class="form-horizontal" action="#">
                 <fieldset>
                     <div class="control-group">
@@ -126,7 +138,7 @@
 </div>
 <script type="text/javascript" src="libs/jquery/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="libs/jquery/plugins/jquery.transit.js"></script>
-<script type="text/javascript" src="../transition.js"></script>
+<script type="text/javascript" src="js/transition.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

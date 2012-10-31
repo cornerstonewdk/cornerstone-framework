@@ -150,16 +150,16 @@
 </div>
 <script type="text/javascript" src="libs/jquery/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="libs/jquery/plugins/jquery.transit.js"></script>
-<script type="text/javascript" src="../transition.js"></script>
+<script type="text/javascript" src="js/transition.js"></script>
 <script type="text/javascript" src="libs/iscroll/iscroll.js"></script>
 <script type="text/javascript">
     var scroll1, scroll2;
     function loaded() {
 
-        if(typeof(scroll1) === "object") {
+        if (typeof(scroll1) === "object") {
             scroll1.destroy();
         }
-        if(typeof(scroll2) === "object") {
+        if (typeof(scroll2) === "object") {
             scroll2.destroy();
         }
         scroll1 = new iScroll('front', {
@@ -203,10 +203,10 @@
         Transition.launcher({
             transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
             inTarget:{
-                id:inTargetID // 들어오는 페이지의 ID 값
+                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             outTarget:{
-                id:outTargetID // 나가는 페이지의 ID 값
+                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             isReverse:false, // 뒤로가기 여부
             done:function () {
@@ -224,10 +224,10 @@
         $(".scroller").removeAttr("style");
         Transition.launcher({
             inTarget:{
-                id:inTargetID // 들어오는 페이지의 ID 값
+                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             outTarget:{
-                id:outTargetID // 나가는 페이지의 ID 값
+                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             isReverse:true, // 뒤로가기 여부
             done:function () {
