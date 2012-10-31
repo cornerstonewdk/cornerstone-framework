@@ -12,10 +12,10 @@ define([
                     Transition.launcher({
                         transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
                         inTarget:{
-                            id:inTargetID // 들어오는 페이지의 ID 값
+                            el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
                         },
                         outTarget:{
-                            id:outTargetID // 나가는 페이지의 ID 값
+                            el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
                         },
                         isReverse:false, // 뒤로가기 여부
                         done:function () {
@@ -31,10 +31,10 @@ define([
                         inTargetID = "#front";
                     Transition.launcher({
                         inTarget:{
-                            id:inTargetID // 들어오는 페이지의 ID 값
+                            el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
                         },
                         outTarget:{
-                            id:outTargetID // 나가는 페이지의 ID 값
+                            el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
                         },
                         isReverse:true, // 뒤로가기 여부
                         done:function () {

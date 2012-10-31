@@ -5,9 +5,9 @@
  * Time: 오전 10:03
  * To change this template use File | Settings | File Templates.
  */
-$(function() {
+$(function () {
     var effect = Transition.effect.prototype;
-    effect.custom1= function (opt) {
+    effect.custom1 = function (opt) {
         // 회전 기본 값
         var self = this,
             defaultValue = {
@@ -26,10 +26,10 @@ $(function() {
         // 나가는 페이지 스타일 초기화 값
         this.outTargetCss = {
             position:"absolute",
-            width:$(opt.outTarget.id).width(),
+            width:$(opt.outTarget.el).width(),
             scale:1,
             opacity:1,
-            perspective:$(opt.outTarget.id).width(),
+            perspective:$(opt.outTarget.el).width(),
             rotate3d:"0, 0, 0, 0",
             overflow:"hidden"
         };
@@ -37,16 +37,16 @@ $(function() {
         // 들어오는 페이지 스타일 초기화 값
         this.inTargetCss = {
             position:"absolute",
-            width:$(opt.inTarget.id).width(),
+            width:$(opt.inTarget.el).width(),
             scale:0.5,
             opacity:0,
-            perspective:$(opt.outTarget.id).width(),
+            perspective:$(opt.outTarget.el).width(),
             rotate3d:"0, 0, 0, 0",
             overflow:"hidden"
         };
 
-        $(opt.inTarget.id).css(this.inTargetCss);
-        $(opt.outTarget.id).css(this.outTargetCss).transition({
+        $(opt.inTarget.el).css(this.inTargetCss);
+        $(opt.outTarget.el).css(this.outTargetCss).transition({
             scale:0.5,
             opacity:0
         }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -55,7 +55,7 @@ $(function() {
             });
             opt.outTarget.done();
 
-            $(opt.inTarget.id).transition({
+            $(opt.inTarget.el).transition({
                 scale:1,
                 opacity:1
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
@@ -65,9 +65,20 @@ $(function() {
     };
 
     // 주소 툴바 감추기
-    window.addEventListener('load', function(){
-        setTimeout(scrollTo, 0, 0, 1);
-    }, false);
+    function hideAddressBar() {
+        // 웹페이지의 높이가 화면높이보다 작을 때는 실행할 필요가 없으므로 종료
+        if (document.height <= window.outerHeight) return;
+        var scrollTimer = setInterval(function () {
+            if (!pageYOffset) {  // 모바일 브라우저에서 주소창이 보이고 있을 때는 pageYOffset = 0 이므로 이때만 실행
+                scrollTo(0, 1);  // 웹페이지를 x축 0, y축 1의 위치로 끌어올림
+            } else { // pageYOffset !=0 인 경우 반복 종료: scrollTo(0, 1) 이 실행되었거나 사용자가 스크롤을 움직인 경우
+                clearInterval(scrollTimer);
+            }
+        }, 100); // 100 밀리세컨드마다 반복 실행
+    }
+
+    window.addEventListener('load', hideAddressBar, false);  // 페이지 로드 되었을 때 실행
+    window.addEventListener('orientationchange', hideAddressBar, false); // 화면이 가로/세로 전환되었을 때 실행
 
     $("#front .btn").live("click", function (e) {
         var transitionType = $(this).attr("data-transition"),
@@ -76,10 +87,10 @@ $(function() {
         Transition.launcher({
             transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
             inTarget:{
-                id:inTargetID // 들어오는 페이지의 ID 값
+                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             outTarget:{
-                id:outTargetID // 나가는 페이지의 ID 값
+                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             isReverse:false, // 뒤로가기 여부
             done:function () {
@@ -95,10 +106,10 @@ $(function() {
             inTargetID = "#front";
         Transition.launcher({
             inTarget:{
-                id:inTargetID // 들어오는 페이지의 ID 값
+                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             outTarget:{
-                id:outTargetID // 나가는 페이지의 ID 값
+                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
             isReverse:true, // 뒤로가기 여부
             done:function () {
@@ -107,4 +118,65 @@ $(function() {
             }
         });
     });
+//
+//    function NoClickDelay(el) {
+//        this.element = typeof el == 'object' ? el : document.getElementById(el);
+//        if (window.Touch)
+//            this.element.addEventListener('touchstart', this, false);
+//    }
+//
+//    NoClickDelay.prototype = {
+//        handleEvent:function (e) {
+//            console.log("handleEvent");
+//            switch (e.type) {
+//                case 'touchstart':
+//                    this.onTouchStart(e);
+//                    break;
+//                case 'touchmove':
+//                    this.onTouchMove(e);
+//                    break;
+//                case 'touchend':
+//                    this.onTouchEnd(e);
+//                    break;
+//            }
+//        },
+//
+//        onTouchStart:function (e) {
+//            console.log("onTouchStart");
+//            e.preventDefault();
+//            this.moved = false;
+//
+//            this.theTarget = document.elementFromPoint(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+//            if (this.theTarget.nodeType == 3) this.theTarget = theTarget.parentNode;
+//            this.theTarget.className += ' pressed';
+//
+//            this.element.addEventListener('touchmove', this, false);
+//            this.element.addEventListener('touchend', this, false);
+//        },
+//
+//        onTouchMove:function (e) {
+//            console.log("onTouchMove");
+//            this.moved = true;
+//            this.theTarget.className = this.theTarget.className.replace(/ ?pressed/gi, '');
+//        },
+//
+//        onTouchEnd:function (e) {
+//            console.log("onTouchEnd");
+//            this.element.removeEventListener('touchmove', this, false);
+//            this.element.removeEventListener('touchend', this, false);
+//
+//            if (!this.moved && this.theTarget) {
+//                this.theTarget.className = this.theTarget.className.replace(/ ?pressed/gi, '');
+//                var theEvent = document.createEvent('MouseEvents');
+//                theEvent.initEvent('click', true, true);
+//                this.theTarget.dispatchEvent(theEvent);
+//            }
+//
+//            this.theTarget = undefined;
+//        }
+//    };
+//
+//    $("button").each(function (i) {
+//        new NoClickDelay(this);
+//    });
 });
