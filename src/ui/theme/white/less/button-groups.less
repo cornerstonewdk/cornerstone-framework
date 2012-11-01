@@ -56,6 +56,7 @@
   -webkit-border-bottom-left-radius: 4px;
       -moz-border-radius-bottomleft: 4px;
           border-bottom-left-radius: 4px;
+					.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4)");
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
@@ -67,6 +68,7 @@
   -webkit-border-bottom-right-radius: 4px;
       -moz-border-radius-bottomright: 4px;
           border-bottom-right-radius: 4px;
+					.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4)");
 }
 // Reset corners for large buttons
 .btn-group > .btn.large:first-child {
@@ -120,6 +122,7 @@
 
 // Split button dropdowns
 // ----------------------
+
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {	
@@ -180,11 +183,7 @@
 }
 
 // Reposition the caret [2012-08-29] Add
-.btn .caret {
-  margin-top: 8px;
-  margin-left: 0;
-	border-top: 5px solid @black;
-}
+
 // Carets in other button sizes
 .btn-mini .caret,
 .btn-small .caret,
@@ -202,28 +201,6 @@
   border-top: 0;
 }
 
-// Account for other colors
-.btn-primary,
-.btn-warning,
-.btn-danger,
-.btn-info,
-.btn-success,
-.btn-inverse {
-  .caret {
-    border-top-color: @caretColorActive;
-    border-bottom-color: @caretColorActive;
-  }
-}
-
-.dropdown-toggle .caret {
-	border-top:   4px solid @caretColorActive;
-}
-
-.dropup .dropdown-toggle .caret {
-  border-bottom: 4px solid @caretColorActive;
-  border-top: 0;
-}
-
 .dropup .dropdown-menu {
 	&:before {
     border: 0;
@@ -234,7 +211,6 @@
 }
 
 .btn-group .btn {
-	color: @btnGroupTxt;
 	text-shadow: 0 1px 0 rgba(255,255,255,.2);
 	border: 0;
 	border-top: 1px solid @btnBorder;
@@ -250,6 +226,11 @@
 		#font > #effect > .txt-over();
 		border-left: 0;
 		border-right: 0;
+		#gradient > .vertical(rgba(0,0,0,.5), rgba(0,0,0,.3));
+		background-color: @btnActive;
+		*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+		background-position: 0 0;
+		.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
 	}
 }
 
@@ -285,12 +266,15 @@
 
 .btn-group .btn.btn-primary {
 	&:hover {
-		color: @btnGroupTxt;
+		color: @white;
   }
 	// Active state
   &.active,
   &:active {
-		color: @white;
+		#font > #effect > .txt-active();
+		text-shadow: inset 0 0 2px rgba(255,255,255,.5);
+		.buttonBackground(@btnBlueActiveHighlight, @btnBlueActive, @btnBlueActiveTxt, @btnShadow);
+		.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
 	}
 }
 
@@ -435,6 +419,7 @@
 .btn-group-vertical .btn:first-child {
   .border-radius(4px 4px 0 0);
 	border-left: 1px solid #fff;
+	box-shadow:none;
 }
 .btn-group-vertical .btn:last-child {
 	color: @btnGroupTxt;

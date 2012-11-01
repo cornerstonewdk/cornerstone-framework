@@ -4773,19 +4773,14 @@ address {
   color: #000000;
   font-size: 14px;
   border-bottom: 1px solid #cdcdcd;
-  -webkit-box-shadow: 0 1px 1px #ffffff;
-  -moz-box-shadow: 0 1px 1px #ffffff;
-  box-shadow: 0 1px 1px #ffffff;
   padding: 10px;
 }
-.lists .lists-con li i {
+.lists .lists-con li i,
+.lists .lists-con li.sub-group ul li i {
   display: block;
   width: 25px;
   height: 25px;
   float: right;
-  background: url('../img/icon_silver01.png') no-repeat left top;
-  background-size: 287px;
-  background-position: -135px -55px;
 }
 .lists .lists-con li:last-child {
   border-bottom: 0;
@@ -4807,6 +4802,26 @@ address {
 }
 .lists .lists-con li.sub-group ul li a {
   color: #b0b0b0;
+}
+.lists ul li.active,
+.lists .lists-con li.sub-group ul li.active {
+  background: #dddddd;
+  color: #000000;
+  border-bottom: 1px solid transparents;
+}
+.lists ul li.active a,
+.lists .lists-con li.sub-group ul li.active a {
+  color: #000000;
+  background: none;
+}
+.lists ul li.active i,
+.lists .lists-con li.sub-group ul li.active i {
+  display: block;
+  width: 25px;
+  height: 25px;
+  float: right;
+  background: url('../img/icon.png') no-repeat -66px -27px;
+  background-size: 320px;
 }
 .text-warning {
   color: #c76b16;
@@ -6733,14 +6748,14 @@ address {
     color: #000000;
     background: none;
   }
-  .lists ul li:hover i {
+  .lists ul li:hover i,
+  .lists ul li.active i,
+  .lists .lists-con li.sub-group ul li:hover i,
+  .lists .lists-con li.sub-group ul li.active i {
     display: block;
     width: 25px;
     height: 25px;
     float: right;
-    background: url('../img/icon_blue03.png') no-repeat left top;
-    background-size: 287px;
-    background-position: -135px -55px;
   }
   .lists ul li:last-child:hover {
     -webkit-border-radius: 0 0 6px 6px;

@@ -51,14 +51,14 @@
 		background: none;
 	}
 
-	.lists ul li:hover i {
+	.lists ul li:hover i,
+	.lists ul li.active i,
+	.lists .lists-con li.sub-group ul li:hover i,
+	.lists .lists-con li.sub-group ul li.active i {
 		display: block;
 		width: 25px;
 		height: 25px;
 		float: right;
-		background: url('../img/icon_blue03.png') no-repeat left top;
-		background-size: 287px;
-		background-position: -135px -55px;
 	}
 
 	.lists ul li:last-child:hover {
