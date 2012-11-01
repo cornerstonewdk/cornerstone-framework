@@ -3,7 +3,7 @@
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sync', 'bootstrap', 'style!main' ], function( ListView, AddView, DetailView, Users, Backbone, Sync ) {
+define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sync', 'multipage-router', 'bootstrap', 'style!main' ], function( ListView, AddView, DetailView, Users, Backbone, Sync, MultipageRouter ) {
 	return {
 		launch: function() {
 
@@ -15,27 +15,52 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 			var detailView = null;
 
 			// Router
-			var MainRouter = Backbone.Router.extend( {
-
-				routes: {
-					'': 'list',
-					'list': 'list',
-					'add': 'add',
-					'detail/:id': 'detail',
-					'*path': 'notFound'
-				},
-
-				list: function() {
-
-					if ( detailView ) {
-						detailView.dispose();
-						detailView = null;
+			var MainRouter = MultipageRouter.extend( {
+			
+				pages: {
+					'list-page': {
+						fragment: [ '', 'list' ],
+						el: '#list-section',
+						render: function() {
+		
+							if ( detailView ) {
+								detailView.dispose();
+								detailView = null;
+							}
+		
+							users.fetch();
+						},
+						// fragment가 바뀌고 나서 transition이 시작되기 전에 callback이 필요하다. (화면을 그리기 위해)
+						// transition이 완료되고 나서 실행되는 callback
+						inactive: function( nextPageId ) {
+							//if ( nextPageId != 'detail-page' )
+							//	$( '#list-section' ).removeClass( 'active' );
+						}
+					},
+					'add-page': {
+						fragment: 'add',
+						el: '#add-section',
+						render: 'add',
+						inactive: function() {
+						}
+					},
+					'detail-page': {
+						fragment: 'detail/:id',
+						active: 'detail'
+					},
+					'default': {
+						el: '#err-section',
+						active: function( path ) {
+						},
+						
+						inactive: function( nextPageId ) {
+						}
 					}
-
-					users.fetch();
-
-					$( 'section.page' ).removeClass( 'active' );
-					$( 'section.page#list-section' ).addClass( 'active' );
+				},
+				
+				transitions: {
+					'list-page:add-page': { type: 'slide', duration: 3000 },
+					'list-page:default': 'slide'
 				},
 
 				add: function() {
@@ -46,19 +71,11 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 					}
 
 					addView.render();
-
-					$( 'section.page' ).removeClass( 'active' );
-					$( 'section.page#add-section' ).addClass( 'active' );
 				},
 
 				detail: function( id ) {
 					// 삭제 기능을 위해 collection이 필요하다.
 					detailView = new DetailView( { collection: users, model: users.get( id ) } );
-				},
-
-				// TODO 공통된 에러 처리
-				notFound: function( path ) {
-					alert( 'Path not found: ' + path );
 				}
 			} );
 

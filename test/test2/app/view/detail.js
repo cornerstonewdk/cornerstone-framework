@@ -34,7 +34,7 @@ define( [ 'backbone', 'jquery', 'template!view/detail' ], function( Backbone, $,
 			'click button#delete-button': 'delete'
 		},
 
-		delete: function() {
+		'delete': function() {
 			this.model.destroy();
 			location.href = '#list';
 		},
