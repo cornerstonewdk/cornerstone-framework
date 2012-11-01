@@ -1,0 +1,719 @@
+
+legend {
+  display: block;
+  width: 100%;
+  margin-bottom: @baseLineHeight;
+  font-size: (@baseFontSize * 1.5) - 1;
+  line-height: @baseLineHeight * 2;
+  color: @grayDarker;
+  border: 0;
+  border-bottom: 0;
+	text-shadow: 0 1px 0 rgba(255,255,255,.2); 
+	margin: 40px 0 10px;
+	padding-left: 20px;
+
+  // Small
+  small {
+    font-size: @baseLineHeight * .75;
+    color: @grayLight;
+  }
+}
+
+// Set font for forms
+label,
+input,
+button,
+select,
+textarea {	
+  #font > .shorthand(@baseFontSize,normal,@baseLineHeight); // Set size, weight, line-height here
+}
+
+input,
+button,
+textarea {
+  font-family: @sansFontFamily; // And only set font-family here for those that need it (note the missing label element)
+}
+
+// Shared size and type resets
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	height: auto;
+  display: inline-block;
+  padding: 10px 6px;
+  margin-bottom: 9px;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @gray;
+  .border-radius(@inputBorderRadius);	
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	border: 1px solid @grayLight;
+	.border-radius(@inputBorderRadius);
+	@transition: border linear .2s, box-shadow linear .2s;
+	.transition(@transition);
+	color: @grayLight;
+	&:focus {
+			color: @blue;
+			.inp-focus(@inputShadow, @inputBackground);
+	  }
+	}
+
+// --- orange focus [2012-08-29]
+input.ipt-orange,
+textarea.ipt-orange {
+	&:focus {
+	    border:1px solid rgba(255,107,28,.7);
+	    outline: 0;
+	    outline: thin dotted \9; /* IE6-9 */
+			.box-shadow(0 0 8px @inputShadowOrange);
+	    color: @orange;
+	  }
+	}
+
+textarea {
+	height: auto;
+}
+
+// Mixin for form field states
+.formFieldState(@textColor: #b0b0b0, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+  // Set the text color
+  > label,
+  .help-block,
+  .help-inline {
+    color: @textColor;
+  }
+  // Style inputs accordingly
+  .checkbox,
+  .radio,
+  input,
+  select,
+  textarea {
+	color: @textColor;
+	border:none;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	.box-shadow(inset 0 1px 1px rgba(0,0,0,0.7));
+	    &:focus {
+	      border:none;
+	    }
+	}
+}
+
+
+// INPUT GROUPS
+// ------------
+
+// Allow us to put symbols and text within the input field for a cleaner look
+.input-append,
+.input-prepend {
+  margin-bottom: 5px;
+  font-size: 0;
+  white-space: nowrap; // Prevent span and input from separating
+
+  input,
+  select,
+  .uneditable-input {
+    position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
+    margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
+    *margin-left: 0;
+    font-size: @baseFontSize;
+		line-height: @baseLineHeight;
+    vertical-align: top;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    // Make input on top when focused so blue border and shadow always show
+    &:focus {
+      z-index: 2;
+    }
+  }
+  .add-on {
+		color: @gray;
+    display: inline-block;
+    width: auto;
+    height: @baseLineHeight;
+    min-width: 16px;    
+    padding: 10px;
+    font-size: @baseFontSize;
+    font-weight: normal;
+    line-height: @baseLineHeight;
+    text-align: center;
+    background-color: @white;
+    border: 1px solid @btnBorder;
+		text-shadow: none;
+  }
+  .add-on,
+  .btn,
+	.btn:active {
+    margin-left: -1px;
+    vertical-align: top;
+    .border-radius(0);
+  }
+  .active {
+    background-color: lighten(@green, 30);
+    border-color: @green;
+  }
+}
+.input-prepend {
+  .add-on,
+  .btn {
+    margin-right: -1px;
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+}
+.input-append {
+  input,
+  select,
+  .uneditable-input {
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on:last-child,
+  .btn:last-child {
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+  }
+}
+// Remove all border-radius for inputs with both prepend and append
+.input-prepend.input-append {
+  input,
+  select,
+  .uneditable-input {
+    .border-radius(0);
+  }
+  .add-on:first-child,
+  .btn:first-child {
+    margin-right: -1px;
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on:last-child,
+  .btn:last-child {
+    margin-left: -1px;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+  }
+}
+
+// Select
+select {
+	width: 100%;
+	height: 35px;
+	padding: 5px;
+  margin: 0;
+	background-color: @selectBackground;
+	border: 1px solid @grayLight;
+	.border-radius(@inputBorderRadius);
+   color: @grayLight;
+   outline: none;
+   display: inline-block;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   cursor: pointer;
+	 &:focus {
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+  }
+}
+
+.select-box { position:relative }
+.select-box:after {
+  content:'';
+  display:block;
+	position:absolute;
+	right:10px; 
+	top:0px;
+	border-color: transparent transparent @selectArrow transparent;
+	border-style: solid;
+	border-width: 8px 5px 8px 5px;
+	height: 0px;
+	width: 0px;
+	.border-radius(0);
+	box-shadow: none;
+	margin: 0;
+}
+.select-box:before {
+  content:'';
+  position:absolute;
+	right:10px; 
+	top:20px;
+	border-color: @selectArrow transparent transparent transparent;
+	border-style: solid;
+	border-width: 8px 5px 8px 5px;
+	height: 0px;
+	width: 0px;
+	.border-radius(0);
+	box-shadow: none;
+	margin: 0;
+}
+
+.help-inline {
+  position: absolute;
+  z-index: 100000;
+  display: block;
+  visibility: visible;
+  padding: 0;
+  .opacity(100);
+}
+
+// Wrapper for the tooltip content
+.help-inner {
+  padding: 3px 8px;
+  color: @tooltipColor;
+  text-align: center;
+  text-decoration: none;
+  .border-radius(4px);
+}
+
+// Arrows
+.help-arrow,
+.help-arrow:after {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.help-arrow:after {
+  content: "";
+  z-index: -1;
+}
+
+.help-inline {
+  .help-arrow {
+    top: 50%;
+    left: -6px;
+    margin-top: -@popoverArrowWidth;
+    border-width: @popoverArrowWidth @popoverArrowWidth @popoverArrowWidth 0;
+    border-right-color: @popoverArrowColor;
+    &:after {
+      border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth @popoverArrowOuterWidth 0;
+      border-right-color: @black;
+      bottom: -@popoverArrowOuterWidth;
+      left: -1px;
+    }
+  }
+}
+
+.controls .help-inline {
+	left: 235px; 
+	top: 0;
+}
+
+.controls .help-inline .help-inner {
+	font-size: (@baseFontSize + 2);
+	padding: 9px 10px 8px 10px;	
+	border:1px solid @black;
+	text-align:left;
+	font-weight:bold;
+	display:inline-block;
+	vertical-align:middle;
+	background: @disabledBackground;
+	color: @disabledText;
+}
+
+
+.help-inline .help-inner i {	
+	width: 22px;
+	height: 20px;
+	float: left;
+	margin: -2px 4px 0 0;
+}
+
+.disabled .controls .help-inline .help-arrow {
+	border-right-color: #4e555a;
+}
+
+
+.disabled .help-inline .help-inner i {
+	background:url('../img/icon.png') no-repeat 0 -193px;
+	background-size:138px;	
+}
+
+.error .help-inline .help-inner {	
+	background: @errorBackground;
+	color: @errorText;
+}
+
+.error .controls .help-inline .help-arrow {
+	border-right-color: @errorBackground;
+}
+
+.error .help-inline .help-inner i {	
+	background:url('../img/icon.png') no-repeat 0 -234px;
+	background-size:138px;	
+}
+
+.success .help-inline .help-inner {
+	background: @successBackground;
+	color: @successText;
+}
+
+.success .help-inline .help-arrow {
+	border-right-color: @successBackground;
+}
+
+.success .help-inline .help-inner i {	
+	background:url('../img/icon.png') no-repeat -53px -768px;
+	background-size:138px;	
+}
+
+// Warning
+.control-group.warning {
+  .formFieldState(@warningText, @warningBorder, @warningBackground);
+	position:relative;
+}
+
+// Error
+.control-group.error {
+  .formFieldState(@errorText, @errorBorder, @errorBackground);
+	position:relative;
+}
+// Success
+.control-group.success {
+  .formFieldState(@successText, @successBorder, @successBackground);
+	position:relative;
+}
+
+// Disabled  ---- [2012-08-28] Add
+.control-group.disabled {
+	.formFieldState(@disabledText, @disabledText, @inputBackground);
+	position:relative;
+}
+// Disabled input  ---- [2012-08-28] Add
+.input-disa {
+	font-size: @baseFontSize;
+	line-height: (@baseLineHeight + 4);
+	background:url('../img/bg_input.png') repeat-x left top;
+}
+
+
+// Margin to space out fieldsets
+.control-group {
+  margin-bottom: 0;
+}
+
+
+.control-group .controls input {
+	border: 1px solid @grayLight;
+	box-shadow: none;
+	&:focus {
+		border: 1px solid @grayLight;
+	}
+}
+
+// Button
+
+.uneditable-input {
+	font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+	padding: 11px 7px;
+	color: @gray;
+	background: @uneditableBackground;
+}
+
+// Radios and checkboxes on same line
+// TODO v3: Convert .inline to .control-inline
+.radio.inline,
+.checkbox.inline {
+	.user-select(none);
+  display: inline-block;
+  padding-top: 5px;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-left: 5px; // space out consecutive inline controls
+	padding-left:0;
+}
+
+
+// SEARCH FORM
+// -----------
+
+input.search-query {
+  padding-right: 14px;
+  padding-right: 4px \9;
+  padding-left: 14px;
+  padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-bottom: 0; // Remove the default margin on all inputs
+  .border-radius(15px);
+}
+
+/* Allow for input prepend/append in search forms */
+.form-search .input-append .search-query,
+.form-search .input-prepend .search-query {
+  .border-radius(0); // Override due to specificity
+}
+.form-search .input-append .search-query {
+  .border-radius(14px 0 0 14px)
+}
+.form-search .input-append .btn {
+  .border-radius(0 14px 14px 0)
+}
+.form-search .input-prepend .search-query {
+  .border-radius(0 14px 14px 0)
+}
+.form-search .input-prepend .btn {
+  .border-radius(14px 0 0 14px)
+}
+
+
+
+
+// HORIZONTAL & VERTICAL FORMS
+// ---------------------------
+
+// Common properties
+// -----------------
+
+.form-search input {
+	background-color: @inputBackground;
+	border:1px solid @grayLight;
+	.border-radius(@searchBorderRadius);
+	@transition: border linear .2s, box-shadow linear .2s;
+	.transition(@transition);
+	color: @searchTxt;
+	padding: 9px 15px;
+	&:focus {
+		color: @white;
+	}
+}
+
+.form-search button,
+.form-search button:hover,
+.form-search button:active {
+	font-size: @baseFontSize;
+	padding: 9px 10px;
+}
+
+.form-search {
+  .input-append input.search-query {
+		.border-radius(20px 0 0 20px);
+  }
+
+	.input-append button.btn {
+		.border-radius(0 20px 20px 0);
+  }
+  // Re-hide hidden elements due to specifity
+  .hide {
+    display: none;
+  }
+}
+
+// select box
+
+.select-area {
+	position:relative;
+}
+
+.select-area select {
+	position:absolute; 
+	left:5px;
+	top:0;
+}
+
+.select-box {
+	position:relative;
+	outline:0;	
+	background-color: @selectBackground;
+	border:1px solid transparent;
+	.border-radius(@inputBorderRadius);
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");	
+}
+.select-box input {
+	width:85%;
+	height: @selectHeight;
+	margin:0;
+	color: @grayLight;
+	background-color: transparent;
+	box-shadow: none;
+	border-radius : 0;
+	// Focus state
+  &:focus {
+    border:1px solid transparent;
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+		box-shadow: none;
+		color: @grayLight;
+  }
+}
+
+.select-box .arrow1 {
+	display:block;
+	position:absolute;
+	right:10px; 
+	top:0px;
+	border-color: transparent transparent @selectArrow transparent;
+	border-style: solid;
+	border-width: 8px 5px 8px 5px;
+	background:none;
+	height: 0px;
+	width: 0px;
+	.border-radius(0);
+	box-shadow: none;
+	margin: 0;
+}
+
+.select-box .arrow2 {
+	content:"";
+	position:absolute;
+	right:10px; 
+	top:20px;
+	border-color: @selectArrow transparent transparent transparent;
+	border-style: solid;
+	border-width: 8px 5px 8px 5px;
+	background:none;
+	height: 0px;
+	width: 0px;
+	.border-radius(0);
+	box-shadow: none;
+	margin: 0;
+}
+
+
+.slider {
+	position: relative;
+	width: 100%;
+	height: 7px;
+	content:"";
+	display:block;
+	border-radius:20px;
+	background-color: rgba(41,41,41,1);
+}
+
+.slider-bar {
+    height: 7px;
+    position: absolute;
+    border-radius:20px;
+    background-color: rgba(032, 148, 177,1);
+}
+
+.slide-handle {
+	width: 20px;
+	height: 20px;
+	.border-radius(50px);
+	border: 0;
+	background-color: @sliderBtn;
+	position:absolute;	
+	left: 0; 
+	top: -8px;
+	z-index: 100;
+}
+
+.slider-box {
+	width: 100%;
+	display: inline-block;
+}
+.slider-box .slider {
+	float: left;
+}
+
+.slider-box .figure {
+	float: right;
+}
+
+.flip-area {
+	.user-select(none);
+	position:relative;
+	display: inline-block;
+	border: 1px solid @grayLight;
+	.border-radius(25px);
+	margin: 0;
+	background-color: @inputGradiantBg;
+}
+
+.flip-check {
+	position: absolute;
+	left: -10000px;
+}
+
+.flip-check + .flip-txt {	
+	text-align: center;
+	padding: 3px 15px 7px;
+	color: @flipOffTxt;
+	font-size: @baseFontSize + 2;
+	line-height: @baseLineHeight;
+	font-weight:bold;
+	display: inline-block;
+	.border-radius(20px);
+	background-color: @flipOffBg;
+}
+
+.flip-check:checked + .flip-txt {
+	text-align: right;
+	padding: 3px 15px 7px;
+	color: @flipOnTxt;
+	font-size: @baseFontSize + 2;
+	line-height: @baseLineHeight;
+	font-weight:bold;
+	display: inline-block;
+	.border-radius(20px);
+	background-color: @flipOnBg;
+}
+
+.flip-check + .flip-txt:after {	
+	display: inline-block;
+	content: attr(data-off);
+	color: @flipOffTxt;
+	margin-top: 8px;
+}
+
+.flip-check:checked + .flip-txt:after {	
+	display: inline-block;
+	content: attr(data-on);
+	color: @flipOnTxt;
+	margin-top: 8px;
+}
+
+.flip-check:checked + .flip-txt > span {
+	float: right;
+	margin-left: 15px;
+	margin-right: 0;
+}
+
+.slider-box input.figure {
+	width: 40px;
+	margin: -5px 0 0;
+	padding: 5px;
+	background: none;
+	box-shadow : none;
+	text-align: right;
+	color: @figureTxt;
+	font-size: @baseFontSize;
+	&:focus {
+    border: 0;
+		padding: 5px;
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+		box-shadow: none;
+		color: @figureTxt;
+  }
+}

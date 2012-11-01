@@ -36,18 +36,13 @@
 	background: url('../img/bg_tab_on.png') repeat left top;
 	background-size: 4px;
 }
+
 // Add a hover state for linked versions only
 
-a.thumbnail:hover:after {
-	content: "";
-	display:block;
-	position: absolute;
-	left: -3px;
-	top: -2px;
-	width: 100%;
-	height: 100%;
-  border: 3px solid #ea002c;
-	.border-radius(8px);
+a.thumbnail:hover {
+  .transition(none);
+	background-position: 0;
+	.box-shadow(0 0 8px rgba(0,0,0,.7));
 }
 
 // Images and captions
@@ -65,7 +60,7 @@ a.thumbnail:hover:after {
 }
 
 
-.gray .thumbnail {
+.gray a.thumbnail {
   display: block;
   padding: 9px 10px;
   line-height: @baseLineHeight;
@@ -75,4 +70,8 @@ a.thumbnail:hover:after {
   .transition(all .2s ease-in-out);
 	background: url('../img/bg_dot_black.png') repeat left top;
 	background-size: 4px;
+}
+
+.gray a.thumbnail:hover {
+	.box-shadow(none)
 }

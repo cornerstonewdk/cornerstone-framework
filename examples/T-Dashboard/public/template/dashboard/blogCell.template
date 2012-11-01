@@ -1,0 +1,5 @@
+<li>
+	<a href="{{link}}" target="_blannk">
+		<p>{{title}}</p>
+	</a>
+</li>

@@ -22,7 +22,7 @@
 .navbar-inner {
 	text-align:center;
   min-height: @navbarHeight;
-  padding: 0 20px;
+  padding: 0 10px;
   #gradient > .vertical-nav(rgba(0,0,0,.1), rgba(255,255,255,.05));
 	border:none;
   border-top: 1px solid rgba(255,255,255,.1);
@@ -79,10 +79,11 @@
 // Dividers in navbar
 // -------------------------
 .navbar .divider-vertical {
-  height: @navbarHeight;
-  margin: 0 9px;
-  border-left: 1px solid @navbarBackground;
-  border-right: 1px solid @navbarBackgroundHighlight;
+  height: @navbarHeight - 16;
+  margin: 0;
+	padding: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
 // Buttons in navbar
@@ -144,6 +145,7 @@
 		float: right;
 		.navbarVerticalAlign(30px); // Vertically center in navbar
 		margin-bottom: 0;
+		padding: 0 10px 0 0;
     .search-query {
       color: @grayLighter;
 			line-height: (@baseLineHeight + 5);
@@ -171,8 +173,8 @@
 .navbar-search label {
 	color: @grayDark;
 	display: inline-block;
-	padding: 0 10px 0 0;
-	font-size: (@baseFontSize + 4);
+	padding: 0 5px 0 0;
+	font-size: @baseFontSize;
 }
 
 .navbar-search button {
@@ -187,7 +189,7 @@
 
 .navbar-search button i {
 	background: url('../img/icon.png') no-repeat -53px -673px;
-	background-size: 138px;
+	background-size: 320px;
 	display: block;
 	width: 18px;
 	height: 24px;
@@ -205,8 +207,6 @@
     .border-radius(0);
   }
 }
-
-
 
 // Fixed navbar
 // -------------------------
@@ -234,33 +234,11 @@
   .border-radius(0);
 }
 
-// Reset container width
-// Required here as we reset the width earlier on and the grid mixins don't override early enough
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  #grid > .core > .span(@gridColumns);
-}
 
 // Fixed to top
 .navbar-fixed-top {
   top: 0;
 }
-.navbar-fixed-top,
-.navbar-static-top {
-  .navbar-inner {
-    .box-shadow(~"inset 0 -1px 0 rgba(0,0,0,.1), 0 1px 10px rgba(0,0,0,.1)");
-  }
-}
-
-// Fixed to bottom
-.navbar-fixed-bottom {
-  bottom: 0;
-  .navbar-inner {
-    .box-shadow(~"inset 0 1px 0 rgba(0,0,0,.1), 0 -1px 10px rgba(0,0,0,.1)");
-  }
-}
-
 
 // NAVIGATION
 // ----------
@@ -271,7 +249,7 @@
   display: block;
   float: left;
   margin: 0;
-	padding: 9px 0 0;
+	padding: 9px 0 0 10px;
 	z-index: 1;
 }
 .navbar .nav.pull-right {
@@ -279,14 +257,14 @@
 }
 .navbar .nav > li {
   float: left;
-	padding: 0 3px;
+	padding: 0 2px;
 }
 
 .navbar .nav > li:first-child {
 	border-right: 1px solid rgba(33,33,34,.2);
 	.box-shadow(~"1px 0 0 rgba(255,255,255,.5)");
 	margin-right: 5px;	
-	padding: 0 15px 0 0;
+	padding: 0 5px 0 0;
 }
 
 // Links
@@ -296,13 +274,10 @@
   padding: 7px 13px;
 	margin: 0;
   color: @navbarLinkColor;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 	border: 1px solid transparent;
-}
-.navbar .nav .dropdown-toggle .caret {
-  margin-top: 3px;
 }
 
 
@@ -322,7 +297,6 @@
   background-color: @navbarLinkBackgroundActive;
 }
 
-
 .navbar .nav > li:first-child a,
 .navbar .nav > li:first-child > a:focus,
 .navbar .nav > li:first-child > a:hover,
@@ -333,25 +307,58 @@
 	box-shadow: none;
 	background: none;
 	color: @navbarLinkHome;
-	font-size: ((@baseFontSize * 2 ) - 6);	
+	font-size: @baseFontSize + 4;	
 	text-shadow: 0 1px 1px rgba(255,255,255,7);
 }
 
+.navbar .nav.pull-right > li:first-child,
+.navbar .nav.pull-right > li:last-child {
+	border: 0;
+	box-shadow: none;
+	margin: 0;	
+	padding: 0 3px;
+}
+
+.navbar .nav.pull-right > li:first-child a {
+	float: none;
+  // Vertically center the text given @navbarHeight
+  padding: 7px 13px;
+	margin: 0;
+  color: @navbarLinkColor;
+	font-size: @baseFontSize;
+  text-decoration: none;
+  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+	border: 1px solid transparent;
+}
+
+.navbar .nav.pull-right > li:first-child a:focus,
+.navbar .nav.pull-right > li:first-child a:hover,
+.navbar .nav.pull-right > li:first-child .active > a,
+.navbar .nav.pull-right > li:first-child .active > a:hover,
+.navbar .nav.pull-right > li:first-child .active > a:focus {
+	color: @white;
+  text-decoration: none;
+	text-shadow: none;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+}
 
 .navbar .nav > li a i {
 	display: inline-block;
 	vertical-align: middle;
 	background-image: url('../img/icon.png');
-	background-size: 138px;
+	background-size: 320px;
 	padding-right: 0;
 	margin-top: -2px;
 }
 
 // Icon + Text Navigation 
 
-.nav.pull-right > li:last-child a,
-.ico-txt .nav > li:first-child a {
-  padding: 6px 13px 2px;
+.ico-txt .nav > li:first-child a,
+.nav-icon .pull-right > li:last-child a {
+  padding: 4px 13px;
 	margin: 0;
 	border: 1px solid transparent;
 	text-shadow: none;
@@ -363,24 +370,20 @@
 
 .ico-txt .nav > li:first-child a:hover, 
 .ico-txt .nav > li:first-child a:active,
-.ico-txt .nav.pull-right > li:first-child a:hover, 
-.ico-txt .nav.pull-right > .active a {
-	font-size: 0;
-	line-height: 0;
-  text-decoration: none;
+.nav-icon .nav.pull-right > li:last-child a:hover,
+.nav-icon .nav.pull-right > li:last-child a:active {
 	.border-radius(4px);
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
   background-color: @navbarLinkBackgroundActive;
-	text-shadow: 0 1px 1px rgba(0,0,0,.9);
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav > li a,
 .ico-txt .nav > li a:hover,
 .ico-txt .nav > li a:active,
 .ico-txt .nav > li.active a {
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav > li a i {
@@ -389,20 +392,20 @@
 
 .ico-txt .nav > li:first-child a {
 	color: @navbarLinkColor;
-	font-size: (@baseFontSize + 3);
-	padding: 6px 13px 2px;
+	font-size: @baseFontSize;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav > li:first-child a:hover, 
 .ico-txt .nav > li:first-child a:active, 
 .ico-txt .nav > li:first-child.active a {
 	color: @white;
-	font-size: (@baseFontSize + 3);
-	padding: 6px 13px 2px;
+	font-size: @baseFontSize;
+	padding: 4px 13px;
 }
 
 .ico-txt .nav, .nav-icon .nav {
-	padding: 7px 0 0;
+	padding: 8px 0 0;
 }
 
 .ico-txt .nav.pull-right > li:first-child {
@@ -412,47 +415,39 @@
 	margin: 0;
 }
 
-.ico-txt .nav.pull-right > li:first-child a {
-	font-size: 0;
-	line-height: 0;	
-	padding: 6px 14px 2px;
-}
-
 // Icon Navigation 
 
-.nav-icon .nav > li a {
-	font-size: 0;
-	line-height: 0;	
-}
-
+.nav-icon .nav > li a,
 .nav-icon .nav > li a:hover,
 .nav-icon .nav > li a:active,
 .nav-icon .nav > li.active a {
-	padding: 6px 13px 2px;
+	font-size: 0;
+	line-height: 0;
+	padding: 4px 13px;
 }
 
-.nav-icon .nav > li:first-child a {
+.nav-icon .nav > li:first-child a,
+.nav-icon .nav.pull-right > li:first-child a {	
+	visibility: visible;
 	font-size: 0;
 	line-height: 0;
   text-decoration: none;
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 	.border-radius(4px);
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarFirstBackground;
+  background-color: @navbarLinkBackgroundActive;
 }
 
 .nav-icon .nav > li:first-child a:hover, 
 .nav-icon .nav > li:first-child a:active, 
-.nav-icon .nav > li:first-child.active a,
-.nav-icon .nav.pull-right > li:first-child a:hover,
-.nav-icon .nav.pull-right > .active a {
+.nav-icon .nav > li:first-child.active a {
+	visibility: visible;
 	font-size: 0;
 	line-height: 0;
-  text-decoration: none;
-	padding: 6px 13px 2px;
+	padding: 4px 13px;
 	.border-radius(4px);
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
   background-color: @navbarLinkBackgroundActive;
 }
@@ -463,13 +458,6 @@
 	box-shadow: none;
 }
 
-.nav.pull-right > li:first-child a {
-	.border-radius(0);
-	box-shadow: none;
-	border: 0;
-  background: none;
-}
-
 .nav.pull-right > li:last-child {
 	border-left: 1px solid rgba(255,255,255,.5);
 	.box-shadow(~"-1px 0 0 rgba(33,33,34,.2)");
@@ -477,6 +465,15 @@
 	padding: 0 0 0 5px;
 }
 
+.ico-txt .nav.pull-right > li:first-child a,
+.ico-txt .nav.pull-right > li:last-child a,
+.nav-icon .nav.pull-right > li:last-child a,
+.nav-icon .nav.pull-right > li:last-child a:hover,
+.nav-icon .nav.pull-right > li:last-child a:active {
+	font-size: 0;
+	line-height: 0;	
+	padding: 3px 13px 3px 13px;
+}
 
 // Navbar button for toggling navbar items in responsive layouts
 // These definitions need to come after '.navbar .btn'
@@ -488,11 +485,11 @@
 	top: 0;
 	margin:8px 0 0;
 	display: none;
-	.box-shadow(inset 0 0 7px rgba(0,0,0,.7));
+	.box-shadow(inset 0 0 7px rgba(0,0,0,.3));
 	border:1px solid rgba(255,255,255,.1);
 	border-bottom:1px solid rgba(255,255,255,.3);
 	.border-radius(4px);	
-	background: #212121;
+	background: @navBtn;
 	padding: 6px 10px;
 }
 
@@ -501,8 +498,8 @@
 	height: 22px;
 	padding: 0;
 	display: block;
-	background:url('../img/icon.png') no-repeat -53px -47px;
-	background-size: 139px;
+	background:url('../img/icon.png') no-repeat -14px -515px;
+	background-size: 320px;
 }
 
 .btn-write, 
@@ -512,8 +509,8 @@
 	width:28px;
 	height:29px;
 	display:block;
-	background:url('../img/icon.png') no-repeat -53px -86px;
-	background-size: 139px;
+	background:url('../img/icon.png') no-repeat -27px -1114px;
+	background-size: 320px;
 	margin:14px 0 0;
 	cursor: pointer;
 }
@@ -526,7 +523,7 @@
 	height:22px;
 	display:block;
 	background:url('../img/icon.png') no-repeat center center;
-	background-size: 139px;
+	background-size: 320px;
 	margin:14px 0 0;
 	cursor: pointer;
 }
@@ -539,7 +536,19 @@
 	top: 42px;
 	left: 3px;
 	z-index: 1;
-	text-align:left;  
+	text-align:left; 
+	&:before {
+    border-bottom-color: @dropdownBorder;
+    position: absolute;
+    top: -9px;
+    left: 9px;
+  }
+  &:after {
+    border-bottom: 8px solid @dropdownBackground;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+  }
 }
 
 // Menu position and menu caret support for dropups via extra dropup class
@@ -573,7 +582,6 @@
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColor;
   border-bottom-color: @navbarLinkColor;
-	margin-top: -1px;
 }
 .navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
@@ -581,7 +589,6 @@
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColorActive;
   border-bottom-color: @navbarLinkColorActive;
-	margin-top: -1px;
 }
 
 // Right aligned menus need alt position
@@ -654,8 +661,11 @@
     border-right-color: @navbarInverseBackgroundHighlight;
   }
  
+  .nav.pull-right li.dropdown .dropdown-toggle {
+		padding: 7px 13px;
+	}
 
-  // Navbar collapse button
+	// Navbar collapse button
   .btn-navbar {
     .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
 		background:#212121 url('../img/icon.png') no-repeat 0 -935;
@@ -665,102 +675,114 @@
 }
 
 
-.home {
+.icon-home {
 	width: 24px;
 	height: 29px;
-	background-position: 0 -932px;
+	background-position: -193px -822px;
 }
 
-.message {
+.nav > li:first-child a:hover .icon-home, 
+.nav > li:first-child a:active .icon-home, 
+.nav > li:first-child.active a .icon-home {
 	width: 24px;
 	height: 29px;
-	background-position: -53px -223px;
+	background-position: -60px -822px;
 }
 
-.mail {
+.icon-message {
+	width: 24px;
+	height: 29px;
+	background-position: -193px -467px;
+}
+
+.navbar .nav > li a:hover .icon-message, 
+.navbar .nav > li a:active .icon-message, 
+.navbar .nav > li.active a .icon-message, {
+	width: 24px;
+	height: 29px;
+	background-position: -60px -467px;
+}
+
+.icon-mail {
 	width: 26px;
 	height: 29px;
-	background-position: -53px -135px;
+	background-position: -191px -601px;
 }
 
-.save {
+.navbar .nav > li a:hover .icon-mail, 
+.navbar .nav > li a:active .icon-mail, 
+.navbar .nav > li.active a .icon-mail, {
+	width: 26px;
+	height: 29px;
+	background-position: -59px -601px;
+}
+
+.icon-save {
 	width: 22px;
 	height: 29px;
-	background-position: -53px -475px;
+	background-position: -193px -645px;
 }
 
-.user2 {
+.navbar .nav > li a:hover .icon-save, 
+.navbar .nav > li a:active .icon-save, 
+.navbar .nav > li.active a .icon-save, {
+	width: 22px;
+	height: 29px;
+	background-position: -61px -645px;
+}
+
+.icon-user2 {
+	width: 27px;
+	height: 29px;
+	background-position: -191px -779px;
+}
+
+.navbar .nav > li a:hover .icon-user2, 
+.navbar .nav > li a:active .icon-user2, 
+.navbar .nav > li.active a .icon-user2, {
+	width: 27px;
+	height: 29px;
+	background-position: -59px -779px;
+}
+
+.icon-connect {
 	width: 26px;
 	height: 29px;
-	background-position: 0 -275px;
+	background-position: -191px -734px;
 }
 
-.connect {
+.nav-icon .nav > li:first-child a:hover .icon-connect, 
+.nav-icon .nav > li:first-child a:active .icon-connect, 
+.nav-icon .nav > li:first-child.active a .icon-connect {
 	width: 26px;
 	height: 29px;
-	background-position: 0 -91px;
+	background-position: -59px -734px;
 }
 
-.search {
+.icon-search {
 	width: 24px;
 	height: 29px;
-	background-position: -53px -572px;
+	background-position: -192px -690px;
 }
 
-.write {
+.navbar .nav > li a:hover .icon-search, 
+.navbar .nav > li a:active .icon-search, 
+.navbar .nav > li.active a .icon-search {
+	background-position: -60px -690px;
+}
+
+.icon-write {
 	width: 28px;
 	height: 29px;
-	background-position: -53px -324px;
+	background-position: -190px -557px;
 }
 
-.navbar .nav > li a:hover .message, 
-.navbar .nav > li a:active .message, 
-.navbar .nav > li.active a .message, {
-	background-position: -53px -271px;
-}
-
-.navbar .nav > li a:hover .mail, 
-.navbar .nav > li a:active .mail, 
-.navbar .nav > li.active a .mail, {
-	background-position: -53px -178px;
-}
-
-.navbar .nav > li a:hover .save, 
-.navbar .nav > li a:active .save, 
-.navbar .nav > li.active a .save, {
-	background-position: -53px -523px;
-}
-
-.navbar .nav > li a:hover .user2, 
-.navbar .nav > li a:active .user2, 
-.navbar .nav > li.active a .user2, {
-	background-position: 0 -322px;
-}
-
-
-
-.navbar .nav > li a:hover .search, 
-.navbar .nav > li a:active .search, 
-.navbar .nav > li.active a .search {
-	background-position: -53px -719px;
-}
-
-.navbar .nav > li a:hover .write, 
-.navbar .nav > li a:active .write, 
-.navbar .nav > li.active a .write {
-	background-position: -53px -378px;
-}
-
-.nav > li:first-child a:hover .home, 
-.nav > li:first-child a:active .home, 
-.nav > li:first-child.active a .home {
-	background-position: -53px 3px;
-}
-
-.nav-icon .nav > li:first-child a:hover .connect, 
-.nav-icon .nav > li:first-child a:active .connect, 
-.nav-icon .nav > li:first-child.active a .connect {
-	background-position: 0 -142px;
+.navbar .nav > li a:hover .icon-write, 
+.navbar .nav > li a:active .icon-write, 
+.navbar .nav > li.active a .icon-write {
+	width: 28px;
+	height: 29px;
+	background-position: -58px -557px;
 }
 
 

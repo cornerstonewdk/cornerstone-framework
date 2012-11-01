@@ -2048,7 +2048,7 @@
         Alert = $.fn.alert.Constructor;
 
         Alert.prototype.hide = function (type, next) {
-            console.log("alert hello world");
+//            console.log("alert hello world");
         };
 
         $.fn.alert.Constructor = Alert;
@@ -2388,7 +2388,7 @@
                     var now = new Date().getTime();
                     var touchTime = now - _touch_start_time;
 
-                    console.log(swipeTime, touchTime, _distance, swipeMinDistance);
+//                    console.log(swipeTime, touchTime, _distance, swipeMinDistance);
                     if ((swipeTime > touchTime) && (_distance > swipeMinDistance)) {
                         // calculate the angle
                         _angle = self.getAngle(_pos.start[0], _pos.move[0]);
@@ -4786,7 +4786,7 @@ jQuery.fn.motioncaptcha || (function ($) {
     };
 
     Spinner.prototype.toggle = function () {
-        console.log("toggle");
+//        console.log("toggle");
         var $parent = this.$element.parent("[data-toggle='buttons-radio']");
 
         $parent && $parent

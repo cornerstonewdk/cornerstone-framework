@@ -1,0 +1,28 @@
+<div class="hero-unit">
+	<p>{{customerName}} 님</p>
+	<p>고객등급 : {{customerLevel}}</p>
+	<p>사용기기 : {{customerDevice}}</p>
+	<p>요금제 : {{customerPricePlan}}</p>
+</div>
+<div class="row-fluid">
+	<div class="span6">
+		<div class="hero-unit">
+			<p>VOC 접수내용</p>
+			<hr>
+			<p>{{vocRequest}}</p>
+			<br>
+			<p>조치 내용</p>
+			<hr>
+			<p>{{vocResponse}}</p>
+		</div>
+	</div>
+	<div class="span6 hidden-phone">
+		<div class="hero-unit">
+			<p>VOC 이력</p>
+			<div class="lists scroller">
+				<ul id="vocHistory" class="lists-con">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

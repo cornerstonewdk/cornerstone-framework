@@ -18,6 +18,9 @@
 		.lists ul li.padding-20:hover {
 			background: none;
 		}
+		body {
+			padding: 0;
+		}
 	</style>
 </head>
 <body>
@@ -84,7 +87,7 @@
 
 <div id="wrapper" class="scrollview">
 	<div class="lists scroller">
-		<ul id="thelist">
+		<ul id="thelist" class="lists-con">
 			<li class="padding-20">
 				<form>
 					<legend>Text input</legend>
@@ -174,7 +177,7 @@
 		</li>
 	</ul>
 </div>
-<script type="text/javascript" src="../../../dist/lib/jquery.js"></script>
+<script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="../../../dist/ui/widget-scrollview.js"></script>
 <script type="text/javascript">
 	$("#wrapper").featuredScrollView({

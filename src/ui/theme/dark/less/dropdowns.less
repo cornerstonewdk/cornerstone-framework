@@ -43,7 +43,7 @@
   top: 100%;
   left: 0;
   z-index: @zindexDropdown;
-  display: block; // none by default, but block on "open" of the menu
+  display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: 160px;
   padding: 0;
@@ -99,6 +99,7 @@
     padding: 5px 20px;
     clear: both;
     font-weight: normal;
+		font-size: @baseFontSize - 2;
     line-height: @baseLineHeight;
     color: @dropdownLinkColor;
     white-space: nowrap;	

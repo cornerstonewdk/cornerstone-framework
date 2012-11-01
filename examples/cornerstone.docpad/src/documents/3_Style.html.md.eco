@@ -1,0 +1,295 @@
+---                                                                         
+title1: 'LiveDocument: 1. Introduction'                                     
+title2: 'LiveDocument: 2. Application'                                      
+title: 'LiveDocument: 3. Style'                                            
+title4: 'LiveDocument: 4. Widget'                                           
+title5: 'LiveDocument: 5. Util'                                             
+title6: 'LiveDocument: 6. Applendix'                                        
+title7: 'Reference: 1. Feel And Appearance'                                 
+title8: 'Reference: 2. Optimization'                                        
+outline1: 'Framework 사용했을 때 얻을 수 있는 이점들에 대한 설명'           
+outline2: '애플리케이션 작성법'                                             
+outline: '스타일 작성법'                                                   
+outline4: '위젯 사용법'                                                     
+outline5: '유틸리티 사용법'                                                 
+outline6: '부록'                                                            
+outline7: '구현을 위한 설계문서로써 제품의 모양새와 느낌을 정의하고 설명함' 
+outline8: '최적화'                                                          
+date: '2012-10-03'                                                          
+layout: 'post'                                                              
+tags: ['post','corner','prime','odd']
+tagstr: 'post corner prime odd'
+---                                                                         
+
+스타일 작성법
+===========
+
+
+소개
+---
+스타일 작성법은 개발자나 퍼블리셔가 아니더라도 코드를 빠르고 정확하게 이해할 수 있도록 한다. 최초 작성자가 유지보수를 끝까지 책임지는 경우는 드물다. 이런 경우 최초 작성자가 아닌 다른 사람이 코드를 분석할 때 스타일 가이드가 없는 경우 소스를 직접 분석해야하는 비효율적인 비용이 발생한다. 하지만 스타일 가이드에 준수해 작성된 소스의 경우 소스 분석 시간을 낮추므로 업무 효율성을 높일 수 있다. 또한 스타일 가이드에 준수한 코드는 코드가 일관성 있게 작성이 되므로 프로젝트 팀원이 작성하는 코드의 통일성을 보장 받을 수 있다. 이와 같이 스타일 가이드를 통해 얻을 수 있는 장점을 아래와 같이 정리할 수 있다.
+
+* 스타일가이드를 통한 일관성 있는 규칙으로 코드의 통일성
+* 코드 분석 용이
+* 업무 효율 상승
+* 유지보수 비용 감소
+
+
+
+
+명명법
+-----
+
+명명법은 레이아웃, 요소 등의 ID, CLASS 이름을 작성하는 규칙이다. 누구나 보기에 이해하기 쉬운 이름으로 작성을해야 코드를 쉽게 파악할 수 있고, 일관성있는 코드를 작성할 수 있다.
+
+### 기본 규칙
+
+이름의 시작은 영문 소문자로 작성하며, 의미상으로 구분이 필요한 경우 `-` 하이픈으로 구분한다. 모든 이름은 영문, 숫자 그리고 `-` 하이픈으로 이뤄진다. 또한 클래스에 네이밍을 할 경우 아래 예시 방식을 따르는 것을 권장한다. 
+
+예시.
+
+1. b- :  
+코드는 간결해지지만 의미상 식별이 거의 불가능하다.
+
+1. button- :  
+이름을 보는 순간 바로 어떤 의미인지 확인이 가능하다 하지만 코드가 길어질 수 있는 단점이 있다.
+
+1. btn- :  
+코드 / 이름의 의미 또한 어느정도 간결하고 식별이 가능하다. **(권장)**
+
+###공통 명명법 	
+			
+- 버튼 : btn-
+- 아이콘 : icon-
+			
+- 폼 : form-
+- input : input-
+- 표 : table-
+
+- 네비게이션 : nav-	
+- 탭메뉴 : tab-
+- 검색 : search-
+
+
+### 예약어 추가 예정 (실작업시)
+
+
+
+격자
+---
+
+격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <div> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.
+부트스트랩도 자체적인 격자 레이아웃 시스템을 제공한다. 부트스트랩의 격자 시스템은 12열의 격자(12-column grid)로 이루어져 있으며 기본 버전과 유동 버전(Fluid)이 있다. 또한 다양한 화면 크기에 대응하기 위해 4개의 디자인 형태를 갖는데 이 것은 반응형 디자인과 연관되어 동작한다.
+
+기본 격자 시스템(Default grid system)은 940px 고정 너비에 12열 격자로 이루어진다.
+행은 "row", 열은 "span*"이라는 클래스로 표현되는데, "span*" 클래스는 span1~12 까지 사용할 수 있다.			
+열 사이의 간격은 20px이며 "span1" 클래스의 너비는 60px이다. "span*" 클래스의 숫자가 하나씩 증가할 때마다 너비가 80px씩 늘어나 "span12" 클래스의 너비는 전체 너비인 940px이 된다.
+
+유동 격자 시스템(Fluid grid system)은 격자 크기를 픽셀이 아닌 퍼센트로 사용한다. 유동 격자 시스템을 사용하려면 행의 클래스를 "row-fluid"로 바꾸기만 하면 된다.
+
+열에 "offset*" 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 단, 열 위치 이동은 기본 격자 시스템에서만 가능하다.
+
+
+예제) url : http://jsfiddle.net/azamara/gtgYM/
+
+* 그리드 시스템 UI
+
+![](images/style-grid-1.png?raw=true)
+
+그리드 시스템을 통해 얻을 수 있는 장점은 아래와 같다.
+
+* 그리드를 통해 튼튼한 레이아웃을 보장
+* 사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 
+* 미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경
+
+
+
+CSS 구조
+-------
+
+우리 CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법
+
+	bootstrap.css에는 가 태그별 basic 속성 작성.
+	global.css 공통적으로 사용하는 class 작성.
+	div, table, ul class를 사용. (class="")
+	element는 기본 bootstrap.css에서 상속하여 사용할수도 있다.
+
+
+	###### Bootstrap 베이스의 네이밍 방법
+	기본  .table	             행 사이에만 수평 라인
+	옵션  .table-bordered	 반올림 코너와 바깥쪽 테두리를 추가합니다
+	      .table-striped	     홀수 행 (1, 3, 5 등)로 밝은 회색 배경색을 추가
+	      .table-condensed   td및 th의 셀 패딩을 8px에서 4px로 줄임
+
+	 예제) http://twitter.github.com/bootstrap/base-css.html#tables	
+
+#####Selector 선언방법
+
+		개별적으로 사용 가능한 element나 class의 속성을 각각의 그리드 내에 만들어진 layout의 class에 상속하여 속성을 변경 후 사용 가능하다.
+
+#####CSS Selector 사용방법
+		
+		div p <DIV> 요소 내부의 모든 <P> 요소를 선택
+		div>p 부모 <DIV> 요소내에 모든 <P> 요소를 선택
+		div+p 부모 <DIV> 요소 바로 뒤에 배치되는 <P> 요소를 선택
+		input[type="text"] input type의 text만 선택
+
+		input:focus 포커스를 가진 입력 요소를 선택
+		p:first-letter  모든 <P>의 첫 글자를 선택
+		p:first-line  모든 <P>의 첫 번째 행을 선택
+		p:first-child  부모 <P>의 첫 번째 자식 element를 선택
+		p:before  모든 <P>의 내용 앞에 내용을 삽입
+		p:after  모든 <P> 다음 내용을 삽입
+		p:first-of-type  <p>와  동일한 행의 첫번째 <p>요소 선택
+		p:last-of-type  <p>와 동일한 행의 마지막 <p>요소 선택
+		p:only-of-type  <p>와 동일한 행의 같은 요소를 선택
+		p:only-child   부모<p>의 자식 element 선택
+		p:nth-child(2)  부모<p>의 2번째 자식 노드 선택
+		p:nth-last-child(2)  부모<p>의 뒤에서 2번째 자식 노드 선택
+		p:nth-of-type(2)  <p>의 형제 노드중에 2번째 노드 선택
+		p:nth-last-of-type(2)  <p>의 형제 노드중에 뒤에서 부터 2번째 노드 선택
+		p:last-child  부모 <P>의 마지막 모든 자식 element를 선택
+		p:empty  자식이 없는 모든 <P>를 선택
+
+
+반응형 웹
+----------------
+### 반응형웹
+반응형 웹에 대하 설명
+
+	반응형웹이란? (Responsive Website)
+	Responsive Website의 뜻처럼 반응하는 웹이란 뜻이다.
+	하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든웹이다.
+	
+
+### 레이아웃 (반응형 중심)
+반응형 웹을 통해 스크린별로 나눠지는 레이아웃 형태 설명
+
+	미디어쿼리(media query)를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다.
+
+* 그리드 내에 레이아웃 식별 구분
+
+
+#####기기에 따른 그리드 크기변화
+<table style="width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; margin:0 0 20px;">
+	<colgroup>
+		<col width="25%" />
+		<col width="25%" />
+		<col width="25%" />
+		<col width="" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">기기</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Layout Width</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Column width</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Gutter width</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">스마트폰</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">480px 이하</td>
+			<td colspan="2" style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">고정되지 않은 Column</td>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">스마트폰 / 태블릿pc</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">767px 이하</td>
+			<td colspan="2" style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">고정되지 않은 Column</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">태블릿pc</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">768px 이상</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">42px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">20px</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">PC</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">최대 980px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">60px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">20px</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">대형 디스플레이</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">최대  1200px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">70px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">30px</td>
+		</tr>
+	</tbody>
+</table>
+
+		반응형웹을 구현하려면 viewport의 메타태그를 포함해야 한다.
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+#####기기크기에 따라 적용되는 미디어쿼리
+
+		 /* Landscape phones and down */
+  		@media (max-width: 480px) { ... }
+		 
+		/* Landscape phone to portrait tablet */
+		@media (max-width: 767px) { ... }
+		
+		/* Portrait tablet to landscape and desktop */
+		@media (min-width: 768px) and (max-width: 979px) { ... }
+		 
+		/* Large desktop */
+		@media (min-width: 1200px) { ... }
+
+#####지원하는 Class
+<table style="width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; margin:0 0 20px;">
+	<colgroup>
+		<col width="25%" />
+		<col width="25%" />
+		<col width="25%" />
+		<col width="" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Class</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Phones</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Tablets</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Desktops</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.visible-phone</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.visible-tablet</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.visible-desktop</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.hidden-phone</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.hidden-tablet</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.hidden-desktop</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+		</tr>
+	</tbody>
+</table>
+
+테마
+----------------
+CSS 구조를 바탕으로 테마 stylesheet 작성 방법 설명?

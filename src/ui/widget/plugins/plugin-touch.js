@@ -8,27 +8,15 @@
  */
 
 ;(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([ "jquery" ], function ($) {
-            factory($, root, doc);
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
+    factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
-    var _pos = {}, _offset, _touch_start_time, swipeTime = 350, swipeMinDistance = 10, _has_touch = ('ontouchstart' in window);
+    var doc, draggable, _pos = {}, _offset, _touch_start_time, swipeTime = 350, swipeMinDistance = 10, _has_touch = ('ontouchstart' in window);
 
     /**
      * @class Touch
      * @constructor
      */
     var Touch = function () {
-        var self = this;
-        $(document).on("touchstart mousedown touchmove mousemove touchend mouseup", function (e) {
-
-        });
     };
 
     Touch.prototype = {
@@ -131,7 +119,7 @@
         },
 
         drag:function (element, option) {
-            var doc, draggable, el, self = this;
+            var el, self = this;
             option = $.extend({x:true, y:true, drag:true}, option);
             doc = doc || $(document).on("mousedown mouseup touchstart touchend", function (e) {
                 self.getTouchPageXY(e);
@@ -169,7 +157,6 @@
 
                     e.preventDefault();
                 } else {
-
                     try {
                         if (draggable) {
                             draggable.trigger("dragEnd");
@@ -181,7 +168,6 @@
                     }
                 }
             });
-
             return element.data("drag", true);
         },
 
@@ -229,7 +215,7 @@
                     var now = new Date().getTime();
                     var touchTime = now - _touch_start_time;
 
-                    console.log(swipeTime, touchTime, _distance, swipeMinDistance);
+//                    console.log(swipeTime, touchTime, _distance, swipeMinDistance);
                     if ((swipeTime > touchTime) && (_distance > swipeMinDistance)) {
                         // calculate the angle
                         _angle = self.getAngle(_pos.start[0], _pos.move[0]);
@@ -305,5 +291,4 @@
         return touch.swipe($(this), option);
     };
 
-}))
-;
+}));

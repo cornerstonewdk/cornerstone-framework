@@ -8,15 +8,7 @@
  */
 
 ;(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([ "jquery" ], function ($) {
-            factory($, root, doc);
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
+    factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
     /**
      * @class Spinner
@@ -47,7 +39,6 @@
     };
 
     Spinner.prototype.toggle = function () {
-        console.log("toggle");
         var $parent = this.$element.parent("[data-toggle='buttons-radio']");
 
         $parent && $parent
@@ -77,7 +68,6 @@
         $("div.widget-spinner div.spinner-center").attr({
             "data-content": text
         });
-        console.log(text);
     };
 
     Spinner.prototype.removeText = function () {
@@ -130,13 +120,13 @@
 
     /* BUTTON DATA-API
      * =============== */
-//
-//    $(function () {
-//        $("body").on("click.Spinner.data-api", "[data-toggle^=button]", function ( e ) {
-//            var $btn = $(e.target)
-//            if (!$btn.hasClass("btn")) $btn = $btn.closest(".btn")
-//            $btn.button("toggle")
-//        })
-//    })
+
+    $(function () {
+        $("body").on("click.Spinner.data-api", "[data-toggle^=button]", function ( e ) {
+            var $btn = $(e.target)
+            if (!$btn.hasClass("btn")) $btn = $btn.closest(".btn")
+            $btn.button("toggle")
+        })
+    })
 }));
 

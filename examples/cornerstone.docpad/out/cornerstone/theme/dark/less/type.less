@@ -1,0 +1,353 @@
+// Body
+
+body {background:url('../img/bg_body.png') repeat left top; color: @white;}
+
+//
+// Typography
+// --------------------------------------------------
+
+
+// Body text
+// -------------------------
+
+p {
+  margin: 0 0 @baseLineHeight / 2;
+}
+.lead {
+  margin-bottom: @baseLineHeight;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: @baseLineHeight * 1.5;
+}
+
+
+// Emphasis & misc
+// -------------------------
+
+small {
+  font-size: 85%; // Ex: 14px base font * 85% = about 12px
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+.muted {
+  color: @grayLight;
+}
+
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  margin: (@baseLineHeight / 2) 0;
+  font-family: @headingsFontFamily;
+  font-weight: @headingsFontWeight;
+  line-height: 1;
+  color: @headingsColor;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
+  small {
+    font-weight: normal;
+    line-height: 1;
+    color: @grayLight;
+  }
+}
+h1 { font-size: 36px; line-height: 40px; }
+h2 { font-size: 30px; line-height: 40px; }
+h3 { font-size: 24px; line-height: 40px; }
+h4 { font-size: 18px; line-height: 20px; }
+h5 { font-size: 14px; line-height: 20px; }
+h6 { font-size: 12px; line-height: 20px; }
+
+h1 small { font-size: 24px; }
+h2 small { font-size: 18px; }
+h3 small { font-size: 14px; }
+h4 small { font-size: 14px; }
+
+
+// Page header
+// -------------------------
+
+.page-header {
+  padding-bottom: 2px ! important;
+  margin: 0;
+  border-bottom:1px solid rgba(255,255,255,0.3);
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.2);
+  overflow:hidden;
+}
+
+.page-header h1 {
+    padding-bottom:9px;
+    margin:0 0 0;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+}
+
+
+
+// Lists
+// --------------------------------------------------
+
+// Unordered and Ordered lists
+ul, ol {
+  padding: 0;
+  margin: 0 0 @baseLineHeight / 2 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+li {
+  line-height: @baseLineHeight;
+}
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
+// Description Lists
+dl {
+  margin-bottom: @baseLineHeight;
+}
+dt,
+dd {
+  line-height: @baseLineHeight;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: @baseLineHeight / 2;
+}
+// Horizontal layout (like forms)
+.dl-horizontal {
+  dt {
+    float: left;
+    width: 120px;
+    clear: left;
+    text-align: right;
+    .text-overflow();
+  }
+  dd {
+    margin-left: 130px;
+  }
+}
+
+// MISC
+// ----
+
+// Horizontal rules
+hr {
+  margin: @baseLineHeight 0;
+  border: 0;
+}
+
+// Abbreviations and acronyms
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted @grayLight;
+}
+abbr.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+// Blockquotes
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 @baseLineHeight;
+  border-left: 5px solid @grayLighter;
+  p {
+    margin-bottom: 0;
+    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+  }
+  small {
+    display: block;
+    line-height: @baseLineHeight;
+    color: @grayLight;
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+
+  // Float right with text-align: right
+  &.pull-right {
+    float: right;
+    padding-right: 15px;
+    padding-left: 0;
+    border-right: 5px solid @grayLighter;
+    border-left: 0;
+    p,
+    small {
+      text-align: right;
+    }
+    small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014';
+      }
+    }
+  }
+}
+
+// Quotes
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+
+// Addresses
+address {
+  display: block;
+  margin-bottom: @baseLineHeight;
+  font-style: normal;
+  line-height: @baseLineHeight;
+}
+
+.title {
+    display: block;
+  margin-bottom: @baseLineHeight;
+  font-size: (@baseFontSize * 1.5) - 1;
+  line-height: @baseLineHeight * 2;
+  color: @titleColor;
+  border: 0;
+  border-bottom: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.2); 
+    margin: 40px 0 10px;
+    padding-left: 20px;
+}
+
+.footer {
+    text-align:right; 
+    font-size:20px;
+    font-weight:bold;
+    color: @footTxtColor; 
+    text-shadow: 0 1px 0 rgba(255,255,255,.2); 
+    padding:0 30px 0 0;
+    margin:30px 0 10px;
+    background:url('../img/ci_t.png') no-repeat right top;
+    background-size:17px 18px;
+}
+
+.blind {
+    visibility:visible; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    font-size:0; 
+    line-height:0; 
+    text-indent:-3000em; 
+    position:absolute;
+}
+
+// Lists
+.lists {
+    background:url('../img/bg_top.png') repeat left top;
+    background-size: 4px;
+    padding: 10px;
+    .border-radius(6px);
+}
+
+.lists header {
+    background: url('../img/bg_list_header.png') repeat left top;
+    background-size: 49px;
+    .border-radius(6px 6px 0 0);
+    .box-shadow(~"0 0 5px rgba(0,0,0,.5), inset 0 -4px 4px rgba(0,0,0,.2)");
+    position: relative;
+    z-index: 100;
+    padding: 10px;
+    color: @white;
+    font-size: @baseFontSize + 4;
+    text-shadow: 0 2px 1px rgba(0,0,0,.7);
+}
+
+.lists.group header {
+    background: url('../img/bg_list_group.png') repeat left top;
+    background-size: 49px;
+    .border-radius(6px 6px 0 0);
+    .box-shadow(~"0 0 5px rgba(0,0,0,.5), inset 0 -4px 4px rgba(0,0,0,.2)");
+    position: relative;
+    z-index: 100;
+    padding: 10px;
+    color: @white;
+    font-size: @baseFontSize + 4;
+    text-shadow: 0 2px 1px rgba(0,0,0,.7);
+}
+
+.lists ul {
+    background-color: #ededed;
+    .border-radius(0 0 6px 6px);
+    padding: 0;
+    margin: 0;    
+    list-style: none;
+    .box-shadow(0 0 5px rgba(0,0,0,.5));
+    position: relative;
+    z-index: 1;
+}
+
+.lists ul li {
+    padding: 0;
+    margin: 0;
+    color: @black;
+    font-size: @baseFontSize + 4;
+    border-bottom: 1px solid #cdcdcd;
+    .box-shadow(0 1px 1px rgba(255,255,255,1));    
+    padding: 10px;
+}
+
+.lists ul li i {
+    display: block;
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url('../img/icon_silver01.png') no-repeat left top;
+    background-size: 287px;
+    background-position: -135px -55px;
+}
+
+.lists ul li:last-child {
+    border-bottom: 0;
+    box-shadow: none;
+}
+
+.lists ul li a {
+    background: none;    
+    color: @black;
+    text-decoration: none;    
+}
+
+.lists ul li a.group-tit {
+    display: block;
+    color: @subGroupTxt;
+    text-shadow: 0 1px 1px rgba(0,0,0,.8);
+    padding: 5px 10px;
+    background-color: @subGroupTit;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.5), inset 0 4px 4px rgba(255,255,255,.1)");    
+}
+
+.lists ul li.sub-group {
+    padding: 0;
+}
+
+.lists ul li.sub-group ul li a {
+    color: @black;
+}
+
+// Emphasis classes
+
+.text-warning { color: @warningBackground;}
+.text-error { color: @errorBackground;}
+.text-info { color: @infoBackground;}
+.text-success { color: @successBackground;}

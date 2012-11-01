@@ -17,12 +17,17 @@
   // No need to reset .thumbnails here since it's the same @gridGutterWidth
 
 	.navbar-inner {
-		min-height: (@navbarHeight - 10);
+		min-height: @navbarHeight;
 		padding: 0 10px;		
 	}	
 
 	.navbar-fixed-top {
 		margin: 0;
+	}
+
+	.navbar-fixed-top .navbar-inner {
+		min-height: @navbarHeight;
+		padding: 0;
 	}
 
 	.navbar-fixed-top .container {
@@ -79,8 +84,8 @@
 	}	
 
 	.nav-icon .nav > li a {
-		font-size: (@baseFontSize + 3);
-		line-height: @baseLineHeight + 3;
+		font-size: @baseFontSize;
+		line-height: @baseLineHeight;
 	}
 
 	.navbar .nav > li:first-child a,
@@ -89,7 +94,7 @@
 	.navbar .nav > .active:first-child > a,
 	.navbar .nav > .active:first-child > a:hover,
 	.navbar .nav > .active:first-child > a:focus {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		color: @white;
 		text-shadow: none;
 		text-decoration: none;
@@ -144,7 +149,7 @@
 		padding-left: 0;
 		margin: 0;
 		background: none;
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		color: @white;
 		text-shadow: none;
 		text-decoration: none;
@@ -167,20 +172,20 @@
 	.nav-icon .nav.pull-right > li.active:first-child a,
 	.nav-icon .nav.pull-right > li.active:last-child a,{
 		padding: 7px 0 7px 10px;
-		line-height: @baseLineHeight + 3;
+		line-height: @baseLineHeight;
 		color: @navbarLinkHome;
 		text-shadow: 0 1px 1px rgba(255,255,255,7);
 	}
 
 	.ico-txt .nav > li:first-child a:hover {
 		padding: 7px 0 7px 10px;
-		line-height: @baseLineHeight + 3;
+		line-height: @baseLineHeight;
 	}
 
 	.ico-txt .nav.pull-right > li:first-child a:hover,
 	.nav-icon .nav.pull-right > li:first-child a:hover {
-		font-size: (@baseFontSize + 3);
-		line-height: @baseLineHeight + 3;
+		font-size: @baseFontSize;
+		line-height: @baseLineHeight;
 		color: @navbarLinkHome;
 		padding: 7px 0 7px 10px;
 		background-color: #b7b7b7;
@@ -192,9 +197,9 @@
 	.nav-icon .nav > li:first-child a:hover, 
 	.nav-icon .nav > li:first-child a:active, 
 	.nav-icon .nav > li:first-child.active a {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		color: @white;
-		line-height: @baseLineHeight + 3;
+		line-height: @baseLineHeight;
 		text-decoration: none;
 		padding: 7px 0 7px 10px;
 		background-color: #5f6267;
@@ -214,9 +219,9 @@
 	.nav.pull-right > li:last-child a:hover, 
 	.nav.pull-right > li:last-child a:active, 
 	.nav.pull-right > li:last-child.active a {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		color: @white;
-		line-height: @baseLineHeight + 3;
+		line-height: @baseLineHeight;
 		text-decoration: none;
 		padding: 7px 0 7px 10px;
 		background-color: #b7b7b7;
@@ -243,7 +248,7 @@
 	.navbar .brand {
 		min-width: 320px;
 		display: inline-block;
-		padding-top: 10px;
+		padding-top: 15px;
 	}
 
 	.navbar .btn-navbar {

@@ -14,6 +14,189 @@
   // Input grid
   #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);
 
+	.btn {
+		// Hover state
+		&:hover {
+			color: @btnLinkTxt;
+			text-decoration: none;       
+			#gradient > .vertical(rgba(255,255,255,.2), rgba(255,255,255,.01));
+			 background-color: @btnHover;
+			 *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4)");
+			margin: 0;
+
+			// transition is only when going to hover, otherwise the background
+			// behind the gradient (there for IE<=9 fallback) gets mismatched
+			.transition(background-position .1s linear);
+		}
+
+		// Focus state for keyboard and accessibility
+		&:focus {
+			.tab-focus();
+		}
+
+		// Active state
+		&.active,
+		&:active {
+			color: @btnActiveTxt;
+			text-decoration: none;
+			#gradient > .vertical(rgba(0,0,0,.5), rgba(0,0,0,.3));
+			background-color: @btnActive;
+			*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			background-position: 0 0;
+			border:1px solid transparent;
+			.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
+			margin: 0;
+		}
+
+		// Disabled state
+		&.disabled,
+		&[disabled] {
+			cursor: default;
+			color: @btnDisabledTxt;
+			text-shadow: none;
+			background-color: @btnDisabled;
+			background-image: none;
+			border:1px solid @btnBorder;
+			.opacity(100);
+			.box-shadow(none);
+		}
+	}
+
+	.btn-primary { 
+		// Hover state
+		&:hover {
+			color: @btnBlueActiveTxt;		
+			.buttonBackground(@btnBlueHoverHighlight, @btnBlueHover, @btnPrimaryTxt, @btnShadow);		
+			border:1px solid @btnBorder;
+		}
+
+		// Active state
+		&.active,
+		&:active {
+			text-shadow: inset 0 0 2px rgba(255,255,255,.5);
+			.buttonBackground(@btnBlueActiveHighlight, @btnBlueActive, @btnBlueActiveTxt, @btnShadow);
+			border: 1px solid transparent;
+			.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
+		}
+		// Disabled state
+		&.disabled,
+		&[disabled] {
+			cursor: default;		
+			.buttonBackground(@btnBlueDisabled, @btnBlueDisabled, @btnBlueDisabledTxt);	
+			text-shadow: none;
+			background-image: none;
+			border:1px solid @btnBorder;
+			.opacity(100);
+			.box-shadow(none);
+		}
+	}
+
+	.btn-group .btn {
+		&:hover {
+			#font > #effect > .txt-over();
+			border-left: 0;
+			border-right: 0;
+		}
+	}
+
+	.btn-group .btn:first-child {
+		// Hover state
+		&:hover {
+			border-left: 1px solid transparent;
+			border-right: 0;
+		}
+	}
+
+	.btn-group .btn:last-child {
+		// Hover state
+		&:hover {
+			border-left: 0;
+			border-right: 1px solid transparent;
+		}
+	}
+
+	.btn-group .btn.dropdown-toggle,
+	.btn-group .btn.dropdown-toggle:first-child {
+		border-right: 1px solid @btnBorder;
+	}
+
+	.btn-group .btn.dropdown-toggle:hover {
+		border-right: 1px solid transparent;
+	}
+
+	.btn-group-vertical .btn {
+		display: block;
+		float: none;
+		width: 100%;
+		color: @btnGroupTxt;
+		font-size: @baseFontSize + 3;
+		text-shadow: 0 1px 0 rgba(255,255,255,.2);
+		border: 0;
+		border-left: 1px solid #000;
+		border-right: 1px solid #000;
+		.box-shadow(~"inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4)");
+		background: transparent;
+		margin: 0;
+
+		// Hover state
+		&:hover {
+			#font > #effect > .txt-over();
+			text-decoration: none;
+			background-color: none;		
+			*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			#gradient > .vertical-btn;
+			background-position: 0 0;
+			border: 0;
+			border-left: 1px solid transparent;
+			border-right: 1px solid transparent;
+			box-shadow: none;
+			.box-shadow(~"inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3)"); 
+			margin: 0;
+
+			// transition is only when going to hover, otherwise the background
+			// behind the gradient (there for IE<=9 fallback) gets mismatched
+			.transition(background-position .1s linear);
+		}
+
+		// Focus state for keyboard and accessibility
+		&:focus {
+			.tab-focus();
+		}
+
+		// Active state
+		&.active,
+		&:active {
+			#font > #effect > .txt-over();
+			text-decoration: none;
+			background-color: none;		
+			*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+			#gradient > .vertical-btn;
+			background-position: 0 0;
+			border: 0;
+			border-left: 1px solid transparent;
+			border-right: 1px solid transparent;
+			box-shadow: none;
+			.box-shadow(~"inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3)"); 
+			margin: 0;
+		}
+	}
+
+	.btn-group-vertical .btn:hover:first-child,
+	.btn-group-vertical .btn:active:first-child {
+		#font > #effect > .txt-over();
+		border: 1px solid transparent;
+		border-bottom: 0;
+	}
+
+	.btn-group-vertical .btn:hover:last-child,
+	.btn-group-vertical .btn:active:last-child {
+		#font > #effect > .txt-over();
+		border: 1px solid transparent;
+		border-top: 0;
+	}
+
+
   // Thumbnails
   .thumbnails {
     margin-left: -@gridGutterWidth1200;
@@ -48,14 +231,16 @@
 		background: none;
 	}
 
-	.lists ul li:hover i {
+	.lists ul li:hover i,
+	.lists ul li.active i,
+	.lists .lists-con li.sub-group ul li:hover i,
+	.lists .lists-con li.sub-group ul li.active i {
 		display: block;
 		width: 25px;
 		height: 25px;
 		float: right;
-		background: url('../img/icon_blue03.png') no-repeat left top;
-		background-size: 287px;
-		background-position: -135px -55px;
+		background: url('../img/icon.png') no-repeat -66px -27px;
+		background-size: 320px;
 	}
 
 	.lists ul li:last-child:hover {
@@ -83,4 +268,308 @@
 		.border-radius(0 0 6px 6px);
 	}
 
+	//pagination
+	.pagination a:hover,
+	.pagination .active a {
+		color: @pagingActive;
+		text-decoration:none;
+		border-top: none;
+		border-bottom: 1px solid rgba(255,255,255,.15);
+		background-color: @pagingNumBg;
+		.box-shadow(~"inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15)");
+	}
+
+	.pagination ul li:first-child a:hover span, 
+	.pagination ul li:last-child a:hover span {	
+		width: 22px;
+		height: 22px;
+		padding: 0;
+		margin: 0 auto;
+		display: block;
+		position: relative;
+		.border-radius(50px);
+		border:none;
+		vertical-align:middle;
+		box-shadow:none;
+		#gradient > .vertical-paging;
+	}
+
+	.pagination ul li:first-child a:hover span:after, 
+	.pagination ul li:last-child a:hover span:after {
+		content:"";
+		border-color: transparent @pagingArrowActive transparent transparent;
+		border-style: solid;
+		border-width: 7px 9px 7px 9px;
+		background: none ! important;
+		height: 0px ! important;
+		width: 0px ! important;
+		.border-radius(0);
+		box-shadow: none;
+		position: absolute;
+		left: -3px;
+		top: 4px;
+	}
+
+	.pagination ul li:last-child a:hover span:after {
+		border-color: transparent transparent transparent @pagingArrowActive;
+		position: absolute;
+		left: 8px;
+		top: 4px;
+	}
+
+	.pagination2 a:hover,
+	.pagination2 .active a,
+	.pagination2 .active span {
+		width: 15px;
+		height: 15px;
+		margin: -4px 0 0 -4px;
+		#gradient > .radial-paging;
+		.box-shadow(~"inset 0 0 2px rgba(255,255,255,.2), 0 3px 5px rgba(0,0,0,.3)");
+	}
+
+	.pagination2 li:first-child a:hover,
+	.pagination2 li:last-child a:hover {
+		margin: 0;
+		text-decoration: none;
+		border-top: none;
+		border-bottom: 1px solid rgba(255,255,255,.15);
+		background-color: @pagingNumBg;
+		.box-shadow(~"inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15)");
+	}
+
+	.pagination2 li:first-child a:hover span,
+	.pagination2 li:last-child a:hover span {	
+		width: 22px;
+		height: 22px;
+		padding: 0;
+		margin: 0;
+		display: block;
+		position: realtive;
+		.border-radius(50px);
+		border: none;
+		vertical-align: middle;
+		box-shadow: none;
+		#gradient > .vertical-paging;
+	}
+
+	.pagination2 li:first-child a:hover span:after, 
+	.pagination2 li:last-child a:hover span:after {
+		content:"";
+		border-color: transparent @pagingArrowActive transparent transparent;
+		border-style: solid;
+		border-width: 7px 9px 7px 9px;
+		background: none ! important;
+		height: 0px ! important;
+		width: 0px ! important;
+		.border-radius(0);
+		box-shadow: none;
+		position: absolute;
+		left: -3px;
+		top: 4px;
+	}
+
+	.pagination2 li:last-child a:hover span:after {
+		border-color: transparent transparent transparent @pagingArrowActive;
+		left: 8px;
+		top: 4px;
+	}
+
+	//Nav. pill
+
+	.nav-pills > li > a {
+		color: @navPillLink;
+		font-size: @baseFontSize;
+		text-shadow: 0 2px 2px rgba(0,0,0,.5);
+		padding: 15px 35px;
+		margin-top: 2px;
+		margin-bottom: 2px;
+		.border-radius(5px);
+		border:1px solid @navPillBorder;
+		background-color: @navPillBackground;
+		.box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
+		&:hover {
+			color: @navPillActive;
+			background-color: rgba(0,0,0,.2);
+			border:1px solid @navPillBorderOver;
+			border-bottom:1px solid rgba(255,255,255,.25);
+			.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+		}
+	}
+
+	.nav-pills > .active > a,
+	.nav-pills > .active > a:hover {
+		color: @white;
+		text-shadow: 0 2px 2px rgba(0,0,0,.7);
+		background-color: @navPillBgActive;
+		border:1px solid @navPillBorderOver;
+		border-bottom:1px solid rgba(255,255,255,.25);
+		.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+	}
+
+	// Actual tabs (as links)
+	.nav-tabs > li > a {
+		color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		text-shadow: 0 2px 2px rgba(0,0,0,.7);
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border:0;
+		#gradient > .tab-grd();
+		.border-radius(4px 4px 0 0);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3)");
+		overflow:hidden;
+		&:hover {
+			color: @navTabLink;
+			border-color: @navTabTop @navTabLeft @navTabRight;
+			background-color: rgba(0,0,0,.7);
+		}
+	}
+	// Active state, and it's :hover to override normal :hover
+	.nav-tabs > .active > a,
+	.nav-tabs > .active > a:hover {
+		color: @navTabOver;
+		text-shadow: 0 2px 2px rgba(0,0,0,.3);
+		border: 0;
+		#gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
+		background-color: transparent;
+		.box-shadow(~"inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3)");
+		cursor: default;
+	}
+
+	.nav-tabs.nav-stacked > li > a:hover {
+		color: @navTabLink;
+		border-color: @navTabTop @navTabLeft @navTabRight;
+		background-color: rgba(0,0,0,.7);
+	}
+
+	.tabs-below > .nav-tabs > li > a {
+		color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		text-shadow: 0 2px 2px rgba(0,0,0,.7);
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border:0;
+		#gradient > .tab-grd();
+		.border-radius(0 0 4px 4px);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+		overflow:hidden;
+		&:hover {
+			color: @navTabLink;
+			border-color: @navTabTop @navTabLeft @navTabRight;
+			background-color: rgba(0,0,0,.7);
+		}
+	}
+
+	.pager a:hover {
+		text-decoration: none;
+		background-color: @pagerHoverBg;
+		.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.25), 0 4px 6px rgba(0,0,0,.71)");
+	}
+
+	// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+	.table-striped {
+		tbody {
+			tr:nth-child(odd) td,
+			tr:nth-child(odd) th {
+				background-color: @tableBackgroundAccent;
+			}
+		}
+	}
+
+
+	.table {
+		tbody {
+			tr:hover td,
+			tr:hover th {
+				background-color: @tableBackgroundHover;
+			}
+		}
+	}
+
+	.table-hover {
+		tbody {
+			tr:hover td,
+			tr:hover th {
+				background-color: @tableBackgroundHover;
+			}
+		}
+	}
+
+	// Nav Lists
+	.nav-list > li > a:hover {
+		color: @white;
+		background-color: @navListHover;
+		.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
+		border-bottom: 1px solid rgba(0,0,0,.2);
+		margin-top: 1px;
+	}
+
+	.nav-list > li:last-child > a:hover {
+		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
+	}
+
+	// Thumbnails
+	a.thumbnail:hover:after {
+		content: "";
+		display:block;
+		position: absolute;
+		left: -3px;
+		top: -2px;
+		width: 100%;
+		height: 100%;
+		border: 3px solid #ea002c;
+		.border-radius(8px);
+	}
+
+	.btn-group .btn:hover .icon-up,
+	.btn-group .btn:active .icon-up,
+	.btn-group .btn.active .icon-up{
+		background-position: -149px -380px;
+	}
+
+	.btn-group .btn:hover .icon-down,
+	.btn-group .btn:active .icon-down,
+	.btn-group .btn.active .icon-down {
+		background-position: -149px -425px;
+	}
+
+	.btn-group .btn:hover .icon-set,
+	.btn-group .btn:active .icon-set,
+	.btn-group .btn.active .icon-set {
+		background-position: -149px -336px;
+	}
+
+	.btn-group .btn-primary .icon-up {
+		background-position: -17px -380px;
+	}
+
+	.btn-group .btn-primary .icon-down {
+		background-position: -17px -425px;
+	}
+
+	.btn-group .btn-primary .icon-set {
+		background-position: -16px -336px;
+	}
+
+	.btn-group .btn-primary:hover .icon-up,
+	.btn-group .btn-primary:active .icon-up,
+	.btn-group .btn-primary.active .icon-up{
+		background-position: -61px -380px;
+	}
+
+	.btn-group .btn-primary:hover .icon-down,
+	.btn-group .btn-primary:active .icon-down,
+	.btn-group .btn-primary.active .icon-down {
+		background-position: -61px -425px;
+	}
+
+	.btn-group .btn-primary:hover .icon-set,
+	.btn-group .btn-primary:active .icon-set,
+	.btn-group .btn-primary.active .icon-set {
+		background-position: -60px -336px;
+	}
 }

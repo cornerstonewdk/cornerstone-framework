@@ -14,17 +14,18 @@
 		-webkit-transform:translate3d(0,0,0);
 	}
 
-	.modal.fade.in {
-		top: 25%;
-	}
-
 	.navbar-inner {
-		min-height: (@navbarHeight - 10);
+		min-height: @navbarHeight;
 		padding: 0 10px;		
 	}	
 
 	.navbar-fixed-top {
 		margin: 0;
+	}
+
+	.navbar-fixed-top .navbar-inner {
+		min-height: @navbarHeight;
+		padding: 0;
 	}
 
 	.navbar-fixed-top .container {
@@ -81,7 +82,7 @@
 	}	
 
 	.nav-icon .nav > li a {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		line-height: (@baseLineHeight + 3);
 	}
 
@@ -91,7 +92,7 @@
 	.navbar .nav > .active:first-child > a,
 	.navbar .nav > .active:first-child > a:hover,
 	.navbar .nav > .active:first-child > a:focus {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		#font > #effect > .txt-over();
 		text-shadow: none;
 		text-decoration: none;
@@ -140,7 +141,7 @@
 	.nav-icon .nav > .active:first-child > a,
 	.nav-icon .nav > .active:first-child > a:hover,
 	.nav-icon .nav > .active:first-child > a:focus {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		line-height: @baseLineHeight + 3;
 		#font > #effect > .txt-over();
 		text-decoration: none;
@@ -162,7 +163,7 @@
 		padding-left: 0;
 		margin: 0;
 		background: none;
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		text-shadow: none;
 		text-decoration: none;
 		padding: 7px 0 7px 10px;
@@ -194,7 +195,7 @@
 
 	.ico-txt .nav.pull-right > li:first-child a:hover,
 	.nav-icon .nav.pull-right > li:first-child a:hover {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		line-height: @baseLineHeight + 3;
 		padding: 7px 0 7px 10px;
 		box-shadow: none;
@@ -205,7 +206,7 @@
 	.nav-icon .nav > li:first-child a:hover, 
 	.nav-icon .nav > li:first-child a:active, 
 	.nav-icon .nav > li:first-child.active a {
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		#font > #effect > .txt-over();
 		line-height: @baseLineHeight + 3;
 		text-decoration: none;
@@ -227,7 +228,7 @@
 	.nav.pull-right > li:last-child a:active, 
 	.nav.pull-right > li:last-child.active a {
 		#font > #effect > .txt-over();
-		font-size: (@baseFontSize + 3);
+		font-size: @baseFontSize;
 		line-height: @baseLineHeight + 3;
 		text-decoration: none;
 		padding: 7px 0 7px 10px;
@@ -254,7 +255,7 @@
 
 	.navbar .brand {
 		display: block;
-		padding-top: 10px;
+		padding-top: 15px;
 	}
 
 	.navbar .btn-navbar {

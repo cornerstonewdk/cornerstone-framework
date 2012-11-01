@@ -11,12 +11,6 @@
   .ie7-restore-left-whitespace();
 }
 
-// Space out series of button groups
-.btn-group + .btn-group {
-  margin-left: 0;
-	margin-right: 5px;
-}
-
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
   font-size: 0; // Hack to remove whitespace that results from using inline-block
@@ -43,7 +37,6 @@
 }
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
-  font-size: ((@baseFontSize * 2) - 4); // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
@@ -98,26 +91,14 @@
 }
 
 // On hover/focus/active, bring the proper btn to front
-.btn-group > .btn:hover,
+.btn-group > .btn:hover {
+  z-index: 0;
+}
+
 .btn-group > .btn:focus,
 .btn-group > .btn:active,
 .btn-group > .btn.active {
   z-index: 2;
-	border: 1px solid transparent;
-}
-
-.btn-group > .btn:first-child:hover,
-.btn-group > .btn:first-child:focus,
-.btn-group > .btn:first-child:active,
-.btn-group > .btn:first-child.active {
-	border-left: 0;
-}
-
-.btn-group > .btn:last-child:hover,
-.btn-group > .btn:last-child:focus,
-.btn-group > .btn:last-child:active,
-.btn-group > .btn:last-child.active {
-	border-right: 0;
 }
 
 // On active and open, don't show outline
@@ -125,8 +106,6 @@
 .btn-group.open .dropdown-toggle {
   outline: 0;
 }
-
-
 
 // Split button dropdowns
 // ----------------------
@@ -138,7 +117,6 @@
   .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), inset -1px 0 1px rgba(0,0,0,.1), 0 4px 3px rgba(0,0,0,.4)");
   *padding-top: 5px;
   *padding-bottom: 5px;
-	font-size: (@baseFontSize + 4);
 }
 .btn-group > .btn-mini + .dropdown-toggle {
   padding-left: 5px;
@@ -190,13 +168,13 @@
   }
 }
 
-
 // Reposition the caret [2012-08-29] Add
 .btn .caret {
   margin-top: 8px;
   margin-left: 0;
 	border-top: 5px solid @black;
 }
+
 // Carets in other button sizes
 .btn-mini .caret,
 .btn-small .caret,
@@ -214,8 +192,6 @@
   border-top: 0;
 }
 
-
-
 // Account for other colors
 .btn-primary,
 .btn-warning,
@@ -230,23 +206,38 @@
 }
 
 .dropdown-toggle .caret {
-	border-top:   4px solid @caretColorActive;
+	border-top: 4px solid @caretColorActive;
 }
 
-.btn-group {
-	display:inline-block; 
+
+.dropup .dropdown-toggle .caret {
+  border-bottom: 4px solid @caretColorActive;
+  border-top: 0;
+}
+
+.dropup .dropdown-menu {
+	&:before {
+    border: 0;
+  }
+  &:after {
+     border: 0;
+  }
 }
 
 .btn-group .btn {
-	// Hover state
-  &:hover {
+	color: @btnGroupTxt;
+	text-shadow: 0 1px 0 rgba(255,255,255,.2);
+	border: 0;
+	border-top: 1px solid @btnBorder;
+	border-bottom: 1px solid @btnBorder;
+	&:hover {
 		border-left: 0;
 		border-right: 0;
   }
-
   // Active state
   &.active,
   &:active {
+		#font > #effect > .txt-over();
 		border-left: 0;
 		border-right: 0;
 	}
@@ -255,7 +246,7 @@
 .btn-group .btn:first-child {
 	// Hover state
   &:hover {
-		border-left: 1px solid transparent;
+		border-left: 1px solid @btnBorder;
 		border-right: 0;
   }
 
@@ -271,7 +262,7 @@
 	// Hover state
   &:hover {
 		border-left: 0;
-		border-right: 1px solid transparent;
+		border-right: 1px solid @btnBorder;
   }
 
   // Active state
@@ -282,163 +273,87 @@
 	}
 }
 
-.btn-group .up:after,
-.btn-group .down:after,
-.btn-group .set:after{
+.btn-group .btn.btn-primary {
+	&:hover {
+		color: @btnGroupTxt;
+  }
+}
+
+.btn-group .btn i.icon-up,
+.btn-group .btn i.icon-down,
+.btn-group .btn i.icon-set, {
 	width:24px;
 	height:24px;
-	display:inline-block;
+	display:block;
 	content:"";
-	background:url('../img/icon.png') no-repeat 1px -652px;
-	background-size:138px;
+	background-image:url('../img/icon.png');
+	background-size: 320px;
 }
 
-.btn-group .down:after {
-	background-position: 1px -745px;
+.btn-group .btn .icon-up {
+	background-position: -105px -380px;
 }
 
-.btn-group .set:after {
-	background-position: 1px -840px;
+.btn-group .btn .icon-down {
+	background-position: -105px -425px;
 }
 
-.btn-group .up:hover:after,
-.btn-group .up:active:after,
-.btn-group .up.active:after{
-	background-position: 1px -699px;
+.btn-group .btn .icon-set {
+	background-position: -105px -336px;
 }
 
-.btn-group .down:hover:after,
-.btn-group .down:active:after,
-.btn-group .down.active:after {
-	background-position: 1px -793px;
+.btn-group .btn:active .icon-up,
+.btn-group .btn.active .icon-up{
+	background-position: -149px -380px;
 }
 
-.btn-group .set:hover:after,
-.btn-group .set:active:after,
-.btn-group .set.active:after {
-	background-position: 1px -887px;
+.btn-group .btn:active .icon-down,
+.btn-group .btn.active .icon-down {
+	background-position: -149px -425px;
 }
 
-// Button Group Type Add
-
-.t-group .btn {
-	color: @btnGroupTxt;
-	text-shadow: 0 1px 0 rgba(255,255,255,.2);
-	border: 0;
-	border-top: 1px solid @btnBorder;
-	border-bottom: 1px solid @btnBorder;
-
-	&:hover {
-		#font > #effect > .txt-over();
-  }
-  // Active state
-  &.active,
-  &:active {
-		#font > #effect > .txt-over();
-	}
+.btn-group .btn:active .icon-set,
+.btn-group .btn.active .icon-set {
+	background-position: -149px -336px;
 }
 
-.t-blue .btn {
-  .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground, @btnBlueTxt, @btnShadow);
-	border: 0;
-	border-top: 1px solid @black;
-	border-bottom: 1px solid @black;
-	text-shadow: 0 1px 0 rgba(255,255,255,.2);
-
-  // Hover state
-  &:hover {
-    color: @btnBlueActiveTxt;
-   border: 0;
-		border-top: 1px solid transparent;
-		border-bottom: 1px solid transparent;
-		background-color: @btnBlueActive;
-		background-image:none;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
-  }
-
-  // Focus state for keyboard and accessibility
-  &:focus {
-    .tab-focus();
-  }
-
-  // Active state
-  &.active,
-  &:active {
-    color: @btnBlueActiveTxt;
-    text-shadow:inset 0 0 2px rgba(255,255,255,.5);
-    background-color: @btnBlueActive;
-		background-image:none;
-    border:0;
-  }
-
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
-    background-color: darken(@white, 10%);
-    background-image: none;
-    .opacity(65);
-    .box-shadow(none);
-  }
-
+.btn-group .btn-primary .icon-up {
+	background-position: -17px -380px;
 }
 
-.t-blue .btn:first-child {
-	border-left: 1px solid @black;
+.btn-group .btn-primary .icon-down {
+	background-position: -17px -425px;
 }
 
-.t-blue .btn:last-child {
-	border-right: 1px solid @black;
+.btn-group .btn-primary .icon-set {
+	background-position: -16px -336px;
 }
 
-.t-blue .up:after,
-.t-blue .down:after,
-.t-blue .set:after{
-	background-position: 1px -370px;
+.btn-group .btn-primary:active .icon-up,
+.btn-group .btn-primary.active .icon-up{
+	background-position: -61px -380px;
 }
 
-.t-blue .down:after {
-	background-position: 1px -463px;
+.btn-group .btn-primary:active .icon-down,
+.btn-group .btn-primary.active .icon-down {
+	background-position: -61px -425px;
 }
 
-.t-blue .set:after {
-	background-position: 1px -557px;
+.btn-group .btn-primary:active .icon-set,
+.btn-group .btn-primary.active .icon-set {
+	background-position: -60px -336px;
 }
 
-.t-blue .up:hover:after,
-.t-blue .up:active:after,
-.t-blue .up.active:after{
-	background-position: 1px -416px;
-}
-
-.t-blue .down:hover:after,
-.t-blue .down:active:after,
-.t-blue .down.active:after {
-	background-position: 1px -511px;
-}
-
-.t-blue .set:hover:after,
-.t-blue .set:active:after,
-.t-blue .active:after {
-	background-position: 1px -606px;
-}
-
-.t-drop .btn, .split .btn {
-	font-size: (@baseFontSize + 4);
-	padding: 10px 15px;
-}
-
-.split .dropdown-toggle {
-	padding: 10px 5px;
+.btn-group .btn.dropdown-toggle,
+.btn-group .btn.dropdown-toggle:first-child {
+	border-right: 1px solid @btnBorder;
 }
 
 // Vertical button groups
 // ----------------------
 
 .btn-group-vertical {
+	display: inline-block;
   overflow:hidden; // makes buttons only take up the width they need
   .ie7-inline-block();
 	.border-radius(6px);
@@ -450,7 +365,7 @@
   float: none;
   width: 100%;
 	color: @btnGroupTxt;
-	font-size: (@baseFontSize * 2) - 3;
+	font-size: @baseFontSize + 3;
 	text-shadow: 0 1px 0 rgba(255,255,255,.2);
 	border: 0;
 	border-left: 1px solid #000;
@@ -461,22 +376,18 @@
 
 	// Hover state
   &:hover {
-		#font > #effect > .txt-over();
-    text-decoration: none;
-    background-color: none;		
-    *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
-		#gradient > .vertical-btn;
-    background-position: 0 0;
+		display: block;
+		float: none;
+		width: 100%;
+		color: @btnGroupTxt;
+		font-size: @baseFontSize + 3;
+		text-shadow: 0 1px 0 rgba(255,255,255,.2);
 		border: 0;
-		border-left: 1px solid transparent;
-		border-right: 1px solid transparent;
-		box-shadow: none;
-		.box-shadow(~"inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3)"); 
+		border-left: 1px solid #000;
+		border-right: 1px solid #000;
+		.box-shadow(~"inset 0 0 4px rgba(255,255,255,.15), inset 0 1px 1px rgba(255,255,255,.2), 0 -1px 1px rgba(0,0,0,.4)");
+		background: transparent;
 		margin: 0;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
   }
 
   // Focus state for keyboard and accessibility
@@ -525,16 +436,32 @@
   .border-radius(0 0 6px 6px);
 }
 
-.btn-group-vertical .btn:hover:first-child,
-.btn-group-vertical .btn:active:first-child {
-	#font > #effect > .txt-over();
-	border: 1px solid transparent;
+.btn-group-vertical .btn:hover:first-child {
+	border: 1px solid @btnBorder;
 	border-bottom: 0;
 }
 
-.btn-group-vertical .btn:hover:last-child,
+.btn-group-vertical .btn:hover:last-child {
+	border: 1px solid @btnBorder;
+	border-top: 0;
+}
+
+
+.btn-group-vertical .btn:active:first-child {
+	#font > #effect > .txt-over();
+	border: 1px solid @btnBorder;
+	border-bottom: 0;
+}
+
 .btn-group-vertical .btn:active:last-child {
 	#font > #effect > .txt-over();
 	border: 1px solid transparent;
 	border-top: 0;
+}
+
+.hor-toggle .btn {
+	font-size: @baseFontSize + 6;
+	font-weight: 600;
+	line-height: @baseLineHeight + 6;
+	padding: 9px 17px;
 }

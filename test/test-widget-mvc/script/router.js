@@ -11,18 +11,18 @@ define(function(require) {
 
         initialize: function() {
             $(".dropdown-menu").hide();
+            var Plugin = require("widget-plugins");
             window.Widget = {
                 chart:function ($el, options1, options2) {
                     if (typeof $el === "object" && $el.length > 0) {
-                        var Featured = require("../../dist/ui/widget-chart.js");
-                        var style = require('style!../../../src/ui/widget/featured/chart/featured-chart');
+                        var Featured = require("widget-chart");
                         $el.featuredChart(options1, options2);
                     }
                     return $el;
                 },
                 listView :function ($el, options1, options2) {
                     if (typeof $el === "object" && $el.length > 0) {
-                        var Featured = require("../../dist/ui/widget-listview.js");
+                        var Featured = require("widget-listview");
                         $el.featuredListView(options1, options2);
                     }
                     return $el;
@@ -45,7 +45,7 @@ define(function(require) {
 
         }
 	});
-	
+
 	new MainRouter();
 
 	Backbone.history.start();
