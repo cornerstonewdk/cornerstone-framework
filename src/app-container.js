@@ -26,6 +26,7 @@ requirejs.config( {
 		'form-view': Cornerstone.PATH + 'mvc/view/form',
 		'validation-view': Cornerstone.PATH + 'mvc/view/validation',
 		'gesture-view': Cornerstone.PATH + 'mvc/view/gesture',
+		'multipage-router': Cornerstone.PATH + 'mvc/router/multipage',
 		
 		'socket.io': '/socket.io/socket.io',
 		
