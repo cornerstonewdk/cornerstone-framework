@@ -1,0 +1,753 @@
+---                                                                         
+title1: 'LiveDocument: 1. Introduction'                                     
+title2: 'LiveDocument: 2. Application'                                      
+title3: 'LiveDocument: 3. Style'                                            
+title4: 'LiveDocument: 4. Widget'                                           
+title: 'LiveDocument: 5. Util'                                             
+title6: 'LiveDocument: 6. Applendix'                                        
+title7: 'Reference: 1. Feel And Appearance'                                 
+title8: 'Reference: 2. Optimization'                                        
+outline1: 'Framework 사용했을 때 얻을 수 있는 이점들에 대한 설명'           
+outline2: '애플리케이션 작성법'                                             
+outline3: '스타일 작성법'                                                   
+outline4: '위젯 사용법'                                                     
+outline: '유틸리티 사용법'                                                 
+outline6: '부록'                                                            
+outline7: '구현을 위한 설계문서로써 제품의 모양새와 느낌을 정의하고 설명함' 
+outline8: '최적화'                                                          
+date: '2012-10-03'                                                          
+layout: 'post'                                                              
+tags: ['post','corner','prime','odd']
+tagstr: 'post corner prime odd'
+section: 'Live Document'
+sections: ['Live Document']
+---                                                                         
+
+유틸리티 사용법
+============
+
+----------
+
+유틸리티는 다른 부분과의 의존성 없이 단독으로 사용할 수 있는 라이브러리 집합이다. 크게 네 가지로 나눌 수 있고, 각각은 require.js 모듈로 제공되며 모듈명은 다음과 같다.
+
+모듈명 | 설명
+:---- | :----
+transition | 화면 전환(Transition) 유틸리티
+runtime | 웹으로는 구현 불가능한 단말기의 Native 기능들을 제공하는 런타임 유틸리티
+jsonp | 다른 도메인의 서버에서 데이터를 가져오는 JSON 유틸리티
+skt | SKT Open API 서버와 통신하는 유틸리티
+
+이 중 runtime 모듈은 Cornerstone Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다.
+
+각각은 require.js 모듈이므로 다음과 같이 사용할 수 있다.
+
+```
+require( [ 'runtime' ], function( Runtime ) {
+	// 오디오 음량을 80%로 조정
+	Runtime.setAudioVolume( 80 );
+} );
+```
+
+`Runtime 환경이 아닐 경우 어떻게 대처할지`
+
+화면 전환
+-------
+
+###	화면전환 구조
+화면전화는 Launcher(실행기)와 Effect(효과)로 구성되어 있다.
+
+Launcher의 기능
+
+-	화면전환 효과를 내기 전 사용자가 정의한 값과 기본값을 병합
+-	화면전환을 위한 CSS 준비 및 뒤로 가기인 경우 이전 페이지 효과로 설정
+-	화면전환 가능 브라우저인지, 가능한 효과의 종류 인지 판단 등을 처리하고 실제 화면전환 효과를 실행시키는 기능
+-	화면전환 시 사용된 CSS를 초기화 후 사용자가 정의한 완료 함수를 실행한다.
+
+Effect의 기능
+
+-	각 효과에 맞는 CSS를 설정하고 화면전환 효과를 표현한다.
+
+### 화면전환 호환 브라우저
+
+-	Internet Explorer 9+(일부), 파이어폭스(Firefox), 크롬(Chrome), 사파리(Safari)
+
+### 종류
+1)	종류 목록
+
+- Flip(플립) 효과 : 화면 중심 y축을 기준으로 카드를 뒤집는 것처럼 나가는 페이지가 뒤돌아서면서 들어오는 페이지가 나타나는 효과 (3D)
+- Spin(화전) 효과 : 나가는 페이지가 회전화면서 사라지고, 들어오는 페이지가 회전하면서 나타나는 효과 (3D)
+- Slide(슬라이드) 효과 : 나가는 페이지가 좌측 밖으로 나가는 동시에 우측 밖에서 들어오는 페이지가 현재화면으로 들어오는 효과
+- Slideup(슬라이드 시작 방향 위) 효과 : 나가는 페이지가 아래로 내려가는 동시에 위에서 들어오는 페이지가 현재화면으로 들어오는 효과
+- Slidedown(슬라이드 시작 방향 아래) 효과 : Slideup의 반대효과
+- Fade(페이드) 효과 : 나가는 페이지가 사라지면서, 들어오는 페이지가 나타나는 효과
+- Pop(팝) 효과 : 나가는 페이지가 화면 중심으로 사라지고, 들어오는 페이지가 중심에서나타나는 효과
+- Turn(턴) 효과 : 왼쪽 y축을 기준으로 화면을 책 넘기기처럼 표현하는 효과 (3D)
+
+2)	종류별 작동 영상 [http://youtu.be/ncYSE-JRfJc](http://youtu.be/ncYSE-JRfJc)
+ 
+### 화면전환 사용방법
+
+1)	기본 HTML/CSS
+
+HTML
+화면전환시 나가고, 들어가는 페이지를 표현해야하므로 최소한 2개 이상의 영역이 필요하다. 아래 HTML은 front와 back 페이지로 
+구분해서 화면전환를 구현했으며, 개발시 front와 back은 같은 레벨에서 N개 존재가 가능하다.
+
+	<div id="front" class="current">
+		<!-- 플립효과로 다음 페이지 이동  -->
+        <button class="full-width btn " data-transition="flip">Flip</button>
+	</div>
+	<div id="back">
+	    (중략...)
+	</div>
+
+동일 레벨에서 N개 존재 가능
+
+	<div id="front" class="current">
+		<!-- 플립효과로 다음 페이지 이동  -->
+        <button class="full-width btn " data-transition="flip">Flip</button>
+	</div>
+	<div id="back">
+	    (중략...)
+	</div>
+	<div id="front2">
+	    (중략...)
+	</div>
+	<div id="back2">
+	    (중략...)
+	</div>
+	(중략...)
+
+
+CSS
+
+기본적으로 화면전환시 현재페이지를 제외한 페이지는 노출이 되지 않게 해야하므로 .current 등의 클래스로 현재 페이지인 경우만
+노출되도록 한다.
+
+	#front, #back {
+	    display: none;
+	}
+	#front.current, #back.current {
+	    display: block;
+	}
+
+ ※ **위의 코드에서 사용된 ID와 Class값의 네이밍은 사용자가 원하는대로 변경해서 사용이 가능하다.**
+
+
+2)	의존성 주입 
+
+-	일반 방식 [RUN](http://jsfiddle.net/azamara/tcEAG/8/)
+
+		<!-- jQuery -->
+		<script type="text/javascript" src="jquery/jquery-1.7.2.min.js"></script>
+		<!-- jQuery Transit -->
+		<script type="text/javascript" src="jquery.transit.js"></script>
+		<!-- 화면전환 Javascript -->
+		<script type="text/javascript" src="transition.js"></script>
+
+-	MVC Framework을 이용한 의존성 주입 [RUN](http://jsfiddle.net/azamara/tcEAG/7/)
+
+		define(['backbone',
+				'transition'],
+    			function (Backbone, Transition) {
+				(중략...)
+		});
+
+3)	화면전환 파라미터 정의
+윈도우 테이블 UI 확인이 어려움으로 추후 테이블로 변경 예정 
+
+
+transitionType - 화면전환 효과 기본 None(효과 없음) - None - X
+
+fallbackType - IE에서 임시로 사용할 효과 - Fade - X
+
+inTarget 들어오는 페이지 파라미터
+
+- id - 들어오는 페이지 아이디값 - undefined - O
+- from - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X 
+- to - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X 
+- duration - 들어오는 페이지의 애니메이션 시간 - 효과별 기본값 - X 
+- timing : 지정한 시간동안이 트랜지션 속도 (타이밍 함수값) - ease - X
+
+outTarget 나가는 페이지 파라미터
+
+- id - 나가는 페이지 아이디값 - undefined - O
+- from - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X 
+- to - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X 
+- duration - 나가는 페이지의 애니메이션 시간 - 효과별 기본값 - X 
+- timing : 지정한 시간동안이 트랜지션 속도 (타이밍 함수값) - ease - X
+- done - 나가는 페이지 트랜지션 완료시 실행 시킬 함수 - function(){} - X
+
+isReverse - 뒤로 가기 페이지인지 여부 식별 - false - O
+
+done - 화면전환 완료시 실행 시킬 함수 - function(){} - X
+
+4)	사용 문법
+
+기본적인 문법은 사용자가 아래와 같은 설정들을 제어할 수 있다.
+
+- transitionType : 화면전환 종류 (기본값: None)
+- inTarget : 나가는 페이지
+	- id : 아이디값  **(필수)**
+- outTarget : 들어오는 페이지 
+	- id : 아이디값  **(필수)**
+- isReverse : 뒤로가기 여부 (기본값: false)
+- done : 완료 시 실행할 함수
+
+
+<기본 문법>
+	
+    Transition.launcher({
+        transitionType:"flip", // 화면전환 종류 참고
+        inTarget:{
+            id:inTargetID // 들어오는 페이지의 ID 값
+        },
+        outTarget:{
+            id:outTargetID // 나가는 페이지의 ID 값
+        },
+        isReverse: false, // 뒤로가기 여부
+        done:function () {
+            $("#front").addClass("current");
+            $("#back").removeClass("current");
+        }
+    });
+
+
+고급 문법은 사용자가 기본문법의 설정보다 더 상세한 설정들을 제어할 수 있다.
+
+- transitionType : 화면전환 종류 (기본값: None)
+- fallbackType : 미지원 브라우저에서 사용할 효과 (기본값: Fade)
+- inTarget : 나가는 페이지
+	- id : 아이디값  **(필수)**
+	- from : 시작점 좌표 또는 각도 값
+	- to : 도착점 좌표 또는 각도 값
+	- duration : 들어오는 페이지의 트랜지션 지속 시간
+	- timing : 지정한 시간동안이 트랜지션 속도 (타이밍 함수값) 
+- outTarget : 들어오는 페이지 
+	- id : 아이디값  **(필수)**
+- isReverse : 뒤로가기 여부 (기본값: false)
+- done : 완료 시 실행할 함수
+
+<고급 문법>
+
+    Transition.launcher({
+        transitionType:"none", // 화면전환 효과 기본 None(효과 없음)
+        fallbackType:"fade", // 미지원 브라우저에서 사용할 효과(Fade, None 가능)
+        inTarget:{
+            id:undefined, // 들어오는 페이지의 ID 값
+            from:undefined, // 들어오는 페이지의 시작점
+            to:undefined, // 들어오는 페이지의 도착점
+            duration:undefined, // 들어오는 페이지의 애니메이션 시간
+            timing:"ease", // linear ease ease-in ease-out ease-in-out
+            done:function () {
+
+            }
+        },
+        outTarget:{
+            id:undefined, // 나가는 페이지의 ID 값
+            from:undefined, // 나가는 페이지의 시작점
+            to:undefined, // 나가는 페이지의 도착점
+            duration:undefined, // 나가는 페이지의 애니메이션 시간
+            timing:"ease",
+            done:function () {
+
+            }
+        },
+        isReverse:false, // 뒤로가기 여부
+        done:function () {
+
+        }
+    });
+
+
+<예제1> [RUN](http://jsfiddle.net/azamara/WMKCy/)
+
+HTML 코드	
+	
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>CornerStone :: Page Transiton 화면전환</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="css/fonts/stylesheet.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div id="front" class="current span12">
+                (중략...)
+                <div class="row-fluid">
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="flip">Flip</button>
+                    </div>
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="spin">Spin</button>
+                    </div>
+                </div>
+                (중략...)
+            </div>
+            <div id="back" class="span12">
+                (중략...)
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="libs/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/plugins/jquery.transit.js"></script>
+    <script type="text/javascript" src="../transition.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    </body>
+    </html>
+
+자바스크립트 코드
+
+    $("#front .btn").live("click", function (e) {
+        var transitionType = $(this).attr("data-transition"),
+            inTargetID = "#back",
+            outTargetID = "#front";
+        Transition.launcher({
+            transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
+            inTarget:{
+                id:inTargetID // 들어오는 페이지의 ID 값
+            },
+            outTarget:{
+                id:outTargetID // 나가는 페이지의 ID 값
+            },
+            isReverse:false, // 뒤로가기 여부
+            done:function () {
+                $("#front").removeClass("current");
+                $("#back").addClass("current");
+            }
+        });
+    });
+
+
+5)	사용자 정의 화면전환 효과 확장 방법
+
+사용자 정의 화면전환 효과 추가 코드
+
+	// 효과 객체에 사용자정의 효과를 추가 하기위해 화면전환 프로토타입 효과 객체를 가져온다.
+	var effect = Transition.effect.prototype;
+
+	// 가져온 객체에 사용자가 정의한 효과 이름(custom1) 작성
+    effect.custom1= function (opt) {
+		// 사용자 정의 효과 코드 작성
+    };
+
+
+실행코드 코드
+
+    var transitionType = "custom1", // 위에 사용자가 정의한 custom1를 트랜지션 효과로 지정
+        inTargetID = "#back",
+        outTargetID = "#front";
+
+    Transition.launcher({
+        transitionType:transitionType, 
+        inTarget:{
+            id:inTargetID // 들어오는 페이지의 ID 값
+        },
+        outTarget:{
+            id:outTargetID // 나가는 페이지의 ID 값
+        },
+        isReverse:false, // 뒤로가기 여부
+        done:function () {
+            
+        }
+    });
+
+
+
+
+런타임
+-----
+모바일 리소스를 어떻게 사용하는지 설명
+
+JSONP
+-----
+1)	JSONP 유틸은 서로다른 도메인을 지닌 서버간에 데이터를 통신하기 위해 사용하며, 요청시 파라미터에 callback을 인자로 넘겨주어 응답을 받는 서버에서 해당 callback 이름으로 래핑된 JSON 데이터를 전달 받는 방식이다.
+
+2)	의존성 주입 
+
+-	일반 방식
+
+		<!-- jQuery -->
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<!-- JSONP Javascript -->
+		<script type="text/javascript" src="jsonp.js"></script>
+
+-	MVC Framework을 이용한 의존성 주입
+
+		require.config( {
+    		paths: {
+		        "jquery": "jquery-1.7.2.min",
+		        "jsonp": "jsonp"
+		    },
+		    shim: {
+		        "jsonp": {
+		            deps: ["jquery"],
+		            exports: "jsonp"
+		        }
+		    }
+		} );
+
+3)	파라미터 정의 : 윈도우 테이블 UI 확인이 어려움으로 추후 테이블로 변경 예정 ( 파라미터명 : 설명 : 필수여부 )
+
+-	url : 데이터를 요청할 서버의 URL - O
+-	data : 요청시 전달한 데이터, JSON 형식 - X
+-	success : 응답 성공 시 실행될 사용자 정의 함수 - O
+-	error : timeout 등의 error 발생 시 실행될 사용자 정의 함수 - X
+-	callback : 요청받는 서버에서 callback 이름을 지정한 경우 작성 - X
+-	timeout : 데이터 요청 후 응답여부를 결정할 기준 시간( ms ) - X
+
+4) 사용 문법
+
+	Jsonp.get( {
+	    url: 'http://example.com', 
+	    data: {
+	        foo: "bar",
+	        hello: "world"
+	    },
+	    success: function ( data ){
+	        $.each( data.items, function( i, item ) {
+				console.log( 'items[' + i + '] - ' + item );
+	        } );
+	    },
+	    error: function ( err ) {
+	        alert( err );
+	    },
+	    callback: 'exampleCb',
+	    timeout: 5000
+	} );
+
+<예제1>
+HTML 코드
+
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+			<style type="text/css">
+			button { width: 150px; height: 50px; }
+			img { height: 100px; float: left; }
+			</style>
+		</head>
+		<body>
+			<h1>Jsonp util with Flickr open API<h1/>
+			<p/>
+			<button id="btn1">이미지 가져오기(commonjs)</button>
+			<p/>
+			<div id="images"></div>
+			<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+			<script type="text/javascript" src="jsonp.js"></script>
+		</body>
+	</html>
+
+자바스크립트 코드
+
+	$( '#btn1' ).click( function () {
+		Jsonp.get( {
+	        url: 'http://api.flickr.com/services/feeds/photos_public.gne',
+	        data: {
+	            tags: "cat",
+	            tagmode: "any",
+	            format: "json"
+	        },
+	        success: function ( data ){
+	            $.each( data.items, function( i, item ) {
+	                $( '<img/>' ).attr( 'src', item.media.m ).appendTo( '#images' );
+	                if ( i == 3 ) return false;
+	            } );
+	        },
+	        error: function () {
+	            alert( 'error' );
+	        },
+	        callback: 'jsonFlickrFeed',
+	        timeout: 5000
+	    } );	
+	} );
+
+<예제2>
+HTML 코드
+
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+			<style type="text/css">
+			button { width: 150px; height: 50px; }
+			img { height: 100px; float: left; }
+			</style>
+		</head>
+		<body>
+			<h1>Jsonp util with Flickr open API<h1/>
+			<p/>
+			<button id="btn1">이미지 가져오기(requirejs)</button>
+			<p/>
+			<div id="images"></div>
+			<script type="text/javascript" src="require.js" data-main="main"></script>
+			</script>
+		</body>
+	</html>
+
+자바스크립트 코드 ( main.js )
+
+	require.config( {
+	    paths: {
+	        "jquery": "jquery-1.7.2.min",
+	        "jsonp": "jsonp"
+	    },
+	    shim: {
+	        "jsonp": {
+	            deps: ["jquery"],
+	            exports: "jsonp"
+	        }
+	    }
+	} );
+
+	require( [ 'jsonp' ], function ( Jsonp ) {
+	    $( '#btn1' ).click( function () {
+	        Jsonp.get( {
+	            url: 'http://api.flickr.com/services/feeds/photos_public.gne',
+	            data: {
+	                tags: "cat",
+	                tagmode: "any",
+	                format: "json"
+	            },
+	            success: function ( data ){
+	                $.each( data.items, function( i, item ) {
+	                    $( '<img/>' ).attr( 'src', item.media.m ).appendTo( '#images' );
+	                    if ( i == 3 ) return false;
+	                } );
+	            },
+	            error: function () {
+	                alert( 'error' );
+	            },
+	            callback: 'jsonFlickrFeed',
+	            timeout: 5000
+	        } );
+	    } );
+	} );
+
+
+SKT Open API
+------------
+SKT Open API는 SKT에서 제공하는 여러 가지 기능들을 써드파티 애플리케이션에서 사용할 수 있도록 공개된 API이다. Cornerstone Framework에서는 이 API를 사용하기 쉽도록 가공한 유틸리티를 제공한다.
+
+SKT Open API에서 제공하는 기능들은 다음과 같다.
+
+기능 | 설명
+:--- | :---
+인증 | OAuth 2.0을 사용하여 SKT Open API를 사용할 수 있는 권한을 얻는다.
+SMS | 인증한 사용자의 계정을 사용하여 SMS를 발송한다.
+과금 | 지정한 금액을 결제하고, 해당 금액을 SKT 통신 요금과 같이 청구한다.
+
+**`현재 SKT Open API 서버는 Dummy로 운영되고 있기 때문에, 통신은 가능하나 실제로 SMS 발송, 과금이 처리되지는 않는다.`**
+
+### 사전 작업
+SKT Open API를 사용하기 위해서는 SKT Open API 서버(이하 API 서버)에 사용할 써드파티 애플리케이션의 정보를 사전에 등록해야 한다. 등록하기 위해 다음과 같은 정보들을 입력한다.
+
+- 애플리케이션 이름
+- 애플리케이션의 URI
+
+등록이 완료되고 나면 API 서버에서는 다음 정보들을 발급한다.
+
+- 클라이언트(애플리케이션)의 식별자 (client_id)
+- 클라이언트의 비밀번호 (client_secret)
+
+### 인증
+API 서버는 인증에 OAuth 2.0을 사용한다. 인증 작업의 목적은 접근 토큰(Access token)을 얻는 것이고, 이 토큰을 사용해서 다른 기능들을 사용할 수 있다. 접근 토큰을 얻는 방법에는 크게 Web Server Flow와 User-Agent Flow의 두 가지가 있다.
+
+#### Web Server Flow
+Web Server Flow는 웹 서버(Server-side 환경)에서 접근 토큰을 얻기 위한 절차이다. 다음과 같은 순서대로 진행된다.
+
+1. 최초로 인증을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들이 유효한지 확인하고 로그인 화면을 표시한다.
+
+	```
+	URL : https://api.sk.com/oauth/authorize
+	
+	Parameters :
+		client_id : 등록시 발급받은 client_id
+		redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+		response_type : code
+	
+	ex) https://api.sk.com/oauth/authorize?client_id=abcd1234&redirect_uri=http://example.com&response_type=code
+	```
+	사용자가 정상적으로 로그인을 하고 클라이언트에 대해서 사용 허가를 하면 API 서버는 redirect_uri에 인증 코드를 붙여서 호출한다. 클라이언트는 인증 코드를 받아서 다음 단계에서 사용한다. 인증 코드는 1시간 동안만 유효하고 한번 사용한 코드는 폐기된다.
+	
+	```
+	ex) http://example.com?code=123456
+	```
+
+2. 인증 코드를 사용해서 접근 토큰을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들을 유효한지 확인하고 접근 토큰을 발급한다.
+
+	```
+	URL : https://api.sk.com/oauth/access_token
+	
+	Parameters :
+		client_id : 등록시 발급받은 client_id
+		client_secret : 등록시 발급받은 client_secret
+		redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+		code : 이전 단계에서 받은 인증 코드
+	
+	ex) https://api.sk.com/oauth/access_token?client_id=abcd1234&client_secret=zxcvbn&redirect_uri=http://example.com&code=123456
+	```
+	
+	접근 토큰을 발급하면 API 서버는 redirect_uri에 접근 토큰을 붙여서 호출한다.
+	
+	```
+	ex) http://example.com?access_token=qwert12345
+	```
+	
+	접근 토큰은 외부에 노출되지 않도록 주의한다.
+
+#### User-Agent Flow
+User-Agent Flow는 데스크탑/모바일 앱이나 웹 애플리케이션(Client-side 환경)에서 접근 토큰을 얻기 위한 절차이다. 다음과 같은 순서대로 진행된다.
+
+1. 최초로 인증을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들이 유효한지 확인하고 로그인 화면을 표시한다.
+
+	```
+	URL : https://api.sk.com/oauth/authorize
+	
+	Parameters :
+		client_id : 등록시 발급받은 client_id
+		redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+		response_type : token
+	
+	ex) https://api.sk.com/oauth/authorize?client_id=abcd1234&redirect_uri=http://example.com&response_type=token
+	```
+	
+	사용자가 정상적으로 로그인을 하고 클라이언트에 대해서 사용 허가를 하면 API 서버는 redirect_uri에 접근 토큰과 만료 시간(초)을 붙여서 호출한다.
+	
+	```
+	ex) http://example.com#access_token=qwert12345&expires_in=3600
+	```
+
+Web Server Flow에 비해서 한 단계를 덜 거치지만 다음 이유로 인해 보안이 유지될 수 있다.
+
+- redirect_uri의 도메인이 등록시 URI와 동일한지를 검사하기 때문에 다른 클라이언트로 정보가 전송되는 일은 없다.
+- redirect_uri가 (SSL이 적용되지 않은) http를 사용하더라도 Fragment(#)를 사용해서 전달하기 때문에 서버로의 요청이 없다. 따라서 정보가 가로채질 염려도 없다.
+
+### 유틸리티
+SKT Open API를 사용하기 편하게 해주는 유틸리티를 제공한다. 이 유틸리티는 웹 앱에서 사용할 수 있는 유틸리티이므로 User-Agent Flow 방식을 이용해 접근 토큰을 얻도록 되어 있다.
+
+```
+require( [ 'skt' ], function( SKT ) {
+	
+	// 인증
+	SKT.authorize( {
+		clientId: 'abcd1234',
+		redirectUri: 'http://example.com',
+		success: function( token ) {
+			// 인증이 완료되고 나면 실행된다.
+			// token 파라미터로 접근 토큰이 전달된다.
+		},
+		error: function( err ) {
+			// 에러가 발생시 실행된다.
+			// err 파라미터로 전달된다.
+		}
+	} );
+} );
+```
+
+해당 유틸리티를 사용 시 token 전달을 위해 지정한 redirectUri의 html을 다음과 같이 코딩한다.
+
+```
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script type="text/javascript">
+		parent.SKT.authSuccess( location );
+		</script>
+	</body>
+</html>
+```
+
+### SMS
+SMS를 보내기 위해서는 먼저 인증 단계를 거치고 접근 토큰을 받아야 한다. API 서버로 아래와 같이 요청을 보내면 된다.
+
+```
+URL : https://api.sk.com/sms
+
+Parameters :
+	access_token : 접근 토큰
+	from : 보내는 사람의 전화번호
+	to : 받는 사람의 전화번호
+	message : 메시지 내용
+
+ex) https://api.sk.com/sms?access_token=qwert12345&from=01011112222&to=01022223333&message=Hi
+```
+
+유틸리티를 사용하면 이 작업을 쉽게 수행할 수 있다. 단 이종 도메인간의 통신이므로 jsonp 로 통신하며, 서버측의
+응답없음 또는 404 error 등을 받을 수 없기 때문에 timeout을 사용한다.
+
+```
+require( [ 'skt' ], function( SKT ) {
+	
+	// SMS 발송
+	SKT.sendSms( {
+		accessToken: 'qwert12345',
+		from: '01011112222',
+		to: '01022223333',
+		message: 'Hi',
+		success: function( data ) {
+			// 발송이 완료되고 나면 실행된다.
+		},
+		error: function( err ) {
+			// error 가 발생시 실행된다.
+		},
+		timeout: 3000
+	} );
+} );
+```
+
+### 과금
+과금 API를 사용하기 위해서는 먼저 인증 단계를 거치고 접근 토큰을 받아야 한다. API 서버로 아래와 같이 요청을 보내면 된다.
+
+```
+URL : https://api.sk.com/payment
+
+Parameters :
+	access_token : 접근 토큰
+	type :
+		one-time : 한 클라이언트/한 사용자에 대해서 한번만 과금
+		recurring : 요청을 보낼때마다 과금
+		weekly-subscription : 매주 자동으로 과금
+		monthly-subscription : 매월 자동으로 과금
+		yearly-subscription : 매년 자동으로 과금
+	payment_date :
+		type이 weekly-subscription인 경우 과금할 요일 (sunday/monday/...)
+		type이 monthly-subscription인 경우 과금일을 나타내는 두 자리 숫자 ex) 07
+		type이 yearly-subscription인 경우 과금일을 나타내는 네 자리 숫자 ex) 0501
+	amount : 과금할 금액 (원)
+
+ex) https://api.sk.com/payment?access_token=qwert12345&type=recurring&amount=1000
+```
+
+유틸리티를 사용하면 이 작업을 쉽게 수행할 수 있다. 단 이종 도메인간의 통신이므로 jsonp 로 통신하며, 서버측의
+응답없음 또는 404 error 등을 받을 수 없기 때문에 timeout을 사용한다.
+
+```
+require( [ 'skt' ], function( SKT ) {
+
+	// 과금 요청
+	SKT.pay( {
+		accessToken: 'qwert12345',
+		type: 'recurring',
+		amount: 1000,
+		success: function( data ) {
+			// 과금이 완료되고 나면 실행된다.
+		},
+		error: function( err ) {
+			// error 가 발생시 실행된다.
+		},
+		timeout: 3000
+	} );
+} );
+```
