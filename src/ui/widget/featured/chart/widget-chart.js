@@ -20,21 +20,27 @@
 
                 initialize:function () {
                     _.bindAll(this, "render");
-                    this.model.on("change", this.render);
+//                    this.model.on("change", this.updateChart);
+                },
+
+                updateChart:function (view) {
+                    view.model.clear();
+                    view.model.fetch({
+                        success:function (model) {
+                            var data = [];
+                            $.each(model.toJSON(), function (i, obj) {
+                                data.push(obj);
+                            });
+
+                            view.options = $.extend({}, view.options, {data:data});
+                            view.$el.featuredChart(view.options);
+                        }
+                    });
                 },
 
                 render:function () {
-                    var data = [];
-                    $.each(this.model.toJSON(), function (i, obj) {
-                        data.push(obj);
-                    });
-
-                    this.options = $.extend({}, this.options, {
-                        data: data
-                    });
-
                     this.$el.featuredChart(this.options);
-
+                    this.updateChart(this);
                     return this;
                 }
             });
