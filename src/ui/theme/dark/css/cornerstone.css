@@ -1454,7 +1454,6 @@ input.search-query {
 }
 .slider-box input.figure:focus {
   border: 0;
-  padding: 5px;
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
@@ -6756,9 +6755,6 @@ address {
   border-radius: 0;
 }
 @media (max-width: 767px) {
-  body {
-    padding: 0 10px;
-  }
   .modal.fade {
     -webkit-transform: translate3d(0, 0, 0);
   }
