@@ -1160,6 +1160,7 @@ input.search-query {
   display: inline-block;
 }
 .slider-box .slider {
+  min-width: 80%;
   float: left;
 }
 .slider-box .figure {
@@ -5848,6 +5849,10 @@ address {
   .navbar .btn-navbar {
     display: block;
   }
+  .slider-box .slider {
+    min-width: 70%;
+    float: left;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
@@ -6399,6 +6404,10 @@ address {
   }
   .navbar .btn-navbar {
     display: block;
+  }
+  .slider-box .slider {
+    min-width: 73%;
+    float: left;
   }
 }
 @media (min-width: 1200px) {

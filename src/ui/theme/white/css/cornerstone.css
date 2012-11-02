@@ -1344,9 +1344,10 @@ input.search-query {
   display: inline-block;
 }
 .slider-box .slider {
+  min-width: 80%;
   float: left;
 }
-.slider-box .figure {
+.slider-box input.figure {
   float: right;
   width: 40px;
   margin: -5px 0 0;
@@ -1357,7 +1358,7 @@ input.search-query {
   color: #000000;
   font-size: 16px;
 }
-.slider-box .figure:focus {
+.slider-box input.figure:focus {
   border: 0;
   padding: 5px;
   outline: 0;
@@ -7107,6 +7108,10 @@ address {
   .navbar .btn-navbar {
     display: block;
   }
+  .slider-box .slider {
+    min-width: 70%;
+    float: left;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
@@ -7633,6 +7638,10 @@ address {
   }
   .navbar .btn-navbar {
     display: block;
+  }
+  .slider-box .slider {
+    min-width: 73%;
+    float: left;
   }
 }
 @media (min-width: 1200px) {
