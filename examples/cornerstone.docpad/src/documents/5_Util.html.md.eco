@@ -21,6 +21,8 @@ tags: ['post','corner','prime','odd']
 tagstr: 'post corner prime odd'
 section: 'Live Document'
 sections: ['Live Document']
+subsection: '5 Util'
+order: '[5,1]'
 ---                                                                         
 
 유틸리티 사용법

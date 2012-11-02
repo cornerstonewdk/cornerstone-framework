@@ -21,6 +21,8 @@ tags: ['post','corner','prime','odd']
 tagstr: 'post corner prime odd'
 section: 'Live Document'
 sections: ['Live Document']
+subsection: '3 Style'
+order: '[3,1]'
 ---                                                                         
 
 스타일 작성법

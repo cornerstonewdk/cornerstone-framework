@@ -4,7 +4,7 @@ div '.row', ->
 		p '.list-documents-none', -> 'nothing found'
 		return
     @documents.forEach (document) ->
-		div '.span2', 'tags': document.tagstr, ->
+		div '.span2.main-box', 'tags': document.tagstr, ->
 			a '.list-documents-link', href:'.'+document.url+'.html', ->
 				strong '.list-documents-title', property:'dc:title', ->
 					document.title

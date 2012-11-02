@@ -21,6 +21,8 @@ tags: ['post','corner','reference']
 tagstr: 'post corner reference'                                                       
 section: 'Reference'
 sections: ['Reference']
+subsection: '1 Feel And Appearance'
+order: '[1,1]'
 ---                                                                         
 
 느낌과 모양새 

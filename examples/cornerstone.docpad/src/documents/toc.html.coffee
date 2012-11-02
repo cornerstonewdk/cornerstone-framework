@@ -32,24 +32,24 @@ section ".tagmap", ->
     div '#tagmap.row', ->
       for cell in row
         tag = @sections.store( cell )
-        div ".span4", ->
-          h4 tag.name
+        div ".span12", "id":"section", ->
+          h2 tag.name
           ul ->
             tag.documents.forEach (documentModel)->
-              li -> a href: "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+              li -> 
+                h4 ->
+                  a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
 
 
 ###
-script "defer":"defer", "src":"/vendor/jquery.js", ->
 script ->
-  "var elms = document.getElementById('toc'); \n"+
-  "alert(elms.class);                         \n"+
-  "alert(elms.id);                            \n"+
-  "for (var i=0; i<elms.length; i++) {        \n"+
-  "    elms[i].className = 'active';          \n"+
-  "    alert('active');                       \n"+
-  "}                                          \n"+
-  "alert('hi');                               \n"
+  "var secElms = document.getElementById('section'); \n"+
+  "    alert(secElms.length);                       \n"+
+  "for (var i=0; i<secElms.length; i++) {        \n"+
+  "    alert(secElms[i].firstChild.innerHTML);                       \n"+
+  "}                                          \n"
+
+script "defer":"defer", "src":"/vendor/jquery.js", ->
 script ->
   "(function(){         \n"+
   "    $('#toc').addClass('active');          \n"+

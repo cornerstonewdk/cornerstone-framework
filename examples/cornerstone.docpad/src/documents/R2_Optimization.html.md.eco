@@ -21,6 +21,8 @@ tags: ['post','corner','reference']
 tagstr: 'post corner reference'
 section: 'Reference'
 sections: ['Reference']
+subsection: '2 Optimization'
+order: '[2,1]'
 ---                                                                         
 
 # 최적화

@@ -21,7 +21,8 @@ tags: ['post','corner','prime','even']
 tagstr: 'post corner prime even'
 section: 'Live Document'
 sections: ['Live Document']
-tocdepth: '2'
+subsection: '2 Application'
+order: '[2,1]'
 ---                                                                         
 
 애플리케이션 작성법

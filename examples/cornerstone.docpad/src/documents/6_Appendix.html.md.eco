@@ -21,6 +21,8 @@ tags: ['post','corner','even']
 tagstr: 'post corner even'
 section: 'Live Document'
 sections: ['Live Document']
+subsection: '6 Applendix'
+order: '[6,1]'
 ---                                                                         
 
 # 부록

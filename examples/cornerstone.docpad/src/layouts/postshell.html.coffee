@@ -106,7 +106,23 @@ html lang: 'ko', ->
 
         div '.container', ->
           div '.row-fluid', ->
-            div '.span12', ->
+            div '.span3.bs-docs-sidebar', ->
+                cellular = rowmap 1, @sections.store()
+                for row in cellular
+                  for cell in row
+                    ul '.nav.nav-list', ->
+                      tag = @sections.store( cell )
+                      li '.nav-header', -> tag.name
+                      tag.documents.forEach (documentModel) ->
+                        li '.inactive', ->
+                             a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+                             #div "style":"display:block", -> "#{documentModel.get('subsection')}" + " / " + "#{documentModel.get('order')}" 
+                             #if "#{documentModel.get('url')}" is @document.url
+                             #  p -> "same" + if "#{documentModel.get('url')}" is @document.url then "active"
+                             #else
+                             #  p -> "Not Same"
+
+            div '.span9', ->
                 # Document
                 article '.page',
                     'typeof': 'sioc:page'

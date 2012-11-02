@@ -21,7 +21,8 @@ tags: ['post','corner','prime','odd']
 tagstr: 'post corner prime odd'                                                       
 section: 'Live Document'
 sections: ['Live Document']
-tocdepth: '1'
+subsection: '1 Introduction'
+order: '[1,1]'
 ---                                                                         
 
 # 개요
