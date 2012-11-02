@@ -42,7 +42,7 @@
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top: 4px solid #000000;
+  border-top: 4px solid #4e4e4e;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
@@ -5892,17 +5892,9 @@ address {
   width: 25px;
   height: 25px;
   float: right;
-  background: url('../img/icon.png') no-repeat -21px -27px;
+  background: url('../img/icon.png') no-repeat left top;
   background-size: 320px;
-}
-.lists ul li.active i,
-.lists .lists-con li.sub-group ul li.active i {
-  display: block;
-  width: 25px;
-  height: 25px;
-  float: right;
-  background: url('../img/icon.png') no-repeat -66px -27px;
-  background-size: 320px;
+  background-position: -21px -27px;
 }
 .lists .lists-con li:last-child {
   border-bottom: 0;
@@ -5928,6 +5920,30 @@ address {
 }
 .lists .lists-con li.sub-group ul li a {
   color: #000000;
+}
+.lists ul li.active,
+.lists .lists-con li.sub-group ul li.active {
+  background: #2a6b8d;
+  color: #ffffff;
+  border-bottom: 1px solid transparents;
+  box-shadow: none;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.5);
+  -moz-box-shadow: inset 0 0 5px rgba(0,0,0,.5);
+  box-shadow: inset 0 0 5px rgba(0,0,0,.5);
+}
+.lists ul li.active a,
+.lists .lists-con li.sub-group ul li.active a {
+  color: #ffffff;
+  background: none;
+}
+.lists ul li.active i,
+.lists .lists-con li.sub-group ul li.active i {
+  display: block;
+  width: 25px;
+  height: 25px;
+  float: right;
+  background: url('../img/icon.png') no-repeat -66px -27px;
+  background-size: 320px;
 }
 .text-warning {
   color: #c76b16;
@@ -8154,6 +8170,9 @@ address {
   .btn-group .btn:last-child:hover {
     border-left: 0;
     border-right: 1px solid transparent;
+  }
+  .btn-group .btn.btn-primary:hover {
+    color: #ffffff;
   }
   .btn-group .btn.dropdown-toggle,
   .btn-group .btn.dropdown-toggle:first-child {

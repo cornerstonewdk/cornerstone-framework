@@ -187,10 +187,6 @@
                 } : null;
 
 
-            if (input[0].value == val) {
-                return self;
-            }
-
 //            if (vertical) {
 //                this.progressHeight = len - x + handle.height() / 2;
 //                if ($.browser.os === "IOS" && $.browser.version > 4) {
@@ -224,7 +220,6 @@
 //                    });
 //                }
 //            }
-
             if (vertical) {
                 handle.animate({top:x}, speed, callback);
                 if (conf.progress) {
@@ -379,7 +374,7 @@
         }
 
 
-        input.blur(function (e) {
+        input.on("change", function (e) {
             var val = $(this).val();
             if (val !== value) {
                 self.setValue(val, e);

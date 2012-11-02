@@ -8,6 +8,7 @@
 
 // Core
 .btn {
+	color: @btnLinkTxt;
   display: inline-block;
   .ie7-inline-block();
   padding: 12px 17px;
@@ -40,7 +41,7 @@
   // Active state
   &.active,
   &:active {
-		color: @btnActiveTxt;
+		#font > #effect > .txt-active();
     text-decoration: none;
 		#gradient > .vertical(rgba(0,0,0,.5), rgba(0,0,0,.3));
     background-color: @btnActive;
@@ -84,6 +85,7 @@
   // Active state
   &.active,
   &:active {
+		#font > #effect > .txt-active();
     text-shadow: inset 0 0 2px rgba(255,255,255,.5);
     .buttonBackground(@btnBlueActiveHighlight, @btnBlueActive, @btnBlueActiveTxt, @btnShadow);
     border: 1px solid transparent;
@@ -143,4 +145,16 @@
   color: @linkColorHover;
   text-decoration: underline;
   background-color: transparent;
+}
+
+.btn .caret {
+	opacity:0.5;
+}
+
+.btn:hover .caret, .open.btn-group .caret {
+	opacity:0.5;
+}
+
+.btn:active .caret {
+	opacity:1;
 }

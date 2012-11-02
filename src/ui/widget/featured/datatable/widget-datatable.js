@@ -9,11 +9,38 @@
  */
 
 (function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
+    // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
+    if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
         // AMD Hybrid 포맷
-        define(function (require, exports, module) {
-            var $ = require("jquery");
-            return factory($, root, doc);
+        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-datatable"], function (Backbone, _, $) {
+            factory($, root, doc);
+            return Backbone.View.extend({
+                initialize:function () {
+                    _.bindAll(this, "render");
+//                    this.model.on("change", this.render);
+                },
+
+                updateDataTable:function (view) {
+                    view.model.clear();
+                    view.model.fetch({
+                        success:function (model) {
+                            view.options = $.extend({}, view.options, model.toJSON());
+
+                            view.dataTable.fnClearTable();
+                            view.dataTable.fnAddData(view.options.aaData);
+                            view.dataTable.fnDraw();
+                        }
+                    });
+                },
+
+                render:function () {
+                    if (!this.dataTable) {
+                        this.dataTable = this.$el.featuredDataTable(this.options);
+                    }
+                    this.updateDataTable(this);
+                    return this;
+                }
+            });
         });
     } else {
         // Browser globals
@@ -25,7 +52,7 @@
     // 데이터테이블 플러그인 랩핑 및 기본값 설정
     $.fn[pluginName] = function (options) {
         var defaultOptions = {
-            "bProcessing": false,
+            "bProcessing":false,
             sPaginationType:"bootstrap",
             sDom:"<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>",
             oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수"}
@@ -33,9 +60,7 @@
 
         options = $.extend(true, defaultOptions, options);
 
-        return this.each(function () {
-            $(this).dataTable(options);
-        });
+        return $(this).dataTable(options);
     };
 
     /* 기본 클래스명 정의 */
