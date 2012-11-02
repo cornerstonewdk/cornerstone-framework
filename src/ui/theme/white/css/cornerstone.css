@@ -1341,13 +1341,14 @@ input.search-query {
 }
 .slider-box input.figure {
   width: 40px;
-  margin: -5px 0 0;
-  padding: 5px;
+  margin: -2px 0 0;
+  padding: 0 5px;
   background: none;
   box-shadow: none;
   text-align: right;
-  color: #ffffff;
-  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
 }
 .slider-box input.figure:focus {
   border: 0;
@@ -1356,7 +1357,7 @@ input.search-query {
   /* IE6-9 */
 
   box-shadow: none;
-  color: #ffffff;
+  color: #000000;
 }
 .slider-box {
   width: 100%;
