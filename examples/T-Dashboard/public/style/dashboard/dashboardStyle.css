@@ -60,7 +60,8 @@
 	margin: 5px;
 	width: 279px;
 	height: 279px;
-	background: #F6F6F6;
+	background: #FFFFFF;
+	border-radius: 5px;
 }
 
 #dashboard_container > .dashboardItem.height2x {
@@ -69,6 +70,10 @@
 
 #dashboard_container > .draggin {
 	display: none;	
+}
+
+div#dashboard_container {
+	color: #05121D;
 }
 
 /* Dashboard barchart style */
@@ -86,7 +91,7 @@ div[data-featured="scrollView"] {
  * 	대쉬보드 isotope 를 가운데 정렬 해주는것 bootstrap에서는 잘안되는 문제 해결하기 위해 미디어쿼리 사용 
  */
 .dashboard_wrapper {
-	border: 1px solid;
+/*	border: 1px solid;*/
 }
 #dashboard_container {
 	width: 867px; /* 270 * 4, 270 * 3, 270 * 2, 270 */

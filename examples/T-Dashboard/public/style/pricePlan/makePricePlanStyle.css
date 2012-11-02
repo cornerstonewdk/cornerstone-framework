@@ -67,6 +67,7 @@ div.dropZone > div {
 	font-size:16px;
 	font-weight:bold;
 	line-height:100%;
+	color: #05121D;	/*글씨색상 변경*/
 }
 div.dropZone > div > p {
 	padding-top:3px;
@@ -78,7 +79,6 @@ div.dropZone > div > p {
 /*div.dropZone > div > p:after{
 	content:"분";
 }*/
-
 .prod-name {
 	text-align:right;
 }

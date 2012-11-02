@@ -37,3 +37,7 @@
 .voc-con div.hero-unit h3:first-child {
 	margin-top:0;
 }
+
+div#voc div.hero-unit {
+	color: #05121D;	/*글씨색상 변경*/
+}

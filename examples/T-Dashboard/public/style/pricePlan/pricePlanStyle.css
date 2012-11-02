@@ -30,6 +30,7 @@ div#pricePlan div.dropZone > div {
 	text-align:center;
 	font-size:16px;
 	font-weight:bold;
+	color: #05121D;	/*글씨색상 변경*/
 }
 div#pricePlan div.dropZone > div > p {
 	padding-top:3px;
