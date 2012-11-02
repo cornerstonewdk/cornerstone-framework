@@ -1,4 +1,4 @@
-<div data-featured="scrollView2" class="scrollview">
+<div data-featured="scrollView" class="scrollview">
 	<div class="lists scroller">
 		<ul id="planlist" class="lists-con">
 		</ul>

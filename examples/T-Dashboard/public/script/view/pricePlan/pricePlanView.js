@@ -19,6 +19,8 @@ define([
 		
 		selectedPricePlan: null,
 		
+		selectedPricePlanId: null,
+		
 		initialize: function() {
 			
 		},
@@ -90,7 +92,7 @@ define([
 		},
 		
 		onClickedMakePricePlan: function(e) {
-			document.location = '#makePricePlan/new';
+			document.location = '#makePricePlan';
 		},
 		
 		render: function() {
@@ -104,10 +106,14 @@ define([
 				$('ul#pricePlanList').append('<li><a data-plan="' + pricePlan['pricePlanId'] + '">' + pricePlan['pricePlanName'] + '</a></li>');
 			}
 			
-			var $firstObj = $('ul#pricePlanList > li:nth-child(1) > a[data-plan]');
+			if(!this.selectedPricePlanId) {
+				var $firstObj = $('ul#pricePlanList > li:nth-child(1) > a[data-plan]');
 			
-			if($firstObj.length == 0) return;
-			this.planSelectProc($firstObj);
+				if($firstObj.length == 0) return;
+				this.planSelectProc($firstObj);
+			} else {
+				this.planSelectProc($('[data-plan="' + this.selectedPricePlanId + '"]'));
+			}
 		},
 		
 		viewDidAppear: function() {

@@ -36,10 +36,10 @@
 				Transition.launcher({
 					transitionType:"flip",
 					inTarget: {
-						id: '#' + this.currentId
+						el: '#' + this.currentId
 					},
 					outTarget: {
-						id: '#' + this.prevId
+						el: '#' + this.prevId
 					},
 					isReverse: false,
 					done: function() {
@@ -67,10 +67,10 @@
 				Transition.launcher({
 					transitionType:"slide",
 					inTarget: {
-						id: '#' + this.currentId
+						el: '#' + this.currentId
 					},
 					outTarget: {
-						id: '#' + this.prevId
+						el: '#' + this.prevId
 					},
 					isReverse: false,
 					done: function() {
@@ -98,10 +98,10 @@
 				Transition.launcher({
 					transitionType:"slide",
 					inTarget: {
-						id: '#' + this.currentId
+						el: '#' + this.currentId
 					},
 					outTarget: {
-						id: '#' + this.prevId
+						el: '#' + this.prevId
 					},
 					isReverse: true,
 					done: function() {

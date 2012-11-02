@@ -38,7 +38,7 @@ define(
 		events: {
 			'click div#dashboard_lte': 'lteClick',
 			'click div[data-widgettitle="dashboard_voc"]': 'vocClick',
-			'click div#dashboard_policy': 'policyClick',
+			'click div#dashboard_policy': 'pricePlanClick',
 			'click div#dashboard_sns': 'snsClick',
 			'click div#dashboard_facebook': 'facebookClick',
 			'click div#dashboard_youtube': 'youtubeClick',
@@ -52,8 +52,12 @@ define(
 			document.location = '#voc';
 		},
 		
-		policyClick: function(e) {
-			document.location = '#pricePlan';
+		pricePlanClick: function(e) {
+			if(typeof($(e.target).attr('data-id')) == 'undefined') {
+				document.location = '#pricePlan';	
+			} else {
+				document.location = '#pricePlan/' + $(e.target).attr('data-id');
+			}
 		},
 		
 		snsClick: function(e) {

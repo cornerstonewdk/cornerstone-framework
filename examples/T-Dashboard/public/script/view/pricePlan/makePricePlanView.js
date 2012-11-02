@@ -28,16 +28,20 @@ define([
 		initialize: function() {
 		},
 
-		//그리기
+		/*
+		 * el 이 가르키는 위치에 html을 만들어 준다.
+		 */
 		render: function() {
 			var self = this;
 			
-			var handleBarParams = {};
+			var handleBarParams = {};	//html template 에 초기에 정의도어 있어야 할 파라메터 객체 생성 
 			
+			//오늘 날짜 구하기
 			var today = new Date();
 			today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 			
-			if(this.selectPlanData != null) {
+			//template 에 전달할 데이터 수집
+			if(this.selectPlanData != null) {	//기존에 만든 정책 수정일때 기존데이터 수집 처리 부분
 				this.isNew = false;
 				this.selectPlanData = JSON.parse(decodeURIComponent(this.selectPlanData));
 				
@@ -45,18 +49,19 @@ define([
 				handleBarParams['applyDate'] = this.selectPlanData['applyDate'];
 				handleBarParams['makeData'] = this.selectPlanData['makeData'];
 				
+				//설정되지 않은 객체들도 있으므로 일단 다 0으로 설정한다.
 				handleBarParams['voiceData'] = 0;
 				handleBarParams['dataData'] = 0;
 				handleBarParams['messageData'] = 0;
 				handleBarParams['roamingData'] = 0;
 				
+				//기존 설정값들 불러와 위에서 0으로 설정한 부분에 덮어 씌운다.
 				var producTypeList = this.selectPlanData['producttype'];
 				for(var i = 0; i < producTypeList.length; i++) {
 					var ptype = producTypeList[i];
 					handleBarParams[ptype['value'] + 'Data'] = ptype['extraData'];
 				}
-				
-			} else {
+			} else {	//새로 만드는 정책일때 기본값 설정 부분
 				this.isNew = true;
 				
 				handleBarParams['pricePlanName'] = '';
@@ -69,9 +74,16 @@ define([
 				handleBarParams['roamingData'] = 0;
 			}
 			
+			//화면 그려주기
 			$(this.el).html(template(handleBarParams));
 		},
 		
+		/*
+		 * 화면이 표시된 후에 처리해줄 작업 정의
+		 * render() 에서 처리하지 않고 여기서 하는 이유는 render() 이 처리되고 있을시에는 아직 이전 화면 html tag가 사라지지 않기 때문에
+		 * 여기서 처리해주면 이전 화면 html 은 모두 사라져 있고 화면이 표시된 이후에 싸이즈 잡는 작업은 이때 해주면 좋다.
+		 * 이 메서드는 pageNavigation.js 에서 호출해주기 때문에 이것을 사용하지 않을때는 아무 의미 없다.
+		 */
 		viewDidAppear: function() {
 			var self = this;
 			
@@ -148,10 +160,30 @@ define([
 		events: {
 			'click button#saveButton': 'clickedSaveButton',
 			'click button.removeButton': 'clickedRemoveButton',
-			// 'click button.btn.btn-primary': 'change',
+			'click button#makePlan-backButton': 'onClickedBackButton',
+			
+			'click button#voiceModalCancel': 'onClickedVoiceModalCancel',
+			'click button#voiceModalOK': 'onClickedVoiceModalOK',
+			'click button#dataModalCancel': 'onClickedDataModalCancel',
+			'click button#dataModalOK': 'onClickedDataModalOK',
+			'click button#messageModalCancel': 'onClickedMessageModalCancel',
+			'click button#messageModalOK': 'onClickedMessageModalOK',
+			'click button#roamingModalCancel': 'onClickedRoamingModalCancel',
+			'click button#roamingModalOK': 'onClickedRoamingModalOK',
 		},
 		
-		//저장 버튼 눌렸을때
+		/*
+		 * 폰싸이즈 화면에서 뒤로 버튼 눌렸을때 이벤트 처리
+		 * history.bakc() 해준다.
+		 */
+		onClickedBackButton: function(e) {
+			history.back();
+		},
+		
+		/*
+		 * 저장 버튼 눌렸을때 이벤트 처리
+		 * 설정된 객체들의 벨리데이션 처리 및 데이터 취합 후 서버기능은 없기 때문에 임시 메모리배열에 저장
+		 */
 		clickedSaveButton: function(e) {
 			var self = this;
 
@@ -426,7 +458,36 @@ define([
 			}
 		
 			$obj.append('<button class="removeButton">x</button>');
-		}
+		},
+		
+		onClickedVoiceModalCancel: function(e) {
+			$('input#voiceData').val($('div[data-producttype="voice"]').attr('data-extradata')).change();
+		},
+		onClickedVoiceModalOK: function(e) {
+			$('div[data-producttype="voice"]').attr('data-extradata', $('input#voiceData').val());
+			$('div[data-producttype="voice"] > p').html('(' + $('input#voiceData').val() + ') 분');
+		},
+		onClickedDataModalCancel: function(e) {
+			$('input#dataData').val($('div[data-producttype="data"]').attr('data-extradata')).change();
+		},
+		onClickedDataModalOK: function(e) {
+			$('div[data-producttype="data"]').attr('data-extradata', $('input#dataData').val());
+			$('div[data-producttype="data"] > p').html('(' + $('input#dataData').val() + ') GB');
+		},
+		onClickedMessageModalCancel: function(e) {
+			$('input#messageData').val($('div[data-producttype="message"]').attr('data-extradata')).change();
+		},
+		onClickedMessageModalOK: function(e) {
+			$('div[data-producttype="message"]').attr('data-extradata', $('input#messageData').val());
+			$('div[data-producttype="message"] > p').html('(' + $('input#messageData').val() + ') 건');
+		},
+		onClickedRoamingModalCancel: function(e) {
+			$('input#roamingData').val($('div[data-producttype="roaming"]').attr('data-extradata')).change();
+		},
+		onClickedRoamingModalOK: function(e) {
+			$('div[data-producttype="roaming"]').attr('data-extradata', $('input#roamingData').val());
+			$('div[data-producttype="roaming"] > p').html('(' + $('input#roamingData').val() + ') 분');
+		},
 		
 	});
 	

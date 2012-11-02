@@ -66,6 +66,7 @@ div.dropZone > div {
 	text-align:center;
 	font-size:16px;
 	font-weight:bold;
+	line-height:100%;
 }
 div.dropZone > div > p {
 	padding-top:3px;
@@ -73,6 +74,10 @@ div.dropZone > div > p {
 	font-weight:normal;
 	display: block;
 }
+
+/*div.dropZone > div > p:after{
+	content:"분";
+}*/
 
 .prod-name {
 	text-align:right;
@@ -91,13 +96,15 @@ div.dropZone > div > p {
 	position:absolute;
 	right:3px; 
 	top:3px;
-	padding:7px 7px;
+	padding:4px 7px;
 	font-size:14px;
+	line-height:100%;
 }
 .modifyButton{
 	position:absolute;
 	left:3px; 
 	top:3px;	
-	padding:7px 10px;
+	padding:4px 10px;
 	font-size:14px;
+	line-height:100%;
 }

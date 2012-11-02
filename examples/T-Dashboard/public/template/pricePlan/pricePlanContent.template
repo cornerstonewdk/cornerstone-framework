@@ -1,6 +1,9 @@
 <div class="row-fluid">
-	<div class="span12 prod-name2">
-		<label>상품명 : {{pricePlanName}}</label><button class="btn" type="button" id="modifyButton">수정</button>
+	<div class="span4 prod-name2">
+		<label>상품명 : {{pricePlanName}}</label>
+	</div>
+	<div class="span8 prod-form2">
+		<button class="btn hidden-phone" type="button" id="modifyButton">수정</button>
 	</div>
 </div>
 

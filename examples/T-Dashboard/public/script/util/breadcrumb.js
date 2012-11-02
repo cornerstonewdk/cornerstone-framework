@@ -25,7 +25,7 @@
 		if(this.prevRoute != null) {
 			if(this.prevRoute == route) {
 				this.prevRoute = route;
-				return '-';	
+				return '|';	
 			}
 		}
 		
