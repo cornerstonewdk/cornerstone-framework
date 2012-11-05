@@ -87,30 +87,12 @@
             }
         });
 
-//        if (typeof options.scrollEndAction === "function") {
-//            var $spinner = $("#endless-loader");
-//            var updateScheduled = false;
-//
-//            function onscreen($el) {
-//                var viewportBottom = $(window).scrollTop() + $(window).height();
-//                return window.scrollY != 0 && $el.offset().top <= viewportBottom;
-//            }
-//
-//            $(window).on('scroll', function () {
-//                $spinner.show();
-//                if (!updateScheduled) {
-//                    setTimeout(function () {
-//                        if (onscreen($spinner)) {
-//                            options.scrollEndAction();
-//                        }
-//                        updateScheduled = false;
-//                        console.log($spinner.offset().top, $("#endless-loader").offset().top);
-//                        $spinner.hide();
-//                    }, 500);
-//                    updateScheduled = true;
-//                }
-//            });
-//        }
+        $(window).on("scroll", function () {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                options.scrollEndAction();
+                self.$el.trigger("scrollEnd");
+            }
+        });
     };
 
     Plugin.prototype.addItem = function (options, html) {
@@ -148,7 +130,7 @@
                 }
             }
 
-            window.scrollTo(window.scrollX, window.scrollY - ($("#endless-loader").height()));
+            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
         } else {
             if (typeof items === "undefined") {
                 page.remove();
@@ -158,7 +140,7 @@
                 }
             }
 
-            window.scrollTo(window.scrollX, window.scrollY - ($("#endless-loader").height()));
+            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
         }
 
         this.refresh();
@@ -176,7 +158,7 @@
         listView.height = height;
         this.$el.children("div").css({"height":listView.height});
 
-        window.scrollTo(window.scrollX, window.scrollY - $("#endless-loader").height());
+        window.scrollTo(window.scrollX, window.scrollY - $(options.spinner).height());
     };
 
     Plugin.prototype.scrollHandler = function (options) {

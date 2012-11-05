@@ -49,7 +49,6 @@ runTask( 'init', function() {
 	j.mkdir( PATH_DIST + 'loader' );
 	j.mkdir( PATH_DIST + 'mvc/model' );
 	j.mkdir( PATH_DIST + 'mvc/view' );
-	j.mkdir( PATH_DIST + 'mvc/router' );
 	j.mkdir( PATH_DIST + 'ui' );
 	j.mkdir( PATH_DIST + 'ui/img' );
 	j.mkdir( PATH_DIST + 'ui/theme/dark/css' );
@@ -149,7 +148,7 @@ runTask( 'deploy', [ 'validate' ], function() {
 
 	j.concat(
 		PATH_SOURCE + 'ui/widget/featured/editor/bootstrap-wysihtml5.css',
-		PATH_DIST + 'ui/bootstrap-wysihtml5.css'
+		PATH_DIST + 'ui/widget-editor.css'
 	);
 
 	// minify
@@ -158,7 +157,6 @@ runTask( 'deploy', [ 'validate' ], function() {
 	j.files( PATH_SOURCE + 'loader', '**/*.js' ).minify( PATH_DIST + 'loader' );
 	j.files( PATH_SOURCE + 'mvc/model', '**/*.js' ).minify( PATH_DIST + 'mvc/model' );
 	j.files( PATH_SOURCE + 'mvc/view', '**/*.js' ).minify( PATH_DIST + 'mvc/view' );
-	j.files( PATH_SOURCE + 'mvc/router', '**/*.js' ).minify( PATH_DIST + 'mvc/router' );
 	j.files( PATH_SOURCE + 'util', '**/*.js' ).minify( PATH_DIST + 'util' );
 	
 	// 이미지 파일 복사

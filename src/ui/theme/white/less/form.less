@@ -751,7 +751,17 @@ input.search-query {
 	z-index: 1000;
 }
 
-.figure {
+.slider-box {
+	width: 100%;
+	display: inline-block;
+}
+.slider-box .slider {
+	min-width:80%;
+	float: left;
+}
+
+.slider-box input.figure {
+	float: right;
 	width: 40px;
 	margin: -5px 0 0;
 	padding: 5px;
@@ -759,7 +769,7 @@ input.search-query {
 	box-shadow : none;
 	text-align: right;
 	color: @figureTxt;
-	font-size: (@baseFontSize - 4);
+	font-size: (@baseFontSize - 2);
 	&:focus {
     border: 0;
 		padding: 5px;
@@ -768,18 +778,6 @@ input.search-query {
 		box-shadow: none;
 		color: @figureTxt;
   }
-}
-
-.slider-box {
-	width: 100%;
-	display: inline-block;
-}
-.slider-box .slider {
-	float: left;
-}
-
-.slider-box .figure {
-	float: right;
 }
 
 .flip-area {
