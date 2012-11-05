@@ -83,6 +83,8 @@ define(
 					itemSelector : '.dashboardItem'
 				});
 			});
+			
+			$('.dashboardItem').spinner('show');
 		},
 		
 		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
@@ -120,6 +122,7 @@ define(
 					data : json
 				});
 			});
+			$('#reportChart').parent().spinner('hide');
 			
 			//트위터 그리기
 			var twitterWidget = new TwitterWidget();

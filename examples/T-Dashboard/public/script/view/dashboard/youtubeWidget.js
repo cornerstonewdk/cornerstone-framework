@@ -30,6 +30,8 @@ define(
 					$(".pluginType").text("(" + player.pluginType.toUpperCase() + ")");
 				}
 			});
+			
+			$('#youtubeWedget').parent().spinner('hide');
 		},
 		
 	});

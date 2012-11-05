@@ -38,7 +38,9 @@ define(
 				ulTag.append(cellTemplate(planData));
 			}
 			
-			$('div[data-featured="scrollView2"]').featuredScrollView();
+			$('div[data-featured="scrollView2"]').featuredScrollView('refrash');
+			
+			$('#planWidget').parent().spinner('hide');
 		},
 		
 	});

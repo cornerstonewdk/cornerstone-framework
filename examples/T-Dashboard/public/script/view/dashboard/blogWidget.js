@@ -32,6 +32,8 @@
 				var rssItem = data[i];
 				this.$el.find('ul#blogWidgetList').append(cellTemplate(rssItem));
 			}
+			
+			$('div#blogWidget').parent().spinner('hide');
 		},
 		
 	});

@@ -99,6 +99,9 @@ define(function(require) {
 		return uuid.join('');
 	};
 	
+	/*
+	 * 요금정책 가져오기
+	 */
 	DummyDataUtil.prototype.getPricePlan = function() {
 		return this.pricePlanList;
 	};

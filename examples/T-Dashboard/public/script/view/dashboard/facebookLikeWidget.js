@@ -17,6 +17,8 @@
 			var self = this;
 			
 			$(this.el).html(template());
+			
+			$('div#facebookLikeWidget').parent().spinner('hide');
 		},
 
 	});

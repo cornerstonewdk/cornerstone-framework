@@ -32,6 +32,8 @@
 			this.vocListUpdateTimer = setInterval(function() {
 				self.updateVocList();
 			}, 2000);
+			
+			$('div#vocWidget').parent().spinner('hide');
 		},
 		
 		redrawVocList: function(list) {

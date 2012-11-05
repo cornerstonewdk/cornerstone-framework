@@ -28,7 +28,7 @@ requirejs.config({
 	}
 });
 
-define(['router'], function(Router) {
+define(['router', 'widget-plugins'], function(Router) {
 	return {
 		launch: function() {
 			// 애플리게이션의 시작점

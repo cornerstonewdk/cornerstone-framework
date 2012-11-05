@@ -33,10 +33,12 @@ define(
 			this.vocInfoUpdateTimer = setInterval(function() {
 				self.updateVocSatisfactionInfo();
 			}, 1000);
+			
+			$('div#vocSatisfactionWidget').parent().spinner('hide');
 		},
 		
 		updateVocSatisfactionInfo: function() {
-			if($(this.el).length == 0) {
+			if($('div#vocSatisfactionWidget').length == 0) {
 				clearInterval(this.vocInfoUpdateTimer);
 				this.vocInfoUpdateTimer = null;
 				return;
