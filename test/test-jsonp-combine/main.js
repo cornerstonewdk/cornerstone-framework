@@ -1,8 +1,8 @@
 require.config( {
     paths: { // path naming
         // Libs
-        "jquery": "jquery-1.7.2.min",
-        "jsonp": "jsonp"
+        "jquery": "../../dist/lib/jquery-1.8.1.min",
+        "jsonp": "../../dist/util/jsonp"
     },
     shim: { // 외존성 설정
         "jsonp": {

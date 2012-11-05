@@ -149,7 +149,7 @@ runTask( 'deploy', [ 'validate' ], function() {
 
 	j.concat(
 		PATH_SOURCE + 'ui/widget/featured/editor/bootstrap-wysihtml5.css',
-		PATH_DIST + 'ui/bootstrap-wysihtml5.css'
+		PATH_DIST + 'ui/widget-editor.css'
 	);
 
 	// minify

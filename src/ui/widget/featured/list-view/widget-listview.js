@@ -10,11 +10,41 @@
 
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
-        /**
-         * ListView는 Handlebar.js와 Infinity.js를 사용한다.
-         */
-        define([ "jquery"], function ($) {
-            return factory($, root, doc);
+
+        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
+            factory($, root, doc);
+            return Backbone.View.extend({
+                initialize:function () {
+                    _.bindAll(this, "render");
+                },
+
+                addItem:function (view, collection) {
+                    collection.each(function (model) {
+                        view.itemView = new view.options.itemView({model:model});
+                        view.$el.featuredListView("addItem", view.itemView.render().el);
+                    });
+                },
+
+                removeItem:function ($target, aNumbers) {
+                    return this.$el.featuredListView("removeItem", $target, aNumbers);
+                },
+
+                updateListView:function (view) {
+                    view.collection.fetch({
+                        success:function (collection) {
+                            view.addItem(view, collection);
+                        }
+                    });
+                },
+
+                render:function () {
+                    this.$el.featuredListView(this.options);
+
+                    this.updateListView(this);
+
+                    return this;
+                }
+            });
         });
     } else {
         // Browser globals
@@ -31,9 +61,9 @@
     var Plugin = function (element, options) {
         var self = this;
         defaultOptions = {
-            optimization: true,
-            SCROLL_THROTTLE: 0,
-            scrollEndAction: null
+            optimization:true,
+            SCROLL_THROTTLE:0,
+            scrollEndAction:null
         };
         this.$el = $(element);
         this.options = options = $.extend(true, defaultOptions, options);
@@ -43,7 +73,7 @@
         ListItem = infinity.ListItem;
 
         this.$el.each(function () {
-            if(options.optimization) {
+            if (options.optimization) {
                 html = self.$el.html();
                 self.$el.html("");
 
@@ -57,32 +87,17 @@
             }
         });
 
-        if(typeof options.scrollEndAction === "function") {
-            var $spinner = $("#endless-loader");
-            var updateScheduled = false;
-            function onscreen($el) {
-                var viewportBottom = $(window).scrollTop() + $(window).height();
-                return window.scrollY != 0 && $el.offset().top <= viewportBottom;
+        $(window).on("scroll", function () {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                options.scrollEndAction();
+                self.$el.trigger("scrollEnd");
             }
-            $(window).on('scroll', function () {
-                $spinner.show();
-                if (!updateScheduled) {
-                    setTimeout(function () {
-                        if (onscreen($spinner)) {
-                            options.scrollEndAction();
-                        }
-                        updateScheduled = false;
-                        $spinner.hide();
-                    }, 500);
-                    updateScheduled = true;
-                }
-            });
-        }
+        });
     };
 
     Plugin.prototype.addItem = function (options, html) {
-        if(options.optimization) {
-            this.$el.data('listView').append(html);
+        if (options.optimization) {
+            this.$el.data('listView').append($(html));
         } else {
             this.$el.append(html);
         }
@@ -97,16 +112,16 @@
         var length;
         var listItems;
         var target;
-        if(options.optimization) {
-            if(typeof items === "undefined") {
+        if (options.optimization) {
+            if (typeof items === "undefined") {
                 listItems = this.$el.data('listView').find(page);
-                for(i = 0, length = listItems.length; i < length; i++) {
+                for (i = 0, length = listItems.length; i < length; i++) {
                     listItems[i].remove();
                 }
             } else {
                 listItems = this.$el.data('listView').find(page);
-                for(i = 0, length = listItems.length; i < length; i++) {
-                    for(j in items) {
+                for (i = 0, length = listItems.length; i < length; i++) {
+                    for (j in items) {
                         target = listItems[i].$el.find("[data-list-itemid='" + items[j] + "']");
                         height += target.height()
                         target.remove();
@@ -115,17 +130,17 @@
                 }
             }
 
-            window.scrollTo(window.scrollX, window.scrollY - ($("#endless-loader").height()));
+            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
         } else {
-            if(typeof items === "undefined") {
+            if (typeof items === "undefined") {
                 page.remove();
             } else {
-                for(i in items) {
+                for (i in items) {
                     page.find("[data-list-itemid='" + items[i] + "']").remove();
                 }
             }
 
-            window.scrollTo(window.scrollX, window.scrollY - ($("#endless-loader").height()));
+            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
         }
 
         this.refresh();
@@ -133,17 +148,17 @@
         this.$el.trigger("listView.removeItem.done");
     };
 
-    Plugin.prototype.refresh = function(option) {
+    Plugin.prototype.refresh = function (option) {
         var listView = this.$el.data('listView');
         var height = 0;
 
-        $(listView.pages).each(function(i) {
+        $(listView.pages).each(function (i) {
             height += this.height;
         });
         listView.height = height;
         this.$el.children("div").css({"height":listView.height});
 
-        window.scrollTo(window.scrollX, window.scrollY - $("#endless-loader").height());
+        window.scrollTo(window.scrollX, window.scrollY - $(options.spinner).height());
     };
 
     Plugin.prototype.scrollHandler = function (options) {

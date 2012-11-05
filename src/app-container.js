@@ -20,6 +20,7 @@ requirejs.config( {
 		'hammer': Cornerstone.PATH_LIB + 'hammer',
 		'jquery.hammer': Cornerstone.PATH_LIB + 'jquery.hammer',
 		'enquire': Cornerstone.PATH_LIB + 'enquire.min',
+		'blackbird': Cornerstone.PATH_LIB + 'blackbirdjs/blackbird',
 		'template': Cornerstone.PATH + 'loader/template',
 		'style': Cornerstone.PATH + 'loader/style',
 		'sync': Cornerstone.PATH + 'mvc/model/sync',
@@ -32,9 +33,10 @@ requirejs.config( {
 		
 		// Utils
 		'transition': Cornerstone.PATH + 'util/transition',
-		'runtime': Cornerstone.PATH + 'util/srt-1.0',
+		'device': Cornerstone.PATH + 'util/srt-1.0',
 		'jsonp': Cornerstone.PATH + 'util/jsonp',
 		'skt': Cornerstone.PATH + 'util/skt',
+		'logging': Cornerstone.PATH + 'util/logging',
 
         // Widget Alias
         'widget-plugins' : Cornerstone.PATH + 'ui/widget-plugins',
@@ -89,6 +91,10 @@ requirejs.config( {
 				return this.enquire;
 			}
 		},
+		'blackbird': {
+			deps: ['style!' + Cornerstone.PATH_LIB + 'blackbirdjs/blackbird'],
+			exports: 'log'
+		},
 		'socket.io': {
 			exports: function() {
 				return this.io;
@@ -96,7 +102,7 @@ requirejs.config( {
 		},
 		'transition': {
 			deps: ['jquery'],
-            exports: "Transition"
+            exports: 'Transition'
 		},
 		'jsonp': {
 			deps: ['jquery']
