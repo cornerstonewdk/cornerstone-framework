@@ -3,21 +3,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 		<title>SKT Open API Client Sample</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link href="css/cornerstone.min.css" rel="stylesheet">
+		<link href="../../../dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="../../../dist/ui/theme/dark/css/cornerstone.css" rel="stylesheet">
 		<style type="text/css">
 		a { cursor: pointer;}
 		label { color: #fff ! important; }
 		</style>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand">SKT Open API Client Sample</a>
-				</div>
-			</div>
+		<div class="navbar navbar-inverse" style="text-align:center; padding: 20px 20px;">
+			<label>SKT Open API Client Sample</label>
 		</div>
 		
 		<div class="container">
@@ -81,7 +77,7 @@
 					                <div class="control-group">
 					                    <label class="control-label" for="message">메시지</label>
 					                    <div class="controls">
-					                    	<textarea id="message" style="width:270px;height:100px;"></textarea>
+					                    	<textarea id="message" class="input-xlarge"></textarea>
 					                    </div>
 					                </div>
 					                <div class="form-actions" style="background:none;">
@@ -94,24 +90,6 @@
 						<div class="innerDiv" name="pay" style="display:none;">
 							<form id="payForm" class="form-horizontal">
 					            <fieldset>
-					            	<!--
-					            	<div class="select-area">
-							            <label class="blind">Select box</label>
-							            <select class="select-value">
-							                <option>1</option>
-							                <option>2</option>
-							                <option>3</option>
-							                <option>4</option>
-							                <option>5</option>
-							            </select>
-							            <div class="select-box">
-							                <input type="text" value="">
-							                <span class="arrow1"></span>
-							                <span class="arrow2"></span>
-							            </div>
-							        </div>
-							    	-->
-							        
 					                <div class="control-group">
 					                    <label class="control-label" for="type">과금 형태</label>
 					                    <div class="controls">
@@ -155,16 +133,16 @@
 			</div>
 		</div>
 		<br/>
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/SKT.js"></script>
+		<script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="../../../dist/lib/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../../dist/util/skt.js"></script>
 
 		<script type="text/javascript">
 
 		var client_auth_token = undefined;
 		var paymentFlag = false;
 
-		$( '#redirectUri' ).val( 'http://prandy.iptime.org:9001/client_redirect.html' );
+		$( '#redirectUri' ).val( 'http://61.250.22.139/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
 		//$( '#redirectUri' ).val( encodeURI( 'file:///C:/nginx-1.2.3/html/client_redirect.html' ) );
 
 		$( 'ul > li' ).on( 'click', function () {

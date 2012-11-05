@@ -1,9 +1,9 @@
 require.config({
     paths:{ // path naming
         // Libs
-        "jquery":"jquery-1.7.2.min",
-        "bootstrap": "bootstrap.min",
-        "SKT": "SKT"
+        "jquery":"../../../../dist/lib/jquery-1.8.1.min",
+        "bootstrap": "../../../../dist/lib/bootstrap/js/bootstrap.min",
+        "SKT": "../../../../dist/util/SKT"
     },
     shim:{ // 외존성 설정
         "bootstrap": {
@@ -22,7 +22,7 @@ require( ['SKT'], function ( sk ) {
     var client_auth_token = undefined;
     var paymentFlag = false;
 
-    $( '#redirectUri' ).val( 'http://prandy.iptime.org:9001/client_redirect.html' );
+    $( '#redirectUri' ).val( 'http://61.250.22.139/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
 
     $( 'ul > li' ).on( 'click', function () {
         var name = $( this ).attr( 'name' );
