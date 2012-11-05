@@ -1,5 +1,8 @@
 /* Loading Circle */
-.spinner:before {
+.widget-spinner {
+  position: relative;
+}
+.widget-spinner:before {
 	content: "";
 	position: absolute;
 	width: 100%;
@@ -11,7 +14,7 @@
 	z-index: 900;
 }
 
-.spinner:after {
+.widget-spinner:after {
 	content: "";
 	background-image: url(../img/spinner.gif);
 	background-size: 50px;
@@ -27,4 +30,8 @@
 	margin-left: -25px;
 	margin-top: -25px;
 	z-index: 1000;
+}
+
+body.widget-spinner:after {
+  position: fixed;
 }
