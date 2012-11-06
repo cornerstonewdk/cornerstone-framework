@@ -43,6 +43,7 @@ require( ['SKT'], function ( sk ) {
             $( '#paymentDiv' ).show();
             paymentFlag = true;
         }
+        $( '#payForm .btn-group.open' ).removeClass("open");
         return false;
     } );
 
