@@ -44,7 +44,6 @@ define(
 			
 			//화면이 변경되었을때 타이머가 도는것은 자원낭비이니 소스코드가 있는지 확인 후 없으면 타이머를 없앤다.
 			if($('#twitterWedget').length == 0) {
-				console.log('456');
 				clearInterval(this.twitterUpdateTimer);
 				this.twitterUpdateTimer = null;
 				return;
@@ -61,7 +60,6 @@ define(
 				error: function() {
 					alert('오류가 발생하였습니다.');
 				},
-				callback: 'jsonFlickrFeed',
 				timeout: 5000
 			});
 		},

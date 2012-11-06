@@ -12,6 +12,7 @@ define(function(require) {
 			'pricePlan/:id' : 'pricePlanRoute',
 			'lteReport' : 'lteReportRoute',
 			'voc' : 'vocRoute',
+			'voc/:id' : 'vocRoute',
 			'makePricePlan': 'makePricePlanRoute',
 			'makePricePlan/:data': 'makePricePlanRoute',
 
@@ -40,9 +41,10 @@ define(function(require) {
 			});
 		},
 
-		vocRoute : function() {
+		vocRoute : function(id) {
 			require(["view/voc/vocView"], function(VocView) {
 				var direction = BreadCrumb.manager.route('voc', 'VOC');
+				VocView['selectedVocId'] = id || null;
 				PageTransition.page.transition(direction, VocView);
 			});
 		},

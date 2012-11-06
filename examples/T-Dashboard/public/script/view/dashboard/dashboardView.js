@@ -49,7 +49,11 @@ define(
 		},
 		
 		vocClick: function(e) {
-			document.location = '#voc';
+			if(typeof($(e.target).attr('data-voclist')) == 'undefined' && typeof($(e.target).parent().attr('data-voclist')) == 'undefined') {
+				document.location = '#voc';	
+			} else {
+				document.location = '#voc/' + ($(e.target).attr('data-voclist') || $(e.target).parent().attr('data-voclist'));
+			}
 		},
 		
 		pricePlanClick: function(e) {

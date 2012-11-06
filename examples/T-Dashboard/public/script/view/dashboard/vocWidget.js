@@ -15,8 +15,6 @@
 		el : 'div#vocWidget',
 		
 		vocListUpdateTimer: null,
-		
-		vocList: null,
 
 		initialize: function() {
 		},
@@ -26,36 +24,45 @@
 			
 			$(this.el).html(template());
 			
-			this.vocList = DummyDataUtil.makeRandomVocData(0, 5);
-			this.redrawVocList(this.vocList);
+			this.redrawVocList(DummyDataUtil.getNewlyVocData(5));
 			
+			//매 5초마다 업데이트 하여 실시간으로 데이터가 들어오는것처럼 한다.
 			this.vocListUpdateTimer = setInterval(function() {
 				self.updateVocList();
-			}, 2000);
+			}, 5000);
 			
+			//스피너 숨김
 			$('div#vocWidget').parent().spinner('hide');
 		},
 		
+		/*
+		 * 최신 데이터를 상위에 올리려고 역순으로 출력한다.
+		 */
 		redrawVocList: function(list) {
 			this.$el.find('#vocWidgetList').children().remove();
 			
-			for(i = 0; i < list.length; i++) {
+			for(i = list.length - 1; i >= 0; i--) {
 				var vocData = list[i];
 				this.$el.find('#vocWidgetList').append(cellTemplate(vocData));	
 			}
 		},
 		
+		/*
+		 * 새로운 데이터를 생성하여 가져온다.
+		 */
 		updateVocList: function() {
-			if($(this.el).length == 0) {
+			//이 화면이 없어졌을때 타이머가 계속 돌고 있으면 종료 시켜버린다.
+			if($('div#vocWidget').length == 0) {
 				clearInterval(this.vocInfoUpdateTimer);
 				this.vocInfoUpdateTimer = null;
 				return;
 			}
 			
-			var tempVocList = DummyDataUtil.makeRandomVocData(0, 1);
-			this.vocList.unshift(tempVocList[0]);
-			this.vocList.pop();
-			this.redrawVocList(this.vocList);
+			//새로운 랜덤데이터 추가
+			DummyDataUtil.addRandomeVocData(DummyDataUtil.randomNumber(1, 3));
+			
+			//데이터를 새로 가져와서 표시해줌
+			this.redrawVocList(DummyDataUtil.getNewlyVocData(5));
 		},
 		
 	});

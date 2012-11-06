@@ -74,14 +74,20 @@ define(function(require) {
 				]
 			}
 		};	//요금상품 리스트
+		
+		this.vocList = new Array();
 	};
 	
-	//랜덤 숫자 생성
+	/*
+	 * 랜덤 숫자 생성
+	 */
 	DummyDataUtil.prototype.randomNumber = function(n1, n2) {
 		return Math.floor( (Math.random() * (n2 - n1 + 1)) + n1 );
 	};
 	
-	//UUID 생성
+	/*
+	 * UUID 생성
+	 */
 	DummyDataUtil.prototype.makeUuid = function() {
 		var chars = '0123456789abcdef'.split('');
 	
@@ -106,11 +112,16 @@ define(function(require) {
 		return this.pricePlanList;
 	};
 	
+	/*
+	 * 요금정책 만든것의 데이터를 추가
+	 */
 	DummyDataUtil.prototype.addPricePlan = function(obj) {
 		this.pricePlanList[obj['pricePlanId']] = obj;
 	};
 	
-	//지점 정보 생성
+	/*
+	 * 지점 정보 생성
+	 */
 	DummyDataUtil.prototype.makeBranchData = function() {
 		var branchList = {
 			'1': {'name': '강남지점(신)'},
@@ -193,7 +204,54 @@ define(function(require) {
 		return branchList;
 	};
 	
-	//가상 VOC Data 생성
+	/*
+	 * 가장 최신 데이터 가져오기
+	 * S : 원하는 갯수
+	 */
+	DummyDataUtil.prototype.getNewlyVocData = function(s) {
+		if(this.vocList.length == 0) {
+			this.vocList = this.makeRandomVocData(1, 100);
+		}
+		
+		return this.vocList.slice(this.vocList.length - s, this.vocList.length);
+	};
+	
+	/*
+	 * 파라메터로 넘겨진 범위만큼만 voclist의 배열을 가져옴
+	 */
+	DummyDataUtil.prototype.getVocDataWithRange = function(s, e) {
+		if(this.vocList.length == 0) {
+			this.vocList = this.makeRandomVocData(1, 100);
+		}
+		
+		return this.vocList.slice(s, e);
+	};
+	
+	/*
+	 * vocList 의 배열을 가져옴
+	 */
+	DummyDataUtil.prototype.getVocData = function() {
+		if(this.vocList.length == 0) {
+			this.vocList = this.makeRandomVocData(1, 100);
+		}
+		
+		return this.vocList;
+	};
+	
+	/*
+	 * 추가로 새로운 램덤데이터를 생성하여 vocList에 데이터 추가
+	 */
+	DummyDataUtil.prototype.addRandomeVocData = function(size) {
+		var temp = this.makeRandomVocData(this.vocList.length + 1, size);
+		
+		this.vocList = this.vocList.concat(temp);
+		delete temp;
+	};
+	
+	/*
+	 * 가상 VOC Data 생성
+	 * 더 많은 변수를 넣으면 더 많은 형태의 렌덤데이터가 생성됨
+	 */
 	DummyDataUtil.prototype.makeRandomVocData = function(idx, size) {
 		var userInfoDB = {
 			'1': {
@@ -266,7 +324,7 @@ define(function(require) {
 		};
 		
 		var tempVocArray = new Array();
-		for(var i = idx; i < size; i++) {
+		for(var i = 0; i < size; i++) {
 			var tempVoc = {};
 			
 			var tempUserInfo = userInfoDB[this.randomNumber(1, 5)];
@@ -278,7 +336,7 @@ define(function(require) {
 			tempVoc['customerDevice'] = tempUserInfo['customerDevice'];
 			tempVoc['customerPricePlan'] = tempUserInfo['customerPricePlan'];
 			tempVoc['customerSatisfaction'] = tempUserInfo['customerSatisfaction'];
-			tempVoc['vocId'] = i;
+			tempVoc['vocId'] = idx + i + 1;
 			tempVoc['vocRequest'] = tempVocData['vocRequest'];
 			tempVoc['vocResponse'] = tempVocData['vocResponse'];
 			tempVoc['vocState'] = tempVocData['vocState'];

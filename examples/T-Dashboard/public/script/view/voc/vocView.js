@@ -27,6 +27,8 @@
 		
 		vocList: null,
 		
+		selectedVocId: null,
+		
 		initialize: function() {
 			this.vocData = new Array;
 		},
@@ -46,22 +48,27 @@
 		},
 		
 		loadNextVocList: function() {
-			var result = DummyDataUtil.makeRandomVocData((this.currentPage++) * this.pageSize, this.pageSize);
+			// var result = DummyDataUtil.makeRandomVocData((this.currentPage++) * this.pageSize, this.pageSize);
+			this.currentPage++;
+			var result = DummyDataUtil.getVocData();
 			this.vocList = result;
 			this.drawVocList(result);
 		},
 		
 		drawVocList: function(list) {
-			for(i = 0; i < list.length; i++) {
+			for(i = list.length - 1; i >= 0 ; i--) {
 				var vocData = list[i];
 				this.$el.find('#vocList').append(cellTemplate(vocData));	
 			}
 			
-			this.$el.find('#vocScrollView').featuredScrollView();
+			this.$el.find('#vocScrollView').featuredScrollView('refresh');
 			
-			if(this.currentPage == 1) {
+			if(this.currentPage == 1 && this.selectedVocId == null) {
 				this.$el.find('ul#vocList > li:first-child').addClass('active');
 				this.loadVocDetailData(this.$el.find('ul#vocList > li:first-child').attr('data-voclist'));
+			} else if(this.currentPage == 1 && this.selectedVocId != null) {
+				this.$el.find('ul#vocList > li[data-voclist="' + this.selectedVocId + '"]').addClass('active');
+				this.loadVocDetailData(this.selectedVocId);
 			}
 		},
 		
