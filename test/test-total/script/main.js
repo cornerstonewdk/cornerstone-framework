@@ -298,7 +298,8 @@ define( [ 'backbone',
                    $( '#cons' ).html( '[ 19 ] touch move' );
                 },
                 end: function( event ) {
-                    $( '#cons' ).html( '[ 19 ] touch end' );
+                   // $( '#cons' ).html( '[ 19 ] touch end' );
+                   alert( '[ 19 ] touch end' );
                 }
             } );
             var touchView = new TouchView( { model: user } );
