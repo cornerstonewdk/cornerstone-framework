@@ -113,9 +113,14 @@ html lang: 'ko', ->
                     ul '.nav.nav-list', ->
                       tag = @sections.store( cell )
                       li '.nav-header', -> tag.name
+                      cur_url_2 = @document.url
                       tag.documents.forEach (documentModel) ->
-                        li '.inactive', ->
-                             a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+                          cur_url_1 = "#{documentModel.get('url')}"
+                          #if "#{documentModel.get('url')}" is @document.url 
+                          if cur_url_1 is cur_url_2 
+                             li '.active', -> a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+                          else
+                             li '.inactive', -> a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
                              #div "style":"display:block", -> "#{documentModel.get('subsection')}" + " / " + "#{documentModel.get('order')}" 
                              #if "#{documentModel.get('url')}" is @document.url
                              #  p -> "same" + if "#{documentModel.get('url')}" is @document.url then "active"
