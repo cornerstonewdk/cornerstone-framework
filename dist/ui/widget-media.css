@@ -248,17 +248,53 @@
 	animation: buffering-stripes 2s linear infinite;
 }
 
-@-webkit-keyframes buffering-stripes{from{background-position:0 0;}to{background-position:30px 0;}} @-moz-keyframes buffering-stripes{from{background-position:0 0;}to{background-position:30px 0;}} @-ms-keyframes buffering-stripes{from{background-position:0 0;}to{background-position:30px 0;}} @-o-keyframes buffering-stripes{from{background-position:0 0;}to{background-position:30px 0;}} @keyframes buffering-stripes{from{background-position:0 0;}to{background-position:30px 0;}} .mejs-controls .mejs-time-rail .mejs-time-loaded {
-																																																																																																																									background: #3caac8;
-																																																																																																																									background: rgba(60, 170, 200, 0.8);
-																																																																																																																									background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(44, 124, 145, 0.8)), to(rgba(78, 183, 212, 0.8)));
-																																																																																																																									background: -webkit-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
-																																																																																																																									background: -moz-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
-																																																																																																																									background: -o-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
-																																																																																																																									background: -ms-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
-																																																																																																																									background: linear-gradient(rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
-																																																																																																																									width: 0;
-																																																																																																																								}
+@-webkit-keyframes buffering-stripes {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 30px 0;
+	}
+}
+
+@-moz-keyframes buffering-stripes {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 30px 0;
+	}
+}
+
+@-ms-keyframes buffering-stripes{from{background-position:0 0;}to{background-position:30px 0;}} @-o-keyframes buffering-stripes {
+																									from {
+																										background-position: 0 0;
+																									}
+																									to {
+																										background-position: 30px 0;
+																									}
+																								}
+
+@keyframes buffering-stripes {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 30px 0;
+	}
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-loaded {
+	background: #3caac8;
+	background: rgba(60, 170, 200, 0.8);
+	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(44, 124, 145, 0.8)), to(rgba(78, 183, 212, 0.8)));
+	background: -webkit-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+	background: -moz-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+	background: -o-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+	background: -ms-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+	background: linear-gradient(rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+	width: 0;
+}
 
 .mejs-controls .mejs-time-rail .mejs-time-current {
 	width: 0;
@@ -746,4 +782,8 @@
 	line-height: 15px;
 	font-family: helvetica, arial;
 	font-size: 10px;
+}
+
+.mejs-ios .mejs-overlay-play {
+	display: none;
 }

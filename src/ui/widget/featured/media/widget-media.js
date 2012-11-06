@@ -11,7 +11,7 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH +  "ui/widget-media"], function (Backbone, _ , $) {
+        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-media"], function (Backbone, _, $) {
             factory($, root, doc);
             return Backbone.View.extend({
                 tagName:'div',
@@ -48,9 +48,9 @@
     $.fn[pluginName] = function (options) {
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
-            rate: "16:9",
-            flashName: Cornerstone.PATH + "ui/flashmediaelement.swf",
-            silverlightName: Cornerstone.PATH + "ui/silverlightmediaelement.xap"
+            rate:"16:9",
+            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") +  "flashmediaelement.swf",
+            silverlightName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") + "silverlightmediaelement.xap"
         };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
