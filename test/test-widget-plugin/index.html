@@ -179,9 +179,8 @@
 			<h4 class="dash-head"><i class="icon-cog"></i> 버튼액션 Loading Circle:</h4>
 
 			<div class="dash-widget no-padding">
-				<a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#widget-spinner" class="btn">중앙 로더</a>
-				<a data-plugin="spinner" data-spinner-type="showAll" data-spinner-target="#widget-spinner" class="btn">전체 페이지 로더</a>
-				<a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#widget-spinner" class="btn" data-spinner-text="Loading...">텍스트가 있는 페이지 로더</a>
+				<a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn">전체 페이지 로더</a>
+				<a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn">중앙 로더</a>
 			</div>
 		</div>
 	</div>
@@ -199,7 +198,7 @@
 
 			<div class="dash-widget no-padding widget-rangeinput">
 				<label>
-					<input type="range" value="10" min="0" max="100"
+					<input type="range" value="0.5" min="0.1" max="99.9" step="0.1"
 						   class="widget-range btn-block"/>
 				</label>
 			</div>
@@ -218,9 +217,9 @@
 		<div class="span4">
 			<h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Input Range:</h4>
 
-			<div class="dash-widget no-padding widget-rangeinput">
+			<div class="dash-widget no-padding widget-rangeinput slider-box">
 				<label>
-					<input type="range" value="10" min="0" max="100"
+					<input type="range" value="0.5" min="0.1" max="999.9" step="10"
 						   class="widget-range btn-block inline"
 						   data-range-options='{"inputShow":true,"progress":true}'/>
 				</label>
@@ -279,9 +278,9 @@
 
 			<div class="dash-widget no-padding">
 				<div class="btn-group t-blue inline" data-toggle="buttons-radio">
-					<button class="btn up"></button>
-					<button class="btn down"></button>
-					<button class="btn set"></button>
+					<button class="btn">b</button>
+					<button class="btn"><i>i</i></button>
+					<button class="btn">u</button>
 				</div>
 			</div>
 		</div>
@@ -864,13 +863,7 @@
 
 </div>
 
-<div id="widget-spinner" class="widget-spinner">
-	<div class="spinner-center">
-		<img src="img/loader/159.gif" alt=""/>
-	</div>
-</div>
 <script type="text/javascript" src="../../dist/lib/jquery-1.8.1.min.js"></script>
-<script type="text/javascript" src="../../dist/lib/jquery.transit.js"></script>
 <script type="text/javascript" src="../../dist/ui/widget-plugins.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript">

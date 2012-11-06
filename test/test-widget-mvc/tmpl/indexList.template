@@ -1,5 +1,0 @@
-<li data-list-itemid="{{index}}">
-    <div><a href="#"><strong>{{title}}</strong>
-        <small class="pull-right">{{published}}</small>
-    </a></div>
-</li>

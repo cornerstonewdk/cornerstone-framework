@@ -1,0 +1,25 @@
+<div id="module-news-preview-container" style="top: 0px; ">
+	<div id="news-preview-controls" style="left: 0px; ">
+		<div class="news-preview-close" style="opacity: 1; " onclick="javascript:history.back();">
+			<div class="news-preview-backg" style="background-color: rgb(63, 63, 63); "></div>
+			<div class="news-preview-close-sign"></div>
+		</div>
+	</div>
+	<div class="news-preview-horizontal-fix" style="">
+		<ul id="news-preview-list">
+			<li >
+				<div class="custom-separator-preview-news"></div>
+				<div class="item-vertical-title" style="color: rgb(63, 63, 63); ">{{title}}</div>
+				<div class="row">
+					<div class="span6">
+						<img src="{{imgUrl}}" width="100%">
+					</div>
+				</div>
+				<div class="main-text-holder">
+					<p>{{description}}</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- end .news-vertical-preview-horizontal-fix -->
+</div>

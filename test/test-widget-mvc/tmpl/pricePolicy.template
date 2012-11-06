@@ -1,5 +1,0 @@
-<div class="span12">
-	<div id="gesture-area" class="well" >
-		<div id="gesture-obj"><input type="text" size="100" style="width: 100px;" /></div>
-	</div>	
-</div>

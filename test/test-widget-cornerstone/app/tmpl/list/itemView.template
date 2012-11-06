@@ -1,0 +1,13 @@
+<div class="item">
+	<div class="custom-separator"></div>
+	<div class="item-vertical">
+		<div class="item-vertical-title" style="color: rgb(63, 63, 63); ">{{title}}</div>
+		<div class="row">
+			<div class="span6">
+				<img src="{{imgUrl}}" width="100%">
+			</div>
+		</div>
+		<div class="main-text-holder">{{description}}</div>
+		<!--<div class="item-vertical-read-more"><a href="#list/{{index}}"><span>더보기 Read More</span></a></div>-->
+	</div>
+</div>
