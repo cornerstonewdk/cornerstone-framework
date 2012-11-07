@@ -13,7 +13,7 @@ requirejs.config( {
         'person': {
             deps: [ 'dependency1', 'dependency2' ],
             exports: function() {
-                return this.User.noConflict();
+                return this.Person.noConflict();
             }
         },
         //[ 22 ] style 동적 로드 확인
@@ -22,7 +22,7 @@ requirejs.config( {
 } );
 
 //[ 5 ] 설정의 모듈명으로 로드( user )
-define( [ 'backbone', 
+define( [ 'logging', 
           'gesture-view', 
           'person', 
           'dummy/load-test', 
@@ -33,9 +33,9 @@ define( [ 'backbone',
           'validationView',
           'sync',
           'multipage-router',
-          'logging'
+          'backbone'
            ],
-          function( Backbone, 
+          function( Logging, 
                     GestureView, 
                     Person, 
                     Test, 
@@ -46,7 +46,7 @@ define( [ 'backbone',
                     ValidationView,
                     Sync,
                     MultipageRouter,
-                    Logging
+                    Backbone
                      ) {
     return {
         launch: function() {
@@ -65,38 +65,37 @@ define( [ 'backbone',
                 },
                 list: function() {
                     // URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
-                    console.log( '#list 실행' );
+                    Logging.debug( '#list 실행' );
                 },
                 add: function() {
-                    console.log( '#add 실행' );
+                    Logging.debug( '#add 실행' );
                 },
                 detail: function( id ) {
-                    console.log( '#detail 실행, id : ' + id );
+                    Logging.debug( '#detail 실행, id : ' + id );
                 }
             } );
             */
-            
-            function config() {
-                Logging.config( {
-                    debug: $( '#debug-group button.active' ).text(),
-                    info: $( '#debug-group button.active' ).text(),
-                    warn: $( '#debug-group button.active' ).text(),
-                    error: $( '#debug-group button.active' ).text(),
-                    time: $( '#debug-group button.active' ).text()
-                } );
-            }
-
             Logging.config( {
                 defaultLevel: 'debug',
                 debug: 'console',
-                info: 'none',
+                info: 'console',
                 warn: 'console',
-                error: 'screen',
-                time: 'screen'
+                error: 'console',
+                time: 'console'
             } );
-
+            
+            function config( str ) {
+                Logging.config( {
+                    debug: str,
+                    info: str,
+                    warn: str,
+                    error: str,
+                    time: str
+                } );
+            }
+            
             $( '#debug-group button' ).click( function () {
-                config();
+                config( $( this ).text() );
             } );
             
             // [ 31 ] 테스트
@@ -106,10 +105,10 @@ define( [ 'backbone',
                         fragment: [ '', 'list' ],
                         el: 'div#list',
                         render: function() {
-                            console.log( '[ 31 ] #list 호출 발생 후 화면렌더링시에 실행' );
+                            Logging.debug( '[ 31 ] #list 호출 발생 후 화면렌더링시에 실행' );
                         },
                         active: function() {
-                            console.log( '[ 31 ] #list active.' );
+                            Logging.debug( '[ 31 ] #list active.' );
                         }
                     },
                     'add-page': {
@@ -130,10 +129,10 @@ define( [ 'backbone',
                     }
                 },
                 add: function() {
-                    console.log( '[ 31 ] #add active.' );
+                    Logging.debug( '[ 31 ] #add active.' );
                 },
                 detail: function( id ) {
-                    console.log( '[ 31 ] #detail active. id : ' + id );
+                    Logging.debug( '[ 31 ] #detail active. id : ' + id );
                 },
                 transitions: {
                     'list-page:add-page': 'slide',
@@ -146,34 +145,34 @@ define( [ 'backbone',
             // Fragment identifier의 변경을 감지하고 라우팅을 처리한다.
             Backbone.history.start();
 
-            console.log( '[ 4 ] Application Launched' );
-            console.log( '[ 5 ] requirejs의 설정 로드 후 ')
-            console.log( '[ 1 ] ' + Person.name + ' / ' + Person.age + ' / ' + Person.gender );
-            console.log( '[ 5 ] requirejs의 설정으로 간단히 명명한 Person 모듈이 사용' );
-            console.log( '[ 2 ] ' + Test.age );
+            Logging.debug( '[ 4 ] Application Launched' );
+            Logging.debug( '[ 5 ] requirejs의 설정 로드 후 ')
+            Logging.debug( '[ 1 ] ' + Person.name + ' / ' + Person.age + ' / ' + Person.gender );
+            Logging.debug( '[ 5 ] requirejs의 설정으로 간단히 명명한 Person 모듈이 사용' );
+            Logging.debug( '[ 2 ] ' + Test.age );
             //[ 7 ] export1 사용
             Export1.check();
 
             //[ 9 ] Model 정의 및 초기화
             var user = new User();
-            console.log( '[ 10 ] ' + user.get( 'name' ) + ' / ' + user.get( 'age' ) );
+            Logging.debug( '[ 10 ] ' + user.get( 'name' ) + ' / ' + user.get( 'age' ) );
             
 
-            console.log( '[ 11 ] start ---------------------------' );
+            Logging.debug( '[ 11 ] start ---------------------------' );
             user.set( 'name', '박영수' );
-            console.log( user.get( 'name' ) );
+            Logging.debug( user.get( 'name' ) );
             user.set( { name: '김을동', age: 60 } );
-            console.log( user.get( 'name' ) );
-            console.log( user.get( 'age' ) );
-            console.log( user.get( 'job' ) );
+            Logging.debug( user.get( 'name' ) );
+            Logging.debug( user.get( 'age' ) );
+            Logging.debug( user.get( 'job' ) );
             user.set( 'job', '컨설턴트' );
-            console.log( user.get( 'job' ) );
-            console.log( '[ 11 ] end   ---------------------------' );
+            Logging.debug( user.get( 'job' ) );
+            Logging.debug( '[ 11 ] end   ---------------------------' );
 
 
-            console.log( '[ 12 ] start ---------------------------' );
+            Logging.debug( '[ 12 ] start ---------------------------' );
             user.on( 'change', function() {
-                console.log( '무엇인가 변경됨' );
+                Logging.debug( '무엇인가 변경됨' );
             } );
             user.set( 'name', '신기섭' );
             user.set( 'gender', true );
@@ -181,7 +180,7 @@ define( [ 'backbone',
             user.set( 'name', '안영미' );
             user.set( 'gender', false );
             user.on( 'change:name', function() {
-                console.log( '이름이 변경됨' );
+                Logging.debug( '이름이 변경됨' );
             } );
             user.set( 'name', '박윤화' );
             user.set( 'gender', true );
@@ -189,19 +188,19 @@ define( [ 'backbone',
             user.set( 'name', '홍미선' );
             user.set( 'gender', false );
             user.set( 'age', '25' );
-            console.log( '[ 12 ] end   ---------------------------' );
+            Logging.debug( '[ 12 ] end   ---------------------------' );
 
 
-            console.log( '[ 13 ] start ---------------------------' );
-            console.log( 'user.cid : ' + user.cid + ', user.name : ' + user.get( 'name' ) );
-            console.log( 'user.id : ' + user.id );
+            Logging.debug( '[ 13 ] start ---------------------------' );
+            Logging.debug( 'user.cid : ' + user.cid + ', user.name : ' + user.get( 'name' ) );
+            Logging.debug( 'user.id : ' + user.id );
 
             if ( user.isNew() ) {
-                console.log( '새로 만들어진 모델' );
+                Logging.debug( '새로 만들어진 모델' );
             }
-            console.log( '[ 13 ] end   ---------------------------' );
+            Logging.debug( '[ 13 ] end   ---------------------------' );
 
-            console.log( '[ 14 ] start ---------------------------' );
+            Logging.debug( '[ 14 ] start ---------------------------' );
             var Users = Backbone.Collection.extend( {
                 model: User,
                 url: '/users'
@@ -216,35 +215,35 @@ define( [ 'backbone',
             ] );
             users3.url = '/users3'
 
-            console.log( '[ 14 ] end   ---------------------------' );
+            Logging.debug( '[ 14 ] end   ---------------------------' );
 
 
-            console.log( '[ 15 ] start ---------------------------' );
+            Logging.debug( '[ 15 ] start ---------------------------' );
             users1.add( [
                 { name: '박철수', age: 25, id: 35 },
                 { name: '최영희', age: 30, id: 36 }
             ] );
-            console.log( '[ 15 ] end   ---------------------------' );
+            Logging.debug( '[ 15 ] end   ---------------------------' );
 
             
-            console.log( '[ 16 ] start ---------------------------' );
+            Logging.debug( '[ 16 ] start ---------------------------' );
             var user1 = users1.get( 35 );
-            console.log( user1.get( 'name') );
+            Logging.debug( user1.get( 'name') );
 
             var user2 = users2.getByCid( 'c0' );
-            console.log( user2.get( 'name' ) );
+            Logging.debug( user2.get( 'name' ) );
             //[ 26 ] 확인을 위해 id값 설정
             user2.set( 'id', 999 );
             
             var user3 = users1.at( 1 );
-            console.log( user3.get( 'name' ) );
+            Logging.debug( user3.get( 'name' ) );
 
             var users4 = users1.where( { age: 25 } );
-            console.log( users1.at( 0 ).get( 'name' ) );
-            console.log( '[ 16 ] end   ---------------------------' );
+            Logging.debug( users1.at( 0 ).get( 'name' ) );
+            Logging.debug( '[ 16 ] end   ---------------------------' );
 
 
-            console.log( '[ 17 ] start ---------------------------' );
+            Logging.debug( '[ 17 ] start ---------------------------' );
             var UserView = Backbone.View.extend( {
                 tagName: 'ul',
                 className: 'user',
@@ -253,7 +252,7 @@ define( [ 'backbone',
                 }
             } );
             var userView = new UserView( { model: user } );
-            console.log( userView.el );
+            Logging.debug( userView.el );
 
             var UserView = Backbone.View.extend( {
                 el: 'section#list-section',
@@ -263,9 +262,9 @@ define( [ 'backbone',
             } );
             var userView = new UserView( { model: user } );
 
-            console.log( userView.el );
-            console.log( userView.$el );
-            console.log( 'gender: ' + user.get( 'gender' ) );
+            Logging.debug( userView.el );
+            Logging.debug( userView.$el );
+            Logging.debug( 'gender: ' + user.get( 'gender' ) );
             var UserView = Backbone.View.extend( {
                 tagName: 'ul',
                 className: 'user',
@@ -278,15 +277,15 @@ define( [ 'backbone',
                 }
             } );
 
-            console.log( user.get( 'age' ) );
+            Logging.debug( user.get( 'age' ) );
             var userView = new UserView( { model: user } );
 
             // View 객체를 그린 후 DOM element를 페이지에 삽입
             $( '#list-section' ).append( userView.render().el );
-            console.log( '[ 17 ] end   ---------------------------' );
+            Logging.debug( '[ 17 ] end   ---------------------------' );
 
 
-            console.log( '[ 18 ] start ---------------------------' );
+            Logging.debug( '[ 18 ] start ---------------------------' );
             var UserView = Backbone.View.extend( {
                 el: 'section#list-section',
                 events: {
@@ -295,20 +294,20 @@ define( [ 'backbone',
                     'mouseover': 'showTooltip'
                 },
                 open: function() {
-                    console.log( 'dbclick event.' );
+                    Logging.debug( 'dbclick event.' );
                 },
                 select: function() {
-                    console.log( 'click event' );
+                    Logging.debug( 'click event' );
                 },
                 showTooltip: function() {
-                    console.log( 'mouseover event' );
+                    Logging.debug( 'mouseover event' );
                 }
             } );
             var userView = new UserView( { model: user } );
-            console.log( '[ 18 ] end   ---------------------------' );
+            Logging.debug( '[ 18 ] end   ---------------------------' );
 
 
-            console.log( '[ 19 ] start ---------------------------' );
+            Logging.debug( '[ 19 ] start ---------------------------' );
             var TouchView = Backbone.View.extend( {
                 el: 'section#touch-section',
                 events: {
@@ -331,10 +330,10 @@ define( [ 'backbone',
                 }
             } );
             var touchView = new TouchView( { model: user } );
-            console.log( '[ 19 ] end   ---------------------------' );
+            Logging.debug( '[ 19 ] end   ---------------------------' );
 
             
-            console.log( '[ 20 ] start ---------------------------' );
+            Logging.debug( '[ 20 ] start ---------------------------' );
             var TempGestureView = GestureView.extend( {
                 el: 'section#gesture-section',
                 events: {
@@ -351,34 +350,34 @@ define( [ 'backbone',
                     //'release': 'rel'
                 },
                 select: function( event ) {
-                     $( '#cons1_tab' ).html( '[ 20 ] tap.' );
+                     $( '#cons1_tab span' ).html( '[ 20 ] tap.' );
                 },
                 open: function( event ) {
-                    $( '#cons1_tab' ).html( '[ 20 ] doubletap.' );
+                    $( '#cons1_tab span' ).html( '[ 20 ] doubletap.' );
                 },
                 menu: function( event ) {
-                    $( '#cons1_drag' ).html( '[ 20 ] hold.' );
+                    $( '#cons1_drag span' ).html( '[ 20 ] hold.' );
                 },
                 dstart: function ( event ) {
-                    $( '#cons1_drag' ).html( '[ 20 ] dragstart.' );
+                    $( '#cons1_drag span' ).html( '[ 20 ] dragstart.' );
                 },
                 dmove: function ( event ) {
-                    $( '#cons1_drag' ).html( '[ 20 ] drag.' );
+                    $( '#cons1_drag span' ).html( '[ 20 ] drag.' );
                 },
                 dend: function ( event ) {
-                    $( '#cons1_drag' ).html( '[ 20 ] dragend.' );
+                    $( '#cons1_drag span' ).html( '[ 20 ] dragend.' );
                 },
                 sw: function ( event ) {
-                    $( '#cons1_tab' ).html( '[ 20 ] swipe.' );
+                    $( '#cons1_tab span' ).html( '[ 20 ] swipe.' );
                 }, 
                 trstart: function ( event ) {
-                    $( '#cons1_trans' ).html( '[ 20 ] transformstart.' );
+                    $( '#cons1_trans span' ).html( '[ 20 ] transformstart.' );
                 },
                 trmove: function ( event ) {
-                    $( '#cons1_trans' ).html( '[ 20 ] transform.' );
+                    $( '#cons1_trans span' ).html( '[ 20 ] transform.' );
                 },
                 trend: function ( event ) {
-                    $( '#cons1_trans' ).html( '[ 20 ] transformend.' );
+                    $( '#cons1_trans span' ).html( '[ 20 ] transformend.' );
                 }
                 /*
                 ,
@@ -389,7 +388,7 @@ define( [ 'backbone',
 
             } );
             var gestureView = new TempGestureView( { model: user } );
-            console.log( '[ 20 ] end   ---------------------------' );
+            Logging.debug( '[ 20 ] end   ---------------------------' );
             
 
             user.on( 'error', function( model, error ) {
@@ -413,12 +412,12 @@ define( [ 'backbone',
                 return false;
             } );     
 
-            console.log( '[ 26 ] ' + users1.at(0).url() );
+            Logging.debug( '[ 26 ] ' + users1.at(0).url() );
             users2.each( function ( item ) {
-                console.log( '[ 26 ] ' + item.url() );
+                Logging.debug( '[ 26 ] ' + item.url() );
             } );
 
-            console.log( '[ 27 ] ' + users3.at(0).url() );
+            Logging.debug( '[ 27 ] ' + users3.at(0).url() );
 
             // Model 클래스를 정의하면서 지정하는 방법
             var TestModel1 = Backbone.Model.extend( {
@@ -426,39 +425,39 @@ define( [ 'backbone',
                 id: 'test'
             } );
             var testModel1 = new TestModel1();
-            console.log( '[ 26 - Model 클래스를 정의하면서 지정(urlRoot) ]' + testModel1.urlRoot );
-            console.log( '[ 26 - Model 클래스를 정의하면서 지정했을때 url() ]' + testModel1.url() );
+            Logging.debug( '[ 26 - Model 클래스를 정의하면서 지정(urlRoot) ]' + testModel1.urlRoot );
+            Logging.debug( '[ 26 - Model 클래스를 정의하면서 지정했을때 url() ]' + testModel1.url() );
 
             // Model 객체를 생성하면서 지정하는 방법
             var user4 = new User( { id: 4 } );
             user4.urlRoot = '/users';
-            console.log( '[ 26 - Model 객체를 생성하면서 지정(urlRoot) ]' + user4.urlRoot );
-            console.log( '[ 26 - Model 객체를 생성하면서 지정했을때 url() ]' + user4.url() );
+            Logging.debug( '[ 26 - Model 객체를 생성하면서 지정(urlRoot) ]' + user4.urlRoot );
+            Logging.debug( '[ 26 - Model 객체를 생성하면서 지정했을때 url() ]' + user4.url() );
 
             /* [ 28 ]
             Backbone.sync = Sync.createSync( {
                 readAll: function( collection, options ) {
-                    console.log( 'Collection.fetch가 실행' );
+                    Logging.debug( 'Collection.fetch가 실행' );
                     options.success( collection );
                     options.error( '데이터 조회 실패' );
                 },
                 read: function( model, options ) {
-                    console.log( 'Model.fetch가 실행' );
+                    Logging.debug( 'Model.fetch가 실행' );
                     options.success( model );
                     options.error( '데이터 조회 실패' );
                 },
                 create: function( model, options ) {
-                    console.log( 'Model.save가 실행되었을 때 (새로 생성된 Model인 경우)' );
+                    Logging.debug( 'Model.save가 실행되었을 때 (새로 생성된 Model인 경우)' );
                     options.success( model );
                     options.error( '데이터 조회 실패' );
                 },
                 update: function( model, options ) {
-                    console.log( 'Model.save가 실행되었을 때 (이미 존재하는 Model인 경우)' );
+                    Logging.debug( 'Model.save가 실행되었을 때 (이미 존재하는 Model인 경우)' );
                     options.success( model );
                     options.error( '데이터 조회 실패' );
                 },
                 delete: function( model, options ) {
-                    console.log( 'Model.destroy가 실행' );
+                    Logging.debug( 'Model.destroy가 실행' );
                     options.success( model );
                     options.error( '데이터 조회 실패' );
                 }
@@ -468,30 +467,30 @@ define( [ 'backbone',
             $( '.sync button' ).on( 'click', function () {
                 var elName = $( this ).attr( 'name' );
                 if ( elName === 'col.fetch' ){
-                    console.log( '[ 27 ] GET 요청 확인 : collection 객체 ]' );
+                    Logging.debug( '[ 27 ] GET 요청 확인 : collection 객체 ]' );
                     users1.fetch();
                 } 
 
                 if ( elName === 'mod.fetch' ){
-                    console.log( '[ 27 ] GET 요청 확인 : model 객체 ]' );
+                    Logging.debug( '[ 27 ] GET 요청 확인 : model 객체 ]' );
                     user1.fetch();
                 }
 
                 if ( elName === 'mod.save' ){
                     // id가 없을 경우 user1.save() 확인을 위해
-                    console.log( '[ 27 ] POST 요청 확인 : model 객체에 id가 없을 경우 ]' );
+                    Logging.debug( '[ 27 ] POST 요청 확인 : model 객체에 id가 없을 경우 ]' );
                     user2.set( 'id', undefined );
                     user2.save();
                 }
 
                 if ( elName === 'mod.save.id' ){
-                    console.log( '[ 27 ] PUT 요청 확인 : model 객체에 id가 있을 경우 ]' );
+                    Logging.debug( '[ 27 ] PUT 요청 확인 : model 객체에 id가 있을 경우 ]' );
                     user1.save();
 
                 }
 
                 if ( elName === 'mod.destroy' ){
-                    console.log( '[ 27 ] DELETE 요청 확인 : model 객체 ]' );
+                    Logging.debug( '[ 27 ] DELETE 요청 확인 : model 객체 ]' );
                     user1.destroy();
                 }
             } );
@@ -500,17 +499,17 @@ define( [ 'backbone',
                 var elName = $( this ).attr( 'name' );
 
                 if ( elName === 'list' ){
-                    console.log( '[ 30 ] #list 실행 요청' );
+                    Logging.debug( '[ 30 ] #list 실행 요청' );
                     location.href = '#list';
                 } 
 
                 if ( elName === 'add' ){
-                    console.log( '[ 30 ] #add 실행 요청' );
+                    Logging.debug( '[ 30 ] #add 실행 요청' );
                     location.href = '#add';
                 } 
 
                 if ( elName === 'detail' ){
-                    console.log( '[ 30 ] #detail 실행 요청' );
+                    Logging.debug( '[ 30 ] #detail 실행 요청' );
                     location.href = '#detail/10';
                 } 
             } );

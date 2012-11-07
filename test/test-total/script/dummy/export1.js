@@ -1,7 +1,7 @@
-define( [ 'person' ], function ( Person ) {
+define( [ 'person', 'logging' ], function ( Person, Logging ) {
 	return {
 		check: function () {
-			console.log( '[ 7 ] 전달된 Person name값을 확인 : ' +  Person.name );
+			Logging.debug( '[ 7 ] 전달된 Person name값을 확인 : ' +  Person.name );
 		}
 	}
 } );

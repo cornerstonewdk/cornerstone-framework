@@ -1,4 +1,4 @@
-define( function () {
-	console.log( '[ 6 ] dependency1 loaed.' );
+define( [ 'logging' ], function ( Logging ) {
+	Logging.debug( '[ 6 ] dependency1 loaed.' );
 	return {};
 } );

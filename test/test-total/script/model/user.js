@@ -1,4 +1,4 @@
-define( [ 'backbone' ], function( Backbone ) {
+define( [ 'backbone', 'logging' ], function( Backbone, Logging ) {
     return Backbone.Model.extend( {
     	//urlRoot: '/users',
         defaults: {
@@ -7,7 +7,7 @@ define( [ 'backbone' ], function( Backbone ) {
             gender: 'male'
         },
         initialize: function() {
-            console.log( '[ 8, 9 ] user created' );
+            Logging.debug( '[ 8, 9 ] user created' );
         },
         validate: function( attrs ) {
         if ( !attrs.name )
