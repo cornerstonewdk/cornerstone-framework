@@ -1,17 +1,17 @@
-define( [ 'backbone' ], function( Backbone ) {
+define( [ 'backbone', 'logging' ], function( Backbone, Logging ) {
 
     return Backbone.View.extend( {
 
         initialize: function() {
-            console.log( 'validationView init.');
+            Logging.debug( 'validationView init.');
         },
 
         reset: function() {
-            console.log( '유효성 검사전 호출' );
+            Logging.debug( '유효성 검사전 호출' );
         },
 
         success: function() {
-            console.log( '유효성 검사 성공!!' );
+            Logging.debug( '유효성 검사 성공!!' );
         },
 
         fail: function( err ) {
