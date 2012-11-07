@@ -2,6 +2,7 @@ define(
 	[
 		'jquery', 
 		'backbone',
+		'observer', 
 		'view/dashboard/twitterWidget', 
 		'view/dashboard/youtubeWidget', 
 		'view/dashboard/vocSatisfactionWidget', 
@@ -18,6 +19,7 @@ define(
 	], function(
 		$, 
 		Backbone, 
+		Resize, 
 		TwitterWidget,
 		YoutubeWidget, 
 		VocSatisfactionWidget, 
@@ -89,6 +91,15 @@ define(
 			});
 			
 			$('.dashboardItem').spinner('show');
+			
+			Resize.resize.listen();
+			Resize.resize.addListener('#dashboard_container', function(state){
+				console.log(state);
+				setTimeout(function() {
+					var $container = $('#dashboard_container');
+					$container.isotope('reLayout');
+				}, 1000);
+			});
 		},
 		
 		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)

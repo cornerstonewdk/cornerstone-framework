@@ -50,13 +50,16 @@ define([
 			var customerTypeList =data['customertype'];
 			for(var i = 0; i < customerTypeList.length; i++) {
 				var ctype = customerTypeList[i];
-				$('div[data-customertype="' + ctype['value'] + '"]').show();
+				$('div[data-customertype="' + ctype['value'] + '"]').attr('data-show', 'true');
+				$('div[data-customertype="' + ctype['value'] + '"]').addClass('span' + Math.ceil(12 / customerTypeList.length));
 			}
+			$('div#dropCustomerTypeZone > div[data-show="false"]').remove();
 			
 			var producTypeList = data['producttype'];
 			for(var i = 0; i < producTypeList.length; i++) {
 				var ptype = producTypeList[i];
-				$('div[data-producttype="' + ptype['value'] + '"]').show();
+				$('div[data-producttype="' + ptype['value'] + '"]').attr('data-show', 'true');
+				$('div[data-producttype="' + ptype['value'] + '"]').addClass('span' + Math.ceil(12 / producTypeList.length));
 				switch(ptype['value']) {
 					case 'voice':
 						$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 분)');
@@ -72,18 +75,23 @@ define([
 						break;
 				}
 			}
+			$('div#dropProductTypeZone > div[data-show="false"]').remove();
 			
 			var commTypeList = data['commtype'];
 			for(var i = 0; i < commTypeList.length; i++) {
 				var ctype = commTypeList[i];
-				$('div[data-commtype="' + ctype['value'] + '"]').show();
+				$('div[data-commtype="' + ctype['value'] + '"]').attr('data-show', 'true');
+				$('div[data-commtype="' + ctype['value'] + '"]').addClass('span' + Math.ceil(12 / commTypeList.length));
 			}
+			$('div#dropCommTypeZone > div[data-show="false"]').remove();
 			
 			var discountTypeList = data['discounttype'];
 			for(var i = 0; i < discountTypeList.length; i++) {
 				var dtype = discountTypeList[i];
-				$('div[data-discounttype="' + dtype['value'] + '"]').show();
+				$('div[data-discounttype="' + dtype['value'] + '"]').attr('data-show', 'true');
+				$('div[data-discounttype="' + dtype['value'] + '"]').addClass('span' + Math.ceil(12 / discountTypeList.length));
 			}
+			$('div#dropDiscountTypeZone > div[data-show="false"]').remove();
 		},
 		
 		onClickedModifyButton: function(e) {
