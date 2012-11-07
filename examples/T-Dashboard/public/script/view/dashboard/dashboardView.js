@@ -140,6 +140,8 @@ define(
 			//LTE 계통현황 차트 그려주기
 			$.getJSON("data/bar.json").success(function(json) {
 				$("#reportChart").featuredChart({
+                    resize:false,
+                    duration: 0,
 					chartType : "stackedBar",
 					data : json
 				});
