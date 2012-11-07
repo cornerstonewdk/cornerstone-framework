@@ -11,37 +11,37 @@ function config() {
 	} );
 }
 
-$( '#debug' ).click( function() {
+$( '#debug-button' ).click( function() {
 	config();
 	Logging.debug( 'Debug 메시지를 로그에 남깁니다.' );
 } );
 
-$( '#info' ).click( function() {
+$( '#info-button' ).click( function() {
 	config();
 	Logging.info( 'Info 메시지를 로그에 남깁니다.' );
 } );
 
-$( '#warn' ).click( function() {
+$( '#warn-button' ).click( function() {
 	config();
 	Logging.warn( 'Warn 메시지를 로그에 남깁니다.' );
 } );
 
-$( '#error' ).click( function() {
+$( '#error-button' ).click( function() {
 	config();
 	Logging.error( 'Error 메시지를 로그에 남깁니다.' );
 } );
 
-$( '#log' ).click( function() {
+$( '#log-button' ).click( function() {
 	config();
 	Logging.log( 'Log 메시지를 로그에 남깁니다.' );
 } );
 
-$( '#time' ).click( function() {
+$( '#time-button' ).click( function() {
 	config();
 	Logging.time( 'timer1' );
 } );
 
-$( '#timeEnd' ).click( function() {
+$( '#timeEnd-button' ).click( function() {
 	config();
 	Logging.timeEnd( 'timer1' );
 } );
