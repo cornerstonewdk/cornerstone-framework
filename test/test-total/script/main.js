@@ -75,6 +75,7 @@ define( [ 'backbone',
                 }
             } );
             */
+            
             function config() {
                 Logging.config( {
                     debug: $( '#debug-group button.active' ).text(),
@@ -97,7 +98,7 @@ define( [ 'backbone',
             $( '#debug-group button' ).click( function () {
                 config();
             } );
-
+            
             // [ 31 ] 테스트
             var MainRouter = MultipageRouter.extend( {
                 pages: {
