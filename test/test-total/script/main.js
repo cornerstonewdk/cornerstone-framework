@@ -289,7 +289,8 @@ define( [ 'backbone',
                 events: {
                     'touchstart': 'start',
                     'touchmove': 'move',
-                    'touchend': 'end'
+                    'touchend': 'end',
+                    'touchcancel': 'cancel'
                 },
                 start: function( event ) {
                     $( '#cons' ).html( '[ 19 ] touch start' );
@@ -298,8 +299,10 @@ define( [ 'backbone',
                    $( '#cons' ).html( '[ 19 ] touch move' );
                 },
                 end: function( event ) {
-                   // $( '#cons' ).html( '[ 19 ] touch end' );
-                   alert( '[ 19 ] touch end' );
+                    $( '#cons' ).html( '[ 19 ] touch end' );
+                },
+                cancel: function ( event ) {
+                    $( '#cons' ).html( '[ 19 ] touch cancel' );
                 }
             } );
             var touchView = new TouchView( { model: user } );
@@ -307,7 +310,7 @@ define( [ 'backbone',
 
 
             console.log( '[ 20 ] start ---------------------------' );
-            var gestureView = GestureView.extend( {
+            var TempGestureView = GestureView.extend( {
                 el: 'section#gesture-section',
                 events: {
                     'tap': 'select',
@@ -357,6 +360,7 @@ define( [ 'backbone',
                 }
 
             } );
+            var gestureView = new TempGestureView( { model: user } );
             console.log( '[ 20 ] end   ---------------------------' );
 
             user.on( 'error', function( model, error ) {
