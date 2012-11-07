@@ -326,37 +326,37 @@ define( [ 'backbone',
                     'release': 'rel'
                 },
                 select: function( event ) {
-                     $( '#cons2' ).html( '[ 20 ] tap.' );
+                     $( '#cons1_tab' ).html( '[ 20 ] tap.' );
                 },
                 open: function( event ) {
-                    $( '#cons2' ).html( '[ 20 ] doubletap.' );
+                    $( '#cons1_tab' ).html( '[ 20 ] doubletap.' );
                 },
                 menu: function( event ) {
-                    $( '#cons1' ).html( '[ 20 ] hold.' );
+                    $( '#cons1_drag' ).html( '[ 20 ] hold.' );
                 },
                 dstart: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] dragstart.' );
+                    $( '#cons1_drag' ).html( '[ 20 ] dragstart.' );
                 },
                 dmove: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] drag.' );
+                    $( '#cons1_drag' ).html( '[ 20 ] drag.' );
                 },
                 dend: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] dragend.' );
+                    $( '#cons1_drag' ).html( '[ 20 ] dragend.' );
                 },
                 sw: function ( event ) {
                     $( '#cons1' ).html( '[ 20 ] swipe.' );
                 }, 
                 trstart: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] transformstart.' );
+                    $( '#cons1_trans' ).html( '[ 20 ] transformstart.' );
                 },
                 trmove: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] transform.' );
+                    $( '#cons1_trans' ).html( '[ 20 ] transform.' );
                 },
                 trend: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] transformend.' );
+                    $( '#cons1_trans' ).html( '[ 20 ] transformend.' );
                 },
                 rel: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] release.' );
+                    $( '#cons1_drag' ).html( '[ 20 ] release.' );
                 }
 
             } );
