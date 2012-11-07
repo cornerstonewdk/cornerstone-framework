@@ -302,13 +302,13 @@ define( [ 'backbone',
                     $( '#cons' ).html( '[ 19 ] touch end' );
                 },
                 cancel: function ( event ) {
-                    $( '#cons' ).html( '[ 19 ] touch cancel' );
+                    alert( '[ 19 ] touch cancel' );
                 }
             } );
             var touchView = new TouchView( { model: user } );
             console.log( '[ 19 ] end   ---------------------------' );
 
-
+            /*
             console.log( '[ 20 ] start ---------------------------' );
             var TempGestureView = GestureView.extend( {
                 el: 'section#gesture-section',
@@ -362,6 +362,7 @@ define( [ 'backbone',
             } );
             var gestureView = new TempGestureView( { model: user } );
             console.log( '[ 20 ] end   ---------------------------' );
+            */
 
             user.on( 'error', function( model, error ) {
                 alert( '[ 24 ] ' + error.attribute + ' 속성: ' + error.message );
