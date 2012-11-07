@@ -328,8 +328,8 @@
 	
 				resize( state.size );
 				reposition( state.pos );
+				show();
 				if ( state.load ) {
-					show();
 					document.getElementById( IDs.checkbox ).checked = true; 
 				}
 	

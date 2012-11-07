@@ -765,6 +765,8 @@
             transitionType:"none", // 화면전환 효과 기본 None(효과 없음)
             fallbackType:"fade", // IE에서 임시로 사용할 효과
             autoDisplay:true, // 완료시 자동으로 이전페이지를 감출지 여부
+            nested: false, // 네스티드 여부
+            animationFade: true, // 트랜지션 중 페이드인아웃
             inTarget:{
                 el:undefined, // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
                 from:undefined, // 들어오는 페이지의 시작점
@@ -811,9 +813,10 @@
          */
         run:function () {
             var effect = new Effect(this.options);
-            try {
-                this._before();
 
+            this._before();
+
+            try {
                 // Fallback for MSIE
                 if (!$.support.transition) {
                     $.fn.transition = $.fn.animate;
@@ -838,15 +841,25 @@
          * this._before();
          */
         _before:function () {
-//            console.log("_before");
-
-            $("body").css({overflow:"hidden"});
+//            console.log("_before")
+            var $body = $("body");
+            $body.css({overflow:"hidden"});
             $(this.options.inTarget.el).show();
             $(this.options.outTarget.el).show();
 
-            if (this.options.isReverse && $("body").attr("data-transition") !== undefined) {
-                this.options.transitionType = $("body").attr("data-transition");
+            if (this.options.isReverse && $body.attr("data-transition") !== undefined) {
+                this.options.transitionType = $body.attr("data-transition");
             }
+
+            // 스크롤로 페이지가 이동된 경우 화면전환시 새로운 페이지의 위치도 이전 페이지 스크롤 위치로 보여지는 문제
+            if(!this.options.nested) {
+//                $(window).scrollTop(0,0);
+                this.options.inTarget.top = $(this.options.inTarget.el).css("top");
+                $(this.options.inTarget.el).css({
+                    top: $(window).scrollTop()
+                });
+            }
+
         },
 
         /**
@@ -869,6 +882,14 @@
 
             this.options.inTarget.done();
             this.options.done();
+
+            // 스크롤로 페이지가 이동된 경우 화면전환시 새로운 페이지의 위치도 이전 페이지 스크롤 위치로 보여지는 문제
+            if(!this.options.nested) {
+//                $(window).scrollTop(0,0);
+                $(this.options.inTarget.el).css({
+                    top: this.options.inTarget.top
+                });
+            }
 
 //            console.log("_done");
         }
@@ -960,14 +981,14 @@
                 height:$(window).height() > $(opt.inTarget.el).height() ?
                     $(opt.inTarget.el).height() : $(window).height(),
                 overflow:"hidden",
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             };
 
             $.transition = $.transit;
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 rotate3d:"0, 1, 0, " + opt.outTarget.to,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
@@ -1036,13 +1057,13 @@
                     $(opt.inTarget.el).height() : $(window).height(),
                 overflow:"hidden",
                 scale:0,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             };
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 rotate3d:"0, 0, 0, " + opt.outTarget.to,
                 scale:0,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
                     scale:1
@@ -1109,11 +1130,10 @@
                 transform:"translate(" + opt.inTarget.from + ",0)",
                 opacity:1
             };
-
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 x:opt.outTarget.to,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 // 기본 좌표로 초기화
                 $(this).css({
@@ -1186,7 +1206,7 @@
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 y:opt.outTarget.to,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
                     transform:"translate(0,0)"
@@ -1258,7 +1278,7 @@
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 y:opt.outTarget.to,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
                     transform:"translate(0,0)"
@@ -1302,13 +1322,13 @@
             this.inTargetCss = {
                 position:"absolute",
                 width:$(opt.inTarget.el).width(),
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             };
 
             // 페이지 스타일 초기화
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transition({
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
                 $(opt.inTarget.el).transition({
@@ -1352,7 +1372,7 @@
                 position:"absolute",
                 width:$(opt.inTarget.el).width(),
                 scale:0.5,
-                opacity:0,
+                opacity:opt.animationFade ? 0 : 1,
                 perspective:$(opt.outTarget.el).width(),
                 rotate3d:"0, 0, 0, 0",
                 overflow:"hidden"
@@ -1361,7 +1381,7 @@
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 scale:0.5,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
                     scale:1
@@ -1433,7 +1453,7 @@
                 perspective:$(opt.inTarget.el).width(),
                 rotate3d:"0, 1, 0, " + opt.inTarget.from,
                 transformOrigin:"0 0",
-                opacity:0,
+                opacity:opt.animationFade ? 0 : 1,
                 height:$(window).height() > $(opt.outTarget.el).height() ?
                     $(opt.outTarget.el).height() : $(window).height(),
                 overflow:"hidden"
@@ -1442,7 +1462,7 @@
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 rotate3d:"0, 1, 0, " + opt.outTarget.to,
-                opacity:0
+                opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
