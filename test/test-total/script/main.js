@@ -32,7 +32,8 @@ define( [ 'backbone',
           'form-view',
           'validationView',
           'sync',
-          'multipage-router'
+          'multipage-router',
+          'logging'
            ],
           function( Backbone, 
                     GestureView, 
@@ -44,7 +45,8 @@ define( [ 'backbone',
                     FormView,
                     ValidationView,
                     Sync,
-                    MultipageRouter 
+                    MultipageRouter,
+                    Logging
                      ) {
     return {
         launch: function() {
@@ -73,6 +75,28 @@ define( [ 'backbone',
                 }
             } );
             */
+            function config() {
+                Logging.config( {
+                    debug: $( '#debug-group button.active' ).text(),
+                    info: $( '#debug-group button.active' ).text(),
+                    warn: $( '#debug-group button.active' ).text(),
+                    error: $( '#debug-group button.active' ).text(),
+                    time: $( '#debug-group button.active' ).text()
+                } );
+            }
+
+            Logging.config( {
+                defaultLevel: 'debug',
+                debug: 'console',
+                info: 'none',
+                warn: 'console',
+                error: 'screen',
+                time: 'screen'
+            } );
+
+            $( '#debug-group button' ).click( function () {
+                config();
+            } );
 
             // [ 31 ] 테스트
             var MainRouter = MultipageRouter.extend( {
