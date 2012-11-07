@@ -326,10 +326,10 @@ define( [ 'backbone',
                     'release': 'rel'
                 },
                 select: function( event ) {
-                     $( '#cons1' ).html( '[ 20 ] tap.' );
+                     $( '#cons2' ).html( '[ 20 ] tap.' );
                 },
                 open: function( event ) {
-                    $( '#cons1' ).html( '[ 20 ] doubletap.' );
+                    $( '#cons2' ).html( '[ 20 ] doubletap.' );
                 },
                 menu: function( event ) {
                     $( '#cons1' ).html( '[ 20 ] hold.' );
