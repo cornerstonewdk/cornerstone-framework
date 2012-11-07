@@ -322,8 +322,8 @@ define( [ 'backbone',
                     'swipe': 'sw',
                     'transformstart': 'trstart',
                     'transform': 'trmove',
-                    'transformend': 'trend',
-                    'release': 'rel'
+                    'transformend': 'trend'
+                    //'release': 'rel'
                 },
                 select: function( event ) {
                      $( '#cons1_tab' ).html( '[ 20 ] tap.' );
@@ -344,7 +344,7 @@ define( [ 'backbone',
                     $( '#cons1_drag' ).html( '[ 20 ] dragend.' );
                 },
                 sw: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] swipe.' );
+                    $( '#cons1_tab' ).html( '[ 20 ] swipe.' );
                 }, 
                 trstart: function ( event ) {
                     $( '#cons1_trans' ).html( '[ 20 ] transformstart.' );
@@ -354,10 +354,13 @@ define( [ 'backbone',
                 },
                 trend: function ( event ) {
                     $( '#cons1_trans' ).html( '[ 20 ] transformend.' );
-                },
+                }
+                /*
+                ,
                 rel: function ( event ) {
                     $( '#cons1_drag' ).html( '[ 20 ] release.' );
                 }
+                */
 
             } );
             var gestureView = new TempGestureView( { model: user } );
