@@ -32,7 +32,8 @@ define( [ 'backbone',
           'form-view',
           'validationView',
           'sync',
-          'multipage-router'
+          'multipage-router',
+          'logging'
            ],
           function( Backbone, 
                     GestureView, 
@@ -44,7 +45,8 @@ define( [ 'backbone',
                     FormView,
                     ValidationView,
                     Sync,
-                    MultipageRouter 
+                    MultipageRouter,
+                    Logging
                      ) {
     return {
         launch: function() {
@@ -73,7 +75,30 @@ define( [ 'backbone',
                 }
             } );
             */
+            
+            function config() {
+                Logging.config( {
+                    debug: $( '#debug-group button.active' ).text(),
+                    info: $( '#debug-group button.active' ).text(),
+                    warn: $( '#debug-group button.active' ).text(),
+                    error: $( '#debug-group button.active' ).text(),
+                    time: $( '#debug-group button.active' ).text()
+                } );
+            }
 
+            Logging.config( {
+                defaultLevel: 'debug',
+                debug: 'console',
+                info: 'none',
+                warn: 'console',
+                error: 'screen',
+                time: 'screen'
+            } );
+
+            $( '#debug-group button' ).click( function () {
+                config();
+            } );
+            
             // [ 31 ] 테스트
             var MainRouter = MultipageRouter.extend( {
                 pages: {
@@ -322,8 +347,8 @@ define( [ 'backbone',
                     'swipe': 'sw',
                     'transformstart': 'trstart',
                     'transform': 'trmove',
-                    'transformend': 'trend',
-                    'release': 'rel'
+                    'transformend': 'trend'
+                    //'release': 'rel'
                 },
                 select: function( event ) {
                      $( '#cons1_tab' ).html( '[ 20 ] tap.' );
@@ -344,7 +369,7 @@ define( [ 'backbone',
                     $( '#cons1_drag' ).html( '[ 20 ] dragend.' );
                 },
                 sw: function ( event ) {
-                    $( '#cons1' ).html( '[ 20 ] swipe.' );
+                    $( '#cons1_tab' ).html( '[ 20 ] swipe.' );
                 }, 
                 trstart: function ( event ) {
                     $( '#cons1_trans' ).html( '[ 20 ] transformstart.' );
@@ -354,10 +379,13 @@ define( [ 'backbone',
                 },
                 trend: function ( event ) {
                     $( '#cons1_trans' ).html( '[ 20 ] transformend.' );
-                },
+                }
+                /*
+                ,
                 rel: function ( event ) {
                     $( '#cons1_drag' ).html( '[ 20 ] release.' );
                 }
+                */
 
             } );
             var gestureView = new TempGestureView( { model: user } );

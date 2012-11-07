@@ -65,6 +65,8 @@
 					
 					break;
 				case 'screen':
+				
+					log.init();
 					
 					switch ( level ) {
 						case 'debug':
@@ -108,15 +110,19 @@
 		time: function( timer ) {
 			if ( this.options.time == 'console' )
 				console.time( timer );
-			else if ( this.options.time == 'screen' )
+			else if ( this.options.time == 'screen' ) {
+				log.init();
 				log.profile( timer );
+			}
 		},
 		
 		timeEnd: function( timer ) {
 			if ( this.options.time == 'console' )
 				console.timeEnd( timer );
-			else if ( this.options.time == 'screen' )
+			else if ( this.options.time == 'screen' ) {
+				log.init();
 				log.profile( timer );
+			}
 		}
 	};
 } );
