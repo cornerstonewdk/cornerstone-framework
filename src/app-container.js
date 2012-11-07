@@ -93,7 +93,9 @@ requirejs.config( {
 		},
 		'blackbird': {
 			deps: ['style!' + Cornerstone.PATH_LIB + 'blackbirdjs/blackbird'],
-			exports: 'log'
+			exports: function() {
+				return this.log;
+			}
 		},
 		'socket.io': {
 			exports: function() {
@@ -109,6 +111,9 @@ requirejs.config( {
 		},
 		'skt': {
 			deps: ['jquery']
+		},
+		'logging': {
+			deps: ['blackbird']	
 		},
         'gesture-view' : {
             deps: ['backbone', 'jquery.hammer']
