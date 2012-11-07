@@ -52,8 +52,6 @@
 	border: solid 1px;
 	padding:5px;
 	text-align:center;
-	position: 'relative';
-	overflow: 'hidden'; 
 }
 
 #dashboard_container > .dashboardItem {
@@ -87,38 +85,6 @@ div#reportChart {
 div[data-featured="scrollView"] {
 	height: 220px;
 }
-
-
-/**
- * 	대쉬보드 isotope 를 가운데 정렬 해주는것 bootstrap에서는 잘안되는 문제 해결하기 위해 미디어쿼리 사용 
- */
-.dashboard_wrapper {
-	border: 1px solid;
-}
-#dashboard_container {
-	width: 867px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
-	margin: 0 auto;
-	border: none !important;
-}
-@media (min-width: 1200px) {
-	#dashboard_container {
-		width: 1156px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
-		margin: 0 auto;
-	}
-}
-@media (max-width: 979px) and (min-width: 768px) {
-	#dashboard_container {
-		width: 581px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
-		margin: 0 auto;
-	}
-}
-@media (max-width: 767px) {
-	#dashboard_container {
-		width: 289px; /* 270 * 4, 270 * 3, 270 * 2, 270 */
-		margin: 0 auto;
-	}
-}
-
 
 /**
  * 	장과장님이 잡아주신 것들

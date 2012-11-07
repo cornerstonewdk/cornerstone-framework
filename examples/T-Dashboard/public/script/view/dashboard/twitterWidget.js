@@ -60,7 +60,7 @@ define(
 				error: function() {
 					alert('오류가 발생하였습니다.');
 				},
-				timeout: 5000
+				timeout: 30000
 			});
 		},
 		

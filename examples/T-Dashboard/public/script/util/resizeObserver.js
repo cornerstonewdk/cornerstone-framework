@@ -49,19 +49,19 @@
 	ResizeObserver.prototype.listen = function() {
 		var self = this;
 		
-		enquire.register("screen and (min-width:1200px)", {
-			match: function() {
-				self.resizeOccurred('desktop-l');
-			},
-		}).register("screen and (min-width:768px) and (max-width:979px)", {
-			match: function() {
-				self.resizeOccurred('tablet');
-			},
-		}).register("screen and (max-width:767px)", {
-			match: function() {
-				self.resizeOccurred('phone-l');
-			},
-		}).listen(5);
+		// enquire.register("screen and (min-width:1200px)", {
+			// match: function() {
+				// self.resizeOccurred('desktop-l');
+			// },
+		// }).register("screen and (min-width:768px) and (max-width:979px)", {
+			// match: function() {
+				// self.resizeOccurred('tablet');
+			// },
+		// }).register("screen and (max-width:767px)", {
+			// match: function() {
+				// self.resizeOccurred('phone-l');
+			// },
+		// }).listen(5);
 		
 		// enquire.register("screen and (min-width:1200px)", {
 			// match: function() {
@@ -84,6 +84,28 @@
 				// self.resizeOccurred('phone-s');
 			// },
 		// }).listen(5);
+		
+		enquire.register("screen and (min-width:1200px)", {
+			match: function() {
+				self.resizeOccurred('desktopL-l');
+			},
+		}).register("screen and (min-width:978px) and (max-width:1199px)", {
+			match: function() {
+				self.resizeOccurred('desktop-s');
+			},
+		}).register("screen and (min-width:768px) and (max-width:979px)", {
+			match: function() {
+				self.resizeOccurred('tablet');
+			},
+		}).register("screen and (min-width:481px) and (max-width:767px)", {
+			match: function() {
+				self.resizeOccurred('phone-l');
+			},
+		}).register("screen and (max-width:480px)", {
+			match: function() {
+				self.resizeOccurred('phone-s');
+			},
+		}).listen(5);
 	};
 	
 	return new ResizeObserver();
