@@ -37,24 +37,6 @@ app.get('/', function(req, res){
 	});
 });
 
-app.get('/t-dashboard/getSktBlogRss', function(req, res){
-	new YQL.exec("SELECT * FROM rss where url = 'http://blog.sktworld.co.kr/rss'", function(response) {
-	
-		if (response.error) {
-			console.log("Example #1... Error: " + response.error.description);
-			res.writeHead(200, {'Content-Type': 'text/javascript'});
-			res.end(response.error.description);
-		} 
-		else {
-			var result = JSON.stringify(response.query.results);
-			
-			res.writeHead(200, {'Content-Type': 'text/javascript'});
-	        res.end(result)
-		}
-	
-	});
-});
-
 app.get('/t-dashboard', function(req, res){
 	fs.readFile('views/index.html', function(err, data){
 		if(err){

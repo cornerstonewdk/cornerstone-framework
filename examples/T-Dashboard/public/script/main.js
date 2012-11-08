@@ -6,6 +6,7 @@ requirejs.config({
 		"isotope": "../lib/jquery.isotope",
 		"observer": "util/resizeObserver",
 		"jsonp": Cornerstone.PATH + "util/jsonp",
+		"yql": "../lib/jquery.query-yql.min",
 	},
 	
 	shim: {
@@ -24,6 +25,10 @@ requirejs.config({
         
         "observer": {
         	deps:["enquire"]
+        },
+        
+        "yql": {
+        	deps:["jquery"]
         },
 	}
 });
