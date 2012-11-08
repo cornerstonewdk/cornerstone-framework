@@ -9,6 +9,11 @@
 	 * URL에서 경로 부분과 파일 부분을 분리한다.
 	 */
 	function parseUrl( url ) {
+	
+		// fragment가 있을 경우 제거한다.
+		var pos = url.indexOf( '#' );
+		if ( pos > -1 ) url = url.substring( 0, pos );
+		
 		return {
 			path: url.substring( 0, url.lastIndexOf( '/' ) + 1 ),	// /로 끝나는 경로명
 			file: url.substring( url.lastIndexOf( '/' ) + 1 )		// 파일명
