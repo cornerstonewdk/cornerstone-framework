@@ -1,0 +1,17 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '컴포넌트'
+outline: '컴포넌트'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+subsection: ‘본문’
+order: '[4, 2]'
+---
+
+# 컴포넌트
+
+위젯 컴포넌트는 위젯의 폼, 플러그인, 피처드 등 화면을 꾸밀때 재사용될 수 있는 요소들이며 기능이 없으며 플러그인과 함께 사용하여 기능을 적용 가능함. 기본적으로 컴포넌트의 스타일을 적용하려면 엘리멘트에서 스타일 클래스를 선언해서 사용해야 한다.
+

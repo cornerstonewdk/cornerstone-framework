@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body>
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar">
+            </span>
+            <span class="icon-bar">
+            </span>
+            <span class="icon-bar">
+            </span>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-left">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  태그별모음
+                </a>
+              </li>
+              <li class="inactive" id="bydate">
+                <a href="./bydate.html" title="bydate">
+                  작성순모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_00_application.html" style="text-indent:20px">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_01_file_structure.html" style="text-indent:40px">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_02_module.html" style="text-indent:40px">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_03_module_usage.html" style="text-indent:40px">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_04_MVC_pattern.html" style="text-indent:40px">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_05_model.html" style="text-indent:40px">모델</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_06_collection.html" style="text-indent:40px">콜렉션</a>
+            </li>
+            <li class="active">
+              <a href="./2_1_07_view.html" style="text-indent:40px">뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_08_gesture.html" style="text-indent:40px">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_09_template.html" style="text-indent:40px">template</a>
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_1_00_form.html" style="text-indent:20px">폼</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_00_component.html" style="text-indent:20px">컴포넌트</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_01_dropdown.html" style="text-indent:40px">드롭다운</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_02_navation.html" style="text-indent:40px">네비게이션</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_03_navagation_bar.html" style="text-indent:40px">네비게이션 바</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_04_pagination.html" style="text-indent:40px">페이지네이션</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_05_label_and_badge.html" style="text-indent:40px">이름표와 뱃지</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_06_typography.html" style="text-indent:40px">타이포그라피</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_07_thumbnail.html" style="text-indent:40px">썸네일</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_08_alert.html" style="text-indent:40px">경고창</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_09_progress_bar.html" style="text-indent:40px">프레그레스 바</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_10_miscellaneous.html" style="text-indent:40px">기타요소</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_00_plugin.html" style="text-indent:20px">플러그인</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_01_alert.html" style="text-indent:40px">알림</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_02_button.html" style="text-indent:40px">버튼</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_03_carousel.html" style="text-indent:40px">캐로셀</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_04_dropdown.html" style="text-indent:40px">드롭다운</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_05_modal.html" style="text-indent:40px">모달</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_06_pop_over.html" style="text-indent:40px">팝오버</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_07_scroll_spy.html" style="text-indent:40px">스크롤 스파이</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_08_tab.html" style="text-indent:40px">탭</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_09_tooltip.html" style="text-indent:40px">툴팁</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_10_range_input.html" style="text-indent:40px">범위인풋</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_11_sign.html" style="text-indent:40px">싸인</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_12_spinner.html" style="text-indent:40px">스피너</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_00_featured.html" style="text-indent:20px">피쳐드</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_01_scroll_view.html" style="text-indent:40px">스크롤뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_02_list_view.html" style="text-indent:40px">리스트뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_03_media.html" style="text-indent:40px">미디어</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_04_editor.html" style="text-indent:40px">에디터</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_05_chart.html" style="text-indent:40px">차트</a>
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_00_utilitly.html" style="text-indent:20px">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_01_transition.html" style="text-indent:40px">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_02_device_API.html" style="text-indent:40px">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_03_JSONP.html" style="text-indent:40px">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_04_SKT_open_API.html" style="text-indent:40px">SKT Open API</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9">
+          <article class="page" typeof="sioc:page" about="/2_1_07_view">
+            <div class="page-content" property="sioc:content">
+  <h2>View 만들기</h2>
+
+<p>View의 역할은 사용자와 상호작용하는 것이다. 즉, View는 Model을 어떤 방식으로 사용자에게 보여줄지를 결정하고, 사용자의 입력을 받아서 어떻게 반응할지를 결정한다. 따라서 View는 특정 Model과 연결되어서 Model의 값이 변경될때마다 화면을 다시 그려주는 작업과 사용자의 입력으로 인해서 발생하는 이벤트를 처리하는 작업을 해야 한다.</p>
+
+<p>자신만의 View 클래스를 정의하고 인스턴스를 생성하는 방법은 앞서 보았던 Model, Collection과 동일하다.</p>
+
+<pre><code>var UserView = Backbone.View.extend( {
+
+    tagName: &#39;ul&#39;,
+    className: &#39;user&#39;,
+
+    render: function() {
+        // View를 그리는 코드를 작성한다.
+    }
+
+} );
+
+var userView = new UserView( { model: user } );
+</code></pre>
+
+<p>모든 View 객체는 DOM element를 가진다. 이 DOM element는 실제로 페이지에 존재할 수도 있고 아닐 수도 있다. 위의 예에서 userView 객체는 <code>&lt;ul class=&quot;user&quot;&gt;&lt;/ul&gt;</code> 에 해당하는 DOM element를 자동으로 생성해서 가지게 되지만 아직 페이지에 삽입하지 않았으므로 보여지지는 않는다. 만약에 tagName을 지정하지 않는다면 div 를 생성한다.</p>
+
+<p>el 속성을 지정하게 되면 DOM element를 새로 만들지 않고 페이지에 존재하는 DOM element를 찾아서 사용한다. el 속성을 지정할 때는 jQuery의 selector를 사용한다.</p>
+
+<pre><code>var UserView = Backbone.View.extend( {
+
+    el: &#39;section#list-section&#39;,
+
+    render: function() {
+        // View를 그리는 코드를 작성한다.
+    }
+} );
+</code></pre>
+
+<p>이 DOM element는 el 또는 $el 속성을 사용해서 구할 수 있다.</p>
+
+<pre><code>// userView의 DOM element를 구한다.
+var e1 = userView.el;
+
+// userView의 DOM element에 해당하는 jQuery 객체를 구한다.
+var e2 = userView.$el;
+</code></pre>
+
+<p>실제로 View를 그리는 작업은 render 메소드에서 일어난다. render 메소드에서는 Model 객체를 사용해서 HTML을 생성한 후 this.el을 갱신하고, 메소드의 끝에서 this를 리턴해 주어야 한다. 이것은 체인 호출(chained call)을 가능하게 한다.</p>
+
+<pre><code>var UserView = Backbone.View.extend( {
+
+    tagName: &#39;ul&#39;,
+    className: &#39;user&#39;,
+
+    render: function() {
+        this.$el.html( &#39;&lt;span&gt;&#39; + this.model.get( &#39;age&#39; ) + &#39;&lt;/span&gt;&#39; );
+        return this;
+    }
+} );
+
+var userView = new UserView( { model: user } );
+
+// View 객체를 그린 후 DOM element를 페이지에 삽입한다.
+$( &#39;#user-list&#39; ).append( userView.render().el );
+</code></pre>
+
+<p>위 예는 render 메소드의 동작 방식을 설명하기 위해 단순하게 작성된 것이며, 저렇게 HTML 코드가 render 함수 내에 하드코딩 되는 것은 권장하지 않는다. Model 객체의 값으로 HTML을 만들어내는 작업은 나중에 설명될 템플릿을 사용하게 될 것이다.</p>
+
+<p>사용자의 이벤트를 처리하려면 다음과 같이 events 속성을 지정한다.</p>
+
+<pre><code>var UserView = Backbone.View.extend( {
+
+    el: &#39;section#list-section&#39;,
+
+    events: {
+        &#39;dblclick&#39;: &#39;open&#39;,
+        &#39;click .item&#39;: &#39;select&#39;,
+        &#39;mouseover .title .date&#39;: &#39;showTooltip&#39;
+    },
+
+    open: function() {
+        // section#list-section을 더블클릭하면 실행된다.
+    },
+
+    select: function() {
+        // section#list-section 하위의 .item을 클릭하면 실행된다.
+    },
+
+    showTooltip: function() {
+        // section#list-section 하위의 .title 또는 .date 위에 마우스를 올리면 실행된다.
+    }
+} );
+</code></pre>
+
+<p>events 속성은 &#39;eventName selector&#39;: &#39;callback&#39; 의 형식으로 기술된다. selector를 지정하지 않으면 el(View의 DOM element)에서 발생하는 이벤트를 의미하게 된다. Backbone.View는 내부적으로 이벤트를 처리할 때 jQuery의 delegate를 사용하므로 브라우저에서 기본적으로 발생하는 이벤트 뿐 아니라 jQuery Plugin을 사용하여 추가적으로 정의된 이벤트도 이벤트 이름(eventName)에 지정할 수 있다.</p>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+<script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
+socket.on('regenerated',function(){
+	document.location.reload();
+});</script><script defer="defer"  src="./script.js"></script>  </body>
+</html>

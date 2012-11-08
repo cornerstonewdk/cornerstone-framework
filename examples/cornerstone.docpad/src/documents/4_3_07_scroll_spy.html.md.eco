@@ -1,0 +1,102 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '스크롤 스파이'
+outline: '스크롤 스파이'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+subsection: ‘본문’
+order: '[4, 3, 7]'
+---
+
+## Scrollspy
+스크롤의 현재 위치에 기반하여 navbar 의 현재 활성화된 링크를 자동으로 업데이트 하기 위해 scrollspy 를 사용한다. 또한  드롭다운의 서브아이템 역시 자동 선택 되어지는 것을 확인할 수 있습니다.
+
+__마크업__
+
+data-attribute를 이용하는 방식
+
+topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶은 엘리먼트에 data-spy="scroll" 를 추가한다. (대부분의 경우 body 엘리먼트에 추가한다).
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css' />                                                               
+<style>                                                                                                           
+.CodeMirror { float: left; width: 50%; border: 1px solid black; }                                                 
+iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                     
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/white/css/cornerstone.css' />                                    
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+	<body data-spy="scroll" >...</body>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+>Navbar 링크는 찾아갈 수 있는 id 타겟이 반드시 필요합니다. 예를들어, `<a href="#home">home</a>` 는 `<div id="home"></div>` 처럼 dom 내에 어떤 엘리먼트와 일치해야한다.
+
+javascript를 이용하는 방식
+
+$("#navbar").scrollspy()
+
+### 옵션
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+offset | number | 10 | 스크롤의 위치를 계산할때 Top 으로 부터의 오프셋 픽셀값.
