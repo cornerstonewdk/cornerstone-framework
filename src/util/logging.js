@@ -25,6 +25,8 @@
 			time: 'console'
 		},
 		
+		timers: {},
+		
 		// debug, info, warn, error에 대해서 각각 출력 방향(none/console/screen)을 지정할 수 있다.
 		config: function( options ) {
 		
@@ -50,7 +52,7 @@
 					
 					switch ( level ) {
 						case 'debug':
-							console.debug( msg );
+							if ( console.debug ) console.debug( msg ); else console.log( msg );
 							break;
 						case 'info':
 							console.info( msg );
@@ -108,8 +110,14 @@
 		},
 		
 		time: function( timer ) {
-			if ( this.options.time == 'console' )
-				console.time( timer );
+			if ( this.options.time == 'console' ) {
+				if ( console.time )
+					console.time( timer );
+				else {
+					this.timers[ timer ] = new Date();
+					console.log( timer );
+				}
+			}
 			else if ( this.options.time == 'screen' ) {
 				log.init();
 				log.profile( timer );
@@ -117,8 +125,14 @@
 		},
 		
 		timeEnd: function( timer ) {
-			if ( this.options.time == 'console' )
-				console.timeEnd( timer );
+			if ( this.options.time == 'console' ) {
+				if ( console.time )
+					console.timeEnd( timer );
+				else if ( this.timers[ timer ] ) {
+					console.log( timer + ': ' + ( new Date().getTime() - this.timers[ timer ].getTime() ) + 'ms' );
+					delete this.timers[ timer ];
+				}
+			}
 			else if ( this.options.time == 'screen' ) {
 				log.init();
 				log.profile( timer );
