@@ -10,8 +10,6 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 			var users = new Users();
 			var listView = new ListView( { collection: users } );
 			var addView = new AddView( { collection: users } );	// 새로 추가하면 collection에 추가되어야 하기 때문에 필요하다.
-
-			// modal이 떠 있는 상태인지 추적
 			var detailView = null;
 
 			// Router
@@ -22,12 +20,6 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 						fragment: [ '', 'list' ],
 						el: '#list-section',
 						render: function() {
-		
-							if ( detailView ) {
-								detailView.dispose();
-								detailView = null;
-							}
-		
 							users.fetch();
 						},
 						// fragment가 바뀌고 나서 transition이 시작되기 전에 callback이 필요하다. (화면을 그리기 위해)
@@ -46,7 +38,11 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 					},
 					'detail-page': {
 						fragment: 'detail/:id',
-						active: 'detail'
+						el: '#detail-section',
+						render: 'detail',
+						active: function() {
+							
+						}
 					},
 					'default': {
 						el: '#err-section',
@@ -60,22 +56,18 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 				
 				transitions: {
 					'list-page:add-page': { type: 'slide', duration: 3000 },
-					'list-page:default': 'slide'
+					'list-page:default': 'slide',
+					'list-page:detail-page': 'flip'
 				},
 
 				add: function() {
-
-					if ( detailView ) {
-						detailView.dispose();
-						detailView = null;
-					}
-
 					addView.render();
 				},
 
 				detail: function( id ) {
 					// 삭제 기능을 위해 collection이 필요하다.
 					detailView = new DetailView( { collection: users, model: users.get( id ) } );
+					detailView.render();
 				}
 			} );
 

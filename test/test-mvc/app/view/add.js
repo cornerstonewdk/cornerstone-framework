@@ -5,7 +5,7 @@ define( [ 'model/user', 'backbone', 'jquery', 'form-view', 'view/alert-validatio
 	// TODO Class를 넘기는 경우(AlertValidation, User)와 인스턴스를 넘기는 경우(new AlertValidation())의 명칭을 구분해야 할 듯
 	return Backbone.View.extend( {
 
-		el: $( 'section#add-section' ),
+		el: 'section#add-section',
 
 		initialize: function() {
 		},
