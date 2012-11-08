@@ -439,38 +439,38 @@
 
         return els ? els : this;
     };
-    if (navigator.userAgent.match("Android.*/4.0 Mobile Safari/")) {
-        $("input[type=range]").each(function (i) {
-            var options = $(this).data("rangeOptions");
-
-            $(this).addClass("range-android").parent().addClass("range-android");
-
-            if (typeof options === "object" && options.inputShow) {
-                var $rangeTarget = $(this), $numTarget = $("<input type='tel' value='" + $rangeTarget.val() + "' class='widget-range btn-block figure range inline' />");
-
-                $rangeTarget.on("change", function () {
-                    $numTarget.val($(this).val());
-                });
-
-                $numTarget.insertAfter($rangeTarget).on("change", function (e) {
-                    $rangeTarget.val($(this).val());
-                });
-
-                $rangeTarget.addClass("inline");
-                $rangeTarget.css({
-                    width:$rangeTarget.width() - ($numTarget.width() * 2),
-                    marginRight:$numTarget.width() * 0.2,
-                    float:"left"
-                });
-
-                $numTarget.removeClass("btn-block");
-
-            }
-        });
-    } else {
+//    if (navigator.userAgent.match("Android.*/4.0 Mobile Safari/")) {
+//        $("input[type=range]").each(function (i) {
+//            var options = $(this).data("rangeOptions");
+//
+//            $(this).addClass("range-android").parent().addClass("range-android");
+//
+//            if (typeof options === "object" && options.inputShow) {
+//                var $rangeTarget = $(this), $numTarget = $("<input type='tel' value='" + $rangeTarget.val() + "' class='widget-range btn-block figure range inline' />");
+//
+//                $rangeTarget.on("change", function () {
+//                    $numTarget.val($(this).val());
+//                });
+//
+//                $numTarget.insertAfter($rangeTarget).on("change", function (e) {
+//                    $rangeTarget.val($(this).val());
+//                });
+//
+//                $rangeTarget.addClass("inline");
+//                $rangeTarget.css({
+//                    width:$rangeTarget.width() - ($numTarget.width() * 2),
+//                    marginRight:$numTarget.width() * 0.2,
+//                    float:"left"
+//                });
+//
+//                $numTarget.removeClass("btn-block");
+//
+//            }
+//        });
+//    } else {
         $("input[type=range]").each(function (i) {
             var options = $(this).data("rangeOptions");
             $(this).rangeinput(options);
         });
-    }
+//    }
 }));

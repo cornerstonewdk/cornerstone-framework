@@ -852,13 +852,13 @@
             }
 
             // 스크롤로 페이지가 이동된 경우 화면전환시 새로운 페이지의 위치도 이전 페이지 스크롤 위치로 보여지는 문제
-            if(!this.options.nested) {
-//                $(window).scrollTop(0,0);
-                this.options.inTarget.top = $(this.options.inTarget.el).css("top");
-                $(this.options.inTarget.el).css({
-                    top: $(window).scrollTop()
-                });
-            }
+//            if(!this.options.nested) {
+////                $(window).scrollTop(0,0);
+//                this.options.inTarget.top = $(this.options.inTarget.el).css("top");
+//                $(this.options.inTarget.el).css({
+//                    top: $(window).scrollTop()
+//                });
+//            }
 
         },
 
@@ -884,12 +884,12 @@
             this.options.done();
 
             // 스크롤로 페이지가 이동된 경우 화면전환시 새로운 페이지의 위치도 이전 페이지 스크롤 위치로 보여지는 문제
-            if(!this.options.nested) {
-//                $(window).scrollTop(0,0);
-                $(this.options.inTarget.el).css({
-                    top: this.options.inTarget.top
-                });
-            }
+//            if(!this.options.nested) {
+////                $(window).scrollTop(0,0);
+//                $(this.options.inTarget.el).css({
+//                    top: this.options.inTarget.top
+//                });
+//            }
 
 //            console.log("_done");
         }
