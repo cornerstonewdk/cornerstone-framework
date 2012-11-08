@@ -3,8 +3,7 @@
 		'jquery', 
 		'backbone', 
 		'template!../../../template/dashboard/blogWidget',
-		'template!../../../template/dashboard/blogCell',
-		'yql'
+		'template!../../../template/dashboard/blogCell'
 	], function(
 		$, 
 		Backbone, 
@@ -23,9 +22,8 @@
 			
 			$(this.el).html(template());
 			
-			var statement = "SELECT * FROM rss where url = 'http://blog.sktworld.co.kr/rss'";
-			$.queryYQL(statement, 'json', undefined, function(data){
-				self.drawList(data.query.results.item);
+			$.getJSON("/t-dashboard/getSktBlogRss").success(function(json) {
+				self.drawList(json.item);
 			});
 		},
 		
