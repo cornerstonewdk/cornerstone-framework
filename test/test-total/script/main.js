@@ -347,8 +347,8 @@ define( [ 'logging',
                     'swipe': 'sw',
                     'transformstart': 'trstart',
                     'transform': 'trmove',
-                    'transformend': 'trend'
-                    //'release': 'rel'
+                    'transformend': 'trend',
+                    'release': 'rel'
                 },
                 select: function( event ) {
                      Logging.debug( '[ 20 ] tap.' );
@@ -379,8 +379,7 @@ define( [ 'logging',
                 },
                 trend: function ( event ) {
                     Logging.debug( '[ 20 ] transformend.' );
-                }
-                ,
+                },
                 rel: function ( event ) {
                     Logging.debug( '[ 20 ] release.' );
                 }
