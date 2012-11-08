@@ -97,7 +97,7 @@ define( [ 'logging',
             $( '#debug-group button' ).click( function () {
                 config( $( this ).text() );
             } );
-            
+
             // [ 31 ] 테스트
             var MainRouter = MultipageRouter.extend( {
                 pages: {
@@ -164,7 +164,8 @@ define( [ 'logging',
             user.set( { name: '김을동', age: 60 } );
             Logging.debug( user.get( 'name' ) );
             Logging.debug( user.get( 'age' ) );
-            Logging.debug( user.get( 'job' ) );
+            // 테스트 진행을 위해 string을 붙여줌
+            Logging.debug( 'job : ' + user.get( 'job' ) );
             user.set( 'job', '컨설턴트' );
             Logging.debug( user.get( 'job' ) );
             Logging.debug( '[ 11 ] end   ---------------------------' );
