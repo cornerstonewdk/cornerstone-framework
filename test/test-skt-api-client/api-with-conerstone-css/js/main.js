@@ -89,8 +89,7 @@ require( ['SKT'], function ( sk ) {
             },
             error: function ( err ) {
                 bindAlert( 'alert-error', JSON.stringify( err ) );
-            },
-            timeout: 1000
+            }
         } );
         return false;
     } );
