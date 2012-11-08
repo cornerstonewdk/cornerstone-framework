@@ -21,9 +21,11 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		doubletap: function( event ) {
+			event.preventDefault();
+			
 			this.$obj.css( {
-				width: this.$obj.width() * 1.2,
-				height: this.$obj.height() * 1.2
+				width: Math.round( this.$obj.width() * 1.2 ),
+				height: Math.round( this.$obj.height() * 1.2 )
 			} );
 		},
 		
@@ -38,7 +40,8 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		drag: function( event ) {
-		
+			event.preventDefault();
+			
 			if ( !this.position ) return;
 		
 			var newPosition = {
@@ -57,14 +60,14 @@ define( [ 'gesture-view' ], function( GestureView ) {
 			event.preventDefault();
 			
 			this.width = this.$obj.width();
-			this.height = this.$obj.height();
 			this.degree = this.currentDegree;
 		},
 		
 		transform: function( event ) {
+			event.preventDefault();
+			
 			this.$obj.css( {
-				width: this.width * event.scale,
-				height: this.height * event.scale,
+				width: Math.round( this.width * event.scale ),
 				'-webkit-transform': 'rotate(' + ( this.degree + event.rotation ) + 'deg)'
 			} );
 		},
