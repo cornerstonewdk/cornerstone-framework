@@ -69,6 +69,8 @@
 				case 'screen':
 				
 					log.init();
+					if ( msg === null ) msg = 'null';
+					if ( msg === undefined ) msg = 'undefined';
 					
 					switch ( level ) {
 						case 'debug':
