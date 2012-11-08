@@ -318,16 +318,16 @@ define( [ 'logging',
                     'touchcancel': 'cancel'
                 },
                 start: function( event ) {
-                    $( '#cons' ).html( '[ 19 ] touch start' );
+                    Logging.debug( '[ 19 ] touch start' );
                 },
                 move: function( event ) {
-                   $( '#cons' ).html( '[ 19 ] touch move' );
+                   Logging.debug( '[ 19 ] touch move' );
                 },
                 end: function( event ) {
-                    $( '#cons' ).html( '[ 19 ] touch end' );
+                    Logging.debug( '[ 19 ] touch end' );
                 },
                 cancel: function ( event ) {
-                    alert( '[ 19 ] touch cancel' );
+                    Logging.debug( '[ 19 ] touch cancel' );
                 }
             } );
             var touchView = new TouchView( { model: user } );
@@ -351,41 +351,39 @@ define( [ 'logging',
                     //'release': 'rel'
                 },
                 select: function( event ) {
-                     $( '#cons1_tab span' ).html( '[ 20 ] tap.' );
+                     Logging.debug( '[ 20 ] tap.' );
                 },
                 open: function( event ) {
-                    $( '#cons1_tab span' ).html( '[ 20 ] doubletap.' );
+                    Logging.debug( '[ 20 ] doubletap.' );
                 },
                 menu: function( event ) {
-                    $( '#cons1_drag span' ).html( '[ 20 ] hold.' );
+                   Logging.debug( '[ 20 ] hold.' );
                 },
                 dstart: function ( event ) {
-                    $( '#cons1_drag span' ).html( '[ 20 ] dragstart.' );
+                    Logging.debug( '[ 20 ] dragstart.' );
                 },
                 dmove: function ( event ) {
-                    $( '#cons1_drag span' ).html( '[ 20 ] drag.' );
+                    Logging.debug( '[ 20 ] drag.' );
                 },
                 dend: function ( event ) {
-                    $( '#cons1_drag span' ).html( '[ 20 ] dragend.' );
+                    Logging.debug( '[ 20 ] dragend.' );
                 },
                 sw: function ( event ) {
-                    $( '#cons1_tab span' ).html( '[ 20 ] swipe.' );
+                    Logging.debug( '[ 20 ] swipe.' );
                 }, 
                 trstart: function ( event ) {
-                    $( '#cons1_trans span' ).html( '[ 20 ] transformstart.' );
+                    Logging.debug( '[ 20 ] transformstart.' );
                 },
                 trmove: function ( event ) {
-                    $( '#cons1_trans span' ).html( '[ 20 ] transform.' );
+                    Logging.debug( '[ 20 ] transform.' );
                 },
                 trend: function ( event ) {
-                    $( '#cons1_trans span' ).html( '[ 20 ] transformend.' );
+                    Logging.debug( '[ 20 ] transformend.' );
                 }
-                /*
                 ,
                 rel: function ( event ) {
-                    $( '#cons1_drag' ).html( '[ 20 ] release.' );
+                    Logging.debug( '[ 20 ] release.' );
                 }
-                */
 
             } );
             var gestureView = new TempGestureView( { model: user } );
