@@ -42,14 +42,14 @@
         factory(root.jQuery, root, doc);
     }
 }(this, document, function ($, window, document, undefined) {
-
+    var mePlayer;
     var pluginName = "featuredMedia";
 
     $.fn[pluginName] = function (options) {
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
             rate:"16:9",
-            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") +  "flashmediaelement.swf",
+            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") + "flashmediaelement.swf",
             silverlightName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") + "silverlightmediaelement.xap"
         };
         options = $.extend(true, defaultOptions, options);
@@ -133,7 +133,23 @@
                 }
             };
 
-            var mePlayer = new mejs.MediaElementPlayer(this, options);
+            mejs.PluginMediaElement.prototype.setVideoSize = function (width, height) {
+
+                //if (this.pluginType == 'flash' || this.pluginType == 'silverlight') {
+                if (this.pluginElement != null && this.pluginElement.style) {
+                    this.pluginElement.style.width = width + 'px';
+                    this.pluginElement.style.height = height + 'px';
+                }
+                if (this.pluginApi != null && this.pluginApi.setVideoSize) {
+                    this.pluginApi.setVideoSize(width, height);
+                }
+                //}
+            };
+
+            mejs.Utility.encodeUrl = function (url) {
+                return url === "100%" ? url : encodeURIComponent(url);
+            };
+            mePlayer = new mejs.MediaElementPlayer(this, options);
         });
     };
 
