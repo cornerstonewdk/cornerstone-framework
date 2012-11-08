@@ -51,18 +51,21 @@ requirejs.config( {
 	// 기본적으로 주요 라이브러리들도 전역변수로는 사용하지 않는 것으로 한다.
 	shim: {
 		'jquery': {
-			exports: function() {
-				return this.$.noConflict( true );
+			exports: 'jQuery',
+			init: function() {
+				return this.jQuery.noConflict( true );
 			}
 		},
 		'underscore': {
-			exports: function() {
+			exports: '_',
+			init: function() {
 				return this._.noConflict();
 			}
 		},
 		'backbone': {
 			deps: ['underscore', 'jquery'],
-			exports: function() {
+			exports: 'Backbone',
+			init: function() {
 				return this.Backbone.noConflict();
 			}
 		},
@@ -70,15 +73,10 @@ requirejs.config( {
 			deps: ['jquery']
 		},
 		'lawnchair': {
-			exports: function() {
-				// 전역변수에 선언된 Lawnchair를 삭제하면 제대로 동작하지 않는다.
-				return this.Lawnchair;
-			}
+			exports: 'Lawnchair'
 		},
 		'handlebars': {
-			exports: function() {
-				return this.Handlebars;
-			}
+			exports: 'Handlebars'
 		},
         'template': {
             deps: ['handlebars']
@@ -87,20 +85,14 @@ requirejs.config( {
 			deps: ['hammer', 'jquery']
 		},
 		'enquire': {
-			exports: function() {
-				return this.enquire;
-			}
+			exports: 'enquire'
 		},
 		'blackbird': {
 			deps: ['style!' + Cornerstone.PATH_LIB + 'blackbirdjs/blackbird'],
-			exports: function() {
-				return this.log;
-			}
+			exports: 'log'
 		},
 		'socket.io': {
-			exports: function() {
-				return this.io;
-			}
+			exports: 'io'
 		},
 		'transition': {
 			deps: ['jquery'],
