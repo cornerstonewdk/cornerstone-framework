@@ -18,7 +18,6 @@ require.config({
 });
 
 require( ['SKT'], function ( sk ) {
-    console.log( sk );
     var client_auth_token = undefined;
     var paymentFlag = false;
 
