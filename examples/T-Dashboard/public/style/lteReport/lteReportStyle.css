@@ -1,3 +1,7 @@
 div[data-timechart], div[data-devicechart] {
 	height: 300px;
 }
+
+div#lteReport {
+	color: #05121D;
+}

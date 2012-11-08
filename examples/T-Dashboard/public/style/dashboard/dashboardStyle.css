@@ -49,19 +49,33 @@
 }
 
 #dashboard_container {
-	border: solid 1px;
 	padding:5px;
 	text-align:center;
 }
 
 #dashboard_container > .dashboardItem {
 	border: 0;
-/*	padding: 5px;*/
 	margin: 5px;
 	width: 279px;
-	height: 279px;
+	height: 290px;
 	background: #FFFFFF;
 	border-radius: 5px;
+}
+
+@media all and (max-width: 626px) {
+	#dashboard_container {
+		padding:5px -5px;
+		text-align:center;
+	}
+
+	#dashboard_container > .dashboardItem {
+		border: 0;
+		margin: 5px -5px;
+		width: 100%;
+		height: 290px;
+		background: #FFFFFF;
+		border-radius: 5px;
+	}
 }
 
 #dashboard_container > .dashboardItem.height2x {
@@ -128,10 +142,15 @@ div#dashboard_container .lists li .txt-con2 {
 }
 
 div#dashboard_container .scrollview {
-	width: 272px ! important;
+	position: relative;
+	top: 0;
 }
 
 div#dashboard_container .hero-unit {
 	min-height: 326px;
+}
+
+div#dashboard_container li {
+	line-height: 18px;
 }
 
