@@ -77,11 +77,11 @@ define( [ 'logging',
             */
             Logging.config( {
                 defaultLevel: 'debug',
-                debug: 'console',
-                info: 'console',
-                warn: 'console',
-                error: 'console',
-                time: 'console'
+                debug: 'screen',
+                info: 'screen',
+                warn: 'screen',
+                error: 'screen',
+                time: 'screen'
             } );
             
             function config( str ) {
@@ -132,7 +132,6 @@ define( [ 'logging',
                     Logging.debug( '[ 31 ] #add active.' );
                 },
                 detail: function( id ) {
-                	console.log( id );
                     Logging.debug( '[ 31 ] #detail active. id : ' + id );
                 },
                 transitions: {
