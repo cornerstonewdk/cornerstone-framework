@@ -2,7 +2,8 @@ define([
     "require",
     "backbone",
     "transition",
-    "views/layout/layoutView"
+    "views/layout/layoutView",
+    "widget-plugins"
 ], function (require, Backbone, Transition, LayoutView) {
     var MainRouter = Backbone.Router.extend({
         routes:{

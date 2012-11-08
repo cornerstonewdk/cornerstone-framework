@@ -24,52 +24,6 @@
 			width: auto;
 		}
 
-		label.range-android {
-			position: relative;
-			height: 30px;
-		}
-
-		label.range-android:before {
-			content: "";
-			border-radius: 20px 20px 20px 20px;
-			display: block;
-			height: 7px;
-			position: relative;
-			top: 13px;
-			margin: 0 6px;
-		}
-
-		input[type=range].range-android {
-			-webkit-appearance: none !important;
-			background-color: rgba(84, 84, 84, 0.14);
-			background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
-			background-repeat: repeat-x;
-			border-radius: 15px 15px 15px 15px;
-			margin: 0;
-			position: relative;
-			height: 19px;
-			padding: 0 6px;
-			-webkit-text-size-adjust: none;
-			-ms-text-size-adjust: none;
-			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-		}
-
-		input[type=range].range-android::-webkit-slider-thumb {
-			-webkit-appearance: none !important;
-			border: 7px solid #ECECEC;
-			border-radius: 31px;
-			background-color: #ECECEC;
-			-webkit-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.4), 0 1px 2px white, 0 1px 3px rgba(0, 0, 0, 0.27);
-			box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.4), 0 1px 2px white, 0 1px 3px rgba(0, 0, 0, 0.27);
-			width: 31px !important;
-			height: 31px !important;
-			z-index: 100;
-			-webkit-transform: translate3d(0, 0, 0);
-		}
-		input[type=range].range-android::-webkit-slider-thumb:hover {
-			border: 7px solid #ECECEC;
-			border-radius: 31px;
-		}
 		.scrollspy-example {
 			height: 200px;
 			overflow: auto;
@@ -221,7 +175,7 @@
 				<label>
 					<input type="range" value="0.5" min="0.1" max="999.9" step="10"
 						   class="widget-range btn-block inline"
-						   data-range-options='{"inputShow":true,"progress":true}'/>
+						   data-range-options='{"inputShow":true}'/>
 				</label>
 			</div>
 		</div>

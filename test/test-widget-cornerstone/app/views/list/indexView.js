@@ -39,6 +39,7 @@ define([
                 optimization:false,
                 spinner:"#endless-loader",
                 scrollEndAction: function() {
+                    console.log("Scroll");
                     self.listView.render();
                 }
             });
