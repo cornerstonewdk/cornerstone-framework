@@ -20,13 +20,8 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 						fragment: [ '', 'list' ],
 						el: '#list-section',
 						render: function() {
-							users.fetch();
 						},
-						// fragment가 바뀌고 나서 transition이 시작되기 전에 callback이 필요하다. (화면을 그리기 위해)
-						// transition이 완료되고 나서 실행되는 callback
 						inactive: function( nextPageId ) {
-							//if ( nextPageId != 'detail-page' )
-							//	$( '#list-section' ).removeClass( 'active' );
 						}
 					},
 					'add-page': {
@@ -72,6 +67,8 @@ define( [ 'view/list', 'view/add', 'view/detail', 'model/users', 'backbone', 'sy
 			} );
 
 			Backbone.sync = Sync.local;
+			users.fetch();
+			
 			new MainRouter();
 			Backbone.history.start();
 		}	
