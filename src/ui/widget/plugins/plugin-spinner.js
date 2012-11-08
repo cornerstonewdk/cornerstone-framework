@@ -7,9 +7,13 @@
  *  License :
  */
 
-;(function (root, doc, factory) {
+;
+(function (root, doc, factory) {
     factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
+
+    var hasTouch = ('ontouchstart' in window);
+
     /**
      * @class Spinner
      * @constructor
@@ -49,29 +53,30 @@
     };
 
     Spinner.prototype.show = function () {
-        this.$element.addClass("widget-spinner");
+        this.$element.addClass("widget-spinner").append("<div class='widget-spinner-icon" + (hasTouch ? 2 : "" ) + "'></div>");
     };
 
     Spinner.prototype.showText = function () {
         var text = this.$element.data("spinner-text");
 
-        if(typeof text !== "string" && $.trim(text).length < 1) {
+        if (typeof text !== "string" && $.trim(text).length < 1) {
             return false;
         }
 
         $("div.widget-spinner div.spinner-center").attr({
-            "data-content": text
+            "data-content":text
         });
     };
 
     Spinner.prototype.removeText = function () {
         $("div.widget-spinner div.spinner-center").attr({
-            "data-content": ""
+            "data-content":""
         });
+
     };
 
     Spinner.prototype.hide = function () {
-        this.$element.removeClass("widget-spinner");
+        this.$element, this.$element.removeClass("widget-spinner").find(".widget-spinner-icon" + (hasTouch ? 2 : "" )).remove();
     };
 
 //    Spinner.prototype.destroy = function () {
@@ -110,11 +115,10 @@
 
 
     $(function () {
-        $("body").on("click.Spinner.data-api", "[data-plugin^=spinner]", function ( e ) {
+        $("body").on("click.Spinner.data-api", "[data-plugin^=spinner]", function (e) {
             var $btn = $(e.target);
             var type = $btn.data("spinnerType");
             var target = $btn.data("spinnerTarget");
-            console.log(type);
             $(target).spinner(type);
         })
     })

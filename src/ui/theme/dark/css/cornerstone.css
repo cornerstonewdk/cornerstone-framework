@@ -6706,8 +6706,7 @@ address {
   left: 0;
   z-index: 900;
 }
-.widget-spinner:after {
-  content: "";
+.widget-spinner-icon {
   background-image: url(../img/spinner.gif);
   background-size: 50px;
   width: 50px;
@@ -6721,8 +6720,36 @@ address {
   margin-top: -25px;
   z-index: 1000;
 }
-body.widget-spinner:after {
+.widget-spinner-icon2 {
+  background: url(../img/spinner.png);
+  background-size: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  -webkit-transform: rotate(360deg);
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  z-index: 1000;
+}
+body > .widget-spinner-icon,
+body > .widget-spinner-icon2 {
   position: fixed;
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @media (max-width: 767px) {
   .modal.fade {
