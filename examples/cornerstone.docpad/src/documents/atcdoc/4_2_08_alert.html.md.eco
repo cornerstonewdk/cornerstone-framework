@@ -1,0 +1,79 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+title: '경고창'
+outline: '경고창'
+date: '2012-11-16'
+tagstr: 'widget'
+subsection: ‘본문’
+order: ‘[4, 2, 8]’
+---
+
+## 경고창
+
+성공, 주의, 에러 메세지를 위한 스타일
+
+### 기본 경고창
+
+기본 경고창은 `.alert` 클래스로 경고를 보여줄 내용을 감싸준다. `.alert` 클래스 내부의  `닫기 버튼`은 옵션이므로 닫기 기능이 필요한 경우에 넣는다.
+
+``` cm
+    <div class="alert">
+    	<!-- 기본 닫기 버튼  -->
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+    </div>
+```
+
+__닫기 버튼__
+
+닫기 버튼은 플러그인을 통해 작동이 가능하다. 작동방식은 html5 data-attribute를 사용하는 방법과 javascript를 이용하는 방법이 있다. javascript를 이용하는 방법은 플러그인에서 설명하므로 여기에서는 사용되는 예시와 설명은 data-attribute 방식이다. 닫기 버튼은 `a` 태그와 `button` 태그로 만들 수 있으며 `a` 태그인 경우 `href="#"` 속성이 필수적으로 들어가야 한다. `button` 태그의 경우 `form` 태그 안에서 사용되는 경우라면 `type="button"`  속성이 들어가야 한다.
+
+``` cm
+    <a href="#" class="close" data-dismiss="alert">×</a>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+```
+
+### 옵션
+
+__경고 메세지가 긴 경우__
+
+경고 메세지가 긴 경우 `.alert` 클래스에 `.alert-block` 클래스를 추가해서 위, 아래 여백이 증가되므로 좀더 가독성이 높은 UI를 구성할 수 있다.
+
+``` cm
+    <div class="alert alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4>Warning!</h4>
+        Best check yo self, you're not...
+    </div>
+```
+
+__에러 메세지__
+
+여러가지 에러에 대한 메세지를 표현 할때 `.alert-error` 클래스를 추가한다.
+
+``` cm
+    <div class="alert alert-error">
+    ...
+    </div>
+```
+
+__성공 메세지__
+
+성공에 대한 메세지를 표현 할때 `.alert-success` 클래스를 추가한다.
+
+``` cm
+    <div class="alert alert-success">
+    ...
+    </div>
+```
+
+__안내 메세지__
+
+안내에 대한 메세지를 표현 할때 `.alert-info` 클래스를 추가한다.
+
+``` cm
+    <div class="alert alert-info">
+    ...
+    </div>
+```

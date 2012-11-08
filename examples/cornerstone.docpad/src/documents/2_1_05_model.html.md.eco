@@ -1,0 +1,101 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '모델'
+outline: '모델'
+date: '2012-11-16'
+tagstr: 'application'
+tags: ['post','application','']
+subsection: ‘본문’
+order: '[2, 1, 5]'
+---
+
+Model 만들기
+-----------
+다음과 같이 Backbone.Model의 extend를 사용하면 자신만의 Model 클래스를 정의하고 클래스의 인스턴스를 생성할 수 있다. defaults는 객체를 생성할 때 사용할 기본 속성값들을 의미하고, initialize는 객체가 생성되면 실행되는 생성자 함수이다.
+
+```
+var User = Backbone.Model.extend( {
+
+	defaults: {
+		name: '홍길동',
+		age: 40
+	},
+	
+	initialize: function() {
+		// Model이 생성되면 실행된다.
+		console.log( 'Created!' );
+	}
+} );
+
+var user = new User();
+```
+
+Backbone 역시 require.js 모듈로 제공되므로 전체 코드는 다음처럼 될 것이다.
+
+```
+// model/user
+define( [ 'backbone' ], function( Backbone ) {
+
+	return Backbone.Model.extend( {
+
+		defaults: {
+			name: '홍길동',
+			age: 40
+		},
+		
+		initialize: function() {
+			// Model이 생성되면 실행된다.
+			console.log( 'Created!' );
+		}
+	} );
+} );
+```
+```
+require( [ 'model/user' ], function( User ) {
+	var user = new User();
+} );
+```
+
+Model 객체를 생성할 때 속성값들을 지정할 수 있고, get 메소드를 사용해 각각의 속성값을 구할 수 있다.
+
+```
+var user = new User( { name: '김철수' } );
+
+console.log( user.get( 'name' ) );	// 콘솔에 '김철수' 출력
+console.log( user.get( 'age' ) );	// 콘솔에 '40' 출력
+```
+
+set 메소드를 사용하면 속성값을 변경할 수 있다.
+
+```
+user.set( 'name', '박영수' );
+user.set( { name: '박영수', age: 35 } );	// 여러 값을 한번에 변경 가능하다.
+user.set( 'job', '컨설턴트' );	// 새로운 값을 지정할 수도 있다.
+```
+
+속성값이 변경되면 Model 객체에서 change 이벤트가 발생한다. on 또는 bind 메소드를 사용하면 이벤트가 발생했을 때 실행될 callback 함수를 지정할 수 있다. off 또는 unbind 메소드를 사용하면 지정된 callback 함수를 제거할 수 있다.
+
+```
+user.on( 'change', function() {
+	// 아무 속성값이나 변경되면 실행된다.
+} );
+
+user.on( 'change:name', function() {
+	// name 속성의 값이 변경되면 실행된다.
+} );
+
+// change 이벤트의 모든 callback을 제거한다.
+user.off( 'change' );
+```
+
+Model의 고유한 식별자는 cid와 id의 두가지가 있다. cid는 Client ID라는 의미로 Model 객체가 생성될 때 자동으로 부여되는 식별자이고, id는 개발자가 직접 부여해 주는 식별자이다. 일반적으로 클라이언트에서 생성된 Model 객체는 일단 cid만을 가지게 되고 Model의 데이터가 서버에 저장이 되고 나면 데이터베이스에 저장할 때 만들어지는 Primary Key 값으로 Model의 id를 업데이트한다. 혹은 서버와 연동하지 않고 브라우저의 로컬 스토리지를 사용한다면 로컬 스토리지에 저장하면서 id를 부여할 수도 있다.
+
+```
+// 새로 만들어진 Model인지 검사한다.
+if ( user.isNew() ) {
+}
+```
+
+isNew 메소드는 Model이 새로 만들어진 것인지를 검사하는데, 새로 만들어진 Model 이라는 의미는 아직 서버에 저장되지 않았음을 의미한다. 그리고, id가 없으면 서버에 저장되지 않은 것으로 간주한다. 이것은 바꿔 말하면 Model을 서버에 저장한 후에는 반드시 id를 부여해야 함을 의미한다.

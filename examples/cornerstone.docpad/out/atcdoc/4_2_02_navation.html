@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body>
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar">
+            </span>
+            <span class="icon-bar">
+            </span>
+            <span class="icon-bar">
+            </span>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-left">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  태그별모음
+                </a>
+              </li>
+              <li class="inactive" id="bydate">
+                <a href="./bydate.html" title="bydate">
+                  작성순모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_00_application.html" style="text-indent:20px">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_01_file_structure.html" style="text-indent:40px">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_02_module.html" style="text-indent:40px">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_03_module_usage.html" style="text-indent:40px">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_04_MVC_pattern.html" style="text-indent:40px">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_05_model.html" style="text-indent:40px">모델</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_06_collection.html" style="text-indent:40px">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_07_view.html" style="text-indent:40px">뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_08_gesture.html" style="text-indent:40px">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_09_template.html" style="text-indent:40px">template</a>
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_1_00_form.html" style="text-indent:20px">폼</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_00_component.html" style="text-indent:20px">컴포넌트</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_01_dropdown.html" style="text-indent:40px">드롭다운</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_02_navation.html" style="text-indent:40px">네비게이션</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_03_navagation_bar.html" style="text-indent:40px">네비게이션 바</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_04_pagination.html" style="text-indent:40px">페이지네이션</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_05_label_and_badge.html" style="text-indent:40px">이름표와 뱃지</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_06_typography.html" style="text-indent:40px">타이포그라피</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_07_thumbnail.html" style="text-indent:40px">썸네일</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_08_alert.html" style="text-indent:40px">경고창</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_09_progress_bar.html" style="text-indent:40px">프레그레스 바</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_10_miscellaneous.html" style="text-indent:40px">기타요소</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_00_plugin.html" style="text-indent:20px">플러그인</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_01_alert.html" style="text-indent:40px">알림</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_02_button.html" style="text-indent:40px">버튼</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_03_carousel.html" style="text-indent:40px">캐로셀</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_04_dropdown.html" style="text-indent:40px">드롭다운</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_05_modal.html" style="text-indent:40px">모달</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_06_pop_over.html" style="text-indent:40px">팝오버</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_07_scroll_spy.html" style="text-indent:40px">스크롤 스파이</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_08_tab.html" style="text-indent:40px">탭</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_09_tooltip.html" style="text-indent:40px">툴팁</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_10_range_input.html" style="text-indent:40px">범위인풋</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_11_sign.html" style="text-indent:40px">싸인</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_12_spinner.html" style="text-indent:40px">스피너</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_00_featured.html" style="text-indent:20px">피쳐드</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_01_scroll_view.html" style="text-indent:40px">스크롤뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_02_list_view.html" style="text-indent:40px">리스트뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_03_media.html" style="text-indent:40px">미디어</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_04_editor.html" style="text-indent:40px">에디터</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_05_chart.html" style="text-indent:40px">차트</a>
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_00_utilitly.html" style="text-indent:20px">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_01_transition.html" style="text-indent:40px">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_02_device_API.html" style="text-indent:40px">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_03_JSONP.html" style="text-indent:40px">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_04_SKT_open_API.html" style="text-indent:40px">SKT Open API</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9">
+          <article class="page" typeof="sioc:page" about="/atcdoc/4_2_02_navation">
+            <div class="page-content" property="sioc:content">
+  <h2>네비게이션</h2>
+
+<h3>어플리케이션 스타일 네비게이션</h3>
+
+<p>Nav 리스트는 부가적인 헤더와 함께 nav 의 링크들을 그룹하는 심플하면서 쉬운 방법을 제공하며, OS X 의 파인더와 같은 사이드바를 만들 수 있다.
+구조적으로, Tab, Pill 과 같은 핵심 nav 스타일을 토대로 만들어 졌으며 사용 및 커스터마이징을 매우 직관적으로 할 수 있다.</p>
+
+<h4>아이콘과 함께</h4>
+
+<p>Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, <i> 태그를 적절한 class 함께 추가하기만 하면 된다.</p>
+
+<h4>가로 구분자</h4>
+
+<p>비어있는 리스트 아이템 — <li> — 을 .divider 클래스와 함께 넣어줌으로서 가로 구분자를 넣을 수 있다.</p>
+
+<pre><code>    &lt;ul class=&quot;nav nav-list&quot;&gt;
+        ...
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+
+</code></pre>
+
+<h4>nav 리스트 예제</h4>
+
+<p>링크의 리스트에 class=&ldquo;nav nav-list&rdquo; 를 추가한다.</p>
+
+<pre><code>    &lt;ul class=&quot;nav nav-list&quot;&gt;
+        &lt;li class=&quot;nav-header&quot;&gt;
+            List header
+        &lt;/li&gt;
+        &lt;li class=&quot;active&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot;&gt;Library&lt;/a&gt;
+        &lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+</code></pre>
+
+<pre><code class="cm">    &lt;div class=&quot;well&quot; style=&quot;padding: 8px 0;&quot;&gt;
+        &lt;ul class=&quot;nav nav-list&quot;&gt;
+            &lt;li class=&quot;nav-header&quot;&gt;List header&lt;/li&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Library&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;nav-header&quot;&gt;Another list header&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Profile&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Help&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h4>아이콘 추가 예제</h4>
+
+<p>같은 방법이지만, 단지 아이콘을 위해 <i> 태그를 추가한다.</p>
+
+<pre><code>    &lt;ul class=&quot;nav nav-list&quot;&gt;
+        ...
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot;&gt;
+            &lt;i class=&quot;icon-book&quot;&gt;&lt;/i&gt;
+            Library
+            &lt;/a&gt;
+        &lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+</code></pre>
+
+<pre><code class="cm">    &lt;div class=&quot;well&quot; style=&quot;padding: 8px 0;&quot;&gt;
+        &lt;ul class=&quot;nav nav-list&quot;&gt;
+            &lt;li class=&quot;nav-header&quot;&gt;List header&lt;/li&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-white icon-home&quot;&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-book&quot;&gt;&lt;/i&gt; Library&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-pencil&quot;&gt;&lt;/i&gt; Applications&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;nav-header&quot;&gt;Another list header&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-user&quot;&gt;&lt;/i&gt; Profile&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-cog&quot;&gt;&lt;/i&gt; Settings&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-flag&quot;&gt;&lt;/i&gt; Help&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h3>tab nav</h3>
+
+<p>tab 을 통해 컨텐츠를 오갈 수 있도록 심플한 플러그인으로 tab 에 생명을 넣습니다. 부트스트랩은 4가지 스타일로 동적 Tab 을 통합 : top (기본), right, bottom, 그리고 left 아주 작은 마크업 수정만으로 쉽게 이들 사이의 변경을 할 수 있다.</p>
+
+<h4>동적 Tab 예제</h4>
+
+<p>Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 로 감싸면 된다.</p>
+
+<pre><code class="cm">    &lt;div class=&quot;tabbable&quot; style=&quot;margin-bottom: 9px;&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#1&quot; data-toggle=&quot;tab&quot;&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2&quot; data-toggle=&quot;tab&quot;&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#3&quot; data-toggle=&quot;tab&quot;&gt;Section 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+          &lt;div class=&quot;tab-pane active&quot; id=&quot;1&quot;&gt;
+            &lt;p&gt;I&#39;m in Section 1.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane&quot; id=&quot;2&quot;&gt;
+            &lt;p&gt;Howdy, I&#39;m in Section 2.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane&quot; id=&quot;3&quot;&gt;
+            &lt;p&gt;What up girl, this is Section 3.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h4>커스텀 jQuery 플러그인</h4>
+
+<p>모든 동적 Tab 는 우리의 경량 jQuery 플러그인에 의해 작동된다. Tab에 대한 더 자세한 내용은 플러그인 챕터에서 확인할 수 있다.</p>
+
+<h4>직관적인 마크업</h4>
+
+<p>동적 탭을 사용하려면 감싸는 div, 여러 세트의 tab, 그리고 그에 해당하는 여러 세트의 컨텐츠 pane 이 필요하다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable&quot;&gt;
+    &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#1&quot; data-toggle=&quot;tab&quot;&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#2&quot; data-toggle=&quot;tab&quot;&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class=&quot;tab-content&quot;&gt;
+        &lt;div class=&quot;tab-pane active&quot; id=&quot;1&quot;&gt;
+        &lt;p&gt;I&#39;m in Section 1.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;tab-pane&quot; id=&quot;2&quot;&gt;
+        &lt;p&gt;Howdy, I&#39;m in Section 2.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h4>모든 방향의 동적탭 기능</h4>
+
+<h5>하단 탭</h5>
+
+<p>탭을 하단에 두려면 .tabs-below class 를 추가하고 HTML의 순서를 바꾼다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable tabs-below&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            ...
+        &lt;/div&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            ...
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<pre><code class="cm">    &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#A&quot; data-toggle=&quot;tab&quot;&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#B&quot; data-toggle=&quot;tab&quot;&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#C&quot; data-toggle=&quot;tab&quot;&gt;Section 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre>
+
+<h5>좌측 탭</h5>
+
+<p>탭을 좌측에 두려면 .tabs-left class 를 추가한다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable tabs-left&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            ...
+        &lt;/ul&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<pre><code class="cm">    &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#lA&quot; data-toggle=&quot;tab&quot;&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#lB&quot; data-toggle=&quot;tab&quot;&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#lC&quot; data-toggle=&quot;tab&quot;&gt;Section 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre>
+
+<h5>우측 탭</h5>
+
+<p>탭을 우측에 두려면 .tabs-right class 를 추가한다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable tabs-right&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            ...
+        &lt;/ul&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<pre><code class="cm">    &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#rA&quot; data-toggle=&quot;tab&quot;&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#rB&quot; data-toggle=&quot;tab&quot;&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#rC&quot; data-toggle=&quot;tab&quot;&gt;Section 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+<script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
+socket.on('regenerated',function(){
+	document.location.reload();
+});</script><script defer="defer"  src="./script.js"></script>  </body>
+</html>

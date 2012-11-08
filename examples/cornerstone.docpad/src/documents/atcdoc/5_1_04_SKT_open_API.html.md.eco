@@ -1,0 +1,302 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+title: 'SKT Open API'
+outline: 'SKT Open API'
+date: '2012-11-16'
+tagstr: 'utiltily'
+subsection: ‘본문’
+order: ‘[5, 1, 4]’
+---
+
+SKT Open API
+------------
+SKT Open API는 SKT에서 제공하는 여러 가지 기능들을 써드파티 애플리케이션에서 사용할 수 있도록 공개된 API이다. Cornerstone Framework에서는 이 API를 사용하기 쉽도록 가공한 유틸리티를 제공한다.
+
+SKT Open API에서 제공하는 기능들은 다음과 같다.
+
+기능 | 설명
+:--- | :---
+인증 | OAuth 2.0을 사용하여 SKT Open API를 사용할 수 있는 권한을 얻는다.
+SMS | 인증한 사용자의 계정을 사용하여 SMS를 발송한다.
+과금 | 지정한 금액을 결제하고, 해당 금액을 SKT 통신 요금과 같이 청구한다.
+
+**`현재 SKT Open API 서버는 Dummy로 운영되고 있기 때문에, 통신은 가능하나 실제로 SMS 발송, 과금이 처리되지는 않는다.`**
+
+### 사전 작업
+SKT Open API를 사용하기 위해서는 SKT Open API 서버(이하 API 서버)에 사용할 써드파티 애플리케이션의 정보를 사전에 등록해야 한다. 등록하기 위해 다음과 같은 정보들을 입력한다.
+
+- 애플리케이션 이름
+- 애플리케이션의 URI
+
+등록이 완료되고 나면 API 서버에서는 다음 정보들을 발급한다.
+
+- 클라이언트(애플리케이션)의 식별자 (client_id)
+- 클라이언트의 비밀번호 (client_secret)
+
+### 인증
+API 서버는 인증에 OAuth 2.0을 사용한다. 인증 작업의 목적은 접근 토큰(Access token)을 얻는 것이고, 이 토큰을 사용해서 다른 기능들을 사용할 수 있다. 접근 토큰을 얻는 방법에는 크게 Web Server Flow와 User-Agent Flow의 두 가지가 있다.
+
+#### Web Server Flow
+Web Server Flow는 웹 서버(Server-side 환경)에서 접근 토큰을 얻기 위한 절차이다. 다음과 같은 순서대로 진행된다.
+
+1. 최초로 인증을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들이 유효한지 확인하고 로그인 화면을 표시한다.
+
+	```
+	URL : https://api.sk.com/oauth/authorize
+	
+	Parameters :
+		client_id : 등록시 발급받은 client_id
+		redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+		response_type : code
+	
+	ex) https://api.sk.com/oauth/authorize?client_id=abcd1234&redirect_uri=http://example.com&response_type=code
+	```
+	사용자가 정상적으로 로그인을 하고 클라이언트에 대해서 사용 허가를 하면 API 서버는 redirect_uri에 인증 코드를 붙여서 호출한다. 클라이언트는 인증 코드를 받아서 다음 단계에서 사용한다. 인증 코드는 1시간 동안만 유효하고 한번 사용한 코드는 폐기된다.
+	
+	```
+	ex) http://example.com?code=123456
+	```
+
+2. 인증 코드를 사용해서 접근 토큰을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들을 유효한지 확인하고 접근 토큰을 발급한다.
+
+	```
+	URL : https://api.sk.com/oauth/access_token
+	
+	Parameters :
+		client_id : 등록시 발급받은 client_id
+		client_secret : 등록시 발급받은 client_secret
+		redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+		code : 이전 단계에서 받은 인증 코드
+	
+	ex) https://api.sk.com/oauth/access_token?client_id=abcd1234&client_secret=zxcvbn&redirect_uri=http://example.com&code=123456
+	```
+	
+	접근 토큰을 발급하면 API 서버는 redirect_uri에 접근 토큰을 붙여서 호출한다.
+	
+	```
+	ex) http://example.com?access_token=qwert12345
+	```
+	
+	접근 토큰은 외부에 노출되지 않도록 주의한다.
+
+#### User-Agent Flow
+User-Agent Flow는 데스크탑/모바일 앱이나 웹 애플리케이션(Client-side 환경)에서 접근 토큰을 얻기 위한 절차이다. 다음과 같은 순서대로 진행된다.
+
+1. 최초로 인증을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들이 유효한지 확인하고 로그인 화면을 표시한다.
+
+	```
+	URL : https://api.sk.com/oauth/authorize
+	
+	Parameters :
+		client_id : 등록시 발급받은 client_id
+		redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+		response_type : token
+	
+	ex) https://api.sk.com/oauth/authorize?client_id=abcd1234&redirect_uri=http://example.com&response_type=token
+	```
+	
+	사용자가 정상적으로 로그인을 하고 클라이언트에 대해서 사용 허가를 하면 API 서버는 redirect_uri에 접근 토큰과 만료 시간(초)을 붙여서 호출한다.
+	
+	```
+	ex) http://example.com#access_token=qwert12345&expires_in=3600
+	```
+
+Web Server Flow에 비해서 한 단계를 덜 거치지만 다음 이유로 인해 보안이 유지될 수 있다.
+
+- redirect_uri의 도메인이 등록시 URI와 동일한지를 검사하기 때문에 다른 클라이언트로 정보가 전송되는 일은 없다.
+- redirect_uri가 (SSL이 적용되지 않은) http를 사용하더라도 Fragment(#)를 사용해서 전달하기 때문에 서버로의 요청이 없다. 따라서 정보가 가로채질 염려도 없다.
+
+### 유틸리티
+SKT Open API를 사용하기 편하게 해주는 유틸리티를 제공한다. 이 유틸리티는 웹 앱에서 사용할 수 있는 유틸리티이므로 User-Agent Flow 방식을 이용해 접근 토큰을 얻도록 되어 있다.
+
+의존성 주입 
+
+-	일반 방식
+
+		<!-- SKT Open API Util Javascript -->
+		<script type="text/javascript" src="cornerstone/util/skt.js"></script>
+
+-	MVC Framework을 이용한 의존성 주입
+		
+		define( [ 'skt' ], function ( SKT ) {
+				(중략...)
+		} );
+
+### 인증
+
+서버에 접근 토큰을 요창한다. 최초 서버에 인증단계를 거치고, 어플리케이션에 접근 권한을 수락하면 전달된다.
+
+```
+require( [ 'skt' ], function( SKT ) {
+	
+	// 인증
+	SKT.authorize( {
+		clientId: 'abcd1234',
+		redirectUri: 'http://example.com',
+		success: function( token ) {
+			// 인증이 완료되고 나면 실행된다.
+			// token 파라미터로 접근 토큰이 전달된다.
+		},
+		error: function( err ) {
+			// 에러가 발생시 실행된다.
+			// err 파라미터로 전달된다.
+		}
+	} );
+} );
+```
+
+해당 유틸리티를 사용 시 token 전달을 위해 지정한 redirectUri의 html을 다음과 같이 코딩한다.
+
+```
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script type="text/javascript">
+		parent.SKT.authSuccess( location );
+		</script>
+	</body>
+</html>
+```
+
+### SMS
+SMS를 보내기 위해서는 먼저 인증 단계를 거치고 접근 토큰을 받아야 한다. API 서버로 아래와 같이 요청을 보내면 된다.
+
+```
+URL : https://api.sk.com/sms
+
+Parameters :
+	access_token : 접근 토큰
+	from : 보내는 사람의 전화번호
+	to : 받는 사람의 전화번호
+	message : 메시지 내용
+
+ex) https://api.sk.com/sms?access_token=qwert12345&from=01011112222&to=01022223333&message=Hi
+```
+
+유틸리티를 사용하면 이 작업을 쉽게 수행할 수 있다. 단 이종 도메인간의 통신이므로 jsonp 로 통신하며, 서버측의
+응답없음 또는 404 error 등을 받을 수 없기 때문에 timeout을 사용한다.
+
+```
+require( [ 'skt' ], function( SKT ) {
+	
+	// SMS 발송
+	SKT.sendSms( {
+		accessToken: 'qwert12345',
+		from: '01011112222',
+		to: '01022223333',
+		message: 'Hi',
+		success: function( data ) {
+			// 발송이 완료되고 나면 실행된다.
+		},
+		error: function( err ) {
+			// error 가 발생시 실행된다.
+		},
+		timeout: 3000
+	} );
+} );
+```
+
+### 과금
+과금 API를 사용하기 위해서는 먼저 인증 단계를 거치고 접근 토큰을 받아야 한다. API 서버로 아래와 같이 요청을 보내면 된다.
+
+```
+URL : https://api.sk.com/payment
+
+Parameters :
+	access_token : 접근 토큰
+	type :
+		one-time : 한 클라이언트/한 사용자에 대해서 한번만 과금
+		recurring : 요청을 보낼때마다 과금
+		weekly-subscription : 매주 자동으로 과금
+		monthly-subscription : 매월 자동으로 과금
+		yearly-subscription : 매년 자동으로 과금
+	payment_date :
+		type이 weekly-subscription인 경우 과금할 요일 (sunday/monday/...)
+		type이 monthly-subscription인 경우 과금일을 나타내는 두 자리 숫자 ex) 07
+		type이 yearly-subscription인 경우 과금일을 나타내는 네 자리 숫자 ex) 0501
+	amount : 과금할 금액 (원)
+
+ex) https://api.sk.com/payment?access_token=qwert12345&type=recurring&amount=1000
+```
+
+유틸리티를 사용하면 이 작업을 쉽게 수행할 수 있다. 단 이종 도메인간의 통신이므로 jsonp 로 통신하며, 서버측의
+응답없음 또는 404 error 등을 받을 수 없기 때문에 timeout을 사용한다.
+
+```
+require( [ 'skt' ], function( SKT ) {
+
+	// 과금 요청
+	SKT.pay( {
+		accessToken: 'qwert12345',
+		type: 'recurring',
+		amount: 1000,
+		success: function( data ) {
+			// 과금이 완료되고 나면 실행된다.
+		},
+		error: function( err ) {
+			// error 가 발생시 실행된다.
+		},
+		timeout: 3000
+	} );
+} );
+```
+
+Logging
+-------
+logging 모듈은 개발자가 여러 가지 방법으로 로그를 남길 수 있도록 한다. requireJS를 사용하고 있다면 다음과 같이 아주 쉽게 logging 모듈을 구해서 사용할 수 있다.
+
+```
+require( [ 'logging' ], function( Logging ) {
+	Logging.debug( '디버그 메시지를 로그에 남긴다.' );
+} );
+```
+
+requireJS를 사용하지 않는다면, 필요한 자바스크립트와 스타일시트를 각각 선언해 주어야 한다.
+
+```
+<script src="cornerstone/lib/blackbirdjs/blackbird.js"></script>
+<link href="cornerstone/lib/blackbirdjs/blackbird.css" rel="stylesheet"/>
+<script src="cornerstone/dist/util/logging.js"></script>
+```
+
+선언 후에는 전역 객체인 Logging을 사용할 수 있다. Logging 객체가 제공하는 메소드들은 다음과 같다.
+
+메소드명 | 파라미터 | 설명
+:--- | :--- | :---
+config | 설정(object) | 로그를 남기는 방법을 설정한다.
+debug | 메시지(string) | 디버그 메시지를 로그로 남긴다.
+info | 메시지(string) | 정보 메시지를 로그로 남긴다.
+warn | 메시지(string) | 경고 메시지를 로그로 남긴다.
+error | 메시지(string) | 오류 메시지를 로그로 남긴다.
+log | 메시지(string) | 로그 메시지를 남긴다.
+time | 타이머 이름(string) | 타이머를 시작한다. 이름을 다르게 지정하면 여러 타이머를 동시에 사용할 수 있다. 특정 작업이 걸리는 시간을 측정하는데 유용하다.
+timeEnd | 타이머 이름(string) | 지정된 이름의 타이머를 종료하고 소요시간을 보여준다.
+
+config 메소드를 사용할 때 설정 객체는 다음과 같은 속성들을 갖는다.
+
+속성명 | 기본값 | 설명
+:--- | :--- | :---
+defaultLevel | debug | debug/info/warn/error 중의 한 값을 지정하면 해당 메소드를 log 메소드로도 사용할 수 있다.
+debug | console | console/screen/none 중의 한 값을 지정하며 디버그 메시지를 어디로 남길지를 결정한다. console은 브라우저의 기본 콘솔로, screen은 웹 화면에 로그를 표시하는 작은 창으로 로그를 남기도록 하며 none인 경우 로그를 남기지 않는다.
+info | console | debug와 동일
+warn | console | debug와 동일
+error | console | debug와 동일
+time | console | debug와 동일
+
+다음과 같이 설정한다면 log 메소드는 debug 메소드와 동일한 기능을 가지게 되며, info 메소드는 아무 일도 하지 않는다. 그리고 debug, warn 메소드는 브라우저의 기본 콘솔에 로그를 남기고 error, time 메소드는 웹 화면에 작은 창을 표시하고 그 안에 로그를 남긴다.
+
+```
+Logging.config( {
+	defaultLevel: 'debug',
+	debug: 'console',
+	info: 'none',
+	warn: 'console',
+	error: 'screen',
+	time: 'screen'
+} );
+```
+
+화면에 로그를 남기는 screen 옵션은 콘솔을 확인하기가 힘든 스마트폰/패드의 경우 아주 유용하다. 그리고, 개발중에는 screen 또는 console 옵션으로 로그를 확인하다가 최종 제품으로 패키징할 때는 로그를 남기지 않도록 설정할 수 있다.

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body>
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar">
+            </span>
+            <span class="icon-bar">
+            </span>
+            <span class="icon-bar">
+            </span>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-left">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  태그별모음
+                </a>
+              </li>
+              <li class="inactive" id="bydate">
+                <a href="./bydate.html" title="bydate">
+                  작성순모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_00_application.html" style="text-indent:20px">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_01_file_structure.html" style="text-indent:40px">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_02_module.html" style="text-indent:40px">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_03_module_usage.html" style="text-indent:40px">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_04_MVC_pattern.html" style="text-indent:40px">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_05_model.html" style="text-indent:40px">모델</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_06_collection.html" style="text-indent:40px">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_07_view.html" style="text-indent:40px">뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_08_gesture.html" style="text-indent:40px">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a href="./2_1_09_template.html" style="text-indent:40px">template</a>
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_1_00_form.html" style="text-indent:20px">폼</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_00_component.html" style="text-indent:20px">컴포넌트</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_01_dropdown.html" style="text-indent:40px">드롭다운</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_02_navation.html" style="text-indent:40px">네비게이션</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_03_navagation_bar.html" style="text-indent:40px">네비게이션 바</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_04_pagination.html" style="text-indent:40px">페이지네이션</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_05_label_and_badge.html" style="text-indent:40px">이름표와 뱃지</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_06_typography.html" style="text-indent:40px">타이포그라피</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_07_thumbnail.html" style="text-indent:40px">썸네일</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_08_alert.html" style="text-indent:40px">경고창</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_09_progress_bar.html" style="text-indent:40px">프레그레스 바</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_2_10_miscellaneous.html" style="text-indent:40px">기타요소</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_00_plugin.html" style="text-indent:20px">플러그인</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_01_alert.html" style="text-indent:40px">알림</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_02_button.html" style="text-indent:40px">버튼</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_03_carousel.html" style="text-indent:40px">캐로셀</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_04_dropdown.html" style="text-indent:40px">드롭다운</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_05_modal.html" style="text-indent:40px">모달</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_06_pop_over.html" style="text-indent:40px">팝오버</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_07_scroll_spy.html" style="text-indent:40px">스크롤 스파이</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_08_tab.html" style="text-indent:40px">탭</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_09_tooltip.html" style="text-indent:40px">툴팁</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_10_range_input.html" style="text-indent:40px">범위인풋</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_11_sign.html" style="text-indent:40px">싸인</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_3_12_spinner.html" style="text-indent:40px">스피너</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_00_featured.html" style="text-indent:20px">피쳐드</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_01_scroll_view.html" style="text-indent:40px">스크롤뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_02_list_view.html" style="text-indent:40px">리스트뷰</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_03_media.html" style="text-indent:40px">미디어</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_04_editor.html" style="text-indent:40px">에디터</a>
+            </li>
+            <li class="inactive">
+              <a href="./4_4_05_chart.html" style="text-indent:40px">차트</a>
+            </li>
+            <li>
+              <a>‘본문’</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_00_utilitly.html" style="text-indent:20px">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_01_transition.html" style="text-indent:40px">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_02_device_API.html" style="text-indent:40px">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_03_JSONP.html" style="text-indent:40px">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a href="./5_1_04_SKT_open_API.html" style="text-indent:40px">SKT Open API</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9">
+          <article class="page" typeof="sioc:page" about="/atcdoc/4_1_00_form">
+            <div class="page-content" property="sioc:content">
+  <h1>Form</h1>
+
+<p>위젯 폼은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 위젯 플러그인을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(<em>typeahead</em>)같은 기능을 통해 사용자에게 편의를 제공할 수 있다.</p>
+
+<blockquote>
+<p>코너스톤의 위젯 폼은 사용자가 손쉽게 HTML/CSS를 통해 UI를 꾸밀 수 있는 것을 지향한다.</p>
+</blockquote>
+
+<p><strong>기본 스타일</strong></p>
+
+<p>폼 컨트롤은 스타일링을 받을 수 있지만 폼 또는 랩핑되는 마크업에 클래스가 없으면 폼 컨트롤은 좌측 상단을 기준으로 수직 정렬된다.</p>
+
+<p><strong>선택적 레이아웃</strong></p>
+
+<table><thead>
+<tr>
+<th align="left">레이아웃 이름</th>
+<th align="left">설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">검색 폼</td>
+<td align="left">form에 .form-search 클래스를 추가한다. 입력상자엔 .search-query 클래스를 추가하므로 입력상자 모서리를 둥글게 표현할 수 있다.</td>
+</tr>
+<tr>
+<td align="left">인라인 폼</td>
+<td align="left">좌측에서 수평으로 라벨과 입력요소가 정렬되도록 form에 .form-inline 클래스를 추가하므로 간편한 레이아웃을 구성 할 수 있다.</td>
+</tr>
+<tr>
+<td align="left">수평 폼</td>
+<td align="left">form에 .form-horizontal 클래스를 추가하면 라벨과 입력요소(.controls)가 한줄씩 수평으로 이뤄지고 다음 줄부턴 줄 바꿈(.control-group)되는 레이아웃. 라벨의 텍스트는 우측 정렬(.control-label)된다.</td>
+</tr>
+</tbody></table>
+
+<p><strong>기본 폼 예시</strong></p>
+
+<p>기본 폼 스타일은 form태그에 class 선언없이 기본적으로 표현되는 스타일이다.</p>
+
+<pre><code class="cm">    &lt;form&gt;
+        &lt;label class=&quot;title&quot;&gt;입력 상자 1&lt;/label&gt;
+        &lt;input name=&quot;text1&quot; type=&quot;text&quot; placeholder=&quot;입력해주세요.&quot;&gt;
+        &lt;label class=&quot;title&quot;&gt;입력 상자 2&lt;/label&gt;
+        &lt;input name=&quot;text2&quot; type=&quot;text&quot; placeholder=&quot;입력해주세요.&quot;&gt;
+        &lt;label class=&quot;title&quot;&gt;입력 상자 3&lt;/label&gt;
+        &lt;input name=&quot;text3&quot; type=&quot;text&quot; placeholder=&quot;입력해주세요.&quot;&gt;
+        &lt;label class=&quot;title&quot;&gt;입력 상자 4&lt;/label&gt;
+        &lt;input name=&quot;text4&quot; type=&quot;text&quot; placeholder=&quot;입력해주세요.&quot;&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<p><strong>검색 폼 예시</strong></p>
+
+<p>검색 폼 스타일은 form태그에 class <code>.form-search</code>를 form태그 내부 input태그에 <code>.search-query</code>를 추가해야한다.</p>
+
+<pre><code class="cm">    &lt;!-- 돋보기 아이콘 검색버튼 --&gt;
+    &lt;form class=&quot;form-search&quot;&gt;
+        &lt;div class=&quot;input-append&quot;&gt;
+            &lt;input class=&quot;search-query&quot; name=&quot;text1&quot; type=&quot;text&quot; placeholder=&quot;입력해주세요.&quot;&gt;
+            &lt;button type=&quot;submit&quot;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+
+    &lt;!-- 텍스트 검색버튼 --&gt;
+    &lt;form class=&quot;form-search&quot;&gt;
+        &lt;input class=&quot;search-query&quot; name=&quot;text1&quot; type=&quot;text&quot; placeholder=&quot;입력해주세요.&quot;&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;검색&lt;/button&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<p><strong>인라인 폼 예시</strong></p>
+
+<p>인라인 폼 스타일은 form태그에 class <code>.form-inline</code>를 추가해야하며 컴팩트한 레이아웃에 알맞는 레이아웃이다. </p>
+
+<pre><code class="cm">    &lt;form class=&quot;form-inline&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;input-large&quot; placeholder=&quot;이메일 주소&quot;&gt;
+        &lt;input type=&quot;password&quot; class=&quot;input-large&quot; placeholder=&quot;비밀번호&quot;&gt;
+        &lt;label class=&quot;checkbox inline&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox4&quot; value=&quot;option3&quot;&gt;
+            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+            기억하기
+        &lt;/label&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;회원가입&lt;/button&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<p><strong>수평 폼 예시</strong></p>
+
+<p>수평 폼 스타일은 앞의 3가지 레이아웃은 form, label이 모드 좌측 정렬인 방면 이 스타일은 label은 우측으로 정렬되는 레이아웃을 가지고 있다. 수평 폼 스타일을 사용하기 위해 form태그에 class <code>.form-horizontal</code>를 추가하고 입력창을 한 줄씩 보여주기 위해 label과 컨트롤(input, select 등등)들을 class <code>.control-group</code>으로 랩핑한다. label태그에 <code>.control-label</code>를 추가하고 마지막으로 컨트롤들은 가지런한 정렬을 하기 위해 class <code>.controls</code>로 랩핑한다.</p>
+
+<pre><code class="cm">    &lt;form class=&quot;form-horizontal&quot;&gt;
+        &lt;div class=&quot;control-group&quot;&gt;
+            &lt;label class=&quot;control-label&quot; for=&quot;inputEmail&quot;&gt;이메일&lt;/label&gt;
+
+            &lt;div class=&quot;controls&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;inputEmail&quot; placeholder=&quot;이메일은 입력해주세요.&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;control-group&quot;&gt;
+            &lt;label class=&quot;control-label&quot; for=&quot;inputPassword&quot;&gt;비밀번호&lt;/label&gt;
+
+            &lt;div class=&quot;controls&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;inputPassword&quot; placeholder=&quot;비밀번호를 입력해주세요.&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;control-group&quot;&gt;
+                &lt;label class=&quot;checkbox inline&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; value=&quot;option3&quot;&gt;
+                    &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+                    기억하기
+                &lt;/label&gt;
+                &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Sign in&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<h2>Inputs(입력 상자) / Textarea</h2>
+
+<p>입력 상자는 가장 공통적으로 많이 쓰이는 폼 컨트롤이다. 입력상자는 <code>type</code>이라는 명시적인 설정값 꼭 사용해야 한다. html5에선 다음과 같은 type들이 존재한다.</p>
+
+<p>text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color </p>
+
+<p><strong>이 type들은 브라우저에 따러 지원하지 않는 type도 존재한다.</strong></p>
+
+<p><em>e.g.</em> 범위 입력 상자의 경우 IE9, 파이어폭스, 안드로이드에서 정상 동작하지 않는다. (<a href="http://caniuse.com/#search=range%20input">http://caniuse.com/#search=range input</a>) </p>
+
+<blockquote>
+<p>지원되지 않는 몇몇 요소에 대해서는 <strong>코너스톤</strong>은 플러그인 형태로 동일한 기능이 작동하도록 제공한다.</p>
+</blockquote>
+
+<p><strong>input 사용 예시</strong></p>
+
+<pre><code class="cm">    &lt;input class=&quot;input-large&quot; type=&quot;text&quot; placeholder=&quot;입력 상자&quot;/&gt;
+</code></pre>
+
+<p><strong>textarea 사용 예시</strong></p>
+
+<p>textarea은 장문 입력을 하기 위해 <code>rows</code> 속성으로 입력창을 여러줄로 만들수 있다. </p>
+
+<pre><code>&lt;textarea class=&quot;input-large&quot; rows=&quot;3&quot;&gt;장문의 텍스트를 입력할 수 있는 Textarea&lt;/textarea&gt;
+</code></pre>
+
+<h2>체크박스와 라디오버튼</h2>
+
+<p>checkbox(체크박스)는 단일뿐만 아니라 여러개 옵션을 선택할 때 사용되는 컨트롤이고, radio(라디오버튼)은 단일 옵션만 선택할 때 사용되는 컨트롤이다.</p>
+
+<p><strong>기본 스타일 사용 예시(스택형태)</strong></p>
+
+<pre><code class="cm">    &lt;form&gt;
+        &lt;label class=&quot;checkbox&quot; for=&quot;inlineCheckbox1&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox1&quot; value=&quot;option2&quot;&gt;
+            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+            기본 체크박스 1
+        &lt;/label&gt;
+        &lt;label class=&quot;checkbox&quot; for=&quot;inlineCheckbox2&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox2&quot; value=&quot;option2&quot;&gt;
+            &lt;span class=&quot;active&quot;&gt;&lt;/span&gt;
+            기본 체크박스 2
+        &lt;/label&gt;
+        &lt;label class=&quot;checkbox&quot; for=&quot;inlineCheckbox3&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox3&quot; value=&quot;option2&quot;&gt;
+            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+            기본 체크박스 2
+        &lt;/label&gt;
+
+        &lt;label class=&quot;radio&quot; for=&quot;optionsRadios1&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios1&quot; value=&quot;option1&quot; checked=&quot;&quot;&gt;
+            &lt;span class=&quot;checked&quot;&gt;&lt;/span&gt;
+            기본 라디오 버튼 1
+        &lt;/label&gt;
+        &lt;label class=&quot;radio&quot; for=&quot;optionsRadios2&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios2&quot; value=&quot;option1&quot; checked=&quot;&quot;&gt;
+            &lt;span class=&quot;active&quot;&gt;&lt;/span&gt;
+            기본 라디오 버튼 2
+        &lt;/label&gt;
+        &lt;label class=&quot;radio&quot; for=&quot;optionsRadios3&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios3&quot; value=&quot;option1&quot; checked=&quot;&quot;&gt;
+            &lt;span class=&quot;checked&quot;&gt;&lt;/span&gt;
+            기본 라디오 버튼 3
+        &lt;/label&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<p><strong>인라인 스타일 사용 예시</strong></p>
+
+<p>인라인 스타일은 기본 스타일에서 label태그에 class <code>.inline</code>를 추가해서 체크박스와 라디오버튼을 같은 라인에 보여준다.</p>
+
+<pre><code class="cm">    &lt;form&gt;
+        &lt;label class=&quot;checkbox inline&quot; for=&quot;inlineCheckbox4&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox4&quot; value=&quot;option2&quot;&gt;
+            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+            인라인 체크박스 1
+        &lt;/label&gt;
+        &lt;label class=&quot;checkbox inline&quot; for=&quot;inlineCheckbox5&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox5&quot; value=&quot;option2&quot;&gt;
+            &lt;span class=&quot;active&quot;&gt;&lt;/span&gt;
+            인라인 체크박스 2
+        &lt;/label&gt;
+        &lt;label class=&quot;checkbox inline&quot; for=&quot;inlineCheckbox6&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox6&quot; value=&quot;option2&quot;&gt;
+            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+            인라인 체크박스 2
+        &lt;/label&gt;
+
+        &lt;label class=&quot;radio inline&quot; for=&quot;optionsRadios4&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios4&quot; value=&quot;option1&quot; checked=&quot;&quot;&gt;
+            &lt;span class=&quot;checked&quot;&gt;&lt;/span&gt;
+            인라인 라디오 버튼 1
+        &lt;/label&gt;
+        &lt;label class=&quot;radio inline&quot; for=&quot;optionsRadios5&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios5&quot; value=&quot;option1&quot; checked=&quot;&quot;&gt;
+            &lt;span class=&quot;active&quot;&gt;&lt;/span&gt;
+            인라인 라디오 버튼 2
+        &lt;/label&gt;
+        &lt;label class=&quot;radio inline&quot; for=&quot;optionsRadios6&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios6&quot; value=&quot;option1&quot; checked=&quot;&quot;&gt;
+            &lt;span class=&quot;checked&quot;&gt;&lt;/span&gt;
+            인라인 라디오 버튼 3
+        &lt;/label&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<h2>셀렉트박스</h2>
+
+<p>셀렉트박스는 기능적으로는 라디오버튼과 동일하지만 UI적으로는 선택된 값만 노출되는 차이점이 있다.</p>
+
+<p><strong>셀렉트박스 사용 예시</strong></p>
+
+<pre><code class="cm">    &lt;form&gt;
+        &lt;div class=&quot;select-area&quot;&gt;
+            &lt;label class=&quot;blind&quot;&gt;Select box&lt;/label&gt;
+            &lt;select class=&quot;select-value&quot;&gt;
+                &lt;option&gt;1&lt;/option&gt;
+                &lt;option&gt;2&lt;/option&gt;
+                &lt;option&gt;3&lt;/option&gt;
+                &lt;option&gt;4&lt;/option&gt;
+                &lt;option&gt;5&lt;/option&gt;
+            &lt;/select&gt;
+
+            &lt;div class=&quot;select-box&quot;&gt;
+                &lt;input type=&quot;text&quot; value=&quot;&quot;&gt;
+                &lt;span class=&quot;arrow1&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;arrow2&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<h2>폼 컨트롤 확장</h2>
+
+<p><code>prepend append 디자인 보류</code></p>
+
+<p><strong>텍스트 대신 버튼</strong></p>
+
+<pre><code class="cm">    &lt;div class=&quot;input-append&quot;&gt;
+      &lt;input class=&quot;span2&quot; id=&quot;appendedInputButton&quot; size=&quot;16&quot; type=&quot;text&quot;&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;Go!&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;input-append&quot;&gt;
+      &lt;input class=&quot;span2&quot; id=&quot;appendedInputButtons&quot; size=&quot;16&quot; type=&quot;text&quot;&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;Search&lt;/button&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;Options&lt;/button&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<p><strong>검색 폼</strong></p>
+
+<pre><code class="cm">    &lt;form class=&quot;form-search&quot;&gt;
+      &lt;div class=&quot;input-append&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;span2 search-query&quot;&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Search&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;input-prepend&quot;&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Search&lt;/button&gt;
+        &lt;input type=&quot;text&quot; class=&quot;span2 search-query&quot;&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<p><strong>상대적인 크기(Relative Sizing)</strong></p>
+
+<p>상대적인 크기는 <code>.input-mini</code> ~ <code>.input-xxlarge</code> 6가지 크기의 클래스를 제공한다.</p>
+
+<pre><code class="cm">    &lt;input class=&quot;input-mini&quot; type=&quot;text&quot; placeholder=&quot;.input-mini&quot;&gt;
+    &lt;input class=&quot;input-small&quot; type=&quot;text&quot; placeholder=&quot;.input-small&quot;&gt;
+    &lt;input class=&quot;input-medium&quot; type=&quot;text&quot; placeholder=&quot;.input-medium&quot;&gt;
+    &lt;input class=&quot;input-large&quot; type=&quot;text&quot; placeholder=&quot;.input-large&quot;&gt;
+    &lt;input class=&quot;input-xlarge&quot; type=&quot;text&quot; placeholder=&quot;.input-xlarge&quot;&gt;
+    &lt;input class=&quot;input-xxlarge&quot; type=&quot;text&quot; placeholder=&quot;.input-xxlarge&quot;&gt;
+</code></pre>
+
+<p><strong>그리드 크기(Gird Sizing)</strong></p>
+
+<p>그리드 크기는 <code>.span1</code> ~ <code>.span12</code> 12가지 크기의 클래스를 제공한다.</p>
+
+<pre><code class="cm">    &lt;input class=&quot;span1&quot; type=&quot;text&quot; placeholder=&quot;.span1&quot;&gt;
+    &lt;input class=&quot;span2&quot; type=&quot;text&quot; placeholder=&quot;.span2&quot;&gt;
+    &lt;input class=&quot;span3&quot; type=&quot;text&quot; placeholder=&quot;.span3&quot;&gt;
+    &lt;select class=&quot;span1&quot;&gt;
+      ...
+    &lt;/select&gt;
+    &lt;select class=&quot;span2&quot;&gt;
+      ...
+    &lt;/select&gt;
+    &lt;select class=&quot;span3&quot;&gt;
+      ...
+    &lt;/select&gt;
+</code></pre>
+
+<p>한 줄에 여러 그리드를 사용하기 위해 클래스 <code>controls-row</code> 클래스로 랩핑을 한다.</p>
+
+<pre><code class="cm">    &lt;div class=&quot;controls&quot;&gt;
+      &lt;input class=&quot;span5&quot; type=&quot;text&quot; placeholder=&quot;.span5&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;controls controls-row&quot;&gt;
+      &lt;input class=&quot;span4&quot; type=&quot;text&quot; placeholder=&quot;.span4&quot;&gt;
+      &lt;input class=&quot;span1&quot; type=&quot;text&quot; placeholder=&quot;.span1&quot;&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h2>수정불가 입력상자(Inputs)</h2>
+
+<p>입력상자에 들어있는 값을 수정할 수 없는 형태.</p>
+
+<pre><code class="cm">    &lt;span class=&quot;input-xlarge uneditable-input&quot;&gt;Some value here&lt;/span&gt;
+</code></pre>
+
+<h2>폼 액션(Form actions)</h2>
+
+<p><code>설명 추가필요</code></p>
+
+<pre><code class="cm">    &lt;div class=&quot;form-actions&quot;&gt;
+      &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;저장&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot;&gt;취소&lt;/button&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h2>도움말(Help text)</h2>
+
+<p>도움말은 폼 컨트롤(e.g. 입력상자) 주변에 해당 컨트롤에 관련있는 도움말을 노출한다.</p>
+
+<p><strong>인라인 도움말</strong></p>
+
+<pre><code class="cm">    &lt;input type=&quot;text&quot;&gt;&lt;span class=&quot;help-inline&quot;&gt;인라인 도움말&lt;/span&gt;
+</code></pre>
+
+<p><strong>블럭 도움말</strong></p>
+
+<pre><code class="cm">    &lt;input type=&quot;text&quot;&gt;&lt;span class=&quot;help-block&quot;&gt;블록 도움말&lt;/span&gt;
+</code></pre>
+
+<h2>폼 컨트롤 상태</h2>
+
+<p><strong>입력상자 포커스(focus)</strong></p>
+
+<p>코너스톤은 기본적으로 outline 스타일을 제거한다. 하지만 입력상자 포커스에는 outline에 box-shadow를 통해 스타일이 적용된다.</p>
+
+<pre><code class="cm">    &lt;input class=&quot;input-xlarge&quot; id=&quot;focusedInput&quot; type=&quot;text&quot; value=&quot;This is focused...&quot;&gt;
+</code></pre>
+
+<p><strong>비활성 입력상자</strong></p>
+
+<p>입력상자를 비활성화하기 위해 해당 입력상자에 disabled 속성을 추가해야 한다.</p>
+
+<pre><code class="cm">    &lt;input class=&quot;input-xlarge&quot; id=&quot;disabledInput&quot; type=&quot;text&quot; placeholder=&quot;Disabled input here...&quot; disabled&gt;
+</code></pre>
+
+<p><strong>유효성 상태</strong></p>
+
+<p>코너스톤은 유효성 검사를 통해 생기는 오류, 경고, 성공 메세지 스타일을 포함하고 있고 이 스타일을 사용하기 위해 <code>.control-group</code> 클래스로 랩핑해야 한다.</p>
+
+<pre><code class="cm">    &lt;div class=&quot;control-group warning&quot;&gt;
+      &lt;label class=&quot;control-label&quot; for=&quot;inputWarning&quot;&gt;Input with warning&lt;/label&gt;
+      &lt;div class=&quot;controls&quot;&gt;
+        &lt;input type=&quot;text&quot; id=&quot;inputWarning&quot;&gt;
+        &lt;span class=&quot;help-inline&quot;&gt;Something may have gone wrong&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;control-group error&quot;&gt;
+      &lt;label class=&quot;control-label&quot; for=&quot;inputError&quot;&gt;Input with error&lt;/label&gt;
+      &lt;div class=&quot;controls&quot;&gt;
+        &lt;input type=&quot;text&quot; id=&quot;inputError&quot;&gt;
+        &lt;span class=&quot;help-inline&quot;&gt;Please correct the error&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;control-group success&quot;&gt;
+      &lt;label class=&quot;control-label&quot; for=&quot;inputSuccess&quot;&gt;Input with success&lt;/label&gt;
+      &lt;div class=&quot;controls&quot;&gt;
+        &lt;input type=&quot;text&quot; id=&quot;inputSuccess&quot;&gt;
+        &lt;span class=&quot;help-inline&quot;&gt;Woohoo!&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+<script  src="/socket.io/socket.io.js"></script><script >var socket = io.connect('/docpad-live-reload');
+socket.on('regenerated',function(){
+	document.location.reload();
+});</script><script defer="defer"  src="./script.js"></script>  </body>
+</html>

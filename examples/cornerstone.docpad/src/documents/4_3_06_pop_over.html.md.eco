@@ -1,0 +1,48 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '팝오버'
+outline: '팝오버'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+subsection: ‘본문’
+order: '[4, 3, 6]'
+---
+
+## Popover
+버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인.
+
+__마크업__
+
+data-attribute를 이용하는 방식
+
+성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있습니다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다.
+
+javascript를 이용하는 방식
+
+$("#example").popover(options)
+
+### 옵션
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+animation | boolean | true | 팝오버에 css fade 효과를 적용시킨다.
+placement | string/function | "right" | 팝오버의 위치를 선정한다. - top / bottom / left / right
+selector | string | false | 만약 이 셀렉터가 제공되면, 팝오버 오브젝트는 이 셀렉터가 가리키는 타겟으로 대체한다.
+trigger | string | "hover" | 팝오버가 나오는 시점을 정한다. - hover / focus / manual
+title | string/function | "" | `title` 속성이 없을 경우 기본 타이틀값
+content | string/function | "" | `data-content` 속성이 없을 경우 기본 컨텐츠값
+delay | number/object | 0 | 팝오버가 보여지고 숨겨질때 지연시간 (ms)이 옵션에 숫자로 값을 넣으면 지연시간이 보임/숨김 모두 적용된다. Object로 파라미터를 사용할때 Object 문법: delay: { show: 500, hide: 100 }
+
+
+> data 속성을 이용하여 각 팝오버에 대해 옵션을 따로 정할 수 있다.
+
+### 메서드
+
+사용법 | 설정 | 타입 | 설명
+:-- | :-- | :-: | :--
+$().popover(option); | option | object | 엘리먼트들의 팝오버 초기화를 수행한다.
+$().popover("toggle"); | toggle | string | 엘리먼트의 팝오버를 토글한다.
+$().popover("show"); | show | string | 엘리먼트의 팝오버를 보여준다.
+$().popover("hide"); | hide | string | 엘리먼트의 팝오버를 숨긴다.
