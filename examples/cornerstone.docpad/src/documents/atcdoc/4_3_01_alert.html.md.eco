@@ -1,0 +1,62 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+title: '알림'
+outline: '알림'
+date: '2012-11-16'
+tagstr: 'widget'
+subsection: ‘본문’
+order: ‘[4, 3, 1]’
+---
+
+## Alert
+### 사용법
+경고 메세지등을 화면에 보여주거나 사용자가 해당 메시지를 닫는 기능.
+
+$().alert();
+
+__마크업__
+
+data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
+
+``` cm
+	<div class="alert">
+		<!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
+		<a class="close" data-dismiss="alert" href="#">×</a>
+		<strong>data-attribute를 통한 alert 닫기</strong>
+	</div>
+```
+
+javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
+
+``` cm
+	<div class="alert">
+		<!-- javascript를 이용하므로 data-dismiss 속성 제거 -->
+	    <a class="close" href="#">×</a>
+	    <strong>javascript를 통한 alert 닫기</strong>
+	</div>
+
+	<script type="text/javascript">
+		// 닫기 이벤트를 발생 시키기 위해 a태그에 클릭 이벤트 바인딩
+		$("a.close").bind("click", function(e) {
+		    $(".alert").alert("close"); // a태그 클릭시 .alert클래스 영역을 닫는다.
+		});
+	</script>
+```
+
+### 이벤트
+
+이벤트 이름 | 설명
+:-- | :--
+close | close하는 순간 발생하는 이벤트
+closed | close가 완료될 때 발생하는 이벤트
+
+__실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/8kef2/)
+
+``` cm
+	$(".alert").bind("close", function(e) {
+	    alert("닫기 전 이벤트");
+	}).bind("closed", function(e) {
+	    alert("닫기 완료시 CSS Transition 완료 후 이벤트");
+	});
+```

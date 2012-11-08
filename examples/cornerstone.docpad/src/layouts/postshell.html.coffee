@@ -95,14 +95,6 @@ html lang: 'ko', ->
 	                      form '.navbar-search.pull-rigth', 'id' : 'searchForm',
                             -> '<label class="blind"> Tag Search </label>' +
                                '<input class="search-query" type="text" placeholder="TAG" data-provide="typeahead" data-source=\'' + tagstr + '\'>'
-                        #else
-                        #  ul '.nav.pull-right', ->
-                        #    li ->
-                        #        a 'href':'#', ->
-                        #            i '.icon-write', 'id':'tag-search', -> ''
-	                    #  form '.navbar-search.pull-rigth', 'id' : 'searchForm',
-                        #    -> '<label class="blind"> Tag Search </label>' +
-                        #       '<input class="search-query" type="text" placeholder="TAG" disabled="true" data-provide="typeahead" data-source=\'' + tagstr + '\'>'
 
         div '.container', ->
           div '.row-fluid', ->
@@ -114,18 +106,21 @@ html lang: 'ko', ->
                       tag = @sections.store( cell )
                       li '.nav-header', -> tag.name
                       cur_url_2 = @document.url
+                      subsection_cnt = 0
                       tag.documents.forEach (documentModel) ->
                           cur_url_1 = "#{documentModel.get('url')}"
+                          order = "#{documentModel.get('order')}"
+                          order_arr = eval(order)
+                          if order_arr[0] isnt subsection_cnt
+                             li -> a "href":"", "#{documentModel.get('subsection')}"
+                             subsection_cnt = order_arr[0]
+                          indent_sz = (order_arr.length - 1) * 20
+                          style_val = "text-indent:"+indent_sz+"px"
                           #if "#{documentModel.get('url')}" is @document.url 
                           if cur_url_1 is cur_url_2 
-                             li '.active', -> a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+                             li '.active', -> a "href": "."+"#{documentModel.get('url')}"+".html", "style":style_val, "#{documentModel.get('title')}"
                           else
-                             li '.inactive', -> a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
-                             #div "style":"display:block", -> "#{documentModel.get('subsection')}" + " / " + "#{documentModel.get('order')}" 
-                             #if "#{documentModel.get('url')}" is @document.url
-                             #  p -> "same" + if "#{documentModel.get('url')}" is @document.url then "active"
-                             #else
-                             #  p -> "Not Same"
+                             li '.inactive', -> a "href": "."+"#{documentModel.get('url')}"+".html", "style":style_val, "#{documentModel.get('title')}"
 
             div '.span9', ->
                 # Document

@@ -1,0 +1,135 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+title: '에디터'
+outline: '에디터'
+date: '2012-11-16'
+tagstr: 'widget'
+subsection: ‘본문’
+order: ‘[4, 4, 4]’
+---
+
+### 에디터
+에디터 사용 방법
+### Datatables
+
+ 데이터테이블은 사용자에게 마크업에서 보여지는 정적인 테이블을 보다 향상되고 상호작용적인 테이블로 쉽게 만들어준다. 데이터테이블은 기본적으로 마크업을 통해 `table`태그로
+레코드를 작성한 경우 볼 수만 있지만 상호작용적인 기능을 사용할 수 있도록 아래와 같은 기능을 추가적으로 생성해준다.
+
+- 한 페이지에 보여줄 레코드 수 : 10,25,50,100개 레코드를 선택할 수 있는 기능을 제공한다.(선택한 옵션에 따라 자동적으로 그에 맞는 4번 페이지네이션 처리를 한다.)
+- 검색 : 데이터테이블은 정의된 테이블의 레코드에 모든 필드를 대상으로 검색 기능을 제공한다.
+- 정렬 : 테이블의 머리글을 클릭 또는 탭 하므로 해당 필드를 오름/내름차순 정렬 기능을 제공한다.
+- 페이지네이션 : 데이터테이블은 테이블에 정의된 레코드 전체 수와 1번 기능의 기본값인 10개 레코드를 통해 자동적으로 페이징 처리를 해주는 기능을 제공한다.
+
+데이터테이블은 단순히 마크업에 `table`태그에 레코드를 작성해서 사용하는 방법뿐만 아니라 아래와 같은 다양한 Data Sources를 지원한다.
+
+- DOM에 직접 데이터를 `table`내에 `tr` 태그로 정의해서 사용하는 방식
+- 자바스크립트에 데이터를 배열로 정의해서 가져오는 방식
+- 서버사이드 JSON 파일을 Ajax를 통해 가져오는 방식
+- 서버사이드 데이터베이스와 직접 연동해서 가져오는 방식 (동적인 데이터 연동이 가능)
+
+
+의존성
+
+```
+	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!-- Datatables 라이브러리 -->
+	<script type="text/javascript" src="jquery.dataTables.min.js"></script>
+	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
+	<script type="text/javascript" src="featured-datatable.js"></script>
+```
+
+### 사용법
+
+DATA-API(data-attribute) 또는 $('#example').featuredDataTable(); 
+
+__마크업__
+
+DATA-API(data-attribute) 를 이용하는 방식
+
+``` cm
+<!-- data-featured="datatable"를 정의하므로 데이터테이블을 적용한다. -->
+<table class="table table-striped" data-featured="datatable">
+    <!-- 머리글 정의 -->
+    <thead>
+        <tr>
+	        <th>Rendering engine</th>
+	        <th>Browser</th>
+	        <th>Platform(s)</th>
+	        <th>Engine version</th>
+	        <th>CSS grade</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr class="odd gradeX">
+	        <td>Trident</td>
+	        <td>Internet Explorer 4.0</td>
+	        <td>Win 95+</td>
+	        <td class="center"> 4</td>
+	        <td class="center">X</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+javascript를 이용하는 방식 [데모 페이지]
+
+``` cm
+<!-- id값을 정의하고 해당 id값에 $('#example').featuredDataTable(); 스크립트를 통해 데이터테이블을 적용한다.  -->
+<table id="example" class="table table-striped" >
+    <!-- 머리글 정의 -->
+    <thead>
+        <tr>
+	        <th>Rendering engine</th>
+	        <th>Browser</th>
+	        <th>Platform(s)</th>
+	        <th>Engine version</th>
+	        <th>CSS grade</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr class="odd gradeX">
+	        <td>Trident</td>
+	        <td>Internet Explorer 4.0</td>
+	        <td>Win 95+</td>
+	        <td class="center"> 4</td>
+	        <td class="center">X</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+### 기능 
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+bAutoWidth | boolean | true | 자동 컬럼 폭 계산 사용 여부
+bDeferRender | boolean | false | 테이블 렌더링을 연기 시키는 기능 사용 여부
+bFilter | boolean | true | 검색(필터링) 기능 사용 여부
+bInfo | boolean | true | 테이블에 적용된 데이터에 대한 정보를 노출시킬지 사용 여부
+bLengthChange | boolean | true | 한페이지에 보여지는 레코드 수를 선택하는 기능 사용 여부
+bPaginate | boolean | true | 페이지네이션 기능 사용 여부
+bProcessing | boolean | false | 데이터 로딩 시 테이블 가운데 프로그레스 UI를 노출시킬지 여부
+bScrollInfinite | boolean | false | Y축 스크롤을 통해 마지막 레코드일때 지속적으로 데이터 로딩을 할지 사용 여부
+bServerSide | boolean | false | 서버사이드 사용 여부 (ajax 옵션 필요)
+bSort | boolean | true | 머리글 클릭 또는 탭으로 자동 정렬 사용 여부
+
+![<데이터테이블 기능>](<http://azamara.io/img/datatables-features.png>)
+
+[자세히 보기](http://datatables.net/usage/features)
+
+
+### 옵션
+
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-: | :--
+iDisplayLength | int | 10 | 한페이지당 몇 개의 레코드를 노출시킬지 지정하는 옵션 
+iDisplayStart | int | 0 | 지정된 레코드의 수에 해당하는 페이지로 초기에 보여주는 옵션 
+sAjaxDataProp | string | aaData | ajax로 가져온 데이터의 객체에서 어느 depth에 데이터를 가져올지 지정하는 옵션
+sAjaxSource | string | null | datasource를 ajax로 가져오기 위한 서버사이드 호출 URL
+sDom | string | 설명참고 | 기능에 사용되는 UI들을 어떤 DOM구조로 사용할지 지정하는 옵션 (기본값: "<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>")[자세히](http://datatables.net/usage/options#sDom)
+sPaginationType | string | bootstrap | 페이지네이션 UI 타입을 지정하는 옵션 ('bootstrap', 'twobutton',  'fullnumbers')
+sServerMethod | string | GET | ajax로 데이터를 가져올 때 메서드 방식을  GET, POST로 지정하는 옵션
+
+[자세히 보기](http://datatables.net/usage/options)

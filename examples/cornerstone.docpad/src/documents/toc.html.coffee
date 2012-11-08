@@ -38,22 +38,28 @@ section ".tagmap", ->
           a_order = a.get('order')
           b_order = b.get('order')
           a_arr = eval(a_order)
+          if a_arr.length is 2
+            a_arr[2] = 0
           b_arr = eval(b_order)
-          a_arr[0] - b_arr[0] || a_arr[1] - b_arr[1]
+          if b_arr.length is 2
+            b_arr[2] = 0
+          a_arr[0] - b_arr[0] || a_arr[1] - b_arr[1] || a_arr[2] - b_arr[2]
         section_name = "sect_" + section_cnt
-        ul_section_name = "usect_" + section_cnt
-        li_section_name = "lsect_" + section_cnt
         div ".span8", "id":section_name, ->
           h1 tag.name
-          ul "id":ul_section_name, ->
+          ul ->
+            subsection_cnt = 0
             tag.documents.forEach (documentModel)->
               #console.log documentModel.get('order')
               subsection_name = documentModel.get('subsection')
-              doc_order = documentModel.get('order')
-              doc_order_arr = eval(doc_order)
-              order_one = doc_order_arr[0]
-              order_two = doc_order_arr[1]
-              div "order":doc_order, "orderone":order_one, "ordertwo":order_two, "subsection":subsection_name, "tags":"#{documentModel.get('tagstr')}", "name":li_section_name,->
-                li "aname":li_section_name, -> 
+              order = documentModel.get('order')
+              order_arr = eval(order)
+              if order_arr[0] isnt subsection_cnt
+                  li "order_depth":"1", -> subsection_name
+                  subsection_cnt = order_arr[0]
+              indent_sz = (order_arr.length - 1) * 20
+              style_val = "text-indent:"+indent_sz+"px"
+              div "order":order, "subsection":subsection_name, "tags":"#{documentModel.get('tagstr')}", ->
+                li "style":style_val, "order_depth":order_arr.length, -> 
                   a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
 

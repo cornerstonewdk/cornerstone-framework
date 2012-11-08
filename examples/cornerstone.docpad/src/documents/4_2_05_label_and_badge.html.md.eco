@@ -1,0 +1,36 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '이름표와 뱃지'
+outline: '이름표와 뱃지'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+subsection: ‘본문’
+order: '[4, 2, 5]'
+---
+
+## 이름표와 뱃지
+
+### 이름표
+
+Name | Markup
+:-- | :-- 
+<span class="label">Default</span> | `<span class="label">Default</span>`
+<span class="label label-success">Success</span> | `<span class="label label-success">Success</span>`
+<span class="label label-warning">Warning</span> | `<span class="label label-warning">Warning</span>`
+<span class="label label-important">Important</span> | `<span class="label label-important">Important</span>`
+<span class="label label-info">Info</span> | `<span class="label label-info">Info</span>`
+<span class="label label-inverse">Inverse</span> | `<span class="label label-inverse">Inverse</span>`
+
+### 뱃지
+
+Name | Example | Markup
+:-- | :-- | :--  
+Default | <span class="badge">1</span> | `<span class="badge">1</span>`
+Success | <span class="badge badge-success">2</span> | `<span class="badge badge-success">2</span>`
+Warning | <span class="badge badge-warning">4</span> | `<span class="badge badge-warning">4</span>`
+Important | <span class="badge badge-important">6</span> | `<span class="badge badge-important">6</span>`
+Info | <span class="badge badge-info">8</span> | `<span class="badge badge-info">8</span>`
+Inverse | <span class="badge badge-inverse">10</span> | `<span class="badge badge-inverse">10</span>`

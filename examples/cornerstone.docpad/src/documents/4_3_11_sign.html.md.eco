@@ -1,0 +1,104 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '싸인'
+outline: '싸인'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+subsection: ‘본문’
+order: '[4, 3, 11]'
+---
+
+## Sign
+
+터치 기반으로 서명을 할 수 있는 플러그인이다.
+
+__마크업__
+
+javascript를 이용하는 방식
+
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css' />                                                               
+<style>                                                                                                           
+.CodeMirror { float: left; width: 50%; border: 1px solid black; }                                                 
+iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                     
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/white/css/cornerstone.css' />                                    
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+	<div id="example" class="sign">
+		<canvas style="width: 100%; height: 293px; " width="1172" height="295" class="sign"></canvas>
+	</div>
+	<script>
+		$("#example").sign();
+	</script>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+### 메서드
+
+사용법 | 설정 | 타입 | 설명
+:-- | :-- | :-: | :--
+$().sign(); | - | object | 해당 엘리먼트에 플러그인을 적용한다.
+$().sign(option); | show | string | 해당 엘리먼트의 모션캡챠 플러그인을 초기화한다.
+$().sign(option); | reset | string | 해당 엘리먼트의 모션캡챠 플러그인을 초기화한다.

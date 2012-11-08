@@ -1,0 +1,58 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '콜렉션'
+outline: '콜렉션'
+date: '2012-11-16'
+tagstr: 'application'
+tags: ['post','application','']
+subsection: ‘본문’
+order: '[2, 1, 6]'
+---
+
+Collection 만들기
+----------------
+Collection은 Model의 정렬된 집합이다. Collection에 담겨 있는 Model의 속성이 변경되면 해당 Model 뿐 아니라 Collection에도 change 이벤트가 발생한다. Collection에 Model이 추가되거나 삭제되면 add, remove 이벤트가 발생한다.
+
+자신만의 Collection 클래스를 정의하고 인스턴스를 생성하고 싶다면 extend 메소드를 사용한다.
+
+```
+var Users = Backbone.Collection.extend( {
+	model: User
+} );
+
+// 빈 Collection 객체 생성
+var users1 = new Users();
+
+// Model들을 추가해서 Collection을 생성
+var users2 = new Users( [ user1, user2, user3 ] );
+
+// 객체를 추가해서 Collection을 생성, 각 객체는 User Model로 변환되서 추가된다.
+var users3 = new Users( [
+	{ name: '홍길동', age: 40 },
+	{ name: '김철수', age: 35 },
+	{ name: '이영수', age: 20 }
+] );
+```
+
+Collection 객체를 생성한 후에 Model을 추가하고, 여러 가지 방법으로 Model을 찾을 수 있다. Colelction 내에서 Model들은 추가한 순서대로 유지된다.
+
+```
+users1.add( [
+	{ name: '박철수', age: 25 },
+	{ name: '최영희', age: 30 }
+] );
+
+// id로 Model을 찾는다. 
+var user1 = users1.get( 35 );
+
+// cid로 Model을 찾는다.
+var user2 = users1.getByCid( 'c6' );
+
+// 2번째 Model을 구한다.
+var user3 = users1.at( 1 );
+
+// age가 30인 Model들을 찾는다. (Model의 배열을 리턴한다.)
+var users4 = users1.where( { age: 30 } );
+```

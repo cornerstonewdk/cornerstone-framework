@@ -1,0 +1,148 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '탭'
+outline: '탭'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+subsection: ‘본문’
+order: '[4, 3, 8]'
+---
+
+## Tab
+여러 컨텐츠를 한 뷰페이지에 탭메뉴를 통해 선택된 컨텐츠만 보여주는 플러그인
+
+__마크업__
+
+data-attribute를 이용하는 방식
+
+한줄의 자바스크립트 코딩 없이도 tab 또는 pill 네비게이션을 활성화 시킬 수 있습니다. 해당 엘리먼트에 간단히 data-toggle="tab" 또는 data-toggle="pill" 를 기술해 주면 됩니다.
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css' />                                                               
+<style>                                                                                                           
+.CodeMirror { float: left; width: 50%; border: 1px solid black; }                                                 
+iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                     
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/white/css/cornerstone.css' />                                    
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+	<ul class="nav nav-tabs">
+	  <li><a href="#home" data-toggle="tab">Home</a></li>
+	  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+	  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+	  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+	</ul>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+javascript를 이용하는 방식
+
+$("#myTab").tab("show")
+
+
+
+> data 속성을 이용하여 각 팝오버에 대해 옵션을 따로 정할 수 있다.
+
+### 메서드
+
+사용법 | 설명
+:-- | :--
+$().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활성화하고 탭은 dom 내에 타겟이 되는 컨테이너를 가리키는 `data-target` 또는 `href` 를 반드시 가져야한다.
+
+<% prv_2 = (contents) => %>
+	<ul class="nav nav-tabs">
+	  <li class="active"><a href="#home">Home</a></li>
+	  <li><a href="#profile">Profile</a></li>
+	  <li><a href="#messages">Messages</a></li>
+	  <li><a href="#settings">Settings</a></li>
+	</ul>
+
+	<div class="tab-content">
+	  <div class="tab-pane active" id="home">...</div>
+	  <div class="tab-pane" id="profile">...</div>
+	  <div class="tab-pane" id="messages">...</div>
+	  <div class="tab-pane" id="settings">...</div>
+	</div>
+
+	<script>
+	  $(function () {
+	    $(".tabs a:last").tab("show")
+	  })
+	</script>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+
+### 이벤트
+
+이벤트 이름 | 설명
+:-- | :--
+show | 이 이벤트는 새로운 탭이 보여지기 직전에 발생한다. event.target 는 현재 활성화 탭, event.relatedTarget 는 이전 활성화 탭(가능한 경우)을 가리킨다.
+shown | 이 이벤트는 새로운 탭이 보여지고 난 후에 발생한다. event.target 는 현재 활성화 탭, event.relatedTarget 는 이전 활성화 탭(가능한 경우)을 가리킨다.
+
+__실제 사용 예시__
+
+<% prv_3 = (contents) => %>
+	$('a[data-toggle="tab"]').on('shown', function (e) {
+	  e.target // 현재 활성화된 탭
+	  e.relatedTarget // 이전 탭
+	})
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
