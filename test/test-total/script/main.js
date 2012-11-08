@@ -132,6 +132,7 @@ define( [ 'logging',
                     Logging.debug( '[ 31 ] #add active.' );
                 },
                 detail: function( id ) {
+                	console.log( id );
                     Logging.debug( '[ 31 ] #detail active. id : ' + id );
                 },
                 transitions: {
