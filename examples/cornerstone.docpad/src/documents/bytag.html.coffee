@@ -41,9 +41,10 @@ section ".tagmap", ->
     div '#tagmap.row', ->
       for cell in row
         tag = @tags.store( cell )
-        div "##{cell}.span4", ->
-          h4 tag.name
-          ul ->
-            tag.documents.forEach (documentModel)->
-              li -> a href: "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+        if tag.name isnt 'post'
+          div "##{cell}.span4", ->
+            h4 tag.name
+            ul ->
+              tag.documents.forEach (documentModel)->
+                li -> a href: "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
 

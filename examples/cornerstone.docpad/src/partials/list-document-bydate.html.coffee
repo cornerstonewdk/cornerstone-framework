@@ -22,9 +22,9 @@ nav '.list-documents', 'typeof':'dc:collection', ->
                     else
                         tagNames = document.tags
                     for name in tagNames
-                        tagLists = name.trim()
-                        small '.list-documents-tags', property:'dc:tags', ->
-                            tagLists
+                        if name.trim() isnt 'post'
+                            tagLists = name.trim()
+                            small '.list-documents-tags', property:'dc:tags', tagLists
 
 			# Display the description if it exists
 			if document.description
