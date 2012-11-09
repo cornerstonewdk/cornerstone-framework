@@ -35,8 +35,10 @@
 	// redirectUri 에서 호출할 parent window 함수
 	SKT.authSuccess = function ( loc ) {
 		//var token = loc.href.match(/access_token=(.*)$/)[1];
-		var tempStr = navigator.userAgent.indexOf( 'Firefox' ) != -1 ? encodeURIComponent( loc ) : loc;
-		var arr = tempStr.hash.substr( 1 ).split('&');
+		var origin = loc.hash.substr( 1 );
+		var tempStr = navigator.userAgent.indexOf( 'Firefox' ) != -1 ? encodeURIComponent( origin ) : origin;
+		var arr = tempStr.split('&');
+
 		var obj = {};
 		alert( JSON.stringify( arr ) );
 		for( var i = 0 ; i < arr.length ; i++ ) {
