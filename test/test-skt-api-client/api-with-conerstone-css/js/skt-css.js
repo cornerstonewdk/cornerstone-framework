@@ -38,6 +38,7 @@
 		
 		var arr = loc.hash.substr( 1 ).split('&');
 		var obj = {};
+		alert( JSON.stringify( arr ) );
 		for( var i = 0 ; i < arr.length ; i++ ) {
 		    var bits = arr[ i ].split( '=' );
 		    obj[ bits[ 0 ] ] = bits[ 1 ];
