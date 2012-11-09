@@ -35,20 +35,7 @@
 	// redirectUri 에서 호출할 parent window 함수
 	SKT.authSuccess = function ( loc ) {
 		var token = loc.href.match(/access_token=(.*)&/)[1];
-		/*
-		var origin = loc.hash.substr( 1 );
-		var tempStr = navigator.userAgent.indexOf( 'Firefox' ) != -1 ? encodeURIComponent( origin ) : origin;
-		var arr = tempStr.split('&');
-		*/
-		var obj = {};
-		/*
-		alert( JSON.stringify( arr ) );
-		for( var i = 0 ; i < arr.length ; i++ ) {
-		    var bits = arr[ i ].split( '=' );
-		    obj[ bits[ 0 ] ] = bits[ 1 ];
-		}
-		*/
-		obj.access_token = token;
+
 		// iframe유무 확인 후 iframe 제거
 		if( $( '#' + SKT.authFrame ) ){
 			//$( '#' + SKT.authFrame ).remove();
@@ -62,10 +49,6 @@
 		if( !obj.access_token ){
 			SKT_AUTH.options.error( { "result": "fail", "resultCode": "1", "message": "access_token is not valid." } );	
 			return false;
-		} else {
-			alert( obj.access_token );
-			alert( decodeURIComponent( obj.access_token ) );
-			SKT_AUTH.success( decodeURIComponent( obj.access_token ) );	
 		}
 		
 		//SKT_AUTH.success( decodeURIComponent( token ) );	
