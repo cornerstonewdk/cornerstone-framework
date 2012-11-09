@@ -34,7 +34,7 @@
 
 	// redirectUri 에서 호출할 parent window 함수
 	SKT.authSuccess = function ( loc ) {
-		var token = loc.href.match(/access_token=(.*)&/)[1];
+		var access_token = loc.href.match(/access_token=(.*)&/)[1];
 
 		// iframe유무 확인 후 iframe 제거
 		if( $( '#' + SKT.authFrame ) ){
@@ -46,12 +46,11 @@
 		} 
 
 		// 옵션으로 넘어온 사용자 정의 success 함수 실행
-		if( !obj.access_token ){
+		if( !access_token ){
 			SKT_AUTH.options.error( { "result": "fail", "resultCode": "1", "message": "access_token is not valid." } );	
 			return false;
 		}
-		
-		//SKT_AUTH.success( decodeURIComponent( token ) );	
+		SKT_AUTH.success( decodeURIComponent( access_token ) );	
 	};
 
 	Authorize.prototype = {
