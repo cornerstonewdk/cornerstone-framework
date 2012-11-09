@@ -48,18 +48,24 @@
 // --------
 
 .nav-list {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.nav-list > li > a, .nav-list > li > a:hover {
-  margin-left:  -15px;
-  margin-right: -15px;	
+.nav-list > li > a {
 	margin-top: 1px;
   text-shadow: none;
 	color: @black;
 	background-color: @navListBg;
   padding: 10px 15px;
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	.box-shadow(~"0 1px 0 rgba(255,255,255,1)");
+}
+
+.nav-list > li > a:hover {
+  text-shadow: none;
+	color: @black;
+	background-color: @navListBg;
 	border-bottom: 1px solid rgba(0,0,0,.2);
 	.box-shadow(~"0 1px 0 rgba(255,255,255,1)");
 }
@@ -74,7 +80,7 @@
 
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
-  color: @white;
+  color: @black;
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
   background-color: @navListActive;
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,1)");
@@ -99,7 +105,7 @@
   display: block;
 	font-size: @baseFontSize;
 	color: @navListHeader;
-	text-shadow: 0 1px 1px rgba(0,0,0,.5) ! important;
+	text-shadow: 0 1px 1px rgba(0,0,0,.5);
   font-weight: normal;
   line-height: @baseLineHeight;
   text-transform: uppercase;
@@ -537,7 +543,7 @@
   float: left;
 	border-right: 1px solid rgba(0,0,0,.3);
 	box-shadow: none;
-	padding: 5px 2px 5px 0;
+	padding: 5px 1px 5px 0;
 	margin: 0;
 }
 .tabs-left > .nav-tabs > li > a {
