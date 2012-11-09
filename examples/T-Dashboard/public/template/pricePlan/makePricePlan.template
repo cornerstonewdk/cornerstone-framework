@@ -111,7 +111,7 @@
 	
 	<div class="row-fluid visible-phone">
 		<div class="hero-unit">
-			<p>적책은 태블릿 이상의 화면에서만 만드실 수 있습니다.</p>
+			<p>정책은 태블릿 이상의 화면에서만 만드실 수 있습니다.</p>
 			<button class="btn" id="makePlan-backButton">뒤로</button>
 		</div>	
 	</div>

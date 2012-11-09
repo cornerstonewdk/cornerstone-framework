@@ -3,7 +3,7 @@
 		<!-- Left menu -->
 		<div class="span3">
 			<div class="well sidebar-nav">
-				<button class="btn" id="makePricePlan" type="button" style="width: 100%">새로운 정책</button>
+				<button class="btn hidden-phone" id="makePricePlan" type="button" style="width: 100%">새로운 정책</button>
 				<ul class="nav nav-list" id="pricePlanList"></ul>
 			</div>
 		</div>
