@@ -57,6 +57,8 @@
 			SKT_AUTH.options.error( { "result": "fail", "resultCode": "1", "message": "access_token is not valid." } );	
 			return false;
 		} else {
+			alert( obj.access_token );
+			alert( decodeURIComponent( obj.access_token ) );
 			SKT_AUTH.success( decodeURIComponent( obj.access_token ) );	
 		}
 		
