@@ -23,8 +23,6 @@
 			 background-color: @btnHover;
 			 *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
 			.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.4), inset 0 -1px 1px rgba(255,255,255,.05), inset 1px 0 1px rgba(255,255,255,.05), 0 4px 3px rgba(0,0,0,.4)");
-			margin: 0;
-
 			// transition is only when going to hover, otherwise the background
 			// behind the gradient (there for IE<=9 fallback) gets mismatched
 			.transition(background-position .1s linear);
@@ -406,7 +404,8 @@
 		margin-top: 2px;
 		margin-bottom: 2px;
 		.border-radius(5px);
-		border: 0;	
+		border: 0;
+		border-bottom:1px solid transparent;
 		#gradient > .pills-btn;
 		.box-shadow(~"inset 0 1px 3px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.7)");
 		&:hover {
@@ -535,75 +534,81 @@
 
 		// Nav Lists
 		.nav-list > li > a:hover {
-		color: @white;
-		background-color: @navListHover;
-		.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
-		border-bottom: 1px solid rgba(0,0,0,.2);
-		margin-top: 1px;
-	}
+			color: @white;
+			background-color: @navListHover;
+			.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
+			border: 0;
+			border-bottom: 1px solid rgba(0,0,0,.2);
+			margin-top: 1px;
+		}
 
-	.nav-list > li:last-child > a:hover {
-		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
-	}
+		.nav-list > li:first-child > a:hover {
+			border-bottom: 0;
+		}
 
-	// Thumbnails
-	a.thumbnail:hover:after {
-		content: "";
-		display:block;
-		position: absolute;
-		left: -3px;
-		top: -2px;
-		width: 100%;
-		height: 100%;
-		border: 3px solid #ea002c;
-		.border-radius(8px);
-	}
+		.nav-list > li:last-child > a:hover {
+			.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
+			border-bottom: 0;
+		}
 
-	.btn-group .btn:hover .icon-up,
-	.btn-group .btn:active .icon-up,
-	.btn-group .btn.active .icon-up{
-		background-position: -149px -380px;
-	}
+		// Thumbnails
+		a.thumbnail:hover:after {
+			content: "";
+			display:block;
+			position: absolute;
+			left: -3px;
+			top: -2px;
+			width: 100%;
+			height: 100%;
+			border: 3px solid #ea002c;
+			.border-radius(8px);
+		}
 
-	.btn-group .btn:hover .icon-down,
-	.btn-group .btn:active .icon-down,
-	.btn-group .btn.active .icon-down {
-		background-position: -149px -425px;
-	}
+		.btn-group .btn:hover .icon-up,
+		.btn-group .btn:active .icon-up,
+		.btn-group .btn.active .icon-up{
+			background-position: -149px -380px;
+		}
 
-	.btn-group .btn:hover .icon-set,
-	.btn-group .btn:active .icon-set,
-	.btn-group .btn.active .icon-set {
-		background-position: -149px -336px;
-	}
+		.btn-group .btn:hover .icon-down,
+		.btn-group .btn:active .icon-down,
+		.btn-group .btn.active .icon-down {
+			background-position: -149px -425px;
+		}
 
-	.btn-group .btn-primary .icon-up {
-		background-position: -17px -380px;
-	}
+		.btn-group .btn:hover .icon-set,
+		.btn-group .btn:active .icon-set,
+		.btn-group .btn.active .icon-set {
+			background-position: -149px -336px;
+		}
 
-	.btn-group .btn-primary .icon-down {
-		background-position: -17px -425px;
-	}
+		.btn-group .btn-primary .icon-up {
+			background-position: -17px -380px;
+		}
 
-	.btn-group .btn-primary .icon-set {
-		background-position: -16px -336px;
-	}
+		.btn-group .btn-primary .icon-down {
+			background-position: -17px -425px;
+		}
 
-	.btn-group .btn-primary:hover .icon-up,
-	.btn-group .btn-primary:active .icon-up,
-	.btn-group .btn-primary.active .icon-up{
-		background-position: -61px -380px;
-	}
+		.btn-group .btn-primary .icon-set {
+			background-position: -16px -336px;
+		}
 
-	.btn-group .btn-primary:hover .icon-down,
-	.btn-group .btn-primary:active .icon-down,
-	.btn-group .btn-primary.active .icon-down {
-		background-position: -61px -425px;
-	}
+		.btn-group .btn-primary:hover .icon-up,
+		.btn-group .btn-primary:active .icon-up,
+		.btn-group .btn-primary.active .icon-up{
+			background-position: -61px -380px;
+		}
 
-	.btn-group .btn-primary:hover .icon-set,
-	.btn-group .btn-primary:active .icon-set,
-	.btn-group .btn-primary.active .icon-set {
-		background-position: -60px -336px;
-	}
+		.btn-group .btn-primary:hover .icon-down,
+		.btn-group .btn-primary:active .icon-down,
+		.btn-group .btn-primary.active .icon-down {
+			background-position: -61px -425px;
+		}
+
+		.btn-group .btn-primary:hover .icon-set,
+		.btn-group .btn-primary:active .icon-set,
+		.btn-group .btn-primary.active .icon-set {
+			background-position: -60px -336px;
+		}
 }
