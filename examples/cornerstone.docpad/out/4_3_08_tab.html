@@ -60,13 +60,13 @@
               Cornerstone Framework
             </li>
             <li>
-              <a>‘본문’</a>
+              <a class="first-depth">‘본문’</a>
             </li>
             <li class="inactive">
-              <a href="./2_1_00_application.html" style="text-indent:20px">애플리케이션 작성법</a>
+              <a class="second-depth" href="./2_1_00_application.html">애플리케이션 작성법</a>
             </li>
             <li class="inactive">
-              <a href="./2_1_01_file_structure.html" style="text-indent:40px">파일 구조</a>
+              <a class="third-depth" href="./2_1_01_file_structure.html">파일 구조</a>
             </li>
             <li class="inactive">
               <a href="./2_1_02_module.html" style="text-indent:40px">모듈화</a>
@@ -231,16 +231,20 @@
 
 <script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
 
-<p><link rel='stylesheet' href='lib/codemirror.css' />                                                               </p>
+<p>
+	<link rel='stylesheet' href='lib/codemirror.css' />
+    <link rel="stylesheet" href="theme/ambiance.css" />
+</p>
 
 <style>                                                                                                           
-.CodeMirror { float: left; width: 50%; border: 1px solid black; }                                                 
-iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                     
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                     
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
+<iframe id=preview_prv_1></iframe>                                                                  
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -248,7 +252,7 @@ iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border
     <meta charset=utf-8>                                                                                          
     <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
     <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
-    <link rel='stylesheet' href='./dist/ui/theme/white/css/cornerstone.css' />                                    
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                    
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
@@ -273,10 +277,11 @@ iframe { width: 49%; float: left; height: 300px; border: 1px solid black; border
   </body>                                                                                                         
 </html>                                                                                                           
 </textarea>                                                                                                       
-<iframe id=preview_prv_1></iframe>                                                                  
 <script>                                                                                                          
   var delay_prv_1;                                                                                  
-  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), {
+  	theme: 'ambiance',
+  	lineNumbers: true,
     mode: 'text/html',                                                                                            
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
