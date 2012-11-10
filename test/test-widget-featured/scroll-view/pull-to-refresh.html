@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>스크롤뷰 :: 당기면 새로고침</title>
+	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap-responsive.css"/>
+	<link rel="stylesheet" href="../../../dist/ui/theme/white/css/cornerstone.css"/>
+	<link rel="stylesheet" href="../../../dist/ui/widget-scrollview.css">
+	<style type="text/css">
+		body {
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+
+<div id="header">
+	<div class="navbar nav-icon">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<i></i>
+				</button>
+				<a class="brand" href="#">CornerStone</a>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="wrapper" class="scrollview">
+	<div class="lists scroller">
+		<div id="pullDown">
+			<span class="pullDownIcon"></span><span class="pullDownLabel">아래로 당겨서 새로고침...</span>
+		</div>
+		<header>Scroll View (Pull to refresh)</header>
+		<ul id="thelist" class="lists-con">
+			<li><a href="#">테스트 레코드 1</a></li>
+			<li><a href="#">테스트 레코드 2</a></li>
+			<li><a href="#">테스트 레코드 3</a></li>
+			<li><a href="#">테스트 레코드 4</a></li>
+			<li><a href="#">테스트 레코드 5</a></li>
+			<li><a href="#">테스트 레코드 6</a></li>
+			<li><a href="#">테스트 레코드 7</a></li>
+			<li><a href="#">테스트 레코드 8</a></li>
+			<li><a href="#">테스트 레코드 9</a></li>
+			<li><a href="#">테스트 레코드 10</a></li>
+			<li><a href="#">테스트 레코드 11</a></li>
+			<li><a href="#">테스트 레코드 12</a></li>
+			<li><a href="#">테스트 레코드 13</a></li>
+			<li><a href="#">테스트 레코드 14</a></li>
+			<li><a href="#">테스트 레코드 15</a></li>
+			<li><a href="#">테스트 레코드 16</a></li>
+			<li><a href="#">테스트 레코드 17</a></li>
+			<li><a href="#">테스트 레코드 18</a></li>
+			<li><a href="#">테스트 레코드 19</a></li>
+			<li><a href="#">테스트 레코드 20</a></li>
+			<li><a href="#">테스트 레코드 21</a></li>
+			<li><a href="#">테스트 레코드 22</a></li>
+			<li><a href="#">테스트 레코드 23</a></li>
+			<li><a href="#">테스트 레코드 24</a></li>
+			<li><a href="#">테스트 레코드 25</a></li>
+			<li><a href="#">테스트 레코드 26</a></li>
+			<li><a href="#">테스트 레코드 27</a></li>
+			<li><a href="#">테스트 레코드 28</a></li>
+			<li><a href="#">테스트 레코드 29</a></li>
+			<li><a href="#">테스트 레코드 30</a></li>
+			<li><a href="#">테스트 레코드 31</a></li>
+			<li><a href="#">테스트 레코드 32</a></li>
+			<li><a href="#">테스트 레코드 33</a></li>
+			<li><a href="#">테스트 레코드 34</a></li>
+			<li><a href="#">테스트 레코드 35</a></li>
+			<li><a href="#">테스트 레코드 36</a></li>
+			<li><a href="#">테스트 레코드 37</a></li>
+			<li><a href="#">테스트 레코드 38</a></li>
+			<li><a href="#">테스트 레코드 39</a></li>
+			<li><a href="#">테스트 레코드 40</a></li>
+		</ul>
+		<div id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel">위로 당겨서 가져오기...</span>
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<ul class="nav nav-bot">
+		<li>
+			<a href="#">
+				<i class="about"></i>
+				<span>about</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="favorites"></i>
+				<span>favorites</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="active">
+				<i class="downloads"></i>
+				<span>downloads</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="settings"></i>
+				<span>settings</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="user"></i>
+				<span>user</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../../../dist/ui/widget-scrollview.js"></script>
+<script type="text/javascript">
+	var generatedCount = 0;
+	$("#wrapper").featuredScrollView({
+		pullDownID:"pullDown",
+		pullUpID:"pullUp",
+		pullDownAction:function () {
+			// 일반적으로 pullDown은 새로고침 액션으로 이용된다.
+			setTimeout(function() {
+				$("#wrapper").featuredScrollView("refresh");
+			}, 500);
+		},
+		pullUpAction:function () {
+			// ajax로 데이터바인딩이 완료될때 꼭 스크롤뷰 새로고침이 필요함.
+			setTimeout(function() {
+				// 임시 엘리먼트를 추가한다.
+				var el, li, i;
+				el = document.getElementById('thelist');
+				for (i = 0; i < 10; i++) {
+					li = document.createElement('li');
+					li.innerHTML = '<a href="#">신규 레코드 ' + (++generatedCount) + '</a>';
+					el.appendChild(li, el.childNodes[0]);
+				}
+				$("#wrapper").featuredScrollView("refresh");
+			}, 500);
+		}
+	});
+</script>
+</body>
+</html>

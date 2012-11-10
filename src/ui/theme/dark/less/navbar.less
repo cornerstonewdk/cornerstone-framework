@@ -1,0 +1,752 @@
+//
+// Navbars (Redux)
+// --------------------------------------------------
+
+
+// COMMON STYLES
+// -------------
+
+// Base class and wrapper
+.navbar {
+  overflow: visible;
+  margin-bottom: @baseLineHeight;
+  color: @navbarText;
+	background: url('../img/bg_nav.png') repeat left top;
+
+  // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
+  *position: relative;
+  *z-index: 2;
+}
+
+// Inner for background effects
+// Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
+.navbar-inner {
+	text-align:center;
+  min-height: @navbarHeight;
+  padding: 0 10px;	
+  #gradient > .vertical-nav();
+	border:none;
+  .border-radius(0);
+  .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)");
+	position:relative;
+}
+
+// Set width to auto for default container
+// We then reset it for fixed navbars in the #gridSystem mixin
+.navbar .container {
+  width: auto;
+}
+
+// Override the default collapsed state
+.nav-collapse.collapse {
+  height: auto;
+}
+
+// Brand: website or project name
+// -------------------------
+.navbar .brand, .navbar .brand:hover {
+	clear:both;
+  float: none;
+  display: none;
+  // Vertically center the text given @navbarHeight
+  padding: 5px 20px;
+  margin-left: 0; // negative indent to left-align the text down the page
+  font-size: 20px;
+  font-weight: 200;
+  color: @navbarBrandColor;
+  text-shadow: 0 2px 1px rgba(0,0,0,.5);
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.navbar .btn-navbar {
+	display: none;
+}
+
+// Plain text in topbar
+// -------------------------
+.navbar-text {
+  margin-bottom: 0;
+  line-height: @navbarHeight;
+}
+
+// Janky solution for now to account for links outside the .nav
+// -------------------------
+.navbar-link {
+  color: @navbarLinkColor;
+  &:hover {
+    color: @navbarLinkColorHover;
+  }
+}
+
+// Dividers in navbar
+// -------------------------
+.navbar .divider-vertical {
+  height: @navbarHeight - 16;
+  margin: 0;
+	padding: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+// Buttons in navbar
+// -------------------------
+.navbar .btn,
+.navbar .btn-group {
+  .navbarVerticalAlign(28px); // Vertically center in navbar
+}
+.navbar .btn-group .btn {
+  margin: 0; // then undo the margin here so we don't accidentally double it
+}
+
+// Navbar forms
+.navbar-form {
+  margin: -2px 0 0; // remove default bottom margin
+  .clearfix();
+  input,
+  select,
+  .radio,
+  .checkbox {
+    .navbarVerticalAlign(30px); // Vertically center in navbar
+  }
+  input,
+  select,
+  .btn {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  input[type="image"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-top: 3px;
+  }
+  .input-append,
+  .input-prepend {
+    margin-top: 6px;
+    white-space: nowrap; // preven two  items from separating within a .navbar-form that has .pull-left
+    input {
+      margin-top: 0; // remove the margin on top since it's on the parent
+    }
+  }
+}
+
+.navbar-form input {
+	margin: 5px 0 0;
+}
+
+.navbar-form button.btn,
+.navbar-form button.btn:hover, 
+.navbar-form button.btn:active {
+	padding: 10px 20px;
+	margin: 6px 0 0;
+}
+
+
+ // Navbar search
+  .navbar-search {
+		position: relative;
+		float: right;
+		.navbarVerticalAlign(30px); // Vertically center in navbar
+		margin:0;
+		padding: 6px 0 0;
+    .search-query {
+			line-height: (@baseLineHeight + 5);
+      background-color: @inputBackground;
+			border:1px solid transparent;
+			.border-radius(@searchBorderRadius);
+			.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
+			@transition: border linear .2s, box-shadow linear .2s;
+			.transition(@transition);
+			color: @searchTxt;
+			padding: 5px 15px;
+      .transition(none);
+      .placeholder(@navbarInverseSearchPlaceholderColor);
+			vertical-align: middle;
+
+      // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
+      &:focus,
+      &.focused {
+        color: @white;
+				background-color: @inputBackground;
+				border:1px solid transparent;
+				.border-radius(@searchBorderRadius);
+				.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
+				@transition: border linear .2s, box-shadow linear .2s;
+				.transition(@transition);
+				color: @searchTxt;
+				padding: 5px 15px;
+				.transition(none);
+				.placeholder(@navbarInverseSearchPlaceholderColor);
+				vertical-align: middle;
+				text-shadow: none;				
+      }
+    }
+  }
+
+.navbar-search label {
+	display: inline-block;
+	padding: 0 10px 0 0;
+	font-size: @baseFontSize;
+}
+
+// Fixed navbar
+// -------------------------
+
+// Shared (top/bottom) styles
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindexFixedNavbar;
+  margin-bottom: 0; // remove 18px margin for default navbar
+}
+.navbar-fixed-top,
+.navbar-fixed-bottom,
+.navbar-static-top {
+  .navbar-inner {
+    border: 0;
+  }
+}
+.navbar-fixed-top .navbar-inner,
+.navbar-fixed-bottom .navbar-inner {
+  padding-left:  0;
+  padding-right: 0;
+  .border-radius(0);
+}
+
+
+// Fixed to top
+.navbar-fixed-top {
+  top: 0;
+}
+
+// NAVIGATION
+// ----------
+
+.navbar .nav {
+  position: relative;
+  left: 0;
+  display: block;
+  float: left;
+  margin: 0;
+	padding: 9px 0 0;
+}
+.navbar .nav.pull-right {
+  float: right; // redeclare due to specificity
+}
+.navbar .nav > li {
+  float: left;
+	padding: 0 3px;
+}
+
+.navbar .nav > li:first-child {
+	border-right: 1px solid rgba(33,33,34,.85);
+	.box-shadow(~"1px 0 0 rgba(255,255,255,.1)");
+	margin-right: 5px;	
+	padding: 0 15px 0 20px;
+}
+
+.navbar .nav > li > a {
+	text-align: left;
+	display: block;
+	padding: 7px 0 7px 10px;
+	margin: 0;
+	color: @navbarLinkColor;
+	font-size: @baseFontSize - 2;
+	text-decoration: none;
+	text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+	border: 1px solid transparent;
+	.box-shadow(none);
+	background-color: transparent;
+}
+
+.navbar .nav > li > a:hover {
+	color: @navbarLinkColor;
+	text-decoration: none;
+	text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+	border: 1px solid transparent;
+	.box-shadow(none);
+	background-color: transparent;
+}
+
+// Active nav items
+.navbar .nav > li > a:focus,
+.navbar .nav > .active > a
+.navbar .nav > .active > a:focus {
+	#font > #effect > .txt-over();
+	text-decoration: none;
+	.border-radius(4px);
+	box-shadow: none;
+	border: 1px solid transparent;
+	background-color: @navbarLinkBackgroundActive;
+}
+
+
+.navbar .nav > li > a  i {
+	display: none;
+}	
+
+.nav-icon .nav > li a {
+	font-size: @baseFontSize;
+	line-height: (@baseLineHeight + 3);
+}
+
+.navbar .nav > li:first-child a,
+.navbar .nav > li:first-child > a:hover,
+.navbar .nav > li:first-child > a:focus,
+.navbar .nav > .active:first-child > a,
+.navbar .nav > .active:first-child > a:hover,
+.navbar .nav > .active:first-child > a:focus {
+	font-size: @baseFontSize;
+	#font > #effect > .txt-over();
+	text-shadow: none;
+	text-decoration: none;
+	padding: 7px 0 7px 10px;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1)");
+	border: 1px solid @navbarDropdownBorder;
+	background-color: @navbarLinkBackgroundActive;
+}
+
+// Icon + Text Navigation 
+
+.ico-txt .nav > li:first-child a,
+.nav-icon .pull-right > li:last-child a {
+  padding: 4px 13px;
+	margin: 0;
+	border: 1px solid transparent;
+}
+
+.nav.pull-right > li:last-child a i {
+	margin: 0;
+}
+
+.ico-txt .nav > li:first-child a:hover, 
+.ico-txt .nav > li:first-child a:active,
+.nav-icon .nav.pull-right > li:last-child a:hover,
+.nav-icon .nav.pull-right > li:last-child a:active {
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+	padding: 4px 13px;
+}
+
+.ico-txt .nav > li a,
+.ico-txt .nav > li a:hover,
+.ico-txt .nav > li a:active,
+.ico-txt .nav > li.active a {
+	padding: 4px 13px;
+}
+
+.ico-txt .nav > li a i {
+	margin-right: 3px;
+}
+
+.ico-txt .nav > li:first-child a {
+	color: @navbarLinkColor;
+	font-size: @baseFontSize;
+	padding: 4px 13px;
+}
+
+.ico-txt .nav > li:first-child a:hover, 
+.ico-txt .nav > li:first-child a:active, 
+.ico-txt .nav > li:first-child.active a {
+	#font > #effect > .txt-over();
+	font-size: @baseFontSize;
+	padding: 4px 13px;
+}
+
+.ico-txt .nav, .nav-icon .nav {
+	padding: 9px 0 0;
+}
+
+// Icon Navigation 
+
+
+.nav-icon .nav > li a,
+.nav-icon .nav > li a:hover,
+.nav-icon .nav > li a:active,
+.nav-icon .nav > li.active a {
+	font-size: 0;
+	line-height: 0;
+	padding: 4px 13px;
+}
+
+.nav-icon .nav > li:first-child a,
+.nav-icon .nav.pull-right > li:first-child a {	
+	visibility: visible;
+	font-size: 0;
+	line-height: 0;
+  text-decoration: none;
+	padding: 4px 13px;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+}
+
+.nav-icon .nav > li:first-child a:hover, 
+.nav-icon .nav > li:first-child a:active, 
+.nav-icon .nav > li:first-child.active a {
+	visibility: visible;
+	font-size: 0;
+	line-height: 0;
+	padding: 4px 13px;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+}
+
+.nav.pull-right > li:first-child {
+	padding: 0 3px;
+	border-right: 0;
+	box-shadow: none;
+}
+
+.nav.pull-right > li:last-child {
+	border-left: 1px solid rgba(255,255,255,.1);
+	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
+	margin-left: 10px;
+	padding: 0 0 0 5px;
+}
+
+.ico-txt .nav.pull-right > li:first-child a,
+.ico-txt .nav.pull-right > li:last-child a,
+.nav-icon .nav.pull-right > li:last-child a,
+.nav-icon .nav.pull-right > li:last-child a:hover,
+.nav-icon .nav.pull-right > li:last-child a:active {
+	font-size: 0;
+	line-height: 0;	
+	padding: 3px 13px 3px 13px;
+}
+
+// Navbar button for toggling navbar items in responsive layouts
+// These definitions need to come after '.navbar .btn'
+.navbar .btn-navbar, 
+.navbar .btn-navbar:hover,
+.navbar .btn-navbar:active {
+  position: absolute;
+	left: 10px; 
+	top: 0;
+	margin:8px 0 0;
+	.box-shadow(inset 0 0 7px rgba(0,0,0,.7));
+	border:1px solid rgba(255,255,255,.1);
+	border-bottom:1px solid rgba(255,255,255,.3);
+	.border-radius(4px);	
+	background: #212121;
+	padding: 6px 10px;
+}
+
+.btn-navbar i {
+	width: 26px;
+	height: 23px;
+	padding: 0;
+	display: block;
+	background:url('../img/icon.png') no-repeat -191px -515px;
+	background-size: 320px;
+}
+
+.btn-write, 
+.btn-write:hover, 
+.btn-write:active {
+	float:right;
+	width:28px;
+	height:29px;
+	display:block;
+	background:url('../img/icon.png') no-repeat -53px -86px;
+	background-size: 139px;
+	margin:14px 0 0;
+	cursor: pointer;
+}
+
+.btn-top, 
+.btn-top:hover, 
+.btn-top:active {
+	float:right;
+	width:25px;
+	height:22px;
+	display:block;
+	background:url('../img/icon.png') no-repeat center center;
+	background-size: 139px;
+	margin:14px 0 0;
+	cursor: pointer;
+}
+
+// Dropdown menus
+// --------------
+
+// Menu position and menu carets
+.navbar .nav > li > .dropdown-menu {
+	top: 42px;
+	left: 3px;
+	z-index: 10;
+	text-align:left;
+	&:before {
+    border-bottom-color: @dropdownBorder;
+    position: absolute;
+    top: -9px;
+    left: 9px;
+  }
+  &:after {
+    border-bottom: 8px solid @dropdownBackground;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+  }
+}
+
+// Menu position and menu caret support for dropups via extra dropup class
+.navbar-fixed-bottom .nav > li > .dropdown-menu {
+  &:before {
+    border-top: 7px solid #ccc;
+    border-top-color: @dropdownBorder;
+    border-bottom: 0;
+    bottom: -7px;
+    top: auto;
+  }
+  &:after {
+    border-top: 6px solid @dropdownBackground;
+    border-bottom: 0;
+    bottom: -6px;
+    top: auto;
+  }
+}
+
+// Remove background color from open dropdown
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+	#font > #effect > .txt-over();
+  text-decoration: none;
+	.border-radius(4px);
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
+  background-color: @navbarLinkBackgroundActive;
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: @navbarLinkColor;
+  border-bottom-color: @navbarLinkColor;
+}
+.navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  border-top-color: @navbarLinkColorActive;
+  border-bottom-color: @navbarLinkColorActive;
+}
+
+// Right aligned menus need alt position
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
+  left: auto;
+  right: 0;
+  &:before {
+    left: auto;
+    right: 12px;
+  }
+  &:after {
+    left: auto;
+    right: 13px;
+  }
+  .dropdown-menu {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: -1px;
+    .border-radius(6px 0 6px 6px);
+  }
+}
+
+
+// Inverted navbar
+// -------------------------
+
+.navbar-inverse {
+  color: @navbarInverseText;
+
+  .navbar-inner {
+    #gradient > .tab-grd (@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+    border-color: @navbarInverseBorder;
+  }
+
+  .brand,
+  .nav > li > a {
+    color: @navbarInverseLinkColor;
+    text-shadow: none;
+    &:hover {
+      color: @navbarInverseLinkColor;
+    }
+  }
+
+  .nav > li > a:focus,
+  .nav > li > a:hover {
+    background-color: transparent;
+    color: @navbarInverseLinkColor;
+  }
+
+  .nav .active > a,
+  .nav .active > a:focus {
+    color: @navbarInverseLinkColorActive;
+    background-color: @navbarInverseLinkBackgroundActive;
+  }
+
+  // Inline text links
+  .navbar-link {
+    color: @navbarInverseLinkColor;
+    &:hover {
+      color: @navbarInverseLinkColorHover;
+    }
+  }
+
+  // Dividers in navbar
+  .divider-vertical {
+    border-left-color: @navbarInverseBackground;
+    border-right-color: @navbarInverseBackgroundHighlight;
+  }
+
+  // Dropdowns
+  .nav li.dropdown.open > .dropdown-toggle,
+  .nav li.dropdown.active > .dropdown-toggle,
+  .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: @navbarInverseLinkBackgroundActive;
+    color: @navbarInverseLinkColorActive;
+  }
+  .nav li.dropdown > .dropdown-toggle .caret {
+    border-top-color: @navbarInverseLinkColor;
+    border-bottom-color: @navbarInverseLinkColor;
+  }
+  .nav li.dropdown.open > .dropdown-toggle .caret,
+  .nav li.dropdown.active > .dropdown-toggle .caret,
+  .nav li.dropdown.open.active > .dropdown-toggle .caret {
+    border-top-color: @navbarInverseLinkColorActive;
+    border-bottom-color: @navbarInverseLinkColorActive;
+  }
+
+ .nav.pull-right li.dropdown .dropdown-toggle {
+		padding: 7px 13px;
+	}
+
+
+  // Navbar collapse button
+  .btn-navbar {
+    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+		background:#212121 url('../img/icon.png') no-repeat 0 -935;
+		background-size: 139px;
+  }
+
+}
+
+
+.icon-home {
+	width: 24px;
+	height: 29px;
+	background-position: -193px -824px;
+}
+
+.nav > li:first-child a:hover .icon-home, 
+.nav > li:first-child a:active .icon-home, 
+.nav > li:first-child.active a .icon-home {
+	width: 24px;
+	height: 29px;
+	background-position: -149px -824px;
+}
+
+.icon-message {
+	width: 24px;
+	height: 29px;
+	background-position: -193px -467px;
+}
+
+.navbar .nav > li a:hover .icon-message, 
+.navbar .nav > li a:active .icon-message, 
+.navbar .nav > li.active a .icon-message, {
+	width: 24px;
+	height: 29px;
+	background-position: -149px -467px;
+}
+
+.icon-mail {
+	width: 26px;
+	height: 29px;
+	background-position: -191px -602px;
+}
+
+.navbar .nav > li a:hover .icon-mail, 
+.navbar .nav > li a:active .icon-mail, 
+.navbar .nav > li.active a .icon-mail, {
+	width: 26px;
+	height: 29px;
+	background-position: -147px -602px;
+}
+
+.icon-save {
+	width: 22px;
+	height: 29px;
+	background-position: -193px -646px;
+}
+
+.navbar .nav > li a:hover .icon-save, 
+.navbar .nav > li a:active .icon-save, 
+.navbar .nav > li.active a .icon-save, {
+	width: 22px;
+	height: 29px;
+	background-position: -149px -646px;
+}
+
+.icon-user2 {
+	width: 27px;
+	height: 29px;
+	background-position: -191px -779px;
+}
+
+.navbar .nav > li a:hover .icon-user2, 
+.navbar .nav > li a:active .icon-user2, 
+.navbar .nav > li.active a .icon-user2, {
+	width: 27px;
+	height: 29px;
+	background-position: -147px -779px;
+}
+
+.icon-connect {
+	width: 26px;
+	height: 29px;
+	background-position: -191px -734px;
+}
+
+.nav-icon .nav > li:first-child a:hover .icon-connect, 
+.nav-icon .nav > li:first-child a:active .icon-connect, 
+.nav-icon .nav > li:first-child.active a .icon-connect {
+	width: 26px;
+	height: 29px;
+	background-position: -147px -734px;
+}
+
+.icon-search {
+	width: 24px;
+	height: 29px;
+	background-position: -192px -690px;
+}
+
+.navbar .nav > li a:hover .icon-search, 
+.navbar .nav > li a:active .icon-search, 
+.navbar .nav > li.active a .icon-search {
+	background-position: -148px -690px;
+}
+
+.icon-write {
+	width: 28px;
+	height: 29px;
+	background-position: -190px -557px;
+}
+
+.navbar .nav > li a:hover .icon-write, 
+.navbar .nav > li a:active .icon-write, 
+.navbar .nav > li.active a .icon-write {
+	width: 28px;
+	height: 29px;
+	background-position: -146px -557px;
+}

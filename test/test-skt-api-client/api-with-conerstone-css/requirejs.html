@@ -3,21 +3,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 		<title>SKT Open API Client Sample</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link href="css/cornerstone.min.css" rel="stylesheet">
+		<link href="../../../dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="../../../dist/ui/theme/dark/css/cornerstone.css" rel="stylesheet">
 		<style type="text/css">
 		a { cursor: pointer;}
 		label { color: #fff ! important; }
 		</style>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand">SKT Open API Client Sample</a>
-				</div>
-			</div>
+		<div class="navbar navbar-inverse" style="text-align:center; padding: 20px 20px;">
+			<label>SKT Open API Client Sample</label>
 		</div>
 		
 		<div class="container">
@@ -29,13 +25,13 @@
 							<span class="label label-important" id="auth_status">undefined</span>
 						</label>
 						<ul class="nav nav-tabs">
-							<li class="active" name="auth">
+							<li class="active" name="auth" style="width: 32%;">
 								<a>인증</a>
 							</li>
-							<li name="sms">
+							<li name="sms" style="width: 32%;">
 								<a>메시지</a>
 							</li>
-							<li name="pay">
+							<li name="pay" style="width: 33%;">
 								<a>과금</a>
 							</li>
 						</ul>
@@ -81,7 +77,7 @@
 					                <div class="control-group">
 					                    <label class="control-label" for="message">메시지</label>
 					                    <div class="controls">
-					                    	<textarea id="message" style="width:270px;height:100px;"></textarea>
+					                    	<textarea id="message" class="input-xlarge"></textarea>
 					                    </div>
 					                </div>
 					                <div class="form-actions" style="background:none;">
@@ -137,6 +133,6 @@
 			</div>
 		</div>
 		<br/>
-		<script type="text/javascript" src="js/require.js" data-main="js/main"></script>
+		<script type="text/javascript" src="../../../dist/lib/require.js" data-main="js/main"></script>
 	</body>
 </html>

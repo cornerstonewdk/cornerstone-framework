@@ -1,0 +1,431 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #4e4e4e;
+@grayLight:             #808080;
+@grayLighter:           #b0b0b0;
+@white:                 #fff;
+
+
+// Accent colors
+// -------------------------
+@blue:                  #2094b1;
+@blueDark:              #0a2e55;
+@skyBlue:								#5aafc4;
+@green:                 #089908;
+@red:                   #ea002c;
+@yellow:                #8f8f06;
+@orange:                #da7c4a;
+@orangeDark:            #bc673a;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        #404347;
+@textColor:             @grayDark;
+
+// Title
+// -------------------------
+@titColor:							@black;
+
+
+// Links
+// -------------------------
+@linkColor:             #316b9d;
+@linkColorHover:        darken(@linkColor, 15%);
+
+
+// Typography
+// -------------------------
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+@comFontFamily:					Dotum, Calibri, Arial;
+
+@baseFontSize:          18px;
+@baseFontFamily:        @comFontFamily;
+@baseLineHeight:        22px;
+@altFontFamily:         @serifFontFamily;
+
+@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+
+
+// Tables
+// -------------------------
+@tableBackground:                   transparent; // overall background-color
+@tableBackgroundAccent:             rgba(51,51,51,.2); // for striping
+@tableBackgroundHover:              rgba(51,51,51,.2); // for hover
+@tableBorder:                       rgba(0,0,0,.25); // table and cell border
+@tableColor:												@black;
+
+
+// Buttons [2012-08-29] Add
+// -------------------------
+@btnBackground:                     #42464b;
+@btnGradiant:												#3d4146;
+@btnBackgroundHighlight:            #56595e;
+@btnBorder:                         @black;
+@btnShadow:													rgba(0,0,0,.7);
+@btnHover:													#1e2023;
+@btnActive:													#25272a;
+@btnActiveTxt:											#c1f2ff;
+@btnActiveBorder:                   #333;
+@btnLinkTxt:												@white;
+@btnDisabled:												#858e98;
+@btnDisabledTxt:										#ccc;
+
+@btnPrimaryBackground:              #2e6391;
+@btnPrimaryBackgroundHighlight:     #4b7da9;
+@btnPrimaryTxt:											@white;
+
+@btnBlueTxt:												@blueDark;
+@btnBlueHover:											#113a5e;
+@btnBlueHoverHighlight:							#244e72;
+@btnBlueActive:											#1f4164;
+@btnBlueActiveHighlight:						#234a71;
+@btnBlueActiveTxt:									#c1f2ff;
+@btnBlueDisabled:										#87abca;
+@btnBlueDisabledTxt:								#ddd;
+
+@btnGroupTxt:												@black;
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              @gray;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+@verticalBackground:								#eee;
+
+@inputGradiantBg:										rgba(41,41,41,.52);
+@selectArrow:												#42464b;
+@caretColor:												@gray;
+@caretColorActive:									@white;
+
+// Radio, Checkbox List 
+@listBackground:                    #ededed;
+
+
+// Forms
+// -------------------------
+@inputBackground:               @white;
+@inputBorder:                   rgba(179,233,246,.5);
+@inputShadow:                   rgba(255,225,255,1);
+@inputShadowOrange:							rgba(255,205,178,1);
+@inputBorderRadius:             5px;
+@inputDisabledBackground:       @grayLighter;
+@inputHeight:										26px;
+@formActionsBackground:         #f5f5f5;
+
+@addonTopColor:									#5a5d61;
+@addonBotColor:									#3d4146;
+
+@uneditableTxt:									#e0dcdc;
+@disabledInput:									@white;
+
+@selectBackground:              rgba(44,45,46,.8);
+@selectHeight:									16px;
+
+@searchBorderRadius:            25px;
+@searchBackground:							@white;
+@searchTxt:											@grayLight;
+
+@uneditableBackground:          rgba(34,34,34,.22);
+
+// Dropdowns
+// -------------------------
+@dropdownBackground:            @white;
+@dropdownBorder:                rgba(0,0,0,.2);
+@dropdownLinkColor:             @grayDark;
+@dropdownLinkColorHover:        @white;
+@dropdownLinkBackgroundHover:   #ea002c;
+@dropdownLinkBackgroundActive:  #ea002c;
+@dropdownDividerTop:            #e5e5e5;
+@dropdownDividerBottom:         @white;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:          1000;
+@zindexPopover:           1010;
+@zindexTooltip:           1020;
+@zindexFixedNavbar:       1030;
+@zindexModalBackdrop:     1040;
+@zindexModal:             1050;
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+@placeholderText:         @grayLight;
+
+
+// Hr border color
+// -------------------------
+@hrBorder:                @grayDark;
+
+
+// Nav
+// -------------------------
+@navLink:													@grayLighter;
+
+@navTabLink:					            @white;
+@navTabOver:					            @black;
+@navTabLine:					            @white;
+@navTabTop:												#fefefe;
+@navTabLeft:											@grayLighter;
+@navTabRight:											#b4b4b4;
+@navPillLink:					            @white;
+@navPillActive:					          @white;
+@navPillBackground:					      #888;
+@navPillActive:									  #393938;
+@navPillBorder:					          @black;
+@navPillBorderOver:				        #454646;
+@navStackedLink:					        @black;
+@navStackedBorder:								#0c0c0c;
+@navStackedBackground:						#2a2d30;
+
+@navBotActive:										#292c2f;
+@navBotBlueBg:										#316b9d;
+@navBotBlueOver:									#234a71;
+@navBotBorder:										@black;
+@navBotLink:											#d2d2d2;
+@navBotBlueLink:									#d3d3d3;
+@navBotBlueActive:								@white;
+
+
+// Navbar
+// -------------------------
+@navbarHeight:                    51px;
+@navbarBackground:                @black;
+@navbarBackgroundHighlight:       @white;
+
+@navbarText:                      @grayDark;
+@navbarLinkColor:                 @grayDark;
+@navbarLinkHome:									#131313;
+@navbarLinkColorHover:            #f04d6c;
+@navbarLinkColorActive:           @white;
+@navbarLinkBackgroundHover:       #202020;
+@navbarLinkBackgroundActive:      #ea002c;
+@navbarLinkBorder:								rgba(69,69,69,.3);
+@navbarFirstBackground:						#5f6267;
+
+@navbarSearchBackground:          lighten(@navbarBackground, 25%);
+@navbarSearchBackgroundFocus:     @white;
+@navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
+@navbarSearchPlaceholderColor:    #ccc;
+@navbarBrandColor:                @white;
+
+@navbarDropdownBorder:						#454545;
+@navbarDropdownTxt:								@grayLight;
+@navbarDropdownBg									:#B7B7B7;
+@navbarInverseLinkBackgroundActive	:#B7B7B7;
+@navbarInverseLinkColor:					@white;
+
+@radioVertTxt:			              @black;
+
+//	Nav List
+@navListBg:												#ededee;
+@navListHeader:										@white;
+@navListHover:										#525252;
+@navListActive:										#9e2222;
+
+
+@navBtn:													#8a8a8a;
+@navBtnHover:											#e8002c;
+
+
+// Pagination
+// -------------------------
+@pagingBackground:								rgba(0,0,0,.08);
+@pagingNum:												#9b9b9b;
+@pagingNumBg:											#727272;
+@pagingBtn:												#ea002c;
+@pagingNextBtn:										#a8a8a8;
+@pagingTxt:												#727272;
+@pagingActive:										@white;
+@pagingArrow:											#d5d5d5;
+@pagingArrowActive:								#757575;
+
+
+// BreadcrumbsTxt
+// -------------------------
+@breadcrumbsTxt:                  @white;
+
+// Hero unit
+// -------------------------
+@heroUnitBackground:              @grayLighter;
+@heroUnitHeadingColor:            inherit;
+@heroUnitLeadColor:               inherit;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:             @white;
+@warningBackground:       #ef923c;
+@warningBorder:           rgba(143,143,6,.64);
+
+@errorText:               @white;
+@errorBackground:         #e03c5b;
+@errorBorder:             rgba(169,0,0,.64);
+
+@successText:             @white;
+@successBackground:       #67ab4f;
+@successBorder:           rgba(8,153,8,.64);
+
+@infoText:                @white;
+@infoBackground:          #52a4b8;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+@disabledText:            #a4a4a4;
+
+
+// Tooltips and popovers
+// -------------------------
+@tooltipColor:            #fff;
+@tooltipBackground:       #282b2e;
+@tooltipArrowWidth:       5px;
+@tooltipArrowColor:       @tooltipBackground;
+
+@tooltipWhite:						#ededee;
+@whiteArrowColor:					@tooltipWhite;
+@tooltipWhiteColor:				@black;
+
+@popoverBackground:       #fff;
+@popoverArrowWidth:       10px;
+@popoverArrowColor:       #fff;
+@popoverTitleBackground:  darken(@popoverBackground, 3%);
+
+// Special enhancement for popovers
+@popoverArrowOuterWidth:  @popoverArrowWidth + 1;
+@popoverArrowOuterColor:  rgba(0,0,0,.25);
+
+
+// Slider
+@sliderBg:								#8f8f06;
+@sliderBtn:								#ececec;
+@sliderBoll:							#dc1e42;
+
+@figureTxt:								@black;
+
+// Flip
+@flipOffBg:								rgba(47,47,47,80);
+@flipOnBg:								#dc1e42;
+@flipBoll:								#d3d3d3;
+@flipOffTxt:							@grayLighter;
+@flipOnTxt:								@white;
+
+
+// Labels
+@labelDefault:						#656565;
+@labelSuccess:						#3d9e1b;
+@labelWarning:						#ff7a00;
+@labelImportant:					@red;
+@labelInfo:								@blue;
+@labelInverse:						#272727;
+
+// Pager
+@pagerBg:									@btnBackground;
+@pagerTxt:								#bcbcbc;
+@pagerHoverBg:						#2a2d30;
+@pagerActiveBg:						#212121;
+@pagerDisabledTxt:				#646972;
+
+
+// Page Title
+// -------------------------
+@titleColor:              @grayDarker;
+
+// Footer
+// -------------------------
+@footTxtColor:            #424242;
+
+// popover
+@popoverBackground:				#c4c4c4;
+@popoverTitleBackground:	#f7f7f7;
+@popoverConBackground:		@white;
+@popoverArrowColor:				@popoverConBackground;
+@popoverBorder:						#c4c4c4;
+
+@popoverTitleTxt:					@black;
+@popoverConTxt:						@black;
+
+// thumbnails
+@thumbnailsBg:						#d5d5d5;
+@thumbnailsOver:					@red;
+
+//accordion
+
+@accordionTabTxt:						#e6e6e6;
+@accordionInner:					@white;
+@accordionBorder:					transparent;
+@accordionInnerTxt:				#040404;
+
+@wellBackground:					#e7e9ea;
+
+//Lists
+@listHover:								#9e2222;
+@subGroupTit:							#f07118;
+@subGroupTxt:							@white;
+
+// Datapicker
+@datepickerBackground:		@white;
+@dateHeader:							#f7f7f7;
+@dateHeaderTxt:						@black;
+@dateColor:								#8b8b8b;
+@dateDisabled:						#c5c5c5;
+@activeDate:							#f70132;
+@datepickerArrowBack:			#ccc;
+@datepickerArrow:					@white;
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         0;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;

@@ -63,16 +63,18 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], 
 			
 			var self = this;
 			
+			function onValidationError( model, err ) {
+			
+				if ( _.isArray( err ) )
+					_.each( err, self.validation.fail );
+				else
+					self.validation.fail( err );
+			}
+			
+			this.model.off( 'error', onValidationError );
+			this.model.on( 'error', onValidationError );
 			this.model.clear( { silent: true } );
-			this.model.set( values, {
-				error: function( model, err ) {
-				
-					if ( _.isArray( err ) )
-						_.each( err, self.validation.fail );
-					else
-						self.validation.fail( err );
-				}
-			} );
+			this.model.set( values );
 			
 			if ( this.model.isValid() ) self.validation.success();
 			

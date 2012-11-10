@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>에디터</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="../../../dist/ui/theme/white/css/cornerstone.css">
+	<link rel="stylesheet" href="../../../dist/ui/widget-editor.css">
+	<style type="text/css">
+		.editor {
+			width: 97%;
+			min-height: 600px;
+		}
+		.wysihtml5-toolbar [class^="icon-"], [class*=" icon-"] {
+			background-image: url("../../../lib/bootstrap/img/glyphicons-halflings-white.png");
+		}
+		.btn {
+			vertical-align: middle;
+			color: white !important;
+		}
+		.btn i {
+			margin-top: 3px;
+		}
+	</style>
+</head>
+<body>
+
+<!-- 코너스톤 네비게이션 -->
+<div id="header" class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<i></i>
+			</button>
+			<a class="brand" href="/">T-Dashboard</a>
+
+			<div class="nav-collapse collapse in">
+				<ul class="nav">
+					<li class=""> <!-- class="active" -->
+						<a href="#index">Home</a>
+					</li>
+					<li class="">
+						<a href="#form">Form</a>
+					</li>
+					<li class="">
+						<a href="#component">Component</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugin</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Plugin1</a></li>
+							<li><a href="#">Plugin2</a></li>
+							<li><a href="#">Plugin3</a></li>
+							<li><a href="#">Plugin4</a></li>
+						</ul>
+					</li>
+					<li class="">
+						<a href="#Featured">Featured</a>
+					</li>
+				</ul>
+
+				<form class="navbar-search pull-left">
+					<label>Sign in</label>
+					<input type="text" class="search-query" placeholder="SEARCH">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="wrapper" class="container">
+	<div class="row">
+		<div class="span12">
+			<textarea id="example" rows="20" class="editor">
+				<a target="_blank" rel="nofollow" href="http://sk.co.kr/Image/common/logo.gif"><img alt="" src="http://sk.co.kr/Image/common/logo.gif" title="Image: http://sk.co.kr/Image/common/logo.gif"></a><br>&nbsp; &nbsp; <br><h1>Lorem ipsum </h1><br>dolor sit amet, consectetur adipiscing elit. <h2>Aliquam ligula sapien, rutrum sed vestibulum eget,
+					rhoncus ac erat. </h2><h3>Aliquam erat volutpat. Sed convallis scelerisque enim at fermentum. </h3>Aliquam consectetur,
+				est ac auctor iaculis, odio mi bibendum leo, in congue neque velit vel enim. <br>Nullam vitae <b>justo at mauris sodales feugiat</b>.
+
+				Praesent pellentesque ipsum eget tellus imperdiet ultrices. <br>Sed ultricies nisi nec diam sodales fringilla. Quisque adipiscing cursus porta.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Aliquam bibendum scelerisque elit, <i>eu pharetra dui pulvinar eget</i>.
+				<u>Nam mollis mauris id tellus ultricies at porttitor neque vulputate.</u> <br>Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+				per inceptos himenaeos.
+				<br><br><ul><li>&nbsp;역시 마찬가지로, 단순히 고통이라는 이유 때문에 고통 그 자체를 사랑하거나 추구하거나 소유하려는 자는 없다.</li><li>
+					&nbsp;다만 노역과 고통이 아주 큰 즐거움을 선사하는 상황이 때로는 발생하기 때문에 고통을 찾는 사람이 있는 것이다. </li></ul><ol><li>간단한 예를 들자면,
+					모종의 이익을 얻을 수도 없는데 힘든 육체적 노력을 기꺼이 할 사람이 우리들 중에 과연 있겠는가?</li><li> 하지만 귀찮은 일이 뒤따르지 않는 즐거움을 누리는 것을 선택한 사람,
+				</li></ol>혹은 아무런 즐거움도 생기지 않는 고통을 회피하는 사람을 누가 탓할 수 있겠는가?
+
+			</textarea>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../../../dist/ui/widget-editor.js"></script>
+<script type="text/javascript">
+	$("#example").featuredEditor();
+</script>
+</body>
+</html>
