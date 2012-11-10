@@ -57,7 +57,6 @@ table tbody tr:hover td {
     margin-top:20px;
     padding:20px 15px;
     background:rgba(255,255,255,.1);
-    height: 174px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
