@@ -57,6 +57,9 @@ table tbody tr:hover td {
     margin-top:20px;
     padding:20px 15px;
     background:rgba(255,255,255,.1);
+    height: 174px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .list-documents-link {
     font-size:16px;
@@ -187,4 +190,9 @@ a.third-depth {
   .subhead p {
     text-align: center;
   }
+}
+
+.media img {
+	width: 64px;
+	height: 64px;	
 }
