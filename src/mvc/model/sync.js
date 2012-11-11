@@ -39,7 +39,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 		'readAll': function( collection, options ) {
 		
 			// 해당 Collection에 속해있던 Model인지 판별하기 위해 Collection의 url이 일치하는지를 확인한다.
-			new Lawnchair( function() {
+			new Lawnchair( { adapter: 'dom' }, function() {
 				this.all( function( obj ) {
 
 					var models = [];
@@ -53,7 +53,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 		},
 		
 		'read': function( model, options ) {
-			new Lawnchair( function() {
+			new Lawnchair( { adapter: 'dom' }, function() {
 				this.get( model.id, function( obj ) {
 
 					if ( obj ) options.success( obj.model );
@@ -64,7 +64,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 		},
 		
 		'create': function( model, options ) {
-			new Lawnchair( function() {
+			new Lawnchair( { adapter: 'dom' }, function() {
 			
 				// id가 지정되어 있지 않으면 cid를 id로 사용한다.
 				if ( !model.id ) model.set( { id: model.cid } );
@@ -79,7 +79,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 		},
 		
 		'update': function( model, options ) {
-			new Lawnchair( function() {
+			new Lawnchair( { adapter: 'dom' }, function() {
 				this.save( { key: model.id, model: model.toJSON() }, function( obj ) {
 					options.success( model );
 				} );
@@ -87,7 +87,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 		},
 		
 		'delete': function( model, options ) {
-			new Lawnchair( function() {
+			new Lawnchair( { adapter: 'dom' }, function() {
 				this.remove( model.id, function() {
 					options.success();
 				} );
