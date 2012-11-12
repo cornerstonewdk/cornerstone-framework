@@ -3,10 +3,10 @@ define([
 		'jquery', 
 		'backbone',
 		'util/dummyDataUtil', 
-		'template!../../../template/lteReport/lteReport',
+		'template!../template/lteReport/lteReport',
 		'observer',
 		'widget-chart',
-		'style!../../../style/lteReport/lteReportStyle'
+		'style!../style/lteReport/lteReportStyle'
 	], function(
 		GestureView,
 		$, 
