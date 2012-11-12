@@ -55,22 +55,31 @@
 
 	.navbar .nav > li > a {
 		text-align: left;
+		font-weight: normal;
 		display: block;
 		padding: 7px 0 7px 10px;
 	}
 
-	// Active nav items
+	// 2012-11-12
+	// Active nav items 
 	.navbar .nav > li > a:focus,
-	.navbar .nav > li > a:hover,
 	.navbar .nav > .active > a,
 	.navbar .nav > .active > a:hover,
 	.navbar .nav > .active > a:focus {
 		color: @navbarLinkHome;
-		text-shadow: 0 1px 1px rgba(255,255,255,7);
+		text-decoration: none;
 		.border-radius(4px);
 		box-shadow: none;
 		border: 1px solid transparent;
-		background-color: #b7b7b7;
+		background-color: @navbarLinkBackgroundActive;
+	}
+	
+	.navbar .nav > li > a:hover {		
+		color: @navbarLinkColor;
+		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+		background: none;
+		border: 1px solid transparent;
+		.box-shadow (none);
 	}
 
 
@@ -116,6 +125,7 @@
 
 	.navbar .nav > li > .dropdown-menu > li > a {
 		color: @navbarLinkHome;
+		font-weight: normal;
 		text-shadow: 0 1px 1px rgba(255,255,255,7);
 		border: 0;
 		box-shadow: none;
@@ -123,14 +133,27 @@
 		padding: 5px 15px;
 	}
 
-	.navbar .nav > li > .dropdown-menu > li > a:hover,
-	.navbar .nav > li > .dropdown-menu > li > a:active {
+	// 2012-11-12
+	.navbar .nav > li > .dropdown-menu > li > a,
+	.navbar .nav > li > .dropdown-menu > li > a:hover {
+		color: @navbarLinkColor;
+		font-size: @baseFontSize - 2;
+		line-height: @baseLineHeight;
+		font-weight: normal;
 		border: 0;
 		box-shadow: none;
 		margin: 0;
+		padding: 5px 15px;
+		background: none;
+	}
+	.navbar .nav > li > .dropdown-menu > li > a:active {		
+		color: @navbarLinkColorActive;
+		text-shadow: none;
+		border: 0;
+		margin: 0;
 		.border-radius(5px);
-		background: #b7b7b7;
-	}	
+		background: @navbarLinkBackgroundActive;
+	}
 
 	.nav.pull-right {
 		float: none;
@@ -208,20 +231,29 @@
 		box-shadow: none;
 	}
 
-	.nav.pull-right > li:first-child a:hover, 
+	//2012-11-12		
+	.navbar .nav.pull-right > li:first-child > a,
+	.navbar .nav.pull-right > li:first-child > a:hover {
+		color: @navbarLinkColor;
+		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+		line-height: @baseLineHeight;
+		background: none;
+		border: 1px solid transparent;
+		.box-shadow (none);
+		padding: 7px 0 7px 13px;
+	}
 	.nav.pull-right > li:first-child a:active, 
 	.nav.pull-right > li:first-child.active a,
-	.nav.pull-right > li:last-child a:hover, 
 	.nav.pull-right > li:last-child a:active, 
 	.nav.pull-right > li:last-child.active a {
+		color: @navbarLinkColorActive;
+		text-shadow: none;
 		font-size: @baseFontSize;
-		color: @white;
 		line-height: @baseLineHeight;
 		text-decoration: none;
 		padding: 7px 0 7px 10px;
-		background-color: #b7b7b7;
+		background-color: @navbarLinkBackgroundActive;
 		box-shadow: none;
-		border: 0;
 	}
 
 	.nav.pull-right > li:last-child {
@@ -241,7 +273,6 @@
 	}
 
 	.navbar .brand {
-		min-width: 320px;
 		display: inline-block;
 		padding-top: 15px;
 	}
@@ -254,5 +285,41 @@
 	.slider-box .slider {
 		min-width:70%;
 		float: left;
+	}
+
+	//2012-11-12
+	.navbar-inverse .nav-collapse .nav > li > a:hover,
+	.navbar-inverse .nav-collapse .nav.pull-right > li:first-child > a,
+	.navbar-inverse .nav-collapse .nav.pull-right > li:first-child > a:hover,
+	.navbar-inverse .nav-collapse .dropdown-menu a:hover {
+		color: @navbarInverseText;
+		text-shadow: none;
+		background: none;
+	}
+	.navbar-inverse .nav-collapse .nav > li:first-child > a:hover {
+		color: @navbarLinkColorActive;
+		background: @navbarLinkHomeBg;
+	}
+	.navbar-inverse .nav-collapse .nav > li.active a,
+	.navbar-inverse .nav-collapse .nav > li.active > a:hover {
+		color: @navbarLinkColorActive;
+		text-shadow: none;
+		background: @navbarLinkBackgroundActive;
+	}
+
+	.navbar-inverse .nav > li > .dropdown-menu > li > a,
+	.navbar-inverse .nav > li > .dropdown-menu > li > a:hover {
+		color: @navbarInverseText;
+		text-shadow: none;
+		font-size: @baseFontSize - 2;
+		line-height: @baseLineHeight;
+		font-weight: normal;
+		border: 0;
+		box-shadow: none;
+		margin: 0;
+		padding: 5px 15px;
+	}
+	.navbar-inverse .nav > li > .dropdown-menu > li > a:active {
+		color: @navbarLinkColorActive;
 	}
 }
