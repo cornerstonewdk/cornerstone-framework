@@ -40,6 +40,24 @@
 			}
 		}
 		
+		//첫번째가 만약 index 가 안들어왔다면 브레드크럼 히스토리 보정
+		if(isRoot) {
+			switch(route) {
+				case 'index':
+					break;
+				case 'lteReport':
+				case 'pricePlan':
+				case 'voc':
+					this.itemList.push({'route': 'index', 'title': 'T-Dashboard'});
+					break;
+				case 'makePricePlan':
+					this.itemList.push({'route': 'index', 'title': 'T-Dashboard'});
+					this.itemList.push({'route': 'pricePlan', 'title': '정책'});
+					break;
+			}
+		}
+		
+		//히스토리 확인하여 기존것이 있는지 체크 한 후에 방향 및 히스토리 정리
 		if(!alreadyRoute) {
 			this.itemList.push({'route': route, 'title': title});
 			this.draw();
@@ -56,7 +74,10 @@
 			return "<";
 		}
 	};
-
+	
+	/*
+	 * 브레드크럼 히스토리 포함하여 그려주기
+	 */
 	BreadcrumbManager.prototype.draw = function() {
 		this.el.children().remove();
 		

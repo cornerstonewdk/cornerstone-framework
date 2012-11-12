@@ -86,10 +86,6 @@
 	display: none;	
 }
 
-div#dashboard_container {
-	color: #05121D;
-}
-
 /* Dashboard barchart style */
 div#reportChart {
 	height: 200px;

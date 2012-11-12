@@ -7,6 +7,11 @@ requirejs.config({
 		"observer": "util/resizeObserver",
 		"jsonp": Cornerstone.PATH + "util/jsonp",
 		"yql": "../lib/jquery.query-yql.min",
+		"dashboardView": "view/dashboard/dashboardView",
+		"lteReportView": "view/lteReport/lteReportView",
+		"pricePlanView": "view/pricePlan/pricePlanView",
+		"vocView": "view/voc/vocView",
+		"makePricePlanView": "view/pricePlan/makePricePlanView",
 	},
 	
 	shim: {
@@ -29,6 +34,26 @@ requirejs.config({
         
         "yql": {
         	deps:["jquery"]
+        },
+        
+        "dashboardView": {
+        	deps:["app-container"]
+        },
+        
+        "lteReportView": {
+        	deps:["app-container"]
+        },
+        
+        "pricePlanView": {
+        	deps:["app-container"]
+        },
+        
+        "vocView": {
+        	deps:["app-container"]
+        },
+        
+        "makePricePlanView": {
+        	deps:["app-container"]
         },
 	}
 });
