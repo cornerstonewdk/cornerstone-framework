@@ -45,21 +45,60 @@ section ".tagmap", ->
             b_arr[2] = 0
           a_arr[0] - b_arr[0] || a_arr[1] - b_arr[1] || a_arr[2] - b_arr[2]
         section_name = "sect_" + section_cnt
-        div ".span8", "id":section_name, ->
-          h1 tag.name
-          ul ->
-            subsection_cnt = 0
-            tag.documents.forEach (documentModel)->
-              #console.log documentModel.get('order')
-              subsection_name = documentModel.get('subsection')
-              order = documentModel.get('order')
-              order_arr = eval(order)
-              if order_arr[0] isnt subsection_cnt
-                  li "order_depth":"1", -> subsection_name
-                  subsection_cnt = order_arr[0]
-              indent_sz = (order_arr.length - 1) * 20
-              style_val = "text-indent:"+indent_sz+"px"
-              div "order":order, "subsection":subsection_name, "tags":"#{documentModel.get('tagstr')}", ->
-                li "style":style_val, "order_depth":order_arr.length, -> 
-                  a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+        #div ".span8", "id":section_name, ->
+        h1 tag.name
+        subsection_cnt = 0
+        tag.documents.forEach (documentModel)->
+          subsection_name = documentModel.get('subsection')
+          order = documentModel.get('order')
+          order_arr = eval(order)
+          if order_arr[0] isnt subsection_cnt
+              div ".span12.main-box.media", -> 
+                #a ".pull-left", "href":"#", ->
+                #  img ".media-object", "src":"", -> ""
+                img ".media-object", "src":"", -> ""
+                div ".media-body", ->
+                  h4 ".media-heading", -> subsection_name
+                  #p -> documentModel.get('outline')
+              subsection_cnt = order_arr[0]
+          depth = "main-box media"
+          order_str = ""
+          if order_arr.length is 3
+              depth = "span10 offset2 " + depth
+              order_str = order_arr[0] + "." + order_arr[1] + "." + order_arr[2] + "."
+          else 
+              depth = "span11 offset1 " + depth
+              order_str = order_arr[0] + "." + order_arr[1] + ".0."
+          div "class":depth, ->
+                a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
+                  img ".media-object", "src":"./images/"+"#{documentModel.get('thumbnail')}", -> ""
+                div ".media-body", ->
+                  a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
+                    h4 ".media-heading", -> order_str + "#{documentModel.get('title')}"
+                  p -> documentModel.get('outline')
+
+
+
+
+#          indent_sz = (order_arr.length - 1) * 20
+#          style_val = "text-indent:"+indent_sz+"px"
+#          div "order":order, "subsection":subsection_name, "tags":"#{documentModel.get('tagstr')}", ->
+#            li "style":style_val, "order_depth":order_arr.length, -> 
+#              a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+
+#        ul ->
+#            subsection_cnt = 0
+#            tag.documents.forEach (documentModel)->
+#              #console.log documentModel.get('order')
+#              subsection_name = documentModel.get('subsection')
+#              order = documentModel.get('order')
+#              order_arr = eval(order)
+#              if order_arr[0] isnt subsection_cnt
+#                  li "order_depth":"1", -> subsection_name
+#                  subsection_cnt = order_arr[0]
+#              indent_sz = (order_arr.length - 1) * 20
+#              style_val = "text-indent:"+indent_sz+"px"
+#              div "order":order, "subsection":subsection_name, "tags":"#{documentModel.get('tagstr')}", ->
+#                li "style":style_val, "order_depth":order_arr.length, ->
+#                  a "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
 

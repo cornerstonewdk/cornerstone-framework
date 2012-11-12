@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '스크롤 스파이'
 outline: '스크롤 스파이'
+thumbnail: '4_3_07_scroll_spy.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']

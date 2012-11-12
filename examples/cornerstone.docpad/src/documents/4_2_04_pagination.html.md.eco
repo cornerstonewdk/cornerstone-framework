@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '페이지네이션'
 outline: '페이지네이션'
+thumbnail: '4_2_04_pagination.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']

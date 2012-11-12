@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '리스트뷰'
 outline: '리스트뷰'
+thumbnail: '4_4_02_list_view.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']

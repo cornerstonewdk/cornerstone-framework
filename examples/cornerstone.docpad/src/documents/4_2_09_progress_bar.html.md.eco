@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '프레그레스 바'
 outline: '프레그레스 바'
+thumbnail: '4_2_09_progress_bar.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']

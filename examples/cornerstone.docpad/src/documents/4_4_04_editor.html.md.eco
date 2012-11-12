@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '에디터'
 outline: '에디터'
+thumbnail: '4_4_04_editor.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']

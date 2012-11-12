@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '네비게이션 바'
 outline: '네비게이션 바'
+thumbnail: '4_2_03_navagation_bar.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']

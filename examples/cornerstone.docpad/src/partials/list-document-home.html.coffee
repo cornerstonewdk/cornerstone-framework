@@ -5,13 +5,17 @@ div '.row', ->
 		return
     row_cnt = 0
     @documents.forEach (document) ->
-        row_cnt = row_cnt + 1
+		row_cnt = row_cnt + 1
+		new_row = row_cnt % 6 
+		if new_row is 1
+			text "<div class='row'>"
 		div '.span2.main-box', 'tags': document.tagstr, ->
 			a '.list-documents-link', href:'.'+document.url+'.html', ->
 				strong '.list-documents-title', property:'dc:title', ->
 					document.title
 			p '.list-documents-outline', property:'dc:outline', ->
 				document.outline
-			#p '.list-documents-tagstr', property:'dc:tagstr', ->
-			#	document.tagstr
+		if new_row is 0
+			text "</div>"
+			row_cnt = 0
 

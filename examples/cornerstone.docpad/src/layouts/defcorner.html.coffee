@@ -24,11 +24,11 @@ html lang: 'ko', ->
 
 		# ----------------------------- # Cornerstone Stylesheets and Scripts
 
-	    link rel: 'stylesheet', href: './dist/lib/bootstrap/css/bootstrap.css'
+		link rel: 'stylesheet', href: './dist/lib/bootstrap/css/bootstrap.css'
 		link rel: 'stylesheet', href: './dist/lib/bootstrap/css/bootstrap-responsive.css'
 
 		link rel: 'stylesheet', href: './dist/ui/theme/white/css/cornerstone.css'
-		link rel: 'stylesheet', href: './dist/ui/theme/white/css/livedocument.css'
+		link rel: 'stylesheet', href: './livedocument.css'
 
 		script src: './dist/lib/jquery-1.8.1.min.js'
 		script src: './dist/ui/widget-plugins.js'
@@ -63,7 +63,11 @@ html lang: 'ko', ->
         tagstr = tagstr + '""]'
         #p -> tagstr
 
-        div '.navbar.ico-txt', ->
+        if @document.linkTitle is 'home'
+             styleforindex = "margin-bottom: 0;"
+        else
+             styleforindex = ""
+        div '.navbar.ico-txt', "style":styleforindex , ->
             div '.navbar-inner', ->
                 div '.container', ->
                     button '.btn.btn-navbar', 'type':'button', 'data-toggle':'collapse', 'data-target':'.nav-collapse', ->
@@ -73,7 +77,7 @@ html lang: 'ko', ->
                     a '.brand', href : './index.html', ->
                         'Cornerstone'
                     div '.nav-collapse.collapse', ->
-                        ul '.nav.pull-left', ->
+                        ul '.nav', ->
                             @getCollection('pages').toJSON().forEach (page) =>
                                     linkClass = 'inactive'
                                     #linkClass = if @document.url = page.url then 'active' else 'inactive'
@@ -85,6 +89,7 @@ html lang: 'ko', ->
                                         else linkUrl = '.' + h(page.url) + '.html'
                                     li 'class':linkClass, 'id':linkTitle, ->
                                         a href:linkUrl, title:linkTitle, ->
+                                            i ".icon-list", ""
                                             page.name
                                             #page.name + h(page.url) + @document.url.indexOf(page.url) + page.order
                                             #page.name +' '+ @document.url +' '+  page.url
@@ -96,14 +101,12 @@ html lang: 'ko', ->
 	                      form '.navbar-search.pull-rigth', 'id' : 'searchForm',
                             -> '<label class="blind"> Tag Search </label>' +
                                '<input class="search-query" type="text" placeholder="TAG" data-provide="typeahead" data-source=\'' + tagstr + '\'>'
-                        #else
-                        #  ul '.nav.pull-right', ->
-                        #    li ->
-                        #        a 'href':'#', ->
-                        #            i '.icon-write', 'id':'tag-search', -> ''
-	                    #  form '.navbar-search.pull-rigth', 'id' : 'searchForm',
-                        #    -> '<label class="blind"> Tag Search </label>' +
-                        #       '<input class="search-query" type="text" placeholder="TAG" disabled="true" data-provide="typeahead" data-source=\'' + tagstr + '\'>'
+
+        if @document.linkTitle is 'home'
+          header ".jumbotron.subhead#overview", ->
+            div ".container", ->
+                h1 -> "Cornerstone WDK Document"
+                p ".lead", -> "코너스톤 웹 개발 킷의 기본적 사용법과 이를 활용한 다양한 웹 애플리케이션을 작성하고 직접 체험할 수 있습니다."
 
         div '.container', ->
           div '.row-fluid', ->

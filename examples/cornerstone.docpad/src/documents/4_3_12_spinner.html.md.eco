@@ -4,6 +4,7 @@ section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '스피너'
 outline: '스피너'
+thumbnail: '4_3_12_spinner.png'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
