@@ -98,7 +98,7 @@ define( [ 'logging',
                 config( $( this ).text() );
             } );
 
-            $( '#debug-group button' ).trigger( 'click' );
+            $( '#debug-group button:eq(1)' ).trigger( 'click' );
 
             // [ 31 ] 테스트
             var MainRouter = MultipageRouter.extend( {
