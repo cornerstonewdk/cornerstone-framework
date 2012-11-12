@@ -1,11 +1,11 @@
 <!--
 layout: 'post'
-section: 'Runtime'
+section: 'Cornerstone Framework'
 title: 'Runtime 기본구조 (WebApp)'
 outline: '런타임 기본구조 (WebApp)'
 date: '2012-11-16'
 tagstr: 'runtime'
-order: '[1, 2]'
+order: '[7, 2]'
 thumbnail: ''
 -->
 
