@@ -2,9 +2,9 @@ define([
 		'jquery', 
 		'backbone', 
 		'util/dummyDataUtil', 
-		'template!../../../template/pricePlan/pricePlan',
-		'template!../../../template/pricePlan/pricePlanContent',  
-		'style!../../../style/pricePlan/pricePlanStyle'
+		'template!../template/pricePlan/pricePlan',
+		'template!../template/pricePlan/pricePlanContent',  
+		'style!../style/pricePlan/pricePlanStyle'
 ], function(
 		$, 
 		Backbone, 

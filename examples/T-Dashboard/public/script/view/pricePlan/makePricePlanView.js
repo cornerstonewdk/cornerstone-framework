@@ -2,8 +2,8 @@ define([
 		'jquery', 
 		'backbone', 
 		'util/dummyDataUtil', 
-		'template!../../../template/pricePlan/makePricePlan', 
-		'style!../../../style/pricePlan/makePricePlanStyle',
+		'template!../template/pricePlan/makePricePlan', 
+		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
 ], function(
 		$, 
