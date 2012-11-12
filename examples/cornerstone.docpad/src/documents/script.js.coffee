@@ -25,14 +25,17 @@ $('#tag-search').click ->
     matchStr = new RegExp $('#searchForm input').val()
     articles = $('article div[tags]')
     articles.hide()
-    showCnt = 0
+    #showCnt = 0
 
     $.each( articles, ( idx, at ) ->
         str = $( articles[idx] ).attr 'tags'
-        flag = matchStr.test str
+        alert(str + " | " + matchStr + " | idx=" + idx)
+        flag = false
+        if str isnt "" and str isnt undefined
+            flag = matchStr.test str
         if flag 
             $(articles[idx]).show()
-            showCnt++
+            #showCnt++
     )
 
     #if showCnt is 0 

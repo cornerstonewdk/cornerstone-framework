@@ -7,8 +7,9 @@ outline: '파일 구조'
 date: '2012-11-16'
 tagstr: 'application'
 tags: ['post','application','']
-subsection: ‘본문’
+subsection: 'Application'
 order: '[2, 1, 1]'
+thumbnail: '2.1.01.file_structure.png'
 ---
 
 Web을 구성하는 세 가지 요소

@@ -57,11 +57,18 @@ table tbody tr:hover td {
     margin-top:20px;
     padding:20px 15px;
     background:rgba(255,255,255,.1);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .list-documents-link {
     font-size:16px;
     display:block;
     margin:0 0 10px;
+}
+
+.media img {
+    width: 64px;
+    height: 64px;  
 }
 
 .page-content h1 {font-size:28px; font-weight:bold;}

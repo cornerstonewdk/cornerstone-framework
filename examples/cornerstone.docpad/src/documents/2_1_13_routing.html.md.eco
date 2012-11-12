@@ -1,0 +1,207 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '라우팅'
+outline: '여러 화면이 존재하는 Single-page Web App을 만든다고 가정해 보자. 다른 화면으로 이동할 때는 실제로 페이지를 전환하지 않고 AJAX를 사용해 페이지의 일부분을 다시 렌더링하게 될 것이다. 이 경우 실제로 페이지가 전환되는 것이 아니므로 현재 URL에는 변화가 없다...'
+date: '2012-11-16'
+tagstr: 'application'
+tags: ['post','application','']
+order: '[2, 1, 13]'
+---
+
+Fragment와 라우팅
+---------------
+여러 화면이 존재하는 Single-page Web App을 만든다고 가정해 보자. 다른 화면으로 이동할 때는 실제로 페이지를 전환하지 않고 AJAX를 사용해 페이지의 일부분을 다시 렌더링하게 될 것이다. 이 경우 실제로 페이지가 전환되는 것이 아니므로 현재 URL에는 변화가 없다. 즉, 각각의 화면은 고유한 URL을 가질 수 없고, 따라서 각 화면에 대한 하이퍼링크를 제공하거나 브라우저에 북마크로 등록하거나 하는 작업이 불가능해지며 브라우저의 Back/Forward 버튼을 사용해서 페이지 이동을 할 수도 없다. 이것은 웹으로서의 사용성을 해치는 일이기 때문에 해결책이 필요하다.
+
+URL에 부가적인 정보를 더 담는 방법으로 Query가 있다. 웹 개발 경험이 있다면 누구나 한번쯤은 다음과 같이 물음표(?)를 사용하여 파라미터를 추가해 보았을 것이다.
+
+```
+http://www.example.org/foo.html?bar=1
+```
+
+또 다른 방법으로는 Fragment가 있다. 이것은 Hash mark(#)를 사용하여 현재 페이지의 특정 위치를 가리킨다. Hash mark 뒷부분의 문자열을 Fragment identifier라고 한다.
+
+```
+http://www.example.org/foo.html#bar
+```
+
+Query와 Fragment는 결정적인 차이점을 가지고 있는데, Query는 서버에서 처리되지만 Fragment는 클라이언트(웹 브라우저)에서 처리된다는 것이다. 즉, Fragment가 변경되어도 브라우저는 서버에 요청을 다시 보내지 않는다. 그래서 이점을 이용하여 Single-page Web App의 화면마다 다른 Fragment identifier를 부여하면, 결국 화면마다 고유한 URL을 가질 수 있게 되고 URL이 바뀌어도 페이지가 전환되지 않기 때문에 Single-page Web App을 유지할 수 있다.
+
+> HTML5의 Push State를 사용하면 Fragment를 사용하지 않고도 이 문제를 해결할 수 있으나, Push State는 IE9 이하의 브라우저와 안드로이드의 기본 브라우저에서 제대로 지원하지 않으므로 사용하지 않는다.
+
+따라서 Fragment를 사용하면 애플리케이션에서는 페이지가 처음 실행되거나 Fragment identifier가 변경될 경우 그에 맞는 화면을 렌더링하는 작업을 해 주면 된다. 이를 간편하게 할 수 있도록 Backbone에서는 Router를 제공한다.
+
+일반적으로 웹에서 라우팅은 URL에 패턴에 따라서 다른 모듈을 실행하도록 분기시키는 작업을 의미한다. Backbone의 Router는 Fragment identifier의 패턴에 따라서 지정된 함수를 실행하거나 이벤트를 발생시킨다.
+
+```
+var MainRouter = Backbone.Router.extend( {
+	
+	// Fragment identifier의 패턴과 함수의 매핑
+	routes: {
+		'': 'list',				// # or #이 없는 경우
+		'list': 'list',			// #list
+		'add': 'add',			// #add
+		'detail/:id', 'detail'	// #detail/5
+	},
+	
+	list: function() {
+		// URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
+	},
+	
+	add: function() {
+		// URL이 #add로 끝나면 실행된다.
+	},
+	
+	detail: function( id ) {
+		// URL 패턴에서 :로 시작되는 부분은 파라미터를 의미한다.
+	}
+} );
+
+new MainRouter();
+
+// Fragment identifier의 변경을 감지하고 라우팅을 처리한다.
+Backbone.history.start();
+```
+
+위의 예에서 보는 것과 같이 동적으로 변화되는 부분은 :[변수명]의 형태로 쓰면 함수의 파라미터로 받을 수 있다.
+라우팅 코드는 애플리케이션 메인의 launch 함수 내에 작성되는 것이 가장 적합하다.
+
+Multipage Router
+----------------
+Backbone Router 만으로도 쉽게 라우팅을 처리할 수 있지만 웹 앱이 다음 조건을 만족한다면 Multipage Router를 사용해서 더 쉽게 페이지간 전환을 처리할 수 있다.
+
+1. 하나의 HTML 문서 내에 여러 페이지가 존재하며 각각의 페이지가 block element(div, section 등)로 표현된다.
+2. 한 번에 하나의 페이지만 화면에 표시되고 나머지 페이지는 숨겨진다.
+3. 페이지마다 매핑되는 Fragment identifier가 존재해서, Fragment identifier가 변경되면 맞는 페이지가 표시되어야 한다.
+4. 페이지가 바뀔 때 애니메이션 효과가 필요하다.
+
+### 마크업 작성
+
+페이지가 3개(목록, 추가, 상세정보)인 웹 앱을 만든다고 가정하자. 각각의 페이지를 block element로 표현해야 하므로, 다음과 같이 div를 3개 작성한다.
+
+```
+<div class="container">
+	<div id="list"></div>
+	<div id="add"></div>
+	<div id="detail"></div>
+</div>
+```
+
+### Router 작성
+
+Multipage Router는 `multipage-router`라는 이름의 모듈로 제공된다. Router를 extend 해서 정의한 후 객체를 생성하고 라우팅을 시작하는 코드까지 모두 Backbone의 Router와 사용법이 거의 동일하다.
+
+```
+require( [ 'backbone', 'multipage-router' ], function( Backbone, MultipageRouter ) {
+
+	var MainRouter = MultipageRouter.extend( {
+		// 중략
+	} );
+	
+	new MainRouter();
+	Backbone.history.start();
+} );
+```
+
+Backbone의 Router에서는 routes 속성을 정의해서 Fragment identifier와 함수를 매핑했지만, MultipageRouter에서는 pages 속성과 transitions 속성을 정의한다. pages 속성에는 각 페이지의 정보와 상태에 따라 실행될 함수를 정의하고, transitions 속성에는 페이지 간 이동시에 적용될 애니메이션 효과를 정의한다.
+
+앞서 Backbone.Router를 사용해서 작성했던 예를 MultipageRouter를 이용해서 바꿔보면 다음과 같다.
+
+```
+var MainRouter = MultipageRouter.extend( {
+
+	pages: {
+		'list-page': {
+			fragment: [ '', 'list' ],
+			el: 'div#list',
+			active: 'list'
+		},
+		'add-page': {
+			fragment: 'add',
+			el: 'div#add',
+			active: 'add'
+		},
+		'detail-page': {
+			fragment: 'detail/:id',
+			el: 'div#detail',
+			active: 'detail'
+		}
+	},
+	
+	list: function() {
+		// URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
+	},
+	
+	add: function() {
+		// URL이 #add로 끝나면 실행된다.
+	},
+	
+	detail: function( id ) {
+		// URL 패턴에서 :로 시작되는 부분은 파라미터를 의미한다.
+	}
+} );
+```
+
+routes 속성을 작성할 때 보다 내용이 길어졌지만, MultipageRouter는 훨씬 더 많은 작업을 수행한다. Backbone.Router는 단순히 Fragment identifer가 변경되는 이벤트를 감지할 뿐이지만, MultipageRouter는 그 외에도 Fragment identifier와 연결되어 있는 div만을 화면에 보여주고, 다른 div들은 자동으로 숨겨준다.
+
+pages 속성 객체의 하위 속성들은 각각 하나의 페이지를 나타내고, 속성명(list-page, add-page, detail-page)은 페이지의 ID를 의미한다. 속성의 값은 다시 하위 속성들을 가지는데 그 의미는 다음과 같다.
+
+- fragment : 해당 페이지를 활성화하는데 필요한 Fragment identifier의 패턴, 문자열로 하나를 지정하거나 배열로 여러 개를 지정할 수 있다.
+- el : 해당 페이지와 매핑되는 block element를 나타내는 jQuery selector
+- render : 해당 페이지가 활성화되고 Transition(화면 전환 애니메이션 효과)이 일어나기 전, 해당 페이지를 다시 렌더링하기 위해서 호출되는 callback 함수 또는 함수의 이름
+- active : 해당 페이지가 활성화되고 Transition이 완료되고 난 후에 호출되는 callback 함수 또는 함수의 이름
+- inactive : 다른 페이지가 활성화되면서 해당 페이지가 비활성화되면서 호출되는 callback 함수 또는 함수의 이름
+
+list-page에서 add-page로 이동한다고 가정했을 때 callback 함수가 실행되는 순서는 아래와 같다.
+
+1. list-page의 inactive 함수가 실행된다.
+2. add-page의 render 함수가 실행된다.
+3. 화면 전환 애니메이션 효과가 발생한다.
+4. add-page의 active 함수가 실행된다.
+
+Backbone.Router와는 달리 callback 함수의 이름 대신에 함수 자체를 지정할 수도 있다.
+
+```
+'list-page': {
+	fragment: [ '', 'list' ],
+	el: 'div#list',
+	render: function() {
+	},
+	active: function() {
+		// URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
+	}
+}
+```
+
+기본 페이지를 설정하려면 페이지 ID를 default로 지정하면 된다. 기본 페이지는 Fragment identifier 패턴이 일치하는 페이지가 없을 경우에 매핑되는 페이지이다.
+
+```
+'default': {
+	active: function( path ) {
+		alert( '존재하지 않는 주소입니다. : ' + path );
+	}
+}
+```
+
+### Transition 설정
+
+페이지 이동시에 애니메이션 효과를 주고 싶다면 transitions 속성을 지정하면 된다. transitions 속성 객체의 하위 속성명으로 '이전 페이지 ID:다음 페이지 ID' 를 주고, 속성 값으로는 Transition 종류를 지정한다.
+
+```
+transitions: {
+	'list-page:add-page': 'slide',
+	'list-page:detail-page': 'flip'
+}
+```
+
+위 예는 list-page에서 add-page로 이동할 때는 slide 효과가, list-page에서 detail-page로 이동할 때는 flip 효과가 적용된다. 반대 방향의 효과를 지정하지 않아도 기본적으로 동일한 효과에서 방향만 반대로 나타나도록 설정된다. 즉, add-page에서 list-page로 이동할 때는 반대 방향의 slide 효과가, detail-page에서 list-page로 이동할 때는 반대 방향의 flip 효과가 적용된다. 물론, 반대 방향의 효과를 명시적으로 지정하면 그 설정이 우선한다.
+
+애니메이션 효과의 속도를 조절하고 싶다면 다음과 같이 duration을 밀리초 단위로 지정하면 된다.
+
+```
+transitions: {
+	'list-page:add-page': { type: 'slide', duration: 2000 },
+	'list-page:detail-page': 'flip'
+}
+```

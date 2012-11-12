@@ -1,0 +1,1098 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '스타일'
+outline: '스타일'
+date: '2012-11-16'
+tagstr: 'style'
+tags: ['post','style','']
+subsection: 'Style'
+order: '[3, 1]'
+thumbnail: '3. Style.png'
+---
+
+스타일 작성법
+===========
+
+
+소개
+---
+스타일 작성법은 개발자나 퍼블리셔가 아니더라도 코드를 빠르고 정확하게 이해할 수 있도록 한다. 최초 작성자가 유지보수를 끝까지 책임지는 경우는 드물다. 이런 경우 최초 작성자가 아닌 다른 사람이 코드를 분석할 때 스타일 가이드가 없는 경우 소스를 직접 분석해야하는 비효율적인 비용이 발생한다. 하지만 스타일 가이드에 준수해 작성된 소스의 경우 소스 분석 시간을 낮추므로 업무 효율성을 높일 수 있다. 또한 스타일 가이드에 준수한 코드는 코드가 일관성 있게 작성이 되므로 프로젝트 팀원이 작성하는 코드의 통일성을 보장 받을 수 있다. 이와 같이 스타일 가이드를 통해 얻을 수 있는 장점을 아래와 같이 정리할 수 있다.
+
+* 스타일가이드를 통한 일관성 있는 규칙으로 코드의 통일성
+* 코드 분석 용이
+* 업무 효율 상승
+* 유지보수 비용 감소
+
+
+
+
+명명법
+-----
+
+명명법은 레이아웃, 요소 등의 ID, CLASS 이름을 작성하는 규칙이다. 누구나 보기에 이해하기 쉬운 이름으로 작성을해야 코드를 쉽게 파악할 수 있고, 일관성있는 코드를 작성할 수 있다.
+
+### 기본 규칙
+
+이름의 시작은 영문 소문자로 작성하며, 의미상으로 구분이 필요한 경우 `-` 하이픈으로 구분한다. 모든 이름은 영문, 숫자 그리고 `-` 하이픈으로 이뤄진다. 또한 클래스에 네이밍을 할 경우 아래 예시 방식을 따르는 것을 권장한다. 
+
+예시.
+
+1. b- :  
+코드는 간결해지지만 의미상 식별이 거의 불가능하다.
+
+1. button- :  
+이름을 보는 순간 바로 어떤 의미인지 확인이 가능하다 하지만 코드가 길어질 수 있는 단점이 있다.
+
+1. btn- :  
+코드 / 이름의 의미 또한 어느정도 간결하고 식별이 가능하다. **(권장)**
+
+###공통 명명법 	
+			
+- 버튼 : btn-
+- 아이콘 : icon-
+			
+- 폼 : form-
+- input : input-
+- 표 : table-
+
+- 네비게이션 : nav-	
+- 탭메뉴 : tab-
+- 검색 : search-
+
+
+### 예약어
+#### Conerstones의 btn-group icon class ####
+
+	icon-up
+	icon-down
+	icon-set
+
+#### Conerstones의 navbar icon class ####
+
+	icon-home
+	icon-list
+	icon-message
+	icon-mail
+	icon-save
+	icon-user2
+	icon-connect
+	icon-search
+	icon-write
+	icon-about
+	icon-favorites
+	icon-downloads
+	icon-settings
+	icon-user
+
+테마
+----------------
+
+	제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 BtS의 특성인 BtS > LESS로 작성되어 BtS > Customize와 같이 사용자화 가능함으로 개별 테마 안에서 BtS에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 BtS에 없는 요소들도 BtS과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 BtS의 방식대로 사용자화가 가능해야 함
+
+	Corner Stone 기본테마 - dark테마 , white테마
+	Wire Frame 백지테마 - 확장이나 변형을 위해 제공되는 테마
+		
+
+### 확장테마 작성법 ###
+
+	wireframe은 white, gray톤과 그림자 효과, 그라데이션등을 배제한 가장 기본적인 테마로, 사용자가 직접 디자인을 적용시킬 수 있도록 만들어진 테마이다.
+	기본 테마인 wireframe.css를 적용 시킨 후 새로운 css 파일을 추가 사용한다.
+
+## 부트스트랩과 다른부분 ##
+
+	부트스트랩은 체크박스, 라디오버튼의 경우 스크립트를 포함하여 플러인으로 되어있지만, 
+	현재 시스템의 경우 html5, css3로만 구현되어 있다.
+	모바일 디자인은 터치, 사용자의 편의성을 고려한 UI가 적용되어 있다.
+
+## 추가된 부분 ##
+	
+	Lists - 여러가지 다양한 list를 만들수 있도록 제공한다.
+	Nav bar - mobile에서 상,하단에 붙여 사용할수 있는 기본 Nav bar를 제공한다.
+
+## 텍스처 사용 ##
+
+	Background에 텍스처를 사용할수 있다. conerstones에서 제공한는 기본 텍스처를 사용하여도 되지만,
+	좀더 디자인적으로 꾸미고 싶다면 사용자가 텍스처를 활용하여 Background에 적용시켜 사용할 수도 있다.
+	 
+
+## 폼의 높이 너비 ##
+
+	모바일 사용을 고려하여 폼의 높이와 너비의 폭을 크게 하여 사용 편의성을 고려하였다.
+
+## 주의사항 ##
+
+	.nav-tab을 사용하여 tab을 구현할때는 각 tab의 li에 사용자가 직접 width를 적용해준다.
+
+	모바일 해상도를 고려하여 media query를 사용할 것을 권장한다.
+	media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하게 구현할 수 있다.
+
+	모바일에서는 css의 a:hover, 스크립트의 onmouseover, onmouseenter등의 기능은 사용하지 않는것이 좋다. 위의 기능들은 웹의 마우스 이벤트에 속한다. 따라서 마우스를 사용하지 않고 터치기능을 사용하는 모바일 기기중에 여러가지 오류가 생길 수 있다.
+
+
+격자
+---
+
+격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <div> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.
+부트스트랩도 자체적인 격자 레이아웃 시스템을 제공한다. 부트스트랩의 격자 시스템은 12열의 격자(12-column grid)로 이루어져 있으며 기본 버전과 유동 버전(Fluid)이 있다. 또한 다양한 화면 크기에 대응하기 위해 4개의 디자인 형태를 갖는데 이 것은 반응형 디자인과 연관되어 동작한다.
+
+기본 격자 시스템(Default grid system)은 940px 고정 너비에 12열 격자로 이루어진다.
+행은 "row", 열은 "span*"이라는 클래스로 표현되는데, "span*" 클래스는 span1~12 까지 사용할 수 있다.			
+열 사이의 간격은 20px이며 "span1" 클래스의 너비는 60px이다. "span*" 클래스의 숫자가 하나씩 증가할 때마다 너비가 80px씩 늘어나 "span12" 클래스의 너비는 전체 너비인 940px이 된다.
+
+유동 격자 시스템(Fluid grid system)은 격자 크기를 픽셀이 아닌 퍼센트로 사용한다. 유동 격자 시스템을 사용하려면 행의 클래스를 "row-fluid"로 바꾸기만 하면 된다.
+
+열에 "offset*" 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 단, 열 위치 이동은 기본 격자 시스템에서만 가능하다.
+
+
+예제) url : http://jsfiddle.net/azamara/gtgYM/
+
+* 그리드 시스템 UI
+
+![](images/style-grid-1.png?raw=true)
+
+그리드 시스템을 통해 얻을 수 있는 장점은 아래와 같다.
+
+* 그리드를 통해 튼튼한 레이아웃을 보장
+* 사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 
+* 미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경
+
+## Default grid system ##
+```cm
+	<div>
+    	<div class="row show-grid">
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+		</div>
+		<div class="row show-grid">
+			<div class="span2">2</div>
+         	<div class="span3">3</div>
+        	<div class="span4">4</div>
+        </div>
+        <div class="row show-grid">
+   			<div class="span4">4</div>
+	      	<div class="span5">5</div>
+        </div>
+     	<div class="row show-grid">
+        	<div class="span9">9</div>
+       	</div>
+     </div>
+```
+
+### Offsetting columns ###
+```cm
+	<div>
+    	<div class="row show-grid">
+      		<div class="span4">4</div>
+           	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row -->
+      	<div class="row show-grid">
+        	<div class="span3 offset1">3 offset 1</div>
+          	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row -->
+      	<div class="row show-grid">
+       		<div class="span6 offset3">6 offset 3</div>
+      	</div><!-- /row -->
+     </div>
+```
+
+### Nesting columns ###
+```cm
+	<div class="row show-grid">
+    	<div class="span9">
+         	Level 1 column
+          	<div class="row show-grid">
+            	<div class="span6">
+               		Level 2
+              	</div>
+              	<div class="span3">
+                	Level 2
+              	</div>
+            </div>
+   		</div>
+ 	</div>
+```
+
+## Fluid grid system ##
+### Live fluid grid example ###
+```cm
+	<div>
+    	<div class="row-fluid show-grid">
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+		</div>
+		<div class="row-fluid show-grid">
+			<div class="span2">2</div>
+         	<div class="span3">3</div>
+        	<div class="span4">4</div>
+        </div>
+        <div class="row-fluid show-grid">
+   			<div class="span4">4</div>
+	      	<div class="span5">5</div>
+        </div>
+     	<div class="row-fluid show-grid">
+        	<div class="span9">9</div>
+       	</div>
+     </div>
+```
+
+### Offsetting columns ###
+```cm
+	<div>
+    	<div class="row-fluid show-grid">
+      		<div class="span4">4</div>
+           	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row-fluid -->
+      	<div class="row-fluid show-grid">
+        	<div class="span3 offset1">3 offset 1</div>
+          	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row-fluid -->
+      	<div class="row-fluid show-grid">
+       		<div class="span6 offset3">6 offset 3</div>
+      	</div><!-- /row-fluid -->
+     </div>
+```
+
+### Nesting columns ###
+```cm
+	<div class="row-fluid show-grid">
+    	<div class="span9">
+         	Level 1 column
+          	<div class="row-fluid show-grid">
+            	<div class="span6">
+               		Level 2
+              	</div>
+              	<div class="span3">
+                	Level 2
+              	</div>
+            </div>
+   		</div>
+ 	</div>
+```
+
+
+CSS 구조
+-------
+
+우리 CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법
+
+	bootstrap.css에는 가 태그별 basic 속성 작성.
+	global.css 공통적으로 사용하는 class 작성.
+	div, table, ul class를 사용. (class="")
+	element는 기본 bootstrap.css에서 상속하여 사용할수도 있다.
+
+
+	###### Bootstrap 베이스의 네이밍 방법
+	기본  .table	             행 사이에만 수평 라인
+	옵션  .table-bordered	 반올림 코너와 바깥쪽 테두리를 추가합니다
+	      .table-striped	     홀수 행 (1, 3, 5 등)로 밝은 회색 배경색을 추가
+	      .table-condensed   td및 th의 셀 패딩을 8px에서 4px로 줄임
+
+	 예제) http://twitter.github.com/bootstrap/base-css.html#tables	
+
+#####Selector 선언방법
+
+		개별적으로 사용 가능한 element나 class의 속성을 각각의 그리드 내에 만들어진 layout의 class에 상속하여 속성을 변경 후 사용 가능하다.
+
+#####CSS Selector 사용방법
+		
+		div p <DIV> 요소 내부의 모든 <P> 요소를 선택
+		div>p 부모 <DIV> 요소내에 모든 <P> 요소를 선택
+		div+p 부모 <DIV> 요소 바로 뒤에 배치되는 <P> 요소를 선택
+		input[type="text"] input type의 text만 선택
+
+		input:focus 포커스를 가진 입력 요소를 선택
+		p:first-letter  모든 <P>의 첫 글자를 선택
+		p:first-line  모든 <P>의 첫 번째 행을 선택
+		p:first-child  부모 <P>의 첫 번째 자식 element를 선택
+		p:before  모든 <P>의 내용 앞에 내용을 삽입
+		p:after  모든 <P> 다음 내용을 삽입
+		p:first-of-type  <p>와  동일한 행의 첫번째 <p>요소 선택
+		p:last-of-type  <p>와 동일한 행의 마지막 <p>요소 선택
+		p:only-of-type  <p>와 동일한 행의 같은 요소를 선택
+		p:only-child   부모<p>의 자식 element 선택
+		p:nth-child(2)  부모<p>의 2번째 자식 노드 선택
+		p:nth-last-child(2)  부모<p>의 뒤에서 2번째 자식 노드 선택
+		p:nth-of-type(2)  <p>의 형제 노드중에 2번째 노드 선택
+		p:nth-last-of-type(2)  <p>의 형제 노드중에 뒤에서 부터 2번째 노드 선택
+		p:last-child  부모 <P>의 마지막 모든 자식 element를 선택
+		p:empty  자식이 없는 모든 <P>를 선택
+
+
+반응형 웹
+----------------
+### 반응형웹
+반응형 웹에 대한 설명
+
+	반응형웹이란? (Responsive Website)
+	Responsive Website의 뜻처럼 반응하는 웹이란 뜻이다.
+	하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든웹이다.
+	
+
+### 레이아웃 (반응형 중심)
+반응형 웹을 통해 스크린별로 나눠지는 레이아웃 형태 설명
+
+	미디어쿼리(media query)를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다.
+
+* 그리드 내에 레이아웃 식별 구분
+
+
+#####기기에 따른 그리드 크기변화
+<table style="width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; margin:0 0 20px;">
+	<colgroup>
+		<col width="25%" />
+		<col width="25%" />
+		<col width="25%" />
+		<col width="" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">기기</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Layout Width</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Column width</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Gutter width</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">스마트폰</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">480px 이하</td>
+			<td colspan="2" style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">고정되지 않은 Column</td>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">스마트폰 / 태블릿pc</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">767px 이하</td>
+			<td colspan="2" style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">고정되지 않은 Column</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">태블릿pc</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">768px 이상</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">42px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">20px</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">PC</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">최대 980px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">60px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">20px</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">대형 디스플레이</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">최대  1200px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">70px</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">30px</td>
+		</tr>
+	</tbody>
+</table>
+
+		반응형웹을 구현하려면 viewport의 메타태그를 포함해야 한다.
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+#####기기크기에 따라 적용되는 미디어쿼리
+
+		 /* Landscape phones and down */
+  		@media (max-width: 480px) { ... }
+		 
+		/* Landscape phone to portrait tablet */
+		@media (max-width: 767px) { ... }
+		
+		/* Portrait tablet to landscape and desktop */
+		@media (min-width: 768px) and (max-width: 979px) { ... }
+		 
+		/* Large desktop */
+		@media (min-width: 1200px) { ... }
+
+#####지원하는 Class
+<table style="width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; margin:0 0 20px;">
+	<colgroup>
+		<col width="25%" />
+		<col width="25%" />
+		<col width="25%" />
+		<col width="" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Class</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Phones</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Tablets</th>
+			<th style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Desktops</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.visible-phone</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.visible-tablet</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.visible-desktop</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.hidden-phone</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.hidden-tablet</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">.hidden-desktop</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Visible</td>
+			<td style="text-align:center; border-bottom:1px solid #ddd; border-right:1px solid #ddd;">Hidden</td>
+		</tr>
+	</tbody>
+</table>
+
+COMPONENTS, FORM 구성
+------
+
+## Layouts ##
+### Fixed layout ###
+```cm
+	<div class="mini-layout">
+   		<div class="mini-layout-body"></div>
+ 	</div>
+```
+
+### Fluid layout ###
+```cm
+	<div class="mini-layout fluid">
+    	<div class="mini-layout-sidebar"></div>
+      	<div class="mini-layout-body"></div>
+	</div>
+```
+
+
+## Typography ##
+### 머릿글 (Headings) ###
+
+	머릿글은 <h1>~<h6>로 작성한다.
+```cm
+	<h1>h1. Heading 1</h1>
+	<h2>h2. Heading 2</h2>
+	<h3>h3. Heading 3</h3>
+	<h4>h4. Heading 4</h4>
+	<h5>h5. Heading 5</h5>
+	<h6>h6. Heading 6</h6>
+``` 
+
+### 기본글꼴 (Body copy) ###
+
+	Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 22px이다. 
+ 	기본 테마인 wireframe의 기본글꼴은 14px 이며, line-height는 18px이다.  
+	body내의 <p>태그에 모두 적용된다.
+
+```cm
+	<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+	<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+	<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+```
+
+#### Lead body copy ####
+
+	'.lead'를 사용하여 문장의 중요한 부분을 강조 할수도 있다.
+
+```cm
+	<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+	<p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+	<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+```
+
+### 강조 (Emphasis) ###
+
+	강조되는 부분은 기본 태그를 이용한다.
+	
+#### small ####
+```cm
+	<p>
+		<small>This line of text is meant to be treated as fine print.</small>
+	</p>
+``` 
+
+#### Bold ####
+```cm
+	<strong>This line of text is meant to be treated as fine print.</strong>
+``` 
+
+#### Italics ####
+```cm
+	<em>This line of text is meant to be treated as fine print.</em>
+``` 
+
+#### Emphasis classes ####
+```cm
+	<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+	<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+	<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+	<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
+	<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+``` 
+
+### 약어 (Emphasis) ###
+
+	약어(abbr) 및 머리 글자에 대한 요소는 hover에 대한 확장 된 버전을 표시한다. 약어(abbr)와 제목 (title)속성은 생략된 문장이나 짧게 쓴 축약 text등에 hover 효과를 두어 문장전체를 보여 준다.
+```cm
+	<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+	<p>An abbreviation of the word attribute is <abbr title="initialism">attr</abbr>.</p>
+	<p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
+```
+
+## Addresses ##
+	주소를 표시할때 쓴다.
+```cm
+	<address>
+		<strong>Twitter, Inc.</strong><br>
+		795 Folsom Ave, Suite 600<br>
+		San Francisco, CA 94107<br>
+		<abbr title="Phone">P:</abbr> (123) 456-7890
+	</address>			 
+	<address>
+		<strong>Full Name</strong><br>
+		<a href="mailto:#">first.last@gmail.com</a>
+	</address>
+```
+
+
+## 인용구 (Blockquotes) ##
+	문서내 인용한 부분에 적용된다.
+
+### 기본 인용구 (Default blockquote) ###
+```cm
+	<blockquote>
+  		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+	</blockquote>
+```
+
+### Blockquote options ###
+
+
+#### Naming a source ####
+	인용한 글의 작성자 이름등에는 <small>, <cite>를 사용하여 적용한다.
+```cm
+	<blockquote>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+	</blockquote>
+```
+
+#### Alternate displays ####
+	오른쪽 정렬을 할때는 .pull-right를 사용한다.
+```cm
+	<blockquote class="pull-right">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+	</blockquote>
+```
+
+## Lists ##
+### Unordered ###
+	순서가 정해지지 않은 목록에 적용되는 태그
+
+```cm
+	<ul>
+		<li>Lorem ipsum dolor sit amet</li>
+		<li>Consectetur adipiscing elit</li>
+		<li>Integer molestie lorem at massa</li>
+		<li>Facilisis in pretium nisl aliquet</li>
+		<li>Nulla volutpat aliquam velit</li>
+	</ul>
+```
+
+### Ordered ###
+	순서가 있는 목록에 적용되는 태그
+
+```cm
+	<ol>
+		<li>Lorem ipsum dolor sit amet</li>
+		<li>Consectetur adipiscing elit</li>
+		<li>Integer molestie lorem at massa</li>
+		<li>Facilisis in pretium nisl aliquet</li>
+		<li>Nulla volutpat aliquam velit</li>
+	</ol>
+```
+
+### Unstyled ###
+	순서가 정해지지 않은 목록이나 추가적인 목록에 적용되는 태그
+
+```cm
+	<ul class="unstyled">
+		<li>Lorem ipsum dolor sit amet</li>
+		<li>Consectetur adipiscing elit</li>
+		<li>Integer molestie lorem at massa</li>
+		<li>Facilisis in pretium nisl aliquet
+			<ul>
+				<li>Phasellus iaculis neque</li>
+				<li>Purus sodales ultricies</li>
+				<li>Vestibulum laoreet porttitor sem</li>
+				<li>Ac tristique libero volutpat at</li>
+			</ul>
+		</li>
+		<li>Nulla volutpat aliquam velit</li>
+	</ul>
+```
+
+### Description ###
+	정의된 목록
+
+```cm
+	<dl>
+		<dt>Description lists</dt>
+		<dd>A description list is perfect for defining terms.</dd>
+		<dt>Euismod</dt>
+		<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+		<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+		<dt>Malesuada porta</dt>
+		<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+	</dl>
+```
+
+#### Horizontal description ####
+	정의된 목록 가로정렬
+
+```cm
+	<dl class="dl-horizontal">
+		<dt>Description lists</dt>
+		<dd>A description list is perfect for defining terms.</dd>
+		<dt>Euismod</dt>
+		<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+		<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+		<dt>Malesuada porta</dt>
+		<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+	</dl>
+```
+
+## Code ##
+
+### Inline ###
+	일직선의 정렬에 적용
+
+```cm
+	<p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
+```
+
+### Basic block ###
+	<pre>를 사용하여 여러 줄에 걸쳐서 보여준다. <pre>내에서는 괄호등은 code를 사용한다. 
+
+```cm
+	<pre> &lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+```
+
+## Tables ##
+
+### Default styles ###
+	기본 table 형식
+```cm
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+### Optional classes ###
+	.table-striped
+	 css에서 :nth-child를 사용하여 얼룩말 효과 적용 
+```cm
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+	.table-bordered
+	 table에 border 적용
+```cm
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+	.table-hover
+	 table에 hover 효과 적용
+```cm
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+	.table-condensed
+	 table에 cell 간격이 촘촘하게 적용
+```cm
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="success">
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+### Optional row classes ###
+	각 행에 class를 적용
+	.success - 성공 또는 긍정적인 표현.
+	.error   - 위험 또는 부정적인 표현.
+	.warning - 경고 또는 주의.
+	.info    - 정보 전달 또는 기본적인 스타일.
+
+```cm
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="success">
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+### Supported table markup ###
+	table의 사용방법
+	<table>  - 표형식의 테이터를 표시하는 요소
+	<thead>  - table에서 header에 해당되는 요소
+	<tbody>  - table행과 열을 감싸주는 요소
+	<tr>     - table의 행을 나타내는 요소
+	<td>     - table의 열을 나타내는 요소
+	<th>     - thead, tbody내의 열 또는 행을 표현하며 lable로 표현되는 요소
+	<caption> - 스크린 리더에서 읽어지는 table을 설명하는 요소
+
+```cm
+	<table>
+		<caption>table example</caption>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>UserName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="success">
+				<td>1</td>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Brid</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+```
+
+## Lists ##
+	모든 list 형식의 요소에 사용
+
+```cm
+	<div class="lists">
+		<header>List1</header>
+		<ul class="lists-con">
+			<li>
+				<a href="">Profile</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Sign up</a>
+				<i></i>
+			</li>
+			<li class="active">
+				<a href="">Connect</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Discover</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Find Friends</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Location</a>
+				<i></i>
+			</li>
+		</ul>
+	</div>
+```
+```cm
+	<div class="lists group">
+		<header>Grouped Lists</header>
+		<ul class="lists-con">
+			<li>
+				Profile
+				<i></i>
+			</li>
+			<li>
+				<a href="">Sign up</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Connect</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Discover</a>
+				<i></i>
+			</li>
+			<li>
+				<a href="">Find Friends</a>
+				<i></i>
+			</li>
+			<li class="sub-group">
+				<a href="" class="group-tit">Location</a>
+				<ul class="lists-con">
+					<li>
+						<a href="">South Korea</a>
+						<i></i>
+					</li>
+					<li>
+						<a href="">United States</a>
+						<i></i>
+					</li>
+					<li>
+						<a href="">China</a>
+						<i></i>
+					</li>
+					<li>
+						<a href="">France</a>
+						<i></i>
+					</li>
+					<li>
+						<a href="">India</a>
+						<i></i>
+					</li>
+					<li class="active">
+						<a href="">Great Britain</a>
+						<i></i>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+```
+
+## Nav bar. mobile ##
+	mobile에서만 사용하는 Navigation
+
+```cm
+	<ul class="nav nav-bot">
+		<li>					
+			<a href="#">
+				<i class="icon-about"></i>
+				<span>about</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="icon-favorites"></i>
+				<span>favorites</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="active">
+				<i class="icon-downloads"></i>
+				<span>downloads</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="icon-settings"></i>
+				<span>settings</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="icon-user"></i>
+				<span>user</span>
+			</a>
+		</li>
+	</ul>
+```

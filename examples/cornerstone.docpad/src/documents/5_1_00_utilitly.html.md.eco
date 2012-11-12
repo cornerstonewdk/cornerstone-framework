@@ -7,8 +7,9 @@ outline: '유틸리티'
 date: '2012-11-16'
 tagstr: 'utiltily'
 tags: ['post','utiltily','']
-subsection: ‘본문’
+subsection: 'Util'
 order: '[5, 1]'
+thumbnail: '5.1.00.utilitly.png'
 ---
 
 유틸리티 사용법

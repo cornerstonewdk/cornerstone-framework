@@ -7,8 +7,8 @@ outline: '차트'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
-subsection: ‘본문’
 order: '[4, 4, 5]'
+thumbnail: '4.4.05.chart.png'
 ---
 
 ### Chart

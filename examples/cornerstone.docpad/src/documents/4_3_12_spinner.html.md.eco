@@ -7,8 +7,8 @@ outline: '스피너'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
-subsection: ‘본문’
 order: '[4, 3, 12]'
+thumbnail: '4.3.12.spinner.png'
 ---
 
 ## Spinner
