@@ -68,23 +68,23 @@ table tbody tr:hover td {
 .page-content h2 {font-size:20px; margin-top:40px;}
 
 .well {
-	background: white;
-	box-shadow: 0 0 3px 3px #aaa;
+    background: white;
+    box-shadow: 0 0 3px 3px #aaa;
 }
 
 a.first-depth {
-	color: dimgray;
-	font-weight: bold;
-	font-size: 20px;
+    color: dimgray;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 a.second-depth {
-	text-indent: 20px;
-	font-size: 15px;
+    text-indent: 20px;
+    font-size: 15px;
 }
 
 a.third-depth {
-	text-indent: 40px;
+    text-indent: 40px;
 }
 
 .jumbotron {
