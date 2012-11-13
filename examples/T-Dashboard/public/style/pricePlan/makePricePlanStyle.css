@@ -159,10 +159,13 @@ div#makePricePlan .modifyButton{
 	-webkit-border-radius: 3px 0 3px 0;
 	 -moz-border-radius: 3px 0 3px 0;
 	      border-radius: 3px 0 3px 0;
+<<<<<<< HEAD
 }
 
 div.modal-header > h3 {
 	color: #05121D;
+=======
+>>>>>>> 1865635... 스타일링
 }
 
 /*.slider {width:200px;}*/
