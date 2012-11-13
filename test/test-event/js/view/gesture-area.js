@@ -21,10 +21,7 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		doubletap: function( event ) {
-			this.$obj.css( {
-				width: Math.round( this.$obj.width() * 1.2 ),
-				height: Math.round( this.$obj.height() * 1.2 )
-			} );
+			this.$obj.css( 'width', this.$obj.width() * 1.2 );
 		},
 		
 		gestureOptions: {
