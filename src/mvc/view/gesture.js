@@ -4,6 +4,8 @@ define( [ 'backbone', 'underscore', 'jquery', 'jquery.hammer' ], function( Backb
 	return Backbone.View.extend( {
 	
 		constructor: function( attributes, options ) {
+		
+			var hammerOptions = this.gestureOptions;
 			
 			// Backbone.View.apply가 실행이 되어야 this.$, this.$el을 사용할 수 있으므로 여기서는 다른 방법을 사용한다.
 			var $el = $( this.el );
@@ -26,9 +28,7 @@ define( [ 'backbone', 'underscore', 'jquery', 'jquery.hammer' ], function( Backb
 			
 			_.each( selectors, function( value, key ) {
 			
-				var options = {
-					drag_min_distance: 5
-				};
+				var options = hammerOptions ? _.clone( hammerOptions ) : {};
 				
 				options[ 'drag' ] = _.contains( value, 'dragstart' ) || _.contains( value, 'drag' ) || _.contains( value, 'dragend' );
 				options[ 'swipe' ] = _.contains( value, 'swipe' );
