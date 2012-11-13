@@ -15,6 +15,7 @@
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   *line-height: @baseLineHeight;
+	text-shadow: none;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -39,7 +40,7 @@
   // Active state
   &.active,
   &:active {
-		color: @btnActiveTxt;
+		color: @white;
 		text-decoration: none;
 		text-shadow: none;
 		background-color: @btnActive;
@@ -47,7 +48,7 @@
 		background-position: 0 0;
 		border:1px solid transparent;
 		.caret {
-			border-top-color: @btnActiveTxt;
+			border-top-color: @white;
 		}
   }
 
@@ -158,4 +159,11 @@
 
 .btn-g2 .btn {
 	font-size:24px; font-weight:bold;
+}
+
+button.btn.btn-small {
+	padding: 8px 15px;
+}
+button.btn.btn-mini {
+	padding: 5px 13px;
 }

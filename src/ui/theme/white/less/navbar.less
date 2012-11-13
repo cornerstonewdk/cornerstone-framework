@@ -145,7 +145,7 @@
 		float: right;
 		.navbarVerticalAlign(30px); // Vertically center in navbar
 		margin-bottom: 0;
-		padding: 6px 0 0;
+		padding: 0;
     .search-query {
       color: @grayLighter;
 			line-height: (@baseLineHeight + 5);
@@ -155,6 +155,7 @@
       .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
+			margin-top: -3px;
 
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
@@ -176,25 +177,6 @@
 	padding: 0 5px 0 0;
 	font-size: @baseFontSize;
 }
-
-.navbar-search button {
-	display: block;
-	background: none;
-	border: 0;
-	position: absolute;
-	top: 2px;
-	right: 10px;
-	z-index: 1000;
-}
-
-.navbar-search button i {
-	background: url('../img/icon.png') no-repeat -53px -673px;
-	background-size: 320px;
-	display: block;
-	width: 18px;
-	height: 24px;
-}
-
 
 // Static navbar
 // -------------------------
@@ -249,7 +231,7 @@
   display: block;
   float: left;
   margin: 0;
-	padding: 9px 0 0 10px;
+	padding: 9px 0 0;
 	z-index: 1;
 }
 .navbar .nav.pull-right {
@@ -271,18 +253,28 @@
 .navbar .nav > li > a {
   float: none;
   // Vertically center the text given @navbarHeight
-  padding: 7px 13px;
+  padding: 7px 13px 5px;
 	margin: 0;
   color: @navbarLinkColor;
 	font-size: @baseFontSize;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+	border: 0;
+}
+
+
+.navbar .nav > li > a:hover {
+	color: @navbarLinkColor;
+	text-decoration: none;
+	text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 	border: 1px solid transparent;
+	.box-shadow(none);
+	background-color: transparent;
+	border: 0;
 }
 
 // Active nav items
 .navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover,
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
@@ -290,8 +282,8 @@
   text-decoration: none;
 	text-shadow: none;
 	.border-radius(4px);
-	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	border: 0;
   background-color: @navbarLinkBackgroundActive;
 }
 
@@ -306,7 +298,7 @@
 	box-shadow: none;
 	background: none;
 	color: @navbarLinkHome;
-	font-size: @baseFontSize + 4;	
+	font-size: @baseFontSize + 2;	
 	text-shadow: 0 1px 1px rgba(255,255,255,7);
 }
 
@@ -321,13 +313,13 @@
 .navbar .nav.pull-right > li:first-child a {
 	float: none;
   // Vertically center the text given @navbarHeight
-  padding: 7px 13px;
+  padding: 7px 13px 5px;
 	margin: 0;
   color: @navbarLinkColor;
 	font-size: @baseFontSize;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
-	border: 1px solid transparent;
+	border: 0;
 }
 
 .navbar .nav.pull-right > li:first-child a:focus,
@@ -339,28 +331,38 @@
   text-decoration: none;
 	text-shadow: none;
 	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	border: 0;
   background-color: @navbarLinkBackgroundActive;
 }
 
 .navbar .nav > li a i {
 	display: inline-block;
-	vertical-align: middle;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
+	vertical-align: middle;	
 	padding-right: 0;
 	margin-top: -2px;
 }
 
 // Icon + Text Navigation 
 
-.ico-txt .nav > li:first-child a,
-.nav-icon .pull-right > li:last-child a {
-  padding: 4px 13px;
+.ico-txt .nav, .nav-icon .nav {
+	padding: 6px 0 0;
+}
+
+.navbar.ico-txt .nav > li:first-child a,
+.navbar.nav-icon .nav > li:first-child a {
+  padding: 7px 13px 5px;
 	margin: 0;
-	border: 1px solid transparent;
+	border: 0;
 	text-shadow: none;
+}
+
+.navbar.ico-txt .nav > li:first-child a:hover, 
+.navbar.ico-txt .nav > li:first-child a:active, 
+.navbar.ico-txt .nav > li:first-child.active a {
+	color: @white;
+	padding: 7px 13px 5px;
+	border:0;
 }
 
 .nav.pull-right > li:last-child a i {
@@ -368,43 +370,46 @@
 }
 
 .ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active,
-.nav-icon .nav.pull-right > li:last-child a:hover,
-.nav-icon .nav.pull-right > li:last-child a:active {
+.ico-txt .nav > li:first-child a:active {
 	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	border: 0;
   background-color: @navbarLinkBackgroundActive;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 }
 
-.ico-txt .nav > li a,
-.ico-txt .nav > li a:hover,
-.ico-txt .nav > li a:active,
-.ico-txt .nav > li.active a {
-	padding: 4px 13px;
+.navbar.nav-icon .nav.pull-right > li:first-child a:hover,
+.navbar.nav-icon .nav.pull-right > li:first-child a:active {
+	.border-radius(4px);
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	border: 0;
+  background-color: @navbarLinkBackgroundActive;
+	padding: 7px 13px 5px;
+}
+
+.navbar.ico-txt .nav > li a,
+.navbar.ico-txt .nav > li a:hover,
+.navbar.ico-txt .nav > li a:active,
+.navbar.ico-txt .nav > li.active a {
+	padding: 7px 13px 5px;
+}
+
+.navbar.ico-txt .nav.pull-right > li:last-child a,
+.navbar.ico-txt .nav.pull-right > li:last-child a:hover,
+.navbar.ico-txt .nav.pull-right > li:last-child a:active,
+.navbar.ico-txt .nav.pull-right > li:last-child.active a,
+.navbar.nav-icon .nav.pull-right > li:last-child a,
+.navbar.nav-icon .nav.pull-right > li:last-child a:hover,
+.navbar.nav-icon .nav.pull-right > li:last-child a:active,
+.navbar.nav-icon .nav.pull-right > li:last-child.active a {
+	font-size: 0;
+	line-height: 0;
+	padding: 7px 13px 5px;
+	margin-top: -1px;
 }
 
 .ico-txt .nav > li a i {
 	margin-right: 3px;
-}
-
-.ico-txt .nav > li:first-child a {
-	color: @navbarLinkColor;
-	font-size: @baseFontSize;
-	padding: 4px 13px;
-}
-
-.ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active, 
-.ico-txt .nav > li:first-child.active a {
-	color: @white;
-	font-size: @baseFontSize;
-	padding: 4px 13px;
-}
-
-.ico-txt .nav, .nav-icon .nav {
-	padding: 8px 0 0;
 }
 
 .ico-txt .nav.pull-right > li:first-child {
@@ -422,32 +427,32 @@
 .nav-icon .nav > li.active a {
 	font-size: 0;
 	line-height: 0;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 }
 
-.nav-icon .nav > li:first-child a,
-.nav-icon .nav.pull-right > li:first-child a {	
-	visibility: visible;
+.navbar.nav-icon .nav > li:first-child a,
+.navbar.nav-icon .nav.pull-right > li:first-child a {	
 	font-size: 0;
 	line-height: 0;
+	visibility: visible;
   text-decoration: none;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	border: 0;
   background-color: @navbarLinkBackgroundActive;
 }
 
-.nav-icon .nav > li:first-child a:hover, 
-.nav-icon .nav > li:first-child a:active, 
-.nav-icon .nav > li:first-child.active a {
+.navbar.nav-icon .nav > li:first-child a:hover, 
+.navbar.nav-icon .nav > li:first-child a:active, 
+.navbar.nav-icon .nav > li:first-child.active a {
 	visibility: visible;
 	font-size: 0;
 	line-height: 0;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	border: 0;
   background-color: @navbarLinkBackgroundActive;
 }
 
@@ -458,20 +463,10 @@
 }
 
 .nav.pull-right > li:last-child {
-	border-left: 1px solid rgba(255,255,255,.5);
-	.box-shadow(~"-1px 0 0 rgba(33,33,34,.2)");
+	border-left: 1px solid rgba(255,255,255,.1);
+	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
 	margin-left: 10px;
 	padding: 0 0 0 5px;
-}
-
-.ico-txt .nav.pull-right > li:first-child a,
-.ico-txt .nav.pull-right > li:last-child a,
-.nav-icon .nav.pull-right > li:last-child a,
-.nav-icon .nav.pull-right > li:last-child a:hover,
-.nav-icon .nav.pull-right > li:last-child a:active {
-	font-size: 0;
-	line-height: 0;	
-	padding: 3px 13px 3px 13px;
 }
 
 // Navbar button for toggling navbar items in responsive layouts
@@ -484,9 +479,9 @@
 	top: 0;
 	margin:8px 0 0;
 	display: none;
-	.box-shadow(inset 0 0 7px rgba(0,0,0,.3));
-	border:1px solid rgba(255,255,255,.1);
-	border-bottom:1px solid rgba(255,255,255,.3);
+	.box-shadow(inset 0 1px 3px rgba(0,0,0,.25));
+	border:1px solid rgba(0,0,0,.3);
+	border-bottom:1px solid rgba(255,255,255,.1);
 	.border-radius(4px);	
 	background: @navBtn;
 	padding: 6px 10px;
@@ -497,34 +492,8 @@
 	height: 22px;
 	padding: 0;
 	display: block;
-	background:url('../img/icon.png') no-repeat -14px -515px;
+	background:url('../img/icon.png') no-repeat -58px -515px;
 	background-size: 320px;
-}
-
-.btn-write, 
-.btn-write:hover, 
-.btn-write:active {
-	float:right;
-	width:28px;
-	height:29px;
-	display:block;
-	background:url('../img/icon.png') no-repeat -27px -1114px;
-	background-size: 320px;
-	margin:14px 0 0;
-	cursor: pointer;
-}
-
-.btn-top, 
-.btn-top:hover, 
-.btn-top:active {
-	float:right;
-	width:25px;
-	height:22px;
-	display:block;
-	background:url('../img/icon.png') no-repeat center center;
-	background-size: 320px;
-	margin:14px 0 0;
-	cursor: pointer;
 }
 
 // Dropdown menus
@@ -582,6 +551,7 @@
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColor;
   border-bottom-color: @navbarLinkColor;
+	vertical-align: top;
 }
 .navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
@@ -589,6 +559,7 @@
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColorActive;
   border-bottom-color: @navbarLinkColorActive;
+	vertical-align: top;
 }
 
 // Right aligned menus need alt position
@@ -636,7 +607,7 @@
 
   .nav > li > a:focus,
   .nav > li > a:hover {
-    background-color: @navbarInverseLinkBackgroundHover;
+    background-color: @navbarLinkBackgroundActive;
     color: @navbarInverseLinkColorHover;
   }
 
@@ -644,8 +615,8 @@
   .nav .active > a:hover,
   .nav .active > a:focus {
     color: @navbarInverseLinkColorActive;
-    background-color: @navbarInverseLinkBackgroundActive;
-  }
+    background-color: @navbarLinkBackgroundActive;
+  }	
 
   // Inline text links
   .navbar-link {
@@ -674,10 +645,11 @@
 
 }
 
-
 .icon-home {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -193px -822px;
 }
 
@@ -686,12 +658,16 @@
 .nav > li:first-child.active a .icon-home {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -60px -822px;
 }
 
 .icon-message {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -193px -467px;
 }
 
@@ -700,12 +676,16 @@
 .navbar .nav > li.active a .icon-message, {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -60px -467px;
 }
 
 .icon-mail {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -191px -601px;
 }
 
@@ -714,12 +694,16 @@
 .navbar .nav > li.active a .icon-mail, {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -59px -601px;
 }
 
 .icon-save {
 	width: 22px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -193px -645px;
 }
 
@@ -728,12 +712,16 @@
 .navbar .nav > li.active a .icon-save, {
 	width: 22px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -61px -645px;
 }
 
 .icon-user2 {
 	width: 27px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -191px -779px;
 }
 
@@ -742,12 +730,16 @@
 .navbar .nav > li.active a .icon-user2, {
 	width: 27px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -59px -779px;
 }
 
 .icon-connect {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -191px -734px;
 }
 
@@ -756,12 +748,16 @@
 .nav-icon .nav > li:first-child.active a .icon-connect {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -59px -734px;
 }
 
 .icon-search {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -192px -690px;
 }
 
@@ -774,6 +770,8 @@
 .icon-write {
 	width: 28px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -190px -557px;
 }
 
@@ -782,6 +780,8 @@
 .navbar .nav > li.active a .icon-write {
 	width: 28px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -58px -557px;
 }
 

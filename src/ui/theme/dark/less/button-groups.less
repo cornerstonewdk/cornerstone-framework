@@ -146,10 +146,23 @@
 
   // Keep the hover's background when dropdown is open
   .btn.dropdown-toggle {
-    background-color: @btnBackgroundHighlight;
+    text-decoration: none;
+		#gradient > .vertical(rgba(0,0,0,.5), rgba(0,0,0,.3));
+    background-color: @btnActive;
+    *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
+    background-position: 0 0;
+		border:1px solid transparent;
+		.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
+		#font > #effect > .txt-over();
   }
-  .btn-primary.dropdown-toggle {
-    background-color: @btnPrimaryBackgroundHighlight;
+  .btn-primary.dropdown-toggle,
+	.btn-primary.dropdown-toggle:hover,
+	.btn-primary.dropdown-toggle:first-child {
+    text-shadow: inset 0 0 2px rgba(255,255,255,.5);
+    .buttonBackground(@btnBlueActiveHighlight, @btnBlueActive, @btnBlueActiveTxt, @btnShadow);
+    border: 1px solid transparent;
+		.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
+		#font > #effect > .txt-over();
   }
   .btn-warning.dropdown-toggle {
     background-color: @btnWarningBackgroundHighlight;
@@ -166,6 +179,13 @@
   .btn-inverse.dropdown-toggle {
     background-color: @btnInverseBackgroundHighlight;
   }
+	.btn-warning.dropdown-toggle:hover,
+	.btn-danger.dropdown-toggle:hover,
+	.btn-success.dropdown-toggle:hover,
+	.btn-info.dropdown-toggle:hover,
+	.btn-inverse.dropdown-toggle:hover, {
+		border:1px solid transparent;
+	}
 }
 
 // Reposition the caret [2012-08-29] Add
@@ -207,6 +227,7 @@
 
 .dropdown-toggle .caret {
 	border-top: 4px solid @caretColorActive;
+	margin-top: 8px;
 }
 
 
