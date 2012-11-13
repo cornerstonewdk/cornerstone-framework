@@ -1,12 +1,12 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: 'Runtime 기본구조'
+title: '기본구조'
 outline: '런타임 기본구조'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for PlugIn'
-order: '[6, 1]'
+order: '[7, 1]'
 -->
 
 ----------

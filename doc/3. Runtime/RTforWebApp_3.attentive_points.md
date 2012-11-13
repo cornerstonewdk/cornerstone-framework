@@ -1,12 +1,12 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: 'Android와 iOS 공통 개발시 주의할 점'
+title: '개발시 주의사항'
 outline: 'Android와 iOS 공통 개발시 주의할 점'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
-order: '[7, 3]'
+order: '[6, 3]'
 -->
 
 ----------
