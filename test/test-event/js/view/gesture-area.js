@@ -21,16 +21,17 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		doubletap: function( event ) {
-			event.preventDefault();
-			
 			this.$obj.css( {
 				width: Math.round( this.$obj.width() * 1.2 ),
 				height: Math.round( this.$obj.height() * 1.2 )
 			} );
 		},
 		
+		gestureOptions: {
+			prevent_default: true
+		},
+		
 		dragstart: function( event ) {
-			event.preventDefault();
 		
 			this.position = this.$obj.position();
 			
@@ -40,7 +41,6 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		drag: function( event ) {
-			event.preventDefault();
 			
 			if ( !this.position ) return;
 		
@@ -57,14 +57,12 @@ define( [ 'gesture-view' ], function( GestureView ) {
 		},
 		
 		transformstart: function( event ) {
-			event.preventDefault();
 			
 			this.width = this.$obj.width();
 			this.degree = this.currentDegree;
 		},
 		
 		transform: function( event ) {
-			event.preventDefault();
 			
 			this.$obj.css( {
 				width: Math.round( this.width * event.scale ),
