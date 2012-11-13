@@ -1,7 +1,7 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: '기본구조'
+title: '런타임 기본구조'
 outline: '런타임 기본구조'
 date: '2012-11-16'
 tagstr: 'runtime'
@@ -18,7 +18,13 @@ order: '[6, 1]'
 
 ## 1.1 공통 Runtime 기본구조 
 
+- WebApp 구조도
+
 ![Cornerstone Runtime 메인 구조](./images/runtime1.png)
+
+- PlugIn 구조도
+
+![Cornerstone Runtime 메인 구조](./images/extensionstructure.png)
 
 -	Cornerstone Runtime은 크게 platform 별 Native Layer와 Java Script Layer의 2가지의 layer로 나뉘어 진다. 
 
