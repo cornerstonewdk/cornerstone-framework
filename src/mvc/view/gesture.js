@@ -33,7 +33,8 @@ define( [ 'backbone', 'underscore', 'jquery', 'jquery.hammer' ], function( Backb
 				options[ 'drag' ] = _.contains( value, 'dragstart' ) || _.contains( value, 'drag' ) || _.contains( value, 'dragend' );
 				options[ 'swipe' ] = _.contains( value, 'swipe' );
 				options[ 'transform' ] = _.contains( value, 'transformstart' ) || _.contains( value, 'transform' ) || _.contains( value, 'transformend' );
-				options[ 'tap' ] = _.contains( value, 'tap' ) || _.contains( value, 'doubletap' );
+				options[ 'tap' ] = _.contains( value, 'tap' );
+				options[ 'tap_double' ] = _.contains( value, 'doubletap' );
 				options[ 'hold' ] = _.contains( value, 'hold' );
 				
 				( key ? $el.find( key ) : $el ).hammer( options );
