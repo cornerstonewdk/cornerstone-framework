@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap.css"/>
 	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap-responsive.css"/>
 	<link rel="stylesheet" href="../../../dist/ui/theme/white/css/cornerstone.css"/>
-	<link rel="stylesheet" href="css/featured-datatable.css">
+	<link rel="stylesheet" href="../../../dist/ui/widget-datatable.css">
 	<style type="text/css">
 		h1, h2, .dataTables_wrapper {
 			color: #FFF;
@@ -59,7 +59,9 @@
 	$(document).ready(function () {
 		$('#example').featuredDataTable({
 			"bProcessing": true,
-			"sAjaxSource": 'data/sample.json'
+			"aaData":[["Trident", "Internet Explorer 4.0", "Win 95+", "4", "X"],
+				["Trident", "Internet Explorer 5.0", "Win 95+", "5", "C"],
+				["Trident", "Internet Explorer 5.5", "Win 95+", "5.5", "A"]]
 		});
 	});
 </script>

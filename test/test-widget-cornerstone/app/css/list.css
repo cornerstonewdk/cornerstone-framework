@@ -1,0 +1,70 @@
+#listView .item {
+	min-height: 500px;
+}
+
+#listView .item-vertical {
+	position: relative;
+	float: left;
+	margin-top: 22px;
+	z-index: 4;
+}
+
+#listView .item-vertical-title {
+	position: relative;
+	margin: 0 0 20px;
+	font-weight: bold;
+	font-size: 18px;
+	color: #3f3f3f;
+	text-align: left;
+	cursor: pointer;
+}
+
+#listView .item-vertical-read-more {
+	position: relative;
+	float: left;
+	background-color: #3F3F3F;
+	cursor: pointer;
+	cursor: hand;
+	margin-top: 15px;
+	width: 30%;
+}
+
+#listView .item-vertical-read-more span {
+	position: relative;
+	float: left;
+	width: 94%;
+	padding: 3%;
+	font-size: 13px;
+	line-height: 200%;
+	color: #ffffff;
+	overflow: hidden;
+	text-decoration: none;
+	outline: none;
+	text-align: center;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+#listView .main-text-holder {
+	padding: 10px;
+	height: 90px;
+	line-height: 20px;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.endless-loader {
+	width: 110px;
+	margin: 0 auto;
+}
+
+.icon-endless-loader{
+	background: url("img/159.gif") 0 0 no-repeat;
+	background-size: 30px 30px;
+	height: 30px;
+	padding-left: 35px;
+	line-height: 30px;
+}

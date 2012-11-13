@@ -3,7 +3,7 @@ define( [ 'backbone', 'template!view/list' ], function( Backbone, template ) {
 
 	return Backbone.View.extend( {
 
-		el: $( 'section#list-section' ),
+		el: 'section#list-section',
 
 		initialize: function() {
 			// collection에 변동이 있으면 다시 렌더링한다.

@@ -1,12 +1,12 @@
-$(function() {
+$(function () {
     // 데이터픽커
     var HAS_TOUCH = ('ontouchstart' in window);
-    if(!HAS_TOUCH) {
+    if (!HAS_TOUCH) {
         $('.datepicker').datepicker({
-            language: "ko"
+            language:"ko"
         });
     } else {
-        $('.datepicker').each(function() {
+        $('.datepicker').each(function () {
 
         });
     }
@@ -17,11 +17,12 @@ $(function() {
 // 모션캡차
     $("#form-motion-capcha").motioncaptcha();
 
-    $("[data-plugin='spinner']").on("click", function(e) {
+    $("[data-plugin='spinner']").on("click", function (e) {
         var self = this;
-        window.setTimeout(function() {
-            $(self).spinner("hide");
-        }, 1000);
+        var target = $(this).data("spinnerTarget");
+        window.setTimeout(function () {
+            $(target).spinner("hide");
+        }, 3000);
     });
 
 // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.

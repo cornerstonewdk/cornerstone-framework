@@ -52,6 +52,8 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 					
 					self[ key + '_handler' ] = function() {
 					
+						var handlerArg = arguments;
+					
 						self.runInactive( key );
 						
 						var prevPageId = self.currentPageId, prevPage = self.currentPage;
@@ -67,7 +69,7 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 							transition.outTarget.el = prevPage.el;
 							transition.done = function() {
 								// Transition 완료 후에 active 실행
-								self.runActive.apply( self, arguments );
+								self.runActive.apply( self, handlerArg );
 							};
 							
 							Transition.launcher( transition );

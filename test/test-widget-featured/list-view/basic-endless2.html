@@ -14,16 +14,19 @@
 	<link rel="stylesheet" href="../../../dist/ui/theme/white/css/cornerstone.css"/>
 	<link rel="stylesheet" href="css/list-view.css">
 	<style type="text/css">
-		#wrapper {
-			top: 65px;
-			position: relative;
+		body {
+			padding: 0;
+			overflow-x: hidden;
+		}
+		#header {
+			display: none;
 		}
 	</style>
 </head>
 <body>
 
 <div id="header">
-	<div class="navbar nav-icon navbar-fixed-top">
+	<div class="navbar nav-icon">
 		<div class="navbar-inner">
 			<div class="container">
 				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -31,57 +34,10 @@
 				</button>
 				<a class="brand" href="#">CornerStone</a>
 
-				<div class="nav-collapse collapse">
-					<ul class="nav pull-left">
-						<li class="">
-							<a href="#">
-								<i class="home"></i>
-								Home
-							</a>
-						</li>
-						<li class="">
-							<a href="#">
-								<i class="message"></i>
-								Link1
-							</a>
-						</li>
-						<li class="">
-							<a href="#">
-								<i class="mail"></i>
-								Link2
-							</a>
-						</li>
-						<li class="active">
-							<a href="#">
-								<i class="save"></i>
-								Link3
-							</a>
-						</li>
-						<li class="">
-							<a href="#">
-								<i class="user2"></i>
-								Link4
-							</a>
-						</li>
-					</ul>
-
-					<ul class="nav pull-right">
-						<li class="">
-							<a href="#"><i class="connect"></i></a>
-						</li>
-						<li class="">
-							<a href="#"><i class="search"></i></a>
-						</li>
-						<li class="">
-							<a href="#"><i class="write"></i></a>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <div class="container-fluid" id="wrapper">
 	<div class="row-fluid">
 		<div class="lists">
@@ -230,9 +186,6 @@
 				</ul>
 			</div>
 		</div>
-		<div id="endless-loader" class="endless-loader">
-			<span class="icon-endless-loader">Loading...</span>
-		</div>
 	</div>
 </div>
 
@@ -251,6 +204,7 @@
 	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
 	$el.featuredListView({
 		optimization: false,
+		spinner: "#endless-loader",
 		scrollEndAction: function() {
 			getItem();
 		}

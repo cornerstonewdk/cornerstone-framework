@@ -13,6 +13,11 @@
 	<link rel="stylesheet" href="../../../dist/lib/bootstrap/css/bootstrap-responsive.css"/>
 	<link rel="stylesheet" href="../../../dist/ui/theme/white/css/cornerstone.css"/>
 	<link rel="stylesheet" href="css/list-view.css">
+	<style type="text/css">
+		body {
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
 
@@ -25,57 +30,10 @@
 				</button>
 				<a class="brand" href="#">CornerStone</a>
 
-				<div class="nav-collapse collapse">
-					<ul class="nav pull-left">
-						<li class="">
-							<a href="#">
-								<i class="home"></i>
-								Home
-							</a>
-						</li>
-						<li class="">
-							<a href="#">
-								<i class="message"></i>
-								Link1
-							</a>
-						</li>
-						<li class="">
-							<a href="#">
-								<i class="mail"></i>
-								Link2
-							</a>
-						</li>
-						<li class="active">
-							<a href="#">
-								<i class="save"></i>
-								Link3
-							</a>
-						</li>
-						<li class="">
-							<a href="#">
-								<i class="user2"></i>
-								Link4
-							</a>
-						</li>
-					</ul>
-
-					<ul class="nav pull-right">
-						<li class="">
-							<a href="#"><i class="connect"></i></a>
-						</li>
-						<li class="">
-							<a href="#"><i class="search"></i></a>
-						</li>
-						<li class="">
-							<a href="#"><i class="write"></i></a>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <div class="container-fluid" id="wrapper">
 	<div class="row-fluid">
 		<div class="lists">
@@ -245,6 +203,7 @@
 
 	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
 	$el.featuredListView({
+		spinner: "#endless-loader",
 		scrollEndAction: function() {
 			getItem();
 		}

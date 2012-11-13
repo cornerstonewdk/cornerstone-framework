@@ -17,7 +17,7 @@
   .border-radius(3px);
   .box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
-.pagination ul li {
+.pagination ul > li {
   display: inline-block;
 	margin-left: -4px;
 	padding: 0 4px 0 1px;
@@ -25,15 +25,17 @@
 	vertical-align: middle;
   }
 
-.pagination ul li:first-child {
+.pagination ul > li:first-child {
 	margin-right: 5px;
 }
 
-.pagination ul li:last-child {
+.pagination ul > li:last-child {
 	margin-left: -1px;
 }
 
-.pagination a, .pagination a:hover {
+.pagination ul > li > a,
+.pagination ul > li > span,
+.pagination ul > li > a:hover {
 	color: @pagingTxt;
 	line-height: @baseLineHeight;
 	width: 26px;
@@ -48,7 +50,8 @@
   .box-shadow(~"inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4)");
 }
 
-.pagination .active a {
+.pagination ul > li > a:active,
+.pagination ul > li.active > a {
 	color: @pagingActive;
 	line-height: @baseLineHeight;
 	font-weight: bold;
@@ -59,10 +62,11 @@
 	.box-shadow(~"inset 0 2px 3px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.15)");
 }
 
-.pagination ul li:first-child a, .pagination ul li:last-child a {
+.pagination ul > li:first-child > a, 
+.pagination ul > li:last-child > a {
 	width: auto;
 	height: auto;
-	padding: 5px 8px;
+	padding: 7px 8px;
 	background: @pagingArrow;
   border: 1px solid rgba(255,255,255,0.1);
 	border-top: 1px solid rgba(255,255,255,0.15);
@@ -71,8 +75,8 @@
   .box-shadow(~"inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4)");
 }
 
-.pagination li:first-child a:active,
-.pagination li:last-child a:active {
+.pagination ul > li:first-child > a:active,
+.pagination ul > li:last-child > a:active {
 	margin: 0;
 	text-decoration: none;
 	border-top: none;
@@ -81,8 +85,8 @@
 	.box-shadow(~"inset 0 2px 3px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.15)");
 }
 
-.pagination ul li:first-child a span, 
-.pagination ul li:last-child a span {
+.pagination ul > li:first-child > a span, 
+.pagination ul > li:last-child > a span {
 	width: 22px;
 	height: 22px;
 	padding: 0;
@@ -96,8 +100,8 @@
   .box-shadow(~"inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4)");
 }
 
-.pagination ul li:first-child a:active span, 
-.pagination ul li:last-child a:active span {	
+.pagination ul > li:first-child > a:active span, 
+.pagination ul > li:last-child > a:active span {	
 	width: 22px;
 	height: 22px;
 	padding: 0;
@@ -111,24 +115,8 @@
 	background-color: @white;
 }
 
-
-.pagination ul li:first-child a span .arrow, 
-.pagination ul li:last-child a span .arrow {
-	border-color: transparent @pagingArrow transparent transparent;
-  border-style: solid;
-  border-width: 7px 9px 7px 9px;
-	background: none;
-  height: 0px;
-  width: 0px;
-	.border-radius(0);
-	box-shadow: none;
-	position: absolute;
-	left: -4px;
-	top: 4px;
-}
-
-.pagination ul li:first-child a span:after, 
-.pagination ul li:last-child a span:after {
+.pagination ul > li:first-child > a span:after, 
+.pagination ul > li:last-child > a span:after {
 	content:"";
 	border-color: transparent @pagingArrow transparent transparent;
   border-style: solid;
@@ -143,8 +131,8 @@
 	top: 4px;
 }
 
-.pagination ul li:first-child a:active span:after, 
-.pagination ul li:last-child a:active span:after {
+.pagination ul > li:first-child > a:active span:after, 
+.pagination ul > li:last-child > a:active span:after {
 	content:"";
 	border-color: transparent @pagingArrowActive transparent transparent;
   border-style: solid;
@@ -160,18 +148,36 @@
 }
 
 
-.pagination ul li:last-child a span:after {
+.pagination ul > li:last-child > a span:after {
 	border-color: transparent transparent transparent @pagingArrow;
 	position: absolute;
 	left: 8px;
 	top: 4px;
 }
 
-.pagination ul li:last-child a:active span:after {
+.pagination ul > li:last-child > a:active span:after {
 	border-color: transparent transparent transparent @pagingArrowActive;
 	position: absolute;
 	left: 8px;
 	top: 4px;
+}
+
+.pagination ul > li.disabled > a,
+.pagination ul > li.disabled > a:hover, 
+.pagination ul > li.disabled > a:active {
+	color: @pagingTxt;
+	line-height: @baseLineHeight;
+	font-weight: normal;
+	width: 26px;
+	padding: 7px 0 7px 0;
+	background: @pagingArrow;
+  border: 1px solid rgba(255,255,255,0.05);
+	border-top: 1px solid rgba(255,255,255,0.2);
+	border-bottom: 0;
+  .border-radius(4px);
+	vertical-align: middle;
+	display:block;
+  .box-shadow(~"inset 0 0 2px rgba(255,255,255,.1), 0 5px 5px rgba(0,0,0,.4)");
 }
 
 

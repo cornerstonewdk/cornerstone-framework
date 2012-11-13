@@ -25,13 +25,13 @@
 							<span class="label label-important" id="auth_status">undefined</span>
 						</label>
 						<ul class="nav nav-tabs">
-							<li class="active" name="auth">
+							<li class="active" name="auth" style="width: 32%;">
 								<a>인증</a>
 							</li>
-							<li name="sms">
+							<li name="sms" style="width: 32%;">
 								<a>메시지</a>
 							</li>
-							<li name="pay">
+							<li name="pay" style="width: 33%;">
 								<a>과금</a>
 							</li>
 						</ul>
@@ -96,11 +96,11 @@
 					                    	<div class="btn-group">
   												<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">one-time</a>
 												<ul class="dropdown-menu">
-													<li><a>one-time</a></li>
-													<li><a>recurring</a></li>
-													<li><a>weekly-subscription</a></li>
-													<li><a>monthly-subscription</a></li>
-													<li><a>yearly-subscription</a></li>
+													<li><a href="#">one-time</a></li>
+													<li><a href="#">recurring</a></li>
+													<li><a href="#">weekly-subscription</a></li>
+													<li><a href="#">monthly-subscription</a></li>
+													<li><a href="#">yearly-subscription</a></li>
 												</ul>
 											</div>
 					                    </div>
@@ -135,14 +135,14 @@
 		<br/>
 		<script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="../../../dist/lib/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../../dist/util/skt.js"></script>
+		<script type="text/javascript" src="js/skt-css.js"></script>
 
 		<script type="text/javascript">
 
 		var client_auth_token = undefined;
 		var paymentFlag = false;
 
-		$( '#redirectUri' ).val( 'http://61.250.22.139/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
+		$( '#redirectUri' ).val( 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
 		//$( '#redirectUri' ).val( encodeURI( 'file:///C:/nginx-1.2.3/html/client_redirect.html' ) );
 
 		$( 'ul > li' ).on( 'click', function () {
@@ -154,6 +154,7 @@
 		} );
 
 		$( '#payForm ul.dropdown-menu > li > a' ).bind( 'click', function ( evt ) {
+
 			$( '#payForm [data-toggle=dropdown]' ).html( $( this ).html() );
 			$( '#paymentDate' ).val( '' );
 			// one-time or recurring
@@ -164,7 +165,8 @@
 				$( '#paymentDiv' ).show();
 				paymentFlag = true;
 			}
-			return false;
+			$( '#payForm .btn-group.open' ).removeClass("open");
+			return false;	
 		} );
 
 		function bindAlert( add, msg ) {
@@ -209,8 +211,7 @@
 				},
 				error: function ( err ) {
 					bindAlert( 'alert-error', JSON.stringify( err ) );
-				},
-				timeout: 1000
+				}
 			} );
 			return false;
 		} );

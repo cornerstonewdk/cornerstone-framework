@@ -1,0 +1,26 @@
+<!--div.container>div.row*10>div.span12-->
+<div class="container chart-view">
+	<div class="title" id="control-btn">Datatable
+		<button class="btn" data-options-url="data/sample-datatable.json">A</button>
+		<button class="btn" data-options-url="data/sample-datatable2.json">B</button>
+	</div>
+	<div class="title-separator"></div>
+	<div class="row">
+		<div class="span12">
+			<table id="datatable" cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+				<thead>
+				<tr>
+					<th width="20%">Rendering engine</th>
+					<th width="25%">Browser</th>
+					<th width="25%">Platform(s)</th>
+					<th width="15%">Engine version</th>
+					<th width="15%">CSS grade</th>
+				</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

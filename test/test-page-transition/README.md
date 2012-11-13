@@ -84,56 +84,20 @@ CSS
 
 2)	의존성 주입 
 
--	일반 방식 [RUN](http://jsfiddle.net/azamara/tcEAG/)
+-	일반 방식 
 
 		<!-- jQuery -->
-		<script type="text/javascript" src="jquery/jquery-1.7.2.min.js"></script>
-		<!-- jQuery Transit -->
-		<script type="text/javascript" src="jquery.transit.js"></script>
+		<script type="text/javascript" src="cornerstone/lib/jquery-1.8.1.min.js"></script>
 		<!-- 화면전환 Javascript -->
-		<script type="text/javascript" src="transition.js"></script>
+		<script type="text/javascript" src="cornerstone/util/transition.js"></script>
 
--	MVC Framework을 이용한 의존성 주입 [RUN](http://jsfiddle.net/azamara/tcEAG/7/)
-
-		// config.js
-		require.config({
-            "paths":{ // path naming
-                // Libs
-                "jquery":"../libs/jquery/jquery-1.7.2.min",
-                "underscore":"../libs/underscore/underscore-min",
-                "backbone":"../libs/backbone/backbone-min",
-
-                // Plugin
-                "jquery-transit":"../libs/jquery/plugins/jquery.transit",
-
-                // Utils
-                "transition":"../../transition",
-
-                "app":"app"
-            },
-            shim:{ // 외존성 설정
-                "backbone":{
-                    deps:["underscore"],
-                    exports: "Backbone"
-                },
-                "jquery-transit":{
-                    deps:["jquery"]
-                },
-                "transition":{
-                    deps:["jquery-transit"],
-                    exports: "Transition"
-                },
-                "app": {
-                    deps:["backbone", "transition"]
-                }
-            }
-        });
+-	MVC Framework을 이용한 의존성 주입
 
 		// app.js
-		define(['backbone',
-				'transition'],
+		define(['backbone', 'transition'],
     			function (Backbone, Transition) {
-				(중략...)
+					(중략...)
+				}
 		});
 
 3)	화면전환 파라미터 정의

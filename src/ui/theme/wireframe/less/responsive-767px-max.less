@@ -38,13 +38,13 @@
 
 	.navbar ul.nav {
 		width: 100%;
-		padding: 0;
+		padding: 7px 0;
 	}
 
 	.navbar .nav > li {
 		float: none;
 		clear:both;
-		padding: 0;
+		padding: 5px 0;
 	}
 
 	.navbar .nav > li:first-child {
@@ -264,5 +264,108 @@
 	.slider-box .slider {
 		min-width:70%;
 		float: left;
+	}
+
+	.navbar .nav > li > a:hover {
+		text-align: left;
+		display: block;
+		padding: 7px 0 7px 10px;
+		color: @navbarLinkColor;
+		text-decoration: none;
+		text-shadow: none;
+		background: transparent;
+		.box-shadow (none);
+		border: 1px solid transparent;
+	}
+
+	// navbar-inverse
+	.navbar-inverse .nav > li > a,
+	.navbar-inverse .nav > li > a:hover,
+	.navbar-inverse .nav.pull-right > li > a,
+	.navbar-inverse .nav.pull-right > li:first-child > a {
+		color: @white;
+		font-weight: normal;
+		text-shadow: none;		
+		&:hover {
+			color: @white;
+			text-shadow: none;
+      background: none;
+    }
+	}
+
+	.navbar-inverse .nav-collapse .nav > li > a:hover, 
+	.navbar-inverse .nav-collapse .dropdown-menu a:hover {
+		background: none;		
+	}
+
+	.navbar-inverse .nav > li.active > a,
+	.navbar-inverse .nav > li.active > a:hover {
+		color: @black;
+		text-shadow: none;
+		background: @navbarDropdownBg;
+	}
+
+	.navbar-inverse .nav-collapse .nav > li:first-child > a,
+	.navbar-inverse .nav-collapse .nav > li:first-child > a:hover {
+		color: @navbarLinkColorHover;
+		text-shadow: none;
+		background-color: @navbarFirstBackground;
+	}
+
+	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a,
+	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a:hover {
+		color: @navbarLinkColor;
+		font-weight: normal;
+		text-shadow: none;
+		background: transparent;
+	}
+
+	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a:active {
+		background-color: @navbarLinkBackgroundActive;
+	}
+
+	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle:active {
+		color: @navbarLinkColor;
+		font-size: @baseFontSize;
+		text-decoration: none;
+		text-shadow: none;
+		border: 1px solid transparent;
+		background: transparent;
+	}
+
+	.navbar-inverse .nav.pull-right > li > a,
+	.navbar-inverse .nav.pull-right > li:first-child > a,
+	.navbar-inverse .nav.pull-right > li > a:hover,
+	.navbar-inverse .nav.pull-right > li:first-child > a:hover {
+		border: 0;
+		color: white;
+		line-height: @baseLineHeight;
+		margin: 0;
+		background: none;	
+		.box-shadow (none);
+		padding: 7px 13px;
+	}
+
+	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a,
+	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a:hover,
+	.navbar-inverse .nav.pull-right > li.dropdown > .dropdown-menu > li > a,
+	.navbar-inverse .nav.pull-right > li.dropdown > .dropdown-menu > li > a:hover {
+		color: @white;
+		font-size: @baseFontSize + 2 ;
+		line-height: @baseLineHeight;
+		font-weight: normal;
+		text-shadow: none;		
+		padding: 5px 15px;
+	}
+
+	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle,
+	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle:hover,
+	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle:active {
+		color: @white;
+		line-height: @baseLineHeight;
+		font-size: @baseFontSize + 4 ;
+		text-decoration: none;
+		text-shadow: none;
+		border:1px solid transparent;
 	}
 }
