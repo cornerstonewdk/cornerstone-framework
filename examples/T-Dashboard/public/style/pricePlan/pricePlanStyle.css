@@ -1,3 +1,9 @@
+#pricePlanContents .hr-pressed {
+	position: relative;
+	top: -15px;
+	margin: 0;
+}
+
 #pricePlanContents .typo-pressed-price {
 	color: orangered;
 }

@@ -1,35 +1,56 @@
+#makePricePlan .date {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+#makePricePlan .hr-pressed {
+	position: relative;
+	top: -10px;
+}
+
+#makePricePlan #dragMenu {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+#makePricePlan #dragMenu > .nav-header {
+	color: lightgray;
+} 
+
+#makePricePlan #dragMenu > .hr-pressed {
+	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	top: 0;
+} 
+
 /*
  * 사이드 메뉴에 있는 애들중 헤더가 아닌애들의 스타일
  */
-div#makePricePlan ul#dragMenu > li:not(.nav-header) {
+#makePricePlan #dragMenu > li:not(.nav-header) {
 	list-style: none;
 	position: relative;
 	height: 40px;
-	padding:0;
-	margin:5px 0;
+	margin: 4px 0;
 }
 
 /*
  * 위엣놈의 하단에 있는 애들의 스타일
  */
-div#makePricePlan ul#dragMenu > li:not(.nav-header) > div {
+ #makePricePlan #dragMenu > li:not(.nav-header) > div {
 	position: absolute;
 	top: 0;
 	left: -12px;
 	z-index: 1000;
-	height: 40px;
-	line-height: 38px;
-	border: solid 1px;
-	margin: 1px;
-	background-color: #FFF;
-	border-radius:4px;
+	margin: 0;
+	padding: 0 12px;
 	width: 100%;
-	padding:0 12px;
-	margin:0;
-	text-align:center;
-	font-weight:bold;
-	font-size:16px;
-}
+	height: 40px;
+	background-color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1em;
+	line-height: 38px;
+	border-radius: 3px;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+ }
 
 div#makePricePlan ul#dragMenu > li:not(.nav-header) > div > p {
 	display: none;
@@ -38,37 +59,49 @@ div#makePricePlan ul#dragMenu > li:not(.nav-header) > div > p {
 /*
  * 드랍존의 스타일
  */
-div#makePricePlan div.dropZone {
+#makePricePlan #plan .typo-pressed {
+	margin-bottom: 0;
+}
+
+#makePricePlan #plan .hr-pressed {
+	margin-bottom: 0;
+}
+
+#makePricePlan #plan .dropZone {
 	position: relative;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 0 7px#888;
+	-moz-box-shadow: inset 0 0 7px #888;
+	box-shadow: inner 0 0 7px #888;
+	background-color: rgba(0, 0, 0, 0.1);
 	width: 100%;
-	height: 80px;
-	padding: 5px;
-	background-color: #666;
-	border: solid 1px;
-	border-radius:4px;
+	height: 90px;
+	padding: 6px;
+	margin-bottom: 15px;
 }
 
 /*
  * 드레그 오브젝트가 드랍존으로 왔을때의 스타일 변경
  */
-div#makePricePlan div.dropZone > div {
+#makePricePlan #plan .dropZone > div {
 	position: relative;
 	left:0 ! important; top:0 ! important;
 	float: left;
 	z-index: 1000;
-	width: 120px;
-	height: 37px;
-	border: solid 1px;
-	margin: 1px;
-	background-color: #FFF;
-	border-radius:4px;
-	padding:33px 5px 5px 5px;
-	text-align:center;
+	width: 105px;
+	height: 45px;
+	border-radius: 3px;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+	background-color: white;
+	padding: 33px 5px 5px 5px;	
 	font-size:16px;
 	font-weight:bold;
 	line-height:100%;
-	color: #05121D;	/*글씨색상 변경*/
+	color: #05121D;
+	margin: 0 5px;
+	text-align:center;
 }
+
 div#makePricePlan div.dropZone > div > p {
 	padding-top:3px;
 	font-size:14px;
@@ -94,19 +127,38 @@ div#makePricePlan .prod-form input, .prod-form .btn {
 
 div#makePricePlan .removeButton {
 	position:absolute;
-	right:3px; 
-	top:3px;
+	right: 0; 
+	top: 0;
 	padding:4px 7px;
 	font-size:14px;
 	line-height:100%;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	border-top: 0;
+	border-right: 0;
+	color: #9da0a4;
+	-webkit-border-radius: 0 3px 0 3px;
+	 -moz-border-radius: 0 3px 0 3px;
+	      border-radius: 0 3px 0 3px;
 }
+
 div#makePricePlan .modifyButton{
 	position:absolute;
-	left:3px; 
-	top:3px;	
+	left:0px; 
+	top:0px;	
 	padding:4px 10px;
 	font-size:14px;
 	line-height:100%;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	border-left: 0;
+	border-top: 0;
+	color: #9da0a4;
+	-webkit-border-radius: 3px 0 3px 0;
+	 -moz-border-radius: 3px 0 3px 0;
+	      border-radius: 3px 0 3px 0;
 }
 
 div.modal-header > h3 {

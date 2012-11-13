@@ -2,7 +2,7 @@
 	<div class="row-fluid">
 		<!-- left menu -->
 		<div class="span3">
-			<div class="well sidebar-nav well-shadow">
+			<div class="well sidebar-nav well-shadow well-billie">
 				<ul class="nav nav-list" data-branchlist>
 					<li class="nav-header">지점</li>
 				</ul>
