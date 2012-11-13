@@ -88,7 +88,11 @@
 			var historyList = this.$el.find('#vocHistory');
 			for(var i = 0; i < this.vocList.length; i++) {
 				if(this.vocList[i]['customerId'] == selectVocData['customerId'] && this.vocList[i]['vocId'] != selectVocData['vocId']) {
-					historyList.append('<li>' + this.vocList[i]['customerSatisfaction'] + ' ' + this.vocList[i]['vocRequest'] + '</li>');
+					if (this.vocList[i]['customerSatisfaction'] === '만족') {
+						historyList.append('<li>' + '<span class="label label-success">' + this.vocList[i]['customerSatisfaction'] + '</span>' + ' ' + this.vocList[i]['vocRequest'] + '</li>');
+					} else {
+						historyList.append('<li>' + '<span class="label label-warning">' + this.vocList[i]['customerSatisfaction'] + '</span>' + ' ' + this.vocList[i]['vocRequest'] + '</li>');
+					}
 				}
 			}
 		},

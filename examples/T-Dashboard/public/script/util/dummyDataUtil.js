@@ -260,7 +260,7 @@ define(function(require) {
 				'customerLevel': 'VIP',
 				'customerDevice': 'iPhone4S',
 				'customerPricePlan': 'LTE95',
-				'customerSatisfaction': '만족'
+				'customerSatisfaction': '불만족'
 			},
 			'2': {
 				'customerId': 'bbbbb',
@@ -268,7 +268,7 @@ define(function(require) {
 				'customerLevel': 'Royal',
 				'customerDevice': 'GalaxyS3',
 				'customerPricePlan': 'LTE75',
-				'customerSatisfaction': '만족'
+				'customerSatisfaction': '불만족'
 			},
 			'3': {
 				'customerId': 'ccccc',
@@ -311,7 +311,7 @@ define(function(require) {
 			},
 			'3': {
 				'vocId': '1',
-				'vocRequest': '활불 되나요?',
+				'vocRequest': '환불 되나요?',
 				'vocResponse': '안됩니다.',
 				'vocState': 'C',
 			},

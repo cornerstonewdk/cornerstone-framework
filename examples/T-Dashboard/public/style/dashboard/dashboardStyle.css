@@ -60,6 +60,8 @@
 	height: 290px;
 	background: #FFFFFF;
 	border-radius: 5px;
+	background: url('../image/bg_top.png');
+	background-size: 4px;
 }
 
 @media all and (max-width: 626px) {
@@ -74,6 +76,8 @@
 		width: 100%;
 		height: 290px;
 		background: #FFFFFF;
+		background: url('../image/bg_top.png');
+		background-size: 4px;
 		border-radius: 5px;
 	}
 }
@@ -87,7 +91,7 @@
 }
 
 /* Dashboard barchart style */
-div#reportChart {
+#reportChart {
 	height: 200px;
 	min-height: 200px;
 }
@@ -99,54 +103,51 @@ div[data-featured="scrollView"] {
 /**
  * 	장과장님이 잡아주신 것들
  */
-div#dashboard_container .title {
-	font-size: 22px;
-	padding: 20px 0 0 0;
+#dashboard_container .typo-pressed-title {
 	margin: 0;
+	padding: 20px 0 0 0;
+	font-size: 1.6em;
 	line-height: 100%;
 }
 
-div#dashboard_container .widget {
+#dashboard_container .widget {
 	padding: 10px 5px 5px 5px;
 }
-div#dashboard_container .widget .lists li {
+#dashboard_container .widget .lists li {
 	font-size: 14px;
 	text-align: left;
 }
-div#dashboard_container .widget2 {
+#dashboard_container .widget2 {
 	padding: 0;
 }
-div#dashboard_container .lists li .name {
+#dashboard_container .lists li .name {
 	width: 60px;
 	display: inline-block;
 }
-div#dashboard_container .lists li .txt-con {
+#dashboard_container .lists li .txt-con {
 	width: 150px;
-	line-height: 100%;
 	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-div#dashboard_container .lists li .txt-con2 {
+#dashboard_container .lists li .txt-con2 {
 	width: 220px;
-	line-height: 100%;
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-div#dashboard_container .scrollview {
+#dashboard_container .scrollview {
 	position: relative;
 	top: 0;
 }
 
-div#dashboard_container .hero-unit {
+#dashboard_container .hero-unit {
 	min-height: 326px;
 }
 
-div#dashboard_container li {
+#dashboard_container li {
 	line-height: 18px;
 }
-

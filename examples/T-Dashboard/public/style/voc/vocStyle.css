@@ -19,11 +19,11 @@
 	margin:0;
 }
 .voc-area div.hero-unit ul li {
-	font-size:20px;
+	font-size:1.1em;
 	line-height: 180%;
 	border-bottom:1px solid #ddd;
 	list-style:none;
-	padding:5px 0;
+	padding:5px 3px;
 }
 
 .voc-con div.hero-unit h3 {
@@ -38,6 +38,14 @@
 	margin-top:0;
 }
 
-div#voc div.hero-unit {
+#voc div.hero-unit {
 	color: #05121D;	/*글씨색상 변경*/
+}
+
+#vocHistory li {
+	font-size: 1em;
+}
+
+#vocData .typo-pressed-strong {
+	color: black;
 }

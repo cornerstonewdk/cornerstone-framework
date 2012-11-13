@@ -1,58 +1,62 @@
-<div class="row-fluid">
-	<div class="span4 prod-name2">
-		<label>상품명 : {{pricePlanName}}</label>
-	</div>
-	<div class="span8 prod-form2">
-		<button class="btn hidden-phone" type="button" id="modifyButton">수정</button>
-	</div>
-</div>
-
-<div class="row-fluid">
-	<div class="span6">
-		<h3>정책 적용일</h3>
-		<div class="well">{{applyDate}}</div>
-	</div>
-	<div class="span6">
-		<h3>정책 작성일</h3>
-		<div class="well">{{makeDate}}</div>
+<div class="well well-billie">
+	<div class="row-fluid">
+		<div class="span9">
+			<h3 class="typo-pressed">상품명 : <span class="pressed-price">{{pricePlanName}}</span></p>
+		</div>
+		<div class="span3">
+			<button class="btn hidden-phone" type="button" id="modifyButton">수정</button>
+		</div>
 	</div>
 </div>
 
-<div class="row-fluid">
-	<h3>고객 조건</h3>
-	<div id="dropCustomerTypeZone" class="dropZone span12">
-		<div data-show="false" data-customertype="basic">일반</div>
-		<div data-show="false" data-customertype="woman">여성</div>
-		<div data-show="false" data-customertype="ting">팅</div>
-		<div data-show="false" data-customertype="silver">실버</div>
+<div class="well-project well contents">
+	<div class="row-fluid">
+		<div class="span6 date">
+			<h3 class="typo-pressed">정책 적용일</h3>
+			<div class="well well-shadow">{{applyDate}}</div>
+		</div>
+		<div class="span6 date">
+			<h3 class="typo-pressed">정책 작성일</h3>
+			<div class="well well-shadow">{{makeDate}}</div>
+		</div>
 	</div>
-</div>
 
-<div class="row-fluid">
-	<h3>상품 조건</h3>
-	<div id="dropProductTypeZone" class="dropZone span12">
-		<div data-show="false" data-producttype="voice" data-extradata="0">음성<p>0</p></div>						
-		<div data-show="false" data-producttype="data" data-extradata="0">데이터<p>0</p></div>
-		<div data-show="false" data-producttype="message" data-extradata="0">메세징<p>0</p></div>
-		<div data-show="false" data-producttype="roaming" data-extradata="0">로밍<p>0</p></div>
+	<div class="row-fluid">
+		<h3 class="typo-pressed">고객 조건</h3>
+		<div id="dropCustomerTypeZone" class="dropZone span12">
+			<div class="well well-shadow" data-show="false" data-customertype="basic">일반</div>
+			<div class="well well-shadow" data-show="false" data-customertype="woman">여성</div>
+			<div class="well well-shadow" data-show="false" data-customertype="ting">팅</div>
+			<div class="well well-shadow" data-show="false" data-customertype="silver">실버</div>
+		</div>
 	</div>
-</div>
 
-<div class="row-fluid">
-	<h3>회선 조건</h3>
-	<div id="dropCommTypeZone" class="dropZone span12">
-		<div data-show="false" data-commtype="3g">3G</div>
-		<div data-show="false" data-commtype="lte">LTE</div>
+	<div class="row-fluid">
+		<h3 class="typo-pressed">상품 조건</h3>
+		<div id="dropProductTypeZone" class="dropZone span12">
+			<div class="well well-shadow" data-show="false" data-producttype="voice" data-extradata="0">음성<p class="typo-number">0</p></div>
+			<div class="well well-shadow" data-show="false" data-producttype="data" data-extradata="0">데이터<p class="typo-number">0</p></div>
+			<div class="well well-shadow" data-show="false" data-producttype="message" data-extradata="0">메세징<p class="typo-number">0</p></div>
+			<div class="well well-shadow" data-show="false" data-producttype="roaming" data-extradata="0">로밍<p class="typo-number">0</p></div>
+		</div>
 	</div>
-</div>
 
-<div class="row-fluid">
-	<h3>할인 조건</h3>
-	<div id="dropDiscountTypeZone" class="dropZone span12">
-		<div data-show="false" data-discounttype="double">더블할인</div>
-		<div data-show="false" data-discounttype="special">스페셜할인</div>
-		<div data-show="false" data-discounttype="good">우량할인</div>
-		<div data-show="false" data-discounttype="tfamily">T끼리 온가족할인</div>
-		<div data-show="false" data-discounttype="lteplus">LTE 플러스할인</div>
+	<div class="row-fluid">
+		<h3 class="typo-pressed">회선 조건</h3>
+		<div id="dropCommTypeZone" class="dropZone span12">
+			<div class="well well-shadow" data-show="false" data-commtype="3g">3G</div>
+			<div class="well well-shadow" data-show="false" data-commtype="lte">LTE</div>
+		</div>
 	</div>
-</div>
+
+	<div class="row-fluid">
+		<h3 class="typo-pressed">할인 조건</h3>
+		<div id="dropDiscountTypeZone" class="dropZone span12">
+			<div class="well well-shadow" data-show="false" data-discounttype="double">더블할인</div>
+			<div class="well well-shadow" data-show="false" data-discounttype="special">스페셜할인</div>
+			<div class="well well-shadow" data-show="false" data-discounttype="good">우량할인</div>
+			<div class="well well-shadow" data-show="false" data-discounttype="tfamily">T끼리 온가족할인</div>
+			<div class="well well-shadow" data-show="false" data-discounttype="lteplus">LTE 플러스할인</div>
+		</div>
+	</div>
+<div>

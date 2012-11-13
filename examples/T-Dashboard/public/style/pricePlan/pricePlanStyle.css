@@ -1,18 +1,58 @@
+#pricePlanContents .typo-pressed-price {
+	color: orangered;
+}
+
+#pricePlanContents .typo-number {
+	color: orangered;
+	font-size: 0.7em;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+#pricePlanContents .contents {
+	z-index: -10;
+	position: relative;
+}
+
+#pricePlanContents .contents .date .well,
+#pricePlanContents .dropZone .well {
+	background-color: white;
+}
+
+#pricePlanContents .contents .well-shadow:before,
+#pricePlanContents .contents .well-shadow:after {
+	top : 50%;
+	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.65);   
+	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.65);
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.65);
+}
+
+#pricePlanContents .dropZone {
+	margin: 0;
+	font-color: lightgray;
+	font-weight: bold;
+	font-size: 1.4em;
+	text-align: center;
+}
 
 /*
  * 드랍존의 스타일
  */
-div#pricePlan div.dropZone {
+ /*
+#pricePlanContents .dropZone {
+	position: relative;
 	padding: 10px;
 	background-color: #666;
 	border: solid 1px;
 	border-radius:4px;
 }
+*/
 
 /*
  * 드레그 오브젝트가 드랍존으로 왔을때의 스타일 변경
  */
-div#pricePlan div.dropZone > div {
+ /*
+#pricePlanContents .dropZone > div {
 	border: solid 1px;
 	padding: 20px;
 	background-color: #FFF;
@@ -20,24 +60,25 @@ div#pricePlan div.dropZone > div {
 	text-align:center;
 	font-size:16px;
 	font-weight:bold;
-	color: #05121D;	/*글씨색상 변경*/
+	color: #05121D;	/*글씨색상 변경
 }
-div#pricePlan div.dropZone > div > p {
+#pricePlanContents .dropZone > div > p {
 	padding-top:3px;
 	font-size:14px;
 	font-weight:normal;
 	display: block;
 }
 
-div#pricePlan .prod-name2 {
+#pricePlanContents .prod-name2 {
 	text-align:left;
 }
-div#pricePlan .prod-name2 label {
+#pricePlanContents .prod-name2 label {
 	line-height:180%; 
 	font-size:26px;
 	padding-right:10px;
 }
 
-div#pricePlan .prod-form2 input, .prod-form2 .btn {
+#pricePlanContents .prod-form2 input, .prod-form2 .btn {
 	vertical-align: top;
 }
+*/
