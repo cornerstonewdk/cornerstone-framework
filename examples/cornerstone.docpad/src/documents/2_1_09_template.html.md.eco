@@ -2,13 +2,13 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: 'template'
-outline: 'template'
+title: 'Template'
+outline: 'Template'
 date: '2012-11-16'
 tagstr: 'application'
 tags: ['post','application','']
-subsection: ‘본문’
 order: '[2, 1, 9]'
+thumbnail: '2.1.09.template.png'
 ---
 
 Template

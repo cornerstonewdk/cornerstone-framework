@@ -140,6 +140,16 @@ html lang: 'ko', ->
                   for cell in row
                     ul '.nav.nav-list', ->
                       tag = @sections.store( cell )
+                      tag.documents.sort (a, b) ->
+                        a_order = a.get('order')
+                        b_order = b.get('order')
+                        a_arr = eval(a_order)
+                        if a_arr.length is 2
+                          a_arr[2] = 0
+                        b_arr = eval(b_order)
+                        if b_arr.length is 2
+                          b_arr[2] = 0
+                        a_arr[0] - b_arr[0] || a_arr[1] - b_arr[1] || a_arr[2] - b_arr[2]
                       li '.nav-header', -> tag.name
                       cur_url_2 = @document.url
                       subsection_cnt = 0

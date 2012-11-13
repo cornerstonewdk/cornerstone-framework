@@ -1,0 +1,22 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '부록'
+outline: '부록'
+date: '2012-11-16'
+tagstr: 'appendix'
+tags: ['post','appendix','']
+subsection: 'Appendix'
+order: '[7, 1]'
+thumbnail: '6. Appendix.png'
+---
+
+# 부록
+
+----------
+
+라이센스
+-----------
+
+`외부 모듈들과 자체 개발한 부분에 대한 License, License를 지키기 위해 개발자가 해야 할 일 명시`

@@ -49,33 +49,37 @@ section ".tagmap", ->
         h1 tag.name
         subsection_cnt = 0
         tag.documents.forEach (documentModel)->
-          subsection_name = documentModel.get('subsection')
           order = documentModel.get('order')
           order_arr = eval(order)
           if order_arr[0] isnt subsection_cnt
               div ".span12.main-box.media", -> 
-                #a ".pull-left", "href":"#", ->
-                #  img ".media-object", "src":"", -> ""
-                img ".media-object", "src":"", -> ""
                 div ".media-body", ->
-                  h4 ".media-heading", -> subsection_name
-                  #p -> documentModel.get('outline')
+                  h4 ".media-heading", -> order_arr[0] + ". " + documentModel.get('subsection')
               subsection_cnt = order_arr[0]
-          depth = "main-box media"
+          depth = "main-box"
           order_str = ""
           if order_arr.length is 3
               depth = "span10 offset2 " + depth
               order_str = order_arr[0] + "." + order_arr[1] + "." + order_arr[2] + "."
           else 
               depth = "span11 offset1 " + depth
-              order_str = order_arr[0] + "." + order_arr[1] + ".0."
-          div "class":depth, ->
+              #order_str = order_arr[0] + "." + order_arr[1] + ".0."
+              order_str = order_arr[0] + "." + order_arr[1] + "."
+          div "class":depth, "order":order, "tags":"#{documentModel.get('tagstr')}", ->
+            div ".media", ->
                 a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
-                  img ".media-object", "src":"./images/"+"#{documentModel.get('thumbnail')}", -> ""
+                  if "#{documentModel.get('thumbnail')}" isnt "undefined"
+                     img ".media-object", "src":"./images/"+"#{documentModel.get('thumbnail')}", -> ""
                 div ".media-body", ->
-                  a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
-                    h4 ".media-heading", -> order_str + "#{documentModel.get('title')}"
+                  h4 ".media-heading", ->
+                    a "href":"."+"#{documentModel.get('url')}"+".html", -> order_str + " " + "#{documentModel.get('title')}"
                   p -> documentModel.get('outline')
+                  #a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
+                  #  h4 ".media-heading", -> order_str + " " + "#{documentModel.get('title')}"
+                  #p -> documentModel.get('outline')
+                  #a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
+                  #  h4 ".media-heading", -> order_str + " " + "#{documentModel.get('title')}"
+                  #  p -> documentModel.get('outline')
 
 
 
