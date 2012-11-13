@@ -8,6 +8,7 @@ date: '2012-11-16'
 tagstr: 'application'
 tags: ['post','application','']
 order: '[2, 13]'
+thumbnail: '2.1.13.routing.png'
 ---
 
 Fragment와 라우팅

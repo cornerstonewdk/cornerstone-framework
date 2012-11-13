@@ -25,20 +25,22 @@ $('#tag-search').click ->
     matchStr = new RegExp $('#searchForm input').val()
     articles = $('article div[tags]')
     articles.hide()
-    #showCnt = 0
+    $('#nothing').hide()
+    showCnt = 0
 
     $.each( articles, ( idx, at ) ->
         str = $( articles[idx] ).attr 'tags'
-        alert(str + " | " + matchStr + " | idx=" + idx)
+        #alert(str + " | " + matchStr + " | idx=" + idx)
         flag = false
         if str isnt "" and str isnt undefined
             flag = matchStr.test str
         if flag 
             $(articles[idx]).show()
-            #showCnt++
+            showCnt++
     )
 
-    #if showCnt is 0 
+    if showCnt is 0 
+         $('#nothing').show()
     #    alert("검색된 문서가 없습니다.")
         
     return false

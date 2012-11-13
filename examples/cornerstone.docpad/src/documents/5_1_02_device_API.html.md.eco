@@ -27,5 +27,16 @@ Device
 -	MVC Framework을 이용한 의존성 주입
 		
 		define( [ 'device' ], function () {
-				(중략...)
+			
+			/**
+			* device api는 기존 HTML5 API를 학장하여 설계되어있기 때문에 대부분 navigator객체에
+			* 포함되어 있거나, window 객체 하위에 객체들이 정의되어 있다. 따라서 device 모듈을 로드
+			* 후 별도로 모듈명으로 파라미터를 받지 않는다.
+			**/
+
+			// device의 베터리의 충전상태 감지
+			navigator.battery.addEventListener( 'chargingchange', function() {
+				alert("navigator.battery.charging = " + navigator.battery.charging);
+				alert("navigator.battery.level = " + navigator.battery.level);
+			}, false );
 		} );

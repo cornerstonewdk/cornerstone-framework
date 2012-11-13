@@ -30,7 +30,6 @@ cellular = rowmap 1, @sections.store()
 section ".tagmap", ->
   section_cnt = 0
   for row in cellular
-    section_cnt = section_cnt + 1
     div '#tagmap.row', ->
       for cell in row
         tag = @sections.store( cell )
@@ -44,8 +43,6 @@ section ".tagmap", ->
           if b_arr.length is 2
             b_arr[2] = 0
           a_arr[0] - b_arr[0] || a_arr[1] - b_arr[1] || a_arr[2] - b_arr[2]
-        section_name = "sect_" + section_cnt
-        #div ".span8", "id":section_name, ->
         h1 tag.name
         subsection_cnt = 0
         tag.documents.forEach (documentModel)->
@@ -56,6 +53,7 @@ section ".tagmap", ->
                 div ".media-body", ->
                   h4 ".media-heading", -> order_arr[0] + ". " + documentModel.get('subsection')
               subsection_cnt = order_arr[0]
+              section_cnt = section_cnt + 1
           depth = "main-box"
           order_str = ""
           if order_arr.length is 3
@@ -65,7 +63,7 @@ section ".tagmap", ->
               depth = "span11 offset1 " + depth
               #order_str = order_arr[0] + "." + order_arr[1] + ".0."
               order_str = order_arr[0] + "." + order_arr[1] + "."
-          div "class":depth, "order":order, "tags":"#{documentModel.get('tagstr')}", ->
+          div "class":depth, "order":order, "tags":"* "+"#{documentModel.get('tagstr')}", ->
             div ".media", ->
                 a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
                   if "#{documentModel.get('thumbnail')}" isnt "undefined"
@@ -80,6 +78,11 @@ section ".tagmap", ->
                   #a ".pull-left", "href":"."+"#{documentModel.get('url')}"+".html", ->
                   #  h4 ".media-heading", -> order_str + " " + "#{documentModel.get('title')}"
                   #  p -> documentModel.get('outline')
+
+  if section_cnt is 0
+    div ".span12.main-box.media", ->
+      div ".media-body", ->
+        h4 ".media-heading", -> "There is no document !"
 
 
 
