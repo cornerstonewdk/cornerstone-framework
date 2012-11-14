@@ -11,12 +11,12 @@ order: '[6, 1]'
 
 ----------
 
-# 1. Cornerstone Runtime 기본구조 
+# Cornerstone Runtime 기본구조 
 
 ----------
 
 
-## 1.1 공통 Runtime 기본구조 
+## 공통 Runtime 기본구조 
 
 - WebApp 구조도
 
@@ -34,7 +34,7 @@ order: '[6, 1]'
 
 <br> 
 
-### 1.1.1 Runtime JavaScript layer 
+### Runtime JavaScript layer 
 
 -	Java Script layer는 웹앱에서 사용하기 위한 JavaScript API들을 선언 및 정의 하며 이를 Runtime의 native layer와 연결하는 역할을 한다.
 
@@ -51,9 +51,9 @@ order: '[6, 1]'
 
 ----------
 
-## 1.2 Android Runtime 기본 구조 
+## Android Runtime 기본 구조 
 <br>
-### 1.2.1 Android Native Layer 
+### Android Native Layer 
 
 -	Android Webview를 이용하여 Runtime JavaScript Library에서 호출된 API를 그에 해당하는 Native Class를 실행하고 성공/실패 콜백 전달하는 모듈
 
@@ -67,7 +67,7 @@ order: '[6, 1]'
 
 <br>
 
-### 1.2.2 Android Project Files 
+### Android Project Files 
 
 -	Android용 webapp을 개발하기 위해서는 아래 와 같은 project file 들을 세팅하여야 한다. 
 
@@ -85,9 +85,9 @@ order: '[6, 1]'
 
 ----------
 
-## 1.3 IOS Runtime 기본 구조 
+## IOS Runtime 기본 구조 
 
-### 1.3.1 IOS Native Layer
+### IOS Native Layer
 
 ![](./images/ios-Runtime-structure.png)
 
@@ -102,7 +102,7 @@ order: '[6, 1]'
 
 <br>
 
-### 1.3.2 IOS Project Files
+### IOS Project Files
 
 -	iOS용 webapp을 개발하기 위해서는 아래 와 같은 project file 들을 세팅하여야 한다. 
 
