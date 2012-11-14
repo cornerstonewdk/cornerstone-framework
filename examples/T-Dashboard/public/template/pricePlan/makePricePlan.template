@@ -62,16 +62,16 @@
 		
 		<!-- contents -->
 		<div class="span9">
-			<div class="well well-billie">
-				<div class="row-fluid">
-					<div class="span2 prod-name">
+			<div class="well well-billie form-inline">
+<!-- 				<div class="row-fluid"> -->
+<!-- 					<div class="span3 prod-name"> -->
 						<label class="typo-pressed">상품명 : </label>
-					</div>
-					<div class="span10 prod-form form-inline">
+<!-- 					</div> -->
+<!-- 					<div class="span9 prod-form form-inline"> -->
 						<input type="text" id="pricePlanName" value="{{pricePlanName}}" />
 						<button class="btn" id="saveButton">저장</button>
-					</div>
-				</div>
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</div>
 			
 			<div class="row-fluid">

@@ -169,4 +169,17 @@ div.modal-header > h3 {
 	color: #05121D;
 }
 
+input#applyDate {
+	width: 80%;
+}
+
+div#makeDate > input {
+	width: 90%;
+}
+
+button#saveButton {
+	position: relative;
+	top: -5px;
+}
+
 /*.slider {width:200px;}*/
