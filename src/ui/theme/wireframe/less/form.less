@@ -83,8 +83,10 @@ input[type="color"],
 	.transition(@transition);
 	color: @grayLight;
 	&:focus {
-			color: @blue;
-			.inp-focus(@inputShadow, @inputBackground);
+			color: @grayLight;
+			.box-shadow(none);
+			background: none;
+			border: 1px solid @grayLight;
 	  }
 	}
 

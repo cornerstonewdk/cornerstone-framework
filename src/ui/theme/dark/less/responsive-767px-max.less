@@ -53,6 +53,39 @@
 		padding: 0;
 	}	
 
+	// 2012-11-12
+	.navbar .nav > li > a {
+		font-weight: normal;
+		text-align: left;
+		display: block;
+		padding: 7px 0 7px 10px;
+	}
+
+	.navbar .nav > li > a:hover {
+		text-align: left;
+		display: block;
+		padding: 7px 0 7px 10px;
+		color: @navbarLinkColor;
+		text-decoration: none;
+		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+		background: transparent;
+		.box-shadow (none);
+		border: 1px solid transparent;
+	}
+
+	// Active nav items
+	.navbar .nav > li > a:focus,
+	.navbar .nav > .active > a,
+	.navbar .nav > .active > a:hover,
+	.navbar .nav > .active > a:focus {
+		color: @navbarLinkHome;
+		text-shadow: 0 1px 1px rgba(255,255,255,7);
+		.border-radius(4px);
+		box-shadow: none;
+		border: 1px solid transparent;
+		background-color: @navbarDropdownBg;
+	}
+
 	.navbar .nav > li > .dropdown-menu {
 		padding-top: 5px;
 		&:before {
@@ -67,22 +100,26 @@
 		border: 0;
 	}
 
-	.navbar .nav > li > .dropdown-menu > li > a {
+	.navbar .nav > li > .dropdown-menu > li > a,
+	.navbar .nav > li > .dropdown-menu > li > a:hover {
 		color: @navbarLinkColor;
+		text-shadow: none;
+		font-weight: normal;
 		border: 0;
 		box-shadow: none;
 		margin: 0;
-		padding: 5px 15px;
+		padding: 5px 15px;	
+		background: none;
 	}
-
-	.navbar .nav > li > .dropdown-menu > li > a:hover,
+	
 	.navbar .nav > li > .dropdown-menu > li > a:active {
-		#font > #effect > .txt-over();
+		color: @dropdownLinkColorHover;
+		text-shadow: none;
 		border: 0;
 		box-shadow: none;
 		margin: 0;
 		.border-radius(5px);
-		background: @navbarLinkBackgroundActive;
+		background: @dropdownLinkBackgroundHover;
 	}
 
 	.nav-icon .nav > li:first-child a,
@@ -163,28 +200,60 @@
 		padding: 7px 0 7px 10px;
 	}
 
-	.nav.pull-right > li:first-child a {
-		color: @navbarText;
-		text-shadow: 0 1px 1px rgba(0,0,0,7);
+	// 2012-11-12
+	.nav.pull-right > li:first-child > a:hover,
+	.nav.pull-right > li:last-child > a:hover {
+		color: @navbarLinkColor;
+		text-shadow: none;
+		border: 1px solid transparent;
 		background: none;
-		border: 0;
-		box-shadow: none;
 	}
 
-	.nav.pull-right > li:first-child a:hover, 
 	.nav.pull-right > li:first-child a:active, 
-	.nav.pull-right > li:first-child.active a,
-	.nav.pull-right > li:last-child a:hover, 
+	.nav.pull-right > li:first-child.active a,	
 	.nav.pull-right > li:last-child a:active, 
 	.nav.pull-right > li:last-child.active a {
-		#font > #effect > .txt-over();
 		font-size: @baseFontSize;
-		line-height: @baseLineHeight + 3;
+		color: @white;
+		line-height: @baseLineHeight;
 		text-decoration: none;
 		padding: 7px 0 7px 10px;
-		background-color: @navbarLinkBackgroundActive;
+		background-color: @navbarDropdownBg;
 		box-shadow: none;
 		border: 0;
+	}	
+	
+	.navbar .nav.pull-right > li:first-child > a,
+	.navbar .nav.pull-right > li:first-child > a:hover {
+		color: @navbarLinkColor;
+		font-size: @baseFontSize;
+		text-decoration: none;
+		text-shadow: none;
+		border: 1px solid transparent;
+		background: none;
+		.box-shadow (none);
+		padding: 7px 13px;
+	}
+
+	.navbar .nav li.dropdown:hover > .dropdown-toggle .caret {
+		border-top-color: @dropdownLinkColorHover;
+		border-bottom-color: @dropdownLinkColorHover;
+	}
+
+	.navbar .nav.pull-right > li.dropdown > .dropdown-toggle:active {
+		color: @navbarLinkColor;
+		font-size: @baseFontSize;
+		text-decoration: none;
+		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+		border: 1px solid transparent;
+		background: transparent;
+	}
+
+	.navbar .nav.pull-right > li.dropdown > ul.dropdown-menu li a:active {
+		font-size: @baseFontSize - 2 ;
+		color: @dropdownLinkColorHover;
+		text-shadow: none;
+		padding: 5px 15px;
 	}
 
 	.nav.pull-right > li:last-child {
@@ -245,9 +314,12 @@
 
 	.navbar-inverse .nav > li.active > a,
 	.navbar-inverse .nav > li.active > a:hover {
-		color: @black;
-		text-shadow: none;
-		background: @navbarDropdownBg;
+		#font > #effect > .txt-over();
+		text-decoration: none;
+		.border-radius(4px);
+		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+		border: 1px solid @navbarLinkBorder;
+		background-color: @navbarLinkBackgroundActive;
 	}
 
 	.navbar-inverse .nav-collapse .nav > li:first-child > a,
@@ -267,16 +339,11 @@
 	}
 
 	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a:active {
-		background-color: @navbarLinkBackgroundActive;
+		background-color: @dropdownLinkBackgroundHover;
 	}
 
-	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle:active {
-		color: @navbarLinkColor;
-		font-size: @baseFontSize;
-		text-decoration: none;
-		text-shadow: none;
+	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle {
 		border: 1px solid transparent;
-		background: transparent;
 	}
 
 	.navbar-inverse .nav.pull-right > li > a,
@@ -302,14 +369,12 @@
 		padding: 5px 15px;
 	}
 
-	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle,
-	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle:hover,
-	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle:active {
-		color: @white;
-		line-height: @baseLineHeight;
-		font-size: @baseFontSize;
-		text-decoration: none;
-		text-shadow: none;
-		border:1px solid transparent;
+	// dropdown
+	.dropdown-menu li > a:hover, 
+	.dropdown-menu li > a:focus, 
+	.dropdown-submenu:hover > a {
+		color: @dropdownLinkColor;
+		background: none;
+		outline: none;
 	}
 }

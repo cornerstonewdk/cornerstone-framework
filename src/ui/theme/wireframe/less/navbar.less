@@ -20,7 +20,7 @@
 // Inner for background effects
 // Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
-	text-align:center;
+	text-align: center;
   min-height: @navbarHeight;
   padding: 0 10px;
 	background: @white;
@@ -130,14 +130,14 @@
 }
 
 .navbar-form input {
-	margin: 5px 0 0;
+	margin: 8px 0 0;
 }
 
 .navbar-form button.btn,
 .navbar-form button.btn:hover, 
 .navbar-form button.btn:active {
 	padding: 10px 20px;
-	margin: 6px 0 0;
+	margin: 8px 0 0;
 }
 
 
@@ -146,8 +146,8 @@
 		position: relative;
 		float: right;
 		.navbarVerticalAlign(30px); // Vertically center in navbar
-		margin-bottom: 0;
-		padding: 6px 0 0;
+		margin: 0;
+		padding: 8px 0 0;
     .search-query {
 			line-height: (@baseLineHeight + 5);
       background-color: @inputBackground;
@@ -159,7 +159,7 @@
 			padding: 5px 15px;
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
-			vertical-align: middle;
+			vertical-align: middle;			
 
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
@@ -168,12 +168,10 @@
 				background-color: @inputBackground;
 				border:1px solid @grayLight;
 				.border-radius(@searchBorderRadius);
-				@transition: border linear .2s, box-shadow linear .2s;
-				.transition(@transition);
 				color: @searchTxt;
 				padding: 5px 15px;
 				.transition(none);
-				.placeholder(@navbarInverseSearchPlaceholderColor);
+				.box-shadow (none);
 				vertical-align: middle;
 				text-shadow: none;				
       }
@@ -251,7 +249,7 @@
   padding: 7px 13px;
 	margin: 0;
   color: @navbarLinkColor;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
   text-decoration: none;
 	border: 1px solid transparent;
 }
@@ -263,7 +261,8 @@
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
-  #font > #effect > .txt-over();
+  color: @navbarLinkColorHover;
+	text-shadow: none;
   text-decoration: none;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
@@ -282,7 +281,7 @@
 	box-shadow: none;
 	background: none;
 	color: @black;
-	font-size: ((@baseFontSize * 2 ) - 6);
+	font-size: (@baseFontSize + 4);
 	text-shadow: none;
 }
 
@@ -300,7 +299,7 @@
   padding: 7px 13px;
 	margin: 0;
   color: @navbarLinkColor;
-	font-size: (@baseFontSize + 3);
+	font-size: @baseFontSize;
   text-decoration: none;
 	border: 1px solid transparent;
 }
@@ -310,7 +309,7 @@
 .navbar .nav.pull-right > li:first-child .active > a,
 .navbar .nav.pull-right > li:first-child .active > a:hover,
 .navbar .nav.pull-right > li:first-child .active > a:focus {
-  #font > #effect > .txt-over();
+  color: @navbarLinkColorHover;
   text-decoration: none;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
@@ -321,13 +320,16 @@
 .navbar .nav > li a i {
 	display: inline-block;
 	vertical-align: middle;
-	background-image: url('../img/icon.png');
-	background-size: 138px;
 	padding-right: 0;
 	margin-top: -2px;
 }
 
 // Icon + Text Navigation 
+
+.ico-txt .nav, 
+.nav-icon .nav {
+	padding: 7px 0 0;
+}
 
 .ico-txt .nav > li:first-child a,
 .nav-icon .pull-right > li:last-child a {
@@ -371,13 +373,9 @@
 .ico-txt .nav > li:first-child a:hover, 
 .ico-txt .nav > li:first-child a:active, 
 .ico-txt .nav > li:first-child.active a {
-	#font > #effect > .txt-over();
+	color: @navbarLinkColorHover;
 	font-size: (@baseFontSize + 3);
 	padding: 4px 13px;
-}
-
-.ico-txt .nav, .nav-icon .nav {
-	padding: 9px 0 0;
 }
 
 // Icon Navigation 
@@ -460,11 +458,11 @@
 
 .btn-navbar i {
 	width: 26px;
-	height: 22px;
+	height: 23px;
 	padding: 0;
 	display: block;
-	background:url('../img/icon.png') no-repeat -53px -47px;
-	background-size: 139px;
+	background:url('../img/icon.png') no-repeat -191px -515px;
+	background-size: 320px;
 }
 
 .btn-write, 
@@ -474,24 +472,12 @@
 	width:28px;
 	height:29px;
 	display:block;
-	background:url('../img/icon.png') no-repeat -53px -86px;
-	background-size: 139px;
+	background:url('../img/icon.png') no-repeat -191px -557px;
+	background-size: 320px;
 	margin:14px 0 0;
 	cursor: pointer;
 }
 
-.btn-top, 
-.btn-top:hover, 
-.btn-top:active {
-	float:right;
-	width:25px;
-	height:22px;
-	display:block;
-	background:url('../img/icon.png') no-repeat center center;
-	background-size: 139px;
-	margin:14px 0 0;
-	cursor: pointer;
-}
 
 // Dropdown menus
 // --------------
@@ -505,14 +491,14 @@
 	&:before {
     border-bottom-color: @dropdownBorder;
     position: absolute;
-    top: -9px;
+    top: -7px;
     left: 9px;
   }
   &:after {
     border-bottom: 8px solid @dropdownBackground;
     position: absolute;
-    top: -8px;
-    left: 10px;
+    top: -7px;
+    left: 9px;
   }
 }
 
@@ -537,7 +523,7 @@
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-	#font > #effect > .txt-over();
+	color: @navbarLinkColorHover;
   text-decoration: none;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
@@ -548,12 +534,18 @@
   border-top-color: @navbarLinkColor;
   border-bottom-color: @navbarLinkColor;
 }
+
 .navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColorActive;
   border-bottom-color: @navbarLinkColorActive;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+	margin-top: 6px;
+	vertical-align: top;
 }
 
 // Right aligned menus need alt position
@@ -593,7 +585,7 @@
   .brand,
   .nav > li > a {
     color: @navbarInverseLinkColor;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    text-shadow: none;
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
@@ -651,115 +643,169 @@
 
   // Navbar collapse button
   .btn-navbar {
-    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
-		background:#212121 url('../img/icon.png') no-repeat 0 -935;
-		background-size: 139px;
+    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));		
   }
+
+	.btn-navbar:hover {
+		border: 1px solid transparent;
+	}
+
+	.nav > li:first-child a,
+	.nav > li:first-child a:hover,
+	.nav > li:first-child a:active,
+	.nav > li:first-child.active a,
+	.nav > li:first-child.active a:hover,
+	.nav.pull-right > li:first-child a {
+		color: @white;
+	}
 
 }
 
+.navbar-inverse .navbar-search .search-query {
+	background: @white;
+	border: 0;
+}
 
 .icon-home {
 	width: 24px;
 	height: 29px;
-	background-position: 0 -932px;
-}
-
-.icon-list {
-	width: 26px;
-	height: 29px;
-	background:url('../img/icon.png') no-repeat -52px -42px;
-}
-
-.icon-message {
-	width: 24px;
-	height: 29px;
-	background-position: -53px -223px;
-}
-
-.icon-mail {
-	width: 26px;
-	height: 29px;
-	background-position: -53px -135px;
-}
-
-.icon-save {
-	width: 22px;
-	height: 29px;
-	background-position: -53px -475px;
-}
-
-.icon-user2 {
-	width: 26px;
-	height: 29px;
-	background-position: 0 -275px;
-}
-
-.icon-connect {
-	width: 26px;
-	height: 29px;
-	background-position: 0 -91px;
-}
-
-.icon-search {
-	width: 24px;
-	height: 29px;
-	background-position: -53px -572px;
-}
-
-.icon-write {
-	width: 28px;
-	height: 29px;
-	background-position: -53px -324px;
-}
-
-.navbar .nav > li a:hover .icon-message, 
-.navbar .nav > li a:active .icon-message, 
-.navbar .nav > li.active a .icon-message, {
-	background-position: -53px -271px;
-}
-
-.navbar .nav > li a:hover .icon-mail, 
-.navbar .nav > li a:active .icon-mail, 
-.navbar .nav > li.active a .icon-mail, {
-	background-position: -53px -178px;
-}
-
-.navbar .nav > li a:hover .icon-save, 
-.navbar .nav > li a:active .icon-save, 
-.navbar .nav > li.active a .icon-save, {
-	background-position: -53px -523px;
-}
-
-.navbar .nav > li a:hover .icon-user2, 
-.navbar .nav > li a:active .icon-user2, 
-.navbar .nav > li.active a .icon-user2, {
-	background-position: 0 -322px;
-}
-
-
-
-.navbar .nav > li a:hover .icon-search, 
-.navbar .nav > li a:active .icon-search, 
-.navbar .nav > li.active a .icon-search {
-	background-position: -53px -719px;
-}
-
-.navbar .nav > li a:hover .icon-write, 
-.navbar .nav > li a:active .icon-write, 
-.navbar .nav > li.active a .icon-write {
-	background-position: -53px -378px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -193px -824px;
 }
 
 .nav > li:first-child a:hover .icon-home, 
 .nav > li:first-child a:active .icon-home, 
 .nav > li:first-child.active a .icon-home {
-	background-position: -53px 3px;
+	width: 24px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -149px -824px;
+}
+
+.icon-message {
+	width: 24px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -193px -467px;
+}
+
+.navbar .nav > li a:hover .icon-message, 
+.navbar .nav > li a:active .icon-message, 
+.navbar .nav > li.active a .icon-message, {
+	width: 24px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -149px -467px;
+}
+
+.icon-mail {
+	width: 26px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -191px -602px;
+}
+
+.navbar .nav > li a:hover .icon-mail, 
+.navbar .nav > li a:active .icon-mail, 
+.navbar .nav > li.active a .icon-mail, {
+	width: 26px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -147px -602px;
+}
+
+.icon-save {
+	width: 22px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -193px -646px;
+}
+
+.navbar .nav > li a:hover .icon-save, 
+.navbar .nav > li a:active .icon-save, 
+.navbar .nav > li.active a .icon-save, {
+	width: 22px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -149px -646px;
+}
+
+.icon-user2 {
+	width: 27px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -191px -779px;
+}
+
+.navbar .nav > li a:hover .icon-user2, 
+.navbar .nav > li a:active .icon-user2, 
+.navbar .nav > li.active a .icon-user2, {
+	width: 27px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -147px -779px;
+}
+
+.icon-connect {
+	width: 26px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -191px -734px;
 }
 
 .nav-icon .nav > li:first-child a:hover .icon-connect, 
 .nav-icon .nav > li:first-child a:active .icon-connect, 
 .nav-icon .nav > li:first-child.active a .icon-connect {
-	background-position: 0 -142px;
+	width: 26px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -147px -734px;
 }
+
+.icon-search {
+	width: 24px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -192px -690px;
+}
+
+.navbar .nav > li a:hover .icon-search, 
+.navbar .nav > li a:active .icon-search, 
+.navbar .nav > li.active a .icon-search {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -148px -690px;
+}
+
+.icon-write {
+	width: 28px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -190px -557px;
+}
+
+.navbar .nav > li a:hover .icon-write, 
+.navbar .nav > li a:active .icon-write, 
+.navbar .nav > li.active a .icon-write {
+	width: 28px;
+	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -146px -557px;
+}
+
 

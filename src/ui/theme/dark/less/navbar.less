@@ -149,7 +149,7 @@
 		float: right;
 		.navbarVerticalAlign(30px); // Vertically center in navbar
 		margin:0;
-		padding: 6px 0 0;
+		padding: 10px 0 0;
     .search-query {
 			line-height: (@baseLineHeight + 5);
       background-color: @inputBackground;
@@ -163,6 +163,7 @@
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
 			vertical-align: middle;
+			margin-top: -3px;
 
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
@@ -251,12 +252,13 @@
 .navbar .nav > li > a {
 	text-align: left;
 	display: block;
-	padding: 7px 0 7px 10px;
+	padding: 7px 13px;
 	margin: 0;
 	color: @navbarLinkColor;
-	font-size: @baseFontSize - 2;
+	font-size: @baseFontSize;
 	text-decoration: none;
 	text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+	font-weight: normal;
 	border: 1px solid transparent;
 	.box-shadow(none);
 	background-color: transparent;
@@ -273,7 +275,8 @@
 
 // Active nav items
 .navbar .nav > li > a:focus,
-.navbar .nav > .active > a
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover
 .navbar .nav > .active > a:focus {
 	#font > #effect > .txt-over();
 	text-decoration: none;
@@ -283,15 +286,9 @@
 	background-color: @navbarLinkBackgroundActive;
 }
 
-
 .navbar .nav > li > a  i {
 	display: none;
 }	
-
-.nav-icon .nav > li a {
-	font-size: @baseFontSize;
-	line-height: (@baseLineHeight + 3);
-}
 
 .navbar .nav > li:first-child a,
 .navbar .nav > li:first-child > a:hover,
@@ -312,10 +309,23 @@
 
 // Icon + Text Navigation 
 
-.ico-txt .nav > li:first-child a,
-.nav-icon .pull-right > li:last-child a {
-  padding: 4px 13px;
+.ico-txt .nav, .nav-icon .nav {
+	padding: 6px 0 0;
+}
+
+.navbar.ico-txt .nav > li:first-child a,
+.navbar.nav-icon .nav > li:first-child a {
+  padding: 7px 13px 5px;
 	margin: 0;
+	border: 1px solid transparent;
+}
+
+.navbar.ico-txt .nav > li:first-child a:hover, 
+.navbar.ico-txt .nav > li:first-child a:active, 
+.navbar.ico-txt .nav > li:first-child.active a {
+	#font > #effect > .txt-over();
+	font-size: @baseFontSize + 2;
+	padding: 7px 13px 5px;
 	border: 1px solid transparent;
 }
 
@@ -323,48 +333,40 @@
 	margin: 0;
 }
 
-.ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active,
-.nav-icon .nav.pull-right > li:last-child a:hover,
-.nav-icon .nav.pull-right > li:last-child a:active {
+.navbar.nav-icon .nav.pull-right > li:first-child a:hover,
+.navbar.nav-icon .nav.pull-right > li:first-child a:active {
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
   background-color: @navbarLinkBackgroundActive;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 }
 
-.ico-txt .nav > li a,
-.ico-txt .nav > li a:hover,
-.ico-txt .nav > li a:active,
-.ico-txt .nav > li.active a {
-	padding: 4px 13px;
+.navbar.ico-txt .nav > li a,
+.navbar.ico-txt .nav > li a:hover,
+.navbar.ico-txt .nav > li a:active,
+.navbar.ico-txt .nav > li.active a {
+	padding: 7px 13px 5px;
+}
+
+.navbar.ico-txt .nav.pull-right > li:last-child a,
+.navbar.ico-txt .nav.pull-right > li:last-child a:hover,
+.navbar.ico-txt .nav.pull-right > li:last-child a:active,
+.navbar.ico-txt .nav.pull-right > li:last-child.active a,
+.navbar.nav-icon .nav.pull-right > li:last-child a,
+.navbar.nav-icon .nav.pull-right > li:last-child a:hover,
+.navbar.nav-icon .nav.pull-right > li:last-child a:active,
+.navbar.nav-icon .nav.pull-right > li:last-child.active a {
+	font-size: 0;
+	line-height: 0;
+	padding: 6px 13px 4px;
 }
 
 .ico-txt .nav > li a i {
 	margin-right: 3px;
 }
 
-.ico-txt .nav > li:first-child a {
-	color: @navbarLinkColor;
-	font-size: @baseFontSize;
-	padding: 4px 13px;
-}
-
-.ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active, 
-.ico-txt .nav > li:first-child.active a {
-	#font > #effect > .txt-over();
-	font-size: @baseFontSize;
-	padding: 4px 13px;
-}
-
-.ico-txt .nav, .nav-icon .nav {
-	padding: 9px 0 0;
-}
-
 // Icon Navigation 
-
 
 .nav-icon .nav > li a,
 .nav-icon .nav > li a:hover,
@@ -372,29 +374,29 @@
 .nav-icon .nav > li.active a {
 	font-size: 0;
 	line-height: 0;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 }
 
-.nav-icon .nav > li:first-child a,
-.nav-icon .nav.pull-right > li:first-child a {	
-	visibility: visible;
+.navbar.nav-icon .nav > li:first-child a,
+.navbar.nav-icon .nav.pull-right > li:first-child a {	
 	font-size: 0;
 	line-height: 0;
+	visibility: visible;
   text-decoration: none;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
   background-color: @navbarLinkBackgroundActive;
 }
 
-.nav-icon .nav > li:first-child a:hover, 
-.nav-icon .nav > li:first-child a:active, 
-.nav-icon .nav > li:first-child.active a {
+.navbar.nav-icon .nav > li:first-child a:hover, 
+.navbar.nav-icon .nav > li:first-child a:active, 
+.navbar.nav-icon .nav > li:first-child.active a {
 	visibility: visible;
 	font-size: 0;
 	line-height: 0;
-	padding: 4px 13px;
+	padding: 7px 13px 5px;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 	border: 1px solid @navbarLinkBorder;
@@ -412,16 +414,6 @@
 	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
 	margin-left: 10px;
 	padding: 0 0 0 5px;
-}
-
-.ico-txt .nav.pull-right > li:first-child a,
-.ico-txt .nav.pull-right > li:last-child a,
-.nav-icon .nav.pull-right > li:last-child a,
-.nav-icon .nav.pull-right > li:last-child a:hover,
-.nav-icon .nav.pull-right > li:last-child a:active {
-	font-size: 0;
-	line-height: 0;	
-	padding: 3px 13px 3px 13px;
 }
 
 // Navbar button for toggling navbar items in responsive layouts
@@ -450,31 +442,6 @@
 	background-size: 320px;
 }
 
-.btn-write, 
-.btn-write:hover, 
-.btn-write:active {
-	float:right;
-	width:28px;
-	height:29px;
-	display:block;
-	background:url('../img/icon.png') no-repeat -53px -86px;
-	background-size: 139px;
-	margin:14px 0 0;
-	cursor: pointer;
-}
-
-.btn-top, 
-.btn-top:hover, 
-.btn-top:active {
-	float:right;
-	width:25px;
-	height:22px;
-	display:block;
-	background:url('../img/icon.png') no-repeat center center;
-	background-size: 139px;
-	margin:14px 0 0;
-	cursor: pointer;
-}
 
 // Dropdown menus
 // --------------
@@ -530,6 +497,7 @@
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColor;
   border-bottom-color: @navbarLinkColor;
+	vertical-align: top;
 }
 .navbar .nav li.dropdown:hover > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
@@ -537,6 +505,7 @@
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColorActive;
   border-bottom-color: @navbarLinkColorActive;
+	vertical-align: top;
 }
 
 // Right aligned menus need alt position
@@ -585,7 +554,7 @@
   .nav > li > a:focus,
   .nav > li > a:hover {
     background-color: transparent;
-    color: @navbarInverseLinkColor;
+    #font > #effect > .txt-over();
   }
 
   .nav .active > a,
@@ -613,7 +582,7 @@
   .nav li.dropdown.active > .dropdown-toggle,
   .nav li.dropdown.open.active > .dropdown-toggle {
     background-color: @navbarInverseLinkBackgroundActive;
-    color: @navbarInverseLinkColorActive;
+    #font > #effect > .txt-over();
   }
   .nav li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColor;
@@ -634,8 +603,6 @@
   // Navbar collapse button
   .btn-navbar {
     .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
-		background:#212121 url('../img/icon.png') no-repeat 0 -935;
-		background-size: 139px;
   }
 
 }
@@ -644,6 +611,8 @@
 .icon-home {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -193px -824px;
 }
 
@@ -652,12 +621,16 @@
 .nav > li:first-child.active a .icon-home {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -149px -824px;
 }
 
 .icon-message {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -193px -467px;
 }
 
@@ -666,12 +639,16 @@
 .navbar .nav > li.active a .icon-message, {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -149px -467px;
 }
 
 .icon-mail {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -191px -602px;
 }
 
@@ -680,12 +657,16 @@
 .navbar .nav > li.active a .icon-mail, {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -147px -602px;
 }
 
 .icon-save {
 	width: 22px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -193px -646px;
 }
 
@@ -694,12 +675,16 @@
 .navbar .nav > li.active a .icon-save, {
 	width: 22px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -149px -646px;
 }
 
 .icon-user2 {
 	width: 27px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -191px -779px;
 }
 
@@ -708,12 +693,16 @@
 .navbar .nav > li.active a .icon-user2, {
 	width: 27px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -147px -779px;
 }
 
 .icon-connect {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -191px -734px;
 }
 
@@ -722,24 +711,32 @@
 .nav-icon .nav > li:first-child.active a .icon-connect {
 	width: 26px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -147px -734px;
 }
 
 .icon-search {
 	width: 24px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -192px -690px;
 }
 
 .navbar .nav > li a:hover .icon-search, 
 .navbar .nav > li a:active .icon-search, 
 .navbar .nav > li.active a .icon-search {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -148px -690px;
 }
 
 .icon-write {
 	width: 28px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -190px -557px;
 }
 
@@ -748,5 +745,7 @@
 .navbar .nav > li.active a .icon-write {
 	width: 28px;
 	height: 29px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
 	background-position: -146px -557px;
 }

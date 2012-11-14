@@ -219,7 +219,7 @@
 		display: none;
 	}
 
-	.navbar .btn-navbar{
+	.navbar .btn-navbar {
 		display: none;
 	}
 
@@ -227,10 +227,9 @@
 	.navbar .nav > li > a {
 		float: none;
 		// Vertically center the text given @navbarHeight
-		padding: 7px 13px;
+		padding: 6px 13px;
 		margin: 0;
 		color: @navbarLinkColor;
-		font-size: @baseFontSize - 2;
 		text-decoration: none;
 		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 		border: 1px solid transparent;
@@ -245,7 +244,7 @@
 	.navbar .nav > .active > a:focus {
 		#font > #effect > .txt-over();
 		text-decoration: none;
-		padding: 7px 13px;
+		padding: 6px 13px;
 		.border-radius(4px);
 		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
 		border: 1px solid @navbarLinkBorder;
@@ -255,7 +254,6 @@
 
 	.navbar .nav > li:first-child a,
 	.navbar .nav > li:first-child > a:focus,
-	.navbar .nav > li:first-child > a:hover,
 	.navbar .nav > .active:first-child > a,
 	.navbar .nav > .active:first-child > a:hover,
 	.navbar .nav > .active:first-child > a:focus {
@@ -263,7 +261,7 @@
 		box-shadow: none;
 		background: none;
 		color: @white;
-		font-size: @baseFontSize + 4;	
+		font-size: @baseFontSize + 2;	
 	}
 
 	.navbar .nav.pull-right > li:first-child,
@@ -284,6 +282,13 @@
 		text-decoration: none;
 		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 		border: 1px solid transparent;
+	}
+
+	.navbar.ico-txt .nav.pull-right > li:first-child a,
+	.navbar.nav-icon .nav.pull-right > li:first-child a {
+		font-size: 0;
+		line-height: 0;
+		padding: 6px 13px;
 	}
 
 	.navbar .nav.pull-right > li:first-child a:focus,
@@ -335,13 +340,13 @@
 		.nav > li > a:focus,
 		.nav > li > a:hover {
 			background-color: @navbarInverseLinkBackgroundHover;
-			color: @navbarInverseLinkColorHover;
+			#font > #effect > .txt-over();
 		}
 
 		.nav .active > a,
 		.nav .active > a:hover,
 		.nav .active > a:focus {
-			color: @navbarInverseLinkColorActive;
+			#font > #effect > .txt-over();
 			background-color: @navbarInverseLinkBackgroundActive;
 		}
 

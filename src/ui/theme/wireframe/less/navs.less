@@ -210,7 +210,7 @@
 .nav-pills > li > a:active {
   color: @white;
   background-color: @navPillBgActive;
-	border:1px solid @navPillBorderOver;
+	border:1px solid @navPillBorderOverz;
 }
 
 .pills-s > li {
@@ -552,17 +552,16 @@
   -webkit-flex: 1;
 }
 
-.nav-bot li a {	
+.nav-bot li a,
+.nav-bot li a:hover {	
 	color: @navBotLink;
 	font-size: @baseFontSize;
 	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
 	border:1px solid @navBotBorder;
 	border-left: 0;
-	position:relative;
+	position: relative;
 	z-index:10;
-	&:hover {
-		background: @white;
-	}
+	background-color: transparent;
 }
 
 .nav-bot li:first-child a, .nav-bot li:first-child a:hover {
@@ -599,7 +598,7 @@
 	width: 32px;
 	height: 25px;
 	margin: 0 auto 3px auto;
-	background: url(../img/icon_black02.png);
+	background: url(../img/icon.png);
 	background-size: 287px;
 }
 
@@ -607,33 +606,76 @@
 .nav-bot li a.active i {
 	width: 32px;
 	height: 25px;
-	background: url(../img/icon_black03.png);
-	background-size: 287px;
 }
 
 .nav-bot li a .icon-about {
 	width:26px;
-	background-position: -53px -810px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -104px -157px;
 }
+
+.nav-bot li a:active .icon-about,
+.nav-bot li a.active .icon-about {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -148px -157px;
+} 
 
 .nav-bot li a .icon-favorites {
 	width:25px;
-	background-position: -53px -912px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -104px -201px;
+}
+
+.nav-bot li a:active .icon-favorites,
+.nav-bot li a.active .icon-favorites {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -148px -201px;
 }
 
 .nav-bot li a .icon-downloads {
 	width:25px;
-	background-position: -106px 0;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -106px -291px;
+}
+
+.nav-bot li a:active .icon-downloads,
+.nav-bot li a.active .icon-downloads {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -150px -291px;
 }
 
 .nav-bot li a .icon-settings {
 	width:31px;
-	background-position: -106px -99px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -105px -336px;
+}
+
+.nav-bot li a:active .icon-settings,
+.nav-bot li a.active .icon-settings {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -149px -336px;
 }
 
 .nav-bot li a .icon-user {
 	width:32px;
-	background-position: -106px -197px;
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -100px -245px;
+}
+
+.nav-bot li a:active .icon-user,
+.nav-bot li a.active .icon-user {
+	background-image: url('../img/icon.png');
+	background-size: 320px;
+	background-position: -144px -245px;
 }
 
 
