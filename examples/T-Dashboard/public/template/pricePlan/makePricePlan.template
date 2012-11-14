@@ -74,28 +74,7 @@
 				</div>
 			</div>
 			
-			<div class="row-fluid" id="makeDate">
-				<div class="span12">
-					<div>
-						<h3>정책 작성일</h3>
-						<div class="well">{{makeData}}</div>
-					</div>
-				</div>
-			</div>
-			
 			<div class="row-fluid">
-<<<<<<< HEAD
-				<div class="span12">
-					<h3>정책 적용일</h3>
-					<div class="well">
-						<div class="input-append date datepicker" data-date="{{applyDate}}" data-date-format="yyyy-mm-dd">
-							<input size="16" type="text" value="{{applyDate}}" readonly id="applyDate">
-							<span class="add-on"><i class="icon-calendar"></i></span>
-						</div>
-					</div>
-				</div>
-=======
-				
 				<div class="span6">
 					<div class="well well-billie">
 						<h3 class="typo-pressed date">정책 적용일</h3>
@@ -114,11 +93,10 @@
 						<div id="makeDate">
 							<h3 class="typo-pressed date">정책 작성일</h3>
 							<hr class="hr-pressed" />
-							<div>{{makeData}}</div>
+							<input type="text" placeholder="{{makeData}}" disabled>
 						</div>
 					</div>
 				</div>
->>>>>>> 1865635... 스타일링
 			</div>
 			
 			<div id="plan" class="well well-project">

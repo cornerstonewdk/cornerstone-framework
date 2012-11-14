@@ -3,6 +3,10 @@
 	margin-top: 0;
 }
 
+#makePricePlan .date.datepicker {
+	margin-bottom: 5px;
+}
+
 #makePricePlan .hr-pressed {
 	position: relative;
 	top: -10px;
@@ -52,7 +56,7 @@
 	box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
  }
 
-div#makePricePlan ul#dragMenu > li:not(.nav-header) > div > p {
+#makePricePlan ul#dragMenu > li:not(.nav-header) > div > p {
 	display: none;
 }
 
@@ -102,7 +106,7 @@ div#makePricePlan ul#dragMenu > li:not(.nav-header) > div > p {
 	text-align:center;
 }
 
-div#makePricePlan div.dropZone > div > p {
+#makePricePlan div.dropZone > div > p {
 	padding-top:3px;
 	font-size:14px;
 	font-weight:normal;
@@ -159,13 +163,10 @@ div#makePricePlan .modifyButton{
 	-webkit-border-radius: 3px 0 3px 0;
 	 -moz-border-radius: 3px 0 3px 0;
 	      border-radius: 3px 0 3px 0;
-<<<<<<< HEAD
 }
 
 div.modal-header > h3 {
 	color: #05121D;
-=======
->>>>>>> 1865635... 스타일링
 }
 
 /*.slider {width:200px;}*/
