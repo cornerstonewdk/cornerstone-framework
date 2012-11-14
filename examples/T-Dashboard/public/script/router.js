@@ -51,7 +51,8 @@ define(function(require) {
 		
 		makePricePlanRoute: function(data) {
 			require(["makePricePlanView"], function(MakePricePlanView) {
-				var direction = BreadCrumb.manager.route('makePricePlan', '새로운 정책');
+				var title = (typeof(data) == 'undefined') ? '새로운 정책' : '정책 수정';
+				var direction = BreadCrumb.manager.route('makePricePlan', title);
 				MakePricePlanView.selectPlanData = data || null;
 				PageTransition.page.transition(direction, MakePricePlanView);
 			});

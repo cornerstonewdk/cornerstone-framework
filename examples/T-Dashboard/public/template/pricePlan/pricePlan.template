@@ -2,7 +2,7 @@
 	<div class="row-fluid">
 		<!-- Left menu -->
 		<div class="span3">
-			<div class="well well-billie sidebar-nav">
+			<div class="well sidebar-nav">
 				<button class="btn hidden-phone" id="makePricePlan" type="button" style="width: 100%">새로운 정책</button>
 				<br />
 				<br />

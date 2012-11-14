@@ -47,7 +47,7 @@ define([
 				
 				handleBarParams['pricePlanName'] = this.selectPlanData['pricePlanName']
 				handleBarParams['applyDate'] = this.selectPlanData['applyDate'];
-				handleBarParams['makeData'] = this.selectPlanData['makeData'];
+				handleBarParams['makeData'] = this.selectPlanData['makeDate'];
 				
 				//설정되지 않은 객체들도 있으므로 일단 다 0으로 설정한다.
 				handleBarParams['voiceData'] = 0;
