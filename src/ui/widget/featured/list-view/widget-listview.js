@@ -65,7 +65,9 @@
         defaultOptions = {
             optimization:true,
             SCROLL_THROTTLE:0,
-            scrollEndAction:null
+            scrollEndAction:function() {
+
+            }
         };
         this.$el = $(element);
         this.options = options = $.extend(true, defaultOptions, options);
