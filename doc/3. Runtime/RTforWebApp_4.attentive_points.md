@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 title: '개발시 주의사항'
-outline: 'Android와 iOS 공통 개발시 주의할 점'
+outline: '안드로이드와 iOS는 개발사, 언어, 구조가 전혀 다른 플랫폼이며 따라서 웹앱 개발시에 상황에 따라 이를 구분해야 하는 경우가 있다.'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'

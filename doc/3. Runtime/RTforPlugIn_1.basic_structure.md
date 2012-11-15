@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 title: '런타임 기본구조'
-outline: '런타임 기본구조'
+outline: 'Cornerstone Runtime은 크게 platform 별 Native Layer와 Java Script Layer의 2가지의 layer로 나뉘어 진다.'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for PlugIn'
