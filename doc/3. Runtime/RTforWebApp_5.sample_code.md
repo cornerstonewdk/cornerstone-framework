@@ -6,7 +6,7 @@ outline: '샘플코드'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
-order: '[6, 6]'
+order: '[6, 5]'
 -->
 
 ## Cornerstone Runtime을 이용한 Runtime Javascript API sample code

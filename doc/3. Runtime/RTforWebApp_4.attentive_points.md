@@ -6,7 +6,7 @@ outline: 'Android와 iOS 공통 개발시 주의할 점'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
-order: '[6, 5]'
+order: '[6, 4]'
 -->
 
 ## Android 와 iOS 차이점
