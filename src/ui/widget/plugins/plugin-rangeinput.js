@@ -468,12 +468,10 @@
 //            }
 //        });
 //    } else {
-    $(function() {
-        $("input[type=range]").each(function (i) {
-            if($(this).data("rangeinput") === undefined) {
-                var options = $(this).data("rangeOptions");
-                $(this).rangeinput(options);
-            }
+    $(function () {
+        $("[data-plugin^='rangeinput']").each(function (i) {
+            var options = $(this).data("rangeOptions");
+            $(this).rangeinput(options);
         });
     });
 //    }
