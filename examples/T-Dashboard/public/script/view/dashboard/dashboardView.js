@@ -2,12 +2,10 @@ define(
 	[
 		'jquery', 
 		'backbone',
-		// 'observer', 
 		'view/dashboard/twitterWidget', 
 		'view/dashboard/youtubeWidget', 
 		'view/dashboard/vocSatisfactionWidget', 
 		'view/dashboard/vocWidget', 
-		'view/dashboard/facebookFeedWidget', 
 		'view/dashboard/facebookLikeWidget', 
 		'view/dashboard/blogWidget', 
 		'view/dashboard/pricePlanWidget', 
@@ -19,12 +17,10 @@ define(
 	], function(
 		$, 
 		Backbone, 
-		// Resize, 
 		TwitterWidget,
 		YoutubeWidget, 
 		VocSatisfactionWidget, 
 		VocWidget, 
-		FacebookFeedWidget, 
 		FacebookLikeWidget, 
 		BlogWidget, 
 		PricePlanWidget, 
@@ -37,6 +33,9 @@ define(
 			
 		},
 		
+		/*
+		 * 대쉬 보드에서 발생하는 이벤트 정의
+		 */
 		events: {
 			'click div#dashboard_lte': 'lteClick',
 			'click div[data-widgettitle="dashboard_voc"]': 'vocClick',
@@ -46,10 +45,12 @@ define(
 			'click div#dashboard_youtube': 'youtubeClick',
 		},
 		
+		/*
+		 * 아래 메서드들은 각 이벤트가 호출되었을 시 처리할 메서드들 위 event에서 정의된 이벤트가 발생시 호출된다
+		 */
 		lteClick: function(e) {
 			document.location = '#lteReport';
 		},
-		
 		vocClick: function(e) {
 			if(typeof($(e.target).attr('data-voclist')) == 'undefined' && typeof($(e.target).parent().attr('data-voclist')) == 'undefined') {
 				document.location = '#voc';	
@@ -57,7 +58,6 @@ define(
 				document.location = '#voc/' + ($(e.target).attr('data-voclist') || $(e.target).parent().attr('data-voclist'));
 			}
 		},
-		
 		pricePlanClick: function(e) {
 			if(typeof($(e.target).attr('data-id')) == 'undefined') {
 				document.location = '#pricePlan';	
@@ -65,15 +65,12 @@ define(
 				document.location = '#pricePlan/' + $(e.target).attr('data-id');
 			}
 		},
-		
 		snsClick: function(e) {
 			document.location = '#sns';
 		},
-		
 		facebookClick: function(e) {
 			document.location = '#facebook';
 		},
-		
 		youtubeClick: function(e) {
 			document.location = '#youtube';
 		},
@@ -91,25 +88,11 @@ define(
 			});
 			
 			$('.dashboardItem').spinner('show');
-			
-			// Resize.resize.listen();
-			// Resize.resize.addListener('#dashboard_container', function(state){
-				// setTimeout(function() {
-					// var $container = $('#dashboard_container');
-					// $container.isotope('reLayout');
-				// }, 500);
-				// setTimeout(function() {
-					// var $container = $('#dashboard_container');
-					// $container.isotope('reLayout');
-				// }, 1000);
-				// setTimeout(function() {
-					// var $container = $('#dashboard_container');
-					// $container.isotope('reLayout');
-				// }, 3000);
-			// });
 		},
 		
-		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
+		/*
+		 * 이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
+		 */
 		viewDidAppear: function() {
 			//가벼운 순서대로 위젯 그려주는걸 추천
 			
@@ -128,10 +111,6 @@ define(
 			//정책 그리기
 			var pricePlanWidget = new PricePlanWidget();
 			pricePlanWidget.render();
-			
-			//facebook feed
-			// var facebookFeedWidget = new FacebookFeedWidget();
-			// facebookFeedWidget.render();
 			
 			//facebook like widget
 			var facebookLikeWidget = new FacebookLikeWidget();
@@ -157,7 +136,9 @@ define(
 			blogWidget.render();
 		},
 		
-		//이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
+		/*
+		 * 이 메서드는 pageTransition.js을 이용해서 사용할 경우에만 사용 가능하다.(*중요)
+		 */
 		viewDidDisappear: function() {
 		},
 		

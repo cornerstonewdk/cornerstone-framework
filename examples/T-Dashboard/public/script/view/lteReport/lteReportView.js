@@ -41,12 +41,16 @@ define([
 			this.changeBranchInfo(this.selectedBranch);
 		},
 		
-		//이벤트 정의
+		/*
+		 * 이벤트 정의
+		 */
 		events: {
 			'click a[data-branchcode]': 'menuClick',
 		},
 		
-		//지점 클릭
+		/*
+		 * 지점 클릭
+		 */
 		menuClick: function(e) {
 			var prevBranch = this.selectedBranch;
 			this.selectedBranch = $(e.target).attr('data-branchcode');
@@ -59,7 +63,9 @@ define([
 			this.changeBranchInfo(this.selectedBranch);
 		},
 		
-		//지점 정보 변경
+		/*
+		 * 지점 정보 변경
+		 */
 		changeBranchInfo: function(branchCode) {
 			var branchInfo = this.branchList[branchCode];
 			

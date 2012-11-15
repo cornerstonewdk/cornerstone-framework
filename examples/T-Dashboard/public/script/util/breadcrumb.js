@@ -10,6 +10,10 @@
         return null;
     }
 }(window, document, function (window, document, $, exports) {
+	
+	/**
+	 * 브레드크럼을 체계적으로 관리하기 위한 클래스
+	 */
 	function BreadcrumbManager(){
 		this.el = $('ul.breadcrumb');
 		this.className = 'Breadcrumb';
@@ -17,6 +21,9 @@
 		this.prevRoute = null;
 	};
 	
+	/*
+	 * 라우트와 연동하여 정보를 받으면 해당 타이틀의 브레드크럼을 정리하고 그려준다. 
+	 */
 	BreadcrumbManager.prototype.route = function(route, title) {
 		var alreadyRoute = false;
 		var sameIdx = 0;

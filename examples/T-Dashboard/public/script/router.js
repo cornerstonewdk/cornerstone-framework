@@ -3,8 +3,14 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var BreadCrumb = require("util/breadcrumb");
 	var PageTransition = require("util/pageTransition");
-
+	
+	/**
+	 * 라우트를 정의
+	 */
 	var MainRouter = Backbone.Router.extend({
+		/*
+		 * 프레그먼트 문자를 기준으로 라우트 정의
+		 */
 		routes : {
 			'' : 'dashboardRoute',
 			'index' : 'dashboardRoute',
@@ -19,6 +25,9 @@ define(function(require) {
 			'*actions' : 'defaultAction'
 		},
 		
+		/*
+		 * 대쉬보드 요청시 처리내용
+		 */
 		dashboardRoute : function() {
 			require(["dashboardView"], function(DashboardView) {
 				var direction = BreadCrumb.manager.route('index', 'T-Dashboard');
@@ -26,13 +35,19 @@ define(function(require) {
 			});
 		},
 		
+		/*
+		 * LTE 개통정보 요청시 처리내용
+		 */
 		lteReportRoute : function() {
 			require(["lteReportView"], function(LteReportView) {
 				var direction = BreadCrumb.manager.route('lteReport', 'LTE 개통 통계');
 				PageTransition.page.transition(direction, LteReportView);
 			});
 		},
-
+		
+		/*
+		 * 정책 요청시 처리내용
+		 */
 		pricePlanRoute : function(id) {
 			require(["pricePlanView"], function(PricePlanView) {
 				var direction = BreadCrumb.manager.route('pricePlan', '정책');
@@ -40,7 +55,10 @@ define(function(require) {
 				PageTransition.page.transition(direction, PricePlanView);
 			});
 		},
-
+		
+		/*
+		 * VOC 요청시 처리내용
+		 */
 		vocRoute : function(id) {
 			require(["vocView"], function(VocView) {
 				var direction = BreadCrumb.manager.route('voc', 'VOC');
@@ -49,6 +67,9 @@ define(function(require) {
 			});
 		},
 		
+		/*
+		 * 정책 생성, 수정 요청시 처리내용
+		 */
 		makePricePlanRoute: function(data) {
 			require(["makePricePlanView"], function(MakePricePlanView) {
 				var title = (typeof(data) == 'undefined') ? '새로운 정책' : '정책 수정';

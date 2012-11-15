@@ -4,7 +4,6 @@ requirejs.config({
 		"transition": Cornerstone.PATH + "util/transition",
 		"navigation":"../lib/navigation",
 		"isotope": "../lib/jquery.isotope",
-		"observer": "util/resizeObserver",
 		"jsonp": Cornerstone.PATH + "util/jsonp",
 		"yql": "../lib/jquery.query-yql.min",
 		"dashboardView": "view/dashboard/dashboardView",
@@ -26,10 +25,6 @@ requirejs.config({
         
         "isotope": {
         	deps:["jquery"]
-        },
-        
-        "observer": {
-        	deps:["enquire"]
         },
         
         "yql": {

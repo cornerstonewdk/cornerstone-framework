@@ -37,6 +37,9 @@ define(
 			$('div#vocSatisfactionWidget').parent().spinner('hide');
 		},
 		
+		/*
+		 * 만족도를 실시간 업데이트 처럼 보이게 일정시간마다 정보 업데이트
+		 */
 		updateVocSatisfactionInfo: function() {
 			if($('div#vocSatisfactionWidget').length == 0) {
 				clearInterval(this.vocInfoUpdateTimer);

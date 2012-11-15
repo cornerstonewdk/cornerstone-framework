@@ -11,6 +11,9 @@
         return null;
     }
 }(window, document, function (window, document, $, exports) {
+	/**
+	 * 브레드 크럼에서 받은 방향정보를 이용하여 두개의 화면을 자동으로 관리하여 트렌지션 효과를 준다.
+	 */
 	function PageTransition(){
 		this.className = 'PageTransition';
 		this.currentId = '';
@@ -18,6 +21,14 @@
 		this.prevView = null;
 	};
 	
+	/*
+	 * 기존 뷰와 새로 들어오는 뷰 객체를 이용하여 트렌지션 효과를 나타내 준다.
+	 * @direction : 방향 >, <, | 이렇게 있다.
+	 * View : Backbone.View를 상속받은 객체
+	 * 부가 효과로 viewDidAppear, viewDidDisappear 메서드를 가지고 있다면 적절한 시점에서 호줄해준다. 없으면 무시
+	 * viewDidAppear : 화면에 표시되고 난 후 호출 (화면이 그려지고 난 후에 처리할 게 있다면 여기서 처리)
+	 * viewDidDisappear : 화면이 사라지고 난 후 호출 (화면이 사라지고 난 후 처리할 게 있다면 여기서 처리)
+	 */
 	PageTransition.prototype.transition = function(direction, View) {
 		if(direction == '-') return;
 		
@@ -116,6 +127,9 @@
 		this.prevView = View;
 	};
 	
+	/*
+	 * 아이디를 UUID를 생성하며 DIV를 관리 한다.
+	 */
 	PageTransition.prototype.makeUuid = function() {
 		var chars = '0123456789abcdef'.split('');
 	

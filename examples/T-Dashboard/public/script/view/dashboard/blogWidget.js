@@ -29,6 +29,9 @@
 			});
 		},
 		
+		/*
+		 * 리스트를 그려준다.
+		 */
 		drawList: function(data) {
 			for(var i = 0; i < Math.min(data.length, 5); i++) {
 				var rssItem = data[i];

@@ -1,7 +1,11 @@
 define(function(require) {
 	var $ = require("jquery");
 
+	/**
+	 * 서버 필요없이 모든 데이터가 동작할 수 있도록 랜덤 또는 미리 입력한 데이터를 모아놓고 관리 하는 클레스
+	 */
 	var DummyDataUtil = function(){
+		//가격 정책 리스트 (기존에 있던 몇몇개만 미리 입력)
 		this.pricePlanList = {
 			"1": {
 				"pricePlanId": "1",
