@@ -470,8 +470,10 @@
 //    } else {
     $(function() {
         $("input[type=range]").each(function (i) {
-            var options = $(this).data("rangeOptions");
-            $(this).rangeinput(options);
+            if($(this).data("rangeinput") === undefined) {
+                var options = $(this).data("rangeOptions");
+                $(this).rangeinput(options);
+            }
         });
     });
 //    }
