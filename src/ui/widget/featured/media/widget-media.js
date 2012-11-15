@@ -154,14 +154,16 @@
     };
 
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=media]").each(function (i) {
-        var self = this;
-        $(this)[pluginName]({
-            alwaysShowControls:true,
-            rate:$(self).data("mediaRate")
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=media]").each(function (i) {
+            var self = this;
+            $(this)[pluginName]({
+                alwaysShowControls:true,
+                rate:$(self).data("mediaRate")
+            });
         });
     });
 }));

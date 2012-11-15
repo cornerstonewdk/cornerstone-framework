@@ -386,21 +386,23 @@
 
     $.fn.featuredChart.Constructor = FeaturedChart;
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=chart]").each(function (i) {
-        var self = this,
-            dataUrl = $(this).data("chartBind");
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=chart]").each(function (i) {
+            var self = this,
+                dataUrl = $(this).data("chartBind");
 
-        $.getJSON(dataUrl).success(function (json) {
-            $(self)[pluginName]({
-                chartType:$(self).data("chartType"),
-                data:json
-            });
-        }).error(function (jqXHR, textStatus, errorThrown) {
-                console.log("getJSON Error", jqXHR, textStatus, errorThrown);
-            });
+            $.getJSON(dataUrl).success(function (json) {
+                $(self)[pluginName]({
+                    chartType:$(self).data("chartType"),
+                    data:json
+                });
+            }).error(function (jqXHR, textStatus, errorThrown) {
+                    console.log("getJSON Error", jqXHR, textStatus, errorThrown);
+                });
+        });
     });
 
     return FeaturedChart;

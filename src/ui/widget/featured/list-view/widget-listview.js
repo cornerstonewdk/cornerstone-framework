@@ -14,7 +14,7 @@
         define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
             factory($, root, doc);
             return Backbone.View.extend({
-                tagName: "ul",
+                tagName:"ul",
                 initialize:function () {
                     _.bindAll(this, "render");
                 },
@@ -189,11 +189,13 @@
 
     $.fn[pluginName].Constructor = Plugin;
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=listView]").each(function (i) {
-        $(this)[pluginName]();
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=listView]").each(function (i) {
+            $(this)[pluginName]();
+        });
     });
 
     return Plugin;
