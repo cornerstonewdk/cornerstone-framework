@@ -6,20 +6,14 @@ outline: 'Android와 iOS 공통 개발시 주의할 점'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
-order: '[6, 3]'
+order: '[6, 5]'
 -->
 
-----------
-
-# 3. Cornerstone Runtime Android와 iOS 공통 개발시 주의할 점 
-
-----------
-
-## 3.1 Android 와 iOS 차이점
+## Android 와 iOS 차이점
 - 안드로이드와 iOS는 개발사, 언어, 구조가 전혀 다른 플랫폼이며 따라서 웹앱 개발시에 상황에 따라 이를 구분해야 하는 경우가 있다.
 
 
-### 3.1.1 Android/iOS 분기 방법
+### Android/iOS 분기 방법
 1) **device.platform** : Runtime이 로딩되면 해당 변수에 Android 인지 iOS인지가 스트링으로 기록된다.
 이를 이용하여 간단히 분기 할 수 있다.
 
@@ -58,7 +52,7 @@ order: '[6, 3]'
 	    document.addEventListener("deviceready", onSuccess, true);
 
 
-### 3.1.2 iOS 웹앱 개발시 어플 종료 문제
+### iOS 웹앱 개발시 어플 종료 문제
 
 1) 안드로이드와는 다르게 iOS 어플들은 애플사의 정책에 따라 어플 종료 개념이 없으며 홈버튼이 이를 대체한다.  
 - 관련 링크 : [(애플사는 공식적으로 어플 종료 API를 제공하지 않는다)](https://developer.apple.com/library/ios/#qa/qa2008/qa1561.html)

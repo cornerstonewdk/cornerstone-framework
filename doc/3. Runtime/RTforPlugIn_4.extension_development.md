@@ -1,12 +1,12 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: '확장 구조 개발'
+title: 'PlugIn 개발'
 outline: 'Runtime 확장 구조 개발'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime'
-order: '[7, 2]'
+order: '[6, 4]'
 -->
 
 ----------

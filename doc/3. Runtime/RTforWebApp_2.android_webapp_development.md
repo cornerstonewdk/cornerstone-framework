@@ -1,11 +1,10 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: '웹앱 개발'
+title: 'Android 웹앱 개발'
 outline: 'Runtime 웹앱 개발'
 date: '2012-11-16'
 tagstr: 'runtime'
-subsection: 'Runtime for WebApp'
 order: '[6, 2]'
 -->
 

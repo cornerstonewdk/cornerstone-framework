@@ -1,27 +1,20 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: '웹앱 개발'
+title: 'iOS 웹앱 개발'
 outline: 'Runtime 웹앱 개발'
 date: '2012-11-16'
 tagstr: 'runtime'
-subsection: 'Runtime for WebApp'
-order: '[6, 2]'
+order: '[6, 3]'
 -->
 
-----------
-
-# 2. Cornerstone Runtime 웹앱 개발
-
-----------
-
-## 2.2 iOS Runtime 웹앱 개발 환경
+## iOS Runtime 웹앱 개발 환경
 
  - Authoring Tool을 이용하여 iOS 용 웹앱 개발환경을 다운로드 받을 수 있다. 
  - [여기에 링크가 들어간다.](http://) 
  - iOS용 웹앱 개발환경은 Xcode 버전 4.3, Mac OSX 버전 10.7.4 Lion 기준으로 개발되었으며 iOS 버전은 5.0 이다.
 
-### 2.2.1 iOS Runtime 웹앱 개발 환경 구조  
+### iOS Runtime 웹앱 개발 환경 구조  
 
 ![](./images/srt_project.png)
 
@@ -46,7 +39,7 @@ order: '[6, 2]'
 
 <br>
 
-### 2.2.2 iOS 웹앱 개발 방법
+### iOS 웹앱 개발 방법
 
 
 **step 1.**  Authoring tool을 이용해 iOS Web App Template를 받아서 Xcode로 프로젝트(파일명 : SRT_Template.xcodeproj)를 연다. 
