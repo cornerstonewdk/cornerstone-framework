@@ -8,19 +8,13 @@ tagstr: 'runtime'
 order: '[6, 2]'
 -->
 
-----------
-
-# 2. Cornerstone Runtime 웹앱 개발
-
-----------
-
-## 2.1 Android Runtime 웹앱 개발 환경 
+## Android Runtime 웹앱 개발 환경 
 
  - Authoring Tool을 이용하여 Android 용 웹앱 개발환경을 다운로드 받을 수 있다. 
  - [여기에 링크가 들어간다.](http://) 
 
 
-### 2.1.1 Android Runtime 웹앱 개발 환경 구조 
+### Android Runtime 웹앱 개발 환경 구조 
 
 ![Android Runtime 웹앱 개발 환경 구조](./images/devel.png)
 
@@ -49,7 +43,7 @@ order: '[6, 2]'
 
 <br>
 
-### 2.1.2 Android 웹앱 개발 절차
+### Android 웹앱 개발 절차
 
 **step 1.**  Authoring tool을 이용해 Android Web App Template를 받으면 Lib 폴더에 **Runtime.jar가 기본으로 포함**되어 있다.
 
