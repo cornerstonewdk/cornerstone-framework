@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 title: 'Android 웹앱 개발'
-outline: 'Runtime 웹앱 개발'
+outline: 'Authoring Tool을 이용하여 Android 용 웹앱 개발환경을 다운로드 받을 수 있다.'
 date: '2012-11-16'
 tagstr: 'runtime'
 order: '[6, 2]'
