@@ -570,4 +570,61 @@
 			.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
 			border-bottom: 0;
 		}
+
+		.navbar-inverse {
+			color: @navbarInverseText;
+
+			.navbar-inner {
+				#gradient > .tab-grd (@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+				border-color: @navbarInverseBorder;
+			}
+
+			.brand,
+			.nav > li > a {
+				color: @navbarInverseLinkColor;
+				text-shadow: none;
+				&:hover {
+					color: @navbarInverseLinkColorHover;
+				}
+			}
+
+			.nav > li > a:focus,
+			.nav > li > a:hover {
+				background-color: @navbarLinkBackgroundActive;
+				color: @navbarInverseLinkColorHover;
+			}
+
+			.nav .active > a,
+			.nav .active > a:hover,
+			.nav .active > a:focus {
+				color: @navbarInverseLinkColorActive;
+				background-color: @navbarLinkBackgroundActive;
+			}	
+
+			// Inline text links
+			.navbar-link {
+				color: @navbarInverseLinkColor;
+				&:hover {
+					color: @navbarInverseLinkColorHover;
+				}
+			}
+
+			// Dividers in navbar
+			.divider-vertical {
+				border-left-color: @navbarInverseBackground;
+				border-right-color: @navbarInverseBackgroundHighlight;
+			}
+		 
+			.nav.pull-right li.dropdown .dropdown-toggle {
+				padding: 7px 13px;
+			}
+
+			// Navbar collapse button
+			.btn-navbar {
+				.buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+				background:#212121 url('../img/icon.png') no-repeat 0 -935;
+				background-size: 139px;
+			}
+
+		}
 }

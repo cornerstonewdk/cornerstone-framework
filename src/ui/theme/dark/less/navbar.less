@@ -164,6 +164,7 @@
       .placeholder(@navbarInverseSearchPlaceholderColor);
 			vertical-align: middle;
 			margin-top: -3px;
+			vertical-align: middle;
 
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
@@ -242,13 +243,6 @@
 	padding: 0 3px;
 }
 
-.navbar .nav > li:first-child {
-	border-right: 1px solid rgba(33,33,34,.85);
-	.box-shadow(~"1px 0 0 rgba(255,255,255,.1)");
-	margin-right: 5px;	
-	padding: 0 15px 0 20px;
-}
-
 .navbar .nav > li > a {
 	text-align: left;
 	display: block;
@@ -290,57 +284,14 @@
 	display: none;
 }	
 
-.navbar .nav > li:first-child a,
-.navbar .nav > li:first-child > a:hover,
-.navbar .nav > li:first-child > a:focus,
-.navbar .nav > .active:first-child > a,
-.navbar .nav > .active:first-child > a:hover,
-.navbar .nav > .active:first-child > a:focus {
-	font-size: @baseFontSize + 2;
-	line-height: @baseLineHeight;
-	#font > #effect > .txt-over();
-	text-shadow: none;
-	text-decoration: none;
-	padding: 6px 13px;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1)");
-	border: 1px solid @navbarDropdownBorder;
-	background-color: @navbarLinkBackgroundActive;
-}
-
 // Icon + Text Navigation 
 
 .ico-txt .nav, .nav-icon .nav {
 	padding: 6px 0 0;
 }
 
-.navbar.ico-txt .nav > li:first-child a,
-.navbar.nav-icon .nav > li:first-child a {
-  padding: 7px 13px 5px;
-	margin: 0;
-	border: 1px solid transparent;
-}
-
-.navbar.ico-txt .nav > li:first-child a:hover, 
-.navbar.ico-txt .nav > li:first-child a:active, 
-.navbar.ico-txt .nav > li:first-child.active a {
-	#font > #effect > .txt-over();
-	font-size: @baseFontSize + 2;
-	padding: 7px 13px 5px;
-	border: 1px solid transparent;
-}
-
 .nav.pull-right > li:last-child a i {
 	margin: 0;
-}
-
-.navbar.nav-icon .nav.pull-right > li:first-child a:hover,
-.navbar.nav-icon .nav.pull-right > li:first-child a:active {
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-	padding: 7px 13px 5px;
 }
 
 .navbar.ico-txt .nav > li a,
@@ -376,45 +327,6 @@
 	font-size: 0;
 	line-height: 0;
 	padding: 7px 13px 5px;
-}
-
-.navbar.nav-icon .nav > li:first-child a,
-.navbar.nav-icon .nav.pull-right > li:first-child a {	
-	font-size: 0;
-	line-height: 0;
-	visibility: visible;
-  text-decoration: none;
-	padding: 7px 13px 5px;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-}
-
-.navbar.nav-icon .nav > li:first-child a:hover, 
-.navbar.nav-icon .nav > li:first-child a:active, 
-.navbar.nav-icon .nav > li:first-child.active a {
-	visibility: visible;
-	font-size: 0;
-	line-height: 0;
-	padding: 7px 13px 5px;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-}
-
-.nav.pull-right > li:first-child {
-	padding: 0 3px;
-	border-right: 0;
-	box-shadow: none;
-}
-
-.nav.pull-right > li:last-child {
-	border-left: 1px solid rgba(255,255,255,.1);
-	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
-	margin-left: 10px;
-	padding: 0 0 0 5px;
 }
 
 // Navbar button for toggling navbar items in responsive layouts
@@ -622,9 +534,9 @@
 	background-position: -193px -824px;
 }
 
-.nav > li:first-child a:hover .icon-home, 
-.nav > li:first-child a:active .icon-home, 
-.nav > li:first-child.active a .icon-home {
+.navbar .nav > li a:hover .icon-home, 
+.navbar .nav > li a:active .icon-home, 
+.navbar .nav > li.active a .icon-home {
 	width: 24px;
 	height: 29px;
 	background-image: url('../img/icon.png');
@@ -712,9 +624,9 @@
 	background-position: -191px -734px;
 }
 
-.nav-icon .nav > li:first-child a:hover .icon-connect, 
-.nav-icon .nav > li:first-child a:active .icon-connect, 
-.nav-icon .nav > li:first-child.active a .icon-connect {
+.nav-icon .nav > li a:hover .icon-connect, 
+.nav-icon .nav > li a:active .icon-connect, 
+.nav-icon .nav > li.active a .icon-connect {
 	width: 26px;
 	height: 29px;
 	background-image: url('../img/icon.png');

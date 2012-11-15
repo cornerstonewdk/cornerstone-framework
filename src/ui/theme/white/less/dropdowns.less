@@ -48,7 +48,7 @@
   float: left;
   min-width: 160px;
   padding: 0;
-  margin: 2px 0 0; // override default ul
+  margin: 0; // override default ul
   list-style: none;
   background-color: @dropdownBackground;
   border: 1px solid #ccc; // Fallback for IE7-8
@@ -75,7 +75,7 @@
     border-bottom: 9px solid @dropdownBorder;
     border-bottom-color: @dropdownBorder;
     position: absolute;
-    top: -7px;
+    top: -9px;
     left: 15px;
 		z-index: 10;
   }
@@ -86,7 +86,7 @@
     border-right:  6px solid transparent;
     border-bottom: 8px solid @dropdownBackground;
     position: absolute;
-    top: -6px;
+    top: -8px;
     left: 16px;
 		z-index: 10;
   }
@@ -208,6 +208,7 @@
     margin-bottom: 1px;
 		&:before {
 			content: '';
+			display: inline;
 			border-left:   0;
 			border-right:  0;
 			border-bottom: 0;
@@ -217,6 +218,7 @@
 
 		&:after {
 			content: '';
+			display: inline;
 			border-left:   0;
 			border-right:  0;
 			border-bottom: 0;
@@ -242,6 +244,26 @@
 }
 .dropdown-submenu:hover .dropdown-menu {
   display: block;
+	&:before {
+			content: '';
+			display: inline;
+			height: 1px;
+			border-left:   0;
+			border-right:  0;
+			border-bottom: 0;
+			border-bottom-color: transparent;
+			position: static;
+		}
+
+		&:after {
+			content: '';
+			display: inline;
+			border-left:   0;
+			border-right:  0;
+			border-bottom: 0;
+			border-bottom-color: transparent;
+			position: static;
+		}
 }
 
 .dropdown-submenu > a:after {

@@ -146,7 +146,7 @@
 		float: right;
 		.navbarVerticalAlign(30px); // Vertically center in navbar
 		margin: 0;
-		padding: 8px 0 0;
+		padding: 10px 0 0;
     .search-query {
 			line-height: (@baseLineHeight + 5);
       background-color: @inputBackground;
@@ -158,7 +158,8 @@
 			padding: 5px 15px;
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
-			vertical-align: middle;			
+			vertical-align: middle;	
+			margin-top: -2px;
 
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
@@ -234,13 +235,6 @@
 	padding: 0 3px;
 }
 
-.navbar .nav > li:first-child {
-	border-right: 1px solid @grayLight;
-	.box-shadow(~"1px 0 0 rgba(255,255,255,.1)");
-	margin-right: 5px;	
-	padding: 0 15px 0 20px;
-}
-
 // Links
 .navbar .nav > li > a {
   float: none;
@@ -268,52 +262,6 @@
   background-color: @navbarLinkBackgroundActive;
 }
 
-.navbar .nav > li:first-child a,
-.navbar .nav > li:first-child > a:focus,
-.navbar .nav > li:first-child > a:hover,
-.navbar .nav > .active:first-child > a,
-.navbar .nav > .active:first-child > a:hover,
-.navbar .nav > .active:first-child > a:focus {
-	border: 0;
-	box-shadow: none;
-	background: none;
-	color: @black;
-	font-size: (@baseFontSize + 4);
-	text-shadow: none;
-}
-
-.navbar .nav.pull-right > li:first-child,
-.navbar .nav.pull-right > li:last-child {
-	border: 0;
-	box-shadow: none;
-	margin: 0;	
-	padding: 0 3px;
-}
-
-.navbar .nav.pull-right > li:first-child a {
-	float: none;
-  // Vertically center the text given @navbarHeight
-  padding: 7px 13px;
-	margin: 0;
-  color: @navbarLinkColor;
-	font-size: @baseFontSize;
-  text-decoration: none;
-	border: 1px solid transparent;
-}
-
-.navbar .nav.pull-right > li:first-child a:focus,
-.navbar .nav.pull-right > li:first-child a:hover,
-.navbar .nav.pull-right > li:first-child .active > a,
-.navbar .nav.pull-right > li:first-child .active > a:hover,
-.navbar .nav.pull-right > li:first-child .active > a:focus {
-  color: @navbarLinkColorHover;
-  text-decoration: none;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-}
-
 .navbar .nav > li a i {
 	display: inline-block;
 	vertical-align: middle;
@@ -328,26 +276,8 @@
 	padding: 7px 0 0;
 }
 
-.ico-txt .nav > li:first-child a,
-.nav-icon .pull-right > li:last-child a {
-  padding: 4px 13px;
-	margin: 0;
-	border: 1px solid transparent;
-}
-
 .nav.pull-right > li:last-child a i {
 	margin: 0;
-}
-
-.ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active,
-.nav-icon .nav.pull-right > li:last-child a:hover,
-.nav-icon .nav.pull-right > li:last-child a:active {
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-	padding: 4px 13px;
 }
 
 .ico-txt .nav > li a,
@@ -367,14 +297,6 @@
 	padding: 4px 13px;
 }
 
-.ico-txt .nav > li:first-child a:hover, 
-.ico-txt .nav > li:first-child a:active, 
-.ico-txt .nav > li:first-child.active a {
-	color: @navbarLinkColorHover;
-	font-size: (@baseFontSize + 3);
-	padding: 4px 13px;
-}
-
 // Icon Navigation 
 
 
@@ -387,54 +309,6 @@
 	padding: 4px 13px;
 }
 
-.nav-icon .nav > li:first-child a,
-.nav-icon .nav.pull-right > li:first-child a {	
-	visibility: visible;
-	font-size: 0;
-	line-height: 0;
-  text-decoration: none;
-	padding: 4px 13px;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-}
-
-.nav-icon .nav > li:first-child a:hover, 
-.nav-icon .nav > li:first-child a:active, 
-.nav-icon .nav > li:first-child.active a {
-	visibility: visible;
-	font-size: 0;
-	line-height: 0;
-	padding: 4px 13px;
-	.border-radius(4px);
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
-  background-color: @navbarLinkBackgroundActive;
-}
-
-.nav.pull-right > li:first-child {
-	padding: 0 3px;
-	border-right: 0;
-	box-shadow: none;
-}
-
-.nav.pull-right > li:last-child {
-	border-left: 1px solid rgba(255,255,255,.1);
-	.box-shadow(~"-1px 0 0 rgba(33,33,34,.85)");
-	margin-left: 10px;
-	padding: 0 0 0 5px;
-}
-
-.ico-txt .nav.pull-right > li:first-child a,
-.ico-txt .nav.pull-right > li:last-child a,
-.nav-icon .nav.pull-right > li:last-child a,
-.nav-icon .nav.pull-right > li:last-child a:hover,
-.nav-icon .nav.pull-right > li:last-child a:active {
-	font-size: 0;
-	line-height: 0;	
-	padding: 3px 13px 3px 13px;
-}
 
 // Navbar button for toggling navbar items in responsive layouts
 // These definitions need to come after '.navbar .btn'
@@ -645,16 +519,7 @@
 
 	.btn-navbar:hover {
 		border: 1px solid transparent;
-	}
-
-	.nav > li:first-child a,
-	.nav > li:first-child a:hover,
-	.nav > li:first-child a:active,
-	.nav > li:first-child.active a,
-	.nav > li:first-child.active a:hover,
-	.nav.pull-right > li:first-child a {
-		color: @white;
-	}
+	}	
 
 }
 
@@ -671,9 +536,9 @@
 	background-position: -193px -824px;
 }
 
-.nav > li:first-child a:hover .icon-home, 
-.nav > li:first-child a:active .icon-home, 
-.nav > li:first-child.active a .icon-home {
+.navbar .nav > li a:hover .icon-home, 
+.navbar .nav > li a:active .icon-home, 
+.navbar .nav > li.active a .icon-home {
 	width: 24px;
 	height: 29px;
 	background-image: url('../img/icon.png');
@@ -761,9 +626,9 @@
 	background-position: -191px -734px;
 }
 
-.nav-icon .nav > li:first-child a:hover .icon-connect, 
-.nav-icon .nav > li:first-child a:active .icon-connect, 
-.nav-icon .nav > li:first-child.active a .icon-connect {
+.nav-icon .nav > li a:hover .icon-connect, 
+.nav-icon .nav > li a:active .icon-connect, 
+.nav-icon .nav > li.active a .icon-connect {
 	width: 26px;
 	height: 29px;
 	background-image: url('../img/icon.png');

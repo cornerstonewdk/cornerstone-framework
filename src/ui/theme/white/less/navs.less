@@ -182,6 +182,24 @@
   .border-radius(4px 4px 0 0);
 	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.15)");
 	overflow:hidden;
+
+	&:hover {
+		color: @navTabLink;
+    border-color: @navTabTop @navTabLeft @navTabRight;
+		#gradient > .tab-grd(#b3b3b3, #a4a4a4);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.4), 0 -2px 3px rgba(0,0,0,.15)");color: @navTabLink;
+		font-size: @baseFontSize;
+		text-align: center;
+		text-shadow: 0 2px 2px rgba(0,0,0,.7);
+		padding-top: 12px;
+		padding-bottom: 12px;
+		line-height: @baseLineHeight;
+		border:0;
+		#gradient > .tab-grd();
+		.border-radius(4px 4px 0 0);
+		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.15)");
+		overflow:hidden;
+  }
   
 	&:active {
 		color: @navTabLink;
