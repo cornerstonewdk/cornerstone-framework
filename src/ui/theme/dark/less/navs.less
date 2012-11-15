@@ -255,7 +255,8 @@
 // Active state
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,
-.nav-pills > .active > a:active {
+.nav-pills > .active > a:active,
+.nav-pills .open .dropdown-toggle {
   color: @white;
 	text-shadow: 0 2px 2px rgba(0,0,0,.7);
   background-color: @navPillBgActive;
@@ -410,7 +411,6 @@
 // Open dropdowns
 // -------------------------
 .nav-tabs .open .dropdown-toggle,
-.nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover {
   color: @navTabOver;
 	text-shadow: 0 2px 2px rgba(0,0,0,.3);
