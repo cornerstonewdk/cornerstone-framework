@@ -6,16 +6,10 @@ outline: '샘플코드'
 date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
-order: '[6, 4]'
+order: '[6, 5]'
 -->
 
-----------
-
-# 4. Cornerstone Runtime Sample Code
-
-----------
-
-## 4.1 Cornerstone Runtime을 이용한 Runtime Javascript API sample code
+## Cornerstone Runtime을 이용한 Runtime Javascript API sample code
 
 -	아래 링크를 통해 Runtime에서 제공하는 JavaScript API 목록을 확인 할 수 있다.  
 
