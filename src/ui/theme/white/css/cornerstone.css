@@ -7540,9 +7540,6 @@ body > .widget-spinner-icon2 {
   .btn-group .btn.dropdown-toggle:hover {
     border-right: 1px solid #000000;
   }
-  .navbar-search {
-    display: none;
-  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {

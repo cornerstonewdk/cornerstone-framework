@@ -6213,9 +6213,6 @@ body > .widget-spinner-icon2 {
     color: #bcbcbc;
     background: none;
   }
-  .navbar-search {
-    display: none;
-  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
@@ -6883,9 +6880,6 @@ body > .widget-spinner-icon2 {
     color: #bcbcbc;
     background: none;
     outline: none;
-  }
-  .navbar-search {
-    display: none;
   }
 }
 @media (min-width: 1200px) {
