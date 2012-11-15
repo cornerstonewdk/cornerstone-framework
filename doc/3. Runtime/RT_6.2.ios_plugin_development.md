@@ -5,12 +5,12 @@ title: 'iOS PlugIn 개발'
 outline: '아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다.'
 date: '2012-11-16'
 tagstr: 'runtime'
-order: '[7, 4]'
+order: '[6, 8]'
 -->
 
-##	2.3 iOS Runtime 확장 구조 개발 
+##	iOS Runtime 확장 구조 개발 
 
-### 2.3.1 iOS Runtime 확장 구조 개발 환경
+### iOS Runtime 확장 구조 개발 환경
 
 ![](./images/srt_project.png) 
 
@@ -41,7 +41,7 @@ order: '[7, 4]'
 
 <br>
 
-### 2.3.2 iOS Runtime 확장 구조 개발 절차 
+### iOS Runtime 확장 구조 개발 절차 
 
 **step 1.**  Authoring tool을 이용해 iOS SRT_Template를 받아서 SRT_Template.xcodeproj 파일을 연다
 

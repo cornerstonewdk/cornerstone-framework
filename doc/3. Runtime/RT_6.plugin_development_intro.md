@@ -5,10 +5,10 @@ title: 'PlugIn 개발 개요'
 outline: 'WebApp은 Device Platform (Android, iOS..)에서 제공하는 Native SDK API를 사용할 수 없다. 따라서 WebApp에서 단말 기능을 사용하고자 한다면 브라우져 및 Runtime에서 제공하는 JavaScript Extension API를 사용하여야 한다. 이를 가능하게 하는것이 Cornerstone Runtime 이며 , 이 Cornerstone Runtime 내부에서 HTML5 Spec을 준수하는 API (contact , calendar, file .. etc) 와 추가적인 Additional API (audio, childBrowser..etc) 를 제공한다.'
 date: '2012-11-16'
 tagstr: 'runtime'
-order: '[7, 2]'
+order: '[6, 6]'
 -->
 
-## 2.1. 개요 
+## 개요 
 
 -	WebApp은 Device Platform (Android, iOS..)에서 제공하는 Native SDK API를 사용할 수 없다. 따라서 WebApp에서 단말 기능을 사용하고자 한다면 브라우져 및 Runtime에서 제공하는 JavaScript Extension API를 사용하여야 한다. 이를 가능하게 하는것이 Cornerstone Runtime 이며 , 이 Cornerstone Runtime 내부에서 HTML5 Spec을 준수하는 API (contact , calendar, file .. etc) 와 추가적인 Additional API (audio, childBrowser..etc) 를 제공한다. 
 

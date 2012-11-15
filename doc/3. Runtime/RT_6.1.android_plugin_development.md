@@ -5,12 +5,12 @@ title: 'Android PlugIn 개발'
 outline: '아래 링크를 통하여 확장구조 개발에 필요한 Android Native source와 JavaScript source 예제를 참조할 수 있다.'
 date: '2012-11-16'
 tagstr: 'runtime'
-order: '[7, 3]'
+order: '[6, 7]'
 -->
 
-##	2.2 Android Runtime 확장 구조 개발 
+##	Android Runtime 확장 구조 개발 
 
-### 2.2.1 Android Runtime 확장 구조 개발 환경
+### Android Runtime 확장 구조 개발 환경
 
 ![Android Runtime 확장구조 개발 환경 구조](./images/devel.png) 
 
@@ -46,7 +46,7 @@ Library 위치
 
 <br>
 
-### 2.2.2 Android Runtime 확장 구조 개발 절차 
+### Android Runtime 확장 구조 개발 절차 
 
 **step 1.**  Authoring tool을 이용해 Android Web App Template를 받으면 Lib 폴더에 **Runtime.jar가 기본으로 포함**되어 있다.
 

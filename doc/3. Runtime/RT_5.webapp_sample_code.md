@@ -1,7 +1,7 @@
 <!--
 layout: 'post'
 section: 'Cornerstone Framework'
-title: '샘플코드'
+title: '웹앱 샘플코드'
 outline: 'Cornerstone Runtime을 이용한 Runtime Javascript API sample code'
 date: '2012-11-16'
 tagstr: 'runtime'
