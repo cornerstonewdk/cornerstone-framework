@@ -75,7 +75,7 @@
     border-bottom: 9px solid @dropdownBorder;
     border-bottom-color: @dropdownBorder;
     position: absolute;
-    top: -9px;
+    top: -7px;
     left: 15px;
 		z-index: 10;
   }
@@ -86,7 +86,7 @@
     border-right:  6px solid transparent;
     border-bottom: 8px solid @dropdownBackground;
     position: absolute;
-    top: -8px;
+    top: -6px;
     left: 16px;
 		z-index: 10;
   }
@@ -206,6 +206,23 @@
     top: auto;
     bottom: 100%;
     margin-bottom: 1px;
+		&:before {
+			content: '';
+			border-left:   0;
+			border-right:  0;
+			border-bottom: 0;
+			border-bottom-color: transparent;
+			position: static;
+		}
+
+		&:after {
+			content: '';
+			border-left:   0;
+			border-right:  0;
+			border-bottom: 0;
+			border-bottom-color: transparent;
+			position: static;
+		}
   }
 }
 

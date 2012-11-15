@@ -7,6 +7,14 @@
 
   // Padding to set content in a bit
 
+	a {
+		color: @white;
+	}
+	a:hover {
+		color: @white;
+		text-decoration: none;
+	}
+
 	.modal.fade {
 		-webkit-transform:translate3d(0,0,0);
 	}
@@ -297,11 +305,11 @@
 	.navbar-inverse .nav > li > a:hover,
 	.navbar-inverse .nav.pull-right > li > a,
 	.navbar-inverse .nav.pull-right > li:first-child > a {
-		color: @white;
+		color: @navbarLinkColor;
 		font-weight: normal;
 		text-shadow: none;		
 		&:hover {
-			color: @white;
+			color: @navbarLinkColor;
 			text-shadow: none;
       background: none;
     }
@@ -340,6 +348,7 @@
 
 	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a:active {
 		background-color: @dropdownLinkBackgroundHover;
+		color: @white;
 	}
 
 	.navbar-inverse .nav.pull-right li.dropdown .dropdown-toggle {
@@ -351,7 +360,7 @@
 	.navbar-inverse .nav.pull-right > li > a:hover,
 	.navbar-inverse .nav.pull-right > li:first-child > a:hover {
 		border: 0;
-		color: white;
+		color: @navbarLinkColor;
 		line-height: @baseLineHeight;
 		margin: 0;
 		background: none;
@@ -361,7 +370,6 @@
 	.navbar-inverse .nav > li.dropdown > .dropdown-menu > li > a:hover,
 	.navbar-inverse .nav.pull-right > li.dropdown > .dropdown-menu > li > a,
 	.navbar-inverse .nav.pull-right > li.dropdown > .dropdown-menu > li > a:hover {
-		color: @white;
 		font-size: @baseFontSize - 2 ;
 		line-height: @baseLineHeight;
 		font-weight: normal;
@@ -377,4 +385,7 @@
 		background: none;
 		outline: none;
 	}
+
+	// Navbar Search
+	.navbar-search {display: none;}
 }

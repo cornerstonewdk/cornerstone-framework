@@ -12,7 +12,8 @@
 .pager li {
   display: inline;
 }
-.pager a {
+.pager li > a,
+.pager li > a:hover {
 	color: @pagerTxt;
 	font-size: @baseFontSize;
 	font-weight: bold;
@@ -22,20 +23,16 @@
   border: 1px solid @grayLight;
   .border-radius(3px);
 }
-.pager a:hover {
-	color: @white;
-  text-decoration: none;
-  background-color: @pagerHoverBg;
-}
-.pager a:active {
+
+.pager li > a:active {
 	color: @white;
   text-decoration: none;
   background-color: @pagerActiveBg;
 }
-.pager .next a {
+.pager li > .next a {
   float: right;
 }
-.pager .previous a {
+.pager li > .previous a {
   float: left;
 }
 .pager .disabled a,

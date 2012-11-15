@@ -16,6 +16,14 @@
 
   // No need to reset .thumbnails here since it's the same @gridGutterWidth
 
+	a {
+		color: @gray;
+	}
+	a:hover {
+		color: @gray;
+		text-decoration: none;
+	}
+
 	.navbar-inner {
 		min-height: @navbarHeight;
 		padding: 0 10px;
@@ -62,18 +70,18 @@
 	.navbar .nav > li > a {
 		text-align: left;
 		display: block;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 	}
 	.navbar .nav > li > a:hover {
 		text-align: left;
 		display: block;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		color: @navbarLinkColor;
 		text-decoration: none;
 		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 		background: transparent;
 		.box-shadow (none);
-		border: 1px solid transparent;
+		border: 0;
 	}
 
 	// Active nav items
@@ -107,10 +115,10 @@
 		color: @white;
 		text-shadow: none;
 		text-decoration: none;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		.border-radius(4px);
 		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.3), 0 1px 1px rgba(255,255,255,.1)");
-		border: 1px solid @navbarDropdownBorder;
+		border: 0;
 		background-color: @navbarFirstBackground;
 	}
 
@@ -162,7 +170,7 @@
 		color: @white;
 		text-shadow: none;
 		text-decoration: none;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		border: 0;
 	}
 
@@ -180,14 +188,14 @@
 	.nav-icon .nav.pull-right > li:last-child a:hover,
 	.nav-icon .nav.pull-right > li.active:first-child a,
 	.nav-icon .nav.pull-right > li.active:last-child a,{
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		line-height: @baseLineHeight;
 		color: @navbarLinkHome;
 		text-shadow: 0 1px 1px rgba(255,255,255,7);
 	}
 
 	.ico-txt .nav > li:first-child a:hover {
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		line-height: @baseLineHeight;
 	}
 
@@ -196,7 +204,7 @@
 		font-size: @baseFontSize;
 		line-height: @baseLineHeight;
 		color: @navbarLinkHome;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		background-color: @navbarDropdownBg;
 		box-shadow: none;
 		border: 0;
@@ -210,7 +218,7 @@
 		color: @white;
 		line-height: @baseLineHeight;
 		text-decoration: none;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		background-color: #5f6267;
 	}
 
@@ -223,11 +231,10 @@
 	}
 
 	// 2012-11-12
-	.nav.pull-right > li:first-child > a:hover,
 	.nav.pull-right > li:last-child > a:hover {
-		color: @navbarLinkHome;
+		color: @navbarLinkColor;
 		text-shadow: 0 1px 1px rgba(255,255,255,7);
-		border: 1px solid transparent;
+		border: 0;
 		background: none;
 	}
 
@@ -239,7 +246,7 @@
 		color: @white;
 		line-height: @baseLineHeight;
 		text-decoration: none;
-		padding: 7px 0 7px 10px;
+		padding: 6px 13px;
 		background-color: @navbarDropdownBg;
 		box-shadow: none;
 		border: 0;
@@ -254,7 +261,7 @@
 		border: 1px solid transparent;
 		background: none;
 		.box-shadow (none);
-		padding: 7px 13px;
+		padding: 6px 13px;
 	}
 
 	.navbar .nav li.dropdown:hover > .dropdown-toggle .caret {
@@ -262,12 +269,22 @@
 		border-bottom-color: @dropdownLinkColor;
 	}
 
+	.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+	.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+	.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret,
+	.navbar .nav li.dropdown.open > .dropdown-toggle:hover .caret,
+	.navbar .nav li.dropdown.active > .dropdown-toggle:hover .caret,
+	.navbar .nav li.dropdown.open.active > .dropdown-toggle:hover .caret {
+		border-top-color: @dropdownLinkColorHover;
+		border-bottom-color: @dropdownLinkColorHover;
+	}
+
 	.navbar .nav.pull-right > li.dropdown > .dropdown-toggle:active {
 		color: @navbarLinkColor;
 		font-size: @baseFontSize;
 		text-decoration: none;
 		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
-		border: 1px solid transparent;
+		border: 0;
 		background: transparent;
 	}
 
@@ -291,11 +308,10 @@
 		clear: both;
 		border: 0;
 		box-shadow: none;
-		margin: 0;
 	}
 
 	.navbar .brand {
-		display: inline-block;
+		display: block;
 		padding: 15px 0 0;
 	}
 
@@ -304,17 +320,23 @@
 	}
 
 	// 2012-11-12
+	.navbar-inverse .brand {
+		color: @white;
+	}
+
 	.navbar-inverse .nav > li > a,
 	.navbar-inverse .nav > li > a:hover,
 	.navbar-inverse .nav.pull-right > li > a,
 	.navbar-inverse .nav.pull-right > li:first-child > a {
 		color: @navbarInverseLinkColor;
 		font-weight: normal;
-		text-shadow: none;		
+		text-shadow: none;
+		border: 0;
 		&:hover {
 			color: @navbarInverseLinkColor;
 			text-shadow: none;
       background: none;
+			border: 0;
     }
 	}
 
@@ -323,6 +345,7 @@
 		color: @navbarLinkColorActive;
 		text-shadow: none;
 		background: @navbarLinkBackgroundActive;
+		border: 0;
 	}
 	.navbar-inverse .nav > li:first-child > a {
 		color: @navbarLinkColorActive;
@@ -337,7 +360,7 @@
 		font-size: @baseFontSize;
 		text-decoration: none;
 		text-shadow: none;
-		border: 1px solid transparent;
+		border: 0;
 		background: transparent;
 	}
 	.navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret, 
@@ -365,6 +388,24 @@
 	.slider-box .slider {
 		min-width:73%;
 		float: left;
+	}
+
+	// dropdown
+	.dropdown-menu li > a:hover, 
+	.dropdown-menu li > a:focus, 
+	.dropdown-submenu:hover > a {
+		color: @dropdownLinkColor;
+		background: none;
+		outline: none;
+	}
+
+	.btn-group .btn.dropdown-toggle:hover {
+		border-right:1px solid @btnBorder;
+	}
+
+	// Navbar Search
+	.navbar-search {
+		display: none;
 	}
 
 }

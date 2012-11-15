@@ -111,7 +111,8 @@
 .btn-group > .btn:last-child:focus,
 .btn-group > .btn:last-child:active,
 .btn-group > .btn:last-child.active {
-	border-right: 0;
+	border-right: 1px solid @btnBorder;
+	border-left: 1px solid @btnBorder;
 }
 
 // On active and open, don't show outline
@@ -231,6 +232,14 @@
 	}
 }
 
+.btn-group > .btn + .btn.dropdown-toggle {
+	// Hover state
+		border-left: 0;
+		&:hover {
+			border-right: 1px solid @btnBorder;
+		}
+	}
+
 .btn-group .btn.btn-primary {
 	&:hover {
 		color: @white;
@@ -262,7 +271,6 @@
     background-color: @btnActive;
     *background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
     background-position: 0 0;
-		border:1px solid transparent;
 		.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
   }	
   .btn-primary.dropdown-toggle,
@@ -271,7 +279,6 @@
     #font > #effect > .txt-active();
     text-shadow: inset 0 0 2px rgba(255,255,255,.5);
     .buttonBackground(@btnBlueActiveHighlight, @btnBlueActive, @btnBlueActiveTxt, @btnShadow);
-    border: 1px solid transparent;
 		.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
   }
   .btn-warning.dropdown-toggle {
@@ -294,7 +301,7 @@
 	.btn-success.dropdown-toggle:hover,
 	.btn-info.dropdown-toggle:hover,
 	.btn-inverse.dropdown-toggle:hover, {
-		border:1px solid transparent;
+		border-color: @btnBorder;
 	}
 }
 
@@ -366,7 +373,11 @@
 
 .btn-group .btn.dropdown-toggle,
 .btn-group .btn.dropdown-toggle:first-child {
+	border-left: 1px solid @btnBorder;
 	border-right: 1px solid @btnBorder;
+	&:hover {
+		border-right: 1px solid @btnBorder;
+  }
 }
 
 // Vertical button groups

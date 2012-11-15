@@ -279,6 +279,7 @@
 @pagingActive:										@black;
 @pagingArrow:											@white;
 @pagingArrowActive:								@skyBlue;
+@pagingDisabled:									@grayLighter;
 
 
 // BreadcrumbsTxt
@@ -294,24 +295,31 @@
 
 // Form states and alerts
 // -------------------------
-@warningText:             @white;
+@warningText:             #1f1f20;
 @warningBackground:       #c76b16;
 @warningBorder:           rgba(143,143,6,.64);
 
-@errorText:               @white;
+@errorText:               #872a2b;
 @errorBackground:         #b91636;
 @errorBorder:             rgba(169,0,0,.64);
 
-@successText:             @white;
+@successText:             #3c5d20;
 @successBackground:       #3f842a;
 @successBorder:           rgba(8,153,8,.64);
 
-@infoText:                @white;
-@infoBackground:          #287a8f;
+@infoText:                #184f6a;
+@infoBackground:          #3a87ad;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+@disabledText:            #1f1f20;
 
 @disabledBackground:      @gray;
 @disabledText:            @white;
+
+@disabledArrow:           #4e555a;
+@errorArrow:							#ac4647;
+@successArrow:						#5c844e;
+@infoArrow:								#3c88ad;
 
 
 // Tooltips and popovers

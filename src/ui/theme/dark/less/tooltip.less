@@ -61,6 +61,16 @@
   .border-radius(4px);
 }
 
+.tooltip-white {
+	&.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-top-color: @whiteArrowColor;
+  }
+}
+
 .tooltip {
   &.top .tooltip-arrow {
     bottom: 0;
@@ -92,15 +102,6 @@
   }
 }
 
-.tooltip-white {
-	&.top .tooltip-arrow {
-    bottom: 0;
-    left: 50%;
-    margin-left: -@tooltipArrowWidth;
-    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
-    border-top-color: @whiteArrowColor;
-  }
-}
 
 .controls .tooltip {
 	width:252px;

@@ -12,7 +12,7 @@
 .pager li {
   display: inline;
 }
-.pager a {
+.pager li > a {
 	color: @pagerTxt;
 	font-size: @baseFontSize;
 	font-weight: bold;
@@ -24,7 +24,7 @@
 	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.15), 0 4px 6px rgba(0,0,0,.71)");
 }
 
-.pager a:hover {
+.pager li > a:hover {
   color: @pagerTxt;
 	font-size: @baseFontSize;
 	font-weight: bold;
@@ -36,16 +36,16 @@
 	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.15), 0 4px 6px rgba(0,0,0,.71)");
 }
 
-.pager a:active {
+.pager li > a:active {
   text-decoration: none;
   background-color: @pagerActiveBg;
 	.box-shadow(~"inset 0 3px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.2)");
 	#font > #effect > .txt-over();
 }
-.pager .next a {
+.pager li > .next a {
   float: right;
 }
-.pager .previous a {
+.pager li > .previous a {
   float: left;
 }
 .pager .disabled a,

@@ -155,7 +155,7 @@
       .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
-			margin-top: -3px;
+			margin-top: -2px;
 
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
@@ -288,18 +288,23 @@
 }
 
 .navbar .nav > li:first-child a,
-.navbar .nav > li:first-child a:hover,
-.navbar .nav > li:first-child > a:focus,
-.navbar .nav > li:first-child > a:hover,
-.navbar .nav > .active:first-child > a,
-.navbar .nav > .active:first-child > a:hover,
-.navbar .nav > .active:first-child > a:focus {
+.navbar .nav > li:first-child > a:focus {
 	border: 0;
 	box-shadow: none;
 	background: none;
 	color: @navbarLinkHome;
 	font-size: @baseFontSize + 2;	
 	text-shadow: 0 1px 1px rgba(255,255,255,7);
+}
+
+.navbar .nav > li:first-child a:hover,
+.navbar .nav > .active:first-child > a,
+.navbar .nav > .active:first-child > a:hover,
+.navbar .nav > .active:first-child > a:focus {
+	color: @white;
+	text-shadow: none;
+	.box-shadow(~"inset 0 1px 3px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
+	background-color: @navbarLinkBackgroundActive;
 }
 
 .navbar .nav.pull-right > li:first-child,
@@ -545,7 +550,7 @@
 	text-shadow: none;
 	.border-radius(4px);
 	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08)");
-	border: 1px solid @navbarLinkBorder;
+	border: 0;
   background-color: @navbarLinkBackgroundActive;
 }
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
