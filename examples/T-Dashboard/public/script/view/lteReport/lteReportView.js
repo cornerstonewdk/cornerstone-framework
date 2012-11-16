@@ -4,7 +4,6 @@ define([
 		'backbone',
 		'util/dummyDataUtil', 
 		'template!../template/lteReport/lteReport',
-		'observer',
 		'widget-chart',
 		'style!../style/lteReport/lteReportStyle'
 	], function(
@@ -12,8 +11,7 @@ define([
 		$, 
 		Backbone, 
 		DummyDataUtil, 
-		template,
-		Observer
+		template
 	){
 	var LteReportView = GestureView.extend({
 		el : 'div#contentsView',
