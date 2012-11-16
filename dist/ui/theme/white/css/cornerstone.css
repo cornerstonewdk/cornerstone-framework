@@ -2759,13 +2759,13 @@ input[type="button"].btn-block {
 .btn-group .btn.btn-primary:active.active {
   background-color: #13283d \9;
 }
-.btn-group.open .dropdown-toggle {
+z.btn-group.open .dropdown-toggle {
   background-image: none;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
 }
-.btn-group.open .btn.dropdown-toggle {
+z.btn-group.open .btn.dropdown-toggle {
   color: #f04d6c;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   text-decoration: none;
@@ -2787,9 +2787,9 @@ input[type="button"].btn-block {
   -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
   box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
 }
-.btn-group.open .btn-primary.dropdown-toggle,
-.btn-group.open .btn-primary.dropdown-toggle:hover,
-.btn-group.open .btn-primary.dropdown-toggle:first-child {
+z.btn-group.open .btn-primary.dropdown-toggle,
+z.btn-group.open .btn-primary.dropdown-toggle:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child {
   color: #c1f2ff;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   text-decoration: none;
@@ -2830,80 +2830,80 @@ input[type="button"].btn-block {
   -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
   box-shadow: inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3);
 }
-.btn-group.open .btn-primary.dropdown-toggle:hover,
-.btn-group.open .btn-primary.dropdown-toggle:hover:hover,
-.btn-group.open .btn-primary.dropdown-toggle:first-child:hover,
-.btn-group.open .btn-primary.dropdown-toggle:active,
-.btn-group.open .btn-primary.dropdown-toggle:hover:active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
-.btn-group.open .btn-primary.dropdown-toggle.active,
-.btn-group.open .btn-primary.dropdown-toggle:hover.active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child.active,
-.btn-group.open .btn-primary.dropdown-toggle.disabled,
-.btn-group.open .btn-primary.dropdown-toggle:hover.disabled,
-.btn-group.open .btn-primary.dropdown-toggle:first-child.disabled,
-.btn-group.open .btn-primary.dropdown-toggle[disabled],
-.btn-group.open .btn-primary.dropdown-toggle:hover[disabled],
-.btn-group.open .btn-primary.dropdown-toggle:first-child[disabled] {
+z.btn-group.open .btn-primary.dropdown-toggle:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:hover:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover:active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
+z.btn-group.open .btn-primary.dropdown-toggle.active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover.active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child.active,
+z.btn-group.open .btn-primary.dropdown-toggle.disabled,
+z.btn-group.open .btn-primary.dropdown-toggle:hover.disabled,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child.disabled,
+z.btn-group.open .btn-primary.dropdown-toggle[disabled],
+z.btn-group.open .btn-primary.dropdown-toggle:hover[disabled],
+z.btn-group.open .btn-primary.dropdown-toggle:first-child[disabled] {
   color: #c1f2ff;
   background-color: #1f4164;
   *background-color: #193451;
 }
-.btn-group.open .btn-primary.dropdown-toggle:active,
-.btn-group.open .btn-primary.dropdown-toggle:hover:active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
-.btn-group.open .btn-primary.dropdown-toggle.active,
-.btn-group.open .btn-primary.dropdown-toggle:hover.active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child.active {
+z.btn-group.open .btn-primary.dropdown-toggle:active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover:active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
+z.btn-group.open .btn-primary.dropdown-toggle.active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover.active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child.active {
   background-color: #13283d \9;
 }
-.btn-group.open .btn-primary.dropdown-toggle:hover,
-.btn-group.open .btn-primary.dropdown-toggle:hover:hover,
-.btn-group.open .btn-primary.dropdown-toggle:first-child:hover,
-.btn-group.open .btn-primary.dropdown-toggle:active,
-.btn-group.open .btn-primary.dropdown-toggle:hover:active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
-.btn-group.open .btn-primary.dropdown-toggle.active,
-.btn-group.open .btn-primary.dropdown-toggle:hover.active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child.active,
-.btn-group.open .btn-primary.dropdown-toggle.disabled,
-.btn-group.open .btn-primary.dropdown-toggle:hover.disabled,
-.btn-group.open .btn-primary.dropdown-toggle:first-child.disabled,
-.btn-group.open .btn-primary.dropdown-toggle[disabled],
-.btn-group.open .btn-primary.dropdown-toggle:hover[disabled],
-.btn-group.open .btn-primary.dropdown-toggle:first-child[disabled] {
+z.btn-group.open .btn-primary.dropdown-toggle:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:hover:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child:hover,
+z.btn-group.open .btn-primary.dropdown-toggle:active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover:active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
+z.btn-group.open .btn-primary.dropdown-toggle.active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover.active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child.active,
+z.btn-group.open .btn-primary.dropdown-toggle.disabled,
+z.btn-group.open .btn-primary.dropdown-toggle:hover.disabled,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child.disabled,
+z.btn-group.open .btn-primary.dropdown-toggle[disabled],
+z.btn-group.open .btn-primary.dropdown-toggle:hover[disabled],
+z.btn-group.open .btn-primary.dropdown-toggle:first-child[disabled] {
   color: #c1f2ff;
   background-color: #1f4164;
   *background-color: #193451;
 }
-.btn-group.open .btn-primary.dropdown-toggle:active,
-.btn-group.open .btn-primary.dropdown-toggle:hover:active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
-.btn-group.open .btn-primary.dropdown-toggle.active,
-.btn-group.open .btn-primary.dropdown-toggle:hover.active,
-.btn-group.open .btn-primary.dropdown-toggle:first-child.active {
+z.btn-group.open .btn-primary.dropdown-toggle:active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover:active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child:active,
+z.btn-group.open .btn-primary.dropdown-toggle.active,
+z.btn-group.open .btn-primary.dropdown-toggle:hover.active,
+z.btn-group.open .btn-primary.dropdown-toggle:first-child.active {
   background-color: #13283d \9;
 }
-.btn-group.open .btn-warning.dropdown-toggle {
+z.btn-group.open .btn-warning.dropdown-toggle {
   background-color: #da7c4a;
 }
-.btn-group.open .btn-danger.dropdown-toggle {
+z.btn-group.open .btn-danger.dropdown-toggle {
   background-color: #bd362f;
 }
-.btn-group.open .btn-success.dropdown-toggle {
+z.btn-group.open .btn-success.dropdown-toggle {
   background-color: #51a351;
 }
-.btn-group.open .btn-info.dropdown-toggle {
+z.btn-group.open .btn-info.dropdown-toggle {
   background-color: #2f96b4;
 }
-.btn-group.open .btn-inverse.dropdown-toggle {
+z.btn-group.open .btn-inverse.dropdown-toggle {
   background-color: #222222;
 }
-.btn-group.open .btn-warning.dropdown-toggle:hover,
-.btn-group.open .btn-danger.dropdown-toggle:hover,
-.btn-group.open .btn-success.dropdown-toggle:hover,
-.btn-group.open .btn-info.dropdown-toggle:hover,
-.btn-group.open .btn-inverse.dropdown-toggle:hover {
+z.btn-group.open .btn-warning.dropdown-toggle:hover,
+z.btn-group.open .btn-danger.dropdown-toggle:hover,
+z.btn-group.open .btn-success.dropdown-toggle:hover,
+z.btn-group.open .btn-info.dropdown-toggle:hover,
+z.btn-group.open .btn-inverse.dropdown-toggle:hover {
   border-color: #000000;
 }
 .btn-group .btn i.icon-up,
@@ -3860,7 +3860,7 @@ input[type="button"].btn-block {
 .navbar .nav > li > .dropdown-menu {
   top: 42px;
   left: 3px;
-  z-index: 1;
+  z-index: 1000;
   text-align: left;
 }
 .navbar .nav > li > .dropdown-menu:before {
@@ -3902,6 +3902,8 @@ input[type="button"].btn-block {
   box-shadow: inset 0 1px 2px rgba(0,0,0,.7), inset 0 -15px 10px rgba(0,0,0,.1), 0 1px 1px rgba(255,255,255,.08);
   border: 0;
   background-color: #ea002c;
+  position: relative;
+  z-index: 1;
 }
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: #333333;
@@ -4059,16 +4061,16 @@ input[type="button"].btn-block {
 .navbar-inverse .btn-navbar.active {
   background-color: #000000 \9;
 }
-.icon-home {
+.icon-con-home {
   width: 24px;
   height: 29px;
   background-image: url('../img/icon.png');
   background-size: 320px;
   background-position: -193px -822px;
 }
-.navbar .nav > li a:hover .icon-home,
-.navbar .nav > li a:active .icon-home,
-.navbar .nav > li.active a .icon-home {
+.navbar .nav > li a:hover .icon-con-home,
+.navbar .nav > li a:active .icon-con-home,
+.navbar .nav > li.active a .icon-con-home {
   width: 24px;
   height: 29px;
   background-image: url('../img/icon.png');
@@ -7384,6 +7386,14 @@ body > .widget-spinner-icon2 {
     -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
   }
+  .navbar.navbar-static .nav {
+    position: relative;
+    z-index: 10;
+  }
+  .navbar.navbar-static .nav.pull-right {
+    position: relative;
+    z-index: 1;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
@@ -8001,6 +8011,14 @@ body > .widget-spinner-icon2 {
     -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
     -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
+  }
+  .navbar.navbar-static .nav {
+    position: relative;
+    z-index: 10;
+  }
+  .navbar.navbar-static .nav.pull-right {
+    position: relative;
+    z-index: 1;
   }
 }
 @media (min-width: 1200px) {
@@ -8623,11 +8641,25 @@ body > .widget-spinner-icon2 {
     border-left: 0;
     border-right: 0;
   }
+  .btn-group .btn.active,
+  .btn-group .btn:active {
+    border-left: 0;
+    border-right: 0;
+  }
   .btn-group .btn:first-child:hover {
     border-left: 1px solid transparent;
     border-right: 0;
   }
+  .btn-group .btn:first-child.active,
+  .btn-group .btn:first-child:active {
+    border-left: 1px solid transparent;
+    border-right: 0;
+  }
   .btn-group .btn:last-child:hover {
+    border-right: 1px solid transparent;
+  }
+  .btn-group .btn:last-child.active,
+  .btn-group .btn:last-child:active {
     border-right: 1px solid transparent;
   }
   .btn-group .btn.btn-primary:hover {
