@@ -1693,6 +1693,9 @@ input.search-query {
   margin-left: 15px;
   margin-right: 0;
 }
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 .btn {
   display: inline-block;
   *display: inline;
