@@ -2315,8 +2315,7 @@ button.btn.btn-mini {
 .pagination ul > li > a:hover {
   color: #b0b0b0;
   line-height: 18px;
-  width: 26px;
-  padding: 7px 0 7px 0;
+  padding: 7px 8px;
   background-color: #ffffff;
   border: 0;
   vertical-align: middle;
@@ -2349,9 +2348,7 @@ button.btn.btn-mini {
 }
 .pagination ul > li:first-child > a span,
 .pagination ul > li:last-child > a span {
-  width: 22px;
-  height: 22px;
-  padding: 0;
+  padding: 7px 8px;
   margin: 0 auto;
   display: block;
   position: relative;
@@ -2364,9 +2361,7 @@ button.btn.btn-mini {
 }
 .pagination ul > li:first-child > a:active span,
 .pagination ul > li:last-child > a:active span {
-  width: 22px;
-  height: 22px;
-  padding: 0;
+  padding: 7px 8px;
   margin: 0 auto;
   display: block;
   position: relative;
@@ -2430,8 +2425,7 @@ button.btn.btn-mini {
   color: #b0b0b0;
   line-height: 18px;
   font-weight: normal;
-  width: 26px;
-  padding: 7px 0 7px 0;
+  padding: 7px 8px;
   background: #dddddd;
   border: 1px solid #b0b0b0;
   -webkit-border-radius: 4px;
