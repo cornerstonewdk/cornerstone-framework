@@ -25,19 +25,20 @@
 }
 
 .mini-layout .mini-layout-body {
+	background-color: #DCEAF4;
 	margin: 0 auto;
 	width: 70%;
 }
 
 .mini-layout.fluid .mini-layout-sidebar,
 .mini-layout.fluid .mini-layout-header,
-.mini-layout.fluid .mini-layout-body,{
+.mini-layout.fluid .mini-layout-body {
 	float: left;
 }
 
 .mini-layout.fluid .mini-layout-sidebar {
 	background-color:#bbd8e9;
-	width: 20%;
+	width: 20%;	
 }
 
 .mini-layout.fluid .mini-layout-body {
