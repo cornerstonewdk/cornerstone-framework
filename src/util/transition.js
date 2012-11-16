@@ -488,22 +488,22 @@
     // ## $.fn.transition
     // Works like $.fn.animate(), but uses CSS transitions.
     //
-    //     $("...").transition({ opacity: 0.1, scale: 0.3 });
+    //     $("...").transit({ opacity: 0.1, scale: 0.3 });
     //
     //     // Specific duration
-    //     $("...").transition({ opacity: 0.1, scale: 0.3 }, 500);
+    //     $("...").transit({ opacity: 0.1, scale: 0.3 }, 500);
     //
     //     // With duration and easing
-    //     $("...").transition({ opacity: 0.1, scale: 0.3 }, 500, 'in');
+    //     $("...").transit({ opacity: 0.1, scale: 0.3 }, 500, 'in');
     //
     //     // With callback
-    //     $("...").transition({ opacity: 0.1, scale: 0.3 }, function() { ... });
+    //     $("...").transit({ opacity: 0.1, scale: 0.3 }, function() { ... });
     //
     //     // With everything
-    //     $("...").transition({ opacity: 0.1, scale: 0.3 }, 500, 'in', function() { ... });
+    //     $("...").transit({ opacity: 0.1, scale: 0.3 }, 500, 'in', function() { ... });
     //
     //     // Alternate syntax
-    //     $("...").transition({
+    //     $("...").transit({
     //       opacity: 0.1,
     //       duration: 200,
     //       delay: 40,
@@ -985,15 +985,15 @@
                 opacity:opt.animationFade ? 0 : 1
             };
 
-            $.transition = $.transit;
+            ;
             $(opt.inTarget.el).css(this.inTargetCss);
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 rotate3d:"0, 1, 0, " + opt.outTarget.to,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
-                $(opt.inTarget.el).transition({
+                $(opt.inTarget.el).transit({
                     rotate3d:"0, 1, 0, " + opt.inTarget.to,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
@@ -1061,7 +1061,7 @@
                 opacity:opt.animationFade ? 0 : 1
             };
             $(opt.inTarget.el).css(this.inTargetCss);
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 rotate3d:"0, 0, 0, " + opt.outTarget.to,
                 scale:0,
                 opacity:opt.animationFade ? 0 : 1
@@ -1070,7 +1070,7 @@
                     scale:1
                 });
                 opt.outTarget.done();
-                $(opt.inTarget.el).transition({
+                $(opt.inTarget.el).transit({
                     rotate3d:"0, 0, 0, " + opt.inTarget.to,
                     scale:1,
                     opacity:1
@@ -1142,7 +1142,7 @@
             opt.inTarget.top = $(opt.inTarget.el).css("top");
 
             // 나가는 페이지 슬라이드
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 x:opt.outTarget.to,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1150,7 +1150,7 @@
             });
 
             // 들어오는 페이지 슬라이드
-            $(opt.inTarget.el).css(this.inTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss).transit({
                 x:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 // 기본 좌표로 초기화
@@ -1219,7 +1219,7 @@
             };
 
             // 나가는 페이지 슬라이드
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 y:opt.outTarget.to,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1230,7 +1230,7 @@
             });
 
             // 들어오는 페이지 슬라이드
-            $(opt.inTarget.el).css(this.inTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss).transit({
                 y:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
@@ -1291,7 +1291,7 @@
             };
 
             // 나가는 페이지 슬라이드
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 y:opt.outTarget.to,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1302,7 +1302,7 @@
             });
 
             // 들어오는 페이지 슬라이드
-            $(opt.inTarget.el).css(this.inTargetCss).transition({
+            $(opt.inTarget.el).css(this.inTargetCss).transit({
                 y:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
@@ -1342,11 +1342,11 @@
 
             // 페이지 스타일 초기화
             $(opt.inTarget.el).css(this.inTargetCss);
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
-                $(opt.inTarget.el).transition({
+                $(opt.inTarget.el).transit({
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
@@ -1394,7 +1394,7 @@
             };
 
             $(opt.inTarget.el).css(this.inTargetCss);
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 scale:0.5,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1403,7 +1403,7 @@
                 });
                 opt.outTarget.done();
 
-                $(opt.inTarget.el).transition({
+                $(opt.inTarget.el).transit({
                     scale:1,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
@@ -1475,13 +1475,13 @@
             };
 
             $(opt.inTarget.el).css(this.inTargetCss);
-            $(opt.outTarget.el).css(this.outTargetCss).transition({
+            $(opt.outTarget.el).css(this.outTargetCss).transit({
                 rotate3d:"0, 1, 0, " + opt.outTarget.to,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
-                $(opt.inTarget.el).transition({
+                $(opt.inTarget.el).transit({
                     rotate3d:"0, 1, 0, " + opt.inTarget.to,
                     opacity:1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
