@@ -3126,16 +3126,16 @@ button.btn.btn-mini {
   background: #ffffff;
   border: 0;
 }
-.icon-home {
+.icon-con-home {
   width: 24px;
   height: 29px;
   background-image: url('../img/icon.png');
   background-size: 320px;
   background-position: -193px -824px;
 }
-.navbar .nav > li a:hover .icon-home,
-.navbar .nav > li a:active .icon-home,
-.navbar .nav > li.active a .icon-home {
+.navbar .nav > li a:hover .icon-con-home,
+.navbar .nav > li a:active .icon-con-home,
+.navbar .nav > li.active a .icon-con-home {
   width: 24px;
   height: 29px;
   background-image: url('../img/icon.png');
