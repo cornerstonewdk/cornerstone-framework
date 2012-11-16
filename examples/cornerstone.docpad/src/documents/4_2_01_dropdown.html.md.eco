@@ -49,6 +49,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
     <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
     <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -58,7 +59,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-  <body>                                                                                                          
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -109,13 +110,15 @@ __메뉴 정렬__
 `.dropdown-menu` 클래스에 `.pull-right` 클래스를 추가하면 드롭다운 메뉴는 우측으로 정렬된다.
 
 <% prv_2 = (contents) => %>
-    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel" style="display:block;">
-      	<li><a tabindex="-1" href="#">메뉴1</a></li>
-        <li><a tabindex="-1" href="#">메뉴2</a></li>
-        <li><a tabindex="-1" href="#">메뉴3</a></li>
-        <li class="divider"></li>
-        <li><a tabindex="-1" href="#">구분된 링크</a></li>
-    </ul>
+	<div class="dropdown">
+    	<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel" style="display:block;">
+	      	<li><a tabindex="-1" href="#">메뉴1</a></li>
+	        <li><a tabindex="-1" href="#">메뉴2</a></li>
+	        <li><a tabindex="-1" href="#">메뉴3</a></li>
+	        <li class="divider"></li>
+	        <li><a tabindex="-1" href="#">구분된 링크</a></li>
+	    </ul>
+	</div>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
 
 __드롭다운에 서브메뉴 추가하기__
@@ -123,17 +126,23 @@ __드롭다운에 서브메뉴 추가하기__
 서브메뉴를 추가할 `li` 태그에 `.dropdown-submenu`를 추가하고 그 안에 서브 메뉴로 사용할 드롭다운를 추가한다.
 
 <% prv_3 = (contents) => %>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="display:block;">
-        ...
-        <li class="dropdown-submenu">
-            <a tabindex="-1" href="#">More options</a>
-            <ul class="dropdown-menu" style="display:block;">
-            	<li><a tabindex="-1" href="#">서브메뉴1</a></li>
-        		<li><a tabindex="-1" href="#">서브메뉴2</a></li>
-		        <li><a tabindex="-1" href="#">서브메뉴3</a></li>
-            </ul>
-        </li>
-    </ul>
+	<div class="dropdown">
+		<li><a tabindex="-1" href="#">메뉴1</a></li>
+        <li><a tabindex="-1" href="#">메뉴2</a></li>
+        <li><a tabindex="-1" href="#">메뉴3</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">구분된 링크</a></li>
+    	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="display:block;">
+	        <li class="dropdown-submenu">
+	            <a tabindex="-1" href="#">More options</a>
+	            <ul class="dropdown-menu" style="display:block;">
+	            	<li><a tabindex="-1" href="#">서브메뉴1</a></li>
+	        		<li><a tabindex="-1" href="#">서브메뉴2</a></li>
+			        <li><a tabindex="-1" href="#">서브메뉴3</a></li>
+	            </ul>
+	        </li>
+	    </ul>
+	</div>
 <% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
 
 ### 사용 예시
@@ -278,7 +287,7 @@ __드롭업 메뉴__
 드롭업은 드롭다운에서 트리거 역할을 하는 toggle 버튼 
 
 <% prv_10 = (contents) => %>
-    <div class="btn-group dropup">
+    <div class="btn-group dropup" style="top: 170px;">
         <button class="btn">Dropup</button>
         <button class="btn dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>

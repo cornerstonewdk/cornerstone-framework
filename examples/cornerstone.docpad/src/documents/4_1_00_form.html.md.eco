@@ -66,6 +66,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
     <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
     <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -75,7 +76,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-  <body>                                                                                                          
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -108,9 +109,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% prv_1 = (contents) => %>
 	<form>
 		<label class="blind">Text input</label>
-		<input class="input-block-level" type="text" placeholder="Text input" value="Text input" >
-		<label class="blind">Text textarea</label>
-		<textarea class="input-block-level" rows="3"></textarea>
+		<input class="input-block-level" type="text" placeholder="Text input" value="Text input"/>
 	</form>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
@@ -189,24 +188,24 @@ _e.g._ 범위 입력 상자의 경우 IE9, 파이어폭스, 안드로이드에�
 
 __input 사용 예시__
 
-<% prv_5 = (contents) => %>
+``` 
 	<input class="input-large" type="text" placeholder="입력 상자"/>
-<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
+```
 
 __textarea 사용 예시__
 
 textarea은 장문 입력을 하기 위해 `rows` 속성으로 입력창을 여러줄로 만들수 있다. 
 
-<% prv_6 = (contents) => %>
-	<textarea class="input-large" rows="3">장문의 텍스트를 입력할 수 있는 Textarea</textarea>
-<% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>
+``` 
+	<textarea class="input-large" rows="3">장문의 텍스트를 입력할 수 있는 Textarea &lt;/textarea&gt;
+```	
 
 ## 체크박스와 라디오버튼 
 checkbox(체크박스)는 단일뿐만 아니라 여러개 옵션을 선택할 때 사용되는 컨트롤이고, radio(라디오버튼)은 단일 옵션만 선택할 때 사용되는 컨트롤이다.
 
 __기본 스타일 사용 예시(스택형태)__
 
-<% prv_7 = (contents) => %>
+<% prv_5 = (contents) => %>
     <form>
         <label class="checkbox">
 			<input type="checkbox" id="inlineCheckbox1" value="option1"  class="checkBtn" disabled>
@@ -229,13 +228,13 @@ __기본 스타일 사용 예시(스택형태)__
 			<span class="inp-radio"></span>
 		</label>		
     </form>
-<% end %><%- codeMirrorBlock {func : prv_7 , funcname : 'prv_7'} %>
+<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
 
 __인라인 스타일 사용 예시__
 
 인라인 스타일은 기본 스타일에서 label태그에 class `.inline`를 추가해서 체크박스와 라디오버튼을 같은 라인에 보여준다.
 
-<% prv_8 = (contents) => %>
+<% prv_6 = (contents) => %>
     <form>
         <label class="checkbox inline">
 			<input type="checkbox" id="inlineCheckbox1" value="option1"  class="checkBtn" disabled>
@@ -258,7 +257,7 @@ __인라인 스타일 사용 예시__
 			<span class="inp-radio"></span>
 		</label>		
     </form>
-<% end %><%- codeMirrorBlock {func : prv_8 , funcname : 'prv_8'} %>
+<% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>
 
 ## 셀렉트박스
 
@@ -266,7 +265,7 @@ __인라인 스타일 사용 예시__
 
 __셀렉트박스 사용 예시__
 
-<% prv_9 = (contents) => %>
+<% prv_7 = (contents) => %>
 	<form>
         <legend>Select</legend>
 		<label class="select-box">
@@ -279,7 +278,7 @@ __셀렉트박스 사용 예시__
 			</select>
 		</label>
     </form>
-<% end %><%- codeMirrorBlock {func : prv_9 , funcname : 'prv_9'} %>
+<% end %><%- codeMirrorBlock {func : prv_7 , funcname : 'prv_7'} %>
 
 ## 폼 컨트롤 확장
 
@@ -287,7 +286,7 @@ input박스 전후로 텍스트나 버튼을 추가할수 있다.
 
 __텍스트 대신 버튼__
 
-<% prv_10 = (contents) => %>
+<% prv_8 = (contents) => %>
 	<form>
 		<legend>prepend, append</legend>
 		<div class="input-prepend">
@@ -310,11 +309,11 @@ __텍스트 대신 버튼__
 			<input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
 		</div>
 	</form>	
-<% end %><%- codeMirrorBlock {func : prv_10 , funcname : 'prv_10'} %>
+<% end %><%- codeMirrorBlock {func : prv_8 , funcname : 'prv_8'} %>
 
 __검색 폼__
 
-<% prv_11 = (contents) => %>
+<% prv_9 = (contents) => %>
 	<form class="form-search">
 		<legend>Search form</legend>		
 		<div class="input-append">
@@ -323,26 +322,26 @@ __검색 폼__
 			<button type="submit" class="btn">Search</button>
 		</div>
 	</form>
-<% end %><%- codeMirrorBlock {func : prv_11 , funcname : 'prv_11'} %>
+<% end %><%- codeMirrorBlock {func : prv_9 , funcname : 'prv_9'} %>
 
 __상대적인 크기(Relative Sizing)__
 
 상대적인 크기는 `.input-mini` ~ `.input-xxlarge` 6가지 크기의 클래스를 제공한다.
 
-<% prv_12 = (contents) => %>
+<% prv_10 = (contents) => %>
 	<input class="input-mini" type="text" placeholder=".input-mini">
 	<input class="input-small" type="text" placeholder=".input-small">
 	<input class="input-medium" type="text" placeholder=".input-medium">
 	<input class="input-large" type="text" placeholder=".input-large">
 	<input class="input-xlarge" type="text" placeholder=".input-xlarge">
 	<input class="input-xxlarge" type="text" placeholder=".input-xxlarge">
-<% end %><%- codeMirrorBlock {func : prv_12 , funcname : 'prv_12'} %>
+<% end %><%- codeMirrorBlock {func : prv_10 , funcname : 'prv_10'} %>
 	
 __그리드 크기(Gird Sizing)__
 
 그리드 크기는 `.span1` ~ `.span12` 12가지 크기의 클래스를 제공한다.
 
-<% prv_13 = (contents) => %>
+<% prv_11 = (contents) => %>
 	<input class="span1" type="text" placeholder=".span1">
 	<input class="span2" type="text" placeholder=".span2">
 	<input class="span3" type="text" placeholder=".span3">
@@ -358,11 +357,11 @@ __그리드 크기(Gird Sizing)__
 	  	<option>내용1</option>
 		<option>내용2</option>
 	</select>
-<% end %><%- codeMirrorBlock {func : prv_13 , funcname : 'prv_13'} %>
+<% end %><%- codeMirrorBlock {func : prv_11 , funcname : 'prv_11'} %>
 
 한 줄에 여러 그리드를 사용하기 위해 클래스 `controls-row` 클래스로 랩핑을 한다.
 
-<% prv_14 = (contents) => %>
+<% prv_12 = (contents) => %>
 	<div class="controls">
 	  <input class="span5" type="text" placeholder=".span5">
 	</div>
@@ -370,24 +369,24 @@ __그리드 크기(Gird Sizing)__
 	  <input class="span4" type="text" placeholder=".span4">
 	  <input class="span1" type="text" placeholder=".span1">
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_14 , funcname : 'prv_14'} %>
+<% end %><%- codeMirrorBlock {func : prv_12 , funcname : 'prv_12'} %>
 	
 ## 수정불가 입력상자(Inputs)
 
 입력상자에 들어있는 값을 수정할 수 없는 형태.
 
-<% prv_15 = (contents) => %>
+<% prv_13 = (contents) => %>
 	<span class="input-block-level uneditable-input">UNEDITABLE INPUT</span>
-<% end %><%- codeMirrorBlock {func : prv_15 , funcname : 'prv_15'} %>
+<% end %><%- codeMirrorBlock {func : prv_13 , funcname : 'prv_13'} %>
 
 ## 폼 액션(Form actions)
 
-<% prv_16 = (contents) => %>
+<% prv_14 = (contents) => %>
 	<div class="form-actions">
 	  <button type="submit" class="btn btn-primary">저장</button>
 	  <button type="button" class="btn">취소</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_16 , funcname : 'prv_16'} %>
+<% end %><%- codeMirrorBlock {func : prv_14 , funcname : 'prv_14'} %>
 
 ## 도움말(Help text)
 
@@ -395,15 +394,15 @@ __그리드 크기(Gird Sizing)__
 
 __인라인 도움말__
 
-<% prv_17 = (contents) => %>
+<% prv_15 = (contents) => %>
 	<input type="text"><span class="help-inline">인라인 도움말</span>
-<% end %><%- codeMirrorBlock {func : prv_17 , funcname : 'prv_17'} %>
+<% end %><%- codeMirrorBlock {func : prv_15 , funcname : 'prv_15'} %>
 
 __블럭 도움말__
 
-<% prv_18 = (contents) => %>
+<% prv_16 = (contents) => %>
 	<input type="text"><span class="help-block">블록 도움말</span>
-<% end %><%- codeMirrorBlock {func : prv_18 , funcname : 'prv_18'} %>
+<% end %><%- codeMirrorBlock {func : prv_16 , funcname : 'prv_16'} %>
 
 ## 폼 컨트롤 상태
 
@@ -411,26 +410,24 @@ __입력상자 포커스(focus)__
 
 코너스톤은 기본적으로 outline 스타일을 제거한다. 하지만 입력상자 포커스에는 outline에 box-shadow를 통해 스타일이 적용된다.
 
-<% prv_19 = (contents) => %>
+<% prv_17 = (contents) => %>
 	<input class="input-xlarge" id="focusedInput" type="text" value="This is focused basic">
-	<textarea class="input-block-level" rows="3"></textarea>
 	<input class="input-block-level ipt-orange" type="text" placeholder="Text input" value="This is focused orange" >
-	<textarea class="input-block-level ipt-orange" rows="3"></textarea>
-<% end %><%- codeMirrorBlock {func : prv_19 , funcname : 'prv_19'} %>
+<% end %><%- codeMirrorBlock {func : prv_17 , funcname : 'prv_17'} %>
 
 __비활성 입력상자__
 
 입력상자를 비활성화하기 위해 해당 입력상자에 disabled 속성을 추가해야 한다.
 
-<% prv_20 = (contents) => %>
+<% prv_18 = (contents) => %>
 	<input class="input-disa" id="disabledInput" type="text" placeholder="DISABLED" disabled>
-<% end %><%- codeMirrorBlock {func : prv_20 , funcname : 'prv_20'} %>
+<% end %><%- codeMirrorBlock {func : prv_18 , funcname : 'prv_18'} %>
 
 __유효성 상태__
 
-코너스톤은 유효성 검사를 통해 생기는 오류, 경고, 성공 메세지 스타일을 포함하고 있고 이 스타일을 사용하기 위해 `.control-group` 클래스로 랩핑해야 한다.
+코너스톤은 유효성 검사를 통해 생기는 오류, 경고, 성공,정보 메세지 스타일을 포함하고 있고 이 스타일을 사용하기 위해 `.control-group` 클래스로 랩핑해야 한다.
 
-<% prv_21 = (contents) => %>
+<% prv_19 = (contents) => %>
 	<div class="control-group warning">
 	  <label class="control-label" for="inputWarning">Input with warning</label>
 	  <div class="controls">
@@ -452,4 +449,11 @@ __유효성 상태__
 	    <span class="help-inline">Woohoo!</span>
 	  </div>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_21 , funcname : 'prv_21'} %>
+	<div class="control-group info">
+	  <label class="control-label" for="inputInfo">Input with info</label>
+	  <div class="controls">
+	    <input type="text" id="inputInfo">
+	    <span class="help-inline">This is good info</span>
+	  </div>
+	</div>
+<% end %><%- codeMirrorBlock {func : prv_19 , funcname : 'prv_19'} %>

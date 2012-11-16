@@ -83,6 +83,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
     <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
     <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -92,7 +93,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-  <body>                                                                                                          
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -243,11 +244,27 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
 	</div>
 ```
 <% prv_4 = (contents) => %>
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
-        <li><a href="#B" data-toggle="tab">Section 2</a></li>
-        <li><a href="#C" data-toggle="tab">Section 3</a></li>
-    </ul>
+    <div class="tabbable tabs-below">
+		<div class="tab-content">
+			<div class="tab-pane active" id="home">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+			</div>
+			<div class="tab-pane" id="profile">
+				Reprehenderit butcher retro keffiyeh dreamcatcher 
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+			</div>
+			<div class="tab-pane" id="messages">
+				salvia cillum iphone. Seitan aliquip 
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
+		</div>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#home" data-toggle="tab">home</a></li>
+			<li><a href="#profile" data-toggle="tab">profile</a></li>
+			<li><a href="#messages" data-toggle="tab">messages</a></li>
+		</ul>
+	</div>
 <% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
 
 ##### 좌측 탭
@@ -268,12 +285,23 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
 <% prv_5 = (contents) => %>
     <div class="tabbable tabs-left">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="">Home</a></li>
-			<li><a href="">Profile</a></li>
-			<li><a href="">Massages</a></li>
+			<li class="active"><a href="#home" data-toggle="tab">home</a></li>
+			<li><a href="#profile" data-toggle="tab">profile</a></li>
+			<li><a href="#messages" data-toggle="tab">messages</a></li>
 		</ul>
 		<div class="tab-content">
-			I'm in Section A.
+			<div class="tab-pane active" id="home">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+			</div>
+			<div class="tab-pane" id="profile">
+				Reprehenderit butcher retro keffiyeh dreamcatcher 
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+			</div>
+			<div class="tab-pane" id="messages">
+				salvia cillum iphone. Seitan aliquip 
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
 		</div>
 	</div>
 <% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
@@ -297,12 +325,23 @@ Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 
 <% prv_6 = (contents) => %>
     <div class="tabbable tabs-right">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="">Home</a></li>
-			<li><a href="">Profile</a></li>
-			<li><a href="">Massages</a></li>
+			<li class="active"><a href="#home" data-toggle="tab">home</a></li>
+			<li><a href="#profile" data-toggle="tab">profile</a></li>
+			<li><a href="#messages" data-toggle="tab">messages</a></li>
 		</ul>
 		<div class="tab-content">
-			I'm in Section A.
+			<div class="tab-pane active" id="home">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+			</div>
+			<div class="tab-pane" id="profile">
+				Reprehenderit butcher retro keffiyeh dreamcatcher 
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+			</div>
+			<div class="tab-pane" id="messages">
+				salvia cillum iphone. Seitan aliquip 
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
 		</div>
 	</div>
 <% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>

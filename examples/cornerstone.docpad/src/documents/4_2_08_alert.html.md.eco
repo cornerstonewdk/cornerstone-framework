@@ -51,6 +51,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
     <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
     <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -60,7 +61,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-  <body>                                                                                                          
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -102,10 +103,10 @@ __닫기 버튼__
 
 닫기 버튼은 플러그인을 통해 작동이 가능하다. 작동방식은 html5 data-attribute를 사용하는 방법과 javascript를 이용하는 방법이 있다. javascript를 이용하는 방법은 플러그인에서 설명하므로 여기에서는 사용되는 예시와 설명은 data-attribute 방식이다. 닫기 버튼은 `a` 태그와 `button` 태그로 만들 수 있으며 `a` 태그인 경우 `href="#"` 속성이 필수적으로 들어가야 한다. `button` 태그의 경우 `form` 태그 안에서 사용되는 경우라면 `type="button"`  속성이 들어가야 한다.
 
-<% prv_2 = (contents) => %>
+``` 
     <a href="#" class="close" data-dismiss="alert">×</a>
     <button type="button" class="close" data-dismiss="alert">×</button>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+```
 
 ### 옵션
 
@@ -113,40 +114,43 @@ __경고 메세지가 긴 경우__
 
 경고 메세지가 긴 경우 `.alert` 클래스에 `.alert-block` 클래스를 추가해서 위, 아래 여백이 증가되므로 좀더 가독성이 높은 UI를 구성할 수 있다.
 
-<% prv_3 = (contents) => %>
+<% prv_2 = (contents) => %>
     <div class="alert alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <h4>Warning!</h4>
         Best check yo self, you're not...
     </div>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
 
 __에러 메세지__
 
 여러가지 에러에 대한 메세지를 표현 할때 `.alert-error` 클래스를 추가한다.
 
-<% prv_4 = (contents) => %>
+<% prv_3 = (contents) => %>
     <div class="alert alert-error">
-   	Error Message
+		<button type="button" class="close" data-dismiss="alert">×</button>
+   		Error Message
     </div>
-<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
 
 __성공 메세지__
 
 성공에 대한 메세지를 표현 할때 `.alert-success` 클래스를 추가한다.
 
-<% prv_5 = (contents) => %>
+<% prv_4 = (contents) => %>
     <div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">×</button>
    		Success Message
     </div>
-<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
+<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
 
 __안내 메세지__
 
 안내에 대한 메세지를 표현 할때 `.alert-info` 클래스를 추가한다.
 
-<% prv_6 = (contents) => %>
+<% prv_5 = (contents) => %>
     <div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert">×</button>
     	Info Message
     </div>
-<% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>
+<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>

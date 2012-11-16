@@ -49,6 +49,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
     <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
     <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -58,7 +59,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-  <body>                                                                                                          
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
