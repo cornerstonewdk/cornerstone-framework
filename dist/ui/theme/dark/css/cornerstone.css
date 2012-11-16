@@ -7352,6 +7352,31 @@ body > .widget-spinner-icon2 {
     background: none;
     outline: none;
   }
+  .dropdown-menu li > a:active,
+  .dropdown-menu li.active > a,
+  .dropdown-menu li.active > a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    outline: 0;
+    background-color: #316b9d;
+    background-color: #2f6695;
+    background-image: -moz-linear-gradient(top, #316b9d, #2b5e8a);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#316b9d), to(#2b5e8a));
+    background-image: -webkit-linear-gradient(top, #316b9d, #2b5e8a);
+    background-image: -o-linear-gradient(top, #316b9d, #2b5e8a);
+    background-image: linear-gradient(to bottom, #316b9d, #2b5e8a);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff316b9d', endColorstr='#ff2b5e8a', GradientType=0);
+  }
+  .dropdown-menu .disabled > a,
+  .dropdown-menu .disabled > a:hover {
+    color: #c0c0c0;
+  }
+  .dropdown-menu .disabled > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    cursor: default;
+  }
   .navbar .nav li.divider-vertical {
     height: 1px;
     margin: 5px 0 0;
