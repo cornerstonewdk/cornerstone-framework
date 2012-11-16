@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '뷰'
-outline: '뷰'
+outline: 'View의 역할은 사용자와 상호작용하는 것이다. 즉, View는 Model을 어떤 방식으로 사용자에게 보여줄지를 결정하고, 사용자의 입력을 받아서 어떻게 반응할지를 결정한다. 따라서 View는 특정 Model과 연결되어서 Model의 값이 변경될때마다 화면을 다시 그려주는 작업과 사용자의 입력으로 인해서 발생하는 이벤트를 처리하는 작업을 해야 한다...'
 date: '2012-11-16'
 tagstr: 'application'
 tags: ['post','application','']

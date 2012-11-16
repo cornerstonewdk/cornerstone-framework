@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '모델'
-outline: '모델'
+outline: '다음과 같이 Backbone.Model의 extend를 사용하면 자신만의 Model 클래스를 정의하고 클래스의 인스턴스를 생성할 수 있다. defaults는 객체를 생성할 때 사용할 기본 속성값들을 의미하고, initialize는 객체가 생성되면 실행되는 생성자 함수이다...'
 date: '2012-11-16'
 tagstr: 'application'
 tags: ['post','application','']

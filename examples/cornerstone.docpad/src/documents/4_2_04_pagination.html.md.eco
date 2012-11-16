@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '페이지네이션'
-outline: '페이지네이션'
+outline: 'ul 엘리먼트로된 네비게이션 요소. 기본적으로 폰에서는 이것 대신 리스트뷰를 사용하는것이 적합하나 네이버나 클리앙같은 게시판 류에서는 실제로는 상당히 자주 사용되고 있는 듯 하며 엔터프라이즈 환경에서도 상당히 자주 사용된다. 기본 페이지네이션에서는 큰 클릭 영역과 간단히 확장/축소가 가능하다. 기본적으로 ul, li 태그로 이뤄져 있고 .pagination 클래스로 감싸야 한다…'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -29,7 +29,7 @@ thumbnail: '4.2.04.paginaton.png'
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -49,6 +49,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -99,6 +101,17 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <li><a href="#">다음</a></li>
         </ul>
     </div>
+	<div class="pagination">
+		<ul>
+			<li><a href="#"><span></span></a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li class="active"><a href="#">5</a></li>
+			<li><a href="#"><span></span></a></li>
+		</ul>
+	</div>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
 ### 옵션
@@ -111,8 +124,11 @@ __비활성 / 활성 상태__
     <div class="pagination">
         <ul>
             <li class="disabled"><a href="#">이전</a></li>
-            <li class="active"><a href="#">1</a></li>
-            ...
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">다음</a></li>
         </ul>
     </div>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
@@ -124,7 +140,10 @@ __비활성 / 활성 상태__
         <ul>
             <li class="disabled"><span>이전</span></li>
             <li class="active"><span>1</span></li>
-            ...
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">다음</a></li>
         </ul>
     </div>
 <% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
@@ -137,17 +156,36 @@ __정렬__
 <% prv_4 = (contents) => %>
 	<!-- 좌측 정렬 -->
     <div class="pagination pagination-centered">
-    ...
-    </div>
-    
+    	<ul>
+            <li class="disabled"><span>이전</span></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">다음</a></li>
+        </ul>
+    </div>    
 	<!-- 중앙 정렬 -->
     <div class="pagination pagination-centered">
-    ...
+    	<ul>
+            <li class="disabled"><span>이전</span></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">다음</a></li>
+        </ul>
     </div>
-
 	<!-- 우측 정렬 -->    
     <div class="pagination pagination-right">
-    ...
+    	<ul>
+            <li class="disabled"><span>이전</span></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">다음</a></li>
+        </ul>
     </div>
 <% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
 

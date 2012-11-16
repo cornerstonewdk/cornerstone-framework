@@ -12,24 +12,21 @@ thumbnail: '4.4.03.media.png'
 ---
 
 ### 미디어
-HTML5 audio and video players in pure HTML and CSS.
-Custom Flash and Silverlight players that mimic the HTML5 MediaElement API for older browsers
-Accessibility standards including WebVTT
-Plugins for Wordpress, Drupal, Joomla, jQuery, and BlogEngine.NET, ruby gem, plone
-See the MediaElement.js Github page
-
+반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어.
 
 ![<미디어 지원표>](<http://azamara.io/img/media-support.png>)
+
+출처: mediaelement.js
 
 의존성
 
 ```
+	<!-- 차트를 위한 스타일시트 -->
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />
 	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<!-- Datatables 라이브러리 -->
-	<script type="text/javascript" src="mediaelement-and-player.js"></script>
-	<!-- 코너스톤 UI 기본 설정(반응형 웹), DATA-API 기능 추가,  화면비율 옵션 추가 -->
-	<script type="text/javascript" src="featured-media.js"></script>
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>
+	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
+    <script src='./dist/ui/widget-media.js'></script>
 ```
 
 ### 사용법
@@ -50,7 +47,7 @@ DATA-API(data-attribute) 를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -70,6 +67,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -112,35 +111,40 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% prv_1 = (contents) => %>
 <!-- data-featured="media"를 정의하므로 미디어를 적용한다. -->
 <div class="featured-video">
-	<video width="100%" height="100%" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"
-				type="video/mp4" data-featured="media"
-				preload="none" ></video>
+	<video width="400" height="300" data-featured="media" preload="none" >
+		<!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+		<source type="video/mp4" src="./sample-data/sample-media.mp4"/>
+		<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+		<object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+			<param name="movie" value="./dist/ui/flashmediaelement.swf"/>
+			<param name="flashvars"
+					  value="controls=true&file=./sample-data/sample-media.mp4"/>
+		</object>
+	</video>
 </div>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
-javascript를 이용하는 방식 [데모 페이지]
+javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
 <!-- id값을 정의하고 해당 id값에 $('#example').featuredMedia(); 스크립트를 통해 미디어를 적용한다.  -->
 <div class="featured-video">
-	<video width="100%" height="100%" id="example" preload="none" >
+	<video width="400" height="300" id="example" preload="none" >
 		<!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
-		<source type="video/mp4" src="http://azamara.io/media/The_Avengers_Trailer_480p.mp4"/>
-		<!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
-		<source type="video/webm" src="http://azamara.io/media/The_Avengers_Trailer_480p.webm"/>
-		<!-- Ogg/Vorbis for older Firefox and Opera versions -->
-		<source type="video/ogg" src="http://azamara.io/media/The_Avengers_Trailer_480p.ogv"/>
+		<source type="video/mp4" src="./sample-data/sample-media.mp4"/>
 		<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-		<object width="320" height="240" type="application/x-shockwave-flash" data="flashmediaelement.swf">
-			<param name="movie" value="flashmediaelement.swf"/>
+		<object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+			<param name="movie" value="./dist/ui/flashmediaelement.swf"/>
 			<param name="flashvars"
-					  value="controls=true&file=http://azamara.io/media/The_Avengers_Trailer_480p.mp4"/>
-			<!-- Image as a last resort
-					  <img src="myvideo.jpg" width="320" height="240" title="No video playback capabilities" />
-					  -->
+					  value="controls=true&file=./sample-data/sample-media.mp4"/>
 		</object>
 	</video>
 </div>
+<script type="text/javascript">
+    window.onload = function() {
+	    $('audio,video').featuredMedia();
+    };
+</script>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
 
 ### 기능
@@ -177,13 +181,9 @@ pauseOtherPlayers | boolean | true | 다른 플레이어가 실행될때 정지 
 ### 이벤트 
 HTML5 | MediaElement | 설명
 :-- | :-- |:--
-loadeddata | loadeddata | ...
-progress | progress | …
-timeupdate | timeupdate | ...
-seeked | seeked | …
-canplay | canplay | ...
 play | play | 플레이할때 발생하는 이벤트
 playing | playing | 플레이 중일 때 발생하는 이벤트
 pause | pause | 정지할때 발생하는 이벤트
 ended | ended | 종료될때 발생하는 이벤트
 volumechange | volumechange | 볼륨크기를 조절할 때 발생하는 이벤트
+

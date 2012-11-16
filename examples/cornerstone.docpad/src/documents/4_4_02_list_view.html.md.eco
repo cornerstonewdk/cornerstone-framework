@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '리스트뷰'
-outline: '리스트뷰'
+outline: '코너스톤의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다. javascript를 이용하는 방식...'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -20,12 +20,10 @@ thumbnail: '4.4.02.list_view.png'
 
 ```
 	<!-- 차트를 위한 스타일시트 -->
-	<link rel="stylesheet" href="css/featured-chart.css">
-	
 	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<!-- 위젯 피처드 차트 -->
-	<script type="text/javascript" src="featured-listview.js"></script>
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>
+	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
+    <script src='./dist/ui/widget-listview.js'></script>
 ```
 
 ### 사용법
@@ -42,7 +40,7 @@ javascript를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -62,6 +60,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -102,103 +102,221 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-    <div class="container-fluid" id="wrapper">
-	    <div class="row-fluid">
-		    <div class="lists">
-			    <div id="listView">
-				    <ul>
-					    <li>
-						    <div><a href="#"><strong>아바타</strong>
-							    <small class="pull-right">2010.08.26</small>
-						    </a></div>
-					    </li>
-					    <li>
-						    <div><a href="#"><strong>그린 랜턴</strong>
-							    <small class="pull-right">2011.06.16</small>
-						    </a></div>
-					    </li>
-					    <li>
-						    <div><a href="#"><strong>아이언맨2</strong>
-							    <small class="pull-right">2010.04.29</small>
-						    </a></div>
-					    </li>
-					    <li>
-						    <div><a href="#"><strong>트론</strong>
-							    <small class="pull-right">2010.12.29</small>
-						    </a></div>
-					    </li>
-					    <li>
-						    <div><a href="#"><strong>아바타</strong>
-							    <small class="pull-right">2010.08.26</small>
-						    </a></div>
-					    </li>
-				    </ul>
-			    </div>
-		    </div>
-		    <div>
-			    <button id="addItem" class="btn">더보기</button>
-		    </div>
-	    </div>
-    </div>
-    <script type="text/javascript">
-	    var $el = $('#listView');
-	    var isLoading = false;
-	    var html;
-    
-	    // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
-	    $el.featuredListView({
-		    optimization: true
-	    });
-    
-	    // AJAX로 데이터를 가져오는 함수
-	    function getItem() {
-		    if (isLoading) {
-			    return false;
-		    }
-    
-		    isLoading = true;
-    
-		    var request = $.ajax({
-			    url:"data/sample.json",
-			    type:"POST",
-			    dataType:"json"
-		    });
-    
-		    request.done(function (json) {
-			    html = "<ul>";
-			    if (typeof json === "object" && json.items.length > 0) {
-				    $(json.items).each(function (i) {
-					    html += "<li>";
-					    html += "	<div>";
-					    html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
-					    html += "	</div>";
-					    html += "</li>";
-				    });
-				    html += "</ul>";
-				    $el.featuredListView("addItem", html);
-			    }
-			    html = "";
-			    isLoading = false;
-		    });
-    
-		    request.fail(function (jqXHR, textStatus) {
-			    console.log("Request failed: " + textStatus);
-			    isLoading = false;
-		    });
-    
-	    }
-    
-	    // 아이템 추가
-	    $("#addItem").on("click", function (e) {
-		    getItem();
-	    });
-    </script>
+<div class="container-fluid" id="wrapper">
+	<div class="row-fluid">
+		<div class="lists">
+			<div id="listView" >
+				<ul class="lists-con" >
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<button id="addItem" class="btn">더보기</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        var $el = $('#listView');
+        var isLoading = false;
+        var html;
+
+        // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+        $el.featuredListView({
+            optimization: true,
+            spinner: "#endless-loader"
+        });
+
+        // AJAX로 데이터를 가져오는 함수
+        function getItem() {
+            if (isLoading) {
+                return false;
+            }
+
+            isLoading = true;
+
+            var request = $.ajax({
+                url:"./sample-data/list-sample.json",
+                type:"GET",
+                dataType:"json"
+            });
+
+            request.done(function (json) {
+                html = "<ul class='lists-con'>";
+                if (typeof json === "object" && json.items.length > 0) {
+                    $(json.items).each(function (i) {
+                        html += "<li>";
+                        html += "	<div>";
+                        html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+                        html += "	</div>";
+                        html += "</li>";
+                    });
+                    html += "</ul>";
+                    $el.featuredListView("addItem", html);
+                }
+                html = "";
+                isLoading = false;
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                console.log("Request failed: " + textStatus);
+                isLoading = false;
+            });
+
+        }
+
+        // 아이템 추가
+        $("#addItem").on("click", function (e) {
+            getItem();
+        });
+    };
+</script>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
 ### 기능
 
 설정 | 타입 | 기본값 | 설명
 :-- | :-: | :-: | :--
-optimization | boolean | true | 차트의 종류를 작성. bar, line, pie
+optimization | boolean | true | 리스트뷰에 최적화 활성 여부 옵션
 SCROLL_THROTTLE | number | 0 | 최적화가 활성화될 때 사용하는 옵션으로 화면에 보여지지 않는 컨텐츠를 스크롤 이벤트를 통해 얼마나 빨리 보여질지 감출지 속도를 제어한다.
-scrollEndAction | function | null | 브라우저의 스크롤이 마지막인 경우 옵션에 정의한 함수를 실행시킨다. ex) Endless를 구현할 때 사용된다.
+scrollEndAction | function | null | 브라우저의 스크롤이 마지막인 경우 옵션에 정의한 함수를 실행시킨다. Endless를 구현할 때 사용된다.

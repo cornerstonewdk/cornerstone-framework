@@ -1,0 +1,336 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '테마'
+outline: '제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 BtS의 특성인 BtS > LESS로 작성되어 BtS > Customize와 같이 사용자화 가능함으로 개별 테마 안에서 BtS에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 BtS에 없는 요소들도 BtS과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 BtS의 방식대로 사용자화가 가능해야 함...'
+date: '2012-11-16'
+tagstr: 'style'
+tags: ['post','style','']
+subsection: 'Style'
+order: '[3, 2]'
+thumbnail: '3. Style.png'
+---
+
+테마
+----------------
+
+제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 BtS의 특성인 BtS > LESS로 작성되어 BtS > Customize와 같이 사용자화 가능함으로 개별 테마 안에서 BtS에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 BtS에 없는 요소들도 BtS과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 BtS의 방식대로 사용자화가 가능해야 함
+
+- Corner Stone 기본테마 - dark테마 , white테마
+- Wire Frame 백지테마 - 확장이나 변형을 위해 제공되는 테마
+		
+
+### 확장테마 작성법 ###
+
+wireframe은 white, gray톤과 그림자 효과, 그라데이션등을 배제한 가장 기본적인 테마로, 사용자가 직접 디자인을 적용시킬 수 있도록 만들어진 테마이다.
+기본 테마인 wireframe.css를 적용 시킨 후 새로운 css 파일을 추가 사용한다.
+
+## 부트스트랩과 다른부분 ##
+
+부트스트랩은 체크박스, 라디오버튼의 경우 스크립트를 포함하여 플러인으로 되어있지만, 
+현재 시스템의 경우 html5, css3로만 구현되어 있다.
+모바일 디자인은 터치, 사용자의 편의성을 고려한 UI가 적용되어 있다.
+
+## 추가된 부분 ##
+	
+- Lists - 여러가지 다양한 list를 만들수 있도록 제공한다.
+- Nav bar - mobile에서 상,하단에 붙여 사용할수 있는 기본 Nav bar를 제공한다.
+
+## 텍스처 사용 ##
+
+Background에 텍스처를 사용할수 있다. conerstones에서 제공한는 기본 텍스처를 사용하여도 되지만,
+좀더 디자인적으로 꾸미고 싶다면 사용자가 텍스처를 활용하여 Background에 적용시켜 사용할 수도 있다.
+	 
+
+## 폼의 높이 너비 ##
+
+모바일 사용을 고려하여 폼의 높이와 너비의 폭을 크게 하여 사용 편의성을 고려하였다.
+
+## 주의사항 ##
+
+.nav-tab을 사용하여 tab을 구현할때는 각 tab의 li에 사용자가 직접 width를 적용해준다.
+
+모바일 해상도를 고려하여 media query를 사용할 것을 권장한다.
+media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하게 구현할 수 있다.
+
+모바일에서는 css의 a:hover, 스크립트의 onmouseover, onmouseenter등의 기능은 사용하지 않는것이 좋다. 위의 기능들은 웹의 마우스 이벤트에 속한다. 따라서 마우스를 사용하지 않고 터치기능을 사용하는 모바일 기기중에 여러가지 오류가 생길 수 있다.
+
+
+격자
+---
+
+격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <div> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.
+부트스트랩도 자체적인 격자 레이아웃 시스템을 제공한다. 부트스트랩의 격자 시스템은 12열의 격자(12-column grid)로 이루어져 있으며 기본 버전과 유동 버전(Fluid)이 있다. 또한 다양한 화면 크기에 대응하기 위해 4개의 디자인 형태를 갖는데 이 것은 반응형 디자인과 연관되어 동작한다.
+
+기본 격자 시스템(Default grid system)은 940px 고정 너비에 12열 격자로 이루어진다.
+행은 "row", 열은 "span*"이라는 클래스로 표현되는데, "span*" 클래스는 span1~12 까지 사용할 수 있다.			
+열 사이의 간격은 20px이며 "span1" 클래스의 너비는 60px이다. "span*" 클래스의 숫자가 하나씩 증가할 때마다 너비가 80px씩 늘어나 "span12" 클래스의 너비는 전체 너비인 940px이 된다.
+
+유동 격자 시스템(Fluid grid system)은 격자 크기를 픽셀이 아닌 퍼센트로 사용한다. 유동 격자 시스템을 사용하려면 행의 클래스를 "row-fluid"로 바꾸기만 하면 된다.
+
+열에 "offset*" 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 단, 열 위치 이동은 기본 격자 시스템에서만 가능하다.
+
+
+예제) url : http://jsfiddle.net/azamara/gtgYM/
+
+* 그리드 시스템 UI
+
+![](images/style-grid-1.png?raw=true)
+
+그리드 시스템을 통해 얻을 수 있는 장점은 아래와 같다.
+
+* 그리드를 통해 튼튼한 레이아웃을 보장
+* 사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 
+* 미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경
+
+## Default grid system ##
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css'></link>                                                          
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+	<div>
+    	<div class="row show-grid">
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+		</div>
+		<div class="row show-grid">
+			<div class="span2">2</div>
+         	<div class="span3">3</div>
+        	<div class="span4">4</div>
+        </div>
+        <div class="row show-grid">
+   			<div class="span4">4</div>
+	      	<div class="span5">5</div>
+        </div>
+     	<div class="row show-grid">
+        	<div class="span9">9</div>
+       	</div>
+     </div>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+### Offsetting columns ###
+<% prv_2 = (contents) => %>
+	<div>
+    	<div class="row show-grid">
+      		<div class="span4">4</div>
+           	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row -->
+      	<div class="row show-grid">
+        	<div class="span3 offset1">3 offset 1</div>
+          	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row -->
+      	<div class="row show-grid">
+       		<div class="span6 offset3">6 offset 3</div>
+      	</div><!-- /row -->
+     </div>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+
+### Nesting columns ###
+<% prv_3 = (contents) => %>
+	<div class="row show-grid">
+    	<div class="span9">
+         	Level 1 column
+          	<div class="row show-grid">
+            	<div class="span6">
+               		Level 2
+              	</div>
+              	<div class="span3">
+                	Level 2
+              	</div>
+            </div>
+   		</div>
+ 	</div>
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+
+## Fluid grid system ##
+### Live fluid grid example ###
+<% prv_4 = (contents) => %>
+	<div>
+    	<div class="row-fluid show-grid">
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+        	<div class="span1">1</div>
+		</div>
+		<div class="row-fluid show-grid">
+			<div class="span2">2</div>
+         	<div class="span3">3</div>
+        	<div class="span4">4</div>
+        </div>
+        <div class="row-fluid show-grid">
+   			<div class="span4">4</div>
+	      	<div class="span5">5</div>
+        </div>
+     	<div class="row-fluid show-grid">
+        	<div class="span9">9</div>
+       	</div>
+     </div>
+<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
+
+### Offsetting columns ###
+<% prv_5 = (contents) => %>
+	<div>
+    	<div class="row-fluid show-grid">
+      		<div class="span4">4</div>
+           	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row-fluid -->
+      	<div class="row-fluid show-grid">
+        	<div class="span3 offset1">3 offset 1</div>
+          	<div class="span3 offset2">3 offset 2</div>
+      	</div><!-- /row-fluid -->
+      	<div class="row-fluid show-grid">
+       		<div class="span6 offset3">6 offset 3</div>
+      	</div><!-- /row-fluid -->
+     </div>
+<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
+
+### Nesting columns ###
+<% prv_6 = (contents) => %>
+	<div class="row-fluid show-grid">
+    	<div class="span9">
+         	Level 1 column
+          	<div class="row-fluid show-grid">
+            	<div class="span6">
+               		Level 2
+              	</div>
+              	<div class="span3">
+                	Level 2
+              	</div>
+            </div>
+   		</div>
+ 	</div>
+<% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>
+
+
+CSS 구조
+-------
+
+우리 CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법
+
+- bootstrap.css에는 가 태그별 basic 속성 작성.
+- global.css 공통적으로 사용하는 class 작성.
+- div, table, ul class를 사용. (class="")
+- element는 기본 bootstrap.css에서 상속하여 사용할수도 있다.
+
+
+### Bootstrap 베이스의 네이밍 방법
+
+- 기본
+	- .table : 행 사이에만 수평 라인
+- 옵션
+	- .table-bordered : 반올림 코너와 바깥쪽 테두리를 추가합니다
+	- .table-striped : 홀수 행 (1, 3, 5 등)로 밝은 회색 배경색을 추가
+	- .table-condensed : td및 th의 셀 패딩을 8px에서 4px로 줄임
+
+예제) http://twitter.github.com/bootstrap/base-css.html#tables
+
+### Selector 선언방법
+
+개별적으로 사용 가능한 element나 class의 속성을 각각의 그리드 내에 만들어진 layout의 class에 상속하여 속성을 변경 후 사용 가능하다.
+
+### CSS Selector 사용방법
+		
+		div p <DIV> 요소 내부의 모든 <P> 요소를 선택
+		div>p 부모 <DIV> 요소내에 모든 <P> 요소를 선택
+		div+p 부모 <DIV> 요소 바로 뒤에 배치되는 <P> 요소를 선택
+		input[type="text"] input type의 text만 선택
+
+		input:focus 포커스를 가진 입력 요소를 선택
+		p:first-letter  모든 <P>의 첫 글자를 선택
+		p:first-line  모든 <P>의 첫 번째 행을 선택
+		p:first-child  부모 <P>의 첫 번째 자식 element를 선택
+		p:before  모든 <P>의 내용 앞에 내용을 삽입
+		p:after  모든 <P> 다음 내용을 삽입
+		p:first-of-type  <p>와  동일한 행의 첫번째 <p>요소 선택
+		p:last-of-type  <p>와 동일한 행의 마지막 <p>요소 선택
+		p:only-of-type  <p>와 동일한 행의 같은 요소를 선택
+		p:only-child   부모<p>의 자식 element 선택
+		p:nth-child(2)  부모<p>의 2번째 자식 노드 선택
+		p:nth-last-child(2)  부모<p>의 뒤에서 2번째 자식 노드 선택
+		p:nth-of-type(2)  <p>의 형제 노드중에 2번째 노드 선택
+		p:nth-last-of-type(2)  <p>의 형제 노드중에 뒤에서 부터 2번째 노드 선택
+		p:last-child  부모 <P>의 마지막 모든 자식 element를 선택
+		p:empty  자식이 없는 모든 <P>를 선택
+
+

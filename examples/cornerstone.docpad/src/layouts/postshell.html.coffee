@@ -119,7 +119,11 @@ html lang: 'ko', ->
                                         else linkUrl = '.' + h(page.url) + '.html'
                                     li 'class':linkClass, 'id':linkTitle, ->
                                         a href:linkUrl, title:linkTitle, ->
-                                            i ".icon-list", ""
+                                            switch linkTitle
+                                                when "home" then i ".icon-home", ""
+                                                when "toc" then i ".icon-list", ""
+                                                when "bytag" then i ".icon-tag", ""
+
                                             page.name
                                             #page.name + h(page.url) + @document.url.indexOf(page.url) + page.order
                                             #page.name +' '+ @document.url +' '+  page.url
@@ -132,7 +136,7 @@ html lang: 'ko', ->
                             -> '<label class="blind"> Tag Search </label>' +
                                '<input class="search-query" type="text" placeholder="TAG" data-provide="typeahead" data-source=\'' + tagstr + '\'>'
 
-        div '.container', ->
+        div '.container-fluid', ->
           div '.row-fluid', ->
             div '.span3.bs-docs-sidebar', ->
                 cellular = rowmap 1, @sections.store()
@@ -171,7 +175,7 @@ html lang: 'ko', ->
                           else
                              li '.inactive', -> a "class":depth_val, "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
 
-            div '.span9.well', ->
+            div '.span9.well', 'style':'float: left;', ->
                 # Document
                 article '.page',
                     'typeof': 'sioc:page'
@@ -179,7 +183,7 @@ html lang: 'ko', ->
                     -> @content
 
 		# Include our scripts
-		text @getBlock('scripts').add([
-			"./script.js"
-		]).toHTML()
+		#text @getBlock('scripts').add([
+		#	"./script.js"
+		#]).toHTML()
 

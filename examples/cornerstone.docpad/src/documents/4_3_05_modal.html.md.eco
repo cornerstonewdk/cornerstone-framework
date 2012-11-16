@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '모달'
-outline: '모달'
+outline: '컨텐츠를 모달창으로 보여주는 플러그인. data-attribute를 이용하는 방식. 단 한줄의 javascript 코딩 없이도 모달창을 활성화 할 수 있다. 컨트롤러 엘리먼트에 data-toggle="modal" 과 함께 모달 엘리먼트의 id 와 일치하도록 data-target="#foo" 또는 href="#foo" 를 추가해주면, 이를 클릭했을때 모달창이 열리게 된다…'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -18,11 +18,9 @@ __마크업__
 
 data-attribute를 이용하는 방식
 
-단 한줄의 javascript 코딩 없이도 모달창을 활성화 할 수 있습니다. 컨트롤러 엘리먼트에 data-toggle="modal" 과 함께 모달 엘리먼트의 id 와 일치하도록 data-target="#foo" 또는 href="#foo" 를 추가해주면, 이를 클릭했을때 모달창이 열리게 됩니다.
+단 한줄의 javascript 코딩 없이도 모달창을 활성화 할 수 있고 컨트롤러 엘리먼트에 data-toggle="modal" 과 함께 모달 엘리먼트의 id 와 일치하도록 data-target="#foo" 또는 href="#foo" 를 추가해주면, 이를 클릭했을때 모달창이 열리게 된다.
 
-또한, 모달 인스턴스에 옵션을 적용하고 싶으면 컨트롤러 엘리먼트나 모달 엘리먼트에 추가적인 data 속성으로 포함시켜주면 됩니다.
-
-> 모달이 나타나고 사라질때 에니메이션 효과를 주고 싶으면, 단지 .modal 엘리먼트에 .fade 클래스를 추가해주고 (데모를 참조하세요) bootstrap-transition.js 를 페이지에 포함시켜주면 됩니다.
+또한, 모달 인스턴스에 옵션을 적용하고 싶으면 컨트롤러 엘리먼트나 모달 엘리먼트에 추가적인 data 속성으로 포함시켜주면 된다.
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -34,7 +32,7 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -54,6 +52,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -94,26 +94,58 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-	<a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>
+    <div class="dash-widget no-padding">
+        <button class="btn" data-toggle="modal" data-target="#myModal" style="margin:100px">Launch modal</button>
 
-	<div class="modal" id="myModal">
-	  <div class="modal-header">
-	    <a class="close" data-dismiss="modal">×</a>
-	    <h3>Modal header</h3>
-	  </div>
-	  <div class="modal-body">
-	    <p>One fine body…</p>
-	  </div>
-	  <div class="modal-footer">
-	    <a href="#" class="btn">Close</a>
-	    <a href="#" class="btn btn-primary">Save changes</a>
-	  </div>
-	</div>
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
 javascript를 이용하는 방식
 
-$("#myModal").modal(options);
+<% prv_2 = (contents) => %>
+    <div class="dash-widget no-padding">
+        <button id="modal1" class="btn" style="margin:100px">Launch modal</button>
+
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+	    window.onload = function() {
+            $("#myModal").modal();
+            $("#modal1").on("click", function ( e ) {
+              $("#myModal").modal("toggle");
+              e.preventDefault();
+            });
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -142,8 +174,41 @@ hidden | 모달창이 사용자에게 감춰지고 나서 호출됩니다 (css �
 
 __실제 사용 예시__
 
-<% prv_2 = (contents) => %>
-	$('#myModal').on('hidden', function () {
-	  // do something…
-	})
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% prv_3 = (contents) => %>
+    <div class="dash-widget no-padding">
+        <button id="modal1" class="btn" style="margin:100px">Launch modal</button>
+
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+	    window.onload = function() {
+            $("#myModal").modal().on("show", function(e) {
+               alert("show");
+             }).on("shown", function(e) {
+                  alert("shown");
+                }).on("hide", function(e) {
+                     alert("hide");
+                   }).on("hidden", function(e) {
+                        alert("hidden");
+                      });
+            $("#modal1").on("click", function ( e ) {
+              $("#myModal").modal("toggle");
+              e.preventDefault();
+            });
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>

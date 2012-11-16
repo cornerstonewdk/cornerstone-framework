@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '유틸리티'
-outline: '유틸리티'
+outline: '유틸리티는 다른 부분과의 의존성 없이 단독으로 사용할 수 있는 라이브러리 집합이다. 크게 네 가지로 나눌 수 있고, 각각은 require.js 모듈로 제공되며 모듈명은 다음과 같다. 이 중 device 모듈은 Cornerstone Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다...'
 date: '2012-11-16'
 tagstr: 'utiltily'
 tags: ['post','utiltily','']

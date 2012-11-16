@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '버튼'
-outline: '버튼'
+outline: '버튼을 클릭했을 때 버튼의 이름등을 바꾸는 토글 기능을 부여하는 플러그인. data-attribute를 이용하는 방식. data-attribute를 이용한 버튼 그룹 checkbox 토글. data-attribute를 이용한 버튼 그룹 radio 토글...'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -18,7 +18,7 @@ $().button();
 
 __마크업__
 
-data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
+data-attribute를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -30,7 +30,7 @@ data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cor
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -50,6 +50,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -94,7 +96,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	<button type="button" class="btn" data-toggle="button">단일 토글</button>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
-data-attribute를 이용한 버튼 그룹 checkbox 토글 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
+data-attribute를 이용한 버튼 그룹 checkbox 토글
 
 <% prv_2 = (contents) => %>
 	<!-- data-toggle="buttons-checkbox" 속성으로 checkbox형태의 토글 기능 부여. -->
@@ -105,7 +107,7 @@ data-attribute를 이용한 버튼 그룹 checkbox 토글 [데모 페이지](htt
 	</div>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
 
-data-attribute를 이용한 버튼 그룹 radio 토글 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
+data-attribute를 이용한 버튼 그룹 radio 토글
 
 <% prv_3 = (contents) => %>
 	<!-- data-toggle="buttons-radio" 속성으로 radio형태의 토글 기능 부여. -->
@@ -116,23 +118,25 @@ data-attribute를 이용한 버튼 그룹 radio 토글 [데모 페이지](http:/
 	</div>
 <% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
 
-javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/bFpnP/)
+javascript를 이용하는 방식
 
 <% prv_4 = (contents) => %>
 	<!--  토글 후 보여줄 텍스르를 data-loading-text 속성에 정의 -->
 	<button type="button" class="btn btn-primary" data-loading-text="토글 후">토글 전</button>
 
 	<script type="text/javascript">
-		// 첫번째 버튼은 javascript로 이벤트를 받아 토글 기능 부여.
-		$("button").eq(0).bind("click", function(e) {
-		    var btn = $(this);
-		    // 해당 버튼 클릭시 data-loading-text에 작성한 텍스트로 버튼 텍스트 대체.
-		    btn.button("loading");
-		    // 3초 후 토글 전 상태로 리셋.
-		    window.setTimeout(function () {
-		      btn.button("reset")
-		    }, 3000)
-		});​
+	    window.onload = function() {
+            // 첫번째 버튼은 javascript로 이벤트를 받아 토글 기능 부여.
+            $("button").eq(0).on("click", function(e) {
+                var btn = $(this);
+                // 해당 버튼 클릭시 data-loading-text에 작성한 텍스트로 버튼 텍스트 대체.
+                btn.button("loading");
+                // 3초 후 토글 전 상태로 리셋.
+                window.setTimeout(function () {
+                  btn.button("reset")
+                }, 3000);
+            });
+		};
 	</script>
 <% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
 

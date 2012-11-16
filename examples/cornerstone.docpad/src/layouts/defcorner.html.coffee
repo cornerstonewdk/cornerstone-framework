@@ -32,6 +32,7 @@ html lang: 'ko', ->
 
 		script src: './dist/lib/jquery-1.8.1.min.js'
 		script src: './dist/ui/widget-plugins.js'
+		script src: './dist/lib/handlebars-1.0.0.beta.6.js'
         
 	# ----------------------------- # Document Body
 
@@ -89,7 +90,11 @@ html lang: 'ko', ->
                                         else linkUrl = '.' + h(page.url) + '.html'
                                     li 'class':linkClass, 'id':linkTitle, ->
                                         a href:linkUrl, title:linkTitle, ->
-                                            i ".icon-list", ""
+                                            #i "class":"", ""
+                                            switch linkTitle
+                                                when "home" then i ".icon-home", ""
+                                                when "toc" then i ".icon-list", ""
+                                                when "bytag" then i ".icon-tag", ""
                                             page.name
                                             #page.name + h(page.url) + @document.url.indexOf(page.url) + page.order
                                             #page.name +' '+ @document.url +' '+  page.url
@@ -118,7 +123,11 @@ html lang: 'ko', ->
                     -> @content
 
 		# Include our scripts
-		text @getBlock('scripts').add([
-			"./script.js"
-		]).toHTML()
+		#text @getBlock('scripts').add([
+		#	"./script.js"
+		#]).toHTML()
 
+        if @document.linkTitle is 'home'
+		    script src: './script.js'
+        else
+		    script src: './script_toc.js'

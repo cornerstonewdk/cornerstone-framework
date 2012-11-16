@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '파일 구조'
-outline: '파일 구조'
+outline: '웹 페이지는 HTML, CSS, Javascript로 구성되며, 각각의 역할은 명확하게 구분되어 있다. HTML은 페이지의 내용을 기술하며, CSS는 페이지의 모양을 기술한다. Javascript는 사용자의 입력을 받아서 처리하고 결과를 만들어내는 기능을 수행한다...'
 date: '2012-11-16'
 tagstr: 'application'
 tags: ['post','application','']

@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '캐로셀'
-outline: '캐로셀'
+outline: '캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다. data-attribute를 이용하는 방식. 좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정...'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -16,9 +16,9 @@ thumbnail: '4.3.03.carousel.png'
 
 $().carousel();
 
-__마크업__
+data-attribute를 이용하는 방식
 
-이미지 영역 마크업 [데모 페이지](http://jsfiddle.net/cornerstone/wx8NQ/)
+`좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정`
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -30,7 +30,7 @@ __마크업__
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -50,6 +50,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -90,70 +92,107 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-	<div class="carousel-inner">
-        <div class="item active">
-            <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
-            <div class="carousel-caption">
-            <h4>첫번째 이미지 타이틀</h4>
-            <p>첫번째 이미지 설명 텍스트</p>
+    <div class="dash-widget no-padding widget-carousel">
+        <div id="slider" class="carousel slide" data-slide="swipe">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>첫번째 이미지 타이틀</h4>
+                        <p>첫번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>두번째 이미지 타이틀</h4>
+                        <p>두번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>첫번째 이미지 타이틀</h4>
+                        <p>첫번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>두번째 이미지 타이틀</h4>
+                        <p>두번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
-            <div class="carousel-caption">
-            <h4>두번째 이미지 타이틀</h4>
-            <p>두번째 이미지 설명 텍스트</p>
-            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
         </div>
     </div>
+	<script type="text/javascript">
+	    window.onload = function() {
+            $(".carousel").carousel({
+                interval: 3000
+            });
+        };
+	</script>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
-data-attribute를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/wx8NQ/)
-
-`좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정`
+javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-	<div id="myCarousel" class="carousel slide">
-	    <!-- 이미지 영역 삽입 부분 -->
-
-	    <!-- data-slide 속성을 통해 javascript 없이 버튼에 기능 부여 -->
-	    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-	    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-	</div>​
+    <div class="dash-widget no-padding widget-carousel">
+        <div id="slider" class="carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>첫번째 이미지 타이틀</h4>
+                        <p>첫번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>두번째 이미지 타이틀</h4>
+                        <p>두번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>첫번째 이미지 타이틀</h4>
+                        <p>첫번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>두번째 이미지 타이틀</h4>
+                        <p>두번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
 	<script type="text/javascript">
-		$(".carousel").carousel({
-		    interval: 3000
-		});​
+	    window.onload = function() {
+            $(".carousel").carousel({
+                interval: 3000
+            }).swipe().bind("swipeRight", function(e) { // 모바일에서 swipe를 이용
+                $(".carousel").carousel("prev");
+            }).bind("swipeLeft", function(e) {
+                $(".carousel").carousel("next");
+            });
+
+        };
 	</script>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
-
-javascript를 이용하는 방식 [데모 페이지](http://jsfiddle.net/cornerstone/BMqzL/)
-
-<% prv_3 = (contents) => %>
-	<div id="myCarousel" class="carousel slide">
-	    <!-- 이미지 영역 삽입 부분 -->
-
-	    <!-- data-slide 속성을 통해 javascript 없이 버튼에 기능 부여 -->
-	    <a class="left carousel-control" href="#myCarousel">‹</a>
-	    <a class="right carousel-control" href="#myCarousel">›</a>
-	</div>​
-	<script type="text/javascript">
-		$(".carousel").carousel({
-		    interval: 3000
-		}).swipe().bind("swipeRight", function(e) { // 모바일에서 swipe를 이용
-		    $(".carousel").carousel("prev");
-		}).bind("swipeLeft", function(e) {
-		    $(".carousel").carousel("next");
-		});
-
-		$(".carousel .left").bind("click", function(e) {
-		    $(".carousel").carousel("prev");
-		});
-		$(".carousel .right").bind("click", function(e) {
-		    $(".carousel").carousel("next");
-		});​
-	</script>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -162,8 +201,6 @@ interval | number | 5000 | 이미지 슬라이드 작동 시간
 pause | string | "hover" | 이미지 일시 정지 방식
 
 ### 메서드
-$().collapse();
-
 설정 | 타입 | 설명
 :-- | :-: | :--
 option | object | 옵션에 설정된 정보를 json형식으로 넣는다.
@@ -180,14 +217,60 @@ next | string | 다음 이미지로 이동
 slide | 이미지 이동 직전에 발생
 slid | 이미지 이동 완료 후 발생
 
-__실제 사용 예시__  [데모 페이지](http://jsfiddle.net/cornerstone/tee87/)
+__실제 사용 예시__
 
-<% prv_4 = (contents) => %>
-	$('.carousel').carousel({
-	    interval: 10000
-	}).bind("slide", function(e) {
-	    alert("이미지 이동 전");
-	}).bind("slid", function(e) {
-	    alert("이미지 이동완료 후");
-	});​
-<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
+<% prv_3 = (contents) => %>
+    <div class="dash-widget no-padding widget-carousel">
+        <div id="slider" class="carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>첫번째 이미지 타이틀</h4>
+                        <p>첫번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>두번째 이미지 타이틀</h4>
+                        <p>두번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>첫번째 이미지 타이틀</h4>
+                        <p>첫번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <div class="carousel-caption">
+                        <h4>두번째 이미지 타이틀</h4>
+                        <p>두번째 이미지 설명 텍스트</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+	    window.onload = function() {
+            $(".carousel").carousel({
+                interval: 100000
+            }).swipe().bind("swipeRight", function(e) {
+                $(".carousel").carousel("prev");
+            }).bind("swipeLeft", function(e) {
+                $(".carousel").carousel("next");
+            }).on("slide", function(e) {
+                console.log("이미지 이동 전");
+            }).on("slid", function(e) {
+                console.log("이미지 이동완료 후");
+            });
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>

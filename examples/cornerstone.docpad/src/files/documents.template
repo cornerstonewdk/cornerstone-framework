@@ -1,0 +1,21 @@
+{{#each this}}
+<div class="row">
+  {{#each this}}
+    <div class="span4 main-box" style="height: 174px;">
+      <div class="media">
+        {{#if image}}
+        <a class="pull-left" href=".{{url}}.html">
+          <img class="media-object" src="images/{{image}}"/>
+        </a>
+        {{/if}}
+        <div class="media-body">
+          <a href=".{{url}}.html">
+            <h4 class="media-heading">{{title}}</h4>
+          </a>
+          <p>{{outline}}</p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+{{/each}}

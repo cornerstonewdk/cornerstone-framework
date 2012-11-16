@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '썸네일'
-outline: '썸네일'
+outline: '썸네일은 기본적으로 최소한의 마크업만으로 링크된 이미지를 보여주도록 디자인 됐다. 고급 사용자 정의 썸네일은 이미지 뿐만 아니라 썸네일에 보다 복잡한 컨텐츠를 넣을 수 있다. 예를들면 링크된 이미지, 컨텐츠 타이틀, 컨텐츠 설명, 버튼 등과 같은 다양한 요소들로 꾸밀 수 있다...'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -37,7 +37,7 @@ __간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -57,6 +57,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
     <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
     <script src='./dist/ui/widget-chart.js'></script>                                                             
     <script src='./dist/ui/widget-datatable.js'></script>                                                         
@@ -103,7 +105,16 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             	<img src="http://placehold.it/300x200" alt="">
             </a>
         </li>
-        ...
+		<li class="span4">
+            <a href="#" class="thumbnail">
+            	<img src="http://placehold.it/300x200" alt="">
+            </a>
+        </li>
+		<li class="span4">
+            <a href="#" class="thumbnail">
+            	<img src="http://placehold.it/300x200" alt="">
+            </a>
+        </li>
     </ul>
 <% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
@@ -117,6 +128,19 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                 <p>썸네일 간단한 설명</p>
             </div>
         </li>
-    ...
+    	<li class="span4">
+            <div class="thumbnail">
+                <img src="http://placehold.it/300x200" alt="">
+                <h3>썸네일 타이틀</h3>
+                <p>썸네일 간단한 설명</p>
+            </div>
+        </li>
+		<li class="span4">
+            <div class="thumbnail">
+                <img src="http://placehold.it/300x200" alt="">
+                <h3>썸네일 타이틀</h3>
+                <p>썸네일 간단한 설명</p>
+            </div>
+        </li>
     </ul>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
