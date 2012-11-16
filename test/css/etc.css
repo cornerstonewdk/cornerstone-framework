@@ -1,5 +1,11 @@
 /* move down carets for tabs */
-.show-grid div {text-align:center; padding:5px 0; background: @grayLight;}
+.show-grid div {
+	text-align:center; padding-top:10px; padding-bottom:10px; background:#ddd;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	margin:5px 0 0;
+}
 
 .mini-layout {
 	border: 1px solid #ddd;

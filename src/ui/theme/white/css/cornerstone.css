@@ -7278,6 +7278,31 @@ body > .widget-spinner-icon2 {
     background: none;
     outline: none;
   }
+  .dropdown-menu li > a:active,
+  .dropdown-menu .active > a,
+  .dropdown-menu .active > a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    outline: 0;
+    background-color: #ea002c;
+    background-color: #e0002a;
+    background-image: -moz-linear-gradient(top, #ea002c, #d10027);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ea002c), to(#d10027));
+    background-image: -webkit-linear-gradient(top, #ea002c, #d10027);
+    background-image: -o-linear-gradient(top, #ea002c, #d10027);
+    background-image: linear-gradient(to bottom, #ea002c, #d10027);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffea002c', endColorstr='#ffd10027', GradientType=0);
+  }
+  .dropdown-menu .disabled > a,
+  .dropdown-menu .disabled > a:hover {
+    color: #808080;
+  }
+  .dropdown-menu .disabled > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    cursor: default;
+  }
   .navbar .nav li.divider-vertical {
     height: 1px;
     margin: 5px 0 0;
