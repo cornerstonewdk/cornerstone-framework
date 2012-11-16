@@ -7317,9 +7317,6 @@ body > .widget-spinner-icon2 {
   .btn-group .btn.dropdown-toggle:hover {
     border-right: 1px solid #000000;
   }
-  .navbar-search {
-    display: none;
-  }
   .nav-list > li > a:hover {
     margin-top: 1px;
     text-shadow: none;
@@ -7937,9 +7934,6 @@ body > .widget-spinner-icon2 {
   }
   .btn-group .btn.dropdown-toggle:hover {
     border-right: 1px solid #000000;
-  }
-  .navbar-search {
-    display: none;
   }
   .nav-list > li > a:hover {
     margin-top: 1px;
@@ -9224,5 +9218,18 @@ body > .widget-spinner-icon2 {
   .navbar-inverse .btn-navbar:active,
   .navbar-inverse .btn-navbar.active {
     background-color: #000000 \9;
+  }
+  a.thumbnail:hover:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -3px;
+    top: -2px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #ea002c;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
   }
 }
