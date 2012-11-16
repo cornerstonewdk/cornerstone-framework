@@ -784,6 +784,7 @@
 	font-size: 10px;
 }
 
-.mejs-android .mejs-overlay-play, .mejs-ios .mejs-overlay-play {
+.mejs-android .mejs-overlay-play, .mejs-ios .mejs-overlay-play,
+.mejs-android .mejs-overlay-loading, .mejs-ios .mejs-overlay-loading{
 	display: none;
 }

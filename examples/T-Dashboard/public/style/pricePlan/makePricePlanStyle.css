@@ -182,4 +182,8 @@ button#saveButton {
 	top: -5px;
 }
 
+.slider-box .figure, .slider-box .figure:focus {
+	color: #000;
+}
+
 /*.slider {width:200px;}*/

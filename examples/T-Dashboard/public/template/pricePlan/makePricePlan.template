@@ -150,7 +150,7 @@
 					<div class="modal-body">
 						<div id="inputRange" title="Input Range" class="widget-container">
 							<div class="span12">
-								<div class="dash-widget no-padding widget-rangeinput">
+								<div class="dash-widget no-padding widget-rangeinput slider-box">
 									<label>
 										<input type="range" value="{{voiceData}}" min="0" max="1000" step="10" class="widget-range btn-block inline" id="voiceData" />
 									</label>
@@ -184,7 +184,7 @@
 					<div class="modal-body">
 						<div id="inputRange" title="Input Range" class="widget-container">
 							<div class="span12">
-								<div class="dash-widget no-padding widget-rangeinput">
+								<div class="dash-widget no-padding widget-rangeinput slider-box">
 									<label>
 										<input type="range" value="{{dataData}}" min="0.0" max="10.0" step="0.1" class="widget-range btn-block inline" id="dataData" />
 									</label>
@@ -218,7 +218,7 @@
 					<div class="modal-body">
 						<div id="inputRange" title="Input Range" class="widget-container">
 							<div class="span12">
-								<div class="dash-widget no-padding widget-rangeinput">
+								<div class="dash-widget no-padding widget-rangeinput slider-box">
 									<label>
 										<input type="range" value="{{messageData}}" min="0" max="1000" step="100" class="widget-range btn-block inline" id="messageData" />
 									</label>
@@ -252,7 +252,7 @@
 					<div class="modal-body">
 						<div id="inputRange" title="Input Range" class="widget-container">
 							<div class="span12">
-								<div class="dash-widget no-padding widget-rangeinput">
+								<div class="dash-widget no-padding widget-rangeinput slider-box">
 									<label>
 										<input type="range" value="{{roamingData}}" min="0" max="1000" step="10" class="widget-range btn-block inline" id="roamingData" />
 									</label>
