@@ -812,6 +812,7 @@
          * this.run();
          */
         run:function () {
+            var self = this;
             var effect = new Effect(this.options);
 
             this._before();
@@ -825,8 +826,8 @@
                     this.options.outTarget.timing = "linear";
                 }
 
-                effect.init(this);
-                effect[this.options.transitionType](this.options);
+                effect.init(self);
+                effect[self.options.transitionType](self.options);
             } catch (e) {
 //                console.log(e);
                 effect.none(this.options);
@@ -843,7 +844,7 @@
         _before:function () {
 //            console.log("_before")
             var $body = $("body");
-            $body.css({overflow:"hidden"});
+            $body.css({overflowX:"hidden"});
             $(this.options.inTarget.el).show();
             $(this.options.outTarget.el).show();
 
@@ -1085,13 +1086,13 @@
             var self = this,
                 defaultValue = {
                     inTarget:{
-                        from:"120%", // width 100%인 경우 UI 상 페이지가 붙는 상태로 보이는 문제를 위해 좌표 20% 증가
+                        from:"150%", // width 100%인 경우 UI 상 페이지가 붙는 상태로 보이는 문제를 위해 좌표 20% 증가
                         to:"0",
                         duration:550
                     },
                     outTarget:{
                         from:"0",
-                        to:'-100%',
+                        to:'-150%',
                         duration:550
                     }
                 };
@@ -1100,25 +1101,29 @@
             if (opt.isReverse) {
                 defaultValue = {
                     inTarget:{
-                        from:"-120%",
+                        from:"-150%",
                         to:"0",
                         duration:550
                     },
                     outTarget:{
                         from:"0",
-                        to:'100%',
+                        to:'150%',
                         duration:550
                     }
                 };
             }
 
+            window.scrollTo(0,0);
             // 기본값과 사용자 정의 값 병합
             opt = this.extend(defaultValue, opt);
 
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
                 position:"absolute",
-                width:$(opt.outTarget.el).width(),
+                width:$(window).width() > $(opt.outTarget.el).width() ?
+                    $(opt.outTarget.el).width() : $(window).width(),
+                height:$(window).height() > $(opt.outTarget.el).height() ?
+                    $(opt.outTarget.el).height() : $(window).height(),
                 transform:"translate(" + opt.outTarget.from + ",0)",
                 opacity:1
             };
@@ -1126,19 +1131,21 @@
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
                 position:"absolute",
-                width:$(opt.inTarget.el).width(),
+                width:$(window).width() > $(opt.inTarget.el).width() ?
+                    $(opt.inTarget.el).width() : $(window).width(),
+                height:$(window).height() > $(opt.inTarget.el).height() ?
+                    $(opt.inTarget.el).height() : $(window).height(),
                 transform:"translate(" + opt.inTarget.from + ",0)",
                 opacity:1
             };
+
+            opt.inTarget.top = $(opt.inTarget.el).css("top");
+
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transition({
                 x:opt.outTarget.to,
                 opacity:opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
-                // 기본 좌표로 초기화
-                $(this).css({
-                    transform:"translate(0,0)"
-                });
                 opt.outTarget.done();
             });
 
@@ -1146,6 +1153,10 @@
             $(opt.inTarget.el).css(this.inTargetCss).transition({
                 x:opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
+                // 기본 좌표로 초기화
+                $(opt.outTarget.el).css({
+                    transform:"translate(0,0)"
+                });
                 self.launcher._done();
             });
 
@@ -1192,6 +1203,8 @@
                 position:"absolute",
                 width:$(opt.outTarget.el).width(),
                 transform:"translate(0, " + opt.outTarget.from + ")",
+                height:$(window).height() > $(opt.outTarget.el).height() ?
+                    $(opt.outTarget.el).height() : $(window).height(),
                 opacity:1
             };
 
@@ -1200,6 +1213,8 @@
                 position:"absolute",
                 width:$(opt.inTarget.el).width(),
                 transform:"translate(0, " + opt.inTarget.from + ")",
+                height:$(window).height() > $(opt.outTarget.el).height() ?
+                    $(opt.outTarget.el).height() : $(window).height(),
                 opacity:1
             };
 

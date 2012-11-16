@@ -72,7 +72,7 @@
 @tableBackground:                   transparent; // overall background-color
 @tableBackgroundAccent:             rgba(51,51,51,.2); // for striping
 @tableBackgroundHover:              rgba(51,51,51,.2); // for hover
-@tableBorder:                       rgba(0,0,0,.25); // table and cell border
+@tableBorder:                       @grayLight; // table and cell border
 @tableColor:												@black;
 
 
@@ -300,23 +300,29 @@
 
 // Form states and alerts
 // -------------------------
-@warningText:             @white;
+
+@warningText:             #1f1f20;
 @warningBackground:       #ef923c;
 @warningBorder:           rgba(143,143,6,.64);
 
-@errorText:               @white;
+@errorText:               #872a2b;
 @errorBackground:         #e03c5b;
 @errorBorder:             rgba(169,0,0,.64);
 
-@successText:             @white;
+@successText:             #3c5d20;
 @successBackground:       #67ab4f;
 @successBorder:           rgba(8,153,8,.64);
 
-@infoText:                @white;
+@infoText:                #184f6a;
 @infoBackground:          #52a4b8;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
-@disabledText:            #a4a4a4;
+@disabledText:            #1f1f20;
+
+@disabledArrow:           #4e555a;
+@errorArrow:							#ac4647;
+@successArrow:						#5c844e;
+@infoArrow:								#3c88ad;
 
 
 // Tooltips and popovers

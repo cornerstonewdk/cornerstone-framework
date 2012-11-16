@@ -14,6 +14,14 @@
   // Input grid
   #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);
 
+	a {
+		color: @white;
+	}
+	a:hover {
+		color: @skyBlue;
+		text-decoration: none;
+	}
+
 	.btn {
 		// Hover state
 		&:hover {
@@ -91,6 +99,7 @@
 		}
 	}
 
+
 	.btn-group .btn {
 		&:hover {
 			#font > #effect > .txt-over();
@@ -157,7 +166,7 @@
 			border-right: 1px solid transparent;
 			box-shadow: none;
 			.box-shadow(~"inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3)"); 
-			margin: 0;
+			margin: -1px 0 0;
 
 			// transition is only when going to hover, otherwise the background
 			// behind the gradient (there for IE<=9 fallback) gets mismatched
@@ -183,7 +192,7 @@
 			border-right: 1px solid transparent;
 			box-shadow: none;
 			.box-shadow(~"inset 0 0 6px rgba(0,0,0,.2), inset 0 3px 3px rgba(0,0,0,.3)"); 
-			margin: 0;
+			margin: -1px 0 0;
 		}
 	}
 
@@ -192,6 +201,7 @@
 		#font > #effect > .txt-over();
 		border: 1px solid transparent;
 		border-bottom: 0;
+		margin: 0;
 	}
 
 	.btn-group-vertical .btn:hover:last-child,
@@ -251,59 +261,6 @@
 		background-color: @navbarLinkBackgroundActive;
 	}
 
-
-	.navbar .nav > li:first-child a,
-	.navbar .nav > li:first-child > a:focus,
-	.navbar .nav > .active:first-child > a,
-	.navbar .nav > .active:first-child > a:hover,
-	.navbar .nav > .active:first-child > a:focus {
-		border: 0;
-		box-shadow: none;
-		background: none;
-		color: @white;
-		font-size: @baseFontSize + 2;	
-	}
-
-	.navbar .nav.pull-right > li:first-child,
-	.navbar .nav.pull-right > li:last-child {
-		border: 0;
-		box-shadow: none;
-		margin: 0;	
-		padding: 0 3px;
-	}
-
-	.navbar .nav.pull-right > li:first-child a {
-		float: none;
-		// Vertically center the text given @navbarHeight
-		padding: 7px 13px;
-		margin: 0;
-		color: @navbarLinkColor;
-		font-size: @baseFontSize;
-		text-decoration: none;
-		text-shadow: 0 1px 0 @navbarBackgroundHighlight;
-		border: 1px solid transparent;
-	}
-
-	.navbar.ico-txt .nav.pull-right > li:first-child a,
-	.navbar.nav-icon .nav.pull-right > li:first-child a {
-		font-size: 0;
-		line-height: 0;
-		padding: 6px 13px;
-	}
-
-	.navbar .nav.pull-right > li:first-child a:focus,
-	.navbar .nav.pull-right > li:first-child a:hover,
-	.navbar .nav.pull-right > li:first-child .active > a,
-	.navbar .nav.pull-right > li:first-child .active > a:hover,
-	.navbar .nav.pull-right > li:first-child .active > a:focus {
-		#font > #effect > .txt-over();
-		text-decoration: none;
-		.border-radius(4px);
-		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
-		border: 1px solid @navbarLinkBorder;
-		background-color: @navbarLinkBackgroundActive;
-	}
-
 	.navbar .nav > li a i {
 		display: inline-block;
 		vertical-align: middle;
@@ -311,13 +268,6 @@
 		background-size: 320px;
 		padding-right: 0;
 		margin-top: -2px;
-	}
-
-	.navbar .nav > li:first-child {
-		border-right: 1px solid rgba(33,33,34,.85);
-		.box-shadow(~"1px 0 0 rgba(255,255,255,.1)");
-		margin-right: 5px;	
-		padding: 0 15px 0 0;
 	}
 
 	.navbar-inverse {
@@ -330,7 +280,7 @@
 
 		.brand,
 		.nav > li > a {
-			color: @navbarInverseLinkColor;
+			color: @navbarLinkColor;
 			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 			&:hover {
 				color: @navbarInverseLinkColorHover;
@@ -369,7 +319,7 @@
 		.nav li.dropdown.active > .dropdown-toggle,
 		.nav li.dropdown.open.active > .dropdown-toggle {
 			background-color: @navbarInverseLinkBackgroundActive;
-			color: @navbarInverseLinkColorActive;
+			#font > #effect > .txt-over();
 		}
 		.nav li.dropdown > .dropdown-toggle .caret {
 			border-top-color: @navbarInverseLinkColor;
@@ -386,6 +336,9 @@
 			padding: 7px 13px;
 		}
 
+		.navbar .nav.pull-right > li:first-child a {
+			color: @white;
+		}
 
 		// Navbar collapse button
 		.btn-navbar {

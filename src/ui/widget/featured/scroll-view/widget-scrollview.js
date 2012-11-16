@@ -11,7 +11,7 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD Hybrid 포맷
-        define(["jquery", "style!" + Cornerstone.PATH +  "ui/widget-scrollview"], function ($) {
+        define(["jquery", "style!" + Cornerstone.PATH + "ui/widget-scrollview"], function ($) {
             return factory($, root, doc);
         });
     } else {
@@ -142,10 +142,12 @@
         });
     };
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=scrollView]").each(function (i) {
-        $(this)[pluginName]();
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=scrollView]").each(function (i) {
+            $(this)[pluginName]();
+        });
     });
 }));

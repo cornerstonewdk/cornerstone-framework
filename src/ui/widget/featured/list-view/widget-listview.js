@@ -14,15 +14,17 @@
         define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
             factory($, root, doc);
             return Backbone.View.extend({
+                tagName:"ul",
                 initialize:function () {
                     _.bindAll(this, "render");
                 },
 
                 addItem:function (view, collection) {
+                    var html = document.createElement(this.tagName);
                     collection.each(function (model) {
-                        view.itemView = new view.options.itemView({model:model});
-                        view.$el.featuredListView("addItem", view.itemView.render().el);
+                        $(html).append(new view.options.itemView({model:model}).render().el);
                     });
+                    view.$el.featuredListView("addItem", html);
                 },
 
                 removeItem:function ($target, aNumbers) {
@@ -63,7 +65,9 @@
         defaultOptions = {
             optimization:true,
             SCROLL_THROTTLE:0,
-            scrollEndAction:null
+            scrollEndAction:function() {
+
+            }
         };
         this.$el = $(element);
         this.options = options = $.extend(true, defaultOptions, options);
@@ -187,11 +191,13 @@
 
     $.fn[pluginName].Constructor = Plugin;
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=listView]").each(function (i) {
-        $(this)[pluginName]();
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=listView]").each(function (i) {
+            $(this)[pluginName]();
+        });
     });
 
     return Plugin;

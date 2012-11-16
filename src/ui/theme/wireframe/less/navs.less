@@ -42,8 +42,6 @@
   margin-top: 9px;
 }
 
-
-
 // NAV LIST
 // --------
 
@@ -54,14 +52,19 @@
 	.border-radius(4px);
 }
 
-.nav-list > li > a, 
-.nav-list > li > a:hover {
+.nav-list > li > a {
   text-shadow: none;
 	color: @grayLight;
 	background-color: @navListBg;
   padding: 10px 15px;
 	border-bottom: 1px solid @grayLight;
 }
+
+.nav-list > li > a:hover {
+		color: @black;
+		background-color: @navListHover;
+		border-bottom: 1px solid @grayLight;
+	}
 
 .nav-list > li > a:active {
 	color: @black;
@@ -83,11 +86,12 @@
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider {
   .nav-divider();
+	border-top: 0;
+	margin: 5px 0 0;
 }
 
 .nav-list > li:first-child > a {
-	.border-radius(4px 4px 0 0);
-	border-top: 0;
+	.border-radius(4px 4px 0 0);	
 }
 
 .nav-list > .nav-header {
@@ -210,7 +214,7 @@
 .nav-pills > li > a:active {
   color: @white;
   background-color: @navPillBgActive;
-	border:1px solid @navPillBorderOverz;
+	border:1px solid @navPillBorderOver;
 }
 
 .pills-s > li {

@@ -47,6 +47,7 @@
 		*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
 		background-position: 0 0;
 		border:1px solid transparent;
+		margin: 0;
 		.caret {
 			border-top-color: @white;
 		}
@@ -69,6 +70,75 @@
 .btn i {
 	display: inline-block;
 	line-height: @baseLineHeight - 2;
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+// Large
+.btn-large {
+  padding: 11px 20px;
+  font-size: @baseFontSize + 2px;
+  line-height: normal;
+  .border-radius(5px);
+}
+.btn-large [class^="icon-"] {
+  margin-top: 2px;
+}
+
+// Small
+.btn-small {
+  padding: 6px 9px;
+  font-size: @baseFontSize - 2px;
+  line-height: @baseLineHeight - 2px;
+}
+.btn-small [class^="icon-"] {
+  margin-top: 0;
+}
+
+// Mini
+.btn-mini {
+  padding: 3px 6px;
+  font-size: @baseFontSize - 4px;
+  line-height: @baseLineHeight - 4px;
+}
+
+// Block button
+// -------------------------
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  .box-sizing(border-box);
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+// Provide *some* extra contrast for those who can get it
+.btn-primary.active,
+.btn-warning.active,
+.btn-danger.active,
+.btn-success.active,
+.btn-info.active,
+.btn-inverse.active {
+  color: rgba(255,255,255,.75);
 }
 
 // Set the backgrounds

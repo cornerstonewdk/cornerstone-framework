@@ -152,7 +152,7 @@ table {
   tbody {
     tr:nth-child(odd) td,
     tr:nth-child(odd) th {
-      background-color: transparent;
+      background-color: @tableBackgroundAccent;
     }
   }
 }
@@ -165,7 +165,7 @@ table {
   tbody {
     tr:hover td,
     tr:hover th {
-      background-color: transparent;
+      background: none;
     }
   }
 }
@@ -174,7 +174,7 @@ table {
   tbody {
     tr:hover td,
     tr:hover th {
-      background-color: transparent;
+      background-color: none;
     }
   }
 }
@@ -225,13 +225,20 @@ table {
 // Exact selectors below required to override .table-striped
 
 .table {
-  tbody tr.success td {
+	tbody tr.warning td,
+	tbody tr.warning:hover td{
+    background-color: @warningBackground;
+  }
+  tbody tr.success td,
+	tbody tr.success:hover td {
     background-color: @successBackground;
   }
-  tbody tr.error td {
+  tbody tr.error td,
+	tbody tr.error:hover td {
     background-color: @errorBackground;
   }
-  tbody tr.info td {
+  tbody tr.info td,
+	tbody tr.info:hover td {
     background-color: @infoBackground;
   }
 }

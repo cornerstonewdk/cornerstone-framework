@@ -12,7 +12,15 @@
   #grid > .fluid(@fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
 
   // Input grid
-  #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);
+  #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);	
+
+	a {
+		color: @white;
+	}
+	a:hover {
+		color: @skyBlue;
+		text-decoration: none;
+	}
 
 	.btn {
 		// Hover state
@@ -96,16 +104,6 @@
 			border-left: 0;
 			border-right: 0;
 		}
-		&:active {
-			#font > #effect > .txt-over();
-			border-left: 0;
-			border-right: 0;
-			#gradient > .vertical(rgba(0,0,0,.5), rgba(0,0,0,.3));
-			background-color: @btnActive;
-			*background-color: none; /* Buttons in IE7 don't get borders, so darken on hover */
-			background-position: 0 0;
-			.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 2px 3px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
-		}
 	}
 
 	.btn-group .btn:first-child {
@@ -119,19 +117,13 @@
 	.btn-group .btn:last-child {
 		// Hover state
 		&:hover {
-			border-left: 0;
 			border-right: 1px solid transparent;
 		}
-	}
+	}	
 
 	.btn-group .btn.btn-primary {
 		&:hover {
 			color: @white;
-		}
-		&:active {
-			text-shadow: inset 0 0 2px rgba(255,255,255,.5);
-			.buttonBackground(@btnBlueActiveHighlight, @btnBlueActive, @btnBlueActiveTxt, @btnShadow);
-			.box-shadow(~"inset 0 0 2px rgba(0,0,0,.1), inset 0 3px 4px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.3)"); 
 		}
 	}
 
@@ -570,83 +562,65 @@
 			margin-top: 1px;
 		}
 
-		.nav-list > li:first-child > a:hover {
-			border-bottom: 0;
-		}
-
 		.nav-list > li:last-child > a:hover {
 			.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
 			border-bottom: 0;
 		}
 
-		// 2012-11-12
-		.navbar-inverse .nav > li:first-child a {
-			 color: @navbarInverseLinkColor;
-			 text-shadow: none;
-			 &:hover {
-				 color: @navbarInverseLinkColorHover;
-				 text-shadow: none;
-			 }
-		 }
+		.navbar-inverse {
+			color: @navbarInverseText;
 
-		// Thumbnails
-		a.thumbnail:hover:after {
-			content: "";
-			display:block;
-			position: absolute;
-			left: -3px;
-			top: -2px;
-			width: 100%;
-			height: 100%;
-			border: 3px solid #ea002c;
-			.border-radius(8px);
-		}
+			.navbar-inner {
+				#gradient > .tab-grd (@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+				border-color: @navbarInverseBorder;
+			}
 
-		.btn-group .btn:hover .icon-up,
-		.btn-group .btn:active .icon-up,
-		.btn-group .btn.active .icon-up{
-			background-position: -149px -380px;
-		}
+			.brand,
+			.nav > li > a {
+				color: @navbarInverseLinkColor;
+				text-shadow: none;
+				&:hover {
+					color: @navbarInverseLinkColorHover;
+				}
+			}
 
-		.btn-group .btn:hover .icon-down,
-		.btn-group .btn:active .icon-down,
-		.btn-group .btn.active .icon-down {
-			background-position: -149px -425px;
-		}
+			.nav > li > a:focus,
+			.nav > li > a:hover {
+				background-color: @navbarLinkBackgroundActive;
+				color: @navbarInverseLinkColorHover;
+			}
 
-		.btn-group .btn:hover .icon-set,
-		.btn-group .btn:active .icon-set,
-		.btn-group .btn.active .icon-set {
-			background-position: -149px -336px;
-		}
+			.nav .active > a,
+			.nav .active > a:hover,
+			.nav .active > a:focus {
+				color: @navbarInverseLinkColorActive;
+				background-color: @navbarLinkBackgroundActive;
+			}	
 
-		.btn-group .btn-primary .icon-up {
-			background-position: -17px -380px;
-		}
+			// Inline text links
+			.navbar-link {
+				color: @navbarInverseLinkColor;
+				&:hover {
+					color: @navbarInverseLinkColorHover;
+				}
+			}
 
-		.btn-group .btn-primary .icon-down {
-			background-position: -17px -425px;
-		}
+			// Dividers in navbar
+			.divider-vertical {
+				border-left-color: @navbarInverseBackground;
+				border-right-color: @navbarInverseBackgroundHighlight;
+			}
+		 
+			.nav.pull-right li.dropdown .dropdown-toggle {
+				padding: 7px 13px;
+			}
 
-		.btn-group .btn-primary .icon-set {
-			background-position: -16px -336px;
-		}
+			// Navbar collapse button
+			.btn-navbar {
+				.buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+				background:#212121 url('../img/icon.png') no-repeat 0 -935;
+				background-size: 139px;
+			}
 
-		.btn-group .btn-primary:hover .icon-up,
-		.btn-group .btn-primary:active .icon-up,
-		.btn-group .btn-primary.active .icon-up{
-			background-position: -61px -380px;
-		}
-
-		.btn-group .btn-primary:hover .icon-down,
-		.btn-group .btn-primary:active .icon-down,
-		.btn-group .btn-primary.active .icon-down {
-			background-position: -61px -425px;
-		}
-
-		.btn-group .btn-primary:hover .icon-set,
-		.btn-group .btn-primary:active .icon-set,
-		.btn-group .btn-primary.active .icon-set {
-			background-position: -60px -336px;
 		}
 }

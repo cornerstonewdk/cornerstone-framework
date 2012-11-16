@@ -120,7 +120,7 @@
             var type = $btn.data("spinnerType");
             var target = $btn.data("spinnerTarget");
             $(target).spinner(type);
-        })
+        });
     })
 }));
 

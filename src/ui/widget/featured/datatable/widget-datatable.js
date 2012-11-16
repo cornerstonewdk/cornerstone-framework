@@ -159,12 +159,14 @@
         }
     });
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=datatable]").each(function (i) {
-        $(this)[pluginName]({
-            "sAjaxSource":$(this).data("datatableBind")
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=datatable]").each(function (i) {
+            $(this)[pluginName]({
+                "sAjaxSource":$(this).data("datatableBind")
+            });
         });
     });
 }));

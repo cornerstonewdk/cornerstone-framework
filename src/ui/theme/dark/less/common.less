@@ -207,6 +207,7 @@
 @navTabTop:												#fefefe;
 @navTabLeft:											@grayLighter;
 @navTabRight:											#b4b4b4;
+@navTabBorder:										#ddd;
 @navPillLink:					            @grayLight;
 @navPillActive:					          @white;
 @navPillBackground:					      rgba(84,84,82,.8);
@@ -250,7 +251,7 @@
 
 @navbarDropdownBorder:						#454545;
 @navbarDropdownTxt:								@grayLight;
-@navbarDropdownBg									:#B7B7B7;
+@navbarDropdownBg:								#B7B7B7;
 @navbarInverseLinkBackgroundActive:#202020;
 @navbarInverseLinkColor:					@white;
 
@@ -290,23 +291,29 @@
 
 // Form states and alerts
 // -------------------------
-@warningText:             @white;
+@warningText:             #993f08;
 @warningBackground:       #c76b16;
 @warningBorder:           rgba(143,143,6,.64);
 
-@errorText:               @white;
+@errorText:               #872a2b;
 @errorBackground:         #b91636;
 @errorBorder:             rgba(169,0,0,.64);
 
-@successText:             @white;
+@successText:             #3c5d20;
 @successBackground:       #3f842a;
 @successBorder:           rgba(8,153,8,.64);
 
-@infoText:                @white;
-@infoBackground:          #287a8f;
+@infoText:                #184f6a;
+@infoBackground:          #3a87ad;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
-@disabledText:            #4e4e4e;
+@disabledText:            #1f1f20;
+
+@warningArrow:						#c77d1a;
+@disabledArrow:           #4e555a;
+@errorArrow:							#ac4647;
+@successArrow:						#5c844e;
+@infoArrow:								#3c88ad;
 
 
 // Tooltips and popovers
@@ -368,7 +375,8 @@
 
 // Footer
 // -------------------------
-@footTxtColor:            #424242;
+@footTxtColor:            @grayLight;
+@footLogo:								#424242;
 
 
 // popover

@@ -49,8 +49,8 @@
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
             rate:"16:9",
-            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") + "flashmediaelement.swf",
-            silverlightName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "") + "silverlightmediaelement.xap"
+            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "./dist/ui/") + "flashmediaelement.swf",
+            silverlightName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "./dist/ui/") + "silverlightmediaelement.xap"
         };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
@@ -154,14 +154,16 @@
     };
 
 
-    /**
-     * DATA API (HTML5 Data Attribute)
-     */
-    $("[data-featured=media]").each(function (i) {
-        var self = this;
-        $(this)[pluginName]({
-            alwaysShowControls:true,
-            rate:$(self).data("mediaRate")
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=media]").each(function (i) {
+            var self = this;
+            $(this)[pluginName]({
+                alwaysShowControls:true,
+                rate:$(self).data("mediaRate")
+            });
         });
     });
 }));

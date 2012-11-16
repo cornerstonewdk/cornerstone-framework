@@ -468,9 +468,11 @@
 //            }
 //        });
 //    } else {
-        $("input[type=range]").each(function (i) {
+    $(function () {
+        $("[data-plugin^='rangeinput']").each(function (i) {
             var options = $(this).data("rangeOptions");
             $(this).rangeinput(options);
         });
+    });
 //    }
 }));
