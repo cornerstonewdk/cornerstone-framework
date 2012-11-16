@@ -104,6 +104,11 @@
 			border-left: 0;
 			border-right: 0;
 		}
+		&.active,
+		&:active {
+			border-left: 0;
+			border-right: 0;
+		}
 	}
 
 	.btn-group .btn:first-child {
@@ -112,11 +117,20 @@
 			border-left: 1px solid transparent;
 			border-right: 0;
 		}
+		&.active,
+		&:active {
+			border-left: 1px solid transparent;
+			border-right: 0;
+		}
 	}
 
 	.btn-group .btn:last-child {
 		// Hover state
 		&:hover {
+			border-right: 1px solid transparent;
+		}
+		&.active,
+		&:active {
 			border-right: 1px solid transparent;
 		}
 	}	
