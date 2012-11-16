@@ -85,6 +85,32 @@
     support.transform3d = checkTransform3dSupport();
 
     $.extend($.support, support);
+    $.support.transition = (function () {
+
+        var transitionEnd = (function () {
+
+            var el = document.createElement('bootstrap')
+                , transEndEventNames = {
+                    'WebkitTransition' : 'webkitTransitionEnd'
+                    ,  'MozTransition'    : 'transitionend'
+                    ,  'OTransition'      : 'oTransitionEnd otransitionend'
+                    ,  'transition'       : 'transitionend'
+                }
+                , name
+
+            for (name in transEndEventNames){
+                if (el.style[name] !== undefined) {
+                    return transEndEventNames[name]
+                }
+            }
+
+        }())
+
+        return transitionEnd && {
+            end: transitionEnd
+        }
+
+    })();
 
     var eventNames = {
         'MozTransition':'transitionend',
@@ -511,7 +537,7 @@
     //       complete: function() { /* ... */ }
     //      });
     //
-    $.fn.transition = $.fn.transit = function (properties, duration, easing, callback) {
+    $.fn.transit = function (properties, duration, easing, callback) {
         var self = this;
         var delay = 0;
         var queue = true;
