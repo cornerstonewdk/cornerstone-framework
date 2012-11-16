@@ -6,7 +6,6 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "3.0.0rc3",
-    "yql": "*"
+    "express": "3.0.0rc3"
   }
 }

@@ -10,16 +10,12 @@ var express = require('express')
 
 var app = express();
 
-var YQL = require('yql');
-
 app.configure(function(){
   app.set('port', process.env.PORT || 8089);
-  app.set('views', __dirname + '/views');
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
@@ -28,7 +24,7 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res){
-	fs.readFile('views/index.html', function(err, data){
+	fs.readFile('public/index.html', function(err, data){
 		if(err){
 			res.end(err);
 		} else {
@@ -38,7 +34,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/t-dashboard', function(req, res){
-	fs.readFile('views/index.html', function(err, data){
+	fs.readFile('public/index.html', function(err, data){
 		if(err){
 			res.end(err);
 		} else {
