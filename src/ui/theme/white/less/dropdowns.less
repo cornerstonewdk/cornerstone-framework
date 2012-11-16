@@ -93,7 +93,14 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
+    height: 1px;
+		font-size: 0;
+		line-height: 1px;
+		overflow: hidden;
+		padding: 0;
+		margin: 0; 
+		background-color: @dropdownDividerTop;
+    border: 0;
   }
 
 }
@@ -264,6 +271,13 @@
 			border-bottom-color: transparent;
 			position: static;
 		}
+}
+
+.dropdown-submenu:hover .dropdown-menu li a:hover {
+	.border-radius(0);
+}
+.dropdown-submenu:hover .dropdown-menu li:last-child a:hover {
+	.border-radius(0 0 5px 5px);
 }
 
 .dropdown-submenu > a:after {
