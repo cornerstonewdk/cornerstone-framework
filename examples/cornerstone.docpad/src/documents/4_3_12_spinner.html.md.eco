@@ -1,0 +1,171 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '스피너'
+outline: 'Spinner은 화면전환이나 페이지 컨텐츠를 로드할 때 대기 중 표시하는 로딩 UI이다. '
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+order: '[4, 3, 12]'
+thumbnail: '4.3.12.spinner.png'
+---
+
+## Spinner
+ Spinner은 화면전환이나 페이지 컨텐츠를 로드할 때 대기 중 표시하는 로딩 UI이다.
+ 
+
+loading 이미지 : [http://preloaders.net/](http://preloaders.net/)
+
+### 사용법
+data-attribute를 이용하는 방식
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css'></link>                                                          
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+<div id="loadingCircle" title="Loading Circle" class="widget-container" style="height: 500px;">
+  <div class="page-header">
+    <h3>Loading Circle</h3>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <h4 class="dash-head"><i class="icon-cog"></i> 버튼액션 Loading Circle:</h4>
+
+      <div class="dash-widget no-padding">
+        <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn">전체 페이지 로더</a>
+        <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn">중앙 로더</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        $("[data-plugin='spinner']").on("click", function (e) {
+            e.preventDefault();
+            var self = this;
+            var target = $(this).data("spinnerTarget");
+            window.setTimeout(function () {
+                $(target).spinner("hide");
+            }, 3000);
+        });
+    };
+</script>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+javascript를 이용하는 방식
+
+
+<% prv_2 = (contents) => %>
+<div id="loadingCircle" title="Loading Circle" class="widget-container" style="height: 500px;">
+  <div class="page-header">
+    <h3>Loading Circle</h3>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <h4 class="dash-head"><i class="icon-cog"></i> 버튼액션 Loading Circle:</h4>
+
+      <div class="dash-widget no-padding">
+        <a id="spinner" class="btn">전체 페이지 로더</a>
+        <a id="nested-spinner" class="btn">중앙 로더</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        $("#spinner").on("click", function() {
+          $("body").spinner("show");
+        });
+
+        $("#nested-spinner").on("click", function() {
+          $("#loadingCircle").spinner("show");
+        });
+
+        $("#spinner,#nested-spinner").on("click", function (e) {
+            e.preventDefault();
+            var self = this;
+            var target = "body,#loadingCircle";
+            window.setTimeout(function () {
+                $(target).spinner("hide");
+            }, 3000);
+        });
+    };
+</script>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+
+### 메서드
+
+사용법 | 설정 | 타입 | 설명
+:-- | :-- | :-: | :--
+$().spinner(); | - | object | 해당 엘리먼트에 플러그인을 적용한다.
+$().spinner(option); | show | string | 로딩 스피너를 보여준다.
+$().spinner(option); | hide | string | 로딩 스피너를 숨긴다.

@@ -1,0 +1,309 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '네비게이션'
+outline: 'Nav 리스트는 부가적인 헤더와 함께 nav 의 링크들을 그룹하는 심플하면서 쉬운 방법을 제공하며, OS X 의 파인더와 같은 사이드바를 만들 수 있다. 구조적으로, Tab, Pill 과 같은 핵심 nav 스타일을 토대로 만들어 졌으며 사용 및 커스터마이징을 매우 직관적으로 할 수 있다...'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+order: '[4, 2, 2]'
+thumbnail: '4.2.02.navation.png'
+---
+
+## 네비게이션 
+
+### 어플리케이션 스타일 네비게이션
+
+Nav 리스트는 부가적인 헤더와 함께 nav 의 링크들을 그룹하는 심플하면서 쉬운 방법을 제공하며, OS X 의 파인더와 같은 사이드바를 만들 수 있다.
+구조적으로, Tab, Pill 과 같은 핵심 nav 스타일을 토대로 만들어 졌으며 사용 및 커스터마이징을 매우 직관적으로 할 수 있다.
+
+#### 아이콘과 함께 
+Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, <i> 태그를 적절한 class 함께 추가하기만 하면 된다.
+
+#### 가로 구분자
+비어있는 리스트 아이템 — <li> — 을 .divider 클래스와 함께 넣어줌으로서 가로 구분자를 넣을 수 있다.
+
+```
+	<ul class="nav nav-list">
+        ...
+        <li class="divider"></li>
+        ...
+    </ul>
+
+```
+
+#### nav 리스트 예제
+링크의 리스트에 class="nav nav-list" 를 추가한다.
+
+```
+    <ul class="nav nav-list">
+        <li class="nav-header">
+            List header
+        </li>
+        <li class="active">
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Library</a>
+        </li>
+        ...
+    </ul>
+```
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css'></link>                                                          
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+    <ul class="nav nav-list">
+		<li class="nav-header">List header</li>
+		<li><a href="#">Home</a></li>
+		<li class="active"><a href="#">Library</a></li>
+		<li><a href="#">Applications</a></li>
+		<li><a href="#">Another List Header</a></li>
+		<li><a href="#">Profile</a></li>
+		<li><a href="#">Settings</a></li>
+		<li><a href="#">Help</a></li>
+	</ul>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+#### 아이콘 추가 예제
+같은 방법이지만, 단지 아이콘을 위해 <i> 태그를 추가한다.
+
+```
+    <ul class="nav nav-list">
+        ...
+        <li>
+            <a href="#">
+            <i class="icon-book"></i>
+            Library
+            </a>
+        </li>
+        ...
+    </ul>
+```
+
+<% prv_2 = (contents) => %>
+    <ul class="nav nav-list">
+        <li class="nav-header">List header</li>
+        <li class="active"><a href="#"><i class="icon-white icon-home"></i> Home</a></li>
+        <li><a href="#"><i class="icon-book"></i> Library</a></li>
+        <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+        <li class="nav-header">Another list header</li>
+        <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+        <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="icon-flag"></i> Help</a></li>
+    </ul>    
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+
+### tab nav
+
+tab 을 통해 컨텐츠를 오갈 수 있도록 심플한 플러그인으로 tab 에 생명을 넣습니다. 부트스트랩은 4가지 스타일로 동적 Tab 을 통합 : top (기본), right, bottom, 그리고 left 아주 작은 마크업 수정만으로 쉽게 이들 사이의 변경을 할 수 있다.
+
+#### 동적 Tab 예제
+Tab 을 동적으로 만들려면, .nav-tabs 를 .tabbable class 를 가진 div 로 감싸면 된다.
+
+<% prv_3 = (contents) => %>
+    <div class="tabbable" style="margin-bottom: 9px;">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
+          <li><a href="#2" data-toggle="tab">Section 2</a></li>
+          <li><a href="#3" data-toggle="tab">Section 3</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>I'm in Section 1.</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Howdy, I'm in Section 2.</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>What up girl, this is Section 3.</p>
+          </div>
+        </div>
+    </div>
+<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+
+#### 커스텀 jQuery 플러그인
+모든 동적 Tab 는 우리의 경량 jQuery 플러그인에 의해 작동된다. Tab에 대한 더 자세한 내용은 플러그인 챕터에서 확인할 수 있다.
+
+#### 직관적인 마크업
+동적 탭을 사용하려면 감싸는 div, 여러 세트의 tab, 그리고 그에 해당하는 여러 세트의 컨텐츠 pane 이 필요하다.
+
+```
+    <div class="tabbable">
+    	<ul class="nav nav-tabs">
+	        <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
+	        <li><a href="#2" data-toggle="tab">Section 2</a></li>
+	    </ul>
+	    <div class="tab-content">
+	        <div class="tab-pane active" id="1">
+	        <p>I'm in Section 1.</p>
+	        </div>
+	        <div class="tab-pane" id="2">
+	        <p>Howdy, I'm in Section 2.</p>
+	        </div>
+	    </div>
+    </div>
+```
+
+#### 모든 방향의 동적탭 기능
+
+##### 하단 탭
+
+탭을 하단에 두려면 .tabs-below class 를 추가하고 HTML의 순서를 바꾼다.
+
+```
+    <div class="tabbable tabs-below">
+		<div class="tab-content">
+			<div class="tab-pane active" id="home">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher 
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip 
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
+			<div class="tab-pane" id="profile">...</div>
+			<div class="tab-pane" id="messages">...</div>
+			<div class="tab-pane" id="settings">...</div>
+		</div>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#home" data-toggle="tab">TAB1</a></li>
+			<li><a href="#profile" data-toggle="tab">TAB2</a></li>
+			<li><a href="#messages" data-toggle="tab">TAB3</a></li>
+		</ul>
+	</div>
+```
+<% prv_4 = (contents) => %>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
+        <li><a href="#B" data-toggle="tab">Section 2</a></li>
+        <li><a href="#C" data-toggle="tab">Section 3</a></li>
+    </ul>
+<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
+
+##### 좌측 탭
+
+탭을 좌측에 두려면 .tabs-left class 를 추가한다.
+
+```
+    <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+            ...
+        </ul>
+        <div class="tab-content">
+            ...
+        </div>
+    </div>
+```
+
+<% prv_5 = (contents) => %>
+    <div class="tabbable tabs-left">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="">Home</a></li>
+			<li><a href="">Profile</a></li>
+			<li><a href="">Massages</a></li>
+		</ul>
+		<div class="tab-content">
+			I'm in Section A.
+		</div>
+	</div>
+<% end %><%- codeMirrorBlock {func : prv_5 , funcname : 'prv_5'} %>
+
+
+##### 우측 탭
+
+탭을 우측에 두려면 .tabs-right class 를 추가한다.
+
+```
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            ...
+        </ul>
+        <div class="tab-content">
+            ...
+        </div>
+    </div>
+```
+
+<% prv_6 = (contents) => %>
+    <div class="tabbable tabs-right">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="">Home</a></li>
+			<li><a href="">Profile</a></li>
+			<li><a href="">Massages</a></li>
+		</ul>
+		<div class="tab-content">
+			I'm in Section A.
+		</div>
+	</div>
+<% end %><%- codeMirrorBlock {func : prv_6 , funcname : 'prv_6'} %>
+

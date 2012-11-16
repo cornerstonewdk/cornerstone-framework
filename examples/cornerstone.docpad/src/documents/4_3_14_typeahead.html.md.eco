@@ -1,0 +1,127 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '자동완성'
+outline: '텍스트 입력상자에 typeahead (자동완성) 를 손쉽게 만들기 위한 플러그인. data-attribute를 이용하는 방식. 엘리먼트에 typeahead 기능을 부여하고 이를 등록하기 위해 data 속성을 추가한다...'
+date: '2012-11-16'
+tagstr: 'widget'
+tags: ['post','widget','']
+order: '[4, 3, 14]'
+thumbnail: '4.3.14.typeahead.png'
+---
+
+## Typeahead
+텍스트 입력상자에 typeahead (자동완성) 를 손쉽게 만들기 위한 플러그인.
+
+__마크업__
+
+data-attribute를 이용하는 방식
+
+엘리먼트에 typeahead 기능을 부여하고 이를 등록하기 위해 data 속성을 추가한다.
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css'></link>                                                          
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight'>                                                                                           
+<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+  <body>                                                                                                          
+    <%- obj.func '1' %>                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+	<input type="text" class="span12" style="margin: 0 auto;" data-provide="typeahead" data-items="4"
+    						   data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+
+javascript를 이용하는 방식
+
+<% prv_2 = (contents) => %>
+	<input id="typeahead" type="text" class="span12" style="margin: 0 auto;" data-items="4">
+
+    <script type="text/javascript">
+        window.onload = function() {
+            $("#typeahead").typeahead({
+                source: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+            });
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+
+### 옵션
+설정 | 타입 | 기본값 | 설명
+:-- | :-: | :-- | :--
+source | array | [] | 쿼리를 위한 데이타 소스.
+items | number | 8 | 드롭다운에 보여질 아이템의 최대 개수.
+matcher | function | case insensitive | 쿼리가 아이템에 매칭되는지 결정하는데 사용되는 메소드. 쿼리에 매칭되는지 확인할 하나의 item 전달인자를 받이고 this.query 으로 현재의 쿼리를 얻을 수 있고 쿼리에 매칭이 되면 true 를 반환한다.
+sorter | function | exact match,case sensitive,case insensitive | 자동완성 결과를 정렬하는데 사용되는 메소드. 하나의 items 전달인자를 받아들이고 typeahead 인스턴스의 범위를 가지고 있다. this.query 으로 현재의 쿼리를 얻을 수 있다.
+highlighter | function | highlights all default matches | 자동완성 결과를 하이라이트 하는데 사용되는 메소드. 하나의 items 전달인자를 받아들이고 typeahead 인스턴스의 범위를 가지고 있고, html을 리턴해야한다.
+
+
+### 메서드
+
+사용법 | 설정 | 타입 | 설명
+:-- | :-- | :-: | :--
+$().typeahead(options); | option | object | input 엘리먼트를 typeahead 기능과 함께 초기화한다.
