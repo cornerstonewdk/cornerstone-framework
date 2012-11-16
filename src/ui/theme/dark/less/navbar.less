@@ -246,7 +246,7 @@
 .navbar .nav > li > a {
 	text-align: left;
 	display: block;
-	padding: 7px 13px;
+	padding: 6px 13px;
 	margin: 0;
 	color: @navbarLinkColor;
 	font-size: @baseFontSize;
@@ -268,15 +268,15 @@
 }
 
 // Active nav items
-.navbar .nav > li > a:focus,
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover
 .navbar .nav > .active > a:focus {
 	#font > #effect > .txt-over();
 	text-decoration: none;
+	padding: 6px 13px;
 	.border-radius(4px);
-	box-shadow: none;
-	border: 1px solid transparent;
+	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+	border: 1px solid @navbarLinkBorder;
 	background-color: @navbarLinkBackgroundActive;
 }
 
@@ -399,7 +399,10 @@
 // Remove background color from open dropdown
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+.navbar .nav li.dropdown.open.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open:hover > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle:hover,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle:hover {
 	#font > #effect > .txt-over();
   text-decoration: none;
 	.border-radius(4px);
@@ -466,14 +469,24 @@
 
   .nav > li > a:focus,
   .nav > li > a:hover {
-    background-color: transparent;
     #font > #effect > .txt-over();
+		text-decoration: none;
+		padding: 6px 13px;
+		.border-radius(4px);
+		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+		border: 1px solid @navbarLinkBorder;
+		background-color: @navbarLinkBackgroundActive;
   }
 
   .nav .active > a,
   .nav .active > a:focus {
-    color: @navbarInverseLinkColorActive;
-    background-color: @navbarInverseLinkBackgroundActive;
+    #font > #effect > .txt-over();
+		text-decoration: none;
+		padding: 6px 13px;
+		.border-radius(4px);
+		.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
+		border: 1px solid @navbarLinkBorder;
+		background-color: @navbarLinkBackgroundActive;
   }
 
   // Inline text links
@@ -509,7 +522,7 @@
   }
 
  .nav.pull-right li.dropdown .dropdown-toggle {
-		padding: 7px 13px;
+		padding: 6px 13px;
 	}
 
 
