@@ -6,6 +6,7 @@ outline: 'WebApp은 Device Platform (Android, iOS..)에서 제공하는 Native S
 date: '2012-11-16'
 tagstr: 'runtime'
 order: '[6, 6]'
+thumbnail: '6.6.00.plugin_developement.png'
 -->
 
 ## 개요 

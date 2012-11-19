@@ -7,6 +7,7 @@ date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
 order: '[6, 4]'
+thumbnail: '6.4.00.warning.png'
 -->
 
 ## Android 와 iOS 차이점

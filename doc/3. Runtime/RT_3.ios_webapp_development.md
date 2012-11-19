@@ -6,6 +6,7 @@ outline: 'Authoring Tool을 이용하여 iOS 용 웹앱 개발환경을 다운�
 date: '2012-11-16'
 tagstr: 'runtime'
 order: '[6, 3]'
+thumbnail: '6.3.00.iOS.png'
 -->
 
 ## iOS Runtime 웹앱 개발 환경

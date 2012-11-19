@@ -6,6 +6,7 @@ outline: '아래 링크를 통하여 확장구조 개발에 필요한 Android Na
 date: '2012-11-16'
 tagstr: 'runtime'
 order: '[6, 7]'
+thumbnail: '6.7.00.android.png'
 -->
 
 ##	Android Runtime 확장 구조 개발 

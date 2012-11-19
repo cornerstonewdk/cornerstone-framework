@@ -6,6 +6,7 @@ outline: '아래 링크를 통하여 확장구조 개발에 필요한 iOs Native
 date: '2012-11-16'
 tagstr: 'runtime'
 order: '[6, 8]'
+thumbnail: '6.8.00.iOS.png'
 -->
 
 ##	iOS Runtime 확장 구조 개발 

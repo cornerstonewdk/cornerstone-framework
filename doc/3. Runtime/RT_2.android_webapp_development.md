@@ -6,6 +6,7 @@ outline: 'Authoring Tool을 이용하여 Android 용 웹앱 개발환경을 다�
 date: '2012-11-16'
 tagstr: 'runtime'
 order: '[6, 2]'
+thumbnail: '6.2.00.android.png'
 -->
 
 ## Android Runtime 웹앱 개발 환경 

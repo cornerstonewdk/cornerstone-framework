@@ -7,6 +7,7 @@ date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime for WebApp'
 order: '[6, 5]'
+thumbnail: '6.5.00.sample.png'
 -->
 
 ## Cornerstone Runtime을 이용한 Runtime Javascript API sample code

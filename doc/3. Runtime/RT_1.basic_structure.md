@@ -7,6 +7,7 @@ date: '2012-11-16'
 tagstr: 'runtime'
 subsection: 'Runtime'
 order: '[6, 1]'
+thumbnail: '6.1.00.runtime_structure.png'
 -->
 
 ----------
