@@ -5,8 +5,8 @@ sections: ['Cornerstone Framework']
 title: 'SKT Open API'
 outline: 'SKT Open API는 SKT에서 제공하는 여러 가지 기능들을 써드파티 애플리케이션에서 사용할 수 있도록 공개된 API이다. Cornerstone Framework에서는 이 API를 사용하기 쉽도록 가공한 유틸리티를 제공한다. SKT Open API에서 제공하는 기능들은 다음과 같다...'
 date: '2012-11-16'
-tagstr: 'utiltily'
-tags: ['post','utiltily','']
+tagstr: 'utility'
+tags: ['post','utility','']
 order: '[5, 1, 4]'
 thumbnail: '5.1.04.SKT_open_API.png'
 ---

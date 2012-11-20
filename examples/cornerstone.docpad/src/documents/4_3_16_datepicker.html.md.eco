@@ -11,7 +11,7 @@ order: '[4, 3, 16]'
 thumbnail: '4.3.16.datepicker.png'
 ---
 
-## Data picker
+## Date picker
 ### 사용법
 입력 박스에 포커스를 할 경우 달력 UI가 노출 되고, 날짜를 선택하면 입력상자에 정보가 입력된다.
 

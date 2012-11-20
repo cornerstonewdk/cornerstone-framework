@@ -8,6 +8,7 @@ date: '2012-11-16'
 tagstr: 'runtime'
 tags: ['post','runtime','']
 order: '[6, 7]'
+thumbnail: '6.7.00.android.png'
 ---
 
 ##	Android Runtime 확장 구조 개발 

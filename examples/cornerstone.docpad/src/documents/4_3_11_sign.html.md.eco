@@ -93,7 +93,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-    <div id="example" class="sign"></div>
+    <div id="example" class="sign" style="height: 300px"></div>
     <button class="btn" onclick="$('#example').sign('reset');">Reset</button>
     <script>
 	    window.onload = function() {

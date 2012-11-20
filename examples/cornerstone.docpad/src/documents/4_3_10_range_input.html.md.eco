@@ -14,6 +14,10 @@ thumbnail: '4.3.10.range_input.png'
 ## RangeInput
  RangeInput은 범위값을 설정될 때 사용하는 Input UI이다.
 
+ 안드로이드 디바이스의 경우 스크립트 / UI 처리 성능이 좋지 않아 드래그시 핸들의 위치를 translate3d(CSS 하드웨어가속 프로퍼티) 속성을 사용해 최적화 했으며,
+ 입력상자를 노출하는 경우 입력값이 드래그 이벤트마다 변경시 성능이 저하되는 문제로 드래그 종료시 입력상자 값이 변경되도록 설정되고, 프로그레스 옵션 또한 성능 문제로
+ 제한되어 있다. 그리고 step을 소수로 사용하는 경우 성능 저하 문제가 발생하므로 안드로이드에서는 가능한 step을 양수나 음수를 사용하는 것을 권장한다.
+
 ### 사용법
 
 data-attribute 방식
@@ -99,9 +103,9 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <div class="span4">
       <h4 class="dash-head"><i class="icon-cog"></i> 스타일을 입힌 Input Range:</h4>
 
-      <div class="dash-widget no-padding widget-rangeinput">
+      <div class="widget-rangeinput">
         <label>
-          <input type="range" data-plugin="rangeinput" value="0.5" min="0.1" max="99.9" step="0.1"
+          <input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="1"
                class="widget-range btn-block"/>
         </label>
       </div>
@@ -109,9 +113,9 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <div class="span4">
       <h4 class="dash-head"><i class="icon-cog"></i> 프로그레스 스타일을 입힌 Input Range:</h4>
 
-      <div class="dash-widget no-padding widget-rangeinput">
+      <div class="widget-rangeinput">
         <label>
-          <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+          <input type="range" data-plugin="rangeinput"   value="10" min="1" max="100" step="1"
                class="widget-range btn-block"
                data-range-options='{"inputShow":false,"progress":true}'/>
         </label>
@@ -120,9 +124,9 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <div class="span4">
       <h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Input Range:</h4>
 
-      <div class="dash-widget no-padding widget-rangeinput slider-box">
+      <div class="widget-rangeinput slider-box">
         <label>
-          <input type="range" data-plugin="rangeinput" value="0.5" min="0.1" max="999.9" step="10"
+          <input type="range" data-plugin="rangeinput" value="10" min="0" max="1000" step="10"
                class="widget-range btn-block inline"
                data-range-options='{"inputShow":true}'/>
         </label>
@@ -143,9 +147,9 @@ javascript 코드
     <div class="span4">
       <h4 class="dash-head"><i class="icon-cog"></i> 스타일을 입힌 Input Range:</h4>
 
-      <div class="dash-widget no-padding widget-rangeinput">
+      <div class="widget-rangeinput">
         <label>
-          <input id="range1" type="range" value="0.5" min="0.1" max="99.9" step="0.1"
+          <input id="range1" type="range" value="10" min="1" max="100" step="1"
                class="widget-range btn-block"/>
         </label>
       </div>
@@ -153,7 +157,7 @@ javascript 코드
     <div class="span4">
       <h4 class="dash-head"><i class="icon-cog"></i> 프로그레스 스타일을 입힌 Input Range:</h4>
 
-      <div class="dash-widget no-padding widget-rangeinput">
+      <div class="widget-rangeinput">
         <label>
           <input id="range2" type="range" value="10" min="0" max="100"
                class="widget-range btn-block"/>
@@ -163,9 +167,9 @@ javascript 코드
     <div class="span4">
       <h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Input Range:</h4>
 
-      <div class="dash-widget no-padding widget-rangeinput slider-box">
+      <div class="widget-rangeinput slider-box">
         <label>
-          <input id="range3" type="range" value="0.5" min="0.1" max="999.9" step="10"
+          <input id="range3" type="range" value="10" min="0" max="1000" step="10"
                class="widget-range btn-block inline"/>
         </label>
       </div>

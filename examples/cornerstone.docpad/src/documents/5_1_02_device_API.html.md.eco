@@ -5,8 +5,8 @@ sections: ['Cornerstone Framework']
 title: '단말 API'
 outline: 'Device 유틸은 HTML5 API를 확장하여 하이브리드 페키징시에 다양한 Native Device API를 제공한다 Device 유틸을 사용하기 위해서는 js 모듈뿐 아니라 각 디바이스별 사용법이 다르기 때문에 자세한 내용은 여기를 참고하기 바란다...'
 date: '2012-11-16'
-tagstr: 'utiltily'
-tags: ['post','utiltily','']
+tagstr: 'utility'
+tags: ['post','utility','']
 order: '[5, 1, 2]'
 thumbnail: '5.1.02.device_API.png'
 ---
@@ -15,7 +15,7 @@ Device
 ------
 1)	Device 유틸은 HTML5 API를 확장하여 하이브리드 페키징시에 다양한 Native Device API를 제공한다.
     Device 유틸을 사용하기 위해서는 js 모듈뿐 아니라 각 디바이스별 사용법이 다르기 때문에 자세한 내용은
-    여기를 참고하기 바란다.
+    [여기](RT_1_basic_structure.html)를 참고하기 바란다.
 
 2)	의존성 주입 
 

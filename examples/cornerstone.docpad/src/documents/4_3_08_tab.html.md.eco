@@ -124,16 +124,6 @@ javascript를 이용하는 방식
 
 $("#myTab").tab("show")
 
-
-
-> data 속성을 이용하여 각 팝오버에 대해 옵션을 따로 정할 수 있다.
-
-### 메서드
-
-사용법 | 설명
-:-- | :--
-$().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활성화하고 탭은 dom 내에 타겟이 되는 컨테이너를 가리키는 `data-target` 또는 `href` 를 반드시 가져야한다.
-
 <% prv_2 = (contents) => %>
     <div class="dash-widget no-padding">
         <ul id="myTab" class="nav nav-tabs">
@@ -170,6 +160,13 @@ $().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활
         };
 	</script>
 <% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+
+### 메서드
+
+사용법 | 설명
+:-- | :--
+$().tab | 탭 엘리먼트와 그와 짝이 되는 컨텐트 컨테이너를 활성화하고 탭은 dom 내에 타겟이 되는 컨테이너를 가리키는 `data-target` 또는 `href` 를 반드시 가져야한다.
+
 
 ### 이벤트
 
