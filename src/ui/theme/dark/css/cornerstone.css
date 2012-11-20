@@ -5075,9 +5075,6 @@ button.btn.btn-mini {
 }
 .badge {
   padding: 4px 12px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
 }
 a.label:hover,
 a.badge:hover {
