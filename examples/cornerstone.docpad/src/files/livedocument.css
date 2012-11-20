@@ -1,5 +1,7 @@
 /* move down carets for tabs */
-
+body {
+  font-family:dotum;
+}
 
 table {
   width: 100%;
