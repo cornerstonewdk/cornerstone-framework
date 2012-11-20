@@ -7383,7 +7383,7 @@ body > .widget-spinner-icon2 {
     position: relative;
     z-index: 1;
   }
-  *:hover {
+  .btn:hover {
     display: none;
   }
 }
