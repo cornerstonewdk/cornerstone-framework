@@ -266,15 +266,15 @@ jQuery.fn.motioncaptcha || (function ($) {
         cssClass:".mc-active", // This CSS class is applied to the form, when the plugin is active
 
         // An array of shape names that you want MotionCAPTCHA to use:
-        shapes:["triangle", "x", "rectangle", "circle", "check", "caret", "zigzag", "arrow", "leftbracket", "rightbracket", "v", "delete", "star", "pigtail"],
-
+//        shapes:["triangle", "x", "rectangle", "circle", "check", "caret", "zigzag", "arrow", "leftbracket", "rightbracket", "v", "delete", "star", "pigtail"],
+        shapes:["triangle", "x", "rectangle", "circle", "check", "caret", "zigzag", "arrow", "v", "delete", "star", "pigtail"],
         // Canvas vars:
         canvasFont:"15px 'Lucida Grande'",
         canvasTextColor:"#111",
 
         // These messages are displayed inside the canvas after a user finishes drawing:
-        errorMsg:"Please try again.",
-        successMsg:"Captcha passed!",
+        errorMsg:"다시 시도해주세요.",
+        successMsg:"성공!",
 
         // This message is displayed if the user"s browser doesn"t support canvas:
         noCanvasMsg:"Your browser doesn't support <canvas> - try Chrome, FF4, Safari or IE9.",

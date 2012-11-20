@@ -41,7 +41,7 @@
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top: 4px solid #4e4e4e;
+  border-top: 4px solid #d3d3d3;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
@@ -501,7 +501,6 @@ textarea {
 }
 .input-prepend .add-on,
 .input-prepend .btn {
-  margin-left: 0;
   -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
@@ -1506,6 +1505,11 @@ input.search-query {
   -moz-border-radius: 20px;
   border-radius: 20px;
   background-color: #2094b1;
+}
+.slider:after,
+.slider-bar {
+  margin: 0 6px;
+  width: auto;
 }
 .slide-handle {
   width: 31px;
@@ -4546,13 +4550,13 @@ button.btn.btn-mini {
   border-radius: 6px;
 }
 .nav .dropdown-toggle .caret {
-  border-top-color: #4e4e4e;
-  border-bottom-color: #4e4e4e;
+  border-top-color: #d3d3d3;
+  border-bottom-color: #d3d3d3;
   vertical-align: top;
 }
 .nav .dropdown-toggle:hover .caret {
-  border-top-color: #4e4e4e;
-  border-bottom-color: #4e4e4e;
+  border-top-color: #d3d3d3;
+  border-bottom-color: #d3d3d3;
 }
 /* move down carets for tabs */
 .nav-tabs .dropdown-toggle .caret {
@@ -4563,8 +4567,8 @@ button.btn.btn-mini {
   border-bottom-color: #ffffff;
 }
 .nav-tabs .active .dropdown-toggle .caret {
-  border-top-color: #4e4e4e;
-  border-bottom-color: #4e4e4e;
+  border-top-color: #d3d3d3;
+  border-bottom-color: #d3d3d3;
 }
 .nav > .dropdown.active > a:hover {
   cursor: pointer;
@@ -6804,9 +6808,6 @@ address {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.datepicker td span:hover {
-  background: #b0b0b0;
-}
 .datepicker td span.disabled,
 .datepicker td span.disabled:hover {
   background: none;
@@ -7049,12 +7050,8 @@ address {
   user-select: none;
 }
 .widget-sign .sign canvas {
-  border: 1px solid #CCC !important;
-}
-@media (max-width: 480px) {
-  .widget-sign .sign canvas {
-    height: 100px !important;
-  }
+  border: 1px solid #CCC;
+  min-height: 200px;
 }
 /* Loading Circle */
 .widget-spinner {
@@ -7437,6 +7434,9 @@ body > .widget-spinner-icon2 {
     -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
     -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
+  }
+  *:hover {
+    display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
