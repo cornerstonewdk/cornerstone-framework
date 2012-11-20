@@ -1492,6 +1492,11 @@ input.search-query {
   border-radius: 20px;
   background-color: #2094b1;
 }
+.slider:after,
+.slider-bar {
+  margin: 0 6px;
+  width: auto;
+}
 .slide-handle {
   width: 31px;
   height: 31px;
@@ -6726,9 +6731,6 @@ address {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.datepicker td span:hover {
-  background: #b0b0b0;
-}
 .datepicker td span.disabled,
 .datepicker td span.disabled:hover {
   background: none;
@@ -6971,12 +6973,8 @@ address {
   user-select: none;
 }
 .widget-sign .sign canvas {
-  border: 1px solid #CCC !important;
-}
-@media (max-width: 480px) {
-  .widget-sign .sign canvas {
-    height: 100px !important;
-  }
+  border: 1px solid #CCC;
+  min-height: 200px;
 }
 /* Loading Circle */
 .widget-spinner {
@@ -7377,6 +7375,9 @@ body > .widget-spinner-icon2 {
   .navbar.navbar-static .nav.pull-right {
     position: relative;
     z-index: 1;
+  }
+  *:hover {
+    display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
