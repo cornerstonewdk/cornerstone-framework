@@ -27,4 +27,7 @@
 		{{/if}}
 	</tbody>
 </table>
-<a href="#add" class="btn">사용자 추가</a>
+<a href="#add" class="btn">사용자 추가 (기본)</a>
+<a href="#add" class="btn" data-transition="flip">사용자 추가 (Flip)</a>
+<a href="#add" class="btn" data-transition="slide">사용자 추가 (Slide)</a>
+<a href="#add" class="btn" data-transition="fade">사용자 추가 (Fade)</a>
