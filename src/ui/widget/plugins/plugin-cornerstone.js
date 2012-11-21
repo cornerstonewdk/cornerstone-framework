@@ -8,7 +8,7 @@
  */
 
 (function () {
-    var _has_touch = ('ontouchstart' in window);
+    var HAS_TOUCH = ('ontouchstart' in window);
 
     /*
      Alert 기능 확장 : Close할때 마크업 삭제가 아닌 display none/block 처리 추가
@@ -131,34 +131,37 @@
     /**
      * Collapse
      */
-//    var Collapse = $.fn.collapse.Constructor;
-//
-//    Collapse.prototype.show = function() {
-//        var dimension
-//            , scroll
-//            , actives
-//            , hasData
-//
-//        if (this.transitioning) return
-//
-//        dimension = this.dimension()
-//        scroll = $.camelCase(['scroll', dimension].join('-'))
-//        actives = this.$parent && this.$parent.find('> .accordion-group > .in')
-//
-//        if (actives && actives.length) {
-//            hasData = actives.data('collapse')
-//            if (hasData && hasData.transitioning) return
-//            actives.collapse('hide')
-//            hasData || actives.data('collapse', null)
-//        }
-//
-//        this.$element[dimension](0)
-//        this.transition('addClass', $.Event('show'), 'shown')
-//        $.support.transition && this.$element[dimension](this.$element[0][scroll])
-//    };
+    var Collapse = $.fn.collapse.Constructor;
 
-    // 최적화 필요
-//    $.fn.collapse.Constructor = Collapse
+    // 터치기반에 최적화된 Show 함수
+    if(HAS_TOUCH) {
+        Collapse.prototype.toggle =  function () {
+            this.$element[0].style["WebkitTransition"] = "none";
+            this[this.$element.hasClass('in') ? 'hide' : 'show']()
+        };
+
+        Collapse.prototype.transition = function (method, startEvent, completeEvent) {
+            var that = this
+                , complete = function () {
+                    if (startEvent.type == 'show') that.reset()
+                    that.transitioning = 0
+                    that.$element.trigger(completeEvent)
+                }
+
+            this.$element.trigger(startEvent)
+
+            if (startEvent.isDefaultPrevented()) return
+
+            this.transitioning = 1
+
+            this.$element[method]('in')
+// Duration
+//            $.support.transition && this.$element.hasClass('collapse') ?
+//                this.$element.one($.support.transition.end, complete) :
+                complete()
+        };
+    }
+    $.fn.collapse.Constructor = Collapse
 
 
 }).call(this);

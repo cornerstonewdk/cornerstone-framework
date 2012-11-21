@@ -6402,6 +6402,13 @@ address {
   line-height: 1;
   width: 100%;
 }
+.carousel .item {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: 0.35s ease left;
+  -moz-transition: 0.35s ease left;
+  -o-transition: 0.35s ease left;
+  transition: 0.35s ease left;
+}
 .well {
   color: #333333;
   min-height: 20px;
