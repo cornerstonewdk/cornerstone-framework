@@ -243,7 +243,7 @@
 
 	SKT.pay = function ( options ) {
 		
-		var defaults = [ 'accessToken', 'type', 'amount' ];
+		var defaults = [ 'accessToken', 'type', 'amount', 'to' ];
 
 		if( !( options.type === 'one-time' || options.type === 'recurring' ) )
 			defaults.push( 'paymentDate' );
@@ -255,7 +255,8 @@
 			access_token: options.accessToken,
 			type: options.type,
 			amount: options.amount,
-			payment_date: options.paymentDate
+			payment_date: options.paymentDate,
+			to: options.to
 		};
 
 		$.ajax( {

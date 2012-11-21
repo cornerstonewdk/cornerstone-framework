@@ -222,7 +222,7 @@ define( [ 'logging',
 
             Logging.debug( '[ 15 ] start ---------------------------' );
             users1.add( [
-                { name: '박철수', age: 25, id: 35 },
+                { name: '박철수', age: 80, id: 35 },
                 { name: '최영희', age: 30, id: 36 }
             ] );
             Logging.debug( '[ 15 ] end   ---------------------------' );
@@ -230,6 +230,7 @@ define( [ 'logging',
             
             Logging.debug( '[ 16 ] start ---------------------------' );
             var user1 = users1.get( 35 );
+            user1.set( 'gender', true );
             Logging.debug( user1.get( 'name') );
 
             var user2 = users2.getByCid( 'c0' );
@@ -240,7 +241,7 @@ define( [ 'logging',
             var user3 = users1.at( 1 );
             Logging.debug( user3.get( 'name' ) );
 
-            var users4 = users1.where( { age: 25 } );
+            var users4 = users1.where( { age: 80 } );
             Logging.debug( users1.at( 0 ).get( 'name' ) );
             Logging.debug( '[ 16 ] end   ---------------------------' );
 
@@ -391,23 +392,24 @@ define( [ 'logging',
             
 
             user.on( 'error', function( model, error ) {
-                alert( '[ 24 ] ' + error.attribute + ' 속성: ' + error.message );
+                Logging.debug( '[ 24 ] ' + error.attribute + ' 속성: ' + error.message );
             } );
-            user.set( 'name', '' );
+            //user.set( 'name', '' );
 
 
             var formView = new FormView( { el: '#add-form', model: user } );
 
             $( '#add-form' ).submit( function () {
                 var temp = formView.toModel();
-                alert( '[ 23 ] 이름 : ' + temp.get( 'name' ) + ', 나이 : ' + temp.get( 'age' ) + ', 성별 : ' + temp.get( 'gender') );
+                Logging.debug( '[ 23 ] 이름 : ' + temp.get( 'name' ) + ', 나이 : ' + temp.get( 'age' ) + ', 성별 : ' + temp.get( 'gender') );
                 return false;
             } );
 
-            var validationView = new FormView( { el: '#add-form1', model: user, validationViewClass: ValidationView } );       
+            var validationView = new FormView( { el: '#add-form1', model: user1, validationViewClass: ValidationView } );       
 
             $( '#add-form1' ).submit( function () {
                 var temp = validationView.toModel();
+                Logging.debug( '[ 23 ] 이름 : ' + temp.get( 'name' ) + ', 나이 : ' + temp.get( 'age' ) + ', 성별 : ' + temp.get( 'gender') );
                 return false;
             } );     
 

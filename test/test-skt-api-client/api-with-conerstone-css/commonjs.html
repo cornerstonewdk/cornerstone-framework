@@ -118,6 +118,12 @@
 					                    	<input id="amount" class="input-xlarge" type="text"/>
 					                    </div>
 					                </div>
+					                <div class="control-group">
+					                    <label class="control-label" for="user">과금 알림</label>
+					                    <div class="controls">
+					                    	<input id="user" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
 					                <div class="form-actions" style="background:none;">
 					                    <button type="submit" class="btn btn-primary">과금 요청</button> 
 					                    <button type="reset" class="btn">다시입력</button>
@@ -222,6 +228,7 @@
 				accessToken: client_auth_token,
 				type: $( '#payForm [data-toggle=dropdown]' ).html(),
 				amount: $( '#amount' ).val(),
+				to: $( '#user' ).val(),
 				success: function ( data ) {
 					var str = '[ 수신데이터 ]\n' +
 							  'result : ' + data.result + '\n' +
