@@ -51,7 +51,7 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 					value.el && $( value.el ).hide();
 					
 					self[ key + '_handler' ] = function() {
-					
+						
 						var handlerArg = arguments;
 					
 						self.runInactive( key );
@@ -65,14 +65,24 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 						var transition = self.findTransition( prevPageId, key );
 						
 						if ( transition ) {
-							transition.inTarget.el = value.el;
-							transition.outTarget.el = prevPage.el;
-							transition.done = function() {
-								// Transition 완료 후에 active 실행
-								self.runActive.apply( self, handlerArg );
-							};
 							
-							Transition.launcher( transition );
+							var params = {
+								transitionType: transition.type,
+								inTarget: { el: value.el },
+								outTarget: { el: prevPage.el },
+								isReverse: transition.reverse || false,
+								done: function() {
+									// Transition 완료 후에 active 실행
+									self.runActive.apply( self, handlerArg );
+								}
+							};
+			
+							if ( transition.duration ) {
+								params.inTarget.duration = transition.duration / 2;
+								params.outTarget.duration = transition.duration / 2;
+							}
+							
+							Transition.launcher( params );
 						}
 						// Transition 설정이 없으면 그냥 이전 페이지를 숨기고 새 페이지를 보여준다.
 						else {
@@ -85,37 +95,76 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 				} );
 			}
 			
+			// data-transition을 사용해서 지정된 Transition 설정을 보관한다.
+			// data-transition을 사용하면 현재 페이지는 알 수 있으나 도착 페이지는 현재 시점에서는 알 수 없다.
+			// 반대 방향의 설정이 없을 때 동일한 type의 reverse transition을 적용하기 위해 보관한다.
+			// data-transition은 click이 가능한 요소면 어디든 붙일 수 있다.
+			this.dataTransitions = {};
+			
+			$( document ).on( 'click', '[data-transition]', function( e ) {
+			
+				var transition = {
+					type: $( this ).attr( 'data-transition' )
+				};
+			
+				var dataDuration = $( this ).attr( 'data-duration' );
+				if ( dataDuration ) transition.duration = parseInt( dataDuration );
+				
+				self.dataTransitions[ self.currentPageId ] = transition;
+				e.stopPropagation();
+			} );
+			
+			$( document ).on( 'click', ':not([data-transition])', function( e ) {
+				delete self.dataTransitions[ self.currentPageId ];
+				e.stopPropagation();
+			} );
+			
 			// 여기서 extend 된 Router들의 initialize가 실행된다.
 			// 따라서 extend 된 Router들의 initialize보다 먼저 실행하려면 앞쪽에, 나중에 실행하려면 뒷쪽에 코드를 작성한다.
 			Backbone.Router.apply( this, arguments );
 		},
 		
-		// from 페이지에서 to 페이지로 이동할 때의 Transition 설정을 찾는다.
-		findTransition: function( from, to ) {
+		_findDataTransitionObject: function( from ) {
+			var transition = this.dataTransitions[ from ];
+			return _.isString( transition ) ? { type: transition } : transition;
+		},
 		
+		_findTransitionObject: function( from, to ) {
 			if ( !this.transitions ) return null;
+			var transition = this.transitions[ from + ':' + to ];
+			return _.isString( transition ) ? { type: transition } : transition;
+		},
+		
+		// from 페이지에서 to 페이지로 이동할 때의 Transition 설정을 찾는다.
+		// returns {
+		//   type: transition의 종류
+		//   duration: 생략 가능, 이동 시간 (ms)
+		//   reverse: 생략 가능, true/false
+		// }
+		findTransition: function( from, to ) {
 			
-			var result = {
-				inTarget: {},
-				outTarget: {},
-				isReverse: false
-			};
+			var transition;
+			
+			if ( transition = this._findDataTransitionObject( from ) ) {
+				transition.reverse = false;
+				return transition;
+			}
+			if ( transition = this._findDataTransitionObject( to ) ) {
+				transition.reverse = true;
+				return transition;
+			}
 			
 			// from -> to 방향의 Transition 설정이 없으면 to -> from 방향을 찾는다.
-			var transition = this.transitions[ from + ':' + to ];
-			if ( !transition ) {
-				transition = this.transitions[ to + ':' + from ];
-				result.isReverse = true;
+			if ( transition = this._findTransitionObject( from, to ) ) {
+				transition.reverse = false;
+				return transition;
 			}
-			if ( !transition ) return null;
-			
-			result.transitionType = _.isString( transition ) ? transition : transition.type;
-			if ( transition.duration ) {
-				result.inTarget.duration = transition.duration / 2;
-				result.outTarget.duration = transition.duration / 2;
+			if ( transition = this._findTransitionObject( to, from ) ) {
+				transition.reverse = true;
+				return transition;
 			}
 			
-			return result;
+			return null;
 		},
 		
 		// 현재 페이지의 render callback을 실행한다.
