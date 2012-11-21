@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.*;
+import net.sf.json.JSONObject;
+import net.sf.json.JSONSerializer;
 
 public class Repl {
 
@@ -16,15 +18,17 @@ public class Repl {
     s += "<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          \n";
     s += "<style>                                                                                                           \n";
     s += ".CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    \n";
-    s += "iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    \n";
+    s += "iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } \n";
     s += "</style>                                                                                                          \n";
     s += "<% end %>                                                                                                         \n";
     s += "<%- codeMirrorRequiredBlock '1' %>                                                                                \n";
     s += "                                                                                                                  \n";
+    s += "                                                                                                                  \n";
+    s += "                                                                                                                  \n";
     s += "<% codeMirrorBlock = (obj) => %>                                                                                  \n";
     s += "<p>                                                                                                               \n";
     s += "<div class='highlight'>                                                                                           \n";
-    s += "<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  \n";
+    s += "<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        \n";
     //s += "<p style='margin-bottom:0px;color=white'>-</p>                                                                    \n";
     s += "<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              \n";
     s += "<!doctype html>                                                                                                   \n";
@@ -39,6 +43,7 @@ public class Repl {
     s += "    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              \n";
     s += "    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               \n";
     s += "    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  \n";
+    s += "    <link rel='stylesheet' href='./etc.css' />                                                                    \n";
     s += "    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        \n";
     s += "    <script src='./dist/ui/widget-chart.js'></script>                                                             \n";
     s += "    <script src='./dist/ui/widget-datatable.js'></script>                                                         \n";
@@ -48,7 +53,11 @@ public class Repl {
     s += "    <script src='./dist/ui/widget-plugins.js'></script>                                                           \n";
     s += "    <script src='./dist/ui/widget-scrollview.js'></script>                                                        \n";
     s += "  </head>                                                                                                         \n";
+    s += "<% if obj.if_nopad: %>                                                                                            \n";
     s += "  <body>                                                                                                          \n";
+    s += "<% else: %>                                                                                                       \n";
+    s += "  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   \n";
+    s += "<% end %>                                                                                                         \n";
     s += "    <%- obj.func '1' %>                                                                                           \n";
     s += "  </body>                                                                                                         \n";
     s += "</html>                                                                                                           \n";
@@ -62,7 +71,7 @@ public class Repl {
     s += "    tabMode: 'indent',                                                                                            \n";
     s += "    onChange: function() {                                                                                        \n";
     s += "      clearTimeout(delay_<%= obj.funcname %>);                                                                    \n";
-    s += "      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             \n";
+    //s += "      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             \n";
     s += "    }                                                                                                             \n";
     s += "  });                                                                                                             \n";
     s += "  function updatePreview_<%= obj.funcname %>() {                                                                  \n";
@@ -90,7 +99,8 @@ public class Repl {
           // 마크다운 파일임을 표시하지 않은 경우 변환하지 않는다.
           return;
       } else {
-          System.err.println( "- Markdown File ! ( "+mdfile.getName()+" )" );
+          //System.err.println( " - Markdown File ! ( "+mdfile.getName()+" )" );
+          System.err.println( ": Markdown File Found ! " );
       }
 
       try {
@@ -110,6 +120,7 @@ public class Repl {
 
               // 헤더 부분 첫 줄 처리
               if ( s.trim().startsWith("<!--") ) {
+                  System.err.println( ": Header Found ! " );
                   out.write("---");
                   out.newLine();
                   // 헤더 나머지 부분 처리
@@ -144,8 +155,14 @@ public class Repl {
                           out.write(tmp);
                           out.newLine();
                       } else if ( s.trim().startsWith("order:") ) {  // 메타정보 order 처리
-                          s.replace("‘","'");
-                          out.write(s);
+                          //s.replace("‘","'");
+                          out.write( s.replace("‘","'") );
+                          out.newLine();
+                      } else if ( s.trim().startsWith("outline:") ) {  // 메타정보 outline 처리
+                          out.write( s.replace("<","&lt;").replace(">","&gt;") );
+                          out.newLine();
+                      } else if ( s.trim().startsWith("title:") ) {  // 메타정보 title 처리
+                          out.write( s.replace("<","&lt;").replace(">","&gt;") );
                           out.newLine();
                       } else {
                           out.write(s);
@@ -165,9 +182,59 @@ public class Repl {
               int preview_cnt=0;
               while ((s = in.readLine()) != null) {
                   if ( s.trim().startsWith("``` cm") || s.trim().startsWith("```cm") ) {  // 코드미러 블럭으로 변환해야 하는 부분 처리
+                        System.err.println( ": CodeMirror Block  Found ! " );
+
+                        // 코드미러 관련 설정 값은 JSON 형식임. value 리스트 !
+                        /*
+                            { 
+                                'iframe-height'     : '500px' ,
+                                'iframe-min-height' : '200px' , 
+                                'iframe-no-padding' : true 
+                            }
+                        */
+                        // 코드미러 관련 디폴트 설정 값
+                        String iframe_height      = "";
+                        String iframe_min_height  = "";
+                        boolean iframe_no_padding = false;
+
+                        // 코드미러 관련 설정 내용이 있는지 확인
+                        // ```cm 으로 시작되는 라인에서 첫 번째 쉼표(,) 이후 부분을 옵션으로 간주
+                        // 쉼표(,) 이후 부분이 필요하므로 s.indexOf()+1 로 한다.
+                        // 쉼표(,)가 없는 경우라면 s.indexOf()에서 -1이 리턴되지만 +1 을 하였기 때문에 cm_option에는 s가 그대로 담긴다.
+                        String cm_option = s.substring( s.indexOf(",")+1 ).trim();
+                        // 코드미러 관련 설정 부분이 맞으면 처리
+                        if( cm_option.startsWith("{") && cm_option.endsWith("}") ) {
+
+                            System.err.println( "  CodeMirror Options Found ! " );
+                            System.err.println( "  "+cm_option );
+                            JSONObject json = new JSONObject();
+                            try {
+                                json = (JSONObject) JSONSerializer.toJSON( cm_option );
+                                System.err.println( "iframe-height     : "+json.get("iframe-height") );
+                                System.err.println( "iframe-min-height : "+json.get("iframe-min-height") );
+                                System.err.println( "iframe-no-padding : "+json.get("iframe-no-padding") );
+                                if ( json.get("iframe-height") != null ) {
+                                    iframe_height =  (String)json.get("iframe-height");
+                                    System.err.println( "iframe-height     : "+iframe_height );
+                                }
+                                if ( json.get("iframe-min-height") != null ) {
+                                    iframe_min_height = (String) json.get("iframe-min-height");
+                                    System.err.println( "iframe-min-height : "+iframe_min_height );
+                                }
+                                if ( json.get("iframe-no-padding") != null ) {
+                                    iframe_no_padding = (boolean) json.get("iframe-no-padding");
+                                    System.err.println( "iframe-no-padding : "+iframe_no_padding );
+                                }
+                                    
+                            } catch (Exception e) {
+                                System.err.println(e);
+                            }
+                        }
 
                         if (preview_cnt==0) {
                           s = getCodemirrorBlock();
+                          //s = s.replaceFirst("CM_IFRAME_HEIGHT",iframe_height);
+                          //s = s.replaceFirst("CM_IFRAME_MIN_HEIGHT",iframe_min_height);
                           out.write(s);
                           out.newLine();
                         }
@@ -177,11 +244,25 @@ public class Repl {
                         s = "<% "+funcName+" = (contents) => %>";
                         out.write(s);
                         out.newLine();
-                        while ((s = in.readLine()) != null) {
 
+                        // 코드미러 블럭 나머지 부분 처리
+                        while ((s = in.readLine()) != null) {
                             if (s.trim().length() >= 3) {
                                 if ( s.trim().substring(0,3).equals("```")) {
-                                    s = "<% end %><%- codeMirrorBlock {func : "+funcName+" , funcname : '"+funcName+"'} %>";
+                                    s =  "<% end %><%- codeMirrorBlock {";
+                                    s += "func : "      + funcName          + "  , ";
+                                    s += "funcname : '" + funcName          + "' , ";
+                                    if ( iframe_height.equals("") )
+                                        s += "ifs_h : '' , ";
+                                    else
+                                        s += "ifs_h : 'height: " + iframe_height + ";' , ";
+                                    if ( iframe_min_height.equals("") )
+                                        s += "ifs_minh : '' , ";
+                                    else
+                                        s += "ifs_minh : 'min-height: " + iframe_min_height + ";' , ";
+                                    s += "if_nopad : "  + iframe_no_padding + "  , ";
+                                    s += "no : 'no' ";
+                                    s += "} %>";
                                     out.write(s);
                                     out.newLine();
                                     break;
@@ -220,7 +301,8 @@ public class Repl {
         mds = md_directory.listFiles();
 
         for (int i=0; i<mds.length; i++) {
-            System.err.println( "i="+i+" : FileName = "+mds[i].getAbsolutePath() );
+            //System.err.println( "i="+i+" : FileName = "+mds[i].getAbsolutePath() );
+            System.err.println( "i="+i+" : "+mds[i].getPath() );
             convertMD2eco(mds[i]);
         }
 
