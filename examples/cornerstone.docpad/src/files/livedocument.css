@@ -204,4 +204,8 @@ a.third-depth {
   .subhead p {
     text-align: center;
   }
+
+  iframe {
+    min-height: 300px;
+  }
 }

@@ -21,11 +21,11 @@ thumbnail: '4.2.07.thumbnail.png'
 
 __간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
 
-썸네일은 `ul` 태그와 여러 `li` 태그로 이뤄져 있다. 그리드 시스템의  `.span2`, `.span3` 과 같은 크기를 썸네일에서도 사용 할 수 있다.
+썸네일은 `<ul>` 태그와 여러 `<li>` 태그로 이뤄져 있다. 그리드 시스템의  `.span2`, `.span3` 과 같은 크기를 썸네일에서도 사용 할 수 있다.
 
 ### 마크업
 
-썸네일을 꾸미기 위해 요구되는 마크업은 복잡하지 않고 가볍다. 
+썸네일을 꾸미기 위해 요구되는 마크업은 복잡하지 않고 가볍다. 또한 `<a>` 태그 대신 `<div>` 태그를 사용하므로 이미지뿐만 아니라 다양한 요소를 넣을 수 있다.
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -37,15 +37,17 @@ __간단하고 유연한 마크업 / 그리드 컬럼 크기 사용__
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -69,7 +71,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -83,7 +89,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -100,6 +105,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+	<h3>기본 썸네일</h3>
     <ul class="thumbnails">
         <li class="span4">
             <a href="#" class="thumbnail">
@@ -117,11 +123,9 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             </a>
         </li>
     </ul>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
 
-또한 위 마크업과 다르게 `a` 태그 대신 `div` 태그를 사용하므로 이미지뿐만 아니라 다양한 요소를 넣을 수 있다.
-<% prv_2 = (contents) => %>
-    <ul class="thumbnails">
+	<h3>다양한 요소 삽입</h3>
+	<ul class="thumbnails">
         <li class="span4">
             <div class="thumbnail">
                 <img src="http://placehold.it/300x200" alt="">
@@ -144,4 +148,4 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             </div>
         </li>
     </ul>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

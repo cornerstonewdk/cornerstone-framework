@@ -17,6 +17,29 @@ __Wells__
 
 Wells은 엘리먼트에 심플한 inset 효과를 주기 위해 사용한다.
 
+__Close__
+
+모달창이나 경고창을 사라지게 하기 위해 공통적으로 close 아이콘을 사용한다.
+
+__도움되는 클래스들(Helper classes)__
+
+__.pull-left__
+
+`.pull-left` 클래스가 선언된 엘리먼트는 `float: left;` 속성이 선언된다.
+
+
+__.pull_right__
+
+`.pull-right` 클래스가 선언된 엘리먼트는 `float: right;` 속성이 선언된다.
+
+_.clearfix__
+
+`float` 속성이 적용된 엘리먼트를 `Clear`  시킨다.
+
+__.muted__
+
+`.muted` 클래스가 선언된 엘리먼트의 텍스트 색을 `color: #999` 로 변경한다.
+
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
 <script src='mode/xml/xml.js'></script>                                                                           
@@ -27,15 +50,17 @@ Wells은 엘리먼트에 심플한 inset 효과를 주기 위해 사용한다.
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -59,7 +84,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -73,7 +102,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -90,36 +118,12 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+	<h3>Wells</h3>
     <div class="well">
 	    Hello World
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
-
-__Close__
-
-모달창이나 경고창을 사라지게 하기 위해 공통적으로 close 아이콘을 사용한다.
-
-<% prv_2 = (contents) => %>
+	<h3>Close button</h3>
 	<div style="float: left;">
     	<a class="close">&times;</a>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
-
-__도움되는 클래스들(Helper classes)__
-
-__.pull-left__
-
-`.pull-left` 클래스가 선언된 엘리먼트는 `float: left;` 속성이 선언된다.
-
-
-__.pull_right__
-
-`.pull-right` 클래스가 선언된 엘리먼트는 `float: right;` 속성이 선언된다.
-
-_.clearfix__
-
-`float` 속성이 적용된 엘리먼트를 `Clear`  시킨다.
-
-__.muted__
-
-`.muted` 클래스가 선언된 엘리먼트의 텍스트 색을 `color: #999` 로 변경한다.
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 132px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

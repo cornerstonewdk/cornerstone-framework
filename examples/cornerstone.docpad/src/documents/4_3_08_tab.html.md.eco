@@ -16,7 +16,7 @@ thumbnail: '4.3.08.tab.png'
 
 __마크업__
 
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute)를 이용하는 방식
 
 한줄의 자바스크립트 코딩 없이도 tab 또는 pill 네비게이션을 활성화 시킬 수 있다. 해당 엘리먼트에 간단히 data-toggle="tab" 또는 data-toggle="pill" 를 기술해 주면 된다.
 
@@ -30,15 +30,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -62,7 +64,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -76,7 +82,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -93,6 +98,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+    <h3>Tab</h3>
     <div class="dash-widget no-padding">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
@@ -118,13 +124,14 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             </div>
         </div>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 $("#myTab").tab("show")
 
 <% prv_2 = (contents) => %>
+    <h3>Tab</h3>
     <div class="dash-widget no-padding">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
@@ -159,7 +166,7 @@ $("#myTab").tab("show")
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 메서드
 
@@ -178,6 +185,7 @@ shown | 이 이벤트는 새로운 탭이 보여지고 난 후에 발생한다. 
 __실제 사용 예시__
 
 <% prv_3 = (contents) => %>
+    <h3>Tab</h3>
     <div class="dash-widget no-padding">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
@@ -206,14 +214,14 @@ __실제 사용 예시__
 
 	<script>
 	    window.onload = function() {
+            $(this).tab().on("show", function(e){
+               console.log("show");
+              }).on("shown", function(e){
+               console.log("shown");
+              });
             $('#myTab a').click(function (e) {
               e.preventDefault();
-              $(this).tab().on("show", function(e){
-               alert("show");
-              }).on("shown", function(e){
-               alert("shown");
-              });
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

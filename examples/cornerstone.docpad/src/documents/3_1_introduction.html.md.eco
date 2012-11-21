@@ -47,14 +47,19 @@ thumbnail: '3. Style.png'
 ###공통 명명법 	
 			
 - 버튼 : btn-
+
 - 아이콘 : icon-
 			
 - 폼 : form-
+
 - input : input-
+
 - 표 : table-
 
 - 네비게이션 : nav-	
+
 - 탭메뉴 : tab-
+
 - 검색 : search-
 
 

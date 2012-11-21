@@ -29,15 +29,17 @@ div 엘레멘트로 된 네비게이션 요소
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -61,7 +63,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -75,7 +81,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -141,7 +146,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
         </div>
         </div><!-- /navbar-inner -->
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 300px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### Navbar 기반 구조 (scaffolding)
 
@@ -299,4 +304,4 @@ Breadcrumbs는 `ul` 엘리멘트로 된 네비게이션 요소이다. 타블랫�
         <li><a href="#">Library</a> <span class="divider">/</span></li>
         <li class="active">Data</li>
     </ul>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 84px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

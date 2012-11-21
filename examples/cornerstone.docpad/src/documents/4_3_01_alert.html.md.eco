@@ -12,14 +12,14 @@ thumbnail: '4.3.01.alert.png'
 ---
 
 ## Alert
-### 사용법
+
 경고 메세지등을 화면에 보여주거나 사용자가 해당 메시지를 닫는 기능.
 
-$().alert();
+### 사용법
 
-__마크업__
+DATA-API(data-dismiss="alert"), $('#example').alert()
 
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute) 를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -31,15 +31,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -63,7 +65,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -77,7 +83,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -94,16 +99,18 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+    <h3>Alert</h3>
 	<div class="alert">
 		<!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
 		<a class="close" data-dismiss="alert" href="#">×</a>
 		<strong>data-attribute를 통한 alert 닫기</strong>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 90px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript 코드
 
 <% prv_2 = (contents) => %>
+    <h3>Alert</h3>
 	<div class="alert">
 		<!-- javascript를 이용하므로 data-dismiss 속성 제거 -->
 	    <a class="close" href="#">×</a>
@@ -119,7 +126,7 @@ javascript를 이용하는 방식
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 이벤트
 
@@ -131,6 +138,7 @@ closed | close가 완료될 때 발생하는 이벤트
 __실제 사용 예시__
 
 <% prv_3 = (contents) => %>
+    <h3>Alert</h3>
 	<div class="alert">
 		<!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
 		<a class="close" data-dismiss="alert" href="#">×</a>
@@ -140,10 +148,10 @@ __실제 사용 예시__
 	<script type="text/javascript">
 	    window.onload = function() {
             $(".alert").on("close", function(e) {
-              alert("닫기 전 이벤트");
+              console.log("닫기 전 이벤트");
             }).on("closed", function(e) {
-              alert("닫기 완료시 CSS Transition 완료 후 이벤트");
+              console.log("닫기 완료시 CSS Transition 완료 후 이벤트");
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

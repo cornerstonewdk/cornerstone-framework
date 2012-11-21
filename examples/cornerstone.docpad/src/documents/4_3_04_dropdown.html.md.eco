@@ -14,11 +14,12 @@ thumbnail: '4.3.04.dropdown.png'
 ### Dropdown
 네비게이션, 메뉴 등에서 서브 메뉴를 노출 시킬 때 사용되는 드롭다운 플러그인.
 
-$(".dropdown-toggle").dropdown()
+### 사용법
 
-__마크업__
+DATA-API(data-attribute)방식, $(".dropdown-toggle").dropdown() 자바스크립트 방식을 사용할 수 있다.
 
-data-attribute를 이용하는 방식
+
+#### DATA-API(data-attribute)를 이용하는 방식
 
 드롭다운 기능을 적용하려면 해당 엘리먼트에 data-toggle="dropdown" 을 추가하기만 하면 되며, 유효한 부트스트랩 드롭다운이 자동으로 활성화 된다.
 
@@ -34,15 +35,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -66,7 +69,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -80,7 +87,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -97,74 +103,72 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<div class="dash-widget no-padding">
-    <ul class="nav nav-pills" role="navigation">
-        <li class="dropdown">
-            <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b
-                    class="caret"></b></a>
-            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                <li role="menuitem"><a href="#">Action</a></li>
-                <li role="menuitem"><a href="#">Another action</a></li>
-                <li role="menuitem"><a href="#">Something else here</a></li>
-                <li role="menuitem" class="divider"></li>
-                <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2
-                <b class="caret"></b></a>
-            <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                <li role="menuitem"><a href="#">Action</a></li>
-                <li role="menuitem"><a href="#">Another action</a></li>
-                <li role="menuitem"><a href="#">Something else here</a></li>
-                <li role="menuitem" class="divider"></li>
-                <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+    <h3>Dropdown</h3>
+    <div class="dash-widget no-padding">
+        <ul class="nav nav-pills" role="navigation">
+            <li class="dropdown">
+                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b
+                        class="caret"></b></a>
+                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                    <li role="menuitem"><a href="#">Action</a></li>
+                    <li role="menuitem"><a href="#">Another action</a></li>
+                    <li role="menuitem"><a href="#">Something else here</a></li>
+                    <li role="menuitem" class="divider"></li>
+                    <li role="menuitem"><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2
+                    <b class="caret"></b></a>
+                <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                    <li role="menuitem"><a href="#">Action</a></li>
+                    <li role="menuitem"><a href="#">Another action</a></li>
+                    <li role="menuitem"><a href="#">Something else here</a></li>
+                    <li role="menuitem" class="divider"></li>
+                    <li role="menuitem"><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
-
-$(".dropdown-toggle").dropdown()
-
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-<div class="dash-widget no-padding">
-    <ul class="nav nav-pills" role="navigation">
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">Dropdown <b
-                    class="caret"></b></a>
-            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                <li role="menuitem"><a href="#">Action</a></li>
-                <li role="menuitem"><a href="#">Another action</a></li>
-                <li role="menuitem"><a href="#">Something else here</a></li>
-                <li role="menuitem" class="divider"></li>
-                <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">Dropdown 2
-                <b class="caret"></b></a>
-            <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                <li role="menuitem"><a href="#">Action</a></li>
-                <li role="menuitem"><a href="#">Another action</a></li>
-                <li role="menuitem"><a href="#">Something else here</a></li>
-                <li role="menuitem" class="divider"></li>
-                <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+    <h3>Dropdown</h3>
+    <div class="dash-widget no-padding">
+        <ul class="nav nav-pills" role="navigation">
+            <li class="dropdown">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">Dropdown <b
+                        class="caret"></b></a>
+                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="menuitem"><a href="#">Action</a></li>
+                    <li role="menuitem"><a href="#">Another action</a></li>
+                    <li role="menuitem"><a href="#">Something else here</a></li>
+                    <li role="menuitem" class="divider"></li>
+                    <li role="menuitem"><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">Dropdown 2
+                    <b class="caret"></b></a>
+                <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li role="menuitem"><a href="#">Action</a></li>
+                    <li role="menuitem"><a href="#">Another action</a></li>
+                    <li role="menuitem"><a href="#">Something else here</a></li>
+                    <li role="menuitem" class="divider"></li>
+                    <li role="menuitem"><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-<script type="text/javascript">
-	    window.onload = function() {
-            $(".dropdown-toggle").dropdown();
-        };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
-
+    <script type="text/javascript">
+            window.onload = function() {
+                $(".dropdown-toggle").dropdown();
+            };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 메서드
 

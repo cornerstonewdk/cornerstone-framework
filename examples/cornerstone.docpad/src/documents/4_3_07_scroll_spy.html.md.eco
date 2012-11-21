@@ -16,7 +16,7 @@ thumbnail: '4.3.07.scroll_spy.png'
 
 __마크업__
 
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute)를 이용하는 방식
 
 topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶은 엘리먼트에 data-spy="scroll" 를 추가한다. (대부분의 경우 body 엘리먼트에 추가한다).
 
@@ -30,15 +30,17 @@ topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶�
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -62,7 +64,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -76,7 +82,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -93,6 +98,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+    <h3>Scrollspy</h3>
     <div class="dash-widget no-padding">
         <div id="navbarExample" class="navbar navbar-static">
             <div class="navbar-inner">
@@ -123,13 +129,14 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             </p>
         </div>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 >Navbar 링크는 찾아갈 수 있는 id 타겟이 반드시 필요하다. 예를들어, `<a href="#home">home</a>` 는 `<div id="home"></div>` 처럼 dom 내에 어떤 엘리먼트와 일치해야한다.
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
+    <h3>Scrollspy</h3>
     <div class="dash-widget no-padding">
         <div id="navbarExample" class="navbar navbar-static">
             <div class="navbar-inner">
@@ -166,7 +173,7 @@ javascript를 이용하는 방식
             $("#navbar").scrollspy()
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명

@@ -16,19 +16,37 @@ thumbnail: '4.4.02.list_view.png'
 
 코너스톤의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다.
 
-의존성
+어떻게 무겁고 복잡한 DOM 구조를 부드럽게 동작하는지를 보여주는 그림.
 
+![<리스트뷰 최적화 원리>](<images/listview-optimization.png>)
+
+### 의존성
+
+#### 일반 방식
 ```
-	<!-- 차트를 위한 스타일시트 -->
+    <!-- 해당 피처드에 필요한 Stylesheet  -->
+    <link rel='stylesheet' href='./dist/ui/widget-listview.css' />
+
 	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>
 	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
     <script src='./dist/ui/widget-listview.js'></script>
 ```
 
+#### MVC 방식
+MVC 방식은 별도로 사용자가 일반방식 처럼 CSS를 추가하지 않고도 사용않아도 된다.
+```
+    define([
+        "backbone",
+        "widget-listview" // 차트 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
+    ], function (Backbone, ListView) {
+        // Something...
+    });
+```
+
 ### 사용법
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식(더보기 버튼 방식)
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -40,15 +58,17 @@ javascript를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -72,7 +92,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -86,7 +110,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -106,8 +129,8 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <div class="container-fluid" id="wrapper">
 	<div class="row-fluid">
 		<div class="lists">
-			<div id="listView" >
-				<ul class="lists-con" >
+			<div id="listView" class="lists-con">
+				<ul>
 					<li>
 						<div><a href="#"><strong>아바타</strong>
 							<small class="pull-right">2010.08.26</small>
@@ -283,7 +306,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             });
 
             request.done(function (json) {
-                html = "<ul class='lists-con'>";
+                html = "<ul>";
                 if (typeof json === "object" && json.items.length > 0) {
                     $(json.items).each(function (i) {
                         html += "<li>";
@@ -312,7 +335,268 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
         });
     };
 </script>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+
+#### javascript를 이용하는 방식(ScrollEnd 방식)
+
+<% prv_2 = (contents) => %>
+<div class="container-fluid" id="wrapper">
+	<div class="row-fluid">
+		<div class="lists">
+			<div id="listView" class="lists-con">
+				<ul>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>트론</strong>
+							<small class="pull-right">2010.12.29</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아바타</strong>
+							<small class="pull-right">2010.08.26</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>그린 랜턴</strong>
+							<small class="pull-right">2011.06.16</small>
+						</a></div>
+					</li>
+					<li>
+						<div><a href="#"><strong>아이언맨2</strong>
+							<small class="pull-right">2010.04.29</small>
+						</a></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        var $el = $('#listView');
+        var isLoading = false;
+        var html;
+
+        // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+        $el.featuredListView({
+            optimization: true,
+            spinner: "#endless-loader",
+            scrollEndAction: function() {
+                getItem();
+            }
+        });
+
+        // AJAX로 데이터를 가져오는 함수
+        function getItem() {
+            if (isLoading) {
+                return false;
+            }
+
+            isLoading = true;
+
+            var request = $.ajax({
+                url:"./sample-data/list-sample.json",
+                type:"GET",
+                dataType:"json"
+            });
+
+            request.done(function (json) {
+                html = "<ul>";
+                if (typeof json === "object" && json.items.length > 0) {
+                    $(json.items).each(function (i) {
+                        html += "<li>";
+                        html += "	<div>";
+                        html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+                        html += "	</div>";
+                        html += "</li>";
+                    });
+                    html += "</ul>";
+                    $el.featuredListView("addItem", html);
+                }
+                html = "";
+                isLoading = false;
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                console.log("Request failed: " + textStatus);
+                isLoading = false;
+            });
+
+        }
+    };
+</script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+
+#### MVC 프레임워크 뷰를 이용하는 방식
+
+```
+define([
+    "jquery",
+    "backbone",
+    "template!tmpl/list/indexView",
+    "widget-listview",
+    "views/list/itemView",
+    "style!css/list"
+], function ($, Backbone, Template, ListView, ItemView) {
+    return Backbone.View.extend({
+        events:"",
+        el:"div.new-page",
+        template:null,
+        headerView:null,
+        footerView:null,
+        initialize:function () {
+
+        },
+
+        render:function () {
+            var self = this;
+// 템플릿 렌더링
+            this.$el.html(Template);
+
+// 콜렉션에 데이터를 가져올 url를 설정한다.
+            var ItemList = Backbone.Collection.extend({
+                model:Backbone.Model.extend(),
+                url:"data/sample-list.json"
+            });
+
+// 차트 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 차트를 그린다.
+            this.listView = new ListView({
+                el:'#listView',
+                collection:new ItemList(),
+                itemView:ItemView, // 사용자가 정의하는 리스트의 한 Row가 되는 SubView
+                optimization:false, // 최적화 여부 설정
+                spinner:"#endless-loader", // 스피너를 보여줄 타겟 엘리먼트의 ID 작성
+                scrollEndAction: function() { // ScrollEnd인 경우 호출되는 함수를 사용자가 정의
+                    self.listView.render();
+                }
+            });
+
+            this.listView.render();
+
+            return this;
+        }
+    });
+});
+```
 
 ### 기능
 

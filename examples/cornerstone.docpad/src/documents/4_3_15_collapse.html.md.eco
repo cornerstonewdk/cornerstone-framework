@@ -10,13 +10,13 @@ tags: ['post','widget','']
 order: '[4, 3, 15]'
 thumbnail: '4.3.15.collapse.png'
 ---
+
 ## Collapse
 콜랩스는 탭의 수직형태로 타이틀을 클릭하면 컨텐츠가 접혔다 펴지는 형태의 플러그인.
 
 $(".collapse").collapse();
 
-
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute)를 이용하는 방식
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
 <script src='mode/xml/xml.js'></script>                                                                           
@@ -27,15 +27,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -59,7 +61,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -73,7 +79,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -90,6 +95,7 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+    <h3>Collapse</h3>
     <div class="dash-widget no-padding">
         <div class="accordion" id="accordion2">
             <div class="accordion-group">
@@ -130,12 +136,13 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             </div>
           </div>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 <% prv_2 = (contents) => %>
+    <h3>Collapse</h3>
     <div class="dash-widget no-padding">
-        <div id="accordion" class="accordion">
+        <div id="accordion2" class="accordion">
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle"
@@ -197,14 +204,17 @@ javascript를 이용하는 방식
     </div>
     <script type="text/javascript">
         window.onload = function() {
-            $(".collapse").collapse("hide");
+            $(".collapse").collapse();
             $(".accordion-toggle").on("click", function(e) {
-                e.preventDefault();
-                $(this).parent().parent().find(".collapse").collapse("toggle");
+                var $this = $(this);
+                var target = $this.attr('data-target') || e.preventDefault() || (href = $this.attr('href'));
+                var option = $(target).data('collapse') ? 'toggle' : $this.data();
+                $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed');
+                $(target).collapse(option);
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -233,6 +243,7 @@ hidden | collapse 엘리먼트가 사용자에게 감춰지고 나서 호출됩�
 __실제 사용 예시__
 
 <% prv_3 = (contents) => %>
+    <h3>Collapse</h3>
     <div class="dash-widget no-padding">
         <div id="accordion" class="accordion">
             <div class="accordion-group">
@@ -315,4 +326,4 @@ __실제 사용 예시__
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

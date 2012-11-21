@@ -20,7 +20,9 @@ thumbnail: '4.3.10.range_input.png'
 
 ### 사용법
 
-data-attribute 방식
+DATA-API(data-attribute), $('#example').rangeinput()
+
+#### DATA-API(data-attribute) 를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -32,15 +34,17 @@ data-attribute 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -64,7 +68,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -78,7 +86,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -95,101 +102,103 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<div id="inputRange" title="Input Range" class="widget-container">
-  <div class="page-header">
-    <h3>Input Range(Slider)</h3>
-  </div>
-  <div class="row-fluid">
-    <div class="span4">
-      <h4 class="dash-head"><i class="icon-cog"></i> 스타일을 입힌 Input Range:</h4>
+    <h3>RangeInput</h3>
+    <div title="Range Input" class="widget-container">
+      <div class="page-header">
+        <h3>Range Input(Slider)</h3>
+      </div>
+      <div class="row-fluid">
+        <div class="span4">
+          <h4 class="dash-head"><i class="icon-cog"></i> 기본 Range Input:</h4>
 
-      <div class="widget-rangeinput">
-        <label>
-          <input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="1"
-               class="widget-range btn-block"/>
-        </label>
+          <div class="widget-rangeinput">
+            <label>
+              <input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="1"
+                   class="widget-range btn-block"/>
+            </label>
+          </div>
+        </div>
+        <div class="span4">
+          <h4 class="dash-head"><i class="icon-cog"></i> 프로그레스 스타일을 입힌 Range Input:</h4>
+
+          <div class="widget-rangeinput">
+            <label>
+              <input type="range" data-plugin="rangeinput"   value="10" min="1" max="100" step="1"
+                   class="widget-range btn-block"
+                   data-range-options='{"inputShow":false,"progress":true}'/>
+            </label>
+          </div>
+        </div>
+        <div class="span4">
+          <h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Range Input:</h4>
+
+          <div class="widget-rangeinput slider-box">
+            <label>
+              <input type="range" data-plugin="rangeinput" value="10" min="0" max="1000" step="10"
+                   class="widget-range btn-block inline"
+                   data-range-options='{"inputShow":true}'/>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="span4">
-      <h4 class="dash-head"><i class="icon-cog"></i> 프로그레스 스타일을 입힌 Input Range:</h4>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-      <div class="widget-rangeinput">
-        <label>
-          <input type="range" data-plugin="rangeinput"   value="10" min="1" max="100" step="1"
-               class="widget-range btn-block"
-               data-range-options='{"inputShow":false,"progress":true}'/>
-        </label>
-      </div>
-    </div>
-    <div class="span4">
-      <h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Input Range:</h4>
+#### javascript를 이용하는 방식
 
-      <div class="widget-rangeinput slider-box">
-        <label>
-          <input type="range" data-plugin="rangeinput" value="10" min="0" max="1000" step="10"
-               class="widget-range btn-block inline"
-               data-range-options='{"inputShow":true}'/>
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
-
-
-javascript 코드
 <% prv_2 = (contents) => %>
-<div id="inputRange" title="Input Range" class="widget-container">
-  <div class="page-header">
-    <h3>Input Range(Slider)</h3>
-  </div>
-  <div class="row-fluid">
-    <div class="span4">
-      <h4 class="dash-head"><i class="icon-cog"></i> 스타일을 입힌 Input Range:</h4>
+    <h3>RangeInput</h3>
+    <div title="Range Input" class="widget-container">
+      <div class="page-header">
+        <h3>Range Input(Slider)</h3>
+      </div>
+      <div class="row-fluid">
+        <div class="span4">
+          <h4 class="dash-head"><i class="icon-cog"></i> 기본 Range Input:</h4>
 
-      <div class="widget-rangeinput">
-        <label>
-          <input id="range1" type="range" value="10" min="1" max="100" step="1"
-               class="widget-range btn-block"/>
-        </label>
+          <div class="widget-rangeinput">
+            <label>
+              <input id="range1" type="range" value="10" min="1" max="100" step="1"
+                   class="widget-range btn-block"/>
+            </label>
+          </div>
+        </div>
+        <div class="span4">
+          <h4 class="dash-head"><i class="icon-cog"></i> 프로그레스 스타일을 입힌 Range Input:</h4>
+
+          <div class="widget-rangeinput">
+            <label>
+              <input id="range2" type="range" value="10" min="0" max="100"
+                   class="widget-range btn-block"/>
+            </label>
+          </div>
+        </div>
+        <div class="span4">
+          <h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Range Input:</h4>
+
+          <div class="widget-rangeinput slider-box">
+            <label>
+              <input id="range3" type="range" value="10" min="0" max="1000" step="10"
+                   class="widget-range btn-block inline"/>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="span4">
-      <h4 class="dash-head"><i class="icon-cog"></i> 프로그레스 스타일을 입힌 Input Range:</h4>
 
-      <div class="widget-rangeinput">
-        <label>
-          <input id="range2" type="range" value="10" min="0" max="100"
-               class="widget-range btn-block"/>
-        </label>
-      </div>
-    </div>
-    <div class="span4">
-      <h4 class="dash-head"><i class="icon-cog"></i> 가변값이 표시되는 Input Range:</h4>
-
-      <div class="widget-rangeinput slider-box">
-        <label>
-          <input id="range3" type="range" value="10" min="0" max="1000" step="10"
-               class="widget-range btn-block inline"/>
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-    window.onload = function() {
-          $("#range1").rangeinput();
-          $("#range2").rangeinput({
-            "inputShow":false,
-            "progress":true
-          });
-          $("#range3").rangeinput({
-            "inputShow":true
-          });
-  };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+    <script type="text/javascript">
+        window.onload = function() {
+              $("#range1").rangeinput();
+              $("#range2").rangeinput({
+                "inputShow":false,
+                "progress":true
+              });
+              $("#range3").rangeinput({
+                "inputShow":true
+              });
+      };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 

@@ -33,9 +33,8 @@ thumbnail: '4.4.03.media.png'
 
 DATA-API(data-attribute) 또는 $('#example').featuredDataTable();
 
-__마크업__
 
-DATA-API(data-attribute) 를 이용하는 방식
+#### DATA-API(data-attribute) 를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -47,15 +46,17 @@ DATA-API(data-attribute) 를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -79,7 +80,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -93,7 +98,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -110,43 +114,45 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<!-- data-featured="media"를 정의하므로 미디어를 적용한다. -->
-<div class="featured-video">
-	<video width="400" height="300" data-featured="media" preload="none" >
-		<!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
-		<source type="video/mp4" src="./sample-data/sample-media.mp4"/>
-		<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-		<object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
-			<param name="movie" value="./dist/ui/flashmediaelement.swf"/>
-			<param name="flashvars"
-					  value="controls=true&file=./sample-data/sample-media.mp4"/>
-		</object>
-	</video>
-</div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+    <h3>Media</h3>
+    <!-- data-featured="media"를 정의하므로 미디어를 적용한다. -->
+    <div class="featured-video">
+        <video width="400" height="300" data-featured="media" preload="none" >
+            <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+            <source type="video/mp4" src="./sample-data/sample-media.mp4"/>
+            <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+            <object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+                <param name="movie" value="./dist/ui/flashmediaelement.swf"/>
+                <param name="flashvars"
+                          value="controls=true&file=./sample-data/sample-media.mp4"/>
+            </object>
+        </video>
+    </div>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredMedia(); 스크립트를 통해 미디어를 적용한다.  -->
-<div class="featured-video">
-	<video width="400" height="300" id="example" preload="none" >
-		<!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
-		<source type="video/mp4" src="./sample-data/sample-media.mp4"/>
-		<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-		<object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
-			<param name="movie" value="./dist/ui/flashmediaelement.swf"/>
-			<param name="flashvars"
-					  value="controls=true&file=./sample-data/sample-media.mp4"/>
-		</object>
-	</video>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-	    $('audio,video').featuredMedia();
-    };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+    <h3>Media</h3>
+    <!-- id값을 정의하고 해당 id값에 $('#example').featuredMedia(); 스크립트를 통해 미디어를 적용한다.  -->
+    <div class="featured-video">
+        <video width="400" height="300" id="example" preload="none" >
+            <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+            <source type="video/mp4" src="./sample-data/sample-media.mp4"/>
+            <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+            <object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+                <param name="movie" value="./dist/ui/flashmediaelement.swf"/>
+                <param name="flashvars"
+                          value="controls=true&file=./sample-data/sample-media.mp4"/>
+            </object>
+        </video>
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            $('audio,video').featuredMedia();
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 기능
 

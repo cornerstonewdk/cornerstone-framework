@@ -13,7 +13,7 @@ thumbnail: '4.4.06.data_table.png'
 
 ### Datatables
 
- 데이터테이블은 사용자에게 마크업에서 보여지는 정적인 테이블을 보다 향상되고 상호작용적인 테이블로 쉽게 만들어준다. 데이터테이블은 기본적으로 마크업을 통해 `table`태그로
+데이터테이블은 사용자에게 마크업에서 보여지는 정적인 테이블을 보다 향상되고 상호작용적인 테이블로 쉽게 만들어준다. 데이터테이블은 기본적으로 마크업을 통해 `table`태그로
 레코드를 작성한 경우 볼 수만 있지만 상호작용적인 기능을 사용할 수 있도록 아래와 같은 기능을 추가적으로 생성해준다.
 
 - 한 페이지에 보여줄 레코드 수 : 10,25,50,100개 레코드를 선택할 수 있는 기능을 제공한다.(선택한 옵션에 따라 자동적으로 그에 맞는 4번 페이지네이션 처리를 한다.)
@@ -29,22 +29,37 @@ thumbnail: '4.4.06.data_table.png'
 - 서버사이드 데이터베이스와 직접 연동해서 가져오는 방식 (동적인 데이터 연동이 가능)
 
 
-의존성
+### 의존성
+
+#### 일방 방식
 
 ```
+    <!-- 해당 피처드에 필요한 Stylesheet  -->
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />
+
 	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>
 	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
-    <script src='./dist/ui/widget-scrollview.js'></script>
+    <script src='./dist/ui/widget-datatable.js'></script>
 ```
+
+#### MVC 방식
+MVC 방식은 별도로 사용자가 일반방식 처럼 CSS를 추가하지 않고도 사용않아도 된다.
+```
+    define([
+        "backbone",
+        "widget-datatable" // 데이터테이블 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
+    ], function (Backbone, DataTableView) {
+        // Something...
+    });
+```
+
 
 ### 사용법
 
-DATA-API(data-attribute) 또는 $('#example').featuredDataTable(); 
+DATA-API(data-attribute), $('#example').featuredDataTable() 또는 MVC의 View객체로써 사용할 수 있다.
 
-__마크업__
-
-DATA-API(data-attribute) 를 이용하는 방식
+#### DATA-API(data-attribute) 를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -56,15 +71,17 @@ DATA-API(data-attribute) 를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -88,7 +105,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -102,7 +123,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -119,860 +139,120 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<!-- data-featured="datatable"를 정의하므로 데이터테이블을 적용한다. -->
-<table class="table table-striped" data-featured="datatable">
-    <!-- 머리글 정의 -->
-    <thead>
-        <tr>
-	        <th>Rendering engine</th>
-	        <th>Browser</th>
-	        <th>Platform(s)</th>
-	        <th>Engine version</th>
-	        <th>CSS grade</th>
-        </tr>
-    </thead>
-<tbody>
-<tr class="odd gradeX">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 4.0
-	</td>
-	<td>Win 95+</td>
-	<td class="center"> 4</td>
-	<td class="center">X</td>
-</tr>
-<tr class="even gradeC">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 5.0
-	</td>
-	<td>Win 95+</td>
-	<td class="center">5</td>
-	<td class="center">C</td>
-</tr>
-<tr class="odd gradeA">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 5.5
-	</td>
-	<td>Win 95+</td>
-	<td class="center">5.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="even gradeA">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 6
-	</td>
-	<td>Win 98+</td>
-	<td class="center">6</td>
-	<td class="center">A</td>
-</tr>
-<tr class="odd gradeA">
-	<td>Trident</td>
-	<td>Internet Explorer 7</td>
-	<td>Win XP SP2+</td>
-	<td class="center">7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="even gradeA">
-	<td>Trident</td>
-	<td>AOL browser (AOL desktop)</td>
-	<td>Win XP</td>
-	<td class="center">6</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 1.0</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 1.5</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 2.0</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 3.0</td>
-	<td>Win 2k+ / OSX.3+</td>
-	<td class="center">1.9</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Camino 1.0</td>
-	<td>OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Camino 1.5</td>
-	<td>OSX.3+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Netscape 7.2</td>
-	<td>Win 95+ / Mac OS 8.6-9.2</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Netscape Browser 8</td>
-	<td>Win 98SE+</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Netscape Navigator 9</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.0</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.1</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.2</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.2</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.3</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.3</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.4</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.4</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.5</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.6</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.6</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.7</td>
-	<td>Win 98+ / OSX.1+</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.8</td>
-	<td>Win 98+ / OSX.1+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Seamonkey 1.1</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Epiphany 2.20</td>
-	<td>Gnome</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 1.2</td>
-	<td>OSX.3</td>
-	<td class="center">125.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 1.3</td>
-	<td>OSX.3</td>
-	<td class="center">312.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 2.0</td>
-	<td>OSX.4+</td>
-	<td class="center">419.3</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 3.0</td>
-	<td>OSX.4+</td>
-	<td class="center">522.1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>OmniWeb 5.5</td>
-	<td>OSX.4+</td>
-	<td class="center">420</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>iPod Touch / iPhone</td>
-	<td>iPod</td>
-	<td class="center">420.1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>S60</td>
-	<td>S60</td>
-	<td class="center">413</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 7.0</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 7.5</td>
-	<td>Win 95+ / OSX.2+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 8.0</td>
-	<td>Win 95+ / OSX.2+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 8.5</td>
-	<td>Win 95+ / OSX.2+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 9.0</td>
-	<td>Win 95+ / OSX.3+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 9.2</td>
-	<td>Win 88+ / OSX.3+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 9.5</td>
-	<td>Win 88+ / OSX.3+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera for Wii</td>
-	<td>Wii</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Nokia N800</td>
-	<td>N800</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Nintendo DS browser</td>
-	<td>Nintendo DS</td>
-	<td class="center">8.5</td>
-	<td class="center">C/A<sup>1</sup></td>
-</tr>
-<tr class="gradeC">
-	<td>KHTML</td>
-	<td>Konqureror 3.1</td>
-	<td>KDE 3.1</td>
-	<td class="center">3.1</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeA">
-	<td>KHTML</td>
-	<td>Konqureror 3.3</td>
-	<td>KDE 3.3</td>
-	<td class="center">3.3</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>KHTML</td>
-	<td>Konqureror 3.5</td>
-	<td>KDE 3.5</td>
-	<td class="center">3.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeX">
-	<td>Tasman</td>
-	<td>Internet Explorer 4.5</td>
-	<td>Mac OS 8-9</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeC">
-	<td>Tasman</td>
-	<td>Internet Explorer 5.1</td>
-	<td>Mac OS 7.6-9</td>
-	<td class="center">1</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeC">
-	<td>Tasman</td>
-	<td>Internet Explorer 5.2</td>
-	<td>Mac OS 8-X</td>
-	<td class="center">1</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeA">
-	<td>Misc</td>
-	<td>NetFront 3.1</td>
-	<td>Embedded devices</td>
-	<td class="center">-</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeA">
-	<td>Misc</td>
-	<td>NetFront 3.4</td>
-	<td>Embedded devices</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeX">
-	<td>Misc</td>
-	<td>Dillo 0.8</td>
-	<td>Embedded devices</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeX">
-	<td>Misc</td>
-	<td>Links</td>
-	<td>Text only</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeX">
-	<td>Misc</td>
-	<td>Lynx</td>
-	<td>Text only</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeC">
-	<td>Misc</td>
-	<td>IE Mobile</td>
-	<td>Windows Mobile 6</td>
-	<td class="center">-</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeC">
-	<td>Misc</td>
-	<td>PSP browser</td>
-	<td>PSP</td>
-	<td class="center">-</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeU">
-	<td>Other browsers</td>
-	<td>All others</td>
-	<td>-</td>
-	<td class="center">-</td>
-	<td class="center">U</td>
-</tr>
-</tbody>
-</table>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<div class="container">
+	<h3>Data Table</h3>
+	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example"
+		   data-featured="datatable" data-datatable-bind="sample-data/datatable-sample.json">
+		<thead>
+		<tr>
+			<th width="20%">Rendering engine</th>
+			<th width="25%">Browser</th>
+			<th width="25%">Platform(s)</th>
+			<th width="15%">Engine version</th>
+			<th width="15%">CSS grade</th>
+		</tr>
+		</thead>
+		<tbody>
 
-javascript를 이용하는 방식
+		</tbody>
+	</table>
+</div>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
 <!-- id값을 정의하고 해당 id값에 $('#example').featuredDataTable(); 스크립트를 통해 데이터테이블을 적용한다.  -->
-<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example">
-<thead>
-<tr>
-	<th>Rendering engine</th>
-	<th>Browser</th>
-	<th>Platform(s)</th>
-	<th>Engine version</th>
-	<th>CSS grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd gradeX">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 4.0
-	</td>
-	<td>Win 95+</td>
-	<td class="center"> 4</td>
-	<td class="center">X</td>
-</tr>
-<tr class="even gradeC">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 5.0
-	</td>
-	<td>Win 95+</td>
-	<td class="center">5</td>
-	<td class="center">C</td>
-</tr>
-<tr class="odd gradeA">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 5.5
-	</td>
-	<td>Win 95+</td>
-	<td class="center">5.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="even gradeA">
-	<td>Trident</td>
-	<td>Internet
-		Explorer 6
-	</td>
-	<td>Win 98+</td>
-	<td class="center">6</td>
-	<td class="center">A</td>
-</tr>
-<tr class="odd gradeA">
-	<td>Trident</td>
-	<td>Internet Explorer 7</td>
-	<td>Win XP SP2+</td>
-	<td class="center">7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="even gradeA">
-	<td>Trident</td>
-	<td>AOL browser (AOL desktop)</td>
-	<td>Win XP</td>
-	<td class="center">6</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 1.0</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 1.5</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 2.0</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Firefox 3.0</td>
-	<td>Win 2k+ / OSX.3+</td>
-	<td class="center">1.9</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Camino 1.0</td>
-	<td>OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Camino 1.5</td>
-	<td>OSX.3+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Netscape 7.2</td>
-	<td>Win 95+ / Mac OS 8.6-9.2</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Netscape Browser 8</td>
-	<td>Win 98SE+</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Netscape Navigator 9</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.0</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.1</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.2</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.2</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.3</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.3</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.4</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.4</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.5</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.6</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">1.6</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.7</td>
-	<td>Win 98+ / OSX.1+</td>
-	<td class="center">1.7</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Mozilla 1.8</td>
-	<td>Win 98+ / OSX.1+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Seamonkey 1.1</td>
-	<td>Win 98+ / OSX.2+</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Gecko</td>
-	<td>Epiphany 2.20</td>
-	<td>Gnome</td>
-	<td class="center">1.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 1.2</td>
-	<td>OSX.3</td>
-	<td class="center">125.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 1.3</td>
-	<td>OSX.3</td>
-	<td class="center">312.8</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 2.0</td>
-	<td>OSX.4+</td>
-	<td class="center">419.3</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>Safari 3.0</td>
-	<td>OSX.4+</td>
-	<td class="center">522.1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>OmniWeb 5.5</td>
-	<td>OSX.4+</td>
-	<td class="center">420</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>iPod Touch / iPhone</td>
-	<td>iPod</td>
-	<td class="center">420.1</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Webkit</td>
-	<td>S60</td>
-	<td>S60</td>
-	<td class="center">413</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 7.0</td>
-	<td>Win 95+ / OSX.1+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 7.5</td>
-	<td>Win 95+ / OSX.2+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 8.0</td>
-	<td>Win 95+ / OSX.2+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 8.5</td>
-	<td>Win 95+ / OSX.2+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 9.0</td>
-	<td>Win 95+ / OSX.3+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 9.2</td>
-	<td>Win 88+ / OSX.3+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera 9.5</td>
-	<td>Win 88+ / OSX.3+</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Opera for Wii</td>
-	<td>Wii</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Nokia N800</td>
-	<td>N800</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>Presto</td>
-	<td>Nintendo DS browser</td>
-	<td>Nintendo DS</td>
-	<td class="center">8.5</td>
-	<td class="center">C/A<sup>1</sup></td>
-</tr>
-<tr class="gradeC">
-	<td>KHTML</td>
-	<td>Konqureror 3.1</td>
-	<td>KDE 3.1</td>
-	<td class="center">3.1</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeA">
-	<td>KHTML</td>
-	<td>Konqureror 3.3</td>
-	<td>KDE 3.3</td>
-	<td class="center">3.3</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeA">
-	<td>KHTML</td>
-	<td>Konqureror 3.5</td>
-	<td>KDE 3.5</td>
-	<td class="center">3.5</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeX">
-	<td>Tasman</td>
-	<td>Internet Explorer 4.5</td>
-	<td>Mac OS 8-9</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeC">
-	<td>Tasman</td>
-	<td>Internet Explorer 5.1</td>
-	<td>Mac OS 7.6-9</td>
-	<td class="center">1</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeC">
-	<td>Tasman</td>
-	<td>Internet Explorer 5.2</td>
-	<td>Mac OS 8-X</td>
-	<td class="center">1</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeA">
-	<td>Misc</td>
-	<td>NetFront 3.1</td>
-	<td>Embedded devices</td>
-	<td class="center">-</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeA">
-	<td>Misc</td>
-	<td>NetFront 3.4</td>
-	<td>Embedded devices</td>
-	<td class="center">-</td>
-	<td class="center">A</td>
-</tr>
-<tr class="gradeX">
-	<td>Misc</td>
-	<td>Dillo 0.8</td>
-	<td>Embedded devices</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeX">
-	<td>Misc</td>
-	<td>Links</td>
-	<td>Text only</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeX">
-	<td>Misc</td>
-	<td>Lynx</td>
-	<td>Text only</td>
-	<td class="center">-</td>
-	<td class="center">X</td>
-</tr>
-<tr class="gradeC">
-	<td>Misc</td>
-	<td>IE Mobile</td>
-	<td>Windows Mobile 6</td>
-	<td class="center">-</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeC">
-	<td>Misc</td>
-	<td>PSP browser</td>
-	<td>PSP</td>
-	<td class="center">-</td>
-	<td class="center">C</td>
-</tr>
-<tr class="gradeU">
-	<td>Other browsers</td>
-	<td>All others</td>
-	<td>-</td>
-	<td class="center">-</td>
-	<td class="center">U</td>
-</tr>
-</tbody>
-</table>
+<div class="container">
+	<h3>Data Table</h3>
+	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example">
+		<thead>
+		<tr>
+			<th width="20%">Rendering engine</th>
+			<th width="25%">Browser</th>
+			<th width="25%">Platform(s)</th>
+			<th width="15%">Engine version</th>
+			<th width="15%">CSS grade</th>
+		</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+		<tfoot>
+		<tr>
+			<th>Rendering engine</th>
+			<th>Browser</th>
+			<th>Platform(s)</th>
+			<th>Engine version</th>
+			<th>CSS grade</th>
+		</tr>
+		</tfoot>
+	</table>
+</div>
 <script type="text/javascript">
-    window.onload = function() {
-        $('#example').featuredDataTable();
-    };
+	window.onload = function() {
+//      데이터 소스를 배열로 받는 방식
+//		$('#example').featuredDataTable({
+//			"bProcessing": true,
+//			"aaData":[["Trident", "Internet Explorer 4.0", "Win 95+", "4", "X"],
+//				["Trident", "Internet Explorer 5.0", "Win 95+", "5", "C"],
+//				["Trident", "Internet Explorer 5.5", "Win 95+", "5.5", "A"]]
+//		});
+
+        $('#example').featuredDataTable({
+            "sAjaxSource":"sample-data/datatable-sample.json"
+        });
+	};
 </script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+
+#### MVC 프레임워크 뷰를 이용하는 방식
+
+```
+define([
+    "backbone",
+    "widget-datatable",
+    "template!tmpl/datatables/indexView",
+    "style!css/datatable"
+], function (Backbone, DataTableView, Template) {
+    return Backbone.View.extend({
+        events: {
+        },
+
+        el:"div.new-page",
+        template:null,
+
+        initialize:function () {
+
+        },
+
+        updateData:function (view, url) {
+            view.model.url = url;
+            view.render();
+        },
+
+
+        render:function () {
+            var self = this;
+// 템플릿 렌더링
+            this.$el.html(Template);
+
+// 모델 객체에 데이터를 가져올 url를 설정한다.
+            var Model = Backbone.Model.extend({
+                url:"data/sample-datatable.json"
+            });
+// 데이터테이블 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 데이터테이블 UI을 생성한다.
+            this.dataTableView = new DataTableView({
+                el:"#datatable",
+                model:new Model
+            });
+            this.dataTableView.render();
+
+            return this;
+        }
+    });
+});
+```
 
 ### 기능 
 
@@ -989,15 +269,74 @@ bScrollInfinite | boolean | false | Y축 스크롤을 통해 마지막 레코드
 bServerSide | boolean | false | 서버사이드 사용 여부 (ajax 옵션 필요)
 bSort | boolean | true | 머리글 클릭 또는 탭으로 자동 정렬 사용 여부
 
+![<데이터테이블 기능>](<images/datatables-features.png>)
 
 ### 옵션
 
 설정 | 타입 | 기본값 | 설명
-:-- | :-: | :-: | :--
+:-- | :-: | :-- | :--
 iDisplayLength | int | 10 | 한페이지당 몇 개의 레코드를 노출시킬지 지정하는 옵션 
 iDisplayStart | int | 0 | 지정된 레코드의 수에 해당하는 페이지로 초기에 보여주는 옵션 
 sAjaxDataProp | string | aaData | ajax로 가져온 데이터의 객체에서 어느 depth에 데이터를 가져올지 지정하는 옵션
 sAjaxSource | string | null | datasource를 ajax로 가져오기 위한 서버사이드 호출 URL
-sDom | string | 설명참고 | 기능에 사용되는 UI들을 어떤 DOM구조로 사용할지 지정하는 옵션 (기본값: "<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>")
+sDom | string | <'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>> | 기능에 사용되는 UI들을 어떤 DOM구조로 사용할지 지정하는 옵션. 상세설명은 옵션 표 아래 설명 참고
 sPaginationType | string | bootstrap | 페이지네이션 UI 타입을 지정하는 옵션 ('bootstrap', 'twobutton',  'fullnumbers')
 sServerMethod | string | GET | ajax로 데이터를 가져올 때 메서드 방식을  GET, POST로 지정하는 옵션
+oLanguage | object | {sLengthMenu:"_MENU_ 페이지별 레코드수", sInfo:"총 레코드 수:_TOTAL_ (시작 번호:_START_, 끝 번호:_END_)"} | 레코드 메뉴, 레코드수 및 검색의 Label 부분의 텍스트 정의 [자세히보기](http://datatables.net/usage/i18n)
+
+
+##### sDom
+
+테이블 상 하단에 노출되는 컨트롤바인 페이지에 보여질 레코드수 메뉴, 검색, 페이지 정보, 페이지네이션에 대한 마크업 구조를 데이터테이블 내부에서 정한 규칙에 따라 작성을 하면 데이터테이블에서 구조를 파싱해서 마크업 구조를 생성해준다. 
+아래는 각 옵션에 대한 설명이다.
+- 'l' - 페이지에 보여줄 레코드수 메뉴
+- 'f' - 검색 메뉴
+- 't' - 테이블
+- 'i' - 페이지 정보
+- 'p' - 페이지네이션
+- 'r' - 데이터 통신을 할때 테이블 가운데 표시되는 프로그레스
+
+사용법 문법 :
+- '<' and '>' - div 엘리먼트
+- '<"class" and '>' - class 속성이 있는 div 엘리먼트
+- '<"#id" and '>' - class 속성이 있는 div 엘리먼트
+
+예시 : 
+이 예시는 현재 기본값으로 설정된 옵션을 조금 더 가독성있게 포맷팅 한 상태이다. 
+```
+    <'row'
+	    <'span8'l>
+	    <'span4'f>
+    r
+    >
+    t
+    <'row'
+	    <'span12'i>
+	    <'span12'p>
+    >
+``` 
+위 구조는 아래 마크업형태로 변환작업을 데이터테이블에서 자동적으로 생성한다.
+```
+    <div class="row">
+	    <div class="span8">l : 페이지에 보여줄 레코드수 메뉴</div>
+	    <div class="span4">검색 메뉴</div>
+    r : bProcessing 옵션 기본이 false 이므로 노출되지 않음.
+    </div>
+    <table/> <!-- t는 기본적으로 데이터를 노출시키는 곳이므로 table 태그로 자동 생성된다. -->
+    <div class="row">
+	    <div class="span12">i : 페이지 정보</div>
+	    <div class="span12">p : 페이지네이션 </div>
+    </div>
+```
+
+
+
+
+
+iv>
+```
+
+
+
+
+

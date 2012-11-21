@@ -22,25 +22,41 @@ thumbnail: '4.3.00.plugin.png'
 1. alert : 경고 문구 등을 표현할때 사용하는 플러그인
 2. button : 버튼 토글 기능이 추가된 플러그인
 3. carousel : 이미지 슬라이더 플러그인(반응형, Swipe 기능 추가 예정)
-4. collapse : 수직형태의 탭으로 접고 펼기는 형태의 UI를 표현하는 플러그인
-5. dropdown : 메뉴 중 서브메뉴를 드롭다운 형식으로 만들어주는 플러그인
-6. modal : 모달 창을 만들어주는 플러그인
-7. popover : 텍스트에 마우스 오버시 4가지 방향(상하좌우)으로 관련 정보를 보여주는 플러그인
-8. scrollspy : 해당하는 컨텐츠에 위치했을때 해당 메뉴를 활성화시켜주는 플러그인
-9. tab : 탭을 만들어주는 플러그인
-10. tooltip : 팝오버와 비슷한 기능이지만 간단한 텍스트만 노출시키는 플러그인
-11. typeahead : 입력창에 관련 단어 자동완성 기능 플러그인
-12. sign : 터치기반의 싸인 플러그인
+4. dropdown : 메뉴 중 서브메뉴를 드롭다운 형식으로 만들어주는 플러그인
+5. modal : 모달 창을 만들어주는 플러그인
+6. popover : 텍스트에 마우스 오버시 4가지 방향(상하좌우)으로 관련 정보를 보여주는 플러그인
+7. scrollspy : 해당하는 컨텐츠에 위치했을때 해당 메뉴를 활성화시켜주는 플러그인
+8. tab : 탭을 만들어주는 플러그인
+9. tooltip : 팝오버와 비슷한 기능이지만 간단한 텍스트만 노출시키는 플러그인
+10. rangeinput : 폼에 범위 입력(슬라이더)을 만들어주는 플러그인 (터치무브 및 마우스 드래그가능)
+11. sign : 터치기반의 싸인 플러그인
+12. spinner : 페이지나 이미지 또는 특정 영역에 컨텐츠에 로딩을 표현하는 플러그인
 13. motioncapcha : 입력폼(회원가입, 로그인)에서 터치 모션으로 캡차 기능을 구현한 플러그인
-14. spinner : 페이지나 이미지 또는 특정 영역에 컨텐츠에 로딩을 표현하는 플러그인
-15. rangeinput : 폼에 범위 입력(슬라이더)을 만들어주는 플러그인 (터치무브 및 마우스 드래그가능)
+14. typeahead : 입력창에 관련 단어 자동완성 기능 플러그인
+15. collapse : 수직형태의 탭으로 접고 펼기는 형태의 UI를 표현하는 플러그인.
+16. datepicker : 날짜 정보를 키보드가 아닌 캘린터 UI를 통해 입력 받는 플러그인.
 
 
-의존성
+### 의존성
 
+#### 일반 방식
 ```
 	<!-- jQuery: 위젯 플러그인 사용을 위한 jquery.js  -->
     <script src='./dist/lib/jquery-1.8.1.min.js'></script>
 	<!-- Widget Collection: 위젯의 각 플러그인들이 모여있는 widget.js  -->
     <script src='./dist/ui/widget-plugins.js'></script>
+```
+
+#### MVC 방식
+MVC 방식은 별도로 사용자가 일반방식 처럼 JS/CSS를 추가하지 않고, 코너스톤 테마 CSS에 플러그인 스타일은 포함되어 있다.
+```
+    define([
+        "backbone",
+        "widget-plugins" // 플러그인 JS를 Lazy 로딩한다.
+    ], function (Backbone) {
+        render : function() {
+            this.$el.find("#example").sign();
+        }
+        // Something...
+    });
 ```

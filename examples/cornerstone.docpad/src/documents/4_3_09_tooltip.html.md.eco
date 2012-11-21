@@ -14,9 +14,7 @@ thumbnail: '4.3.09.tooltip.png'
 ## Tooltip
 링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인.
 
-__마크업__
-
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute)를 이용하는 방식
 
 성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있습니다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다.
 
@@ -30,15 +28,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -62,7 +62,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -76,7 +80,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -93,7 +96,8 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-    <div class="dash-widget no-padding tooltip-demo" data-toggle="tooltip" style="margin: 100px">
+    <h3>Tooltip</h3>
+    <div class="tooltip-demo" data-toggle="tooltip" style="margin: 100px">
         <ul class="bs-docs-tooltip-examples">
             <li><a href="#" rel="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
             <li><a href="#" rel="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a>
@@ -103,12 +107,13 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             <li><a href="#" rel="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
         </ul>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-    <div id="tooptip" class="dash-widget no-padding tooltip-demo" style="margin: 100px">
+    <h3>Tooltip</h3>
+    <div id="tooptip" class="tooltip-demo" style="margin: 100px">
         <ul class="bs-docs-tooltip-examples">
             <li><a href="#" rel="tooltip" >Tooltip on top</a></li>
             <li><a href="#" rel="tooltip" >Tooltip on right</a>
@@ -120,18 +125,21 @@ javascript를 이용하는 방식
     </div>
     <script type="text/javascript">
 	    window.onload = function() {
-            $('#tooptip').tooltip({
-                selector:"[rel=tooltip]",
-                title: "Hello World",
-                placement: "right",
-                trigger:"click"
+	        var placement = ["top", "right", "bottom", "left"];
+            $('#tooptip [rel=tooltip]').each(function(i) {
+                $(this).tooltip({
+                    selector:"",
+                    title: "Hello World",
+                    placement: placement[i],
+                    trigger:"click"
+                });
             });
             $("[rel=tooltip]").on("click", function(e){
-               e.preventDefault();
-              });
+                e.preventDefault();
+            });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명

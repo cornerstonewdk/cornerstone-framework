@@ -16,7 +16,7 @@ thumbnail: '4.3.06.pop_over.png'
 
 __마크업__
 
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute)를 이용하는 방식
 
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
@@ -29,15 +29,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -61,7 +63,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -75,7 +81,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -92,41 +97,51 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-    <div class="dash-widget no-padding">
-        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover"
-           data-content="And here's some amazing content. It's very engaging. right?"
-           data-original-title="A Title">Click to toggle popover</a>
+    <h3>Popover</h3>
+    <div>
+        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="right"
+                   data-content="And here's some amazing content. It's very engaging. right?"
+                   data-original-title="A Title">Click to toggle popover</a>
+        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="top"
+                   data-content="And here's some amazing content. It's very engaging. right?"
+                   data-original-title="A Title">Click to toggle popover</a>
+        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="left"
+                   data-content="And here's some amazing content. It's very engaging. right?"
+                   data-original-title="A Title">Click to toggle popover</a>
+        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="bottom"
+                   data-content="And here's some amazing content. It's very engaging. right?"
+                   data-original-title="A Title">Click to toggle popover</a>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-    <div id="popovers" style="margin: 100px">
-        <div class="dash-widget no-padding">
-            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
-        </div>
-        <div class="dash-widget no-padding">
-            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
-        </div>
-        <div class="dash-widget no-padding">
-            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
-        </div>
+    <h3>Popover</h3>
+    <div id="popovers" >
+        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
     </div>
     <script type="text/javascript">
 	    window.onload = function() {
-            $("#popovers").popover({
-                placement: "bottom",
-                selector:"[rel=popover]",
-                title: "Hello World Title",
-                content: "Hello World Content"
+            var placement = ["right", "top", "left", "bottom"];
+            $('#popovers [rel=popover]').each(function(i) {
+                $(this).popover({
+                    title: "Hello World",
+                    content:"Description",
+                    placement: placement[i],
+                    trigger:"click"
+                });
             });
+
             $("[rel=popover]").on("click", function(e){
-               e.preventDefault();
-              });
+                e.preventDefault();
+            });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명

@@ -12,13 +12,47 @@ thumbnail: '4.3.03.carousel.png'
 ---
 
 ## Carousel
-캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다.
+캐로셀은 슬라이더 효과로 이미지를 한개씩 보여주는 플러그인이다. 터치기반 환경에서는 Swipe 기능을 통해 이미지를 좌, 우로 이동이 가능하다.
 
-$().carousel();
+### 사용법
+캐로셀은 기본적으로 $('#example').carousel() 자바스크립트 형태로 선언해서 사용해야되며,
+캐로셀에서 DATA-API(data-slide="swipe", data-slide="prev", data-slide="next" )은 이미지를 이동하는 기능을 활성화 시키기 위해 사용된다.
+이미지 이동 기능 또한 자바스크립트 형태로 사용하고 싶은 경우엔 아래와 같은 형태로 사용하면 된다.
+```
+    // 캐로셀 플러그인 적용
+    var = $(".carousel").carousel({
+        interval: 3000
+    // 스와이프 이벤트를 이용해서 이미지 이동.
+    }).swipe().on("swipeRight", function(e) { // 모바일에서 swipe를 이용
+        $(".carousel").carousel("prev");
+    }).on("swipeLeft", function(e) {
+        $(".carousel").carousel("next");
+    });
 
-data-attribute를 이용하는 방식
+    // 좌우 화살표 버튼을 눌러서 이미지 이동
+    $carousel.find(".carousel-control.left").on("click", function() {
+        $(".carousel").carousel("prev");
+    });
+    $carousel.find(".carousel-control.right").on("click", function() {
+        $(".carousel").carousel("next");
+    });
+```
 
-`좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정`
+#### 애니메이션 설정 방법
+캐로셀의 애니메이션은 CSS를 통해 사용된다. 기본적으로 코너스톤에 정의된 애니메이션 설정은 아래와 같다
+```
+    .carousel {
+        -webkit-transform: translate3d(0, 0, 0); /* 모바일등 환경에서 성능 향상을 위해 CSS 하드웨어 가속을 활성화시킨다.  */
+        -webkit-transition: 0.35s ease left;
+        -moz-transition: 0.35s ease left;
+        -o-transition: 0.35s ease left;
+        transition: 0.35s ease left; /* transition 속성의 값은 시간, 이징(easing), 방향으로 이뤄져 있다. */
+    }
+```
+위 코드를 오버라이드 또는 새로은 클래스를 사용자가 정의해서 시간과 이징(easing) 효과를 커스텀하게 만들어서 사용할 수 있다.
+
+
+#### DATA-API(data-attribute)를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -30,15 +64,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -62,7 +98,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -76,7 +116,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -93,7 +132,8 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-    <div class="dash-widget no-padding widget-carousel">
+    <h3>Carousel</h3>
+    <div class="widget-carousel">
         <div id="slider" class="carousel slide" data-slide="swipe">
             <!-- Carousel items -->
             <div class="carousel-inner">
@@ -138,12 +178,13 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-    <div class="dash-widget no-padding widget-carousel">
+    <h3>Carousel</h3>
+    <div class="widget-carousel">
         <div id="slider" class="carousel slide">
             <!-- Carousel items -->
             <div class="carousel-inner">
@@ -177,23 +218,32 @@ javascript를 이용하는 방식
                 </div>
             </div>
             <!-- Carousel nav -->
-            <a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+            <a class="carousel-control left" href="#slider">&lsaquo;</a>
+            <a class="carousel-control right" href="#slider">&rsaquo;</a>
         </div>
     </div>
 	<script type="text/javascript">
 	    window.onload = function() {
-            $(".carousel").carousel({
+            // 캐로셀 플러그인 적용
+            var = $(".carousel").carousel({
                 interval: 3000
-            }).swipe().bind("swipeRight", function(e) { // 모바일에서 swipe를 이용
+            // 스와이프 이벤트를 이용해서 이미지 이동.
+            }).swipe().on("swipeRight", function(e) { // 모바일에서 swipe를 이용
                 $(".carousel").carousel("prev");
-            }).bind("swipeLeft", function(e) {
+            }).on("swipeLeft", function(e) {
                 $(".carousel").carousel("next");
             });
 
+            // 좌우 화살표 버튼을 눌러서 이미지 이동
+            $carousel.find(".carousel-control.left").on("click", function() {
+                $(".carousel").carousel("prev");
+            });
+            $carousel.find(".carousel-control.right").on("click", function() {
+                $(".carousel").carousel("next");
+            });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -221,7 +271,8 @@ slid | 이미지 이동 완료 후 발생
 __실제 사용 예시__
 
 <% prv_3 = (contents) => %>
-    <div class="dash-widget no-padding widget-carousel">
+    <h3>Carousel</h3>
+    <div class="widget-carousel">
         <div id="slider" class="carousel slide">
             <!-- Carousel items -->
             <div class="carousel-inner">
@@ -274,4 +325,4 @@ __실제 사용 예시__
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

@@ -16,7 +16,7 @@ thumbnail: '4.4.04.editor.png'
 코너스톤에서 제공하는 에디터는 에디팅 툴바를 통해 폰트 스타일링, 목록 리스팅, 마크업 작성, 링크, 이미지, 컬러 삽입 등의 기능을 가지고 있으며 각 기능은 옵션을 통해 활성/비활성화할 수 있다.
 단. 안드로이드 계열에서는 텍스트 작성은 가능하지만 일부 기능(스타일링)이 제한적이다.
 
-의존성
+### 의존성
 
 ```
 	<!-- 차트를 위한 스타일시트 -->
@@ -27,8 +27,9 @@ thumbnail: '4.4.04.editor.png'
     <script src='./dist/ui/widget-editor.js'></script>
 ```
 
-#### 사용법
-textarea에 에디터를 적용시키는 예제
+### 사용법
+
+#### textarea에 에디터를 적용시키는 예제
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
 <script src='mode/xml/xml.js'></script>                                                                           
@@ -39,15 +40,17 @@ textarea에 에디터를 적용시키는 예제
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -71,7 +74,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -85,7 +92,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -102,24 +108,26 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<script type="text/javascript">
-    window.onload = function() {
-        $("body").prepend('<textarea id="example" rows="20" placeholder="Enter text ..." style="width:100%;">');
-        $("#example").featuredEditor();
-    };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+    <h3>Editor</h3>
+    <script type="text/javascript">
+        window.onload = function() {
+            $("body").prepend('<textarea id="example" rows="20" placeholder="Enter text ..." style="width:100%;">');
+            $("#example").featuredEditor();
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-에디터를 통해 작성된 값을 가져오는 예제
+#### 에디터를 통해 작성된 값을 가져오는 예제
 <% prv_2 = (contents) => %>
-<script type="text/javascript">
-    window.onload = function() {
-        $("body").prepend('<textarea id="example" rows="20" placeholder="Enter text ..." style="width:100%;">');
-        $("#example").featuredEditor();
-        $("#example").val(); // 에디터에 작성된 값을 가져온다.
-    };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+    <h3>Editor</h3>
+    <script type="text/javascript">
+        window.onload = function() {
+            $("body").prepend('<textarea id="example" rows="20" placeholder="Enter text ..." style="width:100%;">');
+            $("#example").featuredEditor();
+            $("#example").val(); // 에디터에 작성된 값을 가져온다.
+        };
+    </script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 #### 옵션
 

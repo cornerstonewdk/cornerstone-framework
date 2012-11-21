@@ -14,11 +14,11 @@ thumbnail: '4.3.02.button.png'
 ## Button
 버튼을 클릭했을 때 버튼의 이름등을 바꾸는 토글 기능을 부여하는 플러그인.
 
-$().button();
+### 사용법
 
-__마크업__
+DATA-API(data-toggle="buttons*", $('#example').button()
 
-data-attribute를 이용하는 방식
+#### DATA-API(data-attribute)를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -30,15 +30,17 @@ data-attribute를 이용하는 방식
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 500px; border: 1px solid black; border-left: 0px; }                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
                                                                                                                   
+                                                                                                                  
+                                                                                                                  
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight'>                                                                                           
-<iframe id=preview_<%= obj.funcname %>></iframe>                                                                  
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -62,7 +64,11 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body>                                                                                                          
+<% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
     <%- obj.func '1' %>                                                                                           
   </body>                                                                                                         
 </html>                                                                                                           
@@ -76,7 +82,6 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
-      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -93,35 +98,46 @@ iframe { width: 100%; float: left; height: 500px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
+    <h3>Button</h3>
+    <div><i class="badge">1</i>아래 단일 토글을 클릭했을때 버튼이 토글되는지 확인할 수 있다.</div>
 	<!-- data-toggle="button" 속성으로 토글 기능 부여. -->
 	<button type="button" class="btn" data-toggle="button">단일 토글</button>
-<% end %><%- codeMirrorBlock {func : prv_1 , funcname : 'prv_1'} %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-data-attribute를 이용한 버튼 그룹 checkbox 토글
+#### DATA-API(data-attribute)를 이용한 버튼 그룹 checkbox 토글
 
 <% prv_2 = (contents) => %>
-	<!-- data-toggle="buttons-checkbox" 속성으로 checkbox형태의 토글 기능 부여. -->
+    <h3>Button</h3>
+    <div><i class="badge">1</i>아래 버튼 그룹을 클릭한다.</div>
+    <div><i class="badge">2</i>멀티 토글이 정상적으로 작동하는지 확인한다.</div>
+    <!-- data-toggle="buttons-checkbox" 속성으로 checkbox형태의 토글 기능 부여. -->
 	<div class="btn-group" data-toggle="buttons-checkbox">
 		<button type="button" class="btn"><strong>B</strong></button>
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_2 , funcname : 'prv_2'} %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-data-attribute를 이용한 버튼 그룹 radio 토글
+#### DATA-API(data-attribute)를 이용한 버튼 그룹 radio 토글
 
 <% prv_3 = (contents) => %>
+    <h3>Button</h3>
+    <div><i class="badge">1</i>아래 버튼 그룹을 클릭한다.</div>
+    <div><i class="badge">2</i>단일 토글이 정상적으로 작동하는지 확인한다.</div>
 	<!-- data-toggle="buttons-radio" 속성으로 radio형태의 토글 기능 부여. -->
 	<div class="btn-group" data-toggle="buttons-radio">
-		<button type="button" class="btn"><strong>B</strong></button>
+		<button type="button" class="btn active"><strong>B</strong></button>
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_3 , funcname : 'prv_3'} %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-javascript를 이용하는 방식
+#### javascript를 이용하는 방식
 
 <% prv_4 = (contents) => %>
+    <h3>Button</h3>
+    <div><i class="badge">1</i>토글 전 버튼을 누른다.</div>
+    <div><i class="badge">2</i>토글 후 텍스트로 변경되는 것과 3초 후 초기화되는지 확인한다.</div>
 	<!--  토글 후 보여줄 텍스르를 data-loading-text 속성에 정의 -->
 	<button type="button" class="btn btn-primary" data-loading-text="토글 후">토글 전</button>
 
@@ -139,7 +155,7 @@ javascript를 이용하는 방식
             });
 		};
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_4 , funcname : 'prv_4'} %>
+<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 이름 | 설명
