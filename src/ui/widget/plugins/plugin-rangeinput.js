@@ -245,7 +245,6 @@
                 this.insertingValue = true;
                 input[0].value = val;
                 this.insertingValue = false;
-
             }
             self.$input = input;
             self.inputValue = value;
@@ -326,11 +325,20 @@
 
 
         }).on("drag",function (e, y, x) {
+                var distance = 0;
                 if (input.is(":disabled")) {
                     return false;
                 }
 
-                slide(e, vertical ? y : x);
+                distance = isNaN(this.prevX) ? x : (x > this.prevX ? x - this.prevX : this.prevX - x);
+
+                if(navigator.userAgent.match("Android") && distance < 10) {
+                    slide(e, vertical ? y : x);
+                } else {
+                    slide(e, vertical ? y : x);
+                }
+
+                this.prevX = x;
 
             }).on("dragEnd",function (e) {
                 self.$input.val(self.inputValue);
@@ -350,6 +358,7 @@
             init();
             var fix = vertical ? handle.height() / 2 : handle.width() / 2;
             slide(e, vertical ? len - origo - fix + e.pageY : e.pageX - origo - fix);
+            self.$input.val(self.inputValue);
         });
 
         if (conf.keyboard) {

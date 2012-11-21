@@ -6250,11 +6250,11 @@ address {
 .text-success {
   color: #67ab4f;
 }
-ul {
+.lists ul {
   padding: 0;
   margin: 0;
 }
-ul li {
+.lists li {
   list-style: none;
 }
 .lists .lists-con li:last-child {

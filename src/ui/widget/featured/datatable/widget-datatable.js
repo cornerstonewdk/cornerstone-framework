@@ -55,7 +55,7 @@
             "bProcessing":false,
             sPaginationType:"bootstrap",
             sDom:"<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>",
-            oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수"}
+            oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수", sInfo:"총 레코드 수:_TOTAL_ (시작 번호:_START_, 끝 번호:_END_)"}
         };
 
         options = $.extend(true, defaultOptions, options);
@@ -94,7 +94,7 @@
                         fnDraw(oSettings);
                     }
                 };
-                $(nPaging).addClass('pagination2').append(
+                $(nPaging).addClass('pagination').append(
                     '<ul>' +
                         '<li><a href="#"><span></span></a></li>' +
                         '<li><a href="#"><span></span></a></li>' +
@@ -167,6 +167,10 @@
             $(this)[pluginName]({
                 "sAjaxSource":$(this).data("datatableBind")
             });
+        });
+
+        $(".dataTables_paginate a").on("click", function(e) {
+            e.preventDefault();
         });
     });
 }));

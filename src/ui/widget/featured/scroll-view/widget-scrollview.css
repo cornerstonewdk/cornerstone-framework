@@ -1,6 +1,21 @@
-#footer .nav {
+.scroll-wrapper {
+	margin-top: 50px;
+	margin-bottom: 75px;
+}
+.scroll-header, .scroll-footer {
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+}
+.scroll-footer {
+	bottom: 0;
+}
+.scroll-footer .nav,
+.scroll-footer .nav-bot{
+	margin-bottom: 0;
 	padding: 0;
 }
+
 
 .scrollview {
 	z-index: 1;
@@ -21,12 +36,6 @@
 /* iOS에서 position: relative; */
 .lists header, .lists ul {
 	position: static;
-}
-
-#myFrame {
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 
 /**

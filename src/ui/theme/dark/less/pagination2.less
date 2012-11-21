@@ -1,5 +1,5 @@
 //
-// Pagination2 (multiple pages)
+// Pagination (multiple pages)
 // --------------------------------------------------
 
 
@@ -26,10 +26,10 @@
 
 .pagination2 a,
 .pagination2 span {
-	width: 8px;
-	height: 8px;
-	display: block;
-	.border-radius(20px);
+	width:5px;
+	height:5px;
+	display:block;
+	.border-radius(50px);
   padding: 0;
   background: @pagingNum;
   border: none;
@@ -38,9 +38,10 @@
 
 .pagination2 .active a,
 .pagination2 .active span {
-	width: 15px;
-	height: 15px;
-	margin: 0 0 0 -4px;
+	width: 12px;
+	height: 12px;
+	.border-radius(20px);
+	margin:0 0 0 -4px;
 	#gradient > .radial-paging;
 	.box-shadow(~"inset 0 0 2px rgba(255,255,255,.2), 0 3px 5px rgba(0,0,0,.3)");
 }
@@ -70,7 +71,7 @@
 	border-top: none;
 	border-bottom: 1px solid rgba(255,255,255,.15);
   background-color: @pagingNumBg;
-	.box-shadow(~"inset 0 0 5px rgba(0,0,0,.8), 0 0 1px rgba(255,255,255,.15)");
+	.box-shadow(~"inset 0 2px 3px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.15)");
 }
 
 .pagination2 li:first-child a span,
@@ -91,14 +92,14 @@
 	width: 22px;
 	height: 22px;
 	padding: 0;
-	margin: 0 auto;
+	margin: 0;
 	display: block;
-	position: relative;
+	position: realtive;
 	.border-radius(50px);
-	border:none;
-	vertical-align:middle;
-  box-shadow:none;
-	#gradient > .vertical-paging;
+	border: none;
+	vertical-align: middle;
+  box-shadow: none;
+	background-color: @white;
 }
 
 .pagination2 li:first-child a span:after, 

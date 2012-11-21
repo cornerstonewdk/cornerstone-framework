@@ -248,9 +248,71 @@ exports.payment = function(req, res, next) {
 		var type = req.param('type');
 		var payment_date = req.param('payment_date');
 		var amount = req.param('amount');
+		// [2012-11-21 신용후]
+		var to = req.param('to');
 		
-		msg = "type : " + type + ", amount : " + amount;
+		msg = "type : " + type + ", amount : " + amount + ", to : " + to;
+
+		//SMS 보내기
+		// var wsdlUrl = 'http://220.103.249.69:8080/SMSService?WSDL';	//-- test
+		var wsdlUrl = 'http://esb.sktelecom.com:80/SMSService?WSDL';	//-- live
+		var args = {
+				"CONSUMER_ID": 'cornerstone_websvr',
+	            "RPLY_PHON_NUM": '',
+	            "TITLE": amount + '원의 과금이 처리되었습니다.',
+	            "PHONE": to
+	            //,
+	            // "URL": '',
+				// "START_DT_HMS": '',
+				// "END_DT_HMS":''
+	           };
 		
+		var resultMsg = {};
+		res.writeHead(200);
+		// [2012-11-21 신용후]
+		soap.createClient(wsdlUrl, function(err, client) {
+			if (err) {
+				resultMsg.result = 'fail';
+				resultMsg.resultCode = '1';
+				resultMsg.message = 'WSDL 서버와 연결을 실패하였습니다.';
+				
+				if (typeof(req.param('callback')) != 'undefined' && req.param('callback') != null && req.param('callback').length > 0) {
+					res.end(req.param('callback') + '(' + JSON.stringify(resultMsg) + ');');	
+				} else {
+					res.end(JSON.stringify(resultMsg));
+				}
+				req.session.destroy();
+			} else {
+				client.send(args, function(err, result, raw) {
+					if(err) {
+						resultMsg.result = 'fail';
+						resultMsg.resultCode = '1';
+						resultMsg.message = err;
+						
+						if (typeof(req.param('callback')) != 'undefined' && req.param('callback') != null && req.param('callback').length > 0) {
+							res.end(req.param('callback') + '(' + JSON.stringify(resultMsg) + ');');	
+						} else {
+							res.end(JSON.stringify(resultMsg));
+						}
+						req.session.destroy();
+					} else {						
+						resultMsg.result = 'success';
+						resultMsg.resultCode = '0';
+						// [2012-11-21 신용후]
+						resultMsg.message = msg;
+						
+						if (typeof(req.param('callback')) != 'undefined' && req.param('callback') != null && req.param('callback').length > 0) {
+							res.end(req.param('callback') + '(' + JSON.stringify(resultMsg) + ');');	
+						} else {
+							res.end(JSON.stringify(resultMsg));
+						}
+						req.session.destroy();
+					}
+				});
+			}
+		});
+		
+		/* [2012-11-21 신용후]
 		var resultMsg = {};
 		resultMsg.result = 'success';
 		resultMsg.resultCode = '0';
@@ -265,7 +327,7 @@ exports.payment = function(req, res, next) {
 		}
 		
 		req.session.destroy();
-		
+		*/
 		//res.writeHead(200);
 		//res.end('{result: "success", message: "' + msg + '"}');
 	} else {
