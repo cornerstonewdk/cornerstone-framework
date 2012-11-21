@@ -7,7 +7,13 @@ define( [ 'gesture-view' ], function( GestureView ) {
 
 		initialize: function() {
 			this.$obj = this.$( 'img#image' );
-			this.currentDegree = 0;
+			
+			this.status = {
+				x: 0,
+				y: 0,
+				scale: 1,
+				rotate: 0	
+			};
 		},
 
 		events: {
@@ -20,55 +26,51 @@ define( [ 'gesture-view' ], function( GestureView ) {
 			'transformend': 'transformend'
 		},
 		
-		doubletap: function( event ) {
-			this.$obj.css( 'width', this.$obj.width() * 1.2 );
-		},
-		
 		gestureOptions: {
 			prevent_default: true
 		},
 		
-		dragstart: function( event ) {
+		doubletap: function( event ) {
+			this.applyTransform( { scale: 1.2 } );
+			this.status.scale *= 1.2;
+		},
 		
-			this.position = this.$obj.position();
-			
-			// position()으로 구한 위치는 padding(19px)을 포함하고 있으므로 제외한다.
-			this.position.left -= 19;
-			this.position.top -= 19;
+		dragstart: function( event ) {
 		},
 		
 		drag: function( event ) {
-			
-			if ( !this.position ) return;
-		
-			var newPosition = {
-				left: this.position.left + event.distanceX,
-				top: this.position.top + event.distanceY
-			};
-			
-			this.$obj.css( newPosition );
+			this.applyTransform( { x: event.distanceX, y: event.distanceY } );
+			this.lastX = event.distanceX;
+			this.lastY = event.distanceY;
 		},
 		
 		dragend: function( event ) {
-			this.position = null;
+			this.status.x += this.lastX;
+			this.status.y += this.lastY;
 		},
 		
 		transformstart: function( event ) {
-			
-			this.width = this.$obj.width();
-			this.degree = this.currentDegree;
 		},
 		
 		transform: function( event ) {
-			
-			this.$obj.css( {
-				width: Math.round( this.width * event.scale ),
-				'-webkit-transform': 'rotate(' + ( this.degree + event.rotation ) + 'deg)'
-			} );
+			this.applyTransform( { scale: event.scale, rotate: event.rotation } );
 		},
 		
 		transformend: function( event ) {
-			this.currentDegree = this.degree + event.rotation;
+			this.status.scale *= event.scale;
+			this.status.rotate += event.rotation;
+		},
+		
+		applyTransform: function( delta ) {
+		
+			var t = '';
+			t += 'translateX(' + ( this.status.x + ( delta.x || 0 ) ) + 'px) ';
+			t += 'translateY(' + ( this.status.y + ( delta.y || 0 ) ) + 'px) ';
+			t += 'translateZ(0px) ';
+			t += 'scale(' + ( this.status.scale * ( delta.scale || 1 ) ) + ') ';
+			t += 'rotate(' + ( this.status.rotate + ( delta.rotate || 0 ) ) + 'deg)';
+			
+			this.$obj.css( '-webkit-transform', t );
 		}
 	} );
 } );
