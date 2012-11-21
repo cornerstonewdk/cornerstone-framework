@@ -11,6 +11,9 @@
 
 /* Special grid styles
 -------------------------------------------------- */
+body {
+  font-family:dotum;
+}
 
 .show-grid {
   color: black;
