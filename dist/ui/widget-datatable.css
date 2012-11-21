@@ -29,6 +29,6 @@ table {
 	clear: both;
 }
 
-.dataTables_paginate a {
+.dataTables_paginate.pagination2 a {
 	font-size: 0;
 }
