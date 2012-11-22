@@ -7059,11 +7059,12 @@ address {
 }
 .widget-sign .sign canvas {
   border: 1px solid #CCC;
-  min-height: 200px;
+  min-height: 300px;
 }
 /* Loading Circle */
 .widget-spinner {
   position: relative;
+  overflow: hidden;
 }
 .widget-spinner:before {
   content: "";
@@ -7074,7 +7075,7 @@ address {
   opacity: 0.5;
   top: 0;
   left: 0;
-  z-index: 900;
+  z-index: 9000;
 }
 .widget-spinner-icon {
   background-image: url(../img/spinner.gif);
@@ -7088,7 +7089,7 @@ address {
   left: 50%;
   margin-left: -25px;
   margin-top: -25px;
-  z-index: 1000;
+  z-index: 10000;
 }
 .widget-spinner-icon2 {
   background: url(../img/spinner.png);

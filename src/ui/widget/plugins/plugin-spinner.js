@@ -72,7 +72,6 @@
         $("div.widget-spinner div.spinner-center").attr({
             "data-content":""
         });
-
     };
 
     Spinner.prototype.hide = function () {
@@ -104,7 +103,7 @@
             } else if (option) {
                 data.setState(option)
             }
-        })
+        });
     };
 
     $.fn.spinner.defaults = {
@@ -121,6 +120,6 @@
             var target = $btn.data("spinnerTarget");
             $(target).spinner(type);
         });
-    })
+    });
 }));
 

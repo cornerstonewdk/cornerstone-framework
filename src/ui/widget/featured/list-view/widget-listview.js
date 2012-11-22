@@ -93,8 +93,8 @@
 
         this.scrollHeight = navigator.userAgent.match(":*iPhone:*") && !window.navigator.standalone ? 60 : 0;
         $(window).on("scroll", function () {
-//            console.log($(window).scrollTop(), $(document).height() , $(window).height() , self.scrollHeight);
-            if ($(window).scrollTop() == $(document).height() - $(window).height() - self.scrollHeight) {
+            console.log($(window).scrollTop(), $(document).height() , $(window).height() , self.scrollHeight);
+            if ($(window).scrollTop() == ($(document).height() - $(window).height() - self.scrollHeight)) {
                 options.scrollEndAction();
                 self.$el.trigger("scrollEnd");
             }
