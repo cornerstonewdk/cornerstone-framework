@@ -32,6 +32,11 @@
 
 	var Datepicker = function(element, options) {
 		var that = this;
+        var defaults = {
+            firstDisable: true, // 최초에만 readonly
+            changeDisplay: true // 날짜선택시 hide
+        };
+
 
 		this.element = $(element);
 		this.language = options.language||this.element.data('date-language')||"en";
@@ -119,6 +124,9 @@
 		this.fillMonths();
 		this.update();
 		this.showMode();
+
+        this.options = options = $.extend({}, defaults, options);
+        !options.changeDisplay || this.element.on("changeDate", function(e) {$(that).datepicker("hide");});
 	};
 
 	Datepicker.prototype = {
@@ -141,6 +149,8 @@
 		},
 
 		hide: function(e){
+            !this.options.firstDisable || this.element.removeAttr("readonly");
+
 			this.picker.hide();
 			$(window).off('resize', this.place);
 			this.viewMode = this.startViewMode;
