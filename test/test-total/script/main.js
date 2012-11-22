@@ -384,6 +384,8 @@ define( [ 'logging',
                 },
                 rel: function ( event ) {
                     Logging.debug( '[ 20 ] release.' );
+                }, gestureOptions: {
+                    prevent_default: true
                 }
 
             } );
