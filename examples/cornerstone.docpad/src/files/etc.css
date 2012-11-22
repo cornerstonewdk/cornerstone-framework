@@ -27,8 +27,8 @@ body {
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
-  min-height: 40px;
-  line-height: 40px;
+  min-height: 38px;
+  line-height: 38px;
 }
 .show-grid:hover [class*="span"] {
   background: #ddd;
