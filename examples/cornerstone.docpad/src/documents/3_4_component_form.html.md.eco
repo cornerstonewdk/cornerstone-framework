@@ -44,7 +44,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                                   
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
-<div class='highlight'>                                                                                           
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
 <iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
@@ -87,6 +87,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -140,11 +141,14 @@ body내의 `<p>` 태그에 모두 적용된다.
 
 `.lead`를 사용하여 문장의 중요한 부분을 강조 할수도 있다.
 
-<% prv_2 = (contents) => %>
-	<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-	<p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-	<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 232px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+```
+	<p>
+		Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+	</p>
+	<p class="lead">
+		Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+	</p>
+```
 
 ### Emphasis ###
 
@@ -180,29 +184,58 @@ body내의 `<p>` 태그에 모두 적용된다.
 
 강조 유틸리티 클래스의 색상을 통해 의미를 전달한다.
 
-<% prv_3 = (contents) => %>
-	<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-	<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-	<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
-	<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
-	<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 186px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% prv_2 = (contents) => %>
+	<h3>Body copy 예제</h3>
+	<p>
+		Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+	</p>
+	<p class="lead">
+		Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+	</p>
 
-### 약어 (Emphasis) ###
+	<h3>색상을 통한 의미 전달 예제</h3>
+	<p class="muted">
+		Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.
+	</p>
+	<p class="text-warning">
+		Etiam porta sem malesuada magna mollis euismod.
+	</p>
+	<p class="text-error">
+		Donec ullamcorper nulla non metus auctor fringilla.
+	</p>
+	<p class="text-info">
+		Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.
+	</p>
+	<p class="text-success">
+		Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+	</p>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 450px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+
+## Abbreviations ##
 
 약어(abbr) 및 머리 글자에 대한 요소는 hover에 대한 확장 된 버전을 표시한다. 약어(abbr)와 제목 (title)속성은 생략된 문장이나 짧게 쓴 축약 text등에 hover 효과를 두어 문장전체를 보여 준다.
-
-<% prv_4 = (contents) => %>
-	<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-	<p>An abbreviation of the word attribute is <abbr title="initialism">attr</abbr>.</p>
-	<p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
-<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 123px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ## Addresses ##
 
 주소를 표시할때 쓴다. `<address>`를 사용한다.
 
-<% prv_5 = (contents) => %>
+## Blockquotes ##
+
+문서내 인용한 부분에 적용된다. 인용한 글의 작성자 이름등에는 `<small>`, `<cite>`를 사용하여 적용한다. 오른쪽 정렬을 할때는 `.pull-right`를 사용한다.
+
+<% prv_3 = (contents) => %>
+	<h3>Abbreviations 예제</h3>
+	<p>
+		An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.
+	</p>
+	<p>
+		An abbreviation of the word attribute is <abbr title="initialism">attr</abbr>.
+	</p>
+	<p>
+		<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.
+	</p>
+
+	<h3>Address 예제</h3>
 	<address>
 		<strong>Twitter, Inc.</strong><br>
 		795 Folsom Ave, Suite 600<br>
@@ -213,14 +246,7 @@ body내의 `<p>` 태그에 모두 적용된다.
 		<strong>Full Name</strong><br>
 		<a href="mailto:#">first.last@gmail.com</a>
 	</address>
-<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 205px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-## Blockquotes ##
-
-문서내 인용한 부분에 적용된다. 인용한 글의 작성자 이름등에는 `<small>`, `<cite>`를 사용하여 적용한다.
-오른쪽 정렬을 할때는 `.pull-right`를 사용한다.
-
-<% prv_6 = (contents) => %>
 	<h3>Blockquotes 예제</h3>
 	<blockquote>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -232,13 +258,16 @@ body내의 `<p>` 태그에 모두 적용된다.
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
 	</blockquote>
-<% end %><%- codeMirrorBlock {func : prv_6  , funcname : 'prv_6' , ifs_h : 'height: 270px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
-
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 640px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 ## Lists ##
 
 특정항목을 나열할때 사용하며 용도에 맞게 Unordered( 순서가 정해지지 않음 ), Ordered( 순서가 존재함 ), Unstyled( 서가 정해지지 않은 목록이나 추가적인 목록에 적용 ) 3가지 방식을 선택해 사용한다.
 
-<% prv_7 = (contents) => %>
+### Description ###
+
+연관된 설명이 포함 된 용어의 목록등을 표시할때 사용한다. `.dl-horizontal`를 사용하여 가로로 정렬할수 있다.
+
+<% prv_4 = (contents) => %>
 	<h3>Unordered 예제</h3>
 	<ul>
 		<li>Lorem ipsum dolor sit amet</li>
@@ -272,13 +301,7 @@ body내의 `<p>` 태그에 모두 적용된다.
 		</li>
 		<li>Nulla volutpat aliquam velit</li>
 	</ul>
-<% end %><%- codeMirrorBlock {func : prv_7  , funcname : 'prv_7' , ifs_h : 'height: 631px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
-### Description ###
-
-연관된 설명이 포함 된 용어의 목록등을 표시할때 사용한다. `.dl-horizontal`를 사용하여 가로로 정렬할수 있다.
-
-<% prv_8 = (contents) => %>
 	<h3>Description 예제</h3>
 	<dl>
 		<dt>Description lists</dt>
@@ -300,7 +323,7 @@ body내의 `<p>` 태그에 모두 적용된다.
 		<dt>Malesuada porta</dt>
 		<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
 	</dl>
-<% end %><%- codeMirrorBlock {func : prv_8  , funcname : 'prv_8' , ifs_h : 'height: 433px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 1034px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ## Code ##
 
@@ -376,7 +399,7 @@ table의 사용방법
 각 행에 색상 클래스를 사용하여 시각적인 표현 효과를 적용할 수 있다.
 `.success`(성공 또는 긍정적인 표현), `.error`(위험 또는 부정적인 표현), `.warning`(경고 또는 주의), `.info`(정보 전달 또는 기본적인 스타일)
 
-<% prv_9 = (contents) => %>
+<% prv_5 = (contents) => %>
 	<h3>기본 스타일</h3>
 	<table class="table">
 		<thead>
@@ -575,12 +598,44 @@ table의 사용방법
 		</tbody>
 	</table>
 
-<% end %><%- codeMirrorBlock {func : prv_9  , funcname : 'prv_9' , ifs_h : 'height: 1342px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 1342px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ## Lists ##
-기본 제공되는 Lists 형식보다 시각적으로 강조하여 표현하고 싶다면 이 Lists 요소를 사용하기 비란다.
+기본 제공되는 Lists 형식보다 시각적으로 강조하여 표현하고 싶다면 이 Lists 요소를 사용하기 비란다. 그룹화된 Lists를 사용하고 싶으면 `<div>` 테그에 `.group` 클래스를 추가하고 하위 목록으로 사용할 `<li>` 테그에 `.sub-group` 클래스를 추가한다.
 
-<% prv_10 = (contents) => %>
+```
+	<!-- Lists 기본 스타일 -->
+	<div class="lists">
+		<header>header</header>
+		<ul class="lists-con">
+			<li>
+				<a href="#">Profile</a>
+				<i></i>
+			</li>
+			...
+		</ul>
+	</div>
+
+	<!-- Group Lists -->
+	<div class="lists group">
+		<header>header</header>
+		<ul class="lists-con">
+			<li class="sub-group">
+				<a href="#">Profile</a>
+				<ul class="lists-con">
+					<li>
+						<a href="#">South Korea</a>
+						<i></i>
+					</li>
+					...
+				</ul>
+			</li>
+			...
+		</ul>
+	</div>
+```
+
+<% prv_6 = (contents) => %>
 	<h3>기본 Lists</h3>
 	<div class="lists">
 		<header>List1</header>
@@ -667,12 +722,24 @@ table의 사용방법
 			</li>
 		</ul>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_10  , funcname : 'prv_10' , ifs_h : 'height: 1033px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_6  , funcname : 'prv_6' , ifs_h : 'height: 1033px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ## Nav bar. mobile ##
-mobile에서만 사용하는 Navigation 요소로써 사용자에게 가시적인 편의성을 제공할때 사용한다.
+mobile에서만 사용하는 Navigation 요소로써 사용자에게 가시적인 편의성을 제공할때 사용한다. `<ul>` 테그에 `.nav nav-bot` 클래스를 사용한다.
 
-<% prv_11 = (contents) => %>
+```
+	<ul class="nav nav-bot">
+        <li>                
+            <a href="#">
+                <i class="icon-about"></i>
+                <span>about</span>
+            </a>
+        </li>
+		...
+	</ul>
+```
+
+<% prv_7 = (contents) => %>
 	<ul class="nav nav-bot">
 		<li>				
 			<a href="#">
@@ -705,4 +772,4 @@ mobile에서만 사용하는 Navigation 요소로써 사용자에게 가시적�
 			</a>
 		</li>
 	</ul>
-<% end %><%- codeMirrorBlock {func : prv_11  , funcname : 'prv_11' , ifs_h : 'height: 137px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_7  , funcname : 'prv_7' , ifs_h : 'height: 137px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

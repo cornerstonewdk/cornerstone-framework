@@ -65,7 +65,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                                   
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
-<div class='highlight'>                                                                                           
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
 <iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
@@ -108,6 +108,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -155,4 +156,4 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		<button type="button" class="close" data-dismiss="alert">×</button>
     	Info Message
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 619px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

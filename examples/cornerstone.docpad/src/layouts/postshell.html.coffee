@@ -177,10 +177,12 @@ html lang: 'ko', ->
 
             div '.span9.well', 'style':'float: left;', ->
                 # Document
+                a '#showthis', ""
                 article '.page',
                     'typeof': 'sioc:page'
                     about: h @document.url
                     -> @content
+                a 'href':'#showthis', "go to showpoint"
 
 		# Include our scripts
 		#text @getBlock('scripts').add([

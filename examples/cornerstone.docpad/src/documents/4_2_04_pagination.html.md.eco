@@ -32,6 +32,22 @@ __정렬__
 페이지네이션의 정렬은 3가지 종류가 있다. 좌측 정렬(기본), 중앙 정렬, 우측 정렬로 이뤄어 졌으며 좌측 정렬은 기본으로 적용되므로 별도의 클래스가 요구되지 않는다. 하지만
 중앙 정렬과 우측 정렬은 각각 정렬을 위해 클래스가 필요하다. 중앙 정렬의 경우  `.pagination` 클래스에 `.pagination-centered` 를 추가해야 하며 우측 정렬의 경우 `.pagination` 클래스에 `.pagination-right` 클래스를 추가해야 한다.
 
+### 페이저
+
+페이저는 매거진이나 블로그와 같은 사이트에서 많이 사용되는 형태로 페이지네이션과는 달리 이전 / 다음 버튼으로 이뤄져 있다.
+
+__기본 페이저__
+
+기본적으로 페이저는 중앙 정렬 상태이다.
+
+__링크 정렬하기__
+
+기본 페이저에서는 이전 / 다음 버튼이 같이 중앙에 정렬된 방면에 링크 정렬은 이전 / 다음의 `<li>` 태그에 클래스를 추가하므로  이전 버튼은 좌측으로, 다음 버튼은 우측으로 정렬 시킨다.
+
+__비활성 상태__
+
+페이저 링크 또한 페이저네이션처럼 비활성 클래스인 `.disabled` 클래스를 비활성하려는 버튼의 `<li>` 태그에  추가해서 사용 할 수 있다.
+
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
 <script src='mode/xml/xml.js'></script>                                                                           
@@ -51,7 +67,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                                   
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
-<div class='highlight'>                                                                                           
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
 <iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
@@ -94,6 +110,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     tabMode: 'indent',                                                                                            
     onChange: function() {                                                                                        
       clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
     }                                                                                                             
   });                                                                                                             
   function updatePreview_<%= obj.funcname %>() {                                                                  
@@ -167,7 +184,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <li><a href="#">4</a></li>
             <li><a href="#">다음</a></li>
         </ul>
-    </div>    
+    </div>
+   
 	<h3>중앙 정렬</h3>
     <div class="pagination pagination-centered">
     	<ul>
@@ -179,6 +197,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <li><a href="#">다음</a></li>
         </ul>
     </div>
+
 	<h3>우측 정렬</h3>
     <div class="pagination pagination-right">
     	<ul>
@@ -190,24 +209,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <li><a href="#">다음</a></li>
         </ul>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
-### 페이저
 
-페이저는 매거진이나 블로그와 같은 사이트에서 많이 사용되는 형태로 페이지네이션과는 달리 이전 / 다음 버튼으로 이뤄져 있다.
-
-__기본 페이저__
-
-기본적으로 페이저는 중앙 정렬 상태이다.
-
-__링크 정렬하기__
-
-기본 페이저에서는 이전 / 다음 버튼이 같이 중앙에 정렬된 방면에 링크 정렬은 이전 / 다음의 `<li>` 태그에 클래스를 추가하므로  이전 버튼은 좌측으로, 다음 버튼은 우측으로 정렬 시킨다.
-
-__비활성 상태__
-
-페이저 링크 또한 페이저네이션처럼 비활성 클래스인 `.disabled` 클래스를 비활성하려는 버튼의 `<li>` 태그에  추가해서 사용 할 수 있다.
-
-<% prv_2 = (contents) => %>
 	<h3>기본 페이저</h3>
     <ul class="pager">
         <li><a href="#">이전</a></li>
@@ -233,4 +235,4 @@ __비활성 상태__
             <a href="#">다음 &rarr;</a>
         </li>
     </ul>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 1230px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
