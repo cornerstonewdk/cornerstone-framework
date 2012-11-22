@@ -182,9 +182,6 @@
 				</ul>
 			</div>
 		</div>
-		<div id="endless-loader" class="endless-loader">
-			<span class="icon-endless-loader">Loading...</span>
-		</div>
 	</div>
 </div>
 
@@ -194,6 +191,7 @@
 </div>
 
 <script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../../../dist/ui/widget-plugins.js"></script>
 <script type="text/javascript" src="../../../dist/ui/widget-listview.js"></script>
 <script type="text/javascript">
 
@@ -203,8 +201,8 @@
 
 	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
 	$el.featuredListView({
-		spinner: "#endless-loader",
 		scrollEndAction: function() {
+			$("body").spinner("show");
 			getItem();
 		}
 	});
@@ -238,7 +236,10 @@
 			}
 			html = "";
 			pageID++;
-			isLoading = false;
+			setTimeout(function() {
+				isLoading = false;
+				$("body").spinner("hide");
+			}, 1000);
 		});
 
 		request.fail(function (jqXHR, textStatus) {

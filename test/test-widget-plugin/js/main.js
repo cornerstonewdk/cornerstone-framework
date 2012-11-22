@@ -1,5 +1,4 @@
 // 데이터픽커
-
 $('.datepicker').datepicker({
     language:"ko"
 }).on("changeDate", function(e) {

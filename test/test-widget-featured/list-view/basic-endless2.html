@@ -16,10 +16,7 @@
 	<style type="text/css">
 		body {
 			padding: 0;
-			overflow-x: hidden;
-		}
-		#header {
-			display: none;
+			overflow:hidden;
 		}
 	</style>
 </head>
@@ -189,23 +186,25 @@
 	</div>
 </div>
 
-<div style="position: fixed; right: 5px; top: 65px; z-index: 1000;">
+<div style="position: fixed; right: 5px; top: 5px; z-index: 1000;">
 	<button id="removePage" class="btn">페이지 삭제</button>
 	<button id="removeItem" class="btn">아이템 삭제</button>
 </div>
 
 <script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../../../dist/ui/widget-plugins.js"></script>
 <script type="text/javascript" src="../../../dist/ui/widget-listview.js"></script>
 <script type="text/javascript">
+
 	var $el = $('#listView');
 	var pageID = 2;
 	var isLoading = false;
 
 	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
 	$el.featuredListView({
-		optimization: false,
-		spinner: "#endless-loader",
+		optimization:false,
 		scrollEndAction: function() {
+			$("body").spinner("show");
 			getItem();
 		}
 	});
@@ -239,7 +238,10 @@
 			}
 			html = "";
 			pageID++;
-			isLoading = false;
+			setTimeout(function() {
+				isLoading = false;
+				$("body").spinner("hide");
+			}, 1000);
 		});
 
 		request.fail(function (jqXHR, textStatus) {
