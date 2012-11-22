@@ -2,16 +2,16 @@
 // Dropdown menus
 // --------------------------------------------------
 
-
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
 .dropup,
 .dropdown {
   position: relative;
 }
-.dropdown-toggle {
-  // The caret makes the toggle a bit too tall in IE7
+
+.dropdown-toggle { // The caret makes the toggle a bit too tall in IE7
   *margin-bottom: -3px;
 }
+
 .dropdown-toggle:active,
 .open .dropdown-toggle {
   outline: 0;
@@ -24,9 +24,9 @@
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top:   4px solid @white;
+  border-top: 4px solid @white;
   border-right: 4px solid transparent;
-  border-left:  4px solid transparent;
+  border-left: 4px solid transparent;
   content: "";
 }
 
@@ -35,7 +35,6 @@
   margin-top: 8px;
   margin-left: 2px;
 }
-
 
 // The dropdown menu (ul)
 // ----------------------
@@ -58,59 +57,56 @@
   .border-radius(8px);
   .box-shadow(0 5px 5px rgba(0,0,0,.5));
   -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
-
-  // Aligns the dropdown menu to right
+  -moz-background-clip: padding;
+  background-clip: padding-box; // Aligns the dropdown menu to right
   &.pull-right {
     right: 0;
     left: auto;
   }
-
-	&:before {
-    content: '';
-    display: inline-block;
-    border-left:   7px solid transparent;
-    border-right:  7px solid transparent;
-    border-bottom: 9px solid @dropdownBorder;
-    border-bottom-color: @dropdownBorder;
-    position: absolute;
-    top: -9px;
-    left: 15px;
-		z-index: 10;
-  }
-  &:after {
-    content: '';
-    display: inline-block;
-    border-left:   6px solid transparent;
-    border-right:  6px solid transparent;
-    border-bottom: 8px solid @dropdownBackground;
-    position: absolute;
-    top: -8px;
-    left: 16px;
-		z-index: 10;
-  }
-
-  // Dividers (basically an hr) within the dropdown
+// 화살표 제거
+//  &:before {
+//    content: '';
+//    display: inline-block;
+//    border-left: 7px solid transparent;
+//    border-right: 7px solid transparent;
+//    border-bottom: 9px solid @dropdownBorder;
+//    border-bottom-color: @dropdownBorder;
+//    position: absolute;
+//    top: -9px;
+//    left: 15px;
+//    z-index: 10;
+//  }
+//  &:after {
+//    content: '';
+//    display: inline-block;
+//    border-left: 6px solid transparent;
+//    border-right: 6px solid transparent;
+//    border-bottom: 8px solid @dropdownBackground;
+//    position: absolute;
+//    top: -8px;
+//    left: 16px;
+//    z-index: 10;
+//  }
+// Dividers (basically an hr) within the dropdown
   .divider {
     height: 1px;
-		font-size: 0;
-		line-height: 1px;
-		overflow: hidden;
-		padding: 0;
-		margin: 0; 
-		background-color: @dropdownDividerTop;
+    font-size: 0;
+    line-height: 1px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: @dropdownDividerTop;
     border: 0;
   }
 
 }
 
 .dropdown-menu li {
-	border-top: 1px solid rgba(0,0,0,.1);
+  border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
 .dropdown-menu li i {
-	margin: 2px 2px 0 0;
+  margin: 2px 2px 0 0;
 }
 
 .dropdown-menu li > a {
@@ -120,25 +116,25 @@
   font-weight: normal;
   line-height: @baseLineHeight;
   color: @dropdownLinkColor;
-  white-space: nowrap;	
-	border-top: 1px solid rgba(255,255,255,.07);
-	font-size: @baseFontSize - 2;
+  white-space: nowrap;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+  font-size: @baseFontSize - 2;
 }
 
 .dropdown-menu li:first-child {
-	border-top: 0;
+  border-top: 0;
 }
 
 .dropdown-menu li:first-child a {
-	border-top: 0;
-	.border-radius(5px 5px 0 0);
-	padding: 7px 20px 5px 20px;
+  border-top: 0;
+  .border-radius(5px 5px 0 0);
+  padding: 7px 20px 5px 20px;
 }
 
 .dropdown-menu li:last-child a {
-	box-shadow: none;
-	.border-radius(0 0 5px 5px);
-	padding: 5px 20px 7px 20px;
+  box-shadow: none;
+  .border-radius(0 0 5px 5px);
+  padding: 5px 20px 7px 20px;
 }
 
 // Hover state
@@ -170,6 +166,7 @@
 .dropdown-menu .disabled > a:hover {
   color: @grayLight;
 }
+
 // Nuke hover effects
 .dropdown-menu .disabled > a:hover {
   text-decoration: none;
@@ -179,9 +176,8 @@
 
 // Open state for the dropdown
 // ---------------------------
-.open {
-  // IE7's z-index only goes to the nearest positioned ancestor, which would
-  // make the menu appear below buttons that appeared later on the page
+.open { // IE7's z-index only goes to the nearest positioned ancestor, which would
+// make the menu appear below buttons that appeared later on the page
   *z-index: @zindexDropdown;
 
   & > .dropdown-menu {
@@ -201,37 +197,36 @@
 // Just add .dropup after the standard .dropdown class and you're set, bro.
 // TODO: abstract this so that the navbar fixed styles are not placed here?
 .dropup,
-.navbar-fixed-bottom .dropdown {
-  // Reverse the caret
+.navbar-fixed-bottom .dropdown { // Reverse the caret
   .caret {
     border-top: 0;
     border-bottom: 4px solid @black;
     content: "\2191";
   }
-  // Different positioning for bottom up menu
+// Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;
     bottom: 100%;
     margin-bottom: 1px;
-		&:before {
-			content: '';
-			display: inline;
-			border-left:   0;
-			border-right:  0;
-			border-bottom: 0;
-			border-bottom-color: transparent;
-			position: static;
-		}
+    &:before {
+      content: '';
+      display: inline;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+      border-bottom-color: transparent;
+      position: static;
+    }
 
-		&:after {
-			content: '';
-			display: inline;
-			border-left:   0;
-			border-right:  0;
-			border-bottom: 0;
-			border-bottom-color: transparent;
-			position: static;
-		}
+    &:after {
+      content: '';
+      display: inline;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+      border-bottom-color: transparent;
+      position: static;
+    }
   }
 }
 
@@ -240,44 +235,47 @@
 .dropdown-submenu {
   position: relative;
 }
+
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
   -webkit-border-radius: 0 6px 6px 6px;
-     -moz-border-radius: 0 6px 6px 6px;
-          border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
 }
+
 .dropdown-submenu:hover .dropdown-menu {
   display: block;
-	&:before {
-			content: '';
-			display: inline;
-			height: 1px;
-			border-left:   0;
-			border-right:  0;
-			border-bottom: 0;
-			border-bottom-color: transparent;
-			position: static;
-		}
+  &:before {
+    content: '';
+    display: inline;
+    height: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-bottom-color: transparent;
+    position: static;
+  }
 
-		&:after {
-			content: '';
-			display: inline;
-			border-left:   0;
-			border-right:  0;
-			border-bottom: 0;
-			border-bottom-color: transparent;
-			position: static;
-		}
+  &:after {
+    content: '';
+    display: inline;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-bottom-color: transparent;
+    position: static;
+  }
 }
 
 .dropdown-submenu:hover .dropdown-menu li a:hover {
-	.border-radius(0);
+  .border-radius(0);
 }
+
 .dropdown-submenu:hover .dropdown-menu li:last-child a:hover {
-	.border-radius(0 0 5px 5px);
+  .border-radius(0 0 5px 5px);
 }
 
 .dropdown-submenu > a:after {
@@ -293,10 +291,10 @@
   margin-top: 5px;
   margin-right: -10px;
 }
+
 .dropdown-submenu:hover > a:after {
   border-left-color: @dropdownLinkColorHover;
 }
-
 
 // Tweak nav headers
 // -----------------
