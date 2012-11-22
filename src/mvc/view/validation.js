@@ -11,6 +11,7 @@ define( [ 'backbone', 'jquery', 'bootstrap' ], function( Backbone, $ ) {
 			// Form과 그 하위의 :input 들에 대해서 tooltip을 설정한다.
 			this.$el.tooltip( { trigger: 'manual', animation: false } );
 			this.$( ':input' ).tooltip( { trigger: 'manual', animation: false } );
+			this.reset();
 		},
 		
 		/**
@@ -19,7 +20,7 @@ define( [ 'backbone', 'jquery', 'bootstrap' ], function( Backbone, $ ) {
 		 */
 		reset: function() {
 			this.$( '.control-group' ).removeClass( 'error' );
-			this.$( '.control-group .help-inline' ).text( '' );
+			this.$( '.control-group' ).find( '.help-inline,.help-block' ).text( '' ).hide();
 			this.$( ':input' ).tooltip( 'hide' ).removeAttr( 'data-invalid' );
 		},
 		
@@ -42,10 +43,10 @@ define( [ 'backbone', 'jquery', 'bootstrap' ], function( Backbone, $ ) {
 			var group = field.parents( '.control-group' );
 			group && group.addClass( 'error' );
 			
-			// help-inline을 찾아서 메시지를 표시한다. help-inline이 없으면 tooltip을 사용한다.
-			var help = group.find( '.help-inline' );
+			// help-inline/help-block을 찾아서 메시지를 표시한다. help-inline/help-block이 없으면 tooltip을 사용한다.
+			var help = group.find( '.help-inline,.help-block' );
 			if ( help && help.length )
-				help.text( err.message || err );
+				help.text( err.message || err ).show();
 			else {
 				field.attr( { 'data-original-title': err.message || err, 'data-invalid': true } );
 				field.tooltip( 'show' );
