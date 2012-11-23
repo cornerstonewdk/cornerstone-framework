@@ -80,27 +80,6 @@
   right: 0;
   left: auto;
 }
-.dropdown-menu:before {
-  content: '';
-  display: inline-block;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 9px solid #454545;
-  border-bottom-color: #454545;
-  position: absolute;
-  top: -9px;
-  left: 9px;
-}
-.dropdown-menu:after {
-  content: '';
-  display: inline-block;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 8px solid #202020;
-  position: absolute;
-  top: -8px;
-  left: 10px;
-}
 .dropdown-menu .divider {
   height: 1px;
   font-size: 0;
@@ -3096,7 +3075,6 @@ button.btn.btn-mini {
   -moz-border-radius: 3px;
   border-radius: 3px;
   padding: 3px 0 5px 6px;
-  text-align: center;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.5);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.5);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.5);
@@ -3205,7 +3183,6 @@ button.btn.btn-mini {
 }
 .pagination ul > li:first-child > a:active span,
 .pagination ul > li:last-child > a:active span {
-  padding: 7px 8px;
   margin: 0 auto;
   display: block;
   position: relative;
@@ -3215,7 +3192,14 @@ button.btn.btn-mini {
   border: none;
   vertical-align: middle;
   box-shadow: none;
-  background-color: #ffffff;
+  background-color: #28C2F3;
+  background-image: -moz-linear-gradient(top, #28c2f3, #0096db);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28c2f3), to(#0096db));
+  background-image: -webkit-linear-gradient(top, #28c2f3, #0096db);
+  background-image: -o-linear-gradient(top, #28c2f3, #0096db);
+  background-image: linear-gradient(to bottom, #28c2f3, #0096db);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff28c2f3', endColorstr='#ff0096db', GradientType=0);
 }
 .pagination ul > li:first-child > a span:after,
 .pagination ul > li:last-child > a span:after {
@@ -3292,7 +3276,6 @@ button.btn.btn-mini {
 .pagination2 {
   height: 44px;
   margin: 22px 0;
-  text-align: center;
 }
 .pagination2 ul {
   display: inline-block;
@@ -4225,9 +4208,6 @@ button.btn.btn-mini {
   font-weight: normal;
   line-height: 22px;
   text-transform: uppercase;
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
   background-color: rgba(0, 0, 0, 0.55);
   background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.02));
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.02)));
@@ -4240,7 +4220,16 @@ button.btn.btn-mini {
   -webkit-box-shadow: inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4);
   -moz-box-shadow: inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4);
   box-shadow: inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4);
+  padding: 10px 20px;
+}
+.nav-list > .nav-header:first-child {
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
   padding: 15px 20px;
+}
+.nav-list li + .nav-header {
+  margin-top: 0;
 }
 .nav-list > li:last-child > a,
 .nav-list > li:last-child > a:hover {
@@ -7059,11 +7048,12 @@ address {
 }
 .widget-sign .sign canvas {
   border: 1px solid #CCC;
-  min-height: 200px;
+  min-height: 300px;
 }
 /* Loading Circle */
 .widget-spinner {
   position: relative;
+  overflow: hidden;
 }
 .widget-spinner:before {
   content: "";
@@ -7074,7 +7064,7 @@ address {
   opacity: 0.5;
   top: 0;
   left: 0;
-  z-index: 900;
+  z-index: 9000;
 }
 .widget-spinner-icon {
   background-image: url(../img/spinner.gif);
@@ -7088,7 +7078,7 @@ address {
   left: 50%;
   margin-left: -25px;
   margin-top: -25px;
-  z-index: 1000;
+  z-index: 10000;
 }
 .widget-spinner-icon2 {
   background: url(../img/spinner.png);
@@ -7107,7 +7097,7 @@ address {
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-  z-index: 1000;
+  z-index: 10000;
 }
 body > .widget-spinner-icon,
 body > .widget-spinner-icon2 {

@@ -259,7 +259,7 @@ exports.payment = function(req, res, next) {
 		var args = {
 				"CONSUMER_ID": 'cornerstone_websvr',
 	            "RPLY_PHON_NUM": '',
-	            "TITLE": amount + '원의 과금이 처리되었습니다.',
+	            "TITLE": '[SKT] 과금형태 : ' + type + ', ' + amount + '원의 과금이 처리되었습니다.',
 	            "PHONE": to
 	            //,
 	            // "URL": '',

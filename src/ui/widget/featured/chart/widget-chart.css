@@ -653,6 +653,6 @@ Custom
 	display: block;
 }
 
-.dark .nvd3 text {
+.axis-label-white .nvd3 text {
 	fill: rgba(255, 255, 255, 1);
 }

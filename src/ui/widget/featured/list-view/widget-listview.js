@@ -92,9 +92,10 @@
         });
 
         this.scrollHeight = navigator.userAgent.match(":*iPhone:*") && !window.navigator.standalone ? 60 : 0;
+        var scrollTop = 0;
         $(window).on("scroll", function () {
-//            console.log($(window).scrollTop(), $(document).height() , $(window).height() , self.scrollHeight);
-            if ($(window).scrollTop() == $(document).height() - $(window).height() - self.scrollHeight) {
+            scrollTop = navigator.userAgent.match("Android") ? $(window).scrollTop() + 100 : $(window).scrollTop();
+            if (scrollTop >= ($(document).height() - $(window).height() - self.scrollHeight)) {
                 options.scrollEndAction();
                 self.$el.trigger("scrollEnd");
             }

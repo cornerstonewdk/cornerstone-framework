@@ -2,20 +2,20 @@
 // Navs
 // --------------------------------------------------
 
-
 // BASE CLASS
 // ----------
 
 .nav {
   margin-left: 0;
   margin-bottom: @baseLineHeight;
-  list-style: none;	
+  list-style: none;
 }
 
 // Make links block level
 .nav > li > a {
   display: block;
 }
+
 .nav > li > a:hover {
   text-decoration: none;
   background-color: @navLink;
@@ -34,15 +34,14 @@
   font-weight: bold;
   line-height: @baseLineHeight;
   color: @grayLight;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
   text-transform: uppercase;
 }
+
 // Space them out when they follow another list item (link)
 .nav li + .nav-header {
   margin-top: 9px;
 }
-
-
 
 // NAV LIST
 // --------
@@ -53,85 +52,91 @@
 }
 
 .nav-list > li > a {
-	margin-top: 1px;
+  margin-top: 1px;
   text-shadow: none;
-	color: @black;
-	background-color: @navListBg;
+  color: @black;
+  background-color: @navListBg;
   padding: 10px 15px;
-	border-bottom: 1px solid rgba(0,0,0,.2);
-	.box-shadow(~"0 1px 0 rgba(255,255,255,1)");
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  .box-shadow(~"0 1px 0 rgba(255,255,255,1)");
 }
 
 .nav-list > li > a:hover {
   color: @white;
-	background-color: @navListHover;
-	.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
-	border-bottom: 1px solid rgba(0,0,0,.2);
-	margin-top: 1px;
+  background-color: @navListHover;
+  .box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin-top: 1px;
 }
 
 .nav-list > li > a:active {
-	color: @white;
-	background-color: @navListHover;
-	.box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
-	border-bottom: 1px solid rgba(0,0,0,.2);
-	margin-top: 1px;
+  color: @white;
+  background-color: @navListHover;
+  .box-shadow(~"inset 0 -3px 3px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,1)");
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin-top: 1px;
 }
 
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
   color: @white;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
   background-color: @navListActive;
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,1)");
-	border-bottom: 1px solid rgba(0,0,0,.2);
-	margin-top: 1px;
+  .box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,1)");
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin-top: 1px;
 }
 
 .nav-list [class^="icon-"] {
   margin-right: 2px;
 }
+
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider {
-	height: 1px;
-	font-size: 0;
-	line-height: 0;
-	padding: 0;
-	margin: 0 -15px;
-	border-bottom: 1px solid black;
-	outline: 0px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  padding: 0;
+  margin: 0 -15px;
+  border-bottom: 1px solid black;
+  outline: 0px;
 }
 
 .nav-list > li:first-child > a {
-	.border-radius(4px 4px 0 0);
-	border-top: 0;
+  .border-radius(4px 4px 0 0);
+  border-top: 0;
 }
 
 .nav-list > .nav-header {
   display: block;
-	font-size: @baseFontSize;
-	color: @navListHeader;
-	text-shadow: 0 1px 1px rgba(0,0,0,.5);
+  font-size: @baseFontSize;
+  color: @navListHeader;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
   font-weight: normal;
   line-height: @baseLineHeight;
   text-transform: uppercase;
-	.border-radius(4px 4px 0 0);
-	#gradient > .tab-grd(rgba(0,0,0,.3), rgba(0,0,0,.02));
-	background-color: rgba(0,0,0,.4);
-	.box-shadow(~"inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4)");
-	padding: 15px 20px;	
+  #gradient > .tab-grd(rgba(0,0,0,.3), rgba(0,0,0,.02));
+  background-color: rgba(0, 0, 0, .4);
+  .box-shadow(~"inset 0 -2px 2px rgba(0,0,0,.3), inset 0 1px 2px rgba(255,255,255,.4)");
+  padding: 10px 20px;
+  &:first-child {
+    .border-radius(4px 4px 0 0);
+    padding: 15px 20px;
+  }
+}
+.nav-list li + .nav-header {
+  margin-top: 0;
 }
 
 .nav-list > li:last-child > a, .nav-list > li:last-child > a:hover {
-	.border-radius(0 0 4px 4px);
-	border-bottom: 0;
-	box-shadow: none;
+  .border-radius(0 0 4px 4px);
+  border-bottom: 0;
+  box-shadow: none;
 }
+
 .nav-list > li:last-child > a:active {
-	.box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
+  .box-shadow(~"inset 0 0 7px rgba(0,0,0,.7)");
 }
-
-
 
 // TABS AND PILLS
 // -------------
@@ -141,10 +146,12 @@
 .nav-pills {
   .clearfix();
 }
+
 .nav-tabs > li,
 .nav-pills > li {
   float: left;
 }
+
 .nav-tabs > li > a,
 .nav-pills > li > a {
   padding-right: 12px;
@@ -158,62 +165,64 @@
 
 // Give the tabs something to sit on
 .nav-tabs {
-	margin:0;
-	border:0;
-	border-bottom: 3px solid @navTabLine;
-	.box-shadow(~"inset 0 -1px 0 rgba(255,255,255,.3), 0 1px 1px rgba(0,0,0,.3)");
+  margin: 0;
+  border: 0;
+  border-bottom: 3px solid @navTabLine;
+  .box-shadow(~"inset 0 -1px 0 rgba(255,255,255,.3), 0 1px 1px rgba(0,0,0,.3)");
 }
 
 // Make the list-items overlay the bottom border
 .nav-tabs > li {
-	width: auto;
-	margin: 0;
-	padding:0 0 1px 0.7%;
+  width: auto;
+  margin: 0;
+  padding: 0 0 1px 0.7%;
 }
+
 // Actual tabs (as links)
 .nav-tabs > li > a {
-	color: @navTabLink;
-	font-size: @baseFontSize;
-	text-align: center;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  color: @navTabLink;
+  font-size: @baseFontSize;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
   padding-top: 12px;
   padding-bottom: 12px;
   line-height: @baseLineHeight;
-  border:0;
-	#gradient > .tab-grd();
+  border: 0;
+  #gradient > .tab-grd();
   .border-radius(4px 4px 0 0);
-	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3)");
-	overflow:hidden;
+  .box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3)");
+  overflow: hidden;
   &:hover {
-		color: @navTabLink;
-		font-size: @baseFontSize;
-		text-align: center;
-		text-shadow: 0 2px 2px rgba(0,0,0,.7);
-		padding-top: 12px;
-		padding-bottom: 12px;
-		line-height: @baseLineHeight;
-		border:0;
-		#gradient > .tab-grd();
-		.border-radius(4px 4px 0 0);
-		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3)");
-		overflow:hidden;
+    color: @navTabLink;
+    font-size: @baseFontSize;
+    text-align: center;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: @baseLineHeight;
+    border: 0;
+    #gradient > .tab-grd();
+    .border-radius(4px 4px 0 0);
+    .box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 0 2px rgba(255,255,255,.3), 0 -2px 5px rgba(0,0,0,.3)");
+    overflow: hidden;
   }
 
-	&:active {
-		color: @navTabLink;
+  &:active {
+    color: @navTabLink;
     border-color: @navTabTop @navTabLeft @navTabRight;
-		background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
   }
 }
+
 // Active state, and it's :hover to override normal :hover
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
   color: @navTabOver;
-	text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
   border: 0;
-	#gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
-	background-color: transparent;
-	.box-shadow(~"inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3)");
+  #gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
+  background-color: transparent;
+  .box-shadow(~"inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3)");
   cursor: default;
 }
 
@@ -221,41 +230,41 @@
 // -----
 
 .nav-pills > li {
-	margin-right:8px;
+  margin-right: 8px;
 }
 
 // Links rendered as pills
 .nav-pills > li > a {
-	color: @navPillLink;
-	font-size: @baseFontSize;
-	text-shadow: 0 2px 2px rgba(0,0,0,.5);
+  color: @navPillLink;
+  font-size: @baseFontSize;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
   padding: 15px 35px;
   margin-top: 2px;
   margin-bottom: 2px;
   .border-radius(5px);
-	border:1px solid @navPillBorder;
-	background-color: @navPillBackground;
-	.box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
-	&:hover {
-		color: @navPillLink;
-		font-size: @baseFontSize;
-		text-shadow: 0 2px 2px rgba(0,0,0,.5);
-		padding: 15px 35px;
-		margin-top: 2px;
-		margin-bottom: 2px;
-		.border-radius(5px);
-		border:1px solid @navPillBorder;
-		background-color: @navPillBackground;
-		.box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
+  border: 1px solid @navPillBorder;
+  background-color: @navPillBackground;
+  .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
+  &:hover {
+    color: @navPillLink;
+    font-size: @baseFontSize;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+    padding: 15px 35px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    .border-radius(5px);
+    border: 1px solid @navPillBorder;
+    background-color: @navPillBackground;
+    .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
   }
 
-	&:active {
-		color: @navPillActive;
-		background-color: rgba(0,0,0,.2);
-		border:1px solid @navPillBorderOver;
-		border-bottom:1px solid rgba(255,255,255,.25);
-		.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
-	}
+  &:active {
+    color: @navPillActive;
+    background-color: rgba(0, 0, 0, .2);
+    border: 1px solid @navPillBorderOver;
+    border-bottom: 1px solid rgba(255, 255, 255, .25);
+    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+  }
 }
 
 // Active state
@@ -264,34 +273,34 @@
 .nav-pills > .active > a:active,
 .nav-pills .open .dropdown-toggle {
   color: @white;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
   background-color: @navPillBgActive;
-	border:1px solid @navPillBorderOver;
-	border-bottom:1px solid rgba(255,255,255,.25);
-	.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+  border: 1px solid @navPillBorderOver;
+  border-bottom: 1px solid rgba(255, 255, 255, .25);
+  .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
 }
 
 .pills-s > li {
-	margin-right:4px;
+  margin-right: 4px;
 }
 
 .pills-s > li > a {
-	font-size: 17px;
-	color: @grayLight;
-	text-shadow: 0 2px 2px rgba(0,0,0,.5);
+  font-size: 17px;
+  color: @grayLight;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
   padding: 8px 22px;
   margin-top: 2px;
   margin-bottom: 2px;
   .border-radius(5px);
-	border: 1px solid @black;
-	background-color: @navPillBackground;
-	.box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
-	&:hover {
-		color: @navPillActive;
-		background-color: @navPillBgActive;
-		border: 1px solid @navPillBorderOver;
-		border-bottom: 1px solid rgba(255,255,255,.25);
-		.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+  border: 1px solid @black;
+  background-color: @navPillBackground;
+  .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
+  &:hover {
+    color: @navPillActive;
+    background-color: @navPillBgActive;
+    border: 1px solid @navPillBorderOver;
+    border-bottom: 1px solid rgba(255, 255, 255, .25);
+    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
   }
 }
 
@@ -299,76 +308,74 @@
 .pills-s > .active > a,
 .pills-s > .active > a:hover {
   color: @navPillActive;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
   background-color: @navPillBgActive;
-	border: 1px solid @navPillBorderOver;
-	border-bottom: 1px solid rgba(255,255,255,.25);
-	.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+  border: 1px solid @navPillBorderOver;
+  border-bottom: 1px solid rgba(255, 255, 255, .25);
+  .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
 }
-
-
 
 // STACKED NAV
 // -----------
 
 // Stacked tabs and pills
 .nav-stacked > li {
-	width:98%;
+  width: 98%;
   float: none;
-	padding: 0;
+  padding: 0;
 }
-.nav-stacked > li > a {	
+
+.nav-stacked > li > a {
   margin-right: 0; // no need for the gap between nav items	
 }
 
 // Tabs
 .nav-tabs.nav-stacked {
-	padding:0 1%;
+  padding: 0 1%;
   border: 0;
-	box-shadow: none;
+  box-shadow: none;
 }
+
 .nav-tabs.nav-stacked > li > a {
-	color: @navTabLink;
-	font-size: @baseFontSize;
-	text-align: center;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  color: @navTabLink;
+  font-size: @baseFontSize;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
   padding-top: 12px;
   padding-bottom: 12px;
   line-height: @baseLineHeight;
-  border:0;
-	#gradient > .tab-grd();
+  border: 0;
+  #gradient > .tab-grd();
   .border-radius(0);
-	.box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
-	overflow:hidden;
+  .box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
+  overflow: hidden;
 }
 
 .nav-tabs.nav-stacked > li > a:active {
   color: @navTabLink;
   border-color: @navTabTop @navTabLeft @navTabRight;
-	background-color: rgba(0,0,0,.7);
+  background-color: rgba(0, 0, 0, .7);
 }
 
 .nav-tabs.nav-stacked > li.active > a,
-.nav-tabs.nav-stacked > li.active > a:hover{
+.nav-tabs.nav-stacked > li.active > a:hover {
   color: @navTabOver;
-	text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
   border: 0;
-	#gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
-	.box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
-	background-color: transparent;
+  #gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
+  .box-shadow(~"inset -1px -1px 1px rgba(0,0,0,.3), inset 1px 1px 1px rgba(255,255,255,.15)");
+  background-color: transparent;
   cursor: default;
 }
-
 
 // Pills
 .nav-pills.nav-stacked > li > a {
   margin-bottom: 3px;
 }
+
 .nav-pills.nav-stacked > li:last-child > a {
   margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
 }
-
-
 
 // DROPDOWNS
 // ---------
@@ -376,6 +383,7 @@
 .nav-tabs .dropdown-menu {
   .border-radius(8px); // remove the top rounded corners here since there is a hard edge above the menu
 }
+
 .nav-pills .dropdown-menu {
   .border-radius(6px); // make rounded corners match the pills
 }
@@ -386,12 +394,14 @@
 .nav .dropdown-toggle .caret {
   border-top-color: @caretColor;
   border-bottom-color: @caretColor;
-	vertical-align: top;
+  vertical-align: top;
 }
+
 .nav .dropdown-toggle:hover .caret {
   border-top-color: @caretColor;
   border-bottom-color: @caretColor;
 }
+
 /* move down carets for tabs */
 .nav-tabs .dropdown-toggle .caret {
   margin-top: 8px;
@@ -403,6 +413,7 @@
   border-top-color: @caretColorActive;
   border-bottom-color: @caretColorActive;
 }
+
 .nav-tabs .active .dropdown-toggle .caret {
   border-top-color: @caretColor;
   border-bottom-color: @caretColor;
@@ -418,13 +429,14 @@
 // -------------------------
 .nav-tabs .open .dropdown-toggle {
   color: @navTabOver;
-	text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
   border: 0;
-	#gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
-	background-color: transparent;
-	.box-shadow(~"inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3)");
+  #gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
+  background-color: transparent;
+  .box-shadow(~"inset 1px 1px 2px rgba(255,255,255,.15), 0 -2px 5px rgba(0,0,0,.3)");
   cursor: default;
 }
+
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
 .nav li.dropdown.open a:hover .caret {
@@ -438,11 +450,8 @@
   border-color: @grayLight;
 }
 
-
-
 // TABBABLE
 // --------
-
 
 // COMMON STYLES
 // -------------
@@ -451,11 +460,12 @@
 .tabbable {
   .clearfix();
 }
+
 .tab-content {
-	position: relative;
-	z-index: 10;
-	padding: 20px;
-	color: @navTabOver;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  color: @navTabOver;
   overflow: auto; // prevent content from running below tabs
 }
 
@@ -471,65 +481,67 @@
 .pill-content > .pill-pane {
   display: none;
 }
+
 .tab-content > .active,
 .pill-content > .active {
   display: block;
 }
 
-
 // BOTTOM
 // ------
 
 .tabs-below > .nav-tabs {
-	border-top: 3px solid @navTabLine;
-	.box-shadow(~"inset 0 1px 0 rgba(0,0,0,.3), 0 -1px 0 rgba(255,255,255,.3)");
+  border-top: 3px solid @navTabLine;
+  .box-shadow(~"inset 0 1px 0 rgba(0,0,0,.3), 0 -1px 0 rgba(255,255,255,.3)");
 }
+
 .tabs-below > .nav-tabs > li {
-	padding: 1px 0 0 0.7%;
+  padding: 1px 0 0 0.7%;
 }
+
 .tabs-below > .nav-tabs > li > a {
-	color: @navTabLink;
-	font-size: @baseFontSize;
-	text-align: center;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  color: @navTabLink;
+  font-size: @baseFontSize;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
   padding-top: 12px;
   padding-bottom: 12px;
   line-height: @baseLineHeight;
-  border:0;
-	#gradient > .tab-grd();
+  border: 0;
+  #gradient > .tab-grd();
   .border-radius(0 0 4px 4px);
-	.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
-	overflow:hidden;
+  .box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+  overflow: hidden;
   &:hover {
-		color: @navTabLink;
-		font-size: @baseFontSize;
-		text-align: center;
-		text-shadow: 0 2px 2px rgba(0,0,0,.7);
-		padding-top: 12px;
-		padding-bottom: 12px;
-		line-height: @baseLineHeight;
-		border:0;
-		#gradient > .tab-grd();
-		.border-radius(0 0 4px 4px);
-		.box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
-		overflow:hidden;
+    color: @navTabLink;
+    font-size: @baseFontSize;
+    text-align: center;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: @baseLineHeight;
+    border: 0;
+    #gradient > .tab-grd();
+    .border-radius(0 0 4px 4px);
+    .box-shadow(~"inset 0 -2px 4px rgba(0,0,0,.1), inset 0 -1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+    overflow: hidden;
   }
 
-	&:active {
-		color: @navTabLink;
+  &:active {
+    color: @navTabLink;
     border-color: @navTabTop @navTabLeft @navTabRight;
-		background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
   }
 }
 
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover {
-	color: @navTabOver;
-	text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  color: @navTabOver;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
   border: 0;
-	#gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
-	background-color: transparent;
-	.box-shadow(~"inset 1px -1px 2px rgba(255,255,255,.15), 0 2px 5px rgba(0,0,0,.3)");
+  #gradient > .tab-grd(rgba(255,255,255,.06), rgba(255,255,255,.02));
+  background-color: transparent;
+  .box-shadow(~"inset 1px -1px 2px rgba(255,255,255,.15), 0 2px 5px rgba(0,0,0,.3)");
   cursor: default;
 }
 
@@ -541,60 +553,65 @@
 .tabs-right > .nav-tabs > li {
   float: none;
 }
+
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {
   min-width: 120px;
   margin-right: 0;
   margin-bottom: 3px;
-	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+  .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
 }
 
 // Tabs on the left
 .tabs-left > .nav-tabs {
   float: left;
-	border-right: 1px solid rgba(0,0,0,.3);
-	box-shadow: none;
-	padding: 5px 1px 5px 0;
-	margin: 0;
+  border-right: 1px solid rgba(0, 0, 0, .3);
+  box-shadow: none;
+  padding: 5px 1px 5px 0;
+  margin: 0;
 }
+
 .tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
   .border-radius(4px 0 0 4px);
 }
+
 .tabs-left > .nav-tabs > li > a:hover {
   border-color: @grayLighter @navTabBorder @grayLighter @grayLighter;
 }
+
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover {
   border-color: @navTabBorder transparent @navTabBorder @navTabBorder;
   *border-right-color: @white;
-	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+  .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
 }
 
 // Tabs on the right
 .tabs-right > .nav-tabs {
   float: right;
   margin-left: 19px;
-  border-left: 1px solid rgba(0,0,0,.3);
-	box-shadow: none;
-	padding: 5px 2px 5px 0;
-	margin: 0;
+  border-left: 1px solid rgba(0, 0, 0, .3);
+  box-shadow: none;
+  padding: 5px 2px 5px 0;
+  margin: 0;
 }
+
 .tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
   .border-radius(0 4px 4px 0);
 }
+
 .tabs-right > .nav-tabs > li > a:hover {
   border-color: @grayLighter @grayLighter @grayLighter @navTabBorder;
 }
+
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover {
   border-color: @navTabBorder @navTabBorder @navTabBorder transparent;
   *border-left-color: @white;
-	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
+  .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), inset 0 1px 1px rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.3)");
 }
-
-
 
 // DISABLED STATES
 // ---------------
@@ -603,6 +620,7 @@
 .nav > .disabled > a {
   color: @grayLight;
 }
+
 // Nuke hover effects
 .nav > .disabled > a:hover {
   text-decoration: none;
@@ -610,277 +628,277 @@
   cursor: default;
 }
 
-
 // NAV BOTTOM
 .nav-bot {
-	overflow:hidden;
-	padding:0 0 10px;
-	display: -webkit-box;
+  overflow: hidden;
+  padding: 0 0 10px;
+  display: -webkit-box;
   display: -moz-box;
-	display: -webkit-flexbox;	
+  display: -webkit-flexbox;
 }
 
-.nav-bot li {	
-	text-align:center;
-	/* Old Syntax */
+.nav-bot li {
+  text-align: center;
+/* Old Syntax */
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
 
-  /* New Syntax */
+/* New Syntax */
   -webkit-flex: 1;
 }
 
-.nav-bot li a, 
-.nav-bot li a:hover {	
-	color: @navBotLink;
-	font-size: (@baseFontSize - 5);
-	font-weight:bold;
-	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
-	#gradient > .vertical-navbot();
-	.box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,1), 0 5px 4px rgba(0,0,0,.5)");
-	border-bottom:1px solid @navBotBorder;
-	border-top:1px solid @navBotBorder;
-	border-right:0;
-	position:relative;
-	z-index:10;
+.nav-bot li a,
+.nav-bot li a:hover {
+  color: @navBotLink;
+  font-size: (@baseFontSize - 5);
+  font-weight: bold;
+  padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+  #gradient > .vertical-navbot();
+  .box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,1), 0 5px 4px rgba(0,0,0,.5)");
+  border-bottom: 1px solid @navBotBorder;
+  border-top: 1px solid @navBotBorder;
+  border-right: 0;
+  position: relative;
+  z-index: 10;
 }
 
-.v-blue li a, 
-.v-blue li a:hover {	
-	color: @navBotBlueLink;
-	font-weight: bold;
-	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
-	#gradient > .vertical-navbot;
-	background-color: @navBotBlueBg;
-	.box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,.7), 0 7px 7px rgba(0,0,0,.5)");
-	border-bottom:1px solid @navBotBorder;
-	border-top:1px solid @navBotBorder;
-	border-right:0;
-	position:relative;
-	z-index:10;
+.v-blue li a,
+.v-blue li a:hover {
+  color: @navBotBlueLink;
+  font-weight: bold;
+  padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+  #gradient > .vertical-navbot;
+  background-color: @navBotBlueBg;
+  .box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(0,0,0,.7), 0 7px 7px rgba(0,0,0,.5)");
+  border-bottom: 1px solid @navBotBorder;
+  border-top: 1px solid @navBotBorder;
+  border-right: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .nav-bot li:last-child a {
-	.box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px @navPillActive, 0 7px 7px rgba(0,0,0,.5)");
+  .box-shadow(~"inset 1px 0 1px rgba(255,255,255,.2), inset 0 1px 1px rgba(255,255,255,.4), inset -1px 0 1px @navPillActive, 0 7px 7px rgba(0,0,0,.5)");
 }
 
 .nav-bot li a:active,
 .nav-bot li a.active {
-	color: @navbarLinkColorHover;
-	font-size: (@baseFontSize - 5);
-	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
-	background: @navBotActive;
-	.box-shadow(~"inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15)");
-	border-left:0;
-	border-bottom:1px solid rgba(255,255,255,.15);
-	border-top:0;
-	position:relative;
-	z-index:100;
-	margin-top:1px;
+  color: @navbarLinkColorHover;
+  font-size: (@baseFontSize - 5);
+  padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+  background: @navBotActive;
+  .box-shadow(~"inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15)");
+  border-left: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .15);
+  border-top: 0;
+  position: relative;
+  z-index: 100;
+  margin-top: 1px;
 }
 
 .v-blue li a:active,
 .v-blue li a.active {
-	color: @navBotBlueActive;
-	padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
-	background: @navBotBlueOver;
-	.box-shadow(~"inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15)");
-	border-left: 0;
-	border-bottom: 1px solid rgba(255,255,255,.15);
-	border-top: 0;
-	position: relative;
-	z-index: 100;
-	margin-top: 1px;
+  color: @navBotBlueActive;
+  padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+  background: @navBotBlueOver;
+  .box-shadow(~"inset 0 5px 5px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.15)");
+  border-left: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .15);
+  border-top: 0;
+  position: relative;
+  z-index: 100;
+  margin-top: 1px;
 }
 
 .nav.nav-bot li a span {
-	text-overflow: ellipsis;
-	display: block;
-	padding: 0 5px;
-	overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  padding: 0 5px;
+  overflow: hidden;
 }
 
 .nav-bot li i {
-	display:block;
-	width: 32px;
-	height: 25px;
-	margin: 0 auto 3px auto;
+  display: block;
+  width: 32px;
+  height: 25px;
+  margin: 0 auto 3px auto;
 }
 
 .nav-bot li a .icon-about {
-	width:26px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -104px -157px;
+  width: 26px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -104px -157px;
 }
 
 .nav-bot li a:active .icon-about,
 .nav-bot li a.active .icon-about {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -148px -157px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -148px -157px;
 }
 
 .v-blue li a .icon-about {
-	width:26px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -15px -157px;
+  width: 26px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -15px -157px;
 }
 
 .v-blue li a:active .icon-about,
 .v-blue li a.active .icon-about {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -59px -157px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -59px -157px;
 }
 
 .nav-bot li a .icon-favorites {
-	width:25px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -104px -201px;
+  width: 25px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -104px -201px;
 }
 
 .nav-bot li a:active .icon-favorites,
 .nav-bot li a.active .icon-favorites {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -148px -201px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -148px -201px;
 }
 
 .v-blue li a .icon-favorites {
-	width:25px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -15px -201px;
+  width: 25px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -15px -201px;
 }
 
 .v-blue li a:active .icon-favorites,
 .v-blue li a.active .icon-favorites {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -59px -201px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -59px -201px;
 }
 
 .nav-bot li a .icon-downloads {
-	width:25px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -106px -291px;
+  width: 25px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -106px -291px;
 }
 
 .nav-bot li a:active .icon-downloads,
 .nav-bot li a.active .icon-downloads {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -150px -291px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -150px -291px;
 }
 
 .v-blue li a .icon-downloads {
-	width:25px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -17px -291px;
+  width: 25px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -17px -291px;
 }
 
 .v-blue li a:active .icon-downloads,
 .v-blue li a.active .icon-downloads {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -61px -291px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -61px -291px;
 }
 
 .nav-bot li a .icon-settings {
-	width:31px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -105px -336px;
+  width: 31px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -105px -336px;
 }
 
 .nav-bot li a:active .icon-settings,
 .nav-bot li a.active .icon-settings {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -149px -336px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -149px -336px;
 }
 
 .v-blue li a .icon-settings {
-	width:31px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -16px -336px;
+  width: 31px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -16px -336px;
 }
 
 .v-blue li a:active .icon-settings,
 .v-blue li a.active .icon-settings {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -60px -336px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -60px -336px;
 }
 
 .nav-bot li a .icon-user {
-	width:32px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -100px -245px;
+  width: 32px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -100px -245px;
 }
 
 .nav-bot li a:active .icon-user,
 .nav-bot li a.active .icon-user {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -144px -245px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -144px -245px;
 }
 
 .v-blue li a .icon-user {
-	width:32px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -12px -245px;
+  width: 32px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -12px -245px;
 }
 
 .v-blue li a:active .icon-user,
 .v-blue li a.active .icon-user {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -56px -245px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -56px -245px;
 }
 
 // Radio,Checkbox Vertical List
 
 .radio-vertical {
-	.border-radius(4px);
+  .border-radius(4px);
 }
-.radio-vertical > li  {
-	width:100%;
-  float: none;	
-	color: @radioVertTxt;
-	text-shadow: 0 1px 1px rgba(255,255,255,.3);
-	z-index: 2;
-	padding: 15px 0;
-	border-top: 1px solid rgba(255,255,255,.2);
-	border-bottom: 1px solid rgba(45,45,45,1);
-  .border-radius(0);	
-	background-color: @listBackground;
-	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.15), inset 0 -1px 1px rgba(0,0,0,.3), inset 1px 0 1px rgba(255,255,255,.1), inset -1px 0 1px rgba(0,0,0,.3)");
+
+.radio-vertical > li {
+  width: 100%;
+  float: none;
+  color: @radioVertTxt;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .3);
+  z-index: 2;
+  padding: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+  border-bottom: 1px solid rgba(45, 45, 45, 1);
+  .border-radius(0);
+  background-color: @listBackground;
+  .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.15), inset 0 -1px 1px rgba(0,0,0,.3), inset 1px 0 1px rgba(255,255,255,.1), inset -1px 0 1px rgba(0,0,0,.3)");
 }
 
 .radio-vertical > li > label {
-	display: inline-block;
-	padding: 0;
-	margin: 0 0 0 10px;
-	vertical-align: middle;
-	font-size: @baseFontSize + 8; 
-	line-height: @baseLineHeight + 8;
+  display: inline-block;
+  padding: 0;
+  margin: 0 0 0 10px;
+  vertical-align: middle;
+  font-size: @baseFontSize + 8;
+  line-height: @baseLineHeight + 8;
 }
 
 .radio-vertical > li:first-child {
-	.border-radius(4px 4px 0 0);
-	border-top: 0;
+  .border-radius(4px 4px 0 0);
+  border-top: 0;
 }
 
 .radio-vertical > li:last-child {
-	.border-radius(0 0 4px 4px);
-	border-bottom: 0;
+  .border-radius(0 0 4px 4px);
+  border-bottom: 0;
 }

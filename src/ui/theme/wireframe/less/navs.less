@@ -2,20 +2,20 @@
 // Navs
 // --------------------------------------------------
 
-
 // BASE CLASS
 // ----------
 
 .nav {
   margin-left: 0;
   margin-bottom: @baseLineHeight;
-  list-style: none;	
+  list-style: none;
 }
 
 // Make links block level
 .nav > li > a {
   display: block;
 }
+
 .nav > li > a:hover {
   text-decoration: none;
   background-color: @navLink;
@@ -34,9 +34,10 @@
   font-weight: bold;
   line-height: @baseLineHeight;
   color: @grayLight;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
   text-transform: uppercase;
 }
+
 // Space them out when they follow another list item (link)
 .nav li + .nav-header {
   margin-top: 9px;
@@ -48,70 +49,77 @@
 .nav-list {
   padding-left: 15px;
   padding-right: 15px;
-	border: 1px solid @grayLight;
-	.border-radius(4px);
+  border: 1px solid @grayLight;
+  .border-radius(4px);
 }
 
 .nav-list > li > a {
   text-shadow: none;
-	color: @grayLight;
-	background-color: @navListBg;
+  color: @grayLight;
+  background-color: @navListBg;
   padding: 10px 15px;
-	border-bottom: 1px solid @grayLight;
+  border-bottom: 1px solid @grayLight;
 }
 
 .nav-list > li > a:hover {
-		color: @black;
-		background-color: @navListHover;
-		border-bottom: 1px solid @grayLight;
-	}
+  color: @black;
+  background-color: @navListHover;
+  border-bottom: 1px solid @grayLight;
+}
 
 .nav-list > li > a:active {
-	color: @black;
-	background-color: @navListHover;
-	border-bottom: 1px solid @grayLight;
+  color: @black;
+  background-color: @navListHover;
+  border-bottom: 1px solid @grayLight;
 }
 
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
   color: @black;
   background-color: @navListActive;
-	border-bottom: 1px solid @grayLight;
-	text-shadow: none;
+  border-bottom: 1px solid @grayLight;
+  text-shadow: none;
 }
 
 .nav-list [class^="icon-"] {
   margin-right: 2px;
 }
+
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider {
   .nav-divider();
-	border-top: 0;
-	margin: 5px 0 0;
+  border-top: 0;
+  margin: 5px 0 0;
 }
 
 .nav-list > li:first-child > a {
-	.border-radius(4px 4px 0 0);	
+  .border-radius(4px 4px 0 0);
 }
 
 .nav-list > .nav-header {
   display: block;
-	font-size: @baseFontSize;
-	color: @navListHeader;
+  font-size: @baseFontSize;
+  color: @navListHeader;
   font-weight: normal;
   line-height: @baseLineHeight;
   text-transform: uppercase;
-	.border-radius(4px 4px 0 0);
-	background-color: @grayDark;
-	padding: 15px 20px;	
+  background-color: @grayDark;
+  padding: 10px 20px;
+  &:first-child {
+    .border-radius(4px 4px 0 0);
+    padding: 15px 20px;
+  }
+}
+
+.nav-list li + .nav-header {
+  margin-top: 0;
 }
 
 .nav-list > li:last-child > a {
-	.border-radius(0 0 4px 4px);
-	border-bottom: 0;
-	box-shadow: none;
+  .border-radius(0 0 4px 4px);
+  border-bottom: 0;
+  box-shadow: none;
 }
-
 
 // TABS AND PILLS
 // -------------
@@ -121,10 +129,12 @@
 .nav-pills {
   .clearfix();
 }
+
 .nav-tabs > li,
 .nav-pills > li {
   float: left;
 }
+
 .nav-tabs > li > a,
 .nav-pills > li > a {
   padding-right: 12px;
@@ -138,49 +148,51 @@
 
 // Give the tabs something to sit on
 .nav-tabs {
-	margin:0;
-	border:0;
-	border-bottom: 1px solid @grayLight;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid @grayLight;
 }
 
 // Make the list-items overlay the bottom border
 .nav-tabs > li {
-	margin: 0;
-	padding:0 0 0 0.7%;
+  margin: 0;
+  padding: 0 0 0 0.7%;
 }
+
 // Actual tabs (as links)
 .nav-tabs > li > a {
-	color: @navTabLink;
-	font-size: @baseFontSize;
-	text-align: center;
+  color: @navTabLink;
+  font-size: @baseFontSize;
+  text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
   line-height: @baseLineHeight;
   border: 1px solid @grayLight;
-	border-bottom: none;
+  border-bottom: none;
   .border-radius(4px 4px 0 0);
-	overflow:hidden;
+  overflow: hidden;
   &:hover {
-		color: @navTabLink;
-		font-size: @baseFontSize;
-		text-align: center;
-		padding-top: 12px;
-		padding-bottom: 12px;
-		line-height: @baseLineHeight;
-		border: 1px solid @grayLight;
-		border-bottom: none;
-		.border-radius(4px 4px 0 0);
-		overflow:hidden;
-		background: none;
+    color: @navTabLink;
+    font-size: @baseFontSize;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: @baseLineHeight;
+    border: 1px solid @grayLight;
+    border-bottom: none;
+    .border-radius(4px 4px 0 0);
+    overflow: hidden;
+    background: none;
   }
 }
+
 // Active state, and it's :hover to override normal :hover
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
   color: @black;
   border: 1px solid @grayLight;
-	border-bottom: none;
-	background-color: @navTabOver;
+  border-bottom: none;
+  background-color: @navTabOver;
   cursor: default;
 }
 
@@ -188,23 +200,23 @@
 // -----
 
 .nav-pills > li {
-	margin-right:8px;
+  margin-right: 8px;
 }
 
 // Links rendered as pills
 .nav-pills > li > a {
-	color: @navPillLink;
-	font-size: @baseFontSize;
+  color: @navPillLink;
+  font-size: @baseFontSize;
   padding: 15px 35px;
   margin-top: 2px;
   margin-bottom: 2px;
   .border-radius(5px);
-	border:1px solid @navPillBorder;
-	background-color: @navPillBackground;
-	&:hover {
-		color: @navPillLink;
-		background-color: @white;
-		border:1px solid @navPillBorder;
+  border: 1px solid @navPillBorder;
+  background-color: @navPillBackground;
+  &:hover {
+    color: @navPillLink;
+    background-color: @white;
+    border: 1px solid @navPillBorder;
   }
 }
 
@@ -214,30 +226,30 @@
 .nav-pills > li > a:active {
   color: @white;
   background-color: @navPillBgActive;
-	border:1px solid @navPillBorderOver;
+  border: 1px solid @navPillBorderOver;
 }
 
 .pills-s > li {
-	margin-right:4px;
+  margin-right: 4px;
 }
 
 .pills-s > li > a {
-	font-size: 17px;
-	color: @grayLight;
-	text-shadow: 0 2px 2px rgba(0,0,0,.5);
+  font-size: 17px;
+  color: @grayLight;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
   padding: 8px 22px;
   margin-top: 2px;
   margin-bottom: 2px;
   .border-radius(5px);
-	border: 1px solid @black;
-	background-color: @navPillBackground;
-	.box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
-	&:hover {
-		color: @navPillActive;
-		background-color: @navPillBgActive;
-		border: 1px solid @navPillBorderOver;
-		border-bottom: 1px solid rgba(255,255,255,.25);
-		.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+  border: 1px solid @black;
+  background-color: @navPillBackground;
+  .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), inset 0 -1px 2px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.15)");
+  &:hover {
+    color: @navPillActive;
+    background-color: @navPillBgActive;
+    border: 1px solid @navPillBorderOver;
+    border-bottom: 1px solid rgba(255, 255, 255, .25);
+    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
   }
 }
 
@@ -245,69 +257,68 @@
 .pills-s > .active > a,
 .pills-s > .active > a:hover {
   color: @navPillActive;
-	text-shadow: 0 2px 2px rgba(0,0,0,.7);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
   background-color: @navPillBgActive;
-	border: 1px solid @navPillBorderOver;
-	border-bottom: 1px solid rgba(255,255,255,.25);
-	.box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
+  border: 1px solid @navPillBorderOver;
+  border-bottom: 1px solid rgba(255, 255, 255, .25);
+  .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.7)");
 }
-
-
 
 // STACKED NAV
 // -----------
 
 // Stacked tabs and pills
 .nav-stacked > li {
-	width:98%;
+  width: 98%;
   float: none;
-	padding: 0;
+  padding: 0;
 }
-.nav-stacked > li > a {	
+
+.nav-stacked > li > a {
   margin-right: 0; // no need for the gap between nav items	
 }
 
 // Tabs
 .nav-tabs.nav-stacked {
-	padding:0 1%;
+  padding: 0 1%;
   border: 0;
-	box-shadow: none;
+  box-shadow: none;
 }
+
 .nav-tabs.nav-stacked > li > a {
-	color: @navTabLink;
-	font-size: @baseFontSize;
-	text-align: center;
+  color: @navTabLink;
+  font-size: @baseFontSize;
+  text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
   line-height: @baseLineHeight;
-	border-bottom: 0;
+  border-bottom: 0;
   .border-radius(0);
-	overflow:hidden;
-	&:hover {
-		color: @navTabLink;
+  overflow: hidden;
+  &:hover {
+    color: @navTabLink;
   }
 }
+
 .nav-tabs.nav-stacked > li:last-child > a {
-	border-bottom: 1px solid @grayLight;
+  border-bottom: 1px solid @grayLight;
 }
 
 .nav-tabs.nav-stacked > li.active > a,
-.nav-tabs.nav-stacked > li.active > a:hover{
+.nav-tabs.nav-stacked > li.active > a:hover {
   color: @grayDark;
-	background-color: @grayLight;
+  background-color: @grayLight;
   cursor: default;
 }
-
 
 // Pills
 .nav-pills.nav-stacked > li > a {
   margin-bottom: 3px;
 }
+
 .nav-pills.nav-stacked > li:last-child > a {
   margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
 }
-
-
 
 // DROPDOWNS
 // ---------
@@ -315,6 +326,7 @@
 .nav-tabs .dropdown-menu {
   .border-radius(8px); // remove the top rounded corners here since there is a hard edge above the menu
 }
+
 .nav-pills .dropdown-menu {
   .border-radius(6px); // make rounded corners match the pills
 }
@@ -326,10 +338,12 @@
   border-top-color: @linkColor;
   border-bottom-color: @linkColor;
 }
+
 .nav .dropdown-toggle:hover .caret {
   border-top-color: @linkColorHover;
   border-bottom-color: @linkColorHover;
 }
+
 /* move down carets for tabs */
 .nav-tabs .dropdown-toggle .caret {
   margin-top: 8px;
@@ -341,6 +355,7 @@
   border-top-color: @caretColorActive;
   border-bottom-color: @caretColorActive;
 }
+
 .nav-tabs .active .dropdown-toggle .caret {
   border-top-color: @caretColor;
   border-bottom-color: @caretColor;
@@ -361,6 +376,7 @@
   background-color: @grayLight;
   border-color: @grayLight;
 }
+
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
 .nav li.dropdown.open a:hover .caret {
@@ -374,11 +390,8 @@
   border-color: @grayLight;
 }
 
-
-
 // TABBABLE
 // --------
-
 
 // COMMON STYLES
 // -------------
@@ -387,11 +400,12 @@
 .tabbable {
   .clearfix();
 }
+
 .tab-content {
-	position: relative;
-	z-index: 10;
-	padding: 20px;
-	color: @grayLight;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  color: @grayLight;
   overflow: auto; // prevent content from running below tabs
 }
 
@@ -407,52 +421,54 @@
 .pill-content > .pill-pane {
   display: none;
 }
+
 .tab-content > .active,
 .pill-content > .active {
   display: block;
 }
 
-
 // BOTTOM
 // ------
 
 .tabs-below > .nav-tabs {
-	border-top: 1px solid @grayLight;
+  border-top: 1px solid @grayLight;
 }
+
 .tabs-below > .nav-tabs > li {
-	padding: 1px 0 0 0.7%;
+  padding: 1px 0 0 0.7%;
 }
+
 .tabs-below > .nav-tabs > li > a {
-	color: @navTabLink;
-	font-size: @baseFontSize;
-	text-align: center;
+  color: @navTabLink;
+  font-size: @baseFontSize;
+  text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
   line-height: @baseLineHeight;
   border: 1px solid @grayLight;
-	border-top: 0;
+  border-top: 0;
   .border-radius(0 0 4px 4px);
-	overflow:hidden;
+  overflow: hidden;
   &:hover {
-		color: @navTabLink;
-		font-size: @baseFontSize;
-		text-align: center;
-		padding-top: 12px;
-		padding-bottom: 12px;
-		line-height: @baseLineHeight;
-		border: 1px solid @grayLight;
-		border-top: 0;
-		.border-radius(0 0 4px 4px);
-		overflow:hidden;
+    color: @navTabLink;
+    font-size: @baseFontSize;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: @baseLineHeight;
+    border: 1px solid @grayLight;
+    border-top: 0;
+    .border-radius(0 0 4px 4px);
+    overflow: hidden;
   }
 }
 
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover {
-	color: @black;
+  color: @black;
   border: 1px solid @grayLight;
-	border-top: 0;
-	background-color: @navTabOver;
+  border-top: 0;
+  background-color: @navTabOver;
   cursor: default;
 }
 
@@ -464,34 +480,38 @@
 .tabs-right > .nav-tabs > li {
   float: none;
 }
+
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {
   min-width: 120px;
   margin-right: 0;
   margin-bottom: 3px;
-	border: 1px solid @grayLight;
+  border: 1px solid @grayLight;
 }
 
 // Tabs on the left
 .tabs-left > .nav-tabs {
   float: left;
-	border-right: 1px solid @grayLight;
-	box-shadow: none;
-	padding: 5px 0;
-	margin: 0;
+  border-right: 1px solid @grayLight;
+  box-shadow: none;
+  padding: 5px 0;
+  margin: 0;
 }
+
 .tabs-left > .nav-tabs > li > a {
-	color: @grayLight;
-	border-right: 0;
+  color: @grayLight;
+  border-right: 0;
   .border-radius(4px 0 0 4px);
 }
+
 .tabs-left > .nav-tabs > li > a:hover {
   border-color: @grayLight;
-	color: @grayLight;
+  color: @grayLight;
 }
+
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover {
-	color: @grayDark;
+  color: @grayDark;
   border: 1px solid @grayLight;
   *border-right-color: @white;
 }
@@ -501,26 +521,27 @@
   float: right;
   margin-left: 19px;
   border-left: 1px solid @grayLight;
-	padding: 5px 0;
+  padding: 5px 0;
 }
+
 .tabs-right > .nav-tabs > li > a {
-	color: @grayLight;
+  color: @grayLight;
   border-left: 0;
   .border-radius(0 4px 4px 0);
-	border-left: 0;
+  border-left: 0;
 }
+
 .tabs-right > .nav-tabs > li > a:hover {
   border-color: @grayLight;
 }
+
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover {
-	color: @grayDark;
+  color: @grayDark;
   border: 1px solid @grayLight;
-	border-left: 0;
+  border-left: 0;
   *border-left-color: @white;
 }
-
-
 
 // DISABLED STATES
 // ---------------
@@ -529,6 +550,7 @@
 .nav > .disabled > a {
   color: @grayLight;
 }
+
 // Nuke hover effects
 .nav > .disabled > a:hover {
   text-decoration: none;
@@ -536,185 +558,184 @@
   cursor: default;
 }
 
-
 // NAV BOTTOM
 .nav-bot {
-	overflow:hidden;
-	padding:0 0 10px;
-	display: -webkit-box;
+  overflow: hidden;
+  padding: 0 0 10px;
+  display: -webkit-box;
   display: -moz-box;
-	display: -webkit-flexbox;	
+  display: -webkit-flexbox;
 }
 
-.nav-bot li {	
-	text-align:center;
-	/* Old Syntax */
+.nav-bot li {
+  text-align: center;
+/* Old Syntax */
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
 
-  /* New Syntax */
+/* New Syntax */
   -webkit-flex: 1;
 }
 
 .nav-bot li a,
-.nav-bot li a:hover {	
-	color: @navBotLink;
-	font-size: @baseFontSize;
-	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
-	border:1px solid @navBotBorder;
-	border-left: 0;
-	position: relative;
-	z-index:10;
-	background-color: transparent;
+.nav-bot li a:hover {
+  color: @navBotLink;
+  font-size: @baseFontSize;
+  padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+  border: 1px solid @navBotBorder;
+  border-left: 0;
+  position: relative;
+  z-index: 10;
+  background-color: transparent;
 }
 
 .nav-bot li:first-child a, .nav-bot li:first-child a:hover {
-	border:1px solid @navBotBorder;
+  border: 1px solid @navBotBorder;
 }
 
 .nav-bot li a:active,
 .nav-bot li a.active {
-	color: @navbarLinkColorHover;
-	font-size: @baseFontSize;
-	padding:(@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
-	background: @navBotActive;
-	border: 1px solid @navBotActive;
-	border-left: 0;
-	position:relative;
-	z-index:100;
-	margin-top:1px;
+  color: @navbarLinkColorHover;
+  font-size: @baseFontSize;
+  padding: (@navbarHeight / 4) 0 (@navbarHeight / 5) 0;
+  background: @navBotActive;
+  border: 1px solid @navBotActive;
+  border-left: 0;
+  position: relative;
+  z-index: 100;
+  margin-top: 1px;
 }
 
 .nav-bot li:first-child a:active,
 .nav-bot li:first-child a.active {
-	border: 1px solid @navBotActive;
+  border: 1px solid @navBotActive;
 }
 
 .nav.nav-bot li a span {
-	text-overflow: ellipsis;
-	display: block;
-	padding: 0 5px;
-	overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  padding: 0 5px;
+  overflow: hidden;
 }
 
 .nav-bot li i {
-	display:block;
-	width: 32px;
-	height: 25px;
-	margin: 0 auto 3px auto;
-	background: url(../img/icon.png);
-	background-size: 287px;
+  display: block;
+  width: 32px;
+  height: 25px;
+  margin: 0 auto 3px auto;
+  background: url(../img/icon.png);
+  background-size: 287px;
 }
 
 .nav-bot li a:active i,
 .nav-bot li a.active i {
-	width: 32px;
-	height: 25px;
+  width: 32px;
+  height: 25px;
 }
 
 .nav-bot li a .icon-about {
-	width:26px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -104px -157px;
+  width: 26px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -104px -157px;
 }
 
 .nav-bot li a:active .icon-about,
 .nav-bot li a.active .icon-about {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -148px -157px;
-} 
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -148px -157px;
+}
 
 .nav-bot li a .icon-favorites {
-	width:25px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -104px -201px;
+  width: 25px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -104px -201px;
 }
 
 .nav-bot li a:active .icon-favorites,
 .nav-bot li a.active .icon-favorites {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -148px -201px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -148px -201px;
 }
 
 .nav-bot li a .icon-downloads {
-	width:25px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -106px -291px;
+  width: 25px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -106px -291px;
 }
 
 .nav-bot li a:active .icon-downloads,
 .nav-bot li a.active .icon-downloads {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -150px -291px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -150px -291px;
 }
 
 .nav-bot li a .icon-settings {
-	width:31px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -105px -336px;
+  width: 31px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -105px -336px;
 }
 
 .nav-bot li a:active .icon-settings,
 .nav-bot li a.active .icon-settings {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -149px -336px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -149px -336px;
 }
 
 .nav-bot li a .icon-user {
-	width:32px;
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -100px -245px;
+  width: 32px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -100px -245px;
 }
 
 .nav-bot li a:active .icon-user,
 .nav-bot li a.active .icon-user {
-	background-image: url('../img/icon.png');
-	background-size: 320px;
-	background-position: -144px -245px;
+  background-image: url('../img/icon.png');
+  background-size: 320px;
+  background-position: -144px -245px;
 }
-
 
 // Radio,Checkbox Vertical List
 
 .radio-vertical {
-	.border-radius(4px);
+  .border-radius(4px);
 }
-.radio-vertical > li  {
-	width:100%;
-  float: none;	
-	color: @radioVertTxt;
-	z-index: 2;
-	padding: 10px 0;
-	border: 1px solid @grayLight;
-	border-top: 0;
-  .border-radius(0);	
-	background-color: @listBackground;
+
+.radio-vertical > li {
+  width: 100%;
+  float: none;
+  color: @radioVertTxt;
+  z-index: 2;
+  padding: 10px 0;
+  border: 1px solid @grayLight;
+  border-top: 0;
+  .border-radius(0);
+  background-color: @listBackground;
 }
 
 .radio-vertical > li > label {
-	display: inline-block;
-	padding: 0;
-	margin: 0 0 0 20px;
-	vertical-align: middle;
-	font-size: @baseFontSize; 
-	line-height: @baseLineHeight;
+  display: inline-block;
+  padding: 0;
+  margin: 0 0 0 20px;
+  vertical-align: middle;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
 }
 
 .radio-vertical > li:first-child {
-	.border-radius(4px 4px 0 0);
-	border-top: 1px solid @grayLight;
-	margin-top: 0;
+  .border-radius(4px 4px 0 0);
+  border-top: 1px solid @grayLight;
+  margin-top: 0;
 }
 
 .radio-vertical > li:last-child {
-	.border-radius(0 0 4px 4px);
+  .border-radius(0 0 4px 4px);
 }

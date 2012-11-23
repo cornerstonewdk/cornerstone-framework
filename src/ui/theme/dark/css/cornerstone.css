@@ -81,27 +81,27 @@
   right: 0;
   left: auto;
 }
-.dropdown-menu:before {
-  content: '';
-  display: inline-block;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 9px solid #454545;
-  border-bottom-color: #454545;
-  position: absolute;
-  top: -9px;
-  left: 9px;
-}
-.dropdown-menu:after {
-  content: '';
-  display: inline-block;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 8px solid #202020;
-  position: absolute;
-  top: -8px;
-  left: 10px;
-}
+/*.dropdown-menu:before {*/
+  /*content: '';*/
+  /*display: inline-block;*/
+  /*border-left: 7px solid transparent;*/
+  /*border-right: 7px solid transparent;*/
+  /*border-bottom: 9px solid #454545;*/
+  /*border-bottom-color: #454545;*/
+  /*position: absolute;*/
+  /*top: -9px;*/
+  /*left: 9px;*/
+/*}*/
+/*.dropdown-menu:after {*/
+  /*content: '';*/
+  /*display: inline-block;*/
+  /*border-left: 6px solid transparent;*/
+  /*border-right: 6px solid transparent;*/
+  /*border-bottom: 8px solid #202020;*/
+  /*position: absolute;*/
+  /*top: -8px;*/
+  /*left: 10px;*/
+/*}*/
 .dropdown-menu .divider {
   height: 1px;
   font-size: 0;
