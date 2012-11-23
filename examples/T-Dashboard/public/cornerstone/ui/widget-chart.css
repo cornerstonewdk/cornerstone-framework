@@ -653,4 +653,6 @@ Custom
 	display: block;
 }
 
-
+.axis-label-white .nvd3 text {
+	fill: rgba(255, 255, 255, 1);
+}

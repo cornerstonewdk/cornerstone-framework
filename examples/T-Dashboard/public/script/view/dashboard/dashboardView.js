@@ -30,7 +30,13 @@ define(
 		el : 'div#contentsView',
 		
 		initialize: function() {
-			
+            // 화면회전시 랜더링을 정상완료하지 못하는 경우가 생기므로 resize 이벤트를 강제적으로 1회 0.5 후 발생시킨다.
+            $(window).on('orientationchange', orientationChangeHandler);
+            function orientationChangeHandler(e) {
+                setTimeout(function() {
+                    $(window).trigger('resize');
+                }, 500);
+            }
 		},
 		
 		/*
@@ -42,7 +48,7 @@ define(
 			'click div#dashboard_policy': 'pricePlanClick',
 			'click div#dashboard_sns': 'snsClick',
 			'click div#dashboard_facebook': 'facebookClick',
-			'click div#dashboard_youtube': 'youtubeClick',
+			'click div#dashboard_youtube': 'youtubeClick'
 		},
 		
 		/*
@@ -82,11 +88,14 @@ define(
 			$(function() {
 				var $container = $('#dashboard_container');
 
-				$container.isotope({
-					itemSelector : '.dashboardItem'
-				});
+                // 안드로이드에서 성능문제로 isotope 비활성화
+				if(!navigator.userAgent.match("Android")) {
+                    $container.isotope({
+                        itemSelector : '.dashboardItem'
+                    });
+                }
 			});
-			
+
 			$('.dashboardItem').spinner('show');
 		},
 		
@@ -122,7 +131,8 @@ define(
                     resize:false,
                     duration: 0,
 					chartType : "stackedBar",
-					data : json
+					data : json,
+                    autoResize: false // 화면회전시 성능 문제로 자동 리사이징 비활성화
 				});
 			});
 			$('#reportChart').parent().spinner('hide');

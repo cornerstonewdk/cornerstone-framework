@@ -7,7 +7,7 @@
 			</div>
 			<div class="widget" id="reportChart"></div>
 		</div>
-	
+
 		<div class="dashboardItem" data-widgettitle="dashboard_voc">
 			<div class="sbox">
 				<h1 class="typo-pressed typo-pressed-title">접수 VOC</h1>
@@ -31,7 +31,7 @@
 			</div>
 			<div class="widget" id="planWidget"></div>
 		</div>
-		
+
 		<div class="dashboardItem">
 			<div class="sbox">
 				<h1 class="typo-pressed typo-pressed-title">블로그</h1>
@@ -47,7 +47,7 @@
 			</div>
 			<div class="widget" id="twitterWedget"></div>
 		</div>
-		
+
 		<div class="dashboardItem">
 			<div class="sbox">
 				<h1 class="typo-pressed typo-pressed-title">유튜브</h1>
@@ -55,7 +55,7 @@
 			</div>
 			<div class="widget" id="youtubeWedget"></div>
 		</div>
-		
+
 		<div class="dashboardItem">
 			<div class="widget2" id="facebookLikeWidget"></div>
 		</div>

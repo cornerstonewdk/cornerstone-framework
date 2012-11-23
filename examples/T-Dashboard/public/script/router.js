@@ -24,6 +24,10 @@ define(function(require) {
 
 			'*actions' : 'defaultAction'
 		},
+
+        initialize: function() {
+
+        },
 		
 		/*
 		 * 대쉬보드 요청시 처리내용
