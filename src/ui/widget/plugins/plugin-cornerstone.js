@@ -161,10 +161,14 @@
                 complete()
         };
     }
-    $.fn.collapse.Constructor = Collapse
+    $.fn.collapse.Constructor = Collapse;
 
 
 }).call(this);
 
-
-
+if(navigator.userAgent.match("Android")) {
+    $(".dropdown-menu li").on("touchstart", function (e) {
+        $(this).find("a").trigger("click");
+        return false;
+    });
+}
