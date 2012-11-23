@@ -3212,7 +3212,6 @@ z.btn-group.open .btn-inverse.dropdown-toggle:hover {
 }
 .pagination ul > li:first-child > a:active span,
 .pagination ul > li:last-child > a:active span {
-  padding: 7px 8px;
   margin: 0 auto;
   display: block;
   position: relative;

@@ -3183,7 +3183,6 @@ button.btn.btn-mini {
 }
 .pagination ul > li:first-child > a:active span,
 .pagination ul > li:last-child > a:active span {
-  padding: 7px 8px;
   margin: 0 auto;
   display: block;
   position: relative;
