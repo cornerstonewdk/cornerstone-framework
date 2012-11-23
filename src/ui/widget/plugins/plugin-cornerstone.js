@@ -164,11 +164,11 @@
     $.fn.collapse.Constructor = Collapse;
 
 
-}).call(this);
+    if(HAS_TOUCH) {
+        $(".dropdown-menu li").on("touchstart", function (e) {
+            $(this).find("a").trigger("click");
+            return false;
+        });
+    }
 
-if(navigator.userAgent.match("Android")) {
-    $(".dropdown-menu li").on("touchstart", function (e) {
-        $(this).find("a").trigger("click");
-        return false;
-    });
-}
+}).call(this);
