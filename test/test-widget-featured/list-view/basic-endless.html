@@ -4,8 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="CornetStone">
 	<meta name="author" content="William Kim">
-	<meta name="viewport"
-		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 
 	<title>리스트 뷰</title>
@@ -182,6 +181,9 @@
 				</ul>
 			</div>
 		</div>
+		<div id="endless-loader" class="endless-loader">
+			<span class="icon-endless-loader">Loading...</span>
+		</div>
 	</div>
 </div>
 
@@ -191,7 +193,6 @@
 </div>
 
 <script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
-<script type="text/javascript" src="../../../dist/ui/widget-plugins.js"></script>
 <script type="text/javascript" src="../../../dist/ui/widget-listview.js"></script>
 <script type="text/javascript">
 
@@ -201,8 +202,8 @@
 
 	// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
 	$el.featuredListView({
+		spinner: "#endless-loader",
 		scrollEndAction: function() {
-			$("body").spinner("show");
 			getItem();
 		}
 	});
@@ -222,24 +223,23 @@
 		});
 
 		request.done(function (json) {
-			html = "<ul data-list-pageid='" + pageID + "'>";
-			if (typeof json === "object" && json.items.length > 0) {
-				$(json.items).each(function (i) {
-					html += "<li data-list-itemid='" + (i + 1) + "'>";
-					html += "	<div>";
-					html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
-					html += "	</div>";
-					html += "</li>";
-				});
-				html += "</ul>";
-				$el.featuredListView("addItem", html);
-			}
-			html = "";
-			pageID++;
 			setTimeout(function() {
+				html = "<ul data-list-pageid='" + pageID + "'>";
+				if (typeof json === "object" && json.items.length > 0) {
+					$(json.items).each(function (i) {
+						html += "<li data-list-itemid='" + (i + 1) + "'>";
+						html += "	<div>";
+						html += "		<a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+						html += "	</div>";
+						html += "</li>";
+					});
+					html += "</ul>";
+					$el.featuredListView("addItem", html);
+				}
+				html = "";
+				pageID++;
 				isLoading = false;
-				$("body").spinner("hide");
-			}, 1000);
+			}, 750);
 		});
 
 		request.fail(function (jqXHR, textStatus) {
@@ -255,6 +255,7 @@
 	$("#removeItem").on("click", function() {
 		$el.featuredListView("removeItem", $el.find("ul:last"), [5,2,3,14,7]);
 	});
+
 </script>
 </body>
 </html>
