@@ -96,7 +96,7 @@
             target.datum(options.data)
                 .transition().duration(500).call(chart);
 
-            nv.utils.windowResize(chart.update);
+            !options.autoResize ||  nv.utils.windowResize(chart.update);
 
             return chart;
         });
@@ -127,7 +127,7 @@
             target.datum(options.data)
                 .transition().duration(500).call(chart);
 
-            nv.utils.windowResize(chart.update);
+            !options.autoResize ||  nv.utils.windowResize(chart.update);
 
             return chart;
         });
@@ -158,7 +158,7 @@
             target.datum(options.data)
                 .transition().duration(500).call(chart);
 
-            nv.utils.windowResize(chart.update);
+            !options.autoResize ||  nv.utils.windowResize(chart.update);
 
             return chart;
         });
@@ -189,7 +189,7 @@
                 .transition().duration(500)
                 .call(chart);
 
-            nv.utils.windowResize(chart.update);
+            !options.autoResize ||  nv.utils.windowResize(chart.update);
             return chart;
         });
     };
@@ -241,7 +241,7 @@
                     .transition().duration(500)
                     .call(chart);
 
-                nv.utils.windowResize(chart.update);
+                !options.autoResize ||  nv.utils.windowResize(chart.update);
 
                 return chart;
             });
@@ -298,7 +298,7 @@
                 .transition().duration(1200)
                 .call(chart);
 
-            nv.utils.windowResize(chart.update);
+            !options.autoResize ||  nv.utils.windowResize(chart.update);
 
             return chart;
         });
@@ -329,7 +329,7 @@
                 .transition().duration(500)
                 .call(chart);
 
-            nv.utils.windowResize(chart.update);
+            !options.autoResize ||  nv.utils.windowResize(chart.update);
 
             return chart;
         });
@@ -349,6 +349,7 @@
             animate:false,
             controlBar:false,
             filtering:true,
+            autoResize: true,
             color:d3.scale.category10()
         };
 
