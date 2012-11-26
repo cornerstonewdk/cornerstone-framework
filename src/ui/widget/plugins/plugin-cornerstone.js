@@ -165,9 +165,11 @@
 
 
     if(HAS_TOUCH) {
-        $(".dropdown-menu li").on("touchstart", function (e) {
-            $(this).find("a").trigger("click");
-            return false;
+        $(function() {
+            $(".dropdown-menu li").on("touchstart", function (e) {
+                $(this).find("a").trigger("click");
+                return false;
+            });
         });
     }
 
