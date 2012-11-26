@@ -27,7 +27,7 @@ public class Repl {
     s += "                                                                                                                  \n";
     s += "<% codeMirrorBlock = (obj) => %>                                                                                  \n";
     s += "<p>                                                                                                               \n";
-    s += "<div class='highlight'>                                                                                           \n";
+    s += "<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    \n";
     s += "<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        \n";
     //s += "<p style='margin-bottom:0px;color=white'>-</p>                                                                    \n";
     s += "<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              \n";
@@ -71,7 +71,7 @@ public class Repl {
     s += "    tabMode: 'indent',                                                                                            \n";
     s += "    onChange: function() {                                                                                        \n";
     s += "      clearTimeout(delay_<%= obj.funcname %>);                                                                    \n";
-    //s += "      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             \n";
+    s += "      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             \n";
     s += "    }                                                                                                             \n";
     s += "  });                                                                                                             \n";
     s += "  function updatePreview_<%= obj.funcname %>() {                                                                  \n";
