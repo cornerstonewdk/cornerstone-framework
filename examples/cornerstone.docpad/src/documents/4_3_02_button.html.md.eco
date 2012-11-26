@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '버튼'
+title: 'Button'
 outline: '버튼을 클릭했을 때 버튼의 이름등을 바꾸는 토글 기능을 부여하는 플러그인. data-attribute를 이용하는 방식. data-attribute를 이용한 버튼 그룹 checkbox 토글. data-attribute를 이용한 버튼 그룹 radio 토글...'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -103,7 +103,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <div><i class="badge">1</i>아래 단일 토글을 클릭했을때 버튼이 토글되는지 확인할 수 있다.</div>
 	<!-- data-toggle="button" 속성으로 토글 기능 부여. -->
 	<button type="button" class="btn" data-toggle="button">단일 토글</button>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 #### DATA-API(data-attribute)를 이용한 버튼 그룹 checkbox 토글
 
@@ -117,7 +117,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 #### DATA-API(data-attribute)를 이용한 버튼 그룹 radio 토글
 
@@ -131,7 +131,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		<button type="button" class="btn"><em>i</em></button>
 		<button type="button" class="btn">u</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 #### javascript를 이용하는 방식
 
@@ -156,7 +156,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
 		};
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 이름 | 설명

@@ -35,7 +35,7 @@ html lang: 'ko', ->
         
 	# ----------------------------- # Document Body
 
-	body ->
+	body "onload":"smartAnchor('mobile_anchor')", ->
 
         rowmap = (row, orig) ->
           ret = []
@@ -101,9 +101,7 @@ html lang: 'ko', ->
             div '.navbar-inner', ->
                 div '.container', ->
                     button '.btn.btn-navbar', 'type':'button', 'data-toggle':'collapse', 'data-target':'.nav-collapse', ->
-                        span '.icon-bar', ->
-                        span '.icon-bar', ->
-                        span '.icon-bar', ->
+                        i -> ""
                     a '.brand', href : './index.html', ->
                         'Cornerstone'
                     div '.nav-collapse.collapse', ->
@@ -172,20 +170,55 @@ html lang: 'ko', ->
                               depth_val="third-depth"
                           if cur_url_1 is cur_url_2 
                              li '.active', -> a "class":depth_val, "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+                             #li '.active', -> a "class":depth_val, "href":"#showthis", "onclick": "smartAnchor('."+"#{documentModel.get('url')}"+".html#showthis')", "#{documentModel.get('title')}"
                           else
                              li '.inactive', -> a "class":depth_val, "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
+                             #li '.inactive', -> a "class":depth_val, "href":"#showthis", "onclick": "smartAnchor('."+"#{documentModel.get('url')}"+".html#showthis')", "#{documentModel.get('title')}"
 
             div '.span9.well', 'style':'float: left;', ->
+                a '#mobile_anchor', ""
                 # Document
-                a '#showthis', ""
                 article '.page',
                     'typeof': 'sioc:page'
                     about: h @document.url
                     -> @content
-                a 'href':'#showthis', "go to showpoint"
+                #a 'href':'#mobile_anchor', "go to mobile_anchor"
 
 		# Include our scripts
 		#text @getBlock('scripts').add([
 		#	"./script.js"
 		#]).toHTML()
 
+        script src: './smartanchor.js'
+
+        i_cnt = 0
+        idx = -1
+        cur_url = @document.url
+        tag.documents.forEach (documentModel) ->
+                          doc_url = "#{documentModel.get('url')}"
+                          if doc_url is cur_url
+                             idx = i_cnt
+                          i_cnt = i_cnt + 1
+        prev_idx = idx - 1
+        next_idx = idx + 1
+        #p -> tag.documents[idx].get('url') + " " + prev_idx + " " + idx + " " + next_idx
+
+        ###
+        div ".btn-group.pos_fixed", -> 
+            if prev_idx isnt -1
+                a "href":"."+tag.documents[prev_idx].get('url')+".html", -> 
+                    button ".btn", -> "Prev"
+            a "href":"#mobile_anchor", -> 
+                button ".btn", -> "Top"
+            if next_idx isnt i_cnt
+                a "href":"."+tag.documents[next_idx].get('url')+".html", -> 
+                    button ".btn", -> "Next"
+        ###
+        div ".btn-group.pos_fixed", -> 
+            if prev_idx isnt -1
+                a ".btn.btn-small", "href":"."+tag.documents[prev_idx].get('url')+".html", -> 
+                    i ".icon-chevron-left", -> ""
+            a ".btn.btn-small", "href":"#mobile_anchor", -> "Top"
+            if next_idx isnt i_cnt
+                a ".btn.btn-small", "href":"."+tag.documents[next_idx].get('url')+".html", -> 
+                    i ".icon-chevron-right", -> ""

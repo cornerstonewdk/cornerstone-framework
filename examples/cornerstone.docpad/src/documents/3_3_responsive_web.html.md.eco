@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: '반응형 웹'
-outline: '반응형웹이란? (Responsive Website) Responsive Website의 뜻처럼 반응하는 웹이란 뜻이다. 하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든 웹이다. 미디어쿼리(media query)를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다...'
+outline: '반응형웹이란? (Responsive Web) Responsive Web의 뜻처럼 반응하는 웹이란 뜻이다. 하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든 웹이다. 미디어쿼리(media query)를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다...'
 date: '2012-11-16'
 tagstr: 'style'
 tags: ['post','style','']
@@ -12,23 +12,21 @@ order: '[3, 3]'
 thumbnail: '3. Style.png'
 ---
 
-반응형 웹
+반응형 웹(Responsive Web)
 ----------------
-### 반응형웹
+### 소개
 
-반응형웹이란? (Responsive Website)
-Responsive Website의 뜻처럼 반응하는 웹이란 뜻이다.
-하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든웹이다.
+반응형웹이란? Responsive Web의 뜻처럼 반응하는 웹이란 뜻이다. 하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든웹이다.
 	
 
-### 레이아웃 (반응형 중심)
+### 미디어쿼리 사용(media query)
 
-미디어쿼리(media query)를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다.
+미디어쿼리를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다.
 
 * 그리드 내에 레이아웃 식별 구분
 
+#### 기기크기에 따라 적용되는 미디어쿼리
 
-#### 기기에 따른 그리드 크기변화
 <table style="width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; margin:0 0 20px;">
 	<colgroup>
 		<col width="25%" />
@@ -75,13 +73,7 @@ Responsive Website의 뜻처럼 반응하는 웹이란 뜻이다.
 	</tbody>
 </table>
 
-반응형웹을 구현하려면 viewport의 메타태그를 포함해야 한다.
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-#### 기기크기에 따라 적용되는 미디어쿼리
-
+```
 	/* Landscape phones and down */
  	@media (max-width: 480px) { ... }
 	
@@ -93,8 +85,15 @@ Responsive Website의 뜻처럼 반응하는 웹이란 뜻이다.
 	 
 	/* Large desktop */
 	@media (min-width: 1200px) { ... }
+```
 
-#### 지원하는 Class
+반응형 웹을 구현하려면 viewport의 메타태그를 포함해야 한다.
+
+```
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+#### 지원하는 유틸리티 클래스
 
 Class | Phones | Tablets | Desktops
 :----: | :----: | :----: | :----:

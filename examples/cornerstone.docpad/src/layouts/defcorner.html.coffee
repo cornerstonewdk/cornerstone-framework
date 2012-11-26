@@ -72,9 +72,7 @@ html lang: 'ko', ->
             div '.navbar-inner', ->
                 div '.container', ->
                     button '.btn.btn-navbar', 'type':'button', 'data-toggle':'collapse', 'data-target':'.nav-collapse', ->
-                        span '.icon-bar', ->
-                        span '.icon-bar', ->
-                        span '.icon-bar', ->
+                        i -> ""
                     a '.brand', href : './index.html', ->
                         'Cornerstone'
                     div '.nav-collapse.collapse', ->

@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '페이지네이션'
+title: 'Pagination'
 outline: 'ul 엘리먼트로된 네비게이션 요소. 기본적으로 폰에서는 이것 대신 리스트뷰를 사용하는것이 적합하나 네이버나 클리앙같은 게시판 류에서는 실제로는 상당히 자주 사용되고 있는 듯 하며 엔터프라이즈 환경에서도 상당히 자주 사용된다. 기본 페이지네이션에서는 큰 클릭 영역과 간단히 확장/축소가 가능하다. 기본적으로 ul, li 태그로 이뤄져 있고 .pagination 클래스로 감싸야 한다…'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -13,40 +13,110 @@ thumbnail: '4.2.04.paginaton.png'
 
 ## 페이지네이션(Pagination)
 
-`ul` 엘리먼트로된 네비게이션 요소. 기본적으로 폰에서는 이것 대신 리스트뷰를 사용하는것이 적합하나 네이버나 클리앙같은 게시판 류에서는 실제로는 상당히 자주 사용되고 있는 듯 하며 엔터프라이즈 환경에서도 상당히 자주 사용된다.
+`<ul>` 엘리먼트로된 네비게이션 요소. 기본적으로 폰에서는 이것 대신 리스트뷰를 사용하는것이 적합하나 네이버나 클리앙같은 게시판 류에서는 실제로는 상당히 자주 사용되고 있는 듯 하며 엔터프라이즈 환경에서도 상당히 자주 사용된다.
 
-### 기본 페이지네이션
+### 기본 페이지네이션(Standard pagination)
 
 기본 페이지네이션에서는 큰 클릭 영역과 간단히 확장/축소가 가능하다. 기본적으로 `<ul>`, `<li>` 태그로 이뤄져 있고 `.pagination` 클래스로 감싸야 한다.
 
-### 옵션
+```
+	<div class="pagination">
+	  <ul>
+	    <li><a href="#">Prev</a></li>
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li><a href="#">Next</a></li>
+	  </ul>
+	</div>
+```
 
-__비활성 / 활성 상태__
+### 옵션(Options)
+
+#### 비활성 / 활성 상태(Disabled and active states)
 
 비활성 페이지 번호인 경우 해당 `li` 태그에 `.disabled` 클래스를 추가하고 활성 페이지 번호인 경우 해당 `li` 태그에 `.active` 클래스를 추가하면 된다.
 
+```
+	<div class="pagination">
+	  <ul>
+	    <li class="disabled"><a href="#">Prev</a></li>
+	    <li class="active"><a href="#">1</a></li>
+	    ...
+	  </ul>
+	</div>
+```
+
 또한 비활성, 활성인 경우 `<a>` 태그의 클릭 함수를 제거하기 위해 `<span>` 태그로 변경할 수 있다.
 
-__정렬__
+```
+	<div class="pagination">
+	  <ul>
+	    <li class="disabled"><span>Prev</span></li>
+	    <li class="active"><span>1</span></li>
+	    ...
+	  </ul>
+	</div>
+```
+
+#### 정렬(Alignment)
 
 페이지네이션의 정렬은 3가지 종류가 있다. 좌측 정렬(기본), 중앙 정렬, 우측 정렬로 이뤄어 졌으며 좌측 정렬은 기본으로 적용되므로 별도의 클래스가 요구되지 않는다. 하지만
 중앙 정렬과 우측 정렬은 각각 정렬을 위해 클래스가 필요하다. 중앙 정렬의 경우  `.pagination` 클래스에 `.pagination-centered` 를 추가해야 하며 우측 정렬의 경우 `.pagination` 클래스에 `.pagination-right` 클래스를 추가해야 한다.
 
-### 페이저
+```
+	<div class="pagination pagination-centered">
+	  ...
+	</div>
+
+	<div class="pagination pagination-right">
+	  ...
+	</div>
+```
+
+### 페이져(Pager)
 
 페이저는 매거진이나 블로그와 같은 사이트에서 많이 사용되는 형태로 페이지네이션과는 달리 이전 / 다음 버튼으로 이뤄져 있다.
 
-__기본 페이저__
+#### 기본 스타일(Default styles)
 
 기본적으로 페이저는 중앙 정렬 상태이다.
 
-__링크 정렬하기__
+```
+	<ul class="pager">
+	  <li><a href="#">Previous</a></li>
+	  <li><a href="#">Next</a></li>
+	</ul>
+```
+
+#### 링크 정렬(Aligned links)
 
 기본 페이저에서는 이전 / 다음 버튼이 같이 중앙에 정렬된 방면에 링크 정렬은 이전 / 다음의 `<li>` 태그에 클래스를 추가하므로  이전 버튼은 좌측으로, 다음 버튼은 우측으로 정렬 시킨다.
 
-__비활성 상태__
+```
+	<ul class="pager">
+	  <li class="previous">
+	    <a href="#">&larr; Older</a>
+	  </li>
+	  <li class="next">
+	    <a href="#">Newer &rarr;</a>
+	  </li>
+	</ul>
+```
+
+#### 비활성화 상태 옵션(Optional disabled state)
 
 페이저 링크 또한 페이저네이션처럼 비활성 클래스인 `.disabled` 클래스를 비활성하려는 버튼의 `<li>` 태그에  추가해서 사용 할 수 있다.
+
+```
+	<ul class="pager">
+	  <li class="previous disabled">
+	    <a href="#">&larr; Older</a>
+	  </li>
+	  ...
+	</ul>
+```
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -127,7 +197,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-	<h3>기본 페이지네이션</h3>
+	<h3>Default Styles 예제</h3>
     <div class="pagination">
         <ul>
             <li><a href="#">이전</a></li>
@@ -150,7 +220,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		</ul>
 	</div>
 
-	<h3>비활성 / 활성 상태</h3>
+	<h3>Disabled and active states 예제</h3>
 	<div class="pagination">
         <ul>
             <li class="disabled"><a href="#">이전</a></li>
@@ -162,7 +232,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         </ul>
     </div>
 
-	<h3>a tag -> span tag</h3>
+	<h3>a tag -> span tag 예제</h3>
 	<div class="pagination">
         <ul>
             <li class="disabled"><span>이전</span></li>
@@ -174,19 +244,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         </ul>
     </div>
 
-	<h3>기본 정렬(좌측)</h3>
-    <div class="pagination">
-    	<ul>
-            <li class="disabled"><span>이전</span></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">다음</a></li>
-        </ul>
-    </div>
-   
-	<h3>중앙 정렬</h3>
+	<h3>Aligned center 예제</h3>
     <div class="pagination pagination-centered">
     	<ul>
             <li class="disabled"><span>이전</span></li>
@@ -198,7 +256,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         </ul>
     </div>
 
-	<h3>우측 정렬</h3>
+	<h3>Aligned right 예제</h3>
     <div class="pagination pagination-right">
     	<ul>
             <li class="disabled"><span>이전</span></li>
@@ -210,13 +268,13 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         </ul>
     </div>
 
-	<h3>기본 페이저</h3>
+	<h3>Pager 예제</h3>
     <ul class="pager">
         <li><a href="#">이전</a></li>
         <li><a href="#">다음</a></li>
     </ul>
 
-	<h3>링크 정렬하기</h3>
+	<h3>Aligned links 예제</h3>
 	<ul class="pager">
         <li class="previous">
             <a href="#">&larr; 이전</a>
@@ -226,7 +284,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         </li>
     </ul>
 
-	<h3>비활성 상태</h3>
+	<h3>Optional disabled state 예제</h3>
 	<ul class="pager">
         <li class="previous disabled">
             <a href="#">&larr; Older</a>
@@ -235,4 +293,4 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <a href="#">다음 &rarr;</a>
         </li>
     </ul>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 1230px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 1105px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

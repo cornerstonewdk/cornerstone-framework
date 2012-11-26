@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '싸인'
+title: 'Sign'
 outline: '터치 기반으로 서명을 할 수 있는 플러그인이다...'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -140,7 +140,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 570px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 메서드
 

@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '캐로셀'
+title: 'Carousel'
 outline: '캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다. data-attribute를 이용하는 방식. 좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정...'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -20,7 +20,7 @@ thumbnail: '4.3.03.carousel.png'
 이미지 이동 기능 또한 자바스크립트 형태로 사용하고 싶은 경우엔 아래와 같은 형태로 사용하면 된다.
 ```
     // 캐로셀 플러그인 적용
-    var = $(".carousel").carousel({
+    var $carousel = $(".carousel").carousel({
         interval: 3000
     // 스와이프 이벤트를 이용해서 이미지 이동.
     }).swipe().on("swipeRight", function(e) { // 모바일에서 swipe를 이용
@@ -179,7 +179,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 650px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 #### javascript를 이용하는 방식
 
@@ -244,7 +244,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 650px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -311,19 +311,26 @@ __실제 사용 예시__
             <a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
         </div>
     </div>
+    <div id="console" style="height: 30px"></div>
     <script type="text/javascript">
 	    window.onload = function() {
             $(".carousel").carousel({
-                interval: 100000
+                interval: 5000
             }).swipe().bind("swipeRight", function(e) {
                 $(".carousel").carousel("prev");
             }).bind("swipeLeft", function(e) {
                 $(".carousel").carousel("next");
             }).on("slide", function(e) {
                 console.log("이미지 이동 전");
+                $("#console").html($("<p/>", {
+                    text: "이미지 이동 전"
+                }));
             }).on("slid", function(e) {
                 console.log("이미지 이동완료 후");
+                $("#console").html($("<p/>", {
+                    text: "이동완료 후"
+                }));
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

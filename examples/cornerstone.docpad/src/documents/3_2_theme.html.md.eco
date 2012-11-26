@@ -21,33 +21,33 @@ thumbnail: '3. Style.png'
 - Wire Frame 백지테마 - 확장이나 변형을 위해 제공되는 테마
 		
 
-### 확장테마 작성법 ###
+### 테마 확장
 
 wireframe은 white, gray톤과 그림자 효과, 그라데이션등을 배제한 가장 기본적인 테마로, 사용자가 직접 디자인을 적용시킬 수 있도록 만들어진 테마이다.
 기본 테마인 wireframe.css를 적용 시킨 후 새로운 css 파일을 추가 사용한다.
 
-## 부트스트랩과 다른부분 ##
+## Bootstrap 과 차이점
 
 부트스트랩은 체크박스, 라디오버튼의 경우 스크립트를 포함하여 플러인으로 되어있지만, 
 현재 시스템의 경우 html5, css3로만 구현되어 있다.
 모바일 디자인은 터치, 사용자의 편의성을 고려한 UI가 적용되어 있다.
 
-## 추가된 부분 ##
+## 추가된 부분
 	
 - Lists - 여러가지 다양한 list를 만들수 있도록 제공한다.
 - Nav bar - mobile에서 상,하단에 붙여 사용할수 있는 기본 Nav bar를 제공한다.
 
-## 텍스처 사용 ##
+## 텍스쳐 사용
 
 Background에 텍스처를 사용할수 있다. conerstones에서 제공한는 기본 텍스처를 사용하여도 되지만,
 좀더 디자인적으로 꾸미고 싶다면 사용자가 텍스처를 활용하여 Background에 적용시켜 사용할 수도 있다.
 	 
 
-## 폼의 높이 너비 ##
+## 폼의 높이와 넓이
 
 모바일 사용을 고려하여 폼의 높이와 너비의 폭을 크게 하여 사용 편의성을 고려하였다.
 
-## 주의사항 ##
+## 주의사항
 
 .nav-tab을 사용하여 tab을 구현할때는 각 tab의 li에 사용자가 직접 width를 적용해준다.
 
@@ -57,7 +57,7 @@ media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하�
 모바일에서는 css의 a:hover, 스크립트의 onmouseover, onmouseenter등의 기능은 사용하지 않는것이 좋다. 위의 기능들은 웹의 마우스 이벤트에 속한다. 따라서 마우스를 사용하지 않고 터치기능을 사용하는 모바일 기기중에 여러가지 오류가 생길 수 있다.
 
 
-격자
+격자(Grid)
 ---
 
 격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <div> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.
@@ -84,7 +84,7 @@ media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하�
 * 사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 
 * 미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경
 
-## Default grid system ##
+## 기본 격자 시스템
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
 <script src='mode/xml/xml.js'></script>                                                                           
@@ -299,7 +299,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 CSS 구조
 -------
 
-우리 CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법
+Conerstone CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법
 
 - bootstrap.css에는 가 태그별 basic 속성 작성.
 - global.css 공통적으로 사용하는 class 작성.
@@ -307,7 +307,7 @@ CSS 구조
 - element는 기본 bootstrap.css에서 상속하여 사용할수도 있다.
 
 
-### Bootstrap 베이스의 네이밍 방법
+### Bootstrap 네이밍 규칙
 
 - 기본
 	- .table : 행 사이에만 수평 라인
@@ -318,11 +318,11 @@ CSS 구조
 
 예제) http://twitter.github.com/bootstrap/base-css.html#tables
 
-### Selector 선언방법
+### Selector 사용법
 
 개별적으로 사용 가능한 element나 class의 속성을 각각의 그리드 내에 만들어진 layout의 class에 상속하여 속성을 변경 후 사용 가능하다.
 
-### CSS Selector 사용방법
+### CSS Selector 사용법
 		
 		div p <DIV> 요소 내부의 모든 <P> 요소를 선택
 		div>p 부모 <DIV> 요소내에 모든 <P> 요소를 선택

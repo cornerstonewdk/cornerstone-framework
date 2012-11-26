@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '콜랩스'
+title: 'Collapse'
 outline: '콜랩스는 탭의 수직형태로 타이틀을 클릭하면 컨텐츠가 접혔다 펴지는 형태의 플러그인.'
 date: '2012-11-16'
 tagstr: 'widget'

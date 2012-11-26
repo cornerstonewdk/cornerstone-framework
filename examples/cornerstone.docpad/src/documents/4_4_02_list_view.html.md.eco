@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '리스트뷰'
+title: 'ListView'
 outline: '코너스톤의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다. javascript를 이용하는 방식...'
 date: '2012-11-16'
 tagstr: 'widget'

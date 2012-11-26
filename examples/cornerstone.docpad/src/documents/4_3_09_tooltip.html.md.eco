@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '툴팁'
+title: 'Tooltip'
 outline: '링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인. data-attribute를 이용하는 방식. 성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다…'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -98,7 +98,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <% prv_1 = (contents) => %>
     <h3>Tooltip</h3>
-    <div class="tooltip-demo" data-toggle="tooltip" style="margin: 100px">
+    <div class="tooltip-demo" data-toggle="tooltip" style="margin: 10px 0 0 100px;">
         <ul class="bs-docs-tooltip-examples">
             <li><a href="#" rel="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
             <li><a href="#" rel="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a>
@@ -114,7 +114,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <% prv_2 = (contents) => %>
     <h3>Tooltip</h3>
-    <div id="tooptip" class="tooltip-demo" style="margin: 100px">
+    <div class="tooltip-demo" id="tooltip"  style="margin: 10px 0 0 100px;">
         <ul class="bs-docs-tooltip-examples">
             <li><a href="#" rel="tooltip" >Tooltip on top</a></li>
             <li><a href="#" rel="tooltip" >Tooltip on right</a>
@@ -127,7 +127,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script type="text/javascript">
 	    window.onload = function() {
 	        var placement = ["top", "right", "bottom", "left"];
-            $('#tooptip [rel=tooltip]').each(function(i) {
+            $('#tooltip [rel=tooltip]').each(function(i) {
                 $(this).tooltip({
                     selector:"",
                     title: "Hello World",

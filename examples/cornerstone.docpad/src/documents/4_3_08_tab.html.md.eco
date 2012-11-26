@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '탭'
+title: 'Tab'
 outline: '여러 컨텐츠를 한 뷰페이지에 탭메뉴를 통해 선택된 컨텐츠만 보여주는 플러그인. data-attribute를 이용하는 방식. 한줄의 자바스크립트 코딩 없이도 tab 또는 pill 네비게이션을 활성화 시킬 수 있다. 해당 엘리먼트에 간단히 data-toggle="tab" 또는 data-toggle="pill" 를 기술해 주면 된다…'
 date: '2012-11-16'
 tagstr: 'widget'

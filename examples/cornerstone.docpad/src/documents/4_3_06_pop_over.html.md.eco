@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '팝오버'
+title: 'Popover'
 outline: '버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인. data-attribute를 이용하는 방식. javascript를 이용하는 방식...'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -13,8 +13,6 @@ thumbnail: '4.3.06.pop_over.png'
 
 ## Popover
 버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인.
-
-__마크업__
 
 #### DATA-API(data-attribute)를 이용하는 방식
 

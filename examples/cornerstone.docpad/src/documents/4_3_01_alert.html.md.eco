@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '알림'
+title: 'Alert'
 outline: '경고 메세지등을 화면에 보여주거나 사용자가 해당 메시지를 닫는 기능. data-attribute를 이용하는 방식. javascript를 이용하는 방식...'
 date: '2012-11-16'
 tagstr: 'widget'
@@ -106,7 +106,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		<a class="close" data-dismiss="alert" href="#">×</a>
 		<strong>data-attribute를 통한 alert 닫기</strong>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 90px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 #### javascript 코드
 
@@ -127,7 +127,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
 
 ### 이벤트
 
@@ -155,4 +155,4 @@ __실제 사용 예시__
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_nopad : false  , no : 'no' } %>

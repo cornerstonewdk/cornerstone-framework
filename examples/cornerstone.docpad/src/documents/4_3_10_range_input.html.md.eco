@@ -2,7 +2,7 @@
 layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
-title: '범위 입력상자'
+title: 'RangeInput'
 outline: 'RangeInput은 범위값을 설정될 때 사용하는 Input UI이다. '
 date: '2012-11-16'
 tagstr: 'widget'
@@ -105,13 +105,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% prv_1 = (contents) => %>
     <h3>RangeInput</h3>
     <div title="Range Input" class="widget-container">
-      <div class="page-header">
-        <h3>Range Input(Slider)</h3>
-      </div>
       <div class="row-fluid">
         <div class="span4">
           <h4 class="dash-head"><i class="icon-cog"></i> 기본 Range Input:</h4>
-
           <div class="widget-rangeinput">
             <label>
               <input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="1"
@@ -150,9 +146,6 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% prv_2 = (contents) => %>
     <h3>RangeInput</h3>
     <div title="Range Input" class="widget-container">
-      <div class="page-header">
-        <h3>Range Input(Slider)</h3>
-      </div>
       <div class="row-fluid">
         <div class="span4">
           <h4 class="dash-head"><i class="icon-cog"></i> 기본 Range Input:</h4>
