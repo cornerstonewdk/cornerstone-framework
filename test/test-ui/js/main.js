@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(function() {
     // 데이터픽커
     var HAS_TOUCH = ('ontouchstart' in window);
@@ -10,6 +11,15 @@ $(function() {
 
         });
     }
+=======
+// 데이터픽커
+$('.datepicker').datepicker({
+    language:"ko",
+    firstDisable: true,
+    changeDisplay: true
+});
+
+>>>>>>> test
 
 // 싸인
     $("#signature").sign();

@@ -1,0 +1,13 @@
+.endless-loader {
+	width: 110px;
+	margin: 0 auto;
+}
+
+.icon-endless-loader{
+	background: url("../img/loader/159.gif") 0 0 no-repeat;
+	background-size: 30px 30px;
+	height: 30px;
+	padding-left: 35px;
+	line-height: 30px;
+}
+
