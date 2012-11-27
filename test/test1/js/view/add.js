@@ -40,7 +40,6 @@ define( [ 'model/user', 'backbone', 'jquery', 'handlebars' ], function( User, Ba
 
 			if ( user.isValid() ) {
 				this.collection.add( user );
-				user.save();
 
 				// 추가하고 나서는 목록으로 이동
 				location.href = '#list';

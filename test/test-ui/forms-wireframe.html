@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MOBILE T</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap-responsive.css">
+		<link rel="stylesheet" href="../../dist/ui/theme/wireframe/css/cornerstone.css">
+	
+
+    <style>
+      body {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../../docs/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../docs/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+		
+    <div class="container">      
+			<div class="page-header">
+       <h1>Form</h1>
+     </div>
+
+      <div class="row">
+        <div class="span4">
+					<form>
+						<legend>Text input</legend>
+						<div>
+							<label class="blind">Text input</label>
+							<input class="input-block-level" type="text" placeholder="Text input" value="Text input" >
+						</div>
+
+						<div>
+							<label class="blind">Text textarea</label>
+							<textarea class="input-block-level" rows="3"></textarea>
+						</div>
+
+						<hr>
+
+						<div>							
+							<label class="blind">Text input</label>
+							<input class="input-block-level ipt-orange" type="text" placeholder="Text input" value="Text input" >
+						</div>
+
+						<div>
+							<label class="blind">Text textarea</label>
+							<textarea class="input-block-level ipt-orange" rows="3"></textarea>
+						</div>
+
+						<hr>
+
+						<div class="input-prepend">
+							<label class="blind">Prepend</label>
+							<span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" placeholder="Username">
+						</div>
+
+						<hr>
+
+						<div class="input-append">
+							<label class="blind">Append</label>
+							<input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
+						</div>
+
+						<hr>
+
+						<div class="input-prepend input-append">
+							<label class="blind">Combined</label>
+							<span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
+						</div>
+
+						<hr>
+
+						<div class="input-append">
+							<label class="blind">Combined</label>
+							<input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
+						</div>
+						
+				</form>
+
+				<form class="form-search">
+					<legend>Search form</legend>
+					<label class="blind">Search</label>
+					<input type="text" class="input-medium search-query">
+					<button type="submit" class="btn">Search</button>
+
+					<hr>
+
+					<div class="input-append">
+						<label class="blind">Search</label>
+						<input type="text" class="span2 search-query">
+						<button type="submit" class="btn">Search</button>
+					</div>
+				</form>
+				
+        </div><!-- /span4 -->
+
+				<div class="span4">
+					<form>
+						<legend>Text input</legend>
+						<span class="input-block-level uneditable-input">UNEDITABLE INPUT</span>
+
+						<div class="control-group disabled">
+							<div class="controls">
+								<label class="blind">Disabled</label>
+								<input class="input-disa" id="disabledInput" type="text" placeholder="DISABLED" disabled>
+								<div class="help-inline">
+									<i></i> <span>Not supported</span>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<label class="blind">Text input</label>
+							<input class="input-block-level" type="text" placeholder="TEXT INPUT">
+						</div>
+
+						<div>
+							<label class="blind">Focused input</label>
+							<input class="input-block-level" id="focusedInput" type="text" value="FOCUSED INPUT">
+						</div>
+
+						<div class="control-group warning">
+							<div class="controls">
+								<label class="blind">Warning input</label>
+								<input class="input-block-level" type="text" id="inputWarning" value="WARNING!" >
+							</div>
+						</div>			
+						
+						<div class="control-group error">
+							<div class="controls">
+								<label class="blind">Error input</label>
+								<input type="text" id="inputError" value="ERROR!">
+								<div class="help-inline">									
+									<i></i> <span>Error</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group success">
+							<div class="controls">
+								<label class="blind">Success input</label>
+								<input type="text" id="inputSuccess" value="SUCCESS!">
+								<div class="help-inline">									
+										<i></i> <span>Success	</span>		
+								</div>
+							</div>
+						</div>
+
+						<legend>Buttons</legend>
+
+						<p>
+							<label class="blind">Buttons</label>
+							<button class="btn" type="button">BUTTON</button>
+							<button class="btn btn-primary" type="button">BUTTON</button>
+						</p>
+						<hr>
+						<p>
+							<label class="blind">Buttons</label>
+							<button class="btn disabled" type="button">BUTTON</button>
+							<button class="btn btn-primary disabled" type="button">BUTTON</button>
+						</p>
+					</form>
+        </div><!-- /span4 -->
+
+				<div class="span4">
+					<form>
+						<legend>Select</legend>
+						<!-- s :: 추가된 마크업 - Select -->
+						<label class="select-box">
+							<select>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</label>
+						<!-- e :: 추가된 마크업 - Select -->
+
+						<legend>Slider</legend>
+						<div class="slider">
+							<div class="slider-bar">					
+							</div>
+							<button class="slide-handle"></button>
+						</div>
+						
+						<hr>
+
+						<div class="slider-box">
+							<div class="slider inline" style="width:250px;">
+								<div class="slider-bar">								
+								</div>
+								<button class="slide-handle" style="left:100px;"></button>							
+							</div>
+							<input type="tel" maxlength="3" class="figure inline" value="68.7" disabled>
+						</div>
+
+						<!-- s :: 추가된 마크업 - Flip select -->
+						<legend>Flip select</legend>
+						<label class="flip-area" for="f-check">
+							<input type="checkbox" class="flip-check" id="f-check" value="option2" />
+							<span class="flip-txt" data-on="ON" data-off="OFF"></span>
+						</label>
+						<!-- e :: 추가된 마크업 - Flip select -->
+					
+						<legend>Checkbox. radio</legend> 
+						
+						<!-- s :: 추가된 마크업 - 체크박스, 라디오버튼 -->
+						<label class="inline">
+							<input type="checkbox" id="inlineCheckbox1" value="option1"  disabled>
+						</label>
+						<label class="inline">
+							<input type="checkbox" id="inlineCheckbox2" value="option2">
+						</label>
+						<label>
+							<input type="checkbox" id="inlineCheckbox4" value="option3">
+						</label>
+
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+						</label>
+
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+						</label>
+						<!-- e :: 추가된 마크업 - 체크박스, 라디오버튼 -->
+					</form>
+        </div><!-- /span4 -->
+      </div><!-- /row -->
+
+    </div> <!-- /container -->
+
+  </body>
+</html>

@@ -27,8 +27,4 @@ SKT HTML5 Framework
 브랜치는 다음과 같은 용도로 사용한다.
 
 * master : 외부에 노출 가능한 완성본 (Release branch)
-* dev : Framework 코드 구현시에 사용
-* doc : 가이드 문서 작성시에 사용
-* example : 예제 앱 구현시에 사용
-* test : 테스트 코드 작성시에 사용
-* style : 스타일링 작업시에 사용
+* dev : 내부 개발시에 사용

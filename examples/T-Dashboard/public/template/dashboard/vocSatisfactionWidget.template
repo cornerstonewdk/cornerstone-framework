@@ -1,0 +1,4 @@
+<div>
+	<p class="vocDescription">현재까지 총 {{vocCnt}}건 접수중</p><br/><br/><bt/><br/> 
+	<p class="vocPercent" style="display:block; float:none; clear:both;">{{vocSatisfaction}}<span class="vocPercentText">&nbsp&nbsp% 만족</span></p>
+</div>

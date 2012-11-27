@@ -41,6 +41,14 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], 
 			} );
 		},
 		
+		_onValidationError: function( model, err ) {
+		
+			if ( _.isArray( err ) )
+				_.each( err, this.validation.fail );
+			else
+				this.validation.fail( err );
+		},
+		
 		toModel: function() {
 			
 			this.validation.reset();
@@ -61,20 +69,12 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], 
 				}
 			} );
 			
-			var self = this;
-			
+			this.model.off( 'error', this._onValidationError, this );
+			this.model.on( 'error', this._onValidationError, this );
 			this.model.clear( { silent: true } );
-			this.model.set( values, {
-				error: function( model, err ) {
-				
-					if ( _.isArray( err ) )
-						_.each( err, self.validation.fail );
-					else
-						self.validation.fail( err );
-				}
-			} );
+			this.model.set( values );
 			
-			if ( this.model.isValid() ) self.validation.success();
+			if ( this.model.isValid() ) this.validation.success();
 			
 			return this.model;
 		}

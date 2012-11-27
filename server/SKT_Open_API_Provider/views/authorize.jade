@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1= title
+	p 이 사용자가 당신의 계정에 접근을 요청하고 있습니다. 허용 하시겠습니까?
+	form(method='post', action='#{authorizeUrl}')
+		button(name='allow')
+			허용
+		button(name='deny')
+			거절

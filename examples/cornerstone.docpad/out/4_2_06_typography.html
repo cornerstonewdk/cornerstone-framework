@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="active">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/4_2_06_typography">
+            <div>
+  <h2>타이포그라피(Typographic)</h2>
+
+<h3>히어로 유닛(Hero unit)</h3>
+
+<p>히어로 유닛은 사이트에서 중요한 컨텐츠를 보여주기 위해 사용되는 가볍고 유연한 요소이다. 일반적으로 컨텐츠의 제목과 태그 그리고 해당 컨텐츠를 상세하게 볼 수 있는 링크 정도로 구성되며 <code>.hero-unit</code> 클래스로 감싸야 한다.</p>
+
+<pre><code>    &lt;div class=&quot;hero-unit&quot;&gt;
+      &lt;h1&gt;Heading&lt;/h1&gt;
+      &lt;p&gt;Tagline&lt;/p&gt;
+      &lt;p&gt;
+        &lt;a class=&quot;btn btn-primary btn-large&quot;&gt;
+          Learn more
+        &lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h3>페이지 머리글(Page header)</h3>
+
+<p>페이지 머리글은 <code>h1</code>태그를 사용해서 제목글을 작성하며 제목글 내부에   <code>&lt;small&gt;</code> 등의 태그로 다른 스타일을 적용 할 수 있고 <code>.page-header</code> 클래스로 감싸야 한다.</p>
+
+<pre><code>    &lt;div class=&quot;page-header&quot;&gt;
+      &lt;h1&gt;Example page header &lt;small&gt;Subtext for header&lt;/small&gt;&lt;/h1&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<script src='lib/codemirror.js'></script>                                                                         
+
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_1 style='height: 405px;'></iframe>                        
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div class="page-header">
+        <h1>페이지 머리글 <small>부제목</small></h1>
+    </div>
+    <div class="hero-unit">
+        <h1>제목을 넣으세요.</h1>
+        <p>간단한 설명내용을 넣으세요. 제목 밑에 표시됩니다. 짧게 또는 길게 작성 해보세요.</p>
+        <p>
+            <a class="btn btn-primary btn-large">
+            더보기
+            </a>
+        </p>
+    </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./smartanchor.js"></script>
+    <div class="btn-group pos_fixed">
+      <a class="btn btn-small" href="./4_2_05_label_and_badge.html">
+        <i class="icon-chevron-left">
+          
+        </i>
+      </a>
+      <a class="btn btn-small" href="#mobile_anchor">
+        Top
+      </a>
+      <a class="btn btn-small" href="./4_2_07_thumbnail.html">
+        <i class="icon-chevron-right">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+</html>

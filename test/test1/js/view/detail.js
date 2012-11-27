@@ -37,7 +37,7 @@ define( [ 'backbone', 'jquery', 'handlebars' ], function( Backbone, $ ) {
 		},
 
 		delete: function() {
-			this.model.destroy();
+			this.collection.remove( this.model );
 			location.href = '#list';
 		},
 

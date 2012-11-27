@@ -1,0 +1,33 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+
+.breadcrumb {
+  padding: 0 15px 0 25px;
+  margin: 0 0 @baseLineHeight;
+  list-style: none;
+  .border-radius(4px);
+	border: 1px solid @grayLight;
+  li {		
+    display: inline-block;
+    .ie7-inline-block();
+		z-index:10;
+		position:relative;
+		vertical-align:middle;
+		padding:5px 20px 5px 20px;
+		margin-left: -25px;
+  }
+  li a { 
+		color: @grayLight; 
+		text-decoration:none;
+	}
+  li:first-child {z-index:1000;}
+  .active {
+    color: @breadcrumbsTxt;
+		padding-left: 30px;
+  }
+	li span.divider {
+		margin-left: 20px;
+	}
+}

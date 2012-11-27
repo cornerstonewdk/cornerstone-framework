@@ -1,0 +1,36 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: 'MVC 패턴'
+outline: 'MVC(Model-View-Controller) 패턴은 애플리케이션을 Model, View, Controller로 분리해서 작성하는 패턴이다. 이런식으로 애플리케이션을 작성하면 사용자 인터페이스와 비즈니스 로직을 분리해서 서로 영향을 주지 않도록 작성할 수 있고 이는 비즈니스 로직 및 데이터의 재사용성을 높여준다. 각 요소는 다음과 같은 역할을 가진다...'
+date: '2012-11-16'
+tagstr: 'application'
+tags: ['post','application','']
+order: '[2, 4]'
+thumbnail: '2.1.04.MVC_pattern.png'
+---
+
+MVC 패턴
+-------
+MVC(Model-View-Controller) 패턴은 애플리케이션을 Model, View, Controller로 분리해서 작성하는 패턴이다. 이런식으로 애플리케이션을 작성하면 사용자 인터페이스와 비즈니스 로직을 분리해서 서로 영향을 주지 않도록 작성할 수 있고 이는 비즈니스 로직 및 데이터의 재사용성을 높여준다. 각 요소는 다음과 같은 역할을 가진다.
+
+- Model : 애플리케이션의 데이터 및 데이터와 관련된 로직을 관리한다.
+- View : Model을 표현하는 방식을 결정하고 사용자 인터페이스를 담당한다.
+- Controller : 사용자의 입력을 전달받아 처리하고, Model과 View에 명령을 내린다.
+
+이 패턴을 그림으로 나타내면 다음과 같다.
+
+![](images/mvc.png?raw=true)
+
+`이미지 출처: http://blog.nodejitsu.com/scaling-isomorphic-javascript-code`
+
+Cornerstone Framework은 MVC 패턴을 지원하기 위해 Backbone을 포함하고 있다. Backbone에 대해서 더 자세히 알고 싶으면 http://backbonejs.org 를 방문하기 바란다.
+
+Backbone에서 사용하는 MVC 패턴은 전통적인 MVC 패턴과 조금 차이가 있는데, 아래 그림을 보면 잘 알 수 있다.
+
+![](images/backbone-mvc.png?raw=true)
+
+`이미지 출처: http://blog.nodejitsu.com/scaling-isomorphic-javascript-code`
+
+전통적인 MVC 패턴은 Controller가 Model을 조작하도록 되어 있지만, Backbone은 View가 직접 Model을 조작하는 것을 권장하고 있다. 이렇게 되면 Controller의 역할 중 상당 부분을 View가 가져가는 것이기 때문에 Controller가 가벼워지고 View가 무거워진다. 이것은 Model-View-Controller가 서로 균형을 이루는 이상적인 MVC 패턴은 아닐 수 있지만, 사용자의 입력을 View가 받아서 Controller로 전달하는 비효율을 제거해 코드의 양을 줄이고 성능을 향상시킬 수 있다. 

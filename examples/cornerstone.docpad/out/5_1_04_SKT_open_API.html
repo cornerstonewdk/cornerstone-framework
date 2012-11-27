@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="active">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/5_1_04_SKT_open_API">
+            <div>
+  <h2>SKT Open API</h2>
+
+<p>SKT Open API는 SKT에서 제공하는 여러 가지 기능들을 써드파티 애플리케이션에서 사용할 수 있도록 공개된 API이다. Cornerstone Framework에서는 이 API를 사용하기 쉽도록 가공한 유틸리티를 제공한다.</p>
+
+<p>SKT Open API에서 제공하는 기능들은 다음과 같다.</p>
+
+<table><thead>
+<tr>
+<th align="left">기능</th>
+<th align="left">설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">인증</td>
+<td align="left">OAuth 2.0을 사용하여 SKT Open API를 사용할 수 있는 권한을 얻는다.</td>
+</tr>
+<tr>
+<td align="left">SMS</td>
+<td align="left">인증한 사용자의 계정을 사용하여 SMS를 발송한다.</td>
+</tr>
+<tr>
+<td align="left">과금</td>
+<td align="left">지정한 금액을 결제하고, 해당 금액을 SKT 통신 요금과 같이 청구한다.</td>
+</tr>
+</tbody></table>
+
+<p><strong><code>현재 SKT Open API 서버는 Dummy로 운영되고 있기 때문에, 통신은 가능하나 실제로 SMS 발송, 과금이 처리되지는 않는다.</code></strong></p>
+
+<h3>사전 작업</h3>
+
+<p>SKT Open API를 사용하기 위해서는 SKT Open API 서버(이하 API 서버)에 사용할 써드파티 애플리케이션의 정보를 사전에 등록해야 한다. 등록하기 위해 다음과 같은 정보들을 입력한다.</p>
+
+<ul>
+<li>애플리케이션 이름</li>
+<li>애플리케이션의 URI</li>
+</ul>
+
+<p>등록이 완료되고 나면 API 서버에서는 다음 정보들을 발급한다.</p>
+
+<ul>
+<li>클라이언트(애플리케이션)의 식별자 (client_id)</li>
+<li>클라이언트의 비밀번호 (client_secret)</li>
+</ul>
+
+<h3>인증</h3>
+
+<p>API 서버는 인증에 OAuth 2.0을 사용한다. 인증 작업의 목적은 접근 토큰(Access token)을 얻는 것이고, 이 토큰을 사용해서 다른 기능들을 사용할 수 있다. 접근 토큰을 얻는 방법에는 크게 Web Server Flow와 User-Agent Flow의 두 가지가 있다.</p>
+
+<h4>Web Server Flow</h4>
+
+<p>Web Server Flow는 웹 서버(Server-side 환경)에서 접근 토큰을 얻기 위한 절차이다. 다음과 같은 순서대로 진행된다.</p>
+
+<ol>
+<li><p>최초로 인증을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들이 유효한지 확인하고 로그인 화면을 표시한다.</p>
+
+<pre><code>URL : https://api.sk.com/oauth/authorize
+
+Parameters :
+    client_id : 등록시 발급받은 client_id
+    redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+    response_type : code
+
+ex) https://api.sk.com/oauth/authorize?client_id=abcd1234&amp;redirect_uri=http://example.com&amp;response_type=code
+</code></pre>
+
+<p>사용자가 정상적으로 로그인을 하고 클라이언트에 대해서 사용 허가를 하면 API 서버는 redirect_uri에 인증 코드를 붙여서 호출한다. 클라이언트는 인증 코드를 받아서 다음 단계에서 사용한다. 인증 코드는 1시간 동안만 유효하고 한번 사용한 코드는 폐기된다.</p>
+
+<pre><code>ex) http://example.com?code=123456
+</code></pre></li>
+<li><p>인증 코드를 사용해서 접근 토큰을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들을 유효한지 확인하고 접근 토큰을 발급한다.</p>
+
+<pre><code>URL : https://api.sk.com/oauth/access_token
+
+Parameters :
+    client_id : 등록시 발급받은 client_id
+    client_secret : 등록시 발급받은 client_secret
+    redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+    code : 이전 단계에서 받은 인증 코드
+
+ex) https://api.sk.com/oauth/access_token?client_id=abcd1234&amp;client_secret=zxcvbn&amp;redirect_uri=http://example.com&amp;code=123456
+</code></pre>
+
+<p>접근 토큰을 발급하면 API 서버는 redirect_uri에 접근 토큰을 붙여서 호출한다.</p>
+
+<pre><code>ex) http://example.com?access_token=qwert12345
+</code></pre>
+
+<p>접근 토큰은 외부에 노출되지 않도록 주의한다.</p></li>
+</ol>
+
+<h4>User-Agent Flow</h4>
+
+<p>User-Agent Flow는 데스크탑/모바일 앱이나 웹 애플리케이션(Client-side 환경)에서 접근 토큰을 얻기 위한 절차이다. 다음과 같은 순서대로 진행된다.</p>
+
+<ol>
+<li><p>최초로 인증을 요청한다. 아래와 같이 요청을 보내면 API 서버는 파라미터들이 유효한지 확인하고 로그인 화면을 표시한다.</p>
+
+<pre><code>URL : https://api.sk.com/oauth/authorize
+
+Parameters :
+    client_id : 등록시 발급받은 client_id
+    redirect_uri : 결과를 받을 URI, 등록시의 URI와 동일 도메인이어야 한다.
+    response_type : token
+
+ex) https://api.sk.com/oauth/authorize?client_id=abcd1234&amp;redirect_uri=http://example.com&amp;response_type=token
+</code></pre>
+
+<p>사용자가 정상적으로 로그인을 하고 클라이언트에 대해서 사용 허가를 하면 API 서버는 redirect_uri에 접근 토큰과 만료 시간(초)을 붙여서 호출한다.</p>
+
+<pre><code>ex) http://example.com#access_token=qwert12345&amp;expires_in=3600
+</code></pre></li>
+</ol>
+
+<p>Web Server Flow에 비해서 한 단계를 덜 거치지만 다음 이유로 인해 보안이 유지될 수 있다.</p>
+
+<ul>
+<li>redirect_uri의 도메인이 등록시 URI와 동일한지를 검사하기 때문에 다른 클라이언트로 정보가 전송되는 일은 없다.</li>
+<li>redirect_uri가 (SSL이 적용되지 않은) http를 사용하더라도 Fragment(#)를 사용해서 전달하기 때문에 서버로의 요청이 없다. 따라서 정보가 가로채질 염려도 없다.</li>
+</ul>
+
+<h3>유틸리티</h3>
+
+<p>SKT Open API를 사용하기 편하게 해주는 유틸리티를 제공한다. 이 유틸리티는 웹 앱에서 사용할 수 있는 유틸리티이므로 User-Agent Flow 방식을 이용해 접근 토큰을 얻도록 되어 있다.</p>
+
+<p>의존성 주입 </p>
+
+<ul>
+<li><p>일반 방식</p>
+
+<pre><code>&lt;!-- SKT Open API Util Javascript --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;cornerstone/util/skt.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>MVC Framework을 이용한 의존성 주입</p>
+
+<pre><code>define( [ &#39;skt&#39; ], function ( SKT ) {
+        (중략...)
+} );
+</code></pre></li>
+</ul>
+
+<h3>인증</h3>
+
+<p>서버에 접근 토큰을 요창한다. 최초 서버에 인증단계를 거치고, 어플리케이션에 접근 권한을 수락하면 전달된다.</p>
+
+<pre><code>require( [ &#39;skt&#39; ], function( SKT ) {
+
+    // 인증
+    SKT.authorize( {
+        clientId: &#39;abcd1234&#39;,
+        redirectUri: &#39;http://example.com&#39;,
+        success: function( token ) {
+            // 인증이 완료되고 나면 실행된다.
+            // token 파라미터로 접근 토큰이 전달된다.
+        },
+        error: function( err ) {
+            // 에러가 발생시 실행된다.
+            // err 파라미터로 전달된다.
+        }
+    } );
+} );
+</code></pre>
+
+<p>해당 유틸리티를 사용 시 token 전달을 위해 지정한 redirectUri의 html을 다음과 같이 코딩한다.</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+        parent.SKT.authSuccess( location );
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3>SMS</h3>
+
+<p>SMS를 보내기 위해서는 먼저 인증 단계를 거치고 접근 토큰을 받아야 한다. API 서버로 아래와 같이 요청을 보내면 된다.</p>
+
+<pre><code>URL : https://api.sk.com/sms
+
+Parameters :
+    access_token : 접근 토큰
+    from : 보내는 사람의 전화번호
+    to : 받는 사람의 전화번호
+    message : 메시지 내용
+
+ex) https://api.sk.com/sms?access_token=qwert12345&amp;from=01011112222&amp;to=01022223333&amp;message=Hi
+</code></pre>
+
+<p>유틸리티를 사용하면 이 작업을 쉽게 수행할 수 있다. 단 이종 도메인간의 통신이므로 jsonp 로 통신하며, 서버측의
+응답없음 또는 404 error 등을 받을 수 없기 때문에 timeout을 사용한다.</p>
+
+<pre><code>require( [ &#39;skt&#39; ], function( SKT ) {
+
+    // SMS 발송
+    SKT.sendSms( {
+        accessToken: &#39;qwert12345&#39;,
+        from: &#39;01011112222&#39;,
+        to: &#39;01022223333&#39;,
+        message: &#39;Hi&#39;,
+        success: function( data ) {
+            // 발송이 완료되고 나면 실행된다.
+        },
+        error: function( err ) {
+            // error 가 발생시 실행된다.
+        },
+        timeout: 3000
+    } );
+} );
+</code></pre>
+
+<h3>과금</h3>
+
+<p>과금 API를 사용하기 위해서는 먼저 인증 단계를 거치고 접근 토큰을 받아야 한다. API 서버로 아래와 같이 요청을 보내면 된다.</p>
+
+<pre><code>URL : https://api.sk.com/payment
+
+Parameters :
+    access_token : 접근 토큰
+    type :
+        one-time : 한 클라이언트/한 사용자에 대해서 한번만 과금
+        recurring : 요청을 보낼때마다 과금
+        weekly-subscription : 매주 자동으로 과금
+        monthly-subscription : 매월 자동으로 과금
+        yearly-subscription : 매년 자동으로 과금
+    payment_date :
+        type이 weekly-subscription인 경우 과금할 요일 (sunday/monday/...)
+        type이 monthly-subscription인 경우 과금일을 나타내는 두 자리 숫자 ex) 07
+        type이 yearly-subscription인 경우 과금일을 나타내는 네 자리 숫자 ex) 0501
+    amount : 과금할 금액 (원)
+    to : 과금 알림 대상 전화 번호
+
+ex) https://api.sk.com/payment?access_token=qwert12345&amp;type=recurring&amp;amount=1000
+</code></pre>
+
+<p>유틸리티를 사용하면 이 작업을 쉽게 수행할 수 있다. 단 이종 도메인간의 통신이므로 jsonp 로 통신하며, 서버측의
+응답없음 또는 404 error 등을 받을 수 없기 때문에 timeout을 사용한다.</p>
+
+<pre><code>require( [ &#39;skt&#39; ], function( SKT ) {
+
+    // 과금 요청
+    SKT.pay( {
+        accessToken: &#39;qwert12345&#39;,
+        type: &#39;recurring&#39;,
+        amount: 1000,
+        to: &#39;010-1234-1234&#39;, 
+        success: function( data ) {
+            // 과금이 완료되고 나면 실행된다.
+        },
+        error: function( err ) {
+            // error 가 발생시 실행된다.
+        },
+        timeout: 3000
+    } );
+} );
+</code></pre>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./smartanchor.js"></script>
+    <div class="btn-group pos_fixed">
+      <a class="btn btn-small" href="./5_1_03_JSONP.html">
+        <i class="icon-chevron-left">
+          
+        </i>
+      </a>
+      <a class="btn btn-small" href="#mobile_anchor">
+        Top
+      </a>
+      <a class="btn btn-small" href="./5_1_05_logging.html">
+        <i class="icon-chevron-right">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="active">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/3_2_theme">
+            <div>
+  <h2>테마</h2>
+
+<p>제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 BtS의 특성인 BtS &gt; LESS로 작성되어 BtS &gt; Customize와 같이 사용자화 가능함으로 개별 테마 안에서 BtS에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 BtS에 없는 요소들도 BtS과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 BtS의 방식대로 사용자화가 가능해야 함</p>
+
+<ul>
+<li>Corner Stone 기본테마 - dark테마 , white테마</li>
+<li>Wire Frame 백지테마 - 확장이나 변형을 위해 제공되는 테마</li>
+</ul>
+
+<h3>테마 확장</h3>
+
+<p>wireframe은 white, gray톤과 그림자 효과, 그라데이션등을 배제한 가장 기본적인 테마로, 사용자가 직접 디자인을 적용시킬 수 있도록 만들어진 테마이다.
+기본 테마인 wireframe.css를 적용 시킨 후 새로운 css 파일을 추가 사용한다.</p>
+
+<h2>Bootstrap 과 차이점</h2>
+
+<p>부트스트랩은 체크박스, 라디오버튼의 경우 스크립트를 포함하여 플러인으로 되어있지만, 
+현재 시스템의 경우 html5, css3로만 구현되어 있다.
+모바일 디자인은 터치, 사용자의 편의성을 고려한 UI가 적용되어 있다.</p>
+
+<h2>추가된 부분</h2>
+
+<ul>
+<li>Lists - 여러가지 다양한 list를 만들수 있도록 제공한다.</li>
+<li>Nav bar - mobile에서 상,하단에 붙여 사용할수 있는 기본 Nav bar를 제공한다.</li>
+</ul>
+
+<h2>텍스쳐 사용</h2>
+
+<p>Background에 텍스처를 사용할수 있다. conerstones에서 제공한는 기본 텍스처를 사용하여도 되지만,
+좀더 디자인적으로 꾸미고 싶다면 사용자가 텍스처를 활용하여 Background에 적용시켜 사용할 수도 있다.</p>
+
+<h2>폼의 높이와 넓이</h2>
+
+<p>모바일 사용을 고려하여 폼의 높이와 너비의 폭을 크게 하여 사용 편의성을 고려하였다.</p>
+
+<h2>주의사항</h2>
+
+<p>.nav-tab을 사용하여 tab을 구현할때는 각 tab의 li에 사용자가 직접 width를 적용해준다.</p>
+
+<p>모바일 해상도를 고려하여 media query를 사용할 것을 권장한다.
+media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하게 구현할 수 있다.</p>
+
+<p>모바일에서는 css의 a:hover, 스크립트의 onmouseover, onmouseenter등의 기능은 사용하지 않는것이 좋다. 위의 기능들은 웹의 마우스 이벤트에 속한다. 따라서 마우스를 사용하지 않고 터치기능을 사용하는 모바일 기기중에 여러가지 오류가 생길 수 있다.</p>
+
+<h2>격자(Grid)</h2>
+
+<p>격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <div> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.
+부트스트랩도 자체적인 격자 레이아웃 시스템을 제공한다. 부트스트랩의 격자 시스템은 12열의 격자(12-column grid)로 이루어져 있으며 기본 버전과 유동 버전(Fluid)이 있다. 또한 다양한 화면 크기에 대응하기 위해 4개의 디자인 형태를 갖는데 이 것은 반응형 디자인과 연관되어 동작한다.</p>
+
+<p>기본 격자 시스템(Default grid system)은 940px 고정 너비에 12열 격자로 이루어진다.
+행은 &ldquo;row&rdquo;, 열은 &ldquo;span<em>&quot;이라는 클래스로 표현되는데, &quot;span</em>&rdquo; 클래스는 span1~12 까지 사용할 수 있다.<br>
+열 사이의 간격은 20px이며 &ldquo;span1&rdquo; 클래스의 너비는 60px이다. &ldquo;span*&rdquo; 클래스의 숫자가 하나씩 증가할 때마다 너비가 80px씩 늘어나 &ldquo;span12&rdquo; 클래스의 너비는 전체 너비인 940px이 된다.</p>
+
+<p>유동 격자 시스템(Fluid grid system)은 격자 크기를 픽셀이 아닌 퍼센트로 사용한다. 유동 격자 시스템을 사용하려면 행의 클래스를 &ldquo;row-fluid&quot;로 바꾸기만 하면 된다.</p>
+
+<p>열에 &quot;offset*&rdquo; 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 단, 열 위치 이동은 기본 격자 시스템에서만 가능하다.</p>
+
+<p>예제) url : <a href="http://jsfiddle.net/azamara/gtgYM/">http://jsfiddle.net/azamara/gtgYM/</a></p>
+
+<ul>
+<li>그리드 시스템 UI</li>
+</ul>
+
+<p><img src="images/style-grid-1.png?raw=true" alt=""></p>
+
+<p>그리드 시스템을 통해 얻을 수 있는 장점은 아래와 같다.</p>
+
+<ul>
+<li>그리드를 통해 튼튼한 레이아웃을 보장</li>
+<li>사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 </li>
+<li>미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경</li>
+</ul>
+
+<h2>기본 격자 시스템</h2>
+
+<script src='lib/codemirror.js'></script>                                                                         
+
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_1 style='height: 280px;'></iframe>                        
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div>
+        <div class="row show-grid">
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+        </div>
+        <div class="row show-grid">
+            <div class="span3">3</div>
+             <div class="span4">4</div>
+            <div class="span5">5</div>
+        </div>
+        <div class="row show-grid">
+               <div class="span6">6</div>
+              <div class="span6">6</div>
+        </div>
+         <div class="row show-grid">
+            <div class="span12">12</div>
+           </div>
+     </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h3>Offsetting columns</h3>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_2 style='height: 260px;'></iframe>                        
+<textarea id=code_prv_2 name=code_prv_2>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div>
+        <div class="row show-grid">
+              <div class="span4">4</div>
+               <div class="span3 offset2">3 offset 2</div>
+          </div><!-- /row -->
+          <div class="row show-grid">
+            <div class="span5 offset1">5 offset 1</div>
+              <div class="span6 offset6">6 offset 6</div>
+          </div><!-- /row -->
+          <div class="row show-grid">
+               <div class="span9 offset3">9 offset 3</div>
+          </div><!-- /row -->
+     </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_2;                                                                                  
+  var editor_prv_2 = CodeMirror.fromTextArea(document.getElementById('code_prv_2'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_2);                                                                    
+      delay_prv_2 = setTimeout(updatePreview_prv_2, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_2() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_2');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_2.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_2, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h3>Nesting columns</h3>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_3 style='height: 140px;'></iframe>                        
+<textarea id=code_prv_3 name=code_prv_3>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div class="row show-grid">
+        <div class="span12">
+             Level 1 column
+              <div class="row show-grid">
+                <div class="span6">
+                       Level 2
+                  </div>
+                  <div class="span6">
+                    Level 2
+                  </div>
+            </div>
+           </div>
+     </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_3;                                                                                  
+  var editor_prv_3 = CodeMirror.fromTextArea(document.getElementById('code_prv_3'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_3);                                                                    
+      delay_prv_3 = setTimeout(updatePreview_prv_3, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_3() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_3');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_3.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_3, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h2>Fluid grid system</h2>
+
+<h3>Live fluid grid example</h3>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_4 style='height: 280px;'></iframe>                        
+<textarea id=code_prv_4 name=code_prv_4>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div>
+        <div class="row-fluid show-grid">
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+        </div>
+        <div class="row-fluid show-grid">
+            <div class="span3">3</div>
+             <div class="span4">4</div>
+            <div class="span5">5</div>
+        </div>
+        <div class="row-fluid show-grid">
+               <div class="span5">5</div>
+              <div class="span7">7</div>
+        </div>
+         <div class="row-fluid show-grid">
+            <div class="span12">12</div>
+           </div>
+     </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_4;                                                                                  
+  var editor_prv_4 = CodeMirror.fromTextArea(document.getElementById('code_prv_4'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_4);                                                                    
+      delay_prv_4 = setTimeout(updatePreview_prv_4, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_4() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_4');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_4.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_4, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h3>Offsetting columns</h3>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_5 style='height: 220px;'></iframe>                        
+<textarea id=code_prv_5 name=code_prv_5>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div>
+        <div class="row-fluid show-grid">
+              <div class="span4">4</div>
+          </div><!-- /row-fluid -->
+          <div class="row-fluid show-grid">
+            <div class="span6 offset1">6 offset 1</div>
+          </div><!-- /row-fluid -->
+          <div class="row-fluid show-grid">
+               <div class="span9 offset3">9 offset 3</div>
+          </div><!-- /row-fluid -->
+     </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_5;                                                                                  
+  var editor_prv_5 = CodeMirror.fromTextArea(document.getElementById('code_prv_5'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_5);                                                                    
+      delay_prv_5 = setTimeout(updatePreview_prv_5, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_5() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_5');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_5.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_5, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h3>Nesting columns</h3>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_6 style='height: 140px;'></iframe>                        
+<textarea id=code_prv_6 name=code_prv_6>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div class="row-fluid show-grid">
+        <div class="span12">
+             Level 1 column
+              <div class="row-fluid show-grid">
+                <div class="span6">
+                       Level 2
+                  </div>
+                  <div class="span6">
+                    Level 2
+                  </div>
+            </div>
+           </div>
+     </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_6;                                                                                  
+  var editor_prv_6 = CodeMirror.fromTextArea(document.getElementById('code_prv_6'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_6);                                                                    
+      delay_prv_6 = setTimeout(updatePreview_prv_6, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_6() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_6');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_6.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_6, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h2>CSS 구조</h2>
+
+<p>Conerstone CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법</p>
+
+<ul>
+<li>bootstrap.css에는 가 태그별 basic 속성 작성.</li>
+<li>global.css 공통적으로 사용하는 class 작성.</li>
+<li>div, table, ul class를 사용. (class=&ldquo;&rdquo;)</li>
+<li>element는 기본 bootstrap.css에서 상속하여 사용할수도 있다.</li>
+</ul>
+
+<h3>Bootstrap 네이밍 규칙</h3>
+
+<ul>
+<li>기본
+
+<ul>
+<li>.table : 행 사이에만 수평 라인</li>
+</ul></li>
+<li>옵션
+
+<ul>
+<li>.table-bordered : 반올림 코너와 바깥쪽 테두리를 추가합니다</li>
+<li>.table-striped : 홀수 행 (1, 3, 5 등)로 밝은 회색 배경색을 추가</li>
+<li>.table-condensed : td및 th의 셀 패딩을 8px에서 4px로 줄임</li>
+</ul></li>
+</ul>
+
+<p>예제) <a href="http://twitter.github.com/bootstrap/base-css.html#tables">http://twitter.github.com/bootstrap/base-css.html#tables</a></p>
+
+<h3>Selector 사용법</h3>
+
+<p>개별적으로 사용 가능한 element나 class의 속성을 각각의 그리드 내에 만들어진 layout의 class에 상속하여 속성을 변경 후 사용 가능하다.</p>
+
+<h3>CSS Selector 사용법</h3>
+
+<pre><code>    div p &lt;DIV&gt; 요소 내부의 모든 &lt;P&gt; 요소를 선택
+    div&gt;p 부모 &lt;DIV&gt; 요소내에 모든 &lt;P&gt; 요소를 선택
+    div+p 부모 &lt;DIV&gt; 요소 바로 뒤에 배치되는 &lt;P&gt; 요소를 선택
+    input[type=&quot;text&quot;] input type의 text만 선택
+
+    input:focus 포커스를 가진 입력 요소를 선택
+    p:first-letter  모든 &lt;P&gt;의 첫 글자를 선택
+    p:first-line  모든 &lt;P&gt;의 첫 번째 행을 선택
+    p:first-child  부모 &lt;P&gt;의 첫 번째 자식 element를 선택
+    p:before  모든 &lt;P&gt;의 내용 앞에 내용을 삽입
+    p:after  모든 &lt;P&gt; 다음 내용을 삽입
+    p:first-of-type  &lt;p&gt;와  동일한 행의 첫번째 &lt;p&gt;요소 선택
+    p:last-of-type  &lt;p&gt;와 동일한 행의 마지막 &lt;p&gt;요소 선택
+    p:only-of-type  &lt;p&gt;와 동일한 행의 같은 요소를 선택
+    p:only-child   부모&lt;p&gt;의 자식 element 선택
+    p:nth-child(2)  부모&lt;p&gt;의 2번째 자식 노드 선택
+    p:nth-last-child(2)  부모&lt;p&gt;의 뒤에서 2번째 자식 노드 선택
+    p:nth-of-type(2)  &lt;p&gt;의 형제 노드중에 2번째 노드 선택
+    p:nth-last-of-type(2)  &lt;p&gt;의 형제 노드중에 뒤에서 부터 2번째 노드 선택
+    p:last-child  부모 &lt;P&gt;의 마지막 모든 자식 element를 선택
+    p:empty  자식이 없는 모든 &lt;P&gt;를 선택
+</code></pre>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./smartanchor.js"></script>
+    <div class="btn-group pos_fixed">
+      <a class="btn btn-small" href="./3_1_introduction.html">
+        <i class="icon-chevron-left">
+          
+        </i>
+      </a>
+      <a class="btn btn-small" href="#mobile_anchor">
+        Top
+      </a>
+      <a class="btn btn-small" href="./3_3_responsive_web.html">
+        <i class="icon-chevron-right">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+</html>

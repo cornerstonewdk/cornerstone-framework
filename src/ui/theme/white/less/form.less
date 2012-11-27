@@ -1,0 +1,910 @@
+
+legend {
+  display: block;
+  width: 100%;
+  margin-bottom: @baseLineHeight;
+  font-size: @baseFontSize + 4;
+  line-height: @baseLineHeight + 4;
+  color: @grayDarker;
+  border: 0;
+  border-bottom: 0;
+	text-shadow: 0 1px 0 rgba(255,255,255,.2); 
+	margin: 40px 0 10px;
+	font-weight: bold;
+
+  // Small
+  small {
+    font-size: @baseLineHeight * .75;
+    color: @grayLight;
+  }
+}
+
+// Set font for forms
+label,
+input,
+button,
+select,
+textarea {
+  #font > .shorthand(@baseFontSize,normal,@baseLineHeight); // Set size, weight, line-height here
+}
+
+input,
+button,
+textarea {
+  font-family: @sansFontFamily; // And only set font-family here for those that need it (note the missing label element)
+}
+
+// Shared size and type resets
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	height: auto;
+  display: inline-block;
+  padding: 10px 6px 9px 6px;
+  margin-bottom: 9px;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @gray;
+  .border-radius(@inputBorderRadius);
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	background-color: @inputBackground;
+	border: 0;
+	border-bottom: 1px solid rgba(0,0,0,.3);
+	.border-radius(@inputBorderRadius);
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(0,0,0,.05)");
+	@transition: border linear .2s, box-shadow linear .2s;
+	.transition(@transition);
+	color: @grayLight;
+	vertical-align: top;
+	&:focus {
+			color: @blue;
+	   .inp-focus(@inputShadow, @inputBackground);
+	  }
+	}
+
+// --- orange focus [2012-08-29]
+input.ipt-orange,
+textarea.ipt-orange {
+	&:focus {
+			border: 0;
+	    outline: 0;
+	    outline: thin dotted \9; /* IE6-9 */
+			.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 0 10px rgba(255,255,255,1)");
+	    color: @red;
+	  }
+	}
+
+textarea {
+	height: auto;
+}
+// Mixin for form field states
+.formFieldState(@textColor: #b0b0b0, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+  // Set the text color
+  > label,
+  .help-block,
+  .help-inline {
+    color: @textColor;
+  }
+  // Style inputs accordingly
+  .checkbox,
+  .radio,
+  input,
+  select,
+  textarea {
+	color: @textColor;
+	border:none;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	.box-shadow(inset 0 1px 1px rgba(0,0,0,0.7));
+	    &:focus {
+	      border:none;
+	    }
+	}
+}
+
+// INPUT GROUPS
+// ------------
+
+// Allow us to put symbols and text within the input field for a cleaner look
+.input-append,
+.input-prepend {
+  margin-bottom: 5px;
+  font-size: 0;
+  white-space: nowrap; // Prevent span and input from separating
+
+  input,
+  select,
+  .uneditable-input {
+    position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
+    margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
+    *margin-left: 0;
+		margin: 0 1px;
+    font-size: @baseFontSize;
+		line-height: @baseLineHeight;
+    vertical-align: top;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    // Make input on top when focused so blue border and shadow always show
+    &:focus {
+      z-index: 2;
+    }
+  }
+  .add-on {
+		color: @white;
+    display: inline-block;
+    width: auto;
+    height: @baseLineHeight;
+    min-width: 16px;
+		padding: 9px 10px;
+    font-size: @baseFontSize;
+    font-weight: normal;
+    line-height: @baseLineHeight;
+    text-align: center;
+    text-shadow: 0 1px 0 @white;
+    background-color: @grayLighter;
+		#gradient > .vertical-btn(@addonTopColor, @addonBotColor);
+    border: 1px solid @btnBorder;
+		.box-shadow(~"inset 0 0 1px rgba(255,255,255,.5), inset 0 1px 1px rgba(255,255,255,.5), 0 3px 3px rgba(0,0,0,.5)");
+  }
+  .add-on,
+  .btn {
+    margin-left: -1px;
+    vertical-align: top;
+    .border-radius(0);
+		&:active {
+			margin-left: -1px;
+		}
+  }
+  .active {
+    background-color: lighten(@green, 30);
+    border-color: @green;
+  }
+}
+.input-prepend {
+  .add-on,
+  .btn {
+    margin-right: -1px;
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+}
+.input-append {
+  input,
+  select,
+  .uneditable-input {
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on:last-child,
+  .btn:last-child {
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+  }
+}
+// Remove all border-radius for inputs with both prepend and append
+.input-prepend.input-append {
+  input,
+  select,
+  .uneditable-input {
+    .border-radius(0);
+  }
+  .add-on:first-child,
+  .btn:first-child {
+    margin-right: -1px;
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on:last-child,
+  .btn:last-child {
+    margin-left: -1px;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+  }
+}
+
+// Select
+select,
+.controls select {
+	min-height: 40px;
+	padding: 0;
+	font-size: @baseFontSize;
+	line-height: 35px;
+  margin: 0;
+	background-color: @selectBackground;
+	border: 1px solid rgba(0,0,0,.3);
+	.border-radius(@inputBorderRadius);
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(0,0,0,.05)");
+   color: @grayLight;
+   outline: none;
+	display: inline-block;
+	 &:focus {
+    border: 0;
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+  }
+}
+
+.select-box { position:relative }
+
+// Wrapper for the tooltip content
+.help-inline {
+	position: relative;
+  color: @tooltipColor;
+  text-decoration: none;
+  .border-radius(4px);
+	display: inline-block;
+	font-size: @baseFontSize;
+	.box-shadow(0 1px 1px rgba(0,0,0,0.7));	
+	padding: 9px 10px 8px 10px;	
+	border:1px solid @black;
+	text-align: left;
+	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.3), inset 0 -1px 1px rgba(255,255,255,.15), inset -1px 0 1px rgba(255,255,255,.15)");
+	text-shadow: 0 1px 1px rgba(255,255,255,.2);
+	font-weight: bold;
+	#gradient > .vertical(#5c6267, #41474c);	
+	color: @disabledText;
+	&:before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+    border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth @popoverArrowOuterWidth 0;
+    border-right-color: @black;
+		margin-top: -11px;
+		top: 50%;
+    left: -10px;
+		z-index: -2;
+    }
+	&:after {		
+		content: "";
+    position: absolute;
+		display: block;
+		width: 0;
+		height: 0;
+		top: 50%;
+		left: -9px;
+		z-index: 1;
+		margin-top: -10px;
+		border-color: transparent;
+		border-style: solid;
+		border-width: @popoverArrowWidth @popoverArrowWidth @popoverArrowWidth 0;
+		border-right-color: @disabledArrow;
+	}
+  .opacity(100);
+}
+
+.help-block {
+  position: relative;
+  color: @tooltipColor;
+  text-decoration: none;
+  .border-radius(4px);
+	display: lock;
+	font-size: @baseFontSize;
+	.box-shadow(0 1px 1px rgba(0,0,0,0.7));	
+	padding: 9px 10px 8px 10px;	
+	border:1px solid @black;
+	text-align: left;
+	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.3), inset 0 -1px 1px rgba(255,255,255,.15), inset -1px 0 1px rgba(255,255,255,.15)");
+	text-shadow: 0 1px 1px rgba(255,255,255,.2);
+	font-weight: bold;
+	#gradient > .vertical(#5c6267, #41474c);	
+	color: @disabledText;
+	&:before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+    border-width: 0 @popoverArrowOuterWidth @popoverArrowOuterWidth  @popoverArrowOuterWidth;
+    border-top-color: @black;
+		border-bottom-color: @black;
+		top: -11px;
+    left: 20px;
+		z-index: -2;
+    }
+	&:after {		
+		content: "";
+    position: absolute;
+		display: block;
+		width: 0;
+		height: 0;
+		top: -10px;
+		left: 21px;
+		z-index: 1;
+		border-color: transparent;
+		border-style: solid;
+		border-width: 0 @popoverArrowWidth @popoverArrowWidth @popoverArrowWidth;
+		border-top-color: @disabledArrow;
+		border-bottom-color: @disabledArrow;
+	}
+  .opacity(100);
+}
+
+// Wrapper for the tooltip content
+
+.controls .help-inline {
+	font-size: @baseFontSize;
+	.box-shadow(0 1px 1px rgba(0,0,0,0.7));	
+	padding: 9px 10px 8px 10px;	
+	border:1px solid @black;
+	text-align:left;
+	.box-shadow(~"inset 0 1px 1px rgba(255,255,255,.3), inset 0 -1px 1px rgba(255,255,255,.15), inset -1px 0 1px rgba(255,255,255,.15)");
+	text-shadow: 0 1px 1px rgba(255,255,255,.2);
+	font-weight:bold;
+	display:inline-block;
+	vertical-align: top;
+	#gradient > .vertical(#5c6267, #41474c);	
+	color:#282828;
+}
+
+.help-inline i {	
+	width: 22px;
+	height: 20px;
+	float: left;
+	margin: -2px 4px 0 0;
+}
+
+.disabled .help-inline {
+	&:after {		
+		border-right-color: @disabledArrow;
+   }	
+}
+
+.disabled .help-inline i {
+	width: 14px;
+	height: 20px;
+	background:url('../img/icon.png') no-repeat -242px -111px;
+	background-size: 320px;	
+}
+
+.error .help-inline {	
+	#gradient > .vertical(#bf5455, #9c3a3b);
+	color:#8a2627;
+}
+
+.error .help-inline {
+	&:after {		
+		border-right-color: @errorArrow;
+   }	
+}
+
+.error .help-inline i {	
+	background:url('../img/icon.png') no-repeat -150px -112px;
+	background-size: 320px;	
+}
+
+.success .help-inline {
+	#gradient > .vertical(#669357, #557a48);
+	color:#34591b;
+}
+
+.success .help-inline {
+	&:after {		
+		border-right-color: @successArrow;
+   }	
+}
+
+.success .help-inline i {	
+	background:url('../img/icon.png') no-repeat -197px -111px;
+	background-size: 320px;	
+}
+
+.info .help-inline {
+	#gradient > .vertical(#52a0c6, #277094);
+}
+
+.info .help-inline {
+	&:after {		
+		border-right-color: @infoArrow;
+   }	
+}
+
+// Warning
+.control-group.warning {
+  .formFieldState(@warningText, @warningBorder, @warningBackground);
+	position:relative;
+}
+
+// Error
+.control-group.error {
+  .formFieldState(@errorText, @errorBorder, @errorBackground);
+	position:relative;
+}
+// Success
+.control-group.success {
+  .formFieldState(@successText, @successBorder, @successBackground);
+	position:relative;
+}
+// Info
+.control-group.info {
+  .formFieldState(@infoText, @infoText, @infoBackground);
+}
+
+// Disabled  ---- [2012-08-28] Add
+.control-group.disabled {
+	.formFieldState(@disabledText, @disabledText, @inputBackground);
+	position:relative;
+}
+// Disabled input  ---- [2012-08-28] Add
+.input-disa {
+	font-size: @baseFontSize;
+	line-height: (@baseLineHeight + 4);
+	background:url('../img/bg_input.png') repeat-x left top;
+}
+
+
+// Margin to space out fieldsets
+.control-group {
+  margin-bottom: 0;
+}
+
+
+.control-group .controls input {
+	&:focus {
+		border-bottom: 1px solid transparent;
+	}
+}
+
+// Button
+
+.uneditable-input {
+	font-size: @baseFontSize;
+	padding: 9px 7px 0 7px;
+	height: 42px;
+	color: @uneditableTxt;
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
+	background: @uneditableBackground;
+	}
+
+
+// Radios and checkboxes on same line
+// TODO v3: Convert .inline to .control-inline
+.radio.inline,
+.checkbox.inline {
+	.user-select(none);
+  display: inline-block;
+  padding-top: 5px;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-left: 5px; // space out consecutive inline controls
+	padding-left:0;
+}
+
+// Checkbox, radio Add
+
+.checkbox input[type="checkbox"],
+.radio input[type="radio"]{
+	position:absolute;
+	left:-100000px;
+}
+.checkbox span {
+	display: inline-block;
+	border-radius:4px;
+	width: 34px;
+	height: 34px;
+	padding:5px;
+	margin: 0;
+	cursor:pointer;
+	background-color: @inputGradiantBg;
+	#gradient > .vertical(rgba(0,0,0,.2), rgba(0,0,0,.05));
+	vertical-align: middle;
+}
+
+
+.checkbox span:after {
+	border-radius:4px;
+	width: 34px;
+	height: 34px;
+	background:#292929;
+	background-size:138px;
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7)");
+	display:inline-block;
+	content:"";
+}
+
+.checkbox span.disabled:after {
+	background:#292929 url('../img/icon.png') repeat -188px -64px;
+	background-size: 320px;
+}
+
+
+.checkbox span.check:after {
+	background:#292929 url('../img/icon.png') no-repeat -99px -65px;
+	background-size: 320px;
+}
+
+.checkbox .checkBtn:checked:active + .checkbox span:active {
+	background:#292929 url('../img/icon.png') no-repeat -99px -65px;
+	background-size: 320px;
+}
+
+.radio span, {
+	display: inline-block;
+	border-radius:25px;
+	width: 34px;
+	height: 34px;
+	padding:5px;
+	margin: 0;
+	cursor:pointer;
+	background-color: @inputGradiantBg;
+	#gradient > .vertical(rgba(0,0,0,.25), rgba(0,0,0,.05));
+	vertical-align: middle;
+}
+
+.radio span:after {
+	border-radius:25px;
+	width: 34px;
+	height: 34px;
+	background:#292929;
+	background-size:138px;
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.5)");
+	display:inline-block;	
+	content:"";
+}
+
+input:checked + .inp-check:after {
+	background:#292929 url('../img/icon.png') no-repeat -144px -65px;
+	background-size: 320px;
+}
+
+input:disabled + .inp-check:after {
+}
+
+input:checked + .inp-radio:after {
+	background:#292929 url('../img/icon.png') no-repeat -276px -20px;
+	background-size: 320px;
+}
+
+
+// SEARCH FORM
+// -----------
+
+input.search-query {
+  padding-right: 14px;
+  padding-right: 4px \9;
+  padding-left: 14px;
+  padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-bottom: 0; // Remove the default margin on all inputs
+  .border-radius(15px);
+}
+
+/* Allow for input prepend/append in search forms */
+.form-search  .search-query,
+.form-search .input-prepend .search-query {
+  .border-radius(4px); // Override due to specificity
+}
+.form-search .input-append .search-query {
+  .border-radius(14px 0 0 14px)
+}
+.form-search .input-append .btn {
+  .border-radius(0 14px 14px 0)
+}
+.form-search .input-prepend .search-query {
+  .border-radius(0 14px 14px 0)
+}
+.form-search .input-prepend .btn {
+  .border-radius(20px 0 0 20px)
+}
+
+
+
+
+// HORIZONTAL & VERTICAL FORMS
+// ---------------------------
+
+// Common properties
+// -----------------
+
+.form-search input {
+	background-color: @inputBackground;
+	.border-radius(@searchBorderRadius);
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
+	@transition: border linear .2s, box-shadow linear .2s;
+	.transition(@transition);
+	color: @searchTxt;
+	padding: 10px 15px;
+	&:focus {
+		.inp-focus(@inputShadow, @inputBackground);
+		color: @searchTxt;
+	}
+}
+
+.form-search button,
+.form-search button:hover,
+.form-search button:active {
+	font-size: @baseFontSize;
+	padding: 9px 10px;
+	vertical-align: middle;
+}
+
+.form-search {
+  .input-append input.search-query {
+		.border-radius(20px 0 0 20px);
+  }
+
+	.input-append button.btn {
+		.border-radius(0 20px 20px 0);		
+  }
+  // Re-hide hidden elements due to specifity
+  .hide {
+    display: none;
+  }
+}
+
+// select box
+
+.select-area {
+	position:relative;
+}
+
+.select-area select {
+	position:absolute; 
+	left:5px;
+	top:0;
+}
+
+.select-box {
+	position:relative;
+	outline:0;	
+	background-color: @selectBackground;
+	border:1px solid transparent;
+	.border-radius(@inputBorderRadius);
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");	
+}
+.select-box input {
+	width:85%;
+	height: @selectHeight;
+	margin:0;
+	color: @grayLight;
+	background-color: transparent;
+	box-shadow: none;
+	border-radius : 0;
+	// Focus state
+  &:focus {
+    border:1px solid transparent;
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+		box-shadow: none;
+		color: @grayLight;
+  }
+}
+
+.select-box .arrow1 {
+	display:block;
+	position:absolute;
+	right:10px; 
+	top:0px;
+	border-color: transparent transparent @selectArrow transparent;
+	border-style: solid;
+	border-width: 8px 5px 8px 5px;
+	background:none;
+	height: 0px;
+	width: 0px;
+	.border-radius(0);
+	box-shadow: none;
+	margin: 0;
+}
+
+.select-box .arrow2 {
+	content:"";
+	position:absolute;
+	right:10px; 
+	top:20px;
+	border-color: @selectArrow transparent transparent transparent;
+	border-style: solid;
+	border-width: 8px 5px 8px 5px;
+	background:none;
+	height: 0px;
+	width: 0px;
+	.border-radius(0);
+	box-shadow: none;
+	margin: 0;
+}
+
+
+.slider {
+	position: relative;
+	border-radius: 15px;
+	padding: 6px 0;
+	margin: 0;
+	background-color: @inputGradiantBg;
+	#gradient > .vertical(rgba(0,0,0,.2), rgba(255,255,255,.05));
+}
+
+.slider:after {
+	width: 100%;
+	height: 7px;
+	content:"";
+	display:block;
+	border-radius:20px;
+	background-color: rgba(41,41,41,1);
+}
+
+.slider-bar {
+    height: 7px;
+    position: absolute;
+    border-radius:20px;
+    background-color: rgba(032, 148, 177,1);
+}
+
+.slider:after, .slider-bar {
+  margin: 0 6px;
+  width: auto;
+}
+
+.slide-handle {
+	width: 31px;
+	height: 31px;
+	.border-radius(50px);
+	border: 0;
+	background-color: @sliderBtn;
+	.box-shadow(~"inset 0 -1px 2px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,1), 0 1px 3px rgba(0,0,0,.27)");	
+	position:absolute;	
+	left: 0; 
+	top: -8px;
+	z-index: 100;
+}
+
+.slide-handle:after {
+	content:"";
+	width: 17px;
+	height: 17px;
+	.border-radius(50px);
+	border: 0;
+	background-color: @sliderBoll;
+	.box-shadow(~"inset 0 0 3px rgba(0,0,0,.8)");
+	position:absolute;	
+	left: 7px; 
+	top: 7px;
+	z-index: 1000;
+}
+
+.slider-box {
+	width: 100%;
+	display: inline-block;
+}
+.slider-box .slider {
+	min-width:80%;
+	float: left;
+}
+
+.slider-box input.figure {
+	float: right;
+	width: 40px;
+	margin: -5px 0 0;
+	padding: 5px;
+	background: none;
+	box-shadow : none;
+	text-align: right;
+	color: @figureTxt;
+	font-size: (@baseFontSize - 2);
+	&:focus {
+    border: 0;
+		padding: 5px;
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+		box-shadow: none;
+		color: @figureTxt;
+  }
+}
+
+.flip-area {
+	.user-select(none);
+	position:relative;
+	display: inline-block;
+	.border-radius(25px);
+	padding: 7px;
+	margin: 0;
+	background-color: @inputGradiantBg;
+	#gradient > .vertical(rgba(0,0,0,.2), rgba(255,255,255,.05));
+}
+
+.flip-btn {
+	position: relative;
+	width: 31px;
+	height: 31px;
+	.border-radius(50px);
+	border: 0;
+	background-color: @sliderBtn;
+	.box-shadow(~"inset 0 -1px 2px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,1), 0 1px 3px rgba(0,0,0,.27)");
+	float: left;
+	margin-right: 15px;
+}
+
+.flip-btn:after {
+	content:"";
+	width: 17px;
+	height: 17px;
+	.border-radius(50px);
+	border: 0;	
+	.box-shadow(~"inset 0 0 4px rgba(0,0,0,.4), inset 0 3px 4px rgba(255,255,255,.7), inset 0 -6px 4px rgba(0,0,0,.25)");
+	position:absolute;	
+	left: 7px; 
+	top: 7px;
+	z-index: 1000;
+	background-color: @flipBoll;
+}
+
+.flip-check {
+	position: absolute;
+	left: -10000px;
+}
+
+.flip-check + .flip-txt {	
+	text-align: left;
+	padding: 0 15px 0 0;
+	color: @flipOffTxt;
+	font-size: @baseFontSize - 2;
+	line-height: @baseLineHeight - 4;
+	font-weight:bold;
+	display: inline-block;
+	.border-radius(20px);
+	text-shadow: 0 2px 2px rgba(0,0,0,0.7);
+	background-color: @flipOffBg;
+	border:2px solid @grayDarker;
+}
+
+.flip-check:checked + .flip-txt {
+	text-align: right;
+	padding: 0 0 0 15px;
+	color: @flipOnTxt;
+	font-size: @baseFontSize - 2;
+	line-height: @baseLineHeight;
+	font-weight:bold;
+	display: inline-block;
+	.border-radius(20px);
+	text-shadow: 0 2px 2px rgba(0,0,0,0.7);
+	background-color: @flipOnBg;
+	border:2px solid @grayDarker;
+}
+
+.flip-check + .flip-txt:after {	
+	display: inline-block;
+	content: attr(data-off);
+	color: @flipOnTxt;
+	margin-top: 8px;
+}
+
+.flip-check:checked + .flip-txt:after {	
+	display: inline-block;
+	content: attr(data-on);
+	color: @flipOnTxt;
+	margin-top: 8px;
+}
+
+.flip-check:checked + .flip-txt > span {
+	float: right;
+	margin-left: 15px;
+	margin-right: 0;
+}
