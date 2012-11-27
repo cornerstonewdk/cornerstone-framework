@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="active">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/4_2_02_navation">
+            <div>
+  <h2>네비게이션(Navigation)</h2>
+
+<h3>가벼운 구조(Lightweight defaults)</h3>
+
+<p>Nav 리스트는 부가적인 헤더와 함께 nav 의 링크들을 그룹하는 심플하면서 쉬운 방법을 제공하며, OS X 의 파인더와 같은 사이드바를 만들 수 있다.
+구조적으로, Tab, Pill 과 같은 핵심 nav 스타일을 토대로 만들어 졌으며 사용 및 커스터마이징을 매우 직관적으로 할 수 있다.</p>
+
+<h4>아이콘과 사용(With Icon)</h4>
+
+<p>Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, <code>&lt;i&gt;</code> 태그를 적절한 class 함께 추가하기만 하면 된다.</p>
+
+<h4>가로 구분자(Horizontal dividers)</h4>
+
+<p>비어있는 리스트 아이템 — <code>&lt;li&gt;</code> — 을 <code>.divider</code> 클래스와 함께 넣어줌으로서 가로 구분자를 넣을 수 있다.</p>
+
+<pre><code>    &lt;ul class=&quot;nav nav-list&quot;&gt;
+        ...
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+
+</code></pre>
+
+<h4>기본 스타일(Default Styles)</h4>
+
+<p>링크의 리스트에 <code>.nav nav-list</code> 를 추가한다.</p>
+
+<pre><code>    &lt;ul class=&quot;nav nav-list&quot;&gt;
+        &lt;li class=&quot;nav-header&quot;&gt;
+            List header
+        &lt;/li&gt;
+        &lt;li class=&quot;active&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot;&gt;Library&lt;/a&gt;
+        &lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+</code></pre>
+
+<h4>아이콘을 포함(Lists with icon)</h4>
+
+<p>같은 방법이지만, 단지 아이콘을 위해 <code>&lt;i&gt;</code> 태그를 추가한다.</p>
+
+<pre><code>    &lt;ul class=&quot;nav nav-list&quot;&gt;
+        ...
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot;&gt;
+            &lt;i class=&quot;icon-book&quot;&gt;&lt;/i&gt;
+            Library
+            &lt;/a&gt;
+        &lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+</code></pre>
+
+<script src='lib/codemirror.js'></script>                                                                         
+
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_1 style='height: 860px;'></iframe>                        
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <h3>Default Styles 예제</h3>
+    <ul class="nav nav-list">
+        <li class="nav-header">List header</li>
+        <li><a href="#">Home</a></li>
+        <li class="active"><a href="#">Library</a></li>
+        <li><a href="#">Applications</a></li>
+        <li><a href="#">Another List Header</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Help</a></li>
+    </ul>
+
+    <h3>Lists with icon 예제</h3>
+    <ul class="nav nav-list">
+        <li class="nav-header">List header</li>
+        <li class="active"><a href="#"><i class="icon-white icon-home"></i> Home</a></li>
+        <li><a href="#"><i class="icon-book"></i> Library</a></li>
+        <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+        <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+        <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="icon-flag"></i> Help</a></li>
+    </ul>  
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h3>탭(tab nav)</h3>
+
+<p>tab 을 통해 컨텐츠를 오갈 수 있도록 심플한 플러그인으로 tab 에 생명을 넣습니다. 부트스트랩은 4가지 스타일로 동적 Tab 을 통합 : top (기본), right, bottom, 그리고 left 아주 작은 마크업 수정만으로 쉽게 이들 사이의 변경을 할 수 있다.</p>
+
+<h4>동적 구조 탭(Tabbable in any direction)</h4>
+
+<p>Tab 을 동적으로 만들려면, <code>.nav-tabs</code> 를 <code>.tabbable</code> class 를 가진 <code>&lt;div&gt;</code> 로 감싸면 된다.</p>
+
+<h4>jQuery 플러그인 필요(Requires jQuery plugin)</h4>
+
+<p>모든 동적 Tab 는 경량 jQuery 플러그인에 의해 작동된다. Tab에 대한 더 자세한 내용은 플러그인 챕터에서 확인할 수 있다.</p>
+
+<h4>간단한 마크업(Simple markup)</h4>
+
+<p>동적 탭을 사용하려면 감싸는 <code>&lt;div&gt;</code>, 여러 세트의 tab, 그리고 그에 해당하는 여러 세트의 컨텐츠 pane 이 필요하다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#1&quot; data-toggle=&quot;tab&quot;&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#2&quot; data-toggle=&quot;tab&quot;&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane active&quot; id=&quot;1&quot;&gt;
+            &lt;p&gt;I&#39;m in Section 1.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;2&quot;&gt;
+            &lt;p&gt;Howdy, I&#39;m in Section 2.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h5>하단 탭(Tabs on the bottom)</h5>
+
+<p>탭을 하단에 두려면 <code>.tabs-below</code> class 를 추가하고 HTML의 순서를 바꾼다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable tabs-below&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane active&quot; id=&quot;home&quot;&gt;
+                Raw denim you probably haven&#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+                cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher 
+                synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip 
+                quis cardigan american apparel, butcher voluptate nisi qui.
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;profile&quot;&gt;...&lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;messages&quot;&gt;...&lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;settings&quot;&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#home&quot; data-toggle=&quot;tab&quot;&gt;TAB1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#profile&quot; data-toggle=&quot;tab&quot;&gt;TAB2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#messages&quot; data-toggle=&quot;tab&quot;&gt;TAB3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h5>좌측 탭(Tabs on the left)</h5>
+
+<p>탭을 좌측에 두려면 <code>.tabs-left</code> class 를 추가한다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable tabs-left&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            ...
+        &lt;/ul&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h5>우측 탭(Tabs on the right)</h5>
+
+<p>탭을 우측에 두려면 <code>.tabs-right</code> class 를 추가한다.</p>
+
+<pre><code>    &lt;div class=&quot;tabbable tabs-right&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+            ...
+        &lt;/ul&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_2 style='height: 847px;'></iframe>                        
+<textarea id=code_prv_2 name=code_prv_2>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <h3>Default Styles 예제</h3>
+    <div class="tabbable" style="margin-bottom: 9px;">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
+          <li><a href="#2" data-toggle="tab">Section 2</a></li>
+          <li><a href="#3" data-toggle="tab">Section 3</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>I&rsquo;m in Section 1.</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Howdy, I&rsquo;m in Section 2.</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>What up girl, this is Section 3.</p>
+          </div>
+        </div>
+    </div>
+    
+    <h3>Tabs on the bottom 예제</h3>
+    <div class="tabbable tabs-below">
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                Raw denim you probably haven&rsquo;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+                cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+            </div>
+            <div class="tab-pane" id="profile">
+                Reprehenderit butcher retro keffiyeh dreamcatcher 
+                synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+            </div>
+            <div class="tab-pane" id="messages">
+                salvia cillum iphone. Seitan aliquip 
+                quis cardigan american apparel, butcher voluptate nisi qui.
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">home</a></li>
+            <li><a href="#profile" data-toggle="tab">profile</a></li>
+            <li><a href="#messages" data-toggle="tab">messages</a></li>
+        </ul>
+    </div>
+    
+    <h3>Tabs on the left 예제</h3>
+    <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">home</a></li>
+            <li><a href="#profile" data-toggle="tab">profile</a></li>
+            <li><a href="#messages" data-toggle="tab">messages</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                Raw denim you probably haven&rsquo;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+                cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+            </div>
+            <div class="tab-pane" id="profile">
+                Reprehenderit butcher retro keffiyeh dreamcatcher 
+                synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+            </div>
+            <div class="tab-pane" id="messages">
+                salvia cillum iphone. Seitan aliquip 
+                quis cardigan american apparel, butcher voluptate nisi qui.
+            </div>
+        </div>
+    </div>
+    
+    <h3>Tabs on the right 예제</h3>
+    <div class="tabbable tabs-right">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">home</a></li>
+            <li><a href="#profile" data-toggle="tab">profile</a></li>
+            <li><a href="#messages" data-toggle="tab">messages</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                Raw denim you probably haven&rsquo;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+                cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+            </div>
+            <div class="tab-pane" id="profile">
+                Reprehenderit butcher retro keffiyeh dreamcatcher 
+                synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+            </div>
+            <div class="tab-pane" id="messages">
+                salvia cillum iphone. Seitan aliquip 
+                quis cardigan american apparel, butcher voluptate nisi qui.
+            </div>
+        </div>
+    </div>
+                                                                                           
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_2;                                                                                  
+  var editor_prv_2 = CodeMirror.fromTextArea(document.getElementById('code_prv_2'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_2);                                                                    
+      delay_prv_2 = setTimeout(updatePreview_prv_2, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_2() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_2');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_2.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_2, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./smartanchor.js"></script>
+    <div class="btn-group pos_fixed">
+      <a class="btn btn-small" href="./4_2_01_dropdown.html">
+        <i class="icon-chevron-left">
+          
+        </i>
+      </a>
+      <a class="btn btn-small" href="#mobile_anchor">
+        Top
+      </a>
+      <a class="btn btn-small" href="./4_2_03_navagation_bar.html">
+        <i class="icon-chevron-right">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+</html>
