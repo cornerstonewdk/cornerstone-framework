@@ -57,7 +57,7 @@
 		</div>
 
 		<div class="dashboardItem">
-			<div class="widget2" id="facebookLikeWidget"></div>
+			<div class="widget widget-facebook" id="facebookLikeWidget"></div>
 		</div>
 	</div>
 </div>
