@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="active">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/4_4_06_data_table">
+            <div>
+  <h3>Datatables</h3>
+
+<p>데이터테이블은 사용자에게 마크업에서 보여지는 정적인 테이블을 보다 향상되고 상호작용적인 테이블로 쉽게 만들어준다. 데이터테이블은 기본적으로 마크업을 통해 <code>table</code>태그로
+레코드를 작성한 경우 볼 수만 있지만 상호작용적인 기능을 사용할 수 있도록 아래와 같은 기능을 추가적으로 생성해준다.</p>
+
+<ul>
+<li>한 페이지에 보여줄 레코드 수 : 10,25,50,100개 레코드를 선택할 수 있는 기능을 제공한다.(선택한 옵션에 따라 자동적으로 그에 맞는 4번 페이지네이션 처리를 한다.)</li>
+<li>검색 : 데이터테이블은 정의된 테이블의 레코드에 모든 필드를 대상으로 검색 기능을 제공한다.</li>
+<li>정렬 : 테이블의 머리글을 클릭 또는 탭 하므로 해당 필드를 오름/내름차순 정렬 기능을 제공한다.</li>
+<li>페이지네이션 : 데이터테이블은 테이블에 정의된 레코드 전체 수와 1번 기능의 기본값인 10개 레코드를 통해 자동적으로 페이징 처리를 해주는 기능을 제공한다.</li>
+</ul>
+
+<p>데이터테이블은 단순히 마크업에 <code>table</code>태그에 레코드를 작성해서 사용하는 방법뿐만 아니라 아래와 같은 다양한 Data Sources를 지원한다.</p>
+
+<ul>
+<li>DOM에 직접 데이터를 <code>table</code>내에 <code>tr</code> 태그로 정의해서 사용하는 방식</li>
+<li>자바스크립트에 데이터를 배열로 정의해서 가져오는 방식</li>
+<li>서버사이드 JSON 파일을 Ajax를 통해 가져오는 방식</li>
+<li>서버사이드 데이터베이스와 직접 연동해서 가져오는 방식 (동적인 데이터 연동이 가능)</li>
+</ul>
+
+<h3>의존성</h3>
+
+<h4>일방 방식</h4>
+
+<pre><code>    &lt;!-- 해당 피처드에 필요한 Stylesheet  --&gt;
+    &lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-datatable.css&#39; /&gt;
+
+    &lt;!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  --&gt;
+    &lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
+    &lt;!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 --&gt;
+    &lt;script src=&#39;./dist/ui/widget-datatable.js&#39;&gt;&lt;/script&gt;
+</code></pre>
+
+<h4>MVC 방식</h4>
+
+<p>MVC 방식은 별도로 사용자가 일반방식 처럼 CSS를 추가하지 않고도 사용않아도 된다.</p>
+
+<pre><code>    define([
+        &quot;backbone&quot;,
+        &quot;widget-datatable&quot; // 데이터테이블 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
+    ], function (Backbone, DataTableView) {
+        // Something...
+    });
+</code></pre>
+
+<h3>사용법</h3>
+
+<p>DATA-API(data-attribute), $(&#39;#example&#39;).featuredDataTable() 또는 MVC의 View객체로써 사용할 수 있다.</p>
+
+<h4>DATA-API(data-attribute) 를 이용하는 방식</h4>
+
+<script src='lib/codemirror.js'></script>                                                                         
+
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_1 style='height: 700px;'></iframe>                        
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+<div class="container">
+    <h3>Data Table</h3>
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example"
+           data-featured="datatable" data-datatable-bind="sample-data/datatable-sample.json">
+        <thead>
+        <tr>
+            <th width="20%">Rendering engine</th>
+            <th width="25%">Browser</th>
+            <th width="25%">Platform(s)</th>
+            <th width="15%">Engine version</th>
+            <th width="15%">CSS grade</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+                                                                                           
+                                                                      
+                                                                      
+                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h4>javascript를 이용하는 방식</h4>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_2 style='height: 700px;'></iframe>                        
+<textarea id=code_prv_2 name=code_prv_2>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+<!-- id값을 정의하고 해당 id값에 $('#example').featuredDataTable(); 스크립트를 통해 데이터테이블을 적용한다.  -->
+<div class="container">
+    <h3>Data Table</h3>
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example">
+        <thead>
+        <tr>
+            <th width="20%">Rendering engine</th>
+            <th width="25%">Browser</th>
+            <th width="25%">Platform(s)</th>
+            <th width="15%">Engine version</th>
+            <th width="15%">CSS grade</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Rendering engine</th>
+            <th>Browser</th>
+            <th>Platform(s)</th>
+            <th>Engine version</th>
+            <th>CSS grade</th>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+//      데이터 소스를 배열로 받는 방식
+//        $('#example').featuredDataTable({
+//            "bProcessing": true,
+//            "aaData":[["Trident", "Internet Explorer 4.0", "Win 95+", "4", "X"],
+//                ["Trident", "Internet Explorer 5.0", "Win 95+", "5", "C"],
+//                ["Trident", "Internet Explorer 5.5", "Win 95+", "5.5", "A"]]
+//        });
+
+        $('#example').featuredDataTable({
+            "sAjaxSource":"sample-data/datatable-sample.json"
+        });
+    };
+</script>
+                                                                                           
+                                                                      
+                                                                      
+                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_2;                                                                                  
+  var editor_prv_2 = CodeMirror.fromTextArea(document.getElementById('code_prv_2'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_2);                                                                    
+      delay_prv_2 = setTimeout(updatePreview_prv_2, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_2() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_2');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_2.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_2, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<h4>MVC 프레임워크 뷰를 이용하는 방식</h4>
+
+<pre><code>define([
+    &quot;backbone&quot;,
+    &quot;widget-datatable&quot;,
+    &quot;template!tmpl/datatables/indexView&quot;,
+    &quot;style!css/datatable&quot;
+], function (Backbone, DataTableView, Template) {
+    return Backbone.View.extend({
+        events: {
+        },
+
+        el:&quot;div.new-page&quot;,
+        template:null,
+
+        initialize:function () {
+
+        },
+
+        updateData:function (view, url) {
+            view.model.url = url;
+            view.render();
+        },
+
+
+        render:function () {
+            var self = this;
+// 템플릿 렌더링
+            this.$el.html(Template);
+
+// 모델 객체에 데이터를 가져올 url를 설정한다.
+            var Model = Backbone.Model.extend({
+                url:&quot;data/sample-datatable.json&quot;
+            });
+// 데이터테이블 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 데이터테이블 UI을 생성한다.
+            this.dataTableView = new DataTableView({
+                el:&quot;#datatable&quot;,
+                model:new Model
+            });
+            this.dataTableView.render();
+
+            return this;
+        }
+    });
+});
+</code></pre>
+
+<h3>기능</h3>
+
+<table><thead>
+<tr>
+<th align="left">설정</th>
+<th align="center">타입</th>
+<th align="center">기본값</th>
+<th align="left">설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">bAutoWidth</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+<td align="left">자동 컬럼 폭 계산 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bDeferRender</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="left">테이블 렌더링을 연기 시키는 기능 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bFilter</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+<td align="left">검색(필터링) 기능 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bInfo</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+<td align="left">테이블에 적용된 데이터에 대한 정보를 노출시킬지 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bLengthChange</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+<td align="left">한페이지에 보여지는 레코드 수를 선택하는 기능 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bPaginate</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+<td align="left">페이지네이션 기능 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bProcessing</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="left">데이터 로딩 시 테이블 가운데 프로그레스 UI를 노출시킬지 여부</td>
+</tr>
+<tr>
+<td align="left">bScrollInfinite</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="left">Y축 스크롤을 통해 마지막 레코드일때 지속적으로 데이터 로딩을 할지 사용 여부</td>
+</tr>
+<tr>
+<td align="left">bServerSide</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="left">서버사이드 사용 여부 (ajax 옵션 필요)</td>
+</tr>
+<tr>
+<td align="left">bSort</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+<td align="left">머리글 클릭 또는 탭으로 자동 정렬 사용 여부</td>
+</tr>
+</tbody></table>
+
+<p><img src="images/datatables-features.png" alt="&lt;데이터테이블 기능&gt;"></p>
+
+<h3>옵션</h3>
+
+<table><thead>
+<tr>
+<th align="left">설정</th>
+<th align="center">타입</th>
+<th align="left">기본값</th>
+<th align="left">설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">iDisplayLength</td>
+<td align="center">int</td>
+<td align="left">10</td>
+<td align="left">한페이지당 몇 개의 레코드를 노출시킬지 지정하는 옵션</td>
+</tr>
+<tr>
+<td align="left">iDisplayStart</td>
+<td align="center">int</td>
+<td align="left">0</td>
+<td align="left">지정된 레코드의 수에 해당하는 페이지로 초기에 보여주는 옵션</td>
+</tr>
+<tr>
+<td align="left">sAjaxDataProp</td>
+<td align="center">string</td>
+<td align="left">aaData</td>
+<td align="left">ajax로 가져온 데이터의 객체에서 어느 depth에 데이터를 가져올지 지정하는 옵션</td>
+</tr>
+<tr>
+<td align="left">sAjaxSource</td>
+<td align="center">string</td>
+<td align="left">null</td>
+<td align="left">datasource를 ajax로 가져오기 위한 서버사이드 호출 URL</td>
+</tr>
+<tr>
+<td align="left">sDom</td>
+<td align="center">string</td>
+<td align="left">&lt;&#39;row&#39;&lt;&#39;span8&#39;l&gt;&lt;&#39;span4&#39;f&gt;r&gt;t&lt;&#39;row&#39;&lt;&#39;span12&#39;i&gt;&lt;&#39;span12&#39;p&gt;&gt;</td>
+<td align="left">기능에 사용되는 UI들을 어떤 DOM구조로 사용할지 지정하는 옵션. 상세설명은 옵션 표 아래 설명 참고</td>
+</tr>
+<tr>
+<td align="left">sPaginationType</td>
+<td align="center">string</td>
+<td align="left">bootstrap</td>
+<td align="left">페이지네이션 UI 타입을 지정하는 옵션 (&#39;bootstrap&#39;, &#39;twobutton&#39;,  &#39;fullnumbers&#39;)</td>
+</tr>
+<tr>
+<td align="left">sServerMethod</td>
+<td align="center">string</td>
+<td align="left">GET</td>
+<td align="left">ajax로 데이터를 가져올 때 메서드 방식을  GET, POST로 지정하는 옵션</td>
+</tr>
+<tr>
+<td align="left">oLanguage</td>
+<td align="center">object</td>
+<td align="left">{sLengthMenu:&ldquo;<em>MENU</em> 페이지별 레코드수&rdquo;, sInfo:&ldquo;총 레코드 수:<em>TOTAL</em> (시작 번호:<em>START</em>, 끝 번호:<em>END</em>)&rdquo;}</td>
+<td align="left">레코드 메뉴, 레코드수 및 검색의 Label 부분의 텍스트 정의 <a href="http://datatables.net/usage/i18n">자세히보기</a></td>
+</tr>
+</tbody></table>
+
+<h5>sDom</h5>
+
+<p>테이블 상 하단에 노출되는 컨트롤바인 페이지에 보여질 레코드수 메뉴, 검색, 페이지 정보, 페이지네이션에 대한 마크업 구조를 데이터테이블 내부에서 정한 규칙에 따라 작성을 하면 데이터테이블에서 구조를 파싱해서 마크업 구조를 생성해준다. 
+아래는 각 옵션에 대한 설명이다.</p>
+
+<ul>
+<li>&#39;l&#39; - 페이지에 보여줄 레코드수 메뉴</li>
+<li>&#39;f&#39; - 검색 메뉴</li>
+<li>&#39;t&#39; - 테이블</li>
+<li>&#39;i&#39; - 페이지 정보</li>
+<li>&#39;p&#39; - 페이지네이션</li>
+<li>&#39;r&#39; - 데이터 통신을 할때 테이블 가운데 표시되는 프로그레스</li>
+</ul>
+
+<p>사용법 문법 :</p>
+
+<ul>
+<li>&#39;&lt;&#39; and &#39;&gt;&#39; - div 엘리먼트</li>
+<li>&#39;&lt;&ldquo;class&rdquo; and &#39;&gt;&#39; - class 속성이 있는 div 엘리먼트</li>
+<li>&#39;&lt;&ldquo;#id&rdquo; and &#39;&gt;&#39; - ID 속성이 있는 div 엘리먼트</li>
+</ul>
+
+<p>예시 : 
+이 예시는 현재 기본값으로 설정된 옵션을 조금 더 가독성있게 포맷팅 한 상태이다. </p>
+
+<pre><code>    &lt;&#39;row&#39;
+        &lt;&#39;span8&#39;l&gt;
+        &lt;&#39;span4&#39;f&gt;
+    r
+    &gt;
+    t
+    &lt;&#39;row&#39;
+        &lt;&#39;span12&#39;i&gt;
+        &lt;&#39;span12&#39;p&gt;
+    &gt;
+</code></pre>
+
+<p>위 구조는 아래 마크업형태로 변환작업을 데이터테이블에서 자동적으로 생성한다.</p>
+
+<pre><code>    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span8&quot;&gt;l : 페이지에 보여줄 레코드수 메뉴&lt;/div&gt;
+        &lt;div class=&quot;span4&quot;&gt;검색 메뉴&lt;/div&gt;
+    r : bProcessing 옵션 기본이 false 이므로 노출되지 않음.
+    &lt;/div&gt;
+    &lt;table/&gt; &lt;!-- t는 기본적으로 데이터를 노출시키는 곳이므로 table 태그로 자동 생성된다. --&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span12&quot;&gt;i : 페이지 정보&lt;/div&gt;
+        &lt;div class=&quot;span12&quot;&gt;p : 페이지네이션 &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./smartanchor.js"></script>
+    <div class="btn-group pos_fixed">
+      <a class="btn btn-small" href="./4_4_05_chart.html">
+        <i class="icon-chevron-left">
+          
+        </i>
+      </a>
+      <a class="btn btn-small" href="#mobile_anchor">
+        Top
+      </a>
+      <a class="btn btn-small" href="./5_1_00_utilitly.html">
+        <i class="icon-chevron-right">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+</html>
