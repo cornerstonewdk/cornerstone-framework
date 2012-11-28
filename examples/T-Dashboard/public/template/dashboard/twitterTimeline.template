@@ -1,0 +1,8 @@
+<li>
+	<img src="{{profile_image_url}}" />
+	<div class="tweet">
+		<span class="posted">{{created_at}}</span>
+		<h2>{{from_user}}</h2>
+		<p>{{text}}</p>
+	</div>
+</li>

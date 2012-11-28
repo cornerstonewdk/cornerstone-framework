@@ -1,0 +1,63 @@
+<div class="dashboard_wrapper">
+	<div id="dashboard_container">
+		<div class="dashboardItem" id="dashboard_lte">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">LTE 개통 통계</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="reportChart"></div>
+		</div>
+	
+		<div class="dashboardItem" data-widgettitle="dashboard_voc">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">접수 VOC</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="vocWidget"></div>
+		</div>
+		
+		<div class="dashboardItem" data-widgettitle="dashboard_voc">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">금일 VOC 만족율</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="vocSatisfactionWidget"></div>
+		</div>
+		
+		<div class="dashboardItem" id="dashboard_policy">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">정책</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="planWidget"></div>
+		</div>
+		
+		<div class="dashboardItem">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">블로그</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="blogWidget"></div>
+		</div>
+		
+		<div class="dashboardItem">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">트위터</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="twitterWedget"></div>
+		</div>
+		
+		<div class="dashboardItem">
+			<div class="sbox">
+				<h1 class="typo-pressed typo-pressed-title">유튜브</h1>
+				<hr class="hr">
+			</div>
+			<div class="widget" id="youtubeWedget"></div>
+		</div>
+		
+		<div class="dashboardItem">
+			<div class="widget2" id="facebookLikeWidget"></div>
+		</div>
+	</div>
+</div>
