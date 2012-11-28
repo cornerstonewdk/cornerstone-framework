@@ -48,13 +48,13 @@
 			<div class="widget" id="twitterWedget"></div>
 		</div>
 
-		<div class="dashboardItem">
-			<div class="sbox">
-				<h1 class="typo-pressed typo-pressed-title">유튜브</h1>
-				<hr class="hr">
-			</div>
-			<div class="widget" id="youtubeWedget"></div>
-		</div>
+		<!--<div class="dashboardItem">-->
+			<!--<div class="sbox">-->
+				<!--<h1 class="typo-pressed typo-pressed-title">유튜브</h1>-->
+				<!--<hr class="hr">-->
+			<!--</div>-->
+			<!--<div class="widget" id="youtubeWedget"></div>-->
+		<!--</div>-->
 
 		<div class="dashboardItem">
 			<div class="widget widget-facebook" id="facebookLikeWidget"></div>
