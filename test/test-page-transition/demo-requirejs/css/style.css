@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+body {
+    font-family: "MoebiusRegular", sans-serif, dotum;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background: url('../images/linen_bg_tile.jpg') repeat center top;
+    background-attachment: fixed;
+    /* 아이폰 글자 크기 자동조정 방지 */
+    -webkit-text-size-adjust:none;
+}
+
+input, button, select, textarea {
+    font-family: "MoebiusRegular", sans-serif, dotum;
+}
+
+#front .btn {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#front, #back {
+    display: none;
+    margin:0;
+}
+#back {
+    color:#FFF;
+}
+#back h3 {
+    padding: 10px;
+}
+#back .form-actions {
+    background-color: transparent;
+}
+#front.current, #back.current {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    #front, #back {
+        margin: 0px;
+    }
+
+    .navbar .brand {
+        margin: 0 auto;
+        width: 127px;
+        float: none;
+    }
+}
+
+@media (max-width: 500px) {
+    #front, #back {
+        margin: 0;
+    }
+
+    .navbar .brand {
+        margin: 0 auto;
+        width: 127px;
+        float: none;
+    }
+}
