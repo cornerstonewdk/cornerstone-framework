@@ -139,11 +139,11 @@ define(
 				var $container = $('#dashboard_container');
 
                 // 안드로이드에서 성능문제로 isotope 비활성화
-				if(!navigator.userAgent.match("Android")) {
+//				if(!navigator.userAgent.match("Android")) {
                     $container.isotope({
                         itemSelector : '.dashboardItem'
                     });
-                }
+//                }
 			});
 
 			$('.dashboardItem').spinner('show');
