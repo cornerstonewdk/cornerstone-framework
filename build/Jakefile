@@ -54,6 +54,7 @@ runTask( 'init', function() {
 	j.mkdir( PATH_DIST + 'ui/img' );
 	j.mkdir( PATH_DIST + 'ui/theme/dark/css' );
 	j.mkdir( PATH_DIST + 'ui/theme/white/css' );
+	j.mkdir( PATH_DIST + 'ui/theme/wireframe/css' );
 	j.mkdir( PATH_DIST + 'util' );
 } );
 
@@ -164,15 +165,20 @@ runTask( 'deploy', [ 'validate' ], function() {
 	// 이미지 파일 복사
 	j.copy( PATH_SOURCE + 'ui/theme/dark/img', PATH_DIST + 'ui/theme/dark/img' );
 	j.copy( PATH_SOURCE + 'ui/theme/white/img', PATH_DIST + 'ui/theme/white/img' );
+	j.copy( PATH_SOURCE + 'ui/theme/wireframe/img', PATH_DIST + 'ui/theme/wireframe/img' );
 	
 	// less 컴파일
 	j.less( PATH_SOURCE + 'ui/theme/dark/less/cornerstone.less', PATH_DIST + 'ui/theme/dark/css/cornerstone.css', function( err ) {
 		if ( err ) fail( err );
-		
+
 		j.less( PATH_SOURCE + 'ui/theme/white/less/cornerstone.less', PATH_DIST + 'ui/theme/white/css/cornerstone.css', function( err ) {
 			if ( err ) fail( err );
-			
-			complete();
+
+			j.less( PATH_SOURCE + 'ui/theme/white/less/cornerstone.less', PATH_DIST + 'ui/theme/white/css/cornerstone.css', function( err ) {
+				if ( err ) fail( err );
+
+				complete();
+			} );
 		} );
 	} );
 	
