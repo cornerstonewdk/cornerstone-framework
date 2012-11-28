@@ -1,0 +1,77 @@
+<div id="wrap">
+	<div class="game-area">
+		<div class="player">
+			<h2 id="palyerNickname">PLAYER 1</h2>
+			<div class="tetris">
+				<div class="tetris-back" id="tetrisBackDiv">
+					<!-- tetris 게임 -->
+					<canvas id="canvasView">Your browser is not support html5 canvas</canvas>
+				</div>
+
+				<!-- s :: 카운트다운 -->
+				<div class="countdown1" style="display:none;" id="countdown1">
+					3
+				</div>
+				<div class="countdown2" style="display:none;" id="countdown2">
+					GO!
+				</div>
+				<!-- e :: 카운트다운 -->
+
+				<!-- s :: 1등 화면 -->
+				<div class="message" style="display:none;" id="gameResultWinner">
+					<p class="win-txt01">1등</p>
+					<p class="win-txt02" id="gameResultWinnerTime">03:45</p>
+					<div class="winner">
+						<p class="win-txt03">축하합니다!</p>
+						<p>congraturation!</p>
+					</div>
+					<button class="btn01" type="button" value="" style="visibility: hidden;" id="newGameButton1">새로운게임 시작하기</button>
+				</div>
+				<!-- e :: 1등 화면 -->
+
+				<!-- s :: 1등외 화면 -->
+				<div class="message2" style="display:none;" id="gameResultNotWinner">
+					<p class="win-txt01" id="gameResultNotWinnerRank">3등</p>
+					<p class="win-txt02" id="gameResultNotWinnerTime">03:45</p>
+					<div class="gameover">
+						GAME<br/>OVER
+					</div>
+					<button class="btn01" type="button" value="" style="visibility: hidden;" id="newGameButton2">새로운게임 시작하기</button>
+				</div>
+				<!-- e :: 1등외 화면 -->
+
+				<!-- s :: 탈락 -->
+				<div class="drop-out" style="display:none;" id="dropOut">
+					<p class="d-time" id="dropTime">03:34</p>
+					<p class="d-txt" id="dropMsg">
+						김별명이 3등으로<br/>
+						탈락하셨습니다.
+					</p>
+				</div>
+				<!-- e :: 탈락 -->
+			</div>
+		</div>
+		<div class="next">
+			<h2>NEXT</h2>
+			<div id="tetrisNextBackDiv">
+				<!-- tetris 다음 모양 -->
+				<canvas id="nextBlockCanvasView">Your browser is not support html5 canvas</canvas>
+			</div>
+		</div>
+
+		<div class="shape" id="tetrisNextNextBackDiv">
+			<!-- tetris 다음 모양 -->
+			<canvas id="nextNextBlocksCanvasView">Your browser is not support html5 canvas</canvas> 
+		</div>
+
+		<div class="time">
+			<h2>TIME</h2>
+			<p class="time-area" id="timeTag">00:00</p>
+		</div>
+
+		<div class="room">
+			<h2>ROOM</h2>
+			<p id="roomNumTag">6317</p>
+		</div>
+	</div>
+</div>
