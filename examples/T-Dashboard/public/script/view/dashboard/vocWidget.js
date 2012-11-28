@@ -30,7 +30,7 @@
 			this.vocListUpdateTimer = setInterval(function() {
 				self.updateVocList();
 			}, 5000);
-			
+
 			//스피너 숨김
 			$('div#vocWidget').parent().spinner('hide');
 		},

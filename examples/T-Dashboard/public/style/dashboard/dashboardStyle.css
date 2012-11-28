@@ -62,7 +62,7 @@
 	border-radius: 5px;
 	background: url('../image/bg_top.png');
 	background-size: 4px;
-	float: left;
+	float:left;
 }
 
 @media all and (max-width: 626px) {
@@ -122,6 +122,10 @@ div[data-featured="scrollView"] {
 #dashboard_container .widget {
 	padding: 10px 5px 5px 5px;
 }
+
+#dashboard_container .widget-facebook {
+	padding: 5px 5px 5px 5px;
+}
 #dashboard_container .widget .lists li {
 	font-size: 14px;
 	text-align: left;
@@ -150,7 +154,7 @@ div[data-featured="scrollView"] {
 
 #dashboard_container .scrollview {
 	position: relative;
-	top: 0;
+	/*top: 0;*/
 }
 
 #dashboard_container .hero-unit {
@@ -160,3 +164,4 @@ div[data-featured="scrollView"] {
 #dashboard_container li {
 	line-height: 18px;
 }
+
