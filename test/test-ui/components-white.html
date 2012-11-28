@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta char.icon-set="utf-8">
 	<title>MOBILE T</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="../../dist/ui/theme/white/css/cornerstone.css">
+
 	<style>
 		body {
 			padding-top: 30px;
@@ -24,6 +25,60 @@
 </head>
 
 <body>
+
+<div class="container">
+
+<div class="page-header">
+	<h1>Components</h1>
+</div>
+
+<div class="row">
+<div class="span12">
+
+<h2 class="title">breadcrumb</h2>
+<ul class="breadcrumb">
+	<li><a href="#">Level 1</a><span class="divider">/</span></li>
+	<li><a href="#">Level 2</a><span class="divider">/</span></li>
+	<li class="active">Level 3</li>
+</ul>
+
+<hr>
+
+<ul class="breadcrumb">
+	<li><a href="#">Level 1</a><span class="divider">/</span></li>
+	<li class="active">Level 2</li>
+</ul>
+
+<h2 class="title">pagination</h2>
+
+<div class="pagination2">
+	<ul>
+		<li><a href="#"><span></span></a></li>
+		<li><a href="#"></a></li>
+		<li><a href="#"></a></li>
+		<li><a href="#"></a></li>
+		<li><a href="#"></a></li>
+		<li class="active"><a href="#"></a></li>
+		<li><a href="#"><span></span></a></li>
+	</ul>
+</div>
+
+<div class="pagination">
+	<ul>
+		<li><a href="#"><span></span></a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li class="active"><a href="#">5</a></li>
+		<li><a href="#"><span></span></a></li>
+	</ul>
+</div>
+
+<hr>
+
+<h2 class="title">Nav. default</h2>
+
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
@@ -66,58 +121,7 @@
 	</div>
 </div>
 
-<div class="container">
-
-<div class="page-header">
-	<h1>Components</h1>
-</div>
-
-<div class="row">
-<div class="span12">
-
-<h2 class="title">breadcrumb</h2>
-<ul class="breadcrumb">
-	<li><a href="#">Level 1</a><span class="divider">/</span></li>
-	<li><a href="#">Level 2</a><span class="divider">/</span></li>
-	<li class="active">Level 3</li>
-</ul>
-
 <hr>
-
-<ul class="breadcrumb">
-	<li><a href="#">Level 1</a><span class="divider">/</span></li>
-	<li class="active">Level 2</li>
-</ul>
-
-<h2 class="title">pagination</h2>
-
-<div class="pagination2">
-	<ul>
-		<li><a href="#"><span></span></a></li>
-		<li><a href="#"></a></li>
-		<li><a href="#"></a></li>
-		<li><a href="#"></a></li>
-		<li><a href="#"></a></li>
-		<li><a href="#"></a></li>
-		<li><a href="#"><span></span></a></li>
-	</ul>
-</div>
-
-<div class="pagination">
-	<ul>
-		<li><a href="#"><span></span></a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li class="active"><a href="#">5</a></li>
-		<li><a href="#"><span></span></a></li>
-	</ul>
-</div>
-
-<hr>
-
-<h2 class="title">Nav. default</h2>
 
 <div class="navbar nav-dropdown">
 	<div class="navbar-inner">
@@ -155,7 +159,6 @@
 					<label>Sign in</label>
 					<input type="text" class="search-query" placeholder="SEARCH">
 				</form>
-
 				<ul class="nav pull-right">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <i class="caret"></i></a>
@@ -206,7 +209,7 @@
 							Link2
 						</a>
 					</li>
-					<li class="">
+					<li class="active">
 						<a href="#">
 							<i class="icon-save"></i>
 							Link3
@@ -270,7 +273,7 @@
 							Link2
 						</a>
 					</li>
-					<li class="">
+					<li class="active">
 						<a href="#">
 							<i class="icon-save"></i>
 							Link3
@@ -525,21 +528,21 @@
 	</li>
 	<li>
 		<label class="radio">
-			<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>
+			<input type="radio" name="optionsRadios" id="optionsRadios3" value="option2" checked>
 			<span class="inp-radio"></span>
 			dog
 		</label>
 	</li>
 	<li>
 		<label class="radio">
-			<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" checked>
+			<input type="radio" name="optionsRadios" id="optionsRadios4" value="option3" checked>
 			<span class="inp-radio"></span>
 			monkey
 		</label>
 	</li>
 	<li>
 		<label class="radio">
-			<input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" checked>
+			<input type="radio" name="optionsRadios" id="optionsRadios5" value="option4" checked>
 			<span class="inp-radio"></span>
 			rabbit
 		</label>
@@ -583,6 +586,7 @@
 
 <hr>
 
+<!-- s :: [2012-10-22] 버튼 수정 - 파란 버튼은 .btn-primary를 추가하여 사용 -->
 <h2 class="title">Grouped buttons</h2>
 
 <div class="btn-toolbar">
@@ -592,7 +596,7 @@
 		<button class="btn"><i class="icon-set"></i></button>
 	</div>
 
-	<div class="btn-group">
+	<div class="btn-group inline">
 		<button class="btn btn-primary"><i class="icon-up"></i></button>
 		<button class="btn btn-primary"><i class="icon-down"></i></button>
 		<button class="btn btn-primary"><i class="icon-set"></i></button>
@@ -600,7 +604,6 @@
 </div>
 <hr>
 
-<!-- s :: [2012-10-22] 버튼 수정 - 파란 버튼은 .btn-primary를 추가하여 사용 -->
 <h2 class="title">Horizontal toggle checkbox</h2>
 
 <div class="btn-toolbar">
@@ -629,8 +632,6 @@
 
 <hr>
 
-<h2 class="title">Button dropdown menus</h2>
-
 <div class="btn-toolbar">
 	<div class="btn-group">
 		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -642,7 +643,7 @@
 		</ul>
 	</div>
 
-	<div class="btn-group">
+	<div class="btn-group inline">
 		<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
 			DOWN
 			<span class="caret"></span>
@@ -654,8 +655,6 @@
 </div>
 
 <hr>
-
-<h2 class="title">Split button dropdowns</h2>
 
 <div class="btn-toolbar">
 	<div class="btn-group">
@@ -679,31 +678,6 @@
 	</div>
 </div>
 
-<hr>
-
-<h2 class="title">Split button dropup</h2>
-
-<div class="btn-toolbar">
-	<div class="btn-group dropup">
-		<button class="btn">SPLIT</button>
-		<button class="btn dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-			<!-- dropdown menu links -->
-		</ul>
-	</div>
-
-	<div class="btn-group dropup inline">
-		<button class="btn btn-primary">SPLIT</button>
-		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-			<!-- dropdown menu links -->
-		</ul>
-	</div>
-</div>
 <hr>
 
 <h2 class="title">Labels</h2>
@@ -834,7 +808,7 @@
 
 <h2 class="title">Table default style</h2>
 
-<table class="table">
+<table class="table table-bordered">
 	<thead>
 	<tr>
 		<th>#</th>
@@ -1042,7 +1016,7 @@
 					<a href="">China</a>
 					<i></i>
 				</li>
-				<li>
+				<li class="active">
 					<a href="">France</a>
 					<i></i>
 				</li>
@@ -1050,7 +1024,7 @@
 					<a href="">India</a>
 					<i></i>
 				</li>
-				<li class="active">
+				<li>
 					<a href="">Great Britain</a>
 					<i></i>
 				</li>
@@ -1080,6 +1054,7 @@
 	<li><a href="#">Help</a></li>
 </ul>
 
+<<<<<<< HEAD
 <h2 class="title">Tooltip</h2>
 <div class="tooltip-demo tooltip-white" data-toggle="tooltip">
     <ul class="bs-docs-tooltip-examples">
@@ -1091,27 +1066,121 @@
         <li><a href="#" rel="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
     </ul>
 </div>
+=======
+<hr>
+>>>>>>> origin/dev
 
-<!--
-<div class="tooltip-area">
-	<div class="tooltip top">
-		<div class="tooltip-inner">1212</div>
-		<p class="tooltip-arrow"></p>
+<h2 class="title">Collapse</h2>
+
+<div class="accordion" id="accordion2">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle active" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+				Collapsible Group Item #1
+			</a>
+		</div>
+		<div id="collapseOne" class="accordion-body collapse in">
+			<div class="accordion-inner">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro
+				synth master
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+				keffiyeh dreamcatcher
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+				iphone. Seitan aliquip
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
+		</div>
 	</div>
-
-	<div class="tooltip tooltip-white top">
-		<div class="tooltip-inner">1212</div>
-		<p class="tooltip-arrow"></p>
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+				Collapsible Group Item #2
+			</a>
+		</div>
+		<div id="collapseTwo" class="accordion-body collapse">
+			<div class="accordion-inner">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro
+				synth master
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+				keffiyeh dreamcatcher
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+				iphone. Seitan aliquip
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
+		</div>
+	</div>
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+				Collapsible Group Item #2
+			</a>
+		</div>
+		<div id="collapseThree" class="accordion-body collapse">
+			<div class="accordion-inner">
+				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro
+				synth master
+				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+				keffiyeh dreamcatcher
+				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+				iphone. Seitan aliquip
+				quis cardigan american apparel, butcher voluptate nisi qui.
+			</div>
+		</div>
 	</div>
 </div>
--->
 
-<hr>
 <h2 class="title">Wells</h2>
+
 <div class="well">
 	Look, I'm in a well!
 </div>
 
+<h2 class="title">Carousel</h2>
+
+<div id="myCarousel" class="carousel slide">
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+
+			<div class="carousel-caption">
+				<h4>First Thumbnail label</h4>
+
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
+					eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			</div>
+		</div>
+		<div class="item">
+			<img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+
+			<div class="carousel-caption">
+				<h4>Second Thumbnail label</h4>
+
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
+					eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			</div>
+		</div>
+		<div class="item">
+			<img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+
+			<div class="carousel-caption">
+				<h4>Third Thumbnail label</h4>
+
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
+					eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			</div>
+		</div>
+	</div>
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<div class="move-item">
+	<a href="#"></a>
+	<a href="#"></a>
+	<a href="#"></a>
+	<a href="#"></a>
+	<a href="#"></a>
+</div>
+</div>
 <!-- span12 -->
 
 </div>
@@ -1122,9 +1191,7 @@
 </div>
 </div>
 <!-- /container -->
-
-	<script src='../../dist/lib/jquery-1.8.1.min.js'></script>
-	<script src='../../dist/ui/widget-plugins.js'></script>  
+<script type="text/javascript" src="../../dist/lib/jquery-1.8.1.min.js"></script>
 <script type="text/javascript">
 	$("a, button").on("click", function (e) {
 		e.preventDefault();
