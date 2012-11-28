@@ -1,6 +1,0 @@
-<div data-featured="scrollView" class="scrollview twitter">
-	<div class="lists scroller">
-		<ul id="thelist" class="lists-con">
-		</ul>
-	</div>
-</div>
