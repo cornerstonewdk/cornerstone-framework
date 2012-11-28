@@ -26,6 +26,14 @@ define(
                     // 화면회전시 랜더링을 정상완료하지 못하는 경우가 생기므로 resize 이벤트를 강제적으로 발생
                     var isVertical = true;
 
+                    $("body").css({
+                        width: $("body").width() * 2
+                    });
+
+                    $("body > .wrapper").css({
+                        width: width
+                    });
+
                     $(window).on('orientationchange', orientationChangeHandler);
                     function orientationChangeHandler(e) {
                         switch (window.orientation) {
@@ -111,7 +119,7 @@ define(
                     var $container = $('#dashboard_container');
 
                     // 안드로이드에서 성능문제로 isotope 비활성화
-                    if (!navigator.userAgent.match("Android")) {
+//                    if (!navigator.userAgent.match("Android")) {
                         $container.isotope({
                             animationOptions:{
                                 duration:250,
@@ -121,7 +129,7 @@ define(
                             itemSelector:'.dashboardItem',
                             transformsEnabled:true
                         });
-                    }
+//                    }
                 });
 
                 $('.dashboardItem').spinner('show');
