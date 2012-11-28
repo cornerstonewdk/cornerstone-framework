@@ -3,21 +3,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 		<title>SKT Open API Client Sample</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link href="css/cornerstone.min.css" rel="stylesheet">
+		<link href="../../../dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="../../../dist/ui/theme/dark/css/cornerstone.css" rel="stylesheet">
 		<style type="text/css">
 		a { cursor: pointer;}
 		label { color: #fff ! important; }
 		</style>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand">SKT Open API Client Sample</a>
-				</div>
-			</div>
+		<div class="navbar navbar-inverse" style="text-align:center; padding: 20px 20px;">
+			<label>SKT Open API Client Sample</label>
 		</div>
 		
 		<div class="container">
@@ -29,13 +25,13 @@
 							<span class="label label-important" id="auth_status">undefined</span>
 						</label>
 						<ul class="nav nav-tabs">
-							<li class="active" name="auth">
+							<li class="active" name="auth" style="width: 32%;">
 								<a>인증</a>
 							</li>
-							<li name="sms">
+							<li name="sms" style="width: 32%;">
 								<a>메시지</a>
 							</li>
-							<li name="pay">
+							<li name="pay" style="width: 33%;">
 								<a>과금</a>
 							</li>
 						</ul>
@@ -81,7 +77,7 @@
 					                <div class="control-group">
 					                    <label class="control-label" for="message">메시지</label>
 					                    <div class="controls">
-					                    	<textarea id="message" style="width:270px;height:100px;"></textarea>
+					                    	<textarea id="message" class="input-xlarge"></textarea>
 					                    </div>
 					                </div>
 					                <div class="form-actions" style="background:none;">
@@ -94,35 +90,17 @@
 						<div class="innerDiv" name="pay" style="display:none;">
 							<form id="payForm" class="form-horizontal">
 					            <fieldset>
-					            	<!--
-					            	<div class="select-area">
-							            <label class="blind">Select box</label>
-							            <select class="select-value">
-							                <option>1</option>
-							                <option>2</option>
-							                <option>3</option>
-							                <option>4</option>
-							                <option>5</option>
-							            </select>
-							            <div class="select-box">
-							                <input type="text" value="">
-							                <span class="arrow1"></span>
-							                <span class="arrow2"></span>
-							            </div>
-							        </div>
-							    	-->
-							        
 					                <div class="control-group">
 					                    <label class="control-label" for="type">과금 형태</label>
 					                    <div class="controls">
 					                    	<div class="btn-group">
   												<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">one-time</a>
 												<ul class="dropdown-menu">
-													<li><a>one-time</a></li>
-													<li><a>recurring</a></li>
-													<li><a>weekly-subscription</a></li>
-													<li><a>monthly-subscription</a></li>
-													<li><a>yearly-subscription</a></li>
+													<li><a href="#">one-time</a></li>
+													<li><a href="#">recurring</a></li>
+													<li><a href="#">weekly-subscription</a></li>
+													<li><a href="#">monthly-subscription</a></li>
+													<li><a href="#">yearly-subscription</a></li>
 												</ul>
 											</div>
 					                    </div>
@@ -140,6 +118,12 @@
 					                    	<input id="amount" class="input-xlarge" type="text"/>
 					                    </div>
 					                </div>
+					                <div class="control-group">
+					                    <label class="control-label" for="user">과금 알림</label>
+					                    <div class="controls">
+					                    	<input id="user" class="input-xlarge" type="text"/>
+					                    </div>
+					                </div>
 					                <div class="form-actions" style="background:none;">
 					                    <button type="submit" class="btn btn-primary">과금 요청</button> 
 					                    <button type="reset" class="btn">다시입력</button>
@@ -155,16 +139,16 @@
 			</div>
 		</div>
 		<br/>
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/SKT.js"></script>
+		<script type="text/javascript" src="../../../dist/lib/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="../../../dist/lib/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/skt-css.js"></script>
 
 		<script type="text/javascript">
 
 		var client_auth_token = undefined;
 		var paymentFlag = false;
 
-		$( '#redirectUri' ).val( 'http://prandy.iptime.org:9001/client_redirect.html' );
+		$( '#redirectUri' ).val( 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
 		//$( '#redirectUri' ).val( encodeURI( 'file:///C:/nginx-1.2.3/html/client_redirect.html' ) );
 
 		$( 'ul > li' ).on( 'click', function () {
@@ -176,6 +160,7 @@
 		} );
 
 		$( '#payForm ul.dropdown-menu > li > a' ).bind( 'click', function ( evt ) {
+
 			$( '#payForm [data-toggle=dropdown]' ).html( $( this ).html() );
 			$( '#paymentDate' ).val( '' );
 			// one-time or recurring
@@ -186,7 +171,8 @@
 				$( '#paymentDiv' ).show();
 				paymentFlag = true;
 			}
-			return false;
+			$( '#payForm .btn-group.open' ).removeClass("open");
+			return false;	
 		} );
 
 		function bindAlert( add, msg ) {
@@ -231,8 +217,7 @@
 				},
 				error: function ( err ) {
 					bindAlert( 'alert-error', JSON.stringify( err ) );
-				},
-				timeout: 1000
+				}
 			} );
 			return false;
 		} );
@@ -243,6 +228,7 @@
 				accessToken: client_auth_token,
 				type: $( '#payForm [data-toggle=dropdown]' ).html(),
 				amount: $( '#amount' ).val(),
+				to: $( '#user' ).val(),
 				success: function ( data ) {
 					var str = '[ 수신데이터 ]\n' +
 							  'result : ' + data.result + '\n' +

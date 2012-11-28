@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test Total</title>
+        <link rel="stylesheet" type="text/css" href="../../dist/lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../dist/lib/bootstrap/css/bootstrap-responsive.css">
+        <link rel="stylesheet" type="text/css" href="../../dist/ui/theme/dark/css/cornerstone.css">
+        <style type="text/css">
+        #blackbird .footer {padding:0;}
+        div.left label { font-size: 12px;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div id="list">
+                    	<h1>Deburg Option</h1>
+	                    <div id="debug-group" class="btn-group" data-toggle="buttons-radio">
+	                        <button type="button" class="btn active">console</button>
+	                        <button type="button" class="btn">screen</button>
+	                        <button type="button" class="btn">none</button>
+	                    </div>
+                        <h1>#list page 영역</h1>
+                        <section id="list-section">
+                            list-section 영역
+                        </section>
+                        <section id="touch-section" style="background-color:gray; width:300px; height:300px;">
+                            touch-section 영역
+                        </section>
+                        <section id="gesture-section" style="background-color:yellow; width:300px; height:300px;">
+                            gesture-section 영역
+                        </section>
+                        <form id="add-form" class="form-horizonal">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="name">이름</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-xlarge" id="name" name="name"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="age">나이</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-xlarge" id="age" name="age"/>
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="gender">성별</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-xlarge" id="gender" name="gender" data-placement="right"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">폼 서브밋</button>
+                        </form>
+                        <br>
+                        <br>
+                        <h1>Validation View 적용</h1>
+                        <form id="add-form1" class="form-horizonal">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="name">이름</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-xlarge" id="name" name="name"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="age">나이</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-xlarge" id="age" name="age"/>
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="gender">성별</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-xlarge" id="gender" name="gender" data-placement="right"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">폼 서브밋</button>
+                        </form>
+                        <hr>
+                        <h1>동기화</h1>
+                        <div class="btn-group sync">
+                            <button class="btn" type="button" name="col.fetch">collection.fetch()</button>
+                            <button class="btn" type="button" name="mod.fetch">model.fetch()</button>
+                            <button class="btn" type="button" name="mod.save">model.save() - id( X )</button>
+                            <button class="btn" type="button" name="mod.save.id">model.save() - id( O )</button>
+                            <button class="btn" type="button" name="mod.destroy">model.destroy()</button>
+                        </div>
+                        <hr>
+                        <h1>Router 테스트</h1>
+                        <div class="btn-group router">
+                            <button class="btn" type="button" name="list">#list</button>
+                            <button class="btn" type="button" name="add">#add</button>
+                            <button class="btn" type="button" name="detail">#detail/10</button>
+                        </div>
+                    </div>
+                    <div id="add">
+                        <h1>#add page 영역</h1>
+                        <div class="btn-group router">
+                            <button class="btn" type="button" name="list">#list</button>
+                            <button class="btn" type="button" name="add">#add</button>
+                            <button class="btn" type="button" name="detail">#detail/10</button>
+                        </div>
+                        <div>
+                            더하기 페이지입니다.
+                        </div>
+                    </div>
+                    <div id="detail">
+                        <h1>#detail page 영역</h1>
+                        <div class="btn-group router">
+                            <button class="btn" type="button" name="list">#list</button>
+                            <button class="btn" type="button" name="add">#add</button>
+                            <button class="btn" type="button" name="detail">#detail/10</button>
+                        </div>
+                        <div>
+                            디테일 페이지입니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../dist/launcher.js" data-target="script/main"></script> 
+    </body>
+</html>

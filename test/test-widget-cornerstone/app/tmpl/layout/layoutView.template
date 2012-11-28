@@ -1,0 +1,13 @@
+<header>
+
+</header>
+<div id="content" class="container">
+	<div class="row">
+		<div id="front" class="current span12">
+
+		</div>
+		<div id="back" class="new-page span12">
+
+		</div>
+	</div>
+</div>

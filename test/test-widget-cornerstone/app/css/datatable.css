@@ -1,0 +1,4 @@
+.paging_bootstrap ul li a {
+	font-size: 0;
+	cursor: pointer;
+}
