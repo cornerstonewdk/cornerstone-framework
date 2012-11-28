@@ -5,7 +5,6 @@ $('.datepicker').datepicker({
     changeDisplay: true
 });
 
-
 $("#range3").rangeinput({"inputShow":true});
 // 싸인
 $("#signature").sign();
@@ -18,7 +17,7 @@ $("[data-plugin='spinner']").on("click", function (e) {
     var target = $(this).data("spinnerTarget");
     window.setTimeout(function () {
         $(target).spinner("hide");
-    }, 3000);
+    }, 30000);
 });
 
 // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
@@ -48,4 +47,3 @@ $("a.download-sign").bind("click", function (e) {
         e.preventDefault();
     }
 });
-
