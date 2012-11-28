@@ -18,7 +18,7 @@ define(
 		
 		vocSatisfactionInfo: {
 			'vocCnt': 35678,
-			'vocSatisfaction': 90,
+			'vocSatisfaction': 90
 		},
 		
 		
@@ -32,7 +32,7 @@ define(
 			
 			this.vocInfoUpdateTimer = setInterval(function() {
 				self.updateVocSatisfactionInfo();
-			}, 1000);
+			}, 5000);
 			
 			$('div#vocSatisfactionWidget').parent().spinner('hide');
 		},
@@ -46,13 +46,13 @@ define(
 				this.vocInfoUpdateTimer = null;
 				return;
 			}
-			
+
 			this.vocSatisfactionInfo['vocCnt'] = this.vocSatisfactionInfo['vocCnt'] + DummyDataUtil.randomNumber(10, 30);
 			this.vocSatisfactionInfo['vocSatisfaction'] = DummyDataUtil.randomNumber(85, 99);
-			
+
 			$(this.el).html(template(this.vocSatisfactionInfo));
 		},
-		
+
 	});
 	
 	return VocSatisfactionWidget;

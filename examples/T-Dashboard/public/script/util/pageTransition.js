@@ -72,7 +72,9 @@
 				$('div#contentsView').append('<div id="' + this.currentId + '"></div>');
 				
 				View['el'] = $('div#' + this.currentId);
-				View.render();
+
+                var self = this;
+                View.render();
 				$('div#' + this.currentId).hide();
 				
 				Transition.launcher({
@@ -86,10 +88,12 @@
 					isReverse: false,
 					done: function() {
 						$('div#' + self.prevId).remove();
-						if(typeof(View['viewDidAppear']) != 'undefined') View['viewDidAppear']();
+						if(typeof(View['viewDidAppear']) != 'undefined') {
+                            View['viewDidAppear']();
+                        }
 					}
 				});
-				
+
 				break;
 			case '<':
 				var self = this;

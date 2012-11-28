@@ -31,9 +31,9 @@ define(
 			self.updateTwitter();
 			
 			//일정시간마다 (5초) 트위터서버에서 데이터를 가져온다.
-			self.twitterUpdateTimer = setInterval(function() {
-				self.updateTwitter();
-			}, 5000);
+//			self.twitterUpdateTimer = setInterval(function() {
+//				self.updateTwitter();
+//			}, 5000);
 		},
 		
 		/*
@@ -58,7 +58,7 @@ define(
 					self.drawList(data.results);
 				},
 				error: function() {
-					alert('오류가 발생하였습니다.');
+					//alert('오류가 발생하였습니다.');
 				},
 				timeout: 30000
 			});
@@ -114,7 +114,7 @@ define(
 		    } catch (e) {
 		        return '';
 		    }
-		},
+		}
 		
 	});
 	
