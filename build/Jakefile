@@ -174,7 +174,7 @@ runTask( 'deploy', [ 'validate' ], function() {
 		j.less( PATH_SOURCE + 'ui/theme/white/less/cornerstone.less', PATH_DIST + 'ui/theme/white/css/cornerstone.css', function( err ) {
 			if ( err ) fail( err );
 
-			j.less( PATH_SOURCE + 'ui/theme/white/less/cornerstone.less', PATH_DIST + 'ui/theme/white/css/cornerstone.css', function( err ) {
+			j.less( PATH_SOURCE + 'ui/theme/wireframe/less/cornerstone.less', PATH_DIST + 'ui/theme/wireframe/css/cornerstone.css', function( err ) {
 				if ( err ) fail( err );
 
 				complete();
