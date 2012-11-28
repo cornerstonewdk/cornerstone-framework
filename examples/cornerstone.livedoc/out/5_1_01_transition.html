@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="active">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/5_1_01_transition">
+            <div>
+  <h2>화면 전환</h2>
+
+<h3>화면전환 구조</h3>
+
+<p>화면전환은 Launcher(실행기)와 Effect(효과)로 구성되어 있다.</p>
+
+<p>Launcher의 기능</p>
+
+<ul>
+<li>   화면전환 효과를 내기 전 사용자가 정의한 값과 기본값을 병합</li>
+<li>   화면전환을 위한 CSS 준비 및 뒤로 가기인 경우 이전 페이지 효과로 설정</li>
+<li>   화면전환 가능 브라우저인지, 가능한 효과의 종류 인지 판단 등을 처리하고 실제 화면전환 효과를 실행시키는 기능</li>
+<li>   화면전환 시 사용된 CSS를 초기화 후 사용자가 정의한 완료 함수를 실행한다.</li>
+</ul>
+
+<p>Effect의 기능</p>
+
+<ul>
+<li>   각 효과에 맞는 CSS를 설정하고 화면전환 효과를 표현한다.</li>
+</ul>
+
+<h3>화면전환 호환 브라우저</h3>
+
+<ul>
+<li>   Internet Explorer 9+(일부), 파이어폭스(Firefox), 크롬(Chrome), 사파리(Safari)</li>
+</ul>
+
+<h3>종류</h3>
+
+<p>1)    종류 목록</p>
+
+<ul>
+<li>Flip(플립) 효과 : 화면 중심 y축을 기준으로 카드를 뒤집는 것처럼 나가는 페이지가 뒤돌아서면서 들어오는 페이지가 나타나는 효과 (3D)</li>
+<li>Spin(화전) 효과 : 나가는 페이지가 회전화면서 사라지고, 들어오는 페이지가 회전하면서 나타나는 효과 (3D)</li>
+<li>Slide(슬라이드) 효과 : 나가는 페이지가 좌측 밖으로 나가는 동시에 우측 밖에서 들어오는 페이지가 현재화면으로 들어오는 효과</li>
+<li>Slideup(슬라이드 시작 방향 위) 효과 : 나가는 페이지가 아래로 내려가는 동시에 위에서 들어오는 페이지가 현재화면으로 들어오는 효과</li>
+<li>Slidedown(슬라이드 시작 방향 아래) 효과 : Slideup의 반대효과</li>
+<li>Fade(페이드) 효과 : 나가는 페이지가 사라지면서, 들어오는 페이지가 나타나는 효과</li>
+<li>Pop(팝) 효과 : 나가는 페이지가 화면 중심으로 사라지고, 들어오는 페이지가 중심에서나타나는 효과</li>
+<li>Turn(턴) 효과 : 왼쪽 y축을 기준으로 화면을 책 넘기기처럼 표현하는 효과 (3D)</li>
+</ul>
+
+<p>2)    종류별 작동 영상 <a href="http://youtu.be/ncYSE-JRfJc">http://youtu.be/ncYSE-JRfJc</a></p>
+
+<h3>화면전환 사용방법</h3>
+
+<p>1)    기본 HTML/CSS</p>
+
+<p>HTML
+화면전환시 나가고, 들어가는 페이지를 표현해야하므로 최소한 2개 이상의 영역이 필요하다. 아래 HTML은 front와 back 페이지로 
+구분해서 화면전환를 구현했으며, 개발시 front와 back은 같은 레벨에서 N개 존재가 가능하다.</p>
+
+<pre><code>&lt;div id=&quot;front&quot; class=&quot;current&quot;&gt;
+    &lt;!-- 플립효과로 다음 페이지 이동  --&gt;
+    &lt;button class=&quot;full-width btn &quot; data-transition=&quot;flip&quot;&gt;Flip&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;back&quot;&gt;
+    (중략...)
+&lt;/div&gt;
+</code></pre>
+
+<p>동일 레벨에서 N개 존재 가능</p>
+
+<pre><code>&lt;div id=&quot;front&quot; class=&quot;current&quot;&gt;
+    &lt;!-- 플립효과로 다음 페이지 이동  --&gt;
+    &lt;button class=&quot;full-width btn &quot; data-transition=&quot;flip&quot;&gt;Flip&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;back&quot;&gt;
+    (중략...)
+&lt;/div&gt;
+&lt;div id=&quot;front2&quot;&gt;
+    (중략...)
+&lt;/div&gt;
+&lt;div id=&quot;back2&quot;&gt;
+    (중략...)
+&lt;/div&gt;
+(중략...)
+</code></pre>
+
+<p>CSS</p>
+
+<p>기본적으로 화면전환시 현재페이지를 제외한 페이지는 노출이 되지 않게 해야하므로 .current 등의 클래스로 현재 페이지인 경우만
+노출되도록 한다.</p>
+
+<pre><code>#front, #back {
+    display: none;
+}
+#front.current, #back.current {
+    display: block;
+}
+</code></pre>
+
+<p>※ <strong>위의 코드에서 사용된 ID와 Class값의 네이밍은 사용자가 원하는대로 변경해서 사용이 가능하다.</strong></p>
+
+<p>2)    의존성 주입 </p>
+
+<ul>
+<li><p>일반 방식 </p>
+
+<pre><code>&lt;!-- jQuery --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;cornerstone/lib/jquery-1.8.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- 화면전환 Javascript --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;cornerstone/util/transition.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>MVC Framework을 이용한 의존성 주입</p>
+
+<pre><code>// app.js
+define([&#39;backbone&#39;, &#39;transition&#39;],
+        function (Backbone, Transition) {
+            (중략...)
+        }
+});
+</code></pre></li>
+</ul>
+
+<p>3)    화면전환 파라미터 정의
+윈도우 테이블 UI 확인이 어려움으로 추후 테이블로 변경 예정 </p>
+
+<p>transitionType - 화면전환 효과 기본 None(효과 없음) - None - X</p>
+
+<p>fallbackType - IE에서 임시로 사용할 효과 - Fade - X</p>
+
+<p>inTarget 들어오는 페이지 파라미터</p>
+
+<ul>
+<li>el - 들어오는 페이지 아이디값 - undefined - O</li>
+<li>from - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X </li>
+<li>to - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X </li>
+<li>duration - 들어오는 페이지의 애니메이션 시간 - 효과별 기본값 - X </li>
+<li>timing : 지정한 시간동안이 트랜지션 속도 (타이밍 함수값) - ease - X</li>
+</ul>
+
+<p>outTarget 나가는 페이지 파라미터</p>
+
+<ul>
+<li>el - 나가는 페이지 아이디값 - undefined - O</li>
+<li>from - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X </li>
+<li>to - 시작점 좌표 또는 각도 값 - 효과별 기본값 - X </li>
+<li>duration - 나가는 페이지의 애니메이션 시간 - 효과별 기본값 - X </li>
+<li>timing : 지정한 시간동안이 트랜지션 속도 (타이밍 함수값) - ease - X</li>
+<li>done - 나가는 페이지 트랜지션 완료시 실행 시킬 함수 - function(){} - X</li>
+</ul>
+
+<p>isReverse - 뒤로 가기 페이지인지 여부 식별 - false - O</p>
+
+<p>done - 화면전환 완료시 실행 시킬 함수 - function(){} - X</p>
+
+<p>4)    사용 문법</p>
+
+<p>기본적인 문법은 사용자가 아래와 같은 설정들을 제어할 수 있다.</p>
+
+<ul>
+<li>transitionType : 화면전환 종류 (기본값: None)</li>
+<li>inTarget : 나가는 페이지
+
+<ul>
+<li>el : 아이디값  <strong>(필수)</strong></li>
+</ul></li>
+<li>outTarget : 들어오는 페이지 
+
+<ul>
+<li>el : 아이디값  <strong>(필수)</strong></li>
+</ul></li>
+<li>isReverse : 뒤로가기 여부 (기본값: false)</li>
+<li>done : 완료 시 실행할 함수</li>
+</ul>
+
+<p>&lt;기본 문법&gt;</p>
+
+<pre><code>Transition.launcher({
+    transitionType:&quot;flip&quot;, // 화면전환 종류 참고
+    inTarget:{
+        el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+    },
+    outTarget:{
+        el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+    },
+    isReverse: false, // 뒤로가기 여부
+    done:function () {
+        $(&quot;#front&quot;).addClass(&quot;current&quot;);
+        $(&quot;#back&quot;).removeClass(&quot;current&quot;);
+    }
+});
+</code></pre>
+
+<p>고급 문법은 사용자가 기본문법의 설정보다 더 상세한 설정들을 제어할 수 있다.</p>
+
+<ul>
+<li>transitionType : 화면전환 종류 (기본값: None)</li>
+<li>fallbackType : 미지원 브라우저에서 사용할 효과 (기본값: Fade)</li>
+<li>inTarget : 나가는 페이지
+
+<ul>
+<li>el : 아이디값  <strong>(필수)</strong></li>
+<li>from : 시작점 좌표 또는 각도 값</li>
+<li>to : 도착점 좌표 또는 각도 값</li>
+<li>duration : 들어오는 페이지의 트랜지션 지속 시간</li>
+<li>timing : 지정한 시간동안이 트랜지션 속도 (타이밍 함수값) </li>
+</ul></li>
+<li>outTarget : 들어오는 페이지 
+
+<ul>
+<li>el : 아이디값  <strong>(필수)</strong></li>
+</ul></li>
+<li>isReverse : 뒤로가기 여부 (기본값: false)</li>
+<li>done : 완료 시 실행할 함수</li>
+</ul>
+
+<p>&lt;고급 문법&gt;</p>
+
+<pre><code>Transition.launcher({
+    transitionType:&quot;none&quot;, // 화면전환 효과 기본 None(효과 없음)
+    fallbackType:&quot;fade&quot;, // 미지원 브라우저에서 사용할 효과(Fade, None 가능)
+    inTarget:{
+        el:undefined, // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+        from:undefined, // 들어오는 페이지의 시작점
+        to:undefined, // 들어오는 페이지의 도착점
+        duration:undefined, // 들어오는 페이지의 애니메이션 시간
+        timing:&quot;ease&quot;, // linear ease ease-in ease-out ease-in-out
+        done:function () {
+
+        }
+    },
+    outTarget:{
+        el:undefined, // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+        from:undefined, // 나가는 페이지의 시작점
+        to:undefined, // 나가는 페이지의 도착점
+        duration:undefined, // 나가는 페이지의 애니메이션 시간
+        timing:&quot;ease&quot;,
+        done:function () {
+
+        }
+    },
+    isReverse:false, // 뒤로가기 여부
+    done:function () {
+
+    }
+});
+</code></pre>
+
+<p>&lt;예제1&gt; <a href="http://jsfiddle.net/azamara/WMKCy/">RUN</a></p>
+
+<p>HTML 코드    </p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CornerStone :: Page Transiton 화면전환&lt;/title&gt;
+
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;libs/bootstrap/css/bootstrap.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;libs/bootstrap/css/bootstrap-responsive.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/fonts/stylesheet.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;container-fluid&quot;&gt;
+    &lt;div class=&quot;row-fluid&quot;&gt;
+        &lt;div id=&quot;front&quot; class=&quot;current span12&quot;&gt;
+            (중략...)
+            &lt;div class=&quot;row-fluid&quot;&gt;
+                &lt;div class=&quot;span6&quot;&gt;
+                    &lt;button class=&quot;full-width btn &quot; data-transition=&quot;flip&quot;&gt;Flip&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;span6&quot;&gt;
+                    &lt;button class=&quot;full-width btn &quot; data-transition=&quot;spin&quot;&gt;Spin&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            (중략...)
+        &lt;/div&gt;
+        &lt;div id=&quot;back&quot; class=&quot;span12&quot;&gt;
+            (중략...)
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;libs/jquery/jquery-1.7.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;libs/jquery/plugins/jquery.transit.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../transition.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>자바스크립트 코드</p>
+
+<pre><code>$(&quot;#front .btn&quot;).live(&quot;click&quot;, function (e) {
+    var transitionType = $(this).attr(&quot;data-transition&quot;),
+        inTargetID = &quot;#back&quot;,
+        outTargetID = &quot;#front&quot;;
+    Transition.launcher({
+        transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
+        inTarget:{
+            el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+        },
+        outTarget:{
+            el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+        },
+        isReverse:false, // 뒤로가기 여부
+        done:function () {
+            $(&quot;#front&quot;).removeClass(&quot;current&quot;);
+            $(&quot;#back&quot;).addClass(&quot;current&quot;);
+        }
+    });
+});
+</code></pre>
+
+<p>5)    사용자 정의 화면전환 효과 확장 방법</p>
+
+<p>사용자 정의 화면전환 효과 추가 코드</p>
+
+<pre><code>// 효과 객체에 사용자정의 효과를 추가 하기위해 화면전환 프로토타입 효과 객체를 가져온다.
+var effect = Transition.effect.prototype;
+
+// 가져온 객체에 사용자가 정의한 효과 이름(custom1) 작성
+effect.custom1= function (opt) {
+    // 사용자 정의 효과 코드 작성
+};
+</code></pre>
+
+<p>실행코드 코드</p>
+
+<pre><code>var transitionType = &quot;custom1&quot;, // 위에 사용자가 정의한 custom1를 트랜지션 효과로 지정
+    inTargetID = &quot;#back&quot;,
+    outTargetID = &quot;#front&quot;;
+
+Transition.launcher({
+    transitionType:transitionType, 
+    inTarget:{
+        el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+    },
+    outTarget:{
+        el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+    },
+    isReverse:false, // 뒤로가기 여부
+    done:function () {
+
+    }
+});
+</code></pre>
+
+<p>6)    사용 예제</p>
+
+<script src='lib/codemirror.js'></script>                                                                         
+
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<iframe id=preview_prv_1 style=''></iframe>                        
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    
+    <div class="header navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="index.html">CornerStone</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div id="front" class="current span12">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="flip">Flip</button>
+                    </div>
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="spin">Spin</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span4">
+                        <button class="full-width btn " data-transition="slide">Slide</button>
+                    </div>
+                    <div class="span4">
+                        <button class="full-width btn " data-transition="slideup">Slide Up</button>
+                    </div>
+                    <div class="span4">
+                        <button class="full-width btn " data-transition="slidedown">Slide Down</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="pop">Pop</button>
+                    </div>
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="fade">Fade</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="turn">Turn</button>
+                    </div>
+                    <div class="span6">
+                        <button class="full-width btn " data-transition="custom1">Custom1</button>
+                    </div>
+                </div>
+            </div>
+            <div id="back" class="span12">
+                <h3>화면전환용 테스트 페이지2</h3>
+    
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="focusedInput">Focused input</label>
+    
+                            <div class="controls">
+                                <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="disabledInput">Disabled input</label>
+    
+                            <div class="controls">
+                                <input class="input-xlarge disabled" id="disabledInput" type="text"
+                                       placeholder="Disabled input here…" disabled="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
+    
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="optionsCheckbox2" value="option1" disabled="">
+                                    This is a disabled checkbox
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group warning">
+                            <label class="control-label" for="inputWarning">Input with warning</label>
+    
+                            <div class="controls">
+                                <input type="text" id="inputWarning">
+                                <span class="help-inline">Something may have gone wrong</span>
+                            </div>
+                        </div>
+                        <div class="control-group success">
+                            <label class="control-label" for="selectError">Select with success</label>
+    
+                            <div class="controls">
+                                <select id="selectError">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <span class="help-inline">Woohoo!</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="form-actions">
+                    <button class="btn btn-primary">확인</button>
+                    <button class="btn">뒤로가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="javascript">
+    $(function () {
+        var effect = Transition.effect.prototype;
+        effect.custom1 = function (opt) {
+            // 회전 기본 값
+            var self = this,
+                defaultValue = {
+                    inTarget:{
+                        duration:350
+                    },
+                    outTarget:{
+                        from:0,
+                        duration:150
+                    }
+                };
+    
+            // 기본값과 사용자 정의 값 병합
+            opt = this.extend(defaultValue, opt);
+    
+            // 나가는 페이지 스타일 초기화 값
+            this.outTargetCss = {
+                position:"absolute",
+                width:$(opt.outTarget.el).width(),
+                scale:1,
+                opacity:1,
+                perspective:$(opt.outTarget.el).width(),
+                rotate3d:"0, 0, 0, 0",
+                overflow:"hidden"
+            };
+    
+            // 들어오는 페이지 스타일 초기화 값
+            this.inTargetCss = {
+                position:"absolute",
+                width:$(opt.inTarget.el).width(),
+                scale:0.5,
+                opacity:0,
+                perspective:$(opt.outTarget.el).width(),
+                rotate3d:"0, 0, 0, 0",
+                overflow:"hidden"
+            };
+    
+            $(opt.inTarget.el).css(this.inTargetCss);
+            $(opt.outTarget.el).css(this.outTargetCss).transition({
+                scale:0.5,
+                opacity:0
+            }, opt.outTarget.duration, opt.outTarget.timing, function () {
+                $(this).css({
+                    scale:1
+                });
+                opt.outTarget.done();
+    
+                $(opt.inTarget.el).transition({
+                    scale:1,
+                    opacity:1
+                }, opt.inTarget.duration, opt.inTarget.timing, function () {
+                    self.launcher._done(opt);
+                });
+            });
+        };
+    
+        // 주소 툴바 감추기
+        function hideAddressBar() {
+            // 웹페이지의 높이가 화면높이보다 작을 때는 실행할 필요가 없으므로 종료
+            if (document.height <= window.outerHeight) return;
+            var scrollTimer = setInterval(function () {
+                if (!pageYOffset) {  // 모바일 브라우저에서 주소창이 보이고 있을 때는 pageYOffset = 0 이므로 이때만 실행
+                    scrollTo(0, 1);  // 웹페이지를 x축 0, y축 1의 위치로 끌어올림
+                } else { // pageYOffset !=0 인 경우 반복 종료: scrollTo(0, 1) 이 실행되었거나 사용자가 스크롤을 움직인 경우
+                    clearInterval(scrollTimer);
+                }
+            }, 100); // 100 밀리세컨드마다 반복 실행
+        }
+    
+        window.addEventListener('load', hideAddressBar, false);  // 페이지 로드 되었을 때 실행
+        window.addEventListener('orientationchange', hideAddressBar, false); // 화면이 가로/세로 전환되었을 때 실행
+    
+        $("#front .btn").live("click", function (e) {
+            var transitionType = $(this).attr("data-transition"),
+                inTargetID = "#back",
+                outTargetID = "#front";
+            Transition.launcher({
+                transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
+                inTarget:{
+                    el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+                },
+                outTarget:{
+                    el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+                },
+                isReverse:false, // 뒤로가기 여부
+                done:function () {
+                    $("#front").removeClass("current");
+                    $("#back").addClass("current");
+                }
+            });
+        });
+    
+        $("#back .btn").live("click", function (e) {
+            var transitionType = $(this).attr("data-transition"),
+                outTargetID = "#back",
+                inTargetID = "#front";
+            Transition.launcher({
+                inTarget:{
+                    el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+                },
+                outTarget:{
+                    el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+                },
+                isReverse:true, // 뒤로가기 여부
+                done:function () {
+                    $("#front").addClass("current");
+                    $("#back").removeClass("current");
+                }
+            });
+        });
+    });
+
+    </script>
+
+                                                                                           
+                                                                      
+                                                                      
+                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./smartanchor.js"></script>
+    <div class="btn-group pos_fixed">
+      <a class="btn btn-small" href="./5_1_00_utilitly.html">
+        <i class="icon-chevron-left">
+          
+        </i>
+      </a>
+      <a class="btn btn-small" href="#mobile_anchor">
+        Top
+      </a>
+      <a class="btn btn-small" href="./5_1_02_device_API.html">
+        <i class="icon-chevron-right">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+</html>
