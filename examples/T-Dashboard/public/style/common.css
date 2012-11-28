@@ -105,12 +105,12 @@
 
 body.android {
 	/*background: #4a4d51;*/
-	width: 100%;
-	overflow-x: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+	/*width: 100%;*/
 }
 body.android > .container {
 	margin: 0;
+}
+
+body.android.width2x {
+	width: 200%;
 }
