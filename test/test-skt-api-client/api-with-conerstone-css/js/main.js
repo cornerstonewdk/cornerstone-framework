@@ -99,7 +99,7 @@ require( ['SKT'], function ( sk ) {
             accessToken: client_auth_token,
             type: $( '#payForm [data-toggle=dropdown]' ).html(),
             amount: $( '#amount' ).val(),
-            to: $( '#user' ).val()
+            to: $( '#user' ).val(),
             success: function ( data ) {
                 var str = '[ 수신데이터 ]\n' +
                           'result : ' + data.result + '\n' +
