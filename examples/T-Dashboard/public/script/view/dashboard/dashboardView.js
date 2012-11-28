@@ -23,15 +23,6 @@ define(
                     var width = navigator.userAgent.match("SHV-E160S") ? 360 : 320
                     var height = 600;
 
-                    $("body").addClass("android").css({
-                        width:$("body").width() * 2
-                    });
-
-
-                    $(".wrapper").css({
-                        overflow:"hidden",
-                        width: width
-                    });
                     // 화면회전시 랜더링을 정상완료하지 못하는 경우가 생기므로 resize 이벤트를 강제적으로 발생
                     var isVertical = true;
 
@@ -48,12 +39,15 @@ define(
                                 break;
 
                         }
+                        if (!isVertical) {
+                            $("body").addClass("width2x");
+                        } else {
+                            $("body").removeClass("width2x");
+                        }
                         $(window).trigger("my_resize", isVertical);
                     }
 
                     $(window).on("my_resize", function (e, isVertical) {
-                        console.log(isVertical, width, height);
-                        console.log($("body").css("overflow"));
                         /**
                          * 400(360) * 640(600)
                          * 360(320) * 640(600)
@@ -64,6 +58,7 @@ define(
                         });
                     });
                 }
+
             },
 
             /*
@@ -119,7 +114,7 @@ define(
                     if (!navigator.userAgent.match("Android")) {
                         $container.isotope({
                             animationOptions:{
-                                duration:350,
+                                duration:250,
                                 easing:'linear',
                                 queue:true
                             },
