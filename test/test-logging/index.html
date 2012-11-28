@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<title>TEST</title>
+
+		<link href="../../dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../../dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+		<link href="main.css" rel="stylesheet"/>
+		<script src="../../dist/lib/jquery-1.8.1.min.js"></script>
+		<script src="../../dist/lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../dist/lib/blackbirdjs/blackbird.js"></script>
+		<link href="../../dist/lib/blackbirdjs/blackbird.css" rel="stylesheet"/>
+		<script src="../../dist/util/logging.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="form-actions">
+				<button id="debug-button" type="button" class="btn">Debug</button>
+				<button id="info-button" type="button" class="btn btn-info">Info</button>
+				<button id="warn-button" type="button" class="btn btn-warning">Warn</button>
+				<button id="error-button" type="button" class="btn btn-danger">Error</button>
+				<button id="log-button" type="button" class="btn btn-primary">Log</button>
+				<button id="time-button" type="button" class="btn btn-inverse">Time</button>
+				<button id="timeEnd-button" type="button" class="btn btn-inverse">TimeEnd</button>
+			</div>
+			
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">Debug</label>
+					<div class="controls">
+						<div id="debug-group" class="btn-group" data-toggle="buttons-radio">
+							<button type="button" class="btn active">console</button>
+							<button type="button" class="btn">screen</button>
+							<button type="button" class="btn">none</button>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Info</label>
+					<div class="controls">
+						<div id="info-group" class="btn-group" data-toggle="buttons-radio">
+							<button type="button" class="btn active">console</button>
+							<button type="button" class="btn">screen</button>
+							<button type="button" class="btn">none</button>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Warn</label>
+					<div class="controls">
+						<div id="warn-group" class="btn-group" data-toggle="buttons-radio">
+							<button type="button" class="btn active">console</button>
+							<button type="button" class="btn">screen</button>
+							<button type="button" class="btn">none</button>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Error</label>
+					<div class="controls">
+						<div id="error-group" class="btn-group" data-toggle="buttons-radio">
+							<button type="button" class="btn active">console</button>
+							<button type="button" class="btn">screen</button>
+							<button type="button" class="btn">none</button>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Time</label>
+					<div class="controls">
+						<div id="time-group" class="btn-group" data-toggle="buttons-radio">
+							<button type="button" class="btn active">console</button>
+							<button type="button" class="btn">screen</button>
+							<button type="button" class="btn">none</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>

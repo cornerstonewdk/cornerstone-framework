@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<title>TEST</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<link href="../../dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../../dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+		<style>
+		body > .container {
+			margin-top: 50px;
+		}
+		
+		div#gesture-area {
+			position: relative;
+			height: 300px;
+			overflow: hidden;
+		}
+		
+		img#image {
+			max-width: none;
+			position: relative;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Event Test</h1>
+			<hr/>
+			<div id="gesture-area" class="well">
+				<img id="image" src="Landscape.jpg"/>
+			</div>
+		</div>
+
+		<script src="../../dist/launcher.js" data-target="js/main"></script>
+	</body>
+</html>

@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-$(function() {
-    // 데이터픽커
-    var HAS_TOUCH = ('ontouchstart' in window);
-    if(!HAS_TOUCH) {
-        $('.datepicker').datepicker({
-            language: "ko"
-        });
-    } else {
-        $('.datepicker').each(function() {
-
-        });
-    }
-=======
 // 데이터픽커
 $('.datepicker').datepicker({
     language:"ko",
@@ -19,49 +5,47 @@ $('.datepicker').datepicker({
     changeDisplay: true
 });
 
->>>>>>> test
 
+$("#range3").rangeinput({"inputShow":true});
 // 싸인
-    $("#signature").sign();
+$("#signature").sign();
 
 // 모션캡차
-    $("#form-motion-capcha").motioncaptcha();
+$("#form-motion-capcha").motioncaptcha();
 
-    $("[data-plugin='spinner']").on("click", function(e) {
-        var self = this;
-        window.setTimeout(function() {
-            $(self).spinner("hide");
-        }, 1000);
-    });
+$("[data-plugin='spinner']").on("click", function (e) {
+    var self = this;
+    var target = $(this).data("spinnerTarget");
+    window.setTimeout(function () {
+        $(target).spinner("hide");
+    }, 3000);
+});
 
 // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
-    $("button.show-sign").bind('click', function (e) {
-        var data = $("#signature").sign("getData", "image");
-        $("div.widget-sign-viewer img").attr({
-            src:"data:" + data
-        });
-        $("a.download-sign").attr({
-            href:"data:" + data
-        });
-        console.log(data);
+$("button.show-sign").on('click', function (e) {
+    var data = $("#signature").sign("getData", "image");
+    $("div.widget-sign-viewer").html($("<img/>", {
+        src:"data:" + data
+    }));
+    $("a.download-sign").attr({
+        href:"data:" + data
     });
-
-    $("button.reset-sign").bind('click', function (e) {
-        $("#signature").sign("reset");
-        $("div.widget-sign-viewer img").attr({
-            src:"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-        });
-        $("a.download-sign").attr({
-            href:"#"
-        });
-    });
-
-    $("a.download-sign").bind("click", function (e) {
-        var href = $(this).attr("href");
-        if (typeof href === "string" && href === "#") {
-            alert("이미지 보기 후 다운로드해주세요.");
-            e.preventDefault();
-        }
-    });
-
+    console.log(data);
 });
+
+$("button.reset-sign").on('click', function (e) {
+    $("#signature").sign("reset");
+    $(".widget-sign-viewer img").remove();
+    $("a.download-sign").attr({
+        href:"#"
+    });
+});
+
+$("a.download-sign").bind("click", function (e) {
+    var href = $(this).attr("href");
+    if (typeof href === "string" && href === "#") {
+        alert("이미지 보기 후 다운로드해주세요.");
+        e.preventDefault();
+    }
+});
+
