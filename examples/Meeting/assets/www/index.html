@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, target-densitydpi=device-dpi"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="theme/dark/css/cornerstone.css" rel="stylesheet">
+		<!-- <link href="css/cornerstone.min.css" rel="stylesheet"> -->
+		<link href="css/default.css" rel="stylesheet">
+		<script type="text/javascript" charset="utf-8" src="../sktjs/SRT-0.1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/util.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="js/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&language=ko"></script>
+	</head>
+	<body>
+		<div id="intro">
+			<div class="wrapper"> 
+				<img src="img/bg_intro.jpg" />
+			</div>  
+		</div>
+		<div id="main" class="container-fluid" style="display:none;">
+			<div class="row-fluid">
+				<div class="span12">
+				
+					<!-- 상단 탭 -->
+					<div class="tab">
+						<ul class="nav nav-tabs">
+							<li class="active" name="list">
+								<a>회의록 보기</a>
+							</li>
+							<li name="register">
+								<a>회의록 등록</a>
+							</li>
+						</ul>
+					</div>
+					
+					<!-- 회의록 목록 -->
+					<div class="content" name="list">
+						<!-- 전체 선택 버튼 -->
+						<div class="listStatus">
+							■ 회의록 총 <span class="listCnt">0</span> 개
+						</div>
+						<table class="table table-bordered">
+						</table>
+					</div>
+					
+					<!-- 회의록 등록 -->
+					<div class="content" name="register" style="display:none;">
+						<form id="register_form" class="form-horizontal" style="margin: 30px;">
+				            <fieldset>
+				                <div class="control-group">
+				                    <label class="control-label" for="subject">제목</label>
+				                    <div class="controls">
+				                        <input id="subject" name="subject" class="input-xlarge w100" type="text" placeholder="제목을 입력하세요."/>
+				                    </div>
+				                </div>
+				                <div class="control-group">
+				                    <label class="control-label" for="location">위치</label>
+				                    <div class="controls">
+				                    	<input id="location" name="location" class="input-xlarge w70" type="text" placeholder="위치 정보를 입력하세요."/>
+				                    	<button type="button" class="btn btn_location" name="btn_location">위치조회</button>
+				                    </div>
+				                </div>
+				                <div class="control-group">
+				                	<label class="control-label">
+				                		<img id="thum_img" src="img/nophoto.jpg" onerror="img/nophoto.jpg"/>
+				                		<!-- 수정이 필요할듯 -->
+				                		<input name="img_path" type="hidden" class="input"/>
+				                		<input name="audio_path" type="text" class="input"/>
+				                	</label>
+				                	<div class="controls btnGroup">
+				                        <button type="button" class="btn btn-primary" name="btn_picture">
+				                			사진촬영
+				                		</button>
+				                		<button type="button" class="btn" name="btn_gallery">
+				                			사진앨범
+				                		</button>
+				                		<button type="button" class="btn" name="btn_spin">
+				                			회전
+				                		</button>
+				                		<button type="button" class="btn btn-primary" name="btn_audio">
+				                			음성녹음
+				                		</button>
+				                    </div>
+				                </div>
+				                <div class="control-group">
+				                    <label class="control-label" for="substance">내용</label>
+				                    <div class="controls">
+				                    	<textarea id="substance" name="substance" rows="10" placeholder="내용을 입력하세요."></textarea>
+				                    </div>
+				                </div>
+				                <div class="form-actions" style="background:none;">
+				                    <button type="submit" name="btn_register" class="btn btn-primary">저장</button> 
+				                    <button type="button" name="btn_cancle" class="btn">취소</button>
+				                </div>
+				            </fieldset>
+				        </form>
+					</div>
+
+					<!-- 사진 겔러리 -->
+					<div class="content" name="gallery" style="display:none;">
+						<!-- 겔러리 상단 버튼 그룹 -->
+						<div class="btn_group">
+							<button type="button" name="btn_back" class="btn">이전</button>
+							<button type="button" name="btn_select" class="btn btn-primary">선택</button>
+							<button type="button" name="btn_remove" class="btn">삭제</button>
+						</div>
+						<!-- 이미지 리스트 표시 영역 -->
+						<div class="gallery_list">
+							<ul>
+								<li><img src="img_camera/thumbnail_dummy.jpg" /></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- 위치 조회 -->
+					<div class="content" name="map" style="display:none;">
+						<div id="mapArea"></div>
+						<div class="btn_group">
+							<label>
+								<span class="label label-important" id="direct_select_status">직접 선택 Mode : off</span>
+							</label>
+							<span id="directSelect"><img src="img/map_top.png" class="tipArea" /></span>
+							<button type="button" name="btn_back" class="btn">이전</button>
+							<button type="button" name="btn_crt_loc" class="btn btn-primary">현재 위치</button>
+							<button type="button" name="btn_select" class="btn">직접 선택</button>
+							<button type="button" name="btn_expend" class="btn btn-primary">확대</button>
+							<button type="button" name="btn_reduce" class="btn">축소</button>
+						</div>
+					</div>
+
+					<!-- 회의록 조회 -->
+					<div class="row-fluid content" name="detail" style="display: none;">
+						<div class="span12 top">
+							<h1>제목 표시될 부분</h1>
+							<button name="btn_remove" type="button" class="btn">삭제하기</button>
+							<button name="btn_modify" type="button" class="btn btn-primary">수정하기</button>
+							<button name="btn_view_map" type="button" class="btn">지도보기</button>
+							<button name="btn_send_mail" type="button" class="btn btn-primary">메일발송</button>
+						</div>
+						<div class="span12 middle">
+							<img src="img/nophoto.jpg"/>
+						</div>
+						<div class="span12 bottom">
+							<button name="btn_audio_play" type="button" class="btn btn-primary">재생 ▶</button>
+							<button name="btn_audio_pause" type="button" class="btn">멈춤 ||</button>
+							<span class="substance">뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳뭔가의 내용이 나올곳</span>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	
+
+		<script type="text/javascript">
+		
+		// 현재 선택된 회의록 정보 유지를 위한 오브젝트
+		var selectedMeetingData = {
+				img_path: null,
+				audio_path: null,
+				subject: null,
+				substance: null,
+				id: null,
+				time: null,
+				location: null,
+				// 이전 버튼 선택시 돌아갈 곳
+				back_content: undefined
+		};
+		
+		// 구글 맵이 사용할 맵 변수
+		var map;
+		// 음성 재생 및 정지를 위한 오디오 변수
+		var currentAudio;
+		// 사진 갤러리에서 선택한 이미지를 지정하는 변수
+		var selected_img;
+		// 구글맵에서 사용할 마커를 보관하는 어레이
+		var markersArray = new Array;
+		// 지오코드 - 구글맵에서 사용
+		var geocoder;
+		
+		/************** Globar ****************/
+		
+		// 초기 회의록 화면 보이기
+		setTimeout( function () {
+			$( '#intro' ).hide();
+			$( '#main' ).show();
+			show_content( 'list' );
+		}, 2000 );
+		
+		// 해당 어플리케잉션의 preference를 가져온다.
+		function getPreferItems( name ) {
+			var items = navigator.preferences.getItem( name );
+			if( items === 'undefined' ){
+				return undefined;
+			} else {
+				// item이 존재할 경우 Json Array로 변환한다.
+				return $.parseJSON( items );	
+			}
+		}
+		
+		// preference item set 함수
+		function setPreferItems( name, json ){
+			var tempArr = getPreferItems( name );
+			
+			// 해당 preference가 존재하지 않을 경우 빈 어레이를 생성
+			if( !tempArr ) tempArr = new Array;
+			
+			// 넘겨진 json의 id와 기존 내용에 동일한 id가 있으면 기존내용을 제거한다. ( update를 위해 )
+			for( var i in tempArr ){
+				if( tempArr[ i ].id === json.id ){
+					tempArr.splice( i, 1 );
+				}
+			}
+			
+			tempArr.push( json );
+			navigator.preferences.setItem( name, tempArr );
+		}
+		
+		// preference item remove 함수 ( 삭제 알림창 )
+		function removePreferItems( name, id ){
+			var tempArr = getPreferItems( name );
+			
+			if( tempArr ){
+				for( var i in tempArr ){
+					if( tempArr[i].id === id ){
+						tempArr.splice( i, 1 );
+					}
+				}
+				navigator.preferences.setItem( name, tempArr );
+				alert( '삭제되었습니다.' );
+				show_content( 'list', 'list' );
+			}
+		}
+		
+		// 탭 하단에 표시되는 div.content를 선택하여 보여주기
+		function show_content( contentName, tabName ){
+			// tabName이 존재할 시 click trigger를 발생시켜 준다 ( 옵션 )
+			if( !contentName ) {
+				alert( 'contentName은 반드시 필요' );
+				return false;
+			}
+			if( contentName === 'list' ) load_list();
+			
+			if( contentName === 'gallery' ) load_gallery();
+			
+			if( contentName === 'map' ) load_map();
+			
+			if( contentName === 'detail' ){
+				selectedMeetingData.back_content = contentName;
+				load_detail( selectedMeetingData.id );
+			}
+			// detail -> register로 넘어오는 경우 update
+			if( contentName === 'register' ) selectedMeetingData.back_content = contentName;
+			
+			// tabName이 undefined 가 아니라면 tab을 선택 이벤트를 발생
+			if( tabName ) $( 'div.tab ul.nav > li[name=' + tabName + '] > a' ).trigger( 'click' );
+
+			// content 클래스의 모든 div를 숨김
+			$( 'div.content' ).hide();
+
+			// 해당 컨텐트 네임의 div.content 레이어를 표시함
+			$( 'div.content[name=' + contentName + ']' ).show();	
+		}
+		
+		// 상단 탭 선택시 화면 전환
+		$( 'ul.nav > li > a' ).click( function () {
+			$( 'ul.nav li' ).removeClass( 'active' );
+			$( this ).parents( 'li' ).addClass( 'active' );
+			var parent_name = $( this ).parents( 'li' ).attr( 'name' );
+			show_content( parent_name );
+		} );
+
+		/************** 회의록 목록 layer 이벤트 ****************/
+		// 회의록 목록 로드 함수
+		function load_list() {
+
+			var list = getPreferItems( 'meetingData' );
+			
+			if( list ){
+				// 회의록 목록 수 설정
+				$( 'div.content[name=list] span.listCnt' ).text( list.length );
+				$( 'div.content[name=list] table' ).html( '' );
+				
+				// 시간 역순으로 정렬
+				list.reverse();
+				
+				// 목록수 만큼 table에 tr을 추가한다.
+				for( var i in list ){
+					var tr = '<tr uuid="' + list[i].id + '"><td style="width: 20%;"><img src="img/icon1.png" /></td><td style="width: 80%;">' +
+					  '<p class="item_title">' + list[i].subject + '</p>' +
+					  '<p class="item_date">' + new Date( list[i].time ).format("yyyy년 MM월 dd일 a/p hh시 mm분") + '</p>' + 
+					  '</td></tr>';
+					  
+					$( 'div.content[name=list] table' ).append( tr );
+				}
+				
+				// table tr에 클릭 시 디테일 화면으로 전환하게 이벤트를 등록한다.
+				$( 'div.content[name=list] table tr' ).on( 'click', function () {
+					selectedMeetingData.id = $( this ).attr( 'uuid' );
+					show_content( 'detail', null );
+				} );
+			}
+		}
+		
+		/************** 회의록 디테일 layer 이벤트 ****************/
+		// 회의록 디테일 로드 함수		
+		function load_detail( uuid ) {
+			// 초기화
+			$( 'div.content[name=detail] div.middle img' ).attr( 'src', 'img/nophoto.jpg' );
+			selectedMeetingData.id = undefined;
+			selectedMeetingData.location = undefined;
+			
+			var list = getPreferItems( 'meetingData' );
+			if( list ){
+				for( var i in list ){
+					if( list[i].id === uuid ){
+						// uuid가 같을때
+						selectedMeetingData.id = uuid;
+						selectedMeetingData.location = list[i].location;
+						selectedMeetingData.audio_path = list[i].audio_path;
+						selectedMeetingData.img_path = list[i].img_path;
+						selectedMeetingData.substance = list[i].substance;
+						selectedMeetingData.subject = list[i].subject;
+						$( 'div.content[name=detail] h1' ).html( list[i].subject );
+						$( 'div.content[name=detail] div.bottom span' ).html( list[i].substance );
+						if( list[i].img_path && list[i].img_path !== '' ){
+							$( 'div.content[name=detail] div.middle img' ).attr( 'src', list[i].img_path );	
+						}
+					}
+				}
+			}
+		}
+
+		// 삭제하기 버튼
+		$( 'div.content[name=detail] button[name=btn_remove]' ).click( function () {
+			if( !selectedMeetingData.id ) return false;
+			
+			if( confirm( '해당 회의록 자료를 삭제 하시겠습니까?' ) ){
+				removePreferItems( 'meetingData', selectedMeetingData.id );
+			}
+		} );
+
+		// 수정하기 버튼
+		$( 'div.content[name=detail] button[name=btn_modify]' ).click( function () {
+			if( !selectedMeetingData.id ) return false;
+			
+			// 회의록 등록 화면으로 전환
+			show_content( 'register' );
+			
+			// 선택되어 있는 회의록 데이터를 폼에 셋팅
+			$( '#register_form' ).find( ':input' ).each( function () {
+				var inputName = $( this ).attr( 'name' );
+				$( '#register_form input[name=' + inputName + ']' ).val( selectedMeetingData[ inputName ] );
+				$( '#register_form textarea[name=' + inputName + ']' ).val( selectedMeetingData[ inputName ] );
+				if( inputName === 'img_path' ){
+					if( !selectedMeetingData[ inputName ] || selectedMeetingData[ inputName ] === '' ){
+						$( '#thum_img' ).attr( 'src', 'img/nophoto.jpg' );	
+					} else {
+						$( '#thum_img' ).attr( 'src', selectedMeetingData[ inputName ] );	
+					}
+				}
+			} );	
+		} );
+
+		// 지도보기 버튼
+		$( 'div.content[name=detail] button[name=btn_view_map]' ).click( function () {
+			if( !selectedMeetingData.id ) return false;
+			if( !selectedMeetingData.location || selectedMeetingData.location === '' ){
+				alert( '회의록 저장시 위치를 지정하지 않았습니다.' )
+				return false;
+			}
+			show_content( 'map' );
+		} );
+		
+		// 메일보내기 버튼
+		$( 'div.content[name=detail] button[name=btn_send_mail]' ).click( function () {
+			if( !selectedMeetingData.id ) return false;
+
+			var msg = navigator.messaging.createMessage( Messaging.TYPE_EMAIL );
+			
+			msg.body = "회의장소 : " + selectedMeetingData.location + "\n" + "회의내용 : " + replaceAll( selectedMeetingData.substance, "<br/>", "\n");
+			msg.subject = selectedMeetingData.subject;
+			
+			var imagefile = null;
+			var audioFile = null;
+			
+			if( selectedMeetingData.img_path !== "img/nophoto.jpg" ){
+				var splitStr = stringSplit( selectedMeetingData.img_path, '/' );	
+				imagefile = new FileEntry( splitStr[ splitStr.length - 1 ], selectedMeetingData.img_path );
+			}
+			
+			if( selectedMeetingData.audio_path !== ''){
+				var splitAudioStr = stringSplit( selectedMeetingData.audio_path, '/' );
+				audioFile = new FileEntry( splitAudioStr[ splitAudioStr.length - 1 ], selectedMeetingData.audio_path );		
+			}
+			
+			if(imagefile != null && audioFile != null)
+				msg.attachments = [ imagefile, audioFile ];
+			else if(imagefile != null)
+				msg.attachments = [ imagefile ];
+			else if(audioFile != null)
+				msg.attachments = [ audioFile ];
+			
+			try {
+
+				var reval = navigator.messaging.sendMessage( function sc() {
+					//alert( '메일발송이 완료되었습니다.' );
+				}, function ec(err) {
+					alert(err.message)
+				}, msg);
+			} catch (e) {
+				alert(e);
+			}
+		} );
+		
+		// 재생 버튼
+		$( 'div.content[name=detail] button[name=btn_audio_play]' ).click( function () {
+			if( selectedMeetingData.audio_path ){
+				navigator.mediamanager.createAudio( function ( media ) {
+					currentAudio = media;
+					currentAudio.play();
+				}, function ( err ) {
+					alert( '음원 찾기 실패' );
+				}, selectedMeetingData.audio_path );
+			} 
+		} );
+
+		// 일시정지 버튼
+		$( 'div.content[name=detail] button[name=btn_audio_pause]' ).click( function () {
+			if( currentAudio ) currentAudio.pause();
+		} );
+
+		/************** 회의록 등록 layer 이벤트 ****************/
+		
+		function getDir( name ) {
+			window.requestFileSystem( window.LocalFileSystem.PERSISTENT, 0, function ( data ) {
+				locFileSys = data;
+				locFileSys.root.getDirectory( name, { create: true, exclusive: false }, function ( data ) {
+				}, function ( err ) {
+					alert( 'error : ' + err.code );
+				} );	
+			}, function ( err ) {
+				alert( err );
+			} );
+			
+		}
+
+		//위치 조회 버튼
+		$( 'div.content[name=register] button[name=btn_location]' ).click( function () {
+			show_content( 'map' );
+		} );
+		
+		//사진 촬영 버튼
+		$( 'div.content[name=register] button[name=btn_picture]' ).click( function () {
+			navigator.capture.captureImage( function ( data ) {
+				$( '#thum_img' ).attr( 'src', data );
+				$( 'input[name=img_path]' ).val( data );
+				show_content( 'register' );
+			}, function ( err ) {
+				alert( '사진 촬영 실패' );
+			}, {
+				destinationFilename: 'DCIM/' + new Date().getTime() + '.jpg', 
+				highRes:true
+			} );
+		} );
+		
+		//사진 앨범 버튼
+		$( 'div.content[name=register] button[name=btn_gallery]' ).click( function () {
+			show_content( 'gallery' );
+		} );
+		
+		//회전 버튼
+		$( 'div.content[name=register] button[name=btn_spin]' ).click( function () {
+			alert( '미지원' );
+		} );
+		
+		//음성 녹음 버튼
+		$( 'div.content[name=register] button[name=btn_audio]' ).click( function () {
+			getDir( 'Audio' );
+			navigator.capture.captureAudio( function ( data ) {
+				$( 'input[name=audio_path]' ).val( data );
+				show_content( 'register' );
+			}, function ( err ) {
+				alert( '음성 녹음 실패' );
+				show_content( 'register' );
+			}, {
+				destinationFilename: 'Audio/' + new Date().getTime() + '.wav', 
+				highRes:true
+			} );
+		} );
+		
+		//취소 버튼
+		$( 'div.content[name=register] button[name=btn_cancle]' ).click( function () {
+			register_form_reset();
+			show_content( 'list', 'list' );
+		} );
+		
+		// 등록 페이지가 서브밋 될때
+		$( '#register_form' ).submit( function () {
+
+			if( !$( 'div.content[name=register] input[name=subject]' ).val() || $( 'div.content[name=register] input[name=subject]' ).val().length < 1 ){
+				alert( '제목을 입력하세요.' );
+				return false;
+			}
+			if( !$( '#substance' ).val() || $( '#substance' ).val().length < 1 ){
+				alert( '내용을 입력하세요.' );
+				return false;
+			}
+			
+			var formJson = new Object;	
+			$.each( $( this ).serializeArray(), function() {
+				formJson[ this.name ] = this.value;
+			} );
+			
+			// 현재 선택된 탭이 list 일경우 detail에서 수정하기 누른 것으로 판단
+			if( $( 'ul.nav > li.active' ).attr( 'name' ) === 'list' ){
+				formJson.id = selectedMeetingData.id;
+			} else {
+				formJson.id = generateUUID();	
+			}
+			
+			formJson.time = new Date;
+			
+			setPreferItems( 'meetingData', formJson );
+
+			alert( '저장 되었습니다.' );
+			register_form_reset();
+			show_content( 'list', 'list' );
+			return false;
+		} );
+		
+		function register_form_reset(){
+			$( '#thum_img' ).attr( 'src', 'img/nophoto.jpg' );
+			$( '#register_form' ).find( 'input' ).val( '' );
+			$( '#register_form' ).find( 'textarea' ).val( '' );
+		}
+
+		/************** 사진 앨범 layer 이벤트 ****************/
+		
+		function load_gallery() {
+			// 초기화
+			$( 'div.content[name=gallery] ul' ).html( '' );
+			selected_img = undefined;
+			
+			// DCIM 폴더에서 이미지 파일만 찾는다.
+			window.requestFileSystem( window.LocalFileSystem.PERSISTENT, 0, function ( data ) {
+				var locFileSys = data;
+				locFileSys.root.getDirectory( 'DCIM', { create: true, exclusive: false }, function ( data ) {
+					var directoryReader = data.createReader();
+					directoryReader.readEntries( function ( entries ) {
+						var IMG_FORMAT = "\.(bmp|gif|jpg|jpeg|png)$";
+					    for ( var i = 0; i < entries.length; i++ ) {
+					    	if( (new RegExp(IMG_FORMAT, "i") ).test( entries[ i ].name ) ){
+					    		// 정규식에 매칭 된 파일만 li 로 심는다.
+					    		var li = $( '<li></li>' );
+					    		var img = $( '<img/>', { src: 'file:///mnt/sdcard/DCIM/' + entries[ i ].name } );
+								// img click 이벤트를 연결한다.			    		
+					    		add_img_click( img, entries[ i ] );
+					    		img.appendTo( li );
+					    		li.appendTo( $( 'div.content[name=gallery] ul' ) );
+					    	}
+					    }
+					}, function ( err ) {
+						alert( 'error : ' + err.code );
+					} );
+				}, function ( err ) {
+					alert( 'error : ' + err.code );
+				} );
+			}, function ( err ) {
+				alert( err );
+			} );
+		}
+		
+		// ent 값을 유지하기 위해 클로저 사용
+		function add_img_click( img, ent ){
+			img.on( 'click', function () {
+    			if( $( this ).hasClass( 'pic_checked' ) ){
+    				$( this ).removeClass( 'pic_checked' );
+	    			selected_img = undefined;
+    			} else {
+    				$( 'div.content[name=gallery] ul img.pic_checked' ).removeClass( 'pic_checked' );
+    				$( this ).addClass( 'pic_checked' );
+	    			selected_img = ent;
+    			}
+    		} );
+		}
+
+		// 이전 버튼
+		$( 'div.content[name=gallery] button[name=btn_back]' ).click( function () {
+			show_content( 'register' );
+		} );
+		
+		// 삭제 버튼
+		$( 'div.content[name=gallery] button[name=btn_remove]' ).click( function () {
+			if( !selected_img ){
+				alert( '삭제할 사진을 선택해주세요.' );
+				return false;
+			}
+			
+			selected_img.remove( function () {
+				alert( '삭제 되었습니다.' );
+				load_gallery();
+			}, function () {
+				alert( '삭제 실패' );
+			} );
+		} );
+		
+		// 사진 선택 버튼
+		$( 'div.content[name=gallery] button[name=btn_select]' ).click( function () {
+			if( !selected_img ){
+				alert( '이미지를 선택해 주세요.' );
+				return false;
+			}
+			$( '#register_form input[name=img_path]' ).val( selected_img.toURL() );
+			$( '#thum_img' ).attr( 'src', selected_img.toURL() );
+			show_content( 'register' );
+		} );
+		
+		/************** 위치 조회 layer 이벤트 ****************/
+		
+		// 맵로드
+		function load_map() {
+			// 초기화
+			$( '#direct_select_status' ).removeClass( 'label-success' ).addClass( 'label-important');
+			$( '#direct_select_status' ).text( '직접 선택 Mode : off' );
+			navigator.geolocation.getCurrentPosition( function ( pos ) {
+				geocoder = new google.maps.Geocoder();
+				var latlng = new google.maps.LatLng( pos.coords.latitude, pos.coords.longitude );
+			    var mapOpt = {
+			      zoom: 18,
+			      center: latlng,
+			      mapTypeId: google.maps.MapTypeId.ROADMAP
+			    };
+			    
+		    	map = new google.maps.Map( document.getElementById( 'mapArea' ), mapOpt );
+		    	
+		    	if( selectedMeetingData.back_content === 'detail' ){
+		    		// 회의록 보기 일때
+		    		addMarker( latlng, selectedMeetingData.location );
+				} else if( $( 'ul.nav > li.active' ).attr( 'name' ) === 'list' ) {
+					// 회의록 수정일 때
+					addMarker( latlng, $( '#register_form input[name=location]' ).val() );
+				} else {
+					// 회의록 등록 일때
+					addMarker( latlng );
+				}
+		    	
+		    	map.selectFlag = false;
+		    	
+		    	google.maps.event.addListener( map, 'click', function( event ) {
+		    	    placeMarker( event.latLng );
+		    	} );
+		    	
+			}, function ( err ) {
+				alert( 'api err : ' + err.message );
+			} );
+		}
+		
+		// 마커 삽입
+		function addMarker( loc, address ) {
+			
+			// 기존 overlay 죄다 삭제
+			deleteOverlays();
+			
+			var new_loc;
+			var opt = { 'region': 'ko' };
+
+			if( address ){
+				opt.address = address;
+			} else {
+				opt.latLng = loc;
+			}
+			
+			// latLng 정보를 기준으로 해당 위치의 주소를 가져옴 
+			geocoder.geocode( opt, function ( results, status ) {
+				if( status == google.maps.GeocoderStatus.OK ){
+					if( results[ 0 ] ) {
+						
+						var addr =  results[0].formatted_address;
+						
+						if( address ){
+							new_loc = new google.maps.LatLng( results[0].geometry.location.Xa, results[0].geometry.location.Ya );	
+						} else {
+							new_loc = loc;
+						}
+						
+						// marker 생성
+						var marker = new google.maps.Marker( {
+							position: new_loc,
+							map: map,
+							icon: 'img/pin.png'
+						} );
+						
+						// marker 선택 시 해당 위치를 지정하겠는지 질의
+						google.maps.event.addListener( marker, 'click', function() {
+							//infowindow.open( map, marker );
+							if( confirm( addr + '\n 해당 위치를 지정 하시겠습니까?' ) ){
+								$( '#register_form input[name=location]' ).val( addr );
+								$( 'div.content[name=map] button[name=btn_back]' ).trigger( 'click' );
+							}
+				    	} );
+						map.setCenter( new_loc );
+						markersArray.push( marker );
+					}
+				}
+			} );
+		}
+		
+		function placeMarker( loc ) {
+			if( map.selectFlag ){
+				addMarker( loc );
+			}
+		}
+		
+		function deleteOverlays() {
+			if( markersArray ){
+				for ( var i in markersArray ) {
+					markersArray[ i ].setMap( null );
+				}
+				markersArray.length = 0;
+			}
+		}
+		
+		// 이전 버튼
+		$( 'div.content[name=map] button[name=btn_back]' ).click( function () {
+			// todo : 등록, 수정 화면의 구분이 필요할듯?
+			show_content( selectedMeetingData.back_content );
+		} );
+		
+		// 현재 위치 버튼
+		$( 'div.content[name=map] button[name=btn_crt_loc]' ).click( function () {
+			navigator.geolocation.getCurrentPosition( function ( pos ) {
+				var latlng = new google.maps.LatLng( pos.coords.latitude, pos.coords.longitude );
+				addMarker( latlng );
+			}, function ( err ) {
+				alert( 'api err : ' + err.message );
+			} );
+		} );
+		
+		// 직접 선택 버튼 ( 스위치 버튼 식으로 처리해야 할 것 같은데 on, off 표시.. )
+		$( 'div.content[name=map] button[name=btn_select]' ).click( function () {
+			map.selectFlag = !map.selectFlag;
+			if( map.selectFlag ){
+				$( '#direct_select_status' ).removeClass( 'label-important' ).addClass( 'label-success');
+				$( '#direct_select_status' ).text( '직접 선택 Mode : on' );
+			} else {
+				$( '#direct_select_status' ).removeClass( 'label-success' ).addClass( 'label-important');
+				$( '#direct_select_status' ).text( '직접 선택 Mode : off' );
+			}
+		} );
+	
+		// 확대 버튼
+		$( 'div.content[name=map] button[name=btn_expend]' ).click( function () {
+			if( map.getZoom() < 19 ){
+				map.setZoom( Math.round( map.getZoom() ) + 1 );	
+			}
+		} );
+		
+		// 축소 버튼
+		$( 'div.content[name=map] button[name=btn_reduce]' ).click( function () {
+			if( map.getZoom() > 1 ){
+				map.setZoom( Math.round( map.getZoom() ) - 1 );	
+			}
+		} );
+			
+		</script>
+	</body>
+</html>
