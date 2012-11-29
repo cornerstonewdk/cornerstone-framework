@@ -7371,6 +7371,9 @@ body > .widget-spinner-icon2 {
     position: relative;
     z-index: 1;
   }
+  .no-hover:hover {
+    display: none;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
