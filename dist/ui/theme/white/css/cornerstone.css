@@ -7371,7 +7371,7 @@ body > .widget-spinner-icon2 {
     position: relative;
     z-index: 1;
   }
-  .btn:hover {
+  .no-hover:hover {
     display: none;
   }
 }
