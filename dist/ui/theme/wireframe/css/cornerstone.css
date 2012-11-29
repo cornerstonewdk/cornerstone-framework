@@ -6010,9 +6010,6 @@ body > .widget-spinner-icon2 {
   .nav-list > li:last-child > a:hover {
     border-bottom: 0;
   }
-  .btn:hover {
-    display: none;
-  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
