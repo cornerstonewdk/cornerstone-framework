@@ -6010,7 +6010,7 @@ body > .widget-spinner-icon2 {
   .nav-list > li:last-child > a:hover {
     border-bottom: 0;
   }
-  .no-hover:hover {
+  .btn:hover {
     display: none;
   }
 }
