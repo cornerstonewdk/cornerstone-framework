@@ -387,7 +387,7 @@ input.ipt-orange:focus,
 textarea.ipt-orange:focus {
   border: 1px solid rgba(255, 107, 28, 0.7);
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
   -webkit-box-shadow: 0 0 8px rgba(255, 205, 178, 0.6);
@@ -540,7 +540,7 @@ select {
 select:focus {
   border: 0;
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
 }
@@ -575,6 +575,7 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
+  color: #1f1f20;
   opacity: 1;
   filter: alpha(opacity=100);
 }
@@ -695,7 +696,6 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
-  color: #1f1f20;
 }
 .help-inline i {
   width: 22px;
@@ -1177,6 +1177,7 @@ select:focus {
   font-size: 18px;
   line-height: 26px;
   background: url('../img/bg_input.png') repeat-x left top;
+  background-size: 15px 40px;
 }
 .control-group {
   margin-bottom: 0;
@@ -1300,9 +1301,9 @@ input:checked + .inp-radio:after {
 }
 input.search-query {
   padding-right: 14px;
-  padding-right: 4px \9;
+  padding-right: 4px  \9;
   padding-left: 14px;
-  padding-left: 4px \9;
+  padding-left: 4px  \9;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
 
   margin-bottom: 0;
@@ -1408,7 +1409,7 @@ input.search-query {
 .select-box input:focus {
   border: 1px solid transparent;
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
   box-shadow: none;
@@ -1546,7 +1547,7 @@ input.search-query {
   border: 0;
   padding: 5px;
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
   box-shadow: none;

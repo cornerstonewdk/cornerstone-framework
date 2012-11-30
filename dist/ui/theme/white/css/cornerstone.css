@@ -1167,6 +1167,7 @@ select:focus,
   font-size: 18px;
   line-height: 26px;
   background: url('../img/bg_input.png') repeat-x left top;
+  background-size: 15px 40px;
 }
 .control-group {
   margin-bottom: 0;

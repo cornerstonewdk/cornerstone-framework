@@ -1173,6 +1173,7 @@ select + select {
   font-size: 14px;
   line-height: 22px;
   background: url('../img/bg_input.png') repeat-x left top;
+  background-size: 15px 40px;
 }
 .control-group {
   margin-bottom: 0;
