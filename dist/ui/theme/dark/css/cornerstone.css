@@ -575,7 +575,6 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
-  color: #1f1f20;
   opacity: 1;
   filter: alpha(opacity=100);
 }
@@ -637,7 +636,6 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
-  color: #1f1f20;
   opacity: 1;
   filter: alpha(opacity=100);
 }
