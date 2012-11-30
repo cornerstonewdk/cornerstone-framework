@@ -653,8 +653,11 @@ Custom
 	display: block;
 }
 
-.axis-label-white .nvd3 text,
-.axis-label-white .nvd3.nv-pie .nv-slice text{
+.axis-label-white .nvd3 text {
+	fill: rgba(255, 255, 255, 1) !important;
+}
+
+.axis-label-white .nvd3.nv-pie .nv-slice text {
 	fill: rgba(255, 255, 255, 1) !important;
 	stroke: #FFF !important;
 }
