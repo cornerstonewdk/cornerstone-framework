@@ -6282,17 +6282,6 @@ address {
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
 }
-.accordion-group .accordion-heading .accordion-toggle:active {
-  color: #000000;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
-  border-top: 0;
-  border-left: 0;
-  -webkit-box-shadow: 3px -3px 3px rgba(0,0,0,.1), inset 1px 1px 1px rgba(255,255,255,.3);
-  -moz-box-shadow: 3px -3px 3px rgba(0,0,0,.1), inset 1px 1px 1px rgba(255,255,255,.3);
-  box-shadow: 3px -3px 3px rgba(0,0,0,.1), inset 1px 1px 1px rgba(255,255,255,.3);
-  background: url('../img/bg_tab_on.png') repeat left top;
-  background-size: 4px;
-}
 .accordion-toggle {
   cursor: pointer;
 }
@@ -6333,7 +6322,6 @@ address {
   width: 100%;
 }
 .carousel .item {
-  -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: 0.35s ease left;
   -moz-transition: 0.35s ease left;
   -o-transition: 0.35s ease left;
@@ -6408,12 +6396,6 @@ address {
 }
 .widget-carousel .carousel .carousel-control.right {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-@media (max-width: 767px) {
-  .widget-carousel .carousel .carousel-control.left,
-  .widget-carousel .carousel .carousel-control.right {
-    display: none;
-  }
 }
 /*!
  * Datepicker for Bootstrap

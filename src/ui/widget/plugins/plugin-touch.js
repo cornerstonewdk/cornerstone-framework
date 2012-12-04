@@ -199,6 +199,9 @@
 
                 offset = el.position(), x0 = e.pageX - offset.left, y0 = e.pageY - offset.top, x, y, start = true;
 
+                // 스와이프 영역에서 클릭할 경우 href 여부를 판단해서 클릭 이벤트를 발생시킨다.
+                $(e.target).attr("href") && $(e.target).trigger("click");
+
                 e.preventDefault();
             }).on("touchend.swipe.*", function (e) {
                     _pos.move = self.getXYfromEvent(event);
