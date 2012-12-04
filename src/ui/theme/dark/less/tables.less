@@ -51,6 +51,11 @@ table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
+  // add Table Vertical line [ 신용후 ]
+  th:not(:last-child), 
+  td:not(:last-child) {
+    border-right: 1px solid;
+  }
 }
 
 

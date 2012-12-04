@@ -5402,6 +5402,10 @@ table {
 .table tbody + tbody {
   border-top: 2px solid #232223;
 }
+.table th:not(:last-child),
+.table td:not(:last-child) {
+  border-right: 1px solid;
+}
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
