@@ -51,11 +51,6 @@ table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
-  // Add Table Vertical line
-  th:not(:last-child), 
-  td:not(:last-child) {
-    border-right: 1px solid @tableBorder;
-  }
 }
 
 
@@ -95,11 +90,6 @@ table {
   tbody:first-child tr:first-child th,
   tbody:first-child tr:first-child td {
     border-top: 0;
-  }
-  // Prevent a double border ( Vertical line )
-  th:not(:last-child), 
-  td:not(:last-child) {
-    border-right: 0;
   }
   // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
