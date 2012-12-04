@@ -5415,6 +5415,7 @@ table {
   border-collapse: separate;
   *border-collapse: collapse;
   border-left: 0;
+  border-right: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -5422,6 +5423,7 @@ table {
 .table-bordered th,
 .table-bordered td {
   border-left: 1px solid #232223;
+  border-right: 1px solid #232223;
 }
 .table-bordered caption + thead tr:first-child th,
 .table-bordered caption + tbody tr:first-child th,
