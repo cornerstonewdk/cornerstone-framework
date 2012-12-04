@@ -4973,10 +4973,6 @@ address {
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
 }
-.accordion-group:first-child .accordion-heading .accordion-toggle:active,
-.accordion-group:first-child .accordion-heading .accordion-toggle.active {
-  background-color: #dddddd;
-}
 .accordion-toggle {
   cursor: pointer;
 }
@@ -5017,7 +5013,6 @@ address {
   width: 100%;
 }
 .carousel .item {
-  -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: 0.35s ease left;
   -moz-transition: 0.35s ease left;
   -o-transition: 0.35s ease left;
@@ -5090,12 +5085,6 @@ address {
 }
 .widget-carousel .carousel .carousel-control.right {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-@media (max-width: 767px) {
-  .widget-carousel .carousel .carousel-control.left,
-  .widget-carousel .carousel .carousel-control.right {
-    display: none;
-  }
 }
 /*!
  * Datepicker for Bootstrap
