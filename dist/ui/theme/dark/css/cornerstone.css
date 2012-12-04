@@ -5404,7 +5404,7 @@ table {
 }
 .table th:not(:last-child),
 .table td:not(:last-child) {
-  border-right: 1px solid;
+  border-right: 1px solid #232223;
 }
 .table-condensed th,
 .table-condensed td {
