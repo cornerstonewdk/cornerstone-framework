@@ -221,3 +221,9 @@ a
 {
   color: #005580
 }
+
+.fixed_table {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre;
+}
