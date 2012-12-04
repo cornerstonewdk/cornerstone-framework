@@ -51,7 +51,7 @@ table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
-  // add Table Vertical line [ 신용후 ]
+  // Add Table Vertical line
   th:not(:last-child), 
   td:not(:last-child) {
     border-right: 1px solid @tableBorder;
@@ -96,6 +96,7 @@ table {
   tbody:first-child tr:first-child td {
     border-top: 0;
   }
+  // Prevent a double border ( Vertical line)
   th:not(:last-child), 
   td:not(:last-child) {
     border-right: 0;

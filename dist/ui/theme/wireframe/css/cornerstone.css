@@ -4195,6 +4195,10 @@ table {
 .table tbody + tbody {
   border-top: 2px solid #dddddd;
 }
+.table th:not(:last-child),
+.table td:not(:last-child) {
+  border-right: 1px solid #dddddd;
+}
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
@@ -4222,6 +4226,10 @@ table {
 .table-bordered tbody:first-child tr:first-child th,
 .table-bordered tbody:first-child tr:first-child td {
   border-top: 0;
+}
+.table-bordered th:not(:last-child),
+.table-bordered td:not(:last-child) {
+  border-right: 0;
 }
 .table-bordered thead:first-child tr:first-child th:first-child,
 .table-bordered tbody:first-child tr:first-child td:first-child {
