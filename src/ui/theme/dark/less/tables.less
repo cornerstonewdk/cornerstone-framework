@@ -79,12 +79,10 @@ table {
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; // IE7 can't round corners anyway
   border-left: 0;
-  border-right: 0;
   .border-radius(4px);
   th,
   td {
    border-left: 1px solid @tableBorder;
-   border-right: 1px solid @tableBorder;
   }
   // Prevent a double border
   caption + thead tr:first-child th,
@@ -97,6 +95,10 @@ table {
   tbody:first-child tr:first-child th,
   tbody:first-child tr:first-child td {
     border-top: 0;
+  }
+  th:not(:last-child), 
+  td:not(:last-child) {
+    border-right: 0;
   }
   // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
