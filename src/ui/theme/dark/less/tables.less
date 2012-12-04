@@ -80,9 +80,16 @@ table {
   *border-collapse: collapse; // IE7 can't round corners anyway
   border-left: 0;
   .border-radius(4px);
-  th,
-  td {
+  // 기존
+  // th,
+  // td {
+  //  border-left: 1px solid @tableBorder;
+  // }
+  th:first-child, td:first-child {
     border-left: 1px solid @tableBorder;
+  }
+  th:last-child, td:last-child {
+    border-right: 1px solid @tableBorder;
   }
   // Prevent a double border
   caption + thead tr:first-child th,

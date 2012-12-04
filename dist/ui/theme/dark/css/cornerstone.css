@@ -5419,9 +5419,13 @@ table {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.table-bordered th,
-.table-bordered td {
+.table-bordered th:first-child,
+.table-bordered td:first-child {
   border-left: 1px solid #232223;
+}
+.table-bordered th:last-child,
+.table-bordered td:last-child {
+  border-right: 1px solid #232223;
 }
 .table-bordered caption + thead tr:first-child th,
 .table-bordered caption + tbody tr:first-child th,
