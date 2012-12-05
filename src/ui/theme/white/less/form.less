@@ -387,6 +387,21 @@ select,
   background-size: 320px;
 }
 
+.warning .help-inline {
+  #gradient > .vertical(#bb8825, #d07411);
+}
+
+.warning .help-inline {
+  &:after {
+    border-right-color: @warningArrow;
+  }
+}
+
+.warning .help-inline i {
+  background: url('../img/icon.png') no-repeat -150px -112px;
+  background-size: 320px;
+}
+
 .error .help-inline {
   #gradient > .vertical(#bf5455, #9c3a3b);
   color: #8a2627;
