@@ -715,6 +715,23 @@ select:focus,
   background: url('../img/icon.png') no-repeat -242px -111px;
   background-size: 320px;
 }
+.warning .help-inline {
+  background-color: #c3801d;
+  background-image: -moz-linear-gradient(top, #bb8825, #d07411);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bb8825), to(#d07411));
+  background-image: -webkit-linear-gradient(top, #bb8825, #d07411);
+  background-image: -o-linear-gradient(top, #bb8825, #d07411);
+  background-image: linear-gradient(to bottom, #bb8825, #d07411);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbb8825', endColorstr='#ffd07411', GradientType=0);
+}
+.warning .help-inline:after {
+  border-right-color: #c77d1a;
+}
+.warning .help-inline i {
+  background: url('../img/icon.png') no-repeat -150px -112px;
+  background-size: 320px;
+}
 .error .help-inline {
   background-color: #b14a4b;
   background-image: -moz-linear-gradient(top, #bf5455, #9c3a3b);
@@ -770,14 +787,14 @@ select:focus,
 .control-group.warning > label,
 .control-group.warning .help-block,
 .control-group.warning .help-inline {
-  color: #1f1f20;
+  color: #993f08;
 }
 .control-group.warning .checkbox,
 .control-group.warning .radio,
 .control-group.warning input,
 .control-group.warning select,
 .control-group.warning textarea {
-  color: #1f1f20;
+  color: #993f08;
   border-color: rgba(143, 143, 6, 0.64);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -795,16 +812,16 @@ select:focus,
 }
 .control-group.warning .input-prepend .add-on,
 .control-group.warning .input-append .add-on {
-  color: #1f1f20;
-  background-color: #ef923c;
-  border-color: #1f1f20;
+  color: #993f08;
+  background-color: #c76b16;
+  border-color: #993f08;
 }
 .control-group.warning .checkbox,
 .control-group.warning .radio,
 .control-group.warning input,
 .control-group.warning select,
 .control-group.warning textarea {
-  color: #1f1f20;
+  color: #993f08;
   border-color: rgba(143, 143, 6, 0.64);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7);
@@ -823,14 +840,14 @@ select:focus,
 .control-group.warning > label,
 .control-group.warning .help-block,
 .control-group.warning .help-inline {
-  color: #1f1f20;
+  color: #993f08;
 }
 .control-group.warning .checkbox,
 .control-group.warning .radio,
 .control-group.warning input,
 .control-group.warning select,
 .control-group.warning textarea {
-  color: #1f1f20;
+  color: #993f08;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7);
@@ -5258,12 +5275,12 @@ a.badge:hover {
   padding: 8px 35px 8px 14px;
   margin-bottom: 22px;
   text-shadow: none;
-  background-color: #ef923c;
+  background-color: #c76b16;
   border: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  color: #1f1f20;
+  color: #993f08;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.5);
   -moz-box-shadow: 0 1px 1px rgba(0,0,0,.5);
   box-shadow: 0 1px 1px rgba(0,0,0,.5);
@@ -5686,7 +5703,7 @@ table .span24 {
 }
 .table tbody tr.warning td,
 .table tbody tr.warning:hover td {
-  background-color: #ef923c;
+  background-color: #c76b16;
 }
 .table tbody tr.success td,
 .table tbody tr.success:hover td {
@@ -6218,7 +6235,7 @@ address {
   background-size: 320px;
 }
 .text-warning {
-  color: #ef923c;
+  color: #c76b16;
 }
 .text-error {
   color: #e03c5b;
