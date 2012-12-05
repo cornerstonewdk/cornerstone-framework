@@ -100,65 +100,65 @@ Library 위치
  
 	> example code (MacAddress plugin)
 
-			@Override
-			public PluginResult execute(String action, JSONArray args, String callbackId) {
-					
-				this.callbackId = callbackId;
+		@Override
+		public PluginResult execute(String action, JSONArray args, String callbackId) {
 				
-				//action은 JavaScript에서 정의한 extension api 명이다. 
-	
-				//device의 MacAddress를 얻는 기능 
-				if(action.equalsIgnoreCase("getMacAddress")){		
-					WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-					String macAddress = wifiInfo.getMacAddress();
-					
-					PluginResult result = new PluginResult(PluginResult.Status.OK, macAddress);
-					return result;
-				}
-				else if(action.equalsIgnoreCase("getDeviceID")){		
-					String android_id = Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID);
-					
-					PluginResult result = new PluginResult(PluginResult.Status.OK, android_id);
-					return result;
-				}
-				//device의 개통된 번호를 얻는 기능 
-				else if(action.equalsIgnoreCase("getPhoneNumber")){
-					String phoneNumber = tm.getLine1Number();
-					return new PluginResult(PluginResult.Status.OK, phoneNumber);
-				}
+			this.callbackId = callbackId;
+			
+			//action은 JavaScript에서 정의한 extension api 명이다. 
+
+			//device의 MacAddress를 얻는 기능 
+			if(action.equalsIgnoreCase("getMacAddress")){		
+				WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+				String macAddress = wifiInfo.getMacAddress();
 				
-				return new PluginResult(PluginResult.Status.NO_RESULT);
+				PluginResult result = new PluginResult(PluginResult.Status.OK, macAddress);
+				return result;
 			}
+			else if(action.equalsIgnoreCase("getDeviceID")){		
+				String android_id = Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID);
+				
+				PluginResult result = new PluginResult(PluginResult.Status.OK, android_id);
+				return result;
+			}
+			//device의 개통된 번호를 얻는 기능 
+			else if(action.equalsIgnoreCase("getPhoneNumber")){
+				String phoneNumber = tm.getLine1Number();
+				return new PluginResult(PluginResult.Status.OK, phoneNumber);
+			}
+			
+			return new PluginResult(PluginResult.Status.NO_RESULT);
+		}
 
 -	**setContext** 함수를 재정의 하여 plugin 로딩시 초기화 작업 및 API가 호출되기 전의 특정 작업을 수행 할 수 있다. 
 
 	> example code (MacAddress plugin)
 
-			@Override
-			public void setContext(RuntimeInterface ctx) {
-				// TODO Auto-generated method stub
-				super.setContext(ctx);
-				
-				wifiManager = (WifiManager)ctx.getSystemService(Context.WIFI_SERVICE);
-				tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
-			}
+		@Override
+		public void setContext(RuntimeInterface ctx) {
+			// TODO Auto-generated method stub
+			super.setContext(ctx);
+			
+			wifiManager = (WifiManager)ctx.getSystemService(Context.WIFI_SERVICE);
+			tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
+		}
 
 -	**isSynch** 함수를 재정의 하여 특정 API에 대하여 동기적으로 동작하게 함수를 개발 할 수 있다. 특정 api에 대하여 재정의 하지 않는다면 API는 비동기로 동작한다. 
 
 	> example code (MacAddress plugin)
 
-			@Override
-				public boolean isSynch(String action) {
-					//getMacAddress api는 동기적으로 동작 
-					if(action.equals("getMacAddress"))
-						return true;
-					else if(action.equals("getDeviceID"))
-						return true;
-					else if(action.equals("getPhoneNumber"))
-						return true;
-					
-					return super.isSynch(action);
-				}
+		@Override
+			public boolean isSynch(String action) {
+				//getMacAddress api는 동기적으로 동작 
+				if(action.equals("getMacAddress"))
+					return true;
+				else if(action.equals("getDeviceID"))
+					return true;
+				else if(action.equals("getPhoneNumber"))
+					return true;
+				
+				return super.isSynch(action);
+			}
 
 - **execute** 함수의 3번째 매개변수(callbackId)를 이용하여 JavaScript callback에 Native에서 pluginResult 객체를 지속적으로 return 할 수 있다. 
 
@@ -279,7 +279,6 @@ Library 위치
 	>	plugin.xml 
 
    	 `<plugin name="MacAddress" value="co.kr.skr.plugin.MacAddressPlugin" />`
-
 	 `<plugin name="CallLog" value="org.skt.runtime.plugin.CallLogPlugin" />`
 	
 
@@ -295,43 +294,43 @@ Library 위치
 
 >	Example 1. MacAddress Plugin 사용 예제 
  
-		<script type="text/javascript" charset="utf-8" src="../path/macaddressplugin.js"></script>
-		<script type="text/javascript">
-		function getMacAddress(){
-			var macAddress = window.plugins.MacAddress.getMacAddress();
-			alert("MacAddress = " + macAddress);
-		}
-		function getPhoneNumber(){
-			var phoneNumber = window.plugins.MacAddress.getPhoneNumber();
-			alert("phoneNumber = " + phoneNumber);
-		}
-		function getDeviceID(){
-			var id = window.plugins.MacAddress.getDeviceID();
-			alert("Device id = " + id);
-		}
-		</script>
+	<script type="text/javascript" charset="utf-8" src="../path/macaddressplugin.js"></script>
+	<script type="text/javascript">
+	function getMacAddress(){
+		var macAddress = window.plugins.MacAddress.getMacAddress();
+		alert("MacAddress = " + macAddress);
+	}
+	function getPhoneNumber(){
+		var phoneNumber = window.plugins.MacAddress.getPhoneNumber();
+		alert("phoneNumber = " + phoneNumber);
+	}
+	function getDeviceID(){
+		var id = window.plugins.MacAddress.getDeviceID();
+		alert("Device id = " + id);
+	}
+	</script>
 
 >	Example 2. CallLog Plugin 사용 예제 
 
-		<script type="text/javascript" charset="utf-8" src="../path/calllogplugin.js"></script>
-		<title>CallLog Test</title>
-		<script type="text/javascript">
-		
-		function calllogSC(obj){
-			if (obj.length > 0) {
-					alert(obj[0].number);
-					alert(obj[0].duration);
-				} else {
-					alert("empty call log");
-				}
-		}
-		function errorcallback(e) {
-			alert(e);
-		}
-		function getCallLogs() {
-			window.plugins.CallLog.list(calllogSC, errorcallback, "day");
-		}
-		</script>
+	<script type="text/javascript" charset="utf-8" src="../path/calllogplugin.js"></script>
+	<title>CallLog Test</title>
+	<script type="text/javascript">
+	
+	function calllogSC(obj){
+		if (obj.length > 0) {
+				alert(obj[0].number);
+				alert(obj[0].duration);
+			} else {
+				alert("empty call log");
+			}
+	}
+	function errorcallback(e) {
+		alert(e);
+	}
+	function getCallLogs() {
+		window.plugins.CallLog.list(calllogSC, errorcallback, "day");
+	}
+	</script>
 
 **step 6.**  Res 폴더 내부에 웹앱 개발자가 사용하고자 하는 아이콘 이미지를 **icon.png**의 이름으로 삽입한다. 
 
