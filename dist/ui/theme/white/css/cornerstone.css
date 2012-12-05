@@ -6862,7 +6862,7 @@ address {
   width: 16px;
   height: 16px;
 }
-.widget-motioncapcha {
+.widget-motioncaptcha {
   /**
  * jQuery MotionCAPTCHA Plugin CSS
  * josscrowcroft.com/projects/motioncaptcha-jquery-plugin/
@@ -6879,10 +6879,10 @@ address {
   /* Disable mouse-selection on the page (only while user is actively drawing on the canvas): */
 
 }
-.widget-motioncapcha canvas {
+.widget-motioncaptcha canvas {
   border: none;
 }
-.widget-motioncapcha #mc-canvas {
+.widget-motioncaptcha #mc-canvas {
   width: 220px;
   /* For best results, set width to between 210px and 240px */
 
@@ -6894,55 +6894,55 @@ address {
   display: block;
   margin: 0 auto;
 }
-.widget-motioncapcha #mc-canvas.triangle {
+.widget-motioncaptcha #mc-canvas.triangle {
   background-position: 10px 10px;
 }
-.widget-motioncapcha #mc-canvas.x {
+.widget-motioncaptcha #mc-canvas.x {
   background-position: -200px 10px;
 }
-.widget-motioncapcha #mc-canvas.rectangle {
+.widget-motioncaptcha #mc-canvas.rectangle {
   background-position: -400px 10px;
 }
-.widget-motioncapcha #mc-canvas.circle {
+.widget-motioncaptcha #mc-canvas.circle {
   background-position: -600px 10px;
 }
-.widget-motioncapcha #mc-canvas.check {
+.widget-motioncaptcha #mc-canvas.check {
   background-position: 10px -150px;
 }
-.widget-motioncapcha #mc-canvas.caret {
+.widget-motioncaptcha #mc-canvas.caret {
   background-position: -200px -150px;
 }
-.widget-motioncapcha #mc-canvas.zigzag {
+.widget-motioncaptcha #mc-canvas.zigzag {
   background-position: -400px -150px;
 }
-.widget-motioncapcha #mc-canvas.arrow {
+.widget-motioncaptcha #mc-canvas.arrow {
   background-position: -600px -150px;
 }
-.widget-motioncapcha #mc-canvas.leftbracket {
+.widget-motioncaptcha #mc-canvas.leftbracket {
   background-position: 10px -300px;
 }
-.widget-motioncapcha #mc-canvas.rightbracket {
+.widget-motioncaptcha #mc-canvas.rightbracket {
   background-position: -200px -300px;
 }
-.widget-motioncapcha #mc-canvas.v {
+.widget-motioncaptcha #mc-canvas.v {
   background-position: -400px -300px;
 }
-.widget-motioncapcha #mc-canvas.delete {
+.widget-motioncaptcha #mc-canvas.delete {
   background-position: -600px -300px;
 }
-.widget-motioncapcha #mc-canvas.leftbrace {
+.widget-motioncaptcha #mc-canvas.leftbrace {
   background-position: 10px -450px;
 }
-.widget-motioncapcha #mc-canvas.rightbrace {
+.widget-motioncaptcha #mc-canvas.rightbrace {
   background-position: -200px -450px;
 }
-.widget-motioncapcha #mc-canvas.star {
+.widget-motioncaptcha #mc-canvas.star {
   background-position: -400px -450px;
 }
-.widget-motioncapcha #mc-canvas.pigtail {
+.widget-motioncaptcha #mc-canvas.pigtail {
   background-position: -600px -450px;
 }
-.widget-motioncapcha .mc-noselect {
+.widget-motioncaptcha .mc-noselect {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;

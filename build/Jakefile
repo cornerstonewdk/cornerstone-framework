@@ -73,7 +73,7 @@ runTask( 'deploy', [ 'validate' ], function() {
 		PATH_LIB + 'bootstrap/js/bootstrap.js',
 		PATH_SOURCE + 'ui/widget/plugins/plugin-cornerstone.js',
 		PATH_SOURCE + 'ui/widget/plugins/plugin-touch.js',
-		PATH_SOURCE + 'ui/widget/plugins/plugin-motioncapcha.js',
+		PATH_SOURCE + 'ui/widget/plugins/plugin-motioncaptcha.js',
 		PATH_SOURCE + 'ui/widget/plugins/plugin-rangeinput.js',
 		PATH_SOURCE + 'ui/widget/plugins/plugin-sign.js',
 		PATH_SOURCE + 'ui/widget/plugins/plugin-spinner.js',

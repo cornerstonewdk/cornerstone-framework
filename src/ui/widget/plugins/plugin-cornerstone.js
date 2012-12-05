@@ -138,6 +138,8 @@
         Collapse.prototype.toggle =  function () {
             this.$element[0].style["WebkitTransition"] = "none";
             this[this.$element.hasClass('in') ? 'hide' : 'show']()
+//            console.log("in");
+//            this.$element.hasClass('in') ? this.$element.removeClass('in') : this.$element.addClass('in');
         };
 
         Collapse.prototype.transition = function (method, startEvent, completeEvent) {
@@ -158,11 +160,10 @@
 // Duration
 //            $.support.transition && this.$element.hasClass('collapse') ?
 //                this.$element.one($.support.transition.end, complete) :
-                complete()
+            complete()
         };
     }
     $.fn.collapse.Constructor = Collapse;
-
 
     if(HAS_TOUCH) {
         $(function() {
