@@ -58,7 +58,8 @@ define(
 					self.drawList(data.results);
 				},
 				error: function() {
-					alert('오류가 발생하였습니다.');
+//					alert('오류가 발생하였습니다.');
+                    console.log('오류가 발생하였습니다.');
 				},
 				timeout: 30000
 			});
