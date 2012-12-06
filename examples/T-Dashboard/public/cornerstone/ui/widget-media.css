@@ -241,11 +241,11 @@
 	-moz-background-size: 15px 15px;
 	-o-background-size: 15px 15px;
 	background-size: 15px 15px;
-	-webkit-animation: buffering-stripes 2s linear infinite;
-	-moz-animation: buffering-stripes 2s linear infinite;
-	-ms-animation: buffering-stripes 2s linear infinite;
-	-o-animation: buffering-stripes 2s linear infinite;
-	animation: buffering-stripes 2s linear infinite;
+	/*-webkit-animation: buffering-stripes 2s linear infinite;*/
+	/*-moz-animation: buffering-stripes 2s linear infinite;*/
+	/*-ms-animation: buffering-stripes 2s linear infinite;*/
+	/*-o-animation: buffering-stripes 2s linear infinite;*/
+	/*animation: buffering-stripes 2s linear infinite;*/
 }
 
 @-webkit-keyframes buffering-stripes {
