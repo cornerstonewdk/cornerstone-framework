@@ -169,11 +169,11 @@ html lang: 'ko', ->
                           else if order_arr.length is 3
                               depth_val="third-depth"
                           if cur_url_1 is cur_url_2 
-                             li '.active', -> a "class":depth_val, "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
-                             #li '.active', -> a "class":depth_val, "href":"#showthis", "onclick": "smartAnchor('."+"#{documentModel.get('url')}"+".html#showthis')", "#{documentModel.get('title')}"
+                             li '.active', -> a "class":depth_val, "id":"menu_anchor", "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
                           else
                              li '.inactive', -> a "class":depth_val, "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
-                             #li '.inactive', -> a "class":depth_val, "href":"#showthis", "onclick": "smartAnchor('."+"#{documentModel.get('url')}"+".html#showthis')", "#{documentModel.get('title')}"
+                      li -> a ".first-depth", "href":"", "종합테스트"
+                      li '.inactive', -> a "class":"second-depth", "href": "/cornertest", "Cornerstone Framework Test"
 
             div '.span9.well', 'style':'float: left;', ->
                 a '#mobile_anchor', ""
@@ -184,41 +184,38 @@ html lang: 'ko', ->
                     -> @content
                 #a 'href':'#mobile_anchor', "go to mobile_anchor"
 
-		# Include our scripts
-		#text @getBlock('scripts').add([
-		#	"./script.js"
-		#]).toHTML()
+            # Include our scripts
+            #text @getBlock('scripts').add([
+            #"./script.js"
+            #]).toHTML()
 
-        script src: './smartanchor.js'
+            script src: './smartanchor.js'
 
-        i_cnt = 0
-        idx = -1
-        cur_url = @document.url
-        tag.documents.forEach (documentModel) ->
-                          doc_url = "#{documentModel.get('url')}"
-                          if doc_url is cur_url
-                             idx = i_cnt
-                          i_cnt = i_cnt + 1
-        prev_idx = idx - 1
-        next_idx = idx + 1
-        #p -> tag.documents[idx].get('url') + " " + prev_idx + " " + idx + " " + next_idx
+            div '.span9', 'style':'float: right;', ->
+                i_cnt = 0
+                idx = -1
+                cur_url = @document.url
+                tag.documents.forEach (documentModel) ->
+                                  doc_url = "#{documentModel.get('url')}"
+                                  if doc_url is cur_url
+                                     idx = i_cnt
+                                  i_cnt = i_cnt + 1
+                prev_idx = idx - 1
+                next_idx = idx + 1
+                #p -> tag.documents[idx].get('url') + " " + prev_idx + " " + idx + " " + next_idx
 
-        ###
-        div ".btn-group.pos_fixed", -> 
-            if prev_idx isnt -1
-                a "href":"."+tag.documents[prev_idx].get('url')+".html", -> 
-                    button ".btn", -> "Prev"
-            a "href":"#mobile_anchor", -> 
-                button ".btn", -> "Top"
-            if next_idx isnt i_cnt
-                a "href":"."+tag.documents[next_idx].get('url')+".html", -> 
-                    button ".btn", -> "Next"
-        ###
-        div ".btn-group.pos_fixed", -> 
-            if prev_idx isnt -1
-                a ".btn.btn-small", "href":"."+tag.documents[prev_idx].get('url')+".html", -> 
-                    i ".icon-chevron-left", -> ""
-            a ".btn.btn-small", "href":"#mobile_anchor", -> "Top"
-            if next_idx isnt i_cnt
-                a ".btn.btn-small", "href":"."+tag.documents[next_idx].get('url')+".html", -> 
-                    i ".icon-chevron-right", -> ""
+                #div ".pos_fixed_all", ->
+                div "#pos_fixed_btn", 'style':'float: right;', ->
+                  div ".btn-group", -> 
+                    a ".btn.btn-small", "href":"#menu_anchor", -> "Menu"
+                  div ".btn-group", -> 
+                    if prev_idx isnt -1
+                        a ".btn.btn-small", "href":"."+tag.documents[prev_idx].get('url')+".html", -> 
+                            i ".icon-chevron-left", -> ""
+                    a ".btn.btn-small", "href":"#mobile_anchor", -> "Top"
+                    if next_idx isnt i_cnt
+                        a ".btn.btn-small", "href":"."+tag.documents[next_idx].get('url')+".html", -> 
+                            i ".icon-chevron-right", -> ""
+                #script -> "$('.pos_fixed_all').hide(); setTimeout(function() { $('.pos_fixed_all').show() }, 3000);"
+                if cur_url isnt  "/4_3_10_range_input" and cur_url isnt "/4_4_01_scroll_view"
+                    script -> "$('#pos_fixed_btn').addClass('pos_fixed_all');"

@@ -79,6 +79,14 @@ section ".tagmap", ->
                   #  h4 ".media-heading", -> order_str + " " + "#{documentModel.get('title')}"
                   #  p -> documentModel.get('outline')
 
+      div ".span12.main-box.media", ->
+        div ".media-body", ->
+          h4 ".media-heading", ->
+            i ".icon-info-sign", ""
+            span -> "종합테스트 페이지로 이동"
+            i ".icon-arrow-right", ""
+            a "href":"/cornertest","Cornerstone Framework Test"
+
   if section_cnt is 0
     div ".span12.main-box.media", ->
       div ".media-body", ->
