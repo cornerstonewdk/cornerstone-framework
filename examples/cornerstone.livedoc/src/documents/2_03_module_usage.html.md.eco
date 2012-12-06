@@ -59,25 +59,73 @@ Require.js 설정
 --------------
 Cornerstone Framework은 기본적으로 많은 Open Source 라이브러리들을 내장하고 있으며, 그 라이브러리들도 모듈화되어 있기 때문에 모듈을 사용하는 것처럼 라이브러리를 사용할 수 있다. 제공하는 Open Source 라이브러리들은 다음과 같다.
 
-모듈명 | 설명
-:---- | :----
-jquery | [jQuery core 라이브러리](http://jquery.com)
-underscore | [Underscore](http://underscorejs.org/)
-backbone | [Backbone](http://backbonejs.org/)
-bootstrap | [Bootstrap](http://twitter.github.com/bootstrap/)
-enquire | [enquire.js](http://wickynilliams.github.com/enquire.js/)
+<table class="table table-bordered">
+	<tr>
+		<th class="fixed_table">모듈명</th>
+		<th>설명</th>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="http://jquery.com" target="_blank">jquery</a></td>
+		<td>HTML Documenet를 탐색하고 조작하기 편한 방법을 제공한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="http://underscorejs.org/" target="_blank">underscore</a></td>
+		<td>Functional Programming을 지원해 Collection/Array의 제어를 쉽게 한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="http://backbonejs.org/" target="_blank">backbone</a></td>
+		<td>애플리케이션에서 Model-View-Controller 패턴을 사용할 수 있도록 지원한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="http://twitter.github.com/bootstrap/" target="_blank">bootstrap</a></td>
+		<td>웹 페이지의 기본 스타일, 레이아웃, Widget들을 제공한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="http://wickynilliams.github.com/enquire.js/" target="_blank">enquire</a></td>
+		<td>Media Query의 상태를 관리하고 Media가 변경되면 알려준다.</td>
+	</tr>
+</table>
 
-그 외에 Cornerstone Framework에서 기본적으로 제공하는 모듈들도 있는데 다음과 같다. (유틸리티와 UI 위젯은 다른 장에서 따로 정리하고 있으므로 여기에서는 제외한다.)
+그 외에 Cornerstone Framework에서 기본적으로 제공하는 모듈들도 있는데 다음과 같다. ([유틸리티](./5_1_00_utilitly.html)와 [UI 위젯](./4_4_00_featured.html)은 다른 장에서 따로 정리하고 있으므로 여기에서는 제외한다.)
 
-모듈명 | 설명
-:---- | :----
-template | 템플릿을 사용해 동적인 HTML을 쉽게 생성한다. 내부적으로 [Handlebars](http://handlebarsjs.com/)를 사용한다.
-style | 동적으로 CSS 파일을 로드한다.
-sync | Model의 데이터를 LocalStorage와 동기화한다. 내부적으로 [Lawnchair](http://brian.io/lawnchair/)를 사용한다.
-form-view | Model의 데이터와 Form을 양방향 동기화하는 View
-validation-view | Model의 유효성 검사가 실패했음을 보여주는 View
-gesture-view | 터치 기반의 제스처 이벤트를 감지할 수 있게 해주는 View. 내부적으로 [Hammer.js](http://eightmedia.github.com/hammer.js/)를 사용한다.
-multipage-router | 여러 페이지간을 쉽게 이동할 수 있는 라우터
+<table class="table table-bordered table-stripped">
+	<tr>
+		<th class="fixed_table">모듈명</th>
+		<th>설명</th>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_09_template.html" target="_blank">template</a></td>
+		<td>템플릿을 사용해 동적인 HTML을 쉽게 생성한다. 내부적으로 <a href="http://handlebarsjs.com/" target="_blank">Handlebars</a>를 사용한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_10_dynamic_style.html" target="_blank">style</a></td>
+		<td>동적으로 CSS 파일을 로드한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_12_synchronization.html" target="_blank">sync</a></td>
+		<td>Model의 데이터를 LocalStorage와 동기화한다. 내부적으로 <a href="http://brian.io/lawnchair/" target="_blank">Lawnchair</a>를 사용한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_11_form_MVC.htm" target="_blank">form-view</a></td>
+		<td>Model의 데이터와 Form을 양방향 동기화하는 View</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_11_form_MVC.htm" target="_blank">validation-view</a></td>
+		<td>Model의 유효성 검사가 실패했음을 보여주는 View</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_08_gesture.html" target="_blank">gesture-view</a></td>
+		<td>터치 기반의 제스처 이벤트를 감지할 수 있게 해주는 View. 내부적으로 [Hammer.js](http://eightmedia.github.com/hammer.js/)를 사용한다.</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./2_13_routing.html" target="_blank">multipage-router</a></td>
+		<td>여러 페이지간을 쉽게 이동할 수 있는 라우터</td>
+	</tr>
+	<tr>
+		<td class="fixed_table"><a href="./4_3_00_plugin.html" target="_blank">widget-plugins</a></td>
+		<td>유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯</td>
+	</tr>
+</table>
 
 기본적으로 제공하는 모듈 외에 추가해서 사용하는 라이브러리가 있다면 다음과 같은 설정을 통해서 모듈화할 수 있다.
 설정 코드는 애플리케이션 메인의 define 앞쪽에 작성할 것을 권장한다.
@@ -94,7 +142,7 @@ requirejs.config( {
 			// 이 모듈은 jquery, underscore를 사용하기 때문에 jquery, underscore를 먼저 로드한다.
 			deps: [ 'jquery', 'underscore' ],
 			// require/define에서 이 모듈을 사용할 때 파라미터로 전달되는 내용, 전역 변수의 이름을 문자열로 작성한다.
-			exports: '_',
+			exports: 'Somelibrary',
 			init: function() {
 				// 모듈을 사용하기 전에 초기화할 코드가 있으면 작성한다.
 				// 여기서 this는 브라우저의 window 객체이다.

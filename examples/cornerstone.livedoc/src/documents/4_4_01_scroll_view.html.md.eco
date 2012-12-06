@@ -13,7 +13,7 @@ thumbnail: '4.4.01.scroll_view.png'
 
 ### ScrollView
 
-터치환경에서 네이티브적인 느낌을 주는 ScrollView는 안드로이드에서는  기본적으로 제공을 하지 않으며, iOS 계열은 CSS를 통한 제공을 하지만 아이템이 많은 경우 성능 저하 문제가 있다. 코너스톤에서는 성능 및 몇가지 기능 등을
+터치환경에서 네이티브적인 느낌을 주는 ScrollView는 안드로이드에서는  기본적으로 제공을 하지 않으며, iOS 계열은 CSS를 통한 제공을 하지만 아이템이 많은 경우 성능 저하 문제가 있다. Cornerstone에서는 성능 및 몇가지 기능 등을
 사용자가 쉽게 사용할 수 있도록 아래와 같은 기능을 제공하고 있다.
 
 - 기본 스크롤뷰
@@ -23,11 +23,11 @@ thumbnail: '4.4.01.scroll_view.png'
 ### 의존성
 
 ```
-    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />
-	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>
-	<!-- ScrollView 위젯 피처드 -->
-    <script src='./dist/ui/widget-scrollview.js'></script>
+<link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />
+<!-- jQuery: 피처드 위젯 사용을 위한 jquery.js  -->
+<script src='./dist/lib/jquery-1.8.1.min.js'></script>
+<!-- ScrollView 피처드 위젯 -->
+<script src='./dist/ui/widget-scrollview.js'></script>
 ```
 
 ### 사용법
@@ -46,7 +46,7 @@ DATA-API(data-attribute) 또는 $('#example').featuredScrollView();
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -56,7 +56,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -81,31 +85,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -138,111 +142,111 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<!-- data-featurd="scrollView"를 정의하므로 스크롤뷰을 적용한다. -->
-<div data-featured="scrollView" class="scrollview">
-	<div class="lists scroller">
-		<ul id="thelist" class="lists-con">
-			<li><a href="#">테스트 레코드 1</a></li>
-			<li><a href="#">테스트 레코드 2</a></li>
-			<li><a href="#">테스트 레코드 3</a></li>
-			<li><a href="#">테스트 레코드 4</a></li>
-			<li><a href="#">테스트 레코드 5</a></li>
-			<li><a href="#">테스트 레코드 6</a></li>
-			<li><a href="#">테스트 레코드 7</a></li>
-			<li><a href="#">테스트 레코드 8</a></li>
-			<li><a href="#">테스트 레코드 9</a></li>
-			<li><a href="#">테스트 레코드 10</a></li>
-			<li><a href="#">테스트 레코드 11</a></li>
-			<li><a href="#">테스트 레코드 12</a></li>
-			<li><a href="#">테스트 레코드 13</a></li>
-			<li><a href="#">테스트 레코드 14</a></li>
-			<li><a href="#">테스트 레코드 15</a></li>
-			<li><a href="#">테스트 레코드 16</a></li>
-			<li><a href="#">테스트 레코드 17</a></li>
-			<li><a href="#">테스트 레코드 18</a></li>
-			<li><a href="#">테스트 레코드 19</a></li>
-			<li><a href="#">테스트 레코드 20</a></li>
-			<li><a href="#">테스트 레코드 21</a></li>
-			<li><a href="#">테스트 레코드 22</a></li>
-			<li><a href="#">테스트 레코드 23</a></li>
-			<li><a href="#">테스트 레코드 24</a></li>
-			<li><a href="#">테스트 레코드 25</a></li>
-			<li><a href="#">테스트 레코드 26</a></li>
-			<li><a href="#">테스트 레코드 27</a></li>
-			<li><a href="#">테스트 레코드 28</a></li>
-			<li><a href="#">테스트 레코드 29</a></li>
-			<li><a href="#">테스트 레코드 30</a></li>
-			<li><a href="#">테스트 레코드 31</a></li>
-			<li><a href="#">테스트 레코드 32</a></li>
-			<li><a href="#">테스트 레코드 33</a></li>
-			<li><a href="#">테스트 레코드 34</a></li>
-			<li><a href="#">테스트 레코드 35</a></li>
-			<li><a href="#">테스트 레코드 36</a></li>
-			<li><a href="#">테스트 레코드 37</a></li>
-			<li><a href="#">테스트 레코드 38</a></li>
-			<li><a href="#">테스트 레코드 39</a></li>
-			<li><a href="#">테스트 레코드 40</a></li>
-		</ul>
+	<!-- data-featurd="scrollView"를 정의하므로 스크롤뷰을 적용한다. -->
+	<div data-featured="scrollView" class="scrollview">
+		<div class="lists scroller">
+			<ul id="thelist" class="lists-con">
+				<li><a href="#">테스트 레코드 1</a></li>
+				<li><a href="#">테스트 레코드 2</a></li>
+				<li><a href="#">테스트 레코드 3</a></li>
+				<li><a href="#">테스트 레코드 4</a></li>
+				<li><a href="#">테스트 레코드 5</a></li>
+				<li><a href="#">테스트 레코드 6</a></li>
+				<li><a href="#">테스트 레코드 7</a></li>
+				<li><a href="#">테스트 레코드 8</a></li>
+				<li><a href="#">테스트 레코드 9</a></li>
+				<li><a href="#">테스트 레코드 10</a></li>
+				<li><a href="#">테스트 레코드 11</a></li>
+				<li><a href="#">테스트 레코드 12</a></li>
+				<li><a href="#">테스트 레코드 13</a></li>
+				<li><a href="#">테스트 레코드 14</a></li>
+				<li><a href="#">테스트 레코드 15</a></li>
+				<li><a href="#">테스트 레코드 16</a></li>
+				<li><a href="#">테스트 레코드 17</a></li>
+				<li><a href="#">테스트 레코드 18</a></li>
+				<li><a href="#">테스트 레코드 19</a></li>
+				<li><a href="#">테스트 레코드 20</a></li>
+				<li><a href="#">테스트 레코드 21</a></li>
+				<li><a href="#">테스트 레코드 22</a></li>
+				<li><a href="#">테스트 레코드 23</a></li>
+				<li><a href="#">테스트 레코드 24</a></li>
+				<li><a href="#">테스트 레코드 25</a></li>
+				<li><a href="#">테스트 레코드 26</a></li>
+				<li><a href="#">테스트 레코드 27</a></li>
+				<li><a href="#">테스트 레코드 28</a></li>
+				<li><a href="#">테스트 레코드 29</a></li>
+				<li><a href="#">테스트 레코드 30</a></li>
+				<li><a href="#">테스트 레코드 31</a></li>
+				<li><a href="#">테스트 레코드 32</a></li>
+				<li><a href="#">테스트 레코드 33</a></li>
+				<li><a href="#">테스트 레코드 34</a></li>
+				<li><a href="#">테스트 레코드 35</a></li>
+				<li><a href="#">테스트 레코드 36</a></li>
+				<li><a href="#">테스트 레코드 37</a></li>
+				<li><a href="#">테스트 레코드 38</a></li>
+				<li><a href="#">테스트 레코드 39</a></li>
+				<li><a href="#">테스트 레코드 40</a></li>
+			</ul>
+		</div>
 	</div>
-</div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 300px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , if_noscroll : false , no : 'no' } %>
 
 #### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
-<div id="example" class="scrollview">
-	<div class="lists scroller">
-		<ul id="thelist" class="lists-con">
-			<li><a href="#">테스트 레코드 1</a></li>
-			<li><a href="#">테스트 레코드 2</a></li>
-			<li><a href="#">테스트 레코드 3</a></li>
-			<li><a href="#">테스트 레코드 4</a></li>
-			<li><a href="#">테스트 레코드 5</a></li>
-			<li><a href="#">테스트 레코드 6</a></li>
-			<li><a href="#">테스트 레코드 7</a></li>
-			<li><a href="#">테스트 레코드 8</a></li>
-			<li><a href="#">테스트 레코드 9</a></li>
-			<li><a href="#">테스트 레코드 10</a></li>
-			<li><a href="#">테스트 레코드 11</a></li>
-			<li><a href="#">테스트 레코드 12</a></li>
-			<li><a href="#">테스트 레코드 13</a></li>
-			<li><a href="#">테스트 레코드 14</a></li>
-			<li><a href="#">테스트 레코드 15</a></li>
-			<li><a href="#">테스트 레코드 16</a></li>
-			<li><a href="#">테스트 레코드 17</a></li>
-			<li><a href="#">테스트 레코드 18</a></li>
-			<li><a href="#">테스트 레코드 19</a></li>
-			<li><a href="#">테스트 레코드 20</a></li>
-			<li><a href="#">테스트 레코드 21</a></li>
-			<li><a href="#">테스트 레코드 22</a></li>
-			<li><a href="#">테스트 레코드 23</a></li>
-			<li><a href="#">테스트 레코드 24</a></li>
-			<li><a href="#">테스트 레코드 25</a></li>
-			<li><a href="#">테스트 레코드 26</a></li>
-			<li><a href="#">테스트 레코드 27</a></li>
-			<li><a href="#">테스트 레코드 28</a></li>
-			<li><a href="#">테스트 레코드 29</a></li>
-			<li><a href="#">테스트 레코드 30</a></li>
-			<li><a href="#">테스트 레코드 31</a></li>
-			<li><a href="#">테스트 레코드 32</a></li>
-			<li><a href="#">테스트 레코드 33</a></li>
-			<li><a href="#">테스트 레코드 34</a></li>
-			<li><a href="#">테스트 레코드 35</a></li>
-			<li><a href="#">테스트 레코드 36</a></li>
-			<li><a href="#">테스트 레코드 37</a></li>
-			<li><a href="#">테스트 레코드 38</a></li>
-			<li><a href="#">테스트 레코드 39</a></li>
-			<li><a href="#">테스트 레코드 40</a></li>
-		</ul>
+	<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
+	<div id="example" class="scrollview">
+		<div class="lists scroller">
+			<ul id="thelist" class="lists-con">
+				<li><a href="#">테스트 레코드 1</a></li>
+				<li><a href="#">테스트 레코드 2</a></li>
+				<li><a href="#">테스트 레코드 3</a></li>
+				<li><a href="#">테스트 레코드 4</a></li>
+				<li><a href="#">테스트 레코드 5</a></li>
+				<li><a href="#">테스트 레코드 6</a></li>
+				<li><a href="#">테스트 레코드 7</a></li>
+				<li><a href="#">테스트 레코드 8</a></li>
+				<li><a href="#">테스트 레코드 9</a></li>
+				<li><a href="#">테스트 레코드 10</a></li>
+				<li><a href="#">테스트 레코드 11</a></li>
+				<li><a href="#">테스트 레코드 12</a></li>
+				<li><a href="#">테스트 레코드 13</a></li>
+				<li><a href="#">테스트 레코드 14</a></li>
+				<li><a href="#">테스트 레코드 15</a></li>
+				<li><a href="#">테스트 레코드 16</a></li>
+				<li><a href="#">테스트 레코드 17</a></li>
+				<li><a href="#">테스트 레코드 18</a></li>
+				<li><a href="#">테스트 레코드 19</a></li>
+				<li><a href="#">테스트 레코드 20</a></li>
+				<li><a href="#">테스트 레코드 21</a></li>
+				<li><a href="#">테스트 레코드 22</a></li>
+				<li><a href="#">테스트 레코드 23</a></li>
+				<li><a href="#">테스트 레코드 24</a></li>
+				<li><a href="#">테스트 레코드 25</a></li>
+				<li><a href="#">테스트 레코드 26</a></li>
+				<li><a href="#">테스트 레코드 27</a></li>
+				<li><a href="#">테스트 레코드 28</a></li>
+				<li><a href="#">테스트 레코드 29</a></li>
+				<li><a href="#">테스트 레코드 30</a></li>
+				<li><a href="#">테스트 레코드 31</a></li>
+				<li><a href="#">테스트 레코드 32</a></li>
+				<li><a href="#">테스트 레코드 33</a></li>
+				<li><a href="#">테스트 레코드 34</a></li>
+				<li><a href="#">테스트 레코드 35</a></li>
+				<li><a href="#">테스트 레코드 36</a></li>
+				<li><a href="#">테스트 레코드 37</a></li>
+				<li><a href="#">테스트 레코드 38</a></li>
+				<li><a href="#">테스트 레코드 39</a></li>
+				<li><a href="#">테스트 레코드 40</a></li>
+			</ul>
+		</div>
 	</div>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-	    $("#example").featuredScrollView();
-    };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , no : 'no' } %>
+	<script type="text/javascript">
+	    window.onload = function() {
+		    $("#example").featuredScrollView();
+	    };
+	</script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 300px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , if_noscroll : false , no : 'no' } %>
 
 ### 기능
 
@@ -267,61 +271,61 @@ onDestroy | function | null | 스크롤뷰를 제거할 때 발생
 #### 폼 요소를 포함하는 스크롤뷰 예제(폼 엘리먼트 예외처리 예제)
 
 <% prv_3 = (contents) => %>
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
-<div id="wrapper" class="scrollview">
-	<div class="lists scroller">
-		<ul id="thelist" class="lists-con">
-			<li class="padding-20">
-				<form>
-					<legend>Text input</legend>
-					<div>
-						<label class="blind">Text input</label>
-						<input class="input-block-level" type="text" placeholder="Text input" value="Text input">
-					</div>
-
-					<hr>
-
-					<div>
-						<label class="blind">Text input</label>
-						<input class="input-block-level ipt-orange" type="text" placeholder="Text input"
-							   value="Text input">
-					</div>
-					<hr>
-
-					<div class="input-prepend">
-						<label class="blind">Prepend</label>
-						<span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text"
-															placeholder="Username">
-					</div>
-
-					<hr>
-
-					<div class="input-append">
-						<label class="blind">Append</label>
-						<input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
-					</div>
-
-					<hr>
-
-					<div class="input-prepend input-append">
-						<label class="blind">Combined</label>
-						<span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16"
-															type="text"><span class="add-on">.00</span>
-					</div>
-
-				</form>
-			</li>
-		</ul>
+	<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
+	<div id="wrapper" class="scrollview">
+		<div class="lists scroller">
+			<ul id="thelist" class="lists-con">
+				<li class="padding-20">
+					<form>
+						<legend>Text input</legend>
+						<div>
+							<label class="blind">Text input</label>
+							<input class="input-block-level" type="text" placeholder="Text input" value="Text input">
+						</div>
+	
+						<hr>
+	
+						<div>
+							<label class="blind">Text input</label>
+							<input class="input-block-level ipt-orange" type="text" placeholder="Text input"
+								   value="Text input">
+						</div>
+						<hr>
+	
+						<div class="input-prepend">
+							<label class="blind">Prepend</label>
+							<span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text"
+																placeholder="Username">
+						</div>
+	
+						<hr>
+	
+						<div class="input-append">
+							<label class="blind">Append</label>
+							<input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
+						</div>
+	
+						<hr>
+	
+						<div class="input-prepend input-append">
+							<label class="blind">Combined</label>
+							<span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16"
+																type="text"><span class="add-on">.00</span>
+						</div>
+	
+					</form>
+				</li>
+			</ul>
+		</div>
 	</div>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-        $("#wrapper").featuredScrollView({
-            formFields:["SELECT", "INPUT", "TEXTAREA"]
-    	});
-    };
-</script>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , no : 'no' } %>
+	<script type="text/javascript">
+	    window.onload = function() {
+	        $("#wrapper").featuredScrollView({
+	            formFields:["SELECT", "INPUT", "TEXTAREA"]
+	    	});
+	    };
+	</script>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 300px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , if_noscroll : false , no : 'no' } %>
 
 #### Pull to refresh 기능을 제공하는 스크롤뷰
 
@@ -333,7 +337,7 @@ onDestroy | function | null | 스크롤뷰를 제거할 때 발생
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <i></i>
                     </button>
-                    <a class="brand" href="#">CornerStone</a>
+                    <a class="brand" href="#">Cornerstone</a>
                 </div>
             </div>
         </div>
@@ -455,56 +459,11 @@ onDestroy | function | null | 스크롤뷰를 제거할 때 발생
             }
         });
     </script>
-<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 600px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , if_noscroll : false , no : 'no' } %>
 
-#### 이벤트 예제
-
-<% prv_5 = (contents) => %>
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
-<div id="example" class="scrollview">
-	<div class="lists scroller">
-		<ul id="thelist" class="lists-con">
-			<li><a href="#">테스트 레코드 1</a></li>
-			<li><a href="#">테스트 레코드 2</a></li>
-			<li><a href="#">테스트 레코드 3</a></li>
-			<li><a href="#">테스트 레코드 4</a></li>
-			<li><a href="#">테스트 레코드 5</a></li>
-			<li><a href="#">테스트 레코드 6</a></li>
-			<li><a href="#">테스트 레코드 7</a></li>
-			<li><a href="#">테스트 레코드 8</a></li>
-			<li><a href="#">테스트 레코드 9</a></li>
-			<li><a href="#">테스트 레코드 10</a></li>
-		</ul>
-	</div>
-</div>
 <script type="text/javascript">
-    window.onload = function() {
-        $("#example").featuredScrollView({
-            onRefresh: function() {
-                console.log("onRefresh");
-            },
-            onBeforeScrollStart: function() {
-                console.log("onBeforeScrollStart");
-            },
-            onScrollStart: function() {
-                console.log("onScrollStart");
-            },
-            onBeforeScrollMove: function() {
-                console.log("onBeforeScrollMove");
-            },
-            onScrollMove: function() {
-                console.log("onScrollMove");
-            },
-            onBeforeScrollEnd: function() {
-                console.log("onBeforeScrollEnd");
-            },
-            onScrollEnd: function() {
-                console.log("onScrollEnd");
-            },
-            onTouchEnd: function() {
-                console.log("onTouchEnd");
-            }
-        });
-   };
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
 </script>
-<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : true  , no : 'no' } %>

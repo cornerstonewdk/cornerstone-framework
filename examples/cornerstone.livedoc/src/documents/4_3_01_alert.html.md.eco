@@ -31,7 +31,7 @@ DATA-API(data-dismiss="alert"), $('#example').alert()
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -41,7 +41,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -66,31 +70,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -124,17 +128,19 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <% prv_1 = (contents) => %>
     <h3>Alert</h3>
+    <p><i class="badge badge-info">1</i>아래 경고창의 X 버튼을 누른 경우 경고창이 닫힌다.</p>
 	<div class="alert">
 		<!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
 		<a class="close" data-dismiss="alert" href="#">×</a>
 		<strong>data-attribute를 통한 alert 닫기</strong>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### javascript 코드
 
 <% prv_2 = (contents) => %>
     <h3>Alert</h3>
+    <p><i class="badge badge-info">1</i>아래 경고창의 X 버튼을 누른 경우 경고창이 닫힌다.</p>
 	<div class="alert">
 		<!-- javascript를 이용하므로 data-dismiss 속성 제거 -->
 	    <a class="close" href="#">×</a>
@@ -150,7 +156,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 이벤트
 
@@ -163,19 +169,34 @@ __실제 사용 예시__
 
 <% prv_3 = (contents) => %>
     <h3>Alert</h3>
+    <p><i class="badge badge-info">1</i>아래 경고창의 X 버튼을 누른 경우 경고창이 닫힌다.</p>
 	<div class="alert">
 		<!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
 		<a class="close" data-dismiss="alert" href="#">×</a>
 		<strong>data-attribute를 통한 alert 닫기</strong>
 	</div>
+    <div id="console" style="height: 30px"></div>
 
 	<script type="text/javascript">
 	    window.onload = function() {
             $(".alert").on("close", function(e) {
               console.log("닫기 전 이벤트");
+              $("#console").append($("<p/>", {
+                  text: "닫기 전 이벤트"
+              }));
             }).on("closed", function(e) {
-              console.log("닫기 완료시 CSS Transition 완료 후 이벤트");
+                console.log("닫기 완료시 CSS Transition 완료 후 이벤트");
+                $("#console").append($("<p/>", {
+                    text: "닫기 완료시 CSS Transition 완료 후 이벤트"
+                }));
             });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 160px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:first-child").addClass("fixed_table");
+$table.find("tbody tr > td:first-child").addClass("fixed_table");
+</script>

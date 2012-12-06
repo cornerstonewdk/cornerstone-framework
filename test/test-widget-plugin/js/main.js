@@ -47,3 +47,7 @@ $("a.download-sign").bind("click", function (e) {
         e.preventDefault();
     }
 });
+
+$("#tooltip a").on("click", function (e) {
+    e.preventDefault();
+});

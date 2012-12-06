@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: 'Featured'
-outline: '코너스톤의 위젯 피처드는 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다. 아래는 플러그인의 종류와 플러그인에 대한 간단한 설명이다...'
+outline: '피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다...'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -12,23 +12,23 @@ thumbnail: '4.4.00.featured.png'
 ---
 
 
-Featured
-----------
+# Featured
 
-> 코너스톤의 위젯 피처드는 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.
+피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다.
 
-아래는 피처드 플러그인/모듈의 종류와 피처드 플러그인에 대한 간단한 설명이다.
+> Cornerstone의 피처드 위젯는 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.
+
+아래는 피처드 위젯 플러그인 / 모듈의 종류와 각 기능에 대한 간단한 설명이다.
 
 1. ScrollView : 터치기반에서 유용하게 사용되는 스크롤뷰 PC환경에서도 휠로 스크롤이 가능한 스크롤뷰.
-2. ListView : 리스트를 최적화 기능이 적용돼 Content가 아무리 많아도 최적화 옵션을 활성화시키면 항상 일정한 퍼포먼스를 유지하는 리스트뷰.
-3. Media : 코너스톤은 기본적으로 반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어.
-4. Editor : 코너스톤은 기본적으로 반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주는 에디터.
+2. ListView : 리스트에 최적화 기술을 적용해 Content가 아무리 많아도 최적화 옵션을 활성화시키면 항상 일정한 퍼포먼스를 유지하는 리스트뷰.
+3. Media : 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어 위젯. Cornerstone의 반응형 웹 기술이 적용됨.
+4. Editor : 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주는 에디터 위젯.
 5. Chart : 바(스택, 그룹), 라인, 파이 차트 등을 제공하는 차트.
 6. DataTable : 정해진 JSON 규격 또는 마크업을 통해 사용자는 간단한 테이블만으로 페이징처리, 소팅, 검색 등의 기능을 제공하는 데이터테이블.
 
 
-MVC 프레임워크 피처드 모듈
------
+# MVC 프레임워크 피처드 모듈
 
 모듈명 | 플러그인 형태 | 모듈 형태
 :-- | :-- | :--
@@ -39,4 +39,9 @@ widget-editor | O | X
 widget-chart | O | O
 widget-datatable | O | O
 
-
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th").addClass("fixed_table");
+$table.find("tbody tr > td").addClass("fixed_table");
+</script>

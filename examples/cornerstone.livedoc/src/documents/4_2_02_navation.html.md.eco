@@ -18,7 +18,7 @@ thumbnail: '4.2.02.navation.png'
 Nav 리스트는 부가적인 헤더와 함께 nav 의 링크들을 그룹하는 심플하면서 쉬운 방법을 제공하며, OS X 의 파인더와 같은 사이드바를 만들 수 있다.
 구조적으로, Tab, Pill 과 같은 핵심 nav 스타일을 토대로 만들어 졌으며 사용 및 커스터마이징을 매우 직관적으로 할 수 있다.
 
-#### 아이콘과 사용(With Icon)
+#### 아이콘과 함께 사용(With Icon)
 
 Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, `<i>` 태그를 적절한 class 함께 추가하기만 하면 된다.
 
@@ -27,12 +27,11 @@ Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, `<i>` 태그�
 비어있는 리스트 아이템 — `<li>` — 을 `.divider` 클래스와 함께 넣어줌으로서 가로 구분자를 넣을 수 있다.
 
 ```
-	<ul class="nav nav-list">
-        ...
-        <li class="divider"></li>
-        ...
-    </ul>
-
+<ul class="nav nav-list">
+    ...
+    <li class="divider"></li>
+    ...
+</ul>
 ```
 
 #### 기본 스타일(Default Styles)
@@ -40,18 +39,18 @@ Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, `<i>` 태그�
 링크의 리스트에 `.nav nav-list` 를 추가한다.
 
 ```
-    <ul class="nav nav-list">
-        <li class="nav-header">
-            List header
-        </li>
-        <li class="active">
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Library</a>
-        </li>
-        ...
-    </ul>
+<ul class="nav nav-list">
+    <li class="nav-header">
+        List header
+    </li>
+    <li class="active">
+        <a href="#">Home</a>
+    </li>
+    <li>
+        <a href="#">Library</a>
+    </li>
+    ...
+</ul>
 ```
 
 #### 아이콘을 포함(Lists with icon)
@@ -59,16 +58,16 @@ Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, `<i>` 태그�
 같은 방법이지만, 단지 아이콘을 위해 `<i>` 태그를 추가한다.
 
 ```
-    <ul class="nav nav-list">
-        ...
-        <li>
-            <a href="#">
-            <i class="icon-book"></i>
-            Library
-            </a>
-        </li>
-        ...
-    </ul>
+<ul class="nav nav-list">
+    ...
+    <li>
+        <a href="#">
+        <i class="icon-book"></i>
+        Library
+        </a>
+    </li>
+    ...
+</ul>
 ```
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
@@ -81,7 +80,7 @@ Nav 리스트에 아이콘을 갖추는것 또한 쉬워졌으며, `<i>` 태그�
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -91,7 +90,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -116,31 +119,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -196,7 +199,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         <li class="divider"></li>
         <li><a href="#"><i class="icon-flag"></i> Help</a></li>
     </ul>  
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 860px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 860px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 탭(tab nav)
 
@@ -215,20 +218,20 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 동적 탭을 사용하려면 감싸는 `<div>`, 여러 세트의 tab, 그리고 그에 해당하는 여러 세트의 컨텐츠 pane 이 필요하다.
 
 ```
-    <div class="tabbable">
-    	<ul class="nav nav-tabs">
-	        <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
-	        <li><a href="#2" data-toggle="tab">Section 2</a></li>
-	    </ul>
-	    <div class="tab-content">
-	        <div class="tab-pane active" id="1">
-	        <p>I'm in Section 1.</p>
-	        </div>
-	        <div class="tab-pane" id="2">
-	        <p>Howdy, I'm in Section 2.</p>
-	        </div>
-	    </div>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+        <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
+        <li><a href="#2" data-toggle="tab">Section 2</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="1">
+        <p>I'm in Section 1.</p>
+        </div>
+        <div class="tab-pane" id="2">
+        <p>Howdy, I'm in Section 2.</p>
+        </div>
     </div>
+</div>
 ```
 
 ##### 하단 탭(Tabs on the bottom)
@@ -236,24 +239,24 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 탭을 하단에 두려면 `.tabs-below` class 를 추가하고 HTML의 순서를 바꾼다.
 
 ```
-    <div class="tabbable tabs-below">
-		<div class="tab-content">
-			<div class="tab-pane active" id="home">
-				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
-				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher 
-				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip 
-				quis cardigan american apparel, butcher voluptate nisi qui.
-			</div>
-			<div class="tab-pane" id="profile">...</div>
-			<div class="tab-pane" id="messages">...</div>
-			<div class="tab-pane" id="settings">...</div>
+<div class="tabbable tabs-below">
+	<div class="tab-content">
+		<div class="tab-pane active" id="home">
+			Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
+			cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher 
+			synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip 
+			quis cardigan american apparel, butcher voluptate nisi qui.
 		</div>
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#home" data-toggle="tab">TAB1</a></li>
-			<li><a href="#profile" data-toggle="tab">TAB2</a></li>
-			<li><a href="#messages" data-toggle="tab">TAB3</a></li>
-		</ul>
+		<div class="tab-pane" id="profile">...</div>
+		<div class="tab-pane" id="messages">...</div>
+		<div class="tab-pane" id="settings">...</div>
 	</div>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#home" data-toggle="tab">TAB1</a></li>
+		<li><a href="#profile" data-toggle="tab">TAB2</a></li>
+		<li><a href="#messages" data-toggle="tab">TAB3</a></li>
+	</ul>
+</div>
 ```
 
 ##### 좌측 탭(Tabs on the left)
@@ -261,14 +264,14 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 탭을 좌측에 두려면 `.tabs-left` class 를 추가한다.
 
 ```
-    <div class="tabbable tabs-left">
-        <ul class="nav nav-tabs">
-            ...
-        </ul>
-        <div class="tab-content">
-            ...
-        </div>
+<div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+        ...
+    </ul>
+    <div class="tab-content">
+        ...
     </div>
+</div>
 ```
 
 ##### 우측 탭(Tabs on the right)
@@ -276,14 +279,14 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 탭을 우측에 두려면 `.tabs-right` class 를 추가한다.
 
 ```
-    <div class="tabbable tabs-right">
-        <ul class="nav nav-tabs">
-            ...
-        </ul>
-        <div class="tab-content">
-            ...
-        </div>
+<div class="tabbable tabs-right">
+    <ul class="nav nav-tabs">
+        ...
+    </ul>
+    <div class="tab-content">
+        ...
     </div>
+</div>
 ```
 
 <% prv_2 = (contents) => %>
@@ -311,16 +314,13 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 	<div class="tabbable tabs-below">
 		<div class="tab-content">
 			<div class="tab-pane active" id="home">
-				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
-				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+				This is home.
 			</div>
 			<div class="tab-pane" id="profile">
-				Reprehenderit butcher retro keffiyeh dreamcatcher 
-				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+				This is profile.
 			</div>
 			<div class="tab-pane" id="messages">
-				salvia cillum iphone. Seitan aliquip 
-				quis cardigan american apparel, butcher voluptate nisi qui.
+				This are messages.
 			</div>
 		</div>
 		<ul class="nav nav-tabs">
@@ -339,16 +339,13 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="first">
-				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
-				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+				First tab. 
 			</div>
 			<div class="tab-pane" id="second">
-				Reprehenderit butcher retro keffiyeh dreamcatcher 
-				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+				Second tab.
 			</div>
 			<div class="tab-pane" id="third">
-				salvia cillum iphone. Seitan aliquip 
-				quis cardigan american apparel, butcher voluptate nisi qui.
+				Third tab.
 			</div>
 		</div>
 	</div>
@@ -362,17 +359,14 @@ Tab 을 동적으로 만들려면, `.nav-tabs` 를 `.tabbable` class 를 가진 
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="tom">
-				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master 
-				cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. placeat 
+				Tom.
 			</div>
 			<div class="tab-pane" id="ashe">
-				Reprehenderit butcher retro keffiyeh dreamcatcher 
-				synth. aCosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip 
+				Ashe.
 			</div>
 			<div class="tab-pane" id="judy">
-				salvia cillum iphone. Seitan aliquip 
-				quis cardigan american apparel, butcher voluptate nisi qui.
+				Judy.
 			</div>
 		</div>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 847px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 847px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
