@@ -110,7 +110,7 @@ myOAP.on('access_token', function(req, token, next){
 
 //express 설정
 app.configure(function(){
-  app.set('port', process.env.PORT || 80);
+  app.set('port', process.env.PORT || 8088);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
