@@ -14,7 +14,7 @@ function SktDataCenter() {
 		'3': {'client_secret': '3secret', 'redirect_uri': 'http://61.250.22.139/api/client_redirect.html'},
 		'4': {'client_secret': '4secret', 'redirect_uri': 'http://localhost:8080/html5/cornerstone-framework/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html'},
 		'5': {'client_secret': '5secret', 'redirect_uri': 'http://127.0.0.1:8080/html5/cornerstone-framework/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html'},
-		'6': {'client_secret': '5secret', 'redirect_uri': 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html'}
+		'6': {'client_secret': '5secret', 'redirect_uri': 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/'}
 	};
 	
 	/*
@@ -36,7 +36,7 @@ SktDataCenter.prototype.checkClient = function(client_id, client_secret, redirec
 	//클라이언트 id 확인 클라이언트 secret 확인 리다이렉트 uri 확인
 	if(client_id in this.myClients 
 		&& this.myClients[client_id]['client_secret'] == client_secret
-		&& this.myClients[client_id]['redirect_uri'] == redirect_uri) {
+		&& redirect_uri.indexOf(this.myClients[client_id]['redirect_uri']) == 0) {
 		return true;
 	}
 	
@@ -46,7 +46,7 @@ SktDataCenter.prototype.checkClientUserAgent = function(client_id, redirect_uri)
 	//임시로 하드코딩한것에서 처리 (하드 코딩 데이터는 위에 있음) 추후 DB 또는 서버에 확인 요청
 	//클라이언트 id 확인 클라이언트 secret 확인 리다이렉트 uri 확인
 	if(client_id in this.myClients 
-		&& this.myClients[client_id]['redirect_uri'] == redirect_uri) {
+		&& redirect_uri.indexOf(this.myClients[client_id]['redirect_uri']) == 0) {
 		return true;
 	}
 	
