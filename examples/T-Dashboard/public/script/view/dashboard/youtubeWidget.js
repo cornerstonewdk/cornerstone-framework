@@ -32,7 +32,7 @@ define(
 			});
 			
 			$('#youtubeWedget').parent().spinner('hide');
-		},
+		}
 		
 	});
 	
