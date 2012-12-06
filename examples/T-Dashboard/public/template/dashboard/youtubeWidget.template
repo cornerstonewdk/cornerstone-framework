@@ -1,5 +1,5 @@
 <div class="featured-video">
 	<video width="100%" height="100%" id="player1" preload="none">
-		<source type="video/youtube" src="http://www.youtube.com/watch?v=42AzQomBBBw"/>
+		<source type="video/mp4" src="http://61.250.22.139/livedoc/sample-data/sample-media.mp4"/>
 	</video>
 </div>

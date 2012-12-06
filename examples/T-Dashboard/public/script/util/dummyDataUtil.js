@@ -214,7 +214,7 @@ define(function(require) {
 	 */
 	DummyDataUtil.prototype.getNewlyVocData = function(s) {
 		if(this.vocList.length == 0) {
-			this.vocList = this.makeRandomVocData(1, 100);
+			this.vocList = this.makeRandomVocData(1, 10);
 		}
 		
 		return this.vocList.slice(this.vocList.length - s, this.vocList.length);
@@ -225,7 +225,7 @@ define(function(require) {
 	 */
 	DummyDataUtil.prototype.getVocDataWithRange = function(s, e) {
 		if(this.vocList.length == 0) {
-			this.vocList = this.makeRandomVocData(1, 100);
+			this.vocList = this.makeRandomVocData(1, 10);
 		}
 		
 		return this.vocList.slice(s, e);
@@ -236,7 +236,7 @@ define(function(require) {
 	 */
 	DummyDataUtil.prototype.getVocData = function() {
 		if(this.vocList.length == 0) {
-			this.vocList = this.makeRandomVocData(1, 100);
+			this.vocList = this.makeRandomVocData(1, 10);
 		}
 		
 		return this.vocList;

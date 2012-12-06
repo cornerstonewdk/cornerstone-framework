@@ -106,8 +106,12 @@
 				selectedVocId = $(event.target).attr('data-voclist');
 			}
 			
-			$('li.active[data-voclist]').removeClass('active');
-			$('li[data-voclist="' + selectedVocId + '"]').addClass('active');
+			$('li.active[data-voclist]').removeClass('active').removeAttr("style");
+			$('li[data-voclist="' + selectedVocId + '"]').addClass('active').css({
+                boxShadow:"none",
+                background: "#2a6b8d",
+                color: "#FFF"
+            });
 			
 			this.loadVocDetailData(selectedVocId);
 		},
