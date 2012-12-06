@@ -34,13 +34,13 @@ thumbnail: '6.5.00.sample.png'
 	> example 2. 현재 wifi가 연결되었는지를 판단하는 sample (deviceStatus_sample.html) 
 
 		function validSuccessCalback_DS(prop,value) {
-		alert("The aspect::" + prop.aspect + "  property::" + prop.property + " is " + value);
-		if(value == "undefined")
-			alert("현재 wifi로 연결 되어 있지 않음");
+			alert("The aspect::" + prop.aspect + "  property::" + prop.property + " is " + value);
+			if(value == "undefined")
+				alert("현재 wifi로 연결 되어 있지 않음");
 		}
 
 		function validErrorCallback_DS(response){
-		alert("다음 error: " +  response.message + ", 발생");
+			alert("다음 error: " +  response.message + ", 발생");
 		}
 
 		navigator.devicestatus.getPropertyValue(validSuccessCalback_DS ,validErrorCallback_DS ,{aspect:"WiFiNetwork", property:"ssid"});
@@ -58,14 +58,13 @@ thumbnail: '6.5.00.sample.png'
 		}
 
 		// start Image capture
-		navigator.capture.captureImage(captureSuccess, captureError, 
-			{destinationFilename : "file://sdcard/skruntimetest/test.png"});
+		navigator.capture.captureImage(captureSuccess, captureError, {destinationFilename : "file://sdcard/skruntimetest/test.png"});
 
 	> example 4. battery 충전 유무가 변경 되었을 때 이를 웹앱에 공지하는 sample (battery_sample.html)
 
 		function onBatteryStatus() {
-		alert("navigator.battery.charging = " + navigator.battery.charging);
-		alert("navigator.battery.level = " + navigator.battery.level);
+			alert("navigator.battery.charging = " + navigator.battery.charging);
+			alert("navigator.battery.level = " + navigator.battery.level);
 		}
 	
 		navigator.battery.addEventListener("chargingchange", onBatteryStatus,false);

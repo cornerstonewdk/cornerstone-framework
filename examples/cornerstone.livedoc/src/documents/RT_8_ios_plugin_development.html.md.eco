@@ -64,15 +64,15 @@ thumbnail: '6.8.00.iOS.png'
 		
 	> full example code (RTPageLoading.h)
 
-			#import <SRT/RTPlugin.h>
-			
-			@interface RTPageLoading : RTPlugin {
-			    
-			}
-			
-			-(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+		#import <SRT/RTPlugin.h>
+		
+		@interface RTPageLoading : RTPlugin {
+		    
+		}
+		
+		-(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
-			@end
+		@end
 
 
 - native 모듈을 개발을 위한 Objective-C 소스 파일을 생성한다.
@@ -117,19 +117,17 @@ thumbnail: '6.8.00.iOS.png'
 
 	> full example code (RTPageLoading.m)
 
-			#import "RTPageLoading.h"
-			
-			@implementation RTPageLoading
-			
-			-(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options {
-			    NSString* callbackId = [arguments objectAtIndex:0];
-			    RTPluginResult* result = [RTPluginResult resultWithStatus:RTCommandStatus_OK messageAsDouble:123456.789];
-			    [super writeJavascript:[result toSuccessCallbackString:callbackId]]; 
-			}
-			
-			@end
-
+		#import "RTPageLoading.h"
+		
+		@implementation RTPageLoading
+		
+		-(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options {
+		    NSString* callbackId = [arguments objectAtIndex:0];
+		    RTPluginResult* result = [RTPluginResult resultWithStatus:RTCommandStatus_OK messageAsDouble:123456.789];
+		    [super writeJavascript:[result toSuccessCallbackString:callbackId]]; 
 		}
+		@end
+	}
 
 
 **step 3.**  확장 구조 개발자는 아래의 그림과 같이 www 폴더의 .js 파일에 추가할 JavaScript 모듈에 대한 정의를 한다. 
@@ -194,10 +192,10 @@ thumbnail: '6.8.00.iOS.png'
 	>	plugin.xml 
 
 		<key>Plugins</key>
-			<dict>
-				<key>PageLoading</key>
-				<string>RTPageLoading</string>
-			</dict>
+		<dict>
+			<key>PageLoading</key>
+			<string>RTPageLoading</string>
+		</dict>
 
 	
 
@@ -249,25 +247,25 @@ thumbnail: '6.8.00.iOS.png'
 
 >	Example 2. CallLog Plugin 사용 예제 
 
-		<script type="text/javascript" charset="utf-8" src="../path/calllogplugin.js"></script>
-		<title>CallLog Test</title>
-		<script type="text/javascript">
-		
-		function calllogSC(obj){
-			if (obj.length > 0) {
-					alert(obj[0].number);
-					alert(obj[0].duration);
-				} else {
-					alert("empty call log");
-				}
-		}
-		function errorcallback(e) {
-			alert(e);
-		}
-		function getCallLogs() {
-			window.plugins.CallLog.list(calllogSC, errorcallback, "day");
-		}
-		</script>
+	<script type="text/javascript" charset="utf-8" src="../path/calllogplugin.js"></script>
+	<title>CallLog Test</title>
+	<script type="text/javascript">
+	
+	function calllogSC(obj){
+		if (obj.length > 0) {
+				alert(obj[0].number);
+				alert(obj[0].duration);
+			} else {
+				alert("empty call log");
+			}
+	}
+	function errorcallback(e) {
+		alert(e);
+	}
+	function getCallLogs() {
+		window.plugins.CallLog.list(calllogSC, errorcallback, "day");
+	}
+	</script>
 
 
 **step 6.**  Resources/icons 폴더 내부에 웹앱 개발자가 사용하고자 하는 아이콘 이미지를 프로젝트에 추가한다. 기본으로 설정된 icon 파일 이름은 **icon**이며 기본 설정일 경우 단말에 따라 적용되는 icon 파일 이름은 아래와 같다. icon 파일 이름 설정 방법은 step 5. 에서 다룬다.

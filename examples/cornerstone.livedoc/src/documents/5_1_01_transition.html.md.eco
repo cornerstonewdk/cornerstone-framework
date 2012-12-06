@@ -331,7 +331,7 @@ HTML 코드
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -341,7 +341,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -366,31 +370,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -423,16 +427,69 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-	<div class="header navbar">
-	    <div class="navbar-inner">
-	        <div class="container">
-	            <a class="brand" href="index.html">CornerStone</a>
-	        </div>
-	    </div>
-	</div>
-	<div class="container-fluid">
-	    <div class="row-fluid">
+	<style type="text/css">
+		#front .btn {
+		    margin: 10px 0;
+		    padding: 10px;
+		}
+		
+		.full-width {
+		    width: 100%;
+		}
+		
+		#front, #back {
+		    display: none;
+		    margin:0;
+		}
+		#front.current, #back.current {
+			display: block;
+		}
+		
+		#back {
+		    color:#FFF;
+		}
+		#back h3 {
+		    padding: 10px;
+		}
+		#back .form-actions {
+		    background-color: transparent;
+		}
+		
+		
+		@media (max-width: 767px) {
+		    #front, #back {
+		        margin: 0px;
+		    }
+		
+		    .navbar .brand {
+		        margin: 0 auto;
+		        width: 127px;
+		        float: none;
+		    }
+		}
+		
+		@media (max-width: 500px) {
+		    #front, #back {
+		        margin: 0;
+		    }
+		
+		    .navbar .brand {
+		        margin: 0 auto;
+		        width: 127px;
+		        float: none;
+		    }
+		}
+	</style>
+	<div id="page" class="container">
+    	<div class="row-fluid">
 	        <div id="front" class="current span12">
+	            <div class="header navbar">
+	                <div class="navbar-inner">
+	                    <div class="container">
+	                        <a class="brand" href="index.html">CornerStone</a>
+	                    </div>
+	                </div>
+	            </div>
 	            <div class="row-fluid">
 	                <div class="span6">
 	                    <button class="full-width btn " data-transition="flip">Flip</button>
@@ -464,15 +521,20 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	                <div class="span6">
 	                    <button class="full-width btn " data-transition="turn">Turn</button>
 	                </div>
-	                <div class="span6">
-	                    <button class="full-width btn " data-transition="custom1">Custom1</button>
-	                </div>
 	            </div>
 	        </div>
 	        <div id="back" class="span12">
+	            <div class="header navbar">
+	                <div class="navbar-inner">
+	                    <div class="container">
+	                        <a class="brand" href="index.html">CornerStone</a>
+	                    </div>
+	                </div>
+	            </div>
+	
 	            <h3>화면전환용 테스트 페이지2</h3>
 	
-	            <form class="form-horizontal">
+	            <form class="form-horizontal" action="#">
 	                <fieldset>
 	                    <div class="control-group">
 	                        <label class="control-label" for="focusedInput">Focused input</label>
@@ -481,44 +543,13 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	                            <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
 	                        </div>
 	                    </div>
-	                    <div class="control-group">
-	                        <label class="control-label" for="disabledInput">Disabled input</label>
-	
-	                        <div class="controls">
-	                            <input class="input-xlarge disabled" id="disabledInput" type="text"
-	                                   placeholder="Disabled input here…" disabled="">
-	                        </div>
-	                    </div>
-	                    <div class="control-group">
-	                        <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
-	
-	                        <div class="controls">
-	                            <label class="checkbox">
-	                                <input type="checkbox" id="optionsCheckbox2" value="option1" disabled="">
-	                                This is a disabled checkbox
-	                            </label>
-	                        </div>
-	                    </div>
+	                    
 	                    <div class="control-group warning">
-	                        <label class="control-label" for="inputWarning">Input with warning</label>
+	                        <label class="control-label" for="inputWarning">Warning</label>
 	
 	                        <div class="controls">
 	                            <input type="text" id="inputWarning">
-	                            <span class="help-inline">Something may have gone wrong</span>
-	                        </div>
-	                    </div>
-	                    <div class="control-group success">
-	                        <label class="control-label" for="selectError">Select with success</label>
-	
-	                        <div class="controls">
-	                            <select id="selectError">
-	                                <option>1</option>
-	                                <option>2</option>
-	                                <option>3</option>
-	                                <option>4</option>
-	                                <option>5</option>
-	                            </select>
-	                            <span class="help-inline">Woohoo!</span>
+	                            <span class="help-inline">Warning</span>
 	                        </div>
 	                    </div>
 	                </fieldset>
@@ -530,7 +561,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	        </div>
 	    </div>
 	</div>
-	<script type="javascript">
+	<script type="text/javascript" src="./dist/util/transition.js"></script>
+	<script type="text/javascript">
 	$(function () {
 	    var effect = Transition.effect.prototype;
 	    effect.custom1 = function (opt) {
@@ -645,9 +677,5 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	        });
 	    });
 	});
-
 	</script>
-
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
-
-
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 560px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>

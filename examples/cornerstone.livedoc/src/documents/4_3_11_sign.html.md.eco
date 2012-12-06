@@ -30,7 +30,7 @@ __마크업__
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -40,7 +40,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -65,31 +69,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -124,20 +128,20 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% prv_1 = (contents) => %>
     <h3>Sign</h3>
 
-    <div><i class="badge">1</i> 아래 회색 박스 안에 터치 또는 마우스 드래그를 이용해서 싸인을 한다.</div>
-    <div><i class="badge">2</i> 이미지로 보기를 누른 후 하단에 생성된 이미지를 확인한다.</div>
-    <div><i class="badge">3</i> 이미지 다운로드하기를 통해 하단에 생성된 이미지를 다운로드한다.(HTML5 기능으로 구현된 상태로 일부 브라우저에서 작동이 원활하지 않을 수 있다.)</div>
-    <div><i class="badge">4</i> 리셋하기를 눌러 초기화를 한다.</div>
+    <p><i class="badge badge-info">1</i> 아래 회색 박스 안에 터치 또는 마우스 드래그를 이용해서 싸인을 한다.</p>
+    <p><i class="badge badge-info">2</i> 이미지로 보기를 누른 후 하단에 생성된 이미지를 확인한다.</p>
+    <p><i class="badge badge-info">3</i> 리셋하기를 눌러 초기화를 한다.</p>
 
     <div class="widget-sign">
         <div id="signature" class="sign"></div>
         <div id="tools">
             <button class="btn show-sign">이미지로 보기</button>
-            <a href="#" class="btn download-sign" download="my-sign.png">이미지 다운로드하기</a>
             <button class="btn reset-sign">리셋하기</button>
         </div>
-        <div class="widget-sign-viewer"></div>
+        <h3>이미지를 보여줄 영역</h3>
+        <div class="widget-sign-viewer" style="border:1px solid #CCC;min-height: 300px;"></div>
     </div>
+
     <script>
 	    window.onload = function() {
             $("#signature").sign();
@@ -148,22 +152,16 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                 $("div.widget-sign-viewer").html($("<img/>", {
                     src:"data:" + data
                 }));
-                $("a.download-sign").attr({
-                    href:"data:" + data
-                });
                 console.log(data);
             });
 
             $("button.reset-sign").on('click', function (e) {
                 $("#signature").sign("reset"); // 초기화
                 $(".widget-sign-viewer img").remove();
-                $("a.download-sign").attr({
-                    href:"#"
-                });
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 570px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 1100px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 메서드
 
@@ -172,3 +170,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 $().sign(); | - | object | 해당 엘리먼트에 플러그인을 적용한다.
 $().sign(option); | reset | string | 싸인을 초기화한다.
 $().sign(option); | getData | string | 데이터 옵션- "image" : base64형태의 이미지 데이터를 리턴
+
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+</script>

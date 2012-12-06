@@ -30,6 +30,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 5;
+  opacity: 0;
 }
 .CodeMirror-scrollbar-inner {
   /* This needs to have a nonzero width in order for the scrollbar to appear

@@ -88,9 +88,9 @@ thumbnail: '6.1.00.runtime_structure.png'
 
 ----------
 
-## IOS Runtime 기본 구조 
+## iOS Runtime 기본 구조 
 
-### IOS Native Layer
+### iOS Native Layer
 
 ![](./images/ios-Runtime-structure.png)
 
@@ -105,7 +105,7 @@ thumbnail: '6.1.00.runtime_structure.png'
 
 <br>
 
-### IOS Project Files
+### iOS Project Files
 
 -	iOS용 webapp을 개발하기 위해서는 아래 와 같은 project file 들을 세팅하여야 한다. 
 

@@ -30,7 +30,7 @@ DATA-API(data-toggle="buttons*", $('#example').button()
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -40,7 +40,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -65,31 +69,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -123,63 +127,38 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <% prv_1 = (contents) => %>
     <h3>Button</h3>
-    <div><i class="badge">1</i>아래 단일 토글을 클릭했을때 버튼이 토글되는지 확인할 수 있다.</div>
+    <p><i class="badge badge-info">1</i>아래 단일 토글을 클릭했을때 버튼이 토글되는지 확인할 수 있다.</p>
 	<!-- data-toggle="button" 속성으로 토글 기능 부여. -->
-	<button type="button" class="btn" data-toggle="button">단일 토글</button>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+	<button type="button" class="btn no-hover" data-toggle="button">단일 토글</button>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### DATA-API(data-attribute)를 이용한 버튼 그룹 checkbox 토글
 
 <% prv_2 = (contents) => %>
     <h3>Button</h3>
-    <div><i class="badge">1</i>아래 버튼 그룹을 클릭한다.</div>
-    <div><i class="badge">2</i>멀티 토글이 정상적으로 작동하는지 확인한다.</div>
+    <p><i class="badge badge-info">1</i>아래 버튼 그룹을 클릭한다.</p>
+    <p><i class="badge badge-info">2</i>멀티 토글이 정상적으로 작동하는지 확인한다.</p>
     <!-- data-toggle="buttons-checkbox" 속성으로 checkbox형태의 토글 기능 부여. -->
 	<div class="btn-group" data-toggle="buttons-checkbox">
-		<button type="button" class="btn"><strong>B</strong></button>
-		<button type="button" class="btn"><em>i</em></button>
-		<button type="button" class="btn">u</button>
+		<button type="button" class="btn no-hover"><strong>B</strong></button>
+		<button type="button" class="btn no-hover"><em>i</em></button>
+		<button type="button" class="btn no-hover">u</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### DATA-API(data-attribute)를 이용한 버튼 그룹 radio 토글
 
 <% prv_3 = (contents) => %>
     <h3>Button</h3>
-    <div><i class="badge">1</i>아래 버튼 그룹을 클릭한다.</div>
-    <div><i class="badge">2</i>단일 토글이 정상적으로 작동하는지 확인한다.</div>
+    <p><i class="badge badge-info">1</i>아래 버튼 그룹을 클릭한다.</p>
+    <p><i class="badge badge-info">2</i>단일 토글이 정상적으로 작동하는지 확인한다.</p>
 	<!-- data-toggle="buttons-radio" 속성으로 radio형태의 토글 기능 부여. -->
 	<div class="btn-group" data-toggle="buttons-radio">
-		<button type="button" class="btn active"><strong>B</strong></button>
-		<button type="button" class="btn"><em>i</em></button>
-		<button type="button" class="btn">u</button>
+		<button type="button" class="btn active no-hover"><strong>B</strong></button>
+		<button type="button" class="btn no-hover"><em>i</em></button>
+		<button type="button" class="btn no-hover">u</button>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
-
-#### javascript를 이용하는 방식
-
-<% prv_4 = (contents) => %>
-    <h3>Button</h3>
-    <div><i class="badge">1</i>토글 전 버튼을 누른다.</div>
-    <div><i class="badge">2</i>토글 후 텍스트로 변경되는 것과 3초 후 초기화되는지 확인한다.</div>
-	<!--  토글 후 보여줄 텍스르를 data-loading-text 속성에 정의 -->
-	<button type="button" class="btn btn-primary" data-loading-text="토글 후">토글 전</button>
-
-	<script type="text/javascript">
-	    window.onload = function() {
-            // 첫번째 버튼은 javascript로 이벤트를 받아 토글 기능 부여.
-            $("button").eq(0).on("click", function(e) {
-                var btn = $(this);
-                // 해당 버튼 클릭시 data-loading-text에 작성한 텍스트로 버튼 텍스트 대체.
-                btn.button("loading");
-                // 3초 후 토글 전 상태로 리셋.
-                window.setTimeout(function () {
-                  btn.button("reset")
-                }, 3000);
-            });
-		};
-	</script>
-<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 200px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 옵션
 이름 | 설명
@@ -188,3 +167,10 @@ toggle | data-toggle="button"과 같이 토글 온/오프 형태의 기능
 loading | data-loading-text 속성에 정의된 텍스트를 버튼에 보여준다.
 reset | 토글 전에 노출된 텍스트로 보여준다.
 string(사용자가 정의) | data-string-text  string를 부분을 사용자가 정의한대로 사용 가능.(loading, reset형태)
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:first-child").addClass("fixed_table");
+$table.find("tbody tr > td:first-child").addClass("fixed_table");
+</script>

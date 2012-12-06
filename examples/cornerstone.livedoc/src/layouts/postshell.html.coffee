@@ -173,7 +173,7 @@ html lang: 'ko', ->
                           else
                              li '.inactive', -> a "class":depth_val, "href": "."+"#{documentModel.get('url')}"+".html", "#{documentModel.get('title')}"
                       li -> a ".first-depth", "href":"", "종합테스트"
-                      li '.inactive', -> a "class":"second-depth", "href": "/cornertest", "Cornerstone Framework Test"
+                      li '.inactive', -> a "class":"second-depth", "href": "/cornertest/", "Cornerstone Framework Test"
 
             div '.span9.well', 'style':'float: left;', ->
                 a '#mobile_anchor', ""
