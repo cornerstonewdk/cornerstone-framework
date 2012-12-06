@@ -16,16 +16,16 @@ thumbnail: '4.2.01.dropdown.png'
 드롭다운 플러그인과 함께 사용되는 스타일로 Button dropdowns,Navbar등 각종 dropdown을 활용하는 위젯이 이것을 불러들여와 사용된다. 기본적으로 드롭다운 마크업은 화면상에 노출되지 않는다. 드롭다운 메뉴자체가 상위 메뉴를 통해 노출되는 형태이므로 상위 메뉴에서 트리거가 발생하면 노출이 된다.(플러그인 필요) 또한 드롭다운을 포함하는 상위 엘리먼트는 `position:relative` css 프로퍼티 선언을 해야한다.
 
 ```
-	<div class="dropdown">
-	  <!-- Link or button to toggle dropdown -->
-	  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-	    <li><a tabindex="-1" href="#">Action</a></li>
-	    <li><a tabindex="-1" href="#">Another action</a></li>
-	    <li><a tabindex="-1" href="#">Something else here</a></li>
-	    <li class="divider"></li>
-	    <li><a tabindex="-1" href="#">Separated link</a></li>
-	  </ul>
-	</div>
+<div class="dropdown">
+  <!-- Link or button to toggle dropdown -->
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    <li><a tabindex="-1" href="#">Action</a></li>
+    <li><a tabindex="-1" href="#">Another action</a></li>
+    <li><a tabindex="-1" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
 ```
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
@@ -38,7 +38,7 @@ thumbnail: '4.2.01.dropdown.png'
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -48,7 +48,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -73,31 +77,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -139,7 +143,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <li><a tabindex="-1" href="#">구분된 링크</a></li>
         </ul>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 170px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 170px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 옵션(Options)
 
@@ -147,9 +151,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 `.dropdown-menu` 클래스에 `.pull-right` 클래스를 추가하면 드롭다운 메뉴는 우측으로 정렬된다.
 
 ```
-	<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-	  ...
-	</ul>
+<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+  ...
+</ul>
 ```
 
 <% prv_2 = (contents) => %>
@@ -162,22 +166,22 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	        <li><a tabindex="-1" href="#">구분된 링크</a></li>
 	    </ul>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 170px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 170px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 서브메뉴 추가하기(Sub menus on dropdowns)
 
 서브메뉴를 추가할 `li` 태그에 `.dropdown-submenu`를 추가하고 그 안에 서브 메뉴로 사용할 드롭다운를 추가한다.
 
 ```
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-	  ...
-	  <li class="dropdown-submenu">
-	    <a tabindex="-1" href="#">More options</a>
-	    <ul class="dropdown-menu">
-	      ...
-	    </ul>
-	  </li>
-	</ul>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+  ...
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="#">More options</a>
+    <ul class="dropdown-menu">
+      ...
+    </ul>
+  </li>
+</ul>
 ```
 
 <% prv_3 = (contents) => %>
@@ -198,7 +202,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	        </li>
 	    </ul>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 270px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 270px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 예제(Example)
 
@@ -231,7 +235,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	        </li>
 	    </ul>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 230px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 230px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ## 버튼 그룹(Button groups)
 
@@ -240,11 +244,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 여러 `.btn` 클래스를 `.btn-group` 클래스로 랩핑한다.
 
 ```
-	<div class="btn-group">
-	  <button class="btn">1</button>
-	  <button class="btn">2</button>
-	  <button class="btn">3</button>
-	</div>
+<div class="btn-group">
+  <button type="button" class="btn">1</button>
+  <button type="button" class="btn">2</button>
+  <button type="button" class="btn">3</button>
+</div>
 ```
 
 ### 다중 버튼 그룹(Multiple button groups)
@@ -252,11 +256,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 복잡한 요소를 위해 여러 `.btn-group` 클래스를 결합하여 `.btn-toolbar` 클래스로 랩핑한다.
 
 ```
-	<div class="btn-toolbar">
-	  <div class="btn-group">
-	    ...
-	  </div>
-	</div>
+<div class="btn-toolbar">
+  <div class="btn-group">
+    ...
+  </div>
+</div>
 ```
 
 ### 수평 버튼 그룹(Vertical button groups)
@@ -264,35 +268,35 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 기본적으로 수평형태로 보여지는 버튼들을 수직(스택)형태로 보여지도록 하기 위해 `.btn-group` 클래스에  `.btn-group-vertical` 클래스를 추가해야 한다.
 
 ```
-	<div class="btn-group btn-group-vertical">
-	  ...
-	</div>
+<div class="btn-group btn-group-vertical">
+  ...
+</div>
 ```
 
 <% prv_5 = (contents) => %>
 	<h3>Single button group 예제</h3>
     <div class="btn-group">
-    	<button class="btn">1</button>
-	    <button class="btn">2</button>
-	    <button class="btn">3</button>
+    	<button type="button" class="btn">1</button>
+	    <button type="button" class="btn">2</button>
+	    <button type="button" class="btn">3</button>
     </div>
 
 	<h3>Multiple button groups 예제</h3>
 	<div class="btn-toolbar">
         <div class="btn-group">
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn">4</button>
+            <button type="button" class="btn">1</button>
+            <button type="button" class="btn">2</button>
+            <button type="button" class="btn">3</button>
+            <button type="button" class="btn">4</button>
         </div>
         <div class="btn-group">
-            <button class="btn">5</button>
-            <button class="btn">6</button>
-            <button class="btn">7</button>
+            <button type="button" class="btn">5</button>
+            <button type="button" class="btn">6</button>
+            <button type="button" class="btn">7</button>
         </div>
         <div class="btn-group">
-            <button class="btn">8</button>
-            <button class="btn">10</button>
+            <button type="button" class="btn">8</button>
+            <button type="button" class="btn">10</button>
         </div>
     </div>
 
@@ -304,22 +308,22 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         <button type="button" class="btn"><i class="icon-align-justify"></i></button>
     </div>
 	
-<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 456px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 456px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ## 버튼 드롭다운(Button dropdown menus)
 
 버튼 드롭다운은 드롭다운을 보여 주기 위한 toggle형태의 버튼과 드롭다운이 필요하다. 이 2가지 요소를 `.btn-group` 클래스로 감싼다.
 
 ```
-	<div class="btn-group">
-	  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-	    Action
-	    <span class="caret"></span>
-	  </a>
-	  <ul class="dropdown-menu">
-	    <!-- dropdown menu links -->
-	  </ul>
-	</div>
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Action
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <!-- dropdown menu links -->
+  </ul>
+</div>
 ```
 
 ### 다양한 버튼 사이즈 적용(Works with all button sizes)
@@ -331,15 +335,15 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 분리된 버튼 드롭다운은 버튼 텍스트와 역삼각형(caret)에 구분선을 보여준다. 기본 버튼 드롭다운에서는 `a` 태그 내부에 텍스트와 역삼각형(caret)를 같이 포함하지만 분리된 버튼 드롭다운에서는 텍스트와 역삼각형(caret) 부분을 분리하며 `button` 태그를 사용한다.
 
 ```
-	<div class="btn-group">
-	  <button class="btn">Action</button>
-	  <button class="btn dropdown-toggle" data-toggle="dropdown">
-	    <span class="caret"></span>
-	  </button>
-	  <ul class="dropdown-menu">
-	    <!-- dropdown menu links -->
-	  </ul>
-	</div>
+<div class="btn-group">
+  <button class="btn">Action</button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- dropdown menu links -->
+  </ul>
+</div>
 ```
 
 ### 드롭업(Dropup menus)
@@ -347,15 +351,15 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 드롭업은 숨겨진 메뉴가 위로 돌출된다. `.dropup` 사용한다.
 
 ```
-	<div class="btn-group dropup">
-	  <button class="btn">Dropup</button>
-	  <button class="btn dropdown-toggle" data-toggle="dropdown">
-	    <span class="caret"></span>
-	  </button>
-	  <ul class="dropdown-menu">
-	    <!-- dropdown menu links -->
-	  </ul>
-	</div>
+<div class="btn-group dropup">
+  <button class="btn">Dropup</button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- dropdown menu links -->
+  </ul>
+</div>
 ```
 
 <% prv_6 = (contents) => %>
@@ -403,4 +407,4 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 	        <li><a tabindex="-1" href="#">구분된 링크</a></li>
         </ul>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_6  , funcname : 'prv_6' , ifs_h : 'height: 390px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_6  , funcname : 'prv_6' , ifs_h : 'height: 440px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>

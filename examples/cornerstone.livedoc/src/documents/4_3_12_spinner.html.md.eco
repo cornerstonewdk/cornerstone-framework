@@ -31,7 +31,7 @@ loading 이미지 : [http://preloaders.net/](http://preloaders.net/)
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -41,7 +41,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -66,31 +70,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -135,7 +139,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
               <div class="dash-widget no-padding">
                 <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn">전체 페이지 로더</a>
-                <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn">중앙 로더</a>
+                <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn">일부 영역 로더</a>
               </div>
             </div>
           </div>
@@ -153,7 +157,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### javascript를 이용하는 방식
 
@@ -170,7 +174,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
           <div class="dash-widget no-padding">
             <a id="spinner" class="btn">전체 페이지 로더</a>
-            <a id="nested-spinner" class="btn">중앙 로더</a>
+            <a id="nested-spinner" class="btn">일부 영역 로더</a>
           </div>
         </div>
       </div>
@@ -195,7 +199,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 메서드
 
@@ -204,3 +208,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 $().spinner(); | - | object | 해당 엘리먼트에 플러그인을 적용한다.
 $().spinner(option); | show | string | 로딩 스피너를 보여준다.
 $().spinner(option); | hide | string | 로딩 스피너를 숨긴다.
+
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+</script>

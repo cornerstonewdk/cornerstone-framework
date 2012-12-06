@@ -20,9 +20,9 @@ thumbnail: '4.2.09.progress_bar.png'
 기본 프로그레스바는 수직 간단한 그라디언트 효과를 사용한다.
 
 ```
-	<div class="progress">
-	  <div class="bar" style="width: 60%;"></div>
-	</div>
+<div class="progress">
+  <div class="bar" style="width: 60%;"></div>
+</div>
 ```
 
 ### 줄무늬 효과(Striped)
@@ -30,9 +30,9 @@ thumbnail: '4.2.09.progress_bar.png'
 줄무늬 효과를 만들기 위해 그라디언트 효과를 사용하며 `.progress` 클래스에 `.progress-striped` 클래스를 추가 한다.
 
 ```
-	<div class="progress progress-striped">
-	  <div class="bar" style="width: 20%;"></div>
-	</div>
+<div class="progress progress-striped">
+  <div class="bar" style="width: 20%;"></div>
+</div>
 ```
 
 ### 에니메이션 효과(Animated)
@@ -40,9 +40,9 @@ thumbnail: '4.2.09.progress_bar.png'
 줄무늬에 애니메이션 효과를 주기 위해 `.active` 클래스를 추가 한다.
 
 ```
-	<div class="progress progress-striped active">
-	  <div class="bar" style="width: 40%;"></div>
-	</div>
+<div class="progress progress-striped active">
+  <div class="bar" style="width: 40%;"></div>
+</div>
 ```
 
 ### 중첩 효과(Stacked)
@@ -50,11 +50,11 @@ thumbnail: '4.2.09.progress_bar.png'
 프로그레스 바에 다양한 색의 바를 보여주기 위해 `.progress` 클래스에 내부에 `.bar` 클래스에 `.bar-success`,  `.bar-warning`, `.bar-danger`  등의 클래스를 추가해서 다양한 색의 바를 표현 할 수 있다.
 
 ```
-	<div class="progress">
-	  <div class="bar bar-success" style="width: 35%;"></div>
-	  <div class="bar bar-warning" style="width: 20%;"></div>
-	  <div class="bar bar-danger" style="width: 10%;"></div>
-	</div>
+<div class="progress">
+  <div class="bar bar-success" style="width: 35%;"></div>
+  <div class="bar bar-warning" style="width: 20%;"></div>
+  <div class="bar bar-danger" style="width: 10%;"></div>
+</div>
 ```
 
 ### 옵션(Options)
@@ -64,18 +64,18 @@ thumbnail: '4.2.09.progress_bar.png'
 프로그레스 바의 색상은 버튼에서 사용되는 색상인  `info`, `success`, `warning`, `danger` 를 사용 한다.
 
 ```
-	<div class="progress progress-info">
-	  <div class="bar" style="width: 20%"></div>
-	</div>
-	<div class="progress progress-success">
-	  <div class="bar" style="width: 40%"></div>
-	</div>
-	<div class="progress progress-warning">
-	  <div class="bar" style="width: 60%"></div>
-	</div>
-	<div class="progress progress-danger">
-	  <div class="bar" style="width: 80%"></div>
-	</div>
+<div class="progress progress-info">
+  <div class="bar" style="width: 20%"></div>
+</div>
+<div class="progress progress-success">
+  <div class="bar" style="width: 40%"></div>
+</div>
+<div class="progress progress-warning">
+  <div class="bar" style="width: 60%"></div>
+</div>
+<div class="progress progress-danger">
+  <div class="bar" style="width: 80%"></div>
+</div>
 ```
 
 #### 다중 줄무늬 효과 적용(Striped bars)
@@ -83,18 +83,18 @@ thumbnail: '4.2.09.progress_bar.png'
 추가적인 색상에 줄무늬 클래스를 추가해서 다양한 색상의 줄무늬 프로그레스바를 만들 수 있다.
 
 ```
-	<div class="progress progress-info progress-striped">
-	  <div class="bar" style="width: 20%"></div>
-	</div>
-	<div class="progress progress-success progress-striped">
-	  <div class="bar" style="width: 40%"></div>
-	</div>
-	<div class="progress progress-warning progress-striped">
-	  <div class="bar" style="width: 60%"></div>
-	</div>
-	<div class="progress progress-danger progress-striped">
-	  <div class="bar" style="width: 80%"></div>
-	</div>
+<div class="progress progress-info progress-striped">
+  <div class="bar" style="width: 20%"></div>
+</div>
+<div class="progress progress-success progress-striped">
+  <div class="bar" style="width: 40%"></div>
+</div>
+<div class="progress progress-warning progress-striped">
+  <div class="bar" style="width: 60%"></div>
+</div>
+<div class="progress progress-danger progress-striped">
+  <div class="bar" style="width: 80%"></div>
+</div>
 ```
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
@@ -107,7 +107,7 @@ thumbnail: '4.2.09.progress_bar.png'
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -117,7 +117,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -142,31 +146,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -254,4 +258,4 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <div class="progress progress-danger progress-striped">
         <div class="bar" style="width: 80%"></div>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 908px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 908px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>

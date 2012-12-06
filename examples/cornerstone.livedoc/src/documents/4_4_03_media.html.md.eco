@@ -12,21 +12,21 @@ thumbnail: '4.4.03.media.png'
 ---
 
 ### Media
-반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어.
+동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어 위젯. Cornerstone의 반응형 웹 기술이 적용됨.
 
-![<미디어 지원표>](<http://azamara.io/img/media-support.png>)
+![<미디어 지원표>](<images/4.4.03.media-support.png>)
 
 출처: mediaelement.js
 
 의존성
 
 ```
-	<!-- 차트를 위한 스타일시트 -->
-    <link rel='stylesheet' href='./dist/ui/widget-media.css' />
-	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>
-	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
-    <script src='./dist/ui/widget-media.js'></script>
+<!-- 차트를 위한 스타일시트 -->
+<link rel='stylesheet' href='./dist/ui/widget-media.css' />
+<!-- jQuery: 피처드 위젯 사용을 위한 jquery.js  -->
+<script src='./dist/lib/jquery-1.8.1.min.js'></script>
+<!-- Cornerstone UI 기본 설정, DATA-API 기능 추가 -->
+<script src='./dist/ui/widget-media.js'></script>
 ```
 
 ### 사용법
@@ -46,7 +46,7 @@ DATA-API(data-attribute) 또는 $('#example').featuredDataTable();
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -56,7 +56,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -81,31 +85,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -141,18 +145,18 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <h3>Media</h3>
     <!-- data-featured="media"를 정의하므로 미디어를 적용한다. -->
     <div class="featured-video">
-        <video width="400" height="300" data-featured="media" preload="none" >
+        <video width="250" height="200" data-featured="media" preload="none" >
             <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
             <source type="video/mp4" src="./sample-data/sample-media.mp4"/>
             <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-            <object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+            <object width="250" height="200" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
                 <param name="movie" value="./dist/ui/flashmediaelement.swf"/>
                 <param name="flashvars"
                           value="controls=true&file=./sample-data/sample-media.mp4"/>
             </object>
         </video>
     </div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### javascript를 이용하는 방식
 
@@ -160,11 +164,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <h3>Media</h3>
     <!-- id값을 정의하고 해당 id값에 $('#example').featuredMedia(); 스크립트를 통해 미디어를 적용한다.  -->
     <div class="featured-video">
-        <video width="400" height="300" id="example" preload="none" >
+        <video width="250" height="200" id="example" preload="none" >
             <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
             <source type="video/mp4" src="./sample-data/sample-media.mp4"/>
             <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-            <object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+            <object width="250" height="200" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
                 <param name="movie" value="./dist/ui/flashmediaelement.swf"/>
                 <param name="flashvars"
                           value="controls=true&file=./sample-data/sample-media.mp4"/>
@@ -176,7 +180,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             $('audio,video').featuredMedia();
         };
     </script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 기능
 
@@ -218,3 +222,16 @@ pause | pause | 정지할때 발생하는 이벤트
 ended | ended | 종료될때 발생하는 이벤트
 volumechange | volumechange | 볼륨크기를 조절할 때 발생하는 이벤트
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered").each(function(i) {
+    var $this = $(this);
+    if(i == 1) {
+        $this.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+    } else {
+        $this.find("thead tr > th:not(th:nth-child(3))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(3))").addClass("fixed_table");
+    }
+});
+</script>

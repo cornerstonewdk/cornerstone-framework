@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: 'Motioncaptcha'
-outline: '회원가입이나 로그인시 스팸방지를 위해 사용되는 Capcha 문자를 모션 터치로 사용하는 플러그인이다. javascript를 이용하는 방식...'
+outline: '회원가입이나 로그인시 스팸방지를 위해 사용되는 captcha 문자를 모션 터치로 사용하는 플러그인이다. javascript를 이용하는 방식...'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -12,7 +12,7 @@ thumbnail: '4.3.13.motioncaptcha.png'
 ---
 
 ## Motioncaptcha
-회원가입이나 로그인시 스팸방지를 위해 사용되는 Capcha 문자를 모션 터치로 사용하는 플러그인이다.
+회원가입이나 로그인시 스팸방지를 위해 사용되는 captcha 문자를 모션 터치로 사용하는 플러그인이다.
 
 ### 사용법
 $().motioncaptcha();
@@ -29,7 +29,7 @@ $().motioncaptcha();
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -39,7 +39,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -64,31 +68,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -122,10 +126,10 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <% prv_1 = (contents) => %>
     <h3>Motioncaptcha</h3>
-    <div><i class="badge">1</i> 아래 새로고침 버튼을 눌러서 캡챠 화면을 그린다.</div>
-    <div><i class="badge">2</i> 보여지는 그림에 따라 터치 또는 마우스 드래그를 이용해 그림을 그린다.</div>
-    <div><i class="badge">3</i> 그림을 성공적으로 그렸을 때, 실패 했을 때 메세지를 확인하고 성공인 경우 성공 함수가 실행되는지 확인한다.</div>
-	<div id="example" class="widget-motioncapcha">
+    <p><i class="badge badge-info">1</i> 아래 새로고침 버튼을 눌러서 캡차(CAPTCHA) 화면을 그린다.</p>
+    <p><i class="badge badge-info">2</i> 보여지는 그림에 따라 터치 또는 마우스 드래그를 이용해 그림을 그린다.</p>
+    <p><i class="badge badge-info">3</i> 그림을 성공적으로 그렸을 때, 실패 했을 때 메세지를 확인하고 성공인 경우 성공 함수가 실행되는지 확인한다.</p>
+	<div id="example" class="widget-motioncaptcha">
         <p>폼 전송을 위해 도형을 그려주세요. :
             <button class="btn"><i class="icon-refresh"></i></button>
         </p>
@@ -146,7 +150,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		    });
         };
 	</script>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 400px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 500px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ### 옵션
 설정 | 타입 | 기본값 | 설명
@@ -155,3 +159,12 @@ shapes | array | ["triangle", "x", "rectangle", "circle", "check", "caret", "zig
 errorMsg | string | "다시 시도해주세요." | 에레 메세지를 설정한다.
 successMsg | string | "성공!" | 성공 메세지를 설정한다.
 onSuccess | function |  | 성공시 처리하는 함수.
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+$table.find("thead tr > th:nth-child(3)").removeClass("fixed_table");
+$table.find("tbody tr > td:nth-child(3)").removeClass("fixed_table");
+</script>

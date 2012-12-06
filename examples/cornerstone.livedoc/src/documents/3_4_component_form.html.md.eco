@@ -22,11 +22,11 @@ Components, Form layouts
 일반적인 고정 폭 (및 선택적으로 반응) 레이아웃은 `<div의 class="container">`를 사용한다.
 
 ```
-	<body>
-		<div class="container">
-		...
-		</div>
-	</body>
+<body>
+	<div class="container">
+	...
+	</div>
+</body>
 ```
 
 ### 유동 레이아웃(Fluid layout)
@@ -34,16 +34,16 @@ Components, Form layouts
 유동적인 레이아웃을 위해서는 `<div class="container-fluid">`를 사용한다.
 
 ```
-	<div class="container-fluid">
-	  <div class="row-fluid">
-	    <div class="span2">
-	      <!--Sidebar content-->
-	    </div>
-	    <div class="span10">
-	      <!--Body content-->
-	    </div>
-	  </div>
-	</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+    </div>
+    <div class="span10">
+      <!--Body content-->
+    </div>
+  </div>
+</div>
 ```
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
@@ -56,7 +56,7 @@ Components, Form layouts
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -66,7 +66,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -91,31 +95,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -158,7 +162,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 		<div class="mini-layout-sidebar"></div>
 		<div class="mini-layout-body"></div>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 830px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 830px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
+
+Layout에 좀더 자세히 알고 싶으면 [여기](http://twitter.github.com/bootstrap/scaffolding.html#layouts)를 참고하기 바란다.
 
 ## 타이포그라피(Typography)
 
@@ -167,12 +173,12 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 모든 HTML 내에 머리글은 &lt;h1&gt; ~ &lt;h6&gt;로 작성한다.
 
 ```
-	<h1>h1. Heading 1</h1>
-	<h2>h2. Heading 2</h2>
-	<h3>h3. Heading 3</h3>
-	<h4>h4. Heading 4</h4>
-	<h5>h5. Heading 5</h5>
-	<h6>h6. Heading 6</h6>
+<h1>h1. Heading 1</h1>
+<h2>h2. Heading 2</h2>
+<h3>h3. Heading 3</h3>
+<h4>h4. Heading 4</h4>
+<h5>h5. Heading 5</h5>
+<h6>h6. Heading 6</h6>
 ``` 
 
 ### 본문(Body copy)
@@ -181,7 +187,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 기본 테마인 wireframe의 기본글꼴은 14px 이며, line-height는 18px이다. body내의 `<p>` 태그에 모두 적용된다.
 
 ```
-	<p>...</p>
+<p>...</p>
 ```
 
 #### 본문 강조(Lead body copy)
@@ -189,7 +195,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 `.lead`를 사용하여 문장의 중요한 부분을 강조 할수도 있다.
 
 ```
-	<p class="lead">...</p>
+<p class="lead">...</p>
 ```
 
 ### 강조(Emphasis)
@@ -201,9 +207,9 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 강조하지 않을 인라인 또는 블럭 텍스트의 경우 `<small>`를 사용한다.
 
 ```
-	<p>
-		<small>This line of text is meant to be treated as fine print.</small>
-	</p>
+<p>
+	<small>This line of text is meant to be treated as fine print.</small>
+</p>
 ``` 
 
 #### Bold
@@ -211,7 +217,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 강조할 내용에 볼드를 적용하려면 `<strong>`를 사용한다.
 
 ```
-	<strong>This line of text is meant to be treated as fine print.</strong>
+<strong>This line of text is meant to be treated as fine print.</strong>
 ``` 
 
 #### Italics
@@ -219,7 +225,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 강조할 내용에 기울림을 적용하려면 `<em>`를 사용한다.
 
 ```	
-	<em>This line of text is meant to be treated as fine print.</em>
+<em>This line of text is meant to be treated as fine print.</em>
 ``` 
 
 #### 강조 클래스(Emphasis classes)
@@ -227,11 +233,11 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 강조 유틸리티 클래스의 색상을 통해 의미를 전달한다.
 
 ```
-	<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-	<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-	<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
-	<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
-	<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
+<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
 ```
 
 <% prv_2 = (contents) => %>
@@ -259,15 +265,15 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 	<p class="text-success">
 		Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
 	</p>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 450px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 450px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ## 약어(Abbreviations)
 
 약어(abbr) 및 머리 글자에 대한 요소는 hover에 대한 확장 된 버전을 표시한다. 약어(abbr)와 제목 (title)속성은 생략된 문장이나 짧게 쓴 축약 text등에 hover 효과를 두어 문장전체를 보여 준다.
 
 ```
-	<abbr title="attribute">attr</abbr>
-	<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+<abbr title="attribute">attr</abbr>
+<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
 ```
 
 ## 주소(Addresses)
@@ -275,17 +281,17 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 주소를 표시할때 쓴다. `<address>`를 사용한다.
 
 ```
-	<address>
-	  <strong>Twitter, Inc.</strong><br>
-	  795 Folsom Ave, Suite 600<br>
-	  San Francisco, CA 94107<br>
-	  <abbr title="Phone">P:</abbr> (123) 456-7890
-	</address>
-	 
-	<address>
-	  <strong>Full Name</strong><br>
-	  <a href="mailto:#">first.last@gmail.com</a>
-	</address>
+<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+ 
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@gmail.com</a>
+</address>
 ```
 
 ## 인용구(Blockquotes)
@@ -293,14 +299,14 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 문서내 인용한 부분에 적용된다. 인용한 글의 작성자 이름등에는 `<small>`, `<cite>`를 사용하여 적용한다. 오른쪽 정렬을 할때는 `.pull-right`를 사용한다.
 
 ```
-	<blockquote>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-	  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
-	</blockquote>
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+</blockquote>
 
-	<blockquote class="pull-right">
-	  ...
-	</blockquote>
+<blockquote class="pull-right">
+  ...
+</blockquote>
 ```
 
 <% prv_3 = (contents) => %>
@@ -326,35 +332,35 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 		<strong>Full Name</strong><br>
 		<a href="mailto:#">first.last@gmail.com</a>
 	</address>
+	
+	<h3>Blockquotes 우측정렬 예제</h3>
+	<blockquote class="pull-right">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+	</blockquote>
 
 	<h3>Blockquotes 예제</h3>
 	<blockquote>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
 	</blockquote>
-
-	<h3>Blockquotes 우측정렬 예제</h3>
-	<blockquote class="pull-right">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
-	</blockquote>
-<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 640px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_3  , funcname : 'prv_3' , ifs_h : 'height: 640px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 ## 목록(Lists)
 
 특정항목을 나열할때 사용하며 용도에 맞게 Unordered( 순서가 정해지지 않음 ), Ordered( 순서가 존재함 ), Unstyled( 서가 정해지지 않은 목록이나 추가적인 목록에 적용 ) 3가지 방식을 선택해 사용한다.
 
 ```
-	<ul>
-	  <li>...</li>
-	</ul>
-	
-	<ol>
-	  <li>...</li>
-	</ol>
-	
-	<ul class="unstyled">
-	  <li>...</li>
-	</ul>
+<ul>
+  <li>...</li>
+</ul>
+
+<ol>
+  <li>...</li>
+</ol>
+
+<ul class="unstyled">
+  <li>...</li>
+</ul>
 ```
 
 ### 설명(Description)
@@ -362,15 +368,15 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 연관된 설명이 포함 된 용어의 목록등을 표시할때 사용한다. `.dl-horizontal`를 사용하여 가로로 정렬할수 있다.
 
 ```
-	<dl>
-	  <dt>...</dt>
-	  <dd>...</dd>
-	</dl>
-	
-	<dl class="dl-horizontal">
-	  <dt>...</dt>
-	  <dd>...</dd>
-	</dl>
+<dl>
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
 ```
 
 <% prv_4 = (contents) => %>
@@ -429,7 +435,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 		<dt>Malesuada porta</dt>
 		<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
 	</dl>
-<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 1034px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_4  , funcname : 'prv_4' , ifs_h : 'height: 1034px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ## Code
 
@@ -438,7 +444,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 일직선의 정렬에 적용
 
 ```
-	<p>For example, <code>&amp;lt;section&amp;gt;</code> should be wrapped as inline.</p>
+<p>For example, <code>&amp;lt;section&amp;gt;</code> should be wrapped as inline.</p>
 ```
 
 ### Basic block
@@ -446,7 +452,7 @@ Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 
 `<pre>`를 사용하여 여러 줄에 걸쳐서 보여준다. `<pre>`내에서는 괄호등은 code를 사용한다. 
 
 ```
-	<pre><p>Sample text here...</p></pre>
+<pre><p>Sample text here...</p></pre>
 ```
 
 ## 테이블(Tables)
@@ -463,37 +469,37 @@ table의 사용방법
 	<caption> - 스크린 리더에서 읽어지는 table을 설명하는 요소
 
 ```
-	<table>
-		<caption>table example</caption>
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>UserName</th>
-			</tr>
-		</thead>
-		<tbody>	
-			<tr class="success">
-				<td>1</td>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Larry</td>
-				<td>the Brid</td>
-				<td>@twitter</td>
-			</tr>
-		</tbody>
-	</table>
+<table>
+	<caption>table example</caption>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>UserName</th>
+		</tr>
+	</thead>
+	<tbody>	
+		<tr class="success">
+			<td>1</td>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Jacob</td>
+			<td>Thornton</td>
+			<td>@fat</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Larry</td>
+			<td>the Brid</td>
+			<td>@twitter</td>
+		</tr>
+	</tbody>
+</table>
 ```
 
 ### 기본 형식(Default style)
@@ -501,25 +507,25 @@ table의 사용방법
 기본 table 형식은 다음과 같으며, `.table-striped`( css에서 :nth-child를 사용하여 얼룩말 효과 적용 ), `.table-bordered`( 외곽선 효과 ), `.table-hover`( 마우스 오버시 효과 ), `.table-condensed`( table에 cell 간격이 촘촘하게 적용 )를 사용하여 추가 효과를 넣을 수 있다.
 
 ```
-	<table class="table">
-	  …
-	</table>
-	
-	<table class="table table-striped">
-	  …
-	</table>
-	
-	<table class="table table-bordered">
-	  …
-	</table>
-	
-	<table class="table table-hover">
-	  …
-	</table>
-	
-	<table class="table table-condensed">
-	  …
-	</table>
+<table class="table">
+  …
+</table>
+
+<table class="table table-striped">
+  …
+</table>
+
+<table class="table table-bordered">
+  …
+</table>
+
+<table class="table table-hover">
+  …
+</table>
+
+<table class="table table-condensed">
+  …
+</table>
 ```
 
 ### 옵션으로 제공되는 클래스(Optional row classes)
@@ -529,12 +535,12 @@ table의 사용방법
 
 ```
 ...
-  <tr class="success">
-    <td>1</td>
-    <td>TB - Monthly</td>
-    <td>01/04/2012</td>
-    <td>Approved</td>
-  </tr>
+<tr class="success">
+	<td>1</td>
+	<td>TB - Monthly</td>
+	<td>01/04/2012</td>
+	<td>Approved</td>
+</tr>
 ...
 ```
 
@@ -700,7 +706,7 @@ table의 사용방법
 	</table>
 	
 	<h3>색상 표현 적용</h3>
-	<table class="table table-condensed">
+	<table class="table">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -737,41 +743,41 @@ table의 사용방법
 		</tbody>
 	</table>
 
-<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 1342px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_5  , funcname : 'prv_5' , ifs_h : 'height: 1342px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ## 확장 목록(Lists)
 기본 제공되는 Lists 형식보다 시각적으로 강조하여 표현하고 싶다면 이 Lists 요소를 사용하기 비란다. 그룹화된 Lists를 사용하고 싶으면 `<div>` 테그에 `.group` 클래스를 추가하고 하위 목록으로 사용할 `<li>` 테그에 `.sub-group` 클래스를 추가한다.
 
 ```
-	<!-- Lists 기본 스타일 -->
-	<div class="lists">
-		<header>header</header>
-		<ul class="lists-con">
-			<li>
-				<a href="#">Profile</a>
-				<i></i>
-			</li>
-			...
-		</ul>
-	</div>
+<!-- Lists 기본 스타일 -->
+<div class="lists">
+	<header>header</header>
+	<ul class="lists-con">
+		<li>
+			<a href="#">Profile</a>
+			<i></i>
+		</li>
+		...
+	</ul>
+</div>
 
-	<!-- Group Lists -->
-	<div class="lists group">
-		<header>header</header>
-		<ul class="lists-con">
-			<li class="sub-group">
-				<a href="#">Profile</a>
-				<ul class="lists-con">
-					<li>
-						<a href="#">South Korea</a>
-						<i></i>
-					</li>
-					...
-				</ul>
-			</li>
-			...
-		</ul>
-	</div>
+<!-- Group Lists -->
+<div class="lists group">
+	<header>header</header>
+	<ul class="lists-con">
+		<li class="sub-group">
+			<a href="#">Profile</a>
+			<ul class="lists-con">
+				<li>
+					<a href="#">South Korea</a>
+					<i></i>
+				</li>
+				...
+			</ul>
+		</li>
+		...
+	</ul>
+</div>
 ```
 
 <% prv_6 = (contents) => %>
@@ -788,7 +794,7 @@ table의 사용방법
 				<i></i>
 			</li>
 			<li class="active">
-				<a href="">Connect</a>
+				<a href="#">Connect</a>
 				<i></i>
 			</li>
 			<li>
@@ -861,21 +867,21 @@ table의 사용방법
 			</li>
 		</ul>
 	</div>
-<% end %><%- codeMirrorBlock {func : prv_6  , funcname : 'prv_6' , ifs_h : 'height: 1033px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_6  , funcname : 'prv_6' , ifs_h : 'height: 1033px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 ## Nav bar. mobile
 mobile에서만 사용하는 Navigation 요소로써 사용자에게 가시적인 편의성을 제공할때 사용한다. `<ul>` 테그에 `.nav nav-bot` 클래스를 사용한다.
 
 ```
-	<ul class="nav nav-bot">
-        <li>                
-            <a href="#">
-                <i class="icon-about"></i>
-                <span>about</span>
-            </a>
-        </li>
-		...
-	</ul>
+<ul class="nav nav-bot">
+    <li>                
+        <a href="#">
+            <i class="icon-about"></i>
+            <span>about</span>
+        </a>
+    </li>
+	...
+</ul>
 ```
 
 <% prv_7 = (contents) => %>
@@ -911,4 +917,4 @@ mobile에서만 사용하는 Navigation 요소로써 사용자에게 가시적�
 			</a>
 		</li>
 	</ul>
-<% end %><%- codeMirrorBlock {func : prv_7  , funcname : 'prv_7' , ifs_h : 'height: 137px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+<% end %><%- codeMirrorBlock {func : prv_7  , funcname : 'prv_7' , ifs_h : 'height: 137px;' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>

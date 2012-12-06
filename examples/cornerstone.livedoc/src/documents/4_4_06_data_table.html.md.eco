@@ -34,24 +34,24 @@ thumbnail: '4.4.06.data_table.png'
 #### 일방 방식
 
 ```
-    <!-- 해당 피처드에 필요한 Stylesheet  -->
-    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />
+<!-- 해당 피처드에 필요한 Stylesheet  -->
+<link rel='stylesheet' href='./dist/ui/widget-datatable.css' />
 
-	<!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  -->
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>
-	<!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 -->
-    <script src='./dist/ui/widget-datatable.js'></script>
+<!-- jQuery: 피처드 위젯 사용을 위한 jquery.js  -->
+<script src='./dist/lib/jquery-1.8.1.min.js'></script>
+<!-- Cornerstone UI 기본 설정, DATA-API 기능 추가 -->
+<script src='./dist/ui/widget-datatable.js'></script>
 ```
 
 #### MVC 방식
 MVC 방식은 별도로 사용자가 일반방식 처럼 CSS를 추가하지 않고도 사용않아도 된다.
 ```
-    define([
-        "backbone",
-        "widget-datatable" // 데이터테이블 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
-    ], function (Backbone, DataTableView) {
-        // Something...
-    });
+define([
+    "backbone",
+    "widget-datatable" // 데이터테이블 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
+], function (Backbone, DataTableView) {
+    // Something...
+});
 ```
 
 
@@ -71,7 +71,7 @@ DATA-API(data-attribute), $('#example').featuredDataTable() 또는 MVC의 View�
 <link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
 <% end %>                                                                                                         
 <%- codeMirrorRequiredBlock '1' %>                                                                                
@@ -81,7 +81,11 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% codeMirrorBlock = (obj) => %>                                                                                  
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
 <textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -106,31 +110,31 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
 <% if obj.if_nopad: %>                                                                                            
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
 <% else: %>                                                                                                       
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
 <% end %>                                                                                                         
-    <%- obj.func '1' %>                                                                                           
-                                                                      
-                                                                      
-<% if obj.if_auto_h: %>                                                                                            
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
     <script type='text/javascript'>                                   
-      function ifrm_resize (height) {                                 
-        //if(navigator.userAgent.match('Android')) {                  
-            var id = 'preview_<%= obj.funcname %>';                   
-            var example1 = window.parent.document.getElementById(id); 
-            $(example1).css( {                                        
-                height: height + 30                                   
-            });                                                       
-        //}                                                           
-      }                                                               
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
-      var height = $('body').height();                                
-      ifrm_resize(height);                                            
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
-      $(window).on('resize',function() {                              
+        $(window.parent).on('resize',function() {                     
           var height = $('body').height();                            
-          ifrm_resize(height);                                      
+          ifrm_resize(height);                                        
+        });                                                           
       });                                                             
     </script>                                                         
 <% end %>                                                                                                         
@@ -163,72 +167,72 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <% end %>                                                                                                         
 
 <% prv_1 = (contents) => %>
-<div class="container">
-	<h3>Data Table</h3>
-	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example"
-		   data-featured="datatable" data-datatable-bind="sample-data/datatable-sample.json">
-		<thead>
-		<tr>
-			<th width="20%">Rendering engine</th>
-			<th width="25%">Browser</th>
-			<th width="25%">Platform(s)</th>
-			<th width="15%">Engine version</th>
-			<th width="15%">CSS grade</th>
-		</tr>
-		</thead>
-		<tbody>
-
-		</tbody>
-	</table>
-</div>
-<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+	<div class="container">
+		<h3>Data Table</h3>
+		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example"
+			   data-featured="datatable" data-datatable-bind="sample-data/datatable-sample.json">
+			<thead>
+			<tr>
+				<th width="20%">Rendering engine</th>
+				<th width="25%">Browser</th>
+				<th width="25%">Platform(s)</th>
+				<th width="15%">Engine version</th>
+				<th width="15%">CSS grade</th>
+			</tr>
+			</thead>
+			<tbody>
+	
+			</tbody>
+		</table>
+	</div>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 1200px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### javascript를 이용하는 방식
 
 <% prv_2 = (contents) => %>
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredDataTable(); 스크립트를 통해 데이터테이블을 적용한다.  -->
-<div class="container">
-	<h3>Data Table</h3>
-	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example">
-		<thead>
-		<tr>
-			<th width="20%">Rendering engine</th>
-			<th width="25%">Browser</th>
-			<th width="25%">Platform(s)</th>
-			<th width="15%">Engine version</th>
-			<th width="15%">CSS grade</th>
-		</tr>
-		</thead>
-		<tbody>
-
-		</tbody>
-		<tfoot>
-		<tr>
-			<th>Rendering engine</th>
-			<th>Browser</th>
-			<th>Platform(s)</th>
-			<th>Engine version</th>
-			<th>CSS grade</th>
-		</tr>
-		</tfoot>
-	</table>
-</div>
-<script type="text/javascript">
-	window.onload = function() {
-//      데이터 소스를 배열로 받는 방식
-//		$('#example').featuredDataTable({
-//			"bProcessing": true,
-//			"aaData":[["Trident", "Internet Explorer 4.0", "Win 95+", "4", "X"],
-//				["Trident", "Internet Explorer 5.0", "Win 95+", "5", "C"],
-//				["Trident", "Internet Explorer 5.5", "Win 95+", "5.5", "A"]]
-//		});
-
-        $('#example').featuredDataTable({
-            "sAjaxSource":"sample-data/datatable-sample.json"
-        });
-	};
-</script>
-<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 700px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , no : 'no' } %>
+	<!-- id값을 정의하고 해당 id값에 $('#example').featuredDataTable(); 스크립트를 통해 데이터테이블을 적용한다.  -->
+	<div class="container">
+		<h3>Data Table</h3>
+		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example">
+			<thead>
+			<tr>
+				<th width="20%">Rendering engine</th>
+				<th width="25%">Browser</th>
+				<th width="25%">Platform(s)</th>
+				<th width="15%">Engine version</th>
+				<th width="15%">CSS grade</th>
+			</tr>
+			</thead>
+			<tbody>
+	
+			</tbody>
+			<tfoot>
+			<tr>
+				<th>Rendering engine</th>
+				<th>Browser</th>
+				<th>Platform(s)</th>
+				<th>Engine version</th>
+				<th>CSS grade</th>
+			</tr>
+			</tfoot>
+		</table>
+	</div>
+	<script type="text/javascript">
+		window.onload = function() {
+	//      데이터 소스를 배열로 받는 방식
+	//		$('#example').featuredDataTable({
+	//			"bProcessing": true,
+	//			"aaData":[["Trident", "Internet Explorer 4.0", "Win 95+", "4", "X"],
+	//				["Trident", "Internet Explorer 5.0", "Win 95+", "5", "C"],
+	//				["Trident", "Internet Explorer 5.5", "Win 95+", "5.5", "A"]]
+	//		});
+	
+	        $('#example').featuredDataTable({
+	            "sAjaxSource":"sample-data/datatable-sample.json"
+	        });
+		};
+	</script>
+<% end %><%- codeMirrorBlock {func : prv_2  , funcname : 'prv_2' , ifs_h : 'height: 1200px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
 #### MVC 프레임워크 뷰를 이용하는 방식
 
@@ -258,14 +262,14 @@ define([
 
         render:function () {
             var self = this;
-// 템플릿 렌더링
+            // 템플릿 렌더링
             this.$el.html(Template);
 
-// 모델 객체에 데이터를 가져올 url를 설정한다.
+            // 모델 객체에 데이터를 가져올 url를 설정한다.
             var Model = Backbone.Model.extend({
                 url:"data/sample-datatable.json"
             });
-// 데이터테이블 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 데이터테이블 UI을 생성한다.
+            // 데이터테이블 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 데이터테이블 UI을 생성한다.
             this.dataTableView = new DataTableView({
                 el:"#datatable",
                 model:new Model
@@ -353,3 +357,19 @@ oLanguage | object | {sLengthMenu:"_MENU_ 페이지별 레코드수", sInfo:"총
 	    <div class="span12">p : 페이지네이션 </div>
     </div>
 ```
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered").each(function(i) {
+    var $this = $(this);
+    if(i == 1) {
+        $this.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+        $this.find("thead tr > th:nth-child(3)").removeClass("fixed_table");
+        $this.find("tbody tr > td:nth-child(3)").removeClass("fixed_table");
+    } else {
+        $this.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+    }
+});
+</script>
