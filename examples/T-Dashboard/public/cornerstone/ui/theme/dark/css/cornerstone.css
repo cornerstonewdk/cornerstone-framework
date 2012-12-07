@@ -5048,7 +5048,7 @@ button.btn.btn-mini {
   border-radius: 3px;
 }
 .badge {
-  padding: 4px 12px;
+  padding: 4px 9px;
 }
 a.label:hover,
 a.badge:hover {
@@ -9316,4 +9316,7 @@ body > .widget-spinner-icon2 {
   .btn-group .btn-primary.active .icon-set {
     background-position: -60px -336px;
   }
+}
+.modal {
+  color: #000;
 }
