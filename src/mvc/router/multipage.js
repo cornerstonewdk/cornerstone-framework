@@ -37,7 +37,7 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 				_.each( this.pages, function( value, key ) {
 				
 					if ( key == 'default' ) {
-						if ( value && value.active ) routes[ '*path' ] = key + '_handler';
+						if ( value ) routes[ '*path' ] = key + '_handler';
 					}
 					else if ( value.fragment ) {
 						if ( !_.isArray( value.fragment ) ) value.fragment = [ value.fragment ];
