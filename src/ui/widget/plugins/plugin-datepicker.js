@@ -55,7 +55,7 @@
 
 		if (this.isInput) {
 			this.element.on({
-				focus: $.proxy(this.show, this),
+//				focus: $.proxy(this.show, this),
 				keyup: $.proxy(this.update, this),
 				keydown: $.proxy(this.keydown, this)
 			});
@@ -63,23 +63,16 @@
 			if (this.component && this.hasInput){
 				// For components that are not readonly, allow keyboard nav
 				this.element.find('input').on({
-					focus: $.proxy(this.show, this),
+//					focus: $.proxy(this.show, this),
 					keyup: $.proxy(this.update, this),
 					keydown: $.proxy(this.keydown, this)
 				});
 
-				this.component.on('click', $.proxy(this.show, this));
+				//this.component.on('click', $.proxy(this.show, this));
 			} else {
-				this.element.on('click', $.proxy(this.show, this));
+				//this.element.on('click', $.proxy(this.show, this));
 			}
 		}
-
-		$(document).on('mousedown', function (e) {
-			// Clicked outside the datepicker, hide it
-			if ($(e.target).closest('.datepicker').length == 0) {
-				that.hide();
-			}
-		});
 
 		this.autoclose = false;
 		if ('autoclose' in options) {
@@ -127,6 +120,45 @@
 
         this.options = options = $.extend({}, defaults, options);
         !options.changeDisplay || this.element.on("changeDate", function(e) {$(that).datepicker("hide");});
+
+
+        // 토글 기능
+        var isFocus = false;
+        function toggle(target) {
+            if(target.isInput && target.options.firstDisable) {
+                if(!isFocus && $(target.picker).css("display") === "block") {
+                    target.element.attr("readonly","readonly");
+                    target.hide();
+                    isFocus = false;
+                } else {
+                    if(isFocus) {
+                        target.element.removeAttr("readonly");
+                        isFocus = false;
+                    } else {
+                        isFocus = true;
+                    }
+                    target.show();
+                }
+            } else {
+                if($(target.picker).css("display") === "block") {
+                    target.hide();
+                } else {
+                    target.show();
+                }
+            }
+        }
+
+        this.element.off("click").on("click", function(e) {
+            toggle(that);
+        });
+
+        $(document).on('mousedown.datepicker', function (e) {
+			if ($(e.target).closest('.datepicker').length == 0) {
+                that.hide();
+                that.element.attr("readonly","readonly");
+                isFocus = false;
+			}
+        });
 	};
 
 	Datepicker.prototype = {
@@ -149,8 +181,6 @@
 		},
 
 		hide: function(e){
-            !this.options.firstDisable || this.element.removeAttr("readonly");
-
 			this.picker.hide();
 			$(window).off('resize', this.place);
 			this.viewMode = this.startViewMode;
