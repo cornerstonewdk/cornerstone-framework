@@ -788,3 +788,7 @@
 /*.mejs-android .mejs-overlay-loading, .mejs-ios .mejs-overlay-loading{*/
 	/*display: none;*/
 /*}*/
+
+.mejs-android .mejs-overlay-loading, .mejs-ios .mejs-overlay-loading {
+    display: none;
+}
