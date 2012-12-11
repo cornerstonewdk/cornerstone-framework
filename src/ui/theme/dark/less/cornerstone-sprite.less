@@ -1,259 +1,284 @@
 @ratio: .5;
-@defaultWidth: 60px;
-@defaultHeight: 60px;
-@defaultX: -201px;
+@defaultWidth: 30px;
+@defaultHeight: 30px;
+
+.size(@height, @width) {
+  width: @width;
+  height: @height;
+}
+
+.getIconBgPosition( @x:0, @y:0, @diff:0 ) {
+   background-position: (@x + @diff) @y;
+}
 
 [class^="csicon-"],
 [class*=" csicon-"] {
   background: url('../img/icon.png') no-repeat 0 0;
   background-size: 320px;
   display: inline-block;
-  width: @defaultWidth * @ratio !important;
-  height: @defaultHeight * @ratio !important;
+  width: @defaultWidth;
+  height: @defaultHeight;
   border: 1px solid #000;
 }
 
 .csicon-about {
-  background-position: -102px -154px;
+  .getIconBgPosition( -102px, -154px );
 }
 
 .csicon-favorites {
-  background-position: -101.5px -199px
+  .getIconBgPosition( -101.5px, -199px );
 }
 
 .csicon-user {
-  background-position: -101px -243px;
+  .getIconBgPosition( -101px, -243px );
 }
 
 .csicon-downloads {
-  background-position: -101px -288px;
+  .getIconBgPosition( -101px, -288px );
 }
 
 .csicon-settings {
-  background-position: -101px -333px;
+  .getIconBgPosition( -101px, -333px );
 }
 
 .csicon-up {
-  background-position: -101.5px -378.5px;
+  .getIconBgPosition( -101.5px, -378.5px );
 }
 
 .csicon-down {
-  background-position: -101.5px -423px
+  .getIconBgPosition( -101.5px, -423px );
 }
 
 .csicon-message {
-  background-position: -102px -466px;
+  .getIconBgPosition( -102px, -466px );
 }
 
 .csicon-list {
-  background-position: -101px -511px;
+  .getIconBgPosition( -101px, -511px );
 }
 
 .csicon-write {
-  background-position: -101px -556px;
+  .getIconBgPosition( -101px, -556px );
 }
 
 .csicon-mail {
-  background-position: -101px -601px;
+  .getIconBgPosition( -101px, -601px );
 }
 
 .csicon-save {
-  background-position: -101px -645px;
+  .getIconBgPosition( -101px, -645px );
 }
 
 .csicon-search {
-  background-position: -101px -689px;
+  .getIconBgPosition( -101px, -689px );
 }
 
 .csicon-connect {
-  background-position: -101px -733.5px;
+  .getIconBgPosition( -101px, -733.5px );
 }
 
 .csicon-users {
-  background-position: -101.5px -778px;
+  .getIconBgPosition( -101.5px, -778px );
 }
 
 .csicon-home {
-  background-position: -101px -823px;
+  .getIconBgPosition( -101px, -823px );
 }
 
 .csicon-right {
-  background-position: -101.5px -868px;
+  .getIconBgPosition( -101.5px, -868px );
 }
 
 .csicon-left {
-  background-position: -101.5px -913px;
+  .getIconBgPosition( -101.5px, -913px );
 }
+
 .csicon2 {
-  @defaultX: -289px;
-  &.csicon-about {
-    background-position: -295px * @ratio -314px * @ratio;
+  .csicon-about {
+    .getIconBgPosition( -102px, -154px, -44.5px );
   }
-  &.csicon-favorites {
-    background-position: -295px * @ratio -403px * @ratio;
+
+  .csicon-favorites {
+    .getIconBgPosition( -101.5px, -199px, -44.5px );
   }
-  &.csicon-user {
-    background-position: -289px * @ratio -491px * @ratio;
+
+  .csicon-user {
+    .getIconBgPosition( -101px, -243px, -44.5px );
   }
-  &.csicon-downloads {
-    background-position: -300px * @ratio -583px * @ratio;
+
+  .csicon-downloads {
+    .getIconBgPosition( -101px, -288px, -44.5px );
   }
-  &.csicon-settings {
-    background-position: -297px * @ratio -672px * @ratio;
+
+  .csicon-settings {
+    .getIconBgPosition( -101px, -333px, -44.5px );
   }
-  &.csicon-up {
-    background-position: -299px * @ratio -764px * @ratio;
+
+  .csicon-up {
+    .getIconBgPosition( -101.5px, -378.5px, -44.5px );
   }
-  &.csicon-down {
-    background-position: -299px * @ratio -853px * @ratio;
+
+  .csicon-down {
+    .getIconBgPosition( -101.5px, -423px, -44.5px );
   }
-  &.csicon-message {
-    background-position: -296px * @ratio -940px * @ratio;
+
+  .csicon-message {
+    .getIconBgPosition( -102px, -466px, -44.5px );
   }
-  &.csicon-list {
-    background-position: -293px * @ratio -1030px * @ratio;
+
+  .csicon-list {
+    .getIconBgPosition( -101px, -511px, -44.5px );
   }
-  &.csicon-write {
-    background-position: -292px * @ratio -1114px * @ratio;
+
+  .csicon-write {
+    .getIconBgPosition( -101px, -556px, -44.5px );
   }
-  &.csicon-mail {
-    background-position: -294px * @ratio -1213px * @ratio;
+
+  .csicon-mail {
+    .getIconBgPosition( -101px, -601px, -44.5px );
   }
-  &.csicon-save {
-    background-position: -298px * @ratio -1296px * @ratio;
+
+  .csicon-save {
+    .getIconBgPosition( -101px, -645px, -44.5px );
   }
-  &.csicon-search {
-    background-position: -296px * @ratio -1384px * @ratio;
+
+  .csicon-search {
+    .getIconBgPosition( -101px, -689px, -44.5px );
   }
-  &.csicon-connect {
-    background-position: -294px * @ratio -1472px * @ratio;
+
+  .csicon-connect {
+    .getIconBgPosition( -101px, -733.5px, -44.5px );
   }
-  &.csicon-users {
-    background-position: -294px * @ratio -1565px * @ratio;
+
+  .csicon-users {
+    .getIconBgPosition( -101.5px, -778px, -44.5px );
   }
-  &.csicon-home {
-    background-position: -298px * @ratio -1654px * @ratio;
+
+  .csicon-home {
+    .getIconBgPosition( -101px, -823px, -44.5px );
   }
-  &.csicon-right {
-    background-position: -298px * @ratio -1743px * @ratio;
+
+  .csicon-right {
+    .getIconBgPosition( -101.5px, -868px, -44.5px );
   }
-  &.csicon-left {
-    background-position: -298px * @ratio -1832px * @ratio;
+
+  .csicon-left {
+    .getIconBgPosition( -101.5px, -913px, -44.5px );
   }
 }
 .csicon3 {
 
   &.csicon-about {
-    background-position: -384px * @ratio -314px * @ratio;
+    .getIconBgPosition( -384px * @ratio, -314px * @ratio );
   }
   &.csicon-favorites {
-    background-position: -384px * @ratio -403px * @ratio;
+    .getIconBgPosition( -384px * @ratio, -403px * @ratio );
   }
   &.csicon-user {
-    background-position: -378px * @ratio -491px * @ratio;
+    .getIconBgPosition( -378px * @ratio, -491px * @ratio );
   }
   &.csicon-downloads {
-    background-position: -389px * @ratio -583px * @ratio;
+    .getIconBgPosition( -389px * @ratio, -583px * @ratio );
   }
   &.csicon-settings {
-    background-position: -386px * @ratio -672px * @ratio;
+    .getIconBgPosition( -386px * @ratio, -672px * @ratio );
   }
   &.csicon-up {
-    background-position: -388px * @ratio -764px * @ratio;
+    .getIconBgPosition( -388px * @ratio, -764px * @ratio );
   }
   &.csicon-down {
-    background-position: -388px * @ratio -853px * @ratio;
+    .getIconBgPosition( -388px * @ratio, -853px * @ratio );
   }
   &.csicon-message {
-    background-position: -385px * @ratio -940px * @ratio;
+    .getIconBgPosition( -385px * @ratio, -940px * @ratio );
   }
   &.csicon-list {
-    background-position: -382px * @ratio -1030px * @ratio;
+    .getIconBgPosition( -382px * @ratio, -1030px * @ratio );
   }
   &.csicon-write {
-    background-position: -381px * @ratio -1114px * @ratio;
+    .getIconBgPosition( -381px * @ratio, -1114px * @ratio );
   }
   &.csicon-mail {
-    background-position: -383px * @ratio -1213px * @ratio;
+    .getIconBgPosition( -383px * @ratio, -1213px * @ratio );
   }
   &.csicon-save {
-    background-position: -387px * @ratio -1296px * @ratio;
+    .getIconBgPosition( -387px * @ratio, -1296px * @ratio );
   }
   &.csicon-search {
-    background-position: -385px * @ratio -1384px * @ratio;
+    .getIconBgPosition( -385px * @ratio, -1384px * @ratio );
   }
   &.csicon-connect {
-    background-position: -383px * @ratio -1472px * @ratio;
+    .getIconBgPosition( -383px * @ratio, -1472px * @ratio );
   }
   &.csicon-users {
-    background-position: -383px * @ratio -1565px * @ratio;
+    .getIconBgPosition( -383px * @ratio, -1565px * @ratio );
   }
   &.csicon-home {
-    background-position: -387px * @ratio -1654px * @ratio;
+    .getIconBgPosition( -387px * @ratio, -1654px * @ratio );
   }
   &.csicon-right {
-    background-position: -387px * @ratio -1743px * @ratio;
+    .getIconBgPosition( -387px * @ratio, -1743px * @ratio );
   }
   &.csicon-left {
-    background-position: -387px * @ratio -1832px * @ratio;
+    .getIconBgPosition( -387px * @ratio, -1832px * @ratio );
   }
 }
 
 .csicon4 {
 
   &.csicon-about {
-    background-position: -473px * @ratio -314px * @ratio;
+    .getIconBgPosition( -473px * @ratio, -314px * @ratio );
   }
   &.csicon-favorites {
-    background-position: -473px * @ratio -403px * @ratio;
+    .getIconBgPosition( -473px * @ratio, -403px * @ratio );
   }
   &.csicon-user {
-    background-position: -467px * @ratio -491px * @ratio;
+    .getIconBgPosition( -467px * @ratio, -491px * @ratio );
   }
   &.csicon-downloads {
-    background-position: -478px * @ratio -583px * @ratio;
+    .getIconBgPosition( -478px * @ratio, -583px * @ratio );
   }
   &.csicon-settings {
-    background-position: -475px * @ratio -672px * @ratio;
+    .getIconBgPosition( -475px * @ratio, -672px * @ratio );
   }
   &.csicon-up {
-    background-position: -477px * @ratio -764px * @ratio;
+    .getIconBgPosition( -477px * @ratio, -764px * @ratio );
   }
   &.csicon-down {
-    background-position: -477px * @ratio -853px * @ratio;
+    .getIconBgPosition( -477px * @ratio, -853px * @ratio );
   }
   &.csicon-message {
-    background-position: -474px * @ratio -940px * @ratio;
+    .getIconBgPosition( -474px * @ratio, -940px * @ratio );
   }
   &.csicon-list {
-    background-position: -471px * @ratio -1030px * @ratio;
+    .getIconBgPosition( -471px * @ratio, -1030px * @ratio );
   }
   &.csicon-write {
-    background-position: -470px * @ratio -1114px * @ratio;
+    .getIconBgPosition( -470px * @ratio, -1114px * @ratio );
   }
   &.csicon-mail {
-    background-position: -472px * @ratio -1213px * @ratio;
+    .getIconBgPosition( -472px * @ratio, -1213px * @ratio );
   }
   &.csicon-save {
-    background-position: -476px * @ratio -1296px * @ratio;
+    .getIconBgPosition( -476px * @ratio, -1296px * @ratio );
   }
   &.csicon-search {
-    background-position: -474px * @ratio -1384px * @ratio;
+    .getIconBgPosition( -474px * @ratio, -1384px * @ratio );
   }
   &.csicon-connect {
-    background-position: -472px * @ratio -1472px * @ratio;
+    .getIconBgPosition( -472px * @ratio, -1472px * @ratio );
   }
   &.csicon-users {
-    background-position: -472px * @ratio -1565px * @ratio;
+    .getIconBgPosition( -472px * @ratio, -1565px * @ratio );
   }
   &.csicon-home {
-    background-position: -476px * @ratio -1654px * @ratio;
+    .getIconBgPosition( -476px * @ratio, -1654px * @ratio );
   }
   &.csicon-right {
-    background-position: -476px * @ratio -1743px * @ratio;
+    .getIconBgPosition( -476px * @ratio, -1743px * @ratio );
   }
   &.csicon-left {
-    background-position: -476px * @ratio -1832px * @ratio;
+    .getIconBgPosition( -476px * @ratio, -1832px * @ratio );
   }
 }
 
