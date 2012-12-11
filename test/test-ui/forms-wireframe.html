@@ -193,22 +193,23 @@
 		</label>
 		<!-- e :: 추가된 마크업 - Select -->
 
-		<legend>Slider</legend>
-		<div class="slider">
-			<div class="slider-bar">
-			</div>
-			<button class="slide-handle"></button>
+		<legend>Rangeinput</legend>
+		
+		<div class="widget-rangeinput">
+			<label>
+				<input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="1"
+				class="widget-range btn-block"/>
+			</label>
 		</div>
-
-		<hr>
-
-		<div class="slider-box">
-			<div class="slider inline" style="width:250px;">
-				<div class="slider-bar">
-				</div>
-				<button class="slide-handle" style="left:100px;"></button>
-			</div>
-			<input type="tel" maxlength="3" class="figure inline" value="68.7" disabled>
+		
+		<hr/>
+		
+		<div class="widget-rangeinput slider-box">
+			<label>
+				<input type="range" data-plugin="rangeinput" value="10" min="0" max="1000" step="10"
+				class="widget-range btn-block inline"
+				data-range-options='{"inputShow":true}'/>
+			</label>
 		</div>
 
 		<!-- s :: 추가된 마크업 - Flip select -->
@@ -249,6 +250,7 @@
 </div>
 <!-- /container -->
 <script type="text/javascript" src="../../dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../../dist/ui/widget-plugins.js"></script>
 <script type="text/javascript">
 	$("a, button").on("click", function (e) {
 		e.preventDefault();
