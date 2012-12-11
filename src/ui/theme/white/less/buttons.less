@@ -66,10 +66,18 @@
 }
 
 .btn i {
-	display: inline-block;
-	line-height: @baseLineHeight - 2;
+  display: inline-block;
+  line-height: @baseLineHeight - 2;
 }
-
+.btn i[class*=csicon-] {
+  margin: 0 -2px -7px -2px;
+}
+.btn:hover, .btn:active, .btn.active {
+  .movePositionX(-44.5px);
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary.active {
+  .movePositionX(44.5px);
+}
 
 // Button Sizes
 // --------------------------------------------------

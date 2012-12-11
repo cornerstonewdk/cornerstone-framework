@@ -1789,6 +1789,99 @@ input.search-query {
   display: inline-block;
   line-height: 20px;
 }
+.btn i[class*=csicon-] {
+  margin: 0 -2px -7px -2px;
+}
+.btn:hover .csicon-about,
+.btn:active .csicon-about,
+.btn.active .csicon-about {
+  background-position: -146.5px -154px;
+}
+.btn:hover .csicon-favorites,
+.btn:active .csicon-favorites,
+.btn.active .csicon-favorites {
+  background-position: -146px -199px;
+}
+.btn:hover .csicon-user,
+.btn:active .csicon-user,
+.btn.active .csicon-user {
+  background-position: -145.5px -243px;
+}
+.btn:hover .csicon-downloads,
+.btn:active .csicon-downloads,
+.btn.active .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.btn:hover .csicon-settings,
+.btn:active .csicon-settings,
+.btn.active .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.btn:hover .csicon-up,
+.btn:active .csicon-up,
+.btn.active .csicon-up {
+  background-position: -146px -378.5px;
+}
+.btn:hover .csicon-down,
+.btn:active .csicon-down,
+.btn.active .csicon-down {
+  background-position: -146px -423px;
+}
+.btn:hover .csicon-message,
+.btn:active .csicon-message,
+.btn.active .csicon-message {
+  background-position: -146.5px -466px;
+}
+.btn:hover .csicon-list,
+.btn:active .csicon-list,
+.btn.active .csicon-list {
+  background-position: -145.5px -511px;
+}
+.btn:hover .csicon-write,
+.btn:active .csicon-write,
+.btn.active .csicon-write {
+  background-position: -145.5px -556px;
+}
+.btn:hover .csicon-mail,
+.btn:active .csicon-mail,
+.btn.active .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.btn:hover .csicon-save,
+.btn:active .csicon-save,
+.btn.active .csicon-save {
+  background-position: -145.5px -645px;
+}
+.btn:hover .csicon-search,
+.btn:active .csicon-search,
+.btn.active .csicon-search {
+  background-position: -145.5px -689px;
+}
+.btn:hover .csicon-connect,
+.btn:active .csicon-connect,
+.btn.active .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.btn:hover .csicon-users,
+.btn:active .csicon-users,
+.btn.active .csicon-users {
+  background-position: -146px -778px;
+}
+.btn:hover .csicon-home,
+.btn:active .csicon-home,
+.btn.active .csicon-home {
+  background-position: -145.5px -823px;
+}
+.btn:hover .csicon-right,
+.btn:active .csicon-right,
+.btn.active .csicon-right {
+  background-position: -146px -868px;
+}
+.btn:hover .csicon-left,
+.btn:active .csicon-left,
+.btn.active .csicon-left {
+  background-position: -146px -913px;
+}
 .btn-large {
   padding: 11px 20px;
   font-size: 20px;
@@ -3731,12 +3824,6 @@ button.btn.btn-mini {
 .nav.pull-right > li:last-child a i {
   margin: 0;
 }
-.navbar.ico-txt .nav > li a,
-.navbar.ico-txt .nav > li a:hover,
-.navbar.ico-txt .nav > li a:active,
-.navbar.ico-txt .nav > li.active a {
-  padding: 7px 13px 5px;
-}
 .navbar.ico-txt .nav.pull-right > li:last-child a,
 .navbar.ico-txt .nav.pull-right > li:last-child a:hover,
 .navbar.ico-txt .nav.pull-right > li:last-child a:active,
@@ -3751,14 +3838,6 @@ button.btn.btn-mini {
 }
 .ico-txt .nav > li a i {
   margin-right: 3px;
-}
-.nav-icon .nav > li a,
-.nav-icon .nav > li a:hover,
-.nav-icon .nav > li a:active,
-.nav-icon .nav > li.active a {
-  font-size: 0;
-  line-height: 0;
-  padding: 7px 13px 5px;
 }
 .navbar .btn-navbar,
 .navbar .btn-navbar:hover,
@@ -3972,131 +4051,149 @@ button.btn.btn-mini {
   background: #212121;
   padding: 6px 10px;
 }
-.icon-con-home {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -824px;
+.navbar .nav > li .csicon-about {
+  background-position: -191px -154px;
 }
-.navbar .nav > li a:hover .icon-con-home,
-.navbar .nav > li a:active .icon-con-home,
-.navbar .nav > li.active a .icon-con-home {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -824px;
+.navbar .nav > li .csicon-favorites {
+  background-position: -190.5px -199px;
 }
-.icon-message {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -467px;
+.navbar .nav > li .csicon-user {
+  background-position: -190px -243px;
 }
-.navbar .nav > li a:hover .icon-message,
-.navbar .nav > li a:active .icon-message,
-.navbar .nav > li.active a .icon-message {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -467px;
+.navbar .nav > li .csicon-downloads {
+  background-position: -190px -288px;
 }
-.icon-mail {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -602px;
+.navbar .nav > li .csicon-settings {
+  background-position: -190px -333px;
 }
-.navbar .nav > li a:hover .icon-mail,
-.navbar .nav > li a:active .icon-mail,
-.navbar .nav > li.active a .icon-mail {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -602px;
+.navbar .nav > li .csicon-up {
+  background-position: -190.5px -378.5px;
 }
-.icon-save {
-  width: 22px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -646px;
+.navbar .nav > li .csicon-down {
+  background-position: -190.5px -423px;
 }
-.navbar .nav > li a:hover .icon-save,
-.navbar .nav > li a:active .icon-save,
-.navbar .nav > li.active a .icon-save {
-  width: 22px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -646px;
+.navbar .nav > li .csicon-message {
+  background-position: -191px -466px;
 }
-.icon-user2 {
-  width: 27px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -779px;
+.navbar .nav > li .csicon-list {
+  background-position: -190px -511px;
 }
-.navbar .nav > li a:hover .icon-user2,
-.navbar .nav > li a:active .icon-user2,
-.navbar .nav > li.active a .icon-user2 {
-  width: 27px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -779px;
+.navbar .nav > li .csicon-write {
+  background-position: -190px -556px;
 }
-.icon-connect {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -734px;
+.navbar .nav > li .csicon-mail {
+  background-position: -190px -601px;
 }
-.nav-icon .nav > li a:hover .icon-connect,
-.nav-icon .nav > li a:active .icon-connect,
-.nav-icon .nav > li.active a .icon-connect {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -734px;
+.navbar .nav > li .csicon-save {
+  background-position: -190px -645px;
 }
-.icon-search {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -192px -690px;
+.navbar .nav > li .csicon-search {
+  background-position: -190px -689px;
 }
-.navbar .nav > li a:hover .icon-search,
-.navbar .nav > li a:active .icon-search,
-.navbar .nav > li.active a .icon-search {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -690px;
+.navbar .nav > li .csicon-connect {
+  background-position: -190px -733.5px;
 }
-.icon-write {
-  width: 28px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -190px -557px;
+.navbar .nav > li .csicon-users {
+  background-position: -190.5px -778px;
 }
-.navbar .nav > li a:hover .icon-write,
-.navbar .nav > li a:active .icon-write,
-.navbar .nav > li.active a .icon-write {
-  width: 28px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -146px -557px;
+.navbar .nav > li .csicon-home {
+  background-position: -190px -823px;
+}
+.navbar .nav > li .csicon-right {
+  background-position: -190.5px -868px;
+}
+.navbar .nav > li .csicon-left {
+  background-position: -190.5px -913px;
+}
+.navbar .nav > li a:hover .csicon-about,
+.navbar .nav > li a:active .csicon-about,
+.navbar .nav > li.active a .csicon-about {
+  background-position: -146.5px -154px;
+}
+.navbar .nav > li a:hover .csicon-favorites,
+.navbar .nav > li a:active .csicon-favorites,
+.navbar .nav > li.active a .csicon-favorites {
+  background-position: -146px -199px;
+}
+.navbar .nav > li a:hover .csicon-user,
+.navbar .nav > li a:active .csicon-user,
+.navbar .nav > li.active a .csicon-user {
+  background-position: -145.5px -243px;
+}
+.navbar .nav > li a:hover .csicon-downloads,
+.navbar .nav > li a:active .csicon-downloads,
+.navbar .nav > li.active a .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.navbar .nav > li a:hover .csicon-settings,
+.navbar .nav > li a:active .csicon-settings,
+.navbar .nav > li.active a .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.navbar .nav > li a:hover .csicon-up,
+.navbar .nav > li a:active .csicon-up,
+.navbar .nav > li.active a .csicon-up {
+  background-position: -146px -378.5px;
+}
+.navbar .nav > li a:hover .csicon-down,
+.navbar .nav > li a:active .csicon-down,
+.navbar .nav > li.active a .csicon-down {
+  background-position: -146px -423px;
+}
+.navbar .nav > li a:hover .csicon-message,
+.navbar .nav > li a:active .csicon-message,
+.navbar .nav > li.active a .csicon-message {
+  background-position: -146.5px -466px;
+}
+.navbar .nav > li a:hover .csicon-list,
+.navbar .nav > li a:active .csicon-list,
+.navbar .nav > li.active a .csicon-list {
+  background-position: -145.5px -511px;
+}
+.navbar .nav > li a:hover .csicon-write,
+.navbar .nav > li a:active .csicon-write,
+.navbar .nav > li.active a .csicon-write {
+  background-position: -145.5px -556px;
+}
+.navbar .nav > li a:hover .csicon-mail,
+.navbar .nav > li a:active .csicon-mail,
+.navbar .nav > li.active a .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.navbar .nav > li a:hover .csicon-save,
+.navbar .nav > li a:active .csicon-save,
+.navbar .nav > li.active a .csicon-save {
+  background-position: -145.5px -645px;
+}
+.navbar .nav > li a:hover .csicon-search,
+.navbar .nav > li a:active .csicon-search,
+.navbar .nav > li.active a .csicon-search {
+  background-position: -145.5px -689px;
+}
+.navbar .nav > li a:hover .csicon-connect,
+.navbar .nav > li a:active .csicon-connect,
+.navbar .nav > li.active a .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.navbar .nav > li a:hover .csicon-users,
+.navbar .nav > li a:active .csicon-users,
+.navbar .nav > li.active a .csicon-users {
+  background-position: -146px -778px;
+}
+.navbar .nav > li a:hover .csicon-home,
+.navbar .nav > li a:active .csicon-home,
+.navbar .nav > li.active a .csicon-home {
+  background-position: -145.5px -823px;
+}
+.navbar .nav > li a:hover .csicon-right,
+.navbar .nav > li a:active .csicon-right,
+.navbar .nav > li.active a .csicon-right {
+  background-position: -146px -868px;
+}
+.navbar .nav > li a:hover .csicon-left,
+.navbar .nav > li a:active .csicon-left,
+.navbar .nav > li.active a .csicon-left {
+  background-position: -146px -913px;
 }
 .nav {
   margin-left: 0;
@@ -4865,129 +4962,79 @@ button.btn.btn-mini {
 }
 .nav-bot li i {
   display: block;
-  width: 32px;
-  height: 25px;
   margin: 0 auto 3px auto;
 }
-.nav-bot li a .icon-about {
-  width: 26px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -104px -157px;
+.nav-bot li a:active .csicon-about,
+.nav-bot li a.active .csicon-about {
+  background-position: -146.5px -154px;
 }
-.nav-bot li a:active .icon-about,
-.nav-bot li a.active .icon-about {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -157px;
+.nav-bot li a:active .csicon-favorites,
+.nav-bot li a.active .csicon-favorites {
+  background-position: -146px -199px;
 }
-.v-blue li a .icon-about {
-  width: 26px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -15px -157px;
+.nav-bot li a:active .csicon-user,
+.nav-bot li a.active .csicon-user {
+  background-position: -145.5px -243px;
 }
-.v-blue li a:active .icon-about,
-.v-blue li a.active .icon-about {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -59px -157px;
+.nav-bot li a:active .csicon-downloads,
+.nav-bot li a.active .csicon-downloads {
+  background-position: -145.5px -288px;
 }
-.nav-bot li a .icon-favorites {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -104px -201px;
+.nav-bot li a:active .csicon-settings,
+.nav-bot li a.active .csicon-settings {
+  background-position: -145.5px -333px;
 }
-.nav-bot li a:active .icon-favorites,
-.nav-bot li a.active .icon-favorites {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -201px;
+.nav-bot li a:active .csicon-up,
+.nav-bot li a.active .csicon-up {
+  background-position: -146px -378.5px;
 }
-.v-blue li a .icon-favorites {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -15px -201px;
+.nav-bot li a:active .csicon-down,
+.nav-bot li a.active .csicon-down {
+  background-position: -146px -423px;
 }
-.v-blue li a:active .icon-favorites,
-.v-blue li a.active .icon-favorites {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -59px -201px;
+.nav-bot li a:active .csicon-message,
+.nav-bot li a.active .csicon-message {
+  background-position: -146.5px -466px;
 }
-.nav-bot li a .icon-downloads {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -106px -291px;
+.nav-bot li a:active .csicon-list,
+.nav-bot li a.active .csicon-list {
+  background-position: -145.5px -511px;
 }
-.nav-bot li a:active .icon-downloads,
-.nav-bot li a.active .icon-downloads {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -150px -291px;
+.nav-bot li a:active .csicon-write,
+.nav-bot li a.active .csicon-write {
+  background-position: -145.5px -556px;
 }
-.v-blue li a .icon-downloads {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -17px -291px;
+.nav-bot li a:active .csicon-mail,
+.nav-bot li a.active .csicon-mail {
+  background-position: -145.5px -601px;
 }
-.v-blue li a:active .icon-downloads,
-.v-blue li a.active .icon-downloads {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -61px -291px;
+.nav-bot li a:active .csicon-save,
+.nav-bot li a.active .csicon-save {
+  background-position: -145.5px -645px;
 }
-.nav-bot li a .icon-settings {
-  width: 31px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -105px -336px;
+.nav-bot li a:active .csicon-search,
+.nav-bot li a.active .csicon-search {
+  background-position: -145.5px -689px;
 }
-.nav-bot li a:active .icon-settings,
-.nav-bot li a.active .icon-settings {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -336px;
+.nav-bot li a:active .csicon-connect,
+.nav-bot li a.active .csicon-connect {
+  background-position: -145.5px -733.5px;
 }
-.v-blue li a .icon-settings {
-  width: 31px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -16px -336px;
+.nav-bot li a:active .csicon-users,
+.nav-bot li a.active .csicon-users {
+  background-position: -146px -778px;
 }
-.v-blue li a:active .icon-settings,
-.v-blue li a.active .icon-settings {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -60px -336px;
+.nav-bot li a:active .csicon-home,
+.nav-bot li a.active .csicon-home {
+  background-position: -145.5px -823px;
 }
-.nav-bot li a .icon-user {
-  width: 32px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -100px -245px;
+.nav-bot li a:active .csicon-right,
+.nav-bot li a.active .csicon-right {
+  background-position: -146px -868px;
 }
-.nav-bot li a:active .icon-user,
-.nav-bot li a.active .icon-user {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -144px -245px;
-}
-.v-blue li a .icon-user {
-  width: 32px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -12px -245px;
-}
-.v-blue li a:active .icon-user,
-.v-blue li a.active .icon-user {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -56px -245px;
+.nav-bot li a:active .csicon-left,
+.nav-bot li a.active .csicon-left {
+  background-position: -146px -913px;
 }
 .radio-vertical {
   -webkit-border-radius: 4px;
@@ -6480,168 +6527,6 @@ ul li {
 }
 .csicon-left {
   background-position: -101.5px -913px;
-}
-.csicon2 .csicon-about {
-  background-position: -146.5px -154px;
-}
-.csicon2 .csicon-favorites {
-  background-position: -146px -199px;
-}
-.csicon2 .csicon-user {
-  background-position: -145.5px -243px;
-}
-.csicon2 .csicon-downloads {
-  background-position: -145.5px -288px;
-}
-.csicon2 .csicon-settings {
-  background-position: -145.5px -333px;
-}
-.csicon2 .csicon-up {
-  background-position: -146px -378.5px;
-}
-.csicon2 .csicon-down {
-  background-position: -146px -423px;
-}
-.csicon2 .csicon-message {
-  background-position: -146.5px -466px;
-}
-.csicon2 .csicon-list {
-  background-position: -145.5px -511px;
-}
-.csicon2 .csicon-write {
-  background-position: -145.5px -556px;
-}
-.csicon2 .csicon-mail {
-  background-position: -145.5px -601px;
-}
-.csicon2 .csicon-save {
-  background-position: -145.5px -645px;
-}
-.csicon2 .csicon-search {
-  background-position: -145.5px -689px;
-}
-.csicon2 .csicon-connect {
-  background-position: -145.5px -733.5px;
-}
-.csicon2 .csicon-users {
-  background-position: -146px -778px;
-}
-.csicon2 .csicon-home {
-  background-position: -145.5px -823px;
-}
-.csicon2 .csicon-right {
-  background-position: -146px -868px;
-}
-.csicon2 .csicon-left {
-  background-position: -146px -913px;
-}
-.csicon3 .csicon-about {
-  background-position: -191px -154px;
-}
-.csicon3 .csicon-favorites {
-  background-position: -190.5px -199px;
-}
-.csicon3 .csicon-user {
-  background-position: -190px -243px;
-}
-.csicon3 .csicon-downloads {
-  background-position: -190px -288px;
-}
-.csicon3 .csicon-settings {
-  background-position: -190px -333px;
-}
-.csicon3 .csicon-up {
-  background-position: -190.5px -378.5px;
-}
-.csicon3 .csicon-down {
-  background-position: -190.5px -423px;
-}
-.csicon3 .csicon-message {
-  background-position: -191px -466px;
-}
-.csicon3 .csicon-list {
-  background-position: -190px -511px;
-}
-.csicon3 .csicon-write {
-  background-position: -190px -556px;
-}
-.csicon3 .csicon-mail {
-  background-position: -190px -601px;
-}
-.csicon3 .csicon-save {
-  background-position: -190px -645px;
-}
-.csicon3 .csicon-search {
-  background-position: -190px -689px;
-}
-.csicon3 .csicon-connect {
-  background-position: -190px -733.5px;
-}
-.csicon3 .csicon-users {
-  background-position: -190.5px -778px;
-}
-.csicon3 .csicon-home {
-  background-position: -190px -823px;
-}
-.csicon3 .csicon-right {
-  background-position: -190.5px -868px;
-}
-.csicon3 .csicon-left {
-  background-position: -190.5px -913px;
-}
-.csicon4 .csicon-about {
-  background-position: -235.5px -154px;
-}
-.csicon4 .csicon-favorites {
-  background-position: -235px -199px;
-}
-.csicon4 .csicon-user {
-  background-position: -234.5px -243px;
-}
-.csicon4 .csicon-downloads {
-  background-position: -234.5px -288px;
-}
-.csicon4 .csicon-settings {
-  background-position: -234.5px -333px;
-}
-.csicon4 .csicon-up {
-  background-position: -235px -378.5px;
-}
-.csicon4 .csicon-down {
-  background-position: -235px -423px;
-}
-.csicon4 .csicon-message {
-  background-position: -235.5px -466px;
-}
-.csicon4 .csicon-list {
-  background-position: -234.5px -511px;
-}
-.csicon4 .csicon-write {
-  background-position: -234.5px -556px;
-}
-.csicon4 .csicon-mail {
-  background-position: -234.5px -601px;
-}
-.csicon4 .csicon-save {
-  background-position: -234.5px -645px;
-}
-.csicon4 .csicon-search {
-  background-position: -234.5px -689px;
-}
-.csicon4 .csicon-connect {
-  background-position: -234.5px -733.5px;
-}
-.csicon4 .csicon-users {
-  background-position: -235px -778px;
-}
-.csicon4 .csicon-home {
-  background-position: -234.5px -823px;
-}
-.csicon4 .csicon-right {
-  background-position: -235px -868px;
-}
-.csicon4 .csicon-left {
-  background-position: -235px -913px;
 }
 .widget-carousel .carousel {
   -webkit-user-select: none;
@@ -9009,7 +8894,6 @@ body > .widget-spinner-icon2 {
   .navbar .nav > li a i {
     display: inline-block;
     vertical-align: middle;
-    background-image: url('../img/icon.png');
     background-size: 320px;
     padding-right: 0;
     margin-top: -2px;

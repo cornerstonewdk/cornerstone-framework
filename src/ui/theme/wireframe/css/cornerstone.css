@@ -1,4 +1,3 @@
-/* move down carets for tabs */
 .clearfix {
   *zoom: 1;
 }
@@ -25,6 +24,68 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+[class^="csicon-"],
+[class*=" csicon-"] {
+  background: url('../img/icon.png') no-repeat 0 0;
+  background-size: 320px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.csicon-about {
+  background-position: -102px -154px;
+}
+.csicon-favorites {
+  background-position: -101.5px -199px;
+}
+.csicon-user {
+  background-position: -101px -243px;
+}
+.csicon-downloads {
+  background-position: -101px -288px;
+}
+.csicon-settings {
+  background-position: -101px -333px;
+}
+.csicon-up {
+  background-position: -101.5px -378.5px;
+}
+.csicon-down {
+  background-position: -101.5px -423px;
+}
+.csicon-message {
+  background-position: -102px -466px;
+}
+.csicon-list {
+  background-position: -101px -511px;
+}
+.csicon-write {
+  background-position: -101px -556px;
+}
+.csicon-mail {
+  background-position: -101px -601px;
+}
+.csicon-save {
+  background-position: -101px -645px;
+}
+.csicon-search {
+  background-position: -101px -689px;
+}
+.csicon-connect {
+  background-position: -101px -733.5px;
+}
+.csicon-users {
+  background-position: -101.5px -778px;
+}
+.csicon-home {
+  background-position: -101px -823px;
+}
+.csicon-right {
+  background-position: -101.5px -868px;
+}
+.csicon-left {
+  background-position: -101.5px -913px;
 }
 .dropup,
 .dropdown {
@@ -79,27 +140,6 @@
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
-}
-.dropdown-menu:before {
-  content: '';
-  display: inline-block;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 9px solid #454545;
-  border-bottom-color: #454545;
-  position: absolute;
-  top: -7px;
-  left: 9px;
-}
-.dropdown-menu:after {
-  content: '';
-  display: inline-block;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 9px solid #202020;
-  position: absolute;
-  top: -7px;
-  left: 9px;
 }
 .dropdown-menu .divider {
   *width: 100%;
@@ -182,7 +222,7 @@
 .open {
   *z-index: 1000;
 }
-.open  > .dropdown-menu {
+.open > .dropdown-menu {
   display: block;
 }
 .pull-right > .dropdown-menu {
@@ -1195,6 +1235,7 @@ select + select {
   font-size: 14px;
   line-height: 22px;
   background: url('../img/bg_input.png') repeat-x left top;
+  background-size: 15px 40px;
 }
 .control-group {
   margin-bottom: 0;
@@ -1358,6 +1399,11 @@ select:focus {
   border-radius: 20px;
   background-color: #2094b1;
 }
+.slider:after,
+.slider-bar {
+  margin: 0 6px;
+  width: auto;
+}
 .slide-handle {
   width: 20px;
   height: 20px;
@@ -1381,7 +1427,7 @@ select:focus {
 }
 .slider-box .figure {
   float: right;
-  width: 40px;
+  width: 50px;
   margin: -2px 0 0;
   padding: 0 5px;
   background: none;
@@ -1535,6 +1581,189 @@ select:focus {
   display: inline-block;
   line-height: 16px;
 }
+.btn i[class*=csicon-] {
+  margin: 0 -2px -7px -2px;
+}
+.btn:hover .csicon-about,
+.btn:active .csicon-about,
+.btn.active .csicon-about {
+  background-position: -146.5px -154px;
+}
+.btn:hover .csicon-favorites,
+.btn:active .csicon-favorites,
+.btn.active .csicon-favorites {
+  background-position: -146px -199px;
+}
+.btn:hover .csicon-user,
+.btn:active .csicon-user,
+.btn.active .csicon-user {
+  background-position: -145.5px -243px;
+}
+.btn:hover .csicon-downloads,
+.btn:active .csicon-downloads,
+.btn.active .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.btn:hover .csicon-settings,
+.btn:active .csicon-settings,
+.btn.active .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.btn:hover .csicon-up,
+.btn:active .csicon-up,
+.btn.active .csicon-up {
+  background-position: -146px -378.5px;
+}
+.btn:hover .csicon-down,
+.btn:active .csicon-down,
+.btn.active .csicon-down {
+  background-position: -146px -423px;
+}
+.btn:hover .csicon-message,
+.btn:active .csicon-message,
+.btn.active .csicon-message {
+  background-position: -146.5px -466px;
+}
+.btn:hover .csicon-list,
+.btn:active .csicon-list,
+.btn.active .csicon-list {
+  background-position: -145.5px -511px;
+}
+.btn:hover .csicon-write,
+.btn:active .csicon-write,
+.btn.active .csicon-write {
+  background-position: -145.5px -556px;
+}
+.btn:hover .csicon-mail,
+.btn:active .csicon-mail,
+.btn.active .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.btn:hover .csicon-save,
+.btn:active .csicon-save,
+.btn.active .csicon-save {
+  background-position: -145.5px -645px;
+}
+.btn:hover .csicon-search,
+.btn:active .csicon-search,
+.btn.active .csicon-search {
+  background-position: -145.5px -689px;
+}
+.btn:hover .csicon-connect,
+.btn:active .csicon-connect,
+.btn.active .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.btn:hover .csicon-users,
+.btn:active .csicon-users,
+.btn.active .csicon-users {
+  background-position: -146px -778px;
+}
+.btn:hover .csicon-home,
+.btn:active .csicon-home,
+.btn.active .csicon-home {
+  background-position: -145.5px -823px;
+}
+.btn:hover .csicon-right,
+.btn:active .csicon-right,
+.btn.active .csicon-right {
+  background-position: -146px -868px;
+}
+.btn:hover .csicon-left,
+.btn:active .csicon-left,
+.btn.active .csicon-left {
+  background-position: -146px -913px;
+}
+.btn-primary:hover .csicon-about,
+.btn-primary:active .csicon-about,
+.btn-primary.active .csicon-about {
+  background-position: -57.5px -154px;
+}
+.btn-primary:hover .csicon-favorites,
+.btn-primary:active .csicon-favorites,
+.btn-primary.active .csicon-favorites {
+  background-position: -57px -199px;
+}
+.btn-primary:hover .csicon-user,
+.btn-primary:active .csicon-user,
+.btn-primary.active .csicon-user {
+  background-position: -56.5px -243px;
+}
+.btn-primary:hover .csicon-downloads,
+.btn-primary:active .csicon-downloads,
+.btn-primary.active .csicon-downloads {
+  background-position: -56.5px -288px;
+}
+.btn-primary:hover .csicon-settings,
+.btn-primary:active .csicon-settings,
+.btn-primary.active .csicon-settings {
+  background-position: -56.5px -333px;
+}
+.btn-primary:hover .csicon-up,
+.btn-primary:active .csicon-up,
+.btn-primary.active .csicon-up {
+  background-position: -57px -378.5px;
+}
+.btn-primary:hover .csicon-down,
+.btn-primary:active .csicon-down,
+.btn-primary.active .csicon-down {
+  background-position: -57px -423px;
+}
+.btn-primary:hover .csicon-message,
+.btn-primary:active .csicon-message,
+.btn-primary.active .csicon-message {
+  background-position: -57.5px -466px;
+}
+.btn-primary:hover .csicon-list,
+.btn-primary:active .csicon-list,
+.btn-primary.active .csicon-list {
+  background-position: -56.5px -511px;
+}
+.btn-primary:hover .csicon-write,
+.btn-primary:active .csicon-write,
+.btn-primary.active .csicon-write {
+  background-position: -56.5px -556px;
+}
+.btn-primary:hover .csicon-mail,
+.btn-primary:active .csicon-mail,
+.btn-primary.active .csicon-mail {
+  background-position: -56.5px -601px;
+}
+.btn-primary:hover .csicon-save,
+.btn-primary:active .csicon-save,
+.btn-primary.active .csicon-save {
+  background-position: -56.5px -645px;
+}
+.btn-primary:hover .csicon-search,
+.btn-primary:active .csicon-search,
+.btn-primary.active .csicon-search {
+  background-position: -56.5px -689px;
+}
+.btn-primary:hover .csicon-connect,
+.btn-primary:active .csicon-connect,
+.btn-primary.active .csicon-connect {
+  background-position: -56.5px -733.5px;
+}
+.btn-primary:hover .csicon-users,
+.btn-primary:active .csicon-users,
+.btn-primary.active .csicon-users {
+  background-position: -57px -778px;
+}
+.btn-primary:hover .csicon-home,
+.btn-primary:active .csicon-home,
+.btn-primary.active .csicon-home {
+  background-position: -56.5px -823px;
+}
+.btn-primary:hover .csicon-right,
+.btn-primary:active .csicon-right,
+.btn-primary.active .csicon-right {
+  background-position: -57px -868px;
+}
+.btn-primary:hover .csicon-left,
+.btn-primary:active .csicon-left,
+.btn-primary.active .csicon-left {
+  background-position: -57px -913px;
+}
 .btn-large {
   padding: 11px 20px;
   font-size: 16px;
@@ -1641,22 +1870,6 @@ input[type="button"].btn-block {
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #e29870;
-  background-image: -moz-linear-gradient(top, #e7aa8a, #da7c4a);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e7aa8a), to(#da7c4a));
-  background-image: -webkit-linear-gradient(top, #e7aa8a, #da7c4a);
-  background-image: -o-linear-gradient(top, #e7aa8a, #da7c4a);
-  background-image: linear-gradient(to bottom, #e7aa8a, #da7c4a);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe7aa8a', endColorstr='#ffda7c4a', GradientType=0);
-  border-color: #da7c4a #da7c4a #b35625;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #da7c4a;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-warning:hover,
 .btn-warning:active,
@@ -1685,22 +1898,6 @@ input[type="button"].btn-block {
   background-color: #c86029 \9;
 }
 .btn-danger {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #da4f49;
-  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
-  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
-  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
-  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
-  border-color: #bd362f #bd362f #802420;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #bd362f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #da4f49;
@@ -1761,22 +1958,6 @@ input[type="button"].btn-block {
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #5bb75b;
-  background-image: -moz-linear-gradient(top, #62c462, #51a351);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
-  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
-  background-image: -o-linear-gradient(top, #62c462, #51a351);
-  background-image: linear-gradient(to bottom, #62c462, #51a351);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
-  border-color: #51a351 #51a351 #387038;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #51a351;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-success:hover,
 .btn-success:active,
@@ -1821,22 +2002,6 @@ input[type="button"].btn-block {
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #49afcd;
-  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
-  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
-  border-color: #2f96b4 #2f96b4 #1f6377;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2f96b4;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-info:hover,
 .btn-info:active,
@@ -1865,22 +2030,6 @@ input[type="button"].btn-block {
   background-color: #24748c \9;
 }
 .btn-inverse {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #3c3c3c;
-  background-image: -moz-linear-gradient(top, #4e4e4e, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4e4e4e), to(#222222));
-  background-image: -webkit-linear-gradient(top, #4e4e4e, #222222);
-  background-image: -o-linear-gradient(top, #4e4e4e, #222222);
-  background-image: linear-gradient(to bottom, #4e4e4e, #222222);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4e4e4e', endColorstr='#ff222222', GradientType=0);
-  border-color: #222222 #222222 #000000;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #222222;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #3c3c3c;
@@ -2281,7 +2430,6 @@ button.btn.btn-mini {
   margin-left: 20px;
 }
 .pagination {
-  text-align: center;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -2348,20 +2496,22 @@ button.btn.btn-mini {
 }
 .pagination ul > li:first-child > a span,
 .pagination ul > li:last-child > a span {
-  padding: 7px 8px;
-  margin: 0 auto;
+  width: 22px;
+  height: 22px;
+  padding: 0;
   display: block;
   position: relative;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
   background-color: #b0b0b0;
-  vertical-align: middle;
   border: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.4);
 }
 .pagination ul > li:first-child > a:active span,
 .pagination ul > li:last-child > a:active span {
-  padding: 7px 8px;
   margin: 0 auto;
   display: block;
   position: relative;
@@ -2443,7 +2593,6 @@ button.btn.btn-mini {
 .pagination2 {
   height: 36px;
   margin: 18px 0;
-  text-align: center;
 }
 .pagination2 ul {
   display: inline-block;
@@ -3063,22 +3212,6 @@ button.btn.btn-mini {
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #0e0e0e;
-  background-image: -moz-linear-gradient(top, #151515, #040404);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#040404));
-  background-image: -webkit-linear-gradient(top, #151515, #040404);
-  background-image: -o-linear-gradient(top, #151515, #040404);
-  background-image: linear-gradient(to bottom, #151515, #040404);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff151515', endColorstr='#ff040404', GradientType=0);
-  border-color: #040404 #040404 #000000;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #040404;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .navbar-inverse .btn-navbar:hover,
 .navbar-inverse .btn-navbar:active,
@@ -3113,131 +3246,149 @@ button.btn.btn-mini {
   background: #ffffff;
   border: 0;
 }
-.icon-con-home {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -824px;
+.navbar .nav > li .csicon-about {
+  background-position: -191px -154px;
 }
-.navbar .nav > li a:hover .icon-con-home,
-.navbar .nav > li a:active .icon-con-home,
-.navbar .nav > li.active a .icon-con-home {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -824px;
+.navbar .nav > li .csicon-favorites {
+  background-position: -190.5px -199px;
 }
-.icon-message {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -467px;
+.navbar .nav > li .csicon-user {
+  background-position: -190px -243px;
 }
-.navbar .nav > li a:hover .icon-message,
-.navbar .nav > li a:active .icon-message,
-.navbar .nav > li.active a .icon-message {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -467px;
+.navbar .nav > li .csicon-downloads {
+  background-position: -190px -288px;
 }
-.icon-mail {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -602px;
+.navbar .nav > li .csicon-settings {
+  background-position: -190px -333px;
 }
-.navbar .nav > li a:hover .icon-mail,
-.navbar .nav > li a:active .icon-mail,
-.navbar .nav > li.active a .icon-mail {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -602px;
+.navbar .nav > li .csicon-up {
+  background-position: -190.5px -378.5px;
 }
-.icon-save {
-  width: 22px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -646px;
+.navbar .nav > li .csicon-down {
+  background-position: -190.5px -423px;
 }
-.navbar .nav > li a:hover .icon-save,
-.navbar .nav > li a:active .icon-save,
-.navbar .nav > li.active a .icon-save {
-  width: 22px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -646px;
+.navbar .nav > li .csicon-message {
+  background-position: -191px -466px;
 }
-.icon-user2 {
-  width: 27px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -779px;
+.navbar .nav > li .csicon-list {
+  background-position: -190px -511px;
 }
-.navbar .nav > li a:hover .icon-user2,
-.navbar .nav > li a:active .icon-user2,
-.navbar .nav > li.active a .icon-user2 {
-  width: 27px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -779px;
+.navbar .nav > li .csicon-write {
+  background-position: -190px -556px;
 }
-.icon-connect {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -734px;
+.navbar .nav > li .csicon-mail {
+  background-position: -190px -601px;
 }
-.nav-icon .nav > li a:hover .icon-connect,
-.nav-icon .nav > li a:active .icon-connect,
-.nav-icon .nav > li.active a .icon-connect {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -734px;
+.navbar .nav > li .csicon-save {
+  background-position: -190px -645px;
 }
-.icon-search {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -192px -690px;
+.navbar .nav > li .csicon-search {
+  background-position: -190px -689px;
 }
-.navbar .nav > li a:hover .icon-search,
-.navbar .nav > li a:active .icon-search,
-.navbar .nav > li.active a .icon-search {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -690px;
+.navbar .nav > li .csicon-connect {
+  background-position: -190px -733.5px;
 }
-.icon-write {
-  width: 28px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -190px -557px;
+.navbar .nav > li .csicon-users {
+  background-position: -190.5px -778px;
 }
-.navbar .nav > li a:hover .icon-write,
-.navbar .nav > li a:active .icon-write,
-.navbar .nav > li.active a .icon-write {
-  width: 28px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -146px -557px;
+.navbar .nav > li .csicon-home {
+  background-position: -190px -823px;
+}
+.navbar .nav > li .csicon-right {
+  background-position: -190.5px -868px;
+}
+.navbar .nav > li .csicon-left {
+  background-position: -190.5px -913px;
+}
+.navbar .nav > li a:hover .csicon-about,
+.navbar .nav > li a:active .csicon-about,
+.navbar .nav > li.active a .csicon-about {
+  background-position: -146.5px -154px;
+}
+.navbar .nav > li a:hover .csicon-favorites,
+.navbar .nav > li a:active .csicon-favorites,
+.navbar .nav > li.active a .csicon-favorites {
+  background-position: -146px -199px;
+}
+.navbar .nav > li a:hover .csicon-user,
+.navbar .nav > li a:active .csicon-user,
+.navbar .nav > li.active a .csicon-user {
+  background-position: -145.5px -243px;
+}
+.navbar .nav > li a:hover .csicon-downloads,
+.navbar .nav > li a:active .csicon-downloads,
+.navbar .nav > li.active a .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.navbar .nav > li a:hover .csicon-settings,
+.navbar .nav > li a:active .csicon-settings,
+.navbar .nav > li.active a .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.navbar .nav > li a:hover .csicon-up,
+.navbar .nav > li a:active .csicon-up,
+.navbar .nav > li.active a .csicon-up {
+  background-position: -146px -378.5px;
+}
+.navbar .nav > li a:hover .csicon-down,
+.navbar .nav > li a:active .csicon-down,
+.navbar .nav > li.active a .csicon-down {
+  background-position: -146px -423px;
+}
+.navbar .nav > li a:hover .csicon-message,
+.navbar .nav > li a:active .csicon-message,
+.navbar .nav > li.active a .csicon-message {
+  background-position: -146.5px -466px;
+}
+.navbar .nav > li a:hover .csicon-list,
+.navbar .nav > li a:active .csicon-list,
+.navbar .nav > li.active a .csicon-list {
+  background-position: -145.5px -511px;
+}
+.navbar .nav > li a:hover .csicon-write,
+.navbar .nav > li a:active .csicon-write,
+.navbar .nav > li.active a .csicon-write {
+  background-position: -145.5px -556px;
+}
+.navbar .nav > li a:hover .csicon-mail,
+.navbar .nav > li a:active .csicon-mail,
+.navbar .nav > li.active a .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.navbar .nav > li a:hover .csicon-save,
+.navbar .nav > li a:active .csicon-save,
+.navbar .nav > li.active a .csicon-save {
+  background-position: -145.5px -645px;
+}
+.navbar .nav > li a:hover .csicon-search,
+.navbar .nav > li a:active .csicon-search,
+.navbar .nav > li.active a .csicon-search {
+  background-position: -145.5px -689px;
+}
+.navbar .nav > li a:hover .csicon-connect,
+.navbar .nav > li a:active .csicon-connect,
+.navbar .nav > li.active a .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.navbar .nav > li a:hover .csicon-users,
+.navbar .nav > li a:active .csicon-users,
+.navbar .nav > li.active a .csicon-users {
+  background-position: -146px -778px;
+}
+.navbar .nav > li a:hover .csicon-home,
+.navbar .nav > li a:active .csicon-home,
+.navbar .nav > li.active a .csicon-home {
+  background-position: -145.5px -823px;
+}
+.navbar .nav > li a:hover .csicon-right,
+.navbar .nav > li a:active .csicon-right,
+.navbar .nav > li.active a .csicon-right {
+  background-position: -146px -868px;
+}
+.navbar .nav > li a:hover .csicon-left,
+.navbar .nav > li a:active .csicon-left,
+.navbar .nav > li.active a .csicon-left {
+  background-position: -146px -913px;
 }
 .nav {
   margin-left: 0;
@@ -3325,11 +3476,17 @@ button.btn.btn-mini {
   font-weight: normal;
   line-height: 18px;
   text-transform: uppercase;
+  background-color: #333333;
+  padding: 10px 20px;
+}
+.nav-list > .nav-header:first-child {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
-  background-color: #333333;
   padding: 15px 20px;
+}
+.nav-list li + .nav-header {
+  margin-top: 0;
 }
 .nav-list > li:last-child > a {
   -webkit-border-radius: 0 0 4px 4px;
@@ -3689,7 +3846,6 @@ button.btn.btn-mini {
 }
 .tabs-right > .nav-tabs > li > a {
   color: #b0b0b0;
-  border-left: 0;
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
@@ -3769,76 +3925,79 @@ button.btn.btn-mini {
 }
 .nav-bot li i {
   display: block;
-  width: 32px;
-  height: 25px;
   margin: 0 auto 3px auto;
-  background: url(../img/icon.png);
-  background-size: 287px;
 }
-.nav-bot li a:active i,
-.nav-bot li a.active i {
-  width: 32px;
-  height: 25px;
+.nav-bot li a:active .csicon-about,
+.nav-bot li a.active .csicon-about {
+  background-position: -146.5px -154px;
 }
-.nav-bot li a .icon-about {
-  width: 26px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -104px -157px;
+.nav-bot li a:active .csicon-favorites,
+.nav-bot li a.active .csicon-favorites {
+  background-position: -146px -199px;
 }
-.nav-bot li a:active .icon-about,
-.nav-bot li a.active .icon-about {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -157px;
+.nav-bot li a:active .csicon-user,
+.nav-bot li a.active .csicon-user {
+  background-position: -145.5px -243px;
 }
-.nav-bot li a .icon-favorites {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -104px -201px;
+.nav-bot li a:active .csicon-downloads,
+.nav-bot li a.active .csicon-downloads {
+  background-position: -145.5px -288px;
 }
-.nav-bot li a:active .icon-favorites,
-.nav-bot li a.active .icon-favorites {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -201px;
+.nav-bot li a:active .csicon-settings,
+.nav-bot li a.active .csicon-settings {
+  background-position: -145.5px -333px;
 }
-.nav-bot li a .icon-downloads {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -106px -291px;
+.nav-bot li a:active .csicon-up,
+.nav-bot li a.active .csicon-up {
+  background-position: -146px -378.5px;
 }
-.nav-bot li a:active .icon-downloads,
-.nav-bot li a.active .icon-downloads {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -150px -291px;
+.nav-bot li a:active .csicon-down,
+.nav-bot li a.active .csicon-down {
+  background-position: -146px -423px;
 }
-.nav-bot li a .icon-settings {
-  width: 31px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -105px -336px;
+.nav-bot li a:active .csicon-message,
+.nav-bot li a.active .csicon-message {
+  background-position: -146.5px -466px;
 }
-.nav-bot li a:active .icon-settings,
-.nav-bot li a.active .icon-settings {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -336px;
+.nav-bot li a:active .csicon-list,
+.nav-bot li a.active .csicon-list {
+  background-position: -145.5px -511px;
 }
-.nav-bot li a .icon-user {
-  width: 32px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -100px -245px;
+.nav-bot li a:active .csicon-write,
+.nav-bot li a.active .csicon-write {
+  background-position: -145.5px -556px;
 }
-.nav-bot li a:active .icon-user,
-.nav-bot li a.active .icon-user {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -144px -245px;
+.nav-bot li a:active .csicon-mail,
+.nav-bot li a.active .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.nav-bot li a:active .csicon-save,
+.nav-bot li a.active .csicon-save {
+  background-position: -145.5px -645px;
+}
+.nav-bot li a:active .csicon-search,
+.nav-bot li a.active .csicon-search {
+  background-position: -145.5px -689px;
+}
+.nav-bot li a:active .csicon-connect,
+.nav-bot li a.active .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.nav-bot li a:active .csicon-users,
+.nav-bot li a.active .csicon-users {
+  background-position: -146px -778px;
+}
+.nav-bot li a:active .csicon-home,
+.nav-bot li a.active .csicon-home {
+  background-position: -145.5px -823px;
+}
+.nav-bot li a:active .csicon-right,
+.nav-bot li a.active .csicon-right {
+  background-position: -146px -868px;
+}
+.nav-bot li a:active .csicon-left,
+.nav-bot li a.active .csicon-left {
+  background-position: -146px -913px;
 }
 .radio-vertical {
   -webkit-border-radius: 4px;
@@ -3892,10 +4051,7 @@ button.btn.btn-mini {
   border-radius: 3px;
 }
 .badge {
-  padding: 4px 12px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  padding: 4px 9px;
 }
 a.label:hover,
 a.badge:hover {
@@ -4692,7 +4848,6 @@ h4 small {
   margin: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.2);
-  overflow: hidden;
 }
 .page-header h1 {
   padding-bottom: 9px;
@@ -4946,6 +5101,16 @@ address {
 .text-success {
   color: #3f842a;
 }
+.lists ul {
+  padding: 0;
+  margin: 0;
+}
+.lists li {
+  list-style: none;
+}
+.lists .lists-con li:last-child {
+  border-bottom: 1px solid #cdcdcd;
+}
 .accordion {
   margin-bottom: 18px;
 }
@@ -4976,10 +5141,6 @@ address {
   -webkit-border-radius: 6px 6px 0 0;
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
-}
-.accordion-group:first-child .accordion-heading .accordion-toggle:active,
-.accordion-group:first-child .accordion-heading .accordion-toggle.active {
-  background-color: #dddddd;
 }
 .accordion-toggle {
   cursor: pointer;
@@ -5019,6 +5180,12 @@ address {
   display: block;
   line-height: 1;
   width: 100%;
+}
+.carousel .item {
+  -webkit-transition: 0.35s ease left;
+  -moz-transition: 0.35s ease left;
+  -o-transition: 0.35s ease left;
+  transition: 0.35s ease left;
 }
 .well {
   color: #4e4e4e;
@@ -5087,12 +5254,6 @@ address {
 }
 .widget-carousel .carousel .carousel-control.right {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-@media (max-width: 767px) {
-  .widget-carousel .carousel .carousel-control.left,
-  .widget-carousel .carousel .carousel-control.right {
-    display: none;
-  }
 }
 /*!
  * Datepicker for Bootstrap
@@ -5199,22 +5360,6 @@ address {
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #f4dec9;
-  background-image: -moz-linear-gradient(top, #f4d8c9, #f4e6c9);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4d8c9), to(#f4e6c9));
-  background-image: -webkit-linear-gradient(top, #f4d8c9, #f4e6c9);
-  background-image: -o-linear-gradient(top, #f4d8c9, #f4e6c9);
-  background-image: linear-gradient(to bottom, #f4d8c9, #f4e6c9);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff4d8c9', endColorstr='#fff4e6c9', GradientType=0);
-  border-color: #f4e6c9 #f4e6c9 #e7c98a;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #f4e6c9;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .datepicker td.today:hover,
 .datepicker td.today:hover:hover,
@@ -5289,23 +5434,6 @@ address {
 .datepicker td.active.disabled,
 .datepicker td.active.disabled:hover {
   color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #296ebb;
-  background-image: -moz-linear-gradient(top, #2981bb, #2950bb);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2981bb), to(#2950bb));
-  background-image: -webkit-linear-gradient(top, #2981bb, #2950bb);
-  background-image: -o-linear-gradient(top, #2981bb, #2950bb);
-  background-image: linear-gradient(to bottom, #2981bb, #2950bb);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2981bb', endColorstr='#ff2950bb', GradientType=0);
-  border-color: #2950bb #2950bb #1b357c;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2950bb;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #296ebb;
   background-image: -moz-linear-gradient(top, #2981bb, #2950bb);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2981bb), to(#2950bb));
@@ -5403,9 +5531,6 @@ address {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.datepicker td span:hover {
-  background: #dddddd;
-}
 .datepicker td span.disabled,
 .datepicker td span.disabled:hover {
   background: none;
@@ -5417,23 +5542,6 @@ address {
 .datepicker td span.active.disabled,
 .datepicker td span.active.disabled:hover {
   color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #296ebb;
-  background-image: -moz-linear-gradient(top, #2981bb, #2950bb);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2981bb), to(#2950bb));
-  background-image: -webkit-linear-gradient(top, #2981bb, #2950bb);
-  background-image: -o-linear-gradient(top, #2981bb, #2950bb);
-  background-image: linear-gradient(to bottom, #2981bb, #2950bb);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2981bb', endColorstr='#ff2950bb', GradientType=0);
-  border-color: #2950bb #2950bb #1b357c;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2950bb;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #296ebb;
   background-image: -moz-linear-gradient(top, #2981bb, #2950bb);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2981bb), to(#2950bb));
@@ -5648,16 +5756,13 @@ address {
   user-select: none;
 }
 .widget-sign .sign canvas {
-  border: 1px solid #CCC !important;
-}
-@media (max-width: 480px) {
-  .widget-sign .sign canvas {
-    height: 100px !important;
-  }
+  border: 1px solid #CCC;
+  min-height: 300px;
 }
 /* Loading Circle */
 .widget-spinner {
   position: relative;
+  overflow: hidden;
 }
 .widget-spinner:before {
   content: "";
@@ -5668,7 +5773,7 @@ address {
   opacity: 0.5;
   top: 0;
   left: 0;
-  z-index: 900;
+  z-index: 9000;
 }
 .widget-spinner-icon {
   background-image: url(../img/spinner.gif);
@@ -5682,7 +5787,7 @@ address {
   left: 50%;
   margin-left: -25px;
   margin-top: -25px;
-  z-index: 1000;
+  z-index: 10000;
 }
 .widget-spinner-icon2 {
   background: url(../img/spinner.png);
@@ -5701,7 +5806,7 @@ address {
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-  z-index: 1000;
+  z-index: 10000;
 }
 body > .widget-spinner-icon,
 body > .widget-spinner-icon2 {
@@ -6013,6 +6118,9 @@ body > .widget-spinner-icon2 {
   }
   .nav-list > li:last-child > a:hover {
     border-bottom: 0;
+  }
+  .no-hover:hover {
+    display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
@@ -7178,22 +7286,6 @@ body > .widget-spinner-icon2 {
   .btn-primary.disabled,
   .btn-primary[disabled] {
     cursor: default;
-    color: #dddddd;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #87abca;
-    background-image: -moz-linear-gradient(top, #87abca, #87abca);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#87abca), to(#87abca));
-    background-image: -webkit-linear-gradient(top, #87abca, #87abca);
-    background-image: -o-linear-gradient(top, #87abca, #87abca);
-    background-image: linear-gradient(to bottom, #87abca, #87abca);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff87abca', endColorstr='#ff87abca', GradientType=0);
-    border-color: #87abca #87abca #5286b3;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    *background-color: #87abca;
-    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     color: #dddddd;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     background-color: #87abca;
