@@ -5045,6 +5045,230 @@ address {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+[class^="csicon-"],
+[class*=" csicon-"] {
+  background: url('../img/icon.png') no-repeat 0 0;
+  background-size: 320px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.csicon-about {
+  background-position: -102px -154px;
+}
+.csicon-favorites {
+  background-position: -101.5px -199px;
+}
+.csicon-user {
+  background-position: -101px -243px;
+}
+.csicon-downloads {
+  background-position: -101px -288px;
+}
+.csicon-settings {
+  background-position: -101px -333px;
+}
+.csicon-up {
+  background-position: -101.5px -378.5px;
+}
+.csicon-down {
+  background-position: -101.5px -423px;
+}
+.csicon-message {
+  background-position: -102px -466px;
+}
+.csicon-list {
+  background-position: -101px -511px;
+}
+.csicon-write {
+  background-position: -101px -556px;
+}
+.csicon-mail {
+  background-position: -101px -601px;
+}
+.csicon-save {
+  background-position: -101px -645px;
+}
+.csicon-search {
+  background-position: -101px -689px;
+}
+.csicon-connect {
+  background-position: -101px -733.5px;
+}
+.csicon-users {
+  background-position: -101.5px -778px;
+}
+.csicon-home {
+  background-position: -101px -823px;
+}
+.csicon-right {
+  background-position: -101.5px -868px;
+}
+.csicon-left {
+  background-position: -101.5px -913px;
+}
+.csicon2 .csicon-about {
+  background-position: -146.5px -154px;
+}
+.csicon2 .csicon-favorites {
+  background-position: -146px -199px;
+}
+.csicon2 .csicon-user {
+  background-position: -145.5px -243px;
+}
+.csicon2 .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.csicon2 .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.csicon2 .csicon-up {
+  background-position: -146px -378.5px;
+}
+.csicon2 .csicon-down {
+  background-position: -146px -423px;
+}
+.csicon2 .csicon-message {
+  background-position: -146.5px -466px;
+}
+.csicon2 .csicon-list {
+  background-position: -145.5px -511px;
+}
+.csicon2 .csicon-write {
+  background-position: -145.5px -556px;
+}
+.csicon2 .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.csicon2 .csicon-save {
+  background-position: -145.5px -645px;
+}
+.csicon2 .csicon-search {
+  background-position: -145.5px -689px;
+}
+.csicon2 .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.csicon2 .csicon-users {
+  background-position: -146px -778px;
+}
+.csicon2 .csicon-home {
+  background-position: -145.5px -823px;
+}
+.csicon2 .csicon-right {
+  background-position: -146px -868px;
+}
+.csicon2 .csicon-left {
+  background-position: -146px -913px;
+}
+.csicon3 .csicon-about {
+  background-position: -191px -154px;
+}
+.csicon3 .csicon-favorites {
+  background-position: -190.5px -199px;
+}
+.csicon3 .csicon-user {
+  background-position: -190px -243px;
+}
+.csicon3 .csicon-downloads {
+  background-position: -190px -288px;
+}
+.csicon3 .csicon-settings {
+  background-position: -190px -333px;
+}
+.csicon3 .csicon-up {
+  background-position: -190.5px -378.5px;
+}
+.csicon3 .csicon-down {
+  background-position: -190.5px -423px;
+}
+.csicon3 .csicon-message {
+  background-position: -191px -466px;
+}
+.csicon3 .csicon-list {
+  background-position: -190px -511px;
+}
+.csicon3 .csicon-write {
+  background-position: -190px -556px;
+}
+.csicon3 .csicon-mail {
+  background-position: -190px -601px;
+}
+.csicon3 .csicon-save {
+  background-position: -190px -645px;
+}
+.csicon3 .csicon-search {
+  background-position: -190px -689px;
+}
+.csicon3 .csicon-connect {
+  background-position: -190px -733.5px;
+}
+.csicon3 .csicon-users {
+  background-position: -190.5px -778px;
+}
+.csicon3 .csicon-home {
+  background-position: -190px -823px;
+}
+.csicon3 .csicon-right {
+  background-position: -190.5px -868px;
+}
+.csicon3 .csicon-left {
+  background-position: -190.5px -913px;
+}
+.csicon4 .csicon-about {
+  background-position: -235.5px -154px;
+}
+.csicon4 .csicon-favorites {
+  background-position: -235px -199px;
+}
+.csicon4 .csicon-user {
+  background-position: -234.5px -243px;
+}
+.csicon4 .csicon-downloads {
+  background-position: -234.5px -288px;
+}
+.csicon4 .csicon-settings {
+  background-position: -234.5px -333px;
+}
+.csicon4 .csicon-up {
+  background-position: -235px -378.5px;
+}
+.csicon4 .csicon-down {
+  background-position: -235px -423px;
+}
+.csicon4 .csicon-message {
+  background-position: -235.5px -466px;
+}
+.csicon4 .csicon-list {
+  background-position: -234.5px -511px;
+}
+.csicon4 .csicon-write {
+  background-position: -234.5px -556px;
+}
+.csicon4 .csicon-mail {
+  background-position: -234.5px -601px;
+}
+.csicon4 .csicon-save {
+  background-position: -234.5px -645px;
+}
+.csicon4 .csicon-search {
+  background-position: -234.5px -689px;
+}
+.csicon4 .csicon-connect {
+  background-position: -234.5px -733.5px;
+}
+.csicon4 .csicon-users {
+  background-position: -235px -778px;
+}
+.csicon4 .csicon-home {
+  background-position: -234.5px -823px;
+}
+.csicon4 .csicon-right {
+  background-position: -235px -868px;
+}
+.csicon4 .csicon-left {
+  background-position: -235px -913px;
+}
 .widget-carousel .carousel {
   -webkit-user-select: none;
   /* Safari, Chrome */
