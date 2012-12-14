@@ -11,7 +11,7 @@ $("#range3").rangeinput({"inputShow":true});
 $("#signature").sign();
 
 // 모션캡차
-$("#form-motion-capcha").motioncaptcha();
+$("#form-motion-captcha").motioncaptcha();
 
 $("[data-plugin='spinner']").on("click", function (e) {
     var self = this;

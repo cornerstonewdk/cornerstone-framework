@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MOBILE T</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../dist/lib/bootstrap/css/bootstrap-responsive.css">
+    <link id="themeStyle" rel="stylesheet" href="../../dist/ui/theme/dark/css/cornerstone.css">
+    <style>
+        body {
+            padding-bottom: 30px;
+        }
+
+        #selectTheme {
+            width: 100px;
+            height: 20px;
+            position: fixed;
+            left: 10px;
+            bottom: 30px;
+        }
+
+        #selectTheme > select {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+<h2 class="title">Nav bar. mobile</h2>
+
+<ul class="nav nav-bot">
+    <li>
+        <a href="#">
+            <i class="csicon-about"></i>
+            <span>about</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="csicon-favorites"></i>
+            <span>favorites</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="active">
+            <i class="csicon-downloads"></i>
+            <span>downloads</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="csicon-settings"></i>
+            <span>settings</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="csicon-user"></i>
+            <span>user</span>
+        </a>
+    </li>
+</ul>
+
+<ul class="nav nav-bot v-blue">
+    <li>
+        <a href="#">
+            <i class="csicon-about"></i>
+            <span>about</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="csicon-favorites"></i>
+            <span>favorites</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="active">
+            <i class="csicon-downloads"></i>
+            <span>downloads</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="csicon-settings"></i>
+            <span>settings</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="csicon-user"></i>
+            <span>user</span>
+        </a>
+    </li>
+</ul>
+
+<hr>
+
+<h2 class="title">Vertically grouped buttons</h2>
+
+<div class="btn-group btn-group-vertical">
+    <button class="btn">cat</button>
+    <button class="btn">dog</button>
+    <button class="btn">monkey</button>
+    <button class="btn">rabbit</button>
+</div>
+
+<h2 class="title">Vertically grouped radio</h2>
+
+<ul class="nav radio-vertical">
+    <li>
+        <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <span class="inp-radio"></span>
+            cat
+        </label>
+    </li>
+    <li>
+        <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>
+            <span class="inp-radio"></span>
+            dog
+        </label>
+    </li>
+    <li>
+        <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" checked>
+            <span class="inp-radio"></span>
+            monkey
+        </label>
+    </li>
+    <li>
+        <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" checked>
+            <span class="inp-radio"></span>
+            rabbit
+        </label>
+    </li>
+</ul>
+
+<hr>
+
+<h2 class="title">Vertically grouped checkbox</h2>
+
+<ul class="nav radio-vertical">
+    <li>
+        <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox1" value="option1" disabled>
+            <span class="inp-check disabled"></span>
+            cat
+        </label>
+    </li>
+    <li>
+        <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox2" value="option2">
+            <span class="inp-check"></span>
+            dog
+        </label>
+    </li>
+    <li>
+        <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox3" value="option3">
+            <span class="inp-check"></span>
+            monkey
+        </label>
+    </li>
+    <li>
+        <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox4" value="option4">
+            <span class="inp-check check"></span>
+            rabbit
+        </label>
+    </li>
+</ul>
+
+<hr>
+
+<div class="footer">
+    <p class="logo">MOBILE</p>
+</div>
+</div>
+
+<div id="selectTheme">
+    <select>
+        <option>테마선택</option>
+        <option value="dark">Dark</option>
+        <option value="white">White</option>
+        <option value="wireframe">Wireframe</option>
+    </select>
+</div>
+<script src='../../dist/lib/jquery-1.8.1.min.js'></script>
+<script src='../../dist/ui/widget-plugins.js'></script>
+<script type="text/javascript">
+    $("a, button").on("click", function (e) {
+        e.preventDefault();
+    });
+
+    $(document).on("change", "#selectTheme > select", function(e) {
+        if(!$(this).val().match("dark|white|wireframe")) {
+            return false;
+        }
+        $("#themeStyle").attr({
+            href:"../../dist/ui/theme/" + $(this).val() + "/css/cornerstone.css"
+        })
+    });
+</script>
+</body>
+</html>
