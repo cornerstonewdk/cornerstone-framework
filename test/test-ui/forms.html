@@ -18,21 +18,35 @@
 			padding-bottom: 30px;
 		}
         #selectTheme {
-            width: 100px;
+            margin-bottom: 50px;
             height: 20px;
-            position: fixed;
-            left: 10px;
-            bottom: 30px;
         }
         #selectTheme > select {
             font-size: 14px;
+
+            width: 100%;
+            height: 40px;
+            padding: 9px 5px;
+        }
+        .widget-rangeinput {
+            position: relative;
+            z-index: 0;
         }
 	</style>
 </head>
 
-<body>
+<body><!-- /container -->
 
 <div class="container">
+<div id="selectTheme">
+    <select>
+        <option>테마선택</option>
+        <option value="dark">Dark</option>
+        <option value="white">White</option>
+        <option value="wireframe">Wireframe</option>
+    </select>
+</div>
+
 <div class="page-header">
 	<h1>Form</h1>
 </div>
@@ -203,16 +217,16 @@
 		<!-- e :: 추가된 마크업 - Select -->
 
 		<legend>Rangeinput</legend>
-		
+
 		<div class="widget-rangeinput">
 			<label>
 				<input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="1"
 				class="widget-range btn-block"/>
 			</label>
 		</div>
-		
+
 		<hr/>
-		
+
 		<div class="widget-rangeinput slider-box">
 			<label>
 				<input type="range" data-plugin="rangeinput" value="10" min="0" max="1000" step="10"
@@ -264,22 +278,13 @@
 <!-- /row -->
 
 </div>
-<!-- /container -->
-<div id="selectTheme">
-    <select>
-        <option>테마선택</option>
-        <option value="dark">Dark</option>
-        <option value="white">White</option>
-        <option value="wireframe">Wireframe</option>
-    </select>
-</div>
+
 <script src='../../dist/lib/jquery-1.8.1.min.js'></script>
 <script src='../../dist/ui/widget-plugins.js'></script>
 <script type="text/javascript">
     $("a, button").on("click", function (e) {
         e.preventDefault();
     });
-
     $(document).on("change", "#selectTheme > select", function(e) {
         if(!$(this).val().match("dark|white|wireframe")) {
             return false;
