@@ -186,6 +186,9 @@ html lang: 'ko', ->
                     about: h @document.url
                     -> @content
                 #a 'href':'#mobile_anchor', "go to mobile_anchor"
+            
+            div '.span9.well', 'style':'float: left;', ->
+            	"SKTELECOM에 의해 작성된 Cornerstone 개발자 문서는 크리에이티브 커먼즈 저작자표시 3.0 라이선스에 따라 이용할 수 있습니다."
 
             # Include our scripts
             #text @getBlock('scripts').add([
@@ -222,6 +225,3 @@ html lang: 'ko', ->
                 #script -> "$('.pos_fixed_all').hide(); setTimeout(function() { $('.pos_fixed_all').show() }, 3000);"
                 if cur_url isnt  "/4_3_10_range_input" and cur_url isnt "/4_4_01_scroll_view"
                     script -> "$('#pos_fixed_btn').addClass('pos_fixed_all');"
-
-
-            div '.span9.well', 'style':'float: left;', -> "SKTELECOM에 의해 작성된 Cornerstone 개발자 문서는 크리에이티브 커먼즈 저작자표시 3.0 라이선스에 따라 이용할 수 있습니다."
