@@ -187,8 +187,8 @@ html lang: 'ko', ->
                     -> @content
                 #a 'href':'#mobile_anchor', "go to mobile_anchor"
             
-            div '.span9.well', 'style':'float: left;', ->
-            	"SKTELECOM에 의해 작성된 Cornerstone 개발자 문서는 크리에이티브 커먼즈 저작자표시 3.0 라이선스에 따라 이용할 수 있습니다."
+            div '.span9.well', 'style':'float: right;', ->
+            	"<a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다."
 
             # Include our scripts
             #text @getBlock('scripts').add([
