@@ -32,7 +32,10 @@ html lang: 'ko', ->
 
 		script src: './dist/lib/jquery-1.8.1.min.js'
 		script src: './dist/ui/widget-plugins.js'
-        
+		
+		text "<script type='text/javascript'>"
+		text "</script>"
+		
 	# ----------------------------- # Document Body
 
 	body "onload":"smartAnchor('mobile_anchor')", ->
@@ -219,6 +222,4 @@ html lang: 'ko', ->
                 #script -> "$('.pos_fixed_all').hide(); setTimeout(function() { $('.pos_fixed_all').show() }, 3000);"
                 if cur_url isnt  "/4_3_10_range_input" and cur_url isnt "/4_4_01_scroll_view"
                     script -> "$('#pos_fixed_btn').addClass('pos_fixed_all');"
-            
-            text "<script type='text/javascript'>"
-            text "</script>"
+
