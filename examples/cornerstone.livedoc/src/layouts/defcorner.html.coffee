@@ -130,4 +130,5 @@ html lang: 'ko', ->
         else
 		    script src: './script_toc.js'
 		    
-	text "<script type='text/javascript'></script>"
+	text "<script type='text/javascript'>"
+	text "</script>"
