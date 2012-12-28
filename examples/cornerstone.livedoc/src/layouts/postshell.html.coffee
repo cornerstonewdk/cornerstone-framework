@@ -224,4 +224,4 @@ html lang: 'ko', ->
                     script -> "$('#pos_fixed_btn').addClass('pos_fixed_all');"
 
 
-	footer -> "SKTELECOM에 의해 작성된 Cornerstone 개발자 문서는 크리에이티브 커먼즈 저작자표시 3.0 라이선스에 따라 이용할 수 있습니다."
+            div '.span9.well', 'style':'float: left;', -> "SKTELECOM에 의해 작성된 Cornerstone 개발자 문서는 크리에이티브 커먼즈 저작자표시 3.0 라이선스에 따라 이용할 수 있습니다."
