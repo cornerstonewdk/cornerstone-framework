@@ -32,7 +32,18 @@ html lang: 'ko', ->
 
 		script src: './dist/lib/jquery-1.8.1.min.js'
 		script src: './dist/ui/widget-plugins.js'
-        
+		
+		text "<script type='text/javascript'>"
+		text "var _gaq = _gaq || [];"
+		text "_gaq.push(['_setAccount', 'UA-37188645-1']);"
+		text "_gaq.push(['_trackPageview']);"
+		text "(function() {"
+		text "  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;"
+		text "  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';"
+		text "  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);"
+		text "})();"
+		text "</script>"
+		
 	# ----------------------------- # Document Body
 
 	body "onload":"smartAnchor('mobile_anchor')", ->
@@ -183,6 +194,9 @@ html lang: 'ko', ->
                     about: h @document.url
                     -> @content
                 #a 'href':'#mobile_anchor', "go to mobile_anchor"
+            
+            div '.span9.well', 'style':'float: right;', ->
+            	"<a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다."
 
             # Include our scripts
             #text @getBlock('scripts').add([
