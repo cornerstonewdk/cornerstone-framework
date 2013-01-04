@@ -189,6 +189,35 @@ desc( '최적화된 결과 파일들에 Copyright를 명시한다. 그 전에 de
 runTask( 'copyright', [ 'deploy' ], function() {
 	
 	j.concat( 'copyright.txt', PATH_DIST + 'launcher.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'app-container.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'loader/style.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'loader/template.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'mvc/model/sync.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'mvc/router/multipage.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'mvc/view/form.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'mvc/view/gesture.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'mvc/view/validation.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'util/jsonp.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'util/logging.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'util/skt.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'util/srt-0.9.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'util/transition.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-chart.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-datatable.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-editor.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-listview.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-media.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-plugins.js' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-scrollview.js' );
+	
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-chart.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-datatable.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-editor.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-media.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/widget-scrollview.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/theme/dark/css/cornerstone.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/theme/white/css/cornerstone.css' );
+	j.concat( 'copyright.txt', PATH_DIST + 'ui/theme/wireframe/css/cornerstone.css' );
 } );
 
 desc( '디폴트 작업으로 copyright를 수행한다.' );
