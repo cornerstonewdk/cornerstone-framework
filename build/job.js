@@ -41,14 +41,27 @@ exports.copy = function( src, dest ) {
 
 exports.concat = function() {
 
-	var out = arguments[ arguments.length - 1 ];
+	var first = arguments[ 0 ];
+	var last = arguments[ arguments.length - 1 ];
+	var lastContent;
 	
-	for ( var i = 0; i < arguments.length - 1; i++ ) {
+	try {
+		lastContent = fs.readFileSync( last );
+	}
+	catch ( e ) {}
+	
+	action( 'Concatenating', first );
+	fs.writeFileSync( last, fs.readFileSync( first ) );
+	
+	for ( var i = 1; i < arguments.length - 1; i++ ) {
 		action( 'Concatenating', arguments[ i ] );
-		fs.appendFileSync( out, fs.readFileSync( arguments[ i ] ) );
+		fs.appendFileSync( last, fs.readFileSync( arguments[ i ] ) );
 	}
 	
-	action( 'Concatenated', out );
+	action( 'Concatenating', last );
+	fs.appendFileSync( last, lastContent );
+	
+	action( 'Concatenated', last );
 };
 
 exports.less = function( src, dest, cb ) {

@@ -184,5 +184,12 @@ runTask( 'deploy', [ 'validate' ], function() {
 	
 }, { async: true } );
 
-desc( '디폴트 작업으로 deploy를 수행한다.' );
-task( 'default', [ 'deploy' ], function() {} );
+
+desc( '최적화된 결과 파일들에 Copyright를 명시한다. 그 전에 deploy를 수행한다.' );
+runTask( 'copyright', [ 'deploy' ], function() {
+	
+	j.concat( 'copyright.txt', PATH_DIST + 'launcher.js' );
+} );
+
+desc( '디폴트 작업으로 copyright를 수행한다.' );
+task( 'default', [ 'copyright' ], function() {} );
