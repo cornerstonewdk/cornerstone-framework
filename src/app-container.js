@@ -33,7 +33,7 @@ requirejs.config( {
 		
 		// Utils
 		'transition': Cornerstone.PATH + 'util/transition',
-		'device': Cornerstone.PATH + 'util/srt-1.0',
+		'device': Cornerstone.PATH + 'util/srt-0.9',
 		'jsonp': Cornerstone.PATH + 'util/jsonp',
 		'skt': Cornerstone.PATH + 'util/skt',
 		'logging': Cornerstone.PATH + 'util/logging',
