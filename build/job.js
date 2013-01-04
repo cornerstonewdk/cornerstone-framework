@@ -58,8 +58,10 @@ exports.concat = function() {
 		fs.appendFileSync( last, fs.readFileSync( arguments[ i ] ) );
 	}
 	
-	action( 'Concatenating', last );
-	fs.appendFileSync( last, lastContent );
+	if ( lastContent ) {
+		action( 'Concatenating', last );
+		fs.appendFileSync( last, lastContent );
+	}
 	
 	action( 'Concatenated', last );
 };
