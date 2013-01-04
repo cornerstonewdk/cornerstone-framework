@@ -1,5 +1,9 @@
-SKT HTML5 Framework
+Cornerstone Framework
 ===================
+
+소개
+---
+Cornerstone Framework은 모바일 및 데스크탑 환경에서 동작하는 고품질의 웹 페이지 또는 웹 앱을 제작할 수 있는 Client-side Framework이다.
 
 디렉토리 구조
 -----------
@@ -28,3 +32,5 @@ SKT HTML5 Framework
 
 * master : 외부에 노출 가능한 완성본 (Release branch)
 * dev : 내부 개발시에 사용
+
+COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
