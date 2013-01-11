@@ -53,9 +53,9 @@ echo;
 echo "3. [ Livedoc : generating ... ]";
 cd $GIT_DEV_LIVEDOC
 echo CURRENT DIR = [ `pwd` ]; echo;
-#docpad generate
-#rm -rf out_mid
-#cp -r out out_mid
+docpad generate
+rm -rf out_mid
+cp -r out out_mid
 echo;
 
 echo Execute GIT pull '(count = '$cnt', hour = '$hcnt')';
