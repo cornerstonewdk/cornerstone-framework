@@ -1,37 +1,222 @@
 <!DOCTYPE html>
-<html lang="ko">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>Cornerstone</title>
-		<link href="dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-		<link href="dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
-		<style type="text/css">
-		body {
-		  font-family:dotum;
-		}
-		</style>
-	</head>
-	<body>
-		<div class="container" style="margin-top: 50px;">
-			<h1>Cornerstone</h1>
-			<hr/>
-			<div class="well" style="padding: 8px 0;">
-				<ul class="nav nav-list">
-					<li class="nav-header">Examples</li>
-					<li><a href="t-tris/">T-tris</a></li>
-					<li><a href="t-dashboard/">T-Dashboard</a></li>
-					<li class="divider"></li>
-					<li class="nav-header">Developer Guide</li>
-					<li><a href="livedoc/">Live Document</a></li>
-					<li class="divider"></li>
-					<li class="nav-header">Test</li>
-					<li><a href="cornertest/">Cornerstone 테스트 페이지</a></li>
-					<li class="divider"></li>
-					<li class="nav-header">Download</li>
-					<li><a href="download/">Runtime 다운로드</a></li>
-				</ul>
-			</div>
-		</div>
-	</body>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head lang="ko">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Cornerstone WDK</title>
+        <meta name="description" content="mobile web app development kit cornerstone.">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+        <!--[if gt IE 8]><!--><link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-responsive.min.css"><!--<![endif]-->
+        <link rel="stylesheet" href="css/main.css">
+        <!--[if lt IE 9]><link rel="stylesheet" href="css/ie8.css"><![endif]-->
+        <!--[if lt IE 8]><link rel="stylesheet" href="css/ie7.css"><![endif]-->
+        <!--[if lt IE 7]><link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection"><![endif]-->
+
+        <script src="vendor/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="vendor/webfontloader/webfont.js"></script>
+        <script type="text/javascript">
+            WebFont.load({
+                custom: {
+                    families: ['SeoulHangangM', 'SeoulNamsanM'],
+                    urls:['/css/fonts.css']
+                }
+            });
+        </script>
+        <!--[if lt IE 9]><script src="vendor/selectivizr/selectivizr-min.js"></script><![endif]-->
+
+    </head>
+
+    <body>
+        <!--[if lt IE 8]>
+            <div class="chromeframe">
+                <div class="container">
+                    <p class="alert alert-block">지금 사용하시는 웹 브라우저는 <strong>HTML5와 CSS3의 지원이 미흡하여</strong> 이 페이지의 내용과 모양을 의도와 다르게 볼 수 있습니다. 브라우저를 <a href="http://browsehappy.com/">최신으로 업데이트</a>하거나 <a href="http://www.google.com/chromeframe/?redirect=true">구글에서 제공하는 Chrome Frame</a>을 설치하여 향상된 웹 브라우저 환경을 누려보세요.</p>
+                </div>
+            </div>
+        <![endif]-->
+
+        <nav class="navbar navbar-inverse navbar-fixed-top cs-nav">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <img src="img/logo_cornerstone.png" alt="Corner Stone" class="logo"/>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">처음</a></li>
+                            <li><a href="https://github.com/cornerstonewdk/">저장소</a></li>
+                            <li><a href="http://cornerstone.sktelecom.com/livedoc/">문서</a></li>
+                            <li><a href="http://cornerstonewdk.tumblr.com/">블로그</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+            
+        <section class="masthead">
+            <div class="container">
+                <!--
+                <h1 class="title"><span class="slogan">현대적인, 세련된 웹앱을 위한</span><br> Corner Stone WDK</h1>
+                <hr class="bar">
+                <p class="description">Highly Mobile-Centered HTML5 Web App Development Kit</p>
+                -->
+                <img src="img/banner_top.png" alt="Highly Mobile-Centered HTML5 Web App Development Kit Cornerstone" />
+                <div id="myCarousel" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <img src="img/banner_01.png" alt="배너 이미지"/>
+                        </div>
+                        <div class="item">
+                            <img src="img/banner_02.png" alt="배너 이미지"/>
+                        </div>
+                        <div class="item">
+                            <img src="img/banner_03.png" alt="배너 이미지"/>
+                        </div>
+                    </div>
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                </div>
+            </div>
+            <div class="bar"></div>
+        </section>
+
+        <section class="marketing why">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <h1>왜 코너스톤인가?</h1>
+                    </div>
+                    <div class="span12">
+                        <ol class="why-list">
+                            <li>
+                                <h2>“Change is happening in the enterprise web app development industry!”</h2>
+                                <p>웹이 애플리케이션의 영역으로 발전함에 따라 점차적으로 서버중심의 구조에서 풍부한 사용자 경험 제공을 가능하게 하는 클라이언트 중심 구조로 패러다임이 변하고 있습니다.</p>
+                                <p><a href="http://css.dzone.com/articles/shift-towards-client-side-mvc"><i class="icon-chevron-right icon-white"></i>“패러다임 쉬프팅 – 클라이언트 사이드 MVC로”, Paul Hammant</a></p>
+                            </li>
+                            <li>
+                                <h2>“Speed is the most important feature in a mobile web app.”</h2>
+                                <p>웹앱에서 빠른 반응성과 속도가 곧 핵심적인 기능의 하나이며, 특별히 모바일에서는 이를 충족하여야 합니다.</p>
+                                <p><a href="http://37signals.com/svn/posts/2280-speed-is-the-most-important-feature-if-your"><i class="icon-chevron-right icon-white"></i>“성공적인 웹앱 위한 10가지 황금률”, Matt Linderman</a></p>
+                            </li>
+                            <li>
+                                <h2>“Even Google was not rich enough to support all of the different mobile platforms...”</h2>
+                                <p>구글조차도 다양한 모바일단말을 지원하기 위해 모든 앱을 네이티브로 만들기에는 비용상 어려움이 있으며 이를 적절히 해결하는데 웹앱이 커다란 도움이 됩니다.</p>
+                                <p><a href="http://blogs.ft.com/tech-blog/2009/07/app-stores-are-not-the-future-says-google"><i class="icon-chevron-right icon-white"></i>“모바일 빗 컨퍼런스 인터뷰”, Vic Gundotra, 구글 부사장</a></p>  
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="marketing ready">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <h1>웹앱 개발자를 위해 <span>준비된 상차림</span></h1>
+                    </div>
+                    <div class="span4">
+                        <img src="img/pictogram_light.png" alt="불빛 픽토그램"/>
+                        <h2>웹을 가장 잘 <strong>이해</strong>하는 <span>방식으로 구성되었습니다.</span></h2>
+                        <p>내용의 HTML, 모양의 CSS, 작동의 Javascript를 그대로 담고 있어 별다른 어려움 없이 적응할 수 있습니다.</p>
+                    </div>
+                    <div class="span4">
+                        <img src="img/pictogram_tool.png" alt="도구 픽토그램"/>
+                        <h2>웹을 가장 잘 <strong>활용</strong>하는 <span>기술을 활용하였습니다.</span></h2>
+                        <p>대표적인 DOM라이브러리 <a href="http://jquery.com/">jQuery</a>, 자바스크립트 유틸리티 라이브러리 <a href="http://underscorejs.org/">Underscore.js</a>, 클라이언트 MVC 프레임워크 <a href="http://backbonejs.org/">Backbone.js</a>, AMD방식의 모듈화 라이브러리 <a href="http://requirejs.org/">Require.js</a>, 템플릿 엔진 <a href="http://handlebarsjs.com/">Handlebars.js</a>, CSS 프레임워크 <a href="http://getbootstrap.com">Bootstrap</a>을 기반으로 하여 작성되어 어떠한 웹앱이던 바로 작성이 가능합니다.</p>
+                   </div>
+                    <div class="span4">
+                        <img src="img/pictogram_mouse.png" alt="마우스 픽토그램"/>
+                        <h2>Best Practice 모던 웹앱을 <span>바로</span> <span><strong>시작</strong>할 수 있습니다.</span></h2>
+                        <p>코너스톤을 구성하고 있는 라이브러리는 새로운 웹시대를 여는 모던 웹 기술로 구성되어 있습니다. 개발자 여러분은 코너스톤을 한번 들여다 보는 것 만으로 앞으로 다가올 웹 기술과 트랜드를 살펴볼 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="marketing features">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <h1>구성과 특징</h1>
+                    </div>
+                    <div class="span12">
+                        <ul class="features-list">
+                            <li>
+                                <h2>강력한 클라이언트 중심의 웹앱을 작성할 수 있습니다.</h2>
+                                <p>클라이언트 MVC구조를 갖추어 서버없이 단독으로 동작하는 클라이언트 웹앱 에서부터, 뷰와 구조를 분리하여 대규모 개발, 분업과 테스팅에도 적합합니다. 클라이언트 중심 구조는 특별히 풍부한 사용자 경험을 제공하는데도 적합합니다.</p>
+                            </li>
+                            <li>
+                                <h2>유연하고 효율성 높은 모듈구조의 웹앱을 작성할 수 있습니다.</h2>
+                                <p>개발시 필요하다면 전체를 한꺼번에 불러와 앱을 실행시킬수도, 비동기 형식으로 필요할때 마다 필요한 만큼 불러와 실행시킬수도 있습니다. Javascript뿐만아니라 MVC 구조에서 View 템플릿과 스타일또한 완전하게 모듈로 분리시켜 웹앱을 작성, 운용할 수 있습니다. 또한 적절한 모듈화는 대규모 코드개발, 분업화와 관리에도 적합합니다. 이제 안정적인 구조에서 코드를 작성하는데만 집중할 수 있습니다.</p>
+                            </li>
+                            <li>
+                                <h2>모바일에서 특별히 아름다운 UI와 올바른 스타일링 구조를 제공합니다.</h2>
+                                <p>모바일기기에서 터치의 감성을 극대화 할 수 있는 질감이 담긴 UI, 적절한 크기의 폼과 버튼 등 으로 곧바로 모바일 친화적인 웹앱을 만들 수 있으며, <a href="https://twitter.com/twitteross">twitter</a>의 <a href="http://getbootstrap.com">Bootstrap</a>라이브러리를 활용하여 MVC로 구조화된 Javascript 코드만큼 안정적이고 읽기좋은 CSS구조를 제공하며, 이를 확장하여 사용할 수 있습니다.</p>
+                            </li>
+                            <li>
+                                <h2>이제 CSS로 모양새를 표현하는 웹앱을 만들 수 있습니다.</h2>
+                                <p>우리는 png, jpg로 웹 페이지를 구성하는데 익숙해 있습니다. 코너스톤의 모든 UI는 이미지 사용을 최소화 하고 최대한 CSS를 적극적으로 사용하여 모양새를 표현하였습니다. 특별히 코너스톤 UI중 폼의 코드를 유심히 살펴보면 적극적으로 활용된 CSS 코드를 확인 할 수 있습니다.</p>
+                            </li>
+                            <li>
+                                <h2>모바일에서 특별히 빠른 웹앱을 만들 수 있습니다.</h2>
+                                <p><a href="http://jquerymobile.com/">jQuery Mobile</a>, <a href="http://www.sencha.com/products/touch">Sench Touch</a>등 많은 모바일 웹앱 프레임워크가 이미 사용되고 있습니다. 그럼에도 불구하고 코너스톤이 가치있는 이유는 바로 빠른 속도에 있습니다. 모바일 최적화된 CSS, 리스트 뷰등 모바일에서 자주 사용하는 UI패턴의 최적화와 다양한 고민을 통해 속도를 향상하였습니다. </p>
+                            </li>
+                            <li>
+                                <h2>다양한 크기의 기기를 손쉽게 지원하는 웹앱을 작성할 수 있습니다.</h2>
+                                <p>CSS의 미디어 쿼리 기능을 적극활용한 반응형웹을 만들 수 있으며 클라이언트 MVC 라이브러리로 View를 구조화 할수록 다양한 크기의 기기를 손쉽게 지원할 수 있습니다.</p>
+                            </li>
+                            <li class="ie8">
+                                <h2>풍부하고 바로 사용해 볼 수 있는 문서를 제공합니다.</h2>
+                                <p>모던 웹앱에 관심이 있다면 <a href="http://backbonejs.org/">Backbone.js</a>, <a href="http://requirejs.org/">Require.js</a>등을 들어보셨을것 입니다. 하지만 아직 한글화된 서적이나 문서가 적은것이 이러한 기술을 활용하는데 걸림돌이 되었습니다. 이제 한글로 구성된 코너스톤 개발자 문서를 편하게 읽어보면서 문서에서 곧바로 상호작용하는 예제들을 한번씩 실행해 보는 것 만으로 새로운 웹 페러다임을 잘 이해하는 계기가 됩니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <a href="http://www.sktelecom.com/">
+                            <img src="img/logo_sktelecom.png" alt="SKTELECOM logo" />
+                        </a>
+                        <p>COPYRIGHT(C) 2013 BY<span><a href="http://www.sktelecom.com/">&nbsp;SKTELECOM&nbsp;</a></span><span>CO., LTD. ALL RIGHTS RESERVED.</span></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.8.3.min.js"><\/script>')</script>
+
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-37188645-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </body>
 </html>
