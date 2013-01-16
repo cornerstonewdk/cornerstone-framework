@@ -1,0 +1,230 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '소개'
+outline: '스타일 작성법은 개발자나 퍼블리셔가 아니더라도 코드를 빠르고 정확하게 이해할 수 있도록 한다. 최초 작성자가 유지보수를 끝까지 책임지는 경우는 드물다. 이런 경우 최초 작성자가 아닌 다른 사람이 코드를 분석할 때 스타일 가이드가 없는 경우 소스를 직접 분석해야하는 비효율적인 비용이 발생한다. 하지만 스타일 가이드에 준수해 작성된 소스의 경우 소스 분석 시간을 낮추므로 업무 효율성을 높일 수 있다...'
+date: '2012-11-16'
+tagstr: 'style'
+tags: ['post','style','']
+subsection: 'Style'
+order: '[3, 1]'
+thumbnail: '3. Style.png'
+---
+
+소개
+---
+스타일 작성법은 개발자나 퍼블리셔가 아니더라도 코드를 빠르고 정확하게 이해할 수 있도록 한다. 최초 작성자가 유지보수를 끝까지 책임지는 경우는 드물다. 이런 경우 최초 작성자가 아닌 다른 사람이 코드를 분석할 때 스타일 가이드가 없는 경우 소스를 직접 분석해야하는 비효율적인 비용이 발생한다. 하지만 스타일 가이드에 준수해 작성된 소스의 경우 소스 분석 시간을 낮추므로 업무 효율성을 높일 수 있다. 또한 스타일 가이드에 준수한 코드는 코드가 일관성 있게 작성이 되므로 프로젝트 팀원이 작성하는 코드의 통일성을 보장 받을 수 있다. 이와 같이 스타일 가이드를 통해 얻을 수 있는 장점을 아래와 같이 정리할 수 있다.
+
+* 스타일가이드를 통한 일관성 있는 규칙으로 코드의 통일성
+* 코드 분석 용이
+* 업무 효율 상승
+* 유지보수 비용 감소
+
+명명법
+-----
+
+명명법은 레이아웃, 요소 등의 ID, CLASS 이름을 작성하는 규칙이다. 누구나 보기에 이해하기 쉬운 이름으로 작성을해야 코드를 쉽게 파악할 수 있고, 일관성있는 코드를 작성할 수 있다.
+
+### 기본 문법
+
+이름의 시작은 영문 소문자로 작성하며, 의미상으로 구분이 필요한 경우 `-` 하이픈으로 구분한다. 모든 이름은 영문, 숫자 그리고 `-` 하이픈으로 이뤄진다. 또한 클래스에 네이밍을 할 경우 아래 예시 방식을 따르는 것을 권장한다. 
+
+예제.
+
+1. b- :  
+코드는 간결해지지만 의미상 식별이 거의 불가능하다.
+
+1. button- :  
+이름을 보는 순간 바로 어떤 의미인지 확인이 가능하다 하지만 코드가 길어질 수 있는 단점이 있다.
+
+1. btn- :  
+코드 / 이름의 의미 또한 어느정도 간결하고 식별이 가능하다. **(권장)**
+
+### 공통 명명법
+			
+- 버튼 : btn-
+
+- 아이콘 : icon-
+			
+- 폼 : form-
+
+- input : input-
+
+- 표 : table-
+
+- 네비게이션 : nav-	
+
+- 탭메뉴 : tab-
+
+- 검색 : search-
+
+
+### 예약어
+
+Cornerstone은 Bootstrap에서 제공되는 icon class외에 추가된 컴포넌트 위젯을 위한 icon class가 제공된다. Bootstrap에서 제공되는 아이콘은 14px * 14px이나 Cornerstone에서 추가 제공되는 icon class는 30px * 30px 이다. `.csicon-*` 형식의 이름으로 제공된다. 하기 예제와 같이 자신이 아이콘을 넣고 싶은 곳에 해당 마크업을 작성한다.
+
+#### Cornerstone의 icon class 사용법 및 목록 ####
+
+```
+<i class="csicon-about"></i>
+<i class="csicon-favorites"></i>
+<i class="csicon-user"></i>
+<i class="csicon-users"></i>
+<i class="csicon-downloads"></i>
+<i class="csicon-settings"></i>
+<i class="csicon-up"></i>
+<i class="csicon-down"></i>
+<i class="csicon-message"></i>
+<i class="csicon-list"></i>
+<i class="csicon-write"></i>
+<i class="csicon-mail"></i>
+<i class="csicon-save"></i>
+<i class="csicon-search"></i>
+<i class="csicon-connect"></i>
+<i class="csicon-home"></i>
+<i class="csicon-right"></i>
+<i class="csicon-left"></i>
+```
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css'></link>                                                          
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
+<% else: %>                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
+                                                                      
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
+                                                                      
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
+<% end %>                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<div class="btn-group">
+				<button class="btn"><i class="csicon-about"></i></button>
+				<button class="btn"><i class="csicon-favorites"></i></button>
+				<button class="btn"><i class="csicon-user"></i></button>
+				<button class="btn"><i class="csicon-downloads"></i></button>
+				<button class="btn"><i class="csicon-settings"></i></button>
+			</div>
+			<div class="btn-group">
+				<button class="btn"><i class="csicon-up"></i></button>
+				<button class="btn"><i class="csicon-down"></i></button>
+				<button class="btn"><i class="csicon-message"></i></button>
+				<button class="btn"><i class="csicon-list"></i></button>
+				<button class="btn"><i class="csicon-write"></i></button>
+			</div>
+			<div class="btn-group">
+				<button class="btn"><i class="csicon-mail"></i></button>
+				<button class="btn"><i class="csicon-save"></i></button>
+				<button class="btn"><i class="csicon-search"></i></button>
+				<button class="btn"><i class="csicon-connect"></i></button>
+				<button class="btn"><i class="csicon-users"></i></button>
+			</div>
+			<div class="btn-group">
+				<button class="btn"><i class="csicon-home"></i></button>
+				<button class="btn"><i class="csicon-right"></i></button>
+				<button class="btn"><i class="csicon-left"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
+
+Bootstrap에서 기본 제공되는 icon class는 [여기](http://twitter.github.com/bootstrap/base-css.html#icons)를 통해 확인이 가능하다.

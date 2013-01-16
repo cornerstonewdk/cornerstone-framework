@@ -1,0 +1,2 @@
+#!/bin/bash
+githubsync.sh >> githubsync.log &

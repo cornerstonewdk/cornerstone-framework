@@ -1,0 +1,77 @@
+---
+layout: 'post'
+section: 'Cornerstone Framework'
+sections: ['Cornerstone Framework']
+title: '단말 API'
+outline: 'Device 유틸은 HTML5 API를 확장하여 하이브리드 페키징시에 다양한 Native Device API를 제공한다 Device 유틸을 사용하기 위해서는 js 모듈뿐 아니라 각 디바이스별 사용법이 다르기 때문에 자세한 내용은 여기를 참고하기 바란다...'
+date: '2012-11-16'
+tagstr: 'utility'
+tags: ['post','utility','']
+order: '[5, 1, 2]'
+thumbnail: '5.1.02.device_API.png'
+---
+
+Device
+------
+1)	Device 유틸은 HTML5 API를 확장하여 하이브리드 페키징시에 다양한 Native Device API를 제공한다.
+    Device 유틸을 사용하기 위해서는 js 모듈뿐 아니라 각 디바이스별 사용법이 다르기 때문에 자세한 내용은
+    [여기](RT_1_basic_structure.html)를 참고하기 바란다.
+
+2)	의존성 주입 
+
+-	일반 방식
+
+		<!-- Device Util Javascript -->
+		<script type="text/javascript" src="cornerstone/util/srt-1.0.js"></script>
+
+-	MVC Framework을 이용한 의존성 주입
+		
+		define( [ 'device' ], function () {
+			
+			/**
+			* device api는 기존 HTML5 API를 학장하여 설계되어있기 때문에 대부분 navigator객체에
+			* 포함되어 있거나, window 객체 하위에 객체들이 정의되어 있다. 따라서 device 모듈을 로드
+			* 후 별도로 모듈명으로 파라미터를 받지 않는다.
+			**/
+
+			// device의 베터리의 충전상태 감지
+			navigator.battery.addEventListener( 'chargingchange', function() {
+				alert("navigator.battery.charging = " + navigator.battery.charging);
+				alert("navigator.battery.level = " + navigator.battery.level);
+			}, false );
+		} );
+
+3) 사용 예제( 본 예제는 Cornerstone Framework를 이용한 Hybrid Packaging 시의 예제 코드이다. )
+device의 베터리 충전상태가 변할때 마다 Alert창으로 알려주는 예제이다.
+
+HTML 코드
+
+```
+	<!DOCTYPE html>
+	<html lang="ko">
+	    <head>
+	        <meta charset="utf-8"/>
+	        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	        <title>Battery Status</title>
+	    </head>
+	    <body>
+	        <div class="container"></div>
+	        <script src="cornerstone/launcher.js" data-target="script/main"></script> 
+	    </body>
+	</html>
+```
+
+자바스크립트 코드 ( main.js )
+
+```
+	define( [ 'device' ], function () {
+		return {
+			launch: function () {
+				navigator.battery.addEventListener( 'chargingchange', function() {
+					alert("navigator.battery.charging = " + navigator.battery.charging);
+					alert("navigator.battery.level = " + navigator.battery.level);
+				}, false );
+			}
+		};
+	} );
+```

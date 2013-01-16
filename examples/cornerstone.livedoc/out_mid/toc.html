@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+    <script src="./dist/lib/handlebars-1.0.0.beta.6.js"></script>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
+  <body>
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <li>
+                <a href="#">
+                  <i class="icon-write" id="tag-search">
+                    
+                  </i>
+                </a>
+              </li>
+            </ul>
+            <form class="navbar-search pull-rigth" id="searchForm">
+              <label class="blind"> Tag Search </label><input class="search-query" type="text" placeholder="TAG" data-provide="typeahead" data-source='["application","post","runtime","style","utility","widget",""]'>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span12">
+          <article class="page" typeof="sioc:page" about="/toc">
+            <div>
+  <section class="tagmap">
+  <div id="tagmap" class="row">
+    <h1>Cornerstone Framework</h1>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          1. Introduction
+        </h4>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[1, 1]" tags="* ">
+      <div class="media">
+        <a class="pull-left" href="./1__Introduction.html">
+          <img class="media-object" src="./images/1. Introduction.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./1__Introduction.html">
+              1.1. 개요
+            </a>
+          </h4>
+          <p>
+            Cornerstone Framework은 모바일 및 데스크탑 환경에서 동작하는 고품질의 웹 페이지 또는 웹 앱을 제작할 수 있는 Client-side Framework이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          2. 애플리케이션 작성법
+        </h4>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 1]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_01_file_structure.html">
+          <img class="media-object" src="./images/2.1.01.file_structure.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_01_file_structure.html">
+              2.1. 파일 구조
+            </a>
+          </h4>
+          <p>
+            웹 페이지는 HTML, CSS, Javascript로 구성되며, 각각의 역할은 명확하게 구분되어 있다. HTML은 페이지의 내용을 기술하며, CSS는 페이지의 모양을 기술한다. Javascript는 사용자의 입력을 받아서 처리하고 결과를 만들어내는 기능을 수행한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 2]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_02_module.html">
+          <img class="media-object" src="./images/2.1.02.module.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_02_module.html">
+              2.2. 모듈화
+            </a>
+          </h4>
+          <p>
+            Single-page Web App은 하나의 페이지로 이루어진 웹 애플리케이션을 말한다. 페이지가 하나이므로 다른 페이지로 이동하거나 페이지 전체를 갱신하는 일 없이, 높은 사용성과 빠른 속도를 제공한다. 하지만, 하나의 페이지에 과도하게 많은 기능이 들어가면 페이지의 초기 로딩 시간이 길어지고 많은 메모리를 사용하게 되므로 적절하게 여러 페이지로 나누어 주는 것도 중요하다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 3]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_03_module_usage.html">
+          <img class="media-object" src="./images/2.1.03.module_usage.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_03_module_usage.html">
+              2.3. 모듈의 사용
+            </a>
+          </h4>
+          <p>
+            각 html 파일은 다음과 같이 작성된다. body 태그 내에 내용을 작성하고 가장 마지막에 script 태그를 사용함을 주목하자. 이렇게 하면 스크립트가 로딩이 되기 전에 페이지 렌더링을 시작하므로 화면이 더 빨리 뜨는 효과를 기대할 수 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 4]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_04_MVC_pattern.html">
+          <img class="media-object" src="./images/2.1.04.MVC_pattern.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_04_MVC_pattern.html">
+              2.4. MVC 패턴
+            </a>
+          </h4>
+          <p>
+            MVC(Model-View-Controller) 패턴은 애플리케이션을 Model, View, Controller로 분리해서 작성하는 패턴이다. 이런식으로 애플리케이션을 작성하면 사용자 인터페이스와 비즈니스 로직을 분리해서 서로 영향을 주지 않도록 작성할 수 있고 이는 비즈니스 로직 및 데이터의 재사용성을 높여준다. 각 요소는 다음과 같은 역할을 가진다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 5]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_05_model.html">
+          <img class="media-object" src="./images/2.1.05.model.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_05_model.html">
+              2.5. 모델
+            </a>
+          </h4>
+          <p>
+            다음과 같이 Backbone.Model의 extend를 사용하면 자신만의 Model 클래스를 정의하고 클래스의 인스턴스를 생성할 수 있다. defaults는 객체를 생성할 때 사용할 기본 속성값들을 의미하고, initialize는 객체가 생성되면 실행되는 생성자 함수이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 6]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_06_collection.html">
+          <img class="media-object" src="./images/2.1.06.collection.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_06_collection.html">
+              2.6. 콜렉션
+            </a>
+          </h4>
+          <p>
+            Collection은 Model의 정렬된 집합이다. Collection에 담겨 있는 Model의 속성이 변경되면 해당 Model 뿐 아니라 Collection에도 change 이벤트가 발생한다. Collection에 Model이 추가되거나 삭제되면 add, remove 이벤트가 발생한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 7]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_07_view.html">
+          <img class="media-object" src="./images/2.1.07.view.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_07_view.html">
+              2.7. 뷰
+            </a>
+          </h4>
+          <p>
+            View의 역할은 사용자와 상호작용하는 것이다. 즉, View는 Model을 어떤 방식으로 사용자에게 보여줄지를 결정하고, 사용자의 입력을 받아서 어떻게 반응할지를 결정한다. 따라서 View는 특정 Model과 연결되어서 Model의 값이 변경될때마다 화면을 다시 그려주는 작업과 사용자의 입력으로 인해서 발생하는 이벤트를 처리하는 작업을 해야 한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 8]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_08_gesture.html">
+          <img class="media-object" src="./images/2.1.08.gesture.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_08_gesture.html">
+              2.8. 제스쳐
+            </a>
+          </h4>
+          <p>
+            스마트폰이나 스마트패드 등 터치 기반의 기기를 사용할 때는, 터치와 관련된 다양한 이벤트를 처리해야 할 경우가 있다. 일반적으로 iOS, 안드로이드 기기의 브라우저에서는 다음 이벤트들을 추가로 지원한다. 따라서 Backbone View의 events 속성을 다음과 같이 지정해서 이벤트를 처리할 수 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 9]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_09_template.html">
+          <img class="media-object" src="./images/2.1.09.template.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_09_template.html">
+              2.9. Template
+            </a>
+          </h4>
+          <p>
+            View의 render 함수를 구현하다 보면 많은 양의 HTML 코드가 들어가게 된다. 그리고, 정적인 HTML 마크업이 아니라 데이터에 따라 동적으로 변화되어야 할 부분이 많아지면 HTML 코드와 자바스크립트 코드가 뒤섞여 이해하기 힘든 복잡한 코드가 된다. 다음은 사용자의 정보를 표시하는 View의 한 예이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 10]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_10_dynamic_style.html">
+          <img class="media-object" src="./images/2.1.10.dynamic_style.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_10_dynamic_style.html">
+              2.10. 스타일의 동적 로딩
+            </a>
+          </h4>
+          <p>
+            Template을 사용하게 되면 HTML 코드가 여러 파일로 분산된다. 그러다보면, 각 HTML 코드를 꾸며주는 css 코드 역시 여러 파일로 분산될 필요가 있을 것이다. 즉, Template 파일이 필요로 하는 css 파일들을 따로 분리해 놓았다면, 해당 Template을 사용하는 경우에만 로드되도록 할 수 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 11]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_11_form_MVC.html">
+          <img class="media-object" src="./images/2.1.11.form_MVC.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_11_form_MVC.html">
+              2.11. Form과 MVC
+            </a>
+          </h4>
+          <p>
+            Form View는 Cornerstone Framework에서 제공하는 View 클래스 중의 하나로 Form의 데이터로 Model 객체를 만들고, 반대로 Model 객체의 값을 이용하여 Form의 값을 갱신해 주는 역할을 한다. Form View는 form-view라는 이름의 모듈로 제공된다. 인스턴스를 생성할 때 form 태그를 나타내는 DOM element를 el 속성으로, Form과 연결될 Model 객체를 model 속성으로 지정한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 12]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_12_synchronization.html">
+          <img class="media-object" src="./images/2.1.12.synchronization.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_12_synchronization.html">
+              2.12. 동기화
+            </a>
+          </h4>
+          <p>
+            Model이나 Collection의 데이터는 메모리에 보관되므로 페이지가 다시 로드되기만 해도 데이터는 초기화된다. 따라서, 지속적으로 유지되는 공간에 데이터를 저장하고 읽어올 필요가 있다. Backbone.sync 가 그 작업에 도움이 될 것이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[2, 13]" tags="* application">
+      <div class="media">
+        <a class="pull-left" href="./2_13_routing.html">
+          <img class="media-object" src="./images/2.1.13.routing.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./2_13_routing.html">
+              2.13. 라우팅
+            </a>
+          </h4>
+          <p>
+            여러 화면이 존재하는 Single-page Web App을 만든다고 가정해 보자. 다른 화면으로 이동할 때는 실제로 페이지를 전환하지 않고 AJAX를 사용해 페이지의 일부분을 다시 렌더링하게 될 것이다. 이 경우 실제로 페이지가 전환되는 것이 아니므로 현재 URL에는 변화가 없다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          3. Style
+        </h4>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[3, 1]" tags="* style">
+      <div class="media">
+        <a class="pull-left" href="./3_1_introduction.html">
+          <img class="media-object" src="./images/3. Style.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./3_1_introduction.html">
+              3.1. 소개
+            </a>
+          </h4>
+          <p>
+            스타일 작성법은 개발자나 퍼블리셔가 아니더라도 코드를 빠르고 정확하게 이해할 수 있도록 한다. 최초 작성자가 유지보수를 끝까지 책임지는 경우는 드물다. 이런 경우 최초 작성자가 아닌 다른 사람이 코드를 분석할 때 스타일 가이드가 없는 경우 소스를 직접 분석해야하는 비효율적인 비용이 발생한다. 하지만 스타일 가이드에 준수해 작성된 소스의 경우 소스 분석 시간을 낮추므로 업무 효율성을 높일 수 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[3, 2]" tags="* style">
+      <div class="media">
+        <a class="pull-left" href="./3_2_theme.html">
+          <img class="media-object" src="./images/3. Style.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./3_2_theme.html">
+              3.2. 테마
+            </a>
+          </h4>
+          <p>
+            제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 Bootstrap의 특성인 Bootstrap &gt; LESS로 작성되어 Bootstrap &gt; Customize와 같이 사용자화 가능함으로 개별 테마 안에서 Bootstrap에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 Bootstrap에 없는 요소들도 Bootstrap과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 Bootstrap의 방식대로 사용자화가 가능해야 함...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[3, 3]" tags="* style">
+      <div class="media">
+        <a class="pull-left" href="./3_3_responsive_web.html">
+          <img class="media-object" src="./images/3. Style.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./3_3_responsive_web.html">
+              3.3. 반응형 웹
+            </a>
+          </h4>
+          <p>
+            반응형웹이란? (Responsive Web) Responsive Web의 뜻처럼 반응하는 웹이란 뜻이다. 하나의 웹을 PC, 태블릿 PC, 스마트폰등 다양한 기기들의 해상도에 최적화 시켜 볼수 있게 만든 웹이다. 미디어쿼리(media query)를 이용해 PC, 태블릿 PC, 스마트폰 등 다양한 기기의 해상도나 화면 크기에 최적화된 레이아웃으로 자동으로 변환된다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[3, 4]" tags="* style">
+      <div class="media">
+        <a class="pull-left" href="./3_4_component_form.html">
+          <img class="media-object" src="./images/3. Style.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./3_4_component_form.html">
+              3.4. Components, Form layouts
+            </a>
+          </h4>
+          <p>
+            머릿글은 &lt;h1&gt;~&lt;h6&gt;로 작성한다. Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 22px이다. 기본 테마인 wireframe의 기본글꼴은 14px 이며, line-height는 18px이다. body내의 &lt;p&gt;태그에 모두 적용된다....
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          4. Widget
+        </h4>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[4, 1]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_1_00_form.html">
+          <img class="media-object" src="./images/4.1.0.form.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_1_00_form.html">
+              4.1. Form
+            </a>
+          </h4>
+          <p>
+            폼 위젯은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 플러그인 위젯을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(typeahead)같은 기능을 통해 사용자에게 편의를 제공할 수 있다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[4, 2]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_00_component.html">
+          <img class="media-object" src="./images/4.2.00.component.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_00_component.html">
+              4.2. Component
+            </a>
+          </h4>
+          <p>
+            컴포넌트 위젯은 폼 위젯, 플러그인 위젯, 피처드 위젯 등 화면을 꾸밀때 재사용될 수 있는 요소들이며 기능이 없고 플러그인과 함께 사용하여 기능을 적용 가능하다. 기본적으로 컴포넌트 위젯의 스타일을 적용하려면 엘리멘트에서 스타일 클래스를 선언해서 사용해야 한다....
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 1]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_01_dropdown.html">
+          <img class="media-object" src="./images/4.2.01.dropdown.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_01_dropdown.html">
+              4.2.1. Dropdown
+            </a>
+          </h4>
+          <p>
+            드롭다운 플러그인과 함께 사용되는 스타일로 Button dropdowns,Navbar등 각종 dropdown을 활용하는 위젯이 이것을 불러들여와 사용된다. 기본적으로 드롭다운 마크업은 화면상에 노출되지 않는다. 드롭다운 메뉴자체가 상위 메뉴를 통해 노출되는 형태이므로 상위 메뉴에서 트리거가 발생하면 노출이 된다.(플러그인 필요) 또한 드롭다운을 포함하는 상위 엘리먼트는...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 2]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_02_navation.html">
+          <img class="media-object" src="./images/4.2.02.navation.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_02_navation.html">
+              4.2.2. Navigation
+            </a>
+          </h4>
+          <p>
+            Nav 리스트는 부가적인 헤더와 함께 nav 의 링크들을 그룹하는 심플하면서 쉬운 방법을 제공하며, OS X 의 파인더와 같은 사이드바를 만들 수 있다. 구조적으로, Tab, Pill 과 같은 핵심 nav 스타일을 토대로 만들어 졌으며 사용 및 커스터마이징을 매우 직관적으로 할 수 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 3]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_03_navagation_bar.html">
+          <img class="media-object" src="./images/4.2.03.navation_bar.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_03_navagation_bar.html">
+              4.2.3. Navbar
+            </a>
+          </h4>
+          <p>
+            Navbar는 정적인 프로젝트명 또는 메뉴항목을 표현하는 기본적인 네비게이션 요소이다. `.container` 안 한곳에 본 요소를 넣어서 사용한다. Navbar 구조를 갖추기 위해 (static 과 fixed 에 관계없이) 단지 몇개의 `&lt;div&gt;` 만이 필요하다. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 4]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_04_pagination.html">
+          <img class="media-object" src="./images/4.2.04.paginaton.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_04_pagination.html">
+              4.2.4. Pagination
+            </a>
+          </h4>
+          <p>
+            ul 엘리먼트로된 네비게이션 요소. 기본적으로 폰에서는 이것 대신 리스트뷰를 사용하는것이 적합하나 네이버나 클리앙같은 게시판 류에서는 실제로는 상당히 자주 사용되고 있는 듯 하며 엔터프라이즈 환경에서도 상당히 자주 사용된다. 기본 페이지네이션에서는 큰 클릭 영역과 간단히 확장/축소가 가능하다. 기본적으로 ul, li 태그로 이뤄져 있고 .pagination 클래스로 감싸야 한다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 5]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_05_label_and_badge.html">
+          <img class="media-object" src="./images/4.2.05.label_and_badge.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_05_label_and_badge.html">
+              4.2.5. Labels, badges
+            </a>
+          </h4>
+          <p>
+            이름표와 뱃지
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 6]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_06_typography.html">
+          <img class="media-object" src="./images/4.2.06.typography.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_06_typography.html">
+              4.2.6. Typographic
+            </a>
+          </h4>
+          <p>
+            히어로 유닛은 사이트에서 중요한 컨텐츠를 보여주기 위해 사용되는 가볍고 유연한 요소이다. 일반적으로 컨텐츠의 제목과 태그 그리고 해당 컨텐츠를 상세하게 볼 수 있는 링크 정도로 구성되며 .hero-unit 클래스로 감싸야 한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 7]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_07_thumbnail.html">
+          <img class="media-object" src="./images/4.2.07.thumbnail.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_07_thumbnail.html">
+              4.2.7. Thumbnails
+            </a>
+          </h4>
+          <p>
+            썸네일은 기본적으로 최소한의 마크업만으로 링크된 이미지를 보여주도록 디자인 됐다. 고급 사용자 정의 썸네일은 이미지 뿐만 아니라 썸네일에 보다 복잡한 컨텐츠를 넣을 수 있다. 예를들면 링크된 이미지, 컨텐츠 타이틀, 컨텐츠 설명, 버튼 등과 같은 다양한 요소들로 꾸밀 수 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 8]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_08_alert.html">
+          <img class="media-object" src="./images/4.2.08.arert.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_08_alert.html">
+              4.2.8. Alerts
+            </a>
+          </h4>
+          <p>
+            성공, 주의, 에러 메세지를 위한 스타일. 기본 경고창은 .alert 클래스로 경고를 보여줄 내용을 감싸준다. .alert 클래스 내부의 닫기 버튼은 옵션이므로 닫기 기능이 필요한 경우에 넣는다. 닫기 버튼은 플러그인을 통해 작동이 가능하다. 작동방식은 html5 data-attribute를 사용하는 방법과 javascript를 이용하는 방법이 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 9]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_09_progress_bar.html">
+          <img class="media-object" src="./images/4.2.09.progress_bar.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_09_progress_bar.html">
+              4.2.9. Progress bars
+            </a>
+          </h4>
+          <p>
+            프로그레스 바는 파일 업로드, 로딩과 같은 진행 상황을 표현할 때 사용되는 컴포넌트이다. 기본 프로그레스바는 수직 간단한 그라디언트 효과를 사용한다. 줄무늬 효과를 만들기 위해 그라디언트 효과를 사용하며 .progress 클래스에 .progress-striped 클래스를 추가 한다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 2, 10]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_2_10_miscellaneous.html">
+          <img class="media-object" src="./images/4.2.10.miscellaneous.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_2_10_miscellaneous.html">
+              4.2.10. Miscellaneous
+            </a>
+          </h4>
+          <p>
+            Wells은 엘리먼트에 심플한 inset 효과를 주기 위해 사용한다. 모달창이나 경고창을 사라지게 하기 위해 공통적으로 close 아이콘을 사용한다. .pull-left 클래스가 선언된 엘리먼트는 float: left; 속성이 선언된다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[4, 3]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_00_plugin.html">
+          <img class="media-object" src="./images/4.3.00.plugin.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_00_plugin.html">
+              4.3. Plugin
+            </a>
+          </h4>
+          <p>
+            플러그인 위젯은 유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 1]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_01_alert.html">
+          <img class="media-object" src="./images/4.3.01.alert.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_01_alert.html">
+              4.3.1. Alert
+            </a>
+          </h4>
+          <p>
+            경고 메세지등을 화면에 보여주거나 사용자가 해당 메시지를 닫는 기능. data-attribute를 이용하는 방식. javascript를 이용하는 방식...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 2]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_02_button.html">
+          <img class="media-object" src="./images/4.3.02.button.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_02_button.html">
+              4.3.2. Button
+            </a>
+          </h4>
+          <p>
+            버튼을 클릭했을 때 버튼의 이름등을 바꾸는 토글 기능을 부여하는 플러그인. data-attribute를 이용하는 방식. data-attribute를 이용한 버튼 그룹 checkbox 토글. data-attribute를 이용한 버튼 그룹 radio 토글...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 3]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_03_carousel.html">
+          <img class="media-object" src="./images/4.3.03.carousel.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_03_carousel.html">
+              4.3.3. Carousel
+            </a>
+          </h4>
+          <p>
+            캐로셀은 이미지를 슬라이더 효과로 한개씩 보여주는 플러그인이다. data-attribute를 이용하는 방식. 좌/우측 버튼 기능만 가능하며 자체 캐로셀을 위한 방식은 추후 구현 예정...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 4]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_04_dropdown.html">
+          <img class="media-object" src="./images/4.3.04.dropdown.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_04_dropdown.html">
+              4.3.4. Dropdown
+            </a>
+          </h4>
+          <p>
+            '네비게이션, 메뉴 등에서 서브 메뉴를 노출 시킬 때 사용되는 드롭다운 플러그인. data-attribute를 이용하는 방식. 드롭다운 기능을 적용하려면 해당 엘리먼트에 data-toggle="dropdown" 을 추가하기만 하면 된다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 5]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_05_modal.html">
+          <img class="media-object" src="./images/4.3.05.modal.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_05_modal.html">
+              4.3.5. Modal
+            </a>
+          </h4>
+          <p>
+            컨텐츠를 모달창으로 보여주는 플러그인. data-attribute를 이용하는 방식. 단 한줄의 javascript 코딩 없이도 모달창을 활성화 할 수 있다. 컨트롤러 엘리먼트에 data-toggle="modal" 과 함께 모달 엘리먼트의 id 와 일치하도록 data-target="#foo" 또는 href="#foo" 를 추가해주면, 이를 클릭했을때 모달창이 열리게 된다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 6]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_06_pop_over.html">
+          <img class="media-object" src="./images/4.3.06.pop_over.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_06_pop_over.html">
+              4.3.6. Popover
+            </a>
+          </h4>
+          <p>
+            버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인. data-attribute를 이용하는 방식. javascript를 이용하는 방식...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 7]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_07_scroll_spy.html">
+          <img class="media-object" src="./images/4.3.07.scroll_spy.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_07_scroll_spy.html">
+              4.3.7. Scrollspy
+            </a>
+          </h4>
+          <p>
+            스크롤의 현재 위치에 기반하여 navbar 의 현재 활성화된 링크를 자동으로 업데이트 하기 위해 scrollspy 를 사용한다. 또한 드롭다운의 서브아이템 역시 자동 선택 되어지는 것을 확인할 수 있다. data-attribute를 이용하는 방식. topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶은 엘리먼트에 data-spy="scroll" 를 추가한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 8]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_08_tab.html">
+          <img class="media-object" src="./images/4.3.08.tab.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_08_tab.html">
+              4.3.8. Tab
+            </a>
+          </h4>
+          <p>
+            여러 컨텐츠를 한 뷰페이지에 탭메뉴를 통해 선택된 컨텐츠만 보여주는 플러그인. data-attribute를 이용하는 방식. 한줄의 자바스크립트 코딩 없이도 tab 또는 pill 네비게이션을 활성화 시킬 수 있다. 해당 엘리먼트에 간단히 data-toggle="tab" 또는 data-toggle="pill" 를 기술해 주면 된다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 9]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_09_tooltip.html">
+          <img class="media-object" src="./images/4.3.09.tooltip.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_09_tooltip.html">
+              4.3.9. Tooltip
+            </a>
+          </h4>
+          <p>
+            링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인. data-attribute를 이용하는 방식. 성능상의 이유로 툴팁과 툴팁의 data-api 는 필요한 경우에만 작동 하도록 되어있다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다…
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 10]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_10_range_input.html">
+          <img class="media-object" src="./images/4.3.10.range_input.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_10_range_input.html">
+              4.3.10. RangeInput
+            </a>
+          </h4>
+          <p>
+            RangeInput은 범위값을 설정될 때 사용하는 Input UI이다. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 11]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_11_sign.html">
+          <img class="media-object" src="./images/4.3.11.sign.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_11_sign.html">
+              4.3.11. Sign
+            </a>
+          </h4>
+          <p>
+            터치 기반으로 서명을 할 수 있는 플러그인이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 12]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_12_spinner.html">
+          <img class="media-object" src="./images/4.3.12.spinner.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_12_spinner.html">
+              4.3.12. Spinner
+            </a>
+          </h4>
+          <p>
+            Spinner은 화면전환이나 페이지 컨텐츠를 로드할 때 대기 중 표시하는 로딩 UI이다. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 13]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_13_motioncaptcha.html">
+          <img class="media-object" src="./images/4.3.13.motioncaptcha.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_13_motioncaptcha.html">
+              4.3.13. Motioncaptcha
+            </a>
+          </h4>
+          <p>
+            회원가입이나 로그인시 스팸방지를 위해 사용되는 captcha 문자를 모션 터치로 사용하는 플러그인이다. javascript를 이용하는 방식...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 14]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_14_typeahead.html">
+          <img class="media-object" src="./images/4.3.14.typeahead.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_14_typeahead.html">
+              4.3.14. Typeahead
+            </a>
+          </h4>
+          <p>
+            텍스트 입력상자에 typeahead (자동완성) 를 손쉽게 만들기 위한 플러그인. data-attribute를 이용하는 방식. 엘리먼트에 typeahead 기능을 부여하고 이를 등록하기 위해 data 속성을 추가한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 15]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_15_collapse.html">
+          <img class="media-object" src="./images/4.3.15.collapse.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_15_collapse.html">
+              4.3.15. Collapse
+            </a>
+          </h4>
+          <p>
+            콜랩스는 탭의 수직형태로 타이틀을 클릭하면 컨텐츠가 접혔다 펴지는 형태의 플러그인.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 3, 16]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_3_16_datepicker.html">
+          <img class="media-object" src="./images/4.3.16.datepicker.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_3_16_datepicker.html">
+              4.3.16. DatePicker
+            </a>
+          </h4>
+          <p>
+            날짜 정보를 입력받는 플러그인 위젯
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[4, 4]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_00_featured.html">
+          <img class="media-object" src="./images/4.4.00.featured.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_00_featured.html">
+              4.4. Featured
+            </a>
+          </h4>
+          <p>
+            피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 4, 1]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_01_scroll_view.html">
+          <img class="media-object" src="./images/4.4.01.scroll_view.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_01_scroll_view.html">
+              4.4.1. ScrollView
+            </a>
+          </h4>
+          <p>
+            터치환경에서 네이티브적인 느낌을 주는 ScrollView는 안드로이드에서는  기본적으로 제공을 하지 않으며, iOS 계열은 CSS를 통한 제공을 하지만 아이템이 많은 경우 성능 저하 문제가 있다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 4, 2]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_02_list_view.html">
+          <img class="media-object" src="./images/4.4.02.list_view.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_02_list_view.html">
+              4.4.2. ListView
+            </a>
+          </h4>
+          <p>
+            Cornerstone의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다. javascript를 이용하는 방식...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 4, 3]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_03_media.html">
+          <img class="media-object" src="./images/4.4.03.media.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_03_media.html">
+              4.4.3. Media
+            </a>
+          </h4>
+          <p>
+            반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 4, 4]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_04_editor.html">
+          <img class="media-object" src="./images/4.4.04.editor.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_04_editor.html">
+              4.4.4. Editor
+            </a>
+          </h4>
+          <p>
+            Cornerstone에서 제공하는 에디터는 에디팅 툴바를 통해 폰트 스타일링, 목록 리스팅, 마크업 작성, 링크, 이미지, 컬러 삽입 등의 기능을 가지고 있으며 각 기능은 옵션을 통해 활성/비활성화할 수 있다. textarea에 에디터를 적용시키는 예제. 에디터를 통해 작성된 값을 가져오는 예제...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 4, 5]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_05_chart.html">
+          <img class="media-object" src="./images/4.4.05.chart.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_05_chart.html">
+              4.4.5. Chart
+            </a>
+          </h4>
+          <p>
+            Cornerstone의 차트은 기본적으로 바, 라인, 파이 차트로 구성됐으며, 그래프에 보여지는 데이터들을 그룹별로 필터링 할 수 있다. 또한 자바스크립트 방식외에도 사용자는 DATA-API를 사용해서 엘리먼트의 속성만으로도 차트를 구현할 수 있다. DATA-API(data-attribute)를 이용하는 방식. javascript를 이용하는 방식...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[4, 4, 6]" tags="* widget">
+      <div class="media">
+        <a class="pull-left" href="./4_4_06_data_table.html">
+          <img class="media-object" src="./images/4.4.06.data_table.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./4_4_06_data_table.html">
+              4.4.6. Datatables
+            </a>
+          </h4>
+          <p>
+            데이터테이블은 사용자에게 마크업에서 보여지는 정적인 테이블을 보다 향상되고 상호작용적인 테이블로 쉽게 만들어준다. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          5. Util
+        </h4>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[5, 1]" tags="* utility">
+      <div class="media">
+        <a class="pull-left" href="./5_1_00_utilitly.html">
+          <img class="media-object" src="./images/5.1.00.utilitly.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./5_1_00_utilitly.html">
+              5.1. 유틸리티
+            </a>
+          </h4>
+          <p>
+            유틸리티는 다른 부분과의 의존성 없이 단독으로 사용할 수 있는 라이브러리 집합이다. 크게 네 가지로 나눌 수 있고, 각각은 require.js 모듈로 제공되며 모듈명은 다음과 같다. 이 중 device 모듈은 Cornerstone Framework의 Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[5, 1, 1]" tags="* utility">
+      <div class="media">
+        <a class="pull-left" href="./5_1_01_transition.html">
+          <img class="media-object" src="./images/5.1.01.transition.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./5_1_01_transition.html">
+              5.1.1. 화면전환
+            </a>
+          </h4>
+          <p>
+            화면전환은 Launcher(실행기)와 Effect(효과)로 구성되어 있다. Launcher의 기능. 화면전환 효과를 내기 전 사용자가 정의한 값과 기본값을 병합. 화면전환을 위한 CSS 준비 및 뒤로 가기인 경우 이전 페이지 효과로 설정. 화면전환 가능 브라우저인지, 가능한 효과의 종류 인지 판단 등을 처리하고 실제 화면전환 효과를 실행시키는 기능...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[5, 1, 2]" tags="* utility">
+      <div class="media">
+        <a class="pull-left" href="./5_1_02_device_API.html">
+          <img class="media-object" src="./images/5.1.02.device_API.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./5_1_02_device_API.html">
+              5.1.2. 단말 API
+            </a>
+          </h4>
+          <p>
+            Device 유틸은 HTML5 API를 확장하여 하이브리드 페키징시에 다양한 Native Device API를 제공한다 Device 유틸을 사용하기 위해서는 js 모듈뿐 아니라 각 디바이스별 사용법이 다르기 때문에 자세한 내용은 여기를 참고하기 바란다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[5, 1, 3]" tags="* utility">
+      <div class="media">
+        <a class="pull-left" href="./5_1_03_JSONP.html">
+          <img class="media-object" src="./images/5.1.03.JSONP.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./5_1_03_JSONP.html">
+              5.1.3. JSONP
+            </a>
+          </h4>
+          <p>
+            JSONP 유틸은 서로다른 도메인을 지닌 서버간에 데이터를 통신하기 위해 사용하며, 요청시 파라미터에 callback을 인자로 넘겨주어 응답을 받는 서버에서 해당 callback 이름으로 래핑된 JSON 데이터를 전달 받는 방식이다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[5, 1, 4]" tags="* utility">
+      <div class="media">
+        <a class="pull-left" href="./5_1_04_SKT_open_API.html">
+          <img class="media-object" src="./images/5.1.04.SKT_open_API.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./5_1_04_SKT_open_API.html">
+              5.1.4. SKT Open API
+            </a>
+          </h4>
+          <p>
+            SKT Open API는 SKT에서 제공하는 여러 가지 기능들을 써드파티 애플리케이션에서 사용할 수 있도록 공개된 API이다. Cornerstone Framework에서는 이 API를 사용하기 쉽도록 가공한 유틸리티를 제공한다. SKT Open API에서 제공하는 기능들은 다음과 같다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span10 offset2 main-box" order="[5, 1, 5]" tags="* utility">
+      <div class="media">
+        <a class="pull-left" href="./5_1_05_logging.html">
+          <img class="media-object" src="./images/5.1.05.logging.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./5_1_05_logging.html">
+              5.1.5. Logging
+            </a>
+          </h4>
+          <p>
+            logging 모듈은 개발자가 여러 가지 방법으로 로그를 남길 수 있도록 한다. requireJS를 사용하고 있다면 다음과 같이 아주 쉽게 logging 모듈을 구해서 사용할 수 있다. requireJS를 사용하지 않는다면, 필요한 자바스크립트와 스타일시트를 각각 선언해 주어야 한다...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          6. Runtime
+        </h4>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 1]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_1_basic_structure.html">
+          <img class="media-object" src="./images/6.1.00.runtime_structure.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_1_basic_structure.html">
+              6.1. 런타임 기본구조
+            </a>
+          </h4>
+          <p>
+            Java Script layer는 웹앱에서 사용하기 위한 JavaScript API들을 선언 및 정의 하며 이를 Runtime의 native layer와 연결하는 역할을 한다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 2]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_2_android_webapp_development.html">
+          <img class="media-object" src="./images/6.2.00.android.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_2_android_webapp_development.html">
+              6.2. Android 웹앱 개발
+            </a>
+          </h4>
+          <p>
+            Authoring Tool을 이용하여 Android 용 웹앱 개발환경을 다운로드 받을 수 있다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 3]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_3_ios_webapp_development.html">
+          <img class="media-object" src="./images/6.3.00.iOS.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_3_ios_webapp_development.html">
+              6.3. iOS 웹앱 개발
+            </a>
+          </h4>
+          <p>
+            Authoring Tool을 이용하여 iOS 용 웹앱 개발환경을 다운로드 받을 수 있다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 4]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_4_webapp_attentive_points.html">
+          <img class="media-object" src="./images/6.4.00.warning.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_4_webapp_attentive_points.html">
+              6.4. 웹앱 개발시 주의사항
+            </a>
+          </h4>
+          <p>
+            안드로이드와 iOS는 개발사, 언어, 구조가 전혀 다른 플랫폼이며 따라서 웹앱 개발시에 상황에 따라 이를 구분해야 하는 경우가 있다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 5]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_5_webapp_sample_code.html">
+          <img class="media-object" src="./images/6.5.00.sample.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_5_webapp_sample_code.html">
+              6.5. 웹앱 샘플코드
+            </a>
+          </h4>
+          <p>
+            Cornerstone Runtime을 이용한 Runtime Javascript API sample code
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 6]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_6_plugin_development_intro.html">
+          <img class="media-object" src="./images/6.6.00.plugin_developement.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_6_plugin_development_intro.html">
+              6.6. PlugIn 개발 개요
+            </a>
+          </h4>
+          <p>
+            WebApp은 Device Platform (Android, iOS..)에서 제공하는 Native SDK API를 사용할 수 없다. 따라서 WebApp에서 단말 기능을 사용하고자 한다면 브라우져 및 Runtime에서 제공하는 JavaScript Extension API를 사용하여야 한다. 이를 가능하게 하는것이 Cornerstone Runtime 이며 , 이 Cornerstone Runtime 내부에서 HTML5 Spec을 준수하는 API (contact , calendar, file .. etc) 와 추가적인 Additional API (audio, childBrowser..etc) 를 제공한다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 7]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_7_android_plugin_development.html">
+          <img class="media-object" src="./images/6.7.00.android.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_7_android_plugin_development.html">
+              6.7. Android PlugIn 개발
+            </a>
+          </h4>
+          <p>
+            아래 링크를 통하여 확장구조 개발에 필요한 Android Native source와 JavaScript source 예제를 참조할 수 있다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span11 offset1 main-box" order="[6, 8]" tags="* runtime">
+      <div class="media">
+        <a class="pull-left" href="./RT_8_ios_plugin_development.html">
+          <img class="media-object" src="./images/6.8.00.iOS.png" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="./RT_8_ios_plugin_development.html">
+              6.8. iOS PlugIn 개발
+            </a>
+          </h4>
+          <p>
+            아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="span12 main-box media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <i class="icon-info-sign"></i>
+          <span>
+            종합테스트 페이지로 이동
+          </span>
+          <i class="icon-arrow-right"></i>
+          <a href="/cornertest/">Cornerstone Framework Test</a>
+        </h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+          </article>
+        </div>
+      </div>
+    </div>
+    <script src="./script_toc.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+rm -rf ABC/*.class
+
+echo
+echo "1. Compiling ..."
+echo
+javac -d ABC -cp ./ABC/json-lib-2.3-jdk15.jar a.java b.java
+
+echo
+echo "2. Executing ..."
+echo 
+
+java -classpath ./ABC:./ABC/json-lib-2.3-jdk15.jar:./ABC/commons-lang-2.6.jar:./ABC/ezmorph-1.0.6.jar:./ABC/commons-logging-1.1.1.jar:./ABC/commons-collections-3.2.1.jar:./ABC/commons-beanutils-1.8.3.jar a
