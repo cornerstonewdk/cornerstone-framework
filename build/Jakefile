@@ -166,7 +166,7 @@ runTask( 'deploy', [ 'validate' ], function() {
 	j.copy( PATH_SOURCE + 'ui/theme/dark/img', PATH_DIST + 'ui/theme/dark/img' );
 	j.copy( PATH_SOURCE + 'ui/theme/white/img', PATH_DIST + 'ui/theme/white/img' );
 	j.copy( PATH_SOURCE + 'ui/theme/wireframe/img', PATH_DIST + 'ui/theme/wireframe/img' );
-	
+
 	// less 컴파일
 	j.less( PATH_SOURCE + 'ui/theme/dark/less/cornerstone.less', PATH_DIST + 'ui/theme/dark/css/cornerstone.css', function( err ) {
 		if ( err ) fail( err );
@@ -218,6 +218,9 @@ runTask( 'copyright', [ 'deploy' ], function() {
 	j.concat( 'copyright.txt', PATH_DIST + 'ui/theme/dark/css/cornerstone.css' );
 	j.concat( 'copyright.txt', PATH_DIST + 'ui/theme/white/css/cornerstone.css' );
 	j.concat( 'copyright.txt', PATH_DIST + 'ui/theme/wireframe/css/cornerstone.css' );
+
+	// README 파일 복사
+	j.concat( 'README.md', PATH_DIST + 'README.md' );
 } );
 
 desc( '디폴트 작업으로 copyright를 수행한다.' );
