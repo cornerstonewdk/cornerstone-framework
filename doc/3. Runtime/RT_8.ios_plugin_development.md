@@ -15,8 +15,7 @@ thumbnail: '6.8.00.iOS.png'
 
 ![](./images/srt_project.png) 
 
--	아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 
-참조할 수 있다. 
+-	아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다. 
 
 [./sample/iOS_plugin_sample.zip](./sample/iOS_plugin_sample.zip "iOS plugin 개발 예제 소스 ")
 
@@ -26,7 +25,7 @@ thumbnail: '6.8.00.iOS.png'
 
 -	**www** : 웹앱의 저장 위치 
 -	**www/index.html** : 웹앱의 첫 실행 파일
--	**www/SRT-1.0.js** : Cornerstone Runtime JavaScript Library
+-	**www/SRT-0.9.1.js** : Cornerstone Runtime JavaScript Library
 
 3) SRT_Template/Resources - 어플에 필요한 리소스를 저장하는 위치
 
@@ -197,13 +196,13 @@ thumbnail: '6.8.00.iOS.png'
 
 	
 
-**step 5.** 웹앱의 시작 파일은 반드시 index.html 이어야 한다. **SRT-1.0.js는 template 기본 파일**이다. 
+**step 5.** 웹앱의 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.1.js는 template 기본 파일**이다. 
 
 ![](./images/index.jpg)
 
 -	특정 웹페이지 내부에서 DeviceAPI를 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.
  
-	`<script type="text/javascript" charset="utf-8" src=SRT-0.1.js"></script>`
+	`<script type="text/javascript" charset="utf-8" src=SRT-0.9.1.js"></script>`
 
 -	특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.
 
@@ -219,7 +218,7 @@ thumbnail: '6.8.00.iOS.png'
 	<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" context="width-divice-width, initial-scele-1.0, user-scalble=no">
-	<script type="text/javascript" charset="utf-8" src="SRT-1.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="SRT-0.9.1.js"></script>
 	<script type="text/javascript" charset="utf-8" src="pageloadingplugin.js"></script>
 	<title>PageLoadingPlugin</title>
 	<script type="text/javascript">

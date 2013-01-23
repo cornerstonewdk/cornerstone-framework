@@ -162,3 +162,72 @@ thumbnail: '6.5.00.sample.png'
 	> example 11. 웹앱을 종료하는 sample (deviceInteraction_sample.html) 
 
 		 navigator.deviceinteraction.exitApp(); 
+
+	> example 12. 물리 메뉴버튼을 사용하였을 경우 menu를 추가/삭제/이벤트를 등록하는 sample (menu_sample.html)
+
+			- 사용자 정의 메뉴를 특정 페이지에서 생성 하였을 경우 페이지를 빠져 나갈시 removeAll()을 반드시 호출하여야 한다.
+
+         function MenuCallback1(){
+			alert("menu1 button click");
+		}
+		function addMenu(){
+			navigator.menumanager.addMenu("menu1",MenuCallback1);
+		}
+		function removeMenu(){
+			navigator.menumanager.removeMenu("menu1");
+		}
+		function removeAll(){
+			//개발자 custom 추가메뉴를 모두 삭제한다. 
+			navigator.menumanager.removeAll();
+		}
+
+	> example 13. 물리 메뉴버튼을 사용하였을 경우 default menu를 삭제/삽입 하는 sample (menu_sample.html)
+
+		navigator.menumanager.removeMenu("OPENBROWSER");   // 브라우져로 열기 메뉴 삭제
+		navigator.menumanager.removeMenu("REFRESH");       // 새로고침 메뉴 삭제 
+		navigator.menumanager.removeMenu("EXITAPP");       // 앱 종료 메뉴 삭제 
+
+
+		navigator.menumanager.addMenu ("OPENBROWSER");   // 브라우져로 열기 메뉴 삽입
+		navigator.menumanager.addMenu ("REFRESH");       // 새로고침 메뉴 삽입
+		navigator.menumanager.addMenu ("EXITAPP");       // 앱 종료 메뉴 삽입
+
+
+	> example 14. NFC TAG를 읽고 웹앱에 이를 통지하는 sample (nfc_sample.html) 
+
+		function readTagCallback(obj){
+			alert(obj.tag);
+		}
+
+		function setNFCUseTrue(){
+			if(navigator.nfc.isNFCSupport()){
+		  		navigator.nfc.setNFCUse(true);
+			}
+			navigator.nfc.setReadTagCallback(readTagCallback);
+		}
+
+		function setNFCUseFalse(){
+			navigator.nfc.setNFCUse(false);
+		}
+
+    > example 15. NFC TAG와 connection 후에 특정 data를 I/O하는 sample (nfc_sample.html) 
+
+		function transceiveCallback(tag){
+			alert("tagtype::" + tag.type + " tag.transceive:::" + tag.transceive);
+		}
+		function testSC(tag){
+			alert("tagtype::" + tag.type + " tag.transceive:::" + tag.transceive[0]);
+			if(tag.transceive[0] == "6F060102030405069000"){
+			navigator.nfc.transceive(transceiveCallback,transceiveErrorCallback,["00CA000005"]);
+			}
+		}
+		function transceiveErrorCallback(e){
+			alert(e);	
+		}
+
+		function Select_Test_Applet(){
+			navigator.nfc.transceive(testSC,transceiveErrorCallback,
+							  [
+	                          "00A4040006112233445566", //IsoDep
+	                          ]);
+		}
