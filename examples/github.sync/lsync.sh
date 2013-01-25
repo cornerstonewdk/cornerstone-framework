@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mv *.eco eco_bak/
+# mv *.eco eco_bak/
 
 #java Repl /home/appadmin/CORNER/git/CornersGithub/cornerstone-framework.doc/doc/1* 2> LOG1
 #java Repl /home/appadmin/CORNER/git/CornersGithub/cornerstone-framework.doc/doc/2* 2> LOG2
