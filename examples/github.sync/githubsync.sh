@@ -34,7 +34,7 @@ fi
 cnt=`expr $cnt + 1`;
 
 ### git pull 수행
-echo "[ GitHub cornerstone-framework (dev) pulling ... ]";
+echo "GitHub cornerstone-framework (dev) pulling ...";
 cd $CORNER_DEV
 echo CURRENT DIR = [ `pwd` ]; echo;
 git pull;
