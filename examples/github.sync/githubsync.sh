@@ -18,7 +18,7 @@ reset_cnt=$hourly_reset_cnt
 cnt=0
 hcnt=0
 
-echo "----------------------SYNC START-------------------------";
+echo "----------------------GitHub SYNC START-------------------------";
 echo;
 
 while [ 1 ] 
