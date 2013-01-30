@@ -7,9 +7,9 @@ CLASSPATH=.:./json_library/json-lib-2.3-jdk15.jar:./json_library/commons-lang-2.
 DEV=/home/appadmin/CORNER/git/CornersGithub/cornerstone-framework.dev
 DEV_DOC=$DEV/doc
 
-java -classpath $CLASSPATH Repl $DEV_DOC/1* 2> LOG1
-java -classpath $CLASSPATH Repl $DEV_DOC/2* 2> LOG2
-java -classpath $CLASSPATH Repl $DEV_DOC/3* 2> LOG3
+java -classpath $CLASSPATH Repl $DEV_DOC/1* 2> LOG1.log
+java -classpath $CLASSPATH Repl $DEV_DOC/2* 2> LOG2.log
+java -classpath $CLASSPATH Repl $DEV_DOC/3* 2> LOG3.log
 
 DEV_EXAMPLES=$DEV/examples
 LIVEDOC=$DEV_EXAMPLES/cornerstone.livedoc
