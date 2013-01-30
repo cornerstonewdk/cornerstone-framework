@@ -42,8 +42,13 @@ define([
 ```
 
 ### 사용법
+$('#example').featuredChart()
 
-DATA-API(data-attribute), $('#example').featuredChart() 또는 MVC의 View객체로써 사용할 수 있다.
+DATA-API(data-attribute)방식, $("#example").featuredChart(); 자바스크립트 방식을 사용할 수 있다.
+
+- `data-featured="chart"`는 Chart를 사용하기 위한 엘리먼트에 이 속성을 추가해야 한다.
+- `data-chart-bind="json 데이터 URL"`는 Chart에 보여줄 데이터를 가져오기 위한 URL을 지정하기 위해 이 속성을 추가해야 한다.
+- `data-chart-type="타입"`는 Chart를 어떤 형태로 보여 줄지를 지정하기 위해 이 속성을 추가해야 한다.
 
 #### DATA-API(data-attribute) 를 이용하는 방식
 

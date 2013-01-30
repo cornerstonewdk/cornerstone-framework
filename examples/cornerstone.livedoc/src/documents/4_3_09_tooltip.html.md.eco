@@ -3,7 +3,7 @@ layout: 'post'
 section: 'Cornerstone Framework'
 sections: ['Cornerstone Framework']
 title: 'Tooltip'
-outline: '링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인. data-attribute를 이용하는 방식. 성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다…'
+outline: '링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인. data-attribute를 이용하는 방식. 성능상의 이유로 툴팁과 툴팁의 data-api 는 필요한 경우에만 작동 하도록 되어있다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다…'
 date: '2012-11-16'
 tagstr: 'widget'
 tags: ['post','widget','']
@@ -14,9 +14,29 @@ thumbnail: '4.3.09.tooltip.png'
 ## Tooltip
 링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인.
 
+### 사용법
+$("#example").tooltip();
+
+- `data-toggle="tooltip"`는 툴팁을 토글 하기 위한 엘리먼트에 이 속성을 추가해야 한다.
+- `data-placement="top"`는 툴팁을 어떤 방향으로 보여줄지를 결정하기 위해 이 속성을 추가해야 한다.
+- `title="Blah Blah"`는 툴팁으로 보여주는 `Title` 내용을 지정하기 위해 이 속성을 추가해야 한다.
+- javascript 방식을 쓸 경우 `tooltip`을 열거나 닫을 수 있는 엘리먼트를 클릭/hover 했을 때 `tooltip` 창이 토글되도록 아래와 같은 javascript 코드를 작성해야 한다.
+
+```
+var placement = ["top", "left", "right", "bottom"];
+$('#tooltip [rel=tooltip]').each(function(i) {
+    $(this).tooltip({
+        selector:"",
+        title: "Hello World",
+        placement: placement[i],
+        trigger:"click"
+    });
+});
+```
+
 #### DATA-API(data-attribute)를 이용하는 방식
 
-성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있습니다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다.
+성능상의 이유로 툴팁과 툴팁의 data-api 는 필요한 경우에만 작동 하도록 되어있습니다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다.
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -125,14 +145,12 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }
 
 <% prv_1 = (contents) => %>
     <h3>Tooltip</h3>
-    <div class="tooltip-demo" data-toggle="tooltip" style="margin: 10px 0 0 100px;">
+    <div class="tooltip-demo" data-toggle="tooltip" style="margin: 10px 0 50px 80px;">
         <ul class="bs-docs-tooltip-examples">
             <li><a href="#" rel="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
-            <li><a href="#" rel="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a>
-            </li>
-            <li><a href="#" rel="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on
-                bottom</a></li>
             <li><a href="#" rel="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
+            <li><a href="#" rel="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a></li>
+            <li><a href="#" rel="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
         </ul>
     </div>
 <% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
@@ -141,19 +159,17 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }
 
 <% prv_2 = (contents) => %>
     <h3>Tooltip</h3>
-    <div class="tooltip-demo" id="tooltip"  style="margin: 10px 0 0 100px;">
+    <div class="tooltip-demo" id="tooltip" style="margin: 10px 0 50px 80px;">
         <ul class="bs-docs-tooltip-examples">
             <li><a href="#" rel="tooltip" >Tooltip on top</a></li>
-            <li><a href="#" rel="tooltip" >Tooltip on right</a>
-            </li>
-            <li><a href="#" rel="tooltip" >Tooltip on
-                bottom</a></li>
             <li><a href="#" rel="tooltip" >Tooltip on left</a></li>
+            <li><a href="#" rel="tooltip" >Tooltip on right</a></li>
+            <li><a href="#" rel="tooltip" >Tooltip on bottom</a></li>
         </ul>
     </div>
     <script type="text/javascript">
 	    window.onload = function() {
-	        var placement = ["top", "right", "bottom", "left"];
+	        var placement = ["top", "left", "right", "bottom"];
             $('#tooltip [rel=tooltip]').each(function(i) {
                 $(this).tooltip({
                     selector:"",
@@ -175,7 +191,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }
 animation | boolean | true | 툴팁에 css fade 효과를 적용시킨다.
 placement | string/function | "top" | 툴팁의 위치를 선정한다. - top / bottom / left / right
 selector | string | false | 만약 이 셀렉터가 제공되면, 툴팁 오브젝트는 이 셀렉터가 가리키는 타겟으로 대체한다.
-trigger | string | "click" | 팝오버가 나오는 시점을 정한다. - click / hover / focus / manual
+trigger | string | "click" | 툴팁가 나오는 시점을 정한다. - click / hover / focus / manual
 title | string/function | "" | `title` 속성이 없을 경우 기본 타이틀값
 
 

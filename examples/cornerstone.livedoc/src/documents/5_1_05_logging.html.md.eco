@@ -141,3 +141,167 @@ Logging.config( {
 ```
 
 화면에 로그를 남기는 screen 옵션은 콘솔을 확인하기가 힘든 스마트폰/패드의 경우 아주 유용하다. 그리고, 개발중에는 screen 또는 console 옵션으로 로그를 확인하다가 최종 제품으로 패키징할 때는 로그를 남기지 않도록 설정할 수 있다.
+
+다음은 화면에 로그를 남기는 예시이다.
+
+
+<% codeMirrorRequiredBlock = (obj) => %>                                                                          
+<script src='lib/codemirror.js'></script>                                                                         
+<script src='mode/xml/xml.js'></script>                                                                           
+<script src='mode/javascript/javascript.js'></script>                                                             
+<script src='mode/css/css.js'></script>                                                                           
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+<link rel='stylesheet' href='lib/codemirror.css'></link>                                                          
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
+</style>                                                                                                          
+<% end %>                                                                                                         
+<%- codeMirrorRequiredBlock '1' %>                                                                                
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
+<% codeMirrorBlock = (obj) => %>                                                                                  
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+<% if obj.if_noscroll: %>                                                                                            
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> 
+<% else: %>                                                                                                       
+<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> 
+<% end %>                                                                                                         
+<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+<% if obj.if_nopad: %>                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
+<% else: %>                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+<% end %>                                                                                                         
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    <%- obj.func '1' %>                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+<% if obj.if_auto_h: %>                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_<%= obj.funcname %>';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
+                                                                      
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
+                                                                      
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
+<% end %>                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_<%= obj.funcname %>;                                                                                  
+  var editor_<%= obj.funcname %> = CodeMirror.fromTextArea(document.getElementById('code_<%= obj.funcname %>'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_<%= obj.funcname %>);                                                                    
+      delay_<%= obj.funcname %> = setTimeout(updatePreview_<%= obj.funcname %>, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_<%= obj.funcname %>() {                                                                  
+    var previewFrame = document.getElementById('preview_<%= obj.funcname %>');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_<%= obj.funcname %>.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_<%= obj.funcname %>, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+<% end %>                                                                                                         
+
+<% prv_1 = (contents) => %>
+<script src="../../dist/lib/blackbirdjs/blackbird.js"></script>
+<link href="../../dist/lib/blackbirdjs/blackbird.css" rel="stylesheet"/>
+<script src="../../dist/util/logging.js"></script>
+
+<div>
+	<button id="debug-button" type="button" class="btn">Debug</button>
+	<button id="info-button" type="button" class="btn btn-info">Info</button>
+	<button id="warn-button" type="button" class="btn btn-warning">Warn</button>
+	<button id="error-button" type="button" class="btn btn-danger">Error</button>
+	<button id="log-button" type="button" class="btn btn-primary">Log</button>
+	<button id="time-button" type="button" class="btn btn-inverse">Time</button>
+	<button id="timeEnd-button" type="button" class="btn btn-inverse">TimeEnd</button>
+</div>
+
+<script type="text/javascript">
+// Logging 설정
+Logging.config( {
+	defaultLevel: 'info',
+	debug: 'screen',
+	info: 'screen',
+	warn: 'screen',
+	error: 'screen',
+	time: 'screen'
+} );
+
+$( '#debug-button' ).click( function() {
+	Logging.debug( 'Debug 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#info-button' ).click( function() {
+	Logging.info( 'Info 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#warn-button' ).click( function() {
+	Logging.warn( 'Warn 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#error-button' ).click( function() {
+	Logging.error( 'Error 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#log-button' ).click( function() {
+	Logging.log( 'Log 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#time-button' ).click( function() {
+	Logging.time( 'timer1' );
+} );
+
+$( '#timeEnd-button' ).click( function() {
+	Logging.timeEnd( 'timer1' );
+} );
+</script>
+<% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : 'height: 400px;' , ifs_minh : '' , if_auto_h : false  , if_nopad : false  , if_noscroll : false , no : 'no' } %>

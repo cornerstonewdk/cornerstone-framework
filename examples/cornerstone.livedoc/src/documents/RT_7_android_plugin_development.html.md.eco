@@ -43,13 +43,56 @@ Library 위치
 
 -	**plugin.xml** : plugin을 Runtime에 등록하는 파일 
 -	**value/string.xml** : 웹앱의 name을 세팅하는 파일 
--	**xml/config.xml** : device의 orientation(portrait , landscape , audo) 및 splash image를 세팅 하는 파일 
+-	**xml/config.xml** : device의 orientation(portrait , landscape , audo) 및 splash image, 메뉴 사용여부, loading progressbar 사용여부를 세팅 하는 파일
 
 6) AndroidManifest.xml : 하나의 Native Application으로써의 고유한 Package 명을 지정하는 파일, 하드웨어 가속 GPU 렌더링 사용여부를 지정하는 파일.
 
 <br>
 
 ### Android Runtime 확장 구조 개발 절차 
+
+#### Plugin 개발을 위한 클래스 
+
+- Plugin.java 
+
+	- plugin 개발을 위하여 Runtime에서 제공하는 클래스이다. 
+	- 아래의 함수를 기본적으로 제공한다. **필요한 경우 재정의도 가능하다.**
+
+		1) execute()
+
+			- 실제로 native의 모듈이 구현되어야 하는 함수 
+
+		2) isSynch()
+
+			- 특정 api 가 동기/비동기로 구현될지를 설정하는 함수 
+
+		3) setContext()
+
+			- 초기 main context를 plugin에 설정하는 함수 
+
+		4) onPause(), onResume(), onNewIntent(), onDestroy()
+
+			- Runtime의 activity cycle의 이벤트를 받아서 처리할 수 있는 함수  
+
+		5) onActivityResult()
+
+			- plugin 내부에서 특정 activity를 호출 하였을 경우 결과를 처리할 수 있는 함수 
+
+		6) success()
+
+			- plugin 내부에서 바로 JS에 성공 콜백을 호출할 경우 사용하는 함수 
+
+		7) error()
+
+			- plugin 내부에서 바로 JS에 실패 콜백을 호출할 경우 사용하는 함수
+
+
+- PluginResult.java
+	- plugin 의 결과값을 JavaScript에 전달하기 위하여 생성하여야 하는 클래스이다.  
+	- Status와 필요하다면 JavaScript에 전달 할 매개변수로 구성된다. 
+
+
+#### Plugin 개발 절차
 
 **step 1.**  Authoring tool을 이용해 Android Web App Template를 받으면 Lib 폴더에 **Runtime.jar가 기본으로 포함**되어 있다.
 
@@ -284,13 +327,13 @@ Library 위치
 	 `<plugin name="CallLog" value="org.skt.runtime.plugin.CallLogPlugin" />`
 	
 
-**step 5.** 웹앱의 시작 파일은 반드시 index.html 이어야 한다. **SRT-1.0.js는 플러그인 개발 환경 template의 기본 포함된 파일**이다. 
+**step 5.** 웹앱의 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.1.js는 플러그인 개발 환경 template의 기본 포함된 파일**이다. 
 
 ![](./images/src2.png)
 
 -	특정 웹페이지 내부에서 DeviceAPI를 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.
  
-	`<script type="text/javascript" charset="utf-8" src=*../path/SRT-0.1.js"></script>`
+	`<script type="text/javascript" charset="utf-8" src=*../path/SRT-0.9.1.js"></script>`
 
 -	특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.
 

@@ -19,7 +19,7 @@ thumbnail: '3. Style.png'
 
 따라서 테마를 구현시 기본적으로 Bootstrap에 없는 요소들도 Bootstrap과 마찬가지로 LESS로 작성하여 기존 Bootstrap 방식대로 사용자화가 가능하다.
 
-- CornerStone 기본 테마 : dark 테마 , white 테마
+- Cornerstone 기본 테마 : dark 테마 , white 테마
 - Wireframe 백지 테마 : 확장이나 변형을 위해 제공되는 테마
 
 ## 테마 사용법

@@ -189,3 +189,5 @@ require( [ 'form-view', 'user-defined-validation-view' ], function( FormView, Us
 } );
 
 ```
+
+FormView의 실제 동작하는 예제를 보고 싶다면 [여기](../cornertest/test-form/)에서 확인할 수 있다.

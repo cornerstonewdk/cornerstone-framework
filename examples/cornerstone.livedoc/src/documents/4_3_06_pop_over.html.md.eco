@@ -14,8 +14,31 @@ thumbnail: '4.3.06.pop_over.png'
 ## Popover
 버튼 위에 마우스를 올리거나 클릭할 때 해당 버튼 주위에 팝오버형태의 안내 컨텐츠를 보여주는 플러그인.
 
-#### DATA-API(data-attribute)를 이용하는 방식
+### 사용법
+$("#example").popover();
 
+DATA-API(data-attribute)방식, $("#example").popover(); 자바스크립트 방식을 사용할 수 있다.
+
+- `data-toggle="popover"`는 팝오버를 토글 하기 위한 엘리먼트에 이 속성을 추가해야 한다.
+- `data-placement="top"`는 팝오버를 어떤 방향으로 보여줄지를 결정하기 위해 이 속성을 추가해야 한다.
+- `data-content="Blah Blah"`는 팝오버로 보여주는 `Content` 내용을 지정하기 위해 이 속성을 추가해야 한다.
+- `data-original-title="Blah Blah"`는 팝오버로 보여주는 `Title` 내용을 지정하기 위해 이 속성을 추가해야 한다.
+- javascript 방식을 쓸 경우 `popover`을 열거나 닫을 수 있는 버튼 엘리먼트를 클릭/hover 했을 때 `popover` 창이 토글되도록 아래와 같은 javascript 코드를 작성해야 한다.
+
+```
+var placement = ["top", "left", "right", "bottom"];
+$('#popovers [rel=popover]').each(function(i) {
+    $(this).popover({
+        title: "Hello World",
+        content:"Description",
+        placement: placement[i],
+        trigger:"click"
+    });
+});
+```
+
+
+#### DATA-API(data-attribute)를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -124,19 +147,27 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }
 
 <% prv_1 = (contents) => %>
     <h3>Popover</h3>
-    <div>
-        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="right"
-                   data-content="And here's some amazing content. It's very engaging. right?"
-                   data-original-title="A Title">Click to toggle popover</a>
-        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="top"
-                   data-content="And here's some amazing content. It's very engaging. right?"
-                   data-original-title="A Title">Click to toggle popover</a>
-        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="left"
-                   data-content="And here's some amazing content. It's very engaging. right?"
-                   data-original-title="A Title">Click to toggle popover</a>
-        <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="bottom"
-                   data-content="And here's some amazing content. It's very engaging. right?"
-                   data-original-title="A Title">Click to toggle popover</a>
+    <div style="margin:100px auto 150px auto; width: 200px;">
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="top"
+                       data-content="And here's some amazing content. It's very engaging. right?"
+                       data-original-title="A Title">Click to toggle popover</a>
+        </p>
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="left"
+                       data-content="And here's some amazing content. It's very engaging. right?"
+                       data-original-title="A Title">Click to toggle popover</a>
+        </p>
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="right"
+                       data-content="And here's some amazing content. It's very engaging. right?"
+                       data-original-title="A Title">Click to toggle popover</a>
+        </p>
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover" data-toggle="popover" data-placement="bottom"
+                       data-content="And here's some amazing content. It's very engaging. right?"
+                       data-original-title="A Title">Click to toggle popover</a>
+        </p>
     </div>
 <% end %><%- codeMirrorBlock {func : prv_1  , funcname : 'prv_1' , ifs_h : '' , ifs_minh : '' , if_auto_h : true  , if_nopad : false  , if_noscroll : false , no : 'no' } %>
 
@@ -144,15 +175,23 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }
 
 <% prv_2 = (contents) => %>
     <h3>Popover</h3>
-    <div id="popovers" >
-        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
-        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
-        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
-        <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+    <div id="popovers" style="margin:100px auto 150px auto; width: 200px;">
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        </p>
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        </p>
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        </p>
+        <p>
+            <a href="#" class="btn btn-large btn-danger" rel="popover">Click to toggle popover</a>
+        <p>
     </div>
     <script type="text/javascript">
 	    window.onload = function() {
-            var placement = ["right", "top", "left", "bottom"];
+            var placement = ["top", "left", "right", "bottom"];
             $('#popovers [rel=popover]').each(function(i) {
                 $(this).popover({
                     title: "Hello World",

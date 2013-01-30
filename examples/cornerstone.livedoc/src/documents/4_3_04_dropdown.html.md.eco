@@ -19,12 +19,18 @@ thumbnail: '4.3.04.dropdown.png'
 
 DATA-API(data-attribute)방식, $(".dropdown-toggle").dropdown() 자바스크립트 방식을 사용할 수 있다.
 
+- `Dropdown` 기능을 사용하기 위해 `Dropdown` 버튼 엘리먼트에 `data-toggle="dropdown"` 속성을 추가해야 한다.
+- javascript 방식을 쓸 경우 `Dropdown` 버튼 엘리먼트에 `Dropdown` 메뉴가 토글되도록 아래와 같은 javascript 코드를 작성해야 한다.
+
+```
+$(".dropdown-toggle").dropdown();
+```
 
 #### DATA-API(data-attribute)를 이용하는 방식
 
 드롭다운 기능을 적용하려면 해당 엘리먼트에 data-toggle="dropdown" 을 추가하기만 하면 되며, 유효한 부트스트랩 드롭다운이 자동으로 활성화 된다.
 
-> 특정 드롭다운이 열리도록 하려면 data-target="#fat" 또는 href="#fat" 를 사용해야 한다.
+> 특정 드롭다운이 열리도록 하려면 data-target="#dropdownId" 또는 href="#dropdownId" 를 사용해야 한다.
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          
 <script src='lib/codemirror.js'></script>                                                                         
@@ -136,8 +142,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }
     <div class="dash-widget no-padding">
         <ul class="nav nav-pills" role="navigation">
             <li class="dropdown">
-                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b
-                        class="caret"></b></a>
+                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                     <li role="menuitem"><a href="#">Action</a></li>
                     <li role="menuitem"><a href="#">Another action</a></li>

@@ -28,6 +28,7 @@ Cornerstone에서 제공하는 에디터는 에디팅 툴바를 통해 폰트 �
 ```
 
 ### 사용법
+$("#example").featuredEditor();
 
 #### textarea에 에디터를 적용시키는 예제
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          

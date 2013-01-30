@@ -14,7 +14,14 @@ thumbnail: '4.3.08.tab.png'
 ## Tab
 여러 컨텐츠를 한 뷰페이지에 탭메뉴를 통해 선택된 컨텐츠만 보여주는 플러그인
 
-__마크업__
+### 사용법
+$("#example").tab();
+
+DATA-API(data-attribute)방식, $("#example").tab(); 자바스크립트 방식을 사용할 수 있다.
+
+- `data-toggle="tab"`는 탭 컨텐츠를 토글 하기 위한 엘리먼트(`a` 태그)에 이 속성을 추가해야 한다.
+- `data-toggle="tab"`를 추가한 엘리먼트(`a` 태그)의 `href`속성에 해당 메뉴를 클릭했을 때 보여줄 컨텐츠의 `id`를 작성한다.
+
 
 #### DATA-API(data-attribute)를 이용하는 방식
 

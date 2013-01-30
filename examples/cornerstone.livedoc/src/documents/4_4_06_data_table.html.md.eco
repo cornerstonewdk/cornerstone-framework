@@ -56,8 +56,12 @@ define([
 
 
 ### 사용법
+$('#example').featuredDataTable()
 
-DATA-API(data-attribute), $('#example').featuredDataTable() 또는 MVC의 View객체로써 사용할 수 있다.
+DATA-API(data-attribute)방식, $("#example").featuredDataTable(); 자바스크립트 방식을 사용할 수 있다.
+
+- `data-featured="datatable""`는 Datatables를 사용하기 위한 엘리먼트(`table`)에 이 속성을 추가해야 한다.
+- `data-datatable-bind="json 데이터 URL"`는 Datatables에 보여줄 데이터를 가져오기 위한 URL을 지정하기 위해 이 속성을 추가해야 한다.
 
 #### DATA-API(data-attribute) 를 이용하는 방식
 

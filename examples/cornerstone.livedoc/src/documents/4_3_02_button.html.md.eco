@@ -18,6 +18,18 @@ thumbnail: '4.3.02.button.png'
 
 DATA-API(data-toggle="buttons*", $('#example').button()
 
+'button' 토글 기능을 사용하는 방법은 크게 단일, 멀티 토글로 나눠지고, 멀티 토글에서는 radio형태, checkbox형태로 나눠진다.
+
+- 단일 토글은 해당 버튼에 `data-toggle="button"` 속성을 추가해야 한다.
+- checkbox 토글은 멀티 토글에 해당하므로 버튼을 감싸는 `btn-group` 엘리먼트에 `data-toggle="button-checkbox"` 속성을 추가해야 한다.
+- radio 토글은 멀티 토글에 해당하므로 버튼을 감싸는 `btn-group` 엘리먼트에 `data-toggle="button-radio"` 속성을 추가해야 한다.
+- javascript 방식을 쓸 경우 `button` 엘리먼트를 클릭했을 때 토글이 되도록 아래와 같은 javascript 코드를 작성해야 한다.
+
+```
+$("button").on("click", function(e) {
+    $(this).button("toggle");
+});
+```
 #### DATA-API(data-attribute)를 이용하는 방식
 
 <% codeMirrorRequiredBlock = (obj) => %>                                                                          

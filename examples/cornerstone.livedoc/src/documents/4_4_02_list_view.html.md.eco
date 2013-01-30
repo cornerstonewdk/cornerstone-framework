@@ -14,7 +14,7 @@ thumbnail: '4.4.02.list_view.png'
 
 ### ListView
 
-Cornerstone의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다.
+Cornerstone 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다.
 
 Cornerstone 리스트뷰의 최적화 알고리즘은 다음과 같다.
 
@@ -45,6 +45,7 @@ define([
 ```
 
 ### 사용법
+$("#example").featuredListView();
 
 #### javascript를 이용하는 방식(더보기 버튼 방식)
 

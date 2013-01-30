@@ -15,7 +15,8 @@ thumbnail: '4.3.11.sign.png'
 
 터치 기반으로 서명을 할 수 있는 플러그인이다.
 
-__마크업__
+### 사용법
+$("#example").sign();
 
 #### javascript를 이용하는 방식
 

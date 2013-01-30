@@ -31,8 +31,11 @@ thumbnail: '4.4.01.scroll_view.png'
 ```
 
 ### 사용법
+$('#example').featuredScrollView()
 
-DATA-API(data-attribute) 또는 $('#example').featuredScrollView();
+DATA-API(data-attribute)방식, $("#example").featuredScrollView(); 자바스크립트 방식을 사용할 수 있다.
+
+- `data-featured="scrollView"`는 ScrollView 사용하기 위한 엘리먼트에 이 속성을 추가해야 한다.
 
 #### DATA-API(data-attribute) 를 이용하는 방식
 

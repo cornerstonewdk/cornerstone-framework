@@ -39,6 +39,46 @@ widget-editor | O | X
 widget-chart | O | O
 widget-datatable | O | O
 
+
+### 플러그인과 모듈 형태의 차이점
+-  플러그인 형태는 일반적으로 많이 사용되는 jQuery 플러그인 형태를 따른다. 다음은 플러그인 형태를 사용하는 예시이다.
+```
+$("#example").featuredListView({
+    optimization: true
+});
+``` 
+위 예시에서는  `id`가 `example`인 엘리먼트에 `featuredListView`라는 플러그인을 적용시키며, 플러그인을 적용할 떄 `featuredListView`의 매개변수에 `json`형태로 옵션을 부여 할 수 있다. 이 예시에서는 `optimization`라는 옵션을 `true` 설정해서 사용된 플러그인의 예시이다. 
+
+ 
+- 모듈 형태는 MVC 프레임워크에서 사용되는 AMD방식의 모듈이다.  다음은 모듈 형태를 사용하는 예시이다.
+```
+define([
+    "backbone",
+    "widget-listview" 
+], function (Backbone, ListView) {
+    // Something...
+});
+``` 
+위 예시에서 `widget-listview`라는 모듈을 선언하면, 해당 모듈에 적용되는 `stylesheet`가 있는 경우 Lazy 로딩을 통해 불러오며, 선언된 순서대로 function의 매개변수로 ListView 를 넘겨 준다. 다음은 매개변수로 넘어온 ListView 뷰 객체를 사용하는 예시이다.
+```
+this.listView = new ListView({
+    el:'#listView',
+    optimization:false,
+});
+```
+위 예시에서  뷰 객체는 플러그인 형태와는 다르게  ListView를 적용할 엘리먼트를 옵션을 통해 지정하지만 플러그인 형태의 옵션을 동일하게 포함하고 있다.
+
+### data API 지원여부
+
+모듈명 | 지원여부
+:-- | :--
+widget-scrollview | O
+widget-listview | X
+widget-media | O
+widget-editor | X
+widget-chart | O
+widget-datatable | O
+
 <script type="text/javascript">
 var $table = $("table");
 $table.addClass("table table-bordered");
