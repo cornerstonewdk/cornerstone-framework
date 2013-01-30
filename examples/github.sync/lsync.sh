@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mv *.eco eco_bak/
+rm *.eco
 
 CLASSPATH=.:./json_library/json-lib-2.3-jdk15.jar:./json_library/commons-lang-2.6.jar:./json_library/ezmorph-1.0.6.jar:./json_library/commons-logging-1.1.1.jar:./json_library/commons-collections-3.2.1.jar:./json_library/commons-beanutils-1.8.3.jar
 
