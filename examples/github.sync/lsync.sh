@@ -13,13 +13,13 @@ java -classpath $CLASSPATH Repl $DEV_DOC/3* 2> LOG3.log
 
 DEV_EXAMPLES=$DEV/examples
 LIVEDOC=$DEV_EXAMPLES/cornerstone.livedoc
-
 LIVEDOC_DOCUMENTS=$LIVEDOC/src/documents
 
 rm -rf $LIVEDOC_DOCUMENTS/*.eco
 cp *.eco $LIVEDOC_DOCUMENTS/
 
 LIVEDOC_FILES_IMAGES=$LIVEDOC/src/files/images
+
 cp $DEV_DOC/"1. User_Document/images"/*  $LIVEDOC_FILES_IMAGES/
 cp $DEV_DOC/"2. Reference/images"/*      $LIVEDOC_FILES_IMAGES/
 cp $DEV_DOC/"3. Runtime/images"/*        $LIVEDOC_FILES_IMAGES/

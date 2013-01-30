@@ -3,6 +3,8 @@
 GIT_ROOT=/home/appadmin/CORNER/git/CornersGithub
 CORNER_DEV=$GIT_ROOT/cornerstone-framework.dev
 
+GITSYNC=$CORNER_DEV/examples/github.sync
+
 ### 1분 단위로 git pull이 수행되도록 설정한다.
 TEN_MIN=60
 sleep_interval=$TEN_MIN
@@ -34,10 +36,18 @@ fi
 cnt=`expr $cnt + 1`;
 
 ### git pull 수행
-echo "GitHub cornerstone-framework (dev) pulling ...";
+echo "1. GitHub cornerstone-framework (dev) pulling ...";
 cd $CORNER_DEV
 echo CURRENT DIR = [ `pwd` ]; echo;
 git pull;
+echo;
+
+### markdown TO eco 변환작업 수행 (livedoc 전용)
+echo "2. Converting: Markdown -> Livedoc Eco";
+cd $GITSYNC
+echo CURRENT DIR = [ `pwd` ]; echo;
+lsync.sh
+#ls -l
 echo;
 
 echo Execute GIT pull '(count = '$cnt', hour = '$hcnt')';
@@ -47,5 +57,3 @@ sleep $sleep_interval
 echo;
 
 done
-
-
