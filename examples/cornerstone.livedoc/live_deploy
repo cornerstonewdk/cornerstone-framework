@@ -1,5 +1,0 @@
-rm -rf out
-docpad generate
-rm -rf out_deploy_bak
-mv out_deploy out_deploy_bak
-cp -r out out_deploy
