@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -157,7 +157,7 @@
               <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+              <a class="second-depth" id="menu_anchor" href="./4_3_00_plugin.html">Plugin</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,18 +290,18 @@
             <div>
   <h1>Plugin</h1>
 
-<p>위젯 중 플러그인은 재사용 가능성이나 유용도가 높은 UI요소나 느낌과 모양새를 순수 HTML/CSS구현이 어렵고 Javascript의 도움을 받아 콤포넌트와 유사하나 기능적인 면이 추가된것이나 터치로 작동하는 스크롤처럼 느낌과 모양새를 구현하기 위해서 HTML/CSS가 필요없이 Javascript만으로 작동하는 등의 기능을 제공하는 것이다.</p>
+<p>플러그인 위젯은 유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯이다.</p>
 
 <blockquote>
-<p>코너스톤의 위젯 플러그인은 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.</p>
+<p>Cornerstone의 플러그인 위젯은 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.</p>
 </blockquote>
 
-<p>아래는 플러그인의 종류와 플러그인에 대한 간단한 설명이다.</p>
+<p>아래는 플러그인의 종류와 각 기능에 대한 간단한 설명이다.</p>
 
 <ol>
 <li>alert : 경고 문구 등을 표현할때 사용하는 플러그인</li>
 <li>button : 버튼 토글 기능이 추가된 플러그인</li>
-<li>carousel : 이미지 슬라이더 플러그인(반응형, Swipe 기능 추가 예정)</li>
+<li>carousel : 이미지 슬라이더 플러그인</li>
 <li>dropdown : 메뉴 중 서브메뉴를 드롭다운 형식으로 만들어주는 플러그인</li>
 <li>modal : 모달 창을 만들어주는 플러그인</li>
 <li>popover : 텍스트에 마우스 오버시 4가지 방향(상하좌우)으로 관련 정보를 보여주는 플러그인</li>
@@ -305,7 +311,7 @@
 <li>rangeinput : 폼에 범위 입력(슬라이더)을 만들어주는 플러그인 (터치무브 및 마우스 드래그가능)</li>
 <li>sign : 터치기반의 싸인 플러그인</li>
 <li>spinner : 페이지나 이미지 또는 특정 영역에 컨텐츠에 로딩을 표현하는 플러그인</li>
-<li>motioncapcha : 입력폼(회원가입, 로그인)에서 터치 모션으로 캡차 기능을 구현한 플러그인</li>
+<li>motioncaptcha : 입력폼(회원가입, 로그인)에서 터치 모션으로 캡차(CAPTCHA) 기능을 구현한 플러그인</li>
 <li>typeahead : 입력창에 관련 단어 자동완성 기능 플러그인</li>
 <li>collapse : 수직형태의 탭으로 접고 펼기는 형태의 UI를 표현하는 플러그인.</li>
 <li>datepicker : 날짜 정보를 키보드가 아닌 캘린터 UI를 통해 입력 받는 플러그인.</li>
@@ -315,48 +321,144 @@
 
 <h4>일반 방식</h4>
 
-<pre><code>    &lt;!-- jQuery: 위젯 플러그인 사용을 위한 jquery.js  --&gt;
-    &lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
-    &lt;!-- Widget Collection: 위젯의 각 플러그인들이 모여있는 widget.js  --&gt;
-    &lt;script src=&#39;./dist/ui/widget-plugins.js&#39;&gt;&lt;/script&gt;
+<pre><code>&lt;!-- jQuery: 플러그인 위젯 사용을 위한 jquery.js  --&gt;
+&lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
+&lt;!-- Widget Collection: 위젯의 각 플러그인들이 모여있는 widget.js  --&gt;
+&lt;script src=&#39;./dist/ui/widget-plugins.js&#39;&gt;&lt;/script&gt;
 </code></pre>
 
 <h4>MVC 방식</h4>
 
-<p>MVC 방식은 별도로 사용자가 일반방식 처럼 JS/CSS를 추가하지 않고, 코너스톤 테마 CSS에 플러그인 스타일은 포함되어 있다.</p>
+<p>MVC 방식은 별도로 사용자가 일반방식 처럼 JS/CSS를 추가하지 않고, Cornerstone 테마 CSS에 플러그인 스타일은 포함되어 있다.</p>
 
-<pre><code>    define([
-        &quot;backbone&quot;,
-        &quot;widget-plugins&quot; // 플러그인 JS를 Lazy 로딩한다.
-    ], function (Backbone) {
-        render : function() {
-            this.$el.find(&quot;#example&quot;).sign();
-        }
-        // Something...
-    });
+<pre><code>define([
+    &quot;backbone&quot;,
+    &quot;widget-plugins&quot; // 플러그인 JS를 Lazy 로딩한다.
+], function (Backbone) {
+    render : function() {
+        this.$el.find(&quot;#example&quot;).sign();
+    }
+    // Something...
+});
 </code></pre>
+
+<h3>data API 지원여부</h3>
+
+<table><thead>
+<tr>
+<th align="left">플러그인명</th>
+<th align="left">지원여부</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">Alert</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Button</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Carousel</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Dropdown</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Modal</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Popover</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Scrollspy</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Tab</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Tooltip</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">RangeInput</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Sign</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">Spinner</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Motioncaptcha</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">Typehead</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">Collapse</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">DatePicker</td>
+<td align="left">X</td>
+</tr>
+</tbody></table>
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th").addClass("fixed_table");
+$table.find("tbody tr > td").addClass("fixed_table");
+</script>
 
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_2_10_miscellaneous.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_01_alert.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_2_10_miscellaneous.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_01_alert.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -274,7 +274,13 @@
               <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+              <a class="second-depth" id="menu_anchor" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
             </li>
           </ul>
         </div>
@@ -289,8 +295,7 @@
 <p><img src="./images/srt_project.png" alt=""> </p>
 
 <ul>
-<li>   아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 
-참조할 수 있다. </li>
+<li>   아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다. </li>
 </ul>
 
 <p><a href="./sample/iOS_plugin_sample.zip" title="iOS plugin 개발 예제 소스 ">./sample/iOS_plugin_sample.zip</a></p>
@@ -302,7 +307,7 @@
 <ul>
 <li>   <strong>www</strong> : 웹앱의 저장 위치 </li>
 <li>   <strong>www/index.html</strong> : 웹앱의 첫 실행 파일</li>
-<li>   <strong>www/SRT-1.0.js</strong> : Cornerstone Runtime JavaScript Library</li>
+<li>   <strong>www/SRT-0.9.1.js</strong> : Cornerstone Runtime JavaScript Library</li>
 </ul>
 
 <p>3) SRT_Template/Resources - 어플에 필요한 리소스를 저장하는 위치</p>
@@ -348,15 +353,15 @@
 <p>full example code (RTPageLoading.h)</p>
 </blockquote>
 
-<pre><code>    #import &lt;SRT/RTPlugin.h&gt;
+<pre><code>#import &lt;SRT/RTPlugin.h&gt;
 
-    @interface RTPageLoading : RTPlugin {
+@interface RTPageLoading : RTPlugin {
 
-    }
+}
 
-    -(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+-(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
-    @end
+@end
 </code></pre></li>
 <li><p>native 모듈을 개발을 위한 Objective-C 소스 파일을 생성한다.</p>
 
@@ -408,20 +413,19 @@
 <p>full example code (RTPageLoading.m)</p>
 </blockquote>
 
-<pre><code>    #import &quot;RTPageLoading.h&quot;
+<pre><code>#import &quot;RTPageLoading.h&quot;
 
-    @implementation RTPageLoading
+@implementation RTPageLoading
 
-    -(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options {
-        NSString* callbackId = [arguments objectAtIndex:0];
-        RTPluginResult* result = [RTPluginResult resultWithStatus:RTCommandStatus_OK messageAsDouble:123456.789];
-        [super writeJavascript:[result toSuccessCallbackString:callbackId]]; 
-    }
-
-    @end
-
+-(void) getStartPageLoadingTime:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options {
+    NSString* callbackId = [arguments objectAtIndex:0];
+    RTPluginResult* result = [RTPluginResult resultWithStatus:RTCommandStatus_OK messageAsDouble:123456.789];
+    [super writeJavascript:[result toSuccessCallbackString:callbackId]]; 
 }
-</code></pre></li>
+@end
+</code></pre>
+
+<p>}</p></li>
 </ul>
 
 <p><strong>step 3.</strong>  확장 구조 개발자는 아래의 그림과 같이 www 폴더의 .js 파일에 추가할 JavaScript 모듈에 대한 정의를 한다. </p>
@@ -502,21 +506,21 @@ srt.addConstructor(function() {
 </blockquote>
 
 <pre><code>&lt;key&gt;Plugins&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;PageLoading&lt;/key&gt;
-        &lt;string&gt;RTPageLoading&lt;/string&gt;
-    &lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;PageLoading&lt;/key&gt;
+    &lt;string&gt;RTPageLoading&lt;/string&gt;
+&lt;/dict&gt;
 </code></pre></li>
 </ul>
 
-<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-1.0.js는 template 기본 파일</strong>이다. </p>
+<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-0.9.1.js는 template 기본 파일</strong>이다. </p>
 
 <p><img src="./images/index.jpg" alt=""></p>
 
 <ul>
 <li><p>특정 웹페이지 내부에서 DeviceAPI를 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p>
 
-<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=SRT-0.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
+<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=SRT-0.9.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
 <li><p>특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p>
 
 <p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;pageloadingplugin.js&quot;&gt;&lt;/script&gt;</code></p></li>
@@ -531,7 +535,7 @@ srt.addConstructor(function() {
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; context=&quot;width-divice-width, initial-scele-1.0, user-scalble=no&quot;&gt;
-&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;SRT-1.0.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;SRT-0.9.1.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;pageloadingplugin.js&quot;&gt;&lt;/script&gt;
 &lt;title&gt;PageLoadingPlugin&lt;/title&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
@@ -560,25 +564,25 @@ function startLoadingTimeTest(){
 <p>Example 2. CallLog Plugin 사용 예제 </p>
 </blockquote>
 
-<pre><code>    &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;../path/calllogplugin.js&quot;&gt;&lt;/script&gt;
-    &lt;title&gt;CallLog Test&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;../path/calllogplugin.js&quot;&gt;&lt;/script&gt;
+&lt;title&gt;CallLog Test&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
 
-    function calllogSC(obj){
-        if (obj.length &gt; 0) {
-                alert(obj[0].number);
-                alert(obj[0].duration);
-            } else {
-                alert(&quot;empty call log&quot;);
-            }
-    }
-    function errorcallback(e) {
-        alert(e);
-    }
-    function getCallLogs() {
-        window.plugins.CallLog.list(calllogSC, errorcallback, &quot;day&quot;);
-    }
-    &lt;/script&gt;
+function calllogSC(obj){
+    if (obj.length &gt; 0) {
+            alert(obj[0].number);
+            alert(obj[0].duration);
+        } else {
+            alert(&quot;empty call log&quot;);
+        }
+}
+function errorcallback(e) {
+    alert(e);
+}
+function getCallLogs() {
+    window.plugins.CallLog.list(calllogSC, errorcallback, &quot;day&quot;);
+}
+&lt;/script&gt;
 </code></pre>
 
 <p><strong>step 6.</strong>  Resources/icons 폴더 내부에 웹앱 개발자가 사용하고자 하는 아이콘 이미지를 프로젝트에 추가한다. 기본으로 설정된 icon 파일 이름은 <strong>icon</strong>이며 기본 설정일 경우 단말에 따라 적용되는 icon 파일 이름은 아래와 같다. icon 파일 이름 설정 방법은 step 5. 에서 다룬다.</p>
@@ -640,18 +644,33 @@ Key의 경우 JS 라이브러리를 위한 모듈명이며 Value의 경우 Nativ
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./RT_7_android_plugin_development.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./RT_7_android_plugin_development.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
     </div>
   </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -271,10 +271,16 @@
               <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+              <a class="second-depth" id="menu_anchor" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
             </li>
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
             </li>
           </ul>
         </div>
@@ -323,7 +329,7 @@ Library 위치 </p>
 <ul>
 <li>   <strong>plugin.xml</strong> : plugin을 Runtime에 등록하는 파일 </li>
 <li>   <strong>value/string.xml</strong> : 웹앱의 name을 세팅하는 파일 </li>
-<li>   <strong>xml/config.xml</strong> : device의 orientation(portrait , landscape , audo) 및 splash image를 세팅 하는 파일 </li>
+<li>   <strong>xml/config.xml</strong> : device의 orientation(portrait , landscape , audo) 및 splash image, 메뉴 사용여부, loading progressbar 사용여부를 세팅 하는 파일</li>
 </ul>
 
 <p>6) AndroidManifest.xml : 하나의 Native Application으로써의 고유한 Package 명을 지정하는 파일, 하드웨어 가속 GPU 렌더링 사용여부를 지정하는 파일.</p>
@@ -331,6 +337,60 @@ Library 위치 </p>
 <p><br></p>
 
 <h3>Android Runtime 확장 구조 개발 절차</h3>
+
+<h4>Plugin 개발을 위한 클래스</h4>
+
+<ul>
+<li><p>Plugin.java </p>
+
+<ul>
+<li>plugin 개발을 위하여 Runtime에서 제공하는 클래스이다. </li>
+<li><p>아래의 함수를 기본적으로 제공한다. <strong>필요한 경우 재정의도 가능하다.</strong></p>
+
+<p>1) execute()</p>
+
+<pre><code>- 실제로 native의 모듈이 구현되어야 하는 함수 
+</code></pre>
+
+<p>2) isSynch()</p>
+
+<pre><code>- 특정 api 가 동기/비동기로 구현될지를 설정하는 함수 
+</code></pre>
+
+<p>3) setContext()</p>
+
+<pre><code>- 초기 main context를 plugin에 설정하는 함수 
+</code></pre>
+
+<p>4) onPause(), onResume(), onNewIntent(), onDestroy()</p>
+
+<pre><code>- Runtime의 activity cycle의 이벤트를 받아서 처리할 수 있는 함수  
+</code></pre>
+
+<p>5) onActivityResult()</p>
+
+<pre><code>- plugin 내부에서 특정 activity를 호출 하였을 경우 결과를 처리할 수 있는 함수 
+</code></pre>
+
+<p>6) success()</p>
+
+<pre><code>- plugin 내부에서 바로 JS에 성공 콜백을 호출할 경우 사용하는 함수 
+</code></pre>
+
+<p>7) error()</p>
+
+<pre><code>- plugin 내부에서 바로 JS에 실패 콜백을 호출할 경우 사용하는 함수
+</code></pre></li>
+</ul></li>
+<li><p>PluginResult.java</p>
+
+<ul>
+<li>plugin 의 결과값을 JavaScript에 전달하기 위하여 생성하여야 하는 클래스이다.<br></li>
+<li>Status와 필요하다면 JavaScript에 전달 할 매개변수로 구성된다. </li>
+</ul></li>
+</ul>
+
+<h4>Plugin 개발 절차</h4>
 
 <p><strong>step 1.</strong>  Authoring tool을 이용해 Android Web App Template를 받으면 Lib 폴더에 <strong>Runtime.jar가 기본으로 포함</strong>되어 있다.</p>
 
@@ -391,35 +451,35 @@ Library 위치 </p>
 <p>example code (MacAddress plugin)</p>
 </blockquote>
 
-<pre><code>    @Override
-    public PluginResult execute(String action, JSONArray args, String callbackId) {
+<pre><code>@Override
+public PluginResult execute(String action, JSONArray args, String callbackId) {
 
-        this.callbackId = callbackId;
+    this.callbackId = callbackId;
 
-        //action은 JavaScript에서 정의한 extension api 명이다. 
+    //action은 JavaScript에서 정의한 extension api 명이다. 
 
-        //device의 MacAddress를 얻는 기능 
-        if(action.equalsIgnoreCase(&quot;getMacAddress&quot;)){        
-            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            String macAddress = wifiInfo.getMacAddress();
+    //device의 MacAddress를 얻는 기능 
+    if(action.equalsIgnoreCase(&quot;getMacAddress&quot;)){        
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String macAddress = wifiInfo.getMacAddress();
 
-            PluginResult result = new PluginResult(PluginResult.Status.OK, macAddress);
-            return result;
-        }
-        else if(action.equalsIgnoreCase(&quot;getDeviceID&quot;)){        
-            String android_id = Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID);
-
-            PluginResult result = new PluginResult(PluginResult.Status.OK, android_id);
-            return result;
-        }
-        //device의 개통된 번호를 얻는 기능 
-        else if(action.equalsIgnoreCase(&quot;getPhoneNumber&quot;)){
-            String phoneNumber = tm.getLine1Number();
-            return new PluginResult(PluginResult.Status.OK, phoneNumber);
-        }
-
-        return new PluginResult(PluginResult.Status.NO_RESULT);
+        PluginResult result = new PluginResult(PluginResult.Status.OK, macAddress);
+        return result;
     }
+    else if(action.equalsIgnoreCase(&quot;getDeviceID&quot;)){        
+        String android_id = Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID);
+
+        PluginResult result = new PluginResult(PluginResult.Status.OK, android_id);
+        return result;
+    }
+    //device의 개통된 번호를 얻는 기능 
+    else if(action.equalsIgnoreCase(&quot;getPhoneNumber&quot;)){
+        String phoneNumber = tm.getLine1Number();
+        return new PluginResult(PluginResult.Status.OK, phoneNumber);
+    }
+
+    return new PluginResult(PluginResult.Status.NO_RESULT);
+}
 </code></pre></li>
 <li><p><strong>setContext</strong> 함수를 재정의 하여 plugin 로딩시 초기화 작업 및 API가 호출되기 전의 특정 작업을 수행 할 수 있다. </p>
 
@@ -427,14 +487,14 @@ Library 위치 </p>
 <p>example code (MacAddress plugin)</p>
 </blockquote>
 
-<pre><code>    @Override
-    public void setContext(RuntimeInterface ctx) {
-        // TODO Auto-generated method stub
-        super.setContext(ctx);
+<pre><code>@Override
+public void setContext(RuntimeInterface ctx) {
+    // TODO Auto-generated method stub
+    super.setContext(ctx);
 
-        wifiManager = (WifiManager)ctx.getSystemService(Context.WIFI_SERVICE);
-        tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
-    }
+    wifiManager = (WifiManager)ctx.getSystemService(Context.WIFI_SERVICE);
+    tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
+}
 </code></pre></li>
 <li><p><strong>isSynch</strong> 함수를 재정의 하여 특정 API에 대하여 동기적으로 동작하게 함수를 개발 할 수 있다. 특정 api에 대하여 재정의 하지 않는다면 API는 비동기로 동작한다. </p>
 
@@ -442,18 +502,18 @@ Library 위치 </p>
 <p>example code (MacAddress plugin)</p>
 </blockquote>
 
-<pre><code>    @Override
-        public boolean isSynch(String action) {
-            //getMacAddress api는 동기적으로 동작 
-            if(action.equals(&quot;getMacAddress&quot;))
-                return true;
-            else if(action.equals(&quot;getDeviceID&quot;))
-                return true;
-            else if(action.equals(&quot;getPhoneNumber&quot;))
-                return true;
+<pre><code>@Override
+    public boolean isSynch(String action) {
+        //getMacAddress api는 동기적으로 동작 
+        if(action.equals(&quot;getMacAddress&quot;))
+            return true;
+        else if(action.equals(&quot;getDeviceID&quot;))
+            return true;
+        else if(action.equals(&quot;getPhoneNumber&quot;))
+            return true;
 
-            return super.isSynch(action);
-        }
+        return super.isSynch(action);
+    }
 </code></pre></li>
 <li><p><strong>execute</strong> 함수의 3번째 매개변수(callbackId)를 이용하여 JavaScript callback에 Native에서 pluginResult 객체를 지속적으로 return 할 수 있다. </p>
 
@@ -599,14 +659,14 @@ srt.addConstructor(function() {
 <p><code>&lt;plugin name=&quot;CallLog&quot; value=&quot;org.skt.runtime.plugin.CallLogPlugin&quot; /&gt;</code></p></li>
 </ul>
 
-<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-1.0.js는 플러그인 개발 환경 template의 기본 포함된 파일</strong>이다. </p>
+<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-0.9.1.js는 플러그인 개발 환경 template의 기본 포함된 파일</strong>이다. </p>
 
 <p><img src="./images/src2.png" alt=""></p>
 
 <ul>
 <li><p>특정 웹페이지 내부에서 DeviceAPI를 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p>
 
-<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=*../path/SRT-0.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
+<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=*../path/SRT-0.9.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
 <li><p>특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p></li>
 </ul>
 
@@ -614,46 +674,46 @@ srt.addConstructor(function() {
 <p>Example 1. MacAddress Plugin 사용 예제 </p>
 </blockquote>
 
-<pre><code>    &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;../path/macaddressplugin.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    function getMacAddress(){
-        var macAddress = window.plugins.MacAddress.getMacAddress();
-        alert(&quot;MacAddress = &quot; + macAddress);
-    }
-    function getPhoneNumber(){
-        var phoneNumber = window.plugins.MacAddress.getPhoneNumber();
-        alert(&quot;phoneNumber = &quot; + phoneNumber);
-    }
-    function getDeviceID(){
-        var id = window.plugins.MacAddress.getDeviceID();
-        alert(&quot;Device id = &quot; + id);
-    }
-    &lt;/script&gt;
+<pre><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;../path/macaddressplugin.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+function getMacAddress(){
+    var macAddress = window.plugins.MacAddress.getMacAddress();
+    alert(&quot;MacAddress = &quot; + macAddress);
+}
+function getPhoneNumber(){
+    var phoneNumber = window.plugins.MacAddress.getPhoneNumber();
+    alert(&quot;phoneNumber = &quot; + phoneNumber);
+}
+function getDeviceID(){
+    var id = window.plugins.MacAddress.getDeviceID();
+    alert(&quot;Device id = &quot; + id);
+}
+&lt;/script&gt;
 </code></pre>
 
 <blockquote>
 <p>Example 2. CallLog Plugin 사용 예제 </p>
 </blockquote>
 
-<pre><code>    &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;../path/calllogplugin.js&quot;&gt;&lt;/script&gt;
-    &lt;title&gt;CallLog Test&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;../path/calllogplugin.js&quot;&gt;&lt;/script&gt;
+&lt;title&gt;CallLog Test&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
 
-    function calllogSC(obj){
-        if (obj.length &gt; 0) {
-                alert(obj[0].number);
-                alert(obj[0].duration);
-            } else {
-                alert(&quot;empty call log&quot;);
-            }
-    }
-    function errorcallback(e) {
-        alert(e);
-    }
-    function getCallLogs() {
-        window.plugins.CallLog.list(calllogSC, errorcallback, &quot;day&quot;);
-    }
-    &lt;/script&gt;
+function calllogSC(obj){
+    if (obj.length &gt; 0) {
+            alert(obj[0].number);
+            alert(obj[0].duration);
+        } else {
+            alert(&quot;empty call log&quot;);
+        }
+}
+function errorcallback(e) {
+    alert(e);
+}
+function getCallLogs() {
+    window.plugins.CallLog.list(calllogSC, errorcallback, &quot;day&quot;);
+}
+&lt;/script&gt;
 </code></pre>
 
 <p><strong>step 6.</strong>  Res 폴더 내부에 웹앱 개발자가 사용하고자 하는 아이콘 이미지를 <strong>icon.png</strong>의 이름으로 삽입한다. </p>
@@ -699,23 +759,38 @@ package=&quot;co.kr.skt.testapp.test&quot; android:versionName=&quot;1.1&quot; a
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./RT_6_plugin_development_intro.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./RT_8_ios_plugin_development.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./RT_6_plugin_development_intro.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./RT_8_ios_plugin_development.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

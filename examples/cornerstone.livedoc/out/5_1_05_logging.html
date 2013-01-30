@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -247,7 +247,7 @@
               <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+              <a class="third-depth" id="menu_anchor" href="./5_1_05_logging.html">Logging</a>
             </li>
             <li>
               <a class="first-depth">Runtime</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -300,95 +306,101 @@
 
 <p>선언 후에는 전역 객체인 Logging을 사용할 수 있다. Logging 객체가 제공하는 메소드들은 다음과 같다.</p>
 
-<table><thead>
-<tr>
-<th align="left">메소드명</th>
-<th align="left">파라미터</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">config</td>
-<td align="left">설정(object)</td>
-<td align="left">로그를 남기는 방법을 설정한다.</td>
-</tr>
-<tr>
-<td align="left">debug</td>
-<td align="left">메시지(string)</td>
-<td align="left">디버그 메시지를 로그로 남긴다.</td>
-</tr>
-<tr>
-<td align="left">info</td>
-<td align="left">메시지(string)</td>
-<td align="left">정보 메시지를 로그로 남긴다.</td>
-</tr>
-<tr>
-<td align="left">warn</td>
-<td align="left">메시지(string)</td>
-<td align="left">경고 메시지를 로그로 남긴다.</td>
-</tr>
-<tr>
-<td align="left">error</td>
-<td align="left">메시지(string)</td>
-<td align="left">오류 메시지를 로그로 남긴다.</td>
-</tr>
-<tr>
-<td align="left">log</td>
-<td align="left">메시지(string)</td>
-<td align="left">로그 메시지를 남긴다.</td>
-</tr>
-<tr>
-<td align="left">time</td>
-<td align="left">타이머 이름(string)</td>
-<td align="left">타이머를 시작한다. 이름을 다르게 지정하면 여러 타이머를 동시에 사용할 수 있다. 특정 작업이 걸리는 시간을 측정하는데 유용하다.</td>
-</tr>
-<tr>
-<td align="left">timeEnd</td>
-<td align="left">타이머 이름(string)</td>
-<td align="left">지정된 이름의 타이머를 종료하고 소요시간을 보여준다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+<thead>
+    <tr>
+        <th class="fixed_table">메소드명</th>
+        <th class="fixed_table">파라미터</th>
+        <th >설명</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td class="fixed_table">config</td>
+        <td class="fixed_table">설정(object)</td>
+        <td >로그를 남기는 방법을 설정한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">debug</td>
+        <td class="fixed_table">메시지(string)</td>
+        <td >디버그 메시지를 로그로 남긴다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">info</td>
+        <td class="fixed_table">메시지(string)</td>
+        <td >정보 메시지를 로그로 남긴다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">warn</td>
+        <td class="fixed_table">메시지(string)</td>
+        <td >경고 메시지를 로그로 남긴다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">error</td>
+        <td class="fixed_table">메시지(string)</td>
+        <td >오류 메시지를 로그로 남긴다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">log</td>
+        <td class="fixed_table">메시지(string)</td>
+        <td >로그 메시지를 남긴다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">time</td>
+        <td class="fixed_table">타이머 이름(string)</td>
+        <td >타이머를 시작한다. 이름을 다르게 지정하면 여러 타이머를 동시에 사용할 수 있다. 특정 작업이 걸리는 시간을 측정하는데 유용하다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">timeEnd</td>
+        <td class="fixed_table">타이머 이름(string)</td>
+        <td >지정된 이름의 타이머를 종료하고 소요시간을 보여준다.</td>
+    </tr>
+</tbody>
+</table>
 
 <p>config 메소드를 사용할 때 설정 객체는 다음과 같은 속성들을 갖는다.</p>
 
-<table><thead>
-<tr>
-<th align="left">속성명</th>
-<th align="left">기본값</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">defaultLevel</td>
-<td align="left">debug</td>
-<td align="left">debug/info/warn/error 중의 한 값을 지정하면 해당 메소드를 log 메소드로도 사용할 수 있다.</td>
-</tr>
-<tr>
-<td align="left">debug</td>
-<td align="left">console</td>
-<td align="left">console/screen/none 중의 한 값을 지정하며 디버그 메시지를 어디로 남길지를 결정한다. console은 브라우저의 기본 콘솔로, screen은 웹 화면에 로그를 표시하는 작은 창으로 로그를 남기도록 하며 none인 경우 로그를 남기지 않는다.</td>
-</tr>
-<tr>
-<td align="left">info</td>
-<td align="left">console</td>
-<td align="left">debug와 동일</td>
-</tr>
-<tr>
-<td align="left">warn</td>
-<td align="left">console</td>
-<td align="left">debug와 동일</td>
-</tr>
-<tr>
-<td align="left">error</td>
-<td align="left">console</td>
-<td align="left">debug와 동일</td>
-</tr>
-<tr>
-<td align="left">time</td>
-<td align="left">console</td>
-<td align="left">debug와 동일</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+<thead>
+    <tr>
+        <th class="fixed_table">속성명</th>
+        <th class="fixed_table">기본값</th>
+        <th >설명</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td class="fixed_table">defaultLevel</td>
+        <td class="fixed_table">debug</td>
+        <td >debug/info/warn/error 중의 한 값을 지정하면 해당 메소드를 log 메소드로도 사용할 수 있다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">debug</td>
+        <td class="fixed_table">console</td>
+        <td >console/screen/none 중의 한 값을 지정하며 디버그 메시지를 어디로 남길지를 결정한다. console은 브라우저의 기본 콘솔로, screen은 웹 화면에 로그를 표시하는 작은 창으로 로그를 남기도록 하며 none인 경우 로그를 남기지 않는다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">info</td>
+        <td class="fixed_table">console</td>
+        <td >debug와 동일</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">warn</td>
+        <td class="fixed_table">console</td>
+        <td >debug와 동일</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">error</td>
+        <td class="fixed_table">console</td>
+        <td >debug와 동일</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">time</td>
+        <td class="fixed_table">console</td>
+        <td >debug와 동일</td>
+    </tr>
+</tbody>
+</table>
 
 <p>다음과 같이 설정한다면 log 메소드는 debug 메소드와 동일한 기능을 가지게 되며, info 메소드는 아무 일도 하지 않는다. 그리고 debug, warn 메소드는 브라우저의 기본 콘솔에 로그를 남기고 error, time 메소드는 웹 화면에 작은 창을 표시하고 그 안에 로그를 남긴다.</p>
 
@@ -404,27 +416,179 @@
 
 <p>화면에 로그를 남기는 screen 옵션은 콘솔을 확인하기가 힘든 스마트폰/패드의 경우 아주 유용하다. 그리고, 개발중에는 screen 또는 console 옵션으로 로그를 확인하다가 최종 제품으로 패키징할 때는 로그를 남기지 않도록 설정할 수 있다.</p>
 
+<p>다음은 화면에 로그를 남기는 예시이다.</p>
+
+<script src='lib/codemirror.js'></script>                                                                         
+
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 400px;' ></iframe> 
+                                                                                                         
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    
+<script src="../../dist/lib/blackbirdjs/blackbird.js"></script>
+<link href="../../dist/lib/blackbirdjs/blackbird.css" rel="stylesheet"/>
+<script src="../../dist/util/logging.js"></script>
+
+<div>
+    <button id="debug-button" type="button" class="btn">Debug</button>
+    <button id="info-button" type="button" class="btn btn-info">Info</button>
+    <button id="warn-button" type="button" class="btn btn-warning">Warn</button>
+    <button id="error-button" type="button" class="btn btn-danger">Error</button>
+    <button id="log-button" type="button" class="btn btn-primary">Log</button>
+    <button id="time-button" type="button" class="btn btn-inverse">Time</button>
+    <button id="timeEnd-button" type="button" class="btn btn-inverse">TimeEnd</button>
+</div>
+
+<script type="text/javascript">
+// Logging 설정
+Logging.config( {
+    defaultLevel: 'info',
+    debug: 'screen',
+    info: 'screen',
+    warn: 'screen',
+    error: 'screen',
+    time: 'screen'
+} );
+
+$( '#debug-button' ).click( function() {
+    Logging.debug( 'Debug 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#info-button' ).click( function() {
+    Logging.info( 'Info 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#warn-button' ).click( function() {
+    Logging.warn( 'Warn 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#error-button' ).click( function() {
+    Logging.error( 'Error 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#log-button' ).click( function() {
+    Logging.log( 'Log 메시지를 로그에 남깁니다.' );
+} );
+
+$( '#time-button' ).click( function() {
+    Logging.time( 'timer1' );
+} );
+
+$( '#timeEnd-button' ).click( function() {
+    Logging.timeEnd( 'timer1' );
+} );
+</script>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./5_1_04_SKT_open_API.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./RT_1_basic_structure.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./5_1_04_SKT_open_API.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./RT_1_basic_structure.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

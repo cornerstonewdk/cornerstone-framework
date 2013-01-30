@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -190,7 +190,7 @@
               <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_11_sign.html">Sign</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -286,7 +292,9 @@
 
 <p>터치 기반으로 서명을 할 수 있는 플러그인이다.</p>
 
-<p><strong>마크업</strong></p>
+<h3>사용법</h3>
+
+<p>$(&ldquo;#example&rdquo;).sign();</p>
 
 <h4>javascript를 이용하는 방식</h4>
 
@@ -305,13 +313,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 570px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 1100px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -338,23 +348,24 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Sign</h3>
 
-    <div><i class="badge">1</i> 아래 회색 박스 안에 터치 또는 마우스 드래그를 이용해서 싸인을 한다.</div>
-    <div><i class="badge">2</i> 이미지로 보기를 누른 후 하단에 생성된 이미지를 확인한다.</div>
-    <div><i class="badge">3</i> 이미지 다운로드하기를 통해 하단에 생성된 이미지를 다운로드한다.(HTML5 기능으로 구현된 상태로 일부 브라우저에서 작동이 원활하지 않을 수 있다.)</div>
-    <div><i class="badge">4</i> 리셋하기를 눌러 초기화를 한다.</div>
+    <p><i class="badge badge-info">1</i> 아래 회색 박스 안에 터치 또는 마우스 드래그를 이용해서 싸인을 한다.</p>
+    <p><i class="badge badge-info">2</i> 이미지로 보기를 누른 후 하단에 생성된 이미지를 확인한다.</p>
+    <p><i class="badge badge-info">3</i> 리셋하기를 눌러 초기화를 한다.</p>
 
     <div class="widget-sign">
         <div id="signature" class="sign"></div>
         <div id="tools">
             <button class="btn show-sign">이미지로 보기</button>
-            <a href="#" class="btn download-sign" download="my-sign.png">이미지 다운로드하기</a>
             <button class="btn reset-sign">리셋하기</button>
         </div>
-        <div class="widget-sign-viewer"></div>
+        <h3>이미지를 보여줄 영역</h3>
+        <div class="widget-sign-viewer" style="border:1px solid #CCC;min-height: 300px;"></div>
     </div>
+
     <script>
         window.onload = function() {
             $("#signature").sign();
@@ -365,24 +376,17 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                 $("div.widget-sign-viewer").html($("<img/>", {
                     src:"data:" + data
                 }));
-                $("a.download-sign").attr({
-                    href:"data:" + data
-                });
                 console.log(data);
             });
 
             $("button.reset-sign").on('click', function (e) {
                 $("#signature").sign("reset"); // 초기화
                 $(".widget-sign-viewer img").remove();
-                $("a.download-sign").attr({
-                    href:"#"
-                });
             });
         };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -441,27 +445,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_10_range_input.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_12_spinner.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_10_range_input.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_12_spinner.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

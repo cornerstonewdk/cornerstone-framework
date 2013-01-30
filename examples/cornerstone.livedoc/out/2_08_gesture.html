@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -85,7 +85,7 @@
               <a class="second-depth" href="./2_07_view.html">뷰</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+              <a class="second-depth" id="menu_anchor" href="./2_08_gesture.html">제스쳐</a>
             </li>
             <li class="inactive">
               <a class="second-depth" href="./2_09_template.html">Template</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -286,29 +292,28 @@
 
 <p>스마트폰이나 스마트패드 등 터치 기반의 기기를 사용할 때는, 터치와 관련된 다양한 이벤트를 처리해야 할 경우가 있다. 일반적으로 iOS, 안드로이드 기기의 브라우저에서는 다음 이벤트들을 추가로 지원한다.</p>
 
-<table><thead>
-<tr>
-<th align="left">이벤트명</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">touchstart</td>
-<td align="left">화면에 손이 닿으면 발생한다. 마우스 기반의 이벤트 중에서 mousedown과 유사하다.</td>
-</tr>
-<tr>
-<td align="left">touchmove</td>
-<td align="left">화면에 손이 닿은 상태에서 이동하면 발생한다. 마우스 기반의 이벤트 중에서 mousemove와 유사하다.</td>
-</tr>
-<tr>
-<td align="left">touchend</td>
-<td align="left">화면에서 손을 떼면 발생한다. 마우스 기반의 이벤트 중에서 mouseup과 유사하다.</td>
-</tr>
-<tr>
-<td align="left">touchcancel</td>
-<td align="left">화면에 손이 닿은 상태에서 전화가 오거나 하는 등의 일이 발생하면 시스템에 의해 터치가 취소되면서 발생한다. 일부 기기에서는 화면에서 손을 떼는 경우에 발생할 수도 있다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+    <tr>
+        <th class="fixed_table">이벤트명</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td class="fixed_table">touchstart</td>
+        <td>화면에 손이 닿으면 발생한다. 마우스 기반의 이벤트 중에서 mousedown과 유사하다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">touchmove</td>
+        <td>화면에 손이 닿은 상태에서 이동하면 발생한다. 마우스 기반의 이벤트 중에서 mousemove와 유사하다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">touchend</td>
+        <td>화면에서 손을 떼면 발생한다. 마우스 기반의 이벤트 중에서 mouseup과 유사하다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">touchcancel</td>
+        <td>화면에 손이 닿은 상태에서 전화가 오거나 하는 등의 일이 발생하면 시스템에 의해 터치가 취소되면서 발생한다. 일부 기기에서는 화면에서 손을 떼는 경우에 발생할 수도 있다.</td>
+    </tr>
+</table>
 
 <p>따라서 Backbone View의 events 속성을 다음과 같이 지정해서 이벤트를 처리할 수 있다.</p>
 
@@ -374,111 +379,108 @@
 
 <p>Gesture View를 사용해서 처리할 수 있는 추가적인 이벤트는 다음과 같다.</p>
 
-<table><thead>
-<tr>
-<th align="left">이벤트명</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">tap</td>
-<td align="left">화면을 두드리면 발생한다. 마우스 기반의 이벤트 중에서 click과 유사하다.</td>
-</tr>
-<tr>
-<td align="left">doubletap</td>
-<td align="left">화면을 빠르게 연속으로 두번 두드리면 발생한다. 마우스 기반의 이벤트 중에서 dblclick과 유사하다.</td>
-</tr>
-<tr>
-<td align="left">hold</td>
-<td align="left">화면에 일정 시간(0.5초) 이상 손을 대고 있으면 발생한다.</td>
-</tr>
-<tr>
-<td align="left">dragstart</td>
-<td align="left">화면을 잡아 끄는 작업이 시작하면 발생한다.</td>
-</tr>
-<tr>
-<td align="left">drag</td>
-<td align="left">화면을 잡아 끄는 동안 손가락이 이동할 때 마다 발생한다.</td>
-</tr>
-<tr>
-<td align="left">dragend</td>
-<td align="left">화면을 잡아 끄는 작업이 끝나면 발생한다.</td>
-</tr>
-<tr>
-<td align="left">swipe</td>
-<td align="left">화면을 특정 방향으로 쓸면 발생한다. drag의 특정 형태이며 일반적으로 다른 항목이나 화면으로 이동하려고 할 때 사용한다.</td>
-</tr>
-<tr>
-<td align="left">transformstart</td>
-<td align="left">두 손가락을 사용해서 오므리거나 벌리거나(pinch) 회전시키는 동작을 시작하면 발생한다.</td>
-</tr>
-<tr>
-<td align="left">transform</td>
-<td align="left">두 손가락을 사용해서 오므리거나 벌리거나 회전시키는 동작을 하는 동안 손가락이 이동할 때 마다 발생한다.</td>
-</tr>
-<tr>
-<td align="left">transformend</td>
-<td align="left">두 손가락을 사용해서 오므리거나 벌리거나 회전시키는 동작이 끝나면 발생한다.</td>
-</tr>
-<tr>
-<td align="left">release</td>
-<td align="left">화면에서 손이 떨어지면 발생한다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+    <tr>
+        <th class="fixed_table">이벤트명</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td class="fixed_table">tap</td>
+        <td>화면을 두드리면 발생한다. 마우스 기반의 이벤트 중에서 click과 유사하다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">doubletap</td>
+        <td>화면을 빠르게 연속으로 두번 두드리면 발생한다. 마우스 기반의 이벤트 중에서 dblclick과 유사하다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">hold</td>
+        <td>화면에 일정 시간(0.5초) 이상 손을 대고 있으면 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">dragstart</td>
+        <td>화면을 잡아 끄는 작업이 시작하면 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">drag</td>
+        <td>화면을 잡아 끄는 동안 손가락이 이동할 때 마다 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">dragend</td>
+        <td>화면을 잡아 끄는 작업이 끝나면 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">swipe</td>
+        <td>화면을 특정 방향으로 쓸면 발생한다. drag의 특정 형태이며 일반적으로 다른 항목이나 화면으로 이동하려고 할 때 사용한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">transformstart</td>
+        <td>두 손가락을 사용해서 오므리거나 벌리거나(pinch) 회전시키는 동작을 시작하면 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">transform</td>
+        <td>두 손가락을 사용해서 오므리거나 벌리거나 회전시키는 동작을 하는 동안 손가락이 이동할 때 마다 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">transformend</td>
+        <td>두 손가락을 사용해서 오므리거나 벌리거나 회전시키는 동작이 끝나면 발생한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">release</td>
+        <td>화면에서 손이 떨어지면 발생한다.</td>
+    </tr>
+</table>
 
 <p>이벤트가 발생하면 자세한 정보를 담고 있는 event 객체가 callback의 인자로 전달된다. event 객체가 담고 있는 정보는 이벤트의 종류에 따라 다르지만 다음 속성들은 공통적으로 제공된다.</p>
 
-<table><thead>
-<tr>
-<th align="left">속성명</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">originalEvent</td>
-<td align="left">브라우저에 의해서 제공되는 DOM event 객체</td>
-</tr>
-<tr>
-<td align="left">position</td>
-<td align="left">제스처가 일어난 좌표. transition일 경우에는 두 손가락의 중간 위치의 좌표</td>
-</tr>
-<tr>
-<td align="left">touches</td>
-<td align="left">터치 정보의 배열, 여러 손가락을 동시에 터치할 때 각 터치의 정보를 제공한다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+    <tr>
+        <th class="fixed_table">속성명</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td class="fixed_table">originalEvent</td>
+        <td>브라우저에 의해서 제공되는 DOM event 객체</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">position</td>
+        <td>제스처가 일어난 좌표. transition일 경우에는 두 손가락의 중간 위치의 좌표</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">touches</td>
+        <td>터치 정보의 배열, 여러 손가락을 동시에 터치할 때 각 터치의 정보를 제공한다.</td>
+    </tr>
+</table>
 
 <h3>drag, swipe 이벤트</h3>
 
 <p>dragstart, drag, dragend, swipe 이벤트가 발생할 때 event 객체에는 다음 속성들이 추가로 제공된다.</p>
 
-<table><thead>
-<tr>
-<th align="left">속성명</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">angle</td>
-<td align="left">이동의 각도. 단위는 &#39;도&#39;이며 오른쪽이 0, 왼쪽이 -180, 위가 -90, 아래가 90이다.</td>
-</tr>
-<tr>
-<td align="left">direction</td>
-<td align="left">이동한 대략적인 방향을 간단한 문자열로 표현한다. up/right/down/left</td>
-</tr>
-<tr>
-<td align="left">distance</td>
-<td align="left">이동한 거리. 단위는 픽셀이다.</td>
-</tr>
-<tr>
-<td align="left">distanceX</td>
-<td align="left">X 축으로 이동한 거리. 단위는 픽셀이다.</td>
-</tr>
-<tr>
-<td align="left">distanceY</td>
-<td align="left">Y 축으로 이동한 거리. 단위는 픽셀이다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+    <tr>
+        <th class="fixed_table">속성명</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td class="fixed_table">angle</td>
+        <td>이동의 각도. 단위는 &lsquo;도'이며 오른쪽이 0, 왼쪽이 -180, 위가 -90, 아래가 90이다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">direction</td>
+        <td>이동한 대략적인 방향을 간단한 문자열로 표현한다. up/right/down/left</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">distance</td>
+        <td>이동한 거리. 단위는 픽셀이다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">distanceX</td>
+        <td>X 축으로 이동한 거리. 단위는 픽셀이다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">distanceY</td>
+        <td>Y 축으로 이동한 거리. 단위는 픽셀이다.</td>
+    </tr>
+</table>
 
 <p>이동한 거리는 dragstart가 발생한 위치를 기준으로 해서 계산된다.</p>
 
@@ -486,21 +488,20 @@
 
 <p>transformstart, transform, transformend 이벤트가 발생할 때 event 객체에는 다음 속성들이 추가로 제공된다.</p>
 
-<table><thead>
-<tr>
-<th align="left">속성명</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">scale</td>
-<td align="left">두 손가락간의 거리. 초기값을 1로 봤을 때의 배율을 의미한다. 즉, 두 손가락의 거리가 2배가 되도록 벌리면 2가 되고, 절반이 되도록 오므리면 0.5가 된다. 거리에 변화가 없으면 1이다.</td>
-</tr>
-<tr>
-<td align="left">rotation</td>
-<td align="left">회전한 각도. 단위는 &#39;도&#39;이며 두 손가락을 시계방향으로 회전하면 양수, 반시계방향으로 회전하면 음수가 된다. 회전하지 않았다면 0이다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+    <tr>
+        <th class="fixed_table">속성명</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td class="fixed_table">scale</td>
+        <td>두 손가락간의 거리. 초기값을 1로 봤을 때의 배율을 의미한다. 즉, 두 손가락의 거리가 2배가 되도록 벌리면 2가 되고, 절반이 되도록 오므리면 0.5가 된다. 거리에 변화가 없으면 1이다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">rotation</td>
+        <td>회전한 각도. 단위는 '도'이며 두 손가락을 시계방향으로 회전하면 양수, 반시계방향으로 회전하면 음수가 된다. 회전하지 않았다면 0이다.</td>
+    </tr>
+</table>
 
 <p>거리와 각도 역시 transformstart가 발생한 위치를 기준으로 해서 계산된다.</p>
 
@@ -530,96 +531,112 @@
 
 <p>gestureOptions에 지정할 수 있는 옵션들은 다음과 같다.</p>
 
-<table><thead>
-<tr>
-<th align="left">속성명</th>
-<th align="left">기본값</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">prevent_default</td>
-<td align="left">false</td>
-<td align="left">true로 지정하면 브라우저의 기본 동작을 막는다. 예를 들어 드래그를 할 때 화면의 스크롤을 막고, 손가락을 오므리거나 벌릴 때 줌 인/아웃이 되지 않도록 막는다.</td>
-</tr>
-<tr>
-<td align="left">css_hacks</td>
-<td align="left">true</td>
-<td align="left">userSelect, touchCallout, userDrag, tapHightlightColor css를 추가한다.</td>
-</tr>
-<tr>
-<td align="left">drag_vertical</td>
-<td align="left">true</td>
-<td align="left">세로로 드래그할 수 있게 한다.</td>
-</tr>
-<tr>
-<td align="left">drag_horizontal</td>
-<td align="left">true</td>
-<td align="left">가로로 드래그할 수 있게 한다.</td>
-</tr>
-<tr>
-<td align="left">drag_min_distance</td>
-<td align="left">20</td>
-<td align="left">픽셀 단위. 최소한 이 픽셀만큼 움직여야 drag 동작으로 인식한다.</td>
-</tr>
-<tr>
-<td align="left">swipe_time</td>
-<td align="left">200</td>
-<td align="left">ms 단위. 이 시간 이내로 움직여야 swipe 동작으로 인식한다.</td>
-</tr>
-<tr>
-<td align="left">swipe_min_distance</td>
-<td align="left">20</td>
-<td align="left">픽셀 단위. 최소한 이 픽셀만큼 움직여야 swipe 동작으로 인식한다.</td>
-</tr>
-<tr>
-<td align="left">scale_treshold</td>
-<td align="left">0.1</td>
-<td align="left">scale이 최소한 이 값만큼 변화해야 transform 동작으로 인식한다.</td>
-</tr>
-<tr>
-<td align="left">rotation_treshold</td>
-<td align="left">15</td>
-<td align="left">도 단위. rotation이 최소한 이 값만큼 변화해야 transform 동작으로 인식한다.</td>
-</tr>
-<tr>
-<td align="left">tap_max_interval</td>
-<td align="left">300</td>
-<td align="left">ms 단위. tap 이후 이 시간 이내에 다시 tap 하면 doubletap으로 인식된다.</td>
-</tr>
-<tr>
-<td align="left">tap_double_distance</td>
-<td align="left">20</td>
-<td align="left">픽셀 단위. 두번의 tap이 이 거리 내에 있어야 doubletap으로 인식된다.</td>
-</tr>
-<tr>
-<td align="left">hold_timeout</td>
-<td align="left">500</td>
-<td align="left">ms 단위. 이 시간 이상 터치가 유지되어야 hold로 인식된다.</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered table-stripped">
+    <tr>
+        <th class="fixed_table">속성명</th>
+        <th class="fixed_table">기본값</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td class="fixed_table">prevent_default</td>
+        <td class="fixed_table">false</td>
+        <td>true로 지정하면 브라우저의 기본 동작을 막는다. 예를 들어 드래그를 할 때 화면의 스크롤을 막고, 손가락을 오므리거나 벌릴 때 줌 인/아웃이 되지 않도록 막는다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">css_hacks</td>
+        <td class="fixed_table">true</td>
+        <td>userSelect, touchCallout, userDrag, tapHightlightColor css를 추가한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">drag_vertical</td>
+        <td class="fixed_table">true</td>
+        <td>세로로 드래그할 수 있게 한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">drag_horizontal</td>
+        <td class="fixed_table">true</td>
+        <td>가로로 드래그할 수 있게 한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">drag_min_distance</td>
+        <td class="fixed_table">20</td>
+        <td>픽셀 단위. 최소한 이 픽셀만큼 움직여야 drag 동작으로 인식한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">swipe_time</td>
+        <td class="fixed_table">200</td>
+        <td>ms 단위. 이 시간 이내로 움직여야 swipe 동작으로 인식한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">swipe_min_distance</td>
+        <td class="fixed_table">20</td>
+        <td>픽셀 단위. 최소한 이 픽셀만큼 움직여야 swipe 동작으로 인식한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">scale_treshold</td>
+        <td class="fixed_table">0.1</td>
+        <td>scale이 최소한 이 값만큼 변화해야 transform 동작으로 인식한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">rotation_treshold</td>
+        <td class="fixed_table">15</td>
+        <td>도 단위. rotation이 최소한 이 값만큼 변화해야 transform 동작으로 인식한다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">tap_max_interval</td>
+        <td class="fixed_table">300</td>
+        <td>ms 단위. tap 이후 이 시간 이내에 다시 tap 하면 doubletap으로 인식된다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">tap_double_distance</td>
+        <td class="fixed_table">20</td>
+        <td>픽셀 단위. 두번의 tap이 이 거리 내에 있어야 doubletap으로 인식된다.</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">hold_timeout</td>
+        <td class="fixed_table">500</td>
+        <td>ms 단위. 이 시간 이상 터치가 유지되어야 hold로 인식된다.</td>
+    </tr>
+</table>
+
+<p>제스처 이벤트의 실제 동작하는 예제를 보고 싶다면 <a href="../cornertest/test-gesture/">여기</a>에서 확인할 수 있다.</p>
 
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./2_07_view.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./2_09_template.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./2_07_view.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./2_09_template.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

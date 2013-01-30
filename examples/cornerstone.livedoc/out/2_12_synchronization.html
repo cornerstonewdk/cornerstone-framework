@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -97,7 +97,7 @@
               <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+              <a class="second-depth" id="menu_anchor" href="./2_12_synchronization.html">동기화</a>
             </li>
             <li class="inactive">
               <a class="second-depth" href="./2_13_routing.html">라우팅</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -303,7 +309,7 @@
 users.url = &#39;/users&#39;;
 </code></pre>
 
-<p>Collection에 속한 Model은 Collection의 url을 그대로 이어받는다. Collection의  url 뒤에 Model의 id를 덧붙인 것이 Model의 URL이 된다. Model의 url 메소드로 이 값을 구할 수 있다.</p>
+<p>Collection에 속한 Model은 Collection의 url을 그대로 이어받는다. Collection의 url 뒤에 Model의 id를 덧붙인 것이 Model의 URL이 된다. Model의 url 메소드로 이 값을 구할 수 있다.</p>
 
 <pre><code>var users = new Users();
 var user1 = new User( { id: 1 } ), user2 = new User( { id: 2 } );
@@ -327,39 +333,42 @@ user3.urlRoot = &#39;/users&#39;;
 
 <p>Collection 또는 Model의 url은 서버와 동기화할 때 주소로 사용된다. 위 예에서 사용된 <code>users</code> Collection 객체와 <code>user1</code> Model 객체의 fetch, save, destroy 메소드를 호출하면 다음과 같이 RESTful 한 HTTP 요청이 발생할 것이다.</p>
 
-<table><thead>
-<tr>
-<th align="left">호출한 메소드</th>
-<th align="center">HTTP Method</th>
-<th align="left">URI</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">users.fetch()</td>
-<td align="center">GET</td>
-<td align="left">/users</td>
-</tr>
-<tr>
-<td align="left">user1.fetch()</td>
-<td align="center">GET</td>
-<td align="left">/users/1</td>
-</tr>
-<tr>
-<td align="left">id가 없을 경우 user1.save()</td>
-<td align="center">POST</td>
-<td align="left">/users</td>
-</tr>
-<tr>
-<td align="left">id가 있을 경우 user1.save()</td>
-<td align="center">PUT</td>
-<td align="left">/users/1</td>
-</tr>
-<tr>
-<td align="left">user1.destroy()</td>
-<td align="center">DELETE</td>
-<td align="left">/users/1</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="fixed_table">호출한 메소드</th>
+            <th>HTTP Method</th>
+            <th class="fixed_table">URI</th>
+        </tr>
+    </thead>
+<tbody>
+    <tr>
+        <td class="fixed_table">users.fetch()</td>
+        <td>GET</td>
+        <td class="fixed_table">/users</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">user1.fetch()</td>
+        <td>GET</td>
+        <td class="fixed_table">/users/1</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">id가 없을 경우 user1.save()</td>
+        <td>POST</td>
+        <td class="fixed_table">/users</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">id가 있을 경우 user1.save()</td>
+        <td>PUT</td>
+        <td class="fixed_table">/users/1</td>
+    </tr>
+    <tr>
+        <td class="fixed_table">user1.destroy()</td>
+        <td>DELETE</td>
+        <td class="fixed_table">/users/1</td>
+    </tr>
+</tbody>
+</table>
 
 <p>데이터는 HTTP Body에 JSON 형식으로 들어간다.</p>
 
@@ -435,29 +444,53 @@ options.error( &#39;데이터 조회 실패&#39; );
 } );
 </code></pre>
 
-<p>서버와 통신을 하지는 않지만 Collection과 Model을 내부적으로 분류하는 과정에서 url을 사용하기 때문에 로컬 스토리지와 동기화할 때도 URL은 지정하는 것이 좋다.</p>
+<p>저장될 때 Model 단위로 로컬 스토리지에 저장되기 때문에, Collection을 fetch 하면 해당 Collection에 속해 있는 Model 만을 검색해서 가져온다. Model이 어느 Collection에 속해 있었는지를 알기 위해 Collection의 url을 사용하기 때문에 Collection을 로컬 스토리지와 동기화하려면 다음과 같이 Collection에 URL을 지정해야 한다.</p>
+
+<p>즉, 서버든 로컬 스토리지든 동기화를 하기 위해서는 항상 URL을 지정해야 한다.</p>
+
+<pre><code>var Users = Backbone.Collection.extend( {
+    url: &#39;/users&#39;
+} );
+</code></pre>
+
+<p>URL은 Model을 Collection별로 분류하기 위한 식별자로 사용될 뿐이므로 실제로 존재하는 주소일 필요는 없다.</p>
 
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./2_11_form_MVC.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./2_13_routing.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./2_11_form_MVC.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./2_13_routing.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

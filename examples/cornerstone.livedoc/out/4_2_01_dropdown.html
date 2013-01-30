@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -127,7 +127,7 @@
               <a class="second-depth" href="./4_2_00_component.html">Component</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+              <a class="third-depth" id="menu_anchor" href="./4_2_01_dropdown.html">Dropdown</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,18 +290,18 @@
             <div>
   <h2>드롭다운(Dropdown)</h2>
 
-<p>드롭다운 플러그인과 함께 사용되는 스타일로 Button dropdowns,Navbar등 각종 dropdown을 활용하는 위젯이 이것을 불러들여와 사용된다. 기본적으로 드롭다운 마크업은 화면상에 노출되지 않는다. 드롭다운 메뉴자체가 상위 메뉴를 통해 노출되는 형태이므로 상위 메뉴에서 트리거가 발생하면 노출이 된다.(플러그인 필요) 또한 드롭다운을 포함하는 상위 엘리먼트는 <code>position:relative</code> css 프로퍼티 선언을 해야한다.</p>
+<p>드롭다운 플러그인과 함께 사용되는 스타일로 Button dropdowns,Navbar등 각종 dropdown을 활용하는 위젯이 이것을 불러들여와 사용된다. 기본적으로 드롭다운 마크업은 화면상에 노출되지 않는다. 드롭다운 메뉴자체가 상위 메뉴를 통해 노출되는 형태이므로 상위 메뉴에서 트리거가 발생하면 노출이 된다.(플러그인 필요) 또한 드롭다운을 포함하는 상위 엘리먼트는 <code>position:relative</code> css 프로퍼티 선언을 해야한다. </p>
 
-<pre><code>    &lt;div class=&quot;dropdown&quot;&gt;
-      &lt;!-- Link or button to toggle dropdown --&gt;
-      &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; aria-labelledby=&quot;dLabel&quot;&gt;
-        &lt;li&gt;&lt;a tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;dropdown&quot;&gt;
+  &lt;!-- Link or button to toggle dropdown --&gt;
+  &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
 </code></pre>
 
 <script src='lib/codemirror.js'></script>                                                                         
@@ -313,13 +319,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 170px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 170px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -346,19 +354,19 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <div class="dropdown">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;">
-            <li><a tabindex="-1" href="#">메뉴1</a></li>
-            <li><a tabindex="-1" href="#">메뉴2</a></li>
-            <li><a tabindex="-1" href="#">메뉴3</a></li>
+        <ul class="dropdown-menu" role="menu" style="display:block;">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
             <li class="divider"></li>
-            <li><a tabindex="-1" href="#">구분된 링크</a></li>
+            <li><a href="#">구분된 링크</a></li>
         </ul>
     </div>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -392,14 +400,16 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <p>드롭다운 컴포넌트는 우측 정렬 및 서브 드롭다운 등을 추가할 수 있는 옵션을 가지고 있다.
 <code>.dropdown-menu</code> 클래스에 <code>.pull-right</code> 클래스를 추가하면 드롭다운 메뉴는 우측으로 정렬된다.</p>
 
-<pre><code>    &lt;ul class=&quot;dropdown-menu pull-right&quot; role=&quot;menu&quot; aria-labelledby=&quot;dLabel&quot;&gt;
-      ...
-    &lt;/ul&gt;
+<pre><code>&lt;ul class=&quot;dropdown-menu pull-right&quot; role=&quot;menu&quot;&gt;
+  ...
+&lt;/ul&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 170px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 170px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -426,19 +436,19 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <div class="dropdown">
-        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel" style="display:block;">
-              <li><a tabindex="-1" href="#">메뉴1</a></li>
-            <li><a tabindex="-1" href="#">메뉴2</a></li>
-            <li><a tabindex="-1" href="#">메뉴3</a></li>
+        <ul class="dropdown-menu pull-right" role="menu" style="display:block;">
+              <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
             <li class="divider"></li>
-            <li><a tabindex="-1" href="#">구분된 링크</a></li>
+            <li><a href="#">구분된 링크</a></li>
         </ul>
     </div>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -471,20 +481,22 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>서브메뉴를 추가할 <code>li</code> 태그에 <code>.dropdown-submenu</code>를 추가하고 그 안에 서브 메뉴로 사용할 드롭다운를 추가한다.</p>
 
-<pre><code>    &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; aria-labelledby=&quot;dLabel&quot;&gt;
+<pre><code>&lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+  ...
+  &lt;li class=&quot;dropdown-submenu&quot;&gt;
+    &lt;a href=&quot;#&quot;&gt;More options&lt;/a&gt;
+    &lt;ul class=&quot;dropdown-menu&quot;&gt;
       ...
-      &lt;li class=&quot;dropdown-submenu&quot;&gt;
-        &lt;a tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;More options&lt;/a&gt;
-        &lt;ul class=&quot;dropdown-menu&quot;&gt;
-          ...
-        &lt;/ul&gt;
-      &lt;/li&gt;
     &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style='height: 270px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 270px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -511,27 +523,27 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <div class="dropdown">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="display:block;">
-            <li><a tabindex="-1" href="#">메뉴1</a></li>
-            <li><a tabindex="-1" href="#">메뉴2</a></li>
-            <li><a tabindex="-1" href="#">메뉴3</a></li>
+        <ul class="dropdown-menu" role="menu" style="display:block;">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
             <li class="divider"></li>
-            <li><a tabindex="-1" href="#">구분된 링크</a></li>
+            <li><a href="#">구분된 링크</a></li>
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">More options</a>
+                <a href="#">More options</a>
                 <ul class="dropdown-menu" style="display:block;">
-                    <li><a tabindex="-1" href="#">서브메뉴1</a></li>
-                    <li><a tabindex="-1" href="#">서브메뉴2</a></li>
-                    <li><a tabindex="-1" href="#">서브메뉴3</a></li>
+                    <li><a href="#">서브메뉴1</a></li>
+                    <li><a href="#">서브메뉴2</a></li>
+                    <li><a href="#">서브메뉴3</a></li>
                 </ul>
             </li>
         </ul>
     </div>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -560,13 +572,46 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h3>예제(Example)</h3>
+<p>마크업에서 설명한 것처럼 드롭다운은 기본적으로 노출이 되지 않는다. 그래서 자바스크립트 플러그인을 통해 드롭다운을 노출시킬 수 있으며 메뉴 토글기능도 가능하다. 해당 플러그인을 사용하는 방법에 대해 자세히 알고 싶으면 <a href="./4_3_04_dropdown.html">여기</a>를 참고하기 바란다.</p>
 
-<p>마크업에서 설명한 것처럼 드롭다운은 기본적으로 노출이 되지 않는다. 그래서 자바스크립트 플러그인을 통해 드롭다운을 노출시킬 수 있으며 메뉴 토글기능도 가능하다.</p>
+<h2>버튼 그룹(Button groups)</h2>
+
+<h3>기본 버튼 그룹(Single button group)</h3>
+
+<p>여러 <code>.btn</code> 클래스를 <code>.btn-group</code> 클래스로 랩핑한다.</p>
+
+<pre><code>&lt;div class=&quot;btn-group&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn&quot;&gt;1&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn&quot;&gt;2&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn&quot;&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>다중 버튼 그룹(Multiple button groups)</h3>
+
+<p>복잡한 요소를 위해 여러 <code>.btn-group</code> 클래스를 결합하여 <code>.btn-toolbar</code> 클래스로 랩핑한다.</p>
+
+<pre><code>&lt;div class=&quot;btn-toolbar&quot;&gt;
+  &lt;div class=&quot;btn-group&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>수평 버튼 그룹(Vertical button groups)</h3>
+
+<p>기본적으로 수평형태로 보여지는 버튼들을 수직(스택)형태로 보여지도록 하기 위해 <code>.btn-group</code> 클래스에  <code>.btn-group-vertical</code> 클래스를 추가해야 한다.</p>
+
+<pre><code>&lt;div class=&quot;btn-group btn-group-vertical&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_4 style='height: 230px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_4 style='height: 456px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_4 name=code_prv_4>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -593,36 +638,64 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div class="dash-widget no-padding">
-        <ul class="nav nav-pills" role="navigation">
-            <li class="dropdown">
-                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b
-                        class="caret"></b></a>
-                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                    <li role="menuitem"><a href="#">Action</a></li>
-                    <li role="menuitem"><a href="#">Another action</a></li>
-                    <li role="menuitem"><a href="#">Something else here</a></li>
-                    <li role="menuitem" class="divider"></li>
-                    <li role="menuitem"><a href="#">Separated link</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2
-                    <b class="caret"></b></a>
-                <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                    <li role="menuitem"><a href="#">Action</a></li>
-                    <li role="menuitem"><a href="#">Another action</a></li>
-                    <li role="menuitem"><a href="#">Something else here</a></li>
-                    <li role="menuitem" class="divider"></li>
-                    <li role="menuitem"><a href="#">Separated link</a></li>
-                </ul>
-            </li>
-        </ul>
+    <h3>Single button group 예제</h3>
+    <div class="btn-group">
+        <button type="button" class="btn">1</button>
+        <button type="button" class="btn">2</button>
+        <button type="button" class="btn">3</button>
     </div>
-                                                                                           
+
+    <h3>Multiple button groups 예제</h3>
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <button type="button" class="btn">1</button>
+            <button type="button" class="btn">2</button>
+            <button type="button" class="btn">3</button>
+            <button type="button" class="btn">4</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn">5</button>
+            <button type="button" class="btn">6</button>
+            <button type="button" class="btn">7</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn">8</button>
+            <button type="button" class="btn">10</button>
+        </div>
+    </div>
+
+    <h3>Vertical button groups 예제</h3>
+    <div class="btn-group btn-group-vertical">
+        <button type="button" class="btn"><i class="icon-align-left"></i></button>
+        <button type="button" class="btn"><i class="icon-align-right"></i></button>
+        <button type="button" class="btn"><i class="icon-align-center"></i></button>
+        <button type="button" class="btn"><i class="icon-align-justify"></i></button>
+    </div>
+    
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_4';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -651,42 +724,60 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h2>버튼 그룹(Button groups)</h2>
+<h2>버튼 드롭다운(Button dropdown menus)</h2>
 
-<h3>기본 버튼 그룹(Single button group)</h3>
+<p>버튼 드롭다운은 드롭다운을 보여 주기 위한 toggle형태의 버튼과 드롭다운이 필요하다. 이 2가지 요소를 <code>.btn-group</code> 클래스로 감싼다.</p>
 
-<p>여러 <code>.btn</code> 클래스를 <code>.btn-group</code> 클래스로 랩핑한다.</p>
-
-<pre><code>    &lt;div class=&quot;btn-group&quot;&gt;
-      &lt;button class=&quot;btn&quot;&gt;1&lt;/button&gt;
-      &lt;button class=&quot;btn&quot;&gt;2&lt;/button&gt;
-      &lt;button class=&quot;btn&quot;&gt;3&lt;/button&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;btn-group&quot;&gt;
+  &lt;a class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot;&gt;
+    Action
+    &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
 </code></pre>
 
-<h3>다중 버튼 그룹(Multiple button groups)</h3>
+<h3>다양한 버튼 사이즈 적용(Works with all button sizes)</h3>
 
-<p>복잡한 요소를 위해 여러 <code>.btn-group</code> 클래스를 결합하여 <code>.btn-toolbar</code> 클래스로 랩핑한다.</p>
+<p>버튼 드롭다운에 toggle 버튼은 <code>.btn-large</code>, <code>.btn-small</code>, <code>.btn-mini</code>  3가지 크기의 클래스로 표현 할 수 있다.</p>
 
-<pre><code>    &lt;div class=&quot;btn-toolbar&quot;&gt;
-      &lt;div class=&quot;btn-group&quot;&gt;
-        ...
-      &lt;/div&gt;
-    &lt;/div&gt;
+<h2>분리된 버튼 드롭다운(Split button dropdowns)</h2>
+
+<p>분리된 버튼 드롭다운은 버튼 텍스트와 역삼각형(caret)에 구분선을 보여준다. 기본 버튼 드롭다운에서는 <code>a</code> 태그 내부에 텍스트와 역삼각형(caret)를 같이 포함하지만 분리된 버튼 드롭다운에서는 텍스트와 역삼각형(caret) 부분을 분리하며 <code>button</code> 태그를 사용한다.</p>
+
+<pre><code>&lt;div class=&quot;btn-group&quot;&gt;
+  &lt;button class=&quot;btn&quot;&gt;Action&lt;/button&gt;
+  &lt;button class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+    &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
 </code></pre>
 
-<h3>수평 버튼 그룹(Vertical button groups)</h3>
+<h3>드롭업(Dropup menus)</h3>
 
-<p>기본적으로 수평형태로 보여지는 버튼들을 수직(스택)형태로 보여지도록 하기 위해 <code>.btn-group</code> 클래스에  <code>.btn-group-vertical</code> 클래스를 추가해야 한다.</p>
+<p>드롭업은 숨겨진 메뉴가 위로 돌출된다. <code>.dropup</code> 사용한다.</p>
 
-<pre><code>    &lt;div class=&quot;btn-group btn-group-vertical&quot;&gt;
-      ...
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;btn-group dropup&quot;&gt;
+  &lt;button class=&quot;btn&quot;&gt;Dropup&lt;/button&gt;
+  &lt;button class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+    &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_5 style='height: 456px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_5 style='height: 440px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_5 name=code_prv_5>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -713,44 +804,54 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <h3>Single button group 예제</h3>
+    <h3>Button dropdown menus 예제</h3>
     <div class="btn-group">
-        <button class="btn">1</button>
-        <button class="btn">2</button>
-        <button class="btn">3</button>
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            Action
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">구분된 링크</a></li>
+        </ul>
     </div>
 
-    <h3>Multiple button groups 예제</h3>
-    <div class="btn-toolbar">
-        <div class="btn-group">
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn">4</button>
-        </div>
-        <div class="btn-group">
-            <button class="btn">5</button>
-            <button class="btn">6</button>
-            <button class="btn">7</button>
-        </div>
-        <div class="btn-group">
-            <button class="btn">8</button>
-            <button class="btn">10</button>
-        </div>
+    <h3>Split button dropdowns 예제</h3>
+    <div class="btn-group">
+        <button class="btn">Action</button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">구분된 링크</a></li>
+        </ul>
     </div>
 
-    <h3>Vertical button groups 예제</h3>
-    <div class="btn-group btn-group-vertical">
-        <button type="button" class="btn"><i class="icon-align-left"></i></button>
-        <button type="button" class="btn"><i class="icon-align-right"></i></button>
-        <button type="button" class="btn"><i class="icon-align-center"></i></button>
-        <button type="button" class="btn"><i class="icon-align-justify"></i></button>
+    <h3>Dropup menus 예제</h3>
+    <div class="btn-group dropup">
+        <button class="btn">Dropup</button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">구분된 링크</a></li>
+        </ul>
     </div>
-    
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -779,181 +880,42 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h2>버튼 드롭다운(Button dropdown menus)</h2>
-
-<p>버튼 드롭다운은 드롭다운을 보여 주기 위한 toggle형태의 버튼과 드롭다운이 필요하다. 이 2가지 요소를 <code>.btn-group</code> 클래스로 감싼다.</p>
-
-<pre><code>    &lt;div class=&quot;btn-group&quot;&gt;
-      &lt;a class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot;&gt;
-        Action
-        &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
-      &lt;/a&gt;
-      &lt;ul class=&quot;dropdown-menu&quot;&gt;
-        &lt;!-- dropdown menu links --&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-</code></pre>
-
-<h3>다양한 버튼 사이즈 적용(Works with all button sizes)</h3>
-
-<p>버튼 드롭다운에 toggle 버튼은 <code>.btn-large</code>, <code>.btn-small</code>, <code>.btn-mini</code>  3가지 크기의 클래스로 표현 할 수 있다.</p>
-
-<h2>분리된 버튼 드롭다운(Split button dropdowns)</h2>
-
-<p>분리된 버튼 드롭다운은 버튼 텍스트와 역삼각형(caret)에 구분선을 보여준다. 기본 버튼 드롭다운에서는 <code>a</code> 태그 내부에 텍스트와 역삼각형(caret)를 같이 포함하지만 분리된 버튼 드롭다운에서는 텍스트와 역삼각형(caret) 부분을 분리하며 <code>button</code> 태그를 사용한다.</p>
-
-<pre><code>    &lt;div class=&quot;btn-group&quot;&gt;
-      &lt;button class=&quot;btn&quot;&gt;Action&lt;/button&gt;
-      &lt;button class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
-        &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
-      &lt;/button&gt;
-      &lt;ul class=&quot;dropdown-menu&quot;&gt;
-        &lt;!-- dropdown menu links --&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-</code></pre>
-
-<h3>드롭업(Dropup menus)</h3>
-
-<p>드롭업은 숨겨진 메뉴가 위로 돌출된다. <code>.dropup</code> 사용한다.</p>
-
-<pre><code>    &lt;div class=&quot;btn-group dropup&quot;&gt;
-      &lt;button class=&quot;btn&quot;&gt;Dropup&lt;/button&gt;
-      &lt;button class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
-        &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
-      &lt;/button&gt;
-      &lt;ul class=&quot;dropdown-menu&quot;&gt;
-        &lt;!-- dropdown menu links --&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-</code></pre>
-
-<p>                                                                                                               
-<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_6 style='height: 390px;'></iframe>                        
-<textarea id=code_prv_6 name=code_prv_6>                                              
-<!doctype html>                                                                                                   
-<html>                                                                                                            
-  <head>                                                                                                          
-    <meta charset=utf-8>                                                                                          
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
-    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
-    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
-    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
-    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
-    <link rel='stylesheet' href='./etc.css' />                                                                    
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
-    <script src='./dist/ui/widget-chart.js'></script>                                                             
-    <script src='./dist/ui/widget-datatable.js'></script>                                                         
-    <script src='./dist/ui/widget-editor.js'></script>                                                            
-    <script src='./dist/ui/widget-listview.js'></script>                                                          
-    <script src='./dist/ui/widget-media.js'></script>                                                             
-    <script src='./dist/ui/widget-plugins.js'></script>                                                           
-    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
-  </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
-                                                                                                         
-    
-    <h3>Button dropdown menus 예제</h3>
-    <div class="btn-group">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-            Action
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#">메뉴1</a></li>
-            <li><a tabindex="-1" href="#">메뉴2</a></li>
-            <li><a tabindex="-1" href="#">메뉴3</a></li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="#">구분된 링크</a></li>
-        </ul>
-    </div>
-
-    <h3>Split button dropdowns 예제</h3>
-    <div class="btn-group">
-        <button class="btn">Action</button>
-        <button class="btn dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#">메뉴1</a></li>
-            <li><a tabindex="-1" href="#">메뉴2</a></li>
-            <li><a tabindex="-1" href="#">메뉴3</a></li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="#">구분된 링크</a></li>
-        </ul>
-    </div>
-
-    <h3>Dropup menus 예제</h3>
-    <div class="btn-group dropup">
-        <button class="btn">Dropup</button>
-        <button class="btn dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#">메뉴1</a></li>
-            <li><a tabindex="-1" href="#">메뉴2</a></li>
-            <li><a tabindex="-1" href="#">메뉴3</a></li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="#">구분된 링크</a></li>
-        </ul>
-    </div>
-                                                                                           
-                                                                      
-                                                                      
-                                                                                                         
-  </body>                                                                                                         
-</html>                                                                                                           
-</textarea>                                                                                                       
-<script>                                                                                                          
-  var delay_prv_6;                                                                                  
-  var editor_prv_6 = CodeMirror.fromTextArea(document.getElementById('code_prv_6'), { 
-    theme: 'ambiance',                                                                                            
-    lineNumbers: true,                                                                                            
-    mode: 'text/html',                                                                                            
-    tabMode: 'indent',                                                                                            
-    onChange: function() {                                                                                        
-      clearTimeout(delay_prv_6);                                                                    
-      delay_prv_6 = setTimeout(updatePreview_prv_6, 300);                             
-    }                                                                                                             
-  });                                                                                                             
-  function updatePreview_prv_6() {                                                                  
-    var previewFrame = document.getElementById('preview_prv_6');                                    
-    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
-    preview.open();                                                                                               
-    preview.write(editor_prv_6.getValue());                                                         
-    preview.close();                                                                                              
-  }                                                                                                               
-  setTimeout(updatePreview_prv_6, 300);                                                             
-</script>                                                                                                         
-</div>                                                                                                            
-</p>                                                                                                              
-
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_2_00_component.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_2_02_navation.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_2_00_component.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_2_02_navation.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

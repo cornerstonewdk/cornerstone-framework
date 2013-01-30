@@ -79,6 +79,6 @@
 
 #blackbird .footer div { height:50px; float:left; _background-color:#000; _height:30px; }
 #blackbird .footer div.left { background-position:bottom left; _width:100%  !important; }
-  #blackbird .footer div.left label { display:block;color:#BBB;margin:8px 0 0 16px; position:relative; font-family:Arial,sans-serif; _margin:4px 0 0 8px;}
+  #blackbird .footer div.left label { display:block;color:#BBB;margin:8px 0 0 16px; position:relative; font-family:Arial,sans-serif; _margin:4px 0 0 8px; font-size: 12px;}
     #blackbird .footer div.left label input { padding:0;vertical-align:middle; }
 #blackbird .footer div.right { background-position:bottom right; width:150px; _width:0; }

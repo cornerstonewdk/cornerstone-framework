@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -181,7 +181,7 @@
               <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_08_tab.html">Tab</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -286,7 +292,16 @@
 
 <p>여러 컨텐츠를 한 뷰페이지에 탭메뉴를 통해 선택된 컨텐츠만 보여주는 플러그인</p>
 
-<p><strong>마크업</strong></p>
+<h3>사용법</h3>
+
+<p>$(&ldquo;#example&rdquo;).tab();</p>
+
+<p>DATA-API(data-attribute)방식, $(&ldquo;#example&rdquo;).tab(); 자바스크립트 방식을 사용할 수 있다.</p>
+
+<ul>
+<li><code>data-toggle=&quot;tab&quot;</code>는 탭 컨텐츠를 토글 하기 위한 엘리먼트(<code>a</code> 태그)에 이 속성을 추가해야 한다.</li>
+<li><code>data-toggle=&quot;tab&quot;</code>를 추가한 엘리먼트(<code>a</code> 태그)의 <code>href</code>속성에 해당 메뉴를 클릭했을 때 보여줄 컨텐츠의 <code>id</code>를 작성한다.</li>
+</ul>
 
 <h4>DATA-API(data-attribute)를 이용하는 방식</h4>
 
@@ -307,13 +322,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -340,6 +357,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Tab</h3>
     <div class="dash-widget no-padding">
@@ -351,25 +369,37 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <div class="tab-pane fade in active" id="home">
                 <p>Raw denim you probably haven&rsquo;t heard of them jean shorts Austin. Nesciunt tofu stumptown
                     aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                    helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
-                    mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
-                    aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    helvetica. Reprehenderit butcher retro keffiyeh</p>
             </div>
             <div class="tab-pane fade" id="profile">
                 <p>Food truck fixie locavore, accusamus mcsweeney&rsquo;s marfa nulla single-origin coffee squid.
                     Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
-                    four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
-                    beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda
-                    labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit
-                    sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-                    shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown,
-                    tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    four loko farm-to-table craft beer twee. Qui photo booth </p>
             </div>
         </div>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -404,7 +434,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -431,30 +463,24 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Tab</h3>
     <div class="dash-widget no-padding">
         <ul id="myTab" class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-            <li><a href="#profile" data-toggle="tab">Profile</a></li>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="home">
                 <p>Raw denim you probably haven&rsquo;t heard of them jean shorts Austin. Nesciunt tofu stumptown
                     aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                    helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
-                    mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
-                    aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    helvetica. Reprehenderit butcher retro keffiyeh</p>
             </div>
             <div class="tab-pane fade" id="profile">
                 <p>Food truck fixie locavore, accusamus mcsweeney&rsquo;s marfa nulla single-origin coffee squid.
                     Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
-                    four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
-                    beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda
-                    labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit
-                    sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-                    shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown,
-                    tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    four loko farm-to-table craft beer twee. Qui photo booth </p>
             </div>
         </div>
     </div>
@@ -467,9 +493,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -534,7 +579,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -561,49 +608,71 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Tab</h3>
     <div class="dash-widget no-padding">
         <ul id="myTab" class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-            <li><a href="#profile" data-toggle="tab">Profile</a></li>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="home">
                 <p>Raw denim you probably haven&rsquo;t heard of them jean shorts Austin. Nesciunt tofu stumptown
                     aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                    helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
-                    mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
-                    aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    helvetica. Reprehenderit butcher retro keffiyeh.</p>
             </div>
             <div class="tab-pane fade" id="profile">
                 <p>Food truck fixie locavore, accusamus mcsweeney&rsquo;s marfa nulla single-origin coffee squid.
                     Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
-                    four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
-                    beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda
-                    labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit
-                    sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-                    shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown,
-                    tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    four loko farm-to-table craft beer twee. Qui photo booth </p>
             </div>
         </div>
     </div>
+    <div id="console" style="height: 30px"></div>
 
     <script>
         window.onload = function() {
-            $(this).tab().on("show", function(e){
-               console.log("show");
-              }).on("shown", function(e){
-               console.log("shown");
-              });
             $('#myTab a').click(function (e) {
               e.preventDefault();
+              $(this).tab('show');
             });
+
+            $(this).tab().on("show", function(e){
+                console.log("show");
+                $("#console").html($("<p/>", {
+                    text: "이벤트 발생 - show"
+                }));
+              }).on("shown", function(e){
+                console.log("shown");
+                $("#console").html($("<p/>", {
+                    text: "이벤트 발생 - shown"
+                }));
+              });
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_3';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -632,27 +701,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:first-child").addClass("fixed_table");
+$table.find("tbody tr > td:first-child").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_07_scroll_spy.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_09_tooltip.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_07_scroll_spy.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_09_tooltip.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

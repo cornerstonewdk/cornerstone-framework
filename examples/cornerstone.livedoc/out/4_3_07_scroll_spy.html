@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -178,7 +178,7 @@
               <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_07_scroll_spy.html">Scrollspy</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -286,122 +292,86 @@
 
 <p>스크롤의 현재 위치에 기반하여 navbar 의 현재 활성화된 링크를 자동으로 업데이트 하기 위해 scrollspy 를 사용한다. 또한  드롭다운의 서브아이템 역시 자동 선택 되어지는 것을 확인할 수 있다.</p>
 
-<p><strong>마크업</strong></p>
+<h3>사용법</h3>
+
+<p>$(&ldquo;#example&rdquo;).scrollspy();</p>
+
+<p>DATA-API(data-attribute)방식, $(&ldquo;#example&rdquo;).scrollspy(); 자바스크립트 방식을 사용할 수 있다.</p>
+
+<ul>
+<li><code>data-spy=&quot;scroll&quot;</code>는 <code>스크롤이 가능한 엘리먼트</code>에 이 속성을 추가해야 scrollspy를  기능을 사용 할 수 있다.</li>
+<li><code>스크롤이 가능한 엘리먼트</code> 내부 각 제목에 <code>id</code>를 부여하고 스크롤링할때 활성화 시킬 메뉴(<code>a</code> 태그)의 <code>href</code>속성에 해당 <code>id</code>를 매칭시켜줘야 한다.</li>
+</ul>
 
 <h4>DATA-API(data-attribute)를 이용하는 방식</h4>
 
 <p>topbar 네비게이션에 scrollspy 기능을 추가하려면 추적하고 싶은 엘리먼트에 data-spy=&ldquo;scroll&rdquo; 를 추가한다. (대부분의 경우 body 엘리먼트에 추가한다).</p>
 
-<script src='lib/codemirror.js'></script>                                                                         
+<h3>Scrollspy</h3>
 
-<script src='mode/xml/xml.js'></script>                                                                           
-
-<script src='mode/javascript/javascript.js'></script>                                                             
-
-<script src='mode/css/css.js'></script>                                                                           
-
-<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
-
-<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
-<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
-
-<style>                                                                                                           
-.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
-</style>                                                                                                          
-                                                                                
-
-<p>                                                                                                               
-<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 380px;'></iframe>                        
-<textarea id=code_prv_1 name=code_prv_1>                                              
-<!doctype html>                                                                                                   
-<html>                                                                                                            
-  <head>                                                                                                          
-    <meta charset=utf-8>                                                                                          
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
-    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
-    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
-    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
-    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
-    <link rel='stylesheet' href='./etc.css' />                                                                    
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
-    <script src='./dist/ui/widget-chart.js'></script>                                                             
-    <script src='./dist/ui/widget-datatable.js'></script>                                                         
-    <script src='./dist/ui/widget-editor.js'></script>                                                            
-    <script src='./dist/ui/widget-listview.js'></script>                                                          
-    <script src='./dist/ui/widget-media.js'></script>                                                             
-    <script src='./dist/ui/widget-plugins.js'></script>                                                           
-    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
-  </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
-                                                                                                         
-    
-    <h3>Scrollspy</h3>
-    <div class="dash-widget no-padding">
-        <div id="navbarExample" class="navbar navbar-static">
-            <div class="navbar-inner">
-                <div class="container" style="width: auto;">
-                    <ul class="nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#fat">@fat</a></li>
-                        <li><a href="#mdo">@mdo</a></li>
-                        <li><a href="#one">one</a></li>
-                        <li><a href="#two">two</a></li>
-                        <li><a href="#three">three</a></li>
-                    </ul>
-                </div>
+<div class="dash-widget well">
+    <div id="navbarExample" class="navbar navbar-static">
+        <div class="navbar-inner">
+            <div class="container" style="width: auto;">
+                <ul class="nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#fat">@fat</a></li>
+                    <li><a href="#mdo">@mdo</a></li>
+                    <li><a href="#one">one</a></li>
+                    <li><a href="#two">two</a></li>
+                    <li><a href="#three">three</a></li>
+                </ul>
             </div>
         </div>
-        <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example" style="height:200px; overflow:auto; position:relative;">
-            <h4 id="fat">@fat</h4>
-            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&rsquo;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&rsquo;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <h4 id="mdo">@mdo</h4>
-            <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney&rsquo;s vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney&rsquo;s quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
-            <h4 id="one">one</h4>
-            <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
-            <h4 id="two">two</h4>
-            <p>In incididunt echo park, officia deserunt mcsweeney&rsquo;s proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven&rsquo;t heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
-            <h4 id="three">three</h4>
-            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&rsquo;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&rsquo;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven&rsquo;t heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
-            </p>
-        </div>
     </div>
-                                                                                           
-                                                                      
-                                                                      
-                                                                                                         
-  </body>                                                                                                         
-</html>                                                                                                           
-</textarea>                                                                                                       
-<script>                                                                                                          
-  var delay_prv_1;                                                                                  
-  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
-    theme: 'ambiance',                                                                                            
-    lineNumbers: true,                                                                                            
-    mode: 'text/html',                                                                                            
-    tabMode: 'indent',                                                                                            
-    onChange: function() {                                                                                        
-      clearTimeout(delay_prv_1);                                                                    
-      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
-    }                                                                                                             
-  });                                                                                                             
-  function updatePreview_prv_1() {                                                                  
-    var previewFrame = document.getElementById('preview_prv_1');                                    
-    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
-    preview.open();                                                                                               
-    preview.write(editor_prv_1.getValue());                                                         
-    preview.close();                                                                                              
-  }                                                                                                               
-  setTimeout(updatePreview_prv_1, 300);                                                             
-</script>                                                                                                         
-</div>                                                                                                            
-</p>                                                                                                              
+    <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example" style="height:200px; overflow:auto; position:relative;">
+        <h4 id="fat">@fat</h4>
+        <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&rsquo;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&rsquo;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+        <h4 id="mdo">@mdo</h4>
+        <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney&rsquo;s vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney&rsquo;s quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+        <h4 id="one">one</h4>
+        <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+        <h4 id="two">two</h4>
+        <p>In incididunt echo park, officia deserunt mcsweeney&rsquo;s proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven&rsquo;t heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+        <h4 id="three">three</h4>
+        <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&rsquo;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&rsquo;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+        <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven&rsquo;t heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+        </p>
+    </div>
+</div>
+
+<pre><code>&lt;h3&gt;Scrollspy&lt;/h3&gt;
+&lt;div class=&quot;dash-widget no-padding&quot;&gt;
+    &lt;div id=&quot;navbarExample&quot; class=&quot;navbar navbar-static&quot;&gt;
+        &lt;div class=&quot;navbar-inner&quot;&gt;
+            &lt;div class=&quot;container&quot; style=&quot;width: auto;&quot;&gt;
+                &lt;ul class=&quot;nav&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#fat&quot;&gt;@fat&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#mdo&quot;&gt;@mdo&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#one&quot;&gt;one&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#two&quot;&gt;two&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#three&quot;&gt;three&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div data-spy=&quot;scroll&quot; data-target=&quot;#navbarExample&quot; data-offset=&quot;0&quot; class=&quot;scrollspy-example&quot; style=&quot;height:200px; overflow:auto; position:relative;&quot;&gt;
+        &lt;h4 id=&quot;fat&quot;&gt;@fat&lt;/h4&gt;
+        &lt;p&gt;Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&#39;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&#39;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.&lt;/p&gt;
+        &lt;h4 id=&quot;mdo&quot;&gt;@mdo&lt;/h4&gt;
+        &lt;p&gt;Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney&#39;s vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney&#39;s quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.&lt;/p&gt;
+        &lt;h4 id=&quot;one&quot;&gt;one&lt;/h4&gt;
+        &lt;p&gt;Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.&lt;/p&gt;
+        &lt;h4 id=&quot;two&quot;&gt;two&lt;/h4&gt;
+        &lt;p&gt;In incididunt echo park, officia deserunt mcsweeney&#39;s proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven&#39;t heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.&lt;/p&gt;
+        &lt;h4 id=&quot;three&quot;&gt;three&lt;/h4&gt;
+        &lt;p&gt;Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&#39;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&#39;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.&lt;/p&gt;
+        &lt;p&gt;Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven&#39;t heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
 <blockquote>
 <p>Navbar 링크는 찾아갈 수 있는 id 타겟이 반드시 필요하다. 예를들어, <code>&lt;a href=&quot;#home&quot;&gt;home&lt;/a&gt;</code> 는 <code>&lt;div id=&quot;home&quot;&gt;&lt;/div&gt;</code> 처럼 dom 내에 어떤 엘리먼트와 일치해야한다.</p>
@@ -409,103 +379,44 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <h4>javascript를 이용하는 방식</h4>
 
-<p>                                                                                                               
-<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 380px;'></iframe>                        
-<textarea id=code_prv_2 name=code_prv_2>                                              
-<!doctype html>                                                                                                   
-<html>                                                                                                            
-  <head>                                                                                                          
-    <meta charset=utf-8>                                                                                          
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
-    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
-    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
-    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
-    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
-    <link rel='stylesheet' href='./etc.css' />                                                                    
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
-    <script src='./dist/ui/widget-chart.js'></script>                                                             
-    <script src='./dist/ui/widget-datatable.js'></script>                                                         
-    <script src='./dist/ui/widget-editor.js'></script>                                                            
-    <script src='./dist/ui/widget-listview.js'></script>                                                          
-    <script src='./dist/ui/widget-media.js'></script>                                                             
-    <script src='./dist/ui/widget-plugins.js'></script>                                                           
-    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
-  </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
-                                                                                                         
-    
-    <h3>Scrollspy</h3>
-    <div class="dash-widget no-padding">
-        <div id="navbarExample" class="navbar navbar-static">
-            <div class="navbar-inner">
-                <div class="container" style="width: auto;">
-                    <a class="brand" href="#">Project Name</a>
-                    <ul class="nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#fat">@fat</a></li>
-                        <li><a href="#mdo">@mdo</a></li>
-                        <li><a href="#one">one</a></li>
-                        <li><a href="#two">two</a></li>
-                        <li><a href="#three">three</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="navbar" data-target="#navbarExample" data-offset="0" class="scrollspy-example" style="height:200px; overflow:auto; position:relative;">
-            <h4 id="fat">@fat</h4>
-            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&rsquo;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&rsquo;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <h4 id="mdo">@mdo</h4>
-            <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney&rsquo;s vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney&rsquo;s quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
-            <h4 id="one">one</h4>
-            <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
-            <h4 id="two">two</h4>
-            <p>In incididunt echo park, officia deserunt mcsweeney&rsquo;s proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven&rsquo;t heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
-            <h4 id="three">three</h4>
-            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&rsquo;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&rsquo;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven&rsquo;t heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
-            </p>
-        </div>
-    </div>
-    <script type="text/javascript">
-        window.onload = function() {
-            $("#navbar").scrollspy()
-        };
-    </script>
-                                                                                           
-                                                                      
-                                                                      
-                                                                                                         
-  </body>                                                                                                         
-</html>                                                                                                           
-</textarea>                                                                                                       
-<script>                                                                                                          
-  var delay_prv_2;                                                                                  
-  var editor_prv_2 = CodeMirror.fromTextArea(document.getElementById('code_prv_2'), { 
-    theme: 'ambiance',                                                                                            
-    lineNumbers: true,                                                                                            
-    mode: 'text/html',                                                                                            
-    tabMode: 'indent',                                                                                            
-    onChange: function() {                                                                                        
-      clearTimeout(delay_prv_2);                                                                    
-      delay_prv_2 = setTimeout(updatePreview_prv_2, 300);                             
-    }                                                                                                             
-  });                                                                                                             
-  function updatePreview_prv_2() {                                                                  
-    var previewFrame = document.getElementById('preview_prv_2');                                    
-    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
-    preview.open();                                                                                               
-    preview.write(editor_prv_2.getValue());                                                         
-    preview.close();                                                                                              
-  }                                                                                                               
-  setTimeout(updatePreview_prv_2, 300);                                                             
-</script>                                                                                                         
-</div>                                                                                                            
-</p>                                                                                                              
+<pre><code>&lt;h3&gt;Scrollspy&lt;/h3&gt;
+&lt;div class=&quot;dash-widget no-padding&quot;&gt;
+    &lt;div id=&quot;navbarExample&quot; class=&quot;navbar navbar-static&quot;&gt;
+        &lt;div class=&quot;navbar-inner&quot;&gt;
+            &lt;div class=&quot;container&quot; style=&quot;width: auto;&quot;&gt;
+                &lt;a class=&quot;brand&quot; href=&quot;#&quot;&gt;Project Name&lt;/a&gt;
+                &lt;ul class=&quot;nav&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#fat&quot;&gt;@fat&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#mdo&quot;&gt;@mdo&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#one&quot;&gt;one&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#two&quot;&gt;two&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#three&quot;&gt;three&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;navbar&quot; data-target=&quot;#navbarExample&quot; data-offset=&quot;0&quot; class=&quot;scrollspy-example&quot; style=&quot;height:200px; overflow:auto; position:relative;&quot;&gt;
+        &lt;h4 id=&quot;fat&quot;&gt;@fat&lt;/h4&gt;
+        &lt;p&gt;Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&#39;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&#39;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.&lt;/p&gt;
+        &lt;h4 id=&quot;mdo&quot;&gt;@mdo&lt;/h4&gt;
+        &lt;p&gt;Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney&#39;s vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney&#39;s quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.&lt;/p&gt;
+        &lt;h4 id=&quot;one&quot;&gt;one&lt;/h4&gt;
+        &lt;p&gt;Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.&lt;/p&gt;
+        &lt;h4 id=&quot;two&quot;&gt;two&lt;/h4&gt;
+        &lt;p&gt;In incididunt echo park, officia deserunt mcsweeney&#39;s proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven&#39;t heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.&lt;/p&gt;
+        &lt;h4 id=&quot;three&quot;&gt;three&lt;/h4&gt;
+        &lt;p&gt;Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney&#39;s photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven&#39;t heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.&lt;/p&gt;
+        &lt;p&gt;Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven&#39;t heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload = function() {
+        $(&quot;#navbar&quot;).scrollspy()
+    };
+&lt;/script&gt;
+</code></pre>
 
 <h3>옵션</h3>
 
@@ -525,27 +436,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_06_pop_over.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_08_tab.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_06_pop_over.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_08_tab.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

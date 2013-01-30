@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -139,7 +139,7 @@
               <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+              <a class="third-depth" id="menu_anchor" href="./4_2_05_label_and_badge.html">Labels, badges</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -286,76 +292,76 @@
 
 <h3>이름표(Labels)</h3>
 
-<table><thead>
+<table class="table table-bordered"><thead>
 <tr>
-<th align="left">Name</th>
+<th class="fixed_table" align="left">Name</th>
 <th align="left">Markup</th>
 </tr>
 </thead><tbody>
 <tr>
-<td align="left"><span class="label">Default</span></td>
-<td align="left"><code>&lt;span class=&quot;label&quot;&gt;Default&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left"><span class="label">Default</span></td>
+<td align="left"><code>&lt;span class="label"&gt;Default&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left"><span class="label label-success">Success</span></td>
-<td align="left"><code>&lt;span class=&quot;label label-success&quot;&gt;Success&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left"><span class="label label-success">Success</span></td>
+<td align="left"><code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left"><span class="label label-warning">Warning</span></td>
-<td align="left"><code>&lt;span class=&quot;label label-warning&quot;&gt;Warning&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left"><span class="label label-warning">Warning</span></td>
+<td align="left"><code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left"><span class="label label-important">Important</span></td>
-<td align="left"><code>&lt;span class=&quot;label label-important&quot;&gt;Important&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left"><span class="label label-important">Important</span></td>
+<td align="left"><code>&lt;span class="label label-important"&gt;Important&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left"><span class="label label-info">Info</span></td>
-<td align="left"><code>&lt;span class=&quot;label label-info&quot;&gt;Info&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left"><span class="label label-info">Info</span></td>
+<td align="left"><code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left"><span class="label label-inverse">Inverse</span></td>
-<td align="left"><code>&lt;span class=&quot;label label-inverse&quot;&gt;Inverse&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left"><span class="label label-inverse">Inverse</span></td>
+<td align="left"><code>&lt;span class="label label-inverse"&gt;Inverse&lt;/span&gt;</code></td>
 </tr>
 </tbody></table>
 
 <h3>벳지(badges)</h3>
 
-<table><thead>
+<table class="table table-bordered"><thead>
 <tr>
-<th align="left">Name</th>
-<th align="left">Example</th>
+<th class="fixed_table" align="left">Name</th>
+<th class="fixed_table" align="left">Example</th>
 <th align="left">Markup</th>
 </tr>
 </thead><tbody>
 <tr>
-<td align="left">Default</td>
-<td align="left"><span class="badge">1</span></td>
-<td align="left"><code>&lt;span class=&quot;badge&quot;&gt;1&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left">Default</td>
+<td class="fixed_table" align="left"><span class="badge">1</span></td>
+<td align="left"><code>&lt;span class="badge"&gt;1&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left">Success</td>
-<td align="left"><span class="badge badge-success">2</span></td>
-<td align="left"><code>&lt;span class=&quot;badge badge-success&quot;&gt;2&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left">Success</td>
+<td class="fixed_table" align="left"><span class="badge badge-success">2</span></td>
+<td align="left"><code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left">Warning</td>
-<td align="left"><span class="badge badge-warning">4</span></td>
-<td align="left"><code>&lt;span class=&quot;badge badge-warning&quot;&gt;4&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left">Warning</td>
+<td class="fixed_table" align="left"><span class="badge badge-warning">4</span></td>
+<td align="left"><code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left">Important</td>
-<td align="left"><span class="badge badge-important">6</span></td>
-<td align="left"><code>&lt;span class=&quot;badge badge-important&quot;&gt;6&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left">Important</td>
+<td class="fixed_table" align="left"><span class="badge badge-important">6</span></td>
+<td align="left"><code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left">Info</td>
-<td align="left"><span class="badge badge-info">8</span></td>
-<td align="left"><code>&lt;span class=&quot;badge badge-info&quot;&gt;8&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left">Info</td>
+<td class="fixed_table" align="left"><span class="badge badge-info">8</span></td>
+<td align="left"><code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code></td>
 </tr>
 <tr>
-<td align="left">Inverse</td>
-<td align="left"><span class="badge badge-inverse">10</span></td>
-<td align="left"><code>&lt;span class=&quot;badge badge-inverse&quot;&gt;10&lt;/span&gt;</code></td>
+<td class="fixed_table" align="left">Inverse</td>
+<td class="fixed_table" align="left"><span class="badge badge-inverse">10</span></td>
+<td align="left"><code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code></td>
 </tr>
 </tbody></table>
 
@@ -363,23 +369,38 @@
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_2_04_pagination.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_2_06_typography.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_2_04_pagination.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_2_06_typography.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

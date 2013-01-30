@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -106,7 +106,7 @@
               <a class="first-depth">Style</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+              <a class="second-depth" id="menu_anchor" href="./3_1_introduction.html">소개</a>
             </li>
             <li class="inactive">
               <a class="second-depth" href="./3_2_theme.html">테마</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -327,52 +333,202 @@
 
 <h3>예약어</h3>
 
-<h4>Conerstones의 btn-group icon class</h4>
+<p>Cornerstone은 Bootstrap에서 제공되는 icon class외에 추가된 컴포넌트 위젯을 위한 icon class가 제공된다. Bootstrap에서 제공되는 아이콘은 14px * 14px이나 Cornerstone에서 추가 제공되는 icon class는 30px * 30px 이다. <code>.csicon-*</code> 형식의 이름으로 제공된다. 하기 예제와 같이 자신이 아이콘을 넣고 싶은 곳에 해당 마크업을 작성한다.</p>
 
-<pre><code>icon-up
-icon-down
-icon-set
+<h4>Cornerstone의 icon class 사용법 및 목록</h4>
+
+<pre><code>&lt;i class=&quot;csicon-about&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-favorites&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-user&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-users&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-downloads&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-settings&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-up&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-down&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-message&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-list&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-write&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-mail&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-save&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-search&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-connect&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-home&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-right&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;csicon-left&quot;&gt;&lt;/i&gt;
 </code></pre>
 
-<h4>Conerstones의 navbar icon class</h4>
+<script src='lib/codemirror.js'></script>                                                                         
 
-<pre><code>icon-home
-icon-list
-icon-message
-icon-mail
-icon-save
-icon-user2
-icon-connect
-icon-search
-icon-write
-icon-about
-icon-favorites
-icon-downloads
-icon-settings
-icon-user
-</code></pre>
+<script src='mode/xml/xml.js'></script>                                                                           
+
+<script src='mode/javascript/javascript.js'></script>                                                             
+
+<script src='mode/css/css.js'></script>                                                                           
+
+<script src='mode/htmlmixed/htmlmixed.js'></script>                                                               
+
+<p><link rel='stylesheet' href='lib/codemirror.css'></link><br>
+<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          </p>
+
+<style>                                                                                                           
+.CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
+</style>                                                                                                          
+                                                                                
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+                                                                                                       
+<iframe id=preview_prv_1 style='' ></iframe> 
+                                                                                                         
+<textarea id=code_prv_1 name=code_prv_1>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                                       
+  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                                         
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="btn-group">
+                <button class="btn"><i class="csicon-about"></i></button>
+                <button class="btn"><i class="csicon-favorites"></i></button>
+                <button class="btn"><i class="csicon-user"></i></button>
+                <button class="btn"><i class="csicon-downloads"></i></button>
+                <button class="btn"><i class="csicon-settings"></i></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn"><i class="csicon-up"></i></button>
+                <button class="btn"><i class="csicon-down"></i></button>
+                <button class="btn"><i class="csicon-message"></i></button>
+                <button class="btn"><i class="csicon-list"></i></button>
+                <button class="btn"><i class="csicon-write"></i></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn"><i class="csicon-mail"></i></button>
+                <button class="btn"><i class="csicon-save"></i></button>
+                <button class="btn"><i class="csicon-search"></i></button>
+                <button class="btn"><i class="csicon-connect"></i></button>
+                <button class="btn"><i class="csicon-users"></i></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn"><i class="csicon-home"></i></button>
+                <button class="btn"><i class="csicon-right"></i></button>
+                <button class="btn"><i class="csicon-left"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
+                                                                      
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
+                                                                      
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
+                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_1;                                                                                  
+  var editor_prv_1 = CodeMirror.fromTextArea(document.getElementById('code_prv_1'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_1);                                                                    
+      delay_prv_1 = setTimeout(updatePreview_prv_1, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_1() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_1');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_1.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_1, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
+<p>Bootstrap에서 기본 제공되는 icon class는 <a href="http://twitter.github.com/bootstrap/base-css.html#icons">여기</a>를 통해 확인이 가능하다.</p>
 
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./2_13_routing.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./3_2_theme.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./2_13_routing.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./3_2_theme.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

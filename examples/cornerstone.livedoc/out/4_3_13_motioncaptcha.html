@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -196,7 +196,7 @@
               <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,11 +290,11 @@
             <div>
   <h2>Motioncaptcha</h2>
 
-<p>회원가입이나 로그인시 스팸방지를 위해 사용되는 Capcha 문자를 모션 터치로 사용하는 플러그인이다.</p>
+<p>회원가입이나 로그인시 스팸방지를 위해 사용되는 captcha 문자를 모션 터치로 사용하는 플러그인이다.</p>
 
 <h3>사용법</h3>
 
-<p>$().motioncaptcha();</p>
+<p>$(&ldquo;#example&rdquo;).motioncaptcha();</p>
 
 <h4>javascript를 이용하는 방식</h4>
 
@@ -307,13 +313,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 400px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 500px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -340,12 +348,13 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Motioncaptcha</h3>
-    <div><i class="badge">1</i> 아래 새로고침 버튼을 눌러서 캡챠 화면을 그린다.</div>
-    <div><i class="badge">2</i> 보여지는 그림에 따라 터치 또는 마우스 드래그를 이용해 그림을 그린다.</div>
-    <div><i class="badge">3</i> 그림을 성공적으로 그렸을 때, 실패 했을 때 메세지를 확인하고 성공인 경우 성공 함수가 실행되는지 확인한다.</div>
-    <div id="example" class="widget-motioncapcha">
+    <p><i class="badge badge-info">1</i> 아래 새로고침 버튼을 눌러서 캡차(CAPTCHA) 화면을 그린다.</p>
+    <p><i class="badge badge-info">2</i> 보여지는 그림에 따라 터치 또는 마우스 드래그를 이용해 그림을 그린다.</p>
+    <p><i class="badge badge-info">3</i> 그림을 성공적으로 그렸을 때, 실패 했을 때 메세지를 확인하고 성공인 경우 성공 함수가 실행되는지 확인한다.</p>
+    <div id="example" class="widget-motioncaptcha">
         <p>폼 전송을 위해 도형을 그려주세요. :
             <button class="btn"><i class="icon-refresh"></i></button>
         </p>
@@ -366,9 +375,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -433,27 +441,51 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+$table.find("thead tr > th:nth-child(3)").removeClass("fixed_table");
+$table.find("tbody tr > td:nth-child(3)").removeClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_12_spinner.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_14_typeahead.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_12_spinner.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_14_typeahead.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

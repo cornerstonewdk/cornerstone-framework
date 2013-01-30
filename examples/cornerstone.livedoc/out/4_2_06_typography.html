@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -142,7 +142,7 @@
               <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+              <a class="third-depth" id="menu_anchor" href="./4_2_06_typography.html">Typographic</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -288,24 +294,24 @@
 
 <p>히어로 유닛은 사이트에서 중요한 컨텐츠를 보여주기 위해 사용되는 가볍고 유연한 요소이다. 일반적으로 컨텐츠의 제목과 태그 그리고 해당 컨텐츠를 상세하게 볼 수 있는 링크 정도로 구성되며 <code>.hero-unit</code> 클래스로 감싸야 한다.</p>
 
-<pre><code>    &lt;div class=&quot;hero-unit&quot;&gt;
-      &lt;h1&gt;Heading&lt;/h1&gt;
-      &lt;p&gt;Tagline&lt;/p&gt;
-      &lt;p&gt;
-        &lt;a class=&quot;btn btn-primary btn-large&quot;&gt;
-          Learn more
-        &lt;/a&gt;
-      &lt;/p&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;hero-unit&quot;&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Tagline&lt;/p&gt;
+  &lt;p&gt;
+    &lt;a class=&quot;btn btn-primary btn-large&quot;&gt;
+      Learn more
+    &lt;/a&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h3>페이지 머리글(Page header)</h3>
 
 <p>페이지 머리글은 <code>h1</code>태그를 사용해서 제목글을 작성하며 제목글 내부에   <code>&lt;small&gt;</code> 등의 태그로 다른 스타일을 적용 할 수 있고 <code>.page-header</code> 클래스로 감싸야 한다.</p>
 
-<pre><code>    &lt;div class=&quot;page-header&quot;&gt;
-      &lt;h1&gt;Example page header &lt;small&gt;Subtext for header&lt;/small&gt;&lt;/h1&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;page-header&quot;&gt;
+  &lt;h1&gt;Example page header &lt;small&gt;Subtext for header&lt;/small&gt;&lt;/h1&gt;
+&lt;/div&gt;
 </code></pre>
 
 <script src='lib/codemirror.js'></script>                                                                         
@@ -323,13 +329,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 405px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 405px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -356,6 +364,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <div class="page-header">
         <h1>페이지 머리글 <small>부제목</small></h1>
@@ -369,9 +378,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             </a>
         </p>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -404,23 +432,38 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_2_05_label_and_badge.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_2_07_thumbnail.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_2_05_label_and_badge.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_2_07_thumbnail.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

@@ -295,8 +295,7 @@
 <p><img src="./images/srt_project.png" alt=""> </p>
 
 <ul>
-<li>   아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 
-참조할 수 있다. </li>
+<li>   아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다. </li>
 </ul>
 
 <p><a href="./sample/iOS_plugin_sample.zip" title="iOS plugin 개발 예제 소스 ">./sample/iOS_plugin_sample.zip</a></p>
@@ -308,7 +307,7 @@
 <ul>
 <li>   <strong>www</strong> : 웹앱의 저장 위치 </li>
 <li>   <strong>www/index.html</strong> : 웹앱의 첫 실행 파일</li>
-<li>   <strong>www/SRT-1.0.js</strong> : Cornerstone Runtime JavaScript Library</li>
+<li>   <strong>www/SRT-0.9.1.js</strong> : Cornerstone Runtime JavaScript Library</li>
 </ul>
 
 <p>3) SRT_Template/Resources - 어플에 필요한 리소스를 저장하는 위치</p>
@@ -514,14 +513,14 @@ srt.addConstructor(function() {
 </code></pre></li>
 </ul>
 
-<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-1.0.js는 template 기본 파일</strong>이다. </p>
+<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-0.9.1.js는 template 기본 파일</strong>이다. </p>
 
 <p><img src="./images/index.jpg" alt=""></p>
 
 <ul>
 <li><p>특정 웹페이지 내부에서 DeviceAPI를 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p>
 
-<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=SRT-0.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
+<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=SRT-0.9.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
 <li><p>특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p>
 
 <p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;pageloadingplugin.js&quot;&gt;&lt;/script&gt;</code></p></li>
@@ -536,7 +535,7 @@ srt.addConstructor(function() {
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; context=&quot;width-divice-width, initial-scele-1.0, user-scalble=no&quot;&gt;
-&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;SRT-1.0.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;SRT-0.9.1.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;pageloadingplugin.js&quot;&gt;&lt;/script&gt;
 &lt;title&gt;PageLoadingPlugin&lt;/title&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -262,7 +262,7 @@
               <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+              <a class="second-depth" id="menu_anchor" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
             </li>
             <li class="inactive">
               <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
@@ -275,6 +275,12 @@
             </li>
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
             </li>
           </ul>
         </div>
@@ -297,13 +303,13 @@
 <p>example code </p>
 </blockquote>
 
-<pre><code>    if(device.platform == &quot;Android&quot;){
-    // android 처리
-    ...
-    } else {
-    // iOS 처리
-    ...        
-    }
+<pre><code>if(device.platform == &quot;Android&quot;){
+// android 처리
+...
+} else {
+// iOS 처리
+...        
+}
 </code></pre>
 
 <p>2) DeviceStatus 모듈의 <strong>aspect:Device,property:platform</strong>를 이용하면 플랫폼을 알수 있다.</p>
@@ -312,14 +318,14 @@
 <p>example code</p>
 </blockquote>
 
-<pre><code>    var g_platform = null;
+<pre><code>var g_platform = null;
 
-    function validSuccessCalback_DS(prop,value) {
-        console.log(&quot;The aspect::&quot; + prop.aspect + &quot;  property::&quot; + prop.property + &quot; is &quot; + value);
-        g_platform = value
-    }
+function validSuccessCalback_DS(prop,value) {
+    console.log(&quot;The aspect::&quot; + prop.aspect + &quot;  property::&quot; + prop.property + &quot; is &quot; + value);
+    g_platform = value
+}
 
-    navigator.devicestatus.getPropertyValue(validSuccessCalback_DS ,validErrorCallback_DS ,{aspect:&quot;Device&quot;, property:&quot;platform&quot;});
+navigator.devicestatus.getPropertyValue(validSuccessCalback_DS ,validErrorCallback_DS ,{aspect:&quot;Device&quot;, property:&quot;platform&quot;});
 </code></pre>
 
 <p>3) 위의 device.platform를 포함한 모든 Runtime의 함수/변수는 최초 1회 <strong>deviceready</strong> 이벤트가 불린 뒤부터 사용가능하다. </p>
@@ -328,12 +334,12 @@
 <p>example code</p>
 </blockquote>
 
-<pre><code>    var g_platform = null;
-    var onSuccess = function(e) {
-        g_platform = device.platform
-    }
+<pre><code>var g_platform = null;
+var onSuccess = function(e) {
+    g_platform = device.platform
+}
 
-    document.addEventListener(&quot;deviceready&quot;, onSuccess, true);
+document.addEventListener(&quot;deviceready&quot;, onSuccess, true);
 </code></pre>
 
 <h3>iOS 웹앱 개발시 어플 종료 문제</h3>
@@ -374,23 +380,38 @@
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./RT_3_ios_webapp_development.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./RT_5_webapp_sample_code.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./RT_3_ios_webapp_development.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./RT_5_webapp_sample_code.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

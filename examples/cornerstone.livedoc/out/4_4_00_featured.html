@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -208,7 +208,7 @@
               <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+              <a class="second-depth" id="menu_anchor" href="./4_4_00_featured.html">Featured</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
@@ -276,30 +276,38 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
           <a id="mobile_anchor"></a>
           <article class="page" typeof="sioc:page" about="/4_4_00_featured">
             <div>
-  <h2>Featured</h2>
+  <h1>Featured</h1>
+
+<p>피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다.</p>
 
 <blockquote>
-<p>코너스톤의 위젯 피처드는 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.</p>
+<p>Cornerstone의 피처드 위젯는 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다.</p>
 </blockquote>
 
-<p>아래는 피처드 플러그인/모듈의 종류와 피처드 플러그인에 대한 간단한 설명이다.</p>
+<p>아래는 피처드 위젯 플러그인 / 모듈의 종류와 각 기능에 대한 간단한 설명이다.</p>
 
 <ol>
 <li>ScrollView : 터치기반에서 유용하게 사용되는 스크롤뷰 PC환경에서도 휠로 스크롤이 가능한 스크롤뷰.</li>
-<li>ListView : 리스트를 최적화 기능이 적용돼 Content가 아무리 많아도 최적화 옵션을 활성화시키면 항상 일정한 퍼포먼스를 유지하는 리스트뷰.</li>
-<li>Media : 코너스톤은 기본적으로 반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어.</li>
-<li>Editor : 코너스톤은 기본적으로 반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주는 에디터.</li>
+<li>ListView : 리스트에 최적화 기술을 적용해 Content가 아무리 많아도 최적화 옵션을 활성화시키면 항상 일정한 퍼포먼스를 유지하는 리스트뷰.</li>
+<li>Media : 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어 위젯. Cornerstone의 반응형 웹 기술이 적용됨.</li>
+<li>Editor : 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주는 에디터 위젯.</li>
 <li>Chart : 바(스택, 그룹), 라인, 파이 차트 등을 제공하는 차트.</li>
 <li>DataTable : 정해진 JSON 규격 또는 마크업을 통해 사용자는 간단한 테이블만으로 페이징처리, 소팅, 검색 등의 기능을 제공하는 데이터테이블.</li>
 </ol>
 
-<h2>MVC 프레임워크 피처드 모듈</h2>
+<h1>MVC 프레임워크 피처드 모듈</h1>
 
 <table><thead>
 <tr>
@@ -340,27 +348,115 @@
 </tr>
 </tbody></table>
 
+<h3>플러그인과 모듈 형태의 차이점</h3>
+
+<ul>
+<li><p>플러그인 형태는 일반적으로 많이 사용되는 jQuery 플러그인 형태를 따른다. 다음은 플러그인 형태를 사용하는 예시이다.</p>
+
+<pre><code>$(&quot;#example&quot;).featuredListView({
+optimization: true
+});
+</code></pre>
+
+<p>위 예시에서는  <code>id</code>가 <code>example</code>인 엘리먼트에 <code>featuredListView</code>라는 플러그인을 적용시키며, 플러그인을 적용할 떄 <code>featuredListView</code>의 매개변수에 <code>json</code>형태로 옵션을 부여 할 수 있다. 이 예시에서는 <code>optimization</code>라는 옵션을 <code>true</code> 설정해서 사용된 플러그인의 예시이다. </p></li>
+<li><p>모듈 형태는 MVC 프레임워크에서 사용되는 AMD방식의 모듈이다.  다음은 모듈 형태를 사용하는 예시이다.</p>
+
+<pre><code>define([
+&quot;backbone&quot;,
+&quot;widget-listview&quot; 
+], function (Backbone, ListView) {
+// Something...
+});
+</code></pre>
+
+<p>위 예시에서 <code>widget-listview</code>라는 모듈을 선언하면, 해당 모듈에 적용되는 <code>stylesheet</code>가 있는 경우 Lazy 로딩을 통해 불러오며, 선언된 순서대로 function의 매개변수로 ListView 를 넘겨 준다. 다음은 매개변수로 넘어온 ListView 뷰 객체를 사용하는 예시이다.</p>
+
+<pre><code>this.listView = new ListView({
+el:&#39;#listView&#39;,
+optimization:false,
+});
+</code></pre>
+
+<p>위 예시에서  뷰 객체는 플러그인 형태와는 다르게  ListView를 적용할 엘리먼트를 옵션을 통해 지정하지만 플러그인 형태의 옵션을 동일하게 포함하고 있다.</p></li>
+</ul>
+
+<h3>data API 지원여부</h3>
+
+<table><thead>
+<tr>
+<th align="left">모듈명</th>
+<th align="left">지원여부</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">widget-scrollview</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">widget-listview</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">widget-media</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">widget-editor</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">widget-chart</td>
+<td align="left">O</td>
+</tr>
+<tr>
+<td align="left">widget-datatable</td>
+<td align="left">O</td>
+</tr>
+</tbody></table>
+
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th").addClass("fixed_table");
+$table.find("tbody tr > td").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_16_datepicker.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_4_01_scroll_view.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_16_datepicker.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_4_01_scroll_view.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

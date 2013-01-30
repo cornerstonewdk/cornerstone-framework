@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -214,7 +214,7 @@
               <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+              <a class="third-depth" id="menu_anchor" href="./4_4_02_list_view.html">ListView</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_4_03_media.html">Media</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,9 +290,9 @@
             <div>
   <h3>ListView</h3>
 
-<p>코너스톤의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다.</p>
+<p>Cornerstone 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다.</p>
 
-<p>어떻게 무겁고 복잡한 DOM 구조를 부드럽게 동작하는지를 보여주는 그림.</p>
+<p>Cornerstone 리스트뷰의 최적화 알고리즘은 다음과 같다.</p>
 
 <p><img src="images/listview-optimization.png" alt="&lt;리스트뷰 최적화 원리&gt;"></p>
 
@@ -294,28 +300,30 @@
 
 <h4>일반 방식</h4>
 
-<pre><code>    &lt;!-- 해당 피처드에 필요한 Stylesheet  --&gt;
-    &lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-listview.css&#39; /&gt;
+<pre><code>&lt;!-- 해당 피처드에 필요한 Stylesheet  --&gt;
+&lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-listview.css&#39; /&gt;
 
-    &lt;!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  --&gt;
-    &lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
-    &lt;!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 --&gt;
-    &lt;script src=&#39;./dist/ui/widget-listview.js&#39;&gt;&lt;/script&gt;
+&lt;!-- jQuery: 피처드 위젯 사용을 위한 jquery.js  --&gt;
+&lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
+&lt;!-- Cornerstone UI 기본 설정, DATA-API 기능 추가 --&gt;
+&lt;script src=&#39;./dist/ui/widget-listview.js&#39;&gt;&lt;/script&gt;
 </code></pre>
 
 <h4>MVC 방식</h4>
 
 <p>MVC 방식은 별도로 사용자가 일반방식 처럼 CSS를 추가하지 않고도 사용않아도 된다.</p>
 
-<pre><code>    define([
-        &quot;backbone&quot;,
-        &quot;widget-listview&quot; // 차트 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
-    ], function (Backbone, ListView) {
-        // Something...
-    });
+<pre><code>define([
+    &quot;backbone&quot;,
+    &quot;widget-listview&quot; // 차트 모듈 선언하면에 필요한 CSS, JS를 Lazy 로딩한다.
+], function (Backbone, ListView) {
+    // Something...
+});
 </code></pre>
 
 <h3>사용법</h3>
+
+<p>$(&ldquo;#example&rdquo;).featuredListView();</p>
 
 <h4>javascript를 이용하는 방식(더보기 버튼 방식)</h4>
 
@@ -334,13 +342,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 1296px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -367,219 +377,219 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-<div class="container-fluid" id="wrapper">
-    <div class="row-fluid">
-        <div class="lists">
-            <div id="listView" class="lists-con">
-                <ul>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                </ul>
+    <div class="container-fluid" id="wrapper">
+        <div class="row-fluid">
+            <div class="lists">
+                <div id="listView" class="lists-con">
+                    <ul>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <button id="addItem" class="btn">더보기</button>
             </div>
         </div>
-        <div>
-            <button id="addItem" class="btn">더보기</button>
-        </div>
     </div>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-        var $el = $('#listView');
-        var isLoading = false;
-        var html;
-
-        // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
-        $el.featuredListView({
-            optimization: true,
-            spinner: "#endless-loader"
-        });
-
-        // AJAX로 데이터를 가져오는 함수
-        function getItem() {
-            if (isLoading) {
-                return false;
-            }
-
-            isLoading = true;
-
-            var request = $.ajax({
-                url:"./sample-data/list-sample.json",
-                type:"GET",
-                dataType:"json"
+    <script type="text/javascript">
+        window.onload = function() {
+            var $el = $('#listView');
+            var isLoading = false;
+            var html;
+    
+            // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+            $el.featuredListView({
+                optimization: true,
+                spinner: "#endless-loader"
             });
-
-            request.done(function (json) {
-                html = "<ul>";
-                if (typeof json === "object" && json.items.length > 0) {
-                    $(json.items).each(function (i) {
-                        html += "<li>";
-                        html += "    <div>";
-                        html += "        <a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
-                        html += "    </div>";
-                        html += "</li>";
-                    });
-                    html += "</ul>";
-                    $el.featuredListView("addItem", html);
+    
+            // AJAX로 데이터를 가져오는 함수
+            function getItem() {
+                if (isLoading) {
+                    return false;
                 }
-                html = "";
-                isLoading = false;
+    
+                isLoading = true;
+    
+                var request = $.ajax({
+                    url:"./sample-data/list-sample.json",
+                    type:"GET",
+                    dataType:"json"
+                });
+    
+                request.done(function (json) {
+                    html = "<ul>";
+                    if (typeof json === "object" && json.items.length > 0) {
+                        $(json.items).each(function (i) {
+                            html += "<li>";
+                            html += "    <div>";
+                            html += "        <a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+                            html += "    </div>";
+                            html += "</li>";
+                        });
+                        html += "</ul>";
+                        $el.featuredListView("addItem", html);
+                    }
+                    html = "";
+                    isLoading = false;
+                });
+    
+                request.fail(function (jqXHR, textStatus) {
+                    console.log("Request failed: " + textStatus);
+                    isLoading = false;
+                });
+    
+            }
+    
+            // 아이템 추가
+            $("#addItem").on("click", function (e) {
+                getItem();
             });
-
-            request.fail(function (jqXHR, textStatus) {
-                console.log("Request failed: " + textStatus);
-                isLoading = false;
-            });
-
-        }
-
-        // 아이템 추가
-        $("#addItem").on("click", function (e) {
-            getItem();
-        });
-    };
-</script>
-                                                                                           
-                                                                      
-                                                                      
+        };
+    </script>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -612,7 +622,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 600px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -639,214 +651,214 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-<div class="container-fluid" id="wrapper">
-    <div class="row-fluid">
-        <div class="lists">
-            <div id="listView" class="lists-con">
-                <ul>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>트론</strong>
-                            <small class="pull-right">2010.12.29</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아바타</strong>
-                            <small class="pull-right">2010.08.26</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>그린 랜턴</strong>
-                            <small class="pull-right">2011.06.16</small>
-                        </a></div>
-                    </li>
-                    <li>
-                        <div><a href="#"><strong>아이언맨2</strong>
-                            <small class="pull-right">2010.04.29</small>
-                        </a></div>
-                    </li>
-                </ul>
+    <div class="container-fluid" id="wrapper">
+        <div class="row-fluid">
+            <div class="lists">
+                <div id="listView" class="lists-con">
+                    <ul>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>트론</strong>
+                                <small class="pull-right">2010.12.29</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아바타</strong>
+                                <small class="pull-right">2010.08.26</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>그린 랜턴</strong>
+                                <small class="pull-right">2011.06.16</small>
+                            </a></div>
+                        </li>
+                        <li>
+                            <div><a href="#"><strong>아이언맨2</strong>
+                                <small class="pull-right">2010.04.29</small>
+                            </a></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-        var $el = $('#listView');
-        var isLoading = false;
-        var html;
-
-        // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
-        $el.featuredListView({
-            optimization: true,
-            spinner: "#endless-loader",
-            scrollEndAction: function() {
-                getItem();
-            }
-        });
-
-        // AJAX로 데이터를 가져오는 함수
-        function getItem() {
-            if (isLoading) {
-                return false;
-            }
-
-            isLoading = true;
-
-            var request = $.ajax({
-                url:"./sample-data/list-sample.json",
-                type:"GET",
-                dataType:"json"
-            });
-
-            request.done(function (json) {
-                html = "<ul>";
-                if (typeof json === "object" && json.items.length > 0) {
-                    $(json.items).each(function (i) {
-                        html += "<li>";
-                        html += "    <div>";
-                        html += "        <a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
-                        html += "    </div>";
-                        html += "</li>";
-                    });
-                    html += "</ul>";
-                    $el.featuredListView("addItem", html);
+    <script type="text/javascript">
+        window.onload = function() {
+            var $el = $('#listView');
+            var isLoading = false;
+            var html;
+    
+            // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+            $el.featuredListView({
+                optimization: true,
+                spinner: "#endless-loader",
+                scrollEndAction: function() {
+                    getItem();
                 }
-                html = "";
-                isLoading = false;
             });
-
-            request.fail(function (jqXHR, textStatus) {
-                console.log("Request failed: " + textStatus);
-                isLoading = false;
-            });
-
-        }
-    };
-</script>
-                                                                                           
-                                                                      
-                                                                      
+    
+            // AJAX로 데이터를 가져오는 함수
+            function getItem() {
+                if (isLoading) {
+                    return false;
+                }
+    
+                isLoading = true;
+    
+                var request = $.ajax({
+                    url:"./sample-data/list-sample.json",
+                    type:"GET",
+                    dataType:"json"
+                });
+    
+                request.done(function (json) {
+                    html = "<ul>";
+                    if (typeof json === "object" && json.items.length > 0) {
+                        $(json.items).each(function (i) {
+                            html += "<li>";
+                            html += "    <div>";
+                            html += "        <a href='#'><strong>" + this.title + "</strong><small class='pull-right'>" + this.published + "</small></a>";
+                            html += "    </div>";
+                            html += "</li>";
+                        });
+                        html += "</ul>";
+                        $el.featuredListView("addItem", html);
+                    }
+                    html = "";
+                    isLoading = false;
+                });
+    
+                request.fail(function (jqXHR, textStatus) {
+                    console.log("Request failed: " + textStatus);
+                    isLoading = false;
+                });
+    
+            }
+        };
+    </script>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -897,16 +909,16 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
         render:function () {
             var self = this;
-// 템플릿 렌더링
+            // 템플릿 렌더링
             this.$el.html(Template);
 
-// 콜렉션에 데이터를 가져올 url를 설정한다.
+            // 콜렉션에 데이터를 가져올 url를 설정한다.
             var ItemList = Backbone.Collection.extend({
                 model:Backbone.Model.extend(),
                 url:&quot;data/sample-list.json&quot;
             });
 
-// 차트 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 차트를 그린다.
+            // 차트 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 차트를 그린다.
             this.listView = new ListView({
                 el:&#39;#listView&#39;,
                 collection:new ItemList(),
@@ -956,27 +968,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_4_01_scroll_view.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_4_03_media.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_4_01_scroll_view.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_4_03_media.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -160,7 +160,7 @@
               <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_01_alert.html">Alert</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_02_button.html">Button</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -289,6 +295,17 @@
 <h3>사용법</h3>
 
 <p>DATA-API(data-dismiss=&ldquo;alert&rdquo;), $(&#39;#example&#39;).alert()</p>
+
+<ul>
+<li><code>alert</code>창을 닫기 위해 <code>close</code> 엘리먼트에 <code>data-dismiss=&quot;alert&quot;</code> 속성을 추가해야 한다.</li>
+<li>javascript 방식을 쓸 경우 <code>close</code> 엘리먼트를 클릭했을 때 <code>alert</code>를 닫히도록 아래와 같은 javascript 코드를 작성해야 한다.</li>
+</ul>
+
+<pre><code>$(&quot;a.close&quot;).on(&quot;click&quot;, function(e) {
+    e.preventDefault(); // a 태그의 기본 기능을 막는다.
+    $(&quot;.alert&quot;).alert(&quot;close&quot;);
+});
+</code></pre>
 
 <h4>DATA-API(data-attribute) 를 이용하는 방식</h4>
 
@@ -307,13 +324,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 160px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 160px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -340,16 +359,37 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Alert</h3>
+    <p><i class="badge badge-info">1</i>아래 경고창의 X 버튼을 누른 경우 경고창이 닫힌다.</p>
     <div class="alert">
         <!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
         <a class="close" data-dismiss="alert" href="#">×</a>
         <strong>data-attribute를 통한 alert 닫기</strong>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -382,7 +422,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 160px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 160px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -409,8 +451,10 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Alert</h3>
+    <p><i class="badge badge-info">1</i>아래 경고창의 X 버튼을 누른 경우 경고창이 닫힌다.</p>
     <div class="alert">
         <!-- javascript를 이용하므로 data-dismiss 속성 제거 -->
         <a class="close" href="#">×</a>
@@ -420,15 +464,34 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script type="text/javascript">
         window.onload = function() {
             // 닫기 이벤트를 발생 시키기 위해 a태그에 클릭 이벤트 바인딩
-            $("a.close").bind("click", function(e) {
+            $("a.close").on("click", function(e) {
                 e.preventDefault();
                 $(".alert").alert("close"); // a태그 클릭시 .alert클래스 영역을 닫는다.
             });
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -479,7 +542,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style='height: 160px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 160px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -506,26 +571,54 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Alert</h3>
+    <p><i class="badge badge-info">1</i>아래 경고창의 X 버튼을 누른 경우 경고창이 닫힌다.</p>
     <div class="alert">
         <!-- data-attribute를 사용하기 위해  data-dismiss 속성 추가 -->
         <a class="close" data-dismiss="alert" href="#">×</a>
         <strong>data-attribute를 통한 alert 닫기</strong>
     </div>
+    <div id="console" style="height: 30px"></div>
 
     <script type="text/javascript">
         window.onload = function() {
             $(".alert").on("close", function(e) {
               console.log("닫기 전 이벤트");
+              $("#console").append($("<p/>", {
+                  text: "닫기 전 이벤트"
+              }));
             }).on("closed", function(e) {
-              console.log("닫기 완료시 CSS Transition 완료 후 이벤트");
+                console.log("닫기 완료시 CSS Transition 완료 후 이벤트");
+                $("#console").append($("<p/>", {
+                    text: "닫기 완료시 CSS Transition 완료 후 이벤트"
+                }));
             });
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_3';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -554,27 +647,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:first-child").addClass("fixed_table");
+$table.find("tbody tr > td:first-child").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_00_plugin.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_02_button.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_00_plugin.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_02_button.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

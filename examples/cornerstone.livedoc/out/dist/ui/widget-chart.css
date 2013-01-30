@@ -1,3 +1,9 @@
+/*
+    Cornerstone Framework v0.9.1
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
 /********************
  * HTML CSS
  */
@@ -654,5 +660,10 @@ Custom
 }
 
 .axis-label-white .nvd3 text {
-    fill: rgba(255, 255, 255, 1);
+    fill: rgba(255, 255, 255, 1) !important;
+}
+
+.axis-label-white .nvd3.nv-pie .nv-slice text {
+    fill: rgba(255, 255, 255, 1) !important;
+    stroke: #FFF !important;
 }

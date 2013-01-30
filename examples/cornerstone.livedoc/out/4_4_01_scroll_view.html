@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -211,7 +211,7 @@
               <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+              <a class="third-depth" id="menu_anchor" href="./4_4_01_scroll_view.html">ScrollView</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,7 +290,7 @@
             <div>
   <h3>ScrollView</h3>
 
-<p>터치환경에서 네이티브적인 느낌을 주는 ScrollView는 안드로이드에서는  기본적으로 제공을 하지 않으며, iOS 계열은 CSS를 통한 제공을 하지만 아이템이 많은 경우 성능 저하 문제가 있다. 코너스톤에서는 성능 및 몇가지 기능 등을
+<p>터치환경에서 네이티브적인 느낌을 주는 ScrollView는 안드로이드에서는  기본적으로 제공을 하지 않으며, iOS 계열은 CSS를 통한 제공을 하지만 아이템이 많은 경우 성능 저하 문제가 있다. Cornerstone에서는 성능 및 몇가지 기능 등을
 사용자가 쉽게 사용할 수 있도록 아래와 같은 기능을 제공하고 있다.</p>
 
 <ul>
@@ -295,16 +301,22 @@
 
 <h3>의존성</h3>
 
-<pre><code>    &lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-scrollview.css&#39; /&gt;
-    &lt;!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  --&gt;
-    &lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
-    &lt;!-- ScrollView 위젯 피처드 --&gt;
-    &lt;script src=&#39;./dist/ui/widget-scrollview.js&#39;&gt;&lt;/script&gt;
+<pre><code>&lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-scrollview.css&#39; /&gt;
+&lt;!-- jQuery: 피처드 위젯 사용을 위한 jquery.js  --&gt;
+&lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
+&lt;!-- ScrollView 피처드 위젯 --&gt;
+&lt;script src=&#39;./dist/ui/widget-scrollview.js&#39;&gt;&lt;/script&gt;
 </code></pre>
 
 <h3>사용법</h3>
 
-<p>DATA-API(data-attribute) 또는 $(&#39;#example&#39;).featuredScrollView();</p>
+<p>$(&#39;#example&#39;).featuredScrollView()</p>
+
+<p>DATA-API(data-attribute)방식, $(&ldquo;#example&rdquo;).featuredScrollView(); 자바스크립트 방식을 사용할 수 있다.</p>
+
+<ul>
+<li><code>data-featured=&quot;scrollView&quot;</code>는 ScrollView 사용하기 위한 엘리먼트에 이 속성을 추가해야 한다.</li>
+</ul>
 
 <h4>DATA-API(data-attribute) 를 이용하는 방식</h4>
 
@@ -323,13 +335,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 300px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -354,59 +368,59 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
                                                                                             
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-<!-- data-featurd="scrollView"를 정의하므로 스크롤뷰을 적용한다. -->
-<div data-featured="scrollView" class="scrollview">
-    <div class="lists scroller">
-        <ul id="thelist" class="lists-con">
-            <li><a href="#">테스트 레코드 1</a></li>
-            <li><a href="#">테스트 레코드 2</a></li>
-            <li><a href="#">테스트 레코드 3</a></li>
-            <li><a href="#">테스트 레코드 4</a></li>
-            <li><a href="#">테스트 레코드 5</a></li>
-            <li><a href="#">테스트 레코드 6</a></li>
-            <li><a href="#">테스트 레코드 7</a></li>
-            <li><a href="#">테스트 레코드 8</a></li>
-            <li><a href="#">테스트 레코드 9</a></li>
-            <li><a href="#">테스트 레코드 10</a></li>
-            <li><a href="#">테스트 레코드 11</a></li>
-            <li><a href="#">테스트 레코드 12</a></li>
-            <li><a href="#">테스트 레코드 13</a></li>
-            <li><a href="#">테스트 레코드 14</a></li>
-            <li><a href="#">테스트 레코드 15</a></li>
-            <li><a href="#">테스트 레코드 16</a></li>
-            <li><a href="#">테스트 레코드 17</a></li>
-            <li><a href="#">테스트 레코드 18</a></li>
-            <li><a href="#">테스트 레코드 19</a></li>
-            <li><a href="#">테스트 레코드 20</a></li>
-            <li><a href="#">테스트 레코드 21</a></li>
-            <li><a href="#">테스트 레코드 22</a></li>
-            <li><a href="#">테스트 레코드 23</a></li>
-            <li><a href="#">테스트 레코드 24</a></li>
-            <li><a href="#">테스트 레코드 25</a></li>
-            <li><a href="#">테스트 레코드 26</a></li>
-            <li><a href="#">테스트 레코드 27</a></li>
-            <li><a href="#">테스트 레코드 28</a></li>
-            <li><a href="#">테스트 레코드 29</a></li>
-            <li><a href="#">테스트 레코드 30</a></li>
-            <li><a href="#">테스트 레코드 31</a></li>
-            <li><a href="#">테스트 레코드 32</a></li>
-            <li><a href="#">테스트 레코드 33</a></li>
-            <li><a href="#">테스트 레코드 34</a></li>
-            <li><a href="#">테스트 레코드 35</a></li>
-            <li><a href="#">테스트 레코드 36</a></li>
-            <li><a href="#">테스트 레코드 37</a></li>
-            <li><a href="#">테스트 레코드 38</a></li>
-            <li><a href="#">테스트 레코드 39</a></li>
-            <li><a href="#">테스트 레코드 40</a></li>
-        </ul>
+    <!-- data-featurd="scrollView"를 정의하므로 스크롤뷰을 적용한다. -->
+    <div data-featured="scrollView" class="scrollview">
+        <div class="lists scroller">
+            <ul id="thelist" class="lists-con">
+                <li><a href="#">테스트 레코드 1</a></li>
+                <li><a href="#">테스트 레코드 2</a></li>
+                <li><a href="#">테스트 레코드 3</a></li>
+                <li><a href="#">테스트 레코드 4</a></li>
+                <li><a href="#">테스트 레코드 5</a></li>
+                <li><a href="#">테스트 레코드 6</a></li>
+                <li><a href="#">테스트 레코드 7</a></li>
+                <li><a href="#">테스트 레코드 8</a></li>
+                <li><a href="#">테스트 레코드 9</a></li>
+                <li><a href="#">테스트 레코드 10</a></li>
+                <li><a href="#">테스트 레코드 11</a></li>
+                <li><a href="#">테스트 레코드 12</a></li>
+                <li><a href="#">테스트 레코드 13</a></li>
+                <li><a href="#">테스트 레코드 14</a></li>
+                <li><a href="#">테스트 레코드 15</a></li>
+                <li><a href="#">테스트 레코드 16</a></li>
+                <li><a href="#">테스트 레코드 17</a></li>
+                <li><a href="#">테스트 레코드 18</a></li>
+                <li><a href="#">테스트 레코드 19</a></li>
+                <li><a href="#">테스트 레코드 20</a></li>
+                <li><a href="#">테스트 레코드 21</a></li>
+                <li><a href="#">테스트 레코드 22</a></li>
+                <li><a href="#">테스트 레코드 23</a></li>
+                <li><a href="#">테스트 레코드 24</a></li>
+                <li><a href="#">테스트 레코드 25</a></li>
+                <li><a href="#">테스트 레코드 26</a></li>
+                <li><a href="#">테스트 레코드 27</a></li>
+                <li><a href="#">테스트 레코드 28</a></li>
+                <li><a href="#">테스트 레코드 29</a></li>
+                <li><a href="#">테스트 레코드 30</a></li>
+                <li><a href="#">테스트 레코드 31</a></li>
+                <li><a href="#">테스트 레코드 32</a></li>
+                <li><a href="#">테스트 레코드 33</a></li>
+                <li><a href="#">테스트 레코드 34</a></li>
+                <li><a href="#">테스트 레코드 35</a></li>
+                <li><a href="#">테스트 레코드 36</a></li>
+                <li><a href="#">테스트 레코드 37</a></li>
+                <li><a href="#">테스트 레코드 38</a></li>
+                <li><a href="#">테스트 레코드 39</a></li>
+                <li><a href="#">테스트 레코드 40</a></li>
+            </ul>
+        </div>
     </div>
-</div>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -439,7 +453,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 300px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -464,64 +480,64 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
                                                                                             
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
-<div id="example" class="scrollview">
-    <div class="lists scroller">
-        <ul id="thelist" class="lists-con">
-            <li><a href="#">테스트 레코드 1</a></li>
-            <li><a href="#">테스트 레코드 2</a></li>
-            <li><a href="#">테스트 레코드 3</a></li>
-            <li><a href="#">테스트 레코드 4</a></li>
-            <li><a href="#">테스트 레코드 5</a></li>
-            <li><a href="#">테스트 레코드 6</a></li>
-            <li><a href="#">테스트 레코드 7</a></li>
-            <li><a href="#">테스트 레코드 8</a></li>
-            <li><a href="#">테스트 레코드 9</a></li>
-            <li><a href="#">테스트 레코드 10</a></li>
-            <li><a href="#">테스트 레코드 11</a></li>
-            <li><a href="#">테스트 레코드 12</a></li>
-            <li><a href="#">테스트 레코드 13</a></li>
-            <li><a href="#">테스트 레코드 14</a></li>
-            <li><a href="#">테스트 레코드 15</a></li>
-            <li><a href="#">테스트 레코드 16</a></li>
-            <li><a href="#">테스트 레코드 17</a></li>
-            <li><a href="#">테스트 레코드 18</a></li>
-            <li><a href="#">테스트 레코드 19</a></li>
-            <li><a href="#">테스트 레코드 20</a></li>
-            <li><a href="#">테스트 레코드 21</a></li>
-            <li><a href="#">테스트 레코드 22</a></li>
-            <li><a href="#">테스트 레코드 23</a></li>
-            <li><a href="#">테스트 레코드 24</a></li>
-            <li><a href="#">테스트 레코드 25</a></li>
-            <li><a href="#">테스트 레코드 26</a></li>
-            <li><a href="#">테스트 레코드 27</a></li>
-            <li><a href="#">테스트 레코드 28</a></li>
-            <li><a href="#">테스트 레코드 29</a></li>
-            <li><a href="#">테스트 레코드 30</a></li>
-            <li><a href="#">테스트 레코드 31</a></li>
-            <li><a href="#">테스트 레코드 32</a></li>
-            <li><a href="#">테스트 레코드 33</a></li>
-            <li><a href="#">테스트 레코드 34</a></li>
-            <li><a href="#">테스트 레코드 35</a></li>
-            <li><a href="#">테스트 레코드 36</a></li>
-            <li><a href="#">테스트 레코드 37</a></li>
-            <li><a href="#">테스트 레코드 38</a></li>
-            <li><a href="#">테스트 레코드 39</a></li>
-            <li><a href="#">테스트 레코드 40</a></li>
-        </ul>
+    <!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
+    <div id="example" class="scrollview">
+        <div class="lists scroller">
+            <ul id="thelist" class="lists-con">
+                <li><a href="#">테스트 레코드 1</a></li>
+                <li><a href="#">테스트 레코드 2</a></li>
+                <li><a href="#">테스트 레코드 3</a></li>
+                <li><a href="#">테스트 레코드 4</a></li>
+                <li><a href="#">테스트 레코드 5</a></li>
+                <li><a href="#">테스트 레코드 6</a></li>
+                <li><a href="#">테스트 레코드 7</a></li>
+                <li><a href="#">테스트 레코드 8</a></li>
+                <li><a href="#">테스트 레코드 9</a></li>
+                <li><a href="#">테스트 레코드 10</a></li>
+                <li><a href="#">테스트 레코드 11</a></li>
+                <li><a href="#">테스트 레코드 12</a></li>
+                <li><a href="#">테스트 레코드 13</a></li>
+                <li><a href="#">테스트 레코드 14</a></li>
+                <li><a href="#">테스트 레코드 15</a></li>
+                <li><a href="#">테스트 레코드 16</a></li>
+                <li><a href="#">테스트 레코드 17</a></li>
+                <li><a href="#">테스트 레코드 18</a></li>
+                <li><a href="#">테스트 레코드 19</a></li>
+                <li><a href="#">테스트 레코드 20</a></li>
+                <li><a href="#">테스트 레코드 21</a></li>
+                <li><a href="#">테스트 레코드 22</a></li>
+                <li><a href="#">테스트 레코드 23</a></li>
+                <li><a href="#">테스트 레코드 24</a></li>
+                <li><a href="#">테스트 레코드 25</a></li>
+                <li><a href="#">테스트 레코드 26</a></li>
+                <li><a href="#">테스트 레코드 27</a></li>
+                <li><a href="#">테스트 레코드 28</a></li>
+                <li><a href="#">테스트 레코드 29</a></li>
+                <li><a href="#">테스트 레코드 30</a></li>
+                <li><a href="#">테스트 레코드 31</a></li>
+                <li><a href="#">테스트 레코드 32</a></li>
+                <li><a href="#">테스트 레코드 33</a></li>
+                <li><a href="#">테스트 레코드 34</a></li>
+                <li><a href="#">테스트 레코드 35</a></li>
+                <li><a href="#">테스트 레코드 36</a></li>
+                <li><a href="#">테스트 레코드 37</a></li>
+                <li><a href="#">테스트 레코드 38</a></li>
+                <li><a href="#">테스트 레코드 39</a></li>
+                <li><a href="#">테스트 레코드 40</a></li>
+            </ul>
+        </div>
     </div>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-        $("#example").featuredScrollView();
-    };
-</script>
-                                                                                           
-                                                                      
-                                                                      
+    <script type="text/javascript">
+        window.onload = function() {
+            $("#example").featuredScrollView();
+        };
+    </script>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -652,7 +668,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 300px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -677,66 +695,66 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
                                                                                             
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
-<div id="wrapper" class="scrollview">
-    <div class="lists scroller">
-        <ul id="thelist" class="lists-con">
-            <li class="padding-20">
-                <form>
-                    <legend>Text input</legend>
-                    <div>
-                        <label class="blind">Text input</label>
-                        <input class="input-block-level" type="text" placeholder="Text input" value="Text input">
-                    </div>
-
-                    <hr>
-
-                    <div>
-                        <label class="blind">Text input</label>
-                        <input class="input-block-level ipt-orange" type="text" placeholder="Text input"
-                               value="Text input">
-                    </div>
-                    <hr>
-
-                    <div class="input-prepend">
-                        <label class="blind">Prepend</label>
-                        <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text"
-                                                            placeholder="Username">
-                    </div>
-
-                    <hr>
-
-                    <div class="input-append">
-                        <label class="blind">Append</label>
-                        <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
-                    </div>
-
-                    <hr>
-
-                    <div class="input-prepend input-append">
-                        <label class="blind">Combined</label>
-                        <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16"
-                                                            type="text"><span class="add-on">.00</span>
-                    </div>
-
-                </form>
-            </li>
-        </ul>
+    <!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
+    <div id="wrapper" class="scrollview">
+        <div class="lists scroller">
+            <ul id="thelist" class="lists-con">
+                <li class="padding-20">
+                    <form>
+                        <legend>Text input</legend>
+                        <div>
+                            <label class="blind">Text input</label>
+                            <input class="input-block-level" type="text" placeholder="Text input" value="Text input">
+                        </div>
+    
+                        <hr>
+    
+                        <div>
+                            <label class="blind">Text input</label>
+                            <input class="input-block-level ipt-orange" type="text" placeholder="Text input"
+                                   value="Text input">
+                        </div>
+                        <hr>
+    
+                        <div class="input-prepend">
+                            <label class="blind">Prepend</label>
+                            <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text"
+                                                                placeholder="Username">
+                        </div>
+    
+                        <hr>
+    
+                        <div class="input-append">
+                            <label class="blind">Append</label>
+                            <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
+                        </div>
+    
+                        <hr>
+    
+                        <div class="input-prepend input-append">
+                            <label class="blind">Combined</label>
+                            <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16"
+                                                                type="text"><span class="add-on">.00</span>
+                        </div>
+    
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<script type="text/javascript">
-    window.onload = function() {
-        $("#wrapper").featuredScrollView({
-            formFields:["SELECT", "INPUT", "TEXTAREA"]
-        });
-    };
-</script>
-                                                                                           
-                                                                      
-                                                                      
+    <script type="text/javascript">
+        window.onload = function() {
+            $("#wrapper").featuredScrollView({
+                formFields:["SELECT", "INPUT", "TEXTAREA"]
+            });
+        };
+    </script>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -769,7 +787,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_4 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_4 style='height: 600px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_4 name=code_prv_4>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -794,8 +814,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
                                                                                             
-  <body>                                                                                                          
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <div class="scroll-header">
         <div class="navbar nav-icon">
@@ -804,7 +825,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <i></i>
                     </button>
-                    <a class="brand" href="#">CornerStone</a>
+                    <a class="brand" href="#">Cornerstone</a>
                 </div>
             </div>
         </div>
@@ -926,9 +947,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             }
         });
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -957,137 +977,46 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h4>이벤트 예제</h4>
-
-<p>                                                                                                               
-<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_5 style='height: 700px;'></iframe>                        
-<textarea id=code_prv_5 name=code_prv_5>                                              
-<!doctype html>                                                                                                   
-<html>                                                                                                            
-  <head>                                                                                                          
-    <meta charset=utf-8>                                                                                          
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
-    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
-    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
-    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
-    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
-    <link rel='stylesheet' href='./etc.css' />                                                                    
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
-    <script src='./dist/ui/widget-chart.js'></script>                                                             
-    <script src='./dist/ui/widget-datatable.js'></script>                                                         
-    <script src='./dist/ui/widget-editor.js'></script>                                                            
-    <script src='./dist/ui/widget-listview.js'></script>                                                          
-    <script src='./dist/ui/widget-media.js'></script>                                                             
-    <script src='./dist/ui/widget-plugins.js'></script>                                                           
-    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
-  </head>                                                                                                         
-                                                                                            
-  <body>                                                                                                          
-                                                                                                         
-    
-<!-- id값을 정의하고 해당 id값에 $('#example').featuredScrollView(); 스크립트를 통해 스크롤뷰을 적용한다.  -->
-<div id="example" class="scrollview">
-    <div class="lists scroller">
-        <ul id="thelist" class="lists-con">
-            <li><a href="#">테스트 레코드 1</a></li>
-            <li><a href="#">테스트 레코드 2</a></li>
-            <li><a href="#">테스트 레코드 3</a></li>
-            <li><a href="#">테스트 레코드 4</a></li>
-            <li><a href="#">테스트 레코드 5</a></li>
-            <li><a href="#">테스트 레코드 6</a></li>
-            <li><a href="#">테스트 레코드 7</a></li>
-            <li><a href="#">테스트 레코드 8</a></li>
-            <li><a href="#">테스트 레코드 9</a></li>
-            <li><a href="#">테스트 레코드 10</a></li>
-        </ul>
-    </div>
-</div>
 <script type="text/javascript">
-    window.onload = function() {
-        $("#example").featuredScrollView({
-            onRefresh: function() {
-                console.log("onRefresh");
-            },
-            onBeforeScrollStart: function() {
-                console.log("onBeforeScrollStart");
-            },
-            onScrollStart: function() {
-                console.log("onScrollStart");
-            },
-            onBeforeScrollMove: function() {
-                console.log("onBeforeScrollMove");
-            },
-            onScrollMove: function() {
-                console.log("onScrollMove");
-            },
-            onBeforeScrollEnd: function() {
-                console.log("onBeforeScrollEnd");
-            },
-            onScrollEnd: function() {
-                console.log("onScrollEnd");
-            },
-            onTouchEnd: function() {
-                console.log("onTouchEnd");
-            }
-        });
-   };
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
 </script>
-                                                                                           
-                                                                      
-                                                                      
-                                                                                                         
-  </body>                                                                                                         
-</html>                                                                                                           
-</textarea>                                                                                                       
-<script>                                                                                                          
-  var delay_prv_5;                                                                                  
-  var editor_prv_5 = CodeMirror.fromTextArea(document.getElementById('code_prv_5'), { 
-    theme: 'ambiance',                                                                                            
-    lineNumbers: true,                                                                                            
-    mode: 'text/html',                                                                                            
-    tabMode: 'indent',                                                                                            
-    onChange: function() {                                                                                        
-      clearTimeout(delay_prv_5);                                                                    
-      delay_prv_5 = setTimeout(updatePreview_prv_5, 300);                             
-    }                                                                                                             
-  });                                                                                                             
-  function updatePreview_prv_5() {                                                                  
-    var previewFrame = document.getElementById('preview_prv_5');                                    
-    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
-    preview.open();                                                                                               
-    preview.write(editor_prv_5.getValue());                                                         
-    preview.close();                                                                                              
-  }                                                                                                               
-  setTimeout(updatePreview_prv_5, 300);                                                             
-</script>                                                                                                         
-</div>                                                                                                            
-</p>                                                                                                              
 
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_4_00_featured.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_4_02_list_view.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_4_00_featured.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_4_02_list_view.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

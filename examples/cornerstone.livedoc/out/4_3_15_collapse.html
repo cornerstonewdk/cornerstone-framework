@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -202,7 +202,7 @@
               <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_15_collapse.html">Collapse</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -286,7 +292,18 @@
 
 <p>콜랩스는 탭의 수직형태로 타이틀을 클릭하면 컨텐츠가 접혔다 펴지는 형태의 플러그인.</p>
 
-<p>$(&ldquo;.collapse&rdquo;).collapse();</p>
+<h3>사용법</h3>
+
+<p>$(&ldquo;#example&rdquo;).collapse();</p>
+
+<p>DATA-API(data-attribute)방식, $(&ldquo;#example&rdquo;).collapse(); 자바스크립트 방식을 사용할 수 있다.</p>
+
+<ul>
+<li><code>data-toggle=&quot;collapse&quot;</code>는 collapse 컨텐츠를 토글 하기 위한 엘리먼트(<code>a</code> 태그)에 이 속성을 추가해야 한다.</li>
+<li><code>data-toggle=&quot;collapse&quot;</code>를 추가한 엘리먼트(<code>a</code> 태그)의 <code>href</code>속성에 해당 메뉴를 클릭했을 때 보여줄 컨텐츠의 <code>id</code>를 작성한다.</li>
+<li><code>data-parent=&quot;부모엘리먼트&quot;</code>는 collapse 컨텐츠를 라디오 버튼형태로 선택한 컨텐츠가 열리면 다른 컨텐츠들은 닫히도록 하는 속성이다. 이 속성은 collapse 컨텐츠를 토글 하기 위한 엘리먼트(<code>a</code> 태그)에 속성을 추가해야 하며
+collapse를 <code>wrapping</code>하는 부모 엘리먼트의 <code>id</code>값을 모든 collapse 메뉴에 동일하게 적용해야 한다.</li>
+</ul>
 
 <h4>DATA-API(data-attribute)를 이용하는 방식</h4>
 
@@ -305,13 +322,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -338,6 +357,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Collapse</h3>
     <div class="dash-widget no-padding">
@@ -380,9 +400,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             </div>
           </div>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -415,7 +454,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -442,6 +483,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Collapse</h3>
     <div class="dash-widget no-padding">
@@ -507,7 +549,6 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     </div>
     <script type="text/javascript">
         window.onload = function() {
-            $(".collapse").collapse();
             $(".accordion-toggle").on("click", function(e) {
                 var $this = $(this);
                 var target = $this.attr('data-target') || e.preventDefault() || (href = $this.attr('href'));
@@ -517,9 +558,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -562,7 +622,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <td align="left">parent</td>
 <td align="center">selector</td>
 <td align="center">false</td>
-<td align="left">이 collapsible 아이템이 보여질때 parent 셀렉터를 부모로 하는 모든 다른 collapsible 엘리먼트들은 닫힌 상태가 되도록 합니다. (전통적인 아코디언의 행동처럼)</td>
+<td align="left">이 collapsible 아이템이 보여질때 parent 셀렉터를 부모로 하는 모든 다른 collapsible 엘리먼트들은 닫힌 상태가 되도록 합니다.</td>
 </tr>
 <tr>
 <td align="left">toggle</td>
@@ -638,7 +698,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -665,6 +727,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Collapse</h3>
     <div class="dash-widget no-padding">
@@ -728,20 +791,32 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             </div>
         </div>
     </div>
+    <div id="console" style="height: 30px"></div>
     <script type="text/javascript">
         window.onload = function() {
-            $(".collapse").collapse("hide")
-            .on("show", function(e) {
+            $(".collapse").on("show", function(e) {
                 console.log("show");
+                $("#console").html($("<p/>", {
+                    text: "show"
+                }));
             })
             .on("shown", function(e) {
                 console.log("shown");
+                $("#console").html($("<p/>", {
+                    text: "shown"
+                }));
             })
             .on("hide", function(e) {
                 console.log("hide");
+                $("#console").html($("<p/>", {
+                    text: "hide"
+                }));
             })
             .on("hidden", function(e) {
                 console.log("hidden");
+                $("#console").html($("<p/>", {
+                    text: "hidden"
+                }));
             });
             $(".accordion-toggle").on("click", function(e) {
                 e.preventDefault();
@@ -749,9 +824,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_3';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -780,27 +874,56 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered").each(function(i) {
+    var $this = $(this);
+    if(i == 2) {
+        $this.find("thead tr > th:first-child").addClass("fixed_table");
+        $this.find("tbody tr > td:first-child").addClass("fixed_table");
+    } else {
+        $this.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+    }
+});
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_14_typeahead.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_16_datepicker.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_14_typeahead.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_16_datepicker.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -151,7 +151,7 @@
               <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+              <a class="third-depth" id="menu_anchor" href="./4_2_09_progress_bar.html">Progress bars</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -290,38 +296,38 @@
 
 <p>기본 프로그레스바는 수직 간단한 그라디언트 효과를 사용한다.</p>
 
-<pre><code>    &lt;div class=&quot;progress&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 60%;&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;progress&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 60%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h3>줄무늬 효과(Striped)</h3>
 
 <p>줄무늬 효과를 만들기 위해 그라디언트 효과를 사용하며 <code>.progress</code> 클래스에 <code>.progress-striped</code> 클래스를 추가 한다.</p>
 
-<pre><code>    &lt;div class=&quot;progress progress-striped&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 20%;&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;progress progress-striped&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 20%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h3>에니메이션 효과(Animated)</h3>
 
 <p>줄무늬에 애니메이션 효과를 주기 위해 <code>.active</code> 클래스를 추가 한다.</p>
 
-<pre><code>    &lt;div class=&quot;progress progress-striped active&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 40%;&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;progress progress-striped active&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 40%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h3>중첩 효과(Stacked)</h3>
 
 <p>프로그레스 바에 다양한 색의 바를 보여주기 위해 <code>.progress</code> 클래스에 내부에 <code>.bar</code> 클래스에 <code>.bar-success</code>,  <code>.bar-warning</code>, <code>.bar-danger</code>  등의 클래스를 추가해서 다양한 색의 바를 표현 할 수 있다.</p>
 
-<pre><code>    &lt;div class=&quot;progress&quot;&gt;
-      &lt;div class=&quot;bar bar-success&quot; style=&quot;width: 35%;&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;bar bar-warning&quot; style=&quot;width: 20%;&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;bar bar-danger&quot; style=&quot;width: 10%;&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;progress&quot;&gt;
+  &lt;div class=&quot;bar bar-success&quot; style=&quot;width: 35%;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bar bar-warning&quot; style=&quot;width: 20%;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bar bar-danger&quot; style=&quot;width: 10%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h3>옵션(Options)</h3>
@@ -330,36 +336,36 @@
 
 <p>프로그레스 바의 색상은 버튼에서 사용되는 색상인  <code>info</code>, <code>success</code>, <code>warning</code>, <code>danger</code> 를 사용 한다.</p>
 
-<pre><code>    &lt;div class=&quot;progress progress-info&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 20%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;progress progress-success&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 40%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;progress progress-warning&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 60%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;progress progress-danger&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 80%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;progress progress-info&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 20%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress-success&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 40%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress-warning&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 60%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress-danger&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 80%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h4>다중 줄무늬 효과 적용(Striped bars)</h4>
 
 <p>추가적인 색상에 줄무늬 클래스를 추가해서 다양한 색상의 줄무늬 프로그레스바를 만들 수 있다.</p>
 
-<pre><code>    &lt;div class=&quot;progress progress-info progress-striped&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 20%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;progress progress-success progress-striped&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 40%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;progress progress-warning progress-striped&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 60%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;progress progress-danger progress-striped&quot;&gt;
-      &lt;div class=&quot;bar&quot; style=&quot;width: 80%&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;progress progress-info progress-striped&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 20%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress-success progress-striped&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 40%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress-warning progress-striped&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 60%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress-danger progress-striped&quot;&gt;
+  &lt;div class=&quot;bar&quot; style=&quot;width: 80%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <script src='lib/codemirror.js'></script>                                                                         
@@ -377,13 +383,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 908px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 908px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -410,6 +418,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Basic 예제</h3>
     <div class="progress">
@@ -466,9 +475,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <div class="progress progress-danger progress-striped">
         <div class="bar" style="width: 80%"></div>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -501,23 +529,38 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_2_08_alert.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_2_10_miscellaneous.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_2_08_alert.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_2_10_miscellaneous.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

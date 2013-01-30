@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -169,7 +169,7 @@
               <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_04_dropdown.html">Dropdown</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -290,12 +296,20 @@
 
 <p>DATA-API(data-attribute)방식, $(&ldquo;.dropdown-toggle&rdquo;).dropdown() 자바스크립트 방식을 사용할 수 있다.</p>
 
+<ul>
+<li><code>Dropdown</code> 기능을 사용하기 위해 <code>Dropdown</code> 버튼 엘리먼트에 <code>data-toggle=&quot;dropdown&quot;</code> 속성을 추가해야 한다.</li>
+<li>javascript 방식을 쓸 경우 <code>Dropdown</code> 버튼 엘리먼트에 <code>Dropdown</code> 메뉴가 토글되도록 아래와 같은 javascript 코드를 작성해야 한다.</li>
+</ul>
+
+<pre><code>$(&quot;.dropdown-toggle&quot;).dropdown();
+</code></pre>
+
 <h4>DATA-API(data-attribute)를 이용하는 방식</h4>
 
 <p>드롭다운 기능을 적용하려면 해당 엘리먼트에 data-toggle=&ldquo;dropdown&rdquo; 을 추가하기만 하면 되며, 유효한 부트스트랩 드롭다운이 자동으로 활성화 된다.</p>
 
 <blockquote>
-<p>특정 드롭다운이 열리도록 하려면 data-target=&ldquo;#fat&rdquo; 또는 href=&ldquo;#fat&rdquo; 를 사용해야 한다.</p>
+<p>특정 드롭다운이 열리도록 하려면 data-target=&ldquo;#dropdownId&rdquo; 또는 href=&ldquo;#dropdownId&rdquo; 를 사용해야 한다.</p>
 </blockquote>
 
 <script src='lib/codemirror.js'></script>                                                                         
@@ -313,13 +327,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 400px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -346,13 +362,13 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Dropdown</h3>
     <div class="dash-widget no-padding">
         <ul class="nav nav-pills" role="navigation">
             <li class="dropdown">
-                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b
-                        class="caret"></b></a>
+                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                     <li role="menuitem"><a href="#">Action</a></li>
                     <li role="menuitem"><a href="#">Another action</a></li>
@@ -374,9 +390,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             </li>
         </ul>
     </div>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -409,7 +424,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 400px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -436,6 +453,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Dropdown</h3>
     <div class="dash-widget no-padding">
@@ -470,9 +488,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                 $(".dropdown-toggle").dropdown();
             };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -515,27 +532,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:first-child").addClass("fixed_table");
+$table.find("tbody tr > td:first-child").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_03_carousel.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_05_modal.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_03_carousel.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_05_modal.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

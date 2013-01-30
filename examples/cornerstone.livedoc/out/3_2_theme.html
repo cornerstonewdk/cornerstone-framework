@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -109,7 +109,7 @@
               <a class="second-depth" href="./3_1_introduction.html">소개</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./3_2_theme.html">테마</a>
+              <a class="second-depth" id="menu_anchor" href="./3_2_theme.html">테마</a>
             </li>
             <li class="inactive">
               <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,79 +290,42 @@
             <div>
   <h2>테마</h2>
 
-<p>제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 BtS의 특성인 BtS &gt; LESS로 작성되어 BtS &gt; Customize와 같이 사용자화 가능함으로 개별 테마 안에서 BtS에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 BtS에 없는 요소들도 BtS과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 BtS의 방식대로 사용자화가 가능해야 함</p>
+<p>제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공한다. Bootstrap의 특성인 Bootstrap &gt; LESS로 작성되어 Bootstrap &gt; Customize와 같이 사용자화 가능함으로, 개별 테마 안에서 Bootstrap에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능하다. </p>
+
+<p>따라서 테마를 구현시 기본적으로 Bootstrap에 없는 요소들도 Bootstrap과 마찬가지로 LESS로 작성하여 기존 Bootstrap 방식대로 사용자화가 가능하다.</p>
 
 <ul>
-<li>Corner Stone 기본테마 - dark테마 , white테마</li>
-<li>Wire Frame 백지테마 - 확장이나 변형을 위해 제공되는 테마</li>
+<li>Cornerstone 기본 테마 : dark 테마 , white 테마</li>
+<li>Wireframe 백지 테마 : 확장이나 변형을 위해 제공되는 테마</li>
 </ul>
 
-<h3>테마 확장</h3>
+<h2>테마 사용법</h2>
 
-<p>wireframe은 white, gray톤과 그림자 효과, 그라데이션등을 배제한 가장 기본적인 테마로, 사용자가 직접 디자인을 적용시킬 수 있도록 만들어진 테마이다.
-기본 테마인 wireframe.css를 적용 시킨 후 새로운 css 파일을 추가 사용한다.</p>
+<p>제공되는 테마를 사용하기 위해서는 HTML Header 부분에 아래와 같이 bootstrap, bootstrap-responsive, Conerstone CSS를 로드 한다. Cornerstone Theme 경로는 하기와 같으며 자신이 사용할 테마의 경로를 사용하면 된다. 간단하게 theme 하위 폴더의 경로만 수정해서 사용 가능하다.</p>
 
-<h2>Bootstrap 과 차이점</h2>
+<pre><code>&lt;!-- dark 테마 --&gt;
+&lt;link rel=&#39;stylesheet&#39; href=&#39;cornerstone/ui/theme/dark/css/cornerstone.css&#39; /&gt;
 
-<p>부트스트랩은 체크박스, 라디오버튼의 경우 스크립트를 포함하여 플러인으로 되어있지만, 
-현재 시스템의 경우 html5, css3로만 구현되어 있다.
-모바일 디자인은 터치, 사용자의 편의성을 고려한 UI가 적용되어 있다.</p>
+&lt;!-- white 테마 --&gt;
+&lt;link rel=&#39;stylesheet&#39; href=&#39;cornerstone/ui/theme/white/css/cornerstone.css&#39; /&gt;
 
-<h2>추가된 부분</h2>
+&lt;!-- wireframe 테마 --&gt;
+&lt;link rel=&#39;stylesheet&#39; href=&#39;cornerstone/ui/theme/wireframe/css/cornerstone.css&#39; /&gt;
+</code></pre>
 
-<ul>
-<li>Lists - 여러가지 다양한 list를 만들수 있도록 제공한다.</li>
-<li>Nav bar - mobile에서 상,하단에 붙여 사용할수 있는 기본 Nav bar를 제공한다.</li>
-</ul>
+<p>실제 사용은 하기와 같이 총3개의 CSS를 로드하여야 한다.</p>
 
-<h2>텍스쳐 사용</h2>
+<pre><code>&lt;head&gt;
+    &lt;link rel=&#39;stylesheet&#39; href=&#39;cornerstone/lib/bootstrap/css/bootstrap.css&#39; /&gt;                                       
+    &lt;link rel=&#39;stylesheet&#39; href=&#39;cornerstone/lib/bootstrap/css/bootstrap-responsive.css&#39; /&gt;                            
+    &lt;link rel=&#39;stylesheet&#39; href=&#39;cornerstone/ui/theme/dark/css/cornerstone.css&#39; /&gt;
+    ...
+&lt;/head&gt;
+</code></pre>
 
-<p>Background에 텍스처를 사용할수 있다. conerstones에서 제공한는 기본 텍스처를 사용하여도 되지만,
-좀더 디자인적으로 꾸미고 싶다면 사용자가 텍스처를 활용하여 Background에 적용시켜 사용할 수도 있다.</p>
-
-<h2>폼의 높이와 넓이</h2>
-
-<p>모바일 사용을 고려하여 폼의 높이와 너비의 폭을 크게 하여 사용 편의성을 고려하였다.</p>
-
-<h2>주의사항</h2>
-
-<p>.nav-tab을 사용하여 tab을 구현할때는 각 tab의 li에 사용자가 직접 width를 적용해준다.</p>
-
-<p>모바일 해상도를 고려하여 media query를 사용할 것을 권장한다.
-media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하게 구현할 수 있다.</p>
-
-<p>모바일에서는 css의 a:hover, 스크립트의 onmouseover, onmouseenter등의 기능은 사용하지 않는것이 좋다. 위의 기능들은 웹의 마우스 이벤트에 속한다. 따라서 마우스를 사용하지 않고 터치기능을 사용하는 모바일 기기중에 여러가지 오류가 생길 수 있다.</p>
-
-<h2>격자(Grid)</h2>
-
-<p>격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <div> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.
-부트스트랩도 자체적인 격자 레이아웃 시스템을 제공한다. 부트스트랩의 격자 시스템은 12열의 격자(12-column grid)로 이루어져 있으며 기본 버전과 유동 버전(Fluid)이 있다. 또한 다양한 화면 크기에 대응하기 위해 4개의 디자인 형태를 갖는데 이 것은 반응형 디자인과 연관되어 동작한다.</p>
-
-<p>기본 격자 시스템(Default grid system)은 940px 고정 너비에 12열 격자로 이루어진다.
-행은 &ldquo;row&rdquo;, 열은 &ldquo;span<em>&quot;이라는 클래스로 표현되는데, &quot;span</em>&rdquo; 클래스는 span1~12 까지 사용할 수 있다.<br>
-열 사이의 간격은 20px이며 &ldquo;span1&rdquo; 클래스의 너비는 60px이다. &ldquo;span*&rdquo; 클래스의 숫자가 하나씩 증가할 때마다 너비가 80px씩 늘어나 &ldquo;span12&rdquo; 클래스의 너비는 전체 너비인 940px이 된다.</p>
-
-<p>유동 격자 시스템(Fluid grid system)은 격자 크기를 픽셀이 아닌 퍼센트로 사용한다. 유동 격자 시스템을 사용하려면 행의 클래스를 &ldquo;row-fluid&quot;로 바꾸기만 하면 된다.</p>
-
-<p>열에 &quot;offset*&rdquo; 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 단, 열 위치 이동은 기본 격자 시스템에서만 가능하다.</p>
-
-<p>예제) url : <a href="http://jsfiddle.net/azamara/gtgYM/">http://jsfiddle.net/azamara/gtgYM/</a></p>
-
-<ul>
-<li>그리드 시스템 UI</li>
-</ul>
-
-<p><img src="images/style-grid-1.png?raw=true" alt=""></p>
-
-<p>그리드 시스템을 통해 얻을 수 있는 장점은 아래와 같다.</p>
-
-<ul>
-<li>그리드를 통해 튼튼한 레이아웃을 보장</li>
-<li>사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 </li>
-<li>미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경</li>
-</ul>
-
-<h2>기본 격자 시스템</h2>
+<blockquote>
+<p>하기 예제 소스 코드의 8번 라인의 경로를 수정하여 테마를 변경 적용해보길 바란다.</p>
+</blockquote>
 
 <script src='lib/codemirror.js'></script>                                                                         
 
@@ -373,13 +342,15 @@ media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하�
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 280px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -406,38 +377,45 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div>
-        <div class="row show-grid">
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-        </div>
-        <div class="row show-grid">
-            <div class="span3">3</div>
-             <div class="span4">4</div>
-            <div class="span5">5</div>
-        </div>
-        <div class="row show-grid">
-               <div class="span6">6</div>
-              <div class="span6">6</div>
-        </div>
-         <div class="row show-grid">
-            <div class="span12">12</div>
-           </div>
-     </div>
-                                                                                           
+    <div class="container">
+        <form>
+            <fieldset>
+                <legend>Legend</legend>
+                <label>Label name</label>
+                <input type="text" placeholder="Type something…">
+                <span class="help-block">Example block-level help text here.</span>
+                <label class="checkbox inline">
+                      <input type="checkbox" value="option3">
+                      <span class="inp-check check"></span> 기억하기
+                </label>
+                <button type="submit" class="btn">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -466,11 +444,106 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h3>Offsetting columns</h3>
+<h2>테마 확장</h2>
+
+<p>Wireframe은 white, gray톤과 그림자 효과, 그라데이션등을 배제한 가장 기본적인 테마로, 사용자가 직접 디자인을 적용시킬 수 있도록 만들어진 테마이다. 기본 테마인 wireframe.css를 적용 시킨 후 새로운 css 파일을 추가 사용한다.</p>
+
+<h2>Bootstrap 과 차이점</h2>
+
+<p>부트스트랩은 <code>체크박스</code>, <code>라디오버튼</code>의 경우 스크립트를 포함하여 플러인으로 되어있지만, 현재 시스템의 경우 html5, CSS3로만 구현되어 있다. 모바일 디자인은 터치, 사용자의 편의성을 고려한 UI가 적용되어 있다.</p>
+
+<h2>추가된 부분</h2>
+
+<ul>
+<li><code>Lists</code> : 여러가지 다양한 list를 만들수 있도록 제공한다.</li>
+<li><code>Nav bar</code> : mobile에서 상,하단에 붙여 사용할수 있는 기본 Nav bar를 제공한다.</li>
+</ul>
+
+<h2>텍스쳐 사용</h2>
+
+<p>Background에 텍스처를 사용할수 있다. Conerstone에서 제공한는 기본 텍스처를 사용하여도 되지만, 좀더 디자인적으로 꾸미고 싶다면 사용자가 텍스처를 활용하여 Background에 적용시켜 사용할 수도 있다.</p>
+
+<h2>폼의 높이와 넓이</h2>
+
+<p>모바일 사용을 고려하여 폼의 높이와 너비의 폭을 크게 하여 사용 편의성을 고려하였다.</p>
+
+<h2>주의사항</h2>
+
+<p><code>.nav-tab</code>을 사용하여 tab을 구현할때는 각 tab의 <code>&lt;li&gt;</code> 태그에 사용자가 직접 width를 적용해준다.</p>
+
+<p>모바일 해상도를 고려하여 media query를 사용할 것을 권장한다. media query로 웹과 모바일, 여러가지 기기의 해상도를 다양하게 구현할 수 있다.</p>
+
+<p>모바일에서는 CSS의 <code>a:hover</code>, 스크립트의 <code>onmouseover</code>, <code>onmouseenter</code> 등의 기능은 사용하지 않는것이 좋다. 위의 기능들은 웹의 마우스 이벤트에 속한다. 따라서 마우스를 사용하지 않고 터치기능을 사용하는 모바일 기기중에 여러가지 오류가 생길 수 있다.</p>
+
+<h2>격자(Grid)</h2>
+
+<ul>
+<li>그리드 시스템 UI</li>
+</ul>
+
+<p>격자(Grid)는 레이아웃 디자인을 하기 위한 중요한 요소이다. 일반적으로 레이아웃은 <code>&lt;div&gt;</code> 태그와 CSS를 이용해 화면을 분할해 요소를 배치한다. 이러한 화면 분할 방식을 격자시스템은 레이아웃의 틀을 정형화해서 격자 레이아웃 시스템을 제공하는 CSS 프레임워크로는 Blueprint, 960 grid, YUI CSS grids 등이 유명하다.</p>
+
+<p>부트스트랩도 자체적인 격자 레이아웃 시스템을 제공한다. 부트스트랩의 격자 시스템은 12열의 격자(12-column grid)로 이루어져 있으며 <code>기본 버전</code>과 <code>유동 버전(Fluid)</code>이 있다. 또한 다양한 화면 크기에 대응하기 위해 4개의 디자인 형태를 갖는데 이 것은 반응형 디자인과 연관되어 동작한다.</p>
+
+<p>그리드 시스템을 통해 얻을 수 있는 <code>장점</code> 은 아래와 같다.</p>
+
+<ul>
+<li>그리드를 통해 다양한 브라우저 환경속에서도 견고하고 호환성을 충족시키는 레이아웃을 보장</li>
+<li>사전에 정의된 폭크기로 css에 추가적인 작업없이 레이아웃 작업이 용이 </li>
+<li>미디어 쿼리를 이용해 유동적으로 N스크린에 대응하는 그리드 폭으로 변경</li>
+</ul>
+
+<h2>기본 격자 시스템</h2>
+
+<p><img src="images/style-grid-1.png?raw=true" alt=""></p>
+
+<p>위의 그림에서 3번째 행에 해당하는 마크업은 아래와 같이 작성할 수 있으며, 화면에 300px + 20px + 620px 크기의 영역(전체 940px)으로 표현된다.</p>
+
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span4&quot;&gt;…&lt;/div&gt;
+    &lt;div class=&quot;span8&quot;&gt;…&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>기본 격자 시스템(Default grid system)은 940px 고정 너비에 12열 격자로 이루어진다. 행은 <code>.row</code>, 열은 <code>.span*</code>이라는 클래스로 표현되는데, <code>.span*</code> 클래스는 <code>.span1~12</code> 까지 사용할 수 있다. 열 사이의 간격은 20px이며 <code>.span1</code> 클래스의 너비는 60px이다. <code>.span*</code> 클래스의 숫자가 하나씩 증가할 때마다 너비가 80px씩 늘어나 <code>.span12</code> 클래스의 너비는 전체 너비인 940px이 된다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span3&quot;&gt;3&lt;/div&gt;
+         &lt;div class=&quot;span4&quot;&gt;4&lt;/div&gt;
+        &lt;div class=&quot;span5&quot;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span6&quot;&gt;6&lt;/div&gt;
+          &lt;div class=&quot;span6&quot;&gt;6&lt;/div&gt;
+    &lt;/div&gt;
+     &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span12&quot;&gt;12&lt;/div&gt;
+       &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
+
+<p><code>하기 렌더링 되어 보여지는 격자(Grid) 예제들은 이해를 돕기위해 &lt;div&gt; 태그에 추가적인 CSS(.show-grid)를 적용해논 상태이다. 실사용은 상기 예제 코드처럼 작성하기를 바란다.</code></p>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 260px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 280px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -494,26 +567,69 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div>
+    <div class="container">
+        <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">✔ Phone</span></li>
+            <li>Tablet<span class="visible-tablet">✔ Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">✔ Desktop</span></li>
+        </ul>
+    </div>
+
+    <div class="container">
         <div class="row show-grid">
-              <div class="span4">4</div>
-               <div class="span3 offset2">3 offset 2</div>
-          </div><!-- /row -->
-          <div class="row show-grid">
-            <div class="span5 offset1">5 offset 1</div>
-              <div class="span6 offset6">6 offset 6</div>
-          </div><!-- /row -->
-          <div class="row show-grid">
-               <div class="span9 offset3">9 offset 3</div>
-          </div><!-- /row -->
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+        </div>
+        <div class="row show-grid">
+            <div class="span3">3</div>
+             <div class="span4">4</div>
+            <div class="span5">5</div>
+        </div>
+        <div class="row show-grid">
+               <div class="span6">6</div>
+              <div class="span6">6</div>
+        </div>
+         <div class="row show-grid">
+            <div class="span12">12</div>
+           </div>
      </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -542,11 +658,30 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h3>Nesting columns</h3>
+<h3>열 위치 이동하기(Offsetting columns)</h3>
+
+<p>열에 <code>.offset*</code> 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 각 클래스는 왼쪽 여백을 증가 시킨다. 가령 <code>.offset4</code> 클래스를 사용하면 4열 이상 공백을 넣을 수 있다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;span4&quot;&gt;4&lt;/div&gt;
+           &lt;div class=&quot;span3 offset2&quot;&gt;3 offset 2&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span5 offset1&quot;&gt;5 offset 1&lt;/div&gt;
+          &lt;div class=&quot;span6 offset6&quot;&gt;6 offset 6&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+           &lt;div class=&quot;span9 offset3&quot;&gt;9 offset 3&lt;/div&gt;
+      &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style='height: 140px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 260px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -570,26 +705,54 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div class="row show-grid">
-        <div class="span12">
-             Level 1 column
-              <div class="row show-grid">
-                <div class="span6">
-                       Level 2
-                  </div>
-                  <div class="span6">
-                    Level 2
-                  </div>
-            </div>
-           </div>
+    <div class="container">
+        <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">✔ Phone</span></li>
+            <li>Tablet<span class="visible-tablet">✔ Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">✔ Desktop</span></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row show-grid">
+              <div class="span4">4</div>
+               <div class="span3 offset2">3 offset 2</div>
+          </div><!-- /row -->
+          <div class="row show-grid">
+            <div class="span5 offset1">5 offset 1</div>
+              <div class="span6 offset6">6 offset 6</div>
+          </div><!-- /row -->
+          <div class="row show-grid">
+               <div class="span9 offset3">9 offset 3</div>
+          </div><!-- /row -->
      </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_3';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -618,13 +781,32 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h2>Fluid grid system</h2>
+<h3>열 내부에 격자 포함하기(Nesting columns)</h3>
 
-<h3>Live fluid grid example</h3>
+<p>열 내부에 격자를 포함시키려면 <code>.row</code> 클래스와 <code>.span*</code> 클래스가 있는 새로운 <code>&lt;div&gt;</code> 태그를 추가로 지정하면 된다. 단 <code>내부 열의 합이 부모 열의 숫자가 되도록</code> 지정하여야 함에 유의 한다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span12&quot;&gt;
+             Level 1 column
+              &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;span6&quot;&gt;
+                       Level 2
+                  &lt;/div&gt;
+                  &lt;div class=&quot;span6&quot;&gt;
+                    Level 2
+                  &lt;/div&gt;
+            &lt;/div&gt;
+           &lt;/div&gt;
+     &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_4 style='height: 280px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_4 style='height: 140px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_4 name=code_prv_4>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -648,41 +830,56 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div>
-        <div class="row-fluid show-grid">
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-            <div class="span1">1</div>
-        </div>
-        <div class="row-fluid show-grid">
-            <div class="span3">3</div>
-             <div class="span4">4</div>
-            <div class="span5">5</div>
-        </div>
-        <div class="row-fluid show-grid">
-               <div class="span5">5</div>
-              <div class="span7">7</div>
-        </div>
-         <div class="row-fluid show-grid">
-            <div class="span12">12</div>
-           </div>
-     </div>
-                                                                                           
+    <div class="container">
+        <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">✔ Phone</span></li>
+            <li>Tablet<span class="visible-tablet">✔ Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">✔ Desktop</span></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row show-grid">
+            <div class="span12">
+                 Level 1 column
+                  <div class="row show-grid">
+                    <div class="span6">
+                           Level 2
+                      </div>
+                      <div class="span6">
+                        Level 2
+                      </div>
+                </div>
+               </div>
+         </div>
+    </div>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_4';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -711,11 +908,45 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h3>Offsetting columns</h3>
+<h2>유동 격자 시스템(Fluid grid system)</h2>
+
+<p>유동 격자 시스템(Fluid grid system)은 격자 크기를 픽셀이 아닌 퍼센트로 사용한다. 유동 격자 시스템을 사용하려면 행의 클래스를 <code>.row</code>에서 <code>.row-fluid</code>로 바꾸기만 하면 된다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row-fluid&quot;&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;span1&quot;&gt;1&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row-fluid&quot;&gt;
+        &lt;div class=&quot;span3&quot;&gt;3&lt;/div&gt;
+         &lt;div class=&quot;span4&quot;&gt;4&lt;/div&gt;
+        &lt;div class=&quot;span5&quot;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row-fluid&quot;&gt;
+            &lt;div class=&quot;span5&quot;&gt;5&lt;/div&gt;
+          &lt;div class=&quot;span7&quot;&gt;7&lt;/div&gt;
+    &lt;/div&gt;
+     &lt;div class=&quot;row-fluid&quot;&gt;
+        &lt;div class=&quot;span12&quot;&gt;12&lt;/div&gt;
+       &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_5 style='height: 220px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_5 style='height: 280px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_5 name=code_prv_5>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -739,24 +970,69 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div>
+    <div class="container">
+        <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">✔ Phone</span></li>
+            <li>Tablet<span class="visible-tablet">✔ Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">✔ Desktop</span></li>
+        </ul>
+    </div>
+
+    <div class="container">
         <div class="row-fluid show-grid">
-              <div class="span4">4</div>
-          </div><!-- /row-fluid -->
-          <div class="row-fluid show-grid">
-            <div class="span6 offset1">6 offset 1</div>
-          </div><!-- /row-fluid -->
-          <div class="row-fluid show-grid">
-               <div class="span9 offset3">9 offset 3</div>
-          </div><!-- /row-fluid -->
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+            <div class="span1">1</div>
+        </div>
+        <div class="row-fluid show-grid">
+            <div class="span3">3</div>
+             <div class="span4">4</div>
+            <div class="span5">5</div>
+        </div>
+        <div class="row-fluid show-grid">
+               <div class="span5">5</div>
+              <div class="span7">7</div>
+        </div>
+         <div class="row-fluid show-grid">
+            <div class="span12">12</div>
+           </div>
      </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_5';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -785,11 +1061,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
-<h3>Nesting columns</h3>
+<h3>유동 격자 시스템의 열 위치 이동하기(Fluid offsetting)</h3>
+
+<p>위와 마찬가지로 행의 클래스를 <code>.row-fluid</code>로 바꾸기만 하면 된다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row-fluid&quot;&gt;
+          &lt;div class=&quot;span4&quot;&gt;4&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row-fluid&quot;&gt;
+        &lt;div class=&quot;span6 offset1&quot;&gt;6 offset 1&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row-fluid&quot;&gt;
+           &lt;div class=&quot;span9 offset3&quot;&gt;9 offset 3&lt;/div&gt;
+      &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_6 style='height: 140px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_6 style='height: 220px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_6 name=code_prv_6>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -813,26 +1106,52 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script src='./dist/ui/widget-plugins.js'></script>                                                           
     <script src='./dist/ui/widget-scrollview.js'></script>                                                        
   </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
+                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
-    <div class="row-fluid show-grid">
-        <div class="span12">
-             Level 1 column
-              <div class="row-fluid show-grid">
-                <div class="span6">
-                       Level 2
-                  </div>
-                  <div class="span6">
-                    Level 2
-                  </div>
-            </div>
-           </div>
+    <div class="container">
+        <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">✔ Phone</span></li>
+            <li>Tablet<span class="visible-tablet">✔ Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">✔ Desktop</span></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row-fluid show-grid">
+              <div class="span4">4</div>
+          </div><!-- /row-fluid -->
+          <div class="row-fluid show-grid">
+            <div class="span6 offset1">6 offset 1</div>
+          </div><!-- /row-fluid -->
+          <div class="row-fluid show-grid">
+               <div class="span9 offset3">9 offset 3</div>
+          </div><!-- /row-fluid -->
      </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_6';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -861,6 +1180,133 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
+<h3>유동 격자 시스템의 열 내부에 격자 포함하기(Fluid nesting)</h3>
+
+<p>이 경우에는 조금 사용법이 다르다. <code>중첩 열의 합이 열 부모의 수자와 일치하지 않아도 된다</code>에 유의하자. 각 행이 부모 항목의 100% 차지하기 때문이다. 중첩 된 각각의 항목은 부모 사이즈를 기준으로 재설정된다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row-fluid&quot;&gt;
+        &lt;div class=&quot;span6&quot;&gt;
+             Level 1 column
+              &lt;div class=&quot;row-fluid&quot;&gt;
+                &lt;div class=&quot;span6&quot;&gt;
+                       Level 2
+                  &lt;/div&gt;
+                  &lt;div class=&quot;span6&quot;&gt;
+                    Level 2
+                  &lt;/div&gt;
+            &lt;/div&gt;
+           &lt;/div&gt;
+     &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>                                                                                                               
+<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
+                                                                                                       
+<iframe id=preview_prv_7 style='height: 140px;' ></iframe> 
+                                                                                                         
+<textarea id=code_prv_7 name=code_prv_7>                                              
+<!doctype html>                                                                                                   
+<html>                                                                                                            
+  <head>                                                                                                          
+    <meta charset=utf-8>                                                                                          
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
+    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
+    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
+    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
+    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
+    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
+    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
+    <link rel='stylesheet' href='./etc.css' />                                                                    
+    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
+    <script src='./dist/ui/widget-chart.js'></script>                                                             
+    <script src='./dist/ui/widget-datatable.js'></script>                                                         
+    <script src='./dist/ui/widget-editor.js'></script>                                                            
+    <script src='./dist/ui/widget-listview.js'></script>                                                          
+    <script src='./dist/ui/widget-media.js'></script>                                                             
+    <script src='./dist/ui/widget-plugins.js'></script>                                                           
+    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
+  </head>                                                                                                         
+                                                                                            
+  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   
+                                                                                                         
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
+    
+    <div class="container">
+        <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">✔ Phone</span></li>
+            <li>Tablet<span class="visible-tablet">✔ Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">✔ Desktop</span></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row-fluid show-grid">
+            <div class="span6">
+                 Level 1 column
+                  <div class="row-fluid show-grid">
+                    <div class="span6">
+                           Level 2
+                      </div>
+                      <div class="span6">
+                        Level 2
+                      </div>
+                </div>
+               </div>
+         </div>
+    </div>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_7';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
+                                                                      
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
+                                                                      
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
+                                                                                                         
+  </body>                                                                                                         
+</html>                                                                                                           
+</textarea>                                                                                                       
+<script>                                                                                                          
+  var delay_prv_7;                                                                                  
+  var editor_prv_7 = CodeMirror.fromTextArea(document.getElementById('code_prv_7'), { 
+    theme: 'ambiance',                                                                                            
+    lineNumbers: true,                                                                                            
+    mode: 'text/html',                                                                                            
+    tabMode: 'indent',                                                                                            
+    onChange: function() {                                                                                        
+      clearTimeout(delay_prv_7);                                                                    
+      delay_prv_7 = setTimeout(updatePreview_prv_7, 300);                             
+    }                                                                                                             
+  });                                                                                                             
+  function updatePreview_prv_7() {                                                                  
+    var previewFrame = document.getElementById('preview_prv_7');                                    
+    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
+    preview.open();                                                                                               
+    preview.write(editor_prv_7.getValue());                                                         
+    preview.close();                                                                                              
+  }                                                                                                               
+  setTimeout(updatePreview_prv_7, 300);                                                             
+</script>                                                                                                         
+</div>                                                                                                            
+</p>                                                                                                              
+
 <h2>CSS 구조</h2>
 
 <p>Conerstone CSS의 구조 설명 selector 선언 방법 및 Bootstrap 베이스의 네이밍 방법</p>
@@ -883,9 +1329,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <li>옵션
 
 <ul>
-<li>.table-bordered : 반올림 코너와 바깥쪽 테두리를 추가합니다</li>
-<li>.table-striped : 홀수 행 (1, 3, 5 등)로 밝은 회색 배경색을 추가</li>
-<li>.table-condensed : td및 th의 셀 패딩을 8px에서 4px로 줄임</li>
+<li>.table-bordered : 반올림 코너와 바깥쪽 테두리를 추가한다.</li>
+<li>.table-striped : 홀수 행 (1, 3, 5 등)로 밝은 회색 배경색을 추가한다.</li>
+<li>.table-condensed : td및 th의 셀 패딩을 8px에서 4px로 줄인다.</li>
 </ul></li>
 </ul>
 
@@ -897,50 +1343,65 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <h3>CSS Selector 사용법</h3>
 
-<pre><code>    div p &lt;DIV&gt; 요소 내부의 모든 &lt;P&gt; 요소를 선택
-    div&gt;p 부모 &lt;DIV&gt; 요소내에 모든 &lt;P&gt; 요소를 선택
-    div+p 부모 &lt;DIV&gt; 요소 바로 뒤에 배치되는 &lt;P&gt; 요소를 선택
-    input[type=&quot;text&quot;] input type의 text만 선택
+<pre><code>div p &lt;DIV&gt; 요소 내부의 모든 &lt;P&gt; 요소를 선택
+div&gt;p 부모 &lt;DIV&gt; 요소내에 모든 &lt;P&gt; 요소를 선택
+div+p 부모 &lt;DIV&gt; 요소 바로 뒤에 배치되는 &lt;P&gt; 요소를 선택
+input[type=&quot;text&quot;] input type의 text만 선택
 
-    input:focus 포커스를 가진 입력 요소를 선택
-    p:first-letter  모든 &lt;P&gt;의 첫 글자를 선택
-    p:first-line  모든 &lt;P&gt;의 첫 번째 행을 선택
-    p:first-child  부모 &lt;P&gt;의 첫 번째 자식 element를 선택
-    p:before  모든 &lt;P&gt;의 내용 앞에 내용을 삽입
-    p:after  모든 &lt;P&gt; 다음 내용을 삽입
-    p:first-of-type  &lt;p&gt;와  동일한 행의 첫번째 &lt;p&gt;요소 선택
-    p:last-of-type  &lt;p&gt;와 동일한 행의 마지막 &lt;p&gt;요소 선택
-    p:only-of-type  &lt;p&gt;와 동일한 행의 같은 요소를 선택
-    p:only-child   부모&lt;p&gt;의 자식 element 선택
-    p:nth-child(2)  부모&lt;p&gt;의 2번째 자식 노드 선택
-    p:nth-last-child(2)  부모&lt;p&gt;의 뒤에서 2번째 자식 노드 선택
-    p:nth-of-type(2)  &lt;p&gt;의 형제 노드중에 2번째 노드 선택
-    p:nth-last-of-type(2)  &lt;p&gt;의 형제 노드중에 뒤에서 부터 2번째 노드 선택
-    p:last-child  부모 &lt;P&gt;의 마지막 모든 자식 element를 선택
-    p:empty  자식이 없는 모든 &lt;P&gt;를 선택
+input:focus 포커스를 가진 입력 요소를 선택
+p:first-letter  모든 &lt;P&gt;의 첫 글자를 선택
+p:first-line  모든 &lt;P&gt;의 첫 번째 행을 선택
+p:first-child  부모 &lt;P&gt;의 첫 번째 자식 element를 선택
+p:before  모든 &lt;P&gt;의 내용 앞에 내용을 삽입
+p:after  모든 &lt;P&gt; 다음 내용을 삽입
+p:first-of-type  &lt;p&gt;와  동일한 행의 첫번째 &lt;p&gt;요소 선택
+p:last-of-type  &lt;p&gt;와 동일한 행의 마지막 &lt;p&gt;요소 선택
+p:only-of-type  &lt;p&gt;와 동일한 행의 같은 요소를 선택
+p:only-child   부모&lt;p&gt;의 자식 element 선택
+p:nth-child(2)  부모&lt;p&gt;의 2번째 자식 노드 선택
+p:nth-last-child(2)  부모&lt;p&gt;의 뒤에서 2번째 자식 노드 선택
+p:nth-of-type(2)  &lt;p&gt;의 형제 노드중에 2번째 노드 선택
+p:nth-last-of-type(2)  &lt;p&gt;의 형제 노드중에 뒤에서 부터 2번째 노드 선택
+p:last-child  부모 &lt;P&gt;의 마지막 모든 자식 element를 선택
+p:empty  자식이 없는 모든 &lt;P&gt;를 선택
 </code></pre>
 
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./3_1_introduction.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./3_3_responsive_web.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./3_1_introduction.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./3_3_responsive_web.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

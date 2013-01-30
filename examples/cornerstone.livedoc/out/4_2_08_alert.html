@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -148,7 +148,7 @@
               <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+              <a class="third-depth" id="menu_anchor" href="./4_2_08_alert.html">Alerts</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -290,16 +296,16 @@
 
 <p>기본 경고창은 <code>.alert</code> 클래스로 경고를 보여줄 내용을 감싸준다. <code>.alert</code> 클래스 내부의  <code>닫기 버튼</code>은 옵션이므로 닫기 기능이 필요한 경우에 넣는다.</p>
 
-<pre><code>    &lt;div class=&quot;alert&quot;&gt;
-      &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/button&gt;
-      &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you&#39;re not looking too good.
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;alert&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/button&gt;
+  &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you&#39;re not looking too good.
+&lt;/div&gt;
 </code></pre>
 
 <h3>닫기 버튼(Dismiss buttons)</h3>
 
-<pre><code>    &lt;a href=&quot;#&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/a&gt;
-    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/button&gt;
+<pre><code>&lt;a href=&quot;#&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/a&gt;
+&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/button&gt;
 </code></pre>
 
 <p>닫기 버튼은 플러그인을 통해 작동이 가능하다. 작동방식은 html5 data-attribute를 사용하는 방법과 javascript를 이용하는 방법이 있다. javascript를 이용하는 방법은 플러그인에서 설명하므로 여기에서는 사용되는 예시와 설명은 data-attribute 방식이다. 닫기 버튼은 <code>&lt;a&gt;</code> 태그와 <code>&lt;button&gt;</code> 태그로 만들 수 있으며 <code>&lt;a&gt;</code> 태그인 경우 <code>href=&quot;#&quot;</code> 속성이 필수적으로 들어가야 한다. <code>&lt;button&gt;</code> 태그의 경우 <code>&lt;form&gt;</code> 태그 안에서 사용되는 경우라면 <code>type=&quot;button&quot;</code>  속성이 들어가야 한다.</p>
@@ -310,38 +316,38 @@
 
 <p>경고 메세지가 긴 경우 <code>.alert</code> 클래스에 <code>.alert-block</code> 클래스를 추가해서 위, 아래 여백이 증가되므로 좀더 가독성이 높은 UI를 구성할 수 있다.</p>
 
-<pre><code>    &lt;div class=&quot;alert alert-block&quot;&gt;
-      &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/button&gt;
-      &lt;h4&gt;Warning!&lt;/h4&gt;
-      Best check yo self, you&#39;re not...
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;alert alert-block&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/button&gt;
+  &lt;h4&gt;Warning!&lt;/h4&gt;
+  Best check yo self, you&#39;re not...
+&lt;/div&gt;
 </code></pre>
 
 <p><strong>에러 메세지</strong></p>
 
 <p>여러가지 에러에 대한 메세지를 표현 할때 <code>.alert-error</code> 클래스를 추가한다.</p>
 
-<pre><code>    &lt;div class=&quot;alert alert-error&quot;&gt;
-      ...
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;alert alert-error&quot;&gt;
+  ...
+&lt;/div&gt;
 </code></pre>
 
 <p><strong>성공 메세지</strong></p>
 
 <p>성공에 대한 메세지를 표현 할때 <code>.alert-success</code> 클래스를 추가한다.</p>
 
-<pre><code>    &lt;div class=&quot;alert alert-success&quot;&gt;
-      ...
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;alert alert-success&quot;&gt;
+  ...
+&lt;/div&gt;
 </code></pre>
 
 <p><strong>안내 메세지</strong></p>
 
 <p>안내에 대한 메세지를 표현 할때 <code>.alert-info</code> 클래스를 추가한다.</p>
 
-<pre><code>    &lt;div class=&quot;alert alert-info&quot;&gt;
-      ...
-    &lt;/div&gt;
+<pre><code>&lt;div class=&quot;alert alert-info&quot;&gt;
+  ...
+&lt;/div&gt;
 </code></pre>
 
 <script src='lib/codemirror.js'></script>                                                                         
@@ -359,13 +365,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 619px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 619px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -392,6 +400,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Default alert 예제</h3>
     <div class="alert">
@@ -424,9 +433,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         <button type="button" class="close" data-dismiss="alert">×</button>
         Info Message
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -459,23 +487,38 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_2_07_thumbnail.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_2_09_progress_bar.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_2_07_thumbnail.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_2_09_progress_bar.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

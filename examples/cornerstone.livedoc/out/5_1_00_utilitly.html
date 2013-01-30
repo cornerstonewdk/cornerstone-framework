@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -232,7 +232,7 @@
               <a class="first-depth">Util</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+              <a class="second-depth" id="menu_anchor" href="./5_1_00_utilitly.html">유틸리티</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -288,35 +294,38 @@
 
 <p>유틸리티는 다른 부분과의 의존성 없이 단독으로 사용할 수 있는 라이브러리 집합이다. 크게 네 가지로 나눌 수 있고, 각각은 require.js 모듈로 제공되며 모듈명은 다음과 같다.</p>
 
-<table><thead>
-<tr>
-<th align="left">모듈명</th>
-<th align="left">설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">transition</td>
-<td align="left">화면 전환(Transition) 유틸리티</td>
-</tr>
-<tr>
-<td align="left">device</td>
-<td align="left">웹으로는 구현 불가능한 단말기의 Native 기능들을 제공하는 런타임 유틸리티</td>
-</tr>
-<tr>
-<td align="left">jsonp</td>
-<td align="left">다른 도메인의 서버에서 데이터를 가져오는 JSON 유틸리티</td>
-</tr>
-<tr>
-<td align="left">skt</td>
-<td align="left">SKT Open API 서버와 통신하는 유틸리티</td>
-</tr>
-<tr>
-<td align="left">logging</td>
-<td align="left">다양한 방법으로 로그를 남길 수 있는 유틸리티</td>
-</tr>
-</tbody></table>
+<table class="table table-bordered ">
+<thead>
+    <tr>
+        <th class="fixed_table">모듈명</th>
+        <th >설명</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td class="fixed_table"><a href="./5_1_01_transition.html" target="_blank">transition</a></td>
+        <td >화면 전환(Transition) 유틸리티 </td>
+    </tr>
+    <tr>
+        <td class="fixed_table"><a href="./5_1_02_device_API.html" target="_blank">device</a></td>
+        <td >웹으로는 구현 불가능한 단말기의 Native 기능들을 제공하는 런타임 유틸리티</td>
+    </tr>
+    <tr>
+        <td class="fixed_table"><a href="./5_1_03_JSONP.html" target="_blank">jsonp</a></td>
+        <td >다른 도메인의 서버에서 데이터를 가져오는 JSON 유틸리티</td>
+    </tr>
+    <tr>
+        <td class="fixed_table"><a href="./5_1_04_SKT_open_API.html" target="_blank">skt</a></td>
+        <td >SKT Open API 서버와 통신하는 유틸리티</td>
+    </tr>
+    <tr>
+        <td class="fixed_table"><a href="./5_1_05_logging.html" target="_blank">logging</a></td>
+        <td >다양한 방법으로 로그를 남길 수 있는 유틸리티</td>
+    </tr>
+</tbody>
+</table>
 
-<p>이 중 device 모듈은 Cornerstone Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다.</p>
+<p>이 중 device 모듈은 Cornerstone Framework의 Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다.</p>
 
 <p>각각은 require.js 모듈이므로 다음과 같이 사용할 수 있다.</p>
 
@@ -384,23 +393,38 @@
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_4_06_data_table.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./5_1_01_transition.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_4_06_data_table.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./5_1_01_transition.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

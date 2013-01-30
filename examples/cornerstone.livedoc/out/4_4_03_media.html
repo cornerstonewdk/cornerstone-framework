@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -217,7 +217,7 @@
               <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+              <a class="third-depth" id="menu_anchor" href="./4_4_03_media.html">Media</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -284,20 +290,20 @@
             <div>
   <h3>Media</h3>
 
-<p>반응형 웹으로 동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어.</p>
+<p>동일한 마크업으로 각 디바이스별로 최적화된 화면을 보여주며 다양한 인코딩을 지원하는 미디어 위젯. Cornerstone의 반응형 웹 기술이 적용됨.</p>
 
-<p><img src="http://azamara.io/img/media-support.png" alt="&lt;미디어 지원표&gt;"></p>
+<p><img src="images/4.4.03.media-support.png" alt="&lt;미디어 지원표&gt;"></p>
 
 <p>출처: mediaelement.js</p>
 
 <p>의존성</p>
 
-<pre><code>    &lt;!-- 차트를 위한 스타일시트 --&gt;
-    &lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-media.css&#39; /&gt;
-    &lt;!-- jQuery: 위젯 피처드 사용을 위한 jquery.js  --&gt;
-    &lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
-    &lt;!-- 코너스톤 UI 기본 설정, DATA-API 기능 추가 --&gt;
-    &lt;script src=&#39;./dist/ui/widget-media.js&#39;&gt;&lt;/script&gt;
+<pre><code>&lt;!-- 차트를 위한 스타일시트 --&gt;
+&lt;link rel=&#39;stylesheet&#39; href=&#39;./dist/ui/widget-media.css&#39; /&gt;
+&lt;!-- jQuery: 피처드 위젯 사용을 위한 jquery.js  --&gt;
+&lt;script src=&#39;./dist/lib/jquery-1.8.1.min.js&#39;&gt;&lt;/script&gt;
+&lt;!-- Cornerstone UI 기본 설정, DATA-API 기능 추가 --&gt;
+&lt;script src=&#39;./dist/ui/widget-media.js&#39;&gt;&lt;/script&gt;
 </code></pre>
 
 <h3>사용법</h3>
@@ -321,13 +327,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -354,24 +362,44 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Media</h3>
     <!-- data-featured="media"를 정의하므로 미디어를 적용한다. -->
     <div class="featured-video">
-        <video width="400" height="300" data-featured="media" preload="none" >
+        <video width="250" height="200" data-featured="media" preload="none" >
             <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
             <source type="video/mp4" src="./sample-data/sample-media.mp4"/>
             <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-            <object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+            <object width="250" height="200" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
                 <param name="movie" value="./dist/ui/flashmediaelement.swf"/>
                 <param name="flashvars"
                           value="controls=true&file=./sample-data/sample-media.mp4"/>
             </object>
         </video>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -404,7 +432,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -431,15 +461,16 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Media</h3>
     <!-- id값을 정의하고 해당 id값에 $('#example').featuredMedia(); 스크립트를 통해 미디어를 적용한다.  -->
     <div class="featured-video">
-        <video width="400" height="300" id="example" preload="none" >
+        <video width="250" height="200" id="example" preload="none" >
             <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
             <source type="video/mp4" src="./sample-data/sample-media.mp4"/>
             <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-            <object width="400" height="300" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
+            <object width="250" height="200" type="application/x-shockwave-flash" data="./dist/ui/flashmediaelement.swf">
                 <param name="movie" value="./dist/ui/flashmediaelement.swf"/>
                 <param name="flashvars"
                           value="controls=true&file=./sample-data/sample-media.mp4"/>
@@ -451,9 +482,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             $('audio,video').featuredMedia();
         };
     </script>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -658,27 +708,56 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered").each(function(i) {
+    var $this = $(this);
+    if(i == 1) {
+        $this.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+    } else {
+        $this.find("thead tr > th:not(th:nth-child(3))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(3))").addClass("fixed_table");
+    }
+});
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_4_02_list_view.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_4_04_editor.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_4_02_list_view.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_4_04_editor.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

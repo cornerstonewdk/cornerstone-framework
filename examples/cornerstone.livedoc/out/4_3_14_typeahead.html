@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -199,7 +199,7 @@
               <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_14_typeahead.html">Typeahead</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -285,6 +291,18 @@
   <h2>Typeahead</h2>
 
 <p>텍스트 입력상자에 typeahead (자동완성) 를 손쉽게 만들기 위한 플러그인.</p>
+
+<h3>사용법</h3>
+
+<p>$(&ldquo;#example&rdquo;).typeahead();</p>
+
+<p>DATA-API(data-attribute)방식, $(&ldquo;#example&rdquo;).typeahead(); 자바스크립트 방식을 사용할 수 있다.</p>
+
+<ul>
+<li><code>data-provide=&quot;typeahead&quot;</code>는 자동완성 기능을 사용하기 위한 엘리먼트에 이 속성을 추가해야 한다.</li>
+<li><code>data-items=&quot;숫자&quot;</code>는 자동완성기능을 사용할 떄 드롭다운에 보여질 아이템의 최대 개수를 지정하기 위해 엘리먼트에 이 속성을 추가해야 한다.</li>
+<li><code>data-source=[]</code>는 자동완성기능을 사용할 떄 입력된 정보와 매칭되는 데이터를 조회하기 위한 데이터 소스를 지정하기 위해 엘리먼트에 이 속성을 추가해야 한다.</li>
+</ul>
 
 <h4>DATA-API(data-attribute)를 이용하는 방식</h4>
 
@@ -305,13 +323,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 300px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -338,13 +358,13 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Typeahead</h3>
     <input type="text" class="span12" style="margin: 0 auto;" data-provide="typeahead" data-items="4"
                                data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -377,7 +397,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style=''></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 300px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -404,6 +426,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Typeahead</h3>
     <input id="typeahead" type="text" class="span12" style="margin: 0 auto;" data-items="4">
@@ -415,9 +438,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -458,15 +480,21 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </thead><tbody>
 <tr>
 <td align="left">source</td>
-<td align="center">array</td>
+<td align="center">array,function</td>
 <td align="left">[]</td>
-<td align="left">쿼리를 위한 데이타 소스.</td>
+<td align="left">쿼리를 위한 데이타 소스. 배열이나 함수 형태로 사용할 수 있으며, 함수는 2개의 매개변수를 갖는다. 첫 번째 매개변수는 입력상자의 값이며, 두 번째 매개변수는 콜백을 처리하는 함수이다. 콜백 함수를 통해 직접 또는 비동기적 데이터 소스 반환을 할 수 있다.</td>
 </tr>
 <tr>
 <td align="left">items</td>
 <td align="center">number</td>
 <td align="left">8</td>
 <td align="left">드롭다운에 보여질 아이템의 최대 개수.</td>
+</tr>
+<tr>
+<td align="left">minLength</td>
+<td align="center">number</td>
+<td align="left">1</td>
+<td align="left">자동완성을 발생시키기 위한 최소의 문자 캐릭터 수.</td>
 </tr>
 <tr>
 <td align="left">matcher</td>
@@ -479,6 +507,12 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <td align="center">function</td>
 <td align="left">exact match,case sensitive,case insensitive</td>
 <td align="left">자동완성 결과를 정렬하는데 사용되는 메소드. 하나의 items 전달인자를 받아들이고 typeahead 인스턴스의 범위를 가지고 있다. this.query 으로 현재의 쿼리를 얻을 수 있다.</td>
+</tr>
+<tr>
+<td align="left">updater</td>
+<td align="center">function</td>
+<td align="left">returns selected item</td>
+<td align="left">선택한 아이템을 반환하는 메서드.</td>
 </tr>
 <tr>
 <td align="left">highlighter</td>
@@ -506,27 +540,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+$table.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_13_motioncaptcha.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_15_collapse.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_13_motioncaptcha.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_15_collapse.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

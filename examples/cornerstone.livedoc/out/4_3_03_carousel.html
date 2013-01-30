@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -166,7 +166,7 @@
               <a class="third-depth" href="./4_3_02_button.html">Button</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_03_carousel.html">Carousel</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -288,40 +294,49 @@
 
 <h3>사용법</h3>
 
-<p>캐로셀은 기본적으로 $(&#39;#example&#39;).carousel() 자바스크립트 형태로 선언해서 사용해야되며,
-캐로셀에서 DATA-API(data-slide=&ldquo;swipe&rdquo;, data-slide=&ldquo;prev&rdquo;, data-slide=&ldquo;next&rdquo; )은 이미지를 이동하는 기능을 활성화 시키기 위해 사용된다.
-이미지 이동 기능 또한 자바스크립트 형태로 사용하고 싶은 경우엔 아래와 같은 형태로 사용하면 된다.</p>
+<p>캐로셀은 기본적으로 $(&#39;#example&#39;).carousel() 자바스크립트 형태로 선언해서 사용해야되며,</p>
 
-<pre><code>    // 캐로셀 플러그인 적용
-    var $carousel = $(&quot;.carousel&quot;).carousel({
-        interval: 3000
-    // 스와이프 이벤트를 이용해서 이미지 이동.
-    }).swipe().on(&quot;swipeRight&quot;, function(e) { // 모바일에서 swipe를 이용
-        $(&quot;.carousel&quot;).carousel(&quot;prev&quot;);
-    }).on(&quot;swipeLeft&quot;, function(e) {
-        $(&quot;.carousel&quot;).carousel(&quot;next&quot;);
-    });
+<ul>
+<li>캐로셀에서 DATA-API(data-slide=&ldquo;swipe&rdquo;, data-slide=&ldquo;prev&rdquo;, data-slide=&ldquo;next&rdquo; )은 이미지를 이동하는 기능을 활성화 시키기 위해 사용된다.
 
-    // 좌우 화살표 버튼을 눌러서 이미지 이동
-    $carousel.find(&quot;.carousel-control.left&quot;).on(&quot;click&quot;, function() {
-        $(&quot;.carousel&quot;).carousel(&quot;prev&quot;);
-    });
-    $carousel.find(&quot;.carousel-control.right&quot;).on(&quot;click&quot;, function() {
-        $(&quot;.carousel&quot;).carousel(&quot;next&quot;);
-    });
+<ul>
+<li><code>data-slide=&quot;swipe&quot;</code>는 타겟이 되는 캐로셀 엘리먼트에 적용해서 <code>swipe</code>를 사용할 수 있도록 기능을 활성화 시킨다.</li>
+<li><code>data-slide=&quot;prev&quot;</code>는 캐로셀의 왼쪽 화살표 엘리먼트에 적용해서 이전 화면으로 이동하도록 기능을 활성화 시킨다.</li>
+<li><code>data-slide=&quot;next&quot;</code>는 캐로셀의 오른쪽 화살표 엘리먼트에 적용해서 다음 화면으로 이동하도록 기능을 활성화 시킨다.</li>
+</ul></li>
+<li>javascript 방식을 사용해서 이미지 이동 기능 사용하고 싶은 경우엔 아래와 같은 형태로 사용해야 한다.</li>
+</ul>
+
+<pre><code>// 캐로셀 플러그인 적용
+var $carousel = $(&quot;.carousel&quot;).carousel({
+    interval: 3000
+// 스와이프 이벤트를 이용해서 이미지 이동.
+}).swipe().on(&quot;swipeRight&quot;, function(e) { // 모바일에서 swipe를 이용
+    $(&quot;.carousel&quot;).carousel(&quot;prev&quot;);
+}).on(&quot;swipeLeft&quot;, function(e) {
+    $(&quot;.carousel&quot;).carousel(&quot;next&quot;);
+});
+
+// 좌우 화살표 버튼을 눌러서 이미지 이동
+$carousel.find(&quot;.carousel-control.left&quot;).on(&quot;click&quot;, function() {
+    $(&quot;.carousel&quot;).carousel(&quot;prev&quot;);
+});
+$carousel.find(&quot;.carousel-control.right&quot;).on(&quot;click&quot;, function() {
+    $(&quot;.carousel&quot;).carousel(&quot;next&quot;);
+});
 </code></pre>
 
 <h4>애니메이션 설정 방법</h4>
 
 <p>캐로셀의 애니메이션은 CSS를 통해 사용된다. 기본적으로 코너스톤에 정의된 애니메이션 설정은 아래와 같다</p>
 
-<pre><code>    .carousel {
-        -webkit-transform: translate3d(0, 0, 0); /* 모바일등 환경에서 성능 향상을 위해 CSS 하드웨어 가속을 활성화시킨다.  */
-        -webkit-transition: 0.35s ease left;
-        -moz-transition: 0.35s ease left;
-        -o-transition: 0.35s ease left;
-        transition: 0.35s ease left; /* transition 속성의 값은 시간, 이징(easing), 방향으로 이뤄져 있다. */
-    }
+<pre><code>.carousel {
+    -webkit-transform: translate3d(0, 0, 0); /* 모바일등 환경에서 성능 향상을 위해 CSS 하드웨어 가속을 활성화시킨다.  */
+    -webkit-transition: 0.35s ease left;
+    -moz-transition: 0.35s ease left;
+    -o-transition: 0.35s ease left;
+    transition: 0.35s ease left; /* transition 속성의 값은 시간, 이징(easing), 방향으로 이뤄져 있다. */
+}
 </code></pre>
 
 <p>위 코드를 오버라이드 또는 새로은 클래스를 사용자가 정의해서 시간과 이징(easing) 효과를 커스텀하게 만들어서 사용할 수 있다.</p>
@@ -343,13 +358,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 650px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 800px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -376,6 +393,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Carousel</h3>
     <div class="widget-carousel">
@@ -383,31 +401,24 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <!-- Carousel items -->
             <div class="carousel-inner">
                 <div class="active item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img src="images/carousel-01.jpg" alt="">
                     <div class="carousel-caption">
                         <h4>첫번째 이미지 타이틀</h4>
                         <p>첫번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <img src="images/carousel-02.jpg" alt="">
                     <div class="carousel-caption">
                         <h4>두번째 이미지 타이틀</h4>
                         <p>두번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img src="images/carousel-03.jpg" alt="">
                     <div class="carousel-caption">
-                        <h4>첫번째 이미지 타이틀</h4>
-                        <p>첫번째 이미지 설명 텍스트</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
-                    <div class="carousel-caption">
-                        <h4>두번째 이미지 타이틀</h4>
-                        <p>두번째 이미지 설명 텍스트</p>
+                        <h4>세번째 이미지 타이틀</h4>
+                        <p>세번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
             </div>
@@ -423,9 +434,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -458,7 +468,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 650px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 800px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -485,6 +497,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Carousel</h3>
     <div class="widget-carousel">
@@ -492,31 +505,24 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <!-- Carousel items -->
             <div class="carousel-inner">
                 <div class="active item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img src="images/carousel-01.jpg" alt="">
                     <div class="carousel-caption">
                         <h4>첫번째 이미지 타이틀</h4>
                         <p>첫번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <img src="images/carousel-02.jpg" alt="">
                     <div class="carousel-caption">
                         <h4>두번째 이미지 타이틀</h4>
                         <p>두번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img src="images/carousel-03.jpg" alt="">
                     <div class="carousel-caption">
-                        <h4>첫번째 이미지 타이틀</h4>
-                        <p>첫번째 이미지 설명 텍스트</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
-                    <div class="carousel-caption">
-                        <h4>두번째 이미지 타이틀</h4>
-                        <p>두번째 이미지 설명 텍스트</p>
+                        <h4>세번째 이미지 타이틀</h4>
+                        <p>세번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
             </div>
@@ -528,7 +534,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <script type="text/javascript">
         window.onload = function() {
             // 캐로셀 플러그인 적용
-            var = $(".carousel").carousel({
+            var $carousel = $(".carousel").carousel({
                 interval: 3000
             // 스와이프 이벤트를 이용해서 이미지 이동.
             }).swipe().on("swipeRight", function(e) { // 모바일에서 swipe를 이용
@@ -546,9 +552,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -659,7 +664,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style='height: 700px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 800px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -686,6 +693,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Carousel</h3>
     <div class="widget-carousel">
@@ -693,31 +701,24 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             <!-- Carousel items -->
             <div class="carousel-inner">
                 <div class="active item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img src="images/carousel-01.jpg" alt="">
                     <div class="carousel-caption">
                         <h4>첫번째 이미지 타이틀</h4>
                         <p>첫번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <img src="images/carousel-02.jpg" alt="">
                     <div class="carousel-caption">
                         <h4>두번째 이미지 타이틀</h4>
                         <p>두번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img src="images/carousel-03.jpg" alt="">
                     <div class="carousel-caption">
-                        <h4>첫번째 이미지 타이틀</h4>
-                        <p>첫번째 이미지 설명 텍스트</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
-                    <div class="carousel-caption">
-                        <h4>두번째 이미지 타이틀</h4>
-                        <p>두번째 이미지 설명 텍스트</p>
+                        <h4>세번째 이미지 타이틀</h4>
+                        <p>세번째 이미지 설명 텍스트</p>
                     </div>
                 </div>
             </div>
@@ -748,9 +749,8 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             });
         };
     </script>
-                                                                                           
-                                                                      
-                                                                      
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -779,27 +779,59 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered").each(function(i) {
+    var $this = $(this);
+    if(i == 2) {
+        $this.find("thead tr > th:first-child").addClass("fixed_table");
+        $this.find("tbody tr > td:first-child").addClass("fixed_table");
+    } else if(i == 2) {
+        $this.find("thead tr > th:not(th:nth-child(3))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(3))").addClass("fixed_table");
+    } else {
+        $this.find("thead tr > th:not(th:nth-child(4))").addClass("fixed_table");
+        $this.find("tbody tr > td:not(td:nth-child(4))").addClass("fixed_table");
+    }
+});
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_02_button.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_04_dropdown.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_02_button.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_04_dropdown.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

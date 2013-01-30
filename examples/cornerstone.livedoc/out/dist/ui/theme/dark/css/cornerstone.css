@@ -1,3 +1,9 @@
+/*
+    Cornerstone Framework v0.9.1
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
 .clearfix {
   *zoom: 1;
 }
@@ -387,7 +393,7 @@ input.ipt-orange:focus,
 textarea.ipt-orange:focus {
   border: 1px solid rgba(255, 107, 28, 0.7);
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
   -webkit-box-shadow: 0 0 8px rgba(255, 205, 178, 0.6);
@@ -540,7 +546,7 @@ select {
 select:focus {
   border: 0;
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
 }
@@ -575,7 +581,6 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
-  color: #1f1f20;
   opacity: 1;
   filter: alpha(opacity=100);
 }
@@ -637,7 +642,6 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
-  color: #1f1f20;
   opacity: 1;
   filter: alpha(opacity=100);
 }
@@ -697,7 +701,6 @@ select:focus {
   background-image: linear-gradient(to bottom, #5c6267, #41474c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5c6267', endColorstr='#ff41474c', GradientType=0);
-  color: #1f1f20;
 }
 .help-inline i {
   width: 22px;
@@ -781,7 +784,6 @@ select:focus {
 .control-group.warning {
   position: relative;
 }
-.control-group.warning > label,
 .control-group.warning .help-block,
 .control-group.warning .help-inline {
   color: #993f08;
@@ -834,7 +836,6 @@ select:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px rgba(241, 241, 10, 0.64);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px rgba(241, 241, 10, 0.64);
 }
-.control-group.warning > label,
 .control-group.warning .help-block,
 .control-group.warning .help-inline {
   color: #993f08;
@@ -861,7 +862,6 @@ select:focus {
 .control-group.error {
   position: relative;
 }
-.control-group.error > label,
 .control-group.error .help-block,
 .control-group.error .help-inline {
   color: #872a2b;
@@ -914,7 +914,6 @@ select:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px rgba(255, 16, 16, 0.64);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px rgba(255, 16, 16, 0.64);
 }
-.control-group.error > label,
 .control-group.error .help-block,
 .control-group.error .help-inline {
   color: #872a2b;
@@ -941,7 +940,6 @@ select:focus {
 .control-group.success {
   position: relative;
 }
-.control-group.success > label,
 .control-group.success .help-block,
 .control-group.success .help-inline {
   color: #3c5d20;
@@ -994,7 +992,6 @@ select:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px rgba(20, 243, 20, 0.64);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px rgba(20, 243, 20, 0.64);
 }
-.control-group.success > label,
 .control-group.success .help-block,
 .control-group.success .help-inline {
   color: #3c5d20;
@@ -1018,7 +1015,6 @@ select:focus {
 .control-group.success textarea:focus {
   border: none;
 }
-.control-group.info > label,
 .control-group.info .help-block,
 .control-group.info .help-inline {
   color: #184f6a;
@@ -1071,7 +1067,6 @@ select:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px #2b8dbd;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px #2b8dbd;
 }
-.control-group.info > label,
 .control-group.info .help-block,
 .control-group.info .help-inline {
   color: #184f6a;
@@ -1098,7 +1093,6 @@ select:focus {
 .control-group.disabled {
   position: relative;
 }
-.control-group.disabled > label,
 .control-group.disabled .help-block,
 .control-group.disabled .help-inline {
   color: #1f1f20;
@@ -1151,7 +1145,6 @@ select:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px #515154;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 6px #515154;
 }
-.control-group.disabled > label,
 .control-group.disabled .help-block,
 .control-group.disabled .help-inline {
   color: #1f1f20;
@@ -1179,6 +1172,7 @@ select:focus {
   font-size: 18px;
   line-height: 26px;
   background: url('../img/bg_input.png') repeat-x left top;
+  background-size: 15px 40px;
 }
 .control-group {
   margin-bottom: 0;
@@ -1302,9 +1296,9 @@ input:checked + .inp-radio:after {
 }
 input.search-query {
   padding-right: 14px;
-  padding-right: 4px \9;
+  padding-right: 4px  \9;
   padding-left: 14px;
-  padding-left: 4px \9;
+  padding-left: 4px  \9;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
 
   margin-bottom: 0;
@@ -1410,7 +1404,7 @@ input.search-query {
 .select-box input:focus {
   border: 1px solid transparent;
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
   box-shadow: none;
@@ -1548,7 +1542,7 @@ input.search-query {
   border: 0;
   padding: 5px;
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted  \9;
   /* IE6-9 */
 
   box-shadow: none;
@@ -1800,6 +1794,99 @@ input.search-query {
 .btn i {
   display: inline-block;
   line-height: 20px;
+}
+.btn i[class*=csicon-] {
+  margin: 0 -2px -7px -2px;
+}
+.btn:hover .csicon-about,
+.btn:active .csicon-about,
+.btn.active .csicon-about {
+  background-position: -146.5px -154px;
+}
+.btn:hover .csicon-favorites,
+.btn:active .csicon-favorites,
+.btn.active .csicon-favorites {
+  background-position: -146px -199px;
+}
+.btn:hover .csicon-user,
+.btn:active .csicon-user,
+.btn.active .csicon-user {
+  background-position: -145.5px -243px;
+}
+.btn:hover .csicon-downloads,
+.btn:active .csicon-downloads,
+.btn.active .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.btn:hover .csicon-settings,
+.btn:active .csicon-settings,
+.btn.active .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.btn:hover .csicon-up,
+.btn:active .csicon-up,
+.btn.active .csicon-up {
+  background-position: -146px -378.5px;
+}
+.btn:hover .csicon-down,
+.btn:active .csicon-down,
+.btn.active .csicon-down {
+  background-position: -146px -423px;
+}
+.btn:hover .csicon-message,
+.btn:active .csicon-message,
+.btn.active .csicon-message {
+  background-position: -146.5px -466px;
+}
+.btn:hover .csicon-list,
+.btn:active .csicon-list,
+.btn.active .csicon-list {
+  background-position: -145.5px -511px;
+}
+.btn:hover .csicon-write,
+.btn:active .csicon-write,
+.btn.active .csicon-write {
+  background-position: -145.5px -556px;
+}
+.btn:hover .csicon-mail,
+.btn:active .csicon-mail,
+.btn.active .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.btn:hover .csicon-save,
+.btn:active .csicon-save,
+.btn.active .csicon-save {
+  background-position: -145.5px -645px;
+}
+.btn:hover .csicon-search,
+.btn:active .csicon-search,
+.btn.active .csicon-search {
+  background-position: -145.5px -689px;
+}
+.btn:hover .csicon-connect,
+.btn:active .csicon-connect,
+.btn.active .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.btn:hover .csicon-users,
+.btn:active .csicon-users,
+.btn.active .csicon-users {
+  background-position: -146px -778px;
+}
+.btn:hover .csicon-home,
+.btn:active .csicon-home,
+.btn.active .csicon-home {
+  background-position: -145.5px -823px;
+}
+.btn:hover .csicon-right,
+.btn:active .csicon-right,
+.btn.active .csicon-right {
+  background-position: -146px -868px;
+}
+.btn:hover .csicon-left,
+.btn:active .csicon-left,
+.btn.active .csicon-left {
+  background-position: -146px -913px;
 }
 .btn-large {
   padding: 11px 20px;
@@ -3743,12 +3830,6 @@ button.btn.btn-mini {
 .nav.pull-right > li:last-child a i {
   margin: 0;
 }
-.navbar.ico-txt .nav > li a,
-.navbar.ico-txt .nav > li a:hover,
-.navbar.ico-txt .nav > li a:active,
-.navbar.ico-txt .nav > li.active a {
-  padding: 7px 13px 5px;
-}
 .navbar.ico-txt .nav.pull-right > li:last-child a,
 .navbar.ico-txt .nav.pull-right > li:last-child a:hover,
 .navbar.ico-txt .nav.pull-right > li:last-child a:active,
@@ -3763,14 +3844,6 @@ button.btn.btn-mini {
 }
 .ico-txt .nav > li a i {
   margin-right: 3px;
-}
-.nav-icon .nav > li a,
-.nav-icon .nav > li a:hover,
-.nav-icon .nav > li a:active,
-.nav-icon .nav > li.active a {
-  font-size: 0;
-  line-height: 0;
-  padding: 7px 13px 5px;
 }
 .navbar .btn-navbar,
 .navbar .btn-navbar:hover,
@@ -3984,131 +4057,149 @@ button.btn.btn-mini {
   background: #212121;
   padding: 6px 10px;
 }
-.icon-con-home {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -824px;
+.navbar .nav > li .csicon-about {
+  background-position: -191px -154px;
 }
-.navbar .nav > li a:hover .icon-con-home,
-.navbar .nav > li a:active .icon-con-home,
-.navbar .nav > li.active a .icon-con-home {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -824px;
+.navbar .nav > li .csicon-favorites {
+  background-position: -190.5px -199px;
 }
-.icon-message {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -467px;
+.navbar .nav > li .csicon-user {
+  background-position: -190px -243px;
 }
-.navbar .nav > li a:hover .icon-message,
-.navbar .nav > li a:active .icon-message,
-.navbar .nav > li.active a .icon-message {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -467px;
+.navbar .nav > li .csicon-downloads {
+  background-position: -190px -288px;
 }
-.icon-mail {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -602px;
+.navbar .nav > li .csicon-settings {
+  background-position: -190px -333px;
 }
-.navbar .nav > li a:hover .icon-mail,
-.navbar .nav > li a:active .icon-mail,
-.navbar .nav > li.active a .icon-mail {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -602px;
+.navbar .nav > li .csicon-up {
+  background-position: -190.5px -378.5px;
 }
-.icon-save {
-  width: 22px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -193px -646px;
+.navbar .nav > li .csicon-down {
+  background-position: -190.5px -423px;
 }
-.navbar .nav > li a:hover .icon-save,
-.navbar .nav > li a:active .icon-save,
-.navbar .nav > li.active a .icon-save {
-  width: 22px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -646px;
+.navbar .nav > li .csicon-message {
+  background-position: -191px -466px;
 }
-.icon-user2 {
-  width: 27px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -779px;
+.navbar .nav > li .csicon-list {
+  background-position: -190px -511px;
 }
-.navbar .nav > li a:hover .icon-user2,
-.navbar .nav > li a:active .icon-user2,
-.navbar .nav > li.active a .icon-user2 {
-  width: 27px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -779px;
+.navbar .nav > li .csicon-write {
+  background-position: -190px -556px;
 }
-.icon-connect {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -191px -734px;
+.navbar .nav > li .csicon-mail {
+  background-position: -190px -601px;
 }
-.nav-icon .nav > li a:hover .icon-connect,
-.nav-icon .nav > li a:active .icon-connect,
-.nav-icon .nav > li.active a .icon-connect {
-  width: 26px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -147px -734px;
+.navbar .nav > li .csicon-save {
+  background-position: -190px -645px;
 }
-.icon-search {
-  width: 24px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -192px -690px;
+.navbar .nav > li .csicon-search {
+  background-position: -190px -689px;
 }
-.navbar .nav > li a:hover .icon-search,
-.navbar .nav > li a:active .icon-search,
-.navbar .nav > li.active a .icon-search {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -690px;
+.navbar .nav > li .csicon-connect {
+  background-position: -190px -733.5px;
 }
-.icon-write {
-  width: 28px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -190px -557px;
+.navbar .nav > li .csicon-users {
+  background-position: -190.5px -778px;
 }
-.navbar .nav > li a:hover .icon-write,
-.navbar .nav > li a:active .icon-write,
-.navbar .nav > li.active a .icon-write {
-  width: 28px;
-  height: 29px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -146px -557px;
+.navbar .nav > li .csicon-home {
+  background-position: -190px -823px;
+}
+.navbar .nav > li .csicon-right {
+  background-position: -190.5px -868px;
+}
+.navbar .nav > li .csicon-left {
+  background-position: -190.5px -913px;
+}
+.navbar .nav > li a:hover .csicon-about,
+.navbar .nav > li a:active .csicon-about,
+.navbar .nav > li.active a .csicon-about {
+  background-position: -146.5px -154px;
+}
+.navbar .nav > li a:hover .csicon-favorites,
+.navbar .nav > li a:active .csicon-favorites,
+.navbar .nav > li.active a .csicon-favorites {
+  background-position: -146px -199px;
+}
+.navbar .nav > li a:hover .csicon-user,
+.navbar .nav > li a:active .csicon-user,
+.navbar .nav > li.active a .csicon-user {
+  background-position: -145.5px -243px;
+}
+.navbar .nav > li a:hover .csicon-downloads,
+.navbar .nav > li a:active .csicon-downloads,
+.navbar .nav > li.active a .csicon-downloads {
+  background-position: -145.5px -288px;
+}
+.navbar .nav > li a:hover .csicon-settings,
+.navbar .nav > li a:active .csicon-settings,
+.navbar .nav > li.active a .csicon-settings {
+  background-position: -145.5px -333px;
+}
+.navbar .nav > li a:hover .csicon-up,
+.navbar .nav > li a:active .csicon-up,
+.navbar .nav > li.active a .csicon-up {
+  background-position: -146px -378.5px;
+}
+.navbar .nav > li a:hover .csicon-down,
+.navbar .nav > li a:active .csicon-down,
+.navbar .nav > li.active a .csicon-down {
+  background-position: -146px -423px;
+}
+.navbar .nav > li a:hover .csicon-message,
+.navbar .nav > li a:active .csicon-message,
+.navbar .nav > li.active a .csicon-message {
+  background-position: -146.5px -466px;
+}
+.navbar .nav > li a:hover .csicon-list,
+.navbar .nav > li a:active .csicon-list,
+.navbar .nav > li.active a .csicon-list {
+  background-position: -145.5px -511px;
+}
+.navbar .nav > li a:hover .csicon-write,
+.navbar .nav > li a:active .csicon-write,
+.navbar .nav > li.active a .csicon-write {
+  background-position: -145.5px -556px;
+}
+.navbar .nav > li a:hover .csicon-mail,
+.navbar .nav > li a:active .csicon-mail,
+.navbar .nav > li.active a .csicon-mail {
+  background-position: -145.5px -601px;
+}
+.navbar .nav > li a:hover .csicon-save,
+.navbar .nav > li a:active .csicon-save,
+.navbar .nav > li.active a .csicon-save {
+  background-position: -145.5px -645px;
+}
+.navbar .nav > li a:hover .csicon-search,
+.navbar .nav > li a:active .csicon-search,
+.navbar .nav > li.active a .csicon-search {
+  background-position: -145.5px -689px;
+}
+.navbar .nav > li a:hover .csicon-connect,
+.navbar .nav > li a:active .csicon-connect,
+.navbar .nav > li.active a .csicon-connect {
+  background-position: -145.5px -733.5px;
+}
+.navbar .nav > li a:hover .csicon-users,
+.navbar .nav > li a:active .csicon-users,
+.navbar .nav > li.active a .csicon-users {
+  background-position: -146px -778px;
+}
+.navbar .nav > li a:hover .csicon-home,
+.navbar .nav > li a:active .csicon-home,
+.navbar .nav > li.active a .csicon-home {
+  background-position: -145.5px -823px;
+}
+.navbar .nav > li a:hover .csicon-right,
+.navbar .nav > li a:active .csicon-right,
+.navbar .nav > li.active a .csicon-right {
+  background-position: -146px -868px;
+}
+.navbar .nav > li a:hover .csicon-left,
+.navbar .nav > li a:active .csicon-left,
+.navbar .nav > li.active a .csicon-left {
+  background-position: -146px -913px;
 }
 .nav {
   margin-left: 0;
@@ -4877,129 +4968,79 @@ button.btn.btn-mini {
 }
 .nav-bot li i {
   display: block;
-  width: 32px;
-  height: 25px;
   margin: 0 auto 3px auto;
 }
-.nav-bot li a .icon-about {
-  width: 26px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -104px -157px;
+.nav-bot li a:active .csicon-about,
+.nav-bot li a.active .csicon-about {
+  background-position: -146.5px -154px;
 }
-.nav-bot li a:active .icon-about,
-.nav-bot li a.active .icon-about {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -157px;
+.nav-bot li a:active .csicon-favorites,
+.nav-bot li a.active .csicon-favorites {
+  background-position: -146px -199px;
 }
-.v-blue li a .icon-about {
-  width: 26px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -15px -157px;
+.nav-bot li a:active .csicon-user,
+.nav-bot li a.active .csicon-user {
+  background-position: -145.5px -243px;
 }
-.v-blue li a:active .icon-about,
-.v-blue li a.active .icon-about {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -59px -157px;
+.nav-bot li a:active .csicon-downloads,
+.nav-bot li a.active .csicon-downloads {
+  background-position: -145.5px -288px;
 }
-.nav-bot li a .icon-favorites {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -104px -201px;
+.nav-bot li a:active .csicon-settings,
+.nav-bot li a.active .csicon-settings {
+  background-position: -145.5px -333px;
 }
-.nav-bot li a:active .icon-favorites,
-.nav-bot li a.active .icon-favorites {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -148px -201px;
+.nav-bot li a:active .csicon-up,
+.nav-bot li a.active .csicon-up {
+  background-position: -146px -378.5px;
 }
-.v-blue li a .icon-favorites {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -15px -201px;
+.nav-bot li a:active .csicon-down,
+.nav-bot li a.active .csicon-down {
+  background-position: -146px -423px;
 }
-.v-blue li a:active .icon-favorites,
-.v-blue li a.active .icon-favorites {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -59px -201px;
+.nav-bot li a:active .csicon-message,
+.nav-bot li a.active .csicon-message {
+  background-position: -146.5px -466px;
 }
-.nav-bot li a .icon-downloads {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -106px -291px;
+.nav-bot li a:active .csicon-list,
+.nav-bot li a.active .csicon-list {
+  background-position: -145.5px -511px;
 }
-.nav-bot li a:active .icon-downloads,
-.nav-bot li a.active .icon-downloads {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -150px -291px;
+.nav-bot li a:active .csicon-write,
+.nav-bot li a.active .csicon-write {
+  background-position: -145.5px -556px;
 }
-.v-blue li a .icon-downloads {
-  width: 25px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -17px -291px;
+.nav-bot li a:active .csicon-mail,
+.nav-bot li a.active .csicon-mail {
+  background-position: -145.5px -601px;
 }
-.v-blue li a:active .icon-downloads,
-.v-blue li a.active .icon-downloads {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -61px -291px;
+.nav-bot li a:active .csicon-save,
+.nav-bot li a.active .csicon-save {
+  background-position: -145.5px -645px;
 }
-.nav-bot li a .icon-settings {
-  width: 31px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -105px -336px;
+.nav-bot li a:active .csicon-search,
+.nav-bot li a.active .csicon-search {
+  background-position: -145.5px -689px;
 }
-.nav-bot li a:active .icon-settings,
-.nav-bot li a.active .icon-settings {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -149px -336px;
+.nav-bot li a:active .csicon-connect,
+.nav-bot li a.active .csicon-connect {
+  background-position: -145.5px -733.5px;
 }
-.v-blue li a .icon-settings {
-  width: 31px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -16px -336px;
+.nav-bot li a:active .csicon-users,
+.nav-bot li a.active .csicon-users {
+  background-position: -146px -778px;
 }
-.v-blue li a:active .icon-settings,
-.v-blue li a.active .icon-settings {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -60px -336px;
+.nav-bot li a:active .csicon-home,
+.nav-bot li a.active .csicon-home {
+  background-position: -145.5px -823px;
 }
-.nav-bot li a .icon-user {
-  width: 32px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -100px -245px;
+.nav-bot li a:active .csicon-right,
+.nav-bot li a.active .csicon-right {
+  background-position: -146px -868px;
 }
-.nav-bot li a:active .icon-user,
-.nav-bot li a.active .icon-user {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -144px -245px;
-}
-.v-blue li a .icon-user {
-  width: 32px;
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -12px -245px;
-}
-.v-blue li a:active .icon-user,
-.v-blue li a.active .icon-user {
-  background-image: url('../img/icon.png');
-  background-size: 320px;
-  background-position: -56px -245px;
+.nav-bot li a:active .csicon-left,
+.nav-bot li a.active .csicon-left {
+  background-position: -146px -913px;
 }
 .radio-vertical {
   -webkit-border-radius: 4px;
@@ -5060,7 +5101,7 @@ button.btn.btn-mini {
   border-radius: 3px;
 }
 .badge {
-  padding: 4px 12px;
+  padding: 4px 9px;
 }
 a.label:hover,
 a.badge:hover {
@@ -6335,22 +6376,6 @@ ul li {
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
 }
-.accordion-group:first-child .accordion-heading .accordion-toggle:active {
-  border-top: 0;
-  border-left: 0;
-  -webkit-box-shadow: 3px -3px 3px rgba(0,0,0,.1), inset 1px 1px 1px rgba(255,255,255,.3);
-  -moz-box-shadow: 3px -3px 3px rgba(0,0,0,.1), inset 1px 1px 1px rgba(255,255,255,.3);
-  box-shadow: 3px -3px 3px rgba(0,0,0,.1), inset 1px 1px 1px rgba(255,255,255,.3);
-  background-color: rgba(0, 0, 0, 0.55);
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.02)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1affffff', endColorstr='#05ffffff', GradientType=0);
-  background-color: transparent;
-}
 .accordion-toggle {
   cursor: pointer;
 }
@@ -6391,7 +6416,6 @@ ul li {
   width: 100%;
 }
 .carousel .item {
-  -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: 0.35s ease left;
   -moz-transition: 0.35s ease left;
   -o-transition: 0.35s ease left;
@@ -6448,6 +6472,68 @@ ul li {
   line-height: 33px;
   color: #333333;
 }
+[class^="csicon-"],
+[class*=" csicon-"] {
+  background: url('../img/icon.png') no-repeat 0 0;
+  background-size: 320px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.csicon-about {
+  background-position: -102px -154px;
+}
+.csicon-favorites {
+  background-position: -101.5px -199px;
+}
+.csicon-user {
+  background-position: -101px -243px;
+}
+.csicon-downloads {
+  background-position: -101px -288px;
+}
+.csicon-settings {
+  background-position: -101px -333px;
+}
+.csicon-up {
+  background-position: -101.5px -378.5px;
+}
+.csicon-down {
+  background-position: -101.5px -423px;
+}
+.csicon-message {
+  background-position: -102px -466px;
+}
+.csicon-list {
+  background-position: -101px -511px;
+}
+.csicon-write {
+  background-position: -101px -556px;
+}
+.csicon-mail {
+  background-position: -101px -601px;
+}
+.csicon-save {
+  background-position: -101px -645px;
+}
+.csicon-search {
+  background-position: -101px -689px;
+}
+.csicon-connect {
+  background-position: -101px -733.5px;
+}
+.csicon-users {
+  background-position: -101.5px -778px;
+}
+.csicon-home {
+  background-position: -101px -823px;
+}
+.csicon-right {
+  background-position: -101.5px -868px;
+}
+.csicon-left {
+  background-position: -101.5px -913px;
+}
 .widget-carousel .carousel {
   -webkit-user-select: none;
   /* Safari, Chrome */
@@ -6488,12 +6574,6 @@ ul li {
 }
 .widget-carousel .carousel .carousel-control.right {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-@media (max-width: 767px) {
-  .widget-carousel .carousel .carousel-control.left,
-  .widget-carousel .carousel .carousel-control.right {
-    display: none;
-  }
 }
 /*!
  * Datepicker for Bootstrap
@@ -6960,7 +7040,7 @@ ul li {
   width: 16px;
   height: 16px;
 }
-.widget-motioncapcha {
+.widget-motioncaptcha {
   /**
  * jQuery MotionCAPTCHA Plugin CSS
  * josscrowcroft.com/projects/motioncaptcha-jquery-plugin/
@@ -6977,10 +7057,10 @@ ul li {
   /* Disable mouse-selection on the page (only while user is actively drawing on the canvas): */
 
 }
-.widget-motioncapcha canvas {
+.widget-motioncaptcha canvas {
   border: none;
 }
-.widget-motioncapcha #mc-canvas {
+.widget-motioncaptcha #mc-canvas {
   width: 220px;
   /* For best results, set width to between 210px and 240px */
 
@@ -6992,55 +7072,55 @@ ul li {
   display: block;
   margin: 0 auto;
 }
-.widget-motioncapcha #mc-canvas.triangle {
+.widget-motioncaptcha #mc-canvas.triangle {
   background-position: 10px 10px;
 }
-.widget-motioncapcha #mc-canvas.x {
+.widget-motioncaptcha #mc-canvas.x {
   background-position: -200px 10px;
 }
-.widget-motioncapcha #mc-canvas.rectangle {
+.widget-motioncaptcha #mc-canvas.rectangle {
   background-position: -400px 10px;
 }
-.widget-motioncapcha #mc-canvas.circle {
+.widget-motioncaptcha #mc-canvas.circle {
   background-position: -600px 10px;
 }
-.widget-motioncapcha #mc-canvas.check {
+.widget-motioncaptcha #mc-canvas.check {
   background-position: 10px -150px;
 }
-.widget-motioncapcha #mc-canvas.caret {
+.widget-motioncaptcha #mc-canvas.caret {
   background-position: -200px -150px;
 }
-.widget-motioncapcha #mc-canvas.zigzag {
+.widget-motioncaptcha #mc-canvas.zigzag {
   background-position: -400px -150px;
 }
-.widget-motioncapcha #mc-canvas.arrow {
+.widget-motioncaptcha #mc-canvas.arrow {
   background-position: -600px -150px;
 }
-.widget-motioncapcha #mc-canvas.leftbracket {
+.widget-motioncaptcha #mc-canvas.leftbracket {
   background-position: 10px -300px;
 }
-.widget-motioncapcha #mc-canvas.rightbracket {
+.widget-motioncaptcha #mc-canvas.rightbracket {
   background-position: -200px -300px;
 }
-.widget-motioncapcha #mc-canvas.v {
+.widget-motioncaptcha #mc-canvas.v {
   background-position: -400px -300px;
 }
-.widget-motioncapcha #mc-canvas.delete {
+.widget-motioncaptcha #mc-canvas.delete {
   background-position: -600px -300px;
 }
-.widget-motioncapcha #mc-canvas.leftbrace {
+.widget-motioncaptcha #mc-canvas.leftbrace {
   background-position: 10px -450px;
 }
-.widget-motioncapcha #mc-canvas.rightbrace {
+.widget-motioncaptcha #mc-canvas.rightbrace {
   background-position: -200px -450px;
 }
-.widget-motioncapcha #mc-canvas.star {
+.widget-motioncaptcha #mc-canvas.star {
   background-position: -400px -450px;
 }
-.widget-motioncapcha #mc-canvas.pigtail {
+.widget-motioncaptcha #mc-canvas.pigtail {
   background-position: -600px -450px;
 }
-.widget-motioncapcha .mc-noselect {
+.widget-motioncaptcha .mc-noselect {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -7432,7 +7512,7 @@ body > .widget-spinner-icon2 {
     -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
   }
-  .btn:hover {
+  .no-hover:hover {
     display: none;
   }
 }
@@ -8820,7 +8900,6 @@ body > .widget-spinner-icon2 {
   .navbar .nav > li a i {
     display: inline-block;
     vertical-align: middle;
-    background-image: url('../img/icon.png');
     background-size: 320px;
     padding-right: 0;
     margin-top: -2px;
@@ -9351,4 +9430,7 @@ body > .widget-spinner-icon2 {
   .btn-group .btn-primary.active .icon-set {
     background-position: -60px -336px;
   }
+}
+.modal {
+  color: #000;
 }

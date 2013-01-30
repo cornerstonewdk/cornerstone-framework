@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -115,7 +115,7 @@
               <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
             </li>
             <li class="active">
-              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+              <a class="second-depth" id="menu_anchor" href="./3_4_component_form.html">Components, Form layouts</a>
             </li>
             <li>
               <a class="first-depth">Widget</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -290,27 +296,27 @@
 
 <p>일반적인 고정 폭 (및 선택적으로 반응) 레이아웃은 <code>&lt;div의 class=&quot;container&quot;&gt;</code>를 사용한다.</p>
 
-<pre><code>    &lt;body&gt;
-        &lt;div class=&quot;container&quot;&gt;
-        ...
-        &lt;/div&gt;
-    &lt;/body&gt;
+<pre><code>&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+    ...
+    &lt;/div&gt;
+&lt;/body&gt;
 </code></pre>
 
 <h3>유동 레이아웃(Fluid layout)</h3>
 
 <p>유동적인 레이아웃을 위해서는 <code>&lt;div class=&quot;container-fluid&quot;&gt;</code>를 사용한다.</p>
 
-<pre><code>    &lt;div class=&quot;container-fluid&quot;&gt;
-      &lt;div class=&quot;row-fluid&quot;&gt;
-        &lt;div class=&quot;span2&quot;&gt;
-          &lt;!--Sidebar content--&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;span10&quot;&gt;
-          &lt;!--Body content--&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+<pre><code>&lt;div class=&quot;container-fluid&quot;&gt;
+  &lt;div class=&quot;row-fluid&quot;&gt;
+    &lt;div class=&quot;span2&quot;&gt;
+      &lt;!--Sidebar content--&gt;
     &lt;/div&gt;
+    &lt;div class=&quot;span10&quot;&gt;
+      &lt;!--Body content--&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 <script src='lib/codemirror.js'></script>                                                                         
@@ -328,13 +334,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 830px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 830px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -361,6 +369,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Fixed layout</h3>
     <div class="mini-layout">
@@ -372,9 +381,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         <div class="mini-layout-sidebar"></div>
         <div class="mini-layout-body"></div>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -403,18 +431,20 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </div>                                                                                                            
 </p>                                                                                                              
 
+<p>Layout에 좀더 자세히 알고 싶으면 <a href="http://twitter.github.com/bootstrap/scaffolding.html#layouts">여기</a>를 참고하기 바란다.</p>
+
 <h2>타이포그라피(Typography)</h2>
 
 <h3>머리글(Headings)</h3>
 
 <p>모든 HTML 내에 머리글은 &lt;h1&gt; ~ &lt;h6&gt;로 작성한다.</p>
 
-<pre><code>    &lt;h1&gt;h1. Heading 1&lt;/h1&gt;
-    &lt;h2&gt;h2. Heading 2&lt;/h2&gt;
-    &lt;h3&gt;h3. Heading 3&lt;/h3&gt;
-    &lt;h4&gt;h4. Heading 4&lt;/h4&gt;
-    &lt;h5&gt;h5. Heading 5&lt;/h5&gt;
-    &lt;h6&gt;h6. Heading 6&lt;/h6&gt;
+<pre><code>&lt;h1&gt;h1. Heading 1&lt;/h1&gt;
+&lt;h2&gt;h2. Heading 2&lt;/h2&gt;
+&lt;h3&gt;h3. Heading 3&lt;/h3&gt;
+&lt;h4&gt;h4. Heading 4&lt;/h4&gt;
+&lt;h5&gt;h5. Heading 5&lt;/h5&gt;
+&lt;h6&gt;h6. Heading 6&lt;/h6&gt;
 </code></pre>
 
 <h3>본문(Body copy)</h3>
@@ -422,14 +452,14 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <p>Conestones theme 중 white, dakr의 기본글꼴은 18px 이며, line-height는 22px이다. 
 기본 테마인 wireframe의 기본글꼴은 14px 이며, line-height는 18px이다. body내의 <code>&lt;p&gt;</code> 태그에 모두 적용된다.</p>
 
-<pre><code>    &lt;p&gt;...&lt;/p&gt;
+<pre><code>&lt;p&gt;...&lt;/p&gt;
 </code></pre>
 
 <h4>본문 강조(Lead body copy)</h4>
 
 <p><code>.lead</code>를 사용하여 문장의 중요한 부분을 강조 할수도 있다.</p>
 
-<pre><code>    &lt;p class=&quot;lead&quot;&gt;...&lt;/p&gt;
+<pre><code>&lt;p class=&quot;lead&quot;&gt;...&lt;/p&gt;
 </code></pre>
 
 <h3>강조(Emphasis)</h3>
@@ -440,39 +470,41 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>강조하지 않을 인라인 또는 블럭 텍스트의 경우 <code>&lt;small&gt;</code>를 사용한다.</p>
 
-<pre><code>    &lt;p&gt;
-        &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
-    &lt;/p&gt;
+<pre><code>&lt;p&gt;
+    &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+&lt;/p&gt;
 </code></pre>
 
 <h4>Bold</h4>
 
 <p>강조할 내용에 볼드를 적용하려면 <code>&lt;strong&gt;</code>를 사용한다.</p>
 
-<pre><code>    &lt;strong&gt;This line of text is meant to be treated as fine print.&lt;/strong&gt;
+<pre><code>&lt;strong&gt;This line of text is meant to be treated as fine print.&lt;/strong&gt;
 </code></pre>
 
 <h4>Italics</h4>
 
 <p>강조할 내용에 기울림을 적용하려면 <code>&lt;em&gt;</code>를 사용한다.</p>
 
-<pre><code>    &lt;em&gt;This line of text is meant to be treated as fine print.&lt;/em&gt;
+<pre><code>&lt;em&gt;This line of text is meant to be treated as fine print.&lt;/em&gt;
 </code></pre>
 
 <h4>강조 클래스(Emphasis classes)</h4>
 
 <p>강조 유틸리티 클래스의 색상을 통해 의미를 전달한다.</p>
 
-<pre><code>    &lt;p class=&quot;muted&quot;&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
-    &lt;p class=&quot;text-warning&quot;&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
-    &lt;p class=&quot;text-error&quot;&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
-    &lt;p class=&quot;text-info&quot;&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.&lt;/p&gt;
-    &lt;p class=&quot;text-success&quot;&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/p&gt;
+<pre><code>&lt;p class=&quot;muted&quot;&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
+&lt;p class=&quot;text-warning&quot;&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
+&lt;p class=&quot;text-error&quot;&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+&lt;p class=&quot;text-info&quot;&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.&lt;/p&gt;
+&lt;p class=&quot;text-success&quot;&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/p&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 450px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 450px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -499,6 +531,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Body copy 예제</h3>
     <p>
@@ -524,9 +557,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     <p class="text-success">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
     </p>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -559,44 +611,46 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>약어(abbr) 및 머리 글자에 대한 요소는 hover에 대한 확장 된 버전을 표시한다. 약어(abbr)와 제목 (title)속성은 생략된 문장이나 짧게 쓴 축약 text등에 hover 효과를 두어 문장전체를 보여 준다.</p>
 
-<pre><code>    &lt;abbr title=&quot;attribute&quot;&gt;attr&lt;/abbr&gt;
-    &lt;abbr title=&quot;HyperText Markup Language&quot; class=&quot;initialism&quot;&gt;HTML&lt;/abbr&gt;
+<pre><code>&lt;abbr title=&quot;attribute&quot;&gt;attr&lt;/abbr&gt;
+&lt;abbr title=&quot;HyperText Markup Language&quot; class=&quot;initialism&quot;&gt;HTML&lt;/abbr&gt;
 </code></pre>
 
 <h2>주소(Addresses)</h2>
 
 <p>주소를 표시할때 쓴다. <code>&lt;address&gt;</code>를 사용한다.</p>
 
-<pre><code>    &lt;address&gt;
-      &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
-      795 Folsom Ave, Suite 600&lt;br&gt;
-      San Francisco, CA 94107&lt;br&gt;
-      &lt;abbr title=&quot;Phone&quot;&gt;P:&lt;/abbr&gt; (123) 456-7890
-    &lt;/address&gt;
+<pre><code>&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
+  795 Folsom Ave, Suite 600&lt;br&gt;
+  San Francisco, CA 94107&lt;br&gt;
+  &lt;abbr title=&quot;Phone&quot;&gt;P:&lt;/abbr&gt; (123) 456-7890
+&lt;/address&gt;
 
-    &lt;address&gt;
-      &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
-      &lt;a href=&quot;mailto:#&quot;&gt;first.last@gmail.com&lt;/a&gt;
-    &lt;/address&gt;
+&lt;address&gt;
+  &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
+  &lt;a href=&quot;mailto:#&quot;&gt;first.last@gmail.com&lt;/a&gt;
+&lt;/address&gt;
 </code></pre>
 
 <h2>인용구(Blockquotes)</h2>
 
 <p>문서내 인용한 부분에 적용된다. 인용한 글의 작성자 이름등에는 <code>&lt;small&gt;</code>, <code>&lt;cite&gt;</code>를 사용하여 적용한다. 오른쪽 정렬을 할때는 <code>.pull-right</code>를 사용한다.</p>
 
-<pre><code>    &lt;blockquote&gt;
-      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-      &lt;small&gt;Someone famous &lt;cite title=&quot;Source Title&quot;&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
-    &lt;/blockquote&gt;
+<pre><code>&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;Someone famous &lt;cite title=&quot;Source Title&quot;&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+&lt;/blockquote&gt;
 
-    &lt;blockquote class=&quot;pull-right&quot;&gt;
-      ...
-    &lt;/blockquote&gt;
+&lt;blockquote class=&quot;pull-right&quot;&gt;
+  ...
+&lt;/blockquote&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style='height: 640px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 640px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -623,6 +677,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Abbreviations 예제</h3>
     <p>
@@ -646,21 +701,40 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         <strong>Full Name</strong><br>
         <a href="mailto:#">first.last@gmail.com</a>
     </address>
+    
+    <h3>Blockquotes 우측정렬 예제</h3>
+    <blockquote class="pull-right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
 
     <h3>Blockquotes 예제</h3>
     <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <small>Someone famous <cite title="Source Title">Source Title</cite></small>
     </blockquote>
-
-    <h3>Blockquotes 우측정렬 예제</h3>
-    <blockquote class="pull-right">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <small>Someone famous <cite title="Source Title">Source Title</cite></small>
-    </blockquote>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_3';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -693,37 +767,39 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>특정항목을 나열할때 사용하며 용도에 맞게 Unordered( 순서가 정해지지 않음 ), Ordered( 순서가 존재함 ), Unstyled( 서가 정해지지 않은 목록이나 추가적인 목록에 적용 ) 3가지 방식을 선택해 사용한다.</p>
 
-<pre><code>    &lt;ul&gt;
-      &lt;li&gt;...&lt;/li&gt;
-    &lt;/ul&gt;
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
 
-    &lt;ol&gt;
-      &lt;li&gt;...&lt;/li&gt;
-    &lt;/ol&gt;
+&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
 
-    &lt;ul class=&quot;unstyled&quot;&gt;
-      &lt;li&gt;...&lt;/li&gt;
-    &lt;/ul&gt;
+&lt;ul class=&quot;unstyled&quot;&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
 
 <h3>설명(Description)</h3>
 
 <p>연관된 설명이 포함 된 용어의 목록등을 표시할때 사용한다. <code>.dl-horizontal</code>를 사용하여 가로로 정렬할수 있다.</p>
 
-<pre><code>    &lt;dl&gt;
-      &lt;dt&gt;...&lt;/dt&gt;
-      &lt;dd&gt;...&lt;/dd&gt;
-    &lt;/dl&gt;
+<pre><code>&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
 
-    &lt;dl class=&quot;dl-horizontal&quot;&gt;
-      &lt;dt&gt;...&lt;/dt&gt;
-      &lt;dd&gt;...&lt;/dd&gt;
-    &lt;/dl&gt;
+&lt;dl class=&quot;dl-horizontal&quot;&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_4 style='height: 1034px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_4 style='height: 1034px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_4 name=code_prv_4>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -750,6 +826,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Unordered 예제</h3>
     <ul>
@@ -806,9 +883,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         <dt>Malesuada porta</dt>
         <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
     </dl>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_4';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -843,14 +939,14 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>일직선의 정렬에 적용</p>
 
-<pre><code>    &lt;p&gt;For example, &lt;code&gt;&amp;amp;lt;section&amp;amp;gt;&lt;/code&gt; should be wrapped as inline.&lt;/p&gt;
+<pre><code>&lt;p&gt;For example, &lt;code&gt;&amp;amp;lt;section&amp;amp;gt;&lt;/code&gt; should be wrapped as inline.&lt;/p&gt;
 </code></pre>
 
 <h3>Basic block</h3>
 
 <p><code>&lt;pre&gt;</code>를 사용하여 여러 줄에 걸쳐서 보여준다. <code>&lt;pre&gt;</code>내에서는 괄호등은 code를 사용한다. </p>
 
-<pre><code>    &lt;pre&gt;&lt;p&gt;Sample text here...&lt;/p&gt;&lt;/pre&gt;
+<pre><code>&lt;pre&gt;&lt;p&gt;Sample text here...&lt;/p&gt;&lt;/pre&gt;
 </code></pre>
 
 <h2>테이블(Tables)</h2>
@@ -868,62 +964,62 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 &lt;caption&gt; - 스크린 리더에서 읽어지는 table을 설명하는 요소
 </code></pre>
 
-<pre><code>    &lt;table&gt;
-        &lt;caption&gt;table example&lt;/caption&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;#&lt;/th&gt;
-                &lt;th&gt;First Name&lt;/th&gt;
-                &lt;th&gt;Last Name&lt;/th&gt;
-                &lt;th&gt;UserName&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;    
-            &lt;tr class=&quot;success&quot;&gt;
-                &lt;td&gt;1&lt;/td&gt;
-                &lt;td&gt;Mark&lt;/td&gt;
-                &lt;td&gt;Otto&lt;/td&gt;
-                &lt;td&gt;@mdo&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;2&lt;/td&gt;
-                &lt;td&gt;Jacob&lt;/td&gt;
-                &lt;td&gt;Thornton&lt;/td&gt;
-                &lt;td&gt;@fat&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;3&lt;/td&gt;
-                &lt;td&gt;Larry&lt;/td&gt;
-                &lt;td&gt;the Brid&lt;/td&gt;
-                &lt;td&gt;@twitter&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
+<pre><code>&lt;table&gt;
+    &lt;caption&gt;table example&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;#&lt;/th&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;UserName&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;    
+        &lt;tr class=&quot;success&quot;&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;Mark&lt;/td&gt;
+            &lt;td&gt;Otto&lt;/td&gt;
+            &lt;td&gt;@mdo&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;2&lt;/td&gt;
+            &lt;td&gt;Jacob&lt;/td&gt;
+            &lt;td&gt;Thornton&lt;/td&gt;
+            &lt;td&gt;@fat&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td&gt;Larry&lt;/td&gt;
+            &lt;td&gt;the Brid&lt;/td&gt;
+            &lt;td&gt;@twitter&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
 </code></pre>
 
 <h3>기본 형식(Default style)</h3>
 
 <p>기본 table 형식은 다음과 같으며, <code>.table-striped</code>( css에서 :nth-child를 사용하여 얼룩말 효과 적용 ), <code>.table-bordered</code>( 외곽선 효과 ), <code>.table-hover</code>( 마우스 오버시 효과 ), <code>.table-condensed</code>( table에 cell 간격이 촘촘하게 적용 )를 사용하여 추가 효과를 넣을 수 있다.</p>
 
-<pre><code>    &lt;table class=&quot;table&quot;&gt;
-      …
-    &lt;/table&gt;
+<pre><code>&lt;table class=&quot;table&quot;&gt;
+  …
+&lt;/table&gt;
 
-    &lt;table class=&quot;table table-striped&quot;&gt;
-      …
-    &lt;/table&gt;
+&lt;table class=&quot;table table-striped&quot;&gt;
+  …
+&lt;/table&gt;
 
-    &lt;table class=&quot;table table-bordered&quot;&gt;
-      …
-    &lt;/table&gt;
+&lt;table class=&quot;table table-bordered&quot;&gt;
+  …
+&lt;/table&gt;
 
-    &lt;table class=&quot;table table-hover&quot;&gt;
-      …
-    &lt;/table&gt;
+&lt;table class=&quot;table table-hover&quot;&gt;
+  …
+&lt;/table&gt;
 
-    &lt;table class=&quot;table table-condensed&quot;&gt;
-      …
-    &lt;/table&gt;
+&lt;table class=&quot;table table-condensed&quot;&gt;
+  …
+&lt;/table&gt;
 </code></pre>
 
 <h3>옵션으로 제공되는 클래스(Optional row classes)</h3>
@@ -932,18 +1028,20 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 <code>.success</code>(성공 또는 긍정적인 표현), <code>.error</code>(위험 또는 부정적인 표현), <code>.warning</code>(경고 또는 주의), <code>.info</code>(정보 전달 또는 기본적인 스타일)</p>
 
 <pre><code>...
-  &lt;tr class=&quot;success&quot;&gt;
+&lt;tr class=&quot;success&quot;&gt;
     &lt;td&gt;1&lt;/td&gt;
     &lt;td&gt;TB - Monthly&lt;/td&gt;
     &lt;td&gt;01/04/2012&lt;/td&gt;
     &lt;td&gt;Approved&lt;/td&gt;
-  &lt;/tr&gt;
+&lt;/tr&gt;
 ...
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_5 style='height: 1342px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_5 style='height: 1342px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_5 name=code_prv_5>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -970,6 +1068,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>기본 스타일</h3>
     <table class="table">
@@ -1132,7 +1231,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     </table>
     
     <h3>색상 표현 적용</h3>
-    <table class="table table-condensed">
+    <table class="table">
         <thead>
             <tr>
                 <th>#</th>
@@ -1169,9 +1268,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
         </tbody>
     </table>
 
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_5';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -1204,40 +1322,42 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>기본 제공되는 Lists 형식보다 시각적으로 강조하여 표현하고 싶다면 이 Lists 요소를 사용하기 비란다. 그룹화된 Lists를 사용하고 싶으면 <code>&lt;div&gt;</code> 테그에 <code>.group</code> 클래스를 추가하고 하위 목록으로 사용할 <code>&lt;li&gt;</code> 테그에 <code>.sub-group</code> 클래스를 추가한다.</p>
 
-<pre><code>    &lt;!-- Lists 기본 스타일 --&gt;
-    &lt;div class=&quot;lists&quot;&gt;
-        &lt;header&gt;header&lt;/header&gt;
-        &lt;ul class=&quot;lists-con&quot;&gt;
-            &lt;li&gt;
-                &lt;a href=&quot;#&quot;&gt;Profile&lt;/a&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/li&gt;
-            ...
-        &lt;/ul&gt;
-    &lt;/div&gt;
+<pre><code>&lt;!-- Lists 기본 스타일 --&gt;
+&lt;div class=&quot;lists&quot;&gt;
+    &lt;header&gt;header&lt;/header&gt;
+    &lt;ul class=&quot;lists-con&quot;&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot;&gt;Profile&lt;/a&gt;
+            &lt;i&gt;&lt;/i&gt;
+        &lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+&lt;/div&gt;
 
-    &lt;!-- Group Lists --&gt;
-    &lt;div class=&quot;lists group&quot;&gt;
-        &lt;header&gt;header&lt;/header&gt;
-        &lt;ul class=&quot;lists-con&quot;&gt;
-            &lt;li class=&quot;sub-group&quot;&gt;
-                &lt;a href=&quot;#&quot;&gt;Profile&lt;/a&gt;
-                &lt;ul class=&quot;lists-con&quot;&gt;
-                    &lt;li&gt;
-                        &lt;a href=&quot;#&quot;&gt;South Korea&lt;/a&gt;
-                        &lt;i&gt;&lt;/i&gt;
-                    &lt;/li&gt;
-                    ...
-                &lt;/ul&gt;
-            &lt;/li&gt;
-            ...
-        &lt;/ul&gt;
-    &lt;/div&gt;
+&lt;!-- Group Lists --&gt;
+&lt;div class=&quot;lists group&quot;&gt;
+    &lt;header&gt;header&lt;/header&gt;
+    &lt;ul class=&quot;lists-con&quot;&gt;
+        &lt;li class=&quot;sub-group&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Profile&lt;/a&gt;
+            &lt;ul class=&quot;lists-con&quot;&gt;
+                &lt;li&gt;
+                    &lt;a href=&quot;#&quot;&gt;South Korea&lt;/a&gt;
+                    &lt;i&gt;&lt;/i&gt;
+                &lt;/li&gt;
+                ...
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+&lt;/div&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_6 style='height: 1033px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_6 style='height: 1033px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_6 name=code_prv_6>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -1264,6 +1384,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>기본 Lists</h3>
     <div class="lists">
@@ -1278,7 +1399,7 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                 <i></i>
             </li>
             <li class="active">
-                <a href="">Connect</a>
+                <a href="#">Connect</a>
                 <i></i>
             </li>
             <li>
@@ -1351,9 +1472,28 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
             </li>
         </ul>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_6';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -1386,20 +1526,22 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>mobile에서만 사용하는 Navigation 요소로써 사용자에게 가시적인 편의성을 제공할때 사용한다. <code>&lt;ul&gt;</code> 테그에 <code>.nav nav-bot</code> 클래스를 사용한다.</p>
 
-<pre><code>    &lt;ul class=&quot;nav nav-bot&quot;&gt;
-        &lt;li&gt;                
-            &lt;a href=&quot;#&quot;&gt;
-                &lt;i class=&quot;icon-about&quot;&gt;&lt;/i&gt;
-                &lt;span&gt;about&lt;/span&gt;
-            &lt;/a&gt;
-        &lt;/li&gt;
-        ...
-    &lt;/ul&gt;
+<pre><code>&lt;ul class=&quot;nav nav-bot&quot;&gt;
+    &lt;li&gt;                
+        &lt;a href=&quot;#&quot;&gt;
+            &lt;i class=&quot;csicon-about&quot;&gt;&lt;/i&gt;
+            &lt;span&gt;about&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    ...
+&lt;/ul&gt;
 </code></pre>
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_7 style='height: 137px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_7 style='height: 137px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_7 name=code_prv_7>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -1426,42 +1568,62 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <ul class="nav nav-bot">
         <li>                
             <a href="#">
-                <i class="icon-about"></i>
+                <i class="csicon-about"></i>
                 <span>about</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="icon-favorites"></i>
+                <i class="csicon-favorites"></i>
                 <span>favorites</span>
             </a>
         </li>
         <li>
             <a href="#" class="active">
-                <i class="icon-downloads"></i>
+                <i class="csicon-downloads"></i>
                 <span>downloads</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="icon-settings"></i>
+                <i class="csicon-settings"></i>
                 <span>settings</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="icon-user"></i>
+                <i class="csicon-user"></i>
                 <span>user</span>
             </a>
         </li>
     </ul>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_7';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -1494,23 +1656,38 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./3_3_responsive_web.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_1_00_form.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./3_3_responsive_web.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_1_00_form.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>

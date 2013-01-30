@@ -329,7 +329,7 @@ Library 위치 </p>
 <ul>
 <li>   <strong>plugin.xml</strong> : plugin을 Runtime에 등록하는 파일 </li>
 <li>   <strong>value/string.xml</strong> : 웹앱의 name을 세팅하는 파일 </li>
-<li>   <strong>xml/config.xml</strong> : device의 orientation(portrait , landscape , audo) 및 splash image를 세팅 하는 파일 </li>
+<li>   <strong>xml/config.xml</strong> : device의 orientation(portrait , landscape , audo) 및 splash image, 메뉴 사용여부, loading progressbar 사용여부를 세팅 하는 파일</li>
 </ul>
 
 <p>6) AndroidManifest.xml : 하나의 Native Application으로써의 고유한 Package 명을 지정하는 파일, 하드웨어 가속 GPU 렌더링 사용여부를 지정하는 파일.</p>
@@ -337,6 +337,60 @@ Library 위치 </p>
 <p><br></p>
 
 <h3>Android Runtime 확장 구조 개발 절차</h3>
+
+<h4>Plugin 개발을 위한 클래스</h4>
+
+<ul>
+<li><p>Plugin.java </p>
+
+<ul>
+<li>plugin 개발을 위하여 Runtime에서 제공하는 클래스이다. </li>
+<li><p>아래의 함수를 기본적으로 제공한다. <strong>필요한 경우 재정의도 가능하다.</strong></p>
+
+<p>1) execute()</p>
+
+<pre><code>- 실제로 native의 모듈이 구현되어야 하는 함수 
+</code></pre>
+
+<p>2) isSynch()</p>
+
+<pre><code>- 특정 api 가 동기/비동기로 구현될지를 설정하는 함수 
+</code></pre>
+
+<p>3) setContext()</p>
+
+<pre><code>- 초기 main context를 plugin에 설정하는 함수 
+</code></pre>
+
+<p>4) onPause(), onResume(), onNewIntent(), onDestroy()</p>
+
+<pre><code>- Runtime의 activity cycle의 이벤트를 받아서 처리할 수 있는 함수  
+</code></pre>
+
+<p>5) onActivityResult()</p>
+
+<pre><code>- plugin 내부에서 특정 activity를 호출 하였을 경우 결과를 처리할 수 있는 함수 
+</code></pre>
+
+<p>6) success()</p>
+
+<pre><code>- plugin 내부에서 바로 JS에 성공 콜백을 호출할 경우 사용하는 함수 
+</code></pre>
+
+<p>7) error()</p>
+
+<pre><code>- plugin 내부에서 바로 JS에 실패 콜백을 호출할 경우 사용하는 함수
+</code></pre></li>
+</ul></li>
+<li><p>PluginResult.java</p>
+
+<ul>
+<li>plugin 의 결과값을 JavaScript에 전달하기 위하여 생성하여야 하는 클래스이다.<br></li>
+<li>Status와 필요하다면 JavaScript에 전달 할 매개변수로 구성된다. </li>
+</ul></li>
+</ul>
+
+<h4>Plugin 개발 절차</h4>
 
 <p><strong>step 1.</strong>  Authoring tool을 이용해 Android Web App Template를 받으면 Lib 폴더에 <strong>Runtime.jar가 기본으로 포함</strong>되어 있다.</p>
 
@@ -605,14 +659,14 @@ srt.addConstructor(function() {
 <p><code>&lt;plugin name=&quot;CallLog&quot; value=&quot;org.skt.runtime.plugin.CallLogPlugin&quot; /&gt;</code></p></li>
 </ul>
 
-<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-1.0.js는 플러그인 개발 환경 template의 기본 포함된 파일</strong>이다. </p>
+<p><strong>step 5.</strong> 웹앱의 시작 파일은 반드시 index.html 이어야 한다. <strong>SRT-0.9.1.js는 플러그인 개발 환경 template의 기본 포함된 파일</strong>이다. </p>
 
 <p><img src="./images/src2.png" alt=""></p>
 
 <ul>
 <li><p>특정 웹페이지 내부에서 DeviceAPI를 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p>
 
-<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=*../path/SRT-0.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
+<p><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=*../path/SRT-0.9.1.js&quot;&gt;&lt;/script&gt;</code></p></li>
 <li><p>특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 JavaScript Library를 선언한다.</p></li>
 </ul>
 

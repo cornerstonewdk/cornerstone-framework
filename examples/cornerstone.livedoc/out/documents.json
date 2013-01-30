@@ -124,7 +124,7 @@
     "url":"/3_2_theme",
     "image":"3. Style.png",
     "title":"테마",
-    "outline":"제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 BtS의 특성인 BtS &gt; LESS로 작성되어 BtS &gt; Customize와 같이 사용자화 가능함으로 개별 테마 안에서 BtS에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 BtS에 없는 요소들도 BtS과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 BtS의 방식대로 사용자화가 가능해야 함...",
+    "outline":"제공되는 느낌과 모양세의 커다란 범주를 테마라고 하며 3가지를 테마를 제공하며 Bootstrap의 특성인 Bootstrap &gt; LESS로 작성되어 Bootstrap &gt; Customize와 같이 사용자화 가능함으로 개별 테마 안에서 Bootstrap에 제공된 LESS의 변수를 조절함으로써 제공되는 영역에서 손쉽게 사용자화된 테마 생성이 가능함. 따라서 테마를 구현시 기본적으로 Bootstrap에 없는 요소들도 Bootstrap과 마찬가지로 LESS로 작성되어 적절히 변수가 제공되어 Bootstrap의 방식대로 사용자화가 가능해야 함...",
     "tags":"style"
 }
 ,
@@ -148,7 +148,7 @@
     "url":"/4_1_00_form",
     "image":"4.1.0.form.png",
     "title":"Form",
-    "outline":"위젯 폼은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 위젯 플러그인을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(typeahead)같은 기능을 통해 사용자에게 편의를 제공할 수 있다…",
+    "outline":"폼 위젯은 일반적인 PC기반 형태의 입력 폼뿐만 아니라 터치기반 환경에서 유용한 폼요소 또는 UI를 제공하며 HTML/CSS만으로 쉽게 UI를 꾸밀 수 있다. 또한 플러그인 위젯을 통해 기능을 부여할 수 있다. 예를 들어 자동완성(typeahead)같은 기능을 통해 사용자에게 편의를 제공할 수 있다…",
     "tags":"widget"
 }
 ,
@@ -156,7 +156,7 @@
     "url":"/4_2_00_component",
     "image":"4.2.00.component.png",
     "title":"Component",
-    "outline":"위젯 컴포넌트는 위젯의 폼, 플러그인, 피처드 등 화면을 꾸밀때 재사용될 수 있는 요소들이며 기능이 없으며 플러그인과 함께 사용하여 기능을 적용 가능함. 기본적으로 컴포넌트의 스타일을 적용하려면 엘리멘트에서 스타일 클래스를 선언해서 사용해야 한다...",
+    "outline":"컴포넌트 위젯은 폼 위젯, 플러그인 위젯, 피처드 위젯 등 화면을 꾸밀때 재사용될 수 있는 요소들이며 기능이 없고 플러그인과 함께 사용하여 기능을 적용 가능하다. 기본적으로 컴포넌트 위젯의 스타일을 적용하려면 엘리멘트에서 스타일 클래스를 선언해서 사용해야 한다....",
     "tags":"widget"
 }
 ,
@@ -180,7 +180,7 @@
     "url":"/4_2_03_navagation_bar",
     "image":"4.2.03.navation_bar.png",
     "title":"Navbar",
-    "outline":"div 엘레멘트로 된 네비게이션 요소. 프로젝트명과 네비게이션, 그리고 검색폼이 있는 정적 (상단에 붙었다는 의미가 아님) navbar 예제. 구조를 위해 static 과 fixed 에 관계없이 단지 몇개의 div 만이 필요하다...",
+    "outline":"Navbar는 정적인 프로젝트명 또는 메뉴항목을 표현하는 기본적인 네비게이션 요소이다. `.container` 안 한곳에 본 요소를 넣어서 사용한다. Navbar 구조를 갖추기 위해 (static 과 fixed 에 관계없이) 단지 몇개의 `&lt;div&gt;` 만이 필요하다. ",
     "tags":"widget"
 }
 ,
@@ -244,7 +244,7 @@
     "url":"/4_3_00_plugin",
     "image":"4.3.00.plugin.png",
     "title":"Plugin",
-    "outline":"위젯 중 플러그인은 재사용 가능성이나 유용도가 높은 UI요소나 느낌과 모양새를 순수 HTML/CSS구현이 어렵고 Javascript의 도움을 받아 콤포넌트와 유사하나 기능적인 면이 추가된것이나 터치로 작동하는 스크롤처럼 느낌과 모양새를 구현하기 위해서 HTML/CSS가 필요없이 Javascript만으로 작동하는 등의 기능을 제공하는 것이다...",
+    "outline":"플러그인 위젯은 유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯이다...",
     "tags":"widget"
 }
 ,
@@ -316,7 +316,7 @@
     "url":"/4_3_09_tooltip",
     "image":"4.3.09.tooltip.png",
     "title":"Tooltip",
-    "outline":"링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인. data-attribute를 이용하는 방식. 성능상의 이유로 툴팁과 팝오버의 data-api 는 필요한 경우에만 작동 하도록 되어있다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다…",
+    "outline":"링크에 마우스를 올리면 툴팁을 볼 수 있는 플러그인. data-attribute를 이용하는 방식. 성능상의 이유로 툴팁과 툴팁의 data-api 는 필요한 경우에만 작동 하도록 되어있다. 이를 사용하기 원하면 selector 옵션을 기술하면 된다…",
     "tags":"widget"
 }
 ,
@@ -348,7 +348,7 @@
     "url":"/4_3_13_motioncaptcha",
     "image":"4.3.13.motioncaptcha.png",
     "title":"Motioncaptcha",
-    "outline":"회원가입이나 로그인시 스팸방지를 위해 사용되는 Capcha 문자를 모션 터치로 사용하는 플러그인이다. javascript를 이용하는 방식...",
+    "outline":"회원가입이나 로그인시 스팸방지를 위해 사용되는 captcha 문자를 모션 터치로 사용하는 플러그인이다. javascript를 이용하는 방식...",
     "tags":"widget"
 }
 ,
@@ -372,7 +372,7 @@
     "url":"/4_3_16_datepicker",
     "image":"4.3.16.datepicker.png",
     "title":"DatePicker",
-    "outline":"날짜 정보를 입력받는 위젯 플러그인",
+    "outline":"날짜 정보를 입력받는 플러그인 위젯",
     "tags":"widget"
 }
 ,
@@ -380,7 +380,7 @@
     "url":"/4_4_00_featured",
     "image":"4.4.00.featured.png",
     "title":"Featured",
-    "outline":"코너스톤의 위젯 피처드는 data-attribute(DATA-API)와 javascript방식을 통해 사용이 가능하며 javascript에 익숙하지 않은 사용자라도 data-attribute를 통해 사용이 용이히다. 아래는 플러그인의 종류와 플러그인에 대한 간단한 설명이다...",
+    "outline":"피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다...",
     "tags":"widget"
 }
 ,
@@ -396,7 +396,7 @@
     "url":"/4_4_02_list_view",
     "image":"4.4.02.list_view.png",
     "title":"ListView",
-    "outline":"코너스톤의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다. javascript를 이용하는 방식...",
+    "outline":"Cornerstone의 리스트뷰는 일반적으로 엘리먼트를 추가하고 삭제하는 방식외에도 리스트의 DOM구조가 복잡한 경우에도 부드럽게 동작하도록 최적화 옵션을 제공한다. javascript를 이용하는 방식...",
     "tags":"widget"
 }
 ,
@@ -412,7 +412,7 @@
     "url":"/4_4_04_editor",
     "image":"4.4.04.editor.png",
     "title":"Editor",
-    "outline":"코너스톤에서 제공하는 에디터는 에디팅 툴바를 통해 폰트 스타일링, 목록 리스팅, 마크업 작성, 링크, 이미지, 컬러 삽입 등의 기능을 가지고 있으며 각 기능은 옵션을 통해 활성/비활성화할 수 있다. textarea에 에디터를 적용시키는 예제. 에디터를 통해 작성된 값을 가져오는 예제...",
+    "outline":"Cornerstone에서 제공하는 에디터는 에디팅 툴바를 통해 폰트 스타일링, 목록 리스팅, 마크업 작성, 링크, 이미지, 컬러 삽입 등의 기능을 가지고 있으며 각 기능은 옵션을 통해 활성/비활성화할 수 있다. textarea에 에디터를 적용시키는 예제. 에디터를 통해 작성된 값을 가져오는 예제...",
     "tags":"widget"
 }
 ,
@@ -420,7 +420,7 @@
     "url":"/4_4_05_chart",
     "image":"4.4.05.chart.png",
     "title":"Chart",
-    "outline":"코너스톤의 차트은 기본적으로 바, 라인, 파이 차트로 구성됐으며, 그래프에 보여지는 데이터들을 그룹별로 필터링 할 수 있다. 또한 자바스크립트 방식외에도 사용자는 DATA-API를 사용해서 엘리먼트의 속성만으로도 차트를 구현할 수 있다. DATA-API(data-attribute)를 이용하는 방식. javascript를 이용하는 방식...",
+    "outline":"Cornerstone의 차트은 기본적으로 바, 라인, 파이 차트로 구성됐으며, 그래프에 보여지는 데이터들을 그룹별로 필터링 할 수 있다. 또한 자바스크립트 방식외에도 사용자는 DATA-API를 사용해서 엘리먼트의 속성만으로도 차트를 구현할 수 있다. DATA-API(data-attribute)를 이용하는 방식. javascript를 이용하는 방식...",
     "tags":"widget"
 }
 ,
@@ -436,7 +436,7 @@
     "url":"/5_1_00_utilitly",
     "image":"5.1.00.utilitly.png",
     "title":"유틸리티",
-    "outline":"유틸리티는 다른 부분과의 의존성 없이 단독으로 사용할 수 있는 라이브러리 집합이다. 크게 네 가지로 나눌 수 있고, 각각은 require.js 모듈로 제공되며 모듈명은 다음과 같다. 이 중 device 모듈은 Cornerstone Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다...",
+    "outline":"유틸리티는 다른 부분과의 의존성 없이 단독으로 사용할 수 있는 라이브러리 집합이다. 크게 네 가지로 나눌 수 있고, 각각은 require.js 모듈로 제공되며 모듈명은 다음과 같다. 이 중 device 모듈은 Cornerstone Framework의 Runtime을 사용하여 웹 페이지를 패키징한 경우에만 사용 가능하다...",
     "tags":"utility"
 }
 ,

@@ -210,7 +210,7 @@ a.third-depth {
   }
 }
 
-div.pos_fixed
+div.pos_fixed_all
 {
   position:fixed;
   top:90%;
@@ -220,4 +220,10 @@ div.pos_fixed
 a
 {
   color: #005580
+}
+
+.fixed_table {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre;
 }

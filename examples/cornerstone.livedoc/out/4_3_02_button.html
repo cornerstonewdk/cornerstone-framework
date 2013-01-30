@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./livedocument.css" />
     <script src="./dist/lib/jquery-1.8.1.min.js"></script>
     <script src="./dist/ui/widget-plugins.js"></script>
-  </head>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
   <body onload="smartAnchor('mobile_anchor')">
     <div class="navbar ico-txt">
       <div class="navbar-inner">
@@ -163,7 +163,7 @@
               <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
             </li>
             <li class="active">
-              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+              <a class="third-depth" id="menu_anchor" href="./4_3_02_button.html">Button</a>
             </li>
             <li class="inactive">
               <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
@@ -276,6 +276,12 @@
             <li class="inactive">
               <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
             </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
           </ul>
         </div>
         <div class="span9 well" style="float: left;">
@@ -289,6 +295,20 @@
 <h3>사용법</h3>
 
 <p>DATA-API(data-toggle=&ldquo;buttons*&rdquo;, $(&#39;#example&#39;).button()</p>
+
+<p>&#39;button&#39; 토글 기능을 사용하는 방법은 크게 단일, 멀티 토글로 나눠지고, 멀티 토글에서는 radio형태, checkbox형태로 나눠진다.</p>
+
+<ul>
+<li>단일 토글은 해당 버튼에 <code>data-toggle=&quot;button&quot;</code> 속성을 추가해야 한다.</li>
+<li>checkbox 토글은 멀티 토글에 해당하므로 버튼을 감싸는 <code>btn-group</code> 엘리먼트에 <code>data-toggle=&quot;button-checkbox&quot;</code> 속성을 추가해야 한다.</li>
+<li>radio 토글은 멀티 토글에 해당하므로 버튼을 감싸는 <code>btn-group</code> 엘리먼트에 <code>data-toggle=&quot;button-radio&quot;</code> 속성을 추가해야 한다.</li>
+<li>javascript 방식을 쓸 경우 <code>button</code> 엘리먼트를 클릭했을 때 토글이 되도록 아래와 같은 javascript 코드를 작성해야 한다.</li>
+</ul>
+
+<pre><code>$(&quot;button&quot;).on(&quot;click&quot;, function(e) {
+    $(this).button(&quot;toggle&quot;);
+});
+</code></pre>
 
 <h4>DATA-API(data-attribute)를 이용하는 방식</h4>
 
@@ -307,13 +327,15 @@
 
 <style>                                                                                                           
 .CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    
-iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } 
+iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    
 </style>                                                                                                          
                                                                                 
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_1 style='height: 200px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_1 style='height: 200px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_1 name=code_prv_1>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -340,14 +362,34 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Button</h3>
-    <div><i class="badge">1</i>아래 단일 토글을 클릭했을때 버튼이 토글되는지 확인할 수 있다.</div>
+    <p><i class="badge badge-info">1</i>아래 단일 토글을 클릭했을때 버튼이 토글되는지 확인할 수 있다.</p>
     <!-- data-toggle="button" 속성으로 토글 기능 부여. -->
-    <button type="button" class="btn" data-toggle="button">단일 토글</button>
-                                                                                           
+    <button type="button" class="btn no-hover" data-toggle="button">단일 토글</button>
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_1';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -380,7 +422,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_2 style='height: 200px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_2 style='height: 200px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_2 name=code_prv_2>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -407,19 +451,39 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Button</h3>
-    <div><i class="badge">1</i>아래 버튼 그룹을 클릭한다.</div>
-    <div><i class="badge">2</i>멀티 토글이 정상적으로 작동하는지 확인한다.</div>
+    <p><i class="badge badge-info">1</i>아래 버튼 그룹을 클릭한다.</p>
+    <p><i class="badge badge-info">2</i>멀티 토글이 정상적으로 작동하는지 확인한다.</p>
     <!-- data-toggle="buttons-checkbox" 속성으로 checkbox형태의 토글 기능 부여. -->
     <div class="btn-group" data-toggle="buttons-checkbox">
-        <button type="button" class="btn"><strong>B</strong></button>
-        <button type="button" class="btn"><em>i</em></button>
-        <button type="button" class="btn">u</button>
+        <button type="button" class="btn no-hover"><strong>B</strong></button>
+        <button type="button" class="btn no-hover"><em>i</em></button>
+        <button type="button" class="btn no-hover">u</button>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_2';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -452,7 +516,9 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 
 <p>                                                                                                               
 <div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_3 style='height: 200px;'></iframe>                        
+                                                                                                       
+<iframe id=preview_prv_3 style='height: 200px;' ></iframe> 
+                                                                                                         
 <textarea id=code_prv_3 name=code_prv_3>                                              
 <!doctype html>                                                                                                   
 <html>                                                                                                            
@@ -479,19 +545,39 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
                                                                                                        
   <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
                                                                                                          
+    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    
     
     <h3>Button</h3>
-    <div><i class="badge">1</i>아래 버튼 그룹을 클릭한다.</div>
-    <div><i class="badge">2</i>단일 토글이 정상적으로 작동하는지 확인한다.</div>
+    <p><i class="badge badge-info">1</i>아래 버튼 그룹을 클릭한다.</p>
+    <p><i class="badge badge-info">2</i>단일 토글이 정상적으로 작동하는지 확인한다.</p>
     <!-- data-toggle="buttons-radio" 속성으로 radio형태의 토글 기능 부여. -->
     <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" class="btn active"><strong>B</strong></button>
-        <button type="button" class="btn"><em>i</em></button>
-        <button type="button" class="btn">u</button>
+        <button type="button" class="btn active no-hover"><strong>B</strong></button>
+        <button type="button" class="btn no-hover"><em>i</em></button>
+        <button type="button" class="btn no-hover">u</button>
     </div>
-                                                                                           
+                                               
+    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    
+                                               
+    <script type='text/javascript'>                                   
+      $(function() {                                                  
+        function ifrm_resize (height) {                               
+          var id = 'preview_prv_3';                     
+          var example1 = window.parent.document.getElementById(id);   
+          $(example1).css( {                                          
+            height: height + 30                                       
+          });                                                         
+        }                                                             
                                                                       
+        var height = $('body').height();                              
+        ifrm_resize(height);                                          
                                                                       
+        $(window.parent).on('resize',function() {                     
+          var height = $('body').height();                            
+          ifrm_resize(height);                                        
+        });                                                           
+      });                                                             
+    </script>                                                         
                                                                                                          
   </body>                                                                                                         
 </html>                                                                                                           
@@ -516,89 +602,6 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
     preview.close();                                                                                              
   }                                                                                                               
   setTimeout(updatePreview_prv_3, 300);                                                             
-</script>                                                                                                         
-</div>                                                                                                            
-</p>                                                                                                              
-
-<h4>javascript를 이용하는 방식</h4>
-
-<p>                                                                                                               
-<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    
-<iframe id=preview_prv_4 style='height: 200px;'></iframe>                        
-<textarea id=code_prv_4 name=code_prv_4>                                              
-<!doctype html>                                                                                                   
-<html>                                                                                                            
-  <head>                                                                                                          
-    <meta charset=utf-8>                                                                                          
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap.css' />                                       
-    <link rel='stylesheet' href='./dist/lib/bootstrap/css/bootstrap-responsive.css' />                            
-    <link rel='stylesheet' href='./dist/ui/theme/dark/css/cornerstone.css' />                                     
-    <link rel='stylesheet' href='./dist/ui/widget-chart.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-media.css' />                                                   
-    <link rel='stylesheet' href='./dist/ui/widget-scrollview.css' />                                              
-    <link rel='stylesheet' href='./dist/ui/widget-datatable.css' />                                               
-    <link rel='stylesheet' href='./dist/ui/widget-editor.css' />                                                  
-    <link rel='stylesheet' href='./etc.css' />                                                                    
-    <script src='./dist/lib/jquery-1.8.1.min.js'></script>                                                        
-    <script src='./dist/ui/widget-chart.js'></script>                                                             
-    <script src='./dist/ui/widget-datatable.js'></script>                                                         
-    <script src='./dist/ui/widget-editor.js'></script>                                                            
-    <script src='./dist/ui/widget-listview.js'></script>                                                          
-    <script src='./dist/ui/widget-media.js'></script>                                                             
-    <script src='./dist/ui/widget-plugins.js'></script>                                                           
-    <script src='./dist/ui/widget-scrollview.js'></script>                                                        
-  </head>                                                                                                         
-                                                                                                       
-  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   
-                                                                                                         
-    
-    <h3>Button</h3>
-    <div><i class="badge">1</i>토글 전 버튼을 누른다.</div>
-    <div><i class="badge">2</i>토글 후 텍스트로 변경되는 것과 3초 후 초기화되는지 확인한다.</div>
-    <!--  토글 후 보여줄 텍스르를 data-loading-text 속성에 정의 -->
-    <button type="button" class="btn btn-primary" data-loading-text="토글 후">토글 전</button>
-
-    <script type="text/javascript">
-        window.onload = function() {
-            // 첫번째 버튼은 javascript로 이벤트를 받아 토글 기능 부여.
-            $("button").eq(0).on("click", function(e) {
-                var btn = $(this);
-                // 해당 버튼 클릭시 data-loading-text에 작성한 텍스트로 버튼 텍스트 대체.
-                btn.button("loading");
-                // 3초 후 토글 전 상태로 리셋.
-                window.setTimeout(function () {
-                  btn.button("reset")
-                }, 3000);
-            });
-        };
-    </script>
-                                                                                           
-                                                                      
-                                                                      
-                                                                                                         
-  </body>                                                                                                         
-</html>                                                                                                           
-</textarea>                                                                                                       
-<script>                                                                                                          
-  var delay_prv_4;                                                                                  
-  var editor_prv_4 = CodeMirror.fromTextArea(document.getElementById('code_prv_4'), { 
-    theme: 'ambiance',                                                                                            
-    lineNumbers: true,                                                                                            
-    mode: 'text/html',                                                                                            
-    tabMode: 'indent',                                                                                            
-    onChange: function() {                                                                                        
-      clearTimeout(delay_prv_4);                                                                    
-      delay_prv_4 = setTimeout(updatePreview_prv_4, 300);                             
-    }                                                                                                             
-  });                                                                                                             
-  function updatePreview_prv_4() {                                                                  
-    var previewFrame = document.getElementById('preview_prv_4');                                    
-    var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;                          
-    preview.open();                                                                                               
-    preview.write(editor_prv_4.getValue());                                                         
-    preview.close();                                                                                              
-  }                                                                                                               
-  setTimeout(updatePreview_prv_4, 300);                                                             
 </script>                                                                                                         
 </div>                                                                                                            
 </p>                                                                                                              
@@ -629,27 +632,49 @@ iframe { width: 100%; float: left; height: 300px; border: 1px solid black; borde
 </tr>
 </tbody></table>
 
+<script type="text/javascript">
+var $table = $("table");
+$table.addClass("table table-bordered");
+$table.find("thead tr > th:first-child").addClass("fixed_table");
+$table.find("tbody tr > td:first-child").addClass("fixed_table");
+</script>
+
 </div>
 
           </article>
         </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./4_3_01_alert.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./4_3_03_carousel.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
       </div>
-    </div>
-    <script src="./smartanchor.js"></script>
-    <div class="btn-group pos_fixed">
-      <a class="btn btn-small" href="./4_3_01_alert.html">
-        <i class="icon-chevron-left">
-          
-        </i>
-      </a>
-      <a class="btn btn-small" href="#mobile_anchor">
-        Top
-      </a>
-      <a class="btn btn-small" href="./4_3_03_carousel.html">
-        <i class="icon-chevron-right">
-          
-        </i>
-      </a>
     </div>
   </body>
 </html>
