@@ -18,7 +18,8 @@ public class Repl {
     s += "<link rel='stylesheet' href='theme/ambiance.css'></link>                                                          \n";
     s += "<style>                                                                                                           \n";
     s += ".CodeMirror { float: left; width: 100%; margin-bottom: 10px; }                                                    \n";
-    s += "iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; } \n";
+    //s += "iframe { width: 100%; float: left; height: 300px; border: 1px solid black; border-left: 0px; }                    \n";
+    s += "iframe { width: 100%; float: left; height: 300px; border: 1px solid black; }                    \n";
     s += "</style>                                                                                                          \n";
     s += "<% end %>                                                                                                         \n";
     s += "<%- codeMirrorRequiredBlock '1' %>                                                                                \n";
@@ -28,7 +29,11 @@ public class Repl {
     s += "<% codeMirrorBlock = (obj) => %>                                                                                  \n";
     s += "<p>                                                                                                               \n";
     s += "<div class='highlight well' style='padding: 0px 0px 0px 0px;'>                                                    \n";
-    s += "<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>'></iframe>                        \n";
+    s += "<% if obj.if_noscroll: %>                                                                                            \n";
+    s += "<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' scrolling='no'></iframe> \n";
+    s += "<% else: %>                                                                                                       \n";
+    s += "<iframe id=preview_<%= obj.funcname %> style='<%= obj.ifs_h %><%= obj.ifs_minh %>' ></iframe> \n";
+    s += "<% end %>                                                                                                         \n";
     //s += "<p style='margin-bottom:0px;color=white'>-</p>                                                                    \n";
     s += "<textarea id=code_<%= obj.funcname %> name=code_<%= obj.funcname %>>                                              \n";
     s += "<!doctype html>                                                                                                   \n";
@@ -54,11 +59,34 @@ public class Repl {
     s += "    <script src='./dist/ui/widget-scrollview.js'></script>                                                        \n";
     s += "  </head>                                                                                                         \n";
     s += "<% if obj.if_nopad: %>                                                                                            \n";
-    s += "  <body>                                                                                                          \n";
+    s += "  <body style='padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;'>                   \n";
     s += "<% else: %>                                                                                                       \n";
     s += "  <body style='padding-top: 15px;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;'>                   \n";
     s += "<% end %>                                                                                                         \n";
-    s += "    <%- obj.func '1' %>                                                                                           \n";
+    s += "    <!--------------------------------------- 예제 코드 시작 --------------------------------------->    \n";
+    s += "    <%- obj.func '1' %>                                               \n";
+    s += "    <!---------------------------------------- 예제 코드 끝 ---------------------------------------->    \n";
+    s += "<% if obj.if_auto_h: %>                                               \n";
+    s += "    <script type='text/javascript'>                                   \n";
+    s += "      $(function() {                                                  \n";
+    s += "        function ifrm_resize (height) {                               \n";
+    s += "          var id = 'preview_<%= obj.funcname %>';                     \n";
+    s += "          var example1 = window.parent.document.getElementById(id);   \n";
+    s += "          $(example1).css( {                                          \n";
+    s += "            height: height + 30                                       \n";
+    s += "          });                                                         \n";
+    s += "        }                                                             \n";
+    s += "                                                                      \n";
+    s += "        var height = $('body').height();                              \n";
+    s += "        ifrm_resize(height);                                          \n";
+    s += "                                                                      \n";
+    s += "        $(window.parent).on('resize',function() {                     \n";
+    s += "          var height = $('body').height();                            \n";
+    s += "          ifrm_resize(height);                                        \n";
+    s += "        });                                                           \n";
+    s += "      });                                                             \n";
+    s += "    </script>                                                         \n";
+    s += "<% end %>                                                                                                         \n";
     s += "  </body>                                                                                                         \n";
     s += "</html>                                                                                                           \n";
     s += "</textarea>                                                                                                       \n";
@@ -189,13 +217,18 @@ public class Repl {
                             { 
                                 'iframe-height'     : '500px' ,
                                 'iframe-min-height' : '200px' , 
-                                'iframe-no-padding' : true 
+                                'iframe-auto-height': true    ,
+                                'iframe-no-padding' : true    ,
+                                'iframe-no-scrolling' : true 
                             }
                         */
                         // 코드미러 관련 디폴트 설정 값
                         String iframe_height      = "";
                         String iframe_min_height  = "";
+                        boolean iframe_auto_height = true;
                         boolean iframe_no_padding = false;
+                        boolean iframe_no_scrolling = false;
+                        String iframe_scrolling = "no";
 
                         // 코드미러 관련 설정 내용이 있는지 확인
                         // ```cm 으로 시작되는 라인에서 첫 번째 쉼표(,) 이후 부분을 옵션으로 간주
@@ -210,20 +243,40 @@ public class Repl {
                             JSONObject json = new JSONObject();
                             try {
                                 json = (JSONObject) JSONSerializer.toJSON( cm_option );
-                                System.err.println( "iframe-height     : "+json.get("iframe-height") );
-                                System.err.println( "iframe-min-height : "+json.get("iframe-min-height") );
-                                System.err.println( "iframe-no-padding : "+json.get("iframe-no-padding") );
+                                System.err.println( "  -> iframe-height     : "+json.get("iframe-height") );
+                                System.err.println( "  -> iframe-min-height : "+json.get("iframe-min-height") );
+                                System.err.println( "  -> iframe-auto-height: "+json.get("iframe-auto-height") );
+                                System.err.println( "  -> iframe-no-padding : "+json.get("iframe-no-padding") );
+                                System.err.println( "  -> iframe-no-scrolling : "+json.get("iframe-no-scrolling") );
+                                // 코드미러 iframe 높이지정
                                 if ( json.get("iframe-height") != null ) {
                                     iframe_height =  (String)json.get("iframe-height");
-                                    System.err.println( "iframe-height     : "+iframe_height );
+                                    System.err.println( "  iframe-height     : "+iframe_height );
                                 }
+                                // 코드미러 iframe MIN높이지정
                                 if ( json.get("iframe-min-height") != null ) {
                                     iframe_min_height = (String) json.get("iframe-min-height");
-                                    System.err.println( "iframe-min-height : "+iframe_min_height );
+                                    System.err.println( "  iframe-min-height : "+iframe_min_height );
                                 }
+                                // 코드미러 iframe AUTO높이지정
+                                if ( json.get("iframe-auto-height") != null ) {
+                                    iframe_auto_height = (boolean) json.get("iframe-auto-height");
+                                    System.err.println( "  iframe-auto-height : "+iframe_auto_height );
+                                }
+                                // 코드미러 iframe 패딩지정
                                 if ( json.get("iframe-no-padding") != null ) {
                                     iframe_no_padding = (boolean) json.get("iframe-no-padding");
-                                    System.err.println( "iframe-no-padding : "+iframe_no_padding );
+                                    System.err.println( "  iframe-no-padding : "+iframe_no_padding );
+                                }
+                                // 코드미러 iframe 스크롤링지정
+                                if ( json.get("iframe-no-scrolling") != null ) {
+                                    iframe_no_scrolling = (boolean) json.get("iframe-no-scrolling");
+                                    System.err.println( "  iframe-no-scrolling : "+iframe_no_scrolling );
+                                    if (iframe_no_scrolling)
+                                        iframe_scrolling = "no";
+                                    else
+                                        iframe_scrolling = "yes";
+                                    System.err.println( "    - iframe scrolling="+iframe_scrolling );
                                 }
                                     
                             } catch (Exception e) {
@@ -252,15 +305,20 @@ public class Repl {
                                     s =  "<% end %><%- codeMirrorBlock {";
                                     s += "func : "      + funcName          + "  , ";
                                     s += "funcname : '" + funcName          + "' , ";
+
                                     if ( iframe_height.equals("") )
                                         s += "ifs_h : '' , ";
                                     else
                                         s += "ifs_h : 'height: " + iframe_height + ";' , ";
+
                                     if ( iframe_min_height.equals("") )
                                         s += "ifs_minh : '' , ";
                                     else
                                         s += "ifs_minh : 'min-height: " + iframe_min_height + ";' , ";
+
+                                    s += "if_auto_h : "  + iframe_auto_height + "  , ";
                                     s += "if_nopad : "  + iframe_no_padding + "  , ";
+                                    s += "if_noscroll : "  + iframe_no_scrolling + " , ";
                                     s += "no : 'no' ";
                                     s += "} %>";
                                     out.write(s);
