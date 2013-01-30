@@ -5,8 +5,8 @@ CORNER_DEV=$GIT_ROOT/cornerstone-framework.dev
 
 GITSYNC=$CORNER_DEV/examples/github.sync
 
-### 1분 단위로 git pull이 수행되도록 설정한다.
-TEN_MIN=60
+### 10분 단위로 git pull이 수행되도록 설정한다.
+TEN_MIN=600
 sleep_interval=$TEN_MIN
 
 AN_HOUR=3600
