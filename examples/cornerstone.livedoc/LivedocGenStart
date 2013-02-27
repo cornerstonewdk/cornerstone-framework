@@ -1,2 +1,0 @@
-#!/bin/bash
-LivedocGen.sh >> LivedocGen.log &
