@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="active">
+              <a class="second-depth" id="menu_anchor" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/2_11_form_MVC">
+            <div>
+  <h2>Form View</h2>
+
+<p>Form View는 Cornerstone Framework에서 제공하는 View 클래스 중의 하나로 Form의 데이터로 Model 객체를 만들고, 반대로 Model 객체의 값을 이용하여 Form의 값을 갱신해 주는 역할을 한다.</p>
+
+<p>Form View는 <code>form-view</code>라는 이름의 모듈로 제공된다. 인스턴스를 생성할 때 form 태그를 나타내는 DOM element를 el 속성으로, Form과 연결될 Model 객체를 model 속성으로 지정한다.</p>
+
+<pre><code>require( [ &#39;form-view&#39; ], function( FormView ) {
+
+    ...
+
+    var formView = new FormView( { el: &#39;#add-form&#39;, model: user } );
+} );
+</code></pre>
+
+<p>Form View를 생성하면 지정된 Form과 Model 객체가 서로 밀접하게 연결된다. Model 객체의 값으로 Form이 자동으로 채워진다. Model 객체의 속성 이름과 Form의 하위 element의 name이 같은 것끼리 매칭된다. 이후에 Model 객체의 값을 변경하게 되면 자동으로 Form에 반영된다.</p>
+
+<p>사용자가 Form에 값을 다 입력하고 submit 할 때, 다음과 같이 Form의 내용을 Model 객체에 반영하고 Model 객체를 구할 수 있다.</p>
+
+<pre><code>function callbackOnSubmit() {
+
+    var user = formView.toModel();
+
+    // user 객체를 서버에 저장하는 등의 작업을 한다.
+    …
+
+    // 실제로 form의 submit이 일어나지 않게 한다.
+    return false;
+}
+</code></pre>
+
+<p>toModel 메소드를 사용하기 위해서는 연결된 Model 객체가 반드시 validate 메소드를 가져야 한다. 검증이 필요없으면 빈 내용으로라도 정의해야 한다. validate 메소드에 대해서는 아래에서 자세히 설명한다.</p>
+
+<h2>Validation</h2>
+
+<p>Model 객체에 값을 지정할 때, 특히 Form을 통해서 사용자가 입력한 내용을 Model 객체에 반영할 때, 잘못된 값을 입력하지는 않았는지 검증이 필요한 경우가 있다. Model 객체에 값을 지정할 때 유효성 검사를 하려면 Model에 validate 메소드를 추가하면 된다.</p>
+
+<pre><code>var User = Backbone.Model.extend( {
+
+    validate: function( atts ) {
+        if ( !attrs.name )
+            return { attribute: &#39;name&#39;, message: &#39;이름을 입력하세요.&#39; };
+        if ( !attrs.name.length &gt; 50 )
+            return { attribute: &#39;name&#39;, message: &#39;이름이 너무 깁니다.&#39; };
+    }
+} );
+</code></pre>
+
+<p>Model의 set 또는 save 메소드를 실행하면, 그 전에 validate 메소드가 자동으로 실행된다. validate에서 아무것도 리턴하지 않으면 모든 값이 유효한 것으로 간주해 set 또는 save 메소드를 실행하고, validate에서 오류를 리턴하면 error 이벤트를 발생시키고 set 또는 save 메소드는 실행되지 않는다.</p>
+
+<p>validate에서 오류를 리턴할 때는, 오류 메시지를 나타내는 문자열만을 리턴해도 상관없지만 어느 속성에서 오류가 발생했는지를 알 수 있도록 하기 위해 <code>{ attribute: &#39;속성명&#39;, message: &#39;오류 메시지&#39; }</code> 형식의 객체를 리턴하는 것을 권장한다.</p>
+
+<pre><code>// 유효성 검사가 실패하면 실행된다.
+user.on( &#39;error&#39;, function( model, error ) {
+    alert( error.attribute + &#39; 속성: &#39; + error.message );
+} );
+</code></pre>
+
+<p>Form View의 toModel 메소드를 사용해서 Model 객체에 값을 지정할 때에도 동일한 매커니즘으로 동작한다. 다만, Form View는 Model의 유효성 검사가 실패했을 경우에 사용자에게 알려주는 코드를 기본적으로 내장하고 있기 때문에 error 이벤트에 대한 callback을 별도로 작성할 필요가 없다.</p>
+
+<p>Form View를 사용할 때 Model의 유효성 검사가 실패했을 경우에 사용자에게 알려주는 코드는 Validation View라고 불리우며, 기본 Validation View가 Form View에 내장되어 있다. 사용자에게 알려주는 방식을 변경하고자 한다면 별도의 Validation View를 작성해서 Form View에 적용시킬 수도 있다.</p>
+
+<p>다음은 기본 Validation View가 동작하는 방식을 설명하기 위한 Form의 예시이다. Bootstrap의 기본 Form 마크업대로 작성한 것이다.</p>
+
+<pre><code>&lt;form id=&quot;add-form&quot; class=&quot;form-horizonal&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;div class=&quot;control-group&quot;&gt;
+            &lt;label class=&quot;control-label&quot; for=&quot;name&quot;&gt;이름&lt;/label&gt;
+            &lt;div class=&quot;controls&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;input-xlarge&quot; id=&quot;name&quot; name=&quot;name&quot;/&gt;
+                &lt;span class=&quot;help-inline&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;control-group&quot;&gt;
+            &lt;label class=&quot;control-label&quot; for=&quot;email&quot;&gt;이메일&lt;/label&gt;
+            &lt;div class=&quot;controls&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;input-xlarge&quot; id=&quot;email&quot; name=&quot;email&quot;/&gt;
+                &lt;span class=&quot;help-inline&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>기본 Validation View는 다음과 같이 동작한다.</p>
+
+<ol>
+<li>error 이벤트에서 받은 error 객체에 attribute 속성이 있으면 해당 속성과 name이 일치하는 input을 찾는다.</li>
+<li>attribute 속성이 없다면 form 내의 첫번째 input을 찾는다.</li>
+<li>찾은 input이 속해 있는 control-group을 찾아 error 클래스를 추가한다.</li>
+<li>control-group 내의 help-inline을 찾아서 내용에 오류 메시지를 업데이트한다.</li>
+<li>help-inline이 없으면 input에 tooltip을 추가해서 오류 메시지를 표시한다.</li>
+</ol>
+
+<p>Bootstrap 기본 테마를 사용하고 있다면 아래와 같이 보일 것이다.</p>
+
+<p><img src="images/validation1.png?raw=true" alt=""></p>
+
+<p>만약에 input 다음에 있는 <code>&lt;span class=&quot;help-inline&quot;&gt;&lt;/span&gt;</code>을 제거한다면 tooltip이 자동적으로 추가되어 다음과 같이 보일 것이다.</p>
+
+<p><img src="images/validation2.png?raw=true" alt=""></p>
+
+<p>tooltip이 표시되는 위치가 마음에 들지 않는다면 아래와 같이 data-placement 속성을 추가해 tooltip이 표시되는 위치를 조정할 수 있다.</p>
+
+<pre><code>&lt;input type=&quot;text&quot; class=&quot;input-xlarge&quot; id=&quot;name&quot; name=&quot;name&quot; data-placement=&quot;right&quot;/&gt;
+</code></pre>
+
+<p><img src="images/validation3.png?raw=true" alt=""></p>
+
+<p>유효성 검사가 실패했을 때 오류 메시지를 다르게 표시하고 싶다면 새로운 Validation View를 만들어서 Form View의 기본 Validation View를 대체할 수 있다. Validation View는 다음과 같이 Backbone.View를 extend 해서 만든다.</p>
+
+<pre><code>define( [ &#39;backbone&#39; ], function( Backbone ) {
+
+    return Backbone.View.extend( {
+
+        initialize: function() {
+        },
+
+        reset: function() {
+        },
+
+        success: function() {
+        },
+
+        fail: function( err ) {
+        }
+    } );
+} );
+</code></pre>
+
+<p>위와 같이 4개의 메소드를 정의해야 하며, Validation View에서 el 속성은 속해 있는 Form View의 el 속성과 동일하다.</p>
+
+<ol>
+<li>initialize 메소드는 최초 한 번만 호출된다. 필요 없다면 생략해도 무방하다.</li>
+<li>reset 메소드는 Validation View의 상태를 초기화해야 할 필요가 있을 때 호출된다. 유효성 검사를 하기 직전에 호출된다.</li>
+<li>success 메소드는 유효성 검사가 성공했을 때 호출된다.</li>
+<li>fail 메소드는 유효성 검사가 실패했을 때 호출된다. error 객체가 인자로 전달된다. error 객체는 Model의 validate 메소드에서 리턴하는 값이다. 따라서 validate 메소드를 어떻게 구현하느냐에 따라 error 객체의 형태는 달라진다.</li>
+</ol>
+
+<p>유효성 검사가 실패했을 때 alert 함수를 사용해서 오류 메시지를 보여주고 해당 input으로 포커스를 이동하고 싶다면 아래과 같이 Validation View를 만들 수 있다.</p>
+
+<pre><code>define( [ &#39;backbone&#39;, &#39;jquery&#39; ], function( Backbone, $ ) {
+
+    return Backbone.View.extend( {
+
+        initialize: function() {
+            this.reset();
+        },
+
+        reset: function() {
+        },
+
+        success: function() {
+            this.reset();
+        },
+
+        fail: function( err ) {
+            alert( err.message || err );
+            if ( err.attribute ) this.$( &#39;:input[name=&#39; + err.attribute + &#39;]:first&#39; ).focus();
+        }
+    } );
+} );
+</code></pre>
+
+<p>새로운 Validation View를 만들었으면 FormView를 생성할 때 다음과 같이 지정해서 사용할 수 있다.</p>
+
+<pre><code>require( [ &#39;form-view&#39;, &#39;user-defined-validation-view&#39; ], function( FormView, UserDefinedValidationView ) {
+
+    ...
+
+    var formView = new FormView( { el: &#39;#add-form&#39;, model: user, validationViewClass: UserDefinedValidationView } );
+} );
+
+</code></pre>
+
+<p>FormView의 실제 동작하는 예제를 보고 싶다면 <a href="../cornertest/test-form/">여기</a>에서 확인할 수 있다.</p>
+
+</div>
+
+          </article>
+        </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./2_10_dynamic_style.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./2_12_synchronization.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

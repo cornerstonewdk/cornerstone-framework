@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./dist/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="./dist/ui/theme/white/css/cornerstone.css" />
+    <link rel="stylesheet" href="./livedocument.css" />
+    <script src="./dist/lib/jquery-1.8.1.min.js"></script>
+    <script src="./dist/ui/widget-plugins.js"></script>
+<script type='text/javascript'>var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37188645-1']);_gaq.push(['_trackPageview']);(function() {  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>  </head>
+  <body onload="smartAnchor('mobile_anchor')">
+    <div class="navbar ico-txt">
+      <div class="navbar-inner">
+        <div class="container">
+          <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <i>
+              
+            </i>
+          </button>
+          <a class="brand" href="./index.html">
+            Cornerstone
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="inactive" id="home">
+                <a href="./index.html" title="home">
+                  <i class="icon-home"></i>
+                  HOME
+                </a>
+              </li>
+              <li class="inactive" id="toc">
+                <a href="./toc.html" title="toc">
+                  <i class="icon-list"></i>
+                  목차
+                </a>
+              </li>
+              <li class="inactive" id="bytag">
+                <a href="./bytag.html" title="bytag">
+                  <i class="icon-tag"></i>
+                  태그별모음
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list">
+            <li class="nav-header">
+              Cornerstone Framework
+            </li>
+            <li>
+              <a class="first-depth">Introduction</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./1__Introduction.html">개요</a>
+            </li>
+            <li>
+              <a class="first-depth">애플리케이션 작성법</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_01_file_structure.html">파일 구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_02_module.html">모듈화</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_03_module_usage.html">모듈의 사용</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_04_MVC_pattern.html">MVC 패턴</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_05_model.html">모델</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_06_collection.html">콜렉션</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_07_view.html">뷰</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_08_gesture.html">제스쳐</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_09_template.html">Template</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_10_dynamic_style.html">스타일의 동적 로딩</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_11_form_MVC.html">Form과 MVC</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./2_12_synchronization.html">동기화</a>
+            </li>
+            <li class="active">
+              <a class="second-depth" id="menu_anchor" href="./2_13_routing.html">라우팅</a>
+            </li>
+            <li>
+              <a class="first-depth">Style</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_1_introduction.html">소개</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_2_theme.html">테마</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_3_responsive_web.html">반응형 웹</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./3_4_component_form.html">Components, Form layouts</a>
+            </li>
+            <li>
+              <a class="first-depth">Widget</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_1_00_form.html">Form</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_2_00_component.html">Component</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_01_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_02_navation.html">Navigation</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_03_navagation_bar.html">Navbar</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_04_pagination.html">Pagination</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_05_label_and_badge.html">Labels, badges</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_06_typography.html">Typographic</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_07_thumbnail.html">Thumbnails</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_08_alert.html">Alerts</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_09_progress_bar.html">Progress bars</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_2_10_miscellaneous.html">Miscellaneous</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_3_00_plugin.html">Plugin</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_01_alert.html">Alert</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_02_button.html">Button</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_03_carousel.html">Carousel</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_04_dropdown.html">Dropdown</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_05_modal.html">Modal</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_06_pop_over.html">Popover</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_07_scroll_spy.html">Scrollspy</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_08_tab.html">Tab</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_09_tooltip.html">Tooltip</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_10_range_input.html">RangeInput</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_11_sign.html">Sign</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_12_spinner.html">Spinner</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_13_motioncaptcha.html">Motioncaptcha</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_14_typeahead.html">Typeahead</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_15_collapse.html">Collapse</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_3_16_datepicker.html">DatePicker</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./4_4_00_featured.html">Featured</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_01_scroll_view.html">ScrollView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_02_list_view.html">ListView</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_03_media.html">Media</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_04_editor.html">Editor</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_05_chart.html">Chart</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./4_4_06_data_table.html">Datatables</a>
+            </li>
+            <li>
+              <a class="first-depth">Util</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./5_1_00_utilitly.html">유틸리티</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_01_transition.html">화면전환</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_02_device_API.html">단말 API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_03_JSONP.html">JSONP</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_04_SKT_open_API.html">SKT Open API</a>
+            </li>
+            <li class="inactive">
+              <a class="third-depth" href="./5_1_05_logging.html">Logging</a>
+            </li>
+            <li>
+              <a class="first-depth">Runtime</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_1_basic_structure.html">런타임 기본구조</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_2_android_webapp_development.html">Android 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_3_ios_webapp_development.html">iOS 웹앱 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_4_webapp_attentive_points.html">웹앱 개발시 주의사항</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_5_webapp_sample_code.html">웹앱 샘플코드</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_6_plugin_development_intro.html">PlugIn 개발 개요</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_7_android_plugin_development.html">Android PlugIn 개발</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="./RT_8_ios_plugin_development.html">iOS PlugIn 개발</a>
+            </li>
+            <li>
+              <a class="first-depth">종합테스트</a>
+            </li>
+            <li class="inactive">
+              <a class="second-depth" href="/cornertest/">Cornerstone Framework Test</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span9 well" style="float: left;">
+          <a id="mobile_anchor"></a>
+          <article class="page" typeof="sioc:page" about="/2_13_routing">
+            <div>
+  <h2>Fragment와 라우팅</h2>
+
+<p>여러 화면이 존재하는 Single-page Web App을 만든다고 가정해 보자. 다른 화면으로 이동할 때는 실제로 페이지를 전환하지 않고 AJAX를 사용해 페이지의 일부분을 다시 렌더링하게 될 것이다. 이 경우 실제로 페이지가 전환되는 것이 아니므로 현재 URL에는 변화가 없다. 즉, 각각의 화면은 고유한 URL을 가질 수 없고, 따라서 각 화면에 대한 하이퍼링크를 제공하거나 브라우저에 북마크로 등록하거나 하는 작업이 불가능해지며 브라우저의 Back/Forward 버튼을 사용해서 페이지 이동을 할 수도 없다. 이것은 웹으로서의 사용성을 해치는 일이기 때문에 해결책이 필요하다.</p>
+
+<p>URL에 부가적인 정보를 더 담는 방법으로 Query가 있다. 웹 개발 경험이 있다면 누구나 한번쯤은 다음과 같이 물음표(?)를 사용하여 파라미터를 추가해 보았을 것이다.</p>
+
+<pre><code>http://www.example.org/foo.html?bar=1
+</code></pre>
+
+<p>또 다른 방법으로는 Fragment가 있다. 이것은 Hash mark(#)를 사용하여 현재 페이지의 특정 위치를 가리킨다. Hash mark 뒷부분의 문자열을 Fragment identifier라고 한다.</p>
+
+<pre><code>http://www.example.org/foo.html#bar
+</code></pre>
+
+<p>Query와 Fragment는 결정적인 차이점을 가지고 있는데, Query는 서버에서 처리되지만 Fragment는 클라이언트(웹 브라우저)에서 처리된다는 것이다. 즉, Fragment가 변경되어도 브라우저는 서버에 요청을 다시 보내지 않는다. 그래서 이점을 이용하여 Single-page Web App의 화면마다 다른 Fragment identifier를 부여하면, 결국 화면마다 고유한 URL을 가질 수 있게 되고 URL이 바뀌어도 페이지가 전환되지 않기 때문에 Single-page Web App을 유지할 수 있다.</p>
+
+<blockquote>
+<p>HTML5의 Push State를 사용하면 Fragment를 사용하지 않고도 이 문제를 해결할 수 있으나, Push State는 IE9 이하의 브라우저와 안드로이드의 기본 브라우저에서 제대로 지원하지 않으므로 사용하지 않는다.</p>
+</blockquote>
+
+<p>따라서 Fragment를 사용하면 애플리케이션에서는 페이지가 처음 실행되거나 Fragment identifier가 변경될 경우 그에 맞는 화면을 렌더링하는 작업을 해 주면 된다. 이를 간편하게 할 수 있도록 Backbone에서는 Router를 제공한다.</p>
+
+<p>일반적으로 웹에서 라우팅은 URL에 패턴에 따라서 다른 모듈을 실행하도록 분기시키는 작업을 의미한다. Backbone의 Router는 Fragment identifier의 패턴에 따라서 지정된 함수를 실행하거나 이벤트를 발생시킨다.</p>
+
+<pre><code>var MainRouter = Backbone.Router.extend( {
+
+    // Fragment identifier의 패턴과 함수의 매핑
+    routes: {
+        &#39;&#39;: &#39;list&#39;,                // # or #이 없는 경우
+        &#39;list&#39;: &#39;list&#39;,            // #list
+        &#39;add&#39;: &#39;add&#39;,            // #add
+        &#39;detail/:id&#39;, &#39;detail&#39;    // #detail/5
+    },
+
+    list: function() {
+        // URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
+    },
+
+    add: function() {
+        // URL이 #add로 끝나면 실행된다.
+    },
+
+    detail: function( id ) {
+        // URL 패턴에서 :로 시작되는 부분은 파라미터를 의미한다.
+    }
+} );
+
+new MainRouter();
+
+// Fragment identifier의 변경을 감지하고 라우팅을 처리한다.
+Backbone.history.start();
+</code></pre>
+
+<p>위의 예에서 보는 것과 같이 동적으로 변화되는 부분은 :[변수명]의 형태로 쓰면 함수의 파라미터로 받을 수 있다.
+라우팅 코드는 애플리케이션 메인의 launch 함수 내에 작성되는 것이 가장 적합하다.</p>
+
+<h2>Multipage Router</h2>
+
+<p>Backbone Router 만으로도 쉽게 라우팅을 처리할 수 있지만 웹 앱이 다음 조건을 만족한다면 Multipage Router를 사용해서 더 쉽게 페이지간 전환을 처리할 수 있다.</p>
+
+<ol>
+<li>하나의 HTML 문서 내에 여러 페이지가 존재하며 각각의 페이지가 block element(div, section 등)로 표현된다.</li>
+<li>한 번에 하나의 페이지만 화면에 표시되고 나머지 페이지는 숨겨진다.</li>
+<li>페이지마다 매핑되는 Fragment identifier가 존재해서, Fragment identifier가 변경되면 맞는 페이지가 표시되어야 한다.</li>
+<li>페이지가 바뀔 때 애니메이션 효과가 필요하다.</li>
+</ol>
+
+<h3>마크업 작성</h3>
+
+<p>페이지가 3개(목록, 추가, 상세정보)인 웹 앱을 만든다고 가정하자. 각각의 페이지를 block element로 표현해야 하므로, 다음과 같이 div를 3개 작성한다.</p>
+
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div id=&quot;list&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;add&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;detail&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>Router 작성</h3>
+
+<p>Multipage Router는 <code>multipage-router</code>라는 이름의 모듈로 제공된다. Router를 extend 해서 정의한 후 객체를 생성하고 라우팅을 시작하는 코드까지 모두 Backbone의 Router와 사용법이 거의 동일하다.</p>
+
+<pre><code>require( [ &#39;backbone&#39;, &#39;multipage-router&#39; ], function( Backbone, MultipageRouter ) {
+
+    var MainRouter = MultipageRouter.extend( {
+        // 중략
+    } );
+
+    new MainRouter();
+    Backbone.history.start();
+} );
+</code></pre>
+
+<p>Backbone의 Router에서는 routes 속성을 정의해서 Fragment identifier와 함수를 매핑했지만, MultipageRouter에서는 pages 속성과 transitions 속성을 정의한다. pages 속성에는 각 페이지의 정보와 상태에 따라 실행될 함수를 정의하고, transitions 속성에는 페이지 간 이동시에 적용될 애니메이션 효과를 정의한다.</p>
+
+<p>앞서 Backbone.Router를 사용해서 작성했던 예를 MultipageRouter를 이용해서 바꿔보면 다음과 같다.</p>
+
+<pre><code>var MainRouter = MultipageRouter.extend( {
+
+    pages: {
+        &#39;list-page&#39;: {
+            fragment: [ &#39;&#39;, &#39;list&#39; ],
+            el: &#39;div#list&#39;,
+            active: &#39;list&#39;
+        },
+        &#39;add-page&#39;: {
+            fragment: &#39;add&#39;,
+            el: &#39;div#add&#39;,
+            active: &#39;add&#39;
+        },
+        &#39;detail-page&#39;: {
+            fragment: &#39;detail/:id&#39;,
+            el: &#39;div#detail&#39;,
+            active: &#39;detail&#39;
+        }
+    },
+
+    list: function() {
+        // URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
+    },
+
+    add: function() {
+        // URL이 #add로 끝나면 실행된다.
+    },
+
+    detail: function( id ) {
+        // URL 패턴에서 :로 시작되는 부분은 파라미터를 의미한다.
+    }
+} );
+</code></pre>
+
+<p>routes 속성을 작성할 때 보다 내용이 길어졌지만, MultipageRouter는 훨씬 더 많은 작업을 수행한다. Backbone.Router는 단순히 Fragment identifer가 변경되는 이벤트를 감지할 뿐이지만, MultipageRouter는 그 외에도 Fragment identifier와 연결되어 있는 div만을 화면에 보여주고, 다른 div들은 자동으로 숨겨준다.</p>
+
+<p>pages 속성 객체의 하위 속성들은 각각 하나의 페이지를 나타내고, 속성명(list-page, add-page, detail-page)은 페이지의 ID를 의미한다. 속성의 값은 다시 하위 속성들을 가지는데 그 의미는 다음과 같다.</p>
+
+<ul>
+<li>fragment : 해당 페이지를 활성화하는데 필요한 Fragment identifier의 패턴, 문자열로 하나를 지정하거나 배열로 여러 개를 지정할 수 있다.</li>
+<li>el : 해당 페이지와 매핑되는 block element를 나타내는 jQuery selector</li>
+<li>render : 해당 페이지가 활성화되고 Transition(화면 전환 애니메이션 효과)이 일어나기 전, 해당 페이지를 다시 렌더링하기 위해서 호출되는 callback 함수 또는 함수의 이름</li>
+<li>active : 해당 페이지가 활성화되고 Transition이 완료되고 난 후에 호출되는 callback 함수 또는 함수의 이름</li>
+<li>inactive : 다른 페이지가 활성화되면서 해당 페이지가 비활성화되면서 호출되는 callback 함수 또는 함수의 이름</li>
+</ul>
+
+<p>list-page에서 add-page로 이동한다고 가정했을 때 callback 함수가 실행되는 순서는 아래와 같다.</p>
+
+<ol>
+<li>list-page의 inactive 함수가 실행된다.</li>
+<li>add-page의 render 함수가 실행된다.</li>
+<li>화면 전환 애니메이션 효과가 발생한다.</li>
+<li>add-page의 active 함수가 실행된다.</li>
+</ol>
+
+<p>Backbone.Router와는 달리 callback 함수의 이름 대신에 함수 자체를 지정할 수도 있다.</p>
+
+<pre><code>&#39;list-page&#39;: {
+    fragment: [ &#39;&#39;, &#39;list&#39; ],
+    el: &#39;div#list&#39;,
+    render: function() {
+    },
+    active: function() {
+        // URL이 # 또는 #list로 끝나거나 #이 없는 경우 실행된다.
+    }
+}
+</code></pre>
+
+<p>기본 페이지를 설정하려면 페이지 ID를 default로 지정하면 된다. 기본 페이지는 Fragment identifier 패턴이 일치하는 페이지가 없을 경우에 매핑되는 페이지이다.</p>
+
+<pre><code>&#39;default&#39;: {
+    active: function( path ) {
+        alert( &#39;존재하지 않는 주소입니다. : &#39; + path );
+    }
+}
+</code></pre>
+
+<h3>Transition 설정</h3>
+
+<p>페이지 이동시에 애니메이션 효과를 주고 싶다면 transitions 속성을 지정하면 된다. transitions 속성 객체의 하위 속성명으로 &#39;이전 페이지 ID:다음 페이지 ID&#39; 를 주고, 속성 값으로는 Transition 종류를 지정한다.</p>
+
+<pre><code>transitions: {
+    &#39;list-page:add-page&#39;: &#39;slide&#39;,
+    &#39;list-page:detail-page&#39;: &#39;flip&#39;
+}
+</code></pre>
+
+<p>위 예는 list-page에서 add-page로 이동할 때는 slide 효과가, list-page에서 detail-page로 이동할 때는 flip 효과가 적용된다. 반대 방향의 효과를 지정하지 않아도 기본적으로 동일한 효과에서 방향만 반대로 나타나도록 설정된다. 즉, add-page에서 list-page로 이동할 때는 반대 방향의 slide 효과가, detail-page에서 list-page로 이동할 때는 반대 방향의 flip 효과가 적용된다. 물론, 반대 방향의 효과를 명시적으로 지정하면 그 설정이 우선한다.</p>
+
+<p>애니메이션 효과의 속도를 조절하고 싶다면 다음과 같이 duration을 밀리초 단위로 지정하면 된다.</p>
+
+<pre><code>transitions: {
+    &#39;list-page:add-page&#39;: { type: &#39;slide&#39;, duration: 2000 },
+    &#39;list-page:detail-page&#39;: &#39;flip&#39;
+}
+</code></pre>
+
+<p>transitions 속성을 사용하지 않고 마크업에 data- 속성을 추가해서 효과를 지정할 수도 있다. 다음과 같이 클릭이 가능한 HTML 요소에 data-transition과 data-duration 속성을 추가하면 된다.</p>
+
+<pre><code>&lt;a href=&quot;#add&quot; class=&quot;btn&quot; data-transition=&quot;slide&quot;&gt;추가&lt;/a&gt;
+&lt;a href=&quot;#add&quot; class=&quot;btn&quot; data-transition=&quot;flip&quot; data-duration=&quot;1500&quot;&gt;추가&lt;/a&gt;
+&lt;button class=&quot;btn&quot; data-transition=&quot;fade&quot;&gt;수정&lt;/button&gt;
+</code></pre>
+
+<p>마찬가지로 반대 방향의 효과를 지정하지 않아도 동일한 효과에서 방향만 반대로 나타나도록 설정이 되며, data- 속성을 사용하는 것이 transitions 속성에 정의하는 것보다 우선해서 적용된다.</p>
+
+<p>MultipageRouter의 실제 동작하는 예제를 보고 싶다면 <a href="../cornertest/test-multipage/">여기</a>에서 확인할 수 있다.</p>
+
+</div>
+
+          </article>
+        </div>
+        <div class="span9 well" style="float: right;">
+          <a href='http://www.sktelecom.com' target='_blank'>SKTELECOM</a>에 의해 작성된 <a href='http://cornerstone.sktelecom.com/livedoc/' target='_blank'>Cornerstone 개발자 문서</a>는 <a href='http://creativecommons.org/licenses/by/3.0/deed.ko' target='_blank'>크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+        <script src="./smartanchor.js"></script>
+        <div class="span9" style="float: right;">
+          <div id="pos_fixed_btn" style="float: right;">
+            <div class="btn-group">
+              <a class="btn btn-small" href="#menu_anchor">
+                Menu
+              </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-small" href="./2_12_synchronization.html">
+                <i class="icon-chevron-left">
+                  
+                </i>
+              </a>
+              <a class="btn btn-small" href="#mobile_anchor">
+                Top
+              </a>
+              <a class="btn btn-small" href="./3_1_introduction.html">
+                <i class="icon-chevron-right">
+                  
+                </i>
+              </a>
+            </div>
+          </div>
+          <script>
+            $('#pos_fixed_btn').addClass('pos_fixed_all');
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

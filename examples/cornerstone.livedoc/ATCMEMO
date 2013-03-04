@@ -1,0 +1,9 @@
+# 라이브 도큐먼트 생성 관련
+
+1. docpad 글로벌 설치
+	npm -g install docpad
+
+2. livedoc_gen.sh 실행
+	java repl *.md           : live document Markdown 문서를 ECO 파일로 변환
+	docpad generate          : live document 문서가 out 디렉토리에 생성된다.
+	cp -r out out_public     : out 디렉토리를 복사하여 out_public 디렉토리를 만든다.
