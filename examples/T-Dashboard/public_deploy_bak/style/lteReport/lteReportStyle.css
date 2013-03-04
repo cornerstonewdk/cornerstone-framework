@@ -1,9 +1,0 @@
-div[data-timechart], div[data-devicechart] {
-	height: 300px;
-}
-
-#lteReport .branch {
-	font-color: black;
-	height: 400px;
-}
-
