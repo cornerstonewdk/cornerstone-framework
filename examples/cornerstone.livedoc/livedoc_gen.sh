@@ -27,10 +27,13 @@ java -classpath $CLASSPATH Repl $DOC/3* 2> LOG3.log
 rm -rf $LIVEDOC_DOCUMENTS/*.eco
 cp *.eco $LIVEDOC_DOCUMENTS/
 
-
+rm -rf $LIVEDOC_FILES_IMAGES/
+mkdir $LIVEDOC_FILES_IMAGES/
 cp $DOC/"1. User_Document/images"/*  $LIVEDOC_FILES_IMAGES/
 cp $DOC/"2. Reference/images"/*      $LIVEDOC_FILES_IMAGES/
 cp $DOC/"3. Runtime/images"/*        $LIVEDOC_FILES_IMAGES/
+rm -rf $LIVEDOC_FILES_SAMPLE/
+mkdir $LIVEDOC_FILES_SAMPLE/
 cp $DOC/"3. Runtime/sample"/*        $LIVEDOC_FILES_SAMPLE/
 echo;
 
