@@ -1,0 +1,18 @@
+
+@font-face {
+  font-family: 'SeoulHangangM';
+  font-style: normal;
+  src: url(/fonts/SeoulHangangMCompact.eot);
+  src: url(/fonts/SeoulHangangMCompact.eot?#iefix) format('embedded-opentype'),
+       url(/fonts/SeoulHangangMCompact.woff) format('woff'),
+       url(/fonts/SeoulHangangMCompact.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SeoulNamsanM';
+  font-style: normal;
+  src: url(/fonts/SeoulNamsanMCompact.eot);
+  src: url(/fonts/SeoulNamsanMCompact.eot?#iefix) format('embedded-opentype'),
+       url(/fonts/SeoulNamsanMCompact.woff) format('woff'),
+       url(/fonts/SeoulNamsanMCompact.ttf) format('truetype');
+}
