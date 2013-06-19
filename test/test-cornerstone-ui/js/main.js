@@ -13,10 +13,10 @@
 		var currentType = $(this).find("option:checked").data("style-type");
 		$customStyle.remove();
 		if (currentType === "theme") {
-			$baseStyle.attr("href", "style/bootstrap.css");
-			$baseStyle.after('<link id="customStyle" rel="stylesheet" href="style/theme/' + currentValue + '/css/' + currentValue + '.css"/>');
+			$baseStyle.attr("href", "../../grunt-dist/lib/bootstrap/css/bootstrap.css");
+			$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/ui/theme/' + currentValue + '/cornerstone.css"/>');
 		} else {
-			$baseStyle.attr("href", "style/skin/" + currentValue + "/css/" + currentValue + ".css");
+			$baseStyle.attr("href", "../../grunt-dist/ui/skin/" + currentValue + "/" + currentValue + ".css");
 		}
 	});
 
