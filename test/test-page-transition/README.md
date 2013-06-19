@@ -220,7 +220,6 @@ HTML 코드
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
         <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="css/fonts/stylesheet.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
