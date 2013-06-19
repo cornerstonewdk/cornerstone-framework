@@ -29,6 +29,8 @@
 	$("[data-toggle=tooltip]").tooltip();
 	$("[data-toggle=popover]").popover();
 
+	// RangeInput 스크립트로 적응
+	$("#range3").rangeinput({"inputShow": true});
 
 	$('#footer').affix();
 })(jQuery, window, document);

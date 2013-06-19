@@ -2451,7 +2451,6 @@
     </div>
 </section>
 
-
 <!-- Button
   ================================================== -->
 <section id="button" title="Button">
@@ -2696,8 +2695,26 @@
     <header class="page-header">
         <h2>RangeInput</h2>
     </header>
-    <div class="col col-lg-12">
+    <div class="col col-lg-4">
+        <div class="widget-rangeinput">
+            <input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="0.1"
+                   class="widget-range btn-block"/>
+        </div>
     </div>
+    <div class="col col-lg-4">
+        <div class="widget-rangeinput">
+            <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+                   class="widget-range btn-block"
+                   data-range-options='{"inputShow":false,"progress":true}'/>
+        </div>
+    </div>
+    <div class="col col-lg-4">
+        <div class="widget-rangeinput slider-box">
+            <input id="range3" type="range" value="10" min="0" max="100" step="1"
+                   class="widget-range btn-block inline"/>
+        </div>
+    </div>
+
 </section>
 
 <!-- Sign
@@ -2844,10 +2861,11 @@
     <p class="pull-right"><a href="#top">Back to top</a></p>
 </footer>
 
-<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../grunt-dist/lib/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery.smooth-scroll/jquery.smooth-scroll.min.js"></script>
 <script type="text/javascript" src="bower_components/html5-mobile-boilerplate/js/helper.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-plugins.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
