@@ -1,0 +1,28 @@
+.font-face(@name, @fn, @p, @fontWeight:normal) {
+  font-family: '@{name}';
+  src: url('@{p}/@{fn}.eot');
+  // local 속성을 작성할 경우 클라이언트에 해당 글꼴이 있으면 웹폰트를 적용하지 않는다.
+  src: local('NanumGothic'),
+    url('@{p}/@{fn}.eot?#iefix') format('embedded-opentype'),
+    url('@{p}/@{fn}.woff2') format('woff2'),
+    url('@{p}/@{fn}.woff') format('woff'),
+    url('@{p}/@{fn}.ttf') format('truetype');
+  font-weight: @fontWeight;
+  font-style: normal;
+}
+
+.apply-web-font(@name: "NanumGothic") {
+  // Regular
+  @font-face {
+    .font-face(@name, "#{@name}-Regular", "../fonts");
+  }
+
+  // Bold
+  @font-face {
+    .font-face(@name, "#{@name}-Bold", "../fonts", bold);
+  }
+
+  body {
+    font-family: NanumGothic, Dotum, sans-serif;
+  }
+}
