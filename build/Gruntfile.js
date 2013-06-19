@@ -131,17 +131,32 @@ module.exports = function ( grunt ) {
 		less: {
 			cplDarkTheme: {
 				files: {
-					'<%= path.dist %>ui/theme/dark/css/cornerstone.css': '<%= path.source %>ui/theme/dark/less/cornerstone.less'
+					'<%= path.dist %>ui/theme/dark/cornerstone.css': '<%= path.source %>ui/theme/dark/cornerstone.less'
 				}
 			},
 			cplWhiteTheme: {
 				files: {
-					'<%= path.dist %>ui/theme/white/css/cornerstone.css': '<%= path.source %>ui/theme/white/less/cornerstone.less'
+					'<%= path.dist %>ui/theme/white/cornerstone.css': '<%= path.source %>ui/theme/white/cornerstone.less'
 				}
 			},
 			cplWireframeTheme: {
 				files: {
-					'<%= path.dist %>ui/theme/wireframe/css/cornerstone.css': '<%= path.source %>ui/theme/wireframe/less/cornerstone.less',
+					'<%= path.dist %>ui/theme/wireframe/cornerstone.css': '<%= path.source %>ui/theme/wireframe/cornerstone.less',
+				}
+			},
+			cplSkinCerulean: {
+				files: {
+					'<%= path.dist %>ui/skin/cerulean/cerulean.css': '<%= path.source %>ui/skin/cerulean/cerulean.less'
+				}
+			},
+			cplSkinFlatly: {
+				files: {
+					'<%= path.dist %>ui/skin/flatly/flatly.css': '<%= path.source %>ui/skin/flatly/flatly.less'
+				}
+			},
+			cplSkinUnited: {
+				files: {
+					'<%= path.dist %>ui/skin/united/united.css': '<%= path.source %>ui/skin/united/united.less'
 				}
 			}
 		},
