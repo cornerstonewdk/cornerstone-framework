@@ -129,23 +129,6 @@ module.exports = function ( grunt ) {
 			}
 		},
 		less: {
-			test1: {
-				files: {
-					'<%= path.dist %>ui/theme/dark/css/cornerstone.css' : '<%= path.test %>bootstrap.less'
-				}
-			},
-			test2: {
-				files: {
-					'<%= path.dist %>ui/theme/white/css/cornerstone.css' : '<%= path.test %>bootstrap.less'
-				}
-			},
-			test3: {
-				files: {
-					'<%= path.dist %>ui/theme/wireframe/css/cornerstone.css' : '<%= path.test %>bootstrap.less'
-				}
-			}
-			,
-			// less 1.4 미만 컴파일 에러 떨어짐
 			cplDarkTheme: {
 				files: {
 					'<%= path.dist %>ui/theme/dark/css/cornerstone.css': '<%= path.source %>ui/theme/dark/less/cornerstone.less'
@@ -288,6 +271,6 @@ module.exports = function ( grunt ) {
 
 	// 향후 cornerstone.less 가 1.4 기준으로 작성시 아래 주석된 녀석을 사용한다. less설정에 test1~3은 지워질 예정
 	// grunt.registerTask( 'build', [ 'clean', 'createDir', 'copy', 'concat', 'less', 'uglify', 'cssmin' ] );
-	grunt.registerTask( 'build', [ 'clean', 'createDir', 'copy', 'concat', 'less:test1', 'less:test2', 'less:test3', 'uglify', 'cssmin' ] );
+	grunt.registerTask( 'build', [ 'clean', 'createDir', 'copy', 'concat', 'less', 'uglify', 'cssmin' ] );
 	grunt.registerTask( 'default', [ 'build' ] );
 }
