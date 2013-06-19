@@ -101,6 +101,39 @@ module.exports = function ( grunt ) {
 					}
 				]
 			},
+			fontCerulean: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>ui/skin/cerulean/fonts/**' ],
+						dest: '<%= path.dist %>ui/skin/cerulean/fonts/'
+					}
+				]
+			},
+			fontFlatly: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>ui/skin/flatly/fonts/**' ],
+						dest: '<%= path.dist %>ui/skin/flatly/fonts/'
+					}
+				]
+			},
+			fontUnited: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>ui/skin/united/fonts/**' ],
+						dest: '<%= path.dist %>ui/skin/united/fonts/'
+					}
+				]
+			},
 			readme: { 
 				files: [ {
 					src: [ './README.md' ],
@@ -278,9 +311,12 @@ module.exports = function ( grunt ) {
 		grunt.file.mkdir( pathInfo.dist + 'mvc/router' );
 		grunt.file.mkdir( pathInfo.dist + 'ui' );
 		grunt.file.mkdir( pathInfo.dist + 'ui/img' );
-		grunt.file.mkdir( pathInfo.dist + 'ui/theme/dark/css' );
-		grunt.file.mkdir( pathInfo.dist + 'ui/theme/white/css' );
-		grunt.file.mkdir( pathInfo.dist + 'ui/theme/wireframe/css' );
+		grunt.file.mkdir( pathInfo.dist + 'ui/theme/dark' );
+		grunt.file.mkdir( pathInfo.dist + 'ui/theme/white' );
+		grunt.file.mkdir( pathInfo.dist + 'ui/theme/wireframe' );
+		grunt.file.mkdir( pathInfo.dist + 'ui/skin/cerulean/fonts' );
+		grunt.file.mkdir( pathInfo.dist + 'ui/skin/flatly/fonts' );
+		grunt.file.mkdir( pathInfo.dist + 'ui/skin/united/fonts' );
 		grunt.file.mkdir( pathInfo.dist + 'util' );
 	} );
 
