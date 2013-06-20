@@ -131,91 +131,9 @@
     </div>
 </div>
 
-<!--<section id="compareUI" title="UI 비교" class="container">-->
-<!--<div class="page-header">-->
-<!--<h1>UI 비교</h1>-->
-<!--</div>-->
+<div class="container">
 
-<!--<div class="row">-->
-<!--<header class="page-header">-->
-<!--<h2>Base CSS</h2>-->
-<!--</header>-->
-<!--<div class="col col-lg-12">-->
-<!--<table class="table table-striped">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>#</th>-->
-<!--<th>Name</th>-->
-<!--<th>Boostrap 3</th>-->
-<!--<th>Cornerstone 2</th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--<tr>-->
-<!--<td>1</td>-->
-<!--<td>Grid</td>-->
-<!--<td><span class="label">미지원</span></td>-->
-<!--<td><span class="label label-success">지원</span></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="row">-->
-<!--<header class="page-header">-->
-<!--<h2>Components</h2>-->
-<!--</header>-->
-<!--<div class="col col-lg-12">-->
-<!--<table class="table table-striped">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>#</th>-->
-<!--<th>Name</th>-->
-<!--<th>Boostrap 3</th>-->
-<!--<th>Cornerstone 2</th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--<tr>-->
-<!--<td>1</td>-->
-<!--<td>Grid</td>-->
-<!--<td><span class="label">미지원</span></td>-->
-<!--<td><span class="label label-success">지원</span></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="row">-->
-<!--<header class="page-header">-->
-<!--<h2>Javascript CSS</h2>-->
-<!--</header>-->
-<!--<div class="col col-lg-12">-->
-<!--<table class="table table-striped">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>#</th>-->
-<!--<th>Name</th>-->
-<!--<th>Boostrap 3</th>-->
-<!--<th>Cornerstone 2</th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--<tr>-->
-<!--<td>1</td>-->
-<!--<td>Grid</td>-->
-<!--<td><span class="label">미지원</span></td>-->
-<!--<td><span class="label label-success">지원</span></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-
-<section id="baseCSS" title="Base CSS" class="container">
+<section id="baseCSS" title="Base CSS" class="col col-lg-12">
 
 <div class="page-header">
     <h1>Base CSS</h1>
@@ -594,7 +512,7 @@
 </section>
 </section>
 
-<section id="component" title="Components" class="container">
+<section id="component" title="Components" class="col col-lg-12">
 
 <div class="page-header">
     <h1>Components</h1>
@@ -1967,7 +1885,7 @@
 
 </section>
 
-<section id="plugins" title="Plugins" class="container">
+<section id="plugins" title="Plugins" class="col col-lg-12">
 <header class="page-header">
     <h1>Plugins</h1>
 </header>
@@ -2372,7 +2290,7 @@
         </div>
 
         <h3>Four directions</h3>
-        <ul class="bs-example-tooltips">
+        <ul class="demo-tooltips">
             <li><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a>
             </li>
@@ -2397,7 +2315,7 @@
         <h3>Four directions</h3>
 
         <div class="bs-example tooltip-demo">
-            <ul class="bs-example-tooltips">
+            <ul class="demo-tooltips">
                 <li><a href="#" data-toggle="popover" data-placement="top"
                        data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover
                     on top</a></li>
@@ -2659,7 +2577,7 @@
         <h2>Carousel</h2>
     </header>
     <div class="col col-lg-8 col-offset-2">
-        <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
+        <div id="carousel-example-generic" class="carousel slide" data-carousel="swipe">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
@@ -2696,23 +2614,17 @@
         <h2>RangeInput</h2>
     </header>
     <div class="col col-lg-4">
-        <div class="widget-rangeinput">
-            <input type="range" data-plugin="rangeinput" value="1" min="1" max="100" step="0.1"
-                   class="widget-range btn-block"/>
-        </div>
+        <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
+               class="widget-range"/>
     </div>
     <div class="col col-lg-4">
-        <div class="widget-rangeinput">
-            <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
-                   class="widget-range btn-block"
-                   data-range-options='{"inputShow":false,"progress":true}'/>
-        </div>
+        <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+               class="widget-range"
+               data-range-options='{"inputShow":false,"progress":true}'/>
     </div>
     <div class="col col-lg-4">
-        <div class="widget-rangeinput slider-box">
-            <input id="range3" type="range" value="10" min="0" max="100" step="1"
-                   class="widget-range btn-block inline"/>
-        </div>
+        <input id="range3" type="range" value="99999" min="0" max="99999" step="1000"
+               class="widget-range max-10000"/>
     </div>
 
 </section>
@@ -2774,7 +2686,7 @@
 
 </section>
 
-<section id="featured" title="Featured" class="container">
+<section id="featured" title="Featured" class="col col-lg-12">
     <div class="page-header">
         <h1>Featured</h1>
     </div>
@@ -2839,6 +2751,8 @@
         </div>
     </section>
 </section>
+
+</div>
 
 <!-- Footer
  ================================================== -->

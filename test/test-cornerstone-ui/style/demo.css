@@ -38,12 +38,15 @@ body {
   margin-top: 10px;
   overflow: auto;
 }
-.bs-example-tooltips {
+.demo-tooltips {
   text-align: center;
   margin: 0 0 10px;
   list-style: none;
 }
-.bs-example-tooltips li {
+.demo-tooltips li {
   display: inline;
   padding: 0 10px;
+}
+#rangeInput .col {
+  margin: 10px 0;
 }
