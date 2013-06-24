@@ -224,9 +224,9 @@
         <h3><span class="label label-info">New</span> Small device grid</h3>
 
         <div class="row show-grid">
-            <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-            <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-            <div class="col col-lg-4 col-sm-12">4 cols, 12 small cols</div>
+            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
+            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
+            <div class="col col-lg-4 col-12">4 cols, 12 small cols</div>
         </div>
     </div>
 </section>
@@ -481,11 +481,11 @@
     <div class="col col-lg-12">
         <h3>Disabled state</h3>
 
-        <div class="col col-sm-6">
+        <div class="col col-6">
             <h4>Button element</h4>
             <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
         </div>
-        <div class="col col-sm-6">
+        <div class="col col-6">
             <h4>Anchor element</h4>
             <a href="#" class="btn btn-default btn-large disabled">Link</a>
         </div>
@@ -2382,7 +2382,7 @@
     </header>
 
     <div class="row">
-        <div class="col col-lg-6 col-sm-12">
+        <div class="col col-lg-6 col-12">
             <h3>Grouped Buttons</h3>
 
             <div class="btn-group">
@@ -2400,7 +2400,7 @@
                 <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span></button>
             </div>
         </div>
-        <div class="col col-lg-6 col-sm-12">
+        <div class="col col-lg-6 col-12">
             <h3>Horizontal toggle checkbox</h3>
 
             <div class="btn-group" data-toggle="buttons-checkbox">
@@ -2416,7 +2416,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col col-lg-6 col-sm-12">
+        <div class="col col-lg-6 col-12">
             <h3>Horizontal radio</h3>
 
             <div class="btn-group" data-toggle="buttons-radio">
@@ -2425,7 +2425,7 @@
                 <button type="button" class="btn btn-default">Gallery</button>
             </div>
         </div>
-        <div class="col col-lg-6 col-sm-12">
+        <div class="col col-lg-6 col-12">
             <h3>Button dropdown menus</h3>
 
             <div class="btn-group">
@@ -2636,6 +2636,15 @@
         <h2>Sign</h2>
     </header>
     <div class="col col-lg-12">
+        <div class="widget-sign">
+            <div id="signature" class="sign"></div>
+            <div id="tools">
+                <button class="btn btn-default show-sign">이미지로 보기</button>
+                <button class="btn btn-danger reset-sign">리셋하기</button>
+            </div>
+            <h3 class="page-header">이미지를 보여줄 영역</h3>
+            <div class="widget-sign-viewer"></div>
+        </div>
     </div>
 </section>
 

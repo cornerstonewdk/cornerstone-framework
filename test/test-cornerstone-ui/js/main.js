@@ -33,6 +33,27 @@
 		// RangeInput 스크립트로 적응
 		$("#range3").rangeinput({"inputShow": true});
 
+		//
+		// Sign 플러그인
+		// --------------------------------------------------
+		$("#signature").sign();
+
+		// 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
+		$("button.show-sign").on('click', function (e) {
+			var data = $("#signature").sign("getData", "image"); // Base64 형태의 이미지 데이터 리턴
+			$("div.widget-sign-viewer").html($("<img/>", {
+				src:"data:" + data
+			}));
+			console.log(data);
+		});
+
+		// 초기화
+		$("button.reset-sign").on('click', function (e) {
+			$("#signature").sign("reset"); // 초기화
+			$(".widget-sign-viewer img").remove();
+		});
+
+
 		$('#footer').affix();
 	});
 })(jQuery, window, document);
