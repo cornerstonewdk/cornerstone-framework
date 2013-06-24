@@ -24,7 +24,11 @@
 		// 컴포넌트 요소 이동
 		$("#nav-component a").smoothScroll({
 			offset: -50
-		});
+		}).on("click.smoothscroll", function (e) {
+				if ($(e.target).closest(".dropdown-menu").length) {
+					$(".navbar-toggle").trigger("click");
+				}
+			});
 
 		// 툴팁 Data API
 		$("[data-toggle=tooltip]").tooltip();
@@ -88,7 +92,7 @@
 		// Date Picker 플러그인
 		// --------------------------------------------------
 		$('#date-picker1, #date-picker2').datepicker({
-			language:"kr",
+			language: "kr",
 			firstDisable: true,
 			changeDisplay: true
 		});
