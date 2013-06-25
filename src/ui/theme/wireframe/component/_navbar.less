@@ -77,47 +77,49 @@
 }
 
 // Fixed Navbar안의 Dropdown UI
-.navbar[class*=navbar-fixed-] {
-  .dropdown-menu {
-    position: relative;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    padding-left: 30px;
-    float: none;
-    & > li {
-      width: 100%;
-      & > a {
-        padding: 3px 20px 3px 5px;
+@media(max-width: 768px) {
+  .navbar[class*=navbar-fixed-] {
+    .dropdown-menu {
+      position: relative;
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      padding-left: 30px;
+      float: none;
+      & > li {
+        width: 100%;
+        & > a {
+          padding: 3px 20px 3px 5px;
 
-        &:hover, &:active {
-          color: @navbar-link-hover-color;
-          background: @navbar-link-hover-bg;
+          &:hover, &:active {
+            color: @navbar-link-hover-color;
+            background: @navbar-link-hover-bg;
+          }
         }
       }
-    }
 
-    > li > a {
-      color: @navbar-link-color;
-      border-radius: @border-radius-base;
-    }
-    > li > a:hover,
-    > li > a:focus {
-      color: @navbar-link-hover-color;
-      background-color: @navbar-link-hover-bg;
-    }
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
-      color: @navbar-link-active-color;
-      background-color: @navbar-link-active-bg;
-    }
-    > .disabled > a,
-    > .disabled > a:hover,
-    > .disabled > a:focus {
-      color: @navbar-link-disabled-color;
-      background-color: @navbar-link-disabled-bg;
-    }
+      > li > a {
+        color: @navbar-link-color;
+        border-radius: @border-radius-base;
+      }
+      > li > a:hover,
+      > li > a:focus {
+        color: @navbar-link-hover-color;
+        background-color: @navbar-link-hover-bg;
+      }
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        color: @navbar-link-active-color;
+        background-color: @navbar-link-active-bg;
+      }
+      > .disabled > a,
+      > .disabled > a:hover,
+      > .disabled > a:focus {
+        color: @navbar-link-disabled-color;
+        background-color: @navbar-link-disabled-bg;
+      }
 
+    }
   }
 }
