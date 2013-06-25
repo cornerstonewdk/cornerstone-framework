@@ -2897,8 +2897,95 @@
         <header class="page-header">
             <h2>ListView</h2>
         </header>
-        <div class="col col-lg-12">
+        <div class="list-view-wrapper">
+            <div id="listView" class="list-view">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                </ul>
+            </div>
         </div>
+        <p>
+            <button id="addItem" class="btn btn-default">더보기</button>
+        </p>
     </section>
 
     <!-- Media
@@ -2908,6 +2995,10 @@
             <h2>Media</h2>
         </header>
         <div class="col col-lg-12">
+            <video width="100%" height="100%" data-featured="media" preload="none" >
+                <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+                <source type="video/mp4" src="data/sample-media.mp4"/>
+            </video>
         </div>
     </section>
 
@@ -2916,8 +3007,11 @@
     <section id="editor" title="Editor" class="row">
         <header class="page-header">
             <h2>Editor</h2>
+            <span class="label label-warning">Update</span>
+             BTS3으로 버전업되면서 기존 bootsrap 위지윅 js 사용불가.
         </header>
         <div class="col col-lg-12">
+            <textarea id="editorExample" rows="20" placeholder="Enter text ..."></textarea>
         </div>
     </section>
 
@@ -2927,7 +3021,17 @@
         <header class="page-header">
             <h2>Chart</h2>
         </header>
-        <div class="col col-lg-12">
+        <div class="col col-lg-4">
+            <h3>바차트</h3>
+            <div data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json" style="height: 300px"></div>
+        </div>
+        <div class="col col-lg-4">
+            <h3>라인차트</h3>
+            <div data-featured="chart" data-chart-type="line" data-chart-bind="data/sample-line.json" style="height: 300px"></div>
+        </div>
+        <div class="col col-lg-4">
+            <h3>파이차트</h3>
+            <div data-featured="chart" data-chart-type="pie" data-chart-bind="data/sample-pie.json" style="height: 300px"></div>
         </div>
     </section>
 
@@ -2938,6 +3042,21 @@
             <h2>Datatables</h2>
         </header>
         <div class="col col-lg-12">
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example"
+                   data-featured="datatable" data-datatable-bind="data/sample-datatables.json">
+                <thead>
+                <tr>
+                    <th width="20%">Rendering engine</th>
+                    <th width="25%">Browser</th>
+                    <th width="25%">Platform(s)</th>
+                    <th width="15%">Engine version</th>
+                    <th width="15%">CSS grade</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
     </section>
 </section>
@@ -2982,9 +3101,15 @@
 <script type="text/javascript" src="../../grunt-dist/ui/widget-plugins.js"></script>
 <script type="text/javascript" src="../../src/ui/widget/featured/scroll-view/iscroll.js"></script>
 <script type="text/javascript" src="../../grunt-dist/ui/widget-scrollview.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/list-view/infinity.js"></script>
 <script type="text/javascript" src="../../grunt-dist/ui/widget-listview.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/media/mediaelement-and-player.js"></script>
 <script type="text/javascript" src="../../grunt-dist/ui/widget-media.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/editor/wysihtml5.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/editor/bootstrap-wysihtml5.js"></script>
 <script type="text/javascript" src="../../grunt-dist/ui/widget-editor.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/chart/d3.v2.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/chart/nv.d3.js"></script>
 <script type="text/javascript" src="../../grunt-dist/ui/widget-chart.js"></script>
 <script type="text/javascript" src="../../src/ui/widget/featured/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../../grunt-dist/ui/widget-datatable.js"></script>
