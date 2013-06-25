@@ -3,9 +3,10 @@ body {
   padding-bottom: 50px;
 }
 #footer {
+  background: #FFF;
   position: fixed;
-  bottom: 10px;
-  height: 35px;
+  bottom: 0;
+  height: 45px;
   width: 100%;
   padding: 0 10px;
 }
@@ -49,4 +50,7 @@ body {
 }
 #rangeInput .col {
   margin: 10px 0;
+}
+.demo-scroll-view .col-12 {
+  height: 300px;
 }

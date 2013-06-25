@@ -93,6 +93,38 @@
 			changeDisplay: true
 		});
 
+		$("#scrollView1").featuredScrollView();
+
+		var generatedCount = 0;
+		$("#scrollView2").featuredScrollView({
+			pullDownID:"pullDown",
+			pullUpID:"pullUp",
+			pullDownAction:function () {
+				// 일반적으로 pullDown은 새로고침 액션으로 이용된다.
+				setTimeout(function() {
+					$("#scrollView2").featuredScrollView("refresh");
+				}, 500);
+			},
+			pullUpAction:function () {
+				// ajax로 데이터바인딩이 완료될때 꼭 스크롤뷰 새로고침이 필요함.
+				setTimeout(function() {
+					// 임시 엘리먼트를 추가한다.
+					var $el, li, i;
+					$el = $("#scrollView2 .list-group");
+					for (i = 0; i < 10; i++) {
+						li = document.createElement('li');
+						$("<li/>", {
+							"class": "list-group-item"
+						}).html(
+							'<span class="glyphicon glyphicon-chevron-right"></span>'
+							+ '<span class="badge">' + Math.round((Math.random() * 10) + 1) + '</span>'
+							+ '신규 레코드 ' + (++generatedCount)
+							).appendTo($el);
+					}
+					$("#scrollView2").featuredScrollView("refresh");
+				}, 300);
+			}
+		});
 
 		$('#footer').affix();
 	});
