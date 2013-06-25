@@ -24,11 +24,7 @@
 		// 컴포넌트 요소 이동
 		$("#nav-component a").smoothScroll({
 			offset: -50
-		}).on("click.smoothscroll", function (e) {
-				if ($(e.target).closest(".dropdown-menu").length) {
-					$(".navbar-toggle").trigger("click");
-				}
-			});
+		});
 
 		// 툴팁 Data API
 		$("[data-toggle=tooltip]").tooltip();
