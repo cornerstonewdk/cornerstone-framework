@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+  ~ The MIT License (MIT)
+  ~ Copyright © 2013 JNW, http://jnw.io/ <william@jnw.io>
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<html>
+<head>
+    <title>Cornerstone UI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
+    <link id="customStyle" rel="stylesheet" href="../../grunt-dist/ui/theme/wireframe/cornerstone.css"/>
+    <link rel="stylesheet" href="style/demo.css"/>
+</head>
+<body class="preview" id="top">
+
+<div class="container">
+
+<section id="plugins" title="Plugins" class="col col-lg-12">
+<header class="page-header">
+    <h1>Plugins</h1>
+</header>
+플러그인 위젯은 유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯이다.
+
+<!-- Button
+  ================================================== -->
+<section id="button" title="Button">
+    <header class="page-header">
+        <h2>Button</h2>
+        <small>
+            <a href="http://cornerstone.sktelecom.com/cornertest/test-ui/components4.html" target="_blank">
+                <span class="label label-info">이전 버전과 비교하기<span class="glyphicon glyphicon-share-alt"></span></span>
+            </a>
+        </small>
+    </header>
+
+    <div class="row">
+        <div class="col col-lg-6 col-12">
+            <h3>Grouped Buttons</h3>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span>
+                </button>
+                <button type="button" class="btn btn-default"><span
+                        class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-circle-arrow-up"></span>
+                </button>
+                <button type="button" class="btn btn-primary"><span
+                        class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span></button>
+            </div>
+        </div>
+        <div class="col col-lg-6 col-12">
+            <h3>Horizontal toggle checkbox</h3>
+
+            <div class="btn-group" data-toggle="buttons-checkbox">
+                <button type="button" class="btn btn-default">b</button>
+                <button type="button" class="btn btn-default"><em>i</em></button>
+                <button type="button" class="btn btn-default">u</button>
+            </div>
+            <div class="btn-group" data-toggle="buttons-checkbox">
+                <button type="button" class="btn btn-primary">b</button>
+                <button type="button" class="btn btn-primary"><em>i</em></button>
+                <button type="button" class="btn btn-primary">u</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6 col-12">
+            <h3>Horizontal radio</h3>
+
+            <div class="btn-group" data-toggle="buttons-radio">
+                <button type="button" class="btn btn-default">List</button>
+                <button type="button" class="btn btn-default">Grid</button>
+                <button type="button" class="btn btn-default">Gallery</button>
+            </div>
+        </div>
+        <div class="col col-lg-6 col-12">
+            <h3>Button dropdown menus</h3>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Action <span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>Split button dropdowns</h3>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Action</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success">Success</button>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col col-lg-6">
+            <h3>Split button dropup</h3>
+
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-default">Dropup</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-primary">Right dropup</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</section>
+
+</div>
+
+<!-- Footer
+ ================================================== -->
+<hr>
+<footer id="footer">
+    <div class="row">
+        <div class="col col-4">
+            <label for="changeStyle">
+                <select name="changeStyle" id="changeStyle">
+                    <option data-style-type="theme" value="wireframe">테마 - 와이어프레임(기본)</option>
+                    <option data-style-type="theme" value="dark">테마 - 다크</option>
+                    <option data-style-type="theme" value="white">테마 - 화이트</option>
+                    <option data-style-type="skin" value="cerulean">스킨 - 세루리안(Cerulean)</option>
+                    <option data-style-type="skin" value="flatly">스킨 - 플랫리(Flatly)</option>
+                    <option data-style-type="skin" value="united">스킨 - 유나이티드(United)</option>
+                </select>
+            </label>
+        </div>
+        <div class="col col-5">
+            <span class="label label-info">New</span> : BTS3
+            <span class="label label-success">New</span> : CS
+        </div>
+        <div class="col col-3">
+            <a class="pull-right" target="_blank"
+               href="http://validator.w3.org/check?uri=http%3A%2F%2Fjnw.io%2Fprojects%2FCornerstone%2Fcornerstone-framework%2Ftest%2Ftest-cornerstone-ui%2F">
+                <img src="data:image/jpg;base64,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">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="../../grunt-dist/lib/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery.smooth-scroll/jquery.smooth-scroll.min.js"></script>
+<script type="text/javascript" src="bower_components/html5-mobile-boilerplate/js/helper.js"></script>
+<script type="text/javascript" src="../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-plugins.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/scroll-view/iscroll.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-scrollview.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/list-view/infinity.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-listview.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/media/mediaelement-and-player.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-media.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/editor/wysihtml5.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/editor/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-editor.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/chart/d3.v2.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/chart/nv.d3.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-chart.js"></script>
+<script type="text/javascript" src="../../src/ui/widget/featured/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../grunt-dist/ui/widget-datatable.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
+
+
