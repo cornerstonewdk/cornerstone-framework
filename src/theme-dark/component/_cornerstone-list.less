@@ -1,0 +1,32 @@
+//
+// Cornerstone List
+// --------------------------------------------------
+.list-group-cornerstone {
+  margin: -15px;
+}
+
+.panel-group {
+  > .panel {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  > .panel:first-child {
+    border-radius: @panel-border-radius @panel-border-radius 0 0;
+  }
+  > .panel:last-child {
+    border-radius: 0 0 @panel-border-radius @panel-border-radius;
+    margin-bottom: 20px;
+  }
+
+  .panel-sub-heading {
+    font-size: (@font-size-base * 1.1);
+  }
+}
+
+.list-group-item {
+  .glyphicon {
+    &.pull-right {
+      margin-right: -15px;
+    }
+  }
+}
