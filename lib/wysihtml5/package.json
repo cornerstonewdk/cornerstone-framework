@@ -1,0 +1,11 @@
+{
+	"name": "wysihtml5",
+	"version": "0.3.0",
+	"description": "Simple, beautiful wysiwyg editors",
+	"jam": {
+		"main": "wysihtml5-0.3.0.min.js",
+		"shim": {
+			"exports": "wysihtml5"
+		}
+	}
+}

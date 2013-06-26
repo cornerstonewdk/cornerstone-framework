@@ -1,0 +1,15 @@
+{
+	"name": "nv",
+	"version": "0.0.1",
+	"description": "A reusable chart library for d3.JS.",
+	"jam": {
+		"dependencies": {
+			"d3": "2.0.0"
+		},
+		"main": "nv.d3.min.js",
+		"shim": {
+			"deps": [ "d3" ],
+			"exports": "nv"
+		}
+	}
+}

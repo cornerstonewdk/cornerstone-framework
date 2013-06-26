@@ -1,0 +1,15 @@
+{
+	"name": "bootstrap-datepicker",
+	"version": "2.0.0",
+	"description": "Bootstrap datepicker",
+	"jam": {
+		"dependencies": {
+			"bootstrap": "3.0.0",
+			"jquery": "2.0.2"
+		},
+		"main": "bootstrap-datepicker.js",
+		"shim": {
+			"deps": [ "bootstrap", "jquery" ]
+		}
+	}
+}

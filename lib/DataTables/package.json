@@ -1,0 +1,14 @@
+{
+	"name": "DataTables",
+	"version": "1.9.4",
+	"title": "DataTables",
+	"jam": {
+		"dependencies": {
+			"jquery": "2.0.2"
+		},
+		"main": "jquery.DataTables.min.js",
+		"shim": {
+			"deps": [ "jquery" ]
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "MotionCAPTCHA",
+	"version": "0.2.0",
+	"description": "MotionCAPTCHA is a jQuery CAPTCHA plugin, based on the HTML5 Canvas Harmony procedural drawing tool by Mr Doob and the $1 Unistroke Gesture Regonizer algorithm (and the more recent Protractor algorithm improvement), requiring users to sketch the shape they see in the canvas in order to submit a form.",
+	"jam": {
+		"dependencies": {
+			"jquery": "2.0.2"
+		},
+		"main": "jquery.motionCaptcha.0.2.js",
+		"shim": {
+			"deps": [ "jquery" ]
+		}
+	}
+}
