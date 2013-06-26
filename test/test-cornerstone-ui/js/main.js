@@ -188,5 +188,13 @@
 		$("#editorExample").featuredEditor();
 
 		$('#footer').affix();
+
+		MBP.scaleFix();
+		MBP.hideUrlBar();
+
+		$(".btn").each(function() {
+			new MBP.fastButton($(this));
+		});
+
 	});
 })(jQuery, window, document);
