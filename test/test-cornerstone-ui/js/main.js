@@ -15,9 +15,9 @@
 			$customStyle.remove();
 			if (currentType === "theme") {
 				$baseStyle.attr("href", "../../grunt-dist/lib/bootstrap/css/bootstrap.css");
-				$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/ui/theme/' + currentValue + '/cornerstone.css"/>');
+				$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/theme/' + currentValue + '/cornerstone.css"/>');
 			} else {
-				$baseStyle.attr("href", "../../grunt-dist/ui/skin/" + currentValue + "/" + currentValue + ".css");
+				$baseStyle.attr("href", "../../grunt-dist/src/skin/" + currentValue + "/" + currentValue + ".css");
 			}
 		});
 
@@ -29,6 +29,13 @@
 		// 툴팁 Data API
 		$("[data-toggle=tooltip]").tooltip();
 		$("[data-toggle=popover]").popover();
+
+		// 버튼 터치 기반인 경우 버그픽스
+		$('body').on('click', '[data-toggle^=button]', function(e) {
+			var btn = $(e.target);
+			if (btn.hasClass('btn')) {
+			}
+		});
 
 		//
 		// RangeInput 플러그인
