@@ -1,0 +1,4 @@
+{
+	"_id": "_design/_auth",
+	"validate_doc_update": "function(new_doc, old_doc, userCtx) {   if(userCtx.name != 'appadmin') {     throw({forbidden: 'Not Authorized'});   } }"
+}
