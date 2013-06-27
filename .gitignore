@@ -2,6 +2,7 @@
 *.log
 *.eco
 *.swp
+admin.json
 grunt-dist
 examples/tetris-together/node_modules
 examples/T-Dashboard/node_modules
