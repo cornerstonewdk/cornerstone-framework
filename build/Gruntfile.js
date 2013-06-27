@@ -1,26 +1,22 @@
 module.exports = function ( grunt ) {
 
 	// load NPM tasks
-	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-shell');
 
 	var pathInfo = {
 		source: '../src/',
 		lib: '../lib/',
-		dist: '../grunt-dist/'
+		dist: '../grunt-dist/',
+		repo: 'http://j4f.jnw.io/repository'
 	};
 
 	grunt.initConfig( {
-		path: {
-			source: pathInfo.source,
-			lib: pathInfo.lib,
-			dist: pathInfo.dist,
-			test: pathInfo.test
-		},
+		path: pathInfo,
 		pkg: grunt.file.readJSON( 'package.json' ),
 		admin: grunt.file.readJSON( 'admin.json' ),
 		clean: {
@@ -113,9 +109,50 @@ module.exports = function ( grunt ) {
 					}
 				]
 			}
+		},
+		shell: {
+			publish: {
+				command: 
+					'jam publish <%= path.dist %>lib/backbone --repository <%= path.repo %>'
+				,
+				options: {
+					stdout: true,
+					sterr: true
+				}
+			}
 		}
 	} );
-	
+
+
+	// grunt.registerTask( 'searchForPublish', 'search the package.json in each directory', function () {
+	// 	grunt.file.recurse( pathInfo.dist, function callback( abspath, rootdir, subdir, filename ) {
+	// 		if ( filename === 'package.json' ) {
+	// 			var options = {
+	// 				cmd: 'jam publish ' + pathInfo.dist + 'lib/backbone --repository ' + pathInfo.repo,
+	// 				args: [ testAdmin.id, testAdmin.pass ]
+
+	// 			};
+	// 			options.cmd = grunt.template.process(_.isFunction(options.cmd) ? options.cmd.call(grunt) : options.cmd);
+
+	// 			console.log( options.cmd );
+	// 			grunt.util.spawn( options, function ( error, result, code ) {
+	// 				console.log( error, result, code );
+	// 			} );
+					
+	// 		}
+
+
+	// 		console.log( 'abspath : ' + abspath );
+	// 		console.log( 'rootdir : ' + rootdir );
+	// 		console.log( 'subdir : ' + subdir );
+	// 		console.log( 'filename : ' + filename );
+
+	// 		'jam publish <%= path.dist %>lib/backbone --repository <%= path.repo %>'
+	// 		'jam publish ' + pathInfo.dist + 'lib/backbone --repository ' + pathInfo.repo'
+	// 	} );
+	// } );
+
+	grunt.registerTask( 't', [ 'shell' ] );
 	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
 	grunt.registerTask( 'default', [ 'publish' ] );
 }
