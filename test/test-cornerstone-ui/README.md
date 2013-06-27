@@ -5,9 +5,3 @@ Cornerstone UI Test Page
 ---
 Cornerstone에서 제공하는 모든 UI를 검증하기 위한 페이지
 
-
-라이브러리 설치
----
-`
-bower install
-`
