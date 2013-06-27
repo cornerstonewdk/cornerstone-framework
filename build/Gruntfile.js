@@ -11,8 +11,7 @@ module.exports = function ( grunt ) {
 	var pathInfo = {
 		source: '../src/',
 		lib: '../lib/',
-		dist: '../grunt-dist/',
-		test: '../../../bootstrap-3.0.0-wip/less/' 
+		dist: '../grunt-dist/'
 	};
 
 	grunt.initConfig( {
@@ -45,7 +44,9 @@ module.exports = function ( grunt ) {
 						'<%= path.source %>**', 
 						'!<%= path.source %>ui*/**',
 						'!<%= path.source %>skin/**',
-						'!<%= path.source %>theme/**' 
+						'!<%= path.source %>theme/**', 
+						'<%= path.source %>theme/**/package.json', 
+						'<%= path.source %>skin/**/package.json'
 					],
 					dest: '<%= path.dist %>src'
 				} ]
@@ -61,11 +62,60 @@ module.exports = function ( grunt ) {
 					src: [ '<%= path.dist %>src/**/*.js' ]
 				} ]
 			}
+		},
+		less: {
+			compile: {
+				files: [
+					{
+						'<%= path.dist %>src/theme/dark/cornerstone.css': '<%= path.source %>theme/dark/cornerstone.less'
+					},
+					{
+						'<%= path.dist %>src/theme/white/cornerstone.css': '<%= path.source %>theme/white/cornerstone.less'
+					},
+					{
+						'<%= path.dist %>src/theme/wireframe/cornerstone.css': '<%= path.source %>theme/wireframe/cornerstone.less'
+					},
+					{
+						'<%= path.dist %>src/skin/cerulean/cerulean.css': '<%= path.source %>skin/cerulean/cerulean.less'
+					},
+					{
+						'<%= path.dist %>src/skin/flatly/flatly.css': '<%= path.source %>skin/flatly/flatly.less'
+					},
+					{
+						'<%= path.dist %>src/skin/united/united.css': '<%= path.source %>skin/united/united.less'
+					}
+				]
+			}
+		},
+		cssmin: {
+			options: {
+				banner: grunt.file.read( './copyright.txt', { encoding: 'UTF-8' } )
+			},
+			minify: {
+				files: [
+					{
+						'<%= path.dist %>src/theme/dark/cornerstone.css': '<%= path.dist %>src/theme/dark/cornerstone.css'
+					},
+					{
+						'<%= path.dist %>src/theme/white/cornerstone.css': '<%= path.dist %>src/theme/white/cornerstone.css'
+					},
+					{
+						'<%= path.dist %>src/theme/wireframe/cornerstone.css': '<%= path.dist %>src/theme/wireframe/cornerstone.css'
+					},
+					{
+						'<%= path.dist %>src/skin/cerulean/cerulean.css': '<%= path.dist %>src/skin/cerulean/cerulean.css'
+					},
+					{
+						'<%= path.dist %>src/skin/flatly/flatly.css': '<%= path.dist %>src/skin/flatly/flatly.css'
+					},
+					{
+						'<%= path.dist %>src/skin/united/united.css': '<%= path.dist %>src/skin/united/united.css'
+					}
+				]
+			}
 		}
 	} );
 	
-	// 향후 cornerstone.less 가 1.4 기준으로 작성시 아래 주석된 녀석을 사용한다. less설정에 test1~3은 지워질 예정
-	// grunt.registerTask( 'build', [ 'clean', 'createDir', 'copy', 'concat', 'less', 'uglify', 'cssmin' ] );
-	grunt.registerTask( 'build', [ 'clean', 'copy', 'uglify' ] );
-	grunt.registerTask( 'default', [ 'build' ] );
+	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
+	grunt.registerTask( 'default', [ 'publish' ] );
 }
