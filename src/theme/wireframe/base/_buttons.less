@@ -1,0 +1,55 @@
+//
+// Button
+// --------------------------------------------------
+.btn {
+  display: block;
+  > .glyphicon {
+    font-size: @font-size-base * 1.5;
+    display: inline-block;
+    padding: 2px 1px 3px 1px;
+    line-height: 0;
+  }
+}
+
+
+[data-toggle=buttons-checkbox] {
+  .btn-pseudo-states-mobile(@color, @background, @border) {
+
+    &:active {
+      background-color: @background;
+      border-color: @border;
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover {
+        background-color: @background;
+        border-color: @border
+      }
+    }
+  }
+
+  .btn-default {
+    .btn-pseudo-states-mobile(@btn-default-color, @btn-default-bg, @btn-default-border);
+  }
+  .btn-primary {
+    .btn-pseudo-states-mobile(@btn-primary-color, @btn-primary-bg, @btn-primary-border);
+  }
+  // Warning appears as orange
+  .btn-warning {
+    .btn-pseudo-states-mobile(@btn-warning-color, @btn-warning-bg, @btn-warning-border);
+  }
+  // Danger and error appear as red
+  .btn-danger {
+    .btn-pseudo-states-mobile(@btn-danger-color, @btn-danger-bg, @btn-danger-border);
+  }
+  // Success appears as green
+  .btn-success {
+    .btn-pseudo-states-mobile(@btn-success-color, @btn-success-bg, @btn-success-border);
+  }
+  // Info appears as blue-green
+  .btn-info {
+    .btn-pseudo-states-mobile(@btn-info-color, @btn-info-bg, @btn-info-border);
+  }
+}

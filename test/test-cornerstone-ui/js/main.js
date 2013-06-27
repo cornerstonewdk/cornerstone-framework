@@ -199,6 +199,8 @@
 		MBP.scaleFix();
 		MBP.hideUrlBar();
 
-
+		$(".btn").each(function() {
+			MBP.fastButton($(this));
+		});
 	});
 })(jQuery, window, document);
