@@ -1,0 +1,14 @@
+{
+	"name": "cornerstone-pinterest",
+	"version": "0.0.0",
+	"dependencies": {
+		"requirejs": "~2.1.4",
+		"modernizr": "~2.6.2",
+		"jquery": "latest",
+		"cornerstone-framework-dist": "latest",
+		"html5-mobile-boilerplate": "latest",
+		"spin.js": "latest",
+		"unveil": "latest"
+	},
+	"devDependencies": {}
+}
