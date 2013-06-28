@@ -96,9 +96,7 @@
          */
         $(function () {
             $('[data-toggle=popover]').each(function (i) {
-                $(this).popover().live("click", function (e) {
-                    e.preventDefault();
-                });
+                $(this).popover();
             });
         });
     })();
