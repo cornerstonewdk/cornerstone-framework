@@ -94,10 +94,11 @@
                         fnDraw(oSettings);
                     }
                 };
-                $(nPaging).addClass('pagination').append(
-                    '<ul>' +
-                        '<li><a href="#"><span></span></a></li>' +
-                        '<li><a href="#"><span></span></a></li>' +
+
+                $(nPaging).append(
+                    '<ul class="pagination">' +
+                        '<li class="disabled"><a href="#">&laquo;</a></li>' +
+                        '<li><a href="#">&raquo;</a></li>' +
                         '</ul>'
                 );
                 var els = $('a', nPaging);
