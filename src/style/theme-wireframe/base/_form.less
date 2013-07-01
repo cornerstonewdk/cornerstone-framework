@@ -1,9 +1,73 @@
 .control-group {
   &.disabled {
     input {
-      background-image: url("../images/bg-input-disabled.png");
+      background-image: url("images/bg-input-disabled.png");
       background-size: 5% 100%;
       background-repeat: repeat;
     }
+  }
+}
+
+input {
+  &.focused {
+    border-color: rgba(82, 168, 236, .8);
+    outline: 0;
+    outline: thin dotted 9;
+    .box-shadow(0 0 8px rgba(82, 168, 236, .6));
+  }
+}
+
+.controls {
+
+}
+
+.help-inline {
+  .bg-gradient() {
+    #gradient.vertical(@btn-default-bg, 0%, @btn-default-bg1, 100%);
+  }
+  padding: 9px 10px 8px 10px;
+  text-align: left;
+  font-weight: bold;
+  display: inline-block;
+  background-color: @btn-default-bg;
+  border: 1px solid @btn-default-bg;
+  color: @btn-default-color;
+
+  .arrow {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 11px;
+  }
+  .arrow-top {
+    left: 50%;
+    margin-left: -11px;
+    border-top-width: 0;
+    border-bottom-color: @btn-default-bg;
+    top: -11px;
+  }
+  .arrow-right {
+    top: 50%;
+    right: -11px;
+    margin-top: -11px;
+    border-right-width: 0;
+    border-left-color: @btn-default-bg;
+  }
+  .arrow-bottom {
+    left: 50%;
+    margin-left: -11px;
+    border-bottom-width: 0;
+    border-top-color: @btn-default-bg;
+    bottom: -11px;
+  }
+  .arrow-left {
+    top: 50%;
+    left: 5px;
+    margin-top: -11px;
+    border-left-width: 0;
+    border-right-color: @btn-default-bg;
   }
 }
