@@ -34,26 +34,70 @@ module.exports = function ( grunt ) {
 				} ]
 			},
 			src: {
-				files: [ {
-					expand: true, 
-					src: [ 
-						'<%= path.source %>**', 
-						'!<%= path.source %>ui*/**',
-						'!<%= path.source %>stye/**',
-						'<%= path.source %>style/**/package.json'
-					],
-					dest: '<%= path.dist %>src'
-				} ]
+				files: [ 
+					{
+						expand: true, 
+						src: [ 
+							'<%= path.source %>**', 
+							'!<%= path.source %>style/**',
+							'!<%= path.source %>style/bootstrap3/package.json',
+							'<%= path.source %>style/**/package.json'
+						],
+						dest: '<%= path.dist %>src'
+					},
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>style/images/**' ],
+						dest: '<%= path.dist %>src/style/theme-dark/images'
+					},
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>style/images/**' ],
+						dest: '<%= path.dist %>src/style/theme-white/images'
+					},
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>style/images/**' ],
+						dest: '<%= path.dist %>src/style/theme-wireframe/images'
+					},
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>style/images/**' ],
+						dest: '<%= path.dist %>src/style/skin-cerulean/images'
+					},
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>style/images/**' ],
+						dest: '<%= path.dist %>src/style/skin-flatly/images'
+					},
+					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>style/images/**' ],
+						dest: '<%= path.dist %>src/style/skin-united/images'
+					}
+				]
 			}
 		},
 		uglify: {
 			options: {
 				banner: grunt.file.read( './copyright.txt', { encoding: 'UTF-8' } )
 			},
-			loader: {
+			minify: {
 				files: [ {
 					expand: true,
-					src: [ '<%= path.dist %>src/**/*.js' ]
+					src: [ '<%= path.dist %>src/**/*.js', '!<%= path.dist %>src/style/**/*.js' ]
 				} ]
 			}
 		},
