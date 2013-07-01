@@ -40,8 +40,8 @@ module.exports = function ( grunt ) {
 						src: [ 
 							'<%= path.source %>**', 
 							'!<%= path.source %>style/**',
-							'!<%= path.source %>style/bootstrap3/package.json',
-							'<%= path.source %>style/**/package.json'
+							'<%= path.source %>style/**/package.json',
+							'!<%= path.source %>style/bootstrap3/package.json'
 						],
 						dest: '<%= path.dist %>src'
 					},
