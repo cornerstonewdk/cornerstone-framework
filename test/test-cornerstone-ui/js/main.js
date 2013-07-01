@@ -45,7 +45,7 @@
 		//
 		// Sign 플러그인
 		// --------------------------------------------------
-		$("#signature").sign();
+		$("#signature").length && $("#signature").sign();
 
 		// 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
 		$("button.show-sign").on('click', function (e) {
@@ -94,7 +94,7 @@
 		//
 		// Date Picker 플러그인
 		// --------------------------------------------------
-		$('#date-picker1, #date-picker2').datepicker({
+		$('#date-picker1, #date-picker2').length && $('#date-picker1, #date-picker2').datepicker({
 			language: "kr",
 			firstDisable: true,
 			changeDisplay: true
@@ -103,10 +103,10 @@
 		//
 		// 스크롤뷰 피처드
 		// --------------------------------------------------
-		$("#scrollView1").featuredScrollView();
+		$("#scrollView1").length && $("#scrollView1").featuredScrollView();
 
 		var generatedCount = 0;
-		$("#scrollView2").featuredScrollView({
+		$("#scrollView1").length && $("#scrollView2").featuredScrollView({
 			pullDownID: "pullDown",
 			pullUpID: "pullUp",
 			pullDownAction: function () {
@@ -144,7 +144,7 @@
 		var html;
 
 		// ID가 listView이 엘리먼트에 ListView 피쳐드 적용
-		$el.featuredListView({
+		$el.length && $el.featuredListView({
 			optimization: true,
 			spinner: "#endless-loader"
 		});
@@ -192,7 +192,7 @@
 			getItem();
 		});
 
-		$("#editorExample").featuredEditor();
+		$("#editorExample").length && $("#editorExample").featuredEditor();
 
 		$('#footer').affix();
 
