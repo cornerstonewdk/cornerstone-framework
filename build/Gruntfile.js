@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-shell-spawn');
 
 	var pathInfo = {
 		source: '../src/',
@@ -14,6 +14,8 @@ module.exports = function ( grunt ) {
 		dist: '../grunt-dist/',
 		repo: 'http://j4f.jnw.io/repository'
 	};
+
+	var inquirer = require("inquirer");
 
 	grunt.initConfig( {
 		path: pathInfo,
@@ -39,10 +41,8 @@ module.exports = function ( grunt ) {
 					src: [ 
 						'<%= path.source %>**', 
 						'!<%= path.source %>ui*/**',
-						'!<%= path.source %>skin/**',
-						'!<%= path.source %>theme/**', 
-						'<%= path.source %>theme/**/package.json', 
-						'<%= path.source %>skin/**/package.json'
+						'!<%= path.source %>stye/**',
+						'<%= path.source %>style/**/package.json'
 					],
 					dest: '<%= path.dist %>src'
 				} ]
@@ -63,22 +63,22 @@ module.exports = function ( grunt ) {
 			compile: {
 				files: [
 					{
-						'<%= path.dist %>src/theme/dark/cornerstone.css': '<%= path.source %>theme/dark/cornerstone.less'
+						'<%= path.dist %>src/style/theme-dark/cornerstone.css': '<%= path.source %>style/theme-dark/cornerstone.less'
 					},
 					{
-						'<%= path.dist %>src/theme/white/cornerstone.css': '<%= path.source %>theme/white/cornerstone.less'
+						'<%= path.dist %>src/style/theme-white/cornerstone.css': '<%= path.source %>style/theme-white/cornerstone.less'
 					},
 					{
-						'<%= path.dist %>src/theme/wireframe/cornerstone.css': '<%= path.source %>theme/wireframe/cornerstone.less'
+						'<%= path.dist %>src/style/theme-wireframe/cornerstone.css': '<%= path.source %>style/theme-wireframe/cornerstone.less'
 					},
 					{
-						'<%= path.dist %>src/skin/cerulean/cerulean.css': '<%= path.source %>skin/cerulean/cerulean.less'
+						'<%= path.dist %>src/style/skin-cerulean/cerulean.css': '<%= path.source %>style/skin-cerulean/cerulean.less'
 					},
 					{
-						'<%= path.dist %>src/skin/flatly/flatly.css': '<%= path.source %>skin/flatly/flatly.less'
+						'<%= path.dist %>src/style/skin-flatly/flatly.css': '<%= path.source %>style/skin-flatly/flatly.less'
 					},
 					{
-						'<%= path.dist %>src/skin/united/united.css': '<%= path.source %>skin/united/united.less'
+						'<%= path.dist %>src/style/skin-united/united.css': '<%= path.source %>style/skin-united/united.less'
 					}
 				]
 			}
@@ -90,38 +90,67 @@ module.exports = function ( grunt ) {
 			minify: {
 				files: [
 					{
-						'<%= path.dist %>src/theme/dark/cornerstone.css': '<%= path.dist %>src/theme/dark/cornerstone.css'
+						'<%= path.dist %>src/style/theme-dark/cornerstone.css': '<%= path.dist %>src/style/theme-dark/cornerstone.css'
 					},
 					{
-						'<%= path.dist %>src/theme/white/cornerstone.css': '<%= path.dist %>src/theme/white/cornerstone.css'
+						'<%= path.dist %>src/style/theme-white/cornerstone.css': '<%= path.dist %>src/style/theme-white/cornerstone.css'
 					},
 					{
-						'<%= path.dist %>src/theme/wireframe/cornerstone.css': '<%= path.dist %>src/theme/wireframe/cornerstone.css'
+						'<%= path.dist %>src/style/theme-wireframe/cornerstone.css': '<%= path.dist %>src/style/theme-wireframe/cornerstone.css'
 					},
 					{
-						'<%= path.dist %>src/skin/cerulean/cerulean.css': '<%= path.dist %>src/skin/cerulean/cerulean.css'
+						'<%= path.dist %>src/style/skin-cerulean/cerulean.css': '<%= path.dist %>src/style/skin-cerulean/cerulean.css'
 					},
 					{
-						'<%= path.dist %>src/skin/flatly/flatly.css': '<%= path.dist %>src/skin/flatly/flatly.css'
+						'<%= path.dist %>src/style/skin-flatly/flatly.css': '<%= path.dist %>src/style/skin-flatly/flatly.css'
 					},
 					{
-						'<%= path.dist %>src/skin/united/united.css': '<%= path.dist %>src/skin/united/united.css'
+						'<%= path.dist %>src/style/skin-united/united.css': '<%= path.dist %>src/style/skin-united/united.css'
 					}
 				]
 			}
 		},
 		shell: {
-			publish: {
-				command: 
-					'jam publish <%= path.dist %>lib/backbone --repository <%= path.repo %>'
-				,
+			jam: {
+				command: 'jam publish <%= path.dist %>lib/backbone --repository http://j4f.jnw.io/repository',
 				options: {
-					stdout: true,
-					sterr: true
+					async: false,
+					stdout: true
 				}
 			}
 		}
 	} );
+	//command: 'jam publish <%= path.dist %>lib/backbone --repository <%= path.repo %>',
+
+	// grunt.registerTask( 't', function () {
+
+		
+	// 	var spawnOptions = {
+	// 		cmd: 'jam',
+	// 		args: ['publish', pathInfo.dist + 'lib/backbone', '--repository', pathInfo.repo ],
+	// 		opts: {
+	// 			stdio: 'inherit'
+	// 		}
+			
+	// 	};
+
+	// 	var child = grunt.util.spawn( spawnOptions, function ( error, result, code ) {
+	// 		console.log( 'done: ', error, result, code )
+	// 	} );
+
+	// 	child.stdout.on('data', function (data) {
+	// 		console.log( 1 );
+	// 	    switch (data.toString().trim()) {
+	// 	        case 'Username:':
+	// 	            child.stdin.write('admin');
+	// 	            break;
+	// 	        case 'Password:':
+	// 	            child.stdin.write('1234');
+	// 	            break;
+	// 	    }
+	// 	})
+
+	// } );
 
 
 	// grunt.registerTask( 'searchForPublish', 'search the package.json in each directory', function () {
@@ -151,7 +180,6 @@ module.exports = function ( grunt ) {
 	// 		'jam publish ' + pathInfo.dist + 'lib/backbone --repository ' + pathInfo.repo'
 	// 	} );
 	// } );
-
 	grunt.registerTask( 't', [ 'shell' ] );
 	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
 	grunt.registerTask( 'default', [ 'publish' ] );
