@@ -6,7 +6,7 @@
 
   // Bold
   @font-face {
-    font-family: 'Nanum Gothic';
+    font-family: @name;
     font-style: normal;
     font-weight: bold;
     src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
@@ -15,7 +15,7 @@
 
   // Regular
   @font-face {
-    font-family: 'Nanum Gothic';
+    font-family: @name;
     font-style: normal;
     font-weight: 400;
     src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
@@ -23,6 +23,6 @@
   }
 
   body {
-    font-family: NanumGothic, Dotum, sans-serif;
+    font-family: @name, Dotum, sans-serif;
   }
 }
