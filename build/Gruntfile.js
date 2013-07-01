@@ -15,8 +15,6 @@ module.exports = function ( grunt ) {
 		repo: 'http://j4f.jnw.io/repository'
 	};
 
-	var inquirer = require("inquirer");
-
 	grunt.initConfig( {
 		path: pathInfo,
 		pkg: grunt.file.readJSON( 'package.json' ),
