@@ -17,14 +17,7 @@ input {
   }
 }
 
-.controls {
-
-}
-
 .help-inline {
-  .bg-gradient() {
-    #gradient.vertical(@btn-default-bg, 0%, @btn-default-bg1, 100%);
-  }
   padding: 9px 10px 8px 10px;
   text-align: left;
   font-weight: bold;
@@ -42,32 +35,198 @@ input {
     border-style: solid;
     border-width: 11px;
   }
-  .arrow-top {
-    left: 50%;
-    margin-left: -11px;
-    border-top-width: 0;
-    border-bottom-color: @btn-default-bg;
-    top: -11px;
+
+  &.top {
+    .arrow {
+      left: 50%;
+      margin-left: -11px;
+      border-bottom-width: 0;
+      border-top-color: @btn-default-bg;
+      bottom: -11px;
+    }
   }
-  .arrow-right {
-    top: 50%;
-    right: -11px;
-    margin-top: -11px;
-    border-right-width: 0;
-    border-left-color: @btn-default-bg;
+
+  &.right {
+    margin: 0 0 0 -15px;
+    .arrow {
+      top: 50%;
+      left: -11px;
+      margin-top: -11px;
+      border-left-width: 0;
+      border-right-color: @btn-default-bg;
+    }
   }
-  .arrow-bottom {
-    left: 50%;
-    margin-left: -11px;
-    border-bottom-width: 0;
-    border-top-color: @btn-default-bg;
-    bottom: -11px;
+
+  &.bottom {
+    .arrow {
+      left: 50%;
+      margin-left: -11px;
+      border-top-width: 0;
+      border-bottom-color: @btn-default-bg;
+      top: -11px;
+    }
   }
-  .arrow-left {
-    top: 50%;
-    left: 5px;
-    margin-top: -11px;
-    border-left-width: 0;
-    border-right-color: @btn-default-bg;
+
+  &.left {
+    margin: 0 -15px 0 0;
+    .arrow {
+      top: 50%;
+      right: -11px;
+      margin-top: -11px;
+      border-right-width: 0;
+      border-left-color: @btn-default-bg;
+    }
   }
+}
+
+.has-error {
+  .help-inline {
+    background-color: @btn-danger-bg;
+    border: 1px solid @btn-danger-bg;
+    color: @btn-danger-color;
+    &.top {
+      .arrow {
+        border-top-color: @btn-danger-bg;
+      }
+    }
+
+    &.right {
+      .arrow {
+        border-right-color: @btn-danger-bg;
+      }
+    }
+
+    &.bottom {
+      .arrow {
+        border-bottom-color: @btn-danger-bg;
+      }
+    }
+
+    &.left {
+      .arrow {
+        border-left-color: @btn-danger-bg;
+      }
+    }
+  }
+}
+
+.has-success {
+  .help-inline {
+    background-color: @btn-success-bg;
+    border: 1px solid @btn-success-bg;
+    color: @btn-success-color;
+    &.top {
+      .arrow {
+        border-top-color: @btn-success-bg;
+      }
+    }
+
+    &.right {
+      .arrow {
+        border-right-color: @btn-success-bg;
+      }
+    }
+
+    &.bottom {
+      .arrow {
+        border-bottom-color: @btn-success-bg;
+      }
+    }
+
+    &.left {
+      .arrow {
+        border-left-color: @btn-success-bg;
+      }
+    }
+  }
+}
+
+.has-warning {
+  .help-inline {
+    background-color: @btn-warning-bg;
+    border: 1px solid @btn-warning-bg;
+    color: @btn-warning-color;
+    &.top {
+      .arrow {
+        border-top-color: @btn-warning-bg;
+      }
+    }
+
+    &.right {
+      .arrow {
+        border-right-color: @btn-warning-bg;
+      }
+    }
+
+    &.bottom {
+      .arrow {
+        border-bottom-color: @btn-warning-bg;
+      }
+    }
+
+    &.left {
+      .arrow {
+        border-left-color: @btn-warning-bg;
+      }
+    }
+  }
+}
+
+.flip-area {
+  .user-select();
+  position: relative;
+  display: inline-block;
+  border: 1px solid #b0b0b0;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  margin: 0;
+  background-color: #ffffff;
+}
+.flip-check {
+  position: absolute;
+  left: -10000px;
+}
+.flip-check + .flip-txt {
+  text-align: center;
+  padding: 3px 15px 7px;
+  color: #000000;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: bold;
+  display: inline-block;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+.flip-check:checked + .flip-txt {
+  text-align: right;
+  padding: 3px 15px 7px;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: bold;
+  display: inline-block;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background-color: #000000;
+}
+.flip-check + .flip-txt:after {
+  display: inline-block;
+  content: attr(data-off);
+  color: #000000;
+  margin-top: 8px;
+}
+.flip-check:checked + .flip-txt:after {
+  display: inline-block;
+  content: attr(data-on);
+  color: #ffffff;
+  margin-top: 8px;
+}
+.flip-check:checked + .flip-txt > span {
+  float: right;
+  margin-left: 15px;
+  margin-right: 0;
 }
