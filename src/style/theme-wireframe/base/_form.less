@@ -25,7 +25,12 @@ input {
   background-color: @btn-default-bg;
   border: 1px solid @btn-default-bg;
   color: @btn-default-color;
+  position: relative;
 
+  & > span {
+	white-space: pre-line;
+	word-break: break-word;
+  }
   .arrow {
     position: absolute;
     display: block;
@@ -37,6 +42,7 @@ input {
   }
 
   &.top {
+	margin: 0 0 15px 0;
     .arrow {
       left: 50%;
       margin-left: -11px;
@@ -49,15 +55,15 @@ input {
   &.right {
     margin: 0 0 0 -15px;
     .arrow {
-      top: 50%;
+      top: 9px;;
       left: -11px;
-      margin-top: -11px;
       border-left-width: 0;
       border-right-color: @btn-default-bg;
     }
   }
 
   &.bottom {
+	margin: 15px 0 0 0;
     .arrow {
       left: 50%;
       margin-left: -11px;
@@ -69,10 +75,10 @@ input {
 
   &.left {
     margin: 0 -15px 0 0;
+	float: right;
     .arrow {
-      top: 50%;
+      top: 9px;;
       right: -11px;
-      margin-top: -11px;
       border-right-width: 0;
       border-left-color: @btn-default-bg;
     }
@@ -170,63 +176,4 @@ input {
       }
     }
   }
-}
-
-.flip-area {
-  .user-select();
-  position: relative;
-  display: inline-block;
-  border: 1px solid #b0b0b0;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-  margin: 0;
-  background-color: #ffffff;
-}
-.flip-check {
-  position: absolute;
-  left: -10000px;
-}
-.flip-check + .flip-txt {
-  text-align: center;
-  padding: 3px 15px 7px;
-  color: #000000;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: bold;
-  display: inline-block;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  background-color: #ffffff;
-}
-.flip-check:checked + .flip-txt {
-  text-align: right;
-  padding: 3px 15px 7px;
-  color: #ffffff;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: bold;
-  display: inline-block;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  background-color: #000000;
-}
-.flip-check + .flip-txt:after {
-  display: inline-block;
-  content: attr(data-off);
-  color: #000000;
-  margin-top: 8px;
-}
-.flip-check:checked + .flip-txt:after {
-  display: inline-block;
-  content: attr(data-on);
-  color: #ffffff;
-  margin-top: 8px;
-}
-.flip-check:checked + .flip-txt > span {
-  float: right;
-  margin-left: 15px;
-  margin-right: 0;
 }
