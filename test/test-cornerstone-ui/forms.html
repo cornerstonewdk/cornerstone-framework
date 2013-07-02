@@ -29,7 +29,7 @@
         }
     </style>
 </head>
-<body class="preview" id="top">
+<body id="top">
 
 <div class="container">
 
@@ -131,7 +131,7 @@
                     <div class="col col-5">
                         <div class="help-inline right">
                             <span class="arrow"></span>
-                            <span>Not supported</span>
+                            <span class="help-message">Not supported</span>
                         </div>
                     </div>
                 </div>
@@ -149,14 +149,14 @@
 
             <div class="control-group has-warning">
                 <div class="controls row">
-                    <div class="col col-7">
-                        <input type="text" class="input-with-feedback" placeholder="Warning!">
-                    </div>
                     <div class="col col-5">
-                        <div class="help-inline right">
+                        <div class="help-inline left">
                             <span class="arrow"></span>
                             <span>Warning</span>
                         </div>
+                    </div>
+                    <div class="col col-7">
+                        <input type="text" class="input-with-feedback" placeholder="Warning!">
                     </div>
                 </div>
             </div>
@@ -164,31 +164,24 @@
             <hr>
 
             <div class="control-group has-error">
-                <div class="controls row">
-                    <div class="col col-7">
-                        <input type="text" class="input-with-feedback" placeholder="Error!">
+                <div class="controls">
+                    <div class="help-inline top">
+                        <span class="arrow"></span>
+                        <span>Error</span>
                     </div>
-                    <div class="col col-5">
-                        <div class="help-inline right">
-                            <span class="arrow"></span>
-                            <span>Error</span>
-                        </div>
-                    </div>
+                    <input type="text" class="input-with-feedback" placeholder="Error!">
                 </div>
             </div>
 
             <hr>
 
             <div class="control-group has-success">
-                <div class="controls row">
-                    <div class="col col-7">
-                        <input type="text" class="input-with-feedback" placeholder="Success!">
-                    </div>
-                    <div class="col col-5">
-                        <div class="help-inline right">
-                            <span class="arrow"></span>
-                            <span>Success</span>
-                        </div>
+                <div class="controls">
+                    <input type="text" class="input-with-feedback" placeholder="Success!">
+
+                    <div class="help-inline bottom">
+                        <span class="arrow"></span>
+                        <span>Success</span>
                     </div>
                 </div>
             </div>
@@ -196,9 +189,7 @@
             <hr>
 
             <legend>Buttons</legend>
-
             <p>
-
                 <button class="btn btn-default" type="button">BUTTON</button>
                 <button class="btn btn-primary" type="button">BUTTON</button>
             </p>
@@ -225,6 +216,9 @@
             </select>
         </fieldset>
     </form>
+
+    <hr>
+
     <form>
         <fieldset>
             <legend>Rangeinput</legend>
@@ -237,38 +231,58 @@
             <input id="range3" type="range" value="99999" min="0" max="99999" step="1000"
                    class="widget-range max-10000"/>
 
-
+        </fieldset>
+        <fieldset>
             <legend>Flip select</legend>
-            <label class="flip-area" for="f-check">
-                <input type="checkbox" class="flip-check" id="f-check" value="option2"/>
-                <span class="flip-txt" data-on="ON" data-off="OFF">
-                    <span class="flip-btn"></span>
-                </span>
-            </label>
 
+            <div class="switch switch-large">
+                <input type="checkbox" />
+            </div>
+
+            <div class="switch">
+                <input type="checkbox" />
+            </div>
+
+            <hr>
+
+            <div class="switch" data-on="primary" data-off="info">
+                <input type="checkbox" checked/>
+            </div>
+
+            <div class="switch" data-animated="false">
+                <input type="checkbox" checked/>
+            </div>
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <form class="form-inline">
+        <fieldset>
             <legend>Checkbox. radio</legend>
 
             <label class="checkbox inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1" class="checkBtn" disabled>
-                <span class="inp-check disabled"></span>
+                <input type="checkbox" value="option1" disabled>
             </label>
+
             <label class="checkbox inline">
-                <input type="checkbox" id="inlineCheckbox2" value="option2">
-                <span class="inp-check"></span>
+                <input type="checkbox" value="option2" checked>
             </label>
+
             <label class="checkbox inline">
-                <input type="checkbox" id="inlineCheckbox4" value="option3">
-                <span class="inp-check check"></span>
+                <input type="checkbox" value="option3">
             </label>
 
             <label class="radio inline">
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <span class="inp-radio"></span>
+                <input type="radio" name="radio" value="option1" disabled>
             </label>
 
             <label class="radio inline">
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" checked>
-                <span class="inp-radio"></span>
+                <input type="radio" name="radio" value="option1">
+            </label>
+
+            <label class="radio inline">
+                <input type="radio" name="radio" value="option1" checked>
             </label>
         </fieldset>
     </form>
@@ -312,6 +326,7 @@
 <script type="text/javascript" src="js/vendor/helper.js"></script>
 <!-- Widget Plugin -->
 <script type="text/javascript" src="../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../grunt-dist/lib/bootstrap-switch/bootstrap-switch.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/touch/widget-touch.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/rangeinput/widget-rangeinput.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
