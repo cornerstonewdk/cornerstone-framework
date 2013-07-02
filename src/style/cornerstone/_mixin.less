@@ -28,15 +28,16 @@
   font-style: normal;
 }
 
-.button-background(@startColor, @endColor) {
-  .gradient-bar(@startColor, @endColor);
-  &:hover, &:active, &.active, &.disabled, &[disabled] {
-    background-color: @endColor;
-  }
-}
+
 // Gradient Bar Colors for buttons and alerts
 .gradient-bar(@primaryColor, @secondaryColor) {
   #gradient > .vertical(@primaryColor, @secondaryColor);
   border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+.button-background(@startColor, @endColor) {
+  .gradient-bar(@startColor, @endColor);
+  &:hover, &:active, &.active, &.disabled, &[disabled] {
+    background-color: @endColor;
+  }
 }

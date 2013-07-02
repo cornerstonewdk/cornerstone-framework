@@ -102,15 +102,15 @@
   }
 
   label {
-  	text-align: center;
+    text-align: center;
     margin-top: -1px;
     margin-bottom: -1px;
     z-index: 100;
     width: 34%;
-    border-left: 1px solid @btn-default-border;
-    border-right: 1px solid @btn-default-border;
+    border-left: 1px solid @navbar-link-active-bg;
+    border-right: 1px solid @navbar-link-active-bg;
 
-    .button-background(@btn-default-bg, @btn-default-bg);
+    background-color: @navbar-bg;
 
     i {
       color: #000;
@@ -130,27 +130,39 @@
     }
 
     &.switch-right {
-      .button-background(@btn-default-bg, @btn-default-bg);
+      @highlight: darken(@navbar-bg, 5%);
+      #gradient > .vertical(@highlight, 0%, @navbar-bg, 100%);
+      color: @navbar-color;
     }
 
     &.switch-primary, &.switch-left {
-      .button-background(@btn-primary-bg, @btn-primary-bg);
+      @highlight: darken(@btn-primary-bg, 5%);
+      #gradient > .vertical(@highlight, 0%, @btn-primary-bg, 100%);
+      color: @btn-primary-color;
     }
 
     &.switch-info {
-      .button-background(@btn-info-bg, @btn-info-bg);
+      @highlight: darken(@btn-info-bg, 5%);
+      #gradient > .vertical(@highlight, 0%, @btn-info-bg, 100%);
+      color: @btn-info-color;
     }
 
     &.switch-success {
-      .button-background(@btn-success-bg, @btn-success-bg);
+      @highlight: darken(@btn-success-bg, 5%);
+      #gradient > .vertical(@highlight, 0%, @btn-success-bg, 100%);
+      color: @btn-success-color;
     }
 
     &.switch-warning {
-      .button-background(@btn-warning-bg, @btn-warning-bg);
+      @highlight: darken(@btn-warning-bg, 5%);
+      #gradient > .vertical(@highlight, 0%, @btn-warning-bg, 100%);
+      color: @btn-warning-color;
     }
 
     &.switch-danger {
-      .button-background(@btn-danger-bg, @btn-danger-bg);
+      @highlight: darken(@btn-danger-bg, 5%);
+      #gradient > .vertical(@highlight, 0%, @btn-danger-bg, 100%);
+      color: @btn-danger-color;
     }
   }
 }
