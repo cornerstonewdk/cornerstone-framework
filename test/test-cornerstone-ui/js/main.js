@@ -15,9 +15,9 @@
 			$customStyle.remove();
 			if (currentType === "theme") {
 				$baseStyle.attr("href", "../../grunt-dist/lib/bootstrap/css/bootstrap.css");
-				$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/theme/' + currentValue + '/cornerstone.css"/>');
+				$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-' + currentValue + '/cornerstone.css"/>');
 			} else {
-				$baseStyle.attr("href", "../../grunt-dist/src/skin/" + currentValue + "/" + currentValue + ".css");
+				$baseStyle.attr("href", "../../grunt-dist/src/style/skin-" + currentValue + "/" + currentValue + ".css");
 			}
 		});
 
