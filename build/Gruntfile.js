@@ -18,7 +18,6 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		path: pathInfo,
 		pkg: grunt.file.readJSON( 'package.json' ),
-		admin: grunt.file.readJSON( 'admin.json' ),
 		clean: {
 			options: {
 				force: true
@@ -222,7 +221,24 @@ module.exports = function ( grunt ) {
 	// 		'jam publish ' + pathInfo.dist + 'lib/backbone --repository ' + pathInfo.repo'
 	// 	} );
 	// } );
-	grunt.registerTask( 't', [ 'shell' ] );
+	grunt.registerTask( 'upload', 'upload to jam repository', function () {
+		this.async();
+		var admin = grunt.file.readJSON( 'admin.json' );
+		var cp = require( 'child_process' );
+
+		var child = cp.exec( 'jam publish ../grunt-dist/lib/backbone --force --repository http://j4f.jnw.io/repository', function( err, stdout, stderr ) {
+			process.exit( 0 );
+		} );
+
+		child.stdin.setEncoding( 'utf-8' );
+		child.stdout.pipe( process.stdout );
+		child.stdout.on( 'data', function( chunk ) {
+			if ( chunk.substr( -10 ) == 'Username: ' )
+				child.stdin.write( admin.id + '\n' );
+			else if ( chunk.substr( -10 ) == 'Password: ' )
+				child.stdin.write( admin.pass + '\n' );
+		} );
+	} );
 	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
 	grunt.registerTask( 'default', [ 'publish' ] );
 }
