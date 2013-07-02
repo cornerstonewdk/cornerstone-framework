@@ -6,8 +6,10 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-shell-spawn');
-
+	
+	var packages = [];
+	var admin = grunt.file.readJSON( 'admin.json' );
+	var cp = require( 'child_process' );
 	var pathInfo = {
 		source: '../src/',
 		lib: '../lib/',
@@ -150,80 +152,8 @@ module.exports = function ( grunt ) {
 					}
 				]
 			}
-		},
-		shell: {
-			jam: {
-				command: 'jam publish <%= path.dist %>lib/backbone --repository http://j4f.jnw.io/repository',
-				options: {
-					async: false,
-					stdout: true
-				}
-			}
 		}
 	} );
-	//command: 'jam publish <%= path.dist %>lib/backbone --repository <%= path.repo %>',
-
-	// grunt.registerTask( 't', function () {
-
-		
-	// 	var spawnOptions = {
-	// 		cmd: 'jam',
-	// 		args: ['publish', pathInfo.dist + 'lib/backbone', '--repository', pathInfo.repo ],
-	// 		opts: {
-	// 			stdio: 'inherit'
-	// 		}
-			
-	// 	};
-
-	// 	var child = grunt.util.spawn( spawnOptions, function ( error, result, code ) {
-	// 		console.log( 'done: ', error, result, code )
-	// 	} );
-
-	// 	child.stdout.on('data', function (data) {
-	// 		console.log( 1 );
-	// 	    switch (data.toString().trim()) {
-	// 	        case 'Username:':
-	// 	            child.stdin.write('admin');
-	// 	            break;
-	// 	        case 'Password:':
-	// 	            child.stdin.write('1234');
-	// 	            break;
-	// 	    }
-	// 	})
-
-	// } );
-
-
-	// grunt.registerTask( 'searchForPublish', 'search the package.json in each directory', function () {
-	// 	grunt.file.recurse( pathInfo.dist, function callback( abspath, rootdir, subdir, filename ) {
-	// 		if ( filename === 'package.json' ) {
-	// 			var options = {
-	// 				cmd: 'jam publish ' + pathInfo.dist + 'lib/backbone --repository ' + pathInfo.repo,
-	// 				args: [ testAdmin.id, testAdmin.pass ]
-
-	// 			};
-	// 			options.cmd = grunt.template.process(_.isFunction(options.cmd) ? options.cmd.call(grunt) : options.cmd);
-
-	// 			console.log( options.cmd );
-	// 			grunt.util.spawn( options, function ( error, result, code ) {
-	// 				console.log( error, result, code );
-	// 			} );
-					
-	// 		}
-
-
-	// 		console.log( 'abspath : ' + abspath );
-	// 		console.log( 'rootdir : ' + rootdir );
-	// 		console.log( 'subdir : ' + subdir );
-	// 		console.log( 'filename : ' + filename );
-
-	// 		'jam publish <%= path.dist %>lib/backbone --repository <%= path.repo %>'
-	// 		'jam publish ' + pathInfo.dist + 'lib/backbone --repository ' + pathInfo.repo'
-	// 	} );
-	// } );
-	var packages = [];
-	var admin = grunt.file.readJSON( 'admin.json' );
-	var cp = require( 'child_process' );
 
 	grunt.registerTask( 'findPackages', function () {
 		grunt.file.recurse( pathInfo.dist, function callback( abspath, rootdir, subdir, filename ) { 
@@ -251,6 +181,6 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'test', [ 'findPackages', 'upload' ] );
-	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin', 'findPackages', 'upload' ] );
+	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
 	grunt.registerTask( 'default', [ 'publish' ] );
 }
