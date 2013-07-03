@@ -2,8 +2,16 @@
 ( function ( root, doc, factory ) {
     if ( typeof define === "function" && define.amd ) {
         // AMD
-        define( [ 'jquery' ], function ( $ ) {
-            return factory( $, root, doc );
+        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
+            factory( $, root, doc );
+            return Backbone.View.extend( {
+                tagName: 'div',
+                className: 'alert',
+                render: function () {
+                    this.$el.append( $( 'button' ).addClass( 'close' ).attr( 'data-dismiss', 'alert' ).text( 'x' ) );
+                    return this;
+                }
+            } );
         } );
     } else {
         // None AMD
@@ -13,7 +21,7 @@
     /*
      Alert 기능 확장 : Close할때 마크업 삭제가 아닌 display none/block 처리 추가
      */
-    this.Alert = (function () {
+    this.Alert = ( function () {
     
         var Alert;
 
