@@ -37,6 +37,13 @@ module.exports = function ( grunt ) {
 			src: {
 				files: [ 
 					{
+						expand: true,
+						flatten: true,
+						filter: 'isFile',
+						src: [ '<%= path.source %>src/style/bootstrap/docs/assets/js/bootstrap*.js' ],
+						dest: '<%= path.dist %>lib/bootstrap'
+					},
+					{
 						expand: true, 
 						src: [ 
 							'<%= path.source %>**', 
