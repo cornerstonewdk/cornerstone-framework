@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+var grunt = require( 'grunt' );
+var pkg = require( '../package.json' );
+
+function displayHelp() {
+	
+	grunt.log.writeln();
+	grunt.log.writeln( ' Cornerstone CLI '.cyan.inverse + ' ver ' + pkg.version );
+	grunt.log.writeln();
+}
+
+return displayHelp();
+
+grunt.cli();
