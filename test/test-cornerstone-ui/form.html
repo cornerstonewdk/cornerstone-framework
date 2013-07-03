@@ -241,23 +241,12 @@
         <fieldset>
             <legend>Flip select</legend>
 
-            <div class="switch switch-large">
-                <input type="checkbox"/>
-            </div>
-
-            <div class="switch">
-                <input type="checkbox"/>
-            </div>
-
-            <hr>
-
-            <div class="switch" data-on="primary" data-off="info">
-                <input type="checkbox" checked/>
-            </div>
-
-            <div class="switch" data-animated="false">
-                <input type="checkbox" checked/>
-            </div>
+            <label class="flip-area" for="f-check">
+                <input type="checkbox" class="flip-check" id="f-check" value="option2">
+                <span class="flip-txt" data-on="ON" data-off="OFF">
+                    <span class="flip-btn"></span>
+                </span>
+            </label>
         </fieldset>
     </form>
 
@@ -267,7 +256,7 @@
         <fieldset>
             <legend>Checkbox. radio</legend>
 
-            <label class="checkbox inline">
+            <label class="checkbox inline" >
                 <input type="checkbox" value="option1" disabled>
             </label>
 
