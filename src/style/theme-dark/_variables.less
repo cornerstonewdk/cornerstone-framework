@@ -6,34 +6,22 @@
 
 // Typography
 // -------------------------
-@font-family-sans-serif:  "NanumGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
-
-@font-size-base:          14px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
-@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
-@font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
-
-@line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
-
-@headings-font-family:    @font-family-base;
-@headings-font-weight:    500;
-@headings-line-height:    1.1;
+@font-family-sans-serif: "NanumGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif: Georgia, "Times New Roman", Times, serif;
+@font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
 
 // Color Set
 // --------------------------------------------------
 @white: #FFF;
 @orange: #f89406;
 
-
 // Range Input
 // --------------------------------------------------
-@slider-outer-bg: @gray-lighter;
+@slider-outer-bg: rgba(0, 0, 0, 0.2);
+@slider-outer-bg2: rgba(255, 255, 255, 0.05);
 @slider-outer-radius: 15px;
-@slider-inner-bg: @gray-lighter;
+@slider-inner-bg: #292929;
 @slider-inner-radius: 20px;
 
 @slider-handle-outer-bg: @gray-lighter;
@@ -42,4 +30,39 @@
 
 @slider-progress-bg: @brand-primary;
 
+// Forms
+// -------------------------
+@input-bg: rgba(34, 34, 34, 0.64);
+@input-bg-disabled: rgba(34, 34, 34, 0.22);
 
+@input-border: transparent;
+@input-border-radius: 5px;
+
+@input-color-placeholder: @gray-light;
+
+@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large: (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
+@input-height-small: (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
+
+@form-padding-base-vertical: 9px;
+@form-padding-base-horizontal: 6px;
+
+@select-height: 40px;
+
+@form-font-size: 18px;
+@form-text-color: #c0c0c0;
+@form-focus-color: #2094b1;
+
+@form-danger-color: #872a2b;
+@form-success-color: #3c5d20;
+@form-warning-color: #c09853;
+
+
+// Nav
+// -------------------------
+@nav-text-color: #c0c0c0;
+
+
+// Forms
+// -------------------------
+@btn-font-size: 18px;
