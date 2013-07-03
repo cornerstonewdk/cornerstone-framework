@@ -380,8 +380,9 @@ select {
     display: inline-block;
     border-radius: 20px;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-    background-color: #2f2f2f;
+    background-color: @flip-off-bg;
     border: 2px solid #222222;
+    min-width: 100px;
   }
 
   &:checked + .flip-txt {
@@ -394,13 +395,13 @@ select {
     display: inline-block;
     border-radius: 20px;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-    background-color: #28869e;
+    background-color: @flip-on-bg;
     border: 2px solid #222222;
     &:after {
       display: inline-block;
       content: attr(data-on);
       color: #ffffff;
-      margin-top: 8px;
+      margin-top: 5px;
     }
     & > span {
       float: right;
@@ -413,6 +414,6 @@ select {
     display: inline-block;
     content: attr(data-off);
     color: #ffffff;
-    margin-top: 8px;
+    margin-top: 5px;
   }
 }
