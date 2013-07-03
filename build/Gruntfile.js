@@ -164,9 +164,7 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'upload', function () {
 		this.async();
 		packages.forEach( function ( packageDir ) {
-			var child = cp.exec( 'jam publish ' + packageDir + ' --force --repository ' + pathInfo.repo, function( err, stdout, stderr ) {
-				process.exit( 0 );
-			} );
+			var child = cp.exec( 'jam publish ' + packageDir + ' --force --repository ' + pathInfo.repo );
 
 			child.stdin.setEncoding( 'utf-8' );
 			child.stdout.pipe( process.stdout );
