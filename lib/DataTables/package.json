@@ -1,12 +1,12 @@
 {
-	"name": "DataTables",
+	"name": "dataTables",
 	"version": "1.9.4",
-	"title": "DataTables",
+	"description": "dataTables.js",
 	"jam": {
 		"dependencies": {
 			"jquery": "2.0.2"
 		},
-		"main": "jquery.DataTables.min.js",
+		"main": "jquery.dataTables.min.js",
 		"shim": {
 			"deps": [ "jquery" ]
 		}
