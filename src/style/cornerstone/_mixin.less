@@ -56,3 +56,18 @@
     color: @color;
   }
 }
+
+.gradient-vertical-four(
+  @first-color, @first-position,
+  @second-color, @second-position,
+  @third-color, @third-position,
+  @fourth-color, @fourth-position
+) {
+  background: -moz-linear-gradient(top, @first-color @first-position, @second-color @second-position, @third-color @third-position, @fourth-color @fourth-position);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@first-position, @first-color), color-stop(@second-position, @second-color), color-stop(@third-position, @third-color), color-stop(@fourth-position, @fourth-color));
+  background: -webkit-linear-gradient(top, @first-color @first-position, @second-color @second-position, @third-color @third-position, @fourth-color @fourth-position);
+  background: -o-linear-gradient(top, @first-color @first-position, @second-color @second-position, @third-color @third-position, @fourth-color @fourth-position);
+  background: -ms-linear-gradient(top, @first-color @first-position, @second-color @second-position, @third-color @third-position, @fourth-color @fourth-position);
+  background: linear-gradient(to bottom, @first-color @first-position, @second-color @second-position, @third-color @third-position, @fourth-color @fourth-position);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@first-color), argb(@fourth-color)));
+}
