@@ -167,7 +167,7 @@ module.exports = function ( grunt ) {
 			if ( filename == 'package.json' ) packages.push( rootdir + subdir );
 		} );
 	} );
-	var step = require( 'step' );
+	
 	grunt.registerTask( 'upload', function () {
 		var done = this.async();
 		var count = 0;
