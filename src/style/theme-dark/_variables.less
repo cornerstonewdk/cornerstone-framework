@@ -60,6 +60,21 @@
 @flip-on-bg: #28869e;
 @flip-off-bg: #2f2f2f;
 
+@state-warning-text:             #c76b16;
+@state-warning-bg:               #993f08;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
+
+@state-danger-text:              #000;
+@state-danger-bg:                #b91636;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
+
+@state-success-text:             #000;
+@state-success-bg:               #3f842a;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #000;
+@state-info-bg:                  #3a87ad;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
 // Nav
 // -------------------------
@@ -69,3 +84,39 @@
 // Forms
 // -------------------------
 @btn-font-size: 18px;
+
+// Tables
+// -------------------------
+
+@table-bg:                           transparent; // overall background-color
+@table-bg-accent:                    rgba(51, 51, 51, 0.6); // for striping
+@table-bg-hover:                     rgba(51, 51, 51, 0.6); // for hover
+
+@table-border-color:                 #232223; // table and cell border
+
+// Buttons
+// -------------------------
+
+@btn-default-color:              #fff;
+@btn-default-bg:                 #5A5D61;
+@btn-default-border:             @btn-default-bg;
+
+@btn-primary-color:              @btn-default-color;
+@btn-primary-bg:                 #4176a5;
+@btn-primary-border:             #4176a5;
+
+@btn-success-color:              @btn-default-color;
+@btn-success-bg:                 @brand-success;
+@btn-success-border:             @btn-success-bg;
+
+@btn-warning-color:              @btn-default-color;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             @btn-warning-bg;
+
+@btn-danger-color:               @btn-default-color;
+@btn-danger-bg:                  @brand-danger;
+@btn-danger-border:              @btn-danger-bg;
+
+@btn-info-color:                 @btn-default-color;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                @btn-info-bg;
