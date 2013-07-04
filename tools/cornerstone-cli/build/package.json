@@ -1,0 +1,9 @@
+{
+  "name": "cornerstone-cli-build",
+  "description": "Cornerstone Framework CLI를 빌드하고 npm에 배포하는 스크립트",
+  "version": "0.0.1",
+  "author": "손혁진 <hjson@prandy.com>",
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}

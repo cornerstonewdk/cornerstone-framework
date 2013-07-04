@@ -215,6 +215,7 @@ select {
 
 .has-error {
   .input-with-feedback {
+    border: 1px solid #000000;
     color: @form-danger-color;
     &:focus {
       color: @form-danger-color;
@@ -255,6 +256,7 @@ select {
 
 .has-success {
   .input-with-feedback {
+    border: 1px solid #000000;
     color: @form-success-color;
     &:focus {
       color: @form-success-color;
@@ -295,6 +297,7 @@ select {
 
 .has-warning {
   .input-with-feedback {
+    border: 1px solid #000000;
     color: @form-warning-color;
     &:focus {
       color: @form-warning-color;
@@ -339,52 +342,34 @@ select {
   margin: 0;
   background-color: rgba(84, 84, 84, 0.14);
   #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
-}
 
-.flip-btn {
-  position: relative;
-  width: 31px;
-  height: 31px;
-  border-radius: 50px;
-  border: 0;
-  background-color: #ececec;
-  float: left;
-  margin-right: 15px;
-  .box-shadow(~"inset 0 -1px 2px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,1), 0 1px 3px rgba(0,0,0,.27)");
-}
+  .flip-btn {
+    position: relative;
+    width: 31px;
+    height: 31px;
+    border-radius: 50px;
+    border: 0;
+    background-color: #ececec;
+    float: left;
+    margin-right: 15px;
+    .box-shadow(~"inset 0 -1px 2px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,1), 0 1px 3px rgba(0,0,0,.27)");
 
-.flip-btn:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  border-radius: 50px;
-  border: 0;
-  position: absolute;
-  left: 7px;
-  top: 7px;
-  z-index: 1000;
-  background-color: #d3d3d3;
-  .box-shadow(~"inset 0 0 4px rgba(0,0,0,.4), inset 0 3px 4px rgba(255,255,255,.7), inset 0 -6px 4px rgba(0,0,0,.25)");
-}
-
-.flip-check {
-  position: absolute;
-  left: -10000px;
-  & + .flip-txt {
-    text-align: left;
-    padding: 0 15px 0 0;
-    color: #b0b0b0;
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: bold;
-    display: inline-block;
-    border-radius: 20px;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-    background-color: #2f2f2f;
-    border: 2px solid #222222;
+    &:after {
+      content: "";
+      width: 17px;
+      height: 17px;
+      border-radius: 50px;
+      border: 0;
+      position: absolute;
+      left: 7px;
+      top: 7px;
+      z-index: 1000;
+      background-color: #d3d3d3;
+      .box-shadow(~"inset 0 0 4px rgba(0,0,0,.4), inset 0 3px 4px rgba(255,255,255,.7), inset 0 -6px 4px rgba(0,0,0,.25)");
+    }
   }
 
-  &:checked + .flip-txt {
+  &.active > .flip-txt {
     text-align: right;
     padding: 0 0 0 15px;
     color: #ffffff;
@@ -394,13 +379,37 @@ select {
     display: inline-block;
     border-radius: 20px;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-    background-color: #28869e;
+    background-color: @flip-on-bg;
     border: 2px solid #222222;
     &:after {
       display: inline-block;
       content: attr(data-on);
       color: #ffffff;
-      margin-top: 8px;
+      margin-top: 5px;
+    }
+    & > span {
+      float: right;
+      margin-left: 15px;
+      margin-right: 0;
+    }
+  }
+  &:not(.fast-button) .flip-check:checked ~ .flip-txt {
+    text-align: right;
+    padding: 0 0 0 15px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: @flip-on-bg;
+    border: 2px solid #222222;
+    &:after {
+      display: inline-block;
+      content: attr(data-on);
+      color: #ffffff;
+      margin-top: 5px;
     }
     & > span {
       float: right;
@@ -409,10 +418,146 @@ select {
     }
   }
 
-  & + .flip-txt:after {
+  .flip-txt {
+    text-align: left;
+    padding: 0 15px 0 0;
+    color: #b0b0b0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
     display: inline-block;
-    content: attr(data-off);
-    color: #ffffff;
-    margin-top: 8px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: @flip-off-bg;
+    border: 2px solid #222222;
+    min-width: 100px;
+    &:after {
+      display: inline-block;
+      content: attr(data-off);
+      color: #ffffff;
+      margin-top: 5px;
+    }
+  }
+
+  .flip-check {
+    position: absolute;
+    left: -10000px;
+  }
+}
+
+.input-checkbox {
+  .user-select();
+  & > input[type=checkbox] {
+    display: none;
+  }
+  & > .control {
+    position: relative;
+    display: inline-block;
+    border-radius: 4px;
+    width: 44px;
+    height: 44px;
+    padding: 5px;
+    margin: 0;
+    cursor: pointer;
+    background-color: rgba(84, 84, 84, 0.14);
+    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    vertical-align: middle;
+    &:before {
+      content: "";
+      display: inline-block;
+      border-radius: 4px;
+      width: 34px;
+      height: 34px;
+      background: #292929;
+      background-size: 320px;
+      .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7)");
+    }
+    &.placeholder {
+      &:before {
+        content: "\e013";
+        position: absolute;
+        color: #737373;
+        width: 20px;
+        height: 29px;
+        font-family: 'Glyphicons Halflings';
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1;
+        display: inline-block;
+        padding: 4px 10px 1px 4px;
+      }
+    }
+  }
+
+  &.active > .control:after,
+  &:not(.fast-button) input:checked ~ .control:after {
+    content: "\e013";
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    color: #53a3ba;
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    display: inline-block;
+    padding-right: 10px;
+  }
+
+  input[disabled] ~ .control:before, input.disabled ~ .control:before {
+    background-image: url(images/icon-disabled.png);
+    background-size: 40px 40px;
+  }
+}
+
+.input-radio {
+  .user-select();
+  & > input[type=radio] {
+    display: none;
+  }
+  & > .control {
+    display: inline-block;
+    position: relative;
+    border-radius: 25px;
+    width: 44px;
+    height: 44px;
+    padding: 5px;
+    margin: 0;
+    cursor: pointer;
+    background-color: rgba(84, 84, 84, 0.14);
+    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    vertical-align: middle;
+    &:before {
+      content: "";
+      display: inline-block;
+      border-radius: 25px;
+      width: 34px;
+      height: 34px;
+      background: #292929;
+      background-size: 320px;
+      .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7)");
+    }
+  }
+
+  &.active > .control:after,
+  &:not(.fast-button) input:checked ~ .control:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 24px;
+    width: 24px;
+    height: 24px;
+    background: #292929;
+    .gradient-vertical-four(#53a3ba, 0%, #2582a1, 39%, #247f9f, 54%, #195366, 100%);
+  }
+
+  input[disabled] ~ .control:before, input.disabled ~ .control:before {
+    background-image: url(images/icon-disabled.png);
+    background-size: 40px 40px;
   }
 }

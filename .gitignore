@@ -8,4 +8,6 @@ examples/tetris-together/node_modules
 examples/T-Dashboard/node_modules
 examples/cornerstone.docpad/node_modules
 bower_components
-build/node_modules/
+build/node_modules
+tools/cornerstone-cli/src/node_modules
+tools/cornerstone-cli/build/node_modules

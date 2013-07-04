@@ -241,8 +241,19 @@
         <fieldset>
             <legend>Flip select</legend>
 
-            <label class="flip-area" for="f-check">
-                <input type="checkbox" class="flip-check" id="f-check" value="option2">
+            <label class="flip-area" >
+                <input type="checkbox" class="flip-check" value="option2">
+                <span class="flip-txt" data-on="ON" data-off="OFF">
+                    <span class="flip-btn"></span>
+                </span>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Flip select (required Hammer.js)</legend>
+
+            <label class="flip-area fast-button" >
+                <input type="checkbox" class="flip-check" value="option2">
                 <span class="flip-txt" data-on="ON" data-off="OFF">
                     <span class="flip-btn"></span>
                 </span>
@@ -254,30 +265,58 @@
 
     <form class="form-inline">
         <fieldset>
-            <legend>Checkbox. radio</legend>
+            <legend>Checkbox</legend>
 
-            <label class="checkbox inline" >
+            <label class="input-checkbox" >
                 <input type="checkbox" value="option1" disabled>
+                <span class="control"></span>
             </label>
 
-            <label class="checkbox inline">
+            <label class="input-checkbox">
                 <input type="checkbox" value="option2" checked>
+                <span class="control"></span>
             </label>
 
-            <label class="checkbox inline">
+            <label class="input-checkbox">
                 <input type="checkbox" value="option3">
+                <span class="control placeholder"></span>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Checkbox (required Hammer.js)</legend>
+
+            <label class="input-checkbox" >
+                <input type="checkbox" value="option1" disabled>
+                <span class="control"></span>
             </label>
 
-            <label class="radio inline">
+            <label class="input-checkbox fast-button active">
+                <input type="checkbox" value="option2" checked>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox  fast-button">
+                <input type="checkbox" value="option3">
+                <span class="control placeholder"></span>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Radio</legend>
+            <label class="input-radio">
                 <input type="radio" name="radio" value="option1" disabled>
+                <span class="control"></span>
             </label>
 
-            <label class="radio inline">
+            <label class="input-radio">
                 <input type="radio" name="radio" value="option1">
+                <span class="control"></span>
             </label>
 
-            <label class="radio inline">
+            <label class="input-radio">
                 <input type="radio" name="radio" value="option1" checked>
+                <span class="control"></span>
             </label>
         </fieldset>
     </form>
@@ -317,11 +356,11 @@
 
 
 <script type="text/javascript" src="../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="js/vendor/jquery.hammer.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.smooth-scroll.min.js"></script>
 <script type="text/javascript" src="js/vendor/helper.js"></script>
 <!-- Widget Plugin -->
 <script type="text/javascript" src="../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/bootstrap-switch/bootstrap-switch.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/touch/widget-touch.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/rangeinput/widget-rangeinput.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
