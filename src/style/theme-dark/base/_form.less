@@ -369,55 +369,79 @@ select {
     }
   }
 
-  .flip-check {
-    position: absolute;
-    left: -10000px;
-    & + .flip-txt {
-      text-align: left;
-      padding: 0 15px 0 0;
-      color: #b0b0b0;
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: bold;
+  &.active > .flip-txt {
+    text-align: right;
+    padding: 0 0 0 15px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: @flip-on-bg;
+    border: 2px solid #222222;
+    &:after {
       display: inline-block;
-      border-radius: 20px;
-      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-      background-color: @flip-off-bg;
-      border: 2px solid #222222;
-      min-width: 100px;
-    }
-
-    &:checked + .flip-txt {
-      text-align: right;
-      padding: 0 0 0 15px;
+      content: attr(data-on);
       color: #ffffff;
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: bold;
-      display: inline-block;
-      border-radius: 20px;
-      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-      background-color: @flip-on-bg;
-      border: 2px solid #222222;
-      &:after {
-        display: inline-block;
-        content: attr(data-on);
-        color: #ffffff;
-        margin-top: 5px;
-      }
-      & > span {
-        float: right;
-        margin-left: 15px;
-        margin-right: 0;
-      }
+      margin-top: 5px;
     }
+    & > span {
+      float: right;
+      margin-left: 15px;
+      margin-right: 0;
+    }
+  }
+  &:not(.fast-button) .flip-check:checked ~ .flip-txt {
+    text-align: right;
+    padding: 0 0 0 15px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: @flip-on-bg;
+    border: 2px solid #222222;
+    &:after {
+      display: inline-block;
+      content: attr(data-on);
+      color: #ffffff;
+      margin-top: 5px;
+    }
+    & > span {
+      float: right;
+      margin-left: 15px;
+      margin-right: 0;
+    }
+  }
 
-    & + .flip-txt:after {
+  .flip-txt {
+    text-align: left;
+    padding: 0 15px 0 0;
+    color: #b0b0b0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: @flip-off-bg;
+    border: 2px solid #222222;
+    min-width: 100px;
+    &:after {
       display: inline-block;
       content: attr(data-off);
       color: #ffffff;
       margin-top: 5px;
     }
+  }
+
+  .flip-check {
+    position: absolute;
+    left: -10000px;
   }
 }
 
@@ -426,7 +450,7 @@ select {
   & > input[type=checkbox] {
     display: none;
   }
-  & > span {
+  & > .control {
     position: relative;
     display: inline-block;
     border-radius: 4px;
@@ -467,7 +491,8 @@ select {
     }
   }
 
-  input:checked + span:after {
+  &.active > .control:after,
+  &:not(.fast-button) input:checked ~ .control:after {
     content: "\e013";
     position: absolute;
     top: 9px;
@@ -483,7 +508,7 @@ select {
     padding-right: 10px;
   }
 
-  input[disabled] + span:before, input.disabled + span:before {
+  input[disabled] ~ .control:before, input.disabled ~ .control:before {
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
   }
@@ -494,7 +519,7 @@ select {
   & > input[type=radio] {
     display: none;
   }
-  & > span {
+  & > .control {
     display: inline-block;
     position: relative;
     border-radius: 25px;
@@ -518,7 +543,8 @@ select {
     }
   }
 
-  input:checked + span:after {
+  &.active > .control:after,
+  &:not(.fast-button) input:checked ~ .control:after {
     content: "";
     position: absolute;
     top: 10px;
@@ -530,7 +556,7 @@ select {
     .gradient-vertical-four(#53a3ba, 0%, #2582a1, 39%, #247f9f, 54%, #195366, 100%);
   }
 
-  input[disabled] + span:before, input.disabled + span:before {
+  input[disabled] ~ .control:before, input.disabled ~ .control:before {
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
   }
