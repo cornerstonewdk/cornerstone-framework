@@ -167,25 +167,41 @@ module.exports = function ( grunt ) {
 			if ( filename == 'package.json' ) packages.push( rootdir + subdir );
 		} );
 	} );
-	
+	var step = require( 'step' );
 	grunt.registerTask( 'upload', function () {
-		this.async();
-		packages.forEach( function ( packageDir ) {
-			var child = cp.exec( 'jam publish ' + packageDir + ' --force --repository ' + pathInfo.repo );
+		var done = this.async();
+		var count = 0;
 
-			child.stdin.setEncoding( 'utf-8' );
-			child.stdout.pipe( process.stdout );
+		grunt.util.async.whilst(
+		    function () {	
+		    	return count < packages.length; 
+		    },
+		    function ( callback ) {
+		    	var child = cp.exec( 'jam publish ' + packages[ count ] + ' --force --repository ' + pathInfo.repo );
 
-			child.stdout.on( 'data', function( chunk ) {
-				if ( chunk.substr( -10 ) == 'Username: ' )
-					child.stdin.write( admin.id + '\n' );
-				else if ( chunk.substr( -10 ) == 'Password: ' )
-					child.stdin.write( admin.pass + '\n' );
-			} );
-		} );
+				child.stdin.setEncoding( 'utf-8' );
+				child.stdout.pipe( process.stdout );
+
+				child.stdout.on( 'data', function( chunk ) {
+					if ( chunk.substr( -10 ) == 'Username: ' )
+						child.stdin.write( admin.id + '\n' );
+					else if ( chunk.substr( -10 ) == 'Password: ' )
+						child.stdin.write( admin.pass + '\n' );
+				} );
+		        count++;
+		        setTimeout( callback, 700 );
+		    },
+		    function ( err ) {
+		    	if ( err ) {
+		    		console.log( err );
+		    		throw err;
+		    	}
+		        done();
+		    }
+		);
 	} );
 
-	grunt.registerTask( 'test', [ 'findPackages', 'upload' ] );
-	grunt.registerTask( 'publish', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
-	grunt.registerTask( 'default', [ 'publish' ] );
+	grunt.registerTask( 'publish', [ 'findPackages', 'upload' ] );
+	grunt.registerTask( 'build', [ 'clean', 'copy', 'uglify', 'less', 'cssmin' ] );
+	grunt.registerTask( 'default', [ 'build', 'publish' ] );
 }
