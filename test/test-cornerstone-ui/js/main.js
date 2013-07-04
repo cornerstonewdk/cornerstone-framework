@@ -31,7 +31,7 @@
 		$("[data-toggle=popover]").popover();
 
 		// 버튼 터치 기반인 경우 버그픽스
-		$('body').on('click', '[data-toggle^=button]', function(e) {
+		$('body').on('click', '[data-toggle^=button]', function (e) {
 			var btn = $(e.target);
 			if (btn.hasClass('btn')) {
 			}
@@ -198,5 +198,13 @@
 
 		MBP.scaleFix();
 		MBP.hideUrlBar();
+
+		$(".fast-button").hammer().on("tap", function () {
+			$(this).toggleClass("active");
+			if ($(this).hasClass("active")) {
+				console.log(123213);
+				$(this).find("input").attr("checked", "checked");
+			}
+		});
 	});
 })(jQuery, window, document);
