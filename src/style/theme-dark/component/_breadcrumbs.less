@@ -1,0 +1,37 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+.breadcrumb {
+  border-radius: 0;
+  border: 0;
+  padding: 1px 15px 1px 25px;
+  margin: 0 0 22px;
+  .gradient-vertical-without-color(rgba(0, 0, 0, .4), rgba(255, 255, 255, .1));
+  background-color: rgba(0, 0, 0, 0.3);
+  //linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.1))
+  .box-shadow(~"inset 0 -10px 10px rgba(0, 0, 0, .2), 0 2px 2px rgba(255, 255, 255, .08)");
+  > li {
+    text-shadow: 0 -1px 0 #000;
+    padding: 5px 10px;
+
+    a {
+      color: #B0B0B0;
+      text-decoration: none;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+    }
+    &:after {
+      display: inline-block;
+      content: "\00a0 /"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: #ccc;
+      margin-left: 15px;
+    }
+    &:last-child:after {
+      display: none; // No divider after last element
+    }
+  }
+  > .active {
+    color: #FFF;
+  }
+}
