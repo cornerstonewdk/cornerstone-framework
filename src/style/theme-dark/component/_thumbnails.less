@@ -1,0 +1,43 @@
+//
+// Thumbnails
+// --------------------------------------------------
+
+
+// Base classes
+// For thumbnail block-level composite components and simple image styles
+
+// The actual thumbnailed element
+// Can be `a`, `div`, or `img`
+.thumbnail,
+.img-thumbnail {
+  border: none;
+  position: relative;
+  padding: 9px 10px;
+  margin-bottom: 15px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAIAAABLMMCEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGZJREFUCNdFjVkKwCAQQ+f+1xNUXFFccD1DU0vbfAxDSF5ojFFKSSm11vDj9t4p56yU4pw75+ac+4iQklIyxqy1v4tKCAHBWisI84hA2a9AM8Z472/uY621YAGFDULxy8YYhRBa6wuxc4O8kKSTOQAAAABJRU5ErkJggg==');
+  background-size: 4px;
+  .box-shadow(~"0 0 8px rgba(0, 0, 0, 0.7)");
+
+  &:hover {
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: -3px;
+      top: -2px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid #EA002C;
+      border-radius: 8px;
+      z-index: -1;
+    }
+  }
+
+  &.gray {
+    color: #FFF;
+    .caption, .title {
+      color: #FFF;
+    }
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAIAAABLMMCEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGhJREFUCNdFjWsOgCAMg3cKH2jwDQ5wDvX+Z7PRRJP+aPqtKy2L67qemXM+zvOCVJWapi2KEkA1v2lKGw3DCIDGdyuyEwhzgBOREGKMCYZeDnm/WmufjfCn0zRXVW2Mcc7/KerYAMPPG0+lGFOtpuEJAAAAAElFTkSuQmCC');
+  }
+}
