@@ -1,11 +1,89 @@
 //
 // Pagination
 // --------------------------------------------------
+@pagination-active-color: #82E6FF;
+@pagination-arrow-bg: #242424;
+@pagination-arrow-color: #42464b;
+@pagination-arrow-active-bg: #28C2F3;
+@pagination-arrow-active-color: #2a2d30;
+
 .pagination {
-  &.pagination-circle {
-    > li > a,
-    > li > span {
-      padding: 9/1.5px 14/1.37px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 8px 5px 5px 12px;
+  .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .5)");
+
+  > li {
+    display: inline-block;
+    margin-left: -4px;
+    padding: 0 4px 0 1px;
+    text-align: center;
+
+    &:first-child, &:last-child {
+      & > a {
+        width: auto;
+        height: auto;
+        background: #42464B;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-bottom: none;
+        border-radius: 4px;
+        .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .1), 0 5px 5px rgba(0, 0, 0, .4)");
+        & > .glyphicon {
+          color: @pagination-arrow-color;
+          width: 22px;
+          height: 22px;
+          padding: 1px 0 0 0;
+          display: block;
+          position: relative;
+          border-radius: 50px;
+          background-color: @pagination-arrow-bg;
+          border: none;
+          .box-shadow(~"inset 0 1px 1px rgba(0, 0, 0, 1), 0 1px 1px rgba(255, 255, 255, 0.4)");
+        }
+        &:hover, &:focus {
+          background: #42464B;
+          & > .glyphicon {
+            color: @pagination-arrow-active-color;
+            background-color: @pagination-arrow-active-bg;
+            .gradient-vertical-without-color(#28c2f3, #0096db);
+            box-shadow: none;
+            border: none;
+          }
+        }
+      }
+    }
+
+    & > a {
+      padding: 10px;
+      color: #FFF;
+      line-height: 22px;
+      background: #42464B;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 0;
+      border-radius: 4px;
+      vertical-align: middle;
+      display: block;
+      .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .1), 0 5px 5px rgba(0, 0, 0, .4)");
+      &:hover, &:focus {
+        background: #42464B;
+        color: @pagination-active-color;
+      }
+    }
+
+    &.active > a,
+    & > a.active,
+    & > a:active,
+    &:first-child > a:active,
+    &:last-child > a:active {
+      color: @pagination-active-color;
+      line-height: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      border-top: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      background-color: #282B2E;
+      .box-shadow(~"inset 0 2px 3px rgba(0, 0, 0, .5), 0 0 1px rgba(255, 255, 255, .15)");
     }
   }
 }
@@ -17,6 +95,23 @@
       padding: @padding-large-vertical @padding-large-horizontal/1.18;
     }
   }
+
+  & > li {
+    &:first-child, &:last-child {
+      & > a {
+        padding: 8px;
+        & > .glyphicon {
+          width: 30px;
+          height: 30px;
+          padding: 6px 0 0 0;
+        }
+      }
+    }
+
+    & > a {
+      padding: 12px;
+    }
+  }
 }
 
 .pagination-small {
@@ -24,6 +119,55 @@
     > li > a,
     > li > span {
       padding: 9/1.3px 14/1.6px;
+    }
+  }
+
+  & > li {
+    & > a {
+      padding: 5px;
+    }
+  }
+}
+
+&.pagination-circle {
+  background: transparent;
+  border: none;
+  .box-shadow(none);
+  & > li {
+    & > a {
+      background: transparent;
+      border: none;
+      color: #161616;
+      .box-shadow(none);
+      &:hover, &:focus {
+        background: transparent;
+      }
+    }
+
+    &:not(:first-child):not(:last-child) {
+      &.active > a,
+      & > a:hover,
+      & > a:focus,
+      & > a:active {
+        border: none;
+        background: transparent;
+        .box-shadow(none);
+        display: block;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          border-radius: 15px;
+          top: 50%;
+          left: 50%;
+          margin: -7.5px 0 0 -7px;
+          background-color: #2094B1;
+          .gradient-vertical-without-color(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+          .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .2), 0 3px 5px rgba(0, 0, 0, .3)");
+        }
+      }
     }
   }
 }
