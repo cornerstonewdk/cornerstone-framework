@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+
 var grunt = require( 'grunt' );
+var _ = require( 'underscore' );
 var pkg = require( '../package.json' );
 
 function displayHelp() {
@@ -7,8 +9,57 @@ function displayHelp() {
 	grunt.log.writeln();
 	grunt.log.writeln( ' Cornerstone CLI '.cyan.inverse + ' ver ' + pkg.version );
 	grunt.log.writeln();
+
+	grunt.log.writeln( ' ' + '사용법 : ' + 'cs [Command] [Options...]'.bold );
+	grunt.log.writeln();
+
+	grunt.log.writeln( ' ' + 'Commands:'.yellow.underline );
+	grunt.log.writeln();
+	grunt.log.writetableln( [ 10, 60 ], [ '    init', '현재 디렉토리에 프로젝트의 기본 골격을 생성한다. 다음 Option을 지정할 수 있다.'.grey ] );
+	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--noamd', 'Require.js를 사용하지 않는다. 이 옵션이 없으면 Require.js와 Backbone을 사용하는 것으로 기본 골격을 생성한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--theme:[dark/white]', 'Dark/White 테마 중 하나를 선택한다. 이 옵션이 없으면 Bootstrap의 기본 테마를 사용한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--fullpackage', '코너스톤의 모든 패키지를 설치한다. 이 옵션이 없으면 기본적으로 필요한 최소한의 패키지만 설치한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 60 ], [ '        ', '사용 예) ' + 'cs init --theme:white --fullpackage'.green ] );
+	grunt.log.writetableln( [ 10, 60 ], [ '   build', '프로젝트의 소스 코드로부터 배포본을 생성한다. Gruntfile.js를 수정해서 최적화 옵션과 빌드 방법을 설정할 수 있다.'.grey ] );
+	grunt.log.writetableln( [ 10, 60 ], [ '  server', '개발 중 Preview를 할 수 있는 간이 웹서버의 기능을 수행한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 60 ], [ '    test', '테스트 코드를 실행한다. 테스트 코드는 mocha-phantomjs를 사용해서 작성할 수 있다.'.grey ] );
+	grunt.log.writeln();
 }
 
-return displayHelp();
+var command, options = [];
+
+_.each( process.argv, function( item, i ) {
+
+	if ( i < 2 ) return true;
+
+	if ( item.substr( 0, 2 ) == '--' )
+		options.push( item );
+	else {
+		if ( command ) return false;
+		command = item;
+	}
+} );
+
+function doTask( command, options ) {
+
+	if ( !command ) return false;
+
+	// Command 검사
+	if ( !_.contains( [ 'init', 'build', 'server', 'test' ], command ) ) {
+		grunt.log.errorlns( '알 수 없는 커맨드: ' + command );
+		return false;
+	}
+
+	// Option 검사
+	for ( var i in options )
+		if ( !_.contains( [ '--noamd', '--theme:dark', '--theme:white', '--fullpackage' ], options[ i ] ) ) {
+			grunt.log.errorlns( '알 수 없는 옵션: ' + options[ i ] );
+			return false;
+		}
+
+	return true;
+}
+
+if ( !doTask( command, options ) ) return displayHelp();
 
 grunt.cli();

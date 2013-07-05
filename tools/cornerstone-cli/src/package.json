@@ -4,7 +4,8 @@
   "version": "0.0.3",
   "author": "손혁진 <hjson@prandy.com>",
   "dependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.1",
+    "underscore": "~1.4.4"
   },
   "bin": {
     "cs": "bin/cs",
