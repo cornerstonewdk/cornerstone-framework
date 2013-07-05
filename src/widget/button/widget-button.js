@@ -33,9 +33,9 @@
         }
         this.$element.toggleClass('active');
         if ( this.$element.hasClass( 'active' ) ) {
-            this.$element.trigger( e = $.Event('toggleOn') );
+            this.$element.trigger( e = $.Event('toggleOn.cs.button') );
         } else {
-            this.$element.trigger( e = $.Event('toggleOff') );
+            this.$element.trigger( e = $.Event('toggleOff.cs.button') );
         }
 
     };
