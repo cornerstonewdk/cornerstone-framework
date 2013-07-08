@@ -16,6 +16,7 @@
  */
 
 .nvtooltip {
+  color: @text-color-inverse;
   position: absolute;
   background-color: rgba(255,255,255,0.75);
   padding: 1px;
@@ -110,7 +111,8 @@ svg {
 
 
 svg text {
-  font: normal 12px Arial;
+  font-size: 12px;
+  fill: @text-color;
 }
 
 svg .title {
@@ -161,8 +163,8 @@ svg .title {
 */
 
 .nvd3 .nv-axis path {
-  fill: none;
-  stroke: #000;
+  fill: @text-color;
+  stroke: @text-color;
   stroke-opacity: .75;
   shape-rendering: crispEdges;
 }
@@ -286,6 +288,8 @@ svg .title {
 .nvd3.nv-pie .nv-slice text {
   stroke: #000;
   stroke-width: 0;
+  fill: @text-color;
+  text-anchor: middle;
 }
 
 .nvd3.nv-pie path {
