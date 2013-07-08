@@ -33,11 +33,24 @@ table {
   clear: both;
 }
 
-.dataTables_paginate.pagination2 a {
-  font-size: 0;
+.dataTables_wrapper {
+  .pagination {
+    > li {
+      margin-left: 0;
+    }
+  }
+}
+.dataTables_length {
+  select {
+    width: 70px;
+    float: left;
+    margin: 7px 5px 0 0;
+  }
 }
 
-@media(min-width: 768px) {
-  .dataTables_length label {
+.dataTables_filter {
+  input {
+    width: 170px;
+    display: inline-block;
   }
 }

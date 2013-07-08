@@ -54,7 +54,7 @@
         var defaultOptions = {
             "bProcessing":false,
             sPaginationType:"bootstrap",
-            sDom:"<'row'<'span8'l><'span4'f>r>t<'row'<'span12'i><'span12'p>>",
+            sDom:"<'row'<'col col-lg-8 col-12'l><'col col-lg-4 col-12'f>r>t<'row'<'col col-12'i><'col col-12'p>>",
             oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수", sInfo:"총 레코드 수:_TOTAL_ (시작 번호:_START_, 끝 번호:_END_)"}
         };
 
@@ -97,8 +97,8 @@
 
                 $(nPaging).append(
                     '<ul class="pagination">' +
-                        '<li class="disabled"><a href="#">&laquo;</a></li>' +
-                        '<li><a href="#">&raquo;</a></li>' +
+                        '<li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>' +
+                        '<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>' +
                         '</ul>'
                 );
                 var els = $('a', nPaging);
@@ -107,7 +107,7 @@
             },
 
             "fnUpdate":function (oSettings, fnDraw) {
-                var iListLength = 5;
+                var iListLength = 4;
                 var oPaging = oSettings.oInstance.fnPagingInfo();
                 var an = oSettings.aanFeatures.p;
                 var i, j, sClass, iStart, iEnd, iHalf = Math.floor(iListLength / 2);
