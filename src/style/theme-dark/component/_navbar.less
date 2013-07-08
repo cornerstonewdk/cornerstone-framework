@@ -162,6 +162,18 @@
 
 // Fixed Navbar안의 Dropdown UI
 @media (max-width: 768px) {
+  .navbar-toggle {
+    border: none;
+    &:hover {
+      background: transparent;
+    }
+    + .nav-collapse {
+      margin-top: 50px;
+    }
+  }
+  .navbar-icon li > a {
+    font-size: @font-size-base;
+  }
   .navbar[class*=navbar-fixed-] {
     .dropdown-menu {
       position: relative;

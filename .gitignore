@@ -1,4 +1,6 @@
 .DS_store
+.idea
+*.iml
 *.log
 *.eco
 *.swp
