@@ -102,8 +102,7 @@
         // input UI를 노출시키고 싶지 않은 경우 처리
         if (!conf.inputShow) {
             input.css({
-                position:"absolute",
-                left:"-10000em"
+                display:"none"
             });
         } else {
             root.addClass("inline");
@@ -184,42 +183,9 @@
                 callback = isClick ? function () {
                     evt.type = "change";
                     fire.trigger(evt, [val]);
+                    self.$input.trigger( e = $.Event('end.cs.rangeInput') );
                 } : null;
 
-
-//            if (vertical) {
-//                this.progressHeight = len - x + handle.height() / 2;
-//                if ($.browser.os === "IOS" && $.browser.version > 4) {
-//                    handle.animate({
-//                        top:x
-//                    }, speed, callback);
-//                } else {
-//                    handle.transition({
-//                        y:x
-//                    }, speed, callback);
-//                }
-//                if (false && conf.progress) {
-//                    progress.css({
-//                        height:this.progressHeight
-//                    });
-//                }
-//            } else {
-//                this.progressWidth = x + handle.width() / 2;
-//                if ($.browser.os === "IOS" && $.browser.version > 4) {
-//                    handle.animate({
-//                        left:x
-//                    }, speed, callback);
-//                } else {
-//                    handle.transition({
-//                        x:x
-//                    }, speed, callback);
-//                }
-//                if (conf.progress) {
-//                    progress.css({
-//                        width:this.progressWidth
-//                    });
-//                }
-//            }
             if (vertical) {
                 handle.animate({top:x}, speed, callback);
                 if (conf.progress) {
@@ -234,6 +200,7 @@
                     if (conf.progress) {
                         progress.animate({width:x + handle.width() / 2}, speed);
                     }
+
                 }
             }
 
@@ -248,7 +215,7 @@
             }
             self.$input = input;
             self.inputValue = value;
-
+            self.$input.trigger( e = $.Event('move.cs.rangeInput') );
             return self;
         }
 
@@ -322,9 +289,11 @@
 
             // avoid redundant event triggering (= heavy stuff)
             fireOnSlide = hasEvent($(self)) || hasEvent(input);
+            self.$input.trigger( e = $.Event('start.cs.rangeInput') );
 
 
         }).on("drag",function (e, y, x) {
+                
                 var distance = 0;
                 if (input.is(":disabled")) {
                     return false;
@@ -346,6 +315,7 @@
                     e.type = "change";
                     fire.trigger(e, [value]);
                 }
+                self.$input.trigger( e = $.Event('end.cs.rangeInput') );
             }).click(function (e) {
                 return e.preventDefault();
             });
@@ -357,6 +327,7 @@
             }
             init();
             var fix = vertical ? handle.height() / 2 : handle.width() / 2;
+            self.$input.trigger( $.Event('start.cs.rangeInput') );
             slide(e, vertical ? len - origo - fix + e.pageY : e.pageX - origo - fix);
             self.$input.val(self.inputValue);
         });
@@ -375,11 +346,11 @@
 
                 if ((up || down) && !(e.shiftKey || e.altKey || e.ctrlKey)) {
 
-                    // UP: 	k=75, l=76, up=38, pageup=33, right=39
+                    // UP:  k=75, l=76, up=38, pageup=33, right=39
                     if (up) {
                         self.step(key == 33 ? 10 : 1, e);
 
-                        // DOWN:	j=74, h=72, down=40, pagedown=34, left=37
+                        // DOWN:    j=74, h=72, down=40, pagedown=34, left=37
                     } else if (down) {
                         self.step(key == 34 ? -10 : -1, e);
                     }
@@ -390,6 +361,9 @@
 
 
         input.on("change", function (e) {
+            if($(this).css("display") === 'none') {
+                return false;
+            }
             var val = $(this).val();
             if (val !== value) {
                 self.setValue(val, e);
