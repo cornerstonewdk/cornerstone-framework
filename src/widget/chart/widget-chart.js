@@ -292,7 +292,7 @@
 				.values(function (d) {
 					return d;
 				})
-				.color(d3.scale.category10().range());
+				.color(options.color.range());
 
 			if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
 				target = target.append("svg:svg")
@@ -305,6 +305,11 @@
 				.attr('width', width)
 				.attr('height', height)
 				.call(chart);
+
+            // inline Style로 추가되는 스타일 제거
+            $.each(target.selectAll(".nv-slice > .nv-label > text")[0], function(index, item) {
+                $(item).removeAttr("style");
+            });
 
 			!options.autoResize || nv.utils.windowResize(chart.update);
 
