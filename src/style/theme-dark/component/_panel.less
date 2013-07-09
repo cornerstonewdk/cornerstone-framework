@@ -1,4 +1,12 @@
 // Base class
 .panel {
   color: @text-color-inverse;
+  border: none;
+}
+
+.panel-heading,
+.panel-footer {
+  background-color: #2b7096;
+  color: @text-color;
+  .box-shadow(~"0 0 5px rgba(0, 0, 0, .5), inset 0 -4px 4px rgba(0, 0, 0, .2)");
 }
