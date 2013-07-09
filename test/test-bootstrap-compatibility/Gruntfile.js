@@ -9,20 +9,30 @@ module.exports = function (grunt) {
 		clean: {
 			build: {
 				src: [
-//					"assets",
-//					"components",
-//					"css",
-//					"customize",
-//					"examples",
-//					"getting-started",
-//					"javascript"
+					"assets/",
+					"components/",
+					"css/",
+					"customize/",
+					"examples/",
+					"getting-started/",
+					"javascript/",
+					"index.html"
 				]
 			}
 		},
 		copy: {
 			main: {
 				files: [
-					{expand: true, src: ['../../src/style/bootstrap3/_gh_pages/**/*'], dest: './'}, // includes files in path and its subdirs
+					{
+						expand: true,
+						dot: true,
+						cwd: '../../src/style/bootstrap3/_gh_pages/',
+						dest: './',
+						src: [
+							'index.html',
+							'**/*'
+						]
+					}
 				]
 			}
 		},
@@ -137,7 +147,7 @@ module.exports = function (grunt) {
 				replacements: [
 					{
 						from: '/bootstrap.css" rel="stylesheet">',
-						to: '/bootstrap.css" rel="stylesheet"><link href="../../../grunt-dist/src/style/theme-dark/cornerstone.css" rel="stylesheet">'
+						to: '/bootstrap.css" rel="stylesheet"><link href="../../../grunt-dist/src/style/theme-wireframe/cornerstone.css" rel="stylesheet">'
 					}
 				]
 			},
@@ -147,7 +157,7 @@ module.exports = function (grunt) {
 				replacements: [
 					{
 						from: '/bootstrap.css" rel="stylesheet">',
-						to: '/bootstrap.css" rel="stylesheet"><link href="../../../../grunt-dist/src/style/theme-dark/cornerstone.css" rel="stylesheet">'
+						to: '/bootstrap.css" rel="stylesheet"><link href="../../../../grunt-dist/src/style/theme-wireframe/cornerstone.css" rel="stylesheet">'
 					}
 				]
 			}
