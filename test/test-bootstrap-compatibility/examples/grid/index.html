@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>
+  
+    Grid template &middot; Bootstrap
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../../../grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../../../grunt-dist/src/style/theme-dark/cornerstone.css" rel="stylesheet"><link href="../../../grunt-dist/src/style/theme-dark/cornerstone.css" rel="stylesheet">
+
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="../../assets/js/html5shiv.js"></script>
+  <script src="../../assets/js/respond/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="../../assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-146052-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+    <!-- Place anything custom after this. -->
+  </head>
+  <body>
+
+    <!-- Page content of course! -->
+    <!-- Custom styles for this template -->
+<style>
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h4 {
+    margin-top: 25px;
+  }
+  .row {
+    margin-bottom: 20px;
+  }
+  .row .row {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  [class*="col-lg-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(185,74,72,.15);
+    border: 1px solid rgba(185,74,72,.2);
+  }
+</style>
+
+
+<div class="container">
+
+  <h2>Bootstrap grids</h2>
+  <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
+
+  <h4>Three equal columns</h4>
+  <div class="row">
+    <div class="col-lg-4">.col-lg-4</div>
+    <div class="col-lg-4">.col-lg-4</div>
+    <div class="col-lg-4">.col-lg-4</div>
+  </div>
+
+  <h4>Three unequal columns</h4>
+  <div class="row">
+    <div class="col-lg-3">.col-lg-3</div>
+    <div class="col-lg-6">.col-lg-6</div>
+    <div class="col-lg-3">.col-lg-3</div>
+  </div>
+
+  <h4>Two columns</h4>
+  <div class="row">
+    <div class="col-lg-8">.col-lg-8</div>
+    <div class="col-lg-4">.col-lg-4</div>
+  </div>
+
+  <h4>Full width, single column</h4>
+  <p class="text-warning">No grid classes are necessary for full-width elements.</p>
+
+  <h4>Two columns with two nested columns</h4>
+  <div class="row">
+    <div class="col-lg-8">
+      .col-lg-8
+      <div class="row">
+        <div class="col-lg-6">.col-lg-6</div>
+        <div class="col-lg-6">.col-lg-6</div>
+      </div>
+    </div>
+    <div class="col-lg-4">.col-lg-4</div>
+  </div>
+
+  <h4>Mixed: mobile and desktop</h4>
+  <div class="row">
+    <div class="col-12 col-lg-8">.col-12 .col-lg-8</div>
+    <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
+    <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
+    <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-lg-6">.col-6 .col-lg-6</div>
+    <div class="col-6 col-lg-6">.col-6 .col-lg-6</div>
+  </div>
+
+  <h4>Mixed: mobile, tablet, and desktop</h4>
+  <div class="row">
+    <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
+    <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+    <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+    <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+    <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+  </div>
+
+
+</div> <!-- /container -->
+
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../assets/js/jquery.js"></script>
+<script src="../../assets/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script src="../../assets/js/holder/holder.js"></script>
+
+<script src="../../assets/js/application.js"></script>
+
+<!-- Analytics
+================================================== -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+</html>
