@@ -141,8 +141,25 @@ module.exports = function (grunt) {
 					}
 				]
 			},
+			changeThemeRoot: {
+				src: ['index.html'],
+				overwrite: true,
+				replacements: [
+					{
+						from: '/bootstrap.css" rel="stylesheet">',
+						to: '/bootstrap.css" rel="stylesheet"><link href="../../grunt-dist/src/style/theme-wireframe/cornerstone.css" rel="stylesheet">'
+					}
+				]
+			},
 			changeThemeOneDepth: {
-				src: ['**/index.html'],
+				src: [
+					"assets/index.html",
+					"components/index.html",
+					"css/index.html",
+					"customize/index.html",
+					"getting-started/index.html",
+					"javascript/index.html"
+				],
 				overwrite: true,
 				replacements: [
 					{
