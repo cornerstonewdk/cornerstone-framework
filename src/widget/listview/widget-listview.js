@@ -97,7 +97,7 @@
             scrollTop = navigator.userAgent.match("Android") ? $(window).scrollTop() + 100 : $(window).scrollTop();
             if (scrollTop >= ($(document).height() - $(window).height() - self.scrollHeight)) {
                 options.scrollEndAction();
-                self.$el.trigger("scrollEnd");
+                self.$el.trigger("scrollEnd.cs.liveView");
             }
         });
     };
