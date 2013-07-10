@@ -19,6 +19,7 @@ define([
 
 		render: function (index) {
 			var self = this;
+			var HAS_TOUCH = ('ontouchstart' in window);
 			var currentImageWidth = $(".container").width() - 20;
 			$.getJSON("data/sample.json", function (data) {
 				data.body[index].imageLarge = data.body[index].src;
@@ -28,7 +29,7 @@ define([
 				self.$el.preloader({
 					delay: 50,
 					ondone: function () {
-						$(".imageWrapper").removeAttr("style");
+						!HAS_TOUCH && $(".imageWrapper").removeAttr("style");
 					}
 				});
 			});
