@@ -18,11 +18,11 @@ define([
 
 		},
 		render: function () {
-
 			if (!this.isFirst) {
 				return this.$el;
 			}
 
+			var HAS_TOUCH = ('ontouchstart' in window);
 			var self = this;
 			var $container = $(".container");
 			var currentImageWidth = 728 > $container.width()
@@ -39,7 +39,7 @@ define([
 					$(this).preloader({
 						delay: 10,
 						ondone: function() {
-							$(".imageWrapper").removeAttr("style");
+							!HAS_TOUCH && $(".imageWrapper").removeAttr("style");
 						}
 					});
 				});
