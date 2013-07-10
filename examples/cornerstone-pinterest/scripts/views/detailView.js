@@ -22,18 +22,25 @@ define([
 			var currentImageWidth = $(".container").width() - 20;
 			$.getJSON("data/sample.json", function (data) {
 				data.body[index].imageLarge = data.body[index].src;
-				data.body[index].height = data.body[index].height * (currentImageWidth/236);
+				data.body[index].height = data.body[index].height * (currentImageWidth / 236);
 				self.$el.html(Template(data.body[index]));
-				self.$el.preloader({
-					delay: 100,
-					ondone: function() {
-						$(".pinHolder").removeAttr("style");
-					}
-				});
+
+				console.log(index, this.previousIndeX);
+				if (index != self.previousIndex) {
+					self.$el.preloader({
+						delay: 50,
+						ondone: function () {
+							$(".imageWrapper").removeAttr("style");
+						}
+					});
+				}
+
+				self.previousIndex = index;
 			});
+			return this;
 		},
 
-		cleanup: function() {
+		cleanup: function () {
 			this.remove();
 		}
 	});

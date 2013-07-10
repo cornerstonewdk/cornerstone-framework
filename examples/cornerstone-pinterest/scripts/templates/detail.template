@@ -1,7 +1,7 @@
 <div class="col col-lg-12">
     <div class="itemWrapper">
-        <div class="pinHolder" style="min-height:{{height}}px;">
-            <a href="#detail/{{index}}" class="imageWrapper ">
+        <div class="pinHolder">
+            <a href="#detail/{{index}}" class="imageWrapper" style="height:{{height}}px;">
                 <h4 class="domain">{{attrib}}</h4>
                 <img src="{{imageLarge}}" alt="">
             </a>

@@ -60,6 +60,9 @@ body {
   word-wrap: break-word;
   display: none;
 }
+.itemWrapper .imageWrapper {
+  display: block;
+}
 .itemWrapper .imageWrapper img {
   width: 100%;
   height: 100%;
