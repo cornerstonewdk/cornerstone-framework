@@ -33,10 +33,16 @@ define([
 				}));
 
 				self.$el.find(".col-sm-6").eq(0).preloader({
-					delay: 50
+					delay: 50,
+					ondone: function() {
+						$(".pinHolder").removeAttr("style");
+					}
 				});
 				self.$el.find(".col-sm-6").eq(1).preloader({
-					delay: 50
+					delay: 50,
+					ondone: function() {
+						$(".pinHolder").removeAttr("style");
+					}
 				});
 
 				self.isFirst = false;
