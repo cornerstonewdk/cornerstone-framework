@@ -122,13 +122,13 @@ module.exports = function ( grunt ) {
 						'<%= path.dist %>src/style/theme-wireframe/cornerstone.css': '<%= path.source %>style/theme-wireframe/cornerstone.less'
 					},
 					{
-						'<%= path.dist %>src/style/skin-cerulean/cerulean.css': '<%= path.source %>style/skin-cerulean/cerulean.less'
+						'<%= path.dist %>src/style/skin-cerulean/cornerstone.css': '<%= path.source %>style/skin-cerulean/cerulean.less'
 					},
 					{
-						'<%= path.dist %>src/style/skin-flatly/flatly.css': '<%= path.source %>style/skin-flatly/flatly.less'
+						'<%= path.dist %>src/style/skin-flatly/cornerstone.css': '<%= path.source %>style/skin-flatly/flatly.less'
 					},
 					{
-						'<%= path.dist %>src/style/skin-united/united.css': '<%= path.source %>style/skin-united/united.less'
+						'<%= path.dist %>src/style/skin-united/cornerstone.css': '<%= path.source %>style/skin-united/united.less'
 					}
 				]
 			}
@@ -149,13 +149,13 @@ module.exports = function ( grunt ) {
 						'<%= path.dist %>src/style/theme-wireframe/cornerstone.css': '<%= path.dist %>src/style/theme-wireframe/cornerstone.css'
 					},
 					{
-						'<%= path.dist %>src/style/skin-cerulean/cerulean.css': '<%= path.dist %>src/style/skin-cerulean/cerulean.css'
+						'<%= path.dist %>src/style/skin-cerulean/cornerstone.css': '<%= path.dist %>src/style/skin-cerulean/cornerstone.css'
 					},
 					{
-						'<%= path.dist %>src/style/skin-flatly/flatly.css': '<%= path.dist %>src/style/skin-flatly/flatly.css'
+						'<%= path.dist %>src/style/skin-flatly/cornerstone.css': '<%= path.dist %>src/style/skin-flatly/cornerstone.css'
 					},
 					{
-						'<%= path.dist %>src/style/skin-united/united.css': '<%= path.dist %>src/style/skin-united/united.css'
+						'<%= path.dist %>src/style/skin-united/cornerstone.css': '<%= path.dist %>src/style/skin-united/cornerstone.css'
 					}
 				]
 			}
