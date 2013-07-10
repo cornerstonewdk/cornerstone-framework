@@ -32,9 +32,9 @@ define([
 							$(".imageWrapper").removeAttr("style");
 						}
 					});
+				} else {
+					$(".imageWrapper").removeAttr("style");
 				}
-
-				$(".imageWrapper").removeAttr("style");
 				self.previousIndex = index;
 			});
 			return this;
