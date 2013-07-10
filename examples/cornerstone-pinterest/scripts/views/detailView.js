@@ -25,17 +25,12 @@ define([
 				data.body[index].height = data.body[index].height * (currentImageWidth / 236);
 				self.$el.html(Template(data.body[index]));
 
-				if (index != self.previousIndex) {
-					self.$el.preloader({
-						delay: 50,
-						ondone: function () {
-							$(".imageWrapper").removeAttr("style");
-						}
-					});
-				} else {
-					$(".imageWrapper").removeAttr("style");
-				}
-				self.previousIndex = index;
+				self.$el.preloader({
+					delay: 50,
+					ondone: function () {
+						$(".imageWrapper").removeAttr("style");
+					}
+				});
 			});
 			return this;
 		},
