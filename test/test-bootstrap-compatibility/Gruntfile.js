@@ -1,6 +1,11 @@
 'use strict';
 
 module.exports = function (grunt) {
+	var defaultStyle = "theme-wireframe";
+
+	// grunt-*로 시작하는 모든 라이브러리 가져온다.
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
 	// Project configuration.
 	grunt.initConfig({
 		config: {
@@ -146,8 +151,15 @@ module.exports = function (grunt) {
 				overwrite: true,
 				replacements: [
 					{
-						from: '/bootstrap.css" rel="stylesheet">',
-						to: '/bootstrap.css" rel="stylesheet"><link href="../../grunt-dist/src/style/theme-wireframe/cornerstone.css" rel="stylesheet">'
+						from: 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">',
+						to: function (matchedWord, index, fullText, regexMatches) {
+							console.log(defaultStyle, matchedWord, index, regexMatches);
+							if (defaultStyle.match("skin-*")) {
+								return 'grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+							} else {
+								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+							}
+						}
 					}
 				]
 			},
@@ -163,8 +175,14 @@ module.exports = function (grunt) {
 				overwrite: true,
 				replacements: [
 					{
-						from: '/bootstrap.css" rel="stylesheet">',
-						to: '/bootstrap.css" rel="stylesheet"><link href="../../../grunt-dist/src/style/theme-wireframe/cornerstone.css" rel="stylesheet">'
+						from: 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">',
+						to: function () {
+							if (defaultStyle.match("skin-*")) {
+								return 'grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+							} else {
+								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../../grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+							}
+						}
 					}
 				]
 			},
@@ -173,20 +191,26 @@ module.exports = function (grunt) {
 				overwrite: true,
 				replacements: [
 					{
-						from: '/bootstrap.css" rel="stylesheet">',
-						to: '/bootstrap.css" rel="stylesheet"><link href="../../../../grunt-dist/src/style/theme-wireframe/cornerstone.css" rel="stylesheet">'
+						from: 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">',
+						to: function () {
+							if (defaultStyle.match("skin-*")) {
+								return 'grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+							} else {
+								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../../../grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+							}
+						}
 					}
 				]
 			}
 		}
 	});
 
-	// These plugins provide necessary tasks.
-	//grunt-contrib-clean
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-text-replace');
-
+	grunt.registerTask('theme', function (theme) {
+		if (typeof theme === "string" && theme.match("theme-.*|skin-.*")) {
+			defaultStyle = theme;
+		}
+		grunt.task.run(['clean', 'copy', 'replace']);
+	});
 	// Default task.
 	grunt.registerTask('default', ['clean', 'copy', 'replace']);
 };
