@@ -25,7 +25,6 @@ define([
 				data.body[index].height = data.body[index].height * (currentImageWidth / 236);
 				self.$el.html(Template(data.body[index]));
 
-				console.log(index, this.previousIndeX);
 				if (index != self.previousIndex) {
 					self.$el.preloader({
 						delay: 50,
@@ -35,6 +34,7 @@ define([
 					});
 				}
 
+				$(".imageWrapper").removeAttr("style");
 				self.previousIndex = index;
 			});
 			return this;
