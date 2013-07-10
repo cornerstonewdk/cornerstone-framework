@@ -24,7 +24,10 @@ define([
 			}
 
 			var self = this;
-			var currentImageWidth = ($(window).width() - 20) / 2;
+			var $container = $(".container");
+			var currentImageWidth = 728 > $container.width()
+				? $container.width()/2 - 17
+				: $container.width()/2 + 5;
 
 			$.getJSON("data/sample.json", function (data) {
 				self.$el.html(Template({
@@ -32,13 +35,11 @@ define([
 					data: data
 				}));
 
-				self.$el.find(".col-sm-6").eq(0).preloader({
-					delay: 50
+				self.$el.find(".col-sm-6").preloader({
+					ondone: function() {
+						$(".pinHolder").removeAttr("style");
+					}
 				});
-				self.$el.find(".col-sm-6").eq(1).preloader({
-					delay: 50
-				});
-
 				self.isFirst = false;
 			});
 

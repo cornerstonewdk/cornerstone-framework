@@ -19,13 +19,16 @@ define([
 
 		render: function (index) {
 			var self = this;
-			var currentImageWidth = $(window).width() - 10;
+			var currentImageWidth = $(".container").width() - 20;
 			$.getJSON("data/sample.json", function (data) {
 				data.body[index].imageLarge = data.body[index].src;
 				data.body[index].height = data.body[index].height * (currentImageWidth/236);
 				self.$el.html(Template(data.body[index]));
 				self.$el.preloader({
-					delay: 50
+					delay: 100,
+					ondone: function() {
+						$(".pinHolder").removeAttr("style");
+					}
 				});
 			});
 		},
