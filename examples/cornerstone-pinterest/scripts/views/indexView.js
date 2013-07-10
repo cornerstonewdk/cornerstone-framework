@@ -35,10 +35,13 @@ define([
 					data: data
 				}));
 
-				self.$el.find(".col-sm-6").preloader({
-					ondone: function() {
-						$(".pinHolder").removeAttr("style");
-					}
+				self.$el.find(".col-6").each(function() {
+					$(this).preloader({
+						delay: 10,
+						ondone: function() {
+							$(".imageWrapper").removeAttr("style");
+						}
+					});
 				});
 				self.isFirst = false;
 			});
