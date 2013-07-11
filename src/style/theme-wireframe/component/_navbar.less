@@ -37,13 +37,6 @@
   margin: 0;
   padding: 0;
 
-  .navbar-mobile-list-style {
-    text-align: center;
-    padding: 0 0 5px 0;
-    border: 1px solid @table-border-color;
-    .flex();
-  }
-
   > .active {
     background-color: @navbar-link-active-bg;
     color: @navbar-link-active-color;
@@ -74,10 +67,15 @@
       color: @navbar-link-hover-color;
     }
   }
+
+  span.text {
+    padding: 0 2px;
+    .ellipsis();
+  }
 }
 
 // Fixed Navbar안의 Dropdown UI
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .navbar[class*=navbar-fixed-] {
     .dropdown-menu {
       position: relative;
@@ -122,4 +120,14 @@
 
     }
   }
+}
+
+// Placeholder
+// --------------------------------------------------
+.navbar-mobile-list-style() {
+  text-align: center;
+  padding: 0 0 5px 0;
+  border: 1px solid @table-border-color;
+  width: 100%;
+  .flex();
 }

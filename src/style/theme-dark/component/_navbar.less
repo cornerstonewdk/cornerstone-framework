@@ -122,13 +122,6 @@
   margin: 0;
   padding: 0;
 
-  .navbar-mobile-list-style {
-    text-align: center;
-    padding: 0 0 5px 0;
-    border: 1px solid @table-border-color;
-    .flex();
-  }
-
   > .active {
     background-color: @navbar-link-active-bg;
     color: @navbar-link-active-color;
@@ -158,6 +151,10 @@
       background-color: @navbar-link-hover-bg;
       color: @navbar-link-hover-color;
     }
+  }
+  span.text {
+    padding: 0 2px;
+    .ellipsis();
   }
 }
 
@@ -221,4 +218,14 @@
 
     }
   }
+}
+
+// Placeholder
+// --------------------------------------------------
+.navbar-mobile-list-style() {
+  text-align: center;
+  padding: 0 0 5px 0;
+  border: 1px solid @table-border-color;
+  width: 100%;
+  .flex();
 }
