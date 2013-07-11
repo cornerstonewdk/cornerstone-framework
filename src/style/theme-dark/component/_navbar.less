@@ -2,15 +2,15 @@
 // NavBar
 // --------------------------------------------------
 .navbar {
-  font-size: @font-size-base;
   overflow: visible;
   margin-bottom: 22px;
-  color: #C0C0C0;
-  background: url(images/noisy-texture-100x100.png) repeat left top #35363a;
   padding: 0;
+  background: url(images/noisy-texture-100x100.png) repeat left top #35363a;
+  color: #C0C0C0;
+  font-size: @font-size-base;
   & > .navbar-inner {
-    padding-left: 15px;
     padding-right: 15px;
+    padding-left: 15px;
     #gradient > .vertical(rgba(255, 255, 255, 0.01), 0%, rgba(255, 255, 255, 0.05), 100%);
     .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)");
   }
@@ -54,22 +54,22 @@
 
   .nav > .active > a,
   .nav > .active > a:hover.navbar .nav > .active > a:focus {
-    color: #82e6ff;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
     padding: 6px 13px;
-    border-radius: 4px;
     border: 1px solid rgba(69, 69, 69, 0.3);
+    border-radius: 4px;
     background-color: #202020;
+    color: #82e6ff;
+    text-decoration: none;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     .box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
   }
 }
 
 .navbar-nav {
   > li > a > .glyphicon {
-    font-size: @font-size-base * 1.2;
     display: inline-block;
     margin: 3px 5px 0 0;
+    font-size: @font-size-base * 1.2;
     line-height: 5px;
   }
 }
@@ -114,12 +114,12 @@
 }
 
 .navbar-mobile {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flexbox;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 
   .navbar-mobile-list-style {
     text-align: center;
@@ -144,18 +144,18 @@
   }
 
   a {
-    text-decoration: none;
     color: @navbar-link-color;
+    text-decoration: none;
     > .glyphicon {
-      font-size: (@font-size-base * 1.5);
       display: block;
-      padding: 10px 0 0 0;
       margin-bottom: -5px;
+      padding: 10px 0 0 0;
+      font-size: (@font-size-base * 1.5);
     }
 
     &:hover:not(.active), &:focus:not(.active) {
-      color: @navbar-link-hover-color;
       background-color: @navbar-link-hover-bg;
+      color: @navbar-link-hover-color;
     }
   }
 }
@@ -171,9 +171,11 @@
       margin-top: 50px;
     }
   }
+
   .navbar-icon li > a {
     font-size: @font-size-base;
   }
+
   .navbar[class*=navbar-fixed-] {
     .dropdown-menu {
       position: relative;

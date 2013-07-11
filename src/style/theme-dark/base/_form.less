@@ -1,60 +1,44 @@
 .control-group {
   &.disabled {
     input {
-      background-image: url("images/bg-input-disabled.png");
+      background: url(images/bg-input-disabled.png) repeat;
       background-size: 5% 100%;
-      background-repeat: repeat;
     }
   }
 }
 
 legend {
   display: block;
+  margin: 40px 0 10px;
   width: 100%;
-  margin-bottom: 22px;
+  border-width: 0;
+  color: #222;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-weight: bold;
   font-size: 22px;
   line-height: 26px;
-  color: #222;
-  border: 0;
-  border-bottom: 0;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  margin: 40px 0 10px;
-  font-weight: bold;
 }
 
 select,
 textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
-  height: auto;
-  min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+input[type] {
   padding: @form-padding-base-vertical @form-padding-base-horizontal;
-  font-size: @form-font-size;
-  line-height: @line-height-base;
-  color: @form-text-color;
-  vertical-align: middle;
-  background-color: @input-bg;
+  min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  height: auto;
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
+  background-color: @input-bg;
+  color: @form-text-color;
+  vertical-align: middle;
+  font-size: @form-font-size;
+  line-height: @line-height-base;
   .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   &:focus, &.focused {
-    color: @form-focus-color;
-    border-color: rgba(82, 168, 236, .8);
     outline: 0;
+    border-color: rgba(82, 168, 236, .8);
+    color: @form-focus-color;
     .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
   }
 
@@ -62,8 +46,8 @@ input[type="color"] {
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    cursor: not-allowed;
     background-color: rgba(34, 34, 34, 0.22);
+    cursor: not-allowed;
     .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7), 0 1px 1px rgba(255, 255, 255, .27)");
   }
 }
@@ -72,9 +56,9 @@ select {
   height: @select-height;
   border: none;
   &:focus {
-    color: @form-text-color;
-    border: 0;
     outline: 0;
+    border: 0;
+    color: @form-text-color;
   }
 }
 
@@ -89,37 +73,33 @@ select {
 .form-search {
   input {
     display: inline-block;
-    border-radius: 25px;
     padding: 9px;
+    border-radius: 25px;
   }
 }
 
 .help-inline {
-  padding: 9px 10px 8px 10px;
-  text-align: left;
-  font-size: @form-font-size;
-  font-weight: bold;
-  color: darken(#5c6267, 30%);
-  display: inline-block;
-  background-color: #5c6267;
-  border-radius: 4px;
-  border: 1px solid #000000;
   position: relative;
+  display: inline-block;
+  padding: 9px 10px 8px 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  color: darken(#5c6267, 30%);
+  text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  font-size: @form-font-size;
   #gradient > .vertical(#5c6267, 0%, darken(#5c6267, 10%), 100%);
 
   & > span {
     white-space: pre-line;
-    word-break: break-word;
   }
   .arrow {
     position: absolute;
     display: block;
     width: 0;
     height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 8px;
+    border: 8px solid transparent;
   }
 
   &.top {
@@ -133,13 +113,11 @@ select {
       &:after {
         content: "";
         position: absolute;
-        border-width: 12px;
-        border-style: solid;
         top: -11px;
         left: -12px;
-        border-color: transparent;
-        border-bottom-width: 0;
+        border: 12px solid transparent;
         border-top-color: #000;
+        border-bottom-width: 0;
         z-index: -1;
       }
     }
@@ -155,13 +133,11 @@ select {
       &:after {
         content: "";
         position: absolute;
-        border-width: 12px;
-        border-style: solid;
         top: -12px;
         left: -1px;
-        border-color: transparent;
-        border-left-width: 0;
+        border: 12px solid transparent;
         border-right-color: #000;
+        border-left-width: 0;
         z-index: -1;
       }
     }
@@ -178,11 +154,9 @@ select {
       &:after {
         content: "";
         position: absolute;
-        border-width: 12px;
-        border-style: solid;
         top: -1px;
         right: -12px;
-        border-color: transparent;
+        border: 12px solid transparent;
         border-top-width: 0;
         border-bottom-color: #000;
         z-index: -1;
@@ -191,8 +165,8 @@ select {
   }
 
   &.left {
-    margin: 0 -15px 0 0;
     float: right;
+    margin: 0 -15px 0 0;
     .arrow {
       top: 13px;
       right: -8px;
@@ -201,11 +175,9 @@ select {
       &:after {
         content: "";
         position: absolute;
-        border-width: 12px;
-        border-style: solid;
         top: -12px;
         right: -1px;
-        border-color: transparent;
+        border: 12px solid transparent;
         border-right-width: 0;
         border-left-color: #000;
         z-index: -1;
@@ -338,10 +310,9 @@ select {
 .flip-area {
   .user-select();
   position: relative;
-  border-radius: 25px;
-  padding: 7px;
   margin: 0;
-  background-color: rgba(84, 84, 84, 0.14);
+  padding: 7px;
+  border-radius: 25px;
   #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
 
   .flip-btn {
@@ -371,51 +342,51 @@ select {
   }
 
   &.active > .flip-txt {
-    text-align: right;
+    display: inline-block;
     padding: 0 0 0 15px;
+    border: 2px solid #222222;
+    border-radius: 20px;
+    background-color: @flip-on-bg;
     color: #ffffff;
+    text-align: right;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
     font-size: 16px;
     line-height: 22px;
-    font-weight: bold;
-    display: inline-block;
-    border-radius: 20px;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-    background-color: @flip-on-bg;
-    border: 2px solid #222222;
     &:after {
       display: inline-block;
-      content: attr(data-on);
-      color: #ffffff;
       margin-top: 5px;
+      color: #ffffff;
+      content: attr(data-on);
     }
     & > span {
       float: right;
-      margin-left: 15px;
       margin-right: 0;
+      margin-left: 15px;
     }
   }
   &:not(.fast-button) .flip-check:checked ~ .flip-txt {
-    text-align: right;
+    display: inline-block;
     padding: 0 0 0 15px;
+    border: 2px solid #222222;
+    border-radius: 20px;
+    background-color: @flip-on-bg;
     color: #ffffff;
+    text-align: right;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
     font-size: 16px;
     line-height: 22px;
-    font-weight: bold;
-    display: inline-block;
-    border-radius: 20px;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
-    background-color: @flip-on-bg;
-    border: 2px solid #222222;
     &:after {
       display: inline-block;
-      content: attr(data-on);
-      color: #ffffff;
       margin-top: 5px;
+      color: #ffffff;
+      content: attr(data-on);
     }
     & > span {
       float: right;
-      margin-left: 15px;
       margin-right: 0;
+      margin-left: 15px;
     }
   }
 
@@ -454,59 +425,58 @@ select {
   & > .control {
     position: relative;
     display: inline-block;
-    border-radius: 4px;
+    margin: 0;
+    padding: 5px;
     width: 44px;
     height: 44px;
-    padding: 5px;
-    margin: 0;
-    cursor: pointer;
-    background-color: rgba(84, 84, 84, 0.14);
-    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    border-radius: 4px;
     vertical-align: middle;
+    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    cursor: pointer;
     &:before {
-      content: "";
       display: inline-block;
-      border-radius: 4px;
       width: 34px;
       height: 34px;
+      border-radius: 4px;
       background: #292929;
       background-size: 320px;
+      content: "";
       .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7)");
     }
     &.placeholder {
       &:before {
-        content: "\e013";
         position: absolute;
-        color: #737373;
-        width: 20px;
-        height: 29px;
-        font-family: 'Glyphicons Halflings';
-        -webkit-font-smoothing: antialiased;
-        font-style: normal;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 1;
         display: inline-block;
         padding: 4px 10px 1px 4px;
+        width: 20px;
+        height: 29px;
+        color: #737373;
+        content: "\e013";
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+        font-family: 'Glyphicons Halflings', serif;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
       }
     }
   }
 
   &.active > .control:after,
   &:not(.fast-button) input:checked ~ .control:after {
-    content: "\e013";
     position: absolute;
     top: 9px;
     left: 9px;
-    color: #53a3ba;
-    font-family: 'Glyphicons Halflings';
-    -webkit-font-smoothing: antialiased;
-    font-style: normal;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1;
     display: inline-block;
     padding-right: 10px;
+    color: #53a3ba;
+    content: "\e013";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    font-family: 'Glyphicons Halflings', serif;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
   }
 
   input[disabled] ~ .control:before, input.disabled ~ .control:before {
@@ -521,39 +491,38 @@ select {
     display: none;
   }
   & > .control {
-    display: inline-block;
     position: relative;
-    border-radius: 25px;
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
     width: 44px;
     height: 44px;
-    padding: 5px;
-    margin: 0;
-    cursor: pointer;
-    background-color: rgba(84, 84, 84, 0.14);
-    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    border-radius: 25px;
     vertical-align: middle;
+    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    cursor: pointer;
     &:before {
-      content: "";
       display: inline-block;
-      border-radius: 25px;
       width: 34px;
       height: 34px;
+      border-radius: 25px;
       background: #292929;
       background-size: 320px;
+      content: "";
       .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7)");
     }
   }
 
   &.active > .control:after,
   &:not(.fast-button) input:checked ~ .control:after {
-    content: "";
     position: absolute;
     top: 10px;
     left: 10px;
-    border-radius: 24px;
     width: 24px;
     height: 24px;
+    border-radius: 24px;
     background: #292929;
+    content: "";
     .gradient-vertical-four(#53a3ba, 0%, #2582a1, 39%, #247f9f, 54%, #195366, 100%);
   }
 

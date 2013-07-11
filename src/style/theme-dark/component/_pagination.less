@@ -8,8 +8,8 @@
 @pagination-arrow-active-color: #2a2d30;
 
 .pagination {
-  background-color: rgba(0, 0, 0, 0.2);
   padding: 8px 5px 5px 12px;
+  background-color: rgba(0, 0, 0, 0.2);
   .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .5)");
 
   > li {
@@ -22,48 +22,48 @@
       & > a {
         width: auto;
         height: auto;
-        background: #42464B;
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-top: 1px solid rgba(255, 255, 255, 0.15);
         border-bottom: none;
         border-radius: 4px;
+        background: #42464B;
         .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .1), 0 5px 5px rgba(0, 0, 0, .4)");
         & > .glyphicon {
-          color: @pagination-arrow-color;
+          position: relative;
+          display: block;
+          padding: 1px 0 0 0;
           width: 22px;
           height: 22px;
-          padding: 1px 0 0 0;
-          display: block;
-          position: relative;
+          border: none;
           border-radius: 50px;
           background-color: @pagination-arrow-bg;
-          border: none;
+          color: @pagination-arrow-color;
           .box-shadow(~"inset 0 1px 1px rgba(0, 0, 0, 1), 0 1px 1px rgba(255, 255, 255, 0.4)");
         }
         &:hover, &:focus {
           background: #42464B;
           & > .glyphicon {
-            color: @pagination-arrow-active-color;
+            border: none;
             background-color: @pagination-arrow-active-bg;
             .gradient-vertical-without-color(#28c2f3, #0096db);
             box-shadow: none;
-            border: none;
+            color: @pagination-arrow-active-color;
           }
         }
       }
     }
 
     & > a {
+      display: block;
       padding: 10px;
-      color: #FFF;
-      line-height: 22px;
-      background: #42464B;
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-top: 1px solid rgba(255, 255, 255, 0.2);
       border-bottom: 0;
       border-radius: 4px;
+      background: #42464B;
+      color: #FFF;
       vertical-align: middle;
-      display: block;
+      line-height: 22px;
       .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .1), 0 5px 5px rgba(0, 0, 0, .4)");
       &:hover, &:focus {
         background: #42464B;
@@ -76,13 +76,13 @@
     & > a:active,
     &:first-child > a:active,
     &:last-child > a:active {
-      color: @pagination-active-color;
-      line-height: 22px;
-      font-weight: bold;
-      text-decoration: none;
       border-top: none;
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       background-color: #282B2E;
+      color: @pagination-active-color;
+      text-decoration: none;
+      font-weight: bold;
+      line-height: 22px;
       .box-shadow(~"inset 0 2px 3px rgba(0, 0, 0, .5), 0 0 1px rgba(255, 255, 255, .15)");
     }
   }
@@ -101,9 +101,9 @@
       & > a {
         padding: 8px;
         & > .glyphicon {
+          padding: 6px 0 0 0;
           width: 30px;
           height: 30px;
-          padding: 6px 0 0 0;
         }
       }
     }
@@ -130,19 +130,19 @@
 }
 
 &.pagination-circle {
-  background: transparent;
   border: none;
+  background: transparent;
   .box-shadow(none);
   > li > a,
   > li > span {
-    padding-left: 5px;
     padding-right: 5px;
+    padding-left: 5px;
   }
 
   & > li {
     & > a {
-      background: transparent;
       border: none;
+      background: transparent;
       color: #161616;
       .box-shadow(none);
       &:hover, &:focus {
@@ -155,21 +155,21 @@
       & > a:hover,
       & > a:focus,
       & > a:active {
+        position: relative;
+        display: block;
+        .box-shadow(none);
         border: none;
         background: transparent;
-        .box-shadow(none);
-        display: block;
-        position: relative;
         &:after {
-          content: "";
           position: absolute;
-          width: 15px;
-          height: 15px;
-          border-radius: 15px;
           top: 50%;
           left: 50%;
           margin: -7.5px 0 0 -7px;
+          width: 15px;
+          height: 15px;
+          border-radius: 15px;
           background-color: #2094B1;
+          content: "";
           .gradient-vertical-without-color(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
           .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .2), 0 3px 5px rgba(0, 0, 0, .3)");
         }
