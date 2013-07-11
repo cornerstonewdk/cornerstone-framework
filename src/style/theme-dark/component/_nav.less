@@ -9,9 +9,9 @@
     margin-top: -1px;
     > a {
       margin-right: 2px;
-      line-height: @line-height-base;
       border: 1px solid transparent;
       border-radius: 0 0 @border-radius-base @border-radius-base;
+      line-height: @line-height-base;
       &:hover {
         border-color: @gray-lighter @gray-lighter #ddd;
       }
@@ -20,10 +20,10 @@
     &.active > a,
     &.active > a:hover,
     &.active > a:focus {
-      color: @nav-text-color;
-      background-color: @body-bg;
       border: 1px solid #ddd;
       border-top-color: transparent;
+      background-color: @body-bg;
+      color: @nav-text-color;
       cursor: default;
     }
   }

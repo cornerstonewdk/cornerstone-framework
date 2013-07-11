@@ -1,25 +1,25 @@
 //
 // Base
 // --------------------------------------------------
+@body-bg: #3f4245;
+body {
+  background: @body-bg url(images/noisy-texture-100x100.png);
+  color: @text-color;
+}
+
 ul, ol {
   padding: 0;
 }
 
 .blind {
+  position: absolute;
   visibility: visible;
+  overflow: hidden;
   width: 0;
   height: 0;
-  overflow: hidden;
+  text-indent: -3000em;
   font-size: 0;
   line-height: 0;
-  text-indent: -3000em;
-  position: absolute;
-}
-
-body {
-  background-color: #3f4245;
-  background-image: url(images/noisy-texture-100x100.png);
-  color: @text-color;
 }
 
 hr {

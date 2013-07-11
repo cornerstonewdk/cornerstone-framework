@@ -1,5 +1,5 @@
-.ellipsis {
-  width: 100%;
+.ellipsis(@width: 100%) {
+  width: @width;
   text-overflow: ellipsis;
   display: inline-block;
   overflow: hidden;
@@ -79,5 +79,5 @@
   background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
   background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
   background-repeat: repeat-x;
-  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor), argb(@endColor))); // IE9 and down
 }
