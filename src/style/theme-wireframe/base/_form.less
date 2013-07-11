@@ -10,9 +10,9 @@
 
 input {
   &.focused {
-    border-color: rgba(82, 168, 236, .8);
     outline: 0;
     outline: thin dotted 9;
+    border-color: rgba(82, 168, 236, .8);
     .box-shadow(0 0 8px rgba(82, 168, 236, .6));
   }
 }
@@ -20,20 +20,20 @@ input {
 .form-search {
   input {
     display: inline-block;
-    border-radius: 25px;
     padding: 9px;
+    border-radius: 25px;
   }
 }
 
 .help-inline {
+  position: relative;
+  display: inline-block;
   padding: 9px 10px 8px 10px;
+  border: 1px solid @btn-default-bg;
+  background-color: @btn-default-bg;
+  color: @btn-default-color;
   text-align: left;
   font-weight: bold;
-  display: inline-block;
-  background-color: @btn-default-bg;
-  border: 1px solid @btn-default-bg;
-  color: @btn-default-color;
-  position: relative;
 
   & > span {
     white-space: pre-line;
@@ -82,8 +82,8 @@ input {
   }
 
   &.left {
-    margin: 0 -15px 0 0;
     float: right;
+    margin: 0 -15px 0 0;
     .arrow {
       top: 9px;;
       right: -11px;
@@ -189,9 +189,9 @@ input {
 .flip-area {
   .user-select();
   position: relative;
-  border-radius: 25px;
-  padding: 7px;
   margin: 0;
+  padding: 7px;
+  border-radius: 25px;
   background-color: rgba(84, 84, 84, 0.14);
   #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
 

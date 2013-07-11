@@ -109,7 +109,7 @@
     &.range.disabled,
     &.range.disabled:hover {
       background:@gray-lighter;
-      border-radius: none;
+      border-radius: 0;
     }
     &.range.today,
     &.range.today:hover,
@@ -117,7 +117,7 @@
     &.range.today.disabled:hover {
       @todayBackground: mix(@orange, @gray-lighter);
       .button-background(@todayBackground, spin(@todayBackground, 20));
-      border-radius: none;
+      border-radius: 0;
     }
     &.selected,
     &.selected:hover,
@@ -179,11 +179,6 @@
       background: @gray-lighter;
     }
   }
-  /*.dow {
-      border-top: 1px solid #ddd !important;
-  }*/
-
-  // Basic styling for calendar-week cells
   .cw {
     font-size: 10px;
     width: 12px;
