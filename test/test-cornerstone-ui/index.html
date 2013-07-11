@@ -1895,10 +1895,10 @@
         </h3>
 
         <div class="btn-group-vertical">
-            <button class="btn">cat</button>
-            <button class="btn">dog</button>
-            <button class="btn">monkey</button>
-            <button class="btn">rabbit</button>
+            <button class="btn btn-default">cat</button>
+            <button class="btn btn-default">dog</button>
+            <button class="btn btn-default">monkey</button>
+            <button class="btn btn-default">rabbit</button>
         </div>
     </div>
     <div class="col col-lg12">
@@ -1906,26 +1906,33 @@
             Vertically grouped radio
         </h3>
 
-        <ul class="list-group">
+        <ul class="list-group list-group-radio">
             <li class="list-group-item">
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                    <span class="inp-radio"></span>
+                <label class="input-radio">
+                    <input name="radio1" type="radio" value="option1">
+                    <span class="control"></span>
                     cat
                 </label>
             </li>
             <li class="list-group-item">
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked="">
-                    <span class="inp-radio"></span>
+                <label class="input-radio">
+                    <input name="radio1" type="radio" value="option2" checked>
+                    <span class="control"></span>
                     dog
                 </label>
             </li>
             <li class="list-group-item">
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" checked="">
-                    <span class="inp-radio"></span>
+                <label class="input-radio">
+                    <input name="radio1" type="radio" value="option3" >
+                    <span class="control"></span>
                     monkey
+                </label>
+            </li>
+            <li class="list-group-item">
+                <label class="input-radio">
+                    <input name="radio1" type="radio" value="option4" disabled>
+                    <span class="control"></span>
+                    rabbit
                 </label>
             </li>
         </ul>
@@ -1934,25 +1941,32 @@
         <h3 class="title">
             Vertically grouped checkbox
         </h3>
-        <ul class="list-group">
+        <ul class="list-group list-group-checkbox">
             <li class="list-group-item">
-                <label class="checkbox inline">
-                    <input type="checkbox" id="inlineCheckbox2" value="option2">
-                    <span class="inp-check"></span>
+                <label class="input-checkbox">
+                    <input type="checkbox" value="option1">
+                    <span class="control"></span>
                     dog
                 </label>
             </li>
             <li class="list-group-item">
-                <label class="checkbox inline">
-                    <input type="checkbox" id="inlineCheckbox3" value="option3">
-                    <span class="inp-check"></span>
+                <label class="input-checkbox">
+                    <input type="checkbox" value="option2" >
+                    <span class="control placeholder"></span>
+                    cat
+                </label>
+            </li>
+            <li class="list-group-item">
+                <label class="input-checkbox">
+                    <input type="checkbox" value="option3" checked>
+                    <span class="control"></span>
                     monkey
                 </label>
             </li>
             <li class="list-group-item">
-                <label class="checkbox inline">
-                    <input type="checkbox" id="inlineCheckbox4" value="option4">
-                    <span class="inp-check check"></span>
+                <label class="input-checkbox">
+                    <input type="checkbox" value="option3" disabled>
+                    <span class="control"></span>
                     rabbit
                 </label>
             </li>
