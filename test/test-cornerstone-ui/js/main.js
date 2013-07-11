@@ -206,5 +206,9 @@
 				$(this).find("input").attr("checked", "checked");
 			}
 		});
+
+		$( '[data-featured="datatable"]' ).on( 'itemClick.cs.datatables', 'tr', function ( e, data ) {
+			console.log( e, data );
+		} );
 	});
 })(jQuery, window, document);
