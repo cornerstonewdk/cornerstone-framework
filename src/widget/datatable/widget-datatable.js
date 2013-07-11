@@ -59,8 +59,13 @@
         };
 
         options = $.extend(true, defaultOptions, options);
-
-        return $(this).dataTable(options);
+        var dt = $( this ).data( 'featuredDataTable', $(this).dataTable(options) );
+        
+        dt.off( 'click', 'tr' ).on( 'click', 'tr', function ( e ) {
+            var rowData = $( this ).closest( 'table' ).data( 'featuredDataTable' ).fnGetData( this );
+            $( this ).trigger( 'itemClick.cs.datatables', { 'data': rowData } );
+        } );
+        return dt;
     };
 
     /* 기본 클래스명 정의 */
