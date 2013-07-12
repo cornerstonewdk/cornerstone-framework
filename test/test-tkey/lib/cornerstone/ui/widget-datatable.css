@@ -1,0 +1,40 @@
+/*
+    Cornerstone Framework v0.9.1
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
+div.dataTables_length label {
+	width: 460px;
+	float: left;
+	text-align: left;
+	margin: 0;
+	line-height: 56px;
+}
+
+div.dataTables_length select {
+	width: 75px;
+}
+
+div.dataTables_filter label {
+	float: right;
+	margin: 0;
+	line-height: 56px;
+}
+
+div.dataTables_info {
+	padding-top: 8px;
+}
+
+div.dataTables_paginate {
+	margin: 0 auto;
+}
+
+table {
+	margin: .5em 0 1em 0;
+	clear: both;
+}
+
+.dataTables_paginate.pagination2 a {
+	font-size: 0;
+}
