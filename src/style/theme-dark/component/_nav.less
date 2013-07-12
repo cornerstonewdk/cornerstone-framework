@@ -57,7 +57,7 @@
   color: #C0C0C0;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   font-size: 18px;
-  &:hover {
+  &:hover, &:focus {
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 15px 35px;
@@ -85,4 +85,11 @@
 
 .nav-stacked > li > a {
   display: inline-block;
+}
+
+.navbar-nav > .open > a,
+.navbar-nav > .open > a:hover,
+.navbar-nav > .open > a:focus {
+  color: #82E6FF;
+  background-color: #202020;
 }
