@@ -17,36 +17,48 @@
     font-size: @font-size-base * 1.5;
     line-height: 0;
   }
-  &.disabled, &[disabled] {
-    border-color: #000;
-    background: #858e98 none;
-    color: #CCC;
-    opacity: 1;
-    .box-shadow(none);
-  }
 
   &:hover, &:focus, {
     .gradient-vertical-without-color(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
   }
 
+  &.disabled, &[disabled] {
+    .disabled-style(hsl(hue(#4b4e53), 8%, 56%));
+  }
+
   &.btn-primary {
     #gradient > .vertical(@btn-primary-bg, 0%, darken(@btn-primary-bg, 12%), 100%);
+    &.disabled, &[disabled] {
+      .disabled-style(hsl(hue(@btn-primary-bg), 39%, 66%));
+    }
   }
   // Warning appears as orange
   &.btn-warning {
     #gradient > .vertical(@btn-warning-bg, 0%, darken(@btn-warning-bg, 12%), 100%);
+    &.disabled, &[disabled] {
+      .disabled-style(hsl(hue(@btn-warning-bg), 39%, 66%));
+    }
   }
   // Danger and error appear as red
   &.btn-danger {
     #gradient > .vertical(@btn-danger-bg, 0%, darken(@btn-danger-bg, 12%), 100%);
+    &.disabled, &[disabled] {
+      .disabled-style(hsl(hue(@btn-danger-bg), 39%, 66%));
+    }
   }
   // Success appears as green
   &.btn-success {
     #gradient > .vertical(@btn-success-bg, 0%, darken(@btn-success-bg, 12%), 100%);
+    &.disabled, &[disabled] {
+      .disabled-style(hsl(hue(@btn-success-bg), 39%, 66%));
+    }
   }
   // Info appears as blue-green
   &.btn-info {
     #gradient > .vertical(@btn-info-bg, 0%, darken(@btn-info-bg, 12%), 100%);
+    &.disabled, &[disabled] {
+      .disabled-style(hsl(hue(@btn-info-bg), 39%, 66%));
+    }
   }
 
   &.btn-primary, &.btn-warning, &.btn-danger, &.btn-success, &.btn-info {
@@ -104,4 +116,11 @@
       margin: 0;
     }
   }
+}
+
+.disabled-style(@bg: @btn-default-bg, @color: #CCC) {
+  border-color: #000;
+  background: @bg none;
+  color: @color;
+  opacity: 1;
 }
