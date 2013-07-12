@@ -80,7 +80,7 @@ g_hardware_search.df_eventHandler=function(){
 
         if(element.val().length<4){
             switch(location.pathname){
-                case "/screen/ustock/u_sm_reg.html":
+                case "ustock/u_sm_reg.html":
                 {
                     errMsg="4글자 이상 입력하세요.<BR>1234으로 입력하시면 [0001234],[00001234],[00000001234] 인 일련번호를 검색합니다.";
                     break;
@@ -133,10 +133,10 @@ g_hardware_search.drawList = function(){
     ///////검색 조건///////
     var search_mode="";
     switch(location.pathname){
-        case "/screen/dealsub/regre_predeal.html": //회수등록
+        case "dealsub/regre_predeal.html": //회수등록
             search_mode="repredeal";
             break;
-        case "/screen/ustock/u_sm_reg.html": //회수등록
+        case "ustock/u_sm_reg.html": //회수등록
             search_mode="u_sms_reg";
             break;
         default:
@@ -164,7 +164,7 @@ g_hardware_search.uf_setHardwareInfo=function(event, objElemet){
     var ErrObj={};
 
     switch(location.pathname){
-        case "/screen/deal/regpredeal.html": //출고등록
+        case "deal/regpredeal.html": //출고등록
         {
             //보유처 설정            
             ErrObj.elementID=$("#id_subagency1",g_hardware_search.OpenerDiv);
@@ -177,7 +177,7 @@ g_hardware_search.uf_setHardwareInfo=function(event, objElemet){
             $("#id_subagency1",g_hardware_search.OpenerDiv).append(subagency_option);
             break;
         }
-        case "/screen/ustock/u_sm_reg.html": //대리점재고이동
+        case "ustock/u_sm_reg.html": //대리점재고이동
         {
             ErrObj.elementID=$("#id_agency_from",g_hardware_search.OpenerDiv);
             cf_resetErrorMsg(ErrObj);
@@ -202,7 +202,7 @@ g_hardware_search.uf_setHardwareInfo=function(event, objElemet){
         }
     }
     
-    if(location.pathname!="/screen/ustock/u_sm_reg.html"){
+    if(location.pathname!="ustock/u_sm_reg.html"){
         //제조사 설정    
         ErrObj.elementID=$("#id_factory",g_hardware_search.OpenerDiv);
         cf_resetErrorMsg(ErrObj);

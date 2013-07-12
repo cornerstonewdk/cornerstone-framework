@@ -35,14 +35,14 @@ function loadjscssfile(filename, filetype, isDefer, callback) {
 }
 
 requirejs.config( {
-    baseUrl: '/screen/commonJs/',
+    baseUrl: 'commonJs/',
     paths  : {
-         'jquery'                :'/screen/lib/cornerstone/lib/jquery-1.8.1.min'
-        ,'widget-plugins'        :'/screen/lib/cornerstone/ui/widget-plugins'
-        ,'transition'            :'/screen/lib/cornerstone/util/transition'
-        ,'jquery.ui.core'        :'/screen/lib/cornerstone/lib/datepicker/jquery.ui.core-1.9.2.min'
-        ,'jquery.ui.datepicker'  :'/screen/lib/cornerstone/lib/datepicker/jquery.ui.datepicker-1.9.2.min'
-        ,'jquery.ui.monthpicker' :'/screen/lib/cornerstone/lib/datepicker/jquery.ui.monthpicker'     
+         'jquery'                :'lib/cornerstone/lib/jquery-1.8.1.min'
+        ,'widget-plugins'        :'lib/cornerstone/ui/widget-plugins'
+        ,'transition'            :'lib/cornerstone/util/transition'
+        ,'jquery.ui.core'        :'lib/cornerstone/lib/datepicker/jquery.ui.core-1.9.2.min'
+        ,'jquery.ui.datepicker'  :'lib/cornerstone/lib/datepicker/jquery.ui.datepicker-1.9.2.min'
+        ,'jquery.ui.monthpicker' :'lib/cornerstone/lib/datepicker/jquery.ui.monthpicker'
         ,'cf_common'             :'cf_common'
         ,'cf_auth'               :'cf_auth'
         ,'cf_alertmsg'           :'cf_alertmsg'
@@ -52,7 +52,7 @@ requirejs.config( {
         ,'cf_regularExpression'  :'cf_regularExpression'
         ,'cf_ajax'               :'cf_ajax'
         ,'cf_shortCutMenu'       :'cf_shortCutMenu'
-        ,'cf_quick_search'       :'/screen/quicksearch/js/cf_quick_search'
+        ,'cf_quick_search'       :'quicksearch/js/cf_quick_search'
         ,'cf_makeMenu'           :'cf_makeMenu'
         ,'cf_makeGrid'           :'cf_makeGrid'
         ,'cf_loadPage'           :'cf_loadPage'
@@ -113,7 +113,7 @@ require( [ 'cf_validation'
     fileName = fileName.substring(pos, fileName.lastIndexOf('.'));
     loadJs = './js' + fileName + '.js';
     
-    //loadjscssfile("/screen/commonJs/cf_alertmsg.js", "js",true);
+    //loadjscssfile("commonJs/cf_alertmsg.js", "js",true);
     
     loadjscssfile(loadJs, "js",true);
 } );

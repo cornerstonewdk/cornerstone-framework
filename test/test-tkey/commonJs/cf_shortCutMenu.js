@@ -8,7 +8,7 @@ var ShortCutMenu = function(){
 		html += '<div class="flex-menu">';
 		html += '    <div class="btn-group">';
 		html += '        <ul class="flex-btn" id="short_cut_menu">';
-//		html += '            <li><a href="/screen/menu/my_menu.html" class="btn"><span>설정</span></a></li>';
+//		html += '            <li><a href="menu/my_menu.html" class="btn"><span>설정</span></a></li>';
 //		html += '            <li class="menu-no01"><a href="#" class="btn"><span>메뉴1</span></a></li>';
 //		html += '            <li class="menu-no02"><a href="#" class="btn"><span>메뉴2</span></a></li>';
 //		html += '			 <li class="menu-no03"><a href="#" class="btn"><span>메뉴3</span></a></li>';
@@ -38,7 +38,7 @@ var ShortCutMenu = function(){
 	var __cbShortMenu = function(jsonData, objDef){
 
 		var html = "";
-		html += '<li><a href="/screen/menu/my_menu.html" class="btn"><span>설정</span></a></li>';
+		html += '<li><a href="menu/my_menu.html" class="btn"><span>설정</span></a></li>';
 		
 		if(jsonData != null){
 			$.each(jsonData, function(idx, entry ){

@@ -50,63 +50,63 @@ function datepicker() {
     var callBack = new Array();
     callBack.push(tkey);
 
-    loadjscssfile('/screen/lib/cornerstone/lib/datepicker/jquery.ui.core-1.9.2.min.js',       "js");    
-    loadjscssfile('/screen/lib/cornerstone/lib/datepicker/jquery.ui.datepicker-1.9.2.min.js', "js");
-    loadjscssfile('/screen/lib/cornerstone/lib/datepicker/jquery.ui.monthpicker.js',          "js",false, callBack);
+    loadjscssfile('lib/cornerstone/lib/datepicker/jquery.ui.core-1.9.2.min.js',       "js");
+    loadjscssfile('lib/cornerstone/lib/datepicker/jquery.ui.datepicker-1.9.2.min.js', "js");
+    loadjscssfile('lib/cornerstone/lib/datepicker/jquery.ui.monthpicker.js',          "js",false, callBack);
     
 
 }
 
 function cornerStone() {
     //코너스톤
-    loadjscssfile('/screen/lib/cornerstone/ui/widget-plugins.js', "js", false);
-    loadjscssfile('/screen/lib/cornerstone/util/transition.js'  , "js", false);
+    loadjscssfile('lib/cornerstone/ui/widget-plugins.js', "js", false);
+    loadjscssfile('lib/cornerstone/util/transition.js'  , "js", false);
 }
 
 function tkey() {
     //T.Key
 
-    loadjscssfile('/screen/commonJs/cf_common.js', "js");
-    loadjscssfile('/screen/commonJs/cf_auth.js', "js");
-    loadjscssfile('/screen/commonJs/cf_alertmsg.js', "js");
-    loadjscssfile('/screen/commonJs/cf_date.js', "js");
-    loadjscssfile('/screen/commonJs/cf_tkey_common.js', "js");
-    loadjscssfile('/screen/commonJs/cf_AES.js', "js");
-    loadjscssfile('/screen/commonJs/cf_regularExpression.js', "js");
-    loadjscssfile('/screen/commonJs/cf_ajax.js', "js");
-    loadjscssfile('/screen/commonJs/cf_shortCutMenu.js', "js");
-    loadjscssfile('/screen/quicksearch/js/cf_quick_search.js', "js");
-    loadjscssfile('/screen/commonJs/cf_makeMenu.js', "js");
-    loadjscssfile('/screen/commonJs/cf_makeGrid.js', "js");
-    loadjscssfile('/screen/commonJs/cf_loadPage.js', "js");
-    loadjscssfile('/screen/commonJs/storage.js', "js");
-    loadjscssfile('/screen/commonJs/cf_commonUiData.js', "js");
-    loadjscssfile('/screen/commonJs/hardware_search.js', "js");
-    loadjscssfile('/screen/commonJs/cf_transScreen.js', "js");
-    loadjscssfile('/screen/commonJs/cf_TCinput.js', "js");
-    loadjscssfile('/screen/commonJs/cf_formAPI.js', "js");
-    loadjscssfile('/screen/commonJs/cf_confirmModal.js', "js");
-    loadjscssfile('/screen/commonJs/cf_validation.js', "js");
-    loadjscssfile('/screen/commonJs/cf_datepicker.js', "js", false, loadScreenJs);
+    loadjscssfile('commonJs/cf_common.js', "js");
+    loadjscssfile('commonJs/cf_auth.js', "js");
+    loadjscssfile('commonJs/cf_alertmsg.js', "js");
+    loadjscssfile('commonJs/cf_date.js', "js");
+    loadjscssfile('commonJs/cf_tkey_common.js', "js");
+    loadjscssfile('commonJs/cf_AES.js', "js");
+    loadjscssfile('commonJs/cf_regularExpression.js', "js");
+    loadjscssfile('commonJs/cf_ajax.js', "js");
+    loadjscssfile('commonJs/cf_shortCutMenu.js', "js");
+    loadjscssfile('quicksearch/js/cf_quick_search.js', "js");
+    loadjscssfile('commonJs/cf_makeMenu.js', "js");
+    loadjscssfile('commonJs/cf_makeGrid.js', "js");
+    loadjscssfile('commonJs/cf_loadPage.js', "js");
+    loadjscssfile('commonJs/storage.js', "js");
+    loadjscssfile('commonJs/cf_commonUiData.js', "js");
+    loadjscssfile('commonJs/hardware_search.js', "js");
+    loadjscssfile('commonJs/cf_transScreen.js', "js");
+    loadjscssfile('commonJs/cf_TCinput.js', "js");
+    loadjscssfile('commonJs/cf_formAPI.js', "js");
+    loadjscssfile('commonJs/cf_confirmModal.js', "js");
+    loadjscssfile('commonJs/cf_validation.js', "js");
+    loadjscssfile('commonJs/cf_datepicker.js', "js", false, loadScreenJs);
 }
 //-----------------------------------------------------------------------------------------
 //삭제대상 ST 
-//loadjscssfile("/screen/lib/cornerstone/lib/bootstrap/css/bootstrap.css", "css"); 
-//loadjscssfile("/screen/lib/cornerstone/lib/bootstrap/css/bootstrap-responsive.css", "css");
-//loadjscssfile("/screen/lib/cornerstone/ui/theme/wireframe/css/cornerstone.css", "css");
+//loadjscssfile("lib/cornerstone/lib/bootstrap/css/bootstrap.css", "css");
+//loadjscssfile("lib/cornerstone/lib/bootstrap/css/bootstrap-responsive.css", "css");
+//loadjscssfile("lib/cornerstone/ui/theme/wireframe/css/cornerstone.css", "css");
 //삭제대상 ED
 //-----------------------------------------------------------------------------------------
 */
 function initScript() {
-    loadjscssfile("/screen/lib/cornerstone/lib/datepicker/jquery-ui.custom-1.9.2.min.css","css");
-    loadjscssfile("/screen/style/layout.css", "css");
+    loadjscssfile("lib/cornerstone/lib/datepicker/jquery-ui.custom-1.9.2.min.css","css");
+    loadjscssfile("style/layout.css", "css");
 /*    
     var callBack = new Array();
 	    callBack.push(cornerStone);
 	    callBack.push(datepicker);	    
 
     //jQuery
-    loadjscssfile('/screen/lib/cornerstone/lib/jquery-1.8.1.min.js', "js",false, callBack);
+    loadjscssfile('lib/cornerstone/lib/jquery-1.8.1.min.js', "js",false, callBack);
 */
 }
 initScript(); 
