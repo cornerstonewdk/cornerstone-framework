@@ -309,7 +309,7 @@ var CollapseMemu = function(_colInfo, _objDef)
 
         $(document).on('click', '#btnHome', function()
         {
-            location.href = 'main/main.html'
+            location.href = '/screen/main/main.html'
         });
 
         $(document).on('click', ".accordion-toggle", function(e){

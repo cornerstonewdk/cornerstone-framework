@@ -133,7 +133,7 @@ function cf_isLogin(){
         return true;
     }else if(Data=="SERVERWORK"){
 
-        location.href="main/server_work.html";
+        location.href="/screen/main/server_work.html";
 
         return false;
     }else{

@@ -6,42 +6,42 @@
 //    switch (PageName)
 //    {
 //        case "pop_regIncome_kyopum":
-//            $.getScript('income/js/pop_regIncome_kyopum.js',function(){
+//            $.getScript('/screen/income/js/pop_regIncome_kyopum.js',function(){
 //                if(CallBackFn != ''){
 //                    __doFunction(CallBackFn);
 //                }
 //            });
 //            break;
 //        case "sk_income_moreView":
-//            $.getScript('income/js/sk_income_moreView.js',function(){
+//            $.getScript('/screen/income/js/sk_income_moreView.js',function(){
 //                if(CallBackFn != ''){
 //                    __doFunction(CallBackFn);
 //                }
 //            });
 //            break;
 //        case "menu":
-//            $.getScript('menu/js/menu.js',function(){
+//            $.getScript('/screen/menu/js/menu.js',function(){
 //                if(CallBackFn != ''){
 //                    __doFunction(CallBackFn);
 //                }
 //            });
 //            break;
 //        case "sk_income_search":
-//            $.getScript('income/js/sk_income_search.js',function(){
+//            $.getScript('/screen/income/js/sk_income_search.js',function(){
 //                if(CallBackFn != ''){
 //                    __doFunction(CallBackFn);
 //                }
 //            });
 //            break;
 //        case "sk_income_delReason":
-//            $.getScript('income/js/sk_income_delReason.js',function(){
+//            $.getScript('/screen/income/js/sk_income_delReason.js',function(){
 //                if(CallBackFn != ''){
 //                    __doFunction(CallBackFn);
 //                }
 //            });
 //            break;
 //        case "sk_income_list_pre":
-//            $.getScript('income/js/sk_income_list_pre.js',function(){
+//            $.getScript('/screen/income/js/sk_income_list_pre.js',function(){
 //                if(CallBackFn != ''){
 //                    __doFunction(CallBackFn);
 //                }
