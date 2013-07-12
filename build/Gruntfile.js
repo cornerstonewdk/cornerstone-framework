@@ -14,7 +14,7 @@ module.exports = function ( grunt ) {
 		source: '../src/',
 		lib: '../lib/',
 		dist: '../grunt-dist/',
-		repo: 'http://j4f.jnw.io/repository'
+		repo: 'http://cornerstone.sktelecom.com/couchdb/repository'
 	};
 
 	grunt.initConfig( {
@@ -189,7 +189,7 @@ module.exports = function ( grunt ) {
 						child.stdin.write( admin.pass + '\n' );
 				} );
 		        count++;
-		        setTimeout( callback, 700 );
+		        setTimeout( callback, 1000 );
 		    },
 		    function ( err ) {
 		    	if ( err ) {
