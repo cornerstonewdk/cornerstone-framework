@@ -539,7 +539,14 @@
 			"html": false,
 			"link": true,
 			"image": true,
-			events: {},
+			events: {
+				"load": function() {
+	                $( this.textareaElement ).trigger( e = $.Event('load.cs.widget-editor') );
+	            },
+	            "blur": function() {
+	                $( this.textareaElement ).trigger( e = $.Event('blur.cs.widget-editor') );
+	            }
+			},
 			parserRules: {
 				classes: {
 					// (path_to_project/lib/css/wysiwyg-color.css)

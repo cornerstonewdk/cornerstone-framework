@@ -201,8 +201,15 @@
 			getItem();
 		});
 
-		$("#editorExample").length && $("#editorExample").featuredEditor();
+		// editor 이벤트 확장 테스트
+		var editor = $("#editorExample").featuredEditor();
 
+		editor.on( 'load.cs.widget-editor', function ( e ) {
+			console.log( 'editor load', e );
+		} ).on( 'blur.cs.widget-editor', function ( e ) {
+			console.log( 'editor blur', e );
+		} );
+		
 		$('#footer').affix();
 
 		MBP.scaleFix();
