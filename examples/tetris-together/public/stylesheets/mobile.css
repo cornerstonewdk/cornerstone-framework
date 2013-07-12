@@ -1,9 +1,36 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @import url("reset.css");
 
 /* 테트리스 게임 */
 body {background:#201f5e url('../images/bg/bg_back.png') no-repeat center top; background-size:100% 100%;}
-#wrap {width:100%; text-align:center; padding:0 0 10px; margin:0;}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#contents {
+	height: 100%;
+	min-width: 320px
+
+	margin: 0px auto;
+	border: 0px solid yellow;
+	padding: 0px;
+}
+
+#wrap {
+	width:100%; 
+	text-align:center; 
+	margin:0;
+	border: 0px solid white;
+	/*
+	padding:0 0 10px; 
+	*/
+	padding: 0px;
+
+}
+
 .game-area {width:80%; margin:0 auto; padding:55px 0 70px 0; position:relative;}
 .player {width:80%; text-align:left;}
 .player h2 {text-align:center; font-size:2.8em; font-weight:bold; line-height:100%; color:#c5efff; text-shadow:0 0 10px rgba(235,255,251,0.7); padding:0 0 10px;}
@@ -26,15 +53,27 @@ body {background:#201f5e url('../images/bg/bg_back.png') no-repeat center top; b
 .room {margin-top:54px;}
 .room p {width:100%; font-size:1.5em; font-weight:bold; color:#a0d6fc; line-height:100%; text-align:center; border:1px solid #6e86b2; border-top:2px solid #caf0ff; background:#040e30; padding:18% 0; box-shadow:0 0 10px rgba(255,255,255,0.3);}
 
-
 /* 방입장, 방만들기 */
 .game-room {width:100%; margin:0 auto; text-align:center; padding:12% 0 10%;}
-.room-num p {font-size:2.4em; line-height:160%; font-weight:bold; font-family:dotum; padding:0 0 10%;}
+.room-num p {font-size:2em; line-height:160%; font-weight:bold; font-family:dotum; padding:0 0 10%;}
 .room-num div {width:74%; margin:0 auto; -webkit-border-radius:10px; text-align:center; background:#fff; border:3px solid #73feff; padding:5px;}
-.room-num div input {width:96%; height:155px; font-size:8.5em; font-weight:bold; color:#000; text-align:left; letter-spacing:0.33em; -webkit-border-radius:5px; border:0; background:url('../images/bg/bg_roomNum.png') no-repeat center top; background-size:100%; padding:0 0 0 4%;}
+.room-num div input {
+	width:96%; 
+	height:118px; 
+	font-size:6.4em; 
+	font-weight:bold; 
+	color:#000; 
+	text-align:left; 
+	letter-spacing:0.33em; 
+	-webkit-border-radius:5px; 
+	border:0; 
+	background:url('../images/bg/bg_roomNum.png') no-repeat center top;
+	background-size:100%; 
+	padding:0 0 0 4%;
+}
 
 .room-num2 {width:76%; margin:12% auto 0 auto;}
-.room-num2 p {font-size:2.2em; line-height:150%; font-weight:bold; font-family:dotum; border-top:1px solid #fff; border-bottom:1px solid #fff; border-top:2px solid #caf0ff; border-bottom:2px solid #caf0ff; padding:8% 0; margin:0 0 16%;}
+.room-num2 p {font-size:1.9em; line-height:150%; font-weight:bold; font-family:dotum; border-top:1px solid #fff; border-bottom:1px solid #fff; border-top:2px solid #caf0ff; border-bottom:2px solid #caf0ff; padding:8% 0; margin:0 0 16%;}
 .room-num2 .room-txt {padding:8% 0; line-height:160%; margin:0 0 14%;}
 .mT14 {margin:16% auto 0 auto;}
 
@@ -47,7 +86,11 @@ background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e07def), to(#e48
 
 /* 대기실 */
 .stand-by {width:74%; text-align:center; margin:0 auto; padding:6% 0;}
-.stand-by h1 {font-size:2.8em; font-weight:bold; padding:0 0 8%;}
+.stand-by h1 {
+	font-size:2.4em; 
+	font-weight:bold; 
+	padding:0 0 6%;
+}
 .stand-by ul {width:94%; margin:0 auto; background:hsla(35,0%,100%,0.3); border-top:2px solid #caf0ff; border-bottom:2px solid #caf0ff; padding:5% 3% 0 3%; box-shadow: 0 0 10px 2px rgba(255,255,251,0.3);}
 .stand-by ul li {width:100%; display:inline-block; color:#cafff6; padding:1% 0 4%; background:url('../images/bg/bg_line2.png') repeat-x left bottom;}
 .stand-by ul li p {width:29%; text-align:right; line-height:100%; padding:1% 2% 0 0; font-size:1.5em; float:right;}
@@ -57,7 +100,16 @@ background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e07def), to(#e48
 .stand-by ul li.awaiter {background:none; color:#5aff79;}
 .stand-by ul li.awaiter p.player {color:#fff; font-weight:normal; background:none;}
 .stand-by div {width:100%; margin:0 auto; padding:25% 0; font-size:2.0em; line-height:150%; font-weight:bold; border-bottom:2px solid #caf0ff;}
-.stand-by div.ready {width:100%; margin:0 auto; padding:6% 0; margin:0 0 15%; font-size:2.0em; line-height:150%; font-weight:bold; border-bottom:2px solid #caf0ff;}
+.stand-by div.ready {
+	width:100%; 
+	margin:0 auto; 
+	padding:3% 0; 
+	margin:0 0 5%; 
+	font-size:1.6em; 
+	line-height:150%; 
+	font-weight:bold; 
+	border-bottom:2px solid #caf0ff;
+}
 
 /* 카운트 다운 */
 .countdown1 {width:100%; text-align:center; font-size:7.5em; font-weight:bold; color:#fff; position:absolute; left:0; top:47%;}
@@ -85,41 +137,198 @@ background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e07def), to(#e48
 .d-time {color:#fff; font-size:1.2em; margin:0 0 2%; line-height:100%;}
 .d-txt {color:#9fd6fc; font-size:1.2em; font-weight:bold; line-height:140%;}
 
-@media only screen and (min-width:700px) and (max-width:1024px){
-	#wrap {width:100%; padding:0 0 70px;}
-	.game-area {width:528px; margin:0 auto;}
-	.game-room {width:640px; margin:0 auto; text-align:center; padding-top:9%;}
+/* 1. 481 ~ 3840 */
+@media only screen and (min-width:481px) and (max-width:3840px) {
+	body {
+		/* color:red; */
+	}
 
-	.stand-by {width:470px; margin:0 auto; padding:10% 0 28% 0;}
-	.nickname {width:640px; margin:0 auto; padding:20% 0;}
+	#wrap {width:100%; padding:0 0 70px;}
+
+	/*  1. welcome 화면 */
+	.nickname {
+		width:480px;
+
+		margin: 0 auto; 
+		border: 0px solid red;
+		padding: 30px 0 0 0;
+	}
 	.nn-form input {width:55%; font-size:2.2em; border:2px solid #6efeff; -webkit-border-radius:10px; padding:2% 4%;}
+	/*  2. 방번호 입력 화면 */
+	.game-room {
+		width:480px; 
+
+		text-align:center; 
+
+		margin:0 auto; 
+		border: 0px solid red;
+		padding: 30px 0 0 0;
+	}
+	.room-num div input {
+		height:118px; 
+		font-size:6.4em; 
+	}
+	/*  3. 게임 대기 화면 */
+	.stand-by {
+		width:480px;
+
+		margin:0 auto; 
+		border: 0px solid red;
+		padding: 30px 0 0 0;
+	}
+	/*  4. 게임 화면 */
+	.game-area {
+		/* width:528px; */
+		width:472px;
+
+		margin:0 auto;
+		border: 0px solid red;
+		padding: 0px 0 0 0;
+	}
+	.tetris {
+		width:94%; 
+		position:relative; 
+		border:2px solid #fff; 
+		border-top:2px solid #caf0ff; 
+		box-shadow:0 0 10px rgba(255,255,255,0.5); 
+		padding:5px; 
+		background:#0f2c62;
+	}
+	.tetris-back {
+		width:97%; 
+		height:640px; 
+		background: #193478 url('../images/bg/bg_tetris.png') repeat-y center top; 
+		border:5px solid #193478; 
+		border-left:6px solid #193478; 
+		border-right:6px solid #193478;
+	}
+	.tetris-back canvas {
+		width:100%; 
+		height:640px;
+	}
+	.next {
+		top:5.2%;
+		right:1%;
+	}
+	.shape {
+		top:23%;
+		right:1%;
+	}
+	.time {
+		bottom:14%;
+		right:1%;
+	}
+	.room {
+		bottom:0%;
+		right:1%;
+	}
+	.winner .win-txt03 {
+		font-size:2.4em; 
+	}
 }
 
-@media all and (max-width:480px){
-	.game-area {width:80%; padding:25px 0 25px 0; font-size:60%;}
+/* 2. ~ 480 */
+@media all and (max-width:480px) {
+	body {
+		/* color:#fcdb9a; */
+	}
+
+	/*  1. welcome 화면 */
+	.nickname {
+		width:320px;
+		font-size:60%;
+
+		margin: 0 auto; 
+		border: 0px solid #fcdb9a;
+		padding: 20px 0 0 0;
+	}
+	/*  2. 방번호 입력 화면 */
+	.game-room {
+		width:320px;
+		font-size:60%;
+
+		margin: 0 auto; 
+		border: 0px solid #fcdb9a;
+		padding: 20px 0 0 0;
+	}
+	.room-num div {padding:3px;}
+	.room-num div input {
+		height:78px;
+		font-size:7.2em; 
+	}
+	/*  3. 게임 대기 화면 */
+	.stand-by {
+		width:320px;
+		font-size:55%; 
+
+		border: 0px solid #fcdb9a;
+		padding:25px 0 25px 0; 
+	}
+	.stand-by ul li p.player, .stand-by ul li.master p.player {background-size:10%;}
+	/*  4. 게임 화면 */
+	.game-area {
+		width:320px;
+		font-size:60%;
+
+		border: 0px solid #fcdb9a;
+		padding:25px 0 25px 0; 
+	}
 	.tetris-back {height:478px; border:3px solid #193478; border-left:3px solid #193478; border-right:3px solid #193478;}
 	.tetris-back canvas {height:478px;}
-	.next {width:17%; top:8.9%;}
+	.next {width:17%; top:8.9%;right:1%;}
 	.next div {height:50px;}
 	.next div canvas {height:50px;}
-	.shape {width:17%; height:105px;}
+	.shape {width:17%; height:105px;right:1%;}
 	.shape canvas {height:105px;}
-	.time {width:17%; bottom:16%;}
-	.room {width:17%; bottom:4.1%;}
-
-	.game-room {font-size:60%;}
-	.room-num div {padding:3px;}
-	.room-num div input {height:94px;}
-
-	.stand-by {font-size:55%; padding:6% 0 6%;}
-	.stand-by ul li p.player, .stand-by ul li.master p.player {background-size:10%;}
+	.time {width:17%; bottom:16%;right:1%;}
+	.room {width:17%; bottom:4.1%;right:1%;}
 
 	.message, .message2 {height:382px;}
 
-	.nickname {font-size:60%;}
+	.winner .win-txt03 {
+		font-size:2.4em; 
+	}
 }
 
-@media only screen and (max-width:320px){
+/* 3. ~ 320 */
+@media only screen and (max-width:320px) {
+	body {
+		/* color:#c1cd89; */
+	}
+
+	/*  1. welcome 화면 */
+	.nickname {
+		width: 100%;
+		font-size:50%;
+
+		margin: 0 auto; 
+		border: 0px solid #c1cd89;
+		padding: 20px 0 0 0;
+	}
+	/*  2. 방번호 입력 화면 */
+	.game-room {
+		width: 100%;
+		font-size:50%;
+
+		margin: 0 auto; 
+		border: 0px solid #c1cd89;
+		padding: 20px 0 0 0;
+	}
+	.room-num div {padding:3px;}
+	.room-num div input {
+		height:79px;
+		font-size:8.5em; 
+	}
+	/*  3. 게임 대기 화면 */
+	.stand-by {
+		width: 100%;
+		font-size:50%; 
+
+		border: 0px solid #c1cd89;
+		padding:6% 0 6%;
+	}
+	.stand-by ul li p {background-size:11%;}
+	/*  4. 게임 화면 */
 	.game-area {width:80%; padding:35px 0; font-size:50%;}
 	.tetris-back {height:362px; border:3px solid #193478; border-left:3px solid #193478; border-right:3px solid #193478;}
 	.tetris-back canvas {width:100%; height:362px;}
@@ -131,15 +340,5 @@ background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e07def), to(#e48
 	.time {width:17%; bottom:18%; right:0;}
 	.room {width:17%; bottom:7%; right:0;}
 
-	.game-room {font-size:50%;}
-	.room-num div {padding:3px;}
-	.room-num div input {height:79px;}
-
-	.stand-by {font-size:50%; padding:6% 0 6%;}
-	.stand-by ul li p {background-size:11%;}
-
 	.message, .message2 {height:382px;}
-
-	.nickname {font-size:50%;}
-
 }
