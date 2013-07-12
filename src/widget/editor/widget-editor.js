@@ -541,10 +541,10 @@
 			"image": true,
 			events: {
 				"load": function() {
-	                $( this.textareaElement ).trigger( e = $.Event('load.cs.widget-editor') );
+	                $( this.textareaElement ).trigger( e = $.Event('load.cs.editor') );
 	            },
 	            "blur": function() {
-	                $( this.textareaElement ).trigger( e = $.Event('blur.cs.widget-editor') );
+	                $( this.textareaElement ).trigger( e = $.Event('blur.cs.editor') );
 	            }
 			},
 			parserRules: {
