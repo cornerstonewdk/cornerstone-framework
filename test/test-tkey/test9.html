@@ -20,8 +20,8 @@
     <script type="text/javascript" src="../../lib/jquery.hammer.js"></script>
     <script type="text/javascript">
         $(function() {
-            $(".radio").on("click", function (e) {
-                if (e.target.tagName == "LABEL") {
+            $(".radio").hammer().on("tap", function (e) {
+                if (e.target.tagName == "LABEL" && !$(e.target).hasClass("active")) {
                     var name = $(e.target).find("input").attr("name");
                     $("input[name=" + name + "]").closest("label").removeClass("active");
                     $(e.target).find("input").attr("checked", "checked");
