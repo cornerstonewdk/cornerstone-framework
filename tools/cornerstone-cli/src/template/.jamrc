@@ -4,4 +4,4 @@ exports.repositories = [
 	'http://jamjs.org/repository'
 ];
 
-exports.package_dir = 'cornerstone';
+exports.package_dir = 'src/cornerstone';
