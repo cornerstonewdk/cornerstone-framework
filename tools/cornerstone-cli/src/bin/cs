@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var cp = require( 'child_process' );
 var grunt = require( 'grunt' );
 var _ = require( 'underscore' );
 var pkg = require( '../package.json' );
@@ -15,7 +16,7 @@ function displayHelp() {
 
 	grunt.log.writeln( ' ' + 'Commands:'.yellow.underline );
 	grunt.log.writeln();
-	grunt.log.writetableln( [ 10, 60 ], [ '    init', '현재 디렉토리에 프로젝트의 기본 골격을 생성한다. 다음 Option을 지정할 수 있다.'.grey ] );
+	grunt.log.writetableln( [ 10, 60 ], [ '    init', '현재 디렉토리에 프로젝트의 기본 골격을 생성한다. 빈 디렉토리에서 실행해야 하며 다음 Option을 지정할 수 있다.'.grey ] );
 	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--noamd', 'Require.js를 사용하지 않는다. 이 옵션이 없으면 Require.js와 Backbone을 사용하는 것으로 기본 골격을 생성한다.'.grey ] );
 	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--theme:[dark/white]', 'Dark/White 테마 중 하나를 선택한다. 이 옵션이 없으면 Bootstrap의 기본 테마를 사용한다.'.grey ] );
 	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--fullpackage', '코너스톤의 모든 패키지를 설치한다. 이 옵션이 없으면 기본적으로 필요한 최소한의 패키지만 설치한다.'.grey ] );
@@ -40,6 +41,12 @@ _.each( process.argv, function( item, i ) {
 	}
 } );
 
+function copyFiles( rootdir, destdir ) {
+	grunt.file.recurse( rootdir, function( abspath, rootdir, subdir, filename ) {
+		grunt.file.copy( abspath, destdir + '/' + ( subdir || '' ) + '/' + filename );
+	} );
+}
+
 function doTask( command, options ) {
 
 	if ( !command ) return false;
@@ -57,9 +64,44 @@ function doTask( command, options ) {
 			return false;
 		}
 
+	if ( command == 'init' ) {
+		// 빈 디렉토리인지 검사
+		if ( grunt.file.expand( '*' ).length > 0 ) {
+			grunt.log.errorlns( 'init 커맨드는 빈 디렉토리에서 실행해 주세요.' );
+			return false;
+		}
+
+		if ( _.contains( options, '--noamd' ) )
+			copyFiles( __dirname + '/../template/noamd', '.' );
+		else
+			copyFiles( __dirname + '/../template/amd', '.' );
+
+		// TODO 테마 적용
+
+		// TODO 모든 패키지를 설치하도록 설정
+
+		grunt.log.oklns( '기본 파일들이 모두 생성되었습니다.' );
+		grunt.log.oklns( '필요한 라이브러리들을 내려받고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다.' );
+
+		var c1 = cp.exec( 'npm install', function( err, stdout, stderr ) {
+
+			var c2 = cp.exec( 'jam install', function( err, stdout, stderr ) {
+				grunt.log.oklns( '라이브러리를 모두 내려받았습니다.' );
+			} );
+
+			c2.stdin.setEncoding( 'utf-8' );
+			c2.stdout.pipe( process.stdout );
+		} );
+
+		c1.stdin.setEncoding( 'utf-8' );
+		c1.stdout.pipe( process.stdout );
+
+		return true;
+	}
+
+	grunt.cli();
+
 	return true;
 }
 
 if ( !doTask( command, options ) ) return displayHelp();
-
-grunt.cli();
