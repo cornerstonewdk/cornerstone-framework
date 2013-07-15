@@ -96,7 +96,17 @@
 					onSuccess: function () {
 						console.log("성공");
 					}
-				});
+			}).on( 'start.cs.motionCaptcha', function ( e ) {
+				console.log( 'start.cs.motionCaptcha', e );	
+			} ).on( 'move.cs.motionCaptcha', function ( e ) {
+				console.log( 'move.cs.motionCaptcha', e );	
+			} ).on( 'end.cs.motionCaptcha', function ( e ) {
+				console.log( 'end.cs.motionCaptcha', e );	
+			} ).on( 'success.cs.motionCaptcha', function ( e ) {
+				console.log( 'success 이벤트 감지', e );	
+			} ).on( 'fail.cs.motionCaptcha', function ( e ) {
+				console.log( 'fail 이벤트 감지', e );	
+			} );
 		});
 		$("#motion-captcha button").trigger("click");
 
