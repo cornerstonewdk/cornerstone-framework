@@ -1,6 +1,6 @@
 {
 	"name": "sync",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Model을 fetch, save, destroy 할 때, Collection을 fetch 할 때 Model과 저장소를 동기화한다. 저장소는 경우에 따라 달라질 수 있다. (LocalStorage, RESTful Server, ...)",
 	"jam": {
 		"dependencies": {

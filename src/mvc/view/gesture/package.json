@@ -1,6 +1,6 @@
 {
 	"name": "gesture-view",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "backbone view extend ( gesture with hammer )",
 	"jam": {
 		"dependencies": {

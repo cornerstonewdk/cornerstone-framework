@@ -1,6 +1,6 @@
 {
 	"name": "widget-listview",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "infinity기반 스크롤링 성능을 향상한 위젯",
 	"jam": {
 		"dependencies": {

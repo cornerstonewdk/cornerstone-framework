@@ -1,6 +1,6 @@
 {
 	"name": "widget-motioncaptcha",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "motioncaptcha 업데이트 후 이벤트 확장 및 기존 적용내용 추가 ( 터치 기반이 아닌 환경에서만 마우스 이벤트 활성화 )",
 	"jam": {
 		"dependencies": {

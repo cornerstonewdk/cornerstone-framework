@@ -1,6 +1,6 @@
 {
 	"name": "widget-spinner",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "스크롤뷰는 코너스톤 UI에 맞게 기본적으로 설정하며, DATA-API를 사용해서 스크립트 사용없이 마크업 속성만으로 작동되도록 구현함.",
 	"jam": {
 		"dependencies": {

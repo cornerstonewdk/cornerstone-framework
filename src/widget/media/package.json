@@ -1,6 +1,6 @@
 {
 	"name": "widget-media",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "미디어 피처드는 반응형웹에 맞는 화면을 보여주고, 동영상의 비율을 설정할 수 있는 옵션등이 추가적으로 들어갔으며, DATA-API를 사용해서 스크립트 사용없이 마크업 속성만으로 작동되도록 구현함.",
 	"jam": {
 		"dependencies": {

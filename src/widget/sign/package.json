@@ -1,6 +1,6 @@
 {
 	"name": "widget-sign",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "jSignature에서 stroke 이벤트 확장",
 	"jam": {
 		"dependencies": {

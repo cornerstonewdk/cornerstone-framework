@@ -1,6 +1,6 @@
 {
 	"name": "widget-carousel",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "bootstrap carousel 확장",
 	"jam": {
 		"dependencies": {
