@@ -6,21 +6,6 @@
 			e.preventDefault();
 		});
 
-		// 테마, 스킨 변경 제어
-		$("#changeStyle").on("change", function () {
-			var $baseStyle = $("#baseStyle");
-			var $customStyle = $("#customStyle");
-			var currentValue = $(this).val();
-			var currentType = $(this).find("option:checked").data("style-type");
-			$customStyle.remove();
-			if (currentType === "theme") {
-				$baseStyle.attr("href", "../../grunt-dist/lib/bootstrap/css/bootstrap.css");
-				$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-' + currentValue + '/cornerstone.css"/>');
-			} else {
-				$baseStyle.attr("href", "../../grunt-dist/src/style/skin-" + currentValue + "/" + currentValue + ".css");
-			}
-		});
-
 		// 컴포넌트 요소 이동
 		$("#nav-component a").smoothScroll({
 			offset: -50
@@ -63,13 +48,13 @@
 		});
 
 		// sign 플로그인 이벤트 확장
-		$("#signature").on( 'start.cs.sign', function ( e ) {
-			console.log( 'start.cs.sign', e );
-		} ).on( 'move.cs.sign', function ( e ) {
-			console.log( 'move.cs.sign', e );
-		} ).on( 'end.cs.sign', function ( e ) {
-			console.log( 'end.cs.sign', e );
-		} );
+		$("#signature").on('start.cs.sign',function (e) {
+			console.log('start.cs.sign', e);
+		}).on('move.cs.sign',function (e) {
+				console.log('move.cs.sign', e);
+			}).on('end.cs.sign', function (e) {
+				console.log('end.cs.sign', e);
+			});
 
 		//
 		// Spinner 플러그인
@@ -96,17 +81,17 @@
 					onSuccess: function () {
 						console.log("성공");
 					}
-			}).on( 'start.cs.motionCaptcha', function ( e ) {
-				console.log( 'start.cs.motionCaptcha', e );	
-			} ).on( 'move.cs.motionCaptcha', function ( e ) {
-				console.log( 'move.cs.motionCaptcha', e );	
-			} ).on( 'end.cs.motionCaptcha', function ( e ) {
-				console.log( 'end.cs.motionCaptcha', e );	
-			} ).on( 'success.cs.motionCaptcha', function ( e ) {
-				console.log( 'success 이벤트 감지', e );	
-			} ).on( 'fail.cs.motionCaptcha', function ( e ) {
-				console.log( 'fail 이벤트 감지', e );	
-			} );
+				}).on('start.cs.motionCaptcha',function (e) {
+					console.log('start.cs.motionCaptcha', e);
+				}).on('move.cs.motionCaptcha',function (e) {
+					console.log('move.cs.motionCaptcha', e);
+				}).on('end.cs.motionCaptcha',function (e) {
+					console.log('end.cs.motionCaptcha', e);
+				}).on('success.cs.motionCaptcha',function (e) {
+					console.log('success 이벤트 감지', e);
+				}).on('fail.cs.motionCaptcha', function (e) {
+					console.log('fail 이벤트 감지', e);
+				});
 		});
 		$("#motion-captcha button").trigger("click");
 
@@ -214,12 +199,12 @@
 		// editor 이벤트 확장 테스트
 		var editor = $("#editorExample").featuredEditor();
 
-		editor.on( 'load.cs.widget-editor', function ( e ) {
-			console.log( 'editor load', e );
-		} ).on( 'blur.cs.widget-editor', function ( e ) {
-			console.log( 'editor blur', e );
-		} );
-		
+		editor.on('load.cs.widget-editor',function (e) {
+			console.log('editor load', e);
+		}).on('blur.cs.widget-editor', function (e) {
+				console.log('editor blur', e);
+			});
+
 		$('#footer').affix();
 
 		MBP.scaleFix();
@@ -233,8 +218,30 @@
 			}
 		});
 
-		$( '[data-featured="datatable"]' ).on( 'itemClick.cs.datatables', 'tr', function ( e, data ) {
-			console.log( e, data );
-		} );
+		$('[data-featured="datatable"]').on('itemClick.cs.datatables', 'tr', function (e, data) {
+			console.log(e, data);
+		});
+	});
+
+	// 테마, 스킨 변경 제어
+	$("#changeStyle").on("change", function () {
+
+		var $baseStyle = $("#baseStyle");
+		var $customStyle = $("#customStyle");
+		var currentValue = $(this).val();
+		var currentType = $(this).find("option:checked").data("style-type");
+		$customStyle.remove();
+		if (currentType === "theme") {
+			$baseStyle.attr("href", "../../grunt-dist/lib/bootstrap/css/bootstrap.css");
+			$baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-' + currentValue + '/cornerstone.css"/>');
+			$("#customStyle").off("load").on("load", function() {
+				$("#signature canvas").remove();
+				$("#signature").sign();
+			});
+		} else {
+			$baseStyle.attr("href", "../../grunt-dist/src/style/skin-" + currentValue + "/cornerstone.css");
+			$("#signature canvas").remove();
+			$("#signature").sign();
+		}
 	});
 })(jQuery, window, document);
