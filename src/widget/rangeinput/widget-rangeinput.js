@@ -10,8 +10,21 @@
 // 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 막기 위함
 ;
 (function (root, doc, factory) {
-    // Browser globals
-    factory(root.jQuery, root, doc);
+    if ( typeof define === "function" && define.amd ) {
+        // AMD
+        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
+            factory( $, root, doc );
+            return Backbone.view.extend( {
+                render: function () {
+                    this.$el.rangeinput( this.options );
+                    return this;
+                }
+            } );
+        } );
+    } else {
+        // None AMD
+        factory( root.jQuery, root, doc );
+    }
 }(this, document, function (jQuery, window, document, undefined) {
     var defaultOptions = {
         min:0,

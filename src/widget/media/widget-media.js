@@ -11,7 +11,7 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-media"], function (Backbone, _, $) {
+        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
             factory($, root, doc);
             return Backbone.View.extend({
                 tagName:'div',

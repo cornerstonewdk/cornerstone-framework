@@ -8,7 +8,15 @@
  */
 
 ;(function (root, doc, factory) {
-    factory(root.jQuery, root, doc);
+    if ( typeof define === "function" && define.amd ) {
+        // AMD
+        define( [ 'jquery' ], function ( $ ) {
+            factory( $, root, doc );
+        } );
+    } else {
+        // None AMD
+        factory( root.jQuery, root, doc );
+    }
 }(this, document, function (jQuery, window, document, undefined) {
     var doc, draggable, _pos = {}, _offset, _touch_start_time, swipeTime = 350, swipeMinDistance = 10, _has_touch = ('ontouchstart' in window);
 

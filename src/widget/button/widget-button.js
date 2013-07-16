@@ -2,16 +2,8 @@
 ( function ( root, doc, factory ) {
     if ( typeof define === "function" && define.amd ) {
         // AMD
-        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
+        define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
             factory( $, root, doc );
-            return Backbone.View.extend( {
-                tagName: 'button',
-                className: 'btn',
-                render: function () {
-                    this.$el.attr( 'data-toggle', 'button' );
-                    return this;
-                }
-            } );
         } );
     } else {
         // None AMD

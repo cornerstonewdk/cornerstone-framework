@@ -11,9 +11,14 @@
 (function (root, doc, wysihtml5, factory) {
 	if (typeof define === "function" && define.amd) {
 		// AMD Hybrid 포맷
-		define(function (require, exports, module) {
-			var $ = require("jquery");
-			return factory($, root, doc, wysihtml5);
+		define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
+			factory($, root, doc, wysihtml5);
+			return Backbone.view.extend( {
+				render: function () {
+					this.$el.featuredEditor( this.options );
+					return this;
+				}
+			} );
 		});
 	} else {
 		// Browser globals

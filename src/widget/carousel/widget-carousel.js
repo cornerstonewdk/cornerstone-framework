@@ -2,9 +2,14 @@
 ( function ( root, doc, factory ) {
     if ( typeof define === 'function' && define.amd ) {
         // AMD
-        define( [ 'jquery' ], function ( $ ) {
+        define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
             factory( $, root, doc );
-
+            return Backbone.view.extend( {
+                render: function () {
+                    this.$el.carousel( this.options );
+                    return this;
+                }
+            } );
         } );
     } else {
         // None AMD

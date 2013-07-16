@@ -1,5 +1,22 @@
-(function () {
-    /*
+;
+( function ( root, doc, factory ) {
+    if ( typeof define === "function" && define.amd ) {
+        // AMD
+        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
+            factory( $, root, doc );
+            return Backbone.view.extend( {
+            	render: function () {
+            		this.$el.tooltip( this.options );
+            		return this;
+            	}
+            } );
+        } );
+    } else {
+        // None AMD
+        factory( root.jQuery, root, doc );
+    }
+} ( window, document, function ( $, window, document ) {
+	/*
      Tooltip : DATA-API 방식을 추가함.
      */
 	var Tooltip;
@@ -23,6 +40,4 @@
 			});
 		});
 	});
-
-
-}).call(this);
+} ) );
