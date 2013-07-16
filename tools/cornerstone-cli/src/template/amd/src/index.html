@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+		<title>TEST</title>
+		<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+		<style type="text/css">
+			body {
+			  font-family: dotum;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-fixed-top hidden-phone">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#">사용자 관리</a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<section id="list-section" class="page"></section>
+			<section id="add-section" class="page"></section>
+			<section id="detail-section" class="page"></section>
+			<section id="err-section" class="page hide">
+				<div class="alert alert-error">
+					<h4>오류!</h4>
+					존재하지 않는 주소입니다.
+				</div>
+			</section>
+		</div>
+
+		<script src="cornerstone-framework-0.9.1/launcher.js" data-target="app/main"></script>
+	</body>
+</html>

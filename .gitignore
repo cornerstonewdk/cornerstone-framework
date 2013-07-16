@@ -13,3 +13,5 @@ bower_components
 build/node_modules
 tools/cornerstone-cli/src/node_modules
 tools/cornerstone-cli/build/node_modules
+/Gruntfile.js
+/package.json
