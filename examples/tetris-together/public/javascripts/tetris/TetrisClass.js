@@ -324,10 +324,20 @@ var TetrisClass = Class.create({
 	rotate: function() {
 		var newCurrent = new Array();
 		
+		// 오른 쪽으로 회전
+		/*
 		for(var y = 0; y < 4; y++) {
 			newCurrent[y] = new Array();
 			for(var x = 0; x < 4; x++) {
 				newCurrent[y][x] = this.current[3 - x][y];
+			}
+		}
+		*/
+		// 왼 쪽으로 회전
+		for(var y = 0; y < 4; y++) {
+			newCurrent[y] = new Array();
+			for(var x = 0; x < 4; x++) {
+				newCurrent[y][x] = this.current[x][3-y];
 			}
 		}
 		

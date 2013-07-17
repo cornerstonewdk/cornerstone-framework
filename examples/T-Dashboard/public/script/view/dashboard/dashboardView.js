@@ -188,8 +188,16 @@ define(
 			$('#reportChart').parent().spinner('hide');
 			
 			//트위터 그리기
-			var twitterWidget = new TwitterWidget();
-			twitterWidget.render();
+			/**
+			 * TODO
+			 * by 김우섭
+			 * 트위터 Rest API 1.0이 Drop 되고 새로운 API 1.1로 변경.
+			 * 변경 후 API에서는 OAuth 인증이 필수적으로 필요함.
+			 * 추후 구현 예정
+			 * @type {view.dashboard.blogWidget}
+			 */
+//			var twitterWidget = new TwitterWidget();
+//			twitterWidget.render();
 			
 			//blog 그리기
 			var blogWidget = new BlogWidget();

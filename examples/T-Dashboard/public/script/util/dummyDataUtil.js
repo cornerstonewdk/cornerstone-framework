@@ -260,23 +260,23 @@ define(function(require) {
 		var userInfoDB = {
 			'1': {
 				'customerId': 'aaaaa',
-				'customerName': '전종현',
+				'customerName': '홍길동',
 				'customerLevel': 'VIP',
 				'customerDevice': 'iPhone4S',
 				'customerPricePlan': 'LTE95',
-				'customerSatisfaction': '불만족'
+				'customerSatisfaction': '만족'
 			},
 			'2': {
 				'customerId': 'bbbbb',
-				'customerName': '김우섭',
+				'customerName': '김인혜',
 				'customerLevel': 'Royal',
 				'customerDevice': 'GalaxyS3',
 				'customerPricePlan': 'LTE75',
-				'customerSatisfaction': '불만족'
+				'customerSatisfaction': '만족'
 			},
 			'3': {
 				'customerId': 'ccccc',
-				'customerName': '홍길동',
+				'customerName': '박순이',
 				'customerLevel': 'Platinum',
 				'customerDevice': 'Galaxy Note2',
 				'customerPricePlan': 'LTE45',
@@ -284,7 +284,7 @@ define(function(require) {
 			},
 			'4': {
 				'customerId': 'ddddd',
-				'customerName': '김영수',
+				'customerName': '최미자',
 				'customerLevel': 'Red',
 				'customerDevice': 'GalaxyS2',
 				'customerPricePlan': 'LTE45',
@@ -292,38 +292,50 @@ define(function(require) {
 			},
 			'5': {
 				'customerId': 'eeeee',
-				'customerName': '박순이',
+				'customerName': '김영수',
 				'customerLevel': 'Black',
 				'customerDevice': 'Galaxy Note2',
 				'customerPricePlan': 'LTE65',
 				'customerSatisfaction': '만족'
-			},
+			}
 		};
 		
 		var vocDB = {
 			'1': {
 				'vocId': '1',
-				'vocRequest': '핸드폰 전원이 안켜져요',
-				'vocResponse': '배터리를 충전하세요',
-				'vocState': 'C',
+				'vocRequest': 'LTEA 전송속도가 생각보다 더 빨리나오는데요?',
+				'vocResponse': '해당 속도가 평균적인 속도입니다 ^^.',
+				'vocState': 'C'
 			},
 			'2': {
 				'vocId': '1',
-				'vocRequest': '자꾸 다운되요',
-				'vocResponse': '왜 그럴까요?',
-				'vocState': 'C',
+				'vocRequest': '타 통신사에서 SKT로 번호이동을 하고싶은데요.',
+				'vocResponse': '전문 상담직원이 고객님께 즉시 연락드리겠습니다.',
+				'vocState': 'C'
 			},
 			'3': {
 				'vocId': '1',
-				'vocRequest': '환불 되나요?',
-				'vocResponse': '안됩니다.',
-				'vocState': 'C',
+				'vocRequest': '고객센터 직원을 칭찬하고 싶은데 어떻게 해야하나요?',
+				'vocResponse': '홈페이지에 직원추천하기 메뉴에서 칭찬해주실 수 있습니다.',
+				'vocState': 'C'
 			},
 			'4': {
 				'vocId': '1',
-				'vocRequest': '너무 느려요 어떻게 빨라지게 하나요?',
-				'vocResponse': '그런거 없어요~ 그냥 참고 쓰세요',
-				'vocState': 'C',
+				'vocRequest': '독도에서 살고있는데 SKT 핸드폰이 터질까요?',
+				'vocResponse': '물론이죠. 독도 및 국내 대부분의 섬에서 만족스러운 통화 품질을 기대하실 수 있습니다.',
+				'vocState': 'C'
+			},
+			'5': {
+				'vocId': '1',
+				'vocRequest': 'SKT 통신사에는 어떤 혜택이 주어지나요?',
+				'vocResponse': 'T맴버쉽 뿐만 아니라 대한민국 최고의 서비스를 추가로 제공받으실 수 있습니다.',
+				'vocState': 'C'
+			},
+			'6': {
+				'vocId': '1',
+				'vocRequest': '통화가 간혈적으로 끊깁니다.',
+				'vocResponse': '고객님께서 통화하신 지역에서 통화품질 점검을 해보았으나 이상이 발견되지 않았습니다. 기기의 문제로 사료되오니 제조사에 AS를 신청해봐주세요.',
+				'vocState': 'C'
 			},
 		};
 		
