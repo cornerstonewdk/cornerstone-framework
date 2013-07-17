@@ -3,7 +3,6 @@
  * Middlewares
  */
 
-var config = require( '../config');
 var constants = require( './constants' );
 var ValidationError = require( './error' ).ValidationError;
 var FieldError = require( './error' ).FieldError;
@@ -143,11 +142,5 @@ exports.noCache = function( req, res, next ) {
 	res.header( 'Pragma', 'no-cache' );
 	res.header( 'Expires', new Date().toGMTString() );
 
-	next();
-};
-
-// config에서 namespace 정보를 넘겨받아 
-exports.useNamespace = function ( req, res, next ) {
-	res.local( 'namespace', config.network.namespace );
 	next();
 };
