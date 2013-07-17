@@ -107,16 +107,15 @@
 		//
 		// 스크롤뷰 피처드
 		// --------------------------------------------------
-		$("#scrollView1").length && $("#scrollView1").featuredScrollView();
+		$("#scrollView1,#scrollView3").featuredScrollView();
 
 		var generatedCount = 0;
-		$("#scrollView1").length && $("#scrollView2").featuredScrollView({
-			pullDownID: "pullDown",
-			pullUpID: "pullUp",
+		var $scrollView2 = $("#scrollView2");
+		$scrollView2.featuredScrollView({
 			pullDownAction: function () {
 				// 일반적으로 pullDown은 새로고침 액션으로 이용된다.
 				setTimeout(function () {
-					$("#scrollView2").featuredScrollView("refresh");
+					$scrollView2.featuredScrollView("refresh");
 				}, 500);
 			},
 			pullUpAction: function () {
@@ -124,7 +123,7 @@
 				setTimeout(function () {
 					// 임시 엘리먼트를 추가한다.
 					var $el, li, i;
-					$el = $("#scrollView2 .list-group");
+					$el = $scrollView2.find(".list-group");
 					for (i = 0; i < 10; i++) {
 						li = document.createElement('li');
 						$("<li/>", {
@@ -135,7 +134,35 @@
 									+ '신규 레코드 ' + (++generatedCount)
 							).appendTo($el);
 					}
-					$("#scrollView2").featuredScrollView("refresh");
+					$scrollView2.featuredScrollView("refresh");
+				}, 300);
+			}
+		});
+		var $scrollView4 = $("#scrollView4");
+		$scrollView4.featuredScrollView({
+			pullDownAction: function () {
+				// 일반적으로 pullDown은 새로고침 액션으로 이용된다.
+				setTimeout(function () {
+					$scrollView4.featuredScrollView("refresh");
+				}, 500);
+			},
+			pullUpAction: function () {
+				// ajax로 데이터바인딩이 완료될때 꼭 스크롤뷰 새로고침이 필요함.
+				setTimeout(function () {
+					// 임시 엘리먼트를 추가한다.
+					var $el, li, i;
+					$el = $scrollView4.find(".list-group");
+					for (i = 0; i < 10; i++) {
+						li = document.createElement('li');
+						$("<li/>", {
+							"class": "list-group-item"
+						}).html(
+								'<span class="glyphicon glyphicon-chevron-right"></span>'
+									+ '<span class="badge">' + Math.round((Math.random() * 10) + 1) + '</span>'
+									+ '신규 레코드 ' + (++generatedCount)
+							).appendTo($el);
+					}
+					$scrollView4.featuredScrollView("refresh");
 				}, 300);
 			}
 		});
