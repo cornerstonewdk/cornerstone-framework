@@ -65,8 +65,33 @@
       color: @text-color;
     }
   }
+  &:active, &.active {
+    background-color: #2A6B8D;
+    color: #FFF;
+    border-color: #2A6B8D;
+    .box-shadow(~"inset 0 0 5px rgba(0, 0, 0, 0.5)");
+    .badge {
+      color: #428BCA;
+      background-color: #FFF;
+    }
+  }
 }
 
 .panel-nav-group {
+  background: none;
+  padding: 0;
+  .panel-heading, .panel-footer {
+    background: #242426;
+  }
+  .list-group-item {
+    &:active, &.active {
+      color: #FFF;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+      margin-top: 1px;
+      background-color: #9E2222;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      .box-shadow(~"inset 0 0 7px rgba(0, 0, 0, 0.7), 0 1px 0 #FFF");
+    }
 
+  }
 }
