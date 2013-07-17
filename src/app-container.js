@@ -9,7 +9,7 @@ requirejs.config( {
 	baseUrl: Cornerstone.App.baseUrl,
 	// 긴 경로명 대신 사용할 수 있는 alias를 지정한다.
 	paths: {
-		'jquery': Cornerstone.PATH_LIB + 'jquery-1.8.1.min',
+		'jquery': Cornerstone.PATH_LIB + 'jquery-1.10.2.min',
 		'underscore': Cornerstone.PATH_LIB + 'underscore-min',
 		'backbone': Cornerstone.PATH_LIB + 'backbone-min',
 		'handlebars': Cornerstone.PATH_LIB + 'handlebars-1.0.0.beta.6',
