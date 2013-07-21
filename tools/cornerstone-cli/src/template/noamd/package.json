@@ -19,13 +19,8 @@
   },
   "jam": {
     "dependencies": {
-      "launcher": "*",
-      "template": "*",
-      "style": "*",
       "bootstrap": "*",
-      "form-view": "*",
-      "validation-view": "*",
-      "multipage-route": "*"
+      "backbone": "*"
     }
   }
 }

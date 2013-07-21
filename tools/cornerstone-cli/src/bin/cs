@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var fs = require( 'fs' );
 var cp = require( 'child_process' );
 var grunt = require( 'grunt' );
 var _ = require( 'underscore' );
@@ -47,22 +48,14 @@ function copyFiles( rootdir, destdir ) {
 	} );
 }
 
+function replaceFileContent( filename, pattern, replace ) {
+	var data = fs.readFileSync( filename, { encoding: 'utf8' } );
+	fs.writeFileSync( filename, data.replace( pattern, replace ), { encoding: 'utf8' } );
+}
+
 function doTask( command, options ) {
 
 	if ( !command ) return false;
-
-	// Command 검사
-	if ( !_.contains( [ 'init', 'build', 'server', 'test' ], command ) ) {
-		grunt.log.errorlns( '알 수 없는 커맨드: ' + command );
-		return false;
-	}
-
-	// Option 검사
-	for ( var i in options )
-		if ( !_.contains( [ '--noamd', '--theme:dark', '--theme:white', '--fullpackage' ], options[ i ] ) ) {
-			grunt.log.errorlns( '알 수 없는 옵션: ' + options[ i ] );
-			return false;
-		}
 
 	if ( command == 'init' ) {
 		// 빈 디렉토리인지 검사
@@ -71,14 +64,43 @@ function doTask( command, options ) {
 			return false;
 		}
 
-		if ( _.contains( options, '--noamd' ) )
+		// Option 검사
+		for ( var i in options )
+			if ( !_.contains( [ '--noamd', '--theme:dark', '--theme:white', '--fullpackage' ], options[ i ] ) ) {
+				grunt.log.errorlns( '알 수 없는 옵션: ' + options[ i ] );
+				return false;
+			}
+
+		if ( _.contains( options, '--noamd' ) ) {
 			copyFiles( __dirname + '/../template/noamd', '.' );
-		else
+
+			// 테마 적용
+			if ( _.contains( options, '--theme:dark' ) ) {
+				replaceFileContent( './package.json', '"backbone": "*"', '"backbone": "*",\r\n      "theme-dark": "*"' );
+				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-dark/cornerstone.css" rel="stylesheet"/>' );
+			}
+			if ( _.contains( options, '--theme:white' ) ) {
+				replaceFileContent( './package.json', '"backbone": "*"', '"backbone": "*",\r\n      "theme-white": "*"' );
+				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-white/cornerstone.css" rel="stylesheet"/>' );
+			}
+		}
+		else {
 			copyFiles( __dirname + '/../template/amd', '.' );
 
-		// TODO 테마 적용
+			// 테마 적용
+			if ( _.contains( options, '--theme:dark' ) ) {
+				replaceFileContent( './package.json', '"bootstrap": "*",', '"bootstrap": "*",\r\n      "theme-dark": "*",' );
+				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-dark/cornerstone.css" rel="stylesheet"/>' );
+			}
+			if ( _.contains( options, '--theme:white' ) ) {
+				replaceFileContent( './package.json', '"bootstrap": "*",', '"bootstrap": "*",\r\n      "theme-white": "*",' );
+				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-white/cornerstone.css" rel="stylesheet"/>' );
+			}
+		}
 
-		// TODO 모든 패키지를 설치하도록 설정
+		// 모든 패키지를 설치하도록 설정
+		if ( _.contains( options, '--fullpackage' ) )
+			grunt.file.copy( __dirname + '/../template/fullpackage/package.json', './package.json' );
 
 		grunt.log.oklns( '기본 파일들이 모두 생성되었습니다.' );
 		grunt.log.oklns( '필요한 라이브러리들을 내려받고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다.' );
