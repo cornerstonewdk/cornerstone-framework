@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (grunt) {
-	var defaultStyle = "theme-wireframe";
+	var defaultStyle = "theme-dark";
 
 	// grunt-*로 시작하는 모든 라이브러리 가져온다.
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -21,6 +21,9 @@ module.exports = function (grunt) {
 					"examples/",
 					"getting-started/",
 					"javascript/",
+					"dist/",
+					"less/",
+					"js/",
 					"index.html"
 				]
 			}
@@ -51,6 +54,10 @@ module.exports = function (grunt) {
 						to: '"assets'
 					},
 					{
+						from: '"/dist',
+						to: '"dist'
+					},
+					{
 						from: 'href="/"',
 						to: 'href="./"'
 					}
@@ -65,22 +72,12 @@ module.exports = function (grunt) {
 						to: '"../assets'
 					},
 					{
-						from: 'href="/"',
-						to: 'href="../"'
-					}
-				]
-			},
-			twoDepth: {
-				src: ['examples/**/index.html'],
-				overwrite: true,
-				replacements: [
-					{
-						from: '"/assets',
-						to: '"../../assets'
+						from: '"/dist',
+						to: '"../dist'
 					},
 					{
-						from: '"../assets',
-						to: '"../../assets'
+						from: 'href="/"',
+						to: 'href="../"'
 					}
 				]
 			},
@@ -141,7 +138,7 @@ module.exports = function (grunt) {
 				overwrite: true,
 				replacements: [
 					{
-						from: 'assets/css/bootstrap.css" rel="stylesheet">',
+						from: 'dist/css/bootstrap.css" rel="stylesheet">',
 						to: '../../grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">'
 					}
 				]
@@ -181,22 +178,6 @@ module.exports = function (grunt) {
 								return 'grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
 							} else {
 								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../../grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
-							}
-						}
-					}
-				]
-			},
-			changeThemeTwoDepth: {
-				src: ['examples/**/index.html'],
-				overwrite: true,
-				replacements: [
-					{
-						from: 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">',
-						to: function () {
-							if (defaultStyle.match("skin-*")) {
-								return 'grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
-							} else {
-								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../../../grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
 							}
 						}
 					}

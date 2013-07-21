@@ -25,7 +25,7 @@
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="assets/js/html5shiv.js"></script>
-  <script src="assets/js/respond/respond.min.js"></script>
+  <script src="assets/js/respond.min.js"></script>
 <![endif]-->
 
 <!-- Favicons -->
@@ -35,16 +35,7 @@
                 <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
                                <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-146052-10']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+
 
     <!-- Place anything custom after this. -->
   </head>
@@ -77,19 +68,29 @@
           <a href="customize">Customize</a>
         </li>
       </ul>
+      
     </div>
   </div>
 </div>
 
 
     <!-- Page content of course! -->
-    <div class="container">
+    <div class="bs-old-docs">
+  <div class="container">
+    <strong>
+      <a href="/2.3.2/">Looking for Bootstrap 2.3.2 docs?</a>
+    </strong>
+    We've moved it to a new home while we push forward with Bootstrap 3. <a href="http://blog.getbootstrap.com/">Read the blog post</a> for details.
+  </div>
+</div>
+
+<div class="container">
   <div class="bs-masthead">
 
-    <h1>Bootstrap</h1>
+    <h1>Bootstrap 3</h1>
     <p class="lead">Sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development.</p>
     <p>
-      <a href="assets/bootstrap.zip" class="btn btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 3.0.0']);">Download Bootstrap</a>
+      <a href="assets/bootstrap.zip" class="btn btn-bs btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 3.0.0 RC1']);">Download Bootstrap 3.0.0 RC1</a>
     </p>
 
     <div class="bs-social">
@@ -115,7 +116,7 @@
         <a href="http://github.com/twitter/bootstrap" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);">GitHub project</a>
       </li>
       <li>
-        <a href="./getting-started/#examples" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Examples']);">Examples</a>
+        <a href="http://examples.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Examples']);">Examples</a>
       </li>
       <li>
         <a href="http://glyphicons.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Glyphicons']);">Glyphicons</a>
@@ -123,7 +124,6 @@
       <li>
         <a href="http://expo.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Expo']);">Bootstrap Expo</a>
       </li>
-      <li>Version 3.0.0</li>
     </ul>
 
   </div>
@@ -135,28 +135,14 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>
-<script src="assets/js/bootstrap.js"></script>
+<script src="dist/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<script src="assets/js/holder/holder.js"></script>
+<script src="assets/js/holder.js"></script>
 
 <script src="assets/js/application.js"></script>
 
-<!-- Analytics
-================================================== -->
-<script>
-  var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.type  = 'text/javascript';
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-</script>
+
 
 
   </body>
