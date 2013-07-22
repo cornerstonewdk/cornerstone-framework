@@ -8,7 +8,7 @@
     "underscore": "~1.5.1"
   },
   "bin": {
-    "cs": "bin/cs",
+    "cstone": "bin/cstone",
     "jamrc-updator": "bin/jamrc-updator"
   },
   "preferGlobal": true,
