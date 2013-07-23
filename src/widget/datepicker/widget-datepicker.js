@@ -26,18 +26,16 @@
 
 (function ($) {
 
-	// Picker object
-	var smartPhone = (window.orientation != undefined);
+	var i, j, btsSelectors = {
+		wrapper: ".input-group", // .input-prepend, .input-apped -> .inpup-group
+		addOn: ".input-group-addon", // .add-on -> .input-group-addon
+		iconCalendar: "glyphicon glyphicon-calendar",
+		iconTime: "glyphicon glyphicon-time"
+	};
+
 	var DateTimePicker = function (element, options) {
 		this.id = dpgId++;
 		this.init(element, options);
-	};
-
-	var dateToDate = function (dt) {
-		if (typeof dt === 'string') {
-			return new Date(dt);
-		}
-		return dt;
 	};
 
 	DateTimePicker.prototype = {
@@ -49,13 +47,17 @@
 				throw new Error('Must choose at least one picker');
 			this.options = options;
 			this.$element = $(element);
-			this.language = options.language in dates ? options.language : 'en'
+			this.language = options.language in dates ? options.language : 'en';
+			this.pickDateAsTimeStyle = options.pickDateAsTimeStyle;
+			if (options.pickDateAsTimeStyle) {
+				options.pickDate = options.pickTime = false;
+			}
 			this.pickDate = options.pickDate;
 			this.pickTime = options.pickTime;
 			this.isInput = this.$element.is('input');
 			this.component = false;
-			if (this.$element.find('.input-append') || this.$element.find('.input-prepend'))
-				this.component = this.$element.find('.add-on');
+			if (this.$element.find(btsSelectors.wrapper))
+				this.component = this.$element.find(btsSelectors.addOn);
 			this.format = options.format;
 			if (!this.format) {
 				if (this.isInput) this.format = this.$element.data('format');
@@ -68,16 +70,16 @@
 			}
 			if (this.pickTime) {
 				if (icon && icon.length) this.timeIcon = icon.data('time-icon');
-				if (!this.timeIcon) this.timeIcon = 'icon-time';
+				if (!this.timeIcon) this.timeIcon = btsSelectors.iconTime;
 				icon.addClass(this.timeIcon);
 			}
-			if (this.pickDate) {
+			if (this.pickDate || this.pickDateAsTimeStyle) {
 				if (icon && icon.length) this.dateIcon = icon.data('date-icon');
-				if (!this.dateIcon) this.dateIcon = 'icon-calendar';
+				if (!this.dateIcon) this.dateIcon = btsSelectors.iconCalendar;
 				icon.removeClass(this.timeIcon);
 				icon.addClass(this.dateIcon);
 			}
-			this.widget = $(getTemplate(this.timeIcon, options.pickDate, options.pickTime, options.pick12HourFormat, options.pickSeconds, options.collapse)).appendTo('body');
+			this.widget = $(getTemplate(this.timeIcon, options.pickDate, options.pickDateAsTimeStyle, options.pickTime, options.pick12HourFormat, options.pickSeconds, options.collapse)).appendTo('body');
 			this.minViewMode = options.minViewMode || this.$element.data('date-minviewmode') || 0;
 			if (typeof this.minViewMode === 'string') {
 				switch (this.minViewMode) {
@@ -108,7 +110,6 @@
 			}
 			this.startViewMode = this.viewMode;
 			this.weekStart = options.weekStart || this.$element.data('date-weekstart') || 0;
-			this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
 			this.setStartDate(options.startDate || this.$element.data('date-startdate'));
 			this.setEndDate(options.endDate || this.$element.data('date-enddate'));
 			this.fillDow();
@@ -147,7 +148,7 @@
 
 		hide: function () {
 			// Ignore event if in the middle of a picker transition
-			var collapse = this.widget.find('.collapse')
+			var collapse = this.widget.find('.collapse');
 			for (var i = 0; i < collapse.length; i++) {
 				var collapseData = collapse.eq(i).data('collapse');
 				if (collapseData && collapseData.transitioning)
@@ -181,11 +182,7 @@
 		},
 
 		setValue: function (newDate) {
-			if (!newDate) {
-				this._unset = true;
-			} else {
-				this._unset = false;
-			}
+			this._unset = !newDate;
 			if (typeof newDate === 'string') {
 				this._date = this.parseDate(newDate);
 			} else if (newDate) {
@@ -319,7 +316,7 @@
 					this._date = this.parseDate(dateStr);
 				}
 				if (!this._date) {
-					var tmp = new Date()
+					var tmp = new Date();
 					this._date = UTCDate(tmp.getFullYear(),
 						tmp.getMonth(),
 						tmp.getDate(),
@@ -345,7 +342,7 @@
 
 		fillMonths: function () {
 			var html = '';
-			var i = 0
+			var i = 0;
 			while (i < 12) {
 				html += '<span class="month">' + dates[this.language].monthsShort[i++] + '</span>';
 			}
@@ -432,7 +429,7 @@
 			if (currentYear + 1 > endYear) {
 				this.widget.find('.datepicker-months th:eq(2)').addClass('disabled');
 			}
-			for (var i = 0; i < 12; i++) {
+			for (i = 0; i < 12; i++) {
 				if ((year == startYear && startMonth > i) || (year < startYear)) {
 					$(months[i]).addClass('disabled');
 				} else if ((year == endYear && endMonth < i) || (year > endYear)) {
@@ -460,27 +457,29 @@
 		},
 
 		fillHours: function () {
+			var c;
+			var current;
 			var table = this.widget.find(
 				'.timepicker .timepicker-hours table');
 			table.parent().hide();
 			var html = '';
 			if (this.options.pick12HourFormat) {
-				var current = 1;
-				for (var i = 0; i < 3; i += 1) {
+				current = 1;
+				for (i = 0; i < 3; i += 1) {
 					html += '<tr>';
-					for (var j = 0; j < 4; j += 1) {
-						var c = current.toString();
+					for (j = 0; j < 4; j += 1) {
+						c = current.toString();
 						html += '<td class="hour">' + padLeft(c, 2, '0') + '</td>';
 						current++;
 					}
 					html += '</tr>'
 				}
 			} else {
-				var current = 0;
-				for (var i = 0; i < 6; i += 1) {
+				current = 0;
+				for (i = 0; i < 6; i += 1) {
 					html += '<tr>';
-					for (var j = 0; j < 4; j += 1) {
-						var c = current.toString();
+					for (j = 0; j < 4; j += 1) {
+						c = current.toString();
 						html += '<td class="hour">' + padLeft(c, 2, '0') + '</td>';
 						current++;
 					}
@@ -547,9 +546,15 @@
 			timeComponents.filter('[data-time-component=hours]').text(hour);
 			timeComponents.filter('[data-time-component=minutes]').text(minute);
 			timeComponents.filter('[data-time-component=seconds]').text(second);
+
+			// Date as time picker style
+			timeComponents.filter('[data-time-component=years]').text(this._date.getUTCFullYear());
+			timeComponents.filter('[data-time-component=months]').text(this._date.getUTCMonth() + 1);
+			timeComponents.filter('[data-time-component=days]').text(this._date.getUTCDate());
 		},
 
 		click: function (e) {
+			var day, year, month;
 			e.stopPropagation();
 			e.preventDefault();
 			this._unset = false;
@@ -576,10 +581,10 @@
 							break;
 						case 'span':
 							if (target.is('.month')) {
-								var month = target.parent().find('span').index(target);
+								month = target.parent().find('span').index(target);
 								this.viewDate.setUTCMonth(month);
 							} else {
-								var year = parseInt(target.text(), 10) || 0;
+								year = parseInt(target.text(), 10) || 0;
 								this.viewDate.setUTCFullYear(year);
 							}
 							if (this.viewMode !== 0) {
@@ -600,9 +605,9 @@
 							break;
 						case 'td':
 							if (target.is('.day')) {
-								var day = parseInt(target.text(), 10) || 1;
-								var month = this.viewDate.getUTCMonth();
-								var year = this.viewDate.getUTCFullYear();
+								day = parseInt(target.text(), 10) || 1;
+								month = this.viewDate.getUTCMonth();
+								year = this.viewDate.getUTCFullYear();
 								if (target.is('.old')) {
 									if (month === 0) {
 										month = 11;
@@ -638,31 +643,55 @@
 		},
 
 		actions: {
-			incrementHours: function (e) {
+			incrementYears: function () {
+				this._date.setUTCFullYear(this._date.getUTCFullYear() + 1);
+			},
+
+			incrementMonths: function () {
+				this._date.setUTCMonth(this._date.getUTCMonth() + 1);
+			},
+
+			incrementDays: function () {
+				this._date.setUTCDate(this._date.getUTCDate() + 1);
+			},
+
+			decrementYears: function () {
+				this._date.setUTCFullYear(this._date.getUTCFullYear() - 1);
+			},
+
+			decrementMonths: function () {
+				this._date.setUTCMonth(this._date.getUTCMonth() - 1);
+			},
+
+			decrementDays: function () {
+				this._date.setUTCDate(this._date.getUTCDate() - 1);
+			},
+
+			incrementHours: function () {
 				this._date.setUTCHours(this._date.getUTCHours() + 1);
 			},
 
-			incrementMinutes: function (e) {
+			incrementMinutes: function () {
 				this._date.setUTCMinutes(this._date.getUTCMinutes() + 1);
 			},
 
-			incrementSeconds: function (e) {
+			incrementSeconds: function () {
 				this._date.setUTCSeconds(this._date.getUTCSeconds() + 1);
 			},
 
-			decrementHours: function (e) {
+			decrementHours: function () {
 				this._date.setUTCHours(this._date.getUTCHours() - 1);
 			},
 
-			decrementMinutes: function (e) {
+			decrementMinutes: function () {
 				this._date.setUTCMinutes(this._date.getUTCMinutes() - 1);
 			},
 
-			decrementSeconds: function (e) {
+			decrementSeconds: function () {
 				this._date.setUTCSeconds(this._date.getUTCSeconds() - 1);
 			},
 
-			togglePeriod: function (e) {
+			togglePeriod: function () {
 				var hour = this._date.getUTCHours();
 				if (hour >= 12) hour -= 12;
 				else hour += 12;
@@ -672,6 +701,21 @@
 			showPicker: function () {
 				this.widget.find('.timepicker > div:not(.timepicker-picker)').hide();
 				this.widget.find('.timepicker .timepicker-picker').show();
+			},
+
+			showYears: function () {
+//				this.widget.find('.timepicker .timepicker-picker').hide();
+//				this.widget.find('.timepicker .timepicker-hours').show();
+			},
+
+			showMonths: function () {
+//				this.widget.find('.timepicker .timepicker-picker').hide();
+//				this.widget.find('.timepicker .timepicker-minutes').show();
+			},
+
+			showDays: function () {
+//				this.widget.find('.timepicker .timepicker-picker').hide();
+//				this.widget.find('.timepicker .timepicker-seconds').show();
 			},
 
 			showHours: function () {
@@ -841,7 +885,7 @@
 				var methodName, property, rv, len = match.length;
 				if (match === 'ms')
 					len = 1;
-				property = dateFormatComponents[match].property
+				property = dateFormatComponents[match].property;
 				if (property === 'Hours12') {
 					rv = d.getUTCHours();
 					if (rv === 0) rv = 12;
@@ -860,7 +904,7 @@
 		},
 
 		parseDate: function (str) {
-			var match, i, property, methodName, value, parsed = {};
+			var match, i, property, value, parsed = {};
 			if (!(match = this._formatPattern.exec(str)))
 				return null;
 			for (i = 1; i < match.length; i++) {
@@ -963,16 +1007,16 @@
 					e.stopPropagation();
 					var $this = $(this);
 					var $parent = $this.closest('ul');
-					var expanded = $parent.find('.collapse.in');
+					var expanded = $parent.find('.in'); // remove .collapse at BTS 3.0
 					var closed = $parent.find('.collapse:not(.in)');
 
 					if (expanded && expanded.length) {
 						var collapseData = expanded.data('collapse');
 						if (collapseData && collapseData.transitioning) return;
 						expanded.collapse('hide');
-						closed.collapse('show')
+						closed.collapse('show');
 						$this.find('i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
-						self.$element.find('.add-on i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
+						self.$element.find(btsSelectors.addOn).find('i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
 					}
 				});
 			}
@@ -1061,13 +1105,12 @@
 			if (this.$element) {
 				var parents = this.$element.parents();
 				var inFixed = false;
-				for (var i = 0; i < parents.length; i++) {
+				for (i = 0; i < parents.length; i++) {
 					if ($(parents[i]).css('position') == 'fixed') {
 						inFixed = true;
 						break;
 					}
 				}
-				;
 				return inFixed;
 			} else {
 				return false;
@@ -1080,10 +1123,12 @@
 			var $this = $(this),
 				data = $this.data('datetimepicker'),
 				options = typeof option === 'object' && option;
+
 			if (!data) {
 				$this.data('datetimepicker', (data = new DateTimePicker(
 					this, $.extend({}, $.fn.datetimepicker.defaults, options))));
 			}
+
 			if (typeof option === 'string') data[option](val);
 		});
 	};
@@ -1096,9 +1141,12 @@
 		pickSeconds: true,
 		startDate: -Infinity,
 		endDate: Infinity,
-		collapse: true
+		collapse: true,
+		language: "kr",
+		format: "yyyy-MM-dd HH:mm:ss PP"
 	};
 	$.fn.datetimepicker.Constructor = DateTimePicker;
+
 	var dpgId = 0;
 	var dates = $.fn.datetimepicker.dates = {
 		en: {
@@ -1110,6 +1158,13 @@
 				"July", "August", "September", "October", "November", "December"],
 			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
 				"Aug", "Sep", "Oct", "Nov", "Dec"]
+		},
+		kr: {
+			days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
+			daysShort: ["일", "월", "화", "수", "목", "금", "토", "일"],
+			daysMin: ["일", "월", "화", "수", "목", "금", "토", "일"],
+			months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+			monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
 		}
 	};
 
@@ -1162,10 +1217,10 @@
 
 	function padLeft(s, l, c) {
 		if (l < s.length) return s;
-		else return Array(l - s.length + 1).join(c || ' ') + s;
+		else return new Array(l - s.length + 1).join(c || ' ') + s;
 	}
 
-	function getTemplate(timeIcon, pickDate, pickTime, is12Hours, showSeconds, collapse) {
+	function getTemplate(timeIcon, pickDate, pickDateAsTimeStyle, pickTime, is12Hours, showSeconds, collapse) {
 		if (pickDate && pickTime) {
 			return (
 				'<div class="bootstrap-datetimepicker-widget dropdown-menu">' +
@@ -1189,6 +1244,14 @@
 				'<div class="bootstrap-datetimepicker-widget dropdown-menu">' +
 					'<div class="timepicker">' +
 					TPGlobal.getTemplate(is12Hours, showSeconds) +
+					'</div>' +
+					'</div>'
+				);
+		} else if (pickDateAsTimeStyle) {
+			return (
+				'<div class="bootstrap-datetimepicker-widget dropdown-menu">' +
+					'<div class="timepicker">' +
+					DSPGlobal.getTemplate(is12Hours, showSeconds) +
 					'</div>' +
 					'</div>'
 				);
@@ -1233,13 +1296,14 @@
 		},
 		headTemplate: '<thead>' +
 			'<tr>' +
-			'<th class="prev">&lsaquo;</th>' +
+			'<th class="prev"><i class="glyphicon glyphicon-chevron-left"></i></th>' +
 			'<th colspan="5" class="switch"></th>' +
-			'<th class="next">&rsaquo;</th>' +
+			'<th class="next"><i class="glyphicon glyphicon-chevron-right"></i></th>' +
 			'</tr>' +
 			'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>'
 	};
+
 	DPGlobal.template =
 		'<div class="datepicker-days">' +
 			'<table class="table-condensed">' +
@@ -1259,11 +1323,13 @@
 			DPGlobal.contTemplate +
 			'</table>' +
 			'</div>';
+
 	var TPGlobal = {
 		hourTemplate: '<span data-action="showHours" data-time-component="hours" class="timepicker-hour"></span>',
 		minuteTemplate: '<span data-action="showMinutes" data-time-component="minutes" class="timepicker-minute"></span>',
 		secondTemplate: '<span data-action="showSeconds" data-time-component="seconds" class="timepicker-second"></span>'
 	};
+
 	TPGlobal.getTemplate = function (is12Hours, showSeconds) {
 		return (
 			'<div class="timepicker-picker">' +
@@ -1271,12 +1337,12 @@
 				(is12Hours ? ' data-hour-format="12"' : '') +
 				'>' +
 				'<tr>' +
-				'<td><a href="#" class="btn" data-action="incrementHours"><i class="icon-chevron-up"></i></a></td>' +
+				'<td><a href="#" class="btn" data-action="incrementHours"><i class="glyphicon glyphicon-chevron-up"></i></a></td>' +
 				'<td class="separator"></td>' +
-				'<td><a href="#" class="btn" data-action="incrementMinutes"><i class="icon-chevron-up"></i></a></td>' +
+				'<td><a href="#" class="btn" data-action="incrementMinutes"><i class="glyphicon glyphicon-chevron-up"></i></a></td>' +
 				(showSeconds ?
 					'<td class="separator"></td>' +
-						'<td><a href="#" class="btn" data-action="incrementSeconds"><i class="icon-chevron-up"></i></a></td>' : '') +
+						'<td><a href="#" class="btn" data-action="incrementSeconds"><i class="glyphicon glyphicon-chevron-up"></i></a></td>' : '') +
 				(is12Hours ? '<td class="separator"></td>' : '') +
 				'</tr>' +
 				'<tr>' +
@@ -1289,16 +1355,16 @@
 				(is12Hours ?
 					'<td class="separator"></td>' +
 						'<td>' +
-						'<button type="button" class="btn btn-primary" data-action="togglePeriod"></button>' +
+						'<button type="button" class="btn btn-primary pp" data-action="togglePeriod"></button>' +
 						'</td>' : '') +
 				'</tr>' +
 				'<tr>' +
-				'<td><a href="#" class="btn" data-action="decrementHours"><i class="icon-chevron-down"></i></a></td>' +
+				'<td><a href="#" class="btn" data-action="decrementHours"><i class="glyphicon glyphicon-chevron-down"></i></a></td>' +
 				'<td class="separator"></td>' +
-				'<td><a href="#" class="btn" data-action="decrementMinutes"><i class="icon-chevron-down"></i></a></td>' +
+				'<td><a href="#" class="btn" data-action="decrementMinutes"><i class="glyphicon glyphicon-chevron-down"></i></a></td>' +
 				(showSeconds ?
 					'<td class="separator"></td>' +
-						'<td><a href="#" class="btn" data-action="decrementSeconds"><i class="icon-chevron-down"></i></a></td>' : '') +
+						'<td><a href="#" class="btn" data-action="decrementSeconds"><i class="glyphicon glyphicon-chevron-down"></i></a></td>' : '') +
 				(is12Hours ? '<td class="separator"></td>' : '') +
 				'</tr>' +
 				'</table>' +
@@ -1317,15 +1383,64 @@
 						'</table>' +
 						'</div>' : '')
 			);
-	}
-
-	$.fn.datetimepicker.dates['kr'] = {
-		days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
-		daysShort: ["일", "월", "화", "수", "목", "금", "토", "일"],
-		daysMin: ["일", "월", "화", "수", "목", "금", "토", "일"],
-		months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-		monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
 	};
 
+	var DSPGlobal = {
+		hourTemplate: '<span data-action="showYears" data-time-component="years" class="timepicker-hour"></span>',
+		minuteTemplate: '<span data-action="showMonths" data-time-component="months" class="timepicker-minute"></span>',
+		secondTemplate: '<span data-action="showDays" data-time-component="days" class="timepicker-second"></span>'
+	};
 
+	DSPGlobal.getTemplate = function (is12Hours, showSeconds) {
+		return (
+			'<div class="timepicker-picker">' +
+				'<table class="table-condensed">' +
+				'<tr>' +
+				'<td><a href="#" class="btn" data-action="incrementYears"><i class="glyphicon glyphicon-chevron-up"></i></a></td>' +
+				'<td class="separator"></td>' +
+				'<td><a href="#" class="btn" data-action="incrementMonths"><i class="glyphicon glyphicon-chevron-up"></i></a></td>' +
+				(showSeconds ?
+					'<td class="separator"></td>' +
+						'<td><a href="#" class="btn" data-action="incrementDays"><i class="glyphicon glyphicon-chevron-up"></i></a></td>' : '') +
+				(is12Hours ? '<td class="separator"></td>' : '') +
+				'</tr>' +
+				'<tr>' +
+				'<td>' + DSPGlobal.hourTemplate + '</td> ' +
+				'<td class="separator">/</td>' +
+				'<td>' + DSPGlobal.minuteTemplate + '</td> ' +
+				(showSeconds ?
+					'<td class="separator">/</td>' +
+						'<td>' + DSPGlobal.secondTemplate + '</td>' : '') +
+				(is12Hours ?
+					'<td class="separator"></td>' +
+						'<td>' +
+						'<button type="button" class="btn btn-primary pp" data-action="togglePeriod"></button>' +
+						'</td>' : '') +
+				'</tr>' +
+				'<tr>' +
+				'<td><a href="#" class="btn" data-action="decrementYears"><i class="glyphicon glyphicon-chevron-down"></i></a></td>' +
+				'<td class="separator"></td>' +
+				'<td><a href="#" class="btn" data-action="decrementMonths"><i class="glyphicon glyphicon-chevron-down"></i></a></td>' +
+				(showSeconds ?
+					'<td class="separator"></td>' +
+						'<td><a href="#" class="btn" data-action="decrementDays"><i class="glyphicon glyphicon-chevron-down"></i></a></td>' : '') +
+				(is12Hours ? '<td class="separator"></td>' : '') +
+				'</tr>' +
+				'</table>' +
+				'</div>' +
+				'<div class="timepicker-hours" data-action="selectYear">' +
+				'<table class="table-condensed">' +
+				'</table>' +
+				'</div>' +
+				'<div class="timepicker-minutes" data-action="selectMonth">' +
+				'<table class="table-condensed">' +
+				'</table>' +
+				'</div>' +
+				(showSeconds ?
+					'<div class="timepicker-seconds" data-action="selectDay">' +
+						'<table class="table-condensed">' +
+						'</table>' +
+						'</div>' : '')
+			);
+	};
 })(window.jQuery);

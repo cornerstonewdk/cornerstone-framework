@@ -1,149 +1,211 @@
-.datepicker {
-  top: 0;
+.bootstrap-datetimepicker-widget {
+  @white: #FFF;
+  @hover-bg: transparent;
+
+  position: absolute;
+  top: 100%;
   left: 0;
-  padding: 0;
+  z-index: 1000;
+
+  display: none;
+  float: left;
+  margin: 2px 0 0;
   margin-top: 1px;
+  padding: 4px;
+  padding: 5px 0;
+  min-width: 160px;
+  width: 250px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  &:before {
-    content: '';
-    display: inline-block;
-    border-left:   7px solid transparent;
-    border-right:  7px solid transparent;
-    border-bottom: 7px solid #ccc;
-    border-bottom-color: rgba(0,0,0,.2);
-    position: absolute;
-    top: -7px;
-    left: 6px;
+  background-color: #000;
+  background-clip: padding-box;
+  .box-shadow(~"0 6px 12px rgba(0, 0, 0, 0.175)");
+  list-style: none;
+
+  &.pull-right {
+    &:before {
+      right: 6px;
+      left: auto;
+    }
+    &:after {
+      right: 7px;
+      left: auto;
+    }
   }
-  &:after {
-    content: '';
-    display: inline-block;
-    border-left:   6px solid transparent;
-    border-right:  6px solid transparent;
-    border-bottom: 6px solid #353535;
-    position: absolute;
-    top: -6px;
-    left: 7px;
+  >ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
-  >div {
+  li {
+    & > a {
+      display: block;
+      clear: both;
+      padding: 3px 20px;
+      color: #333;
+      white-space: nowrap;
+      font-weight: normal;
+      font-size: @font-size-base * 1.5;
+      line-height: 20px;
+      &:hover, &:focus {
+        text-decoration: none;
+        #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
+      }
+    }
+  }
+  .timepicker-hour, .timepicker-minute, .timepicker-second {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  table[data-hour-format="12"] .separator {
+    margin: 0;
+    padding: 0;
+    width: 4px;
+  }
+  .datepicker > div {
     display: none;
   }
-  &.days div.datepicker-days {
-    display: block;
-
+  .picker-switch {
+    text-align: center;
   }
-  &.months div.datepicker-months {
-    display: block;
-  }
-  &.years div.datepicker-years {
-    display: block;
-  }
-  table{
+  table {
     margin: 0;
+    width: 100%;
   }
   td,
-  th{
-    text-align: center;
+  th {
     width: 20px;
     height: 20px;
     border-radius: 4px;
+    text-align: center;
   }
   td {
-    &.day:hover {
-      background: none;
+    &.day:hover,
+    &.hour:hover,
+    &.minute:hover,
+    &.second:hover {
+      background: @hover-bg;
       cursor: pointer;
     }
     &.old,
     &.new {
       color: @gray-light;
     }
+    &.active,
+    &.active:hover {
+      #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
+      background-color: @btn-primary-bg;
+      color: #fff;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+    }
     &.disabled,
     &.disabled:hover {
       background: none;
       color: @gray-light;
-      cursor: default;
-    }
-    &.today,
-    &.today:hover,
-    &.today.disabled,
-    &.today.disabled:hover {
-      @todayBackground: lighten(@orange, 30%);
-      .button-background(@todayBackground, spin(@todayBackground, 20));
-    }
-    &.active,
-    &.active:hover,
-    &.active.disabled,
-    &.active.disabled:hover {
-      .button-background(@btn-primary-bg, @btn-primary-bg);
-      color: #fff;
-      text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+      cursor: not-allowed;
     }
     span {
       display: block;
-      width: 23%;
-      height: 54px;
-      line-height: 54px;
       float: left;
-      margin: 1%;
-      cursor: pointer;
+      margin: 2px;
+      width: 55px;
+      height: 55px;
       border-radius: 4px;
-      &.disabled,
-      &.disabled:hover {
-        background:none;
-        color: @gray-light;
-        cursor: default;
+      line-height: 54px;
+      cursor: pointer;
+      &:hover {
+        background: @hover-bg;
       }
-      &.active,
-      &.active:hover,
-      &.active.disabled,
-      &.active.disabled:hover {
-        .button-background(@btn-primary-bg, @btn-primary-bg);
+      &.active {
+        #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
+        background-color: @btn-primary-bg;
         color: #fff;
-        text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
       }
       &.old {
         color: @gray-light;
       }
+      &.disabled,
+      &.disabled:hover {
+        background: none;
+        color: @gray-light;
+        cursor: not-allowed;
+      }
     }
   }
 
-  th.switch {
-    width: 145px;
-  }
-
-  thead tr th {
-    color: @text-color;
-    height: 25px;
+  th {
+    &.switch {
+      width: 145px;
+    }
+    &.next,
+    &.prev {
+      font-size: @font-size-base * 1.5;
+    }
+    &.disabled,
+    &.disabled:hover {
+      background: none;
+      color: @gray-light;
+      cursor: not-allowed;
+    }
   }
 
   thead tr:first-child th {
-    height: 25px;
-    border-radius: 0;
-    background: #353535;
-  }
-
-  thead tr:first-child th,
-  tfoot tr:first-child th {
     cursor: pointer;
-  }
-  thead tr:first-child th:first-child {
-    border-radius: 4px 0 0 0;
-  }
-  thead tr:first-child th:last-child {
-    border-radius: 0 4px 0 0;
+    &:hover {
+      background: @hover-bg;
+    }
   }
   /*.dow {
-      border-top: 1px solid #ddd !important;
+  border-top: 1px solid #ddd !important;
   }*/
+
+  a {
+    color: @text-color;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .btn {
+    color: @text-color;
+    &:hover {
+      color: @text-color;
+    }
+  }
+  .pp {
+    color: lighten(@text-color, 100%);
+    &:hover {
+
+    }
+  }
 }
+
 .input-append,
 .input-prepend {
   &.date {
     .add-on i {
       display: block;
-      cursor: pointer;
       width: 16px;
       height: 16px;
+      cursor: pointer;
     }
+  }
+}
+
+.bootstrap-datetimepicker-widget.left-oriented {
+  &:before {
+    right: 6px;
+    left: auto;
+  }
+  &:after {
+    right: 7px;
+    left: auto;
+  }
+}
+
+.bootstrap-datetimepicker-widget {
+  .btn>.glyphicon {
+    font-size: 19px;
   }
 }
