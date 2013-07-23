@@ -25,7 +25,7 @@
       "form-view": "*",
       "validation-view": "*",
       "gesture-view": "*",
-      "multipage-route": "*",
+      "multipage-router": "*",
       "device": "*",
       "logging": "*",
       "jsonp": "*",
@@ -48,7 +48,7 @@
       "widget-scrollview": "*",
       "widget-sign": "*",
       "widget-spinner": "*",
-      "widget-tootip": "*",
+      "widget-tooltip": "*",
       "widget-touch": "*"
     }
   }
