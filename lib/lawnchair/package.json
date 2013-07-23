@@ -1,6 +1,6 @@
 {
 	"name": "lawnchair",
-	"version": "2.0.0",
+	"version": "0.6.1",
 	"description": "a lawnchair is sorta like a couch except smaller and outside. perfect for html5 mobile apps that need a lightweight, adaptive, simple and elegant persistence solution.",
 	"jam": {
 		"main": "lawnchair-0.6.1.min.js",
