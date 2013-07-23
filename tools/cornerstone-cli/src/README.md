@@ -15,16 +15,16 @@ npm install -g cornerstone-cli
 
 ## 사용 방법
 
-`cs`를 아무 command 없이 사용하면 도움말을 볼 수 있다.
+`cstone`를 아무 command 없이 사용하면 도움말을 볼 수 있다.
 
 ```shell
-cs
+cstone
 ```
 
 다음과 같이 command와 option을 지정한다.
 
 ```shell
-cs [command] [option]
+cstone [command] [option]
 ```
 
 사용할 수 있는 command는 다음과 같다.
