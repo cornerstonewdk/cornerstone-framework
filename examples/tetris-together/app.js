@@ -10,6 +10,8 @@ var socketio = require('socket.io');
 
 var app = express();
 
+var middlewares = require( './common/middlewares' );
+
 app.configure(function(){
   app.set('port', process.env.PORT || 8080);
   app.set('views', __dirname + '/views');
@@ -20,6 +22,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);    
   app.use(express.static(__dirname + '/public'));
+  app.use( middlewares.noCache );
   
   /* add by JHC , for error page rendering */
   app.use(function(req, res, next){

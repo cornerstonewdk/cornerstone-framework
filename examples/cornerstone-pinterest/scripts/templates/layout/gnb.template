@@ -1,0 +1,19 @@
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col col-4">
+                    <a href="#" class="btn btn-info back">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </a>
+                </div>
+                <div class="col col-4">
+                    <a class="navbar-brand" href="">Pinterest</a>
+                </div>
+                <div class="col col-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
