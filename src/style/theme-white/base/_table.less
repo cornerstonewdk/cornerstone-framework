@@ -1,0 +1,79 @@
+@table-bg: #f5f5f5;
+@table-border: 1px solid #cbcbcb;
+@table-border-radius: 5px;
+@table-border-radius4: ~"@{@table-border-radius} / 6px";
+@table-head-bg: #878787;
+@table-head-color: #000;
+@table-head-border-bottom: 2px solid #878787;
+
+.table {
+  border: @table-border;
+  border-collapse: separate;
+  border-radius: @table-border-radius;
+  background-color: @table-bg;
+  thead {
+    background-color: @table-head-bg;
+    .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
+    th {
+      border-bottom: @table-head-border-bottom;
+    }
+    &:first-child {
+      th:first-child {
+        border-top-left-radius: @table-border-radius;
+      }
+      th:last-child {
+        border-top-right-radius: @table-border-radius;
+      }
+    }
+  }
+
+  tbody {
+    tr:last-child {
+      td:first-child {
+        border-bottom-left-radius: @table-border-radius;
+      }
+      td:last-child {
+        border-bottom-right-radius: @table-border-radius;
+      }
+    }
+  }
+
+  // State
+  #table > .draw-state(success);
+  #table > .draw-state(warning);
+  #table > .draw-state(success);
+  #table > .draw-state(danger);
+  #table > .draw-state(info);
+}
+
+
+// Placeholder
+#table {
+  // primary, success, warning, danger, info
+  .draw-state(@state: warning) {
+    @state-bg: ~"@{state-@{state}-bg}";
+    & > tbody > tr {
+      & > td.@{state},
+      & > th.@{state},
+      &.@{state} > td {
+        border-color: @state-bg;
+        background-color: @state-bg;
+        color: @text-color-inverse;
+      }
+      &:hover {
+        & > td.@{state},
+        & > th.@{state},
+        &.@{state} > td {
+          // TODO 추후 hover 스타일 작업 필요
+          border-color: @state-bg;
+          background-color: @state-bg;
+          color: @text-color-inverse;
+        }
+      }
+    }
+  }
+}
+
+
+
+
