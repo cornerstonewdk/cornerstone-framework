@@ -19,8 +19,42 @@ define( [ 'jquery' ], function( $ ) {
 			
 			var link = $( '<link rel="stylesheet" type="text/css" media="all" href="' + url + '"></link>' )[ 0 ];
 			
+			// 현재 브라우저 판별
+			function detectBrowser( ua ) {
+
+				ua = ua.toLowerCase();
+
+				var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+					/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+					/(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+					/(msie) ([\w.]+)/.exec( ua ) ||
+					ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+					[];
+
+				var matched = {
+					browser: match[ 1 ] || '',
+					version: match[ 2 ] || '0'
+				};
+
+				var browser = {};
+
+				if ( matched.browser ) {
+					browser[ matched.browser ] = true;
+					browser.version = matched.version;
+				}
+
+				if ( browser.chrome )
+					browser.webkit = true;
+				else if ( browser.webkit )
+					browser.safari = true;
+
+				return browser;
+			}
+
+			var browser = detectBrowser( navigator.userAgent );
+
 			// 스타일시트 로드가 완료되었음을 판단하는 방법이 브라우저마다 다르다.
-			if ( $.browser.msie ) {
+			if ( browser.msie ) {
 				link.onreadystatechange = function() {
 					if ( link.readyState == 'loaded' || link.readyState == 'complete' )	{
 						link.onreadystatechange = null;
@@ -28,7 +62,7 @@ define( [ 'jquery' ], function( $ ) {
 					}
 				};
 			}
-			else if ( $.browser.opera )
+			else if ( browser.opera )
 				link.onload = success;
 			else {
 			
@@ -37,7 +71,7 @@ define( [ 'jquery' ], function( $ ) {
 				var urlHostname = /http:/.test( url ) ? /^(\w+:)?\/\/([^\/?#]+)/.exec( url )[ 2 ] : hostname;
 				
 				// Mozilla에서 크로스도메인인 경우는 완료되었음을 판단하지 못하므로 바로 완료 처리한다.
-				if ( $.browser.mozilla && hostname != urlHostname )
+				if ( browser.mozilla && hostname != urlHostname )
 					success();
 				else
 					( function() {
