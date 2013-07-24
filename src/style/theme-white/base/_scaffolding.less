@@ -1,13 +1,24 @@
 //
 // Base
 // --------------------------------------------------
+@body-bg: #f6f6f6;
+@code-color: #be5543;
+@code-bg: #f6e4e1;
+body {
+  background-color: @body-bg;
+  color: @text-color;
+}
+
 ul, ol {
   padding: 0;
 }
 
-// disable highlight
-.btn {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+code {
+  padding: 2px 4px;
+  background-color: @code-bg;
+  color: @code-color;
+  white-space: nowrap;
+  font-size: 90%;
 }
 
 .blind {
