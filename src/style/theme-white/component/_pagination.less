@@ -6,6 +6,15 @@
     > li > a,
     > li > span {
       padding: 9/1.5px 14/1.37px;
+      border: none;
+      background: none;
+    }
+    > li:first-child > a,
+    > li:first-child > span,
+    > li:last-child > a,
+    > li:last-child > span{
+      border: 1px solid @pagination-border;
+      background-color: @pagination-bg;
     }
   }
 }

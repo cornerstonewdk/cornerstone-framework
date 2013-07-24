@@ -3,9 +3,9 @@
 // --------------------------------------------------
 .navbar-nav {
   > li > a > .glyphicon {
-    font-size: @font-size-base * 1.2;
     display: inline-block;
     margin: 0 5px 0 0;
+    font-size: @font-size-base * 1.2;
     line-height: 5px;
   }
 }
@@ -30,19 +30,12 @@
 }
 
 .navbar-mobile {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flexbox;
-
-  .navbar-mobile-list-style {
-    text-align: center;
-    padding: 0 0 5px 0;
-    border: 1px solid @table-border-color;
-    .flex();
-  }
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 
   > .active {
     background-color: @navbar-link-active-bg;
@@ -60,18 +53,81 @@
   }
 
   a {
-    text-decoration: none;
     color: @navbar-link-color;
+    text-decoration: none;
     > .glyphicon {
-      font-size: (@font-size-base * 1.5);
       display: block;
-      padding: 10px 0 0 0;
       margin-bottom: -5px;
+      padding: 10px 0 0 0;
+      font-size: (@font-size-base * 1.5);
     }
 
     &:hover:not(.active), &:focus:not(.active) {
-      color: @navbar-link-hover-color;
       background-color: @navbar-link-hover-bg;
+      color: @navbar-link-hover-color;
     }
   }
+
+  span.text {
+    padding: 0 2px;
+    .ellipsis();
+  }
+}
+
+// Fixed Navbar안의 Dropdown UI
+@media (max-width: 768px) {
+  .navbar[class*=navbar-fixed-] {
+    .dropdown-menu {
+      position: relative;
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      padding-left: 30px;
+      float: none;
+      & > li {
+        width: 100%;
+        & > a {
+          padding: 3px 20px 3px 5px;
+
+          &:hover, &:active {
+            color: @navbar-link-hover-color;
+            background: @navbar-link-hover-bg;
+          }
+        }
+      }
+
+      > li > a {
+        color: @navbar-link-color;
+        border-radius: @border-radius-base;
+      }
+      > li > a:hover,
+      > li > a:focus {
+        color: @navbar-link-hover-color;
+        background-color: @navbar-link-hover-bg;
+      }
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        color: @navbar-link-active-color;
+        background-color: @navbar-link-active-bg;
+      }
+      > .disabled > a,
+      > .disabled > a:hover,
+      > .disabled > a:focus {
+        color: @navbar-link-disabled-color;
+        background-color: @navbar-link-disabled-bg;
+      }
+
+    }
+  }
+}
+
+// Placeholder
+// --------------------------------------------------
+.navbar-mobile-list-style() {
+  text-align: center;
+  padding: 0 0 5px 0;
+  border: 1px solid @table-border-color;
+  width: 100%;
+  .flex();
 }

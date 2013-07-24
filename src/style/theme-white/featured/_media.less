@@ -1,0 +1,747 @@
+.mejs-container {
+  position: relative;
+  background: #000;
+  vertical-align: top;
+  text-align: left;
+}
+
+.me-plugin {
+  position: absolute;
+}
+
+.mejs-embed, .mejs-embed body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.mejs-container-fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.mejs-container-fullscreen .mejs-mediaelement, .mejs-container-fullscreen video {
+  width: 100%;
+  height: 100%;
+}
+
+.mejs-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mejs-mediaelement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mejs-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mejs-poster img {
+  display: block;
+  padding: 0;
+  border: 0;
+  border: 0;
+}
+
+.mejs-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mejs-overlay-play {
+  cursor: pointer;
+}
+
+.mejs-overlay-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  width: 100px;
+  height: 100px;
+  background: url("images/media-bigplay.png") no-repeat;
+}
+
+.mejs-overlay:hover .mejs-overlay-button {
+  background-position: 0 -100px;
+}
+
+.mejs-overlay-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -40px;
+  width: 80px;
+  height: 80px;
+  background: #333;
+  background: rgba(0, 0, 0, 0.9);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 50, 50, 0.9)), to(rgba(0, 0, 0, 0.9)));
+  background: -webkit-linear-gradient(top, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
+  background: -moz-linear-gradient(top, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
+  background: -o-linear-gradient(top, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
+  background: -ms-linear-gradient(top, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
+  background: linear-gradient(rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9));
+}
+
+.mejs-overlay-loading span {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+
+.mejs-container .mejs-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 30px;
+  background: none;
+  background: rgba(0, 0, 0, 0.7);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 50, 50, 0.7)), to(rgba(0, 0, 0, 0.7)));
+  background: -webkit-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: -moz-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: -o-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: -ms-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  list-style-type: none;
+}
+
+.mejs-container .mejs-controls div {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  background: none 0 0;
+  list-style-type: none;
+  font-size: 11px;
+  line-height: 11px;
+}
+
+.mejs-controls .mejs-button button {
+  position: absolute;
+  display: block;
+  margin: 7px 5px;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  background: transparent url("images/media-controls.png") no-repeat;
+  text-decoration: none;
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.mejs-controls .mejs-button button:focus {
+  outline: solid 1px yellow;
+}
+
+.mejs-container .mejs-controls .mejs-time {
+  display: block;
+  overflow: hidden;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 8px 3px 0 3px;
+  width: auto;
+  height: 17px;
+  color: #fff;
+  text-align: center;
+}
+
+.mejs-container .mejs-controls .mejs-time span {
+  display: block;
+  float: left;
+  margin: 1px 2px 0 0;
+  width: auto;
+  color: #fff;
+  font-size: 11px;
+  line-height: 12px;
+}
+
+.mejs-controls .mejs-play button {
+  background-position: 0 0;
+}
+
+.mejs-controls .mejs-pause button {
+  background-position: 0 -16px;
+}
+
+.mejs-controls .mejs-stop button {
+  background-position: -112px 0;
+}
+
+.mejs-controls div.mejs-time-rail {
+  padding-top: 5px;
+  width: 200px;
+}
+
+.mejs-controls .mejs-time-rail span {
+  position: absolute;
+  display: block;
+  width: 180px;
+  height: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-total {
+  margin: 5px;
+  background: #333;
+  background: rgba(50, 50, 50, 0.8);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(30, 30, 30, 0.8)), to(rgba(60, 60, 60, 0.8)));
+  background: -webkit-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: -moz-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: -o-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: -ms-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-buffering {
+  width: 100%;
+}
+
+@-webkit-keyframes buffering-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+
+@-moz-keyframes buffering-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+
+@-ms-keyframes buffering-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+
+@-o-keyframes buffering-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+
+@keyframes buffering-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-loaded {
+  width: 0;
+  background: #3caac8;
+  background: rgba(60, 170, 200, 0.8);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(44, 124, 145, 0.8)), to(rgba(78, 183, 212, 0.8)));
+  background: -webkit-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+  background: -moz-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+  background: -o-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+  background: -ms-linear-gradient(top, rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+  background: linear-gradient(rgba(44, 124, 145, 0.8), rgba(78, 183, 212, 0.8));
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-current {
+  width: 0;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(255, 255, 255, 0.9)), to(rgba(200, 200, 200, 0.8)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-handle {
+  position: absolute;
+  top: -2px;
+  display: none;
+  margin: 0;
+  width: 10px;
+  border: solid 2px #333;
+  border-radius: 5px;
+  background: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-float {
+  position: absolute;
+  top: -26px;
+  display: none;
+  margin-left: -18px;
+  width: 36px;
+  height: 17px;
+  border: solid 1px #333;
+  background: #eee;
+  color: #111;
+  text-align: center;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-float-current {
+  left: 0;
+  display: block;
+  margin: 2px;
+  width: 30px;
+  text-align: center;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-float-corner {
+  position: absolute;
+  top: 15px;
+  left: 13px;
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 5px #eee;
+  border-radius: 0;
+  line-height: 0;
+}
+
+.mejs-controls .mejs-fullscreen-button button {
+  background-position: -32px 0;
+}
+
+.mejs-controls .mejs-unfullscreen button {
+  background-position: -32px -16px;
+}
+
+.mejs-controls .mejs-mute button {
+  background-position: -16px -16px;
+}
+
+.mejs-controls .mejs-unmute button {
+  background-position: -16px 0;
+}
+
+.mejs-controls .mejs-volume-button {
+  position: relative;
+}
+
+.mejs-controls .mejs-volume-button .mejs-volume-slider {
+  position: absolute;
+  top: -115px;
+  left: 0;
+  z-index: 1;
+  display: none;
+  margin: 0;
+  width: 25px;
+  height: 115px;
+  border-radius: 0;
+  background: rgba(50, 50, 50, 0.7);
+}
+
+.mejs-controls .mejs-volume-button:hover {
+  border-radius: 0 0 4px 4px;
+}
+
+.mejs-controls .mejs-volume-button .mejs-volume-slider .mejs-volume-total {
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  margin: 0;
+  width: 2px;
+  height: 100px;
+  background: #ddd;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mejs-controls .mejs-volume-button .mejs-volume-slider .mejs-volume-current {
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  margin: 0;
+  width: 2px;
+  height: 100px;
+  background: #ddd;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mejs-controls .mejs-volume-button .mejs-volume-slider .mejs-volume-handle {
+  position: absolute;
+  top: -3px;
+  left: 4px;
+  margin: 0;
+  width: 16px;
+  height: 6px;
+  border-radius: 1px;
+  background: #ddd;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mejs-controls div.mejs-horizontal-volume-slider {
+  position: relative;
+  width: 60px;
+  height: 26px;
+}
+
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+  position: absolute;
+  top: 11px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 8px;
+  border-radius: 2px;
+  background: #333;
+  background: rgba(50, 50, 50, 0.8);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(30, 30, 30, 0.8)), to(rgba(60, 60, 60, 0.8)));
+  background: -webkit-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: -moz-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: -o-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: -ms-linear-gradient(top, rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(60, 60, 60, 0.8));
+  font-size: 1px;
+}
+
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+  position: absolute;
+  top: 11px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 8px;
+  border-radius: 2px;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(255, 255, 255, 0.9)), to(rgba(200, 200, 200, 0.8)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.8));
+  font-size: 1px;
+}
+
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+  display: none;
+}
+
+.mejs-controls .mejs-captions-button {
+  position: relative;
+}
+
+.mejs-controls .mejs-captions-button button {
+  background-position: -48px 0;
+}
+
+.mejs-controls .mejs-captions-button .mejs-captions-selector {
+  position: absolute;
+  right: -10px;
+  bottom: 26px;
+  visibility: hidden;
+  overflow: hidden;
+  padding: 10px;
+  width: 130px;
+  height: 100px;
+  border: solid 1px transparent;
+  border-radius: 0;
+  background: rgba(50, 50, 50, 0.7);
+}
+
+.mejs-controls .mejs-captions-button .mejs-captions-selector ul {
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.mejs-controls .mejs-captions-button .mejs-captions-selector ul li {
+  display: block;
+  overflow: hidden;
+  margin: 0 0 6px 0;
+  padding: 0;
+  color: #fff;
+  list-style-type: none;
+}
+
+.mejs-controls .mejs-captions-button .mejs-captions-selector ul li input {
+  float: left;
+  clear: both;
+  margin: 3px 3px 0 5px;
+}
+
+.mejs-controls .mejs-captions-button .mejs-captions-selector ul li label {
+  float: left;
+  padding: 4px 0 0 0;
+  width: 100px;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.mejs-controls .mejs-captions-button .mejs-captions-translations {
+  margin: 0 0 5px 0;
+  font-size: 10px;
+}
+
+.mejs-chapters {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 10000px;
+  -xborder-right: solid 1px #fff;
+}
+
+.mejs-chapters .mejs-chapter {
+  position: absolute;
+  float: left;
+  overflow: hidden;
+  border: 0;
+  background: #222;
+  background: rgba(0, 0, 0, 0.7);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 50, 50, 0.7)), to(rgba(0, 0, 0, 0.7)));
+  background: -webkit-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: -moz-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: -o-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: -ms-linear-gradient(top, rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.7));
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr=#323232, endColorstr=#000000);
+}
+
+.mejs-chapters .mejs-chapter .mejs-chapter-block {
+  display: block;
+  padding: 5px;
+  border-right: solid 1px #333;
+  border-bottom: solid 1px #333;
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.mejs-chapters .mejs-chapter .mejs-chapter-block-last {
+  border-right: none;
+}
+
+.mejs-chapters .mejs-chapter .mejs-chapter-block:hover {
+  background: #666;
+  background: rgba(102, 102, 102, 0.7);
+  background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(102, 102, 102, 0.7)), to(rgba(50, 50, 50, 0.6)));
+  background: -webkit-linear-gradient(top, rgba(102, 102, 102, 0.7), rgba(50, 50, 50, 0.6));
+  background: -moz-linear-gradient(top, rgba(102, 102, 102, 0.7), rgba(50, 50, 50, 0.6));
+  background: -o-linear-gradient(top, rgba(102, 102, 102, 0.7), rgba(50, 50, 50, 0.6));
+  background: -ms-linear-gradient(top, rgba(102, 102, 102, 0.7), rgba(50, 50, 50, 0.6));
+  background: linear-gradient(rgba(102, 102, 102, 0.7), rgba(50, 50, 50, 0.6));
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr=#666666, endColorstr=#323232);
+}
+
+.mejs-chapters .mejs-chapter .mejs-chapter-block .ch-title {
+  display: block;
+  margin: 0 0 3px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.mejs-chapters .mejs-chapter .mejs-chapter-block .ch-timespan {
+  display: block;
+  margin: 3px 0 4px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.mejs-captions-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.mejs-captions-layer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.mejs-captions-layer[lang=ar] {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.mejs-captions-position {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+}
+
+.mejs-captions-position-hover {
+  bottom: 45px;
+}
+
+.mejs-captions-text {
+  padding: 3px 5px;
+  background: rgba(20, 20, 20, 0.8);
+}
+
+.mejs-clear {
+  clear: both;
+}
+
+.me-cannotplay a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.me-cannotplay span {
+  display: block;
+  padding: 15px;
+}
+
+.mejs-controls .mejs-loop-off button {
+  background-position: -64px -16px;
+}
+
+.mejs-controls .mejs-loop-on button {
+  background-position: -64px 0;
+}
+
+.mejs-controls .mejs-backlight-off button {
+  background-position: -80px -16px;
+}
+
+.mejs-controls .mejs-backlight-on button {
+  background-position: -80px 0;
+}
+
+.mejs-controls .mejs-picturecontrols-button {
+  background-position: -96px 0;
+}
+
+.mejs-contextmenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  padding: 10px;
+  width: 150px;
+  border: solid 1px #999;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.mejs-contextmenu .mejs-contextmenu-separator {
+  margin: 5px 6px;
+  height: 1px;
+  background: #333;
+  font-size: 0;
+}
+
+.mejs-contextmenu .mejs-contextmenu-item {
+  padding: 4px 6px;
+  color: #333;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mejs-contextmenu .mejs-contextmenu-item:hover {
+  background: #2C7C91;
+  color: #fff;
+}
+
+.mejs-controls .mejs-sourcechooser-button {
+  position: relative;
+}
+
+.mejs-controls .mejs-sourcechooser-button button {
+  background-position: -128px 0;
+}
+
+.mejs-controls .mejs-sourcechooser-button .mejs-sourcechooser-selector {
+  position: absolute;
+  right: -10px;
+  bottom: 26px;
+  visibility: hidden;
+  overflow: hidden;
+  padding: 10px;
+  width: 130px;
+  height: 100px;
+  border: solid 1px transparent;
+  border-radius: 0;
+  background: rgba(50, 50, 50, 0.7);
+}
+
+.mejs-controls .mejs-sourcechooser-button .mejs-sourcechooser-selector ul {
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.mejs-controls .mejs-sourcechooser-button .mejs-sourcechooser-selector ul li {
+  display: block;
+  overflow: hidden;
+  margin: 0 0 6px 0;
+  padding: 0;
+  color: #fff;
+  list-style-type: none;
+}
+
+.mejs-controls .mejs-sourcechooser-button .mejs-sourcechooser-selector ul li input {
+  float: left;
+  clear: both;
+  margin: 3px 3px 0 5px;
+}
+
+.mejs-controls .mejs-sourcechooser-button .mejs-sourcechooser-selector ul li label {
+  float: left;
+  padding: 4px 0 0 0;
+  width: 100px;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.mejs-android .mejs-overlay-loading, .mejs-ios .mejs-overlay-loading {
+  display: none;
+}
