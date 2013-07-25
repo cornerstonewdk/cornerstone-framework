@@ -93,36 +93,70 @@ fieldset[disabled] .btn {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .32);
   border-color: ~"@{btn-@{state}-border-color}";
   .background-image(~"linear-gradient(bottom, @{gradient-start} 0%, @{gradient-end} 100%)");
-  &:active {
-    color: #FFF;
+
+  &:hover, &:focus, &.hover {
+    .box-shadow(~"0 3px 2px rgba(0,0,0,.09), inset 0 0 2px 0 #fff");
+    #btn-state > .hover(@state);
+  }
+
+  &:active, &.active {
     .box-shadow(~"inset 0 0 14px rgba(0,0,0,.3)");
-    .btn-state-active(@state);
+    #btn-state > .active(@state);
   }
 }
 
-.btn-state-active(@state) when (@state = primary) {
-  background-color: #2b93b9;
-  .background-image(~"linear-gradient(bottom, rgba(49,183,232,.72) 36.36%, rgba(49,183,232,.72) 36.88%, rgba(61,180,225,.72) 49.35%, rgba(19,127,167,.72) 106.6%, rgba(0,75,103,.72) 121.86%, rgba(0,75,103,.72) 136.36%)");
-}
+#btn-state {
+  // :hover, :focus, .hover
+  .hover(@state) when (@state = primary) {
+    border: 1px solid #359fc5;
+    .background-image(~"linear-gradient(bottom, #2a92b9 25%, #44b5e0 75%)");
+  }
 
-.btn-state-active(@state) when (@state = success) {
-  background-color: #4dad2f;
-  .background-image(~"linear-gradient(bottom, rgba(133,212,101,.72) 36.36%, rgba(133,212,101,.72) 36.88%, rgba(125,210,94,.72) 49.35%, rgba(64,161,33,.72) 105.87%, rgba(36,128,8,.72) 121.62%, rgba(36,128,8,.72) 136.36%)");
-}
+  .hover(@state) when (@state = success) {
+    border: 1px solid #439021;
+    .background-image(~"linear-gradient(bottom, #4cae2f 25%, #7fcb61 75%)");
+  }
 
-.btn-state-active(@state) when (@state = info) {
-  background-color: #3377c5;
-  .background-image(~"linear-gradient(bottom, rgba(95,162,244,.72) 36.36%, rgba(95,162,244,.72) 36.88%, rgba(87,156,240,.72) 48.86%, rgba(37,109,191,.72) 106.87%, rgba(2,57,120,.72) 121.86%, rgba(2,57,120,.72) 136.36%)");
-}
+  .hover(@state) when (@state = info) {
+    border: 1px solid #366fc5;
+    .background-image(~"linear-gradient(bottom, #3075c2 25%, #5897e6 75%)");
+  }
 
-.btn-state-active(@state) when (@state = warning) {
-  background-color: #b9952b;
-  .background-image(~"linear-gradient(bottom, rgba(231,193,80,.72) 36.36%, rgba(231,193,80,.72) 36.88%, rgba(228,189,68,.72) 49.35%, rgba(173,138,29,.72) 105.87%, rgba(128,96,3,.72) 121.62%, rgba(128,96,3,.72) 136.36%)");
-}
+  .hover(@state) when (@state = warning) {
+    border: 1px solid #c59f36;
+    .background-image(~"linear-gradient(bottom, #b8952a 25%, #ddb745 75%)");
+  }
 
-.btn-state-active(@state) when (@state = danger) {
-  background-color: #b74f3b;
-  .background-image(~"linear-gradient(bottom, rgba(223,108,93,.72) 36.36%, rgba(223,108,93,.72) 36.88%, rgba(226,109,93,.72) 49.35%, rgba(173,69,50,.72) 106.6%, rgba(111,25,9,.72) 121.86%, rgba(111,25,9,.72) 136.36%)");
+  .hover(@state) when (@state = danger) {
+    border: 1px solid #b24e3a;
+    .background-image(~"linear-gradient(bottom, #b7503c 25%, #e36d5e 75%)");
+  }
+
+  // :active, .active
+  .active(@state) when (@state = primary) {
+    background-color: #2b93b9;
+    .background-image(~"linear-gradient(bottom, rgba(49,183,232,.72) 36.36%, rgba(49,183,232,.72) 36.88%, rgba(61,180,225,.72) 49.35%, rgba(19,127,167,.72) 106.6%, rgba(0,75,103,.72) 121.86%, rgba(0,75,103,.72) 136.36%)");
+  }
+
+  .active(@state) when (@state = success) {
+    background-color: #4dad2f;
+    .background-image(~"linear-gradient(bottom, rgba(133,212,101,.72) 36.36%, rgba(133,212,101,.72) 36.88%, rgba(125,210,94,.72) 49.35%, rgba(64,161,33,.72) 105.87%, rgba(36,128,8,.72) 121.62%, rgba(36,128,8,.72) 136.36%)");
+  }
+
+  .active(@state) when (@state = info) {
+    background-color: #3377c5;
+    .background-image(~"linear-gradient(bottom, rgba(95,162,244,.72) 36.36%, rgba(95,162,244,.72) 36.88%, rgba(87,156,240,.72) 48.86%, rgba(37,109,191,.72) 106.87%, rgba(2,57,120,.72) 121.86%, rgba(2,57,120,.72) 136.36%)");
+  }
+
+  .active(@state) when (@state = warning) {
+    background-color: #b9952b;
+    .background-image(~"linear-gradient(bottom, rgba(231,193,80,.72) 36.36%, rgba(231,193,80,.72) 36.88%, rgba(228,189,68,.72) 49.35%, rgba(173,138,29,.72) 105.87%, rgba(128,96,3,.72) 121.62%, rgba(128,96,3,.72) 136.36%)");
+  }
+
+  .active(@state) when (@state = danger) {
+    background-color: #b74f3b;
+    .background-image(~"linear-gradient(bottom, rgba(223,108,93,.72) 36.36%, rgba(223,108,93,.72) 36.88%, rgba(226,109,93,.72) 49.35%, rgba(173,69,50,.72) 106.6%, rgba(111,25,9,.72) 121.86%, rgba(111,25,9,.72) 136.36%)");
+  }
 }
 
 .btn-disabled() {
