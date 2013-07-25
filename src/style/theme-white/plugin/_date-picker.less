@@ -1,0 +1,211 @@
+.bootstrap-datetimepicker-widget {
+  @white: #FFF;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+
+  display: none;
+  float: left;
+  margin: 2px 0 0;
+  margin-top: 1px;
+  padding: 4px;
+  padding: 5px 0;
+  min-width: 160px;
+  width: 250px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background-color: #FFF;
+  background-clip: padding-box;
+  .box-shadow(~"0 6px 12px rgba(0, 0, 0, 0.175)");
+  list-style: none;
+
+  &.pull-right {
+    &:before {
+      right: 6px;
+      left: auto;
+    }
+    &:after {
+      right: 7px;
+      left: auto;
+    }
+  }
+  >ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  li {
+    & > a {
+      display: block;
+      clear: both;
+      padding: 3px 20px;
+      color: #333;
+      white-space: nowrap;
+      font-weight: normal;
+      font-size: @font-size-base * 1.5;
+      line-height: 20px;
+      &:hover, &:focus {
+        color: @dropdown-link-hover-color;
+        text-decoration: none;
+        #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
+      }
+    }
+  }
+  .timepicker-hour, .timepicker-minute, .timepicker-second {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  table[data-hour-format="12"] .separator {
+    margin: 0;
+    padding: 0;
+    width: 4px;
+  }
+  .datepicker > div {
+    display: none;
+  }
+  .picker-switch {
+    text-align: center;
+  }
+  table {
+    margin: 0;
+    width: 100%;
+  }
+  td,
+  th {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  td {
+    &.day:hover,
+    &.hour:hover,
+    &.minute:hover,
+    &.second:hover {
+      background: @gray-lighter;
+      cursor: pointer;
+    }
+    &.old,
+    &.new {
+      color: @gray-light;
+    }
+    &.active,
+    &.active:hover {
+      #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
+      background-color: @btn-primary-bg;
+      color: #fff;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+    }
+    &.disabled,
+    &.disabled:hover {
+      background: none;
+      color: @gray-light;
+      cursor: not-allowed;
+    }
+    span {
+      display: block;
+      float: left;
+      margin: 2px;
+      width: 55px;
+      height: 55px;
+      border-radius: 4px;
+      line-height: 54px;
+      cursor: pointer;
+      &:hover {
+        background: @gray-lighter;
+      }
+      &.active {
+        #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
+        background-color: @btn-primary-bg;
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+      }
+      &.old {
+        color: @gray-light;
+      }
+      &.disabled,
+      &.disabled:hover {
+        background: none;
+        color: @gray-light;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  th {
+    &.switch {
+      width: 145px;
+    }
+    &.next,
+    &.prev {
+      font-size: @font-size-base * 1.5;
+    }
+    &.disabled,
+    &.disabled:hover {
+      background: none;
+      color: @gray-light;
+      cursor: not-allowed;
+    }
+  }
+
+  thead tr:first-child th {
+    cursor: pointer;
+    &:hover {
+      background: @gray-lighter;
+    }
+  }
+  /*.dow {
+  border-top: 1px solid #ddd !important;
+  }*/
+
+  a {
+    color: @text-color;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .btn {
+    color: @text-color;
+    &:hover {
+      color: @text-color;
+    }
+  }
+  .pp {
+    color: lighten(@text-color, 100%);
+    &:hover {
+
+    }
+  }
+}
+
+.input-append,
+.input-prepend {
+  &.date {
+    .add-on i {
+      display: block;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+.bootstrap-datetimepicker-widget.left-oriented {
+  &:before {
+    right: 6px;
+    left: auto;
+  }
+  &:after {
+    right: 7px;
+    left: auto;
+  }
+}
+
+.bootstrap-datetimepicker-widget {
+  .btn>.glyphicon {
+    font-size: 19px;
+  }
+}

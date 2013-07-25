@@ -1,0 +1,95 @@
+.scroll-header, .scroll-footer {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+
+.scroll-footer {
+  bottom: 0;
+}
+
+.scroll-footer .nav,
+.scroll-footer .nav-bot {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.scrollview {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  overflow: auto;
+  width: 100%;
+}
+
+.scroller {
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.lists header, .lists ul {
+  position: static;
+}
+
+.pull-down {
+  padding: 5px 10px;
+  color: #888;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.pull-up {
+  .pull-down;
+  margin-top: -20px;
+}
+
+.pull-down .pull-down-icon, .pull-up .pull-up-icon {
+  display: block;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background: url("images/scrollview-pull-icon.png") 0 0 no-repeat;
+  background-size: 40px 80px;
+  -webkit-transition-duration: 250ms;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-background-size: 40px 80px;
+}
+
+.pull-down .pull-down-icon {
+  -webkit-transform: rotate(0deg) translateZ(0);
+}
+
+.pull-up .pull-up-icon {
+  -webkit-transform: rotate(-180deg) translateZ(0);
+}
+
+.pull-down.flip .pull-down-icon {
+  -webkit-transform: rotate(-180deg) translateZ(0);
+}
+
+.pull-up.flip .pull-up-icon {
+  -webkit-transform: rotate(0deg) translateZ(0);
+}
+
+.pull-down.loading .pull-down-icon, .pull-up.loading .pull-up-icon {
+  background-position: 0 100%;
+  -webkit-transition-duration: 0ms;
+  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg) translateZ(0);
+  }
+}

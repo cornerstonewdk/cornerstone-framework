@@ -26,6 +26,7 @@
       "validation-view": "*",
       "gesture-view": "*",
       "multipage-router": "*",
+      "sync": "*",
       "device": "*",
       "logging": "*",
       "jsonp": "*",

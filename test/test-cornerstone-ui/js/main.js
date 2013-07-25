@@ -98,8 +98,7 @@
 		//
 		// Date Picker 플러그인
 		// --------------------------------------------------
-		$('#date-picker1, #date-picker2').length && $('#date-picker1, #date-picker2').datetimepicker({
-			language: "kr",
+		$("#date-picker1, #date-picker2").datetimepicker({
 			firstDisable: true,
 			changeDisplay: true
 		});

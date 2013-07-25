@@ -1,0 +1,56 @@
+//
+// Button
+// --------------------------------------------------
+.btn {
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #6a6a6a;
+  text-shadow: 0 1px 0 #fff;
+  font-weight: bold;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+  .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
+
+  &:hover, &:focus {
+    border: 1px solid #b6b6b6;
+    background-color: #fff;
+    color: #1f8fb9;
+    .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+    .background-image(~"linear-gradient(bottom, #e3e3e3 25%, #fff 74.74%, #fff 75%)");
+  }
+
+  &:active {
+    background-color: #fff;
+    color: #454545;
+    .box-shadow(~"inset 0 0 4px rgba(0,0,0,.55)");
+    .background-image(~"linear-gradient(bottom, rgba(216,216,216,.72) 36.36%, rgba(216,216,216,.72) 36.88%, rgba(202,202,202,.72) 49.08%, rgba(166,166,166,.72) 106.51%, rgba(48,48,48,.72) 122.08%, rgba(48,48,48,.72) 136.36%)");
+  }
+
+  .disabled,
+  &[disabled] {
+    .btn-disabled();
+  }
+
+  > .glyphicon {
+    display: inline-block;
+    padding: 2px 1px 3px 1px;
+    font-size: @font-size-base * 1.5;
+    line-height: 0;
+  }
+}
+
+.btn-link,
+fieldset[disabled] .btn {
+  .btn-disabled();
+}
+
+// Placeholder
+.btn-disabled() {
+  border: 1px solid #b6b6b6;
+  background-color: #fff;
+  color: #6a6a6a;
+  opacity: .5;
+  box-shadow: none;
+  text-shadow: none;
+}
