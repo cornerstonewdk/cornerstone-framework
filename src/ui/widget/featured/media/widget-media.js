@@ -49,8 +49,8 @@
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
             rate:"16:9",
-            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "./dist/ui/") + "flashmediaelement.swf",
-            silverlightName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "./dist/ui/") + "silverlightmediaelement.xap"
+            flashName: typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/flashmediaelement.swf" : undefined,
+            silverlightName: typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/silverlightmediaelement.xap" : undefined
         };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
@@ -147,7 +147,7 @@
             };
 
             mejs.Utility.encodeUrl = function (url) {
-                return url === "100%" ? url : encodeURIComponent(url);
+                return url === "100%" ? false : encodeURIComponent(url);
             };
             mePlayer = new mejs.MediaElementPlayer(this, options);
         });
@@ -158,7 +158,7 @@
         /**
          * DATA API (HTML5 Data Attribute)
          */
-        $("[data-featured=media]").each(function (i) {
+        $("[data-featured=media]").each(function () {
             var self = this;
             $(this)[pluginName]({
                 alwaysShowControls:true,
