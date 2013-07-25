@@ -17,7 +17,7 @@ $("[data-plugin='spinner']").on("click", function (e) {
     var target = $(this).data("spinnerTarget");
     window.setTimeout(function () {
         $(target).spinner("hide");
-    }, 30000);
+    }, 3000);
 });
 
 // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
