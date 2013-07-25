@@ -225,5 +225,5 @@ a
 .fixed_table {
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: pre;
+  white-space: pre-wrap;
 }
