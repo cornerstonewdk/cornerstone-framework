@@ -91,7 +91,8 @@
          */
         $(function () {
             $('[data-toggle=popover]').each(function () {
-                $(this).popover().live("click", function (e) {
+                $(this).popover();
+				$(document).on("click", $(this), function (e) {
                     e.preventDefault();
                 });
             });
