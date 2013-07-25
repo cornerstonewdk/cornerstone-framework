@@ -2494,10 +2494,16 @@
         <div class="col col-lg-6 col-12">
             <h3 class="title">Horizontal radio</h3>
 
-            <div class="btn-group" data-toggle="buttons-radio">
-                <button type="button" class="btn btn-default">List</button>
-                <button type="button" class="btn btn-default">Grid</button>
-                <button type="button" class="btn btn-default">Gallery</button>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option1"> List 1
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option2"> Grid 2
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option3"> Gallery 3
+                </label>
             </div>
         </div>
         <div class="col col-lg-6 col-12">
@@ -2764,6 +2770,7 @@
     <div class="col col-lg-12">
         <div class="col col-lg-6">
             <h3 class="title">DatePicker(입력상자):</h3>
+
             <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
                 <input size="16" type="text" value="2013-06-24" readonly>
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -2807,318 +2814,319 @@
 <!-- ScrollView
   ================================================== -->
 <section id="scroll-view" class="demo-scroll-view row" title="ScrollView">
-    <header class="page-header">
-        <h2 class="title">ScrollView</h2>
-    </header>
-    <div class="row">
-        <h3 class="title">기본 스크롤뷰</h3>
+<header class="page-header">
+    <h2 class="title">ScrollView</h2>
+</header>
+<div class="row">
+    <h3 class="title">기본 스크롤뷰</h3>
 
-        <div class="col col-12">
-            <div id="scrollView1" class="scrollview">
-                <div class="scroller">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                    </ul>
+    <div class="col col-12">
+        <div id="scrollView1" class="scrollview">
+            <div class="scroller">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3 class="title">Pull to refresh 스크롤뷰</h3>
+
+    <div class="col col-12">
+        <div id="scrollView2" class="scrollview">
+            <div class="scroller">
+                <div data-featured-scrollview="pullDown" class="pull-down">
+                    <span class="pull-down-icon"></span><span class="pull-down-label">아래로 당겨서 새로고침…</span>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                </ul>
+                <div data-featured-scrollview="pullUp" class="pull-up">
+                    <span class="pull-up-icon"></span><span class="pull-up-label">위로 당겨서 가져오기…</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <h3 class="title">Pull to refresh 스크롤뷰</h3>
+</div>
 
-        <div class="col col-12">
-            <div id="scrollView2" class="scrollview">
-                <div class="scroller">
-                    <div data-featured-scrollview="pullDown"  class="pull-down">
-                        <span class="pull-down-icon"></span><span class="pull-down-label">아래로 당겨서 새로고침…</span>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                    </ul>
-                    <div data-featured-scrollview="pullUp"  class="pull-up">
-                        <span class="pull-up-icon"></span><span class="pull-up-label">위로 당겨서 가져오기…</span>
-                    </div>
+
+<h3 class="title">겹치는 스크롤뷰</h3>
+
+<div class="row">
+    <div class="col col-12">
+        <div id="scrollView3" class="scrollview">
+            <div class="scroller">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-12">
+        <div id="scrollView4" class="scrollview">
+            <div class="scroller">
+                <div data-featured-scrollview="pullDown" class="pull-down">
+                    <span class="pull-down-icon"></span><span class="pull-down-label">아래로 당겨서 새로고침…</span>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">14</span>
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">2</span>
+                        Dapibus ac facilisis in
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="badge">1</span>
+                        Morbi leo risus
+                    </li>
+                </ul>
+                <div data-featured-scrollview="pullUp" class="pull-up">
+                    <span class="pull-up-icon"></span><span class="pull-up-label">위로 당겨서 가져오기…</span>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <h3 class="title">겹치는 스크롤뷰</h3>
-    <div class="row">
-        <div class="col col-12">
-            <div id="scrollView3" class="scrollview">
-                <div class="scroller">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-12">
-            <div id="scrollView4" class="scrollview">
-                <div class="scroller">
-                    <div data-featured-scrollview="pullDown" class="pull-down">
-                        <span class="pull-down-icon"></span><span class="pull-down-label">아래로 당겨서 새로고침…</span>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">14</span>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">2</span>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="badge">1</span>
-                            Morbi leo risus
-                        </li>
-                    </ul>
-                    <div data-featured-scrollview="pullUp" class="pull-up">
-                        <span class="pull-up-icon"></span><span class="pull-up-label">위로 당겨서 가져오기…</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 </section>
 
 <!-- ListView

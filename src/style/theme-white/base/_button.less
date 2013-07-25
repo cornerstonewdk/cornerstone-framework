@@ -2,15 +2,22 @@
 // Button
 // --------------------------------------------------
 .btn {
-  border: 1px solid #b6b6b6;
+  @btn-default-bg: #FFF;
+  @btn-default-color: #6a6a6a;
+  @btn-default-border: 1px solid #b6b6b6;
+
+  border: @btn-default-border;
   border-radius: 5px;
-  background-color: #fff;
-  color: #6a6a6a;
-  text-shadow: 0 1px 0 #fff;
+  background-color: @btn-default-bg;
+  color: @btn-default-color;
+  text-shadow: 0 1px 0 @btn-default-bg;
   font-weight: bold;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
-  .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
+  color: difference(@btn-default-bg, #1c1c1c);
+  // hsla(0, 100%, 100%, 1)
+  // hsla(0, 0%, 89%, 1)
+  .background-image(~"linear-gradient(bottom, #e3e3e3 0%, @{btn-default-bg} 99.49%, @{btn-default-bg} 100%)");
 
   &:hover, &:focus {
     border: 1px solid #b6b6b6;
