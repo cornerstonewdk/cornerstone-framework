@@ -253,7 +253,7 @@ HTML 코드
 
 자바스크립트 코드
 
-    $("#front .btn").live("click", function (e) {
+    $(document).on("click", "#front .btn", function (e) {
         var transitionType = $(this).attr("data-transition"),
             inTargetID = "#back",
             outTargetID = "#front";

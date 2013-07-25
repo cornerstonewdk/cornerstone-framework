@@ -5,7 +5,7 @@ define([
     function (Backbone, $, Transition) {
         return {
             init:function () {
-                $("#front .btn").live("click", function (e) {
+                $(document).on("click", "#front .btn", function (e) {
                     var transitionType = $(this).attr("data-transition"),
                         inTargetID = "#back",
                         outTargetID = "#front";
@@ -25,7 +25,7 @@ define([
                     });
                 });
 
-                $("#back .btn").live("click", function (e) {
+                $(document).on("click", "#back .btn", function (e) {
                     var transitionType = $(this).attr("data-transition"),
                         outTargetID = "#back",
                         inTargetID = "#front";
