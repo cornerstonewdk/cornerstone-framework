@@ -1,7 +1,7 @@
 require.config({
     paths:{ // path naming
         // Libs
-        "jquery":"../../../../dist/lib/jquery-1.8.1.min",
+        "jquery":"../../../../dist/lib/jquery-1.10.2.min",
         "bootstrap": "../../../../dist/lib/bootstrap/js/bootstrap.min",
         "SKT": "skt-css"
     },

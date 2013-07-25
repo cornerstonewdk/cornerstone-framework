@@ -14,8 +14,6 @@
      Alert 기능 확장 : Close할때 마크업 삭제가 아닌 display none/block 처리 추가
      */
     this.Alert = (function () {
-        var Alert;
-
         function Alert() {
         }
 
@@ -34,8 +32,6 @@
      스와이프 기능을 사용할 Carousel 영역에 data-slide="swipe" 를 선언하므로 작동
      */
     this.Carousel = (function () {
-        var Carousel;
-
         function Carousel() {
         }
 
@@ -44,22 +40,23 @@
         Carousel.prototype.activeSwipe = function () {
             var self;
             self = this;
-            this.$element.swipe().live("swipeLeft",function (e, swipeEventObj) {
+            this.$element.swipe();
+			$(document).on("swipeLeft", this.$element, function () {
                 if (!self.isActive) {
                     self.pause();
                     self.slide("next");
                     self.isActive = true;
                 }
-            }).live("swipeRight", function (e, swipeEventObj) {
+            }).on("swipeRight", this.$element, function () {
                     if (!self.isActive) {
                         self.pause();
                         self.slide("prev");
                         self.isActive = true;
                     }
                 });
-            this.$element.live("slide",function (e) {
+            $(document).on("slide", this.$element, function () {
                 return self.isActive = true;
-            }).live("slid", function (e) {
+            }).on("slid", this.$element, function () {
                     self.isActive = false;
                 });
         };
@@ -81,8 +78,6 @@
      Popover : DATA-API 방식을 추가함.
      */
     this.Popover = (function () {
-        var Popover;
-
         function Popover() {
         }
 
@@ -95,7 +90,7 @@
          DATA API 기능 추가 예정
          */
         $(function () {
-            $('[data-toggle=popover]').each(function (i) {
+            $('[data-toggle=popover]').each(function () {
                 $(this).popover().live("click", function (e) {
                     e.preventDefault();
                 });
@@ -107,8 +102,6 @@
      Tooltip : DATA-API 방식을 추가함.
      */
     this.Tooltip = (function () {
-        var Tooltip;
-
         function Tooltip() {
         }
 
@@ -137,7 +130,7 @@
     if(HAS_TOUCH) {
         Collapse.prototype.toggle =  function () {
             this.$element[0].style["WebkitTransition"] = "none";
-            this[this.$element.hasClass('in') ? 'hide' : 'show']()
+            this[this.$element.hasClass('in') ? 'hide' : 'show']();
 //            console.log("in");
 //            this.$element.hasClass('in') ? this.$element.removeClass('in') : this.$element.addClass('in');
         };
@@ -145,29 +138,29 @@
         Collapse.prototype.transition = function (method, startEvent, completeEvent) {
             var that = this
                 , complete = function () {
-                    if (startEvent.type == 'show') that.reset()
-                    that.transitioning = 0
-                    that.$element.trigger(completeEvent)
-                }
+                    if (startEvent.type == 'show') that.reset();
+                    that.transitioning = 0;
+                    that.$element.trigger(completeEvent);
+                };
 
-            this.$element.trigger(startEvent)
+            this.$element.trigger(startEvent);
 
-            if (startEvent.isDefaultPrevented()) return
+            if (startEvent.isDefaultPrevented()) return;
 
-            this.transitioning = 1
+            this.transitioning = 1;
 
-            this.$element[method]('in')
+            this.$element[method]('in');
 // Duration
 //            $.support.transition && this.$element.hasClass('collapse') ?
 //                this.$element.one($.support.transition.end, complete) :
-            complete()
+            complete();
         };
     }
     $.fn.collapse.Constructor = Collapse;
 
     if(HAS_TOUCH) {
         $(function() {
-            $(".dropdown-menu li").on("touchstart", function (e) {
+            $(".dropdown-menu li").on("touchstart", function () {
                 $(this).find("a").trigger("click");
                 return false;
             });

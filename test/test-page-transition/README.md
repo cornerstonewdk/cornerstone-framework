@@ -87,7 +87,7 @@ CSS
 -	일반 방식 
 
 		<!-- jQuery -->
-		<script type="text/javascript" src="cornerstone/lib/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="cornerstone/lib/jquery-1.10.2.min.js"></script>
 		<!-- 화면전환 Javascript -->
 		<script type="text/javascript" src="cornerstone/util/transition.js"></script>
 
