@@ -1,17 +1,15 @@
 .control-group {
   &.disabled {
     input {
-      background-image: url("images/bg-input-disabled.png");
       background-size: 5% 100%;
-      background-repeat: repeat;
+      background: url("images/bg-input-disabled.png") repeat;
     }
   }
 }
 
 input {
   &.focused {
-    outline: 0;
-    outline: thin dotted 9;
+    outline: thin dotted 9px;
     border-color: rgba(82, 168, 236, .8);
     .box-shadow(0 0 8px rgba(82, 168, 236, .6));
   }
@@ -37,16 +35,13 @@ input {
 
   & > span {
     white-space: pre-line;
-    word-break: break-word;
   }
   .arrow {
     position: absolute;
     display: block;
     width: 0;
     height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 11px;
+    border: 11px solid transparent;
   }
 
   &.top {
@@ -193,7 +188,7 @@ input {
   padding: 7px;
   border-radius: 25px;
   background-color: rgba(84, 84, 84, 0.14);
-  #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+  .gradient-vertical-without-color(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
 
   .flip-btn {
     position: relative;
