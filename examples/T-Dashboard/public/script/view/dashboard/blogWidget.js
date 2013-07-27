@@ -43,7 +43,7 @@
                     link: model.get("link")
                 });
             });
-            data.length && self.drawList(data);
+            data.length ? this.drawList(data) : this.defaultRender();
 
             // YQL 서버 통신
 			$.queryYQL(statement, 'json', undefined, function(data){
@@ -73,6 +73,16 @@
 
             // 중복된 모델이 아닌 경우만 콜렉션에 모델을 추가하여 로컬스토리지에 저장
             !duplicateModel && Blogs.create(blog);
+        },
+
+        defaultRender: function() {
+            this.drawList([
+                {"title":"SK텔레콤과 함께하는 특별한 하루 - 고나의 T나는 상담실","link":"http://blog.sktworld.co.kr/3712","guid":"http://blog.sktworld.co.kr/3712"},
+                {"title":"지금 게임 어플 대세는? 스마트폰 무료 게임 어플 Best5 – [T랭킹] 2013년 7월 4주","link":"http://blog.sktworld.co.kr/3711","guid":"http://blog.sktworld.co.kr/3711"},
+                {"title":"추억과 함께하는 마지막 트자타임 - TJ 오중석","link":"http://blog.sktworld.co.kr/3710","guid":"http://blog.sktworld.co.kr/3710"},
+                {"title":"[무한톡 콘서트] 사랑에 빠진 청춘! 고민이 있다면 버벌진트에게 물어봐~","link":"http://blog.sktworld.co.kr/3709","guid":"http://blog.sktworld.co.kr/3709"},
+                {"title":"2세대 넥서스7 및 안드로이드 4.3 발표, 눈에 띄는 특징은? - by T리포터 LiveREX","link":"http://blog.sktworld.co.kr/3708","guid":"http://blog.sktworld.co.kr/3708"}
+            ]);
         },
 		
 		/*
