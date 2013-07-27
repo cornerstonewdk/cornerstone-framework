@@ -46,6 +46,26 @@
   #table > .draw-state(info);
 }
 
+.table.table-bordered {
+  thead {
+    tr:last-child {
+      th {
+        border-bottom: @table-head-border-bottom;
+      }
+    }
+  }
+  tr {
+    & > th,
+    & > td {
+      border-left: none;
+      border-bottom: none;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
 
 // Placeholder
 #table {
