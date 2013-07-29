@@ -19,24 +19,27 @@
 
     Button.prototype.toggle = function () {
 
-       var $parent = this.$element.closest('[data-toggle="buttons"]')
+        var self = this.$element;
+        var $parent = self.closest('[data-toggle="buttons"]')
 
         if ($parent.length) {
             var $old = $parent.find('.active')
-            var $input = this.$element.find('input').prop('checked', !this.$element.hasClass('active'))
+            var $input = self.find('input').prop('checked', !self.hasClass('active'))
 
             if ($input.prop('type') === 'radio') {
                 $old.length && $parent.trigger( 'toggleOff.cs.button', $old );
                 $parent.find('.active').removeClass('active')
-                this.$element.toggleClass('active')
-                $parent.trigger( 'toggleOn.cs.button', this.$element );
+                self.toggleClass('active')
+                $parent.trigger( 'toggleOn.cs.button', self );
+            } else {
+                var flag = self.hasClass('active');
+                self.toggleClass('active');
+                flag ? $parent.trigger( 'toggleOff.cs.button', self ) : $parent.trigger( 'toggleOn.cs.button', self );
             }
-
-            if ($input.prop('type') === 'checkbox') {
-                var flag = this.$element.hasClass('active');
-                this.$element.toggleClass('active');
-                flag ? $parent.trigger( 'toggleOff.cs.button', this.$element ) : $parent.trigger( 'toggleOn.cs.button', this.$element );
-            }
+        } else {
+            var flag = self.hasClass('active');
+            self.toggleClass('active');
+            flag ? self.trigger( 'toggleOff.cs.button', self ) : self.trigger( 'toggleOn.cs.button', self );
         }
     };
 
