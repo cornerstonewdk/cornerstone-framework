@@ -78,8 +78,18 @@ html, body {
 .mT14 {margin:16% auto 0 auto;}
 
 /* 버튼 */
-.btn01 {font-size:2.0em; font-weight:bold; color:#fff; -webkit-border-radius:3px; border:2px solid #528fe9; outline:2px solid #a0c0d2; cursor:pointer; padding:3% 6%;
-background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#90b7f1), to(#90b7f1), color-stop(.6,#528fe9));}
+.btn01 {
+	font-size:2.0em; 
+	font-weight:bold; 
+	color:#fff; 
+	-webkit-border-radius:3px; 
+	border:2px solid #528fe9; 
+	outline:2px solid #a0c0d2; 
+	cursor:pointer; 
+	padding:3% 6%;
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#90b7f1), to(#90b7f1), color-stop(.6,#528fe9));
+	background-image: -moz-linear-gradient(top,  rgba(144,183,241,1) 0%, rgba(82,143,233,0.6) 100%);
+}
 
 .btn02 {font-size:2.0em; font-weight:bold; color:#fff; -webkit-border-radius:3px; border:2px solid #d550e9; outline:2px solid #ead2f0; cursor:pointer; padding:3% 6%;
 background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e07def), to(#e48ef1), color-stop(.6,#d85fea));}
