@@ -28,12 +28,18 @@
     <!-- include source files here... -->
     <script src="../../grunt-dist/src/widget/alert/widget-alert.js"></script>
     <script src="../../grunt-dist/src/widget/button/widget-button.js"></script>
+    <script src="../../grunt-dist/src/widget/carousel/widget-carousel.js"></script>
+    <script src="../../grunt-dist/src/widget/tooltip/widget-tooltip.js"></script>
+    <script src="../../grunt-dist/src/widget/popover/widget-popover.js"></script>
 
     <!-- Spec files -->
     <script src="spec/test.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- run mocha -->
     <script type="text/javascript" charset="utf-8">
+    $("a[href='#'], [type='submit']").on("click", function (e) {
+        e.preventDefault();
+    });
     // If tests run in a real browser
     // Can alternatively do a check on window.PHANTOMJS
     if (navigator.userAgent.indexOf('PhantomJS') < 0) {

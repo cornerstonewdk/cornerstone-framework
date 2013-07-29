@@ -33,36 +33,36 @@
         Carousel.prototype.activeSwipe = function () {
             var self;
             self = this;
-            this.$element.swipe().live("swipeLeft",function (e, swipeEventObj) {
+            this.$element.swipe();
+            $(document).on("swipeLeft", this.$element, function () {
                 if (!self.isActive) {
                     self.pause();
                     self.slide("next");
                     self.isActive = true;
                 }
-            }).live("swipeRight", function (e, swipeEventObj) {
-                    if (!self.isActive) {
-                        self.pause();
-                        self.slide("prev");
-                        self.isActive = true;
-                    }
-                });
-            this.$element.live("slide",function (e) {
+            }).on("swipeRight", this.$element, function () {
+                if (!self.isActive) {
+                    self.pause();
+                    self.slide("prev");
+                    self.isActive = true;
+                }
+            }).on("slide", this.$element, function () {
                 return self.isActive = true;
-            }).live("slid", function (e) {
-                    self.isActive = false;
-                });
+            }).on("slid", this.$element, function () {
+                self.isActive = false;
+            });
         };
 
         Carousel.prototype.pause = function (e) {
             e || (this.paused = true);
 
             if (this.$element.find('.next, .prev').length && $.support.transition.end) {
-            this.$element.trigger($.support.transition.end);
-            this.cycle(true);
+                this.$element.trigger($.support.transition.end);
+                this.cycle(true);
             }
 
             this.interval = clearInterval(this.interval);
-            this.$element.trigger( e = $.Event('pause.cs.carousel') );
+            this.$element.trigger( $.Event('pause.cs.carousel') );
             return this;
         }
 
@@ -74,7 +74,7 @@
             this.options.interval
             && !this.paused
             && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
-            && this.$element.trigger( e = $.Event('play.cs.carousel') );
+            && this.$element.trigger( $.Event('play.cs.carousel') );
 
             return this
         }
