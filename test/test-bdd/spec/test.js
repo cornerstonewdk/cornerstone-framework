@@ -41,18 +41,42 @@ describe( 'Cornerstone event extend test case', function() {
             
             $( '#mocha-fixture' ).append( radio );
 
-            radio.on( 'toggleOn.cs.button', function ( e ) {
-                console.log( 'toggleOn 발생' );
+            radio.on( 'toggleOn.cs.button', function ( e, el ) {
+                console.log( 'toggleOn 발생', el );
                 e.preventDefault();
                 expect(e).to.be.an('object');
-            } ).on( 'toggleOff.cs.button', function ( e ) {
-                console.log( 'toggleOff 발생' );
+            } ).on( 'toggleOff.cs.button', function ( e, el ) {
+                console.log( 'toggleOff 발생', el );
                 e.preventDefault();
                 expect(e).to.be.an('object');
             } );
+        } );
 
-
+        it( '체크박스 버튼 그룹의 toggleOn 이벤트', function () {
+            var checkboxHTML = '<div class="btn-group" data-toggle="buttons">'
+                + '<label class="btn btn-primary">'
+                + '<input type="checkbox"> checkbox 1'
+                + '</label>'
+                + '<label class="btn btn-primary">'
+                + '<input type="checkbox"> checkbox 2'
+                + '</label>'
+                + '<label class="btn btn-primary">'
+                + '<input type="checkbox"> checkbox 3'
+                + '</label>'
+                + '</div>';
+            var checkbox = $( checkboxHTML ).button();
             
+            $( '#mocha-fixture' ).append( checkbox );
+
+            checkbox.on( 'toggleOn.cs.button', function ( e, el ) {
+                console.log( 'toggleOn 발생', el );
+                e.preventDefault();
+                expect(e).to.be.an('object');
+            } ).on( 'toggleOff.cs.button', function ( e, el ) {
+                console.log( 'toggleOff 발생', el );
+                e.preventDefault();
+                expect(e).to.be.an('object');
+            } );
         } );
     } );
 
