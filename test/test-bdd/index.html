@@ -21,7 +21,7 @@
     // Setup
     mocha.setup('bdd');
     mocha.reporter('html');
-    // mocha.setup({ignoreLeaks: true});
+    mocha.setup({ignoreLeaks: true});
     var expect = chai.expect;
     </script>
 
@@ -31,7 +31,9 @@
     <script src="../../grunt-dist/src/widget/carousel/widget-carousel.js"></script>
     <script src="../../grunt-dist/src/widget/tooltip/widget-tooltip.js"></script>
     <script src="../../grunt-dist/src/widget/popover/widget-popover.js"></script>
+    <script src="../../grunt-dist/src/widget/touch/widget-touch.js"></script>
     <script src="../../grunt-dist/src/widget/rangeInput/widget-rangeinput.js"></script>
+    <script src="../../grunt-dist/src/widget/sign/widget-sign.js"></script>
 
     <!-- Spec files -->
     <script src="spec/test.js" type="text/javascript" charset="utf-8"></script>

@@ -198,10 +198,10 @@ describe( 'Cornerstone event extend test case', function() {
 
     describe( 'widget-tooltip', function () {
         var tooltipHTML = '<div class="bs-example-tooltips btn-group">'
-            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Tooltip on top</button>'
-            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right">Tooltip on right</button>'
-            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">Tooltip on bottom</button>'
-            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="" data-original-title="Tooltip on left">Tooltip on left</button>'
+            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on top">Tooltip on top</button>'
+            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" data-original-title="Tooltip on right">Tooltip on right</button>'
+            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">Tooltip on bottom</button>'
+            + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" data-original-title="Tooltip on left">Tooltip on left</button>'
             + '</div></br></br>';
 
         var tooltip = $( tooltipHTML ).tooltip( { container: 'body' } );
@@ -233,22 +233,22 @@ describe( 'Cornerstone event extend test case', function() {
 
     describe( 'widget-popover', function () {
         var popoverHTML = '<div class="bs-example-popover btn-group">'
-            + '<a href="#" class="btn btn-large btn-danger" data-toggle="popover" title="" data-content="And here\'s some amazing content. It\'s very engaging. right?" data-original-title="A Title">Click to toggle popover</a>'
-            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">'
+            + '<a href="#" class="btn btn-large btn-danger" data-toggle="popover" data-content="And here\'s some amazing content. It\'s very engaging. right?" data-original-title="A Title">Click to toggle popover</a>'
+            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">'
             + '  Popover on top'
             + '</button>'
-            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">'
+            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">'
             + '  Popover on right'
             + '</button>'
-            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">'
+            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">'
             + '  Popover on bottom'
             + '</button>'
-            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">'
+            + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">'
             + '  Popover on left'
             + '</button>'
             + '</div></br></br>';
 
-        var popover = $( popoverHTML ).popover( { container: 'body' } );
+        var popover = $( popoverHTML ).popover();
     
         $( '#mocha-fixture' ).append( popover );
 
@@ -273,5 +273,86 @@ describe( 'Cornerstone event extend test case', function() {
                 expect( e.type ).to.be.equal( 'hidden' );
             } ).find( 'button' ).click().click();
         } );
+    } );
+    
+    describe( 'widget-rageinput', function () {
+        var rangeInputHTML0 = '<input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"' 
+            + 'class="widget-range"/><br/>';
+        var rangeInputHTML1 = '<input type="range" data-plugin="rangeinput" value="10" min="0" max="100" class="widget-range"'
+            + 'data-range-options=\'{"inputShow":false,"progress":true}\'/><br/>'
+        var rangeInputHTML2 = '<input id="range3" type="range" value="99999" min="0" max="99999" step="1000" '
+           + 'class="widget-range max-10000"/><br/>';
+            
+        $( '#mocha-fixture' ).append( rangeInputHTML0 ).append( rangeInputHTML1 ).append( rangeInputHTML2 );
+        $( '#range3' ).rangeinput( { 'inputShow': true } );
+
+        it( 'start, move, end 이벤트', function () {
+            $( 'input[data-plugin="rangeinput"], #range3' ).on( 'start.cs.rangeInput', function ( e ) {
+                console.log( 'start', e );
+                expect( e ).to.be.an.instanceof( $.Event );
+                expect( e.type ).to.be.equal( 'start' );
+            } ).on( 'move.cs.rangeInput', function ( e ) {
+                console.log( 'move', e );
+                expect( e ).to.be.an.instanceof( $.Event );
+                expect( e.type ).to.be.equal( 'move' );
+            } ).on( 'end.cs.rangeInput', function ( e ) {
+                console.log( 'end', e );
+                expect( e ).to.be.an.instanceof( $.Event );
+                expect( e.type ).to.be.equal( 'end' );
+            } )
+            // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
+        } );
+    } );
+
+    describe( 'widget-sign', function () {
+        var signHTML = '<section id="sign" title="Sign" class="row">'
+            + '<header class="page-header">'
+            + '<h2 class="title">Sign</h2>'
+            + '</header>'
+            + '<div class="col col-lg-12">'
+            + '<div class="widget-sign">'
+            + '<div id="signature" class="sign"></div>'
+            + '<div id="tools">'
+            + '<button class="btn btn-default show-sign">이미지로 보기</button>'
+            + '<button class="btn btn-danger reset-sign">리셋하기</button>'
+            + '</div>'
+            + '<div class="widget-sign-viewer" title="이미지를 보여줄 영역"></div>'
+            + '</div>'
+            + '</div>'
+            + '</section>';
+
+        $( '#mocha-fixture' ).append( signHTML );
+        var signature = $( '#signature' ).sign();
+
+        $("button.show-sign").on('click', function (e) {
+            var data = $("#signature").sign("getData", "image"); // Base64 형태의 이미지 데이터 리턴
+            $("div.widget-sign-viewer").html($("<img/>", {
+                src: "data:" + data
+            }));
+        });
+
+        // 초기화
+        $("button.reset-sign").on('click', function (e) {
+            $("#signature").sign("reset"); // 초기화
+            $(".widget-sign-viewer img").remove();
+        });
+
+        it( 'start, move, end 이벤트', function () {
+            signature.on( 'start.cs.sign', function ( e ) {
+                console.log( 'start', e );
+                expect( e ).to.be.an.instanceof( $.Event );
+                expect( e.type ).to.be.equal( 'start' );
+            } ).on( 'move.cs.sign', function ( e ) {
+                console.log( 'move', e );
+                expect( e ).to.be.an.instanceof( $.Event );
+                expect( e.type ).to.be.equal( 'move' );
+            } ).on( 'end.cs.sign', function ( e ) {
+                console.log( 'end', e );
+                expect( e ).to.be.an.instanceof( $.Event );
+                expect( e.type ).to.be.equal( 'end' );
+            } );
+        } );
+
+
     } );
 } );
