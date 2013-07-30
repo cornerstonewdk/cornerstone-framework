@@ -1,0 +1,66 @@
+//
+// Thumbnails
+// --------------------------------------------------
+
+// Base classes
+// For thumbnail block-level composite components and simple image styles
+
+// The actual thumbnailed element
+// Can be `a`, `div`, or `img`
+.thumbnail,
+.img-thumbnail {
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  &:after {
+    position: absolute;
+    bottom: -15px;
+    left: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 34px;
+    background: url("images/image-shadow.png") no-repeat 0 0;
+    background-size: 100% 34px;
+    content: "";
+  }
+
+  &.gray {
+    padding: 20px 15px 0 15px;
+    border: 1px solid #cbcbcb;
+    border-radius: 0 0 5px 5px;
+    .box-shadow(~"inset 0 0 4px #fff");
+    .background-image(~"linear-gradient(bottom, #f8f8f8 0%, #e3e3e3 7.5%, #fff 36.25%, #fff 100%)");
+    background-color: #cbcbcb;
+  }
+
+  .mask {
+    position: relative;
+    & > img {
+      border-radius: 0 0 5px 5px;
+    }
+    &:after {
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      content: "";
+      .box-shadow(~"0 0 3px #fff, inset 0 3px 4px rgba(0,0,0,.19)");
+    }
+  }
+
+  & > img {
+    border-radius: 5px;
+  }
+}
+
+@media (min-width: 992px) {
+  .thumbnail,
+  .img-thumbnail {
+    &:after {
+      bottom: 5px;
+    }
+  }
+}

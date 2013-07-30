@@ -1,5 +1,9 @@
 (function ($, window, document, undefined) {
 
+
+    var a = 1;
+
+    var b = a;
 	$(function () {
 		// 설정되지 않은 링크 기능 방지
 		$("a[href='#'], [type='submit']").on("click", function (e) {
