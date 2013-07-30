@@ -1,0 +1,36 @@
+.list-group {
+  border-radius: 5px;
+  .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+}
+
+.list-group-item {
+  border-color: #c1c1c1;
+
+  &.active {
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0,0,0,.32);
+    background-color: #cbcbcb;
+    .background-image(~"linear-gradient(bottom, #2a92b9 0%, #40aad2 100%)");
+  }
+
+  & >.label {
+    float: right;
+    margin-right: -15px;
+  }
+
+  .pull-right {
+    margin-right: -15px;
+    .label {
+      display: inline-block;
+    }
+    .badge, .label  {
+      margin-top: -6px;
+    }
+  }
+
+  .glyphicon {
+    display: inline-block;
+    padding-top: 4px;
+  }
+}
