@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Mocha Spec Runner</title>
     <link rel="stylesheet" href="css/mocha.css" type="text/css" charset="utf-8" />
-    <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
-    <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-dark/cornerstone.css"/>
+    <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css" />
+    <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-dark/cornerstone.css" />
 </head>
+
 <body>
     <!-- Required for browser reporter -->
     <div id="mocha"></div>
     <div id="mocha-fixture"></div>
     <script src="../../grunt-dist/lib/jquery/jquery-2.0.2.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../grunt-dist/lib/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../grunt-dist/lib/infinity/infinity.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../grunt-dist/lib/wysihtml5/wysihtml5-0.3.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../grunt-dist/lib/Datatables/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/mocha.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/chai.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
     // Setup
     mocha.setup('bdd');
     mocha.reporter('html');
-    mocha.setup({ignoreLeaks: true});
+    mocha.setup({
+        ignoreLeaks: true
+    });
     var expect = chai.expect;
     </script>
 
@@ -34,16 +41,20 @@
     <script src="../../grunt-dist/src/widget/touch/widget-touch.js"></script>
     <script src="../../grunt-dist/src/widget/rangeInput/widget-rangeinput.js"></script>
     <script src="../../grunt-dist/src/widget/sign/widget-sign.js"></script>
+    <script src="../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha.js"></script>
+    <script src="../../grunt-dist/src/widget/listview/widget-listview.js"></script>
+    <script src="../../grunt-dist/src/widget/editor/widget-editor.js"></script>
+    <script src="../../grunt-dist/src/widget/datatable/widget-datatable.js"></script>
 
     <!-- Spec files -->
     <script src="spec/test.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- run mocha -->
     <script type="text/javascript" charset="utf-8">
-    $( document ).on( 'click', 'a[href="#"], [type="submit"]', function ( e ) {
+    $(document).on('click', 'a[href="#"], [type="submit"]', function(e) {
         e.preventDefault();
-    } );
-    
+    });
+
     // If tests run in a real browser
     // Can alternatively do a check on window.PHANTOMJS
     if (navigator.userAgent.indexOf('PhantomJS') < 0) {
@@ -51,4 +62,5 @@
     }
     </script>
 </body>
+
 </html>

@@ -546,10 +546,10 @@
 			"image": true,
 			events: {
 				"load": function() {
-	                $( this.textareaElement ).trigger( e = $.Event('load.cs.editor') );
+	                $( this.textareaElement ).trigger( $.Event('load.cs.editor') );
 	            },
 	            "blur": function() {
-	                $( this.textareaElement ).trigger( e = $.Event('blur.cs.editor') );
+	                $( this.textareaElement ).trigger( $.Event('blur.cs.editor') );
 	            }
 			},
 			parserRules: {
@@ -620,7 +620,7 @@
 		this.iscroll = new iScroll(this.$el.attr("id"), options);
 
 	};
-
+ 
 	Plugin.prototype.refresh = function () {
 		this.iscroll.refresh();
 	};
