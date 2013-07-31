@@ -2,8 +2,8 @@
 // NavBar
 // --------------------------------------------------
 .navbar {
-  padding-left: 5px;
   padding-right: 5px;
+  padding-left: 5px;
   border: 1px solid #b6b6b6;
   .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
   .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
@@ -15,8 +15,8 @@
       border-right: 1px solid #b6b6b6;
       &:hover, &:focus {
         color: #1f8fb9;
-        font-weight: bold;
         text-shadow: 0 0 2px #fff;
+        font-weight: bold;
       }
       &:active {
         .navbar-nav-active();
@@ -41,6 +41,94 @@
 
 .navbar-brand {
   margin-left: 0;
+}
+
+.navbar-mobile {
+  .flex-box();
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: none;
+
+  & > .active,
+  & > li:active,
+  & > a:active {
+    background-color: #2d95bb;
+    .box-shadow(~"inset 0 2px 7px rgba(0,0,0,.55)");
+    .background-image(~"linear-gradient(to bottom, rgba(12,59,85,0.52) 0%,rgba(12,59,85,0.62) 2%,rgba(28,109,152,0.62) 30%,rgba(58,166,219,0.42) 87%,rgba(52,169,228,0.32) 100%)");
+    a, span, .glyphicon {
+      color: @text-color-inverse;
+    }
+  }
+
+  & > li,
+  & > a {
+    list-style-type: none;
+    display: block;
+    border: 1px solid #a8a8a8;
+    .navbar-mobile-list-style();
+    .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+    .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &:not(:first-child) {
+      border-left: none;
+    }
+  }
+
+  a {
+    color: @navbar-link-color;
+    text-decoration: none;
+    > .glyphicon {
+      display: block;
+      margin-bottom: -5px;
+      padding: 10px 0 0 0;
+      font-size: (@font-size-base * 1.5);
+    }
+
+    &:hover:not(.active), &:focus:not(.active) {
+      color: #1f8fb9;
+    }
+  }
+
+  span.text {
+    padding: 0 2px;
+    .ellipsis();
+  }
+
+  &.navbar-mobile-primary {
+    & > li,
+    & > a {
+      border: 1px solid #24749c;
+      color: @text-color-inverse;
+      .navbar-mobile-list-style();
+      .box-shadow(~"0 3px 2px rgba(0,0,0,.09), inset 0 0 2px 0 #fff");
+      .background-image(~"linear-gradient(bottom, #2a81ac, #3b9bc9)");
+    }
+
+    a {
+      &:hover:not(.active), &:focus:not(.active) {
+        color: @text-color-inverse;
+        background-color: #fff;
+        .background-image(~"linear-gradient(top, #46b3e8, #308ab6)");
+      }
+    }
+
+    & > .active,
+    & > li:active,
+    & > a:active {
+      background-color: #2d95bb;
+      .box-shadow(~"inset 0 2px 7px rgba(0,0,0,.55)");
+
+    }
+  }
 }
 
 // Fixed Navbar안의 Dropdown UI
@@ -96,7 +184,6 @@
 .navbar-mobile-list-style() {
   text-align: center;
   padding: 0 0 5px 0;
-  border: 1px solid @table-border-color;
   width: 100%;
   .flex();
 }
@@ -104,7 +191,7 @@
 .navbar-nav-active() {
   color: #454545;
   font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(255,255,255,.54);
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, .54);
   .box-shadow(~"inset 0 0 7px rgba(0,0,0,.55)");
   .background-image(~"linear-gradient(bottom, rgba(216,216,216,.72) 36.36%, rgba(216,216,216,.72) 36.88%, rgba(202,202,202,.72) 49.08%, rgba(166,166,166,.72) 106.51%, rgba(48,48,48,.72) 122.08%, rgba(48,48,48,.72) 136.36%)");
 }
