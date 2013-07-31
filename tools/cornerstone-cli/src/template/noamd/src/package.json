@@ -1,0 +1,10 @@
+{
+  "jam": {
+    "baseUrl": "scripts",
+    "packageDir": "cornerstone",
+    "dependencies": {
+      "bootstrap": "*",
+      "backbone": "*"
+    }
+  }
+}
