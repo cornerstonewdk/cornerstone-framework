@@ -20,9 +20,13 @@
       text-decoration: none;
       text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
     }
+    + li:before {
+      content: "";
+      padding: 0 5px 0 0;
+    }
     &:after {
       display: inline-block;
-      margin-left: 15px; // Unicode space added since inline-block means non-collapsing white-space
+      margin-left: 20px; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
       color: #ccc;
       content: "\00a0 /";
