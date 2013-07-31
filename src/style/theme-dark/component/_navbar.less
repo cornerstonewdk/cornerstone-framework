@@ -7,12 +7,13 @@
   background: url(images/noisy-texture-100x100.png) repeat left top #35363a;
   color: #C0C0C0;
   font-size: @font-size-base;
-  & > .navbar-inner {
+  &:after {
     margin: 0 -15px;
     padding-right: 15px;
     padding-left: 15px;
     #gradient > .vertical(rgba(255, 255, 255, 0.01), 0%, rgba(255, 255, 255, 0.05), 100%);
     .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)");
+    content: "";
   }
 
   .nav {
@@ -64,6 +65,10 @@
       }
     }
   }
+
+  .navbar-form {
+    margin-bottom: 0;
+  }
 }
 
 .navbar-nav {
@@ -72,6 +77,8 @@
     margin: 3px 5px 0 0;
     font-size: @font-size-base * 1.2;
     line-height: 5px;
+    position: relative;
+    top: 3px;
   }
 }
 

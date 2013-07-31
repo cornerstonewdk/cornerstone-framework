@@ -100,14 +100,14 @@ function doTask( command, options ) {
 
 		// 모든 패키지를 설치하도록 설정
 		if ( _.contains( options, '--fullpackage' ) )
-			grunt.file.copy( __dirname + '/../template/fullpackage/package.json', './package.json' );
+			grunt.file.copy( __dirname + '/../template/fullpackage/package.json', './src/package.json' );
 
 		grunt.log.oklns( '기본 파일들이 모두 생성되었습니다.' );
 		grunt.log.oklns( '필요한 라이브러리들을 내려받고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다.' );
 
 		var c1 = cp.exec( 'npm install', function( err, stdout, stderr ) {
 
-			var c2 = cp.exec( 'jam install', function( err, stdout, stderr ) {
+			var c2 = cp.exec( 'jam install', { cwd: './src' }, function( err, stdout, stderr ) {
 				grunt.log.oklns( '라이브러리를 모두 내려받았습니다.' );
 			} );
 

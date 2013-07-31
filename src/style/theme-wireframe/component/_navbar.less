@@ -2,20 +2,30 @@
 // NavBar
 // --------------------------------------------------
 .navbar-nav {
-  > li > a > .glyphicon {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    font-size: @font-size-base * 1.2;
-    line-height: 5px;
+  & > li > a {
+    & > .glyphicon {
+      display: inline-block;
+      margin: 0 5px 0 0;
+      font-size: @font-size-base * 1.2;
+      line-height: 5px;
+      position: relative;
+      top: 3px;
+      &:before {
+        line-height: 0;
+      }
+    }
   }
+
 }
 
 .navbar-icon {
   li {
-    > a {
+    & > a {
       font-size: 0;
-      > .glyphicon {
-        line-height: 0;
+      & > .glyphicon,
+      & > .glyphicon:before {
+        position: relative;
+        top: 4px;
       }
     }
   }
@@ -26,6 +36,10 @@
         font-size: @font-size-base;
       }
     }
+  }
+
+  .navbar-form {
+    margin-bottom: 0;
   }
 }
 
