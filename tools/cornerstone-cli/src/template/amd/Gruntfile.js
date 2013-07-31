@@ -26,18 +26,18 @@ module.exports = function( grunt ) {
 		cssmin: {
 			dist: {
 				expand: true,
-				cwd: '<%= path.src %>/styles',
+				cwd: '<%= path.src %>/app',
 				src: '**/*.css',
-				dest: '<%= path.dist %>/styles'
+				dest: '<%= path.dist %>/app'
 			}
 		},
 
 		uglify: {
 			dist: {
 				expand: true,
-				cwd: '<%= path.src %>/scripts',
+				cwd: '<%= path.src %>/app',
 				src: '**/*.js',
-				dest: '<%= path.dist %>/scripts'
+				dest: '<%= path.dist %>/app'
 			}
 		},
 
@@ -45,7 +45,7 @@ module.exports = function( grunt ) {
 			dist: {
 				expand: true,
 				cwd: '<%= path.src %>',
-				src: [ 'cornerstone/**/*', 'images/**/*', 'styles/fonts/**/*', '**/*.html' ],
+				src: [ 'cornerstone/**/*', '**/images/**/*', '**/fonts/**/*', '**/*.html', '**/*.template' ],
 				dest: '<%= path.dist %>'
 			}
 		},
@@ -92,15 +92,15 @@ module.exports = function( grunt ) {
 				livereload: true
 			},
 			scripts: {
-				files: '<%= path.src %>/scripts/**/*.js',
+				files: '<%= path.src %>/app/**/*.js',
 				tasks: [ 'uglify' ]
 			},
 			styles: {
-				files: '<%= path.src %>/styles/**/*.css',
+				files: '<%= path.src %>/app/**/*.css',
 				tasks: [ 'cssmin' ]
 			},
 			rest: {
-				files: [ '<%= path.src %>/cornerstone/**/*', '<%= path.src %>/images/**/*', '<%= path.src %>/styles/fonts/**/*', '<%= path.src %>/**/*.html' ],
+				files: [ '<%= path.src %>/cornerstone/**/*', '<%= path.src %>/**/images/**/*', '<%= path.src %>/**/fonts/**/*', '<%= path.src %>/**/*.html', '<%= path.src %>/**/*.template' ],
 				tasks: [ 'copy' ]
 			}
 		},

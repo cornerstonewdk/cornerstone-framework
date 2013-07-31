@@ -1,6 +1,6 @@
 {
   "jam": {
-    "baseUrl": "scripts",
+    "baseUrl": "app",
     "packageDir": "cornerstone",
     "dependencies": {
       "launcher": "*",
