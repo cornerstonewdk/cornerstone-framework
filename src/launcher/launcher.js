@@ -21,10 +21,10 @@
 	}
 	
 	/**
-	 * Cornerstone Root Path로 Library Path를 구한다.
+	 * Launcher가 존재하는 Path로 Library Path를 구한다.
 	 */
 	function getLibPath( path ) {
-		return path + 'lib/';
+		return path + '../';
 	}
 
 	// script 태그들을 검색하고, data-target 속성을 추출한다.
@@ -48,7 +48,7 @@
 			
 			// Cornerstone 전역 객체를 만든다.
 			global.Cornerstone = global.CS = {
-				VERSION: '1.0',
+				VERSION: '2.0',
 				PATH: loc.path + path,
 				PATH_LIB: loc.path + pathLib,
 				App: {
