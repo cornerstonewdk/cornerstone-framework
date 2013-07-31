@@ -1,3 +1,3 @@
 [submodule "src/style/bootstrap3"]
 	path = src/style/bootstrap3
-	url = https://github.com/twitter/bootstrap.git
+	url = https://github.com/twbs/bootstrap.git
