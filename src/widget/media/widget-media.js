@@ -51,7 +51,6 @@
             rate: "16:9",
             pauseOtherPlayers: false
         };
-        console.log($(this).data());
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
             // 4:3, 16:9, 16:10 비율 옵션 추가
