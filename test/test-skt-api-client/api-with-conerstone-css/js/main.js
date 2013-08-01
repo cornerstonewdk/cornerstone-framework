@@ -20,8 +20,14 @@ require.config({
 require( ['SKT'], function ( sk ) {
     var client_auth_token = undefined;
     var paymentFlag = false;
+    /* localtest 용
+    $( '#redirectUri' ).val( 'http://localhost/html5/cornerstone-framework/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
+    $( '#clientId' ).val( 3 );
+    */
 
-    $( '#redirectUri' ).val( 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
+    // 실서버 예제
+    $( '#redirectUri' ).val( 'http://cornerstone.sktelecom.com/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
+    $( '#clientId' ).val( 4 );
 
     $( 'ul > li' ).on( 'click', function () {
         var name = $( this ).attr( 'name' );
