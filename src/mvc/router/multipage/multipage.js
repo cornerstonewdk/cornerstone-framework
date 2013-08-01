@@ -4,13 +4,43 @@
  * Backbone.Router를 확장하여 여러 페이지로 구성된 웹앱에서 라우팅을 통하여 페이지 이동이 쉽도록 지원한다.
  * 기존의 Router와는 다르게 routes 속성 대신 pages 속성으로 라우팅을 정의한다.
  */
-define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], function( Backbone, _, $, Transition ) {
+
+( function( root, factory ) {
+
+	// Require.js가 있을 경우
+	if ( typeof define === 'function' && define.amd )
+		define( [ 'backbone', 'underscore', 'jquery', 'transition' ], factory );
+	else
+		root.MultipageRouter = factory( root.Backbone, root._, root.$, root.Transition );
+
+} )( window, function( Backbone, _, $, Transition ) {
 
 	return Backbone.Router.extend( {
 		
 		constructor: function( attributes, options ) {
 		
 			var self = this;
+
+			// Data Attribute를 사용하면 기존 pages 속성은 삭제되고, 마크업에 의해서 pages 속성이 다시 작성된다.
+			if ( this.useDataAttributes ) {
+
+				this.pages = {};
+
+				_.each( $( '[data-url],[data-default-page]' ), function( value, key ) {
+
+					var defaultPage = $( value ).attr( 'data-default-page' );
+					var url = $( value ).attr( 'data-url' );
+					var fragments = [];
+
+					if ( defaultPage == 'true' ) fragments.push( '' );
+					if ( url ) fragments.push( url );
+
+					self.pages[ 'page' + key ] = {
+						fragment: fragments,
+						el: value
+					};
+				} );
+			}
 			
 			/* routes 대신 pages 속성으로 라우팅을 정의한다.
 			 * 해당 페이지가 시작되면 먼저 render가 실행되고, Transition이 일어난 후, active가 실행된다.
@@ -170,7 +200,11 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 		// 현재 페이지의 render callback을 실행한다.
 		runRender: function() {
 		
-			if ( !this.currentPage || !this.currentPage.render ) return;
+			if ( !this.currentPage ) return;
+
+			$( this.currentPage.el ).trigger( 'render', _.values( arguments ) );
+		
+			if ( !this.currentPage.render ) return;
 			
 			// render는 함수 또는 함수 이름을 지정할 수 있다.
 			var renderCallback = _.isFunction( this.currentPage.render ) ? this.currentPage.render : this[ this.currentPage.render ];
@@ -181,7 +215,11 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 		// 현재 페이지의 active callback을 실행한다.
 		runActive: function() {
 		
-			if ( !this.currentPage || !this.currentPage.active ) return;
+			if ( !this.currentPage ) return;
+
+			$( this.currentPage.el ).trigger( 'active', _.values( arguments ) );
+		
+			if ( !this.currentPage.active ) return;
 			
 			// active는 함수 또는 함수 이름을 지정할 수 있다.
 			var activeCallback = _.isFunction( this.currentPage.active ) ? this.currentPage.active : this[ this.currentPage.active ];
@@ -192,7 +230,11 @@ define( [ 'backbone', 'underscore', 'jquery', 'transition', 'jquery.hammer' ], f
 		// 현재 페이지의 inactive callback을 실행한다.
 		runInactive: function( nextPageId ) {
 		
-			if ( !this.currentPage || !this.currentPage.inactive ) return;
+			if ( !this.currentPage ) return;
+
+			$( this.currentPage.el ).trigger( 'inactive', _.values( arguments ) );
+		
+			if ( !this.currentPage.inactive ) return;
 			
 			// inactive는 함수 또는 함수 이름을 지정할 수 있다.
 			var inactiveCallback = _.isFunction( this.currentPage.inactive ) ? this.currentPage.inactive : this[ this.currentPage.inactive ];
