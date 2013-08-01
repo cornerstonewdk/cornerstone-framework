@@ -4,7 +4,6 @@
     <title>Cornerstone UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <script type="text/javascript" src="js/vendor/modernizr.js"></script>
     <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
     <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-white/cornerstone.css"/>
@@ -787,7 +786,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form pull-right" action="">
+                    <form class="navbar-form pull-right" action="#">
                         <input type="text" class="form-control col-lg-8" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
@@ -839,7 +838,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form pull-right" action="">
+                    <form class="navbar-form pull-right" action="#">
                         <input type="text" class="form-control col-lg-8" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
@@ -2806,7 +2805,7 @@
             <h3 class="title">DatePicker(입력상자):</h3>
 
             <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
-                <input size="16" type="text" value="2013-06-24" readonly>
+                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
@@ -2815,7 +2814,7 @@
 
             <div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                <input size="16" type="text" value="2013-06-24" readonly>
+                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
             </div>
         </div>
     </div>
@@ -3271,7 +3270,7 @@
         <div class="col col-lg-12">
             <div class="panel">
                 <div class="panel-heading">MP4</div>
-                <video width="100%" height="100%" data-featured="media">
+                <video data-featured="media" data-option-width="100%" data-option-height="100%">
                     <source type="video/mp4" src="http://pseudo01.hddn.com/vod/demo.flowplayervod/bbb-800.mp4"/>
                 </video>
             </div>
@@ -3281,17 +3280,15 @@
         <div class="col col-lg-12">
             <div class="panel">
                 <div class="panel-heading">MP3</div>
-                <audio width="100%" controls="control" data-featured="media"
-                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"
-                       type="audio/mp3"/>
+                <audio data-featured="media" data-option-width="100%"
+                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
             </div>
         </div>
-    </div>
-    <div class="row">
+
         <div class="col col-lg-4">
             <div class="panel">
                 <div class="panel-heading">MP4</div>
-                <video width="100%" height="100%" data-featured="media">
+                <video data-featured="media" data-option-width="100%" data-option-height="100%">
                     <source type="video/mp4" src="http://pseudo01.hddn.com/vod/demo.flowplayervod/bbb-800.mp4"/>
                 </video>
             </div>
@@ -3299,7 +3296,7 @@
         <div class="col col-lg-4">
             <div class="panel">
                 <div class="panel-heading">Youtube</div>
-                <video width="100%" height="100%" data-featured="media">
+                <video data-featured="media" data-option-width="100%" data-option-height="100%">
                     <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI"/>
                 </video>
             </div>
@@ -3308,8 +3305,8 @@
             <div class="panel">
                 <div class="panel-heading">Radio</div>
                 <!--<audio width="100%" controls="control" data-featured="media"-->
-                       <!--src="http://109.74.195.10:8000/stream.mp3?redirected=1"-->
-                       <!--type="audio/mp4"/>-->
+                <!--src="http://109.74.195.10:8000/stream.mp3?redirected=1"-->
+                <!--type="audio/mp4"/>-->
             </div>
         </div>
     </div>
