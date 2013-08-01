@@ -12,7 +12,6 @@
 .navbar-nav:not(.pull-right) {
   & > li {
     & > a {
-      border-right: 1px solid #b6b6b6;
       &:hover, &:focus {
         color: #1f8fb9;
         text-shadow: 0 0 2px #fff;
@@ -39,9 +38,15 @@
   line-height: 5px;
 }
 
-.navbar-brand {
-  margin-left: 0;
+@media screen and (min-width: 768px) {
+  .navbar-brand {
+    margin-left: 0;
+  }
+  .navbar-nav:not(.pull-right) > li > a {
+    border-right: 1px solid #b6b6b6;
+  }
 }
+
 
 .navbar-mobile {
   .flex-box();
@@ -126,7 +131,6 @@
     & > a:active {
       background-color: #2d95bb;
       .box-shadow(~"inset 0 2px 7px rgba(0,0,0,.55)");
-
     }
   }
 }
