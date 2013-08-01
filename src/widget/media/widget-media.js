@@ -12,7 +12,7 @@
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
         define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
-            factory($, root, doc);
+            factory($, root);
             return Backbone.View.extend({
                 tagName: 'div',
 
@@ -41,14 +41,15 @@
         // Browser globals
         factory(root.jQuery, root, doc);
     }
-}(this, document, function ($, window, document, undefined) {
+}(window, document, function ($, window, undefined) {
     var mePlayer;
     var pluginName = "featuredMedia";
 
     $.fn[pluginName] = function (options) {
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
-            rate: "16:9"
+            rate: "16:9",
+            pauseOtherPlayers: false
         };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
@@ -131,6 +132,18 @@
                 }
             };
 
+            mejs.MediaElementPlayer.prototype.updateDuration = function() {
+                var t = this;
+
+                //Toggle the long video class if the video is longer than an hour.
+                t.container.toggleClass("mejs-long-video", t.media.duration > 3600);
+
+                if (t.durationD && (t.options.duration > 0 || t.media.duration)) {
+                    t.durationD.html(mejs.Utility.secondsToTimeCode(t.options.duration > 0 ? t.options.duration : (isFinite(t.media.duration) ? t.media.duration : 0 ),
+                        t.options.alwaysShowHours, t.options.showTimecodeFrameCount, t.options.framesPerSecond || 25));
+                }
+            };
+
             mejs.PluginMediaElement.prototype.setVideoSize = function (width, height) {
 
                 //if (this.pluginType == 'flash' || this.pluginType == 'silverlight') {
@@ -147,6 +160,7 @@
             mejs.Utility.encodeUrl = function (url) {
                 return url === "100%" ? false : encodeURIComponent(url);
             };
+
             mePlayer = new mejs.MediaElementPlayer(this, options);
         });
     };
@@ -156,7 +170,7 @@
         /**
          * DATA API (HTML5 Data Attribute)
          */
-        $("[data-featured=media]").each(function (i) {
+        $("[data-featured=media]").each(function () {
             var self = this;
             $(this)[pluginName]({
                 alwaysShowControls: true,
