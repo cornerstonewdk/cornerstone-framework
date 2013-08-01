@@ -62,44 +62,38 @@ module.exports = function ( grunt ) {
 					},
 					{
 						expand: true,
-						flatten: true,
-						filter: 'isFile',
-						src: [ '<%= path.source %>style/images/**' ],
+						cwd: '<%= path.source %>style/images/',
+						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/theme-dark/images'
 					},
 					{
 						expand: true,
-						flatten: true,
-						filter: 'isFile',
-						src: [ '<%= path.source %>style/images/**' ],
+						cwd: '<%= path.source %>style/images/',
+						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/theme-white/images'
 					},
 					{
 						expand: true,
-						flatten: true,
-						filter: 'isFile',
-						src: [ '<%= path.source %>style/images/**' ],
+						cwd: '<%= path.source %>style/images/',
+						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/theme-wireframe/images'
 					},
 					{
 						expand: true,
-						flatten: true,
-						filter: 'isFile',
-						src: [ '<%= path.source %>style/images/**' ],
+						cwd: '<%= path.source %>style/images/',
+						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/skin-cerulean/images'
 					},
 					{
 						expand: true,
-						flatten: true,
-						filter: 'isFile',
-						src: [ '<%= path.source %>style/images/**' ],
+						cwd: '<%= path.source %>style/images/',
+						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/skin-flatly/images'
 					},
 					{
 						expand: true,
-						flatten: true,
-						filter: 'isFile',
-						src: [ '<%= path.source %>style/images/**' ],
+						cwd: '<%= path.source %>style/images/',
+						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/skin-united/images'
 					}
 				]
