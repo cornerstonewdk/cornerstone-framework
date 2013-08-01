@@ -71,6 +71,6 @@ body {
     height: 200px;
 }
 
-.panel > div:not(.panel-heading) {
+.panel .mejs-container {
   margin: 0 auto;
 }
