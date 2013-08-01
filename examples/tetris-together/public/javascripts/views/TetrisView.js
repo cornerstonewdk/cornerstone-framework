@@ -200,8 +200,8 @@ define(
 			},
 			
 			//키 이벤트 수신시 처리 메서드
-			pressedKey: function(key) {
-				switch(key.keyCode) {
+			pressedKey: function(event) {
+				switch(event.keyCode) {
 					case 37:
 						if(this.tetris != null){
 							event.preventDefault();
