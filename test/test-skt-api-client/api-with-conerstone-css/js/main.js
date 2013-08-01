@@ -27,7 +27,6 @@ require( ['SKT'], function ( sk ) {
 
     // 실서버 예제
     $( '#redirectUri' ).val( 'http://cornerstone.sktelecom.com/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
-    $( '#clientId' ).val( 4 );
 
     $( 'ul > li' ).on( 'click', function () {
         var name = $( this ).attr( 'name' );

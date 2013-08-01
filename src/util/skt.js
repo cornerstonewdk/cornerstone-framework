@@ -17,7 +17,7 @@
 
 	// 상수 선언
 	// server url은 향후 https 프로토콜로 통신
-	var SERVER_URL = 'http://61.250.22.139:80';
+	var SERVER_URL = 'http://cornerstone.sktelecom.com/';
 	
 	// 변수 선언
 	var authorize_uri = SERVER_URL + '/oauth/authorize',
