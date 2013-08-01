@@ -39,7 +39,7 @@
         } else {
             var flag = self.hasClass('active');
             self.toggleClass('active');
-            flag ? self.trigger( 'toggleOff.cs.button', self ) : self.trigger( 'toggleOn.cs.button', self );
+            flag ? self.trigger( $.Event( 'toggleOff.cs.button' ) ) : self.trigger( $.Event( 'toggleOn.cs.button' ) );
         }
     };
 

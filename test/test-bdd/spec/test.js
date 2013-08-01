@@ -7,109 +7,197 @@ describe('Cornerstone event extend test case', function() {
     });
 
     describe('widget-button', function() {
+        
         var buttonHTML = '<button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button></br></br>';
         var button = $(buttonHTML).button();
-
         $('#mocha-fixture').append(button);
-        it('싱글 토글 버튼에 toggleOn, toggleOff 이벤트', function() {
-            button.on('toggleOn.cs.button', function(e) {
-                // console.log( '싱글 토글 버튼 toggleOn 발생' );
-                e.preventDefault();
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('toggleOn');
-            }).on('toggleOff.cs.button', function(e) {
-                // console.log( '싱글 토글 버튼 toggleOff 발생' );
-                e.preventDefault();
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('toggleOff');
-            }).click().click();
-        });
 
+        describe( 'single toggle button', function () {
+
+            it('버튼 클릭시 toggleOn 이벤트가 발생해야 한다.', function( done ) {
+                button.on('toggleOn.cs.button', function(e) {
+                    // console.log( '싱글 토글 버튼 toggleOn 발생' );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    // TODO namespace가 cs.button이 아닌 button.cs가 나온다?
+                    // expect(e.namespace).to.be.equal('cs.button');
+                    done();
+                }).click();
+            });
+
+            it('toggleOn 이벤트 발생 후 엘레멘트가 .active 가지고 있어야 한다.', function () {
+                expect(button.hasClass('active')).to.be.ok;
+            } );
+
+            it('이미 토글되어 있는 버튼 클릭시 toggleOff 이벤트가 발생해야 한다.', function( done ) {
+                button.on('toggleOff.cs.button', function(e) {
+                    // console.log( '싱글 토글 버튼 toggleOff 발생' );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOff');
+                    // expect(e.namespace).to.be.equal('cs.button');
+                    done();
+                }).click();
+            });
+
+            it('toggleOn 이벤트 발생 후 엘레멘트가 .active 가지고 있지 않아야 한다.', function () {
+                expect(button.hasClass('active')).to.not.be.ok;
+            } );
+        } );
+        
         var radioHTML = '<div class="btn-group" data-toggle="buttons">' + '<label class="btn btn-primary">' + '<input type="radio" name="options" id="option1"> Option 1' + '</label>' + '<label class="btn btn-primary">' + '<input type="radio" name="options" id="option2"> Option 2' + '</label>' + '<label class="btn btn-primary">' + '<input type="radio" name="options" id="option3"> Option 3' + '</label>' + '</div></br></br>';
         var radio = $(radioHTML).button();
         $('#mocha-fixture').append(radio);
 
-        it('라디오 버튼 그룹의 toggleOn 이벤트', function() {
-            radio.on('toggleOn.cs.button', function(e, el) {
-                // console.log( 'toggleOn 발생', el );
-                e.preventDefault();
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('toggleOn');
-                expect(el).to.not.be.undefined;
-            }).on('toggleOff.cs.button', function(e, el) {
-                // console.log( 'toggleOff 발생', e, el );
-                e.preventDefault();
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('toggleOff');
-                expect(el).to.not.be.undefined;
-            });
+        var radioLabel0 = radio.find('label:eq(0)');
+        var radioLabel1 = radio.find('label:eq(1)');
+        var radioLabel2 = radio.find('label:eq(2)');
 
-            var radioLabel0 = radio.find('label:eq(0)');
-            var radioLabel1 = radio.find('label:eq(1)');
-            var radioLabel2 = radio.find('label:eq(2)');
+        describe( 'radio button', function () {
+            it( '첫번째 라디오 버튼 클릭 시 toggleOn 이벤트가 발생하여야 한다.', function ( done ) {
+                radio.on('toggleOn.cs.button', function(e, el) {
+                    // console.log( 'toggleOn 발생', el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    expect(el).to.not.be.undefined;
+                    // console.log( el );
+                    done();
+                });
+                radio.find('label:eq(0)').click();
+            } );
 
-            radioLabel0.click();
-            expect(radioLabel0.hasClass('active')).to.be.ok;
+            it( '첫번째 라디오 버튼은 .active를 가져야하며 나머지는 .active를 가지면 안된다.', function () {
+                expect(radioLabel0.hasClass('active')).to.be.ok;
+                expect(radioLabel1.hasClass('active')).to.not.be.ok;
+                expect(radioLabel2.hasClass('active')).to.not.be.ok;
+            } );
 
-            radioLabel1.click();
-            expect(radioLabel0.hasClass('active')).to.not.be.ok;
-            expect(radioLabel1.hasClass('active')).to.be.ok;
+            it( '두번째 라디오 버튼을 클릭 시 toggleOff와 toggleOn이 동시에 발생하여야 한다.', function ( done ) {
+                radio.on('toggleOff.cs.button', function(e, el) {
+                    // console.log( 'toggleOff 발생', e, el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOff');
+                    expect(el).to.not.be.undefined;
+                    done();
+                });
+                radioLabel1.click();
+            } );
 
-            radioLabel2.click();
-            expect(radioLabel0.hasClass('active')).to.not.be.ok;
-            expect(radioLabel1.hasClass('active')).to.not.be.ok;
-            expect(radioLabel2.hasClass('active')).to.be.ok;
-        });
+            it( '두번째 라디오 버튼은 .active를 가져야하며 나머지는 .active를 가지면 안된다.', function () {
+                expect(radioLabel0.hasClass('active')).to.not.be.ok;
+                expect(radioLabel1.hasClass('active')).to.be.ok;
+                expect(radioLabel2.hasClass('active')).to.not.be.ok;
+            } );
+
+            it( '두번째 라디오 버튼 다시 클릭했을때 두번째 라디오 버튼은 .active를 유지야 해야 하며 나머지는 .active를 가지면 안된다.', function () {
+                radioLabel1.click();
+                expect(radioLabel0.hasClass('active')).to.not.be.ok;
+                expect(radioLabel1.hasClass('active')).to.be.ok;
+                expect(radioLabel2.hasClass('active')).to.not.be.ok;
+            } );
+        } );
 
         var checkboxHTML = '<div class="btn-group" data-toggle="buttons">' + '<label class="btn btn-primary">' + '<input type="checkbox"> checkbox 1' + '</label>' + '<label class="btn btn-primary">' + '<input type="checkbox"> checkbox 2' + '</label>' + '<label class="btn btn-primary">' + '<input type="checkbox"> checkbox 3' + '</label>' + '</div></br></br>';
         var checkbox = $(checkboxHTML).button();
-
         $('#mocha-fixture').append(checkbox);
-        it('체크박스 버튼 그룹의 toggleOn 이벤트', function() {
-            checkbox.on('toggleOn.cs.button', function(e, el) {
-                // console.log( 'toggleOn 발생', el );
-                e.preventDefault();
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('toggleOn');
-                expect(el).to.not.be.undefined;
-            }).on('toggleOff.cs.button', function(e, el) {
-                // console.log( 'toggleOff 발생', el );
-                e.preventDefault();
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('toggleOff');
-                expect(el).to.not.be.undefined;
+
+        var checkLabel0 = checkbox.find('label:eq(0)');
+        var checkLabel1 = checkbox.find('label:eq(1)');
+        var checkLabel2 = checkbox.find('label:eq(2)');
+
+        describe( 'checkbox', function () {
+            it( '첫번째 체크 박스를 클릭했을 때 toggleOn 이벤트가 발생하여야 한다.', function ( done ) {
+                checkbox.on('toggleOn.cs.button', function(e, el) {
+                    // console.log( 'toggleOn 발생', el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    expect(el).to.not.be.undefined;
+                    done();
+                });
+                checkLabel0.click();
+            } );
+
+            it( '첫번째 체크 박스가 .active를 가져야 하며 나머지는 .active를 가지면 안된다.', function () {
+                expect(checkLabel0.hasClass('active')).to.be.ok;
+                expect(checkLabel1.hasClass('active')).to.not.be.ok;
+                expect(checkLabel2.hasClass('active')).to.not.be.ok;
+            } );
+
+            it('선택된 첫번째 체크 박스를 클릭했을 때 toggleOff 이벤트가 발생하여야 한다.', function ( done ) {
+                checkbox.on('toggleOff.cs.button', function(e, el) {
+                    // console.log( 'toggleOff 발생', el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOff');
+                    expect(el).to.not.be.undefined;
+                    done();
+                });
+                checkLabel0.click();
+            } );
+
+            it( '.active를 가진 체크박스가 존재하면 안된다.', function () {
+                expect(checkLabel0.hasClass('active')).to.not.be.ok;
+                expect(checkLabel1.hasClass('active')).to.not.be.ok;
+                expect(checkLabel2.hasClass('active')).to.not.be.ok;
+            } );
+
+            it('세번째 체크 박스를 클릭했을 때 toggleOn 이벤트가 발생하여야 하고 해당 체크박스만 .active를 가져야 한다..', function( done ) {
+                checkbox.off('toggleOn.cs.button').off('toggleOff.cs.button');
+
+                checkbox.on('toggleOn.cs.button', function(e, el) {
+                    // console.log( 'toggleOn 발생', el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    expect(el).to.not.be.undefined;
+                    expect(checkLabel0.hasClass('active')).to.not.be.ok;
+                    expect(checkLabel1.hasClass('active')).to.not.be.ok;
+                    expect(checkLabel2.hasClass('active')).to.be.ok;
+                    done();
+                });
+                checkLabel2.click();
             });
 
-            var checkLabel0 = checkbox.find('label:eq(0)');
-            var checkLabel1 = checkbox.find('label:eq(1)');
-            var checkLabel2 = checkbox.find('label:eq(2)');
+            it('두번째 체크 박스를 클릭했을 때 toggleOn 이벤트가 발생하여야 하고 두번째, 세번째 체크박스가 .active를 가져야 한다.', function ( done ) {
+                checkbox.off('toggleOn.cs.button').off('toggleOff.cs.button');
 
-            checkLabel0.click();
-            expect(checkLabel0.hasClass('active')).to.be.ok;
-            expect(checkLabel1.hasClass('active')).to.not.be.ok;
-            expect(checkLabel2.hasClass('active')).to.not.be.ok;
+                checkbox.on('toggleOn.cs.button', function(e, el) {
+                    // console.log( 'toggleOn 발생', el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    expect(el).to.not.be.undefined;
+                    expect(checkLabel0.hasClass('active')).to.not.be.ok;
+                    expect(checkLabel1.hasClass('active')).to.be.ok;
+                    expect(checkLabel2.hasClass('active')).to.be.ok;
+                    done();
+                });
+                checkLabel1.click(); 
+            } );
 
-            checkLabel1.click();
-            expect(checkLabel0.hasClass('active')).to.be.ok;
-            expect(checkLabel1.hasClass('active')).to.be.ok;
-            expect(checkLabel2.hasClass('active')).to.not.be.ok;
+            it('세번째 체크 박스를 클릭했을 때 toggleOff 이벤트가 발생하여야 하고 두번째 체크박스만 .active를 가져야 한다.', function ( done ) {
+                checkbox.off('toggleOn.cs.button').off('toggleOff.cs.button');
+                // 
+                checkbox.on('toggleOff.cs.button', function(e, el) {
+                    // console.log( 'toggleOff 발생', el );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOff');
+                    expect(el).to.not.be.undefined;
+                    expect(checkLabel0.hasClass('active')).to.not.be.ok;
+                    expect(checkLabel1.hasClass('active')).to.be.ok;
+                    expect(checkLabel2.hasClass('active')).to.not.be.ok;
+                    done();
+                });
+                checkLabel2.click(); 
+            } );
 
-            checkLabel1.click();
-            expect(checkLabel0.hasClass('active')).to.be.ok;
-            expect(checkLabel1.hasClass('active')).to.not.be.ok;
-            expect(checkLabel2.hasClass('active')).to.not.be.ok;
 
-            checkLabel2.click();
-            expect(checkLabel0.hasClass('active')).to.be.ok;
-            expect(checkLabel1.hasClass('active')).to.not.be.ok;
-            expect(checkLabel2.hasClass('active')).to.be.ok;
-
-            checkLabel0.click();
-            expect(checkLabel0.hasClass('active')).to.not.be.ok;
-            expect(checkLabel1.hasClass('active')).to.not.be.ok;
-            expect(checkLabel2.hasClass('active')).to.be.ok;
-
-        });
+        } );
     });
 
     describe('widget-carousel', function() {
