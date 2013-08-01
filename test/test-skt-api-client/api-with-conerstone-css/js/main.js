@@ -21,7 +21,7 @@ require( ['SKT'], function ( sk ) {
     var client_auth_token = undefined;
     var paymentFlag = false;
 
-    $( '#redirectUri' ).val( 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
+    $( '#redirectUri' ).val( 'http://cornerstone.sktelecom.com/cornertest/test-skt-api-client/api-with-conerstone-css/client_redirect.html' );
 
     $( 'ul > li' ).on( 'click', function () {
         var name = $( this ).attr( 'name' );
