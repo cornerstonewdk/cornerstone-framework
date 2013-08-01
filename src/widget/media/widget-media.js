@@ -14,18 +14,18 @@
         define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
             factory($, root, doc);
             return Backbone.View.extend({
-                tagName:'div',
+                tagName: 'div',
 
-                className:'featured-media',
+                className: 'featured-media',
 
-                model:new Backbone.Model(),
+                model: new Backbone.Model(),
 
-                initialize:function () {
+                initialize: function () {
                     _.bindAll(this, "render");
                     this.model.on("change", this.render);
                 },
 
-                render:function () {
+                render: function () {
                     var data = [];
                     $.each(this.model.toJSON(), function (i, obj) {
                         data.push(obj);
@@ -48,9 +48,7 @@
     $.fn[pluginName] = function (options) {
         // 기본 화면 비율값을 옵션으로 정의한다.
         var defaultOptions = {
-            rate:"16:9",
-            flashName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "./dist/ui/") + "flashmediaelement.swf",
-            silverlightName:(typeof Cornerstone !== "undefined" ? Cornerstone.PATH + "ui/" : "./dist/ui/") + "silverlightmediaelement.xap"
+            rate: "16:9"
         };
         options = $.extend(true, defaultOptions, options);
         return this.each(function () {
@@ -147,7 +145,7 @@
             };
 
             mejs.Utility.encodeUrl = function (url) {
-                return url === "100%" ? url : encodeURIComponent(url);
+                return url === "100%" ? false : encodeURIComponent(url);
             };
             mePlayer = new mejs.MediaElementPlayer(this, options);
         });
@@ -161,8 +159,8 @@
         $("[data-featured=media]").each(function (i) {
             var self = this;
             $(this)[pluginName]({
-                alwaysShowControls:true,
-                rate:$(self).data("mediaRate")
+                alwaysShowControls: true,
+                rate: $(self).data("mediaRate")
             });
         });
     });
