@@ -3,6 +3,10 @@ body {
     padding-bottom: 50px;
 }
 
+.nav > li > a.w3c-html5 {
+    padding: 10px 0 0 0;
+}
+
 #footer {
     position: fixed;
     bottom: 0;
@@ -61,16 +65,20 @@ body {
 }
 
 .demo-scroll-view .col-12 {
-    height: 300px;
+    height: 100px;
 }
 
 #scrollView4 {
     overflow: hidden;
-    margin-top: -150px;
+    margin-top: -50px;
     width: 300px;
+    height: 100px;
+}
+
+.list-view-wrapper {
     height: 200px;
 }
 
 .panel .mejs-container {
-  margin: 0 auto;
+    margin: 0 auto;
 }
