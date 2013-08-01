@@ -4,6 +4,7 @@
     <title>Cornerstone UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="js/vendor/modernizr.js"></script>
     <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
     <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-white/cornerstone.css"/>
@@ -787,9 +788,7 @@
                         </li>
                     </ul>
                     <form class="navbar-form pull-right" action="">
-                        <label>
-                            <input type="text" class="form-control col-lg-8" placeholder="Search">
-                        </label>
+                        <input type="text" class="form-control col-lg-8" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="#">Link</a></li>
@@ -841,9 +840,7 @@
                         </li>
                     </ul>
                     <form class="navbar-form pull-right" action="">
-                        <label>
-                            <input type="text" class="form-control col-lg-8" placeholder="Search">
-                        </label>
+                        <input type="text" class="form-control col-lg-8" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="#"><span class="glyphicon glyphicon-star"></span>Link</a></li>
@@ -898,9 +895,7 @@
                         <li><a href="#"><span class="glyphicon glyphicon-search"></span>Search</a></li>
                     </ul>
                     <form class="navbar-form navbar-search pull-right" action="#">
-                        <label>
-                            <input type="text" class="form-control" placeholder="Search">
-                        </label>
+                        <input type="text" class="form-control" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="#"><span class="glyphicon glyphicon-star"></span>Link</a></li>
@@ -2734,17 +2729,13 @@
         <h2 class="title">RangeInput</h2>
     </header>
     <div class="col col-lg-4">
-        <label>
-            <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
-                   class="widget-range"/>
-        </label>
+        <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
+               class="widget-range"/>
     </div>
     <div class="col col-lg-4">
-        <label>
-            <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
-                   class="widget-range"
-                   data-range-options='{"inputShow":false,"progress":true}'/>
-        </label>
+        <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+               class="widget-range"
+               data-range-options='{"inputShow":false,"progress":true}'/>
     </div>
     <div class="col col-lg-4">
         <label for="range3"></label>
@@ -2815,9 +2806,7 @@
             <h3 class="title">DatePicker(입력상자):</h3>
 
             <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
-                <label>
-                    <input size="16" type="text" value="2013-06-24" readonly>
-                </label>
+                <input size="16" type="text" value="2013-06-24" readonly>
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
@@ -2826,9 +2815,7 @@
 
             <div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                <label>
-                    <input size="16" type="text" value="2013-06-24" readonly>
-                </label>
+                <input size="16" type="text" value="2013-06-24" readonly>
             </div>
         </div>
     </div>
@@ -3285,7 +3272,7 @@
             <div class="panel">
                 <div class="panel-heading">MP4</div>
                 <video width="100%" height="100%" data-featured="media">
-                    <source type="video/mp4" src="data/sample-media.mp4"/>
+                    <source type="video/mp4" src="http://pseudo01.hddn.com/vod/demo.flowplayervod/bbb-800.mp4"/>
                 </video>
             </div>
         </div>
@@ -3305,7 +3292,7 @@
             <div class="panel">
                 <div class="panel-heading">MP4</div>
                 <video width="100%" height="100%" data-featured="media">
-                    <source type="video/mp4" src="data/sample-media.mp4"/>
+                    <source type="video/mp4" src="http://pseudo01.hddn.com/vod/demo.flowplayervod/bbb-800.mp4"/>
                 </video>
             </div>
         </div>
@@ -3320,9 +3307,9 @@
         <div class="col col-lg-4">
             <div class="panel">
                 <div class="panel-heading">Radio</div>
-                <audio width="100%" controls="control" data-featured="media"
-                       src="http://109.74.195.10:8000/stream.mp3?redirected=1"
-                       type="audio/mp4"/>
+                <!--<audio width="100%" controls="control" data-featured="media"-->
+                       <!--src="http://109.74.195.10:8000/stream.mp3?redirected=1"-->
+                       <!--type="audio/mp4"/>-->
             </div>
         </div>
     </div>
