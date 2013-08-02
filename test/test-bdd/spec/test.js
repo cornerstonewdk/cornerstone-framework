@@ -3,7 +3,7 @@ describe('Cornerstone event extend test case', function() {
     beforeEach(function() {});
 
     afterEach(function() {
-        // $( '#mocha-fixture' ).html( '' );
+        //$( '#mocha-fixture' ).html( '' );
     });
 
     describe('widget-button', function() {
@@ -16,7 +16,7 @@ describe('Cornerstone event extend test case', function() {
 
             it('버튼 클릭시 toggleOn 이벤트가 발생해야 한다.', function(done) {
                 button.on('toggleOn.cs.button', function(e) {
-                    // console.log( '싱글 토글 버튼 toggleOn 발생' );
+                    Logging.info( '싱글 토글 버튼 toggleOn 발생' );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
@@ -32,7 +32,7 @@ describe('Cornerstone event extend test case', function() {
 
             it('이미 토글되어 있는 버튼 클릭시 toggleOff 이벤트가 발생해야 한다.', function(done) {
                 button.on('toggleOff.cs.button', function(e) {
-                    // console.log( '싱글 토글 버튼 toggleOff 발생' );
+                    Logging.info( '싱글 토글 버튼 toggleOff 발생' );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
@@ -57,12 +57,12 @@ describe('Cornerstone event extend test case', function() {
         describe('radio button', function() {
             it('첫번째 라디오 버튼 클릭 시 toggleOn 이벤트가 발생하여야 한다.', function(done) {
                 radio.on('toggleOn.cs.button', function(e, el) {
-                    // console.log( 'toggleOn 발생', el );
+                    Logging.info( 'toggleOn 발생', el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
                     expect(el).to.not.be.undefined;
-                    // console.log( el );
+                    Logging.info( el );
                     done();
                 });
                 radio.find('label:eq(0)').click();
@@ -76,7 +76,7 @@ describe('Cornerstone event extend test case', function() {
 
             it('두번째 라디오 버튼을 클릭 시 toggleOff와 toggleOn이 동시에 발생하여야 한다.', function(done) {
                 radio.on('toggleOff.cs.button', function(e, el) {
-                    // console.log( 'toggleOff 발생', e, el );
+                    Logging.info( 'toggleOff 발생', e, el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
@@ -111,7 +111,7 @@ describe('Cornerstone event extend test case', function() {
         describe('checkbox', function() {
             it('첫번째 체크 박스를 클릭했을 때 toggleOn 이벤트가 발생하여야 한다.', function(done) {
                 checkbox.on('toggleOn.cs.button', function(e, el) {
-                    // console.log( 'toggleOn 발생', el );
+                    Logging.info( 'toggleOn 발생', el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
@@ -129,7 +129,7 @@ describe('Cornerstone event extend test case', function() {
 
             it('선택된 첫번째 체크 박스를 클릭했을 때 toggleOff 이벤트가 발생하여야 한다.', function(done) {
                 checkbox.on('toggleOff.cs.button', function(e, el) {
-                    // console.log( 'toggleOff 발생', el );
+                    Logging.info( 'toggleOff 발생', el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
@@ -149,7 +149,7 @@ describe('Cornerstone event extend test case', function() {
                 checkbox.off('toggleOn.cs.button').off('toggleOff.cs.button');
 
                 checkbox.on('toggleOn.cs.button', function(e, el) {
-                    // console.log( 'toggleOn 발생', el );
+                    Logging.info( 'toggleOn 발생', el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
@@ -166,7 +166,7 @@ describe('Cornerstone event extend test case', function() {
                 checkbox.off('toggleOn.cs.button').off('toggleOff.cs.button');
 
                 checkbox.on('toggleOn.cs.button', function(e, el) {
-                    // console.log( 'toggleOn 발생', el );
+                    Logging.info( 'toggleOn 발생', el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
@@ -183,7 +183,7 @@ describe('Cornerstone event extend test case', function() {
                 checkbox.off('toggleOn.cs.button').off('toggleOff.cs.button');
                 // 
                 checkbox.on('toggleOff.cs.button', function(e, el) {
-                    // console.log( 'toggleOff 발생', el );
+                    Logging.info( 'toggleOff 발생', el );
                     e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
@@ -248,65 +248,134 @@ describe('Cornerstone event extend test case', function() {
     });
 
     describe('widget-tooltip', function() {
+        
         var tooltipHTML = '<div class="bs-example-tooltips btn-group">' + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on top">Tooltip on top</button>' + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" data-original-title="Tooltip on right">Tooltip on right</button>' + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">Tooltip on bottom</button>' + '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" data-original-title="Tooltip on left">Tooltip on left</button>' + '</div></br></br>';
+        $('#mocha-fixture').append(tooltipHTML);
+        var tooltips = $('[data-toggle=tooltip]');
+        
+        it( '첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function ( done ) {
+            tooltips.each( function () {
+                $( this ).on('show.bs.tooltip', function(e) {
+                    Logging.info( 'show.bs.tooltip 발생' );
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('show');
+                }).on('shown.bs.tooltip', function(e) {
+                    Logging.info( 'shown.bs.tooltip 발생' );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('shown');
+                    done();
+                });
+            } );
+            $( tooltips[0] ).mouseover();
+        } );
 
-        var tooltip = $(tooltipHTML).tooltip({
-            container: 'body'
-        });
+        it( '첫번째 버튼에 마우스 오버를 해제하면 hide,hidden 이벤트가 발생하여야 한다.', function ( done ) {
+            
+            tooltips.each( function () {
+                $( this ).on('hide.bs.tooltip', function(e) {
+                    Logging.info( 'hide.bs.tooltip 발생' );
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('hide');
+                }).on('hidden.bs.tooltip', function(e) {
+                    Logging.info( 'hidden.bs.tooltip 발생' );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('hidden');
+                    done();
+                });
+            } );
+            $( tooltips[0] ).mouseout();
+        } );
 
-        $('#mocha-fixture').append(tooltip);
-        it('show, shown, hide, hidden 이벤트', function() {
-
-            tooltip.on('show.bs.tooltip', function(e) {
-                // console.log( 'show.bs.tooltip 발생', e );
+        it( '세번째 버튼에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function ( done ) {
+            $( tooltips[3] ).off( 'show.bs.tooltip' ).off( 'shown.bs.tooltip' ).off( 'hide.bs.tooltip' ).off( 'hidden.bs.tooltip' );
+            $( tooltips[3] ).on('show.bs.tooltip', function(e) {
+                Logging.info( 'show.bs.tooltip 발생' );
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
             }).on('shown.bs.tooltip', function(e) {
-                // console.log( 'shown.bs.tooltip 발생', e );
+                Logging.info( 'shown.bs.tooltip 발생' );
                 e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('shown');
             }).on('hide.bs.tooltip', function(e) {
-                // console.log( 'hide.bs.tooltip 발생', e );
+                Logging.info( 'hide.bs.tooltip 발생' );
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
             }).on('hidden.bs.tooltip', function(e) {
-                // console.log( 'hidden.bs.tooltip 발생', e );
+                Logging.info( 'hidden.bs.tooltip 발생' );
                 e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
-            }).find('button').mouseover().mouseout();
-        });
+                done();
+            }).mouseover().mouseout();
+        } );
     });
 
     describe('widget-popover', function() {
         var popoverHTML = '<div class="bs-example-popover btn-group">' + '<a href="#" class="btn btn-large btn-danger" data-toggle="popover" data-content="And here\'s some amazing content. It\'s very engaging. right?" data-original-title="A Title">Click to toggle popover</a>' + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">' + '  Popover on top' + '</button>' + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">' + '  Popover on right' + '</button>' + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">' + '  Popover on bottom' + '</button>' + '<button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">' + '  Popover on left' + '</button>' + '</div></br></br>';
+        $('#mocha-fixture').append(popoverHTML);
+        var popovers = $('[data-toggle=popover]');
 
-        var popover = $(popoverHTML).popover();
+        it( '첫번째 버튼을 클릭하면 show,shown 이벤트가 발생하여야 한다.', function ( done ) {
+            popovers.each( function () {
+                $( this ).on('show.bs.popover', function(e) {
+                    Logging.info( 'show.bs.popover 발생' );
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('show');
+                }).on('shown.bs.popover', function(e) {
+                    Logging.info( 'shown.bs.popover 발생' );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('shown');
+                    done();
+                });
+            } );
+            $( popovers[0] ).click();
+        } );
 
-        $('#mocha-fixture').append(popover);
+        it( '첫번째 버튼을 다시 클릭하면 hide,hidden 이벤트가 발생하여야 한다.', function ( done ) {
+            
+            popovers.each( function () {
+                $( this ).on('hide.bs.popover', function(e) {
+                    Logging.info( 'hide.bs.popover 발생' );
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('hide');
+                }).on('hidden.bs.popover', function(e) {
+                    Logging.info( 'hidden.bs.popover 발생' );
+                    e.preventDefault();
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('hidden');
+                    done();
+                });
+            } );
+            $( popovers[0] ).click();
+        } );
 
-        it('show, shown, hide, hidden 이벤트', function() {
-            popover.on('show.bs.popover', function(e) {
-                // console.log( 'show.bs.popover 발생', e );
+        it( '세번째 버튼에 클릭 2회시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function ( done ) {
+            $( popovers[2] ).off( 'show.bs.popover' ).off( 'shown.bs.popover' ).off( 'hide.bs.popover' ).off( 'hidden.bs.popover' );
+            $( popovers[2] ).on('show.bs.popover', function(e) {
+                Logging.info( 'show.bs.popover 발생' );
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
             }).on('shown.bs.popover', function(e) {
-                // console.log( 'shown.bs.popover 발생', e );
+                Logging.info( 'shown.bs.popover 발생' );
                 e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('shown');
             }).on('hide.bs.popover', function(e) {
-                // console.log( 'hide.bs.popover 발생', e );
+                Logging.info( 'hide.bs.popover 발생' );
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
             }).on('hidden.bs.popover', function(e) {
-                // console.log( 'hidden.bs.popover 발생', e );
+                Logging.info( 'hidden.bs.popover 발생' );
                 e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
-            }).find('button').click().click();
-        });
+                done();
+            }).click().click();
+        } );
     });
 
     describe('widget-rageinput', function() {
@@ -563,50 +632,48 @@ describe('Cornerstone event extend test case', function() {
 
     });
 
-    describe('widget-editor', function() {
-        it('load, blur 이벤트', function() {
-            var editorHTML = '<section id="editor" title="Editor" class="row">' + '<header class="page-header">' + '<h2 class="title">Editor</h2>' + '<span class="label label-warning">Update</span>' + 'BTS3으로 버전업되면서 기존 bootsrap 위지윅 js 사용불가.' + '</header>' + '<div class="col col-lg-12">' + '<textarea id="editorExample" rows="20" placeholder="Enter text ..."></textarea>' + '</div>' + '</section>';
-
-            $('#mocha-fixture').append(editorHTML);
-
-            // editor 이벤트 확장 테스트
-            var editor = $("#editorExample").featuredEditor();
-
-            editor.on('load.cs.editor', function(e) {
-                console.log('editor load', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('load');
-                expect(e.namespace).to.be.equal('cs.editor');
-            }).on('blur.cs.editor', function(e) {
-                console.log('editor blur', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('blur');
-                // TODO load전에 넘어오는 이벤트는 내가 발생시킨 이벤트와는 다른 이벤트이다. 어떻게 처리하지?
-                // expect( e.namespace ).to.be.equal( 'cs.editor' );
-            });
-        });
-    });
-
     describe('widget-datatable', function() {
         var datatableHTML = '<section id="datatables" title="Datatables" class="row">' + '<header class="page-header">' + '<h2 class="title">Datatables</h2>' + '</header>' + '<div class="col col-lg-12">' + '<table class="table table-striped" data-featured="datatable" data-datatable-bind="data/sample-datatables.json">' + '<thead>' + '<tr>' + '<th>Rendering engine</th>' + '<th>Browser</th>' + '<th>Platform(s)</th>' + '</tr>' + '</thead>' + '<tbody>' + '</tbody>' + '</table>' + '</div>' + '</section>';
         $('#mocha-fixture').append(datatableHTML);
 
-        it('itemClick 이벤트', function() {
-            var dt = $('[data-featured="datatable"]').on('itemClick.cs.datatables', 'tr', function(e, data) {
-                // console.log( 'itemClick.cs.datatables' );
+        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function() {
+            var dt = $('[data-featured="datatable"]').on('itemClick.cs.datatables', 'tr', function(e, result) {
+                Logging.info( 'itemClick.cs.datatables', result );
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('itemClick');
                 expect(e.namespace).to.be.equal('cs.datatables');
-                expect(data).to.be.an('object')
-                expect(data.data).to.be.instanceof(Array);
+                expect(result).to.be.an('object')
+                expect(result.data).to.be.instanceof(Array);
             });
-
             dt.find('tr:eq(2)').click();
         });
-
-
-
-
     });
 
+    describe('widget-editor', function() {
+        var editorHTML = '<section id="editor" title="Editor" class="row">' + '<header class="page-header">' + '<h2 class="title">Editor</h2>' + '<span class="label label-warning">Update</span>' + 'BTS3으로 버전업되면서 기존 bootsrap 위지윅 js 사용불가.' + '</header>' + '<div class="col col-lg-12">' + '<textarea id="editorExample" rows="20" placeholder="Enter text ..."></textarea>' + '</div>' + '</section>';
+        $('#mocha-fixture').append(editorHTML);
+        var editor;
+
+        it('plugin이 적용된 후 load 이벤트가 발생하여야 한다.', function( done ) {
+            editor = $("#editorExample").featuredEditor();
+            editor.on('load.cs.editor', function(e) {
+                Logging.info('editor load', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('load');
+                expect(e.namespace).to.be.equal('cs.editor');
+                done();
+            }).focus();
+        });
+
+        it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function ( done ) {
+            editor.on('blur.cs.editor', function(e) {
+                Logging.info('editor blur', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('blur');
+                done();
+                // TODO custom 이벤트 발생 전 orig 이벤트 발생..
+                // expect( e.namespace ).to.be.equal( 'cs.editor' );
+            });
+        } );
+    });
 });

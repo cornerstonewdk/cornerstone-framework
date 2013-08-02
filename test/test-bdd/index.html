@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Mocha Spec Runner</title>
     <link rel="stylesheet" href="css/mocha.css" type="text/css" charset="utf-8" />
-    <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css" />
-    <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-dark/cornerstone.css" />
+    <link rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../grunt-dist/lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css" />
+    <link rel="stylesheet" href="../../grunt-dist/src/style/theme-dark/cornerstone.css" />
+    <link rel="stylesheet" href="../../grunt-dist/lib/blackbirdjs/blackbird.css" />
 </head>
 
 <body>
@@ -20,9 +21,22 @@
     <script src="../../grunt-dist/lib/infinity/infinity.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../grunt-dist/lib/wysihtml5/wysihtml5-0.3.0.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../grunt-dist/lib/Datatables/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../grunt-dist/lib/blackbirdjs/blackbird.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../grunt-dist/src/util/logging/logging.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+    Logging.config( {
+        defaultLevel: 'info',
+        debug: 'screen',
+        info: 'screen',
+        warn: 'screen',
+        error: 'screen',
+        time: 'screen'
+    } );
+    </script>
     <script src="js/mocha.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/chai.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
+
     // Setup
     mocha.setup('bdd');
     mocha.reporter('html');

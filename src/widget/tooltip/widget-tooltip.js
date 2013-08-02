@@ -19,23 +19,25 @@
 	/*
      Tooltip : DATA-API 방식을 추가함.
      */
-	var Tooltip;
+	
+	this.Tooltip = (function () {
+        var Tooltip;
 
-	function Tooltip() {
-	}
+        function Tooltip() {
+        }
 
-	Tooltip = $.fn.tooltip.Constructor;
+        Tooltip = $.fn.tooltip.Constructor;
 
-	/* 확장 코딩 */
+        /* 확장 코딩 */
+        $.fn.tooltip.Constructor = Tooltip;
 
-	$.fn.tooltip.Constructor = Tooltip;
-
-	/*
-	 DATA API 기능 추가 예정
-	 */
-	$(function () {
-		$('[data-toggle=tooltip]').each(function (i) {
-			$(this).tooltip();
-		});
-	});
+        /*
+         DATA API 기능 추가 예정
+         */
+        $(function () {
+            $('[data-toggle=tooltip]').each(function () {
+                $(this).tooltip();
+            });
+        });
+    })();
 } ) );
