@@ -1,0 +1,5 @@
+{
+    "name": "bootstrap-select",
+    "version": "1.0.0",
+    "description": "A custom select / multiselect for @twitter bootstrap using button dropdown, designed to behave like regular Bootstrap selects;"
+}

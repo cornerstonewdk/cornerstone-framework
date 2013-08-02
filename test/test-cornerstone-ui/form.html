@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="../../lib/bootstrap-select/bootstrap-select.css"/>
     <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-white/cornerstone.css"/>
     <link rel="stylesheet" href="style/demo.css"/>
     <style type="text/css">
@@ -205,7 +206,7 @@
     <form>
         <fieldset>
             <legend>Select</legend>
-            <select class="col col-lg-12">
+            <select class="col col-lg-12 selectpicker">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -335,6 +336,7 @@
 <script type="text/javascript" src="../../grunt-dist/src/widget/sign/widget-sign.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/spinner/widget-spinner.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/tooltip/widget-tooltip.js"></script>
+<script type="text/javascript" src="../../lib/bootstrap-select/bootstrap-select.js"></script>
 <!-- Widget Featured -->
 <script type="text/javascript" src="../../grunt-dist/lib/d3/d3.v3.min.js"></script>
 <script type="text/javascript" src="../../grunt-dist/lib/nvd3/nv.d3.min.js"></script>
@@ -350,6 +352,9 @@
 <script type="text/javascript" src="../../grunt-dist/lib/iscroll-4/iscroll.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/scrollview/widget-scrollview.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+    $('.selectpicker').selectpicker();
+</script>
 </body>
 </html>
 
