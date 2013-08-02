@@ -25,12 +25,43 @@
       display: inline-block;
     }
     .badge, .label  {
-      margin-top: -6px;
+      position: relative;
+      top: -3px;
     }
   }
 
   .glyphicon {
     display: inline-block;
     padding-top: 4px;
+  }
+}
+
+.list-group-radio, .list-group-checkbox {
+  border-radius: 4px;
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+  }
+  & > li {
+    z-index: 2;
+    float: none;
+    padding: 0;
+    width: 100%;
+    color: @text-color;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+
+    &:first-child {
+      border-top: 0;
+      border-radius: 4px 4px 0 0;
+    }
+  }
+
+  label {
+    display: block;
+    margin: 0 0 0 10px;
+    padding: 15px 0;
+    vertical-align: middle;
+    font-size: 26px;
+    line-height: 30px;
   }
 }

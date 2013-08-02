@@ -239,7 +239,6 @@
 		$(".fast-button").hammer().on("tap", function () {
 			$(this).toggleClass("active");
 			if ($(this).hasClass("active")) {
-				console.log(123213);
 				$(this).find("input").attr("checked", "checked");
 			}
 		});

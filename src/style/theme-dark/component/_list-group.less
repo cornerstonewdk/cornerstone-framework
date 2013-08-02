@@ -14,6 +14,16 @@
 .list-group-item {
   border: 1px solid @list-group-border;
   background-color: @list-group-bg;
+  .pull-right {
+    margin-right: -15px;
+    .label {
+      display: inline-block;
+    }
+    .badge, .label  {
+      position: relative;
+      top: -3px;
+    }
+  }
 }
 
 a.list-group-item {

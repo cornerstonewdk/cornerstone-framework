@@ -1,6 +1,5 @@
 // Base class
 .panel {
-  border-width: 2px;
   border-radius: 5px;
   color: @text-color;
   .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
@@ -33,15 +32,13 @@
     width: 10px;
     height: 100%;
     border-top-left-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.2);
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJElEQVQIW2NkYGDwAeItQAwHjFAWigRMECQHl0AWhEugC4IlAPSwBFJQIcCUAAAAAElFTkSuQmCC);
+    background: rgba(0, 0, 0, 0.2) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJElEQVQIW2NkYGDwAeItQAwHjFAWigRMECQHl0AWhEugC4IlAPSwBFJQIcCUAAAAAElFTkSuQmCC);
     content: "";
   }
 }
 
 .panel-footer {
-  border-top-width: 3px;
-  border-top-color: #7e7e7e;
+  border-top: 3px #7e7e7e;
   background-color: #cbcbcb;
   color: @text-color-inverse;
   text-shadow: 0 1px 0 rgba(0, 0, 0, .32);

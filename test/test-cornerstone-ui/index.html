@@ -4,6 +4,7 @@
     <title>Cornerstone UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="js/vendor/modernizr.js"></script>
     <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
     <link id="customStyle" rel="stylesheet" href="../../grunt-dist/src/style/theme-white/cornerstone.css"/>
@@ -33,13 +34,13 @@
                     <ul class="dropdown-menu">
                         <li><a href="#baseCSS">Bass CSS</a></li>
                         <li class="divider"></li>
+                        <li><a href="#buttons">Buttons</a></li>
+                        <li><a href="#tables">Tables</a></li>
                         <li><a href="#grid-system"><span class="label label-info">New</span> Grid system</a></li>
                         <li><a href="#base-typography">Typography</a></li>
                         <li><a href="#code">Code</a></li>
-                        <li><a href="#tables">Tables</a></li>
-                        <li><a href="form.html" target="_blank">Forms</a></li>
-                        <li><a href="#buttons">Buttons</a></li>
                         <li><a href="#images">Images</a></li>
+                        <li><a href="form.html" target="_blank">Forms</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -63,8 +64,8 @@
                         <li><a href="#list-group"><span class="label label-info">New</span> List Group</a></li>
                         <li><a href="#panels"><span class="label label-info">New</span> Panels</a></li>
                         <li><a href="#wells">Wells</a></li>
-                        <li><a href="#navbar-for-mobile"><span class="label label-success">New</span>
-                            NavbarForMobile</a>
+                        <li><a href="#mobile-navbar"><span class="label label-success">New</span>
+                            Mobile Navbar</a>
                         </li>
                         <li><a href="#cornerstone-list"><span class="label label-success">New</span> Cornerstone
                             List</a></li>
@@ -115,6 +116,21 @@
                     </ul>
                 </li>
             </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="label-new">
+                    <a href="#">
+                        <span class="label label-info">New</span> : BTS3
+                        <span class="label label-success">New</span> : CS
+                    </a>
+                </li>
+                <li>
+                    <a class="w3c-html5" target="_blank"
+                       href="http://validator.w3.org/check?uri=http%3A%2F%2Fjnw.io%2Fprojects%2FCornerstone%2Fcornerstone-framework%2Ftest%2Ftest-cornerstone-ui%2F">
+                        <img alt="valid-html5"
+                             src="data:image/jpg;base64,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">
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -123,132 +139,44 @@
 
 <section id="baseCSS" class="col col-lg-12">
 
-<div class="page-header">
+<div class="page-header row">
     <h1 class="title">Base CSS</h1>
 </div>
 
-<!-- Grid system
+<!-- Buttons
   ================================================== -->
-<section id="grid-system" class="row">
+<section id="buttons" class="row">
     <header class="page-header">
-        <h2 class="title">Grid system</h2>
+        <h2 class="title">Buttons</h2>
     </header>
     <div class="col col-lg-12">
-        <h3 class="title">Grid example</h3>
+        <h3 class="title">Buttons example</h3>
+        <button type="button" class="btn btn-default">Default</button>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-link">Link</button>
+    </div>
 
-        <div class="row show-grid">
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col col-lg-4">4</div>
-            <div class="col col-lg-4">4</div>
-            <div class="col col-lg-4">4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col col-lg-6">6</div>
-            <div class="col col-lg-6">6</div>
-        </div>
+    <div class="col col-lg-12">
+        <h3 class="title">Button sizes</h3>
+        <button type="button" class="btn btn-primary btn-large">Large button</button>
+        <button type="button" class="btn btn-default btn-large">Large button</button>
     </div>
 
 
     <div class="col col-lg-12">
-        <h3 class="title">Offsetting columns</h3>
+        <h3 class="title">Disabled state</h3>
 
-        <div class="row show-grid">
-            <div class="col col-4">4</div>
-            <div class="col col-4 col-offset-4">4 offset 4</div>
+        <div class="col col-6">
+            <h4>Button element</h4>
+            <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
         </div>
-        <!-- /row -->
-        <div class="row show-grid">
-            <div class="col col-3 col-offset-3">3 offset 3</div>
-            <div class="col col-3 col-offset-3">3 offset 3</div>
-        </div>
-        <!-- /row -->
-        <div class="row show-grid">
-            <div class="col col-6 col-offset-3">6 offset 3</div>
-        </div>
-        <!-- /row -->
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title">Nesting columns</h3>
-
-        <div class="row show-grid">
-            <div class="col col-lg-9">
-                Level 1: 9 columns
-                <div class="row show-grid">
-                    <div class="col col-lg-6">
-                        Level 2: 6 columns
-                    </div>
-                    <div class="col col-lg-6">
-                        Level 2: 6 columns
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title">Column ordering</h3>
-
-        <div class="row show-grid">
-            <div class="col col-9 col-push-3">9</div>
-            <div class="col col-3 col-pull-9">3</div>
-        </div>
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title"><span class="label label-info">New</span> Small device grid</h3>
-
-        <div class="row show-grid">
-            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
-            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
-            <div class="col col-lg-4 col-12">4 cols, 12 small cols</div>
-        </div>
-    </div>
-</section>
-
-<!-- Typography
-  ================================================== -->
-<section id="base-typography" class="row">
-    <header class="page-header">
-        <h2 class="title">Typography</h2>
-    </header>
-    <div class="col col-lg-12">
-        <h1>Hello, world!</h1>
-
-        <h2>Hello, world!</h2>
-
-        <h3>Hello, world!</h3>
-
-        <h4>Hello, world!</h4>
-
-        <h5>Hello, world!</h5>
-
-        <h6>Hello, world!</h6>
-    </div>
-</section>
-
-<!-- Code
-  ================================================== -->
-<section id="code" class="row">
-    <header class="page-header">
-        <h2 class="title">Code</h2>
-    </header>
-    <div class="col col-lg-12">
-        <div class="bs-example">
-            For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+        <div class="col col-6">
+            <h4>Anchor element</h4>
+            <a href="#" class="btn btn-primary btn-large disabled">Link</a>
         </div>
     </div>
 </section>
@@ -433,40 +361,128 @@
     </div>
 </section>
 
-<!-- Buttons
+<!-- Grid system
   ================================================== -->
-<section id="buttons" class="row">
+<section id="grid-system" class="row">
     <header class="page-header">
-        <h2 class="title">Buttons</h2>
+        <h2 class="title">Grid system</h2>
     </header>
     <div class="col col-lg-12">
-        <h3 class="title">Buttons example</h3>
-        <button type="button" class="btn btn-default">Default</button>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-warning">Warning</button>
-        <button type="button" class="btn btn-danger">Danger</button>
-        <button type="button" class="btn btn-link">Link</button>
-    </div>
+        <h3 class="title">Grid example</h3>
 
-    <div class="col col-lg-12">
-        <h3 class="title">Button sizes</h3>
-        <button type="button" class="btn btn-primary btn-large">Large button</button>
-        <button type="button" class="btn btn-default btn-large">Large button</button>
-    </div>
-
-
-    <div class="col col-lg-12">
-        <h3 class="title">Disabled state</h3>
-
-        <div class="col col-6">
-            <h4>Button element</h4>
-            <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
+        <div class="row show-grid">
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
+            <div class="col col-lg-1">1</div>
         </div>
-        <div class="col col-6">
-            <h4>Anchor element</h4>
-            <a href="#" class="btn btn-primary btn-large disabled">Link</a>
+        <div class="row show-grid">
+            <div class="col col-lg-4">4</div>
+            <div class="col col-lg-4">4</div>
+            <div class="col col-lg-4">4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col col-lg-6">6</div>
+            <div class="col col-lg-6">6</div>
+        </div>
+    </div>
+
+
+    <div class="col col-lg-12">
+        <h3 class="title">Offsetting columns</h3>
+
+        <div class="row show-grid">
+            <div class="col col-4">4</div>
+            <div class="col col-4 col-offset-4">4 offset 4</div>
+        </div>
+        <!-- /row -->
+        <div class="row show-grid">
+            <div class="col col-3 col-offset-3">3 offset 3</div>
+            <div class="col col-3 col-offset-3">3 offset 3</div>
+        </div>
+        <!-- /row -->
+        <div class="row show-grid">
+            <div class="col col-6 col-offset-3">6 offset 3</div>
+        </div>
+        <!-- /row -->
+    </div>
+
+    <div class="col col-lg-12">
+        <h3 class="title">Nesting columns</h3>
+
+        <div class="row show-grid">
+            <div class="col col-lg-9">
+                Level 1: 9 columns
+                <div class="row show-grid">
+                    <div class="col col-lg-6">
+                        Level 2: 6 columns
+                    </div>
+                    <div class="col col-lg-6">
+                        Level 2: 6 columns
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-lg-12">
+        <h3 class="title">Column ordering</h3>
+
+        <div class="row show-grid">
+            <div class="col col-9 col-push-3">9</div>
+            <div class="col col-3 col-pull-9">3</div>
+        </div>
+    </div>
+
+    <div class="col col-lg-12">
+        <h3 class="title"><span class="label label-info">New</span> Small device grid</h3>
+
+        <div class="row show-grid">
+            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
+            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
+            <div class="col col-lg-4 col-12">4 cols, 12 small cols</div>
+        </div>
+    </div>
+</section>
+
+<!-- Typography
+  ================================================== -->
+<section id="base-typography" class="row">
+    <header class="page-header">
+        <h2 class="title">Typography</h2>
+    </header>
+    <div class="col col-lg-12">
+        <h1>Hello, world!</h1>
+
+        <h2>Hello, world!</h2>
+
+        <h3>Hello, world!</h3>
+
+        <h4>Hello, world!</h4>
+
+        <h5>Hello, world!</h5>
+
+        <h6>Hello, world!</h6>
+    </div>
+</section>
+
+<!-- Code
+  ================================================== -->
+<section id="code" class="row">
+    <header class="page-header">
+        <h2 class="title">Code</h2>
+    </header>
+    <div class="col col-lg-12">
+        <div class="bs-example">
+            For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
     </div>
 </section>
@@ -494,7 +510,7 @@
 
 <section id="component" class="col col-lg-12">
 
-<div class="page-header">
+<div class="page-header row">
     <h1 class="title">Components</h1>
 </div>
 
@@ -786,10 +802,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form pull-right" action="">
-                        <label>
-                            <input type="text" class="form-control col-lg-8" placeholder="Search">
-                        </label>
+                    <form class="navbar-form pull-right" action="#">
+                        <input type="text" class="form-control col-lg-8" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="#">Link</a></li>
@@ -840,10 +854,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form pull-right" action="">
-                        <label>
-                            <input type="text" class="form-control col-lg-8" placeholder="Search">
-                        </label>
+                    <form class="navbar-form pull-right" action="#">
+                        <input type="text" class="form-control col-lg-8" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="#"><span class="glyphicon glyphicon-star"></span>Link</a></li>
@@ -898,9 +910,7 @@
                         <li><a href="#"><span class="glyphicon glyphicon-search"></span>Search</a></li>
                     </ul>
                     <form class="navbar-form navbar-search pull-right" action="#">
-                        <label>
-                            <input type="text" class="form-control" placeholder="Search">
-                        </label>
+                        <input type="text" class="form-control" placeholder="Search">
                     </form>
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="#"><span class="glyphicon glyphicon-star"></span>Link</a></li>
@@ -1593,9 +1603,9 @@
 
 <!-- Cornerstone Custom UI
   ================================================== -->
-<!-- NavbarForMobile
+<!-- Mobile Navbar
   ================================================== -->
-<section id="navbar-for-mobile" class="row">
+<section id="mobile-navbar" class="row">
     <header class="page-header">
         <h2 class="title">
             <span class="label label-success">New</span> Navbar For Mobile
@@ -2000,7 +2010,7 @@
 </section>
 
 <section id="plugins" class="col col-lg-12">
-<header class="page-header">
+<header class="page-header row">
     <h1 class="title">Plugins</h1>
 </header>
 플러그인 위젯은 유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯이다.
@@ -2476,7 +2486,7 @@
         </div>
         <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's
+            <strong>Heads up!</strong> This alert needs your attention, but it's
             not
             super important.
         </div>
@@ -2734,17 +2744,13 @@
         <h2 class="title">RangeInput</h2>
     </header>
     <div class="col col-lg-4">
-        <label>
-            <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
-                   class="widget-range"/>
-        </label>
+        <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
+               class="widget-range"/>
     </div>
     <div class="col col-lg-4">
-        <label>
-            <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
-                   class="widget-range"
-                   data-range-options='{"inputShow":false,"progress":true}'/>
-        </label>
+        <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+               class="widget-range"
+               data-range-options='{"inputShow":false,"progress":true}'/>
     </div>
     <div class="col col-lg-4">
         <label for="range3"></label>
@@ -2815,9 +2821,7 @@
             <h3 class="title">DatePicker(입력상자):</h3>
 
             <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
-                <label>
-                    <input size="16" type="text" value="2013-06-24" readonly>
-                </label>
+                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
@@ -2826,9 +2830,7 @@
 
             <div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                <label>
-                    <input size="16" type="text" value="2013-06-24" readonly>
-                </label>
+                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
             </div>
         </div>
     </div>
@@ -2852,14 +2854,14 @@
 </section>
 
 <section id="featured" class="col col-lg-12">
-<header class="page-header">
+<header class="page-header row">
     <h1 class="title">Featured</h1>
 </header>
 피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다.
 
 <!-- ScrollView
   ================================================== -->
-<section id="scroll-view" class="demo-scroll-view row" title="ScrollView">
+<section id="scroll-view" class="demo-scroll-view" title="ScrollView">
 <header class="page-header">
     <h2 class="title">ScrollView</h2>
 </header>
@@ -3284,7 +3286,7 @@
         <div class="col col-lg-12">
             <div class="panel">
                 <div class="panel-heading">MP4</div>
-                <video width="100%" height="100%" data-featured="media">
+                <video data-featured="media" data-option-width="100%" data-option-height="100%">
                     <source type="video/mp4" src="data/sample-media.mp4"/>
                 </video>
             </div>
@@ -3294,17 +3296,15 @@
         <div class="col col-lg-12">
             <div class="panel">
                 <div class="panel-heading">MP3</div>
-                <audio width="100%" controls="control" data-featured="media"
-                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"
-                       type="audio/mp3"/>
+                <audio data-featured="media" data-option-width="100%"
+                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
             </div>
         </div>
-    </div>
-    <div class="row">
+
         <div class="col col-lg-4">
             <div class="panel">
                 <div class="panel-heading">MP4</div>
-                <video width="100%" height="100%" data-featured="media">
+                <video data-featured="media" data-option-width="100%" data-option-height="100%">
                     <source type="video/mp4" src="data/sample-media.mp4"/>
                 </video>
             </div>
@@ -3312,7 +3312,7 @@
         <div class="col col-lg-4">
             <div class="panel">
                 <div class="panel-heading">Youtube</div>
-                <video width="100%" height="100%" data-featured="media">
+                <video data-featured="media" data-option-width="100%" data-option-height="100%" preload="none">
                     <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI"/>
                 </video>
             </div>
@@ -3320,9 +3320,9 @@
         <div class="col col-lg-4">
             <div class="panel">
                 <div class="panel-heading">Radio</div>
-                <audio width="100%" controls="control" data-featured="media"
-                       src="http://109.74.195.10:8000/stream.mp3?redirected=1"
-                       type="audio/mp4"/>
+                <!--<audio width="100%" controls="control" data-featured="media"-->
+                <!--src="http://109.74.195.10:8000/stream.mp3?redirected=1"-->
+                <!--type="audio/mp4"/>-->
             </div>
         </div>
     </div>
@@ -3392,36 +3392,6 @@
 </section>
 
 </div>
-
-<!-- Footer
- ================================================== -->
-<footer id="footer">
-    <div class="row">
-        <div class="col col-4">
-            <label for="changeStyle">
-                <select name="changeStyle" id="changeStyle">
-                    <option data-style-type="theme" value="white">테마 - 화이트</option>
-                    <option data-style-type="theme" value="dark">테마 - 다크</option>
-                    <option data-style-type="theme" value="wireframe">테마 - 와이어프레임</option>
-                    <option data-style-type="skin" value="cerulean">스킨 - 세루리안(Cerulean)</option>
-                    <option data-style-type="skin" value="flatly">스킨 - 플랫리(Flatly)</option>
-                    <option data-style-type="skin" value="united">스킨 - 유나이티드(United)</option>
-                </select>
-            </label>
-        </div>
-        <div class="col col-5">
-            <span class="label label-info">New</span> : BTS3
-            <span class="label label-success">New</span> : CS
-        </div>
-        <div class="col col-3">
-            <a class="pull-right" target="_blank"
-               href="http://validator.w3.org/check?uri=http%3A%2F%2Fjnw.io%2Fprojects%2FCornerstone%2Fcornerstone-framework%2Ftest%2Ftest-cornerstone-ui%2F">
-                <img alt="valid-html5"
-                     src="data:image/jpg;base64,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">
-            </a>
-        </div>
-    </div>
-</footer>
 
 <script type="text/javascript" src="../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.hammer.js"></script>

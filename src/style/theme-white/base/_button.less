@@ -1,13 +1,14 @@
 //
 // Button
 // --------------------------------------------------
-.btn:not(.btn-link) {
-  @btn-default-bg: #FFF;
-  @btn-default-gradient-start: #FFF;
-  @btn-default-gradient-end: #e3e3e3;
-  @btn-default-color: #6a6a6a;
-  @btn-default-border: 1px solid #b6b6b6;
 
+@btn-default-bg: #FFF;
+@btn-default-gradient-start: #FFF;
+@btn-default-gradient-end: #e3e3e3;
+@btn-default-color: #6a6a6a;
+@btn-default-border: 1px solid #b6b6b6;
+
+.btn:not(.btn-link) {
   border: @btn-default-border;
   border-radius: 6px;
   color: @btn-default-color;
@@ -59,11 +60,68 @@
   &.btn-danger {
     .btn-state(danger);
   }
+
+  &.btn-default .caret {
+    border-top-color: @text-color;
+  }
+}
+
+.dropup {
+  .btn-default .caret {
+    border-bottom-color: @text-color;
+  }
 }
 
 fieldset[disabled] .btn {
   .btn-disabled();
 }
+
+.btn-group-vertical {
+  display: inline-block;
+  border: 1px solid #a8a8a8;
+  border-radius: 5px;
+  background-color: #cbcbcb;
+  .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+  .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
+  & > .btn {
+    background: none;
+    box-shadow: none;
+    border: none;
+
+    &:not(:last-child){
+      border-bottom: 1px solid #b6b6b6;
+    }
+
+    &:hover {
+      background: none;
+      box-shadow: none;
+      color: #1f8fb9;
+      border: none;
+      &:not(:last-child){
+        border-bottom: 1px solid #b6b6b6;
+      }
+    }
+
+    &:first-child {
+      &.active, &:active {
+        border-radius: 3px 3px 0 0;
+      }
+    }
+    &:last-child {
+      &.active, &:active {
+        border-radius: 0 0 3px 3px;
+      }
+    }
+    &.active, &:active {
+      color: @text-color-inverse;
+      font-weight: normal;
+      background-color: #2d95bb;
+      .box-shadow(~"inset 0 2px 7px rgba(0,0,0,.2)");
+      .background-image(~"linear-gradient(to bottom, rgba(12,59,85,0.52) 0%,rgba(12,59,85,0.62) 2%,rgba(28,109,152,0.62) 30%,rgba(58,166,219,0.42) 87%,rgba(52,169,228,0.32) 100%)");
+    }
+  }
+}
+
 
 // Placeholder
 @btn-primary-gradient-start: #2a92b9;

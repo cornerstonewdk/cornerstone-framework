@@ -57,6 +57,12 @@
             mejs.MediaElementPlayer.prototype.setPlayerSize = function (width, height) {
                 var t = this;
 
+                if (typeof t.$node.data("optionWidth") != 'undefined')
+                    width = t.$node.data("optionWidth");
+
+                if (typeof t.$node.data("optionHeight") != 'undefined')
+                    height = t.$node.data("optionHeight");
+
                 if (typeof width != 'undefined')
                     t.width = width;
 
