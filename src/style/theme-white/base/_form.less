@@ -1,8 +1,8 @@
 .form-control {
   border: 1px solid #c3c3c3;
   border-radius: 6px;
-  color: @text-color;
   background-color: #fff;
+  color: @text-color;
   .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
 
 }
@@ -428,30 +428,25 @@ input {
     display: inline-block;
     margin: 0;
     padding: 5px;
-    width: 44px;
-    height: 44px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(0,0,0,.25);
     border-radius: 4px;
+    background-color: #d1d1d1;
     vertical-align: middle;
-    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    .box-shadow(~"0 3px 4px rgba(0,0,0,.19), inset 0 1px 1px rgba(255,255,255,.1)");
+    .background-image(~"linear-gradient(bottom, #d3d3d3 0%, #d9d9d9 49%, #dfdfdf 50%, #eaeaea 100%)");
     cursor: pointer;
-    &:before {
-      display: inline-block;
-      width: 34px;
-      height: 34px;
-      border-radius: 4px;
-      background: #292929;
-      background-size: 320px;
-      content: "";
-      .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7)");
-    }
     &.placeholder {
       &:before {
         position: absolute;
+        top: 4px;
+        left: 4px;
         display: inline-block;
-        padding: 4px 10px 1px 4px;
+        padding: 0;
         width: 20px;
         height: 29px;
-        color: #737373;
+        color: #969696;
         content: "\e013";
         font-weight: 400;
         font-style: normal;
@@ -466,11 +461,11 @@ input {
   &.active > .control:after,
   &:not(.fast-button) input:checked ~ .control:after {
     position: absolute;
-    top: 9px;
-    left: 9px;
+    top: 4px;
+    left: 4px;
     display: inline-block;
     padding-right: 10px;
-    color: #53a3ba;
+    color: #247dab;
     content: "\e013";
     font-weight: 400;
     font-style: normal;
@@ -480,7 +475,8 @@ input {
     -webkit-font-smoothing: antialiased;
   }
 
-  input[disabled] ~ .control:before, input.disabled ~ .control:before {
+  input[disabled] ~ .control, input.disabled ~ .control {
+    background-color: transparent;
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
   }
@@ -496,38 +492,32 @@ input {
     display: inline-block;
     margin: 0;
     padding: 5px;
-    width: 44px;
-    height: 44px;
-    border-radius: 25px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(0,0,0,.25);
+    border-radius: 40px;
+    background-color: #d1d1d1;
     vertical-align: middle;
-    #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
+    .box-shadow(~"0 3px 4px rgba(0,0,0,.19), inset 0 1px 1px rgba(255,255,255,.1)");
+    .background-image(~"linear-gradient(bottom, #d3d3d3 0%, #d9d9d9 49%, #dfdfdf 50%, #eaeaea 100%)");
     cursor: pointer;
-    &:before {
-      display: inline-block;
-      width: 34px;
-      height: 34px;
-      border-radius: 25px;
-      background: #292929;
-      background-size: 320px;
-      content: "";
-      .box-shadow(~"inset 0 1px 2px rgba(0, 0, 0, .7)");
-    }
   }
 
   &.active > .control:after,
   &:not(.fast-button) input:checked ~ .control:after {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 24px;
-    height: 24px;
-    border-radius: 24px;
-    background: #292929;
+    top: 9px;
+    left: 9px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #1f8fb9;
+    .box-shadow(~"0 1px 0 #fff, 0 0 2px 0 #fff, inset 0 2px 2px rgba(0,0,0,.21)");
     content: "";
-    .gradient-vertical-four(#53a3ba, 0%, #2582a1, 39%, #247f9f, 54%, #195366, 100%);
   }
 
-  input[disabled] ~ .control:before, input.disabled ~ .control:before {
+  input[disabled] ~ .control, input.disabled ~ .control {
+    background-color: transparent;
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
   }
