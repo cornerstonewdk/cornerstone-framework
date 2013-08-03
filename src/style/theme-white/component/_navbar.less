@@ -56,13 +56,15 @@
   border: none;
   box-shadow: none;
   background: none;
+  width: 100%;
+  min-height: 68px;
 
   & > .active,
   & > li:active,
   & > a:active {
     background-color: #2d95bb;
     .box-shadow(~"inset 0 2px 7px rgba(0,0,0,.55)");
-    .background-image(~"linear-gradient(to bottom, rgba(12,59,85,0.52) 0%,rgba(12,59,85,0.62) 2%,rgba(28,109,152,0.62) 30%,rgba(58,166,219,0.42) 87%,rgba(52,169,228,0.32) 100%)");
+    .background-image(~"linear-gradient(top, #308ab6, #46b3e8)");
     a, span, .glyphicon {
       color: @text-color-inverse;
     }
@@ -131,6 +133,7 @@
     & > a:active {
       background-color: #2d95bb;
       .box-shadow(~"inset 0 2px 7px rgba(0,0,0,.55)");
+      .background-image(~"linear-gradient(top, #308ab6, #46b3e8)");
     }
   }
 }
@@ -187,7 +190,7 @@
 // --------------------------------------------------
 .navbar-mobile-list-style() {
   text-align: center;
-  padding: 0 0 5px 0;
+  padding: 3px 0 0 0;
   width: 100%;
   .flex();
 }
