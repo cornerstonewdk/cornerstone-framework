@@ -3,6 +3,10 @@ body {
     padding-bottom: 50px;
 }
 
+.btn {
+    margin-bottom: 5px;
+}
+
 .label-new > a {
     text-align: center;
 }
@@ -11,7 +15,6 @@ body {
     padding: 10px 0 0 0;
     text-align: center;
 }
-
 
 #footer {
     position: fixed;
@@ -32,8 +35,8 @@ body {
 
 .the-icons li {
     float: left;
-    width: 100px;
-    height: 110px;
+    width: 110px;
+    height: 100px;
     padding: 10px;
     border: 1px solid #DDD;
     font-size: 12px;
@@ -87,4 +90,10 @@ body {
 
 .panel .mejs-container {
     margin: 0 auto;
+}
+
+@media (max-width: 320px) {
+    .the-icons li {
+        width: 95px;
+    }
 }
