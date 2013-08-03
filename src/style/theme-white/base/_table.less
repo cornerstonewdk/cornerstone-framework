@@ -41,7 +41,6 @@
   // State
   #table > .draw-state(success);
   #table > .draw-state(warning);
-  #table > .draw-state(success);
   #table > .draw-state(danger);
   #table > .draw-state(info);
 }
@@ -71,6 +70,7 @@
 #table {
   // primary, success, warning, danger, info
   .draw-state(@state: warning) {
+
     @state-bg: ~"@{state-@{state}-bg}";
     & > tbody > tr {
       & > td.@{state},
