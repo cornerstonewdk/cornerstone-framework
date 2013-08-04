@@ -32,8 +32,14 @@ code {
   line-height: 0;
 }
 
-a, button, td, th {
-  &:focus {
-    outline: none;
+a, button, td, th, select {
+   &:focus {
+    outline: 0;
+  }
+}
+
+.touch {
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 }

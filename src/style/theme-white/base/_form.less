@@ -558,6 +558,23 @@ input {
   }
 }
 
+select {
+  width: 100%;
+  height: 40px;
+  padding: 9px 5px;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  border: 1px solid @text-color;
+  border-radius: 5px;
+  color: @text-color;
+  outline: 0;
+  display: inline-block;
+  .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.27)");
+}
+.bootstrap-select .btn:focus {
+  outline: 0;
+}
 .bootstrap-select:not([class*="span"]) {
   padding: 0;
 
