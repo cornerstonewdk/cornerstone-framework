@@ -18,8 +18,19 @@
     .box-shadow(~"inset 0 2px 1px 0 rgba(0, 0, 0, 0.5)");
   }
 
-  & > .progress-bar {
+  &.progress-striped .progress-bar {
     border-radius: 10px;
   }
 }
 
+.touch {
+  .progress {
+    border-radius: 10px;
+    background-color: #ddd;
+    .box-shadow(~"inset 0 2px 1px 0 rgba(0, 0, 0, 0.5)");
+
+    &:after {
+      display: none;
+    }
+  }
+}
