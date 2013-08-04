@@ -9,9 +9,30 @@
 }
 
 .carousel-control .glyphicon, .carousel-control .icon-prev, .carousel-control .icon-next {
-  width: 60px;
-  height: 60px;
   margin-top: -30px;
   margin-left: -30px;
-  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  font-size: 35px;
+}
+
+.carousel-indicators {
+  & > li {
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #919191;
+    .box-shadow(~"inset 0 2px 2px #000");
+    &.active {
+      margin: 0 5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background-color: #46b2da;
+      .box-shadow(~"inset 0 2px 2px #000");
+    }
+  }
 }
