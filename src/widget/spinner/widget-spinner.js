@@ -66,7 +66,6 @@
     $(function () {
         $(document).off("click.Spinner.data-api").on("click.Spinner.data-api",
             "[data-plugin^=spinner], .spinner-outer-bg", function (e) {
-                console.log(e);
             var $btn = $(e.target);
             var target = $btn.data("spinnerTarget");
             $(target).length ? $(target).spinner() : $(this).spinner();
