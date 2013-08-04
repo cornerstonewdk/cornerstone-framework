@@ -7,119 +7,71 @@
  *  License :
  */
 
-;
 (function (root, doc, factory) {
     factory(root.jQuery, root, doc);
 }(this, document, function (jQuery, window, document, undefined) {
 
     var hasTouch = ('ontouchstart' in window);
 
-    /**
-     * @class Spinner
-     * @constructor
-     */
-    var Spinner = function (element, options) {
-        this.$element = $(element);
-        this.options = $.extend({}, $.fn.spinner.defaults, options);
-    };
+    $.fn.spinner = function (opts) {
+        opts = $.extend({}, {
+            lines: 13, // The number of lines to draw
+            length: 7, // The length of each line
+            width: 4, // The line thickness
+            radius: 10, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            color: '#FFF', // #rgb or #rrggbb
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: true, // Whether to render a shadow
+            hwaccel: true, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: 'auto', // Top position relative to parent in px
+            left: 'auto' // Left position relative to parent in px
+        }, opts);
 
-    Spinner.prototype.setState = function (state) {
-        var d = "disabled"
-            , $el = this.$element
-            , data = $el.data()
-            , val = $el.is("input") ? "val" : "html";
+        this.each(function () {
+            var $this = $(this),
+                data = $this.data();
 
-        state = state + "Text";
-        data.resetText || $el.data("resetText", $el[val]());
-
-        $el[val](data[state] || this.options[state]);
-
-        // push to event loop to allow forms to submit
-        setTimeout(function () {
-            state == "loadingText" ?
-                $el.addClass(d).attr(d, d) :
-                $el.removeClass(d).removeAttr(d)
-        }, 0)
-    };
-
-    Spinner.prototype.toggle = function () {
-        var $parent = this.$element.parent("[data-toggle='buttons-radio']");
-
-        $parent && $parent
-            .find(".active")
-            .removeClass("active");
-
-        this.$element.toggleClass("active")
-    };
-
-    Spinner.prototype.show = function () {
-        this.$element.addClass("widget-spinner").append("<div class='widget-spinner-icon" + (hasTouch ? 2 : "" ) + "'></div>");
-    };
-
-    Spinner.prototype.showText = function () {
-        var text = this.$element.data("spinner-text");
-
-        if (typeof text !== "string" && $.trim(text).length < 1) {
-            return false;
-        }
-
-        $("div.widget-spinner div.spinner-center").attr({
-            "data-content":text
-        });
-    };
-
-    Spinner.prototype.removeText = function () {
-        $("div.widget-spinner div.spinner-center").attr({
-            "data-content":""
-        });
-    };
-
-    Spinner.prototype.hide = function () {
-        this.$element, this.$element.removeClass("widget-spinner").find(".widget-spinner-icon" + (hasTouch ? 2 : "" )).remove();
-    };
-
-//    Spinner.prototype.destroy = function () {
-//        $(".widget-spinner").remove();
-//    };
-
-
-    /* BUTTON PLUGIN DEFINITION
-     * ======================== */
-
-    $.fn.spinner = function (option) {
-        return this.each(function () {
-            var $this = $(this)
-                , data = $this.data("spinner")
-                , options = typeof option == "object" && option;
-
-            if (!data) {
-                $this.data("spinner", (data = new Spinner(this, options)));
-            }
-
-            if (option == "show") {
-                data.show();
-            } else if (option == "hide") {
-                data.hide();
-            } else if (option) {
-                data.setState(option)
+            if (data.spinner && typeof opts === "string") {
+                data.spinner[opts]();
+            } else {
+                if (data.spinner) {
+                    // 존재한 상태에서 spinner 플러그인을 재호출하면 플러그인을 제거시킨다.
+                    setTimeout(function () {
+                        data.spinner.stop();
+                        delete data.spinner;
+                        $this.toggleClass("spinner-outer-bg");
+                    }, 150);
+                } else {
+                    $(this).toggleClass("spinner-outer-bg");
+                    var style = $this.attr("style");
+                    data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
+                    ($this.height() > $(window).height()) && $this.find(".spinner:first-child").attr("style", style);
+                }
             }
         });
+        return this;
     };
 
-    $.fn.spinner.defaults = {
-        loadingText:"loading..."
+    $.fn.spinner.presets = {
+        tiny: { lines: 8, length: 2, width: 2, radius: 3 },
+        small: { lines: 8, length: 4, width: 3, radius: 5 },
+        large: { lines: 10, length: 8, width: 4, radius: 8 }
     };
-
-    $.fn.spinner.Constructor = Spinner;
-
 
     $(function () {
-        $("body").on("click.Spinner.data-api", "[data-plugin^=spinner]", function (e) {
+        $(document).off("click.Spinner.data-api").on("click.Spinner.data-api",
+            "[data-plugin^=spinner], .spinner-outer-bg", function (e) {
+                console.log(e);
             var $btn = $(e.target);
-            var type = $btn.data("spinnerType");
             var target = $btn.data("spinnerTarget");
-            $(target).spinner(type);
+            $(target).length ? $(target).spinner() : $(this).spinner();
         });
+
     });
 }));
 

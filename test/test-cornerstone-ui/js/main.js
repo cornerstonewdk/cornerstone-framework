@@ -51,21 +51,10 @@
 		$("#signature").on('start.cs.sign',function (e) {
 			console.log('start.cs.sign', e);
 		}).on('move.cs.sign',function (e) {
-				console.log('move.cs.sign', e);
-			}).on('end.cs.sign', function (e) {
-				console.log('end.cs.sign', e);
-			});
-
-		//
-		// Spinner 플러그인
-		// --------------------------------------------------
-		$("[data-plugin='spinner']").on("click", function (e) {
-			e.preventDefault();
-			var target = $(this).data("spinnerTarget");
-			window.setTimeout(function () {
-				$(target).spinner("hide");
-			}, 3000);
-		});
+            console.log('move.cs.sign', e);
+        }).on('end.cs.sign', function (e) {
+            console.log('end.cs.sign', e);
+        });
 
 		//
 		// Motion Captcha 플러그인
