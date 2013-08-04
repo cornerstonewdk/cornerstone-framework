@@ -11,7 +11,7 @@
 		},
 		"main": "widget-editor.js",
 		"shim": {
-			"deps": [ "backbone", "underscore", "jquery", "wysihtml5" ],
+			"deps": [ "backbone", "underscore", "jquery", "jquery.hotkeys" ],
 			"exports": "widget-editor"
 		}
 	}

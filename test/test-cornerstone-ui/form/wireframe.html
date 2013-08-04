@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cornerstone UI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link id="baseStyle" rel="stylesheet" href="../../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../../lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="../../../lib/bootstrap-select/bootstrap-select.css"/>
+    <link id="customStyle" rel="stylesheet" href="../../../grunt-dist/src/style/theme-wireframe/cornerstone.css"/>
+    <link rel="stylesheet" href="../style/demo.css"/>
+    <style type="text/css">
+        hr {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body id="top">
+
+<div class="container">
+
+<header class="page-header">
+    <h1>
+        Form
+        <small>
+            <a href="http://cornerstone.sktelecom.com/cornertest/test-ui/forms.html" target="_blank">
+                <span class="label label-info">이전 버전과 비교하기<span class="glyphicon glyphicon-share-alt"></span></span>
+            </a>
+            <a target="_blank"
+               href="http://validator.w3.org/check?uri=http%3A%2F%2Fjnw.io%2Fprojects%2FCornerstone%2Fcornerstone-framework%2Ftest%2Ftest-cornerstone-ui%2Fform.html">
+                <img alt="valid-html5"
+                     src="data:image/jpg;base64,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">
+            </a>
+        </small>
+    </h1>
+</header>
+
+<!-- Forms
+  ================================================== -->
+<section>
+<div class="row">
+
+<div class="col col-lg-4">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Horizontal form</legend>
+            <input class="form-control" type="text" placeholder="Text input" value="Text input">
+
+            <hr>
+
+            <textarea class="form-control" rows="3"></textarea>
+
+            <hr>
+
+            <input class="form-control" type="text" placeholder="Text input" value="Text input">
+
+            <hr>
+
+            <textarea class="form-control" rows="3"></textarea>
+
+            <hr>
+
+            <div class="input-group col col-lg-6">
+                <span class="input-group-addon">@</span>
+                <input class="form-control" size="16" type="text" placeholder="Username">
+            </div>
+
+            <hr>
+
+            <div class="input-group">
+                <input class="form-control" size="16" type="text">
+                <span class="input-group-addon">.00</span>
+            </div>
+
+            <hr>
+
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" size="16" type="text">
+                <span class="input-group-addon">.00</span>
+            </div>
+
+            <hr>
+
+            <div class="input-group col col-lg-12">
+                <input class="form-control" type="text">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                    <button class="btn btn-default" type="button">Options</button>
+                </span>
+            </div>
+
+        </fieldset>
+    </form>
+
+    <hr>
+    <form class="form-search">
+        <fieldset>
+            <legend>Search form</legend>
+
+            <div class="input-group input-group-search col col-lg-10">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+            <hr>
+            <div class="input-group col col-lg-10">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+
+<div class="col col-lg-4">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Text input</legend>
+            <input class="form-control" type="text" placeholder="UNEDITABLE INPUT" disabled>
+            <hr>
+
+            <input class="form-control" type="text" placeholder="TEXT INPUT">
+
+            <hr>
+
+            <input class="form-control focused" id="focusedInput" type="text" placeholder="FOCUSED INPUT">
+
+            <hr>
+
+            <div class="control-group disabled">
+                <div class="controls row">
+                    <div class="col col-7">
+                        <input class="form-control left" type="text" placeholder="DISABLED" disabled>
+                    </div>
+                    <div class="col col-5">
+                        <div class="help-inline right">
+                            <span class="arrow"></span>
+                            <span class="help-message">Not supported</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="control-group has-warning">
+                <div class="controls row">
+                    <div class="col col-5">
+                        <div class="help-inline left">
+                            <span class="arrow"></span>
+                            <span>Warning</span>
+                        </div>
+                    </div>
+                    <div class="col col-7">
+                        <input type="text" class="form-control" placeholder="Warning!">
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="control-group has-error">
+                <div class="controls">
+                    <div class="help-inline top">
+                        <span class="arrow"></span>
+                        <span>Error</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Error!">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="control-group has-success">
+                <div class="controls">
+                    <input type="text" class="form-control" placeholder="Success!">
+
+                    <div class="help-inline bottom">
+                        <span class="arrow"></span>
+                        <span>Success</span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Buttons</legend>
+            <p>
+                <button class="btn btn-default" type="button">BUTTON</button>
+                <button class="btn btn-primary" type="button">BUTTON</button>
+            </p>
+            <hr>
+            <p>
+
+                <button class="btn btn-default disabled" type="button">BUTTON</button>
+                <button class="btn btn-primary disabled" type="button">BUTTON</button>
+            </p>
+        </fieldset>
+    </form>
+</div>
+
+<div class="col col-lg-4">
+    <form>
+        <fieldset>
+            <legend>Select</legend>
+            <select class="col col-lg-12 selectpicker">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <select class="col col-lg-12">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <form>
+        <fieldset>
+            <legend>Rangeinput</legend>
+
+            <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
+                   class="widget-range"/>
+
+            <hr/>
+
+            <input type="range" data-plugin="rangeinput" value="99999" min="0" max="99999" step="1000"
+                   class="widget-range max-10000"/>
+
+        </fieldset>
+        <fieldset>
+            <legend>Flip select</legend>
+
+            <label class="flip-area">
+                <input type="checkbox" class="flip-check" value="option2" checked>
+                <span class="flip-txt" data-on="ON" data-off="OFF">
+                    <span class="flip-btn"></span>
+                </span>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Flip select (required Hammer.js)</legend>
+
+            <label class="flip-area fast-button">
+                <input type="checkbox" class="flip-check" value="option2">
+                <span class="flip-txt" data-on="ON" data-off="OFF">
+                    <span class="flip-btn"></span>
+                </span>
+            </label>
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <form class="form-inline">
+        <fieldset>
+            <legend>Checkbox</legend>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option1" disabled>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option2" checked>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option3">
+                <span class="control placeholder"></span>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Checkbox (required Hammer.js)</legend>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option1" disabled>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox fast-button active">
+                <input type="checkbox" value="option2" checked>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox  fast-button">
+                <input type="checkbox" value="option3">
+                <span class="control placeholder"></span>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Radio</legend>
+            <label class="input-radio">
+                <input type="radio" name="radio" value="option1" disabled>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-radio">
+                <input type="radio" name="radio" value="option1">
+                <span class="control"></span>
+            </label>
+
+            <label class="input-radio">
+                <input type="radio" name="radio" value="option1" checked>
+                <span class="control"></span>
+            </label>
+        </fieldset>
+    </form>
+</div>
+</div>
+</section>
+
+</div>
+
+<script type="text/javascript" src="../../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../js/vendor/jquery.hammer.js"></script>
+<script type="text/javascript" src="../js/vendor/jquery.smooth-scroll.min.js"></script>
+<script type="text/javascript" src="../js/vendor/helper.js"></script>
+<!-- Widget Plugin -->
+<script type="text/javascript" src="../../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/touch/widget-touch.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/alert/widget-alert.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/carousel/widget-carousel.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/collapse/widget-collapse.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/datepicker/widget-datepicker.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/popover/widget-popover.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/rangeinput/widget-rangeinput.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/sign/widget-sign.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/spinner/widget-spinner.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/tooltip/widget-tooltip.js"></script>
+<script type="text/javascript" src="../../../lib/bootstrap-select/bootstrap-select.js"></script>
+<!-- Widget Featured -->
+<script type="text/javascript" src="../../../grunt-dist/lib/d3/d3.v3.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/nvd3/nv.d3.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/chart/widget-chart.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/DataTables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/datatable/widget-datatable.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/wysihtml5/wysihtml5-0.3.0.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/editor/widget-editor.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/infinity/infinity.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/listview/widget-listview.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/media/mediaelement-and-player.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/media/widget-media.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/iscroll-4/iscroll.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/scrollview/widget-scrollview.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript">
+    $('.selectpicker').selectpicker();
+</script>
+</body>
+</html>
+
+
