@@ -61,7 +61,7 @@
         options = $.extend(true, defaultOptions, options);
         var dt = $( this ).data( 'featuredDataTable', $(this).dataTable(options) );
         
-        dt.off( 'click', 'tr' ).on( 'click', 'tr', function ( e ) {
+        dt.off( 'click', 'tr' ).on( 'click', 'tr', function () {
             var rowData = $( this ).closest( 'table' ).data( 'featuredDataTable' ).fnGetData( this );
             $( this ).trigger( 'itemClick.cs.datatables', { 'data': rowData } );
         } );
@@ -86,13 +86,12 @@
             "iPage":Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
             "iTotalPages":Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
         };
-    }
+    };
 
     /* 부트스트랩 페이지네이션 스타일링 기능 확장 */
     $.extend($.fn.dataTableExt.oPagination, {
         "bootstrap":{
             "fnInit":function (oSettings, nPaging, fnDraw) {
-                var oLang = oSettings.oLanguage.oPaginate;
                 var fnClickHandler = function (e) {
                     e.preventDefault();
                     if (oSettings.oApi._fnPageChange(oSettings, e.data.action)) {
@@ -161,6 +160,10 @@
                         $('li:last', an[i]).removeClass('disabled');
                     }
                 }
+
+
+                var $inputFilter = $(".dataTables_filter input");
+                $inputFilter.hasClass("form-control") || $inputFilter.addClass("form-control");
             }
         }
     });
@@ -169,7 +172,7 @@
         /**
          * DATA API (HTML5 Data Attribute)
          */
-        $("[data-featured=datatable]").each(function (i) {
+        $("[data-featured=datatable]").each(function () {
             $(this)[pluginName]({
                 "sAjaxSource":$(this).data("datatableBind")
             });
