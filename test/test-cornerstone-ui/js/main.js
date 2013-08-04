@@ -84,6 +84,12 @@
 		});
 		$("#motion-captcha button").trigger("click");
 
+        $('.example-countries .typeahead').typeahead({
+            name: 'countries',
+            prefetch: 'data/typeahead-countries.json',
+            limit: 10
+        });
+
 		//
 		// Date Picker 플러그인
 		// --------------------------------------------------
