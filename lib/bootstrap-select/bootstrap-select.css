@@ -42,8 +42,8 @@
 }
 
 .bootstrap-select .btn:focus {
-    outline: thin dotted #333333 !important;
-    outline: 5px auto -webkit-focus-ring-color !important;
+    outline: thin dotted #333333;
+    outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .bootstrap-select.btn-group > .disabled:focus {
-    outline: none !important;
+    outline: none;
 }
 
 .bootstrap-select.btn-group[class*="span"] .btn {
@@ -207,8 +207,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    display: block !important;
+    display: block;
     width: 100%;
-    height: 100% !important;
+    height: 100%;
     opacity: 0;
 }
