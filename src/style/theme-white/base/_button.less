@@ -8,12 +8,14 @@
 @btn-default-color: #6a6a6a;
 @btn-default-border: 1px solid #b6b6b6;
 
-.btn:not(.btn-link) {
+// TODO 터치 기반인 경우 hover 스타일이 터치 후 지속되는 문제 수정 필요
+.btn {
   border: @btn-default-border;
   border-radius: 6px;
   color: @btn-default-color;
   text-shadow: 0 1px 0 #FFF;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  .user-select(none);
   .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
   .background-image(~"linear-gradient(bottom, @{btn-default-gradient-end} 0%, @{btn-default-gradient-start} 99.49%, @{btn-default-gradient-start} 100%)");
 
@@ -25,7 +27,8 @@
     .background-image(~"linear-gradient(bottom, #e3e3e3 25%, #fff 74.74%, #fff 75%)");
   }
 
-  &:active {
+  &:active, &.active {
+    border: 1px solid #b6b6b6;
     background-color: #fff;
     color: #454545;
     .box-shadow(~"inset 0 0 7px rgba(0,0,0,.3)");
@@ -67,6 +70,17 @@
   &.btn-large {
     font-weight: bold;
   }
+}
+
+.btn-link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active,
+.btn-link.active, {
+  border: none;
+  background: none;
+  color: #428bca;
+  .box-shadow(~"none");
 }
 
 .dropup {
@@ -156,7 +170,6 @@ fieldset[disabled] .btn {
   .background-image(~"linear-gradient(bottom, @{gradient-start} 0%, @{gradient-end} 100%)");
 
   &:hover, &:focus, &.hover {
-    .box-shadow(~"0 3px 2px rgba(0,0,0,.09), inset 0 0 2px 0 #fff");
     #btn-state > .hover(@state);
   }
 
