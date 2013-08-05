@@ -364,7 +364,7 @@ select {
       margin-left: 15px;
     }
   }
-  &:not(.fast-button) .flip-check:checked ~ .flip-txt {
+  &:not(.fast-button) .flip-check:checked + .flip-txt {
     display: inline-block;
     padding: 0 0 0 15px;
     border: 2px solid #222222;
@@ -462,7 +462,7 @@ select {
   }
 
   &.active > .control:after,
-  &:not(.fast-button) input:checked ~ .control:after {
+  &:not(.fast-button) input:checked + .control:after {
     position: absolute;
     top: 9px;
     left: 9px;
@@ -478,7 +478,7 @@ select {
     -webkit-font-smoothing: antialiased;
   }
 
-  input[disabled] ~ .control:before, input.disabled ~ .control:before {
+  input[disabled] + .control:before, input.disabled + .control:before {
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
   }
@@ -513,7 +513,7 @@ select {
   }
 
   &.active > .control:after,
-  &:not(.fast-button) input:checked ~ .control:after {
+  &:not(.fast-button) input:checked + .control:after {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -525,7 +525,7 @@ select {
     .gradient-vertical-four(#53a3ba, 0%, #2582a1, 39%, #247f9f, 54%, #195366, 100%);
   }
 
-  input[disabled] ~ .control:before, input.disabled ~ .control:before {
+  input[disabled] + .control:before, input.disabled + .control:before {
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
   }

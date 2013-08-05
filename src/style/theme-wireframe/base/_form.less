@@ -1,17 +1,15 @@
 .control-group {
   &.disabled {
     input {
-      background-image: url("images/bg-input-disabled.png");
       background-size: 5% 100%;
-      background-repeat: repeat;
+      background: url("images/bg-input-disabled.png") repeat;
     }
   }
 }
 
 input {
   &.focused {
-    outline: 0;
-    outline: thin dotted 9;
+    outline: none;
     border-color: rgba(82, 168, 236, .8);
     .box-shadow(0 0 8px rgba(82, 168, 236, .6));
   }
@@ -192,7 +190,6 @@ input {
   margin: 0;
   padding: 7px;
   border-radius: 25px;
-  background-color: rgba(84, 84, 84, 0.14);
   #gradient > .vertical(rgba(0, 0, 0, 0.2), 0%, rgba(255, 255, 255, 0.05), 100%);
 
   .flip-btn {
