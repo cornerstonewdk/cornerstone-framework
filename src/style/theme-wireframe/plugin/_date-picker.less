@@ -5,13 +5,10 @@
   top: 100%;
   left: 0;
   z-index: 1000;
-
   display: none;
   float: left;
-  margin: 2px 0 0;
-  margin-top: 1px;
-  padding: 4px;
-  padding: 5px 0;
+  margin: 1px 0 0;
+  padding: 5px 4px 5px 4px;
   min-width: 160px;
   width: 250px;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -95,7 +92,6 @@
     &.active,
     &.active:hover {
       #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
-      background-color: @btn-primary-bg;
       color: #fff;
       text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
     }
@@ -119,7 +115,6 @@
       }
       &.active {
         #gradient > .vertical(@start-color: @brand-primary, @end-color: darken(@brand-primary, 5%));
-        background-color: @btn-primary-bg;
         color: #fff;
         text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
       }

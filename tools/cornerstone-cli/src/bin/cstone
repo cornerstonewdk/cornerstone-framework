@@ -76,11 +76,11 @@ function doTask( command, options ) {
 
 			// 테마 적용
 			if ( _.contains( options, '--theme:dark' ) ) {
-				replaceFileContent( './package.json', '"backbone": "*"', '"backbone": "*",\r\n      "theme-dark": "*"' );
+				replaceFileContent( './src/package.json', '"backbone": "*"', '"backbone": "*",\r\n      "theme-dark": "*"' );
 				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-dark/cornerstone.css" rel="stylesheet"/>' );
 			}
 			if ( _.contains( options, '--theme:white' ) ) {
-				replaceFileContent( './package.json', '"backbone": "*"', '"backbone": "*",\r\n      "theme-white": "*"' );
+				replaceFileContent( './src/package.json', '"backbone": "*"', '"backbone": "*",\r\n      "theme-white": "*"' );
 				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-white/cornerstone.css" rel="stylesheet"/>' );
 			}
 		}
@@ -89,11 +89,11 @@ function doTask( command, options ) {
 
 			// 테마 적용
 			if ( _.contains( options, '--theme:dark' ) ) {
-				replaceFileContent( './package.json', '"bootstrap": "*",', '"bootstrap": "*",\r\n      "theme-dark": "*",' );
+				replaceFileContent( './src/package.json', '"bootstrap": "*",', '"bootstrap": "*",\r\n      "theme-dark": "*",' );
 				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-dark/cornerstone.css" rel="stylesheet"/>' );
 			}
 			if ( _.contains( options, '--theme:white' ) ) {
-				replaceFileContent( './package.json', '"bootstrap": "*",', '"bootstrap": "*",\r\n      "theme-white": "*",' );
+				replaceFileContent( './src/package.json', '"bootstrap": "*",', '"bootstrap": "*",\r\n      "theme-white": "*",' );
 				replaceFileContent( './src/index.html', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>', '<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>\r\n\t\t<link href="cornerstone/theme-white/cornerstone.css" rel="stylesheet"/>' );
 			}
 		}

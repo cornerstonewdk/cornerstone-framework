@@ -5,5 +5,19 @@
 .list-view {
   .list-group {
     margin: 0;
+    &:not(:first-child) {
+      margin-top: -3px;
+      .list-group-item:first-child {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+
+    &:not(:last-child) {
+      .list-group-item:last-child {
+        padding-bottom: 13px;
+      }
+    }
   }
 }
