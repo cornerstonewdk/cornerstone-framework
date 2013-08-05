@@ -1,0 +1,7 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">3D 바차트</div>
+
+	<div class="btn-group">
+		<button type="button" class="btn btn-success next">다음</button>
+	</div>
+</div>

@@ -7,417 +7,423 @@
  *  License :
  */
 
-;
-(function (root, doc, factory) {
-	// 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
-	if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
-		// AMD. Register as an anonymous module.
-		define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-chart"], function (Backbone, _, $) {
-			factory($, root, doc, d3);
-			return Backbone.View.extend({
+(function (root, doc, Cornerstone, define, d3, factory) {
+    'use strict';
 
-				model: new Backbone.Model(),
+    // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
+    if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
+        // AMD. Register as an anonymous module.
 
-				initialize: function () {
-					_.bindAll(this, "render");
+        define([
+            "backbone",
+            "underscore",
+            "jquery"
+        ], function (Backbone, _, $) {
+            factory($, root, doc, d3);
+            return Backbone.View.extend({
+
+                model: new Backbone.Model(),
+
+                initialize: function () {
+                    _.bindAll(this, "render");
 //                    this.model.on("change", this.updateChart);
-				},
+                },
 
-				updateChart: function (view) {
-					view.model.clear();
-					view.model.fetch({
-						success: function (model) {
-							var data = [];
-							$.each(model.toJSON(), function (i, obj) {
-								data.push(obj);
-							});
+                updateChart: function (view) {
+                    view.model.clear();
+                    view.model.fetch({
+                        success: function (model) {
+                            var data = [];
+                            $.each(model.toJSON(), function (i, obj) {
+                                data.push(obj);
+                            });
 
-							view.options = $.extend({}, view.options, {data: data});
-							view.$el.featuredChart(view.options);
-						}
-					});
-				},
+                            view.options = $.extend({}, view.options, {data: data});
+                            view.$el.featuredChart(view.options);
+                        }
+                    });
+                },
 
-				render: function () {
-					this.$el.featuredChart(this.options);
-					this.updateChart(this);
-					return this;
-				}
-			});
-		});
-	} else {
-		// Browser globals
-		factory(root.jQuery, root, doc, root.d3);
-	}
-}(window, document, function ($, window, document, d3, undefined) {
-	var pluginName = "featuredChart",
-		featuredChart,
-		defaultOptions;
+                render: function () {
+                    this.$el.featuredChart(this.options);
+                    this.updateChart(this);
+                    return this;
+                }
+            });
+        });
+    } else {
+        // Browser globals
+        factory(root.jQuery, root, doc, root.d3);
+    }
+}(window, document, Cornerstone, define, d3, function ($, window, document, d3, undefined) {
+    var pluginName = "featuredChart",
+        featuredChart,
+        defaultOptions;
 
-	FeaturedChart.name = 'FeaturedChart';
+    FeaturedChart.name = 'FeaturedChart';
 
-	function FeaturedChart(element, options) {
-		var self = this;
-		var target = d3.select(element);
+    function FeaturedChart(element, options) {
+        var self = this;
+        var target = d3.select(element);
 
-		// 배열로 넘어온 색상을 d3 색상 카테고리로 변환
-		if (typeof options === "object" && typeof options.color === "object" && options.color.length > 0) {
-			options.color = d3.scale.ordinal().range(options.color);
-		}
+        // 배열로 넘어온 색상을 d3 색상 카테고리로 변환
+        if (typeof options === "object" && typeof options.color === "object" && options.color.length > 0) {
+            options.color = d3.scale.ordinal().range(options.color);
+        }
 
-		this.options = options;
+        this.options = options;
 
-		this.$el = $(element);
+        this.$el = $(element);
 
-		nv.dev = false;
-		this[options.chartType + "Chart"](target, options);
-	}
+        nv.dev = false;
+        this[options.chartType + "Chart"](target, options);
+    }
 
-	FeaturedChart.prototype.barChart = function (target, options) {
-		nv.addGraph(function () {
-			var chart = nv.models.multiBarChart();
+    FeaturedChart.prototype.barChart = function (target, options) {
+        nv.addGraph(function () {
+            var chart = nv.models.multiBarChart();
 
-			chart.xAxis
-				.axisLabel(options.xAxisLabel)
-				.tickFormat(d3.format(',f'));
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
 
-			chart.yAxis
-				.axisLabel(options.yAxisLabel)
-				.tickFormat(d3.format(',.1f'));
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
 
-			chart.color(options.color.range());
+            chart.color(options.color.range());
 
-			if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-				target = target.append("svg:svg")
-			} else {
-				target = target.select("svg");
-			}
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
 
-			target.datum(options.data)
-				.transition().duration(500).call(chart);
+            target.datum(options.data)
+                .transition().duration(500).call(chart);
 
-			!options.autoResize || nv.utils.windowResize(chart.update);
+            !options.autoResize || nv.utils.windowResize(chart.update);
 
-			return chart;
-		});
-	};
+            return chart;
+        });
+    };
 
-	FeaturedChart.prototype.stackedBarChart = function (target, options) {
-		nv.addGraph(function () {
-			var chart = nv.models.multiBarChart();
+    FeaturedChart.prototype.stackedBarChart = function (target, options) {
+        nv.addGraph(function () {
+            var chart = nv.models.multiBarChart();
 
-			chart.stacked(true);
+            chart.stacked(true);
 
-			chart.xAxis
-				.axisLabel(options.xAxisLabel)
-				.tickFormat(d3.format(',f'));
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
 
-			chart.yAxis
-				.axisLabel(options.yAxisLabel)
-				.tickFormat(d3.format(',.1f'));
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
 
-			chart.color(options.color.range());
+            chart.color(options.color.range());
 
-			if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-				target = target.append("svg:svg")
-			} else {
-				target = target.select("svg");
-			}
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
 
-			target.datum(options.data)
-				.transition().duration(500).call(chart);
+            target.datum(options.data)
+                .transition().duration(500).call(chart);
 
-			!options.autoResize || nv.utils.windowResize(chart.update);
+            !options.autoResize || nv.utils.windowResize(chart.update);
 
-			return chart;
-		});
-	};
+            return chart;
+        });
+    };
 
-	FeaturedChart.prototype.groupedBarChart = function (target, options) {
-		nv.addGraph(function () {
-			var chart = nv.models.multiBarChart();
+    FeaturedChart.prototype.groupedBarChart = function (target, options) {
+        nv.addGraph(function () {
+            var chart = nv.models.multiBarChart();
 
-			chart.stacked(false);
+            chart.stacked(false);
 
-			chart.xAxis
-				.axisLabel(options.xAxisLabel)
-				.tickFormat(d3.format(',f'));
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
 
-			chart.yAxis
-				.axisLabel(options.yAxisLabel)
-				.tickFormat(d3.format(',.1f'));
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
 
-			chart.color(options.color.range());
+            chart.color(options.color.range());
 
-			if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-				target = target.append("svg:svg")
-			} else {
-				target = target.select("svg");
-			}
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
 
-			target.datum(options.data)
-				.transition().duration(500).call(chart);
+            target.datum(options.data)
+                .transition().duration(500).call(chart);
 
-			!options.autoResize || nv.utils.windowResize(chart.update);
+            !options.autoResize || nv.utils.windowResize(chart.update);
 
-			return chart;
-		});
-	};
+            return chart;
+        });
+    };
 
-	FeaturedChart.prototype.lineChart = function (target, options) {
-		// Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
-		nv.addGraph(function () {
-			var chart = nv.models.lineChart();
+    FeaturedChart.prototype.lineChart = function (target, options) {
+        // Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
+        nv.addGraph(function () {
+            var chart = nv.models.lineChart();
 
-			chart.xAxis
-				.axisLabel(options.xAxisLabel)
-				.tickFormat(d3.format(',f'));
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
 
-			chart.yAxis
-				.axisLabel(options.yAxisLabel)
-				.tickFormat(d3.format(',.1f'));
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
 
-			chart.color(options.color.range());
+            chart.color(options.color.range());
 
-			if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-				target = target.append("svg:svg")
-			} else {
-				target = target.select("svg");
-			}
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
 
-			target.datum(options.data)
-				.transition().duration(500)
-				.call(chart);
+            target.datum(options.data)
+                .transition().duration(500)
+                .call(chart);
 
-			!options.autoResize || nv.utils.windowResize(chart.update);
-			return chart;
-		});
-	};
+            !options.autoResize || nv.utils.windowResize(chart.update);
+            return chart;
+        });
+    };
 
-	/**
-	 * TODO 실시간 데이터 바인딩할 경우 차트 드로우 업데이트 구현 필요
-	 * @param target
-	 * @param options
-	 */
-	FeaturedChart.prototype.cumulativeLineChart = function (target, options) {
-		var data = [
-			{
-				"key": "Long",
-				"values": getData()
-			}
-		];
-		var chart;
+    /**
+     * TODO 실시간 데이터 바인딩할 경우 차트 드로우 업데이트 구현 필요
+     * @param target
+     * @param options
+     */
+    FeaturedChart.prototype.cumulativeLineChart = function (target, options) {
+        var data = [
+            {
+                "key": "Long",
+                "values": getData()
+            }
+        ];
+        var chart;
 
-		function redraw(target) {
-			nv.addGraph(function () {
-				chart = nv.models.cumulativeLineChart()
-					.x(function (d) {
-						return d.x
-					})
-					.y(function (d) {
-						return d.y / 100
-					})
-					.color(options.color.range());
-
-
-				chart.xAxis
-					.axisLabel(options.xAxisLabel)
-					.tickFormat(function (d) {
-						return d3.time.format('%x')(new Date(d))
-					});
-
-				chart.yAxis
-					.axisLabel(options.yAxisLabel)
-					.tickFormat(d3.format(',.1%'));
+        function redraw(target) {
+            nv.addGraph(function () {
+                chart = nv.models.cumulativeLineChart()
+                    .x(function (d) {
+                        return d.x
+                    })
+                    .y(function (d) {
+                        return d.y / 100
+                    })
+                    .color(options.color.range());
 
 
-				if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-					target = target.append("svg:svg")
-				} else {
-					target = target.select("svg");
-				}
+                chart.xAxis
+                    .axisLabel(options.xAxisLabel)
+                    .tickFormat(function (d) {
+                        return d3.time.format('%x')(new Date(d))
+                    });
 
-				target.datum(data)
-					.transition().duration(500)
-					.call(chart);
-
-				!options.autoResize || nv.utils.windowResize(chart.update);
-
-				return chart;
-			});
+                chart.yAxis
+                    .axisLabel(options.yAxisLabel)
+                    .tickFormat(d3.format(',.1%'));
 
 
-		}
+                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                    target = target.append("svg:svg")
+                } else {
+                    target = target.select("svg");
+                }
 
-		function getData() {
-			var arr = [];
-			var theDate = new Date(2012, 01, 01, 0, 0, 0, 0);
-			for (var x = 0; x < 30; x++) {
-				arr.push({x: new Date(theDate.getTime()), y: Math.random() * 100});
-				theDate.setDate(theDate.getDate() + 1);
-			}
-			return arr;
-		}
+                target.datum(data)
+                    .transition().duration(500)
+                    .call(chart);
 
-		var isOver = false;
-		this.$el.on("mouseover",function () {
-			isOver = true;
-		}).on("mouseout", function () {
-				isOver = false;
-			});
-		setInterval(function () {
-			var long = data[0].values;
-			var next = new Date(long[long.length - 1].x);
-			next.setDate(next.getDate() + 1)
-			long.shift();
-			long.push({x: next.getTime(), y: Math.random() * 100});
-			if (!isOver) {
-				redraw(target);
-			}
-		}, 1500);
-	};
+                !options.autoResize || nv.utils.windowResize(chart.update);
 
-	FeaturedChart.prototype.pieChart = function (target, options) {
-		var width = 500,
-			height = 500;
+                return chart;
+            });
 
-		nv.addGraph(function () {
-			var chart = nv.models.pieChart()
-				.x(function (d) {
-					return d.key
-				})
-				.y(function (d) {
-					return d.y
-				})
-				.values(function (d) {
-					return d;
-				})
-				.color(options.color.range());
 
-			if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-				target = target.append("svg:svg")
-			} else {
-				target = target.select("svg");
-			}
+        }
 
-			target.datum([options.data])
-				.transition().duration(1200)
-				.attr('width', width)
-				.attr('height', height)
-				.call(chart);
+        function getData() {
+            var arr = [];
+            var theDate = new Date(2012, 01, 01, 0, 0, 0, 0);
+            for (var x = 0; x < 30; x++) {
+                arr.push({x: new Date(theDate.getTime()), y: Math.random() * 100});
+                theDate.setDate(theDate.getDate() + 1);
+            }
+            return arr;
+        }
+
+        var isOver = false;
+        this.$el.on("mouseover",function () {
+            isOver = true;
+        }).on("mouseout", function () {
+                isOver = false;
+            });
+        setInterval(function () {
+            var long = data[0].values;
+            var next = new Date(long[long.length - 1].x);
+            next.setDate(next.getDate() + 1)
+            long.shift();
+            long.push({x: next.getTime(), y: Math.random() * 100});
+            if (!isOver) {
+                redraw(target);
+            }
+        }, 1500);
+    };
+
+    FeaturedChart.prototype.pieChart = function (target, options) {
+        var width = 500,
+            height = 500;
+
+        nv.addGraph(function () {
+            var chart = nv.models.pieChart()
+                .x(function (d) {
+                    return d.key
+                })
+                .y(function (d) {
+                    return d.y
+                })
+                .values(function (d) {
+                    return d;
+                })
+                .color(options.color.range());
+
+            if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                target = target.append("svg:svg")
+            } else {
+                target = target.select("svg");
+            }
+
+            target.datum([options.data])
+                .transition().duration(1200)
+                .attr('width', width)
+                .attr('height', height)
+                .call(chart);
 
             // inline Style로 추가되는 스타일 제거
-            $.each(target.selectAll(".nv-slice > .nv-label > text")[0], function(index, item) {
+            $.each(target.selectAll(".nv-slice > .nv-label > text")[0], function (index, item) {
                 $(item).removeAttr("style");
             });
 
-			!options.autoResize || nv.utils.windowResize(chart.update);
+            !options.autoResize || nv.utils.windowResize(chart.update);
 
-			return chart;
-		});
-	};
+            return chart;
+        });
+    };
 
-	/**
-	 * TODO 분산 차트 다른 차트와 같이 사용할 경우 X, Y축 값 표시 팝업 오류발생.
-	 * @param target
-	 * @param options
-	 */
-	FeaturedChart.prototype.scatterChart = function (target, options) {
-		nv.addGraph(function () {
-			var chart = nv.models.scatterChart()
-				.showDistX(true)
-				.showDistY(true)
-				.color(d3.scale.category10().range());
+    /**
+     * TODO 분산 차트 다른 차트와 같이 사용할 경우 X, Y축 값 표시 팝업 오류발생.
+     * @param target
+     * @param options
+     */
+    FeaturedChart.prototype.scatterChart = function (target, options) {
+        nv.addGraph(function () {
+            var chart = nv.models.scatterChart()
+                .showDistX(true)
+                .showDistY(true)
+                .color(d3.scale.category10().range());
 
-			chart.xAxis
-				.axisLabel(options.xAxisLabel)
-				.tickFormat(d3.format(',f'));
+            chart.xAxis
+                .axisLabel(options.xAxisLabel)
+                .tickFormat(d3.format(',f'));
 
-			chart.yAxis
-				.axisLabel(options.yAxisLabel)
-				.tickFormat(d3.format(',.1f'));
+            chart.yAxis
+                .axisLabel(options.yAxisLabel)
+                .tickFormat(d3.format(',.1f'));
 
-			target.append("svg:svg")
-				.datum(options.data)
-				.transition().duration(500)
-				.call(chart);
+            target.append("svg:svg")
+                .datum(options.data)
+                .transition().duration(500)
+                .call(chart);
 
-			!options.autoResize || nv.utils.windowResize(chart.update);
+            !options.autoResize || nv.utils.windowResize(chart.update);
 
-			return chart;
-		});
-	};
+            return chart;
+        });
+    };
 
-	$.fn.featuredChart = function (options, methodOptions) {
-		defaultOptions = {
-			chartType: "bar",
-			lineType: "basis",
-			xAxisLabel: null,
-			yAxisLabel: null,
-			width: 960,
-			height: 600,
-			margin: [0, 0, 0, 0],
-			padding: [0, 0, 0, 0],
-			data: {},
-			animate: false,
-			controlBar: false,
-			filtering: true,
-			autoResize: true,
-			color: d3.scale.category10()
-		};
+    $.fn.featuredChart = function (options, methodOptions) {
+        defaultOptions = {
+            chartType: "bar",
+            lineType: "basis",
+            xAxisLabel: null,
+            yAxisLabel: null,
+            width: 960,
+            height: 600,
+            margin: [0, 0, 0, 0],
+            padding: [0, 0, 0, 0],
+            data: {},
+            animate: false,
+            controlBar: false,
+            filtering: true,
+            autoResize: true,
+            color: d3.scale.category10()
+        };
 
-		options = $.extend(true, defaultOptions, options);
+        options = $.extend(true, defaultOptions, options);
 
-		return this.each(function (i) {
-			var $this = $(this);
-			var data = $this.data(pluginName);
-			// 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
+        return this.each(function () {
+            var $this = $(this);
+            var data = $this.data(pluginName);
+            // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
 //            if (!data) {
 //
 //            }
 
-			// 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
-			if (typeof options == 'string') {
-				data[options](data.options);
-			} else {
-				data = new FeaturedChart(this, options)
-				$this.data(pluginName, data);
-			}
+            // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
+            if (typeof options == 'string') {
+                data[options](data.options);
+            } else {
+                data = new FeaturedChart(this, options);
+                $this.data(pluginName, data);
+            }
 
-			if (!options.filtering) {
-				$this.removeClass("filtering");
-			} else {
-				$this.addClass("filtering");
-			}
+            if (!options.filtering) {
+                $this.removeClass("filtering");
+            } else {
+                $this.addClass("filtering");
+            }
 
-			if (!options.controlBar) {
-				$this.removeClass("control-bar");
-			} else {
-				$this.addClass("control-bar");
-			}
-		});
-	};
+            if (!options.controlBar) {
+                $this.removeClass("control-bar");
+            } else {
+                $this.addClass("control-bar");
+            }
+        });
+    };
 
-	$.fn.featuredChart.Constructor = FeaturedChart;
+    $.fn.featuredChart.Constructor = FeaturedChart;
 
-	$(function () {
-		/**
-		 * DATA API (HTML5 Data Attribute)
-		 */
-		$("[data-featured=chart]").each(function (i) {
-			var self = this,
-				dataUrl = $(this).data("chartBind");
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=chart]").each(function () {
+            var self = this,
+                dataUrl = $(this).data("chartBind");
 
-			$.getJSON(dataUrl).success(function (json) {
-				$(self)[pluginName]({
-					chartType: $(self).data("chartType"),
-					data: json
-				});
-			}).error(function (jqXHR, textStatus, errorThrown) {
-					console.log("getJSON Error", jqXHR, textStatus, errorThrown);
-				});
-		});
-	});
+            $.getJSON(dataUrl).success(function (json) {
+                $(self)[pluginName]({
+                    chartType: $(self).data("chartType"),
+                    data: json
+                });
+            }).error(function (jqXHR, textStatus, errorThrown) {
+                    console.log("getJSON Error", jqXHR, textStatus, errorThrown);
+                });
+        });
+    });
 
-	return FeaturedChart;
+    return FeaturedChart;
 }));
