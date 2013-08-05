@@ -697,26 +697,24 @@ describe('Cornerstone event extend test case', function() {
                 var $this = $( this );
 
                 var test = $this.twitterTypeahead(options);
-                console.log( test.data() );
 
                 var view = $this.twitterTypeahead(options).data('ttView');
 
-                // console.log( view.__proto__.prototype );
-                // console.log( view._handleSelection );
-                //function (){return e.apply(t||this,r.concat(d.call(arguments)))} 
-                
-                // view.__proto__._handleSelection = function(e) {
-                //     var byClick = e.type === "suggestionSelected", suggestion = byClick ? e.data : this.dropdownView.getSuggestionUnderCursor();
-                //     if (suggestion) {
-                //         this.inputView.setInputValue(suggestion.value);
-                //         byClick ? this.inputView.focus() : e.data.preventDefault();
-                //         byClick && utils.isMsie() ? utils.defer(this.dropdownView.close) : this.dropdownView.close();
-                //         this.eventBus.trigger("selected", suggestion.datum, suggestion.dataset);
-                //         console.log( this );
-                //         this.trigger("selected.cs.typeahead", suggestion.datum, suggestion.dataset);
-                //     }
-                //     console.log(e);
-                // };
+                view._handleSelection = function(e) {
+                     var byClick = e.type === "suggestionSelected", suggestion = byClick ? e.data : view.dropdownView.getSuggestionUnderCursor();
+                    suggestion = $(this).text();
+                     if (suggestion) {
+                         this.inputView.setInputValue(suggestion.value);
+                         byClick ? this.inputView.focus() : e.data.preventDefault();
+                         byClick && utils.isMsie() ? utils.defer(view.dropdownView.close) : view.dropdownView.close();
+                         this.eventBus.trigger("selected", suggestion.datum, suggestion.dataset);
+                         console.log( this );
+                         this.trigger("selected.cs.typeahead", suggestion.datum, suggestion.dataset);
+                     }
+                     console.log(e);
+                };
+
+                $(document).on("click.ttt", ".tt-suggestion", view._handleSelection);
             } );
         };
 
