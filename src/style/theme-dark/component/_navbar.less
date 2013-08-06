@@ -8,15 +8,15 @@
   color: #C0C0C0;
   font-size: @font-size-base;
   &:not(.navbar-fixed-top) > .container:before {
-    margin: 0 0 0 -15px;
+    position: absolute;
     #cs-gradient > .vertical(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.05));
     .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)");
-    display: block;
-    content: "";
     top: 0;
-    position: absolute;
+    display: block;
+    margin: 0 0 0 -15px;
     width: 100%;
     height: 100%;
+    content: "";
   }
 
   .nav {
@@ -28,6 +28,7 @@
     & > li {
       padding: 0 3px;
       & > a {
+        min-height: 34px;
         float: none;
         padding: 6px 13px;
         margin: 0;
@@ -64,7 +65,6 @@
         color: #82e6ff;
         text-decoration: none;
         text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-        min-height: 34px;
         .box-shadow(~"inset 0 0 7px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.08)");
       }
     }
@@ -73,12 +73,12 @@
 
 .navbar-nav {
   & > li > a > .glyphicon {
+    position: relative;
+    top: 2px;
+    right: 1px;
     display: block;
     float: left;
     font-size: 16px;
-    position: relative;
-    right: 1px;
-    top: 2px;
   }
 }
 
