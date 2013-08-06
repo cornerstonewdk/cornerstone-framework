@@ -27,6 +27,12 @@ hr {
   border: 0;
 }
 
-a:focus, button:focus {
-  outline: none;
+a, button, td, th, select {
+  &:focus {
+    outline: 0;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
