@@ -105,7 +105,7 @@ fieldset[disabled] .btn {
     box-shadow: none;
     border: none;
 
-    &:not(:last-child){
+    &:not(:last-child) {
       border-bottom: 1px solid #b6b6b6;
     }
 
@@ -114,7 +114,7 @@ fieldset[disabled] .btn {
       box-shadow: none;
       color: #1f8fb9;
       border: none;
-      &:not(:last-child){
+      &:not(:last-child) {
         border-bottom: 1px solid #b6b6b6;
       }
     }
@@ -138,7 +138,6 @@ fieldset[disabled] .btn {
     }
   }
 }
-
 
 // Placeholder
 @btn-primary-gradient-start: #2a92b9;
@@ -234,10 +233,15 @@ fieldset[disabled] .btn {
 }
 
 .btn-disabled() {
-  border: 1px solid #b6b6b6;
-  background-color: #fff;
-  color: #6a6a6a;
-  opacity: .5;
-  box-shadow: none;
-  text-shadow: none;
+  &, &:hover, &:focus, &:active, &.active {
+    border: 1px solid #b6b6b6;
+    background-color: #fff;
+    opacity: .5;
+    box-shadow: none;
+    text-shadow: none;
+  }
+
+  &.btn-default {
+    color: #6a6a6a;
+  }
 }
