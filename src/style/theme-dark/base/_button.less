@@ -71,9 +71,11 @@
   }
 
   &.btn-link {
-    border: none;
-    background: transparent none;
-    .box-shadow(none);
+    &, &:hover, &:focus, &:active, &.active {
+      border: none;
+      background: transparent none;
+      .box-shadow(none);
+    }
   }
 }
 
