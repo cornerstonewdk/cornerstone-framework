@@ -79,6 +79,9 @@
 
 @component-active-bg:            @brand-primary;
 
+@caret-width-base:               4px;
+@caret-width-large:              5px;
+
 
 // Tables
 // -------------------------
@@ -96,6 +99,8 @@
 
 // Buttons
 // -------------------------
+
+@btn-font-weight:                bold;
 
 @btn-default-color:              @text-color;
 @btn-default-bg:                 @btnBackground;
@@ -121,7 +126,7 @@
 @btn-info-bg:                    @btnInfoBackground;
 @btn-info-border:                @btn-info-bg;
 
-@btn-hover-color:                @btn-default-color;
+@btn-link-disabled-color:        @btn-default-color;
 
 
 // Forms
@@ -132,12 +137,13 @@
 
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
+@input-border-focus:             #66afe9;
 
 @input-color-placeholder:        @gray-light;
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large:             (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
-@input-height-small:             (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
+@input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-border-color:            #e5e5e5;
 
@@ -190,6 +196,7 @@
 @navbar-height:                    50px;
 @navbar-color:                     #777;
 @navbar-bg:                        @brand-primary;
+@navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
@@ -369,6 +376,10 @@
 
 // Alerts
 // -------------------------
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
 @alert-bg:                    @state-warning-bg;
 @alert-text:                  @state-warning-text;
 @alert-border:                @state-warning-border;
@@ -468,6 +479,9 @@
 @badge-active-color:          @link-color;
 @badge-active-bg:             #fff;
 
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
 
 // Breadcrumbs
 // -------------------------
@@ -478,12 +492,16 @@
 
 // Carousel
 // ------------------------
+
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
 @carousel-control-color:                      #fff;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
 
-@carousel-indicator-border-color:             #fff;
 @carousel-indicator-active-bg:                #fff;
+@carousel-indicator-border-color:             #fff;
 
 @carousel-caption-color:                      #fff;
 
@@ -491,6 +509,7 @@
 // Close
 // ------------------------
 @close-color:                 #000;
+@close-font-weight:           bold;
 @close-text-shadow:           0 1px 0 #fff;
 
 

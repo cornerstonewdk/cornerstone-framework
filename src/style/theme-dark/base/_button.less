@@ -8,7 +8,7 @@
   color: @text-color;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   font-size: @btn-font-size;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-weight: normal;
   .box-shadow(~"inset 0 0 1px rgba(255,255,255,.5), inset 0 1px 1px rgba(255,255,255,.5), 0 3px 3px rgba(0,0,0,.5)");
 
   & > .glyphicon {
@@ -26,36 +26,41 @@
     .disabled-style(hsl(hue(#4b4e53), 8%, 56%));
   }
 
+  &.btn-default {
+    color: #ffffff;
+    background-color: #474949;
+    border-color: #474949;
+  }
   &.btn-primary {
-    #gradient > .vertical(@btn-primary-bg, 0%, darken(@btn-primary-bg, 12%), 100%);
+    #gradient > .vertical(@btn-primary-bg,  darken(@btn-primary-bg, 12%));
     &.disabled, &[disabled] {
       .disabled-style(hsl(hue(@btn-primary-bg), 39%, 66%));
     }
   }
   // Warning appears as orange
   &.btn-warning {
-    #gradient > .vertical(@btn-warning-bg, 0%, darken(@btn-warning-bg, 12%), 100%);
+    #gradient > .vertical(@btn-warning-bg, darken(@btn-warning-bg, 12%));
     &.disabled, &[disabled] {
       .disabled-style(hsl(hue(@btn-warning-bg), 39%, 66%));
     }
   }
   // Danger and error appear as red
   &.btn-danger {
-    #gradient > .vertical(@btn-danger-bg, 0%, darken(@btn-danger-bg, 12%), 100%);
+    #gradient > .vertical(@btn-danger-bg, darken(@btn-danger-bg, 12%));
     &.disabled, &[disabled] {
       .disabled-style(hsl(hue(@btn-danger-bg), 39%, 66%));
     }
   }
   // Success appears as green
   &.btn-success {
-    #gradient > .vertical(@btn-success-bg, 0%, darken(@btn-success-bg, 12%), 100%);
+    #gradient > .vertical(@btn-success-bg, darken(@btn-success-bg, 12%));
     &.disabled, &[disabled] {
       .disabled-style(hsl(hue(@btn-success-bg), 39%, 66%));
     }
   }
   // Info appears as blue-green
   &.btn-info {
-    #gradient > .vertical(@btn-info-bg, 0%, darken(@btn-info-bg, 12%), 100%);
+    #gradient > .vertical(@btn-info-bg, darken(@btn-info-bg, 12%));
     &.disabled, &[disabled] {
       .disabled-style(hsl(hue(@btn-info-bg), 39%, 66%));
     }
