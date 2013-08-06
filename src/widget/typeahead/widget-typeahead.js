@@ -27,7 +27,7 @@
             var $this = $( this );
             $this.twitterTypeahead(options);
             $this.on('typeahead:selected',function(e, datum, dataset){
-                $this.trigger('selected.cs.typeahead', datum, dataset);
+                $this.trigger('selected.cs.typeahead', [ datum, dataset ] );
             });
         } );
     };
