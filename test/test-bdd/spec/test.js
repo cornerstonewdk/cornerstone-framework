@@ -680,53 +680,35 @@ describe('Cornerstone event extend test case', function() {
     describe('typeahead', function () {
         var typeaheadHTML = '<section id="typeahead" class="row"><header class="page-header"><h2 class="title">Typeahead</h2><small><span class="label label-warning">Update</span> Bootstrap 3에서 Drop된 상태이지만,코너스톤에서 이전 버전보다 조금 더 기능이 강화된 Typeahead 제공</small></header><div class="col col-lg-12"><div class="example example-countries"><h2 class="example-name">Countries</h2><p class="example-description">Prefetches data, stores it in localStorage, and searches it on the client</p><input class="typeahead form-control" type="text" placeholder="countries"></div></div></section>';
         $('#mocha-fixture').append(typeaheadHTML);
-        var KEY_MAP = {
-            enter: 13,
-            esc: 27,
-            tab: 9,
-            left: 37,
-            right: 39,
-            up: 38,
-            down: 40,
-            normal: 65 // "A" key
-        };
 
         var ta = $('.example-countries .typeahead').typeahead({
             name: 'countries',
             prefetch: 'data/typeahead-countries.json',
             limit: 10
-        });
+        }), dMenu;
 
-        
-
-        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function ( ) {
-            
-            
-            
-            // $("input.typeahead").focus();
-            var e = jQuery.Event("keydown.tt");
-            e.which = e.keycode = 65; // # Some key code value
-            
-            $("input.typeahead").trigger(e);
-
-            
-
-            ta.on('typeahead:selected', function ( e, datum, dataset ) {
-                console.log(e, datum, dataset);
-            }  );
-
-            ta.on('selected.cs.typeahead', function ( e, datum, dataset ) {
-                console.log(1);
-                console.log(e, datum, dataset);
-            }  );
-
-            // console.log( ta.data().ttView );
-            
+        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function () {
+            $("input.typeahead").focus();
+            ta.val('korea');
+            var e = jQuery.Event("input.tt");
+            e.which = e.keycode = 65;
+            ta.trigger(e);
+            dMenu = ta.closest('.twitter-typeahead').find('.tt-dropdown-menu');
+            expect(dMenu).to.not.be.undefined;
+            expect(dMenu.find('.tt-suggestion').length).to.equal(2);
         } );
 
-
-
-
-
+        it('검색된 2개의 결과물중 2번째 "South Korea"를 클릭하면 selected이벤트가 발생하여야 한다.', function ( done ) {
+            ta.on( 'selected.cs.typeahead', function ( e, datum, dataset ) {
+                console.log( e, datum, dataset );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('selected');
+                expect(e.namespace).to.be.equal('cs.typeahead');
+                expect(datum.value).to.be.equal('South Korea');
+                expect(dataset).to.be.equal('countries');
+                done();
+            } );
+            dMenu.find('.tt-suggestion:eq(1)').click();
+        } );
     } );
 });
