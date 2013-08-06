@@ -35,16 +35,19 @@
     .background-image(~"linear-gradient(bottom, rgba(216,216,216,.72) 36.36%, rgba(216,216,216,.72) 36.88%, rgba(202,202,202,.72) 49.08%, rgba(166,166,166,.72) 106.51%, rgba(48,48,48,.72) 122.08%, rgba(48,48,48,.72) 136.36%)");
   }
 
-  &.disabled,
-  &[disabled] {
-    .btn-disabled();
-  }
-
-  > .glyphicon {
+  & > .glyphicon {
     display: inline-block;
     padding: 2px 1px 3px 1px;
     font-size: @font-size-base * 1.5;
     line-height: 0;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    border: @btn-default-border;
+    background-color: @btn-default-gradient-start;
+    .btn-disabled();
   }
 
   &.btn-primary {
@@ -72,25 +75,18 @@
   }
 }
 
-.btn-link,
-.btn-link:hover,
-.btn-link:focus,
-.btn-link:active,
-.btn-link.active, {
-  border: none;
-  background: none;
-  color: #428bca;
-  .box-shadow(~"none");
+.btn-link {
+  &, &:hover, &:focus, &:active, &.active {
+    border: none;
+    background: transparent none;
+    .box-shadow(none);
+  }
 }
 
 .dropup {
   .btn-default .caret {
     border-bottom-color: @text-color;
   }
-}
-
-fieldset[disabled] .btn {
-  .btn-disabled();
 }
 
 .btn-group-vertical {
@@ -105,7 +101,7 @@ fieldset[disabled] .btn {
     box-shadow: none;
     border: none;
 
-    &:not(:last-child){
+    &:not(:last-child) {
       border-bottom: 1px solid #b6b6b6;
     }
 
@@ -114,7 +110,7 @@ fieldset[disabled] .btn {
       box-shadow: none;
       color: #1f8fb9;
       border: none;
-      &:not(:last-child){
+      &:not(:last-child) {
         border-bottom: 1px solid #b6b6b6;
       }
     }
@@ -138,7 +134,6 @@ fieldset[disabled] .btn {
     }
   }
 }
-
 
 // Placeholder
 @btn-primary-gradient-start: #2a92b9;
@@ -167,6 +162,7 @@ fieldset[disabled] .btn {
   color: #FFF;
   text-shadow: 0 1px 0 rgba(0, 0, 0, .32);
   border-color: ~"@{btn-@{state}-border-color}";
+  background-color: @gradient-start;
   .background-image(~"linear-gradient(bottom, @{gradient-start} 0%, @{gradient-end} 100%)");
 
   &:hover, &:focus, &.hover {
@@ -176,6 +172,14 @@ fieldset[disabled] .btn {
   &:active, &.active {
     .box-shadow(~"inset 0 0 14px rgba(0,0,0,.3)");
     #btn-state > .active(@state);
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    border-color: ~"@{btn-@{state}-border-color}";
+    background-color: @gradient-start;
+    .btn-disabled();
   }
 }
 
@@ -234,10 +238,16 @@ fieldset[disabled] .btn {
 }
 
 .btn-disabled() {
-  border: 1px solid #b6b6b6;
-  background-color: #fff;
-  color: #6a6a6a;
-  opacity: .5;
-  box-shadow: none;
-  text-shadow: none;
+  &, &:hover, &:focus, &:active, &.active {
+    border: 1px solid #b6b6b6;
+    opacity: .5;
+    box-shadow: none;
+    text-shadow: none;
+    color: #FFF;
+    background-image: none;
+  }
+
+  &.btn-default {
+    color: #6a6a6a;
+  }
 }

@@ -7,18 +7,11 @@
  *  License :
  */
 
-(function (root, doc, Cornerstone, define, d3, factory) {
-    'use strict';
-
+(function (root, doc, factory) {
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
     if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-
-        define([
-            "backbone",
-            "underscore",
-            "jquery"
-        ], function (Backbone, _, $) {
+        define([ "backbone", "underscore", "jquery", "style!" + Cornerstone.PATH + "ui/widget-chart"], function (Backbone, _, $) {
             factory($, root, doc, d3);
             return Backbone.View.extend({
 
@@ -55,7 +48,7 @@
         // Browser globals
         factory(root.jQuery, root, doc, root.d3);
     }
-}(window, document, Cornerstone, define, d3, function ($, window, document, d3, undefined) {
+}(window, document, function ($, window, document, d3, undefined) {
     var pluginName = "featuredChart",
         featuredChart,
         defaultOptions;
@@ -374,7 +367,7 @@
 
         options = $.extend(true, defaultOptions, options);
 
-        return this.each(function () {
+        return this.each(function (i) {
             var $this = $(this);
             var data = $this.data(pluginName);
             // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
@@ -386,7 +379,7 @@
             if (typeof options == 'string') {
                 data[options](data.options);
             } else {
-                data = new FeaturedChart(this, options);
+                data = new FeaturedChart(this, options)
                 $this.data(pluginName, data);
             }
 
@@ -410,7 +403,7 @@
         /**
          * DATA API (HTML5 Data Attribute)
          */
-        $("[data-featured=chart]").each(function () {
+        $("[data-featured=chart]").each(function (i) {
             var self = this,
                 dataUrl = $(this).data("chartBind");
 
