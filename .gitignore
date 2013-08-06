@@ -9,6 +9,8 @@ grunt-dist
 examples/tetris-together/node_modules
 examples/T-Dashboard/node_modules
 examples/cornerstone.docpad/node_modules
+examples/guide/node_modules
+examples/guide/dist
 bower_components
 build/node_modules
 tools/cornerstone-cli/src/node_modules
