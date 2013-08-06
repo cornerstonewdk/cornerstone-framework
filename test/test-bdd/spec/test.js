@@ -690,34 +690,6 @@ describe('Cornerstone event extend test case', function() {
             down: 40,
             normal: 65 // "A" key
         };
-        $.fn.twitterTypeahead = $.fn.typeahead;
-        
-        $.fn.typeahead = function ( options ) {
-            return this.each( function () {
-                var $this = $( this );
-
-                var test = $this.twitterTypeahead(options);
-
-                var view = $this.twitterTypeahead(options).data('ttView');
-
-                view._handleSelection = function(e) {
-                     var byClick = e.type === "suggestionSelected", suggestion = byClick ? e.data : view.dropdownView.getSuggestionUnderCursor();
-                    suggestion = $(this).text();
-                     if (suggestion) {
-                         this.inputView.setInputValue(suggestion.value);
-                         byClick ? this.inputView.focus() : e.data.preventDefault();
-                         byClick && utils.isMsie() ? utils.defer(view.dropdownView.close) : view.dropdownView.close();
-                         this.eventBus.trigger("selected", suggestion.datum, suggestion.dataset);
-                         console.log( this );
-                         this.trigger("selected.cs.typeahead", suggestion.datum, suggestion.dataset);
-                     }
-                     console.log(e);
-                };
-
-                $(document).on("click.ttt", ".tt-suggestion", view._handleSelection);
-            } );
-        };
-
 
         var ta = $('.example-countries .typeahead').typeahead({
             name: 'countries',
@@ -725,27 +697,23 @@ describe('Cornerstone event extend test case', function() {
             limit: 10
         });
 
-        function simulateKeyEvent($node, type, key) {
-            var event = $.Event(type, { keyCode: key });
-            $node.trigger(event);
-            return event;
-        }
+        
 
         it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function ( ) {
             
             
             
             // $("input.typeahead").focus();
-            // var e = jQuery.Event("keydown.tt");
-            // e.which = e.keycode = 65; // # Some key code value
+            var e = jQuery.Event("keydown.tt");
+            e.which = e.keycode = 65; // # Some key code value
             
-            // $("input.typeahead").trigger(e);
+            $("input.typeahead").trigger(e);
 
-            simulateKeyEvent(ta, 'keydown', KEY_MAP.normal);
+            
 
-            // ta.on('typeahead:selected', function ( e, datum, dataset ) {
-            //     console.log(e, datum, dataset);
-            // }  );
+            ta.on('typeahead:selected', function ( e, datum, dataset ) {
+                console.log(e, datum, dataset);
+            }  );
 
             ta.on('selected.cs.typeahead', function ( e, datum, dataset ) {
                 console.log(1);
