@@ -704,12 +704,14 @@ describe('Cornerstone event extend test case', function() {
         $('#mocha-fixture').append(spinnerHTML);
         it('전체 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function (done) {
             $('body').on('show.cs.spinner', function (e) {
+                e.preventDefault();
                 console.log(1)
                 console.log('show spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
                 expect(e.namespace).to.be.equal('cs.spinner');
             } ).on('shown.cs.spinner', function (e) {
+                e.preventDefault();
                 console.log(1)
                 console.log('shown spinner');
                 expect(e).to.be.an.instanceof($.Event);
@@ -741,12 +743,15 @@ describe('Cornerstone event extend test case', function() {
         it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
             
             $('#loadingCircle').on('show.cs.spinner', function (e) {
+                e.preventDefault();
                 console.log(2)
                 console.log('show spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
                 expect(e.namespace).to.be.equal('cs.spinner');
             } ).on('shown.cs.spinner', function (e) {
+                e.preventDefault();
+                console.log(2)
                 console.log('shown spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('shown');
