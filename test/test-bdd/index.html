@@ -8,8 +8,13 @@
     <link rel="stylesheet" href="css/mocha.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../../grunt-dist/lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css" />
-    <link rel="stylesheet" href="../../grunt-dist/src/style/theme-dark/cornerstone.css" />
+    <link rel="stylesheet" href="../../grunt-dist/src/style/theme-white/cornerstone.css" />
     <link rel="stylesheet" href="../../grunt-dist/lib/blackbirdjs/blackbird.css" />
+    <style type="text/css">
+    #mocha-stats li.progress {
+        height: 42px;
+    }
+    </style>
 </head>
 
 <body>
@@ -19,12 +24,10 @@
     <script src="../../grunt-dist/lib/jquery/jquery-2.0.2.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../grunt-dist/lib/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../grunt-dist/lib/infinity/infinity.min.js" type="text/javascript" charset="utf-8"></script>
-    <!--
-    <script src="../../grunt-dist/lib/wysihtml5/wysihtml5-0.3.0.min.js" type="text/javascript" charset="utf-8"></script>
--->
     <script src="../../grunt-dist/lib/Datatables/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../grunt-dist/lib/typeahead/typeahead.js" type="text/javascript" charset="utf-8"></script>
-    
+    <script src="../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../grunt-dist/lib/spin/spin.js" type="text/javascript" charset="utf-8"></script>
 
     <script src="js/mocha.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/chai.js" type="text/javascript" charset="utf-8"></script>
@@ -50,11 +53,10 @@
     <script src="../../grunt-dist/src/widget/sign/widget-sign.js"></script>
     <script src="../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha.js"></script>
     <script src="../../grunt-dist/src/widget/listview/widget-listview.js"></script>
-    <!--
-    <script src="../../grunt-dist/src/widget/editor/widget-editor.js"></script>
--->
     <script src="../../grunt-dist/src/widget/datatable/widget-datatable.js"></script>
     <script src="../../grunt-dist/src/widget/typeahead/widget-typeahead.js"></script>
+    <script src="../../grunt-dist/src/widget/editor/widget-editor.js"></script>
+    <script src="../../grunt-dist/src/widget/spinner/widget-spinner.js"></script>
 
     <!-- Spec files -->
     <script src="spec/test.js" type="text/javascript" charset="utf-8"></script>

@@ -35,22 +35,25 @@
         this.each(function () {
             var $this = $(this),
                 data = $this.data();
-
             if (data.spinner && typeof opts === "string") {
                 data.spinner[opts]();
             } else {
                 if (data.spinner) {
+                    $this.trigger($.Event('hide.cs.spinner'));
                     // 존재한 상태에서 spinner 플러그인을 재호출하면 플러그인을 제거시킨다.
                     setTimeout(function () {
                         data.spinner.stop();
                         delete data.spinner;
                         $this.toggleClass("spinner-outer-bg");
+                        $this.trigger($.Event('hidden.cs.spinner'));
                     }, 150);
                 } else {
+                    $this.trigger($.Event('show.cs.spinner'));
                     $(this).toggleClass("spinner-outer-bg");
                     var style = $this.attr("style");
                     data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
                     ($this.height() > $(window).height()) && $this.find(".spinner:first-child").attr("style", style);
+                    $this.trigger($.Event('shown.cs.spinner'));
                 }
             }
         });
