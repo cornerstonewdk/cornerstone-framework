@@ -636,7 +636,7 @@ describe('Cornerstone event extend test case', function() {
         var datatableHTML = '<section id="datatables" title="Datatables" class="row">' + '<header class="page-header">' + '<h2 class="title">Datatables</h2>' + '</header>' + '<div class="col col-lg-12">' + '<table class="table table-striped" data-featured="datatable" data-datatable-bind="data/sample-datatables.json">' + '<thead>' + '<tr>' + '<th>Rendering engine</th>' + '<th>Browser</th>' + '<th>Platform(s)</th>' + '</tr>' + '</thead>' + '<tbody>' + '</tbody>' + '</table>' + '</div>' + '</section>';
         $('#mocha-fixture').append(datatableHTML);
 
-        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function() {
+        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function( done ) {
             var dt = $('[data-featured="datatable"]').on('itemClick.cs.datatables', 'tr', function(e, result) {
                 console.log( 'itemClick.cs.datatables', result );
                 expect(e).to.be.an.instanceof($.Event);
@@ -644,6 +644,7 @@ describe('Cornerstone event extend test case', function() {
                 expect(e.namespace).to.be.equal('cs.datatables');
                 expect(result).to.be.an('object')
                 expect(result.data).to.be.instanceof(Array);
+                done();
             });
             dt.find('tr:eq(2)').click();
         });
@@ -699,85 +700,109 @@ describe('Cornerstone event extend test case', function() {
         } );
     } );
 
-    describe('widget-spinner', function () {
-        var spinnerHTML = '<section id="spinner" class="row"><header class="page-header"><h2 class="title">Spinner</h2><span class="label label-warning">Update</span> Spin.js로 변경 예정</header><!-- TODO Spin.js로 변경 --><div class="col col-lg-12"><div id="loadingCircle"><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn btn-default">전체 페이지로더</a><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn btn-info">일부영역 로더</a></div></div></section>';
-        $('#mocha-fixture').append(spinnerHTML);
-        it('전체 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function (done) {
-            $('body').on('show.cs.spinner', function (e) {
-                e.preventDefault();
-                console.log(1)
-                console.log('show spinner');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('show');
-                expect(e.namespace).to.be.equal('cs.spinner');
-            } ).on('shown.cs.spinner', function (e) {
-                e.preventDefault();
-                console.log(1)
-                console.log('shown spinner');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('shown');
-                expect(e.namespace).to.be.equal('cs.spinner');
-                done();
-            } );
-            $('[data-plugin="spinner"]:eq(0)').click();
-        });
+    // describe('widget-spinner', function () {
+    //     var spinnerHTML = '<section id="spinner" class="row"><header class="page-header"><h2 class="title">Spinner</h2><span class="label label-warning">Update</span> Spin.js로 변경 예정</header><!-- TODO Spin.js로 변경 --><div class="col col-lg-12"><div id="loadingCircle"><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn btn-default">전체 페이지로더</a><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn btn-info">일부영역 로더</a><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#spinner" class="btn btn-default">섹션 페이지로더</a></div></div></section>';
+    //     $('#mocha-fixture').append(spinnerHTML);
 
-        it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function (done) {
-            $('body').on('hide.cs.spinner', function (e) {
-                console.log(1)
-                console.log('hide spinner');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('hide');
-                expect(e.namespace).to.be.equal('cs.spinner');
-            } ).on('hidden.cs.spinner', function (e) {
-                console.log(1)
-                console.log('hidden spinner');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('hidden');
-                expect(e.namespace).to.be.equal('cs.spinner');
-                done();
-            } );
-            $('body.spinner-outer-bg').click();
-        });
-
-        it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
+    //     it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
             
-            $('#loadingCircle').on('show.cs.spinner', function (e) {
-                e.preventDefault();
-                console.log(2)
-                console.log('show spinner');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('show');
-                expect(e.namespace).to.be.equal('cs.spinner');
-            } ).on('shown.cs.spinner', function (e) {
-                e.preventDefault();
-                console.log(2)
-                console.log('shown spinner');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('shown');
-                expect(e.namespace).to.be.equal('cs.spinner');
-                done();
-            } );
-            $('[data-plugin="spinner"]:eq(1)').click();
-        });
+    //         $('#loadingCircle').on('show.cs.spinner', function (e) {
+                
+    //             console.log(2)
+    //             console.log('show spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('show');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             e.stopPropagation();
+    //         } ).on('shown.cs.spinner', function (e) {
+    //             e.preventDefault();
+    //             console.log(2)
+    //             console.log('shown spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('shown');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             done();
+    //         } );
+    //         $('[data-plugin="spinner"]:eq(1)').click();
+    //     });
 
-        // it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
+    //     it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
             
-        //     $('#loadingCircle').on('hide.cs.spinner', function (e) {
-        //         console.log('hide spinner');
-        //         expect(e).to.be.an.instanceof($.Event);
-        //         expect(e.type).to.be.equal('hide');
-        //         expect(e.namespace).to.be.equal('cs.spinner');
-        //     } ).on('hidden.cs.spinner', function (e) {
-        //         console.log('hidden spinner');
-        //         expect(e).to.be.an.instanceof($.Event);
-        //         expect(e.type).to.be.equal('hidden');
-        //         expect(e.namespace).to.be.equal('cs.spinner');
-        //         done();
-        //     } );
-        //     $('#loadingCircle.spinner-outer-bg').click();
+    //         $('#loadingCircle').on('hide.cs.spinner', function (e) {
+    //             console.log('hide spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('hide');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //         } ).on('hidden.cs.spinner', function (e) {
+    //             console.log('hidden spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('hidden');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             done();
+    //         } );
+    //         $('#loadingCircle.spinner-outer-bg').click();
 
-        // });
+    //     });
 
-    });
+    //     it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
+            
+    //         $('#spinner').on('show.cs.spinner', function (e) {
+                
+    //             console.log(3)
+    //             console.log('show spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('show');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             e.stopPropagation();
+    //         } ).on('shown.cs.spinner', function (e) {
+    //             e.preventDefault();
+    //             console.log(3)
+    //             console.log('shown spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('shown');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             done();
+    //         } );
+    //         $('[data-plugin="spinner"]:eq(2)').click();
+    //     });
+
+    //     it('전체 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function (done) {
+    //         $('body').on('show.cs.spinner', function (e) {
+                
+    //             console.log(1)
+    //             console.log('show spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('show');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //         } ).on('shown.cs.spinner', function (e) {
+                
+    //             console.log(1)
+    //             console.log('shown spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('shown');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             done();
+    //             e.stopPropegation();
+    //         } );
+    //         $('[data-plugin="spinner"]:eq(0)').click();
+    //     });
+
+    //     it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function (done) {
+    //         $('body').on('hide.cs.spinner', function (e) {
+    //             console.log(1)
+    //             console.log('hide spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('hide');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //         } ).on('hidden.cs.spinner', function (e) {
+    //             console.log(1)
+    //             console.log('hidden spinner');
+    //             expect(e).to.be.an.instanceof($.Event);
+    //             expect(e.type).to.be.equal('hidden');
+    //             expect(e.namespace).to.be.equal('cs.spinner');
+    //             done();
+    //         } );
+    //         $('body.spinner-outer-bg').click();
+    //     });
+    // });
 });
