@@ -649,33 +649,20 @@ describe('Cornerstone event extend test case', function() {
         });
     });
 
-    // describe('widget-editor', function() {
-    //     var editorHTML = '<section id="editor" title="Editor" class="row">' + '<header class="page-header">' + '<h2 class="title">Editor</h2>' + '<span class="label label-warning">Update</span>' + 'BTS3으로 버전업되면서 기존 bootsrap 위지윅 js 사용불가.' + '</header>' + '<div class="col col-lg-12">' + '<textarea id="editorExample" rows="20" placeholder="Enter text ..."></textarea>' + '</div>' + '</section>';
-    //     $('#mocha-fixture').append(editorHTML);
-    //     var editor;
+    describe('widget-editor', function() {
+        var editorHTML = '<section id="editor" class="row"><header class="page-header"><h2 class="title">Editor</h2><span class="label label-warning">Update</span>모바일 최적화 필요</header><div class="col col-lg-12"><div class="widget-editor"><div class="btn-toolbar" data-role="editor-toolbar" data-target="#textarea"><div class="btn-group"><a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><i class="glyphicon glyphicon-font"></i><b class="caret"></b></a><ul class="dropdown-menu"></ul></div><div class="btn-group"><a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="glyphicon glyphicon-text-height"></i>&nbsp;<b class="caret"></b></a><ul class="dropdown-menu"><li><a data-edit="fontSize 5"><span class="widget-editor-huge">Huge</span></a></li><li><a data-edit="fontSize 3"><span class="widget-editor-huge">Normal</span></a></li><li><a data-edit="fontSize 1"><span class="widget-editor-huge">Small</span></a></li></ul></div><div class="btn-group"><a class="btn btn-default" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="glyphicon glyphicon-bold"></i></a><a class="btn btn-default" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="glyphicon glyphicon-italic"></i></a><a class="btn btn-default" data-edit="underline" title="Underline (Ctrl/Cmd+U)">Underline</a><a class="btn btn-default" data-edit="strikethrough" title="Strikethrough">Strikethrough</a></div><div class="btn-group"><a class="btn btn-default" data-edit="insertunorderedlist" title="Bullet list"><i class="glyphicon glyphicon-list"></i></a><a class="btn btn-default" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="glyphicon glyphicon-indent-left"></i></a><a class="btn btn-default" data-edit="indent" title="Indent (Tab)"><i class="glyphicon glyphicon-indent-right"></i></a></div><div class="btn-group"><a class="btn btn-default" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="glyphicon glyphicon-align-left"></i></a><a class="btn btn-default" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="glyphicon glyphicon-align-center"></i></a><a class="btn btn-default" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="glyphicon glyphicon-align-right"></i></a><a class="btn btn-default" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="glyphicon glyphicon-align-justify"></i></a></div><div class="btn-group"><a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="glyphicon glyphicon-link"></i></a><div class="dropdown-menu input-append"><input class="span2" placeholder="URL" type="text" data-edit="createLink"/><button class="btn" type="button">Add</button></div></div><div class="btn-group"><a class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)">Undo</a><a class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)">Redo</a></div><input type="text" data-edit="inserttext" class="btn-editor-voice pull-right" x-webkit-speech=""></div><div id="textarea" class="widget-editor-textarea" data-featured="editor">Go ahead</div></div></div></section>';
+        $('#mocha-fixture').append(editorHTML);
+        var editor = $('[data-featured="editor"]').featuredEditor();
 
-    //     it('plugin이 적용된 후 load 이벤트가 발생하여야 한다.', function( done ) {
-    //         editor = $("#editorExample").featuredEditor();
-    //         editor.on('load.cs.editor', function(e) {
-    //             console.log('editor load', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('load');
-    //             expect(e.namespace).to.be.equal('cs.editor');
-    //             done();
-    //         }).focus();
-    //     });
-
-    //     it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function ( done ) {
-    //         editor.on('blur.cs.editor', function(e) {
-    //             console.log('editor blur', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('blur');
-    //             done();
-    //             // TODO custom 이벤트 발생 전 orig 이벤트 발생..
-    //             // expect( e.namespace ).to.be.equal( 'cs.editor' );
-    //         });
-    //     } );
-    // });
+        it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function ( done ) {
+            editor.on('blur', function(e) {
+                console.log('editor blur', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('blur');
+                done();
+            }).focus().blur();
+        } );
+    });
 
     describe('typeahead', function () {
         var typeaheadHTML = '<section id="typeahead" class="row"><header class="page-header"><h2 class="title">Typeahead</h2><small><span class="label label-warning">Update</span> Bootstrap 3에서 Drop된 상태이지만,코너스톤에서 이전 버전보다 조금 더 기능이 강화된 Typeahead 제공</small></header><div class="col col-lg-12"><div class="example example-countries"><h2 class="example-name">Countries</h2><p class="example-description">Prefetches data, stores it in localStorage, and searches it on the client</p><input class="typeahead form-control" type="text" placeholder="countries"></div></div></section>';
@@ -711,4 +698,86 @@ describe('Cornerstone event extend test case', function() {
             dMenu.find('.tt-suggestion:eq(1)').click();
         } );
     } );
+
+    describe('widget-spinner', function () {
+        var spinnerHTML = '<section id="spinner" class="row"><header class="page-header"><h2 class="title">Spinner</h2><span class="label label-warning">Update</span> Spin.js로 변경 예정</header><!-- TODO Spin.js로 변경 --><div class="col col-lg-12"><div id="loadingCircle"><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn btn-default">전체 페이지로더</a><a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn btn-info">일부영역 로더</a></div></div></section>';
+        $('#mocha-fixture').append(spinnerHTML);
+        it('전체 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function (done) {
+            $('body').on('show.cs.spinner', function (e) {
+                e.preventDefault();
+                console.log(1)
+                console.log('show spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('show');
+                expect(e.namespace).to.be.equal('cs.spinner');
+            } ).on('shown.cs.spinner', function (e) {
+                e.preventDefault();
+                console.log(1)
+                console.log('shown spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('shown');
+                expect(e.namespace).to.be.equal('cs.spinner');
+                done();
+            } );
+            $('[data-plugin="spinner"]:eq(0)').click();
+        });
+
+        it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function (done) {
+            $('body').on('hide.cs.spinner', function (e) {
+                console.log(1)
+                console.log('hide spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hide');
+                expect(e.namespace).to.be.equal('cs.spinner');
+            } ).on('hidden.cs.spinner', function (e) {
+                console.log(1)
+                console.log('hidden spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hidden');
+                expect(e.namespace).to.be.equal('cs.spinner');
+                done();
+            } );
+            $('body.spinner-outer-bg').click();
+        });
+
+        it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
+            
+            $('#loadingCircle').on('show.cs.spinner', function (e) {
+                e.preventDefault();
+                console.log(2)
+                console.log('show spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('show');
+                expect(e.namespace).to.be.equal('cs.spinner');
+            } ).on('shown.cs.spinner', function (e) {
+                e.preventDefault();
+                console.log(2)
+                console.log('shown spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('shown');
+                expect(e.namespace).to.be.equal('cs.spinner');
+                done();
+            } );
+            $('[data-plugin="spinner"]:eq(1)').click();
+        });
+
+        // it('특정 영역 스피너를 실행했을 때 show, shown 이벤트가 순차적으로 일어나야한다.', function(done){
+            
+        //     $('#loadingCircle').on('hide.cs.spinner', function (e) {
+        //         console.log('hide spinner');
+        //         expect(e).to.be.an.instanceof($.Event);
+        //         expect(e.type).to.be.equal('hide');
+        //         expect(e.namespace).to.be.equal('cs.spinner');
+        //     } ).on('hidden.cs.spinner', function (e) {
+        //         console.log('hidden spinner');
+        //         expect(e).to.be.an.instanceof($.Event);
+        //         expect(e.type).to.be.equal('hidden');
+        //         expect(e.namespace).to.be.equal('cs.spinner');
+        //         done();
+        //     } );
+        //     $('#loadingCircle.spinner-outer-bg').click();
+
+        // });
+
+    });
 });
