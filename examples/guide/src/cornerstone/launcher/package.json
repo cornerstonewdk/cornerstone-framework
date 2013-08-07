@@ -1,0 +1,8 @@
+{
+	"name": "launcher",
+	"version": "2.0.0",
+	"description": "cornerstone module launcher",
+	"jam": {
+		"main": "launcher.js"
+	}
+}

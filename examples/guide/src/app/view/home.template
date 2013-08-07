@@ -1,0 +1,5 @@
+<div class="list-group">
+	{{#each this}}
+	<a href="#{{id}}" class="list-group-item">{{id}}</a>
+	{{/each}}
+</div>

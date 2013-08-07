@@ -120,5 +120,5 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'server', [ 'build', 'connect:dist', 'open', 'watch' ] );
 
 	// Default task
-	grunt.registerTask( 'default', [ 'test', 'build' ] );
+	grunt.registerTask( 'default', [ 'build' ] );
 };

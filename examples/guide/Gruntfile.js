@@ -1,4 +1,6 @@
 
+var marked = require( 'marked' );
+
 module.exports = function( grunt ) {
 
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
@@ -15,6 +17,7 @@ module.exports = function( grunt ) {
 		// 경로 설정
 		path: {
 			src: 'src',
+			doc: '../../doc',
 			dist: 'dist',
 			test: 'test'
 		},
@@ -99,6 +102,10 @@ module.exports = function( grunt ) {
 				files: '<%= path.src %>/app/**/*.css',
 				tasks: [ 'cssmin' ]
 			},
+			docs: {
+				files: '<%= path.doc %>/**/*.md',
+				tasks: [ 'markdown' ]
+			},
 			rest: {
 				files: [ '<%= path.src %>/cornerstone/**/*', '<%= path.src %>/**/images/**/*', '<%= path.src %>/**/fonts/**/*', '<%= path.src %>/**/*.html', '<%= path.src %>/**/*.template' ],
 				tasks: [ 'copy' ]
@@ -115,7 +122,27 @@ module.exports = function( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'build', [ 'clean', 'cssmin', 'uglify', 'copy' ] );
+	grunt.registerTask( 'markdown', 'markdown 파일들을 HTML 정보가 포함된 json 파일로 변환한다.', function() {
+
+		// Markdown 파일 목록 구하기
+		var files = grunt.file.expand( grunt.config.get( 'path.doc' ) + '/**/*.md' );
+		var documents = [];
+
+		for ( var i in files ) {
+			// 파일의 내용을 읽어서
+			var mdContent = grunt.file.read( files[ i ], { encoding: 'utf-8' } );
+			// HTML로 변환 후
+			var htmlContent = marked( mdContent );
+			// 메타 정보와 함께 객체에 저장
+			documents.push( { id: i, content: htmlContent } );
+		}
+
+		// 객체를 JSON 형식으로 파일에 저장한다.
+		grunt.file.write( grunt.config.get( 'path.dist' ) + '/data/documents.json', JSON.stringify( documents ), { encoding: 'utf-8' } );
+		grunt.log.ok();
+	} );
+
+	grunt.registerTask( 'build', [ 'clean', 'cssmin', 'uglify', 'markdown', 'copy' ] );
 	grunt.registerTask( 'test', [ 'build', 'connect:test', 'mocha' ] );
 	grunt.registerTask( 'server', [ 'build', 'connect:dist', 'open', 'watch' ] );
 
