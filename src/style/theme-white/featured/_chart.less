@@ -520,3 +520,119 @@ svg .title {
 .nvd3 .axis text {
   text-shadow: 0 1px 0 #fff;
 }
+
+// Color preset
+.nv-group,
+.nv-series {
+  .chart-color-preset(5);
+}
+
+.bar,
+.legend li{
+  .chart3d-color-preset(5);
+}
+
+.nv-linePlusBar {
+  .nv-barsWrap {
+    .salmon-on-ice(1);
+    rect {
+      fill: @bar-color;
+      stroke: @bar-color;
+    }
+  }
+  .nv-linesWrap {
+    .salmon-on-ice(2);
+    .nv-group {
+      stroke-opacity: 1;
+      fill-opacity: 0.5;
+      fill: @bar-color;
+      stroke: @bar-color;
+    }
+  }
+}
+
+
+// Placeholder
+.linechart-color-preset (@index) when (@index > 0) {
+  &:nth-child(5n+@{index}) {
+    .salmon-on-ice(@index);
+    stroke-opacity: 1;
+    fill-opacity: 0.5;
+    fill: @bar-color;
+    stroke: @bar-color;
+  }
+
+  .linechart-color-preset(@index - 1);
+}
+.chart-color-preset (@index) when (@index > 0) {
+  &:nth-child(5n+@{index}) {
+    .salmon-on-ice(@index);
+
+    rect, circle {
+      fill: @bar-color;
+      stroke: @bar-color;
+    }
+
+  }
+  .chart-color-preset(@index - 1);
+}
+
+.chart3d-color-preset (@index) when (@index > 0) {
+  &:nth-child(5n+@{index}) {
+    .salmon-on-ice(@index);
+    @bar-color-top: rgba(red(@bar-color), green(@bar-color), blue(@bar-color), 0.8);
+    @bar-color-bottom: rgba(red(@bar-color), green(@bar-color), blue(@bar-color), 0.6);
+    .top {
+      background: @bar-color-top;
+    }
+
+    .left, .right, .back, .front {
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, @bar-color-top), color-stop(1.0, @bar-color-bottom));
+    }
+
+    .bottom {
+      background: @bar-color-bottom;
+    }
+  }
+  .chart3d-color-preset(@index - 1);
+}
+
+.salmon-on-ice(@index) when (@index = 5) {
+  @bar-color: #ff7f66;
+}
+
+.salmon-on-ice(@index) when (@index = 4) {
+  @bar-color: #fff6e5;
+}
+
+.salmon-on-ice(@index) when (@index = 3) {
+  @bar-color: #7ecefd;
+}
+
+.salmon-on-ice(@index) when (@index = 2) {
+  @bar-color: #2185c5;
+}
+
+.salmon-on-ice(@index) when (@index = 1) {
+  @bar-color: #3e454c;
+}
+
+.vitamin-c(@index) when (@index = 5) {
+  @bar-color: #fd7400;
+}
+
+.vitamin-c(@index) when (@index = 4) {
+  @bar-color: #ffe11a;
+}
+
+.vitamin-c(@index) when (@index = 3) {
+  @bar-color: #bedb39;
+}
+
+.vitamin-c(@index) when (@index = 2) {
+  @bar-color: #1f8a70;
+}
+
+.vitamin-c(@index) when (@index = 1) {
+  @bar-color: #004358;
+}

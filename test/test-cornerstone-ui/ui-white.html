@@ -2777,17 +2777,20 @@
 
 <!-- Spinner
   ================================================== -->
-<section id="spinner" class="row">
-    <header class="page-header">
-        <h2 class="title">Spinner</h2>
-        <span class="label label-warning">Update</span> Spin.js로 변경 예정
-    </header>
+<section class="row">
     <!-- TODO Spin.js로 변경 -->
-    <div class="col col-lg-12">
+    <div id="spinner" class="col col-lg-12">
+        <header class="page-header">
+            <h2 class="title">Spinner</h2>
+            <span class="label label-warning">Update</span> Spin.js로 변경 예정
+        </header>
         <div id="loadingCircle">
             <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn btn-default">전체 페이지
                 로더</a>
             <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn btn-info">일부
+                영역 로더</a>
+
+            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#spinner" class="btn btn-info">섹션
                 영역 로더</a>
         </div>
     </div>

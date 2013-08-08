@@ -1,7 +1,68 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">3D 바차트</div>
+<div class="row">
+    <div class="col col-lg-6">
+        <div class="panel panel-primary">
 
-	<div class="btn-group">
-		<button type="button" class="btn btn-success next">다음</button>
-	</div>
+            <div class="panel-heading">신규 차트</div>
+
+            <h3 class="title">수평 바차트 Data-API</h3>
+
+            <div data-featured="chart" data-chart-type="horizontalBar" data-chart-bind="data/sample-bar.json"
+                 style="height: 300px"></div>
+            <h3 class="title">수평 바차트 jQuery Plugin</h3>
+
+            <div data-featured="chart" data-chart-type="horizontalBar" data-chart-bind="data/sample-bar.json"
+                 style="height: 300px"></div>
+            <h3 class="title">수평 바차트 Backbone View</h3>
+
+            <div data-featured="chart" data-chart-type="horizontalBar" data-chart-bind="data/sample-bar.json"
+                 style="height: 300px"></div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success next">다음</button>
+            </div>
+        </div>
+    </div>
+    <div class="col col-lg-6 control">
+        <div class="panel panel-info">
+            <div class="panel-heading">차트 제어</div>
+            <form id="control-chart" class="form-horizontal" class="#">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">차트</label>
+                    <div class="col-lg-10">
+                        <select name="select-chart">
+                            <option value="0">Data-API</option>
+                            <option value="1">jQuery Plugin</option>
+                            <option value="2">Backbone View</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">색상</label>
+                    <div class="col-lg-10">
+                        <select name="select-color">
+                            <option value="">Salmon on ice</option>
+                            <option value="vitamin-c">Vitamin C</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">단위</label>
+                    <div class="col-lg-10">
+                        <select name="select-unit">
+                            <option value="">단위 선택</option>
+                            <option value="1000">정수</option>
+                            <option value="1000.0">소수(1자리)</option>
+                            <option value="1000.00">소수(2자리)</option>
+                            <option value="1,000">천단위</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-default js-change-data">데이터변경</button>
+                        <button type="submit" class="btn btn-info js-submit">옵션 적용</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

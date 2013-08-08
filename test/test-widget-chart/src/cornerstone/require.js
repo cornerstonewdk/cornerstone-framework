@@ -2012,6 +2012,15 @@ var jam = {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "bootstrap-glyphicons",
+            "location": "../cornerstone/bootstrap-glyphicons"
+        },
+        {
+            "name": "bootstrap-select",
+            "location": "../cornerstone/bootstrap-select",
+            "main": "bootstrap-select.min.js"
+        },
+        {
             "name": "d3",
             "location": "../cornerstone/d3",
             "main": "d3.v3.min.js"
@@ -2057,10 +2066,6 @@ var jam = {
             "main": "template.js"
         },
         {
-            "name": "theme-white",
-            "location": "../cornerstone/theme-white"
-        },
-        {
             "name": "transition",
             "location": "../cornerstone/transition",
             "main": "transition.js"
@@ -2090,6 +2095,11 @@ var jam = {
             "exports": "Backbone"
         },
         "bootstrap": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "bootstrap-select": {
             "deps": [
                 "jquery"
             ]
@@ -2185,6 +2195,15 @@ if (typeof require !== "undefined" && require.config) {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "bootstrap-glyphicons",
+            "location": "../cornerstone/bootstrap-glyphicons"
+        },
+        {
+            "name": "bootstrap-select",
+            "location": "../cornerstone/bootstrap-select",
+            "main": "bootstrap-select.min.js"
+        },
+        {
             "name": "d3",
             "location": "../cornerstone/d3",
             "main": "d3.v3.min.js"
@@ -2230,10 +2249,6 @@ if (typeof require !== "undefined" && require.config) {
             "main": "template.js"
         },
         {
-            "name": "theme-white",
-            "location": "../cornerstone/theme-white"
-        },
-        {
             "name": "transition",
             "location": "../cornerstone/transition",
             "main": "transition.js"
@@ -2262,6 +2277,11 @@ if (typeof require !== "undefined" && require.config) {
             "exports": "Backbone"
         },
         "bootstrap": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "bootstrap-select": {
             "deps": [
                 "jquery"
             ]
@@ -2357,6 +2377,15 @@ else {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "bootstrap-glyphicons",
+            "location": "../cornerstone/bootstrap-glyphicons"
+        },
+        {
+            "name": "bootstrap-select",
+            "location": "../cornerstone/bootstrap-select",
+            "main": "bootstrap-select.min.js"
+        },
+        {
             "name": "d3",
             "location": "../cornerstone/d3",
             "main": "d3.v3.min.js"
@@ -2402,10 +2431,6 @@ else {
             "main": "template.js"
         },
         {
-            "name": "theme-white",
-            "location": "../cornerstone/theme-white"
-        },
-        {
             "name": "transition",
             "location": "../cornerstone/transition",
             "main": "transition.js"
@@ -2434,6 +2459,11 @@ else {
             "exports": "Backbone"
         },
         "bootstrap": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "bootstrap-select": {
             "deps": [
                 "jquery"
             ]

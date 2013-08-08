@@ -1,0 +1,14 @@
+{
+    "name": "bootstrap-select",
+    "version": "1.0.0",
+    "description": "A custom select / multiselect for @twitter bootstrap using button dropdown, designed to behave like regular Bootstrap selects;",
+    "jam": {
+        "dependencies": {
+            "jquery": "2.0.2"
+        },
+        "main": "bootstrap-select.min.js",
+        "shim": {
+            "deps": [ "jquery" ]
+        }
+    }
+}

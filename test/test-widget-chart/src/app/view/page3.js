@@ -1,21 +1,27 @@
+define([ 'backbone', 'template!view/page3' ], function (Backbone, template) {
 
-define( [ 'backbone', 'template!view/page3' ], function( Backbone, template ) {
-	
-	return Backbone.View.extend( {
+    return Backbone.View.extend({
 
-		el: 'section#page3',
+        el: 'section#page3',
 
-		render: function() {
-			this.$el.html( template() );
-			return this;
-		},
+        render: function () {
+            var self = this;
+            this.$el.html(template());
+            window.activeDataApi(self.$el);
+            return this;
+        },
 
-		events: {
-			'click button.prev': 'prevPage'
-		},
+        events: {
+            'click button.prev': 'prevPage',
+            'click button.next': 'nextPage'
+        },
 
-		prevPage: function() {
-			location.href = '#page2';
-		}
-	} );
-} );
+        prevPage: function () {
+            location.href = '#page2';
+        },
+
+        nextPage: function () {
+            location.href = '#page4';
+        }
+    });
+});

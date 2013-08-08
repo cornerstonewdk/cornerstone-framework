@@ -1,0 +1,8 @@
+.control {
+    position: fixed;
+    right: 0;
+}
+
+@media (min-width: 768px) {
+
+}
