@@ -501,73 +501,50 @@ describe('Cornerstone event extend test case', function() {
         });
     });
 
+    describe('widget-scrollview', function () {
+        // var srcollviewHTML = '<section id="scroll-view" class="demo-scroll-view" title="ScrollView"><header class="page-header"><h2 class="title">ScrollView</h2></header><div class="row"><h3 class="title">기본 스크롤뷰</h3><div class="col col-12"><div id="scrollView1" class="scrollview"><div class="scroller"><ul class="list-group"><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li></ul></div></div></div></div></section>';
+        // $('#mocha-fixture').append(srcollviewHTML);
+        
+        it('스크롤뷰를 아래로 당길때 pullDown 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰를 위로 당길때 pullUp 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰가 새로고쳐질 때 refresh 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰가 움직이기 시작할 때 start 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰가 움직이고 있을 때 move 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰가 움직임이 멎을 때 end 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰에 터치가 되었을때 touchStart 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰에 터치해제 되었을때 touchEnd 이벤트가 발생하여야 한다.',function () {
+            
+        });
+
+        it('스크롤뷰가 제거될 때 destory 이벤트가 발생하여야 한다.',function () {
+            
+        });
+        
+    } );
+
     describe('widget-listview', function() {
         var listviewHTML = '<section id="list-view" title="ListView" class="row">' + '<header class="page-header">' + '<h2 class="title">ListView</h2>' + '</header>' + '<div class="row">' + '<div class="list-view-wrapper">' + '<div id="listView" class="list-view">' + '<ul class="list-group">' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '</ul>' + '</div>' + '</div>' + '<p>' + '<button id="addItem" class="btn btn-default">더보기</button>' + '</p>' + '</div>' + '</section>'
-
-
-        // var srcollviewHTML = '<div class="row">'
-        //     + '<h3 class="title">Pull to refresh 스크롤뷰</h3>'
-        //     + '<div class="col col-12">'
-        //     + '<div id="scrollView2" class="scrollview">'
-        //     + '<div class="scroller">'
-        //     + '<div data-featured-scrollview="pullDown" class="pull-down">'
-        //     + '<span class="pull-down-icon"></span><span class="pull-down-label">아래로 당겨서 새로고침…</span>'
-        //     + '</div>'
-        //     + '<ul class="list-group">'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">14</span>'
-        //     + 'Cras justo odio'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">2</span>'
-        //     + 'Dapibus ac facilisis in'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">1</span>'
-        //     + 'Morbi leo risus'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">14</span>'
-        //     + 'Cras justo odio'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">2</span>'
-        //     + 'Dapibus ac facilisis in'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">1</span>'
-        //     + 'Morbi leo risus'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">14</span>'
-        //     + 'Cras justo odio'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">2</span>'
-        //     + 'Dapibus ac facilisis in'
-        //     + '</li>'
-        //     + '<li class="list-group-item">'
-        //     + '<span class="glyphicon glyphicon-chevron-right"></span>'
-        //     + '<span class="badge">1</span>'
-        //     + 'Morbi leo risus'
-        //     + '</li>'
-        //     + '</ul>'
-        //     + '<div data-featured-scrollview="pullUp" class="pull-up">'
-        //     + '<span class="pull-up-icon"></span><span class="pull-up-label">위로 당겨서 가져오기…</span>'
-        //     + '</div>'
-        //     + '</div>'
-        //     + '</div>'
-        //     + '</div>'
-        //     + '</div>';
-
         $('#mocha-fixture').append(listviewHTML);
         //
         // 리스트뷰 피처드
