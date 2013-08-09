@@ -1,7 +1,8 @@
-.chartWrap {
+.widget-chart {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  height: 300px;
 }
 
 .nvtooltip {
@@ -40,7 +41,7 @@
 
   text-align: center;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 25px;
 }
 
 .nvtooltip p {
@@ -524,24 +525,38 @@ svg .title {
 // Color preset
 .nv-group,
 .nv-series {
-  .chart-color-preset(5);
+  .chart-color-style(5, 1);
 }
 
+.widget-chart {
+  &.preset2 {
+    .nv-group,
+    .nv-series {
+      .chart-color-style(5, 2);
+    }
+  }
+  &.preset3 {
+    .nv-group,
+    .nv-series {
+      .chart-color-style(5, 3);
+    }
+  }
+}
 .bar,
 .legend li{
-  .chart3d-color-preset(5);
+  .chart3d-color-style(5, 1);
 }
 
 .nv-linePlusBar {
   .nv-barsWrap {
-    .salmon-on-ice(1);
+    .chart-color-preset(1, 2);
     rect {
       fill: @bar-color;
       stroke: @bar-color;
     }
   }
   .nv-linesWrap {
-    .salmon-on-ice(2);
+    .chart-color-preset(2, 2);
     .nv-group {
       stroke-opacity: 1;
       fill-opacity: 0.5;
@@ -553,33 +568,36 @@ svg .title {
 
 
 // Placeholder
-.linechart-color-preset (@index) when (@index > 0) {
+.linechart-color-style (@index, @preset-index) when (@index > 0) {
   &:nth-child(5n+@{index}) {
-    .salmon-on-ice(@index);
+    .chart-color-preset(@index, @preset-index);
     stroke-opacity: 1;
     fill-opacity: 0.5;
     fill: @bar-color;
     stroke: @bar-color;
   }
-
-  .linechart-color-preset(@index - 1);
+  .linechart-color-style(@index - 1);
 }
-.chart-color-preset (@index) when (@index > 0) {
+
+.chart-color-style (@index, @preset-index) when (@index > 0) {
   &:nth-child(5n+@{index}) {
-    .salmon-on-ice(@index);
+    .chart-color-preset(@index, @preset-index);
 
     rect, circle {
       fill: @bar-color;
       stroke: @bar-color;
     }
-
+    circle {
+      stroke: #333;
+    }
   }
-  .chart-color-preset(@index - 1);
+  .chart-color-style(@index - 1, @preset-index);
 }
 
-.chart3d-color-preset (@index) when (@index > 0) {
+.chart3d-color-style (@index, @preset-index) when (@index > 0) {
   &:nth-child(5n+@{index}) {
-    .salmon-on-ice(@index);
+    .chart-color-preset(@index, @preset-index);
+
     @bar-color-top: rgba(red(@bar-color), green(@bar-color), blue(@bar-color), 0.8);
     @bar-color-bottom: rgba(red(@bar-color), green(@bar-color), blue(@bar-color), 0.6);
     .top {
@@ -594,45 +612,67 @@ svg .title {
       background: @bar-color-bottom;
     }
   }
-  .chart3d-color-preset(@index - 1);
+  .chart3d-color-style(@index - 1, @preset-index);
 }
 
-.salmon-on-ice(@index) when (@index = 5) {
+
+.chart-color-preset(@index, @preset-index) when (@index = 5) and (@preset-index = 1) {
+  @bar-color: #2980b9;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 4) and (@preset-index = 1) {
+  @bar-color: #f5a503;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 3) and (@preset-index = 1) {
+  @bar-color: #3498db;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 2) and (@preset-index = 1) {
+  @bar-color: #e74c3c;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 1) and (@preset-index = 1) {
+  @bar-color: #2c3e50;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 5) and (@preset-index = 2) {
   @bar-color: #ff7f66;
 }
 
-.salmon-on-ice(@index) when (@index = 4) {
-  @bar-color: #fff6e5;
-}
-
-.salmon-on-ice(@index) when (@index = 3) {
+.chart-color-preset(@index, @preset-index) when (@index = 4) and (@preset-index = 2) {
   @bar-color: #7ecefd;
 }
 
-.salmon-on-ice(@index) when (@index = 2) {
+.chart-color-preset(@index, @preset-index) when (@index = 3) and (@preset-index = 2) {
+  @bar-color: #f5a503;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 2) and (@preset-index = 2) {
   @bar-color: #2185c5;
 }
 
-.salmon-on-ice(@index) when (@index = 1) {
+.chart-color-preset(@index, @preset-index) when (@index = 1) and (@preset-index = 2) {
   @bar-color: #3e454c;
 }
 
-.vitamin-c(@index) when (@index = 5) {
-  @bar-color: #fd7400;
+.chart-color-preset(@index, @preset-index) when (@index = 5) and (@preset-index = 3) {
+  @bar-color: #fe5e84;
 }
 
-.vitamin-c(@index) when (@index = 4) {
-  @bar-color: #ffe11a;
+.chart-color-preset(@index, @preset-index) when (@index = 4) and (@preset-index = 3) {
+  @bar-color: #c8eaf7;
 }
 
-.vitamin-c(@index) when (@index = 3) {
-  @bar-color: #bedb39;
+.chart-color-preset(@index, @preset-index) when (@index = 3) and (@preset-index = 3) {
+  @bar-color: #7c7c7c;
 }
 
-.vitamin-c(@index) when (@index = 2) {
-  @bar-color: #1f8a70;
+.chart-color-preset(@index, @preset-index) when (@index = 2) and (@preset-index = 3) {
+  @bar-color: #cc0a38;
 }
 
-.vitamin-c(@index) when (@index = 1) {
-  @bar-color: #004358;
+.chart-color-preset(@index, @preset-index) when (@index = 1) and (@preset-index = 3) {
+  @bar-color: #66aec8;
 }
+
