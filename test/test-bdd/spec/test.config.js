@@ -1,0 +1,348 @@
+require.config({
+    "paths": {
+        "backbone": "../../../grunt-dist/lib/backbone/backbone-min",
+        "blackbird": "../../../grunt-dist/lib/blackbird/blackbird",
+        "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap.min",
+        "d3": "../../../grunt-dist/lib/d3/d3.v3.min",
+        "device": "../../../grunt-dist/src/device/srt-0.9",
+        "form-view": "../../../grunt-dist/src/mvc/view/form-view/form",
+        "gesture-view": "../../../grunt-dist/src/mvc/view/gesture-view/gesture",
+        "hammer": "../../../grunt-dist/lib/hammer/hammer",
+        "handlebars": "../../../grunt-dist/lib/handlebars/handlebars",
+        "infinity": "../../../grunt-dist/lib/infinity/infinity",
+        "iscroll": "../../../grunt-dist/lib/iscroll-5/iscroll",
+        "jquery": "../../../grunt-dist/lib/jquery/jquery-2.0.2.min",
+        "jquery.hammer": "../../../grunt-dist/lib/jquery.hammer/jquery.hammer",
+        "jsonp": "../../../grunt-dist/src/util/jsonp/jsonp",
+        "launcher": "../../../grunt-dist/src/launcher/launcher",
+        "logging": "../../../grunt-dist/src/util/logging/logging",
+        "media": "../../../grunt-dist/lib/media/mediaelement-and-player.min",
+        "multipage-route": "../../../grunt-dist/src/mvc/router/multipage-route/multipage",
+        "nv": "../../../grunt-dist/lib/nv/nv.d3.min",
+        "skt": "../../../grunt-dist/src/util/skt/skt",
+        "spin": "../../../grunt-dist/lib/spin/spin",
+        "style": "../../../grunt-dist/src/loader/style/style",
+        "template": "../../../grunt-dist/src/loader/template/template",
+        "theme-dark": "../../../grunt-dist/src/style/theme-dark",
+        "theme-white": "../../../grunt-dist/src/style/theme-white",
+        "transition": "../../../grunt-dist/src/util/transition/transition",
+        "underscore": "../../../grunt-dist/lib/underscore/underscore-min",
+        "validation-view": "../../../grunt-dist/src/mvc/view/validation-view/validation",
+        "widget-alert": "../../../grunt-dist/src/widget/alert/widget-alert",
+        "widget-button": "../../../grunt-dist/src/widget/button/widget-button",
+        "widget-carousel": "../../../grunt-dist/src/widget/carousel/widget-carousel",
+        "widget-chart": "../../../grunt-dist/src/widget/chart/widget-chart",
+        "widget-collapse": "../../../grunt-dist/src/widget/collapse/widget-collapse",
+        "widget-datatable": "../../../grunt-dist/src/widget/datatable/widget-datatable",
+        "widget-datepicker": "../../../grunt-dist/src/widget/datepicker/widget-datepicker",
+        "widget-editor": "../../../grunt-dist/src/widget/editor/widget-editor",
+        "widget-listview": "../../../grunt-dist/src/widget/listview/widget-listview",
+        "widget-media": "../../../grunt-dist/src/widget/media/widget-media",
+        "widget-motioncaptcha": "../../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha",
+        "widget-popover": "../../../grunt-dist/src/widget/popover/widget-popover",
+        "widget-rangeinput": "../../../grunt-dist/src/widget/rangeinput/widget-rangeinput",
+        "widget-scrollview": "../../../grunt-dist/src/widget/scrollview/widget-scrollview",
+        "widget-sign": "../../../grunt-dist/src/widget/sign/widget-sign",
+        "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
+        "widget-tootip": "../../../grunt-dist/src/widget/tootip/widget-tootip",
+        "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch"
+    },
+    "shim": {
+        "backbone": {
+            "deps": [
+                "underscore"
+            ],
+            "exports": "Backbone"
+        },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
+        "bootstrap": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "d3": {
+            "exports": "d3"
+        },
+        "form-view": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "validation-view",
+                "bootstrap"
+            ],
+            "exports": "form-view"
+        },
+        "gesture-view": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hammer"
+            ],
+            "exports": "gesture-view"
+        },
+        "handlebars": {
+            "exports": "Handlebars"
+        },
+        "infinity": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "infinity"
+        },
+        "iscroll": {
+            "exports": "iScroll"
+        },
+        "jquery": {
+            "exports": "jquery"
+        },
+        "jquery.hammer": {
+            "deps": [
+                "jquery",
+                "hammer"
+            ]
+        },
+        "jsonp": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "Jsonp"
+        },
+        "logging": {
+            "deps": [
+                "blackbird"
+            ]
+        },
+        "media": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "multipage-route": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "transition",
+                "jquery.hammer"
+            ],
+            "exports": "multipage-route"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
+        },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "style": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "style"
+        },
+        "template": {
+            "deps": [
+                "jquery",
+                "handlebars"
+            ],
+            "exports": "template"
+        },
+        "transition": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "Transition"
+        },
+        "underscore": {
+            "exports": "_"
+        },
+        "validation-view": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "validation-view"
+        },
+        "widget-alert": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-button": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-button"
+        },
+        "widget-carousel": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-carousel"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
+        },
+        "widget-collapse": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-datatable": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-datatable"
+        },
+        "widget-datepicker": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-datepicker"
+        },
+        "widget-editor": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hotkeys"
+            ],
+            "exports": "widget-editor"
+        },
+        "widget-listview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "infinity"
+            ],
+            "exports": "widget-listview"
+        },
+        "widget-media": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "media"
+            ],
+            "exports": "widget-media"
+        },
+        "widget-motioncaptcha": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-motioncaptcha"
+        },
+        "widget-popover": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-popover"
+        },
+        "widget-rangeinput": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "widget-touch"
+            ],
+            "exports": "widget-rangeinput"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
+        },
+        "widget-sign": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-sign"
+        },
+        "widget-spinner": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "spin"
+            ],
+            "exports": "widget-spinner"
+        },
+        "widget-tootip": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-tootip"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
+        }
+    }
+});
+
+require( [ 'jquery','spec' ], function( $ ) {
+	// INITIALIZE THE RUN
+	console.log($, mocha );
+	$(document).on('click', 'a[href="#"], [type="submit"]', function(e) {
+        e.preventDefault();
+    });
+
+    // If tests run in a real browser
+    // Can alternatively do a check on window.PHANTOMJS
+    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+        mocha.run();
+    }
+});
