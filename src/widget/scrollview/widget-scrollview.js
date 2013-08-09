@@ -45,7 +45,7 @@
 		this.formCheck();
 		this.pullToRefresh();
 
-		this.iscroll = new iScroll(this.$el[0], options);
+		this.iscroll = new IScroll(this.$el[0], options);
 		return this;
 	};
 
