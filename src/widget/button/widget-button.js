@@ -4,6 +4,12 @@
         // AMD
         define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
             factory( $, root, doc );
+            return Backbone.View.extend( {
+                render: function (options) {
+                    this.$el.button(options);
+                    return this;
+                }
+            } );
         } );
     } else {
         // None AMD
