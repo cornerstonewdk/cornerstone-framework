@@ -10,7 +10,8 @@
     "use strict";
     var root = this;
     var pluginName = "featuredChart",
-        defaultOptions;
+        defaultOptions,
+        self;
 
     function FeaturedChart(element, options) {
         var target = d3.select(element);
@@ -30,6 +31,7 @@
 
     FeaturedChart.prototype = {
         barChart: function (target, options) {
+            self = this;
             nv.addGraph(function () {
                 var chart = nv.models.multiBarChart();
 
@@ -41,23 +43,22 @@
                     .axisLabel(options.yAxisLabel)
                     .tickFormat(d3.format(',.1f'));
 
-                chart.color(options.color.range());
-
                 if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                     target = target.append("svg:svg")
                 } else {
                     target = target.select("svg");
                 }
 
-                target.datum(options.data)
-                    .transition().duration(500).call(chart);
+                target.datum(options.data).transition().duration(500).call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         stackedBarChart: function (target, options) {
+            self = this;
             nv.addGraph(function () {
                 var chart = nv.models.multiBarChart();
 
@@ -82,12 +83,14 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         groupedBarChart: function (target, options) {
+            self = this;
             nv.addGraph(function () {
                 var chart = nv.models.multiBarChart();
 
@@ -112,12 +115,14 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         lineChart: function (target, options) {
+            self = this;
             // Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
             nv.addGraph(function () {
                 var chart = nv.models.lineChart();
@@ -142,11 +147,14 @@
                     .transition().duration(500)
                     .call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
+
                 return chart;
             });
         },
         pieChart: function (target, options) {
+            self = this;
             var width = 500,
                 height = 500;
 
@@ -180,26 +188,22 @@
                     $(item).removeAttr("style");
                 });
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         horizontalBarChart: function (target, options) {
+            self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarHorizontalChart()
-                    .x(function (d) {
-                        return d.x
-                    })
-                    .y(function (d) {
-                        return d.y
-                    })
-                    .showValues(true)
-                    .tooltips(false)
-                    .showControls(false);
+                var chart = nv.models.multiBarHorizontalChart();
+//                    .showValues(true)
+//                    .tooltips(true)
+//                    .showControls(true);
 
-                chart.yAxis
-                    .tickFormat(d3.format(',.2f'));
+//                chart.yAxis
+//                    .tickFormat(d3.format(',.2f'));
 
                 if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                     target = target.append("svg:svg")
@@ -211,15 +215,15 @@
                     .transition().duration(500)
                     .call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
-
-                removeAttrStyle(target);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
 
         },
         linePlusBarChart: function (target, options) {
+            self = this;
             var data = [
                 {
                     "key": "Quantity",
@@ -322,14 +326,14 @@
                 target.datum(data)
                     .transition().duration(500).call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
-
-                removeAttrStyle(target);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         lineFocusChart: function (target, options) {
+            self = this;
             function data() {
                 return stream_layers(3, 10 + Math.random() * 200, .1).map(function (data, i) {
                     return {
@@ -396,24 +400,33 @@
                     .transition().duration(500)
                     .call(chart);
 
-                !options.autoResize || nv.utils.windowResize(chart.update);
-
-                //.nv-group
-                removeAttrStyle(target);
+                self.util.applyWindowResize(target, options, chart);
+                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
-        }
-    };
+        },
 
-    var removeAttrStyle = function (target) {
-        $(target.selectAll(".nv-line .nv-group")).each(function () {
-            $(this).removeAttr("style");
-        });
-        var $circle = target.selectAll(".nv-series circle");
-        $circle.length && $($circle).each(function () {
-            $(this).removeAttr("style");
-        });
+        util: {
+            applyWindowResize: function (target, options, chart) {
+                !options.autoResize || nv.utils.windowResize(function () {
+                    chart.update();
+                    self.util.removeLegendStyleAttr(target);
+                });
+            },
+            removeLegendStyleAttr: function (target) {
+                $(target.selectAll(".nv-group rect")).each(function () {
+                    $(this).removeAttr("style");
+                });
+                $(target.selectAll(".nv-line .nv-group")).each(function () {
+                    $(this).removeAttr("style");
+                });
+                var $circle = target.selectAll(".nv-legendWrap circle");
+                $circle.length && $($circle).each(function () {
+                    $(this).removeAttr("style");
+                });
+            }
+        }
     };
 
     $.fn.featuredChart = function (options) {
@@ -429,7 +442,6 @@
             data: {},
             animate: false,
             controlBar: false,
-            filtering: true,
             autoResize: true,
             color: d3.scale.category10()
         };
@@ -448,12 +460,6 @@
                 $this.data(pluginName, data);
             }
 
-            if (!options.filtering) {
-                $this.removeClass("filtering");
-            } else {
-                $this.addClass("filtering");
-            }
-
             if (!options.controlBar) {
                 $this.removeClass("control-bar");
             } else {
@@ -464,28 +470,28 @@
 
     $.fn.featuredChart.Constructor = FeaturedChart;
 
-    root.activeDataApi = function ($el) {
+    root.Cornerstone = root.Cornerstone || {};
+    root.Cornerstone.widget = root.Cornerstone.widget || {};
+    root.Cornerstone.widget.activeDataApi = function ($el) {
         $el = $el && $el.length ? $el.find("[data-featured=chart]") : $("[data-featured=chart]");
-        /**
-         * DATA API (HTML5 Data Attribute)
-         */
+        // DATA API (HTML5 Data Attribute)
         $el.each(function () {
             var self = this,
                 dataUrl = $(this).data("chartBind");
 
-            $.getJSON(dataUrl).success(function (json) {
+            dataUrl && $.getJSON(dataUrl).success(function (json) {
                 $(self)[pluginName]({
                     chartType: $(self).data("chartType"),
                     data: json
                 });
             }).error(function (jqXHR, textStatus, errorThrown) {
-                    console.log("getJSON Error", jqXHR, textStatus, errorThrown);
-                });
+                console.log("getJSON Error", jqXHR, textStatus, errorThrown);
+            });
         });
     };
 
     $(function () {
-        root.activeDataApi();
+        root.Cornerstone.widget.activeDataApi();
     });
 
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
@@ -494,13 +500,10 @@
         // AMD. Register as an anonymous module.
         define([ "jquery", "underscore", "backbone"], function ($, _, Backbone) {
             return Backbone.View.extend({
-
                 model: new Backbone.Model(),
-
                 initialize: function () {
                     _.bindAll(this, "render");
                 },
-
                 updateChart: function (view) {
                     view.model.clear();
                     view.model.fetch({
@@ -511,13 +514,12 @@
                             });
 
                             view.options = $.extend({}, view.options, {data: data});
+
                             view.$el.featuredChart(view.options);
                         }
                     });
                 },
-
                 render: function () {
-                    this.$el.featuredChart(this.options);
                     this.updateChart(this);
                     return this;
                 }
