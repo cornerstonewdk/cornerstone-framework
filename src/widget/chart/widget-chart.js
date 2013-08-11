@@ -14,9 +14,8 @@
         self;
 
     function FeaturedChart(element, options) {
-        var target = d3.select(element);
+        var target = this.util.getTarget(d3.select(element));
 
-        // 배열로 넘어온 색상을 d3 색상 카테고리로 변환
         if (typeof options === "object" && typeof options.color === "object" && options.color.length > 0) {
             options.color = d3.scale.ordinal().range(options.color);
         }
@@ -30,33 +29,22 @@
     }
 
     FeaturedChart.prototype = {
+        // TODO Bar 그래프의 트랜지션이 완료될 때 event trigger 발생 필요
         barChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
                 var chart = nv.models.multiBarChart();
 
-                chart.xAxis
-                    .axisLabel(options.xAxisLabel)
-                    .tickFormat(d3.format(',f'));
-
-                chart.yAxis
-                    .axisLabel(options.yAxisLabel)
-                    .tickFormat(d3.format(',.1f'));
-
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
-
                 target.datum(options.data).transition().duration(500).call(chart);
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
+
+
         stackedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
@@ -64,26 +52,18 @@
 
                 chart.stacked(true);
 
-                chart.xAxis
-                    .axisLabel(options.xAxisLabel)
-                    .tickFormat(d3.format(',f'));
-
-                chart.yAxis
-                    .axisLabel(options.yAxisLabel)
-                    .tickFormat(d3.format(',.1f'));
-
-                chart.color(options.color.range());
-
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
+//                chart.xAxis
+//                    .axisLabel(options.xAxisLabel)
+//                    .tickFormat(d3.format(',f'));
+//
+//                chart.yAxis
+//                    .axisLabel(options.yAxisLabel)
+//                    .tickFormat(d3.format(',.1f'));
 
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -96,26 +76,10 @@
 
                 chart.stacked(false);
 
-                chart.xAxis
-                    .axisLabel(options.xAxisLabel)
-                    .tickFormat(d3.format(',f'));
-
-                chart.yAxis
-                    .axisLabel(options.yAxisLabel)
-                    .tickFormat(d3.format(',.1f'));
-
-                chart.color(options.color.range());
-
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
-
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -127,27 +91,11 @@
             nv.addGraph(function () {
                 var chart = nv.models.lineChart();
 
-                chart.xAxis
-                    .axisLabel(options.xAxisLabel)
-                    .tickFormat(d3.format(',f'));
-
-                chart.yAxis
-                    .axisLabel(options.yAxisLabel)
-                    .tickFormat(d3.format(',.1f'));
-
-                chart.color(options.color.range());
-
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
-
                 target.datum(options.data)
                     .transition().duration(500)
                     .call(chart);
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -171,12 +119,6 @@
                     })
                     .color(options.color.range());
 
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
-
                 target.datum([options.data])
                     .transition().duration(1200)
                     .attr('width', width)
@@ -188,7 +130,7 @@
                     $(item).removeAttr("style");
                 });
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -205,17 +147,9 @@
 //                chart.yAxis
 //                    .tickFormat(d3.format(',.2f'));
 
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
+                target.datum(options.data).transition().duration(500).call(chart);
 
-                target.datum(options.data)
-                    .transition().duration(500)
-                    .call(chart);
-
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -326,7 +260,7 @@
                 target.datum(data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -390,17 +324,13 @@
                 chart.y2Axis
                     .tickFormat(d3.format(',.2f'));
 
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
-                } else {
-                    target = target.select("svg");
-                }
+                target = self.util.getTarget(target);
 
                 target.datum(data())
                     .transition().duration(500)
                     .call(chart);
 
-                self.util.applyWindowResize(target, options, chart);
+                self.util.applyBindEvent(target, options, chart);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -408,12 +338,29 @@
         },
 
         util: {
-            applyWindowResize: function (target, options, chart) {
+            getTarget: function(target) {
+                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
+                    target = target.append("svg:svg")
+                } else {
+                    target = target.select("svg");
+                }
+                return target;
+            },
+
+            // TODO legend 클릭으로 필터링시 수직 차트에서 Bar 그래프가 겹치는 문제
+            // TODO Group/Stacked 클릭 후 데이터 변경시 Group으로만 초기화되는 문제
+            applyBindEvent: function (target, options, chart) {
+                target.selectAll(".nv-legend .nv-series").each(function() {
+                    $(this).off("click.cs-chart").on("click.cs-chart", function() {
+                        self.util.removeLegendStyleAttr(target);
+                    });
+                });
                 !options.autoResize || nv.utils.windowResize(function () {
                     chart.update();
                     self.util.removeLegendStyleAttr(target);
                 });
             },
+
             removeLegendStyleAttr: function (target) {
                 $(target.selectAll(".nv-group rect")).each(function () {
                     $(this).removeAttr("style");
@@ -485,8 +432,8 @@
                     data: json
                 });
             }).error(function (jqXHR, textStatus, errorThrown) {
-                console.log("getJSON Error", jqXHR, textStatus, errorThrown);
-            });
+                    console.log("getJSON Error", jqXHR, textStatus, errorThrown);
+                });
         });
     };
 

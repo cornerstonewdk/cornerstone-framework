@@ -1,10 +1,10 @@
-.control {
+#page1 .control {
     position: fixed;
     top: 70px;
     z-index: 1020;
 }
 
-.view-chart {
+#page1 .view-chart {
 }
 @media (min-width: 768px) {
 
