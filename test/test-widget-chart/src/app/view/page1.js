@@ -10,6 +10,17 @@ define([
         el: 'section#page1',
         sampleDataUrl: "data/sample-bar.json",
         iChangeCount: 1,
+        chartOption: {
+            animate: false,
+            showControls: false,
+            showLegend: false,
+            tooltips: false,
+            control: {
+                active: 'grouped',
+                groupedName: '그룹',
+                stackedName: '스택'
+            }
+        },
 
         render: function () {
             this.$el.html(template());
@@ -36,12 +47,40 @@ define([
             var $target = $(e.target);
             var $form = $target.closest("form");
             var options = $form.serializeArray();
+
             if(options.length) {
                 if(options[0]) {
                     var $chart = this.$el.find(".widget-chart");
                     $chart.prop("class", "widget-chart");
                     $chart.addClass(options[0].value);
                 }
+
+                // Grouped 이름 옵션
+                if(options[3]) {
+                    this.chartOption.control.groupedName = options[3].value;
+                }
+
+                // Stacked 이름 옵션
+                if(options[4]) {
+                    this.chartOption.control.stackedName = options[4].value;
+                }
+
+                // Control 사용 여부
+                if(options[5]) {
+                    this.chartOption.showControls = parseInt(options[5].value) ? true : false;
+                }
+
+                // 범례 사용 여부
+                if(options[6]) {
+                    this.chartOption.showLegend = parseInt(options[6].value) ? true : false;
+                }
+
+                // 툴팁 사용 여부
+                if(options[7]) {
+                    this.chartOption.tooltips = parseInt(options[7].value) ? true : false;
+                }
+
+                this.updateChart();
             }
         },
 
@@ -53,12 +92,12 @@ define([
                 "data/sample-bar3.json"
             ];
             this.sampleDataUrl = aSampleDataUrl[this.iChangeCount % 3];
-            this.updateChart();
+            this.controlSubmit(e);
             this.iChangeCount++;
         },
 
         updateChart: function () {
-            this.activeChartDataApi();
+//            this.activeChartDataApi();
             this.activeChartPlugin();
             this.activeChartView();
         },
@@ -75,33 +114,40 @@ define([
                 url: self.sampleDataUrl,
                 dataType: "json",
                 success: function (data) {
-                    self.$el.find("#horizontalBar1").featuredChart({
-                        chartType: "horizontalBar",
-                        data: data
-                    });
-                    self.$el.find("#bar1").featuredChart({
+
+                    var options = $.extend(true, self.chartOption, {
                         chartType: "bar",
                         data: data
                     });
+                    self.$el.find("#bar1").featuredChart(options);
+
+                    options = $.extend(true, self.chartOption, {
+                        chartType: "horizontalBar",
+                        data: data
+                    });
+                    self.$el.find("#horizontalBar1").featuredChart(options);
                 }
             });
         },
 
         activeChartView: function () {
+            var self = this;
+
             // Backbone View 방식 적용
             var Model = Backbone.Model.extend({
                 url: this.sampleDataUrl
             });
 
             var barChart = new Chart({
-                el: this.$el.find("#bar2"),
-                chartType: "bar",
-                model: new Model()
+                el: "#bar2",
+                model: new Model(),
+                chartOptions: $.extend({}, self.chartOption, {chartType: "bar"})
             });
+
             var horizontalBarChart = new Chart({
-                el: this.$el.find("#horizontalBar2"),
-                chartType: "horizontalBar",
-                model: new Model()
+                el: "#horizontalBar2",
+                model: new Model(),
+                chartOptions: $.extend({}, self.chartOption, {chartType: "horizontalBar"})
             });
 
             barChart.render();

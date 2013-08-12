@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col col-lg-12">
-        <div class="panel panel-info">
+        <div class="panel">
             <div class="panel-heading">차트 제어</div>
             <form id="control-chart" class="form-horizontal" class="#">
                 <div class="form-group">
@@ -16,14 +16,14 @@
                 </div>
                 <div class="form-group">
                     <div class="col-6">
-                        <select name="select-color">
+                        <select class="form-control" name="select-color">
                             <option value="">색상 1</option>
                             <option value="preset2">색상 2</option>
                             <option value="preset3">색상 3</option>
                         </select>
                     </div>
                     <div class="col-3">
-                        <select name="select-unit">
+                        <select class="form-control" name="select-unit">
                             <option value="">단위 선택</option>
                             <option value="04d">정수(4자리수 0000)</option>
                             <option value=".2f">소수(2자리 1.23)</option>
@@ -31,11 +31,51 @@
                         </select>
                     </div>
                     <div class="col-3">
-                        <select name="select-unit">
+                        <select class="form-control" name="select-unit">
                             <option value="">단위 선택</option>
                             <option value="04d">정수(4자리수 0000)</option>
                             <option value=".2f">소수(2자리 1.23)</option>
                             <option value="1,000">천단위 (1,000)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col col-4">
+                        <label class="control-label">Control 이름</label>
+                    </div>
+                    <div class="col col-4">
+                        <label class="control-label">Control 사용</label>
+                    </div>
+                    <div class="col col-2">
+                        <label class="control-label">범례 사용</label>
+                    </div>
+                    <div class="col col-2">
+                        <label class="control-label">툴팁 사용</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-2">
+                        <input class="form-control" type="text" value="그룹" name="groupedName"/>
+                    </div>
+                    <div class="col-2">
+                        <input class="form-control" type="text" value="스택" name="stackedName"/>
+                    </div>
+                    <div class="col-4">
+                        <select class="form-control" name="select-showControls">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <select class="form-control" name="select-showLegend">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <select class="form-control" name="select-tooltips">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
                         </select>
                     </div>
                 </div>
