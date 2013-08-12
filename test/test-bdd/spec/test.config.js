@@ -44,7 +44,7 @@ require.config({
         "widget-scrollview": "../../../grunt-dist/src/widget/scrollview/widget-scrollview",
         "widget-sign": "../../../grunt-dist/src/widget/sign/widget-sign",
         "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
-        "widget-tootip": "../../../grunt-dist/src/widget/tootip/widget-tootip",
+        "widget-tooltip": "../../../grunt-dist/src/widget/tooltip/widget-tooltip",
         "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch"
     },
     "shim": {
@@ -315,14 +315,14 @@ require.config({
             ],
             "exports": "widget-spinner"
         },
-        "widget-tootip": {
+        "widget-tooltip": {
             "deps": [
                 "backbone",
                 "underscore",
                 "jquery",
                 "bootstrap"
             ],
-            "exports": "widget-tootip"
+            "exports": "widget-tooltip"
         },
         "widget-touch": {
             "deps": [
