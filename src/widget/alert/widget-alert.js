@@ -7,7 +7,7 @@
             return Backbone.View.extend( {
                 className: 'alert',
                 render: function () {
-                    this.$el.alert();
+                    this.$el.alert(this.options);
                     return this;
                 }
             } );

@@ -4,7 +4,7 @@
         // AMD
         define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
             factory( $, root, doc );
-            return Backbone.view.extend( {
+            return Backbone.View.extend( {
                 render: function () {
                     this.$el.carousel( this.options );
                     return this;

@@ -2,9 +2,9 @@
 ( function ( root, doc, factory ) {
     if ( typeof define === "function" && define.amd ) {
         // AMD
-        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
+        define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
             factory( $, root, doc );
-            return Backbone.view.extend( {
+            return Backbone.View.extend( {
             	render: function () {
             		this.$el.tooltip( this.options );
             		return this;
