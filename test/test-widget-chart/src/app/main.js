@@ -27,7 +27,7 @@ define([
                             new Page1View().render();
                         },
                         active: function () {
-                            $(".container > section:not(#page1)").html("");
+                            this.releasePage('#page1');
                         }
                     },
                     'page2': {
@@ -37,7 +37,7 @@ define([
                             new Page2View().render();
                         },
                         active: function () {
-                            $(".container > section:not(#page2)").html("");
+                            this.releasePage('#page2');
                         }
                     },
                     'page3': {
@@ -47,8 +47,8 @@ define([
                             new Page3View().render();
                         },
                         active: function () {
-                            $(".container > section:not(#page3)").html("");
-                            $("#page3").hide().show();
+                            this.releasePage('#page3');
+                            $('#page3').hide().show();
                         }
                     },
                     'page4': {
@@ -58,7 +58,7 @@ define([
                             new Page4View().render();
                         },
                         active: function () {
-                            $(".container > section:not(#page4)").html("");
+                            this.releasePage('#page4');
                         }
                     },
                     'page5': {
@@ -68,7 +68,7 @@ define([
                             new Page5View().render();
                         },
                         active: function () {
-                            $(".container > section:not(#page5)").html("");
+                            this.releasePage('#page5');
                         }
                     },
                     'default': {
@@ -84,6 +84,10 @@ define([
                     'page2:page3': 'turn',
                     'page3:page4': 'flip',
                     'page4:page5': 'slide'
+                },
+
+                releasePage: function(currentPage) {
+                    return $('.container > section:not(' + currentPage + ')').html('');
                 }
             });
 
