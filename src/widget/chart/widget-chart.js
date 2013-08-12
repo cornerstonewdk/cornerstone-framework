@@ -21,19 +21,20 @@
             padding: [0, 0, 0, 0],
             data: {},
             animate: false,
-            controlBar: false,
+            showControls: false,
+            showLegend: false,
+            tooltips: false,
             control: {
                 active: 'grouped',
                 groupedName: '그룹',
                 stackedName: '스택'
             },
-            autoResize: true
+            autoResize: false
         },
         chart,
         self;
 
     var FeaturedChart = function (element, options) {
-        this.options = options;
         this.el = element;
         this.$el = $(element);
 
@@ -43,12 +44,14 @@
     };
 
     FeaturedChart.prototype = {
-        beforeRender: function(target, options) {
+        beforeRender: function (target, options) {
             if (this.isNotFirst) {
-                options.control.active = target.selectAll('.nv-controlsWrap .nv-series:not(.disabled)').attr('data-control');
+                options.control = $.extend({}, options.control, {
+                    active: $(this.el).find('.nv-controlsWrap .nv-series:not(.disabled)').data('control')
+                });
             }
         },
-        afterRender: function(target, options, chart) {
+        afterRender: function (target, options) {
             this.util.customControl(target, options);
 
             this.$el.data('currentChart', chart);
@@ -56,20 +59,27 @@
 
             this.util.applyBindEvent(target, options, chart, this.$el);
             this.util.removeLegendStyleAttr(target);
+
+            target.select('.nv-controlsWrap').style('display', [options.showControls ? "block" : "none"]);
+            target.select('.nv-legendWrap').style('display', [options.showLegend ? "block" : "none"]);
+
             this.isNotFirst = true;
         },
-        render: function(options) {
+        render: function (options) {
             var target = this.util.getTarget(d3.select(this.el));
             this.beforeRender(target, options);
 
             chart = this[options.chartType + "Chart"](target, options);
 
-            this.afterRender(target, options, chart);
+            this.afterRender(target, options);
         },
         // TODO Bar 그래프의 트랜지션이 완료될 때 event trigger 발생 필요
         barChart: function (target, options) {
             var self = this,
-                chart = nv.models.multiBarChart();
+                chart = nv.models.multiBarChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
             chart.stacked(options.control.active !== 'grouped');
             chart.yAxis.tickFormat(d3.format('.0f'));
@@ -78,7 +88,6 @@
                 .transition()
                 .duration(500)
                 .each('end', function () {
-                    self.util.customControl(target, options);
                     $(target).trigger("shown");
                 })
                 .call(chart);
@@ -89,7 +98,10 @@
         stackedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarChart();
+                var chart = nv.models.multiBarChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 chart.stacked(true);
 
@@ -113,7 +125,10 @@
         groupedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarChart();
+                var chart = nv.models.multiBarChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 chart.stacked(false);
 
@@ -130,7 +145,10 @@
             self = this;
             // Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
             nv.addGraph(function () {
-                var chart = nv.models.lineChart();
+                var chart = nv.models.lineChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 target.datum(options.data)
                     .transition().duration(500)
@@ -149,16 +167,9 @@
 
             nv.addGraph(function () {
                 var chart = nv.models.pieChart()
-                    .x(function (d) {
-                        return d.key
-                    })
-                    .y(function (d) {
-                        return d.y
-                    })
-                    .values(function (d) {
-                        return d;
-                    })
-                    .color(options.color.range());
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 target.datum([options.data])
                     .transition().duration(1200)
@@ -178,21 +189,18 @@
             });
         },
         horizontalBarChart: function (target, options) {
-            var self = this,
-                chart = nv.models.multiBarHorizontalChart();
-//                    .showValues(true)
-//                    .tooltips(true)
-//                    .showControls(true);
+            var chart = nv.models.multiBarHorizontalChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
             chart.stacked(options.control.active !== 'grouped');
-
             chart.yAxis.tickFormat(d3.format('.0f'));
 
             target.datum(options.data)
                 .transition()
                 .duration(500)
                 .each('end', function () {
-                    self.util.customControl(target, options);
                     $(target).trigger("shown");
                 })
                 .call(chart);
@@ -407,6 +415,7 @@
 
                 !options.autoResize || nv.utils.windowResize(function () {
                     chart.update();
+                    self.customControl(target, options);
                     self.removeLegendStyleAttr(target);
                 });
             },
@@ -428,7 +437,6 @@
 
     $.fn.featuredChart = function (options) {
         options = $.extend(true, defaultOptions, options);
-
         return this.each(function () {
             var $this = $(this);
             var data = $this.data(pluginName);
@@ -461,9 +469,7 @@
                     chartType: $(self).data("chartType"),
                     data: json
                 });
-            }).error(function (jqXHR, textStatus, errorThrown) {
-                    console.log("getJSON Error", jqXHR, textStatus, errorThrown);
-                });
+            });
         });
     };
 
@@ -489,10 +495,9 @@
                             $.each(model.toJSON(), function (i, obj) {
                                 data.push(obj);
                             });
+                            view.options.chartOptions = $.extend({}, view.options.chartOptions, {data: data});
 
-                            view.options = $.extend({}, view.options, {data: data});
-
-                            view.$el.featuredChart(view.options);
+                            view.$el.featuredChart(view.options.chartOptions);
                         }
                     });
                 },
