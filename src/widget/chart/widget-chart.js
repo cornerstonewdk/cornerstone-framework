@@ -10,45 +10,98 @@
     "use strict";
     var root = this;
     var pluginName = "featuredChart",
-        defaultOptions,
+        defaultOptions = {
+            chartType: "bar",
+            lineType: "basis",
+            xAxisLabel: null,
+            yAxisLabel: null,
+            width: 960,
+            height: 600,
+            margin: [0, 0, 0, 0],
+            padding: [0, 0, 0, 0],
+            data: {},
+            animate: false,
+            showControls: false,
+            showLegend: false,
+            tooltips: false,
+            control: {
+                active: 'grouped',
+                groupedName: '그룹',
+                stackedName: '스택'
+            },
+            autoResize: false
+        },
+        chart,
         self;
 
-    function FeaturedChart(element, options) {
-        var target = this.util.getTarget(d3.select(element));
-
-        if (typeof options === "object" && typeof options.color === "object" && options.color.length > 0) {
-            options.color = d3.scale.ordinal().range(options.color);
-        }
-
-        this.options = options;
-
+    var FeaturedChart = function (element, options) {
+        this.el = element;
         this.$el = $(element);
 
         nv.dev = false;
-        this[options.chartType + "Chart"](target, options);
-    }
+
+        this.render(options);
+    };
 
     FeaturedChart.prototype = {
+        beforeRender: function (target, options) {
+            if (this.isNotFirst) {
+                options.control = $.extend({}, options.control, {
+                    active: $(this.el).find('.nv-controlsWrap .nv-series:not(.disabled)').data('control')
+                });
+            }
+        },
+        afterRender: function (target, options) {
+            this.util.customControl(target, options);
+
+            this.$el.data('currentChart', chart);
+            this.$el.data('currentChartControl', options.control);
+
+            this.util.applyBindEvent(target, options, chart, this.$el);
+            this.util.removeLegendStyleAttr(target);
+
+            target.select('.nv-controlsWrap').style('display', [options.showControls ? "block" : "none"]);
+            target.select('.nv-legendWrap').style('display', [options.showLegend ? "block" : "none"]);
+
+            this.isNotFirst = true;
+        },
+        render: function (options) {
+            var target = this.util.getTarget(d3.select(this.el));
+            this.beforeRender(target, options);
+
+            chart = this[options.chartType + "Chart"](target, options);
+
+            this.afterRender(target, options);
+        },
         // TODO Bar 그래프의 트랜지션이 완료될 때 event trigger 발생 필요
         barChart: function (target, options) {
-            self = this;
-            nv.addGraph(function () {
-                var chart = nv.models.multiBarChart();
+            var self = this,
+                chart = nv.models.multiBarChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
-                target.datum(options.data).transition().duration(500).call(chart);
+            chart.stacked(options.control.active !== 'grouped');
+            chart.yAxis.tickFormat(d3.format('.0f'));
 
-                self.util.applyBindEvent(target, options, chart);
-                self.util.removeLegendStyleAttr(target);
+            target.datum(options.data)
+                .transition()
+                .duration(500)
+                .each('end', function () {
+                    $(target).trigger("shown");
+                })
+                .call(chart);
 
-                return chart;
-            });
+            return chart;
         },
-
 
         stackedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarChart();
+                var chart = nv.models.multiBarChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 chart.stacked(true);
 
@@ -63,7 +116,7 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyBindEvent(target, options, chart);
+                self.util.applyBindEvent(target, options, chart, self.$el);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -72,14 +125,17 @@
         groupedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarChart();
+                var chart = nv.models.multiBarChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 chart.stacked(false);
 
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyBindEvent(target, options, chart);
+                self.util.applyBindEvent(target, options, chart, self.$el);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -89,13 +145,16 @@
             self = this;
             // Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
             nv.addGraph(function () {
-                var chart = nv.models.lineChart();
+                var chart = nv.models.lineChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 target.datum(options.data)
                     .transition().duration(500)
                     .call(chart);
 
-                self.util.applyBindEvent(target, options, chart);
+                self.util.applyBindEvent(target, options, chart, self.$el);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
@@ -108,16 +167,9 @@
 
             nv.addGraph(function () {
                 var chart = nv.models.pieChart()
-                    .x(function (d) {
-                        return d.key
-                    })
-                    .y(function (d) {
-                        return d.y
-                    })
-                    .values(function (d) {
-                        return d;
-                    })
-                    .color(options.color.range());
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
                 target.datum([options.data])
                     .transition().duration(1200)
@@ -130,30 +182,30 @@
                     $(item).removeAttr("style");
                 });
 
-                self.util.applyBindEvent(target, options, chart);
+                self.util.applyBindEvent(target, options, chart, self.$el);
                 self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         horizontalBarChart: function (target, options) {
-            self = this;
-            nv.addGraph(function () {
-                var chart = nv.models.multiBarHorizontalChart();
-//                    .showValues(true)
-//                    .tooltips(true)
-//                    .showControls(true);
+            var chart = nv.models.multiBarHorizontalChart()
+                    .showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips);
 
-//                chart.yAxis
-//                    .tickFormat(d3.format(',.2f'));
+            chart.stacked(options.control.active !== 'grouped');
+            chart.yAxis.tickFormat(d3.format('.0f'));
 
-                target.datum(options.data).transition().duration(500).call(chart);
+            target.datum(options.data)
+                .transition()
+                .duration(500)
+                .each('end', function () {
+                    $(target).trigger("shown");
+                })
+                .call(chart);
 
-                self.util.applyBindEvent(target, options, chart);
-                self.util.removeLegendStyleAttr(target);
-
-                return chart;
-            });
+            return chart;
 
         },
         linePlusBarChart: function (target, options) {
@@ -257,12 +309,6 @@
                     target = target.select("svg");
                 }
 
-                target.datum(data)
-                    .transition().duration(500).call(chart);
-
-                self.util.applyBindEvent(target, options, chart);
-                self.util.removeLegendStyleAttr(target);
-
                 return chart;
             });
         },
@@ -330,15 +376,23 @@
                     .transition().duration(500)
                     .call(chart);
 
-                self.util.applyBindEvent(target, options, chart);
-                self.util.removeLegendStyleAttr(target);
-
                 return chart;
             });
         },
 
         util: {
-            getTarget: function(target) {
+            customControl: function (target, options) {
+                target.selectAll('.nv-controlsWrap .nv-series').each(function (item, i) {
+                    var _parent = d3.select(this);
+                    if (i === 0) {
+                        _parent.attr('data-control', 'grouped').select('text').text(options.control.groupedName);
+                    } else {
+                        _parent.attr('data-control', 'stacked').select('text').text(options.control.stackedName);
+                    }
+                });
+            },
+
+            getTarget: function (target) {
                 if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
                     target = target.append("svg:svg")
                 } else {
@@ -349,15 +403,20 @@
 
             // TODO legend 클릭으로 필터링시 수직 차트에서 Bar 그래프가 겹치는 문제
             // TODO Group/Stacked 클릭 후 데이터 변경시 Group으로만 초기화되는 문제
-            applyBindEvent: function (target, options, chart) {
-                target.selectAll(".nv-legend .nv-series").each(function() {
-                    $(this).off("click.cs-chart").on("click.cs-chart", function() {
-                        self.util.removeLegendStyleAttr(target);
+            applyBindEvent: function (target, options, chart, $el) {
+                var self = this;
+
+                target.selectAll(".nv-legend .nv-series").each(function () {
+                    $(this).off("click.cs-chart").on("click.cs-chart", function () {
+                        self.customControl(target, options);
+                        self.removeLegendStyleAttr(target);
                     });
                 });
+
                 !options.autoResize || nv.utils.windowResize(function () {
                     chart.update();
-                    self.util.removeLegendStyleAttr(target);
+                    self.customControl(target, options);
+                    self.removeLegendStyleAttr(target);
                 });
             },
 
@@ -377,40 +436,19 @@
     };
 
     $.fn.featuredChart = function (options) {
-        defaultOptions = {
-            chartType: "bar",
-            lineType: "basis",
-            xAxisLabel: null,
-            yAxisLabel: null,
-            width: 960,
-            height: 600,
-            margin: [0, 0, 0, 0],
-            padding: [0, 0, 0, 0],
-            data: {},
-            animate: false,
-            controlBar: false,
-            autoResize: true,
-            color: d3.scale.category10()
-        };
-
         options = $.extend(true, defaultOptions, options);
-
         return this.each(function () {
             var $this = $(this);
             var data = $this.data(pluginName);
 
             // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
-            if (typeof options == 'string') {
+            if (typeof options === 'string') {
                 data[options](data.options);
+            } else if (typeof options === 'object' && typeof data === 'object') {
+                data.render(options);
             } else {
                 data = new FeaturedChart(this, options);
                 $this.data(pluginName, data);
-            }
-
-            if (!options.controlBar) {
-                $this.removeClass("control-bar");
-            } else {
-                $this.addClass("control-bar");
             }
         });
     };
@@ -431,9 +469,7 @@
                     chartType: $(self).data("chartType"),
                     data: json
                 });
-            }).error(function (jqXHR, textStatus, errorThrown) {
-                    console.log("getJSON Error", jqXHR, textStatus, errorThrown);
-                });
+            });
         });
     };
 
@@ -459,10 +495,9 @@
                             $.each(model.toJSON(), function (i, obj) {
                                 data.push(obj);
                             });
+                            view.options.chartOptions = $.extend({}, view.options.chartOptions, {data: data});
 
-                            view.options = $.extend({}, view.options, {data: data});
-
-                            view.$el.featuredChart(view.options);
+                            view.$el.featuredChart(view.options.chartOptions);
                         }
                     });
                 },
