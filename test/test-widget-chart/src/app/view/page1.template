@@ -20,8 +20,8 @@
                 <div class="form-group">
                     <div class="col-3">
                         <select class="form-control" name="select-showControls">
-                            <option value="0">N</option>
                             <option value="1">Y</option>
+                            <option value="0">N</option>
                         </select>
                     </div>
                     <div class="col-3">
@@ -68,14 +68,14 @@
                     </div>
                     <div class="col-3">
                         <select class="form-control" name="select-showLegend">
-                            <option value="0">N</option>
                             <option value="1">Y</option>
+                            <option value="0">N</option>
                         </select>
                     </div>
                     <div class="col-3">
                         <select class="form-control" name="select-tooltips">
-                            <option value="0">N</option>
                             <option value="1">Y</option>
+                            <option value="0">N</option>
                         </select>
                     </div>
                 </div>

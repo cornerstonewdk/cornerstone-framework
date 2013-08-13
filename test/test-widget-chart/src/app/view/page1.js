@@ -12,9 +12,9 @@ define([
         iChangeCount: 1,
         chartOption: {
             animate: false,
-            showControls: false,
-            showLegend: false,
-            tooltips: false,
+            showControls: true,
+            showLegend: true,
+            tooltips: true,
             control: {
                 active: 'grouped',
                 groupedName: '그룹',
@@ -96,7 +96,7 @@ define([
             this.sampleDataUrl = aSampleDataUrl[this.iChangeCount % 3];
 
             this.updateChart();
-            
+
             this.iChangeCount++;
         },
 
