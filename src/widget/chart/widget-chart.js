@@ -29,7 +29,7 @@
                 groupedName: '그룹',
                 stackedName: '스택'
             },
-            autoResize: false
+            autoResize: true
         },
         chart,
         self;
