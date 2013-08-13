@@ -1,74 +1,292 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Cornerstone</title>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cornerstone</title>
+    <!--
         <link href="dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
         <script type="text/javascript" src="dist/lib/jquery-1.8.1.min.js"></script>
         <script type="text/javascript" src="dist/lib/bootstrap/js/bootstrap.min.js"></script>
-        <style type="text/css">
-        body {
-          font-family:dotum;
+        -->
+    <link href="../grunt-dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../grunt-dist/lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet" />
+    <link href="../grunt-dist/src/style/theme-white/cornerstone.css" rel="stylesheet" />
+    <script type="text/javascript" src="../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="../grunt-dist/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../grunt-dist/lib/handlebars/handlebars.js"></script>
+    <script type="text/javascript" src="../grunt-dist/lib/spin/spin.js"></script>
+    <script type="text/javascript" src="../grunt-dist/src/widget/spinner/widget-spinner.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 70px;
+        padding-bottom: 50px;
+    }
+    .qrcode{
+        min-height: 300px;
+    }
+    .preview{
+        min-height: 270px;
+    }
+    #detail{
+        text-align:center;
+        min-height:700px;
+    }
+    .glyphicon{
+        line-height: 6px;
+        padding-right: 10px;
+    }
+    .urlWrapper{
+        padding: 63px 0px 55px 0px;
+    }
+    @media (max-width:767px) {
+        .list-group li:not(.active) {
+            display:none;
         }
-        </style>
-    </head>
-    <body>
-        <div class="container" style="margin-top: 50px;">
-            <h1>Cornerstone</h1>
-            <hr/>
+    }
+    </style>
+</head>
 
-            <div class="row">
-                <div class="span6">
-                    <div class="well">
-                        <h4>T-tris 게임하기</h4>
-                        <hr/>
-                        <p><a href="http://cornerstone.sktelecom.com/t-tris/">http://cornerstone.sktelecom.com/t-tris/</a></p>
-                        <p><img class="img-polaroid" src="http://api.qrserver.com/v1/create-qr-code/?size=500x500&data=http://cornerstone.sktelecom.com/t-tris/"/></p>
-                    </div>
-                </div>
-                <div class="span6">
-                    <div class="well">
-                        <h4>T-tris 게임 구경하기</h4>
-                        <hr/>
-                        <p><a href="http://cornerstone.sktelecom.com/t-tris/watchRoom">http://cornerstone.sktelecom.com/t-tris/watchRoom</a></p>
-                        <p><img class="img-polaroid" src="http://api.qrserver.com/v1/create-qr-code/?size=500x500&data=http://cornerstone.sktelecom.com/t-tris/watchRoom"/></p>
-                    </div>
-                </div>
-                <div class="span6">
-                    <div class="well">
-                        <h4>T-Dashboard</h4>
-                        <hr/>
-                        <p><a href="http://cornerstone.sktelecom.com/t-dashboard/">http://cornerstone.sktelecom.com/t-dashboard/</a></p>
-                        <p><img class="img-polaroid" src="http://api.qrserver.com/v1/create-qr-code/?size=500x500&data=http://cornerstone.sktelecom.com/t-dashboard/"/></p>
-                    </div>
-                </div>
-                <div class="span6">
-                    <div class="well">
-                        <h4>Live Document</h4>
-                        <hr/>
-                        <p><a href="http://cornerstone.sktelecom.com/livedoc/">http://cornerstone.sktelecom.com/livedoc/</a></p>
-                        <p><img class="img-polaroid" src="http://api.qrserver.com/v1/create-qr-code/?size=500x500&data=http://cornerstone.sktelecom.com/livedoc/"/></p>
-                    </div>
-                </div>
-                <div class="span6">
-                    <div class="well">
-                        <h4>Cornerstone 테스트 페이지</h4>
-                        <hr/>
-                        <p><a href="http://cornerstone.sktelecom.com/cornertest/">http://cornerstone.sktelecom.com/cornertest/</a></p>
-                        <p><img class="img-polaroid" src="http://api.qrserver.com/v1/create-qr-code/?size=500x500&data=http://cornerstone.sktelecom.com/cornertest/"/></p>
-                    </div>
-                </div>
-                <div class="span6">
-                    <div class="well">
-                        <h4>Runtime 다운로드</h4>
-                        <hr/>
-                        <p><a href="http://cornerstone.sktelecom.com/download/">http://cornerstone.sktelecom.com/download/</a></p>
-                        <p><img class="img-polaroid" src="http://api.qrserver.com/v1/create-qr-code/?size=500x500&data=http://cornerstone.sktelecom.com/download/"/></p>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">Cornerstone</a>
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+                <ul id="navbar" class="nav navbar-nav visible-sm">
+                    <li>
+                        <a href="#" data-link="t-tris-play">
+                            <span class="glyphicon glyphicon-user"></span> 
+                            T-tris 게임하기
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-link="t-tris-view">
+                            <span class="glyphicon glyphicon-eye-open"></span> 
+                            T-tris 게임 구경하기
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-link="t-dashboard">
+                            <span class="glyphicon glyphicon-list-alt"></span> 
+                            T-Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-link="live-document">
+                            <span class="glyphicon glyphicon-book"></span> 
+                            Live Document
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-link="test-page">
+                            <span class="glyphicon glyphicon-repeat"></span> 
+                            Cornerstone 테스트 페이지
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-link="runtime-download">
+                            <span class="glyphicon glyphicon-download-alt"></span> 
+                            Runtime 다운로드
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <!-- List Group
+  ================================================== -->
+        <section id="list-group" class="row">
+            <div class="col col-lg-6">
+                <h3 class="title"></h3>
+                <div class="panel-group panel-nav-group">
+                    <div class="panels">
+                        <div class="panel">
+                            <div class="panel-heading">Sample List</div>
+                            <ul class="list-group list-group-flush list-group-cornerstone">
+                                <li class="list-group-item active" data-link="t-tris-play">
+                                    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-user"></span> T-tris 게임하기</h4>
+                                    <p class="list-group-item-text">
+                                        <br/>
+                                        HTML5와 Node.js로 만들어진 T-tris 게임입니다. Socket.io를 활용하여 여러명이 함께 즐길 수 있습니다. 친구들과의 대전을 통해 서로의 실력을 겨루어 보세요. 또한 해당 예제를 통해 웹게임 개발에 도전해보세요.
+                                    </p>
+                                </li>
+                                <li class="list-group-item" data-link="t-tris-view">
+                                    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-eye-open"></span> T-tris 게임 구경하기</h4>
+                                    <p class="list-group-item-text">
+                                        <br/>
+                                        T-tris를 즐기는 다른 플레이어들의 게임화면을 관전할 수 있습니다. 플레이어들의 숨겨진 노하우를 직접 관람 하면서 배워보세요. 관전모드도 Socket.io를 통해 구현되었으며 보다 색다른 개발 노하우를 코드를 통해 확인하세요.
+                                    </p>
+                                </li>
+                                <li class="list-group-item" data-link="t-dashboard">
+                                    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-list-alt"></span> T-Dashboard</h4>
+                                    <p class="list-group-item-text">
+                                        <br/>
+                                        Cornerstone Framework의 막강한 위젯을 활용하여 만들어진 Dashboard 입니다. 막강한 기능과 미려한 디자인이 적용된 위젯을 직접 경험해보세요! 또한 여러분이 개발하고자 하는 업무를 기반으로 Dashboard를 다시 꾸며보는 재미도 느껴보세요.
+                                    </p>
+                                </li>
+                                <li class="list-group-item" data-link="live-document">
+                                    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-book"></span> Live Document</h4>
+                                    <p class="list-group-item-text">
+                                        <br/>
+                                        딱딱한 레퍼런스 문서는 이제 그만. 문서보고 코드를 다시 다른곳에서 실행해보고 왔다갔다 정신 없으셨죠? Cornerstone Framework는 레퍼런스 내용을 Live Document 통해 기능들을 웹상에서 바로 코딩해보고 렌더링 되는 결과물을 한자리에서 눈으로 확인 할 수 있습니다!
+
+                                    </p>
+                                </li>
+                                <li class="list-group-item" data-link="test-page">
+                                    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-repeat"></span> Cornerstone 테스트 페이지</h4>
+                                    <p class="list-group-item-text">
+                                        <br/>
+                                        Cornerstone Framework를 검증하기 위해 사용했던 테스트 페이지들 입니다. Cornerstone Framework의 안정성 검증을 여러분이 직접 확인 해보세요!
+                                    </p>
+                                </li>
+                                <li class="list-group-item" data-link="runtime-download">
+                                    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-download-alt"></span> Runtime 다운로드</h4>
+                                    <p class="list-group-item-text">
+                                        <br/>
+                                        이곳을 클릭하면 Cornerstone Framework의 Runtime Module을 받으실 수 있는 페이지로 이동합니다.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div id="detail" class="col col-lg-6">
+                <div class="wrapper">
+                    <div class="row">
+                        <h3 class="title"></h3>
+                        <a href="#">
+                            <img src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
+                        </a>
+                    </div>
+                    <div class="row urlWrapper">
+                        <h4 class="title">
+                            <a href="http://cornerstone.sktelecom.com/t-tris/">http://cornerstone.sktelecom.com/t-tris/</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="row">
+                        <h3 class="title"></h3>
+                        <div class="col col-6">
+                            <a href="#" class="thumbnail">
+                                <img src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
+                            </a>
+                        </div>
+                        <div class="col col-6">
+                            <a href="#" class="thumbnail">
+                                <img src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script id="detail-template" type="text/x-handlebars-template">
+        <div class="row">
+            <h3 class="title"></h3>
+            <a href="#">
+                <img class="qrcode" src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{url}}" />
+            </a>
         </div>
-    </body>
+        <div class="row urlWrapper">
+            <h4>
+                <a href="{{url}}">{{url}}</a>
+            </h4>
+        </div>
+        <div class="row">
+            <h3 class="title"></h3>
+            <div class="col col-6">
+                <a href="#" class="thumbnail">
+                    <img class="preview" src="{{preview1}}" />
+                </a>
+            </div>
+            <div class="col col-6">
+                <a href="#" class="thumbnail">
+                    <img class="preview" src="{{preview2}}" />
+                </a>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+    var detailObj = {
+        't-tris-play': {
+            url: 'http://cornerstone.sktelecom.com/t-tris/',
+            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
+            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+        },
+        't-tris-view': {
+            url: 'http://cornerstone.sktelecom.com/t-tris/watchRoom',
+            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
+            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+        },
+        't-dashboard': {
+            url: 'http://cornerstone.sktelecom.com/t-dashboard/',
+            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
+            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+        },
+        'live-document': {
+            url: 'http://cornerstone.sktelecom.com/livedoc/',
+            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
+            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+        },
+        'test-page': {
+            url: 'http://cornerstone.sktelecom.com/cornertest/',
+            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
+            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+        },
+        'runtime-download': {
+            url: 'http://cornerstone.sktelecom.com/download/',
+            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
+            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+        }
+    };
+
+    var loadCount = 0;
+
+    $('li.list-group-item').click(function(e) {
+        $(this).closest('ul').find('li').removeClass('active');
+        $(this).addClass('active');
+        render($(this));
+    });
+
+    $('#navbar li > a').click(function(e) {
+        $('li.list-group-item[data-link="' + $(this).data('link') + '"]').click();
+        $('.nav-collapse').collapse('hide');
+    });
+
+    function render(target) {
+        var html = Handlebars.compile($("#detail-template").html())(detailObj[target.data('link')]);
+        var wrapper = $('.wrapper');
+
+        $('#detail .wrapper').html(html);
+        wrapper.spinner('show');
+
+        $(html).find('img').each(function() {
+            $(this).load(function() {
+                loadCount++;
+                if (loadCount === 3) {
+                    wrapper.spinner('hide');
+                    loadCount = 0;
+                };
+            });
+        });
+    };
+    </script>
+</body>
+
 </html>
