@@ -49,25 +49,25 @@ define([
             var options = $form.serializeArray();
 
             if(options.length) {
-                if(options[0]) {
+                if(options[1]) {
                     var $chart = this.$el.find(".widget-chart");
                     $chart.prop("class", "widget-chart");
-                    $chart.addClass(options[0].value);
+                    $chart.addClass(options[1].value);
                 }
 
                 // Grouped 이름 옵션
-                if(options[3]) {
-                    this.chartOption.control.groupedName = options[3].value;
+                if(options[4]) {
+                    this.chartOption.control.groupedName = options[4].value;
                 }
 
                 // Stacked 이름 옵션
-                if(options[4]) {
-                    this.chartOption.control.stackedName = options[4].value;
+                if(options[5]) {
+                    this.chartOption.control.stackedName = options[5].value;
                 }
 
                 // Control 사용 여부
-                if(options[5]) {
-                    this.chartOption.showControls = parseInt(options[5].value) ? true : false;
+                if(options[0]) {
+                    this.chartOption.showControls = parseInt(options[0].value) ? true : false;
                 }
 
                 // 범례 사용 여부
@@ -79,6 +79,8 @@ define([
                 if(options[7]) {
                     this.chartOption.tooltips = parseInt(options[7].value) ? true : false;
                 }
+
+                $('#bar1, #bar2, #horizontalBar1, #horizontalBar2').html('');
 
                 this.updateChart();
             }
@@ -92,7 +94,9 @@ define([
                 "data/sample-bar3.json"
             ];
             this.sampleDataUrl = aSampleDataUrl[this.iChangeCount % 3];
-            this.controlSubmit(e);
+
+            this.updateChart();
+            
             this.iChangeCount++;
         },
 
