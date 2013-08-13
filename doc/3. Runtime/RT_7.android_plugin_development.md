@@ -1,12 +1,12 @@
 <!--
-layout: 'post'
-section: 'Cornerstone Framework'
-title: 'Android PlugIn 개발'
-outline: '아래 링크를 통하여 확장구조 개발에 필요한 Android Native source와 JavaScript source 예제를 참조할 수 있다.'
-date: '2012-11-16'
-tagstr: 'runtime'
-order: '[6, 7]'
-thumbnail: '6.7.00.android.png'
+{
+	"id": 67,
+	"title": "Android PlugIn 개발",
+	"outline": "아래 링크를 통하여 확장구조 개발에 필요한 Android Native source와 JavaScript source 예제를 참조할 수 있다.",
+	"tags": ["runtime"],
+	"order": [6, 7],
+	"thumbnail": "6.7.00.android.png"
+}
 -->
 
 ##	Android Runtime 확장 구조 개발 

@@ -1,13 +1,13 @@
 <!--
-layout: 'post'
-section: 'Cornerstone Framework'
-title: '런타임 기본구조'
-outline: 'Java Script layer는 웹앱에서 사용하기 위한 JavaScript API들을 선언 및 정의 하며 이를 Runtime의 native layer와 연결하는 역할을 한다.'
-date: '2012-11-16'
-tagstr: 'runtime'
-subsection: 'Runtime'
-order: '[6, 1]'
-thumbnail: '6.1.00.runtime_structure.png'
+{
+	"id": 61,
+	"title": "런타임 기본구조",
+	"outline": "Java Script layer는 웹앱에서 사용하기 위한 JavaScript API들을 선언 및 정의 하며 이를 Runtime의 native layer와 연결하는 역할을 한다.",
+	"tags": ["runtime"],
+	"section": "Runtime",
+	"order": [6, 1],
+	"thumbnail": "6.1.00.runtime_structure.png"
+}
 -->
 
 ----------

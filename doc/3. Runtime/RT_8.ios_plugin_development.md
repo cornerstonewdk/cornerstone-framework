@@ -1,12 +1,12 @@
 <!--
-layout: 'post'
-section: 'Cornerstone Framework'
-title: 'iOS PlugIn 개발'
-outline: '아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다.'
-date: '2012-11-16'
-tagstr: 'runtime'
-order: '[6, 8]'
-thumbnail: '6.8.00.iOS.png'
+{
+	"id": 68,
+	"title": "iOS PlugIn 개발",
+	"outline": "아래 링크를 통하여 확장구조 개발에 필요한 iOs Native source와 JavaScript source 예제를 참조할 수 있다.",
+	"tags": ["runtime"],
+	"order": [6, 8],
+	"thumbnail": "6.8.00.iOS.png"
+}
 -->
 
 ##	iOS Runtime 확장 구조 개발 
