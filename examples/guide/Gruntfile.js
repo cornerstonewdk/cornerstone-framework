@@ -131,10 +131,17 @@ module.exports = function( grunt ) {
 		for ( var i in files ) {
 			// 파일의 내용을 읽어서
 			var mdContent = grunt.file.read( files[ i ], { encoding: 'utf-8' } );
-			// HTML로 변환 후
-			var htmlContent = marked( mdContent );
-			// 메타 정보와 함께 객체에 저장
-			documents.push( { id: i, content: htmlContent } );
+			try {
+				// 메타데이터를 읽고
+				var meta = JSON.parse( mdContent.match( /<!--([\s\S]+?)-->/ )[ 1 ] );
+				// HTML로 변환 후
+				meta[ 'content' ] = marked( mdContent );
+				// 메타 정보와 함께 객체에 저장
+				documents.push( meta );
+			}
+			catch( e ) {
+				// 메타데이터가 없거나 JSON 형식이 아니면 Skip
+			}
 		}
 
 		// 객체를 JSON 형식으로 파일에 저장한다.
