@@ -1,0 +1,10 @@
+{
+	"name": "theme-white",
+	"version": "2.0.0",
+	"description": "Cornerstone white theme",
+	"jam": {
+		"dependencies": {
+			"bootstrap": "3.0.0"
+		}
+	}
+}

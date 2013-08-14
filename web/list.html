@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cornerstone</title>
+    <link rel="stylesheet" href="list-include/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="list-include/theme-white/cornerstone.css"/>
     <!--
-        <link href="dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="dist/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
-        <script type="text/javascript" src="dist/lib/jquery-1.8.1.min.js"></script>
-        <script type="text/javascript" src="dist/lib/bootstrap/js/bootstrap.min.js"></script>
-        -->
-    <link href="../grunt-dist/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../grunt-dist/lib/bootstrap-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet" />
-    <link href="../grunt-dist/src/style/theme-white/cornerstone.css" rel="stylesheet" />
-    <script type="text/javascript" src="../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
-    <script type="text/javascript" src="../grunt-dist/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../grunt-dist/lib/handlebars/handlebars.js"></script>
-    <script type="text/javascript" src="../grunt-dist/lib/spin/spin.js"></script>
-    <script type="text/javascript" src="../grunt-dist/src/widget/spinner/widget-spinner.js"></script>
+    <link rel="stylesheet" href="list-include/skin-united/cornerstone.css"/>
+    -->
+    <link rel="stylesheet" href="list-include/bootstrap-glyphicons/css/bootstrap-glyphicons.css"/>
+    <script type="text/javascript" src="list-include/jquery/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="list-include/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="list-include/handlebars/handlebars.js"></script>
+    <script type="text/javascript" src="list-include/spin/spin.js"></script>
+    <script type="text/javascript" src="list-include/spinner/widget-spinner.js"></script>
     <style type="text/css">
     body {
         padding-top: 70px;
@@ -27,9 +23,11 @@
     .qrcode{
         min-height: 300px;
     }
-    .preview{
-        min-height: 270px;
+    .thumbnail>img.preview{
+        width: 270px;
+        height: 270px;
     }
+    
     #detail{
         text-align:center;
         min-height:700px;
@@ -152,7 +150,8 @@
                                     <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-download-alt"></span> Runtime 다운로드</h4>
                                     <p class="list-group-item-text">
                                         <br/>
-                                        이곳을 클릭하면 Cornerstone Framework의 Runtime Module을 받으실 수 있는 페이지로 이동합니다.
+                                        Cornerstone Framework의 Runtime Module을 활용한 예제를 받으실 수 있는 페이지 입니다. 또한 Runtime Module에 대한
+                                        추가 가이드 문서도 제공됩니다.
                                     </p>
                                 </li>
                             </ul>
@@ -166,11 +165,11 @@
                     <div class="row">
                         <h3 class="title"></h3>
                         <a href="#">
-                            <img src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
+                            <img class="qrcode" src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
                         </a>
                     </div>
                     <div class="row urlWrapper">
-                        <h4 class="title">
+                        <h4>
                             <a href="http://cornerstone.sktelecom.com/t-tris/">http://cornerstone.sktelecom.com/t-tris/</a>
                         </h4>
                         
@@ -179,17 +178,15 @@
                         <h3 class="title"></h3>
                         <div class="col col-6">
                             <a href="#" class="thumbnail">
-                                <img src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
+                                <img class="preview" src="list-include/asset/t-tris-play-1.jpg" />
                             </a>
                         </div>
                         <div class="col col-6">
                             <a href="#" class="thumbnail">
-                                <img src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/" />
+                                <img class="preview" src="list-include/asset/t-tris-play-2.jpg" />
                             </a>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </section>
@@ -207,56 +204,59 @@
                 <a href="{{url}}">{{url}}</a>
             </h4>
         </div>
+        {{#if preview}}
         <div class="row">
             <h3 class="title"></h3>
             <div class="col col-6">
                 <a href="#" class="thumbnail">
-                    <img class="preview" src="{{preview1}}" />
+                    <img class="preview" src="list-include/asset/{{name}}-1.jpg" />
                 </a>
             </div>
             <div class="col col-6">
                 <a href="#" class="thumbnail">
-                    <img class="preview" src="{{preview2}}" />
+                    <img class="preview" src="list-include/asset/{{name}}-2.jpg" />
                 </a>
             </div>
         </div>
+        {{/if}}
     </script>
 
     <script type="text/javascript">
     var detailObj = {
         't-tris-play': {
             url: 'http://cornerstone.sktelecom.com/t-tris/',
-            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
-            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+            name: 't-tris-play',
+            preview: true
         },
         't-tris-view': {
             url: 'http://cornerstone.sktelecom.com/t-tris/watchRoom',
-            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
-            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+            name: 't-tris-view',
+            preview: true
         },
         't-dashboard': {
             url: 'http://cornerstone.sktelecom.com/t-dashboard/',
-            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
-            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+            name: 't-dashboard',
+            preview: true
         },
         'live-document': {
             url: 'http://cornerstone.sktelecom.com/livedoc/',
-            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
-            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+            name: 'live-document',
+            preview: true
         },
         'test-page': {
             url: 'http://cornerstone.sktelecom.com/cornertest/',
-            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
-            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+            name: 'test-page',
+            preview: true
         },
         'runtime-download': {
             url: 'http://cornerstone.sktelecom.com/download/',
-            preview1: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/',
-            preview2: 'http://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://cornerstone.sktelecom.com/t-tris/'
+            name: 'runtime-download',
+            preview: false
         }
     };
 
     var loadCount = 0;
+    var compareCount = 3;
 
     $('li.list-group-item').click(function(e) {
         $(this).closest('ul').find('li').removeClass('active');
@@ -270,7 +270,8 @@
     });
 
     function render(target) {
-        var html = Handlebars.compile($("#detail-template").html())(detailObj[target.data('link')]);
+        var link = target.data('link');
+        var html = Handlebars.compile($("#detail-template").html())(detailObj[link]);
         var wrapper = $('.wrapper');
 
         $('#detail .wrapper').html(html);
@@ -279,7 +280,9 @@
         $(html).find('img').each(function() {
             $(this).load(function() {
                 loadCount++;
-                if (loadCount === 3) {
+                
+                link == 'runtime-download' ? compareCount = 1 : compareCount = 3;
+                if (loadCount === compareCount) {
                     wrapper.spinner('hide');
                     loadCount = 0;
                 };

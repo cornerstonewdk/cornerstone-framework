@@ -1,0 +1,7 @@
+/*
+    Cornerstone Framework v0.9.1
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
+!function(a,b,c){c(a.jQuery,a,b)}(this,document,function(a,b,c){$.fn.spinner=function(a){return a=$.extend({},{lines:13,length:7,width:4,radius:10,corners:1,rotate:0,color:"#FFF",speed:1,trail:60,shadow:!0,hwaccel:!0,className:"spinner",zIndex:2e9,top:"auto",left:"auto"},a),this.each(function(){var c=$(this),d=c.data();if(d.spinner&&"string"==typeof a)d.spinner[a]();else if(d.spinner)c.trigger($.Event("hide.cs.spinner")),setTimeout(function(){d.spinner.stop(),delete d.spinner,c.toggleClass("spinner-outer-bg"),c.trigger($.Event("hidden.cs.spinner"))},150);else{c.trigger($.Event("show.cs.spinner")),$(this).toggleClass("spinner-outer-bg");var e=c.attr("style");d.spinner=new Spinner($.extend({color:c.css("color")},a)).spin(this),c.height()>$(b).height()&&c.find(".spinner:first-child").attr("style",e),c.trigger($.Event("shown.cs.spinner"))}}),this},$.fn.spinner.presets={tiny:{lines:8,length:2,width:2,radius:3},small:{lines:8,length:4,width:3,radius:5},large:{lines:10,length:8,width:4,radius:8}},$(function(){$(c).off("click.Spinner.data-api").on("click.Spinner.data-api","[data-plugin^=spinner], .spinner-outer-bg",function(a){var b=$(a.target),c=b.data("spinnerTarget");$(c).length?$(c).spinner():$(this).spinner()})})});
