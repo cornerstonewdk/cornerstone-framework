@@ -35,7 +35,6 @@
         this.each(function () {
             var $this = $(this),
                 data = $this.data();
-                console.log('$this',$this);
             if (data.spinner && typeof opts === "string") {
                 data.spinner[opts]();
             } else {
@@ -70,7 +69,6 @@
     $(function () {
         $(document).off("click.Spinner.data-api").on("click.Spinner.data-api",
             "[data-plugin^=spinner], .spinner-outer-bg", function (e) {
-                console.log(e);
             var $btn = $(e.target);
             var target = $btn.data("spinnerTarget");
             $(target).length ? $(target).spinner() : $(this).spinner();
