@@ -1,12 +1,12 @@
 <!--
-layout: 'post'
-section: 'Cornerstone Framework'
-title: 'iOS 웹앱 개발'
-outline: 'Authoring Tool을 이용하여 iOS 용 웹앱 개발환경을 다운로드 받을 수 있다.'
-date: '2012-11-16'
-tagstr: 'runtime'
-order: '[6, 3]'
-thumbnail: '6.3.00.iOS.png'
+{
+	"id": 63,
+	"title": "iOS 웹앱 개발",
+	"outline": "Authoring Tool을 이용하여 iOS 용 웹앱 개발환경을 다운로드 받을 수 있다.",
+	"tags": ["runtime"],
+	"order": [6, 3],
+	"thumbnail": "6.3.00.iOS.png"
+}
 -->
 
 ## iOS Runtime 웹앱 개발 환경

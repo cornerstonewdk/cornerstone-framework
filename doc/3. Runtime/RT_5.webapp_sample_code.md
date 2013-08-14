@@ -1,13 +1,12 @@
 <!--
-layout: 'post'
-section: 'Cornerstone Framework'
-title: '웹앱 샘플코드'
-outline: 'Cornerstone Runtime을 이용한 Runtime Javascript API sample code'
-date: '2012-11-16'
-tagstr: 'runtime'
-subsection: 'Runtime for WebApp'
-order: '[6, 5]'
-thumbnail: '6.5.00.sample.png'
+{
+	"id": 65,
+	"title": "웹앱 샘플코드",
+	"outline": "Cornerstone Runtime을 이용한 Runtime Javascript API sample code",
+	"tags": ["runtime"],
+	"order": [6, 5],
+	"thumbnail": "6.5.00.sample.png"
+}
 -->
 
 ## Cornerstone Runtime을 이용한 Runtime Javascript API sample code
