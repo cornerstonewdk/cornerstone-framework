@@ -7,12 +7,12 @@
  *  License :
  */
 (function () {
-    "use strict";
+    'use strict';
     var root = this;
-    var pluginName = "featuredChart",
+    var pluginName = 'featuredChart',
         defaultOptions = {
-            chartType: "bar",
-            lineType: "basis",
+            chartType: 'bar',
+            lineType: 'basis',
             xAxisLabel: null,
             yAxisLabel: null,
             width: 960,
@@ -20,9 +20,9 @@
             margin: [0, 0, 0, 0],
             padding: [0, 0, 0, 0],
             data: {},
-            animate: false,
-            showControls: false,
-            showLegend: false,
+            showValues: true,
+            showControls: true,
+            showLegend: true,
             tooltips: false,
             control: {
                 active: 'grouped',
@@ -58,25 +58,41 @@
             this.$el.data('currentChartControl', options.control);
 
             this.util.applyBindEvent(target, options, chart, this.$el);
-            this.util.removeLegendStyleAttr(target);
 
-            target.select('.nv-controlsWrap').style('display', [options.showControls ? "block" : "none"]);
-            target.select('.nv-legendWrap').style('display', [options.showLegend ? "block" : "none"]);
+            target.select('.nv-controlsWrap').style('display', [options.showControls ? 'block' : 'none']);
+            target.select('.nv-legendWrap').style('display', [options.showLegend ? 'block' : 'none']);
 
             this.isNotFirst = true;
         },
         render: function (options) {
-            var target = this.util.getTarget(d3.select(this.el));
-            this.beforeRender(target, options);
+            var self = this,
+                target = this.util.getTarget(d3.select(this.el));
 
-            chart = this[options.chartType + "Chart"](target, options);
+            nv.addGraph(function() {
+                console.log(self, target, options);
+                self.beforeRender(target, options);
 
-            this.afterRender(target, options);
+                chart = self[options.chartType + 'Chart'](target, options);
+
+                console.log(self.$el. target, options);
+                typeof chart.multibar === 'function' && chart.multibar.dispatch.on('barsAnimated', function (d) {
+                    $(self.el).trigger('animationEnd', d);
+
+                    console.log('animationEnd', d);
+                    if (options.data.length - 1 === d.index) {
+                        if (d.series.values.length - 1 === d.data.series) {
+                            console.log('comeplete');
+                            $(self.el).trigger('compelete');
+                        }
+                    }
+                });
+
+                self.afterRender(target, options);
+            });
         },
         // TODO Bar 그래프의 트랜지션이 완료될 때 event trigger 발생 필요
         barChart: function (target, options) {
-            var self = this,
-                chart = nv.models.multiBarChart()
+            var chart = nv.models.multiBarChart()
                     .showControls(options.showControls)
                     .showLegend(options.showLegend)
                     .tooltips(options.tooltips);
@@ -88,10 +104,9 @@
                 .transition()
                 .duration(500)
                 .each('end', function () {
-                    $(target).trigger("shown");
+                    $(target).trigger('shown');
                 })
                 .call(chart);
-
             return chart;
         },
 
@@ -117,7 +132,6 @@
                     .transition().duration(500).call(chart);
 
                 self.util.applyBindEvent(target, options, chart, self.$el);
-                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
@@ -136,7 +150,6 @@
                     .transition().duration(500).call(chart);
 
                 self.util.applyBindEvent(target, options, chart, self.$el);
-                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
@@ -155,7 +168,6 @@
                     .call(chart);
 
                 self.util.applyBindEvent(target, options, chart, self.$el);
-                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
@@ -178,21 +190,26 @@
                     .call(chart);
 
                 // inline Style로 추가되는 스타일 제거
-                $.each(target.selectAll(".nv-slice > .nv-label > text")[0], function (index, item) {
-                    $(item).removeAttr("style");
+                $.each(target.selectAll('.nv-slice > .nv-label > text')[0], function (index, item) {
+                    $(item).removeAttr('style');
                 });
 
                 self.util.applyBindEvent(target, options, chart, self.$el);
-                self.util.removeLegendStyleAttr(target);
 
                 return chart;
             });
         },
         horizontalBarChart: function (target, options) {
             var chart = nv.models.multiBarHorizontalChart()
-                    .showControls(options.showControls)
-                    .showLegend(options.showLegend)
-                    .tooltips(options.tooltips);
+                .showValues(options.showValues)
+                .showControls(options.showControls)
+                .showLegend(options.showLegend)
+                .valueFormat(function (d) {
+                    var format = d3.format('.0f');
+                    return format(d);
+                })
+                .tooltips(options.tooltips);
+
 
             chart.stacked(options.control.active !== 'grouped');
             chart.yAxis.tickFormat(d3.format('.0f'));
@@ -201,7 +218,7 @@
                 .transition()
                 .duration(500)
                 .each('end', function () {
-                    $(target).trigger("shown");
+                    $(target).trigger('shown');
                 })
                 .call(chart);
 
@@ -212,9 +229,9 @@
             self = this;
             var data = [
                 {
-                    "key": "Quantity",
-                    "bar": true,
-                    "values": [
+                    'key': 'Quantity',
+                    'bar': true,
+                    'values': [
                         [ 1136005200000 , 1271000.0] ,
                         [ 1138683600000 , 1271000.0] ,
                         [ 1141102800000 , 1271000.0] ,
@@ -241,8 +258,8 @@
                     ]
                 },
                 {
-                    "key": "Price",
-                    "values": [
+                    'key': 'Price',
+                    'values': [
                         [ 1136005200000 , 71.89] ,
                         [ 1138683600000 , 75.51] ,
                         [ 1141102800000 , 68.49] ,
@@ -303,10 +320,10 @@
 
                 chart.bars.forceY([0]);
 
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
+                if (target.select('svg').length > 0 && target.select('svg')[0][0] === null) {
+                    target = target.append('svg:svg')
                 } else {
-                    target = target.select("svg");
+                    target = target.select('svg');
                 }
 
                 return chart;
@@ -393,10 +410,10 @@
             },
 
             getTarget: function (target) {
-                if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {
-                    target = target.append("svg:svg")
+                if (target.select('svg').length > 0 && target.select('svg')[0][0] === null) {
+                    target = target.append('svg:svg')
                 } else {
-                    target = target.select("svg");
+                    target = target.select('svg');
                 }
                 return target;
             },
@@ -406,30 +423,8 @@
             applyBindEvent: function (target, options, chart, $el) {
                 var self = this;
 
-                target.selectAll(".nv-legend .nv-series").each(function () {
-                    $(this).off("click.cs-chart").on("click.cs-chart", function () {
-                        self.customControl(target, options);
-                        self.removeLegendStyleAttr(target);
-                    });
-                });
-
                 !options.autoResize || nv.utils.windowResize(function () {
                     chart.update();
-                    self.customControl(target, options);
-                    self.removeLegendStyleAttr(target);
-                });
-            },
-
-            removeLegendStyleAttr: function (target) {
-                $(target.selectAll(".nv-group rect")).each(function () {
-                    $(this).removeAttr("style");
-                });
-                $(target.selectAll(".nv-line .nv-group")).each(function () {
-                    $(this).removeAttr("style");
-                });
-                var $circle = target.selectAll(".nv-legendWrap circle");
-                $circle.length && $($circle).each(function () {
-                    $(this).removeAttr("style");
                 });
             }
         }
@@ -458,15 +453,15 @@
     root.Cornerstone = root.Cornerstone || {};
     root.Cornerstone.widget = root.Cornerstone.widget || {};
     root.Cornerstone.widget.activeDataApi = function ($el) {
-        $el = $el && $el.length ? $el.find("[data-featured=chart]") : $("[data-featured=chart]");
+        $el = $el && $el.length ? $el.find('[data-featured=chart]') : $('[data-featured=chart]');
         // DATA API (HTML5 Data Attribute)
         $el.each(function () {
             var self = this,
-                dataUrl = $(this).data("chartBind");
+                dataUrl = $(this).data('chartBind');
 
             dataUrl && $.getJSON(dataUrl).success(function (json) {
                 $(self)[pluginName]({
-                    chartType: $(self).data("chartType"),
+                    chartType: $(self).data('chartType'),
                     data: json
                 });
             });
@@ -478,14 +473,14 @@
     });
 
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
-    if (typeof root.define === "function" && root.define.amd && typeof root.Cornerstone === "object") {
+    if (typeof root.define === 'function' && root.define.amd && typeof root.Cornerstone === 'object') {
         var define = root.define;
         // AMD. Register as an anonymous module.
-        define([ "jquery", "underscore", "backbone"], function ($, _, Backbone) {
+        define([ 'jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             return Backbone.View.extend({
                 model: new Backbone.Model(),
                 initialize: function () {
-                    _.bindAll(this, "render");
+                    _.bindAll(this, 'render');
                 },
                 updateChart: function (view) {
                     view.model.clear();

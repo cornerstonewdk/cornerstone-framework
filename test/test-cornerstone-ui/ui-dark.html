@@ -11,126 +11,124 @@
     <link rel="stylesheet" href="style/demo.css"/>
 </head>
 <body>
-<!-- Header
-  ================================================== -->
-<div class="navbar navbar-fixed-top">
-    <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-responsive-collapse">
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="./">Cornerstone UI</a>
-
-        <div class="nav-collapse collapse navbar-responsive-collapse">
-            <ul id="nav-component" class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-filter"></span>기본 CSS <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#baseCSS">Bass CSS</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#buttons">Buttons</a></li>
-                        <li><a href="#tables">Tables</a></li>
-                        <li><a href="#grid-system"><span class="label label-info">New</span> Grid system</a></li>
-                        <li><a href="#base-typography">Typography</a></li>
-                        <li><a href="#code">Code</a></li>
-                        <li><a href="#images">Images</a></li>
-                        <li><a href="/form/index.html" target="_blank">Forms</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-filter"></span>컴포넌트 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#component">Component</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#glyphicons">Glyphicons</a></li>
-                        <li><a href="#nav">Nav</a></li>
-                        <li><a href="#navBar"><span class="label label-success">New</span> NavBar</a></li>
-                        <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-                        <li><a href="#pagination"><span class="label label-success">New</span> Pagination</a></li>
-                        <li><a href="#pager">Pager</a></li>
-                        <li><a href="#labels">Labels</a></li>
-                        <li><a href="#badges">Badges</a></li>
-                        <li><a href="#typography">Typography</a></li>
-                        <li><a href="#thumbnails">Thumbnails</a></li>
-                        <li><a href="#progressBars">Progress bars</a></li>
-                        <li><a href="#media-object"><span class="label label-info">New</span> Media Object</a></li>
-                        <li><a href="#list-group"><span class="label label-info">New</span> List Group</a></li>
-                        <li><a href="#panels"><span class="label label-info">New</span> Panels</a></li>
-                        <li><a href="#wells">Wells</a></li>
-                        <li><a href="#mobile-navbar"><span class="label label-success">New</span>
-                            Mobile Navbar</a>
-                        </li>
-                        <li><a href="#cornerstone-list"><span class="label label-success">New</span> Cornerstone
-                            List</a></li>
-                        <li><a href="#vertically-grouped"><span class="label label-success">New</span> Vertically
-                            Grouped</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-filter"></span>플러그인 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#plugins">Plugins</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#modal">Modal</a></li>
-                        <li><a href="#dropdown">Dropdown</a></li>
-                        <li><a href="#scrollspy">ScrollSpy</a></li>
-                        <li><a href="#tab">Tab</a></li>
-                        <li><a href="#tooltip">Tooltip</a></li>
-
-                        <li><a href="#popover">Popover</a></li>
-                        <li><a href="#alert">Alert</a></li>
-                        <li><a href="#button">Button</a></li>
-                        <li><a href="#collapse">Collapse</a></li>
-                        <li><a href="#carousel">Carousel</a></li>
-
-                        <li><a href="#rangeInput"><span class="label label-success">New</span> RangeInput</a></li>
-                        <li><a href="#sign"><span class="label label-success">New</span> Sign</a></li>
-                        <li><a href="#spinner"><span class="label label-success">New</span> Spinner</a></li>
-                        <li><a href="#motion-captcha"><span class="label label-success">New</span> Motion
-                            Captcha</a></li>
-                        <li><a href="#date-picker"><span class="label label-success">New</span> DatePicker</a></li>
-
-                        <li><a href="#typeahead"><span class="label label-success">New</span> Typeahead</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-filter"></span>피처드 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#featured">Featured</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#scroll-view">ScrollView</a></li>
-                        <li><a href="#list-view">ListView</a></li>
-                        <li><a href="#media">Media</a></li>
-                        <li><a href="#editor">Editor</a></li>
-                        <li><a href="#chart">Chart</a></li>
-                        <li><a href="#datatables">Datatables</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav pull-right">
-                <li class="label-new">
-                    <a href="#">
-                        <span class="label label-info">New</span> : BTS3
-                        <span class="label label-success">New</span> : CS
-                    </a>
-                </li>
-                <li>
-                    <a class="w3c-html5" target="_blank"
-                       href="http://validator.w3.org/check?uri=http%3A%2F%2Fjnw.io%2Fprojects%2FCornerstone%2Fcornerstone-framework%2Ftest%2Ftest-cornerstone-ui%2F">
-                        <img alt="valid-html5"
-                             src="data:image/jpg;base64,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">
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <a class="navbar-brand" href="#">Cornerstone UI</a>
     </div>
-</div>
+
+    <div class="collapse navbar-collapse navbar-responsive-collapse">
+        <ul id="nav-component" class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                        class="glyphicon glyphicon-filter"></span>기본 CSS <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#baseCSS">Bass CSS</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#buttons">Buttons</a></li>
+                    <li><a href="#tables">Tables</a></li>
+                    <li><a href="#grid-system"><span class="label label-info">New</span> Grid system</a></li>
+                    <li><a href="#base-typography">Typography</a></li>
+                    <li><a href="#code">Code</a></li>
+                    <li><a href="#images">Images</a></li>
+                    <li><a href="/form/index.html" target="_blank">Forms</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                        class="glyphicon glyphicon-filter"></span>컴포넌트 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#component">Component</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#glyphicons">Glyphicons</a></li>
+                    <li><a href="#nav">Nav</a></li>
+                    <li><a href="#navBar"><span class="label label-success">New</span> NavBar</a></li>
+                    <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+                    <li><a href="#pagination"><span class="label label-success">New</span> Pagination</a></li>
+                    <li><a href="#pager">Pager</a></li>
+                    <li><a href="#labels">Labels</a></li>
+                    <li><a href="#badges">Badges</a></li>
+                    <li><a href="#typography">Typography</a></li>
+                    <li><a href="#thumbnails">Thumbnails</a></li>
+                    <li><a href="#progressBars">Progress bars</a></li>
+                    <li><a href="#media-object"><span class="label label-info">New</span> Media Object</a></li>
+                    <li><a href="#list-group"><span class="label label-info">New</span> List Group</a></li>
+                    <li><a href="#panels"><span class="label label-info">New</span> Panels</a></li>
+                    <li><a href="#wells">Wells</a></li>
+                    <li><a href="#mobile-navbar"><span class="label label-success">New</span>
+                        Mobile Navbar</a>
+                    </li>
+                    <li><a href="#cornerstone-list"><span class="label label-success">New</span> Cornerstone
+                        List</a></li>
+                    <li><a href="#vertically-grouped"><span class="label label-success">New</span> Vertically
+                        Grouped</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                        class="glyphicon glyphicon-filter"></span>플러그인 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#plugins">Plugins</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#modal">Modal</a></li>
+                    <li><a href="#dropdown">Dropdown</a></li>
+                    <li><a href="#scrollspy">ScrollSpy</a></li>
+                    <li><a href="#tab">Tab</a></li>
+                    <li><a href="#tooltip">Tooltip</a></li>
+
+                    <li><a href="#popover">Popover</a></li>
+                    <li><a href="#alert">Alert</a></li>
+                    <li><a href="#button">Button</a></li>
+                    <li><a href="#collapse">Collapse</a></li>
+                    <li><a href="#carousel">Carousel</a></li>
+
+                    <li><a href="#rangeInput"><span class="label label-success">New</span> RangeInput</a></li>
+                    <li><a href="#sign"><span class="label label-success">New</span> Sign</a></li>
+                    <li><a href="#spinner"><span class="label label-success">New</span> Spinner</a></li>
+                    <li><a href="#motion-captcha"><span class="label label-success">New</span> Motion
+                        Captcha</a></li>
+                    <li><a href="#date-picker"><span class="label label-success">New</span> DatePicker</a></li>
+
+                    <li><a href="#typeahead"><span class="label label-success">New</span> Typeahead</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                        class="glyphicon glyphicon-filter"></span>피처드 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#featured">Featured</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#scroll-view">ScrollView</a></li>
+                    <li><a href="#list-view">ListView</a></li>
+                    <li><a href="#media">Media</a></li>
+                    <li><a href="#editor">Editor</a></li>
+                    <li><a href="#chart">Chart</a></li>
+                    <li><a href="#datatables">Datatables</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+            <li class="label-new">
+                <a href="#">
+                    <span class="label label-info">New</span> : BTS3
+                    <span class="label label-success">New</span> : CS
+                </a>
+            </li>
+            <li>
+                <a class="w3c-html5" target="_blank"
+                   href="http://validator.w3.org/check?uri=http%3A%2F%2Fjnw.io%2Fprojects%2FCornerstone%2Fcornerstone-framework%2Ftest%2Ftest-cornerstone-ui%2F">
+                    <img alt="valid-html5"
+                         src="data:image/jpg;base64,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">
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
 
@@ -365,49 +363,88 @@
         <h2 class="title">Grid system</h2>
     </header>
     <div class="col col-lg-12">
-        <h3 class="title">Grid example</h3>
+        <h3 class="title">Stacked-to-horizontal</h3>
 
         <div class="row show-grid">
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
-            <div class="col col-lg-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
+            <div class="col-md-1">1</div>
         </div>
         <div class="row show-grid">
-            <div class="col col-lg-4">4</div>
-            <div class="col col-lg-4">4</div>
-            <div class="col col-lg-4">4</div>
+            <div class="col-md-8">8</div>
+            <div class="col-md-4">4</div>
         </div>
         <div class="row show-grid">
-            <div class="col col-lg-6">6</div>
-            <div class="col col-lg-6">6</div>
+            <div class="col-md-4">4</div>
+            <div class="col-md-4">4</div>
+            <div class="col-md-4">4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-md-6">6</div>
+            <div class="col-md-6">6</div>
         </div>
     </div>
 
+    <div class="col col-lg-12">
+        <h3 class="title">Combining mobile with desktop</h3>
+
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-8">8</div>
+            <div class="col-xs-6 col-md-4">4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-6 col-md-4">4</div>
+            <div class="col-xs-6 col-md-4">4</div>
+            <div class="col-xs-6 col-md-4">4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-6 col-md-6">6</div>
+            <div class="col-xs-6 col-md-6">6</div>
+        </div>
+    </div>
+
+    <div class="col col-lg-12">
+        <h3 class="title">Mobile, tablet, and desktop</h3>
+
+        <div class="row show-grid">
+            <div class="col-xs-12 col-sm-8 col-md-8">.col-xs-12 .col-sm-8 .col-md-8</div>
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
+            <div class="col-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
+        </div>
+    </div>
 
     <div class="col col-lg-12">
         <h3 class="title">Offsetting columns</h3>
 
         <div class="row show-grid">
-            <div class="col col-4">4</div>
-            <div class="col col-4 col-offset-4">4 offset 4</div>
+            <div class="col-md-4">4</div>
+            <div class="col-md-4 col-md-offset-4">4 offset 4</div>
         </div>
         <!-- /row -->
         <div class="row show-grid">
-            <div class="col col-3 col-offset-3">3 offset 3</div>
-            <div class="col col-3 col-offset-3">3 offset 3</div>
+            <div class="col-md-3 col-md-offset-3">3 offset 3</div>
+            <div class="col-md-3 col-md-offset-3">3 offset 3</div>
         </div>
         <!-- /row -->
         <div class="row show-grid">
-            <div class="col col-6 col-offset-3">6 offset 3</div>
+            <div class="col-md-6 col-md-offset-3">6 offset 3</div>
         </div>
         <!-- /row -->
     </div>
@@ -416,13 +453,13 @@
         <h3 class="title">Nesting columns</h3>
 
         <div class="row show-grid">
-            <div class="col col-lg-9">
+            <div class="col-md-9">
                 Level 1: 9 columns
                 <div class="row show-grid">
-                    <div class="col col-lg-6">
+                    <div class="col-md-6">
                         Level 2: 6 columns
                     </div>
-                    <div class="col col-lg-6">
+                    <div class="col-md-6">
                         Level 2: 6 columns
                     </div>
                 </div>
@@ -434,18 +471,8 @@
         <h3 class="title">Column ordering</h3>
 
         <div class="row show-grid">
-            <div class="col col-9 col-push-3">9</div>
-            <div class="col col-3 col-pull-9">3</div>
-        </div>
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title"><span class="label label-info">New</span> Small device grid</h3>
-
-        <div class="row show-grid">
-            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
-            <div class="col col-lg-4 col-6">4 cols, 6 small cols</div>
-            <div class="col col-lg-4 col-12">4 cols, 12 small cols</div>
+            <div class="col-md-9 col-md-push-3">9</div>
+            <div class="col-md-3 col-md-pull-9">3</div>
         </div>
     </div>
 </section>
@@ -1499,7 +1526,9 @@
         <h3 class="title">Basic</h3>
 
         <div class="panel">
-            Basic panel example
+            <div class="panel-body">
+                Basic panel example
+            </div>
         </div>
     </div>
     <div class="col col-lg-12">
@@ -1507,14 +1536,18 @@
 
         <div class="panel">
             <div class="panel-heading">Panel heading</div>
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
     </div>
     <div class="col col-lg-12">
         <h3 class="title">Panel with footer</h3>
 
         <div class="panel">
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
             <div class="panel-footer">Panel footer</div>
         </div>
     </div>
@@ -1523,23 +1556,33 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">Panel heading</div>
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
         <div class="panel panel-success">
             <div class="panel-heading">Panel heading</div>
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading">Panel heading</div>
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
         <div class="panel panel-danger">
             <div class="panel-heading">Panel heading</div>
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
         <div class="panel panel-info">
             <div class="panel-heading">Panel heading</div>
-            Panel content
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
     </div>
     <div class="col col-lg-12">
@@ -1548,9 +1591,11 @@
         <div class="panel">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
-            <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla
-                sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam
-                id dolor id nibh ultricies vehicula ut id elit.</p>
+            <div class="panel-body">
+                <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla
+                    sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam
+                    id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
 
             <!-- List group -->
             <ul class="list-group list-group-flush">
@@ -1692,68 +1737,7 @@
     <div class="panel">
         <!-- Default panel contents -->
         <div class="panel-heading">Panel heading</div>
-        <!-- List group -->
-        <ul class="list-group list-group-flush list-group-cornerstone">
-            <li class="list-group-item">
-                <div class="pull-right">
-                    <span class="badge">17</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </div>
-                Cras justo odio
-            </li>
-            <li class="list-group-item">
-                <div class="pull-right">
-                    <span class="badge">2</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </div>
-                Dapibus ac facilisis in
-            </li>
-            <li class="list-group-item">
-                <div class="pull-right">
-                    <span class="badge">1</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </div>
-                Morbi leo risus
-            </li>
-        </ul>
-    </div>
-    <div class="panel">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Panel heading</div>
-        <!-- List group -->
-        <div class="list-group list-group-flush list-group-cornerstone">
-            <a class="list-group-item">
-                <div class="pull-right">
-                    <span class="badge">17</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </div>
-                Cras justo odio
-            </a>
-            <a class="list-group-item active">
-                <div class="pull-right">
-                    <span class="badge">2</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </div>
-                Dapibus ac facilisis in
-            </a>
-            <a class="list-group-item">
-                <div class="pull-right">
-                    <span class="badge">1</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </div>
-                Morbi leo risus
-            </a>
-        </div>
-    </div>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title">Panel Group</h3>
-
-    <div class="panel-group">
-        <div class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Panel heading</div>
-            <!-- List group -->
+        <div class="panel-body">
             <ul class="list-group list-group-flush list-group-cornerstone">
                 <li class="list-group-item">
                     <div class="pull-right">
@@ -1779,14 +1763,44 @@
             </ul>
         </div>
     </div>
-    <hr>
-    <div class="panel-group">
-        <div class="panels">
+    <div class="panel">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Panel heading</div>
+        <div class="panel-body">
+            <div class="list-group list-group-flush list-group-cornerstone">
+                <a class="list-group-item">
+                    <div class="pull-right">
+                        <span class="badge">17</span>
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </div>
+                    Cras justo odio
+                </a>
+                <a class="list-group-item active">
+                    <div class="pull-right">
+                        <span class="badge">2</span>
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </div>
+                    Dapibus ac facilisis in
+                </a>
+                <a class="list-group-item">
+                    <div class="pull-right">
+                        <span class="badge">1</span>
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </div>
+                    Morbi leo risus
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col col-lg-12">
+    <h3 class="title">Panel Group</h3>
 
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading">Panel heading</div>
-                <!-- List group -->
+    <div class="panel-group">
+        <div class="panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
                 <ul class="list-group list-group-flush list-group-cornerstone">
                     <li class="list-group-item">
                         <div class="pull-right">
@@ -1811,32 +1825,68 @@
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <hr>
+    <div class="panel-group">
+        <div class="panels">
+
+            <div class="panel">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Panel heading</div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-flush list-group-cornerstone">
+                        <li class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">17</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Cras justo odio
+                        </li>
+                        <li class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">2</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Dapibus ac facilisis in
+                        </li>
+                        <li class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">1</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Morbi leo risus
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="panel">
                 <!-- Default panel contents -->
                 <div class="panel-heading panel-sub-heading">Panel heading</div>
-                <!-- List group -->
-                <div class="list-group list-group-flush list-group-cornerstone">
-                    <a class="list-group-item">
-                        <div class="pull-right">
-                            <span class="badge">17</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Cras justo odio
-                    </a>
-                    <a class="list-group-item active">
-                        <div class="pull-right">
-                            <span class="badge">2</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Dapibus ac facilisis in
-                    </a>
-                    <a class="list-group-item">
-                        <div class="pull-right">
-                            <span class="badge">1</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Morbi leo risus
-                    </a>
+                <div class="panel-body">
+                    <div class="list-group list-group-flush list-group-cornerstone">
+                        <a class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">17</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Cras justo odio
+                        </a>
+                        <a class="list-group-item active">
+                            <div class="pull-right">
+                                <span class="badge">2</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Dapibus ac facilisis in
+                        </a>
+                        <a class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">1</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Morbi leo risus
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1850,57 +1900,59 @@
             <div class="panel">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Panel heading</div>
-                <!-- List group -->
-                <ul class="list-group list-group-flush list-group-cornerstone">
-                    <li class="list-group-item">
-                        <div class="pull-right">
-                            <span class="badge">17</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Cras justo odio
-                    </li>
-                    <li class="list-group-item active">
-                        <div class="pull-right">
-                            <span class="badge">2</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Dapibus ac facilisis in
-                    </li>
-                    <li class="list-group-item">
-                        <div class="pull-right">
-                            <span class="badge">1</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Morbi leo risus
-                    </li>
-                </ul>
+                <div class="panel-body">
+                    <ul class="list-group list-group-flush list-group-cornerstone">
+                        <li class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">17</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Cras justo odio
+                        </li>
+                        <li class="list-group-item active">
+                            <div class="pull-right">
+                                <span class="badge">2</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Dapibus ac facilisis in
+                        </li>
+                        <li class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">1</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Morbi leo risus
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="panel">
                 <!-- Default panel contents -->
                 <div class="panel-heading panel-sub-heading">Panel heading</div>
-                <!-- List group -->
-                <div class="list-group list-group-flush list-group-cornerstone">
-                    <a class="list-group-item">
-                        <div class="pull-right">
-                            <span class="badge">17</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Cras justo odio
-                    </a>
-                    <a class="list-group-item active">
-                        <div class="pull-right">
-                            <span class="badge">2</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Dapibus ac facilisis in
-                    </a>
-                    <a class="list-group-item">
-                        <div class="pull-right">
-                            <span class="badge">1</span>
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                        Morbi leo risus
-                    </a>
+                <div class="panel-body">
+                    <div class="list-group list-group-flush list-group-cornerstone">
+                        <a class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">17</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Cras justo odio
+                        </a>
+                        <a class="list-group-item active">
+                            <div class="pull-right">
+                                <span class="badge">2</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Dapibus ac facilisis in
+                        </a>
+                        <a class="list-group-item">
+                            <div class="pull-right">
+                                <span class="badge">1</span>
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            Morbi leo risus
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3450,7 +3502,7 @@
 <script type="text/javascript" src="../../grunt-dist/src/widget/listview/widget-listview.js"></script>
 <script type="text/javascript" src="../../grunt-dist/lib/media/mediaelement-and-player.min.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/media/widget-media.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/iscroll-4/iscroll.js"></script>
+<script type="text/javascript" src="../../grunt-dist/lib/iscroll-5/iscroll.js"></script>
 <script type="text/javascript" src="../../grunt-dist/src/widget/scrollview/widget-scrollview.js"></script>
 <script type="text/javascript" src="../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys.js"></script>
 <script type="text/javascript" src="../../src/widget/editor/widget-editor.js"></script>
