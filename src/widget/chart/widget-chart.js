@@ -25,9 +25,6 @@
     };
 
     FeaturedChart.prototype = {
-        beforeRender: function (target, options) {
-
-        },
         afterRender: function (target, options, chart) {
             this.$el.data('currentChart', chart);
             this.$el.data('currentChartControl', options.control);
@@ -46,8 +43,6 @@
             nv.addGraph((function (self, target, options) {
                 var colorLength = options.color.length;
 
-                self.beforeRender(target, options);
-
                 chart = self[options.chartType + 'Chart'](target, options);
 
                 chart.tooltips(options.tooltips)
@@ -57,7 +52,6 @@
 
                 if('line' === options.chartType) {
                     chart.lines.color(options.data.map(function(d,i) {
-                        console.log(i);
                         return d.color || options.color[i % colorLength];
                     }));
                 }
@@ -77,6 +71,8 @@
                         chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
                     }
                 }
+
+                chart = options.beforeRender(target, options, chart);
 
                 target.attr('width', options.width)
                     .attr('height', options.height)
@@ -349,7 +345,10 @@
                 groupedName: '그룹',
                 stackedName: '스택'
             },
-            autoResize: true
+            autoResize: true,
+            beforeRender: function(target, options, chart) {
+                return chart;
+            }
         };
 
         options = $.extend(true, defaultOptions, options);

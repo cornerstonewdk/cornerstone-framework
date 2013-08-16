@@ -53,7 +53,11 @@ define([
                     self.$el.find("#linePlusBar1").featuredChart({
                         chartType: "linePlusBar",
                         format: '.2f',
-                        data: data
+                        data: data,
+                        beforeRender: function(target, options, chart) {
+                            chart.xAxis.tickFormat(d3.format('d'));
+                            return chart;
+                        }
                     });
                 }
             });
