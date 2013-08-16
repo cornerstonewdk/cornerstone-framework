@@ -6,6 +6,38 @@
 }
 
 .panel-group {
+  .panel + .panel {
+    margin-top: 0;
+  }
+  & > .panel {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  .panels {
+    & > .panel:first-child {
+      border-radius: @panel-border-radius @panel-border-radius 0 0;
+      margin-bottom: -4px;
+      .list-group-item:last-child {
+        padding: 10px 15px 18px 15px;
+      }
+    }
+    & > .panel:last-child {
+      margin-bottom: 20px;
+      border-radius: 0 0 @panel-border-radius @panel-border-radius;
+      margin-bottom: 0;
+      .list-group-item:last-child {
+        padding: 10px 15px;
+      }
+    }
+  }
+
+  .panel-sub-heading {
+    font-size: (@font-size-base * 0.95);
+  }
+}
+
+.panel-group {
   padding: 10px;
   border-radius: 6px;
   background-image: url(images/bg-dot.png);
@@ -26,7 +58,7 @@
   }
 
   .panel-sub-heading {
-    font-size: (@font-size-base * 1.1);
+    font-size: (@font-size-base * 0.95);
   }
 }
 
