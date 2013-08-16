@@ -81,8 +81,8 @@ define([
 
                 transitions: {
                     'page1:page2': 'slide',
-                    'page2:page3': 'turn',
-                    'page3:page4': 'flip',
+                    'page2:page3': 'slide',
+                    'page3:page4': 'slide',
                     'page4:page5': 'slide'
                 },
 

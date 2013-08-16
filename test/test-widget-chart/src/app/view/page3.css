@@ -1,4 +1,4 @@
-#page2 {
+#page3 {
   /* Table */
 
   /* Toggle */
@@ -10,22 +10,22 @@
   /* Legend bars */
 
 }
-#page2 .panel {
+#page3 .panel {
   min-height: 600px;
 }
-#page2 #data-table {
+#page3 #data-table {
   display: none;
 }
-#page2 .toggles {
+#page3 .toggles {
   background: #ebebeb;
   color: #545454;
   height: 20px;
   padding: 15px;
 }
-#page2 .toggles p {
+#page3 .toggles p {
   margin: 0;
 }
-#page2 .toggles a {
+#page3 .toggles a {
   background: #222;
   border-radius: 3px;
   color: #fff;
@@ -35,48 +35,48 @@
   padding: 0 6px;
   text-decoration: none;
 }
-#page2 .toggles a:hover {
+#page3 .toggles a:hover {
   background: #666;
 }
-#page2 #reset-graph-button {
+#page3 #reset-graph-button {
   float: right;
 }
-#page2 #wrapper {
+#page3 #wrapper {
   height: 600px;
   margin: 0 auto;
   width: 900px;
   -webkit-transform: scale(0.75);
   -webkit-perspective: 900;
 }
-#page2 #wrapper h2 {
+#page3 #wrapper h2 {
   font-size: 24px;
   line-height: 30px;
   text-align: center;
   -webkit-transform: translateZ(80px);
 }
-#page2 .chart {
+#page3 .chart {
   height: 100%;
   width: 100%;
   -webkit-transition: all 3s ease-out;
   -webkit-transform: rotateX(15deg) rotateY(25deg);
   -webkit-transform-style: preserve-3d;
 }
-#page2 #figure {
+#page3 #figure {
   height: 100%;
   width: 100%;
   -webkit-transform-style: preserve-3d;
 }
-#page2 #figure ul {
+#page3 #figure ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-#page2 .graph {
+#page3 .graph {
   height: 480px;
   position: relative;
   width: 900px;
 }
-#page2 .legend {
+#page3 .legend {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   bottom: 60px;
@@ -88,7 +88,7 @@
   -webkit-transform-style: preserve-3d;
   -webkit-transform: translateZ(65px);
 }
-#page2 .legend li {
+#page3 .legend li {
   display: block;
   float: left;
   height: 20px;
@@ -98,7 +98,7 @@
   -webkit-transform-style: preserve-3d;
   -webkit-transform: translateZ(10px);
 }
-#page2 .legend span.icon {
+#page3 .legend span.icon {
   background-position: 50% 0;
   border-radius: 2px;
   display: block;
@@ -108,7 +108,7 @@
   width: 20px;
   -webkit-transform-style: preserve-3d;
 }
-#page2 .x-axis {
+#page3 .x-axis {
   background: rgba(0, 0, 0, 0.27);
   bottom: 0;
   color: #fff;
@@ -120,14 +120,14 @@
   width: 900px;
   -webkit-transform: rotateX(90deg) translateZ(-50px) translateY(30px);
 }
-#page2 .x-axis li {
+#page3 .x-axis li {
   float: left;
   height: 20px;
   margin: 62px 15px 0 15px;
   padding: 5px 0;
   width: 150px;
 }
-#page2 .y-axis {
+#page3 .y-axis {
   background: rgba(0, 0, 0, 0.09);
   color: #555;
   margin: 0;
@@ -139,13 +139,13 @@
   -webkit-transform-style: preserve-3d;
   -webkit-transform: translateZ(-20px);
 }
-#page2 .y-axis li {
+#page3 .y-axis li {
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   display: block;
   height: 95px;
   padding: 0;
 }
-#page2 .y-axis li span {
+#page3 .y-axis li span {
   background: rgba(0, 0, 0, 0.18);
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   display: block;
@@ -159,7 +159,7 @@
   -webkit-transform-style: preserve-3d;
   -webkit-transform: rotateY(90deg) translateX(-50px) translateZ(-50px);
 }
-#page2 .bars {
+#page3 .bars {
   float: left;
   height: 480px;
   position: relative;
@@ -168,14 +168,14 @@
   -webkit-transform: translateZ(15px);
   -webkit-transform-style: preserve-3d;
 }
-#page2 .bar-group {
+#page3 .bar-group {
   float: left;
   height: 100%;
   margin: 0 15px;
   position: relative;
   width: 150px;
 }
-#page2 .bar {
+#page3 .bar {
   bottom: 1px;
   cursor: pointer;
   height: 0;
@@ -184,7 +184,7 @@
   width: 42px;
   -webkit-transition: all 0.8s ease-out;
 }
-#page2 .bar span {
+#page3 .bar span {
   color: #fff;
   display: block;
   font-size: 24px;
@@ -197,21 +197,21 @@
   -webkit-transition: all 0.4s ease-out;
   -webkit-transform: translateZ(-21px) scale(0);
 }
-#page2 .bar:hover span {
+#page3 .bar:hover span {
   display: block;
   opacity: 1;
   -webkit-transform: translateZ(24px) scale(1);
 }
-#page2 .bar.fig0 {
+#page3 .bar.fig0 {
   left: 0;
 }
-#page2 .bar.fig1 {
+#page3 .bar.fig1 {
   left: 54px;
 }
-#page2 .bar.fig2 {
+#page3 .bar.fig2 {
   left: 108px;
 }
-#page2 #figure h4 {
+#page3 #figure h4 {
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -221,77 +221,77 @@
   -webkit-transform-style: preserve-3d;
   -webkit-transform: rotateZ(-90deg) translateY(-260px) translateZ(80px) translateX(-230px);
 }
-#page2 .fig0 {
+#page3 .fig0 {
   background: none;
 }
-#page2 .fig1 {
+#page3 .fig1 {
   background: none;
 }
-#page2 .fig2 {
+#page3 .fig2 {
   background: none;
 }
-#page2 .face {
+#page3 .face {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #ffffff;
   position: absolute;
   width: 42px;
   -webkit-box-sizing: border-box;
 }
-#page2 .top {
+#page3 .top {
   height: 42px;
   top: 0;
   -webkit-transform: rotateX(90deg) translateZ(21px);
 }
-#page2 .front {
+#page3 .front {
   bottom: 0;
   height: 100%;
   -webkit-transform: translateZ(21px);
 }
-#page2 .right {
+#page3 .right {
   bottom: 0;
   height: 100%;
   -webkit-transform: rotateY(90deg) translateZ(21px);
 }
-#page2 .left {
+#page3 .left {
   bottom: 0;
   height: 100%;
   -webkit-transform: rotateY(-90deg) translateZ(21px);
 }
-#page2 .back {
+#page3 .back {
   bottom: 0;
   height: 100%;
   -webkit-transform: rotateY(180deg) translateZ(21px);
 }
-#page2 .bottom {
+#page3 .bottom {
   bottom: 0;
   height: 42px;
   -webkit-transform: rotateX(90deg) translateZ(-21px);
 }
-#page2 .legend .face {
+#page3 .legend .face {
   height: 20px;
   width: 20px;
 }
-#page2 .legend .top {
+#page3 .legend .top {
   height: 10px;
   -webkit-transform: rotateX(90deg) translateZ(5px);
 }
-#page2 .legend .front {
+#page3 .legend .front {
   height: 20px;
   -webkit-transform: translateZ(5px);
 }
-#page2 .legend .right {
+#page3 .legend .right {
   width: 10px;
   -webkit-transform: rotateY(90deg) translateZ(15px);
 }
-#page2 .legend .left {
+#page3 .legend .left {
   width: 10px;
   -webkit-transform: rotateY(-90deg) translateZ(5px);
 }
-#page2 .legend .back {
+#page3 .legend .back {
   height: 20px;
   -webkit-transform: rotateY(180deg) translateZ(5px);
 }
-#page2 .legend .bottom {
+#page3 .legend .bottom {
   height: 10px;
   -webkit-transform: rotateX(90deg) translateZ(-5px);
 }
