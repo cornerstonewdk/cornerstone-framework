@@ -1,7 +1,7 @@
 [
     {
         "key":"싸인 함수",
-        "color":"#ff7f0e",
+        "bar": true,
         "values":[
             {
                 "x":0,
@@ -407,7 +407,6 @@
     },
     {
         "key":"코사인 함수",
-        "color":"#2ca02c",
         "values":[
             {
                 "x":0,

@@ -10,24 +10,6 @@
     'use strict';
     var root = this;
     var pluginName = 'featuredChart',
-        defaultOptions = {
-            chartType: 'bar',
-            lineType: 'basis',
-            xAxisLabel: null,
-            yAxisLabel: null,
-            format: ".0f",
-            data: {},
-            showValues: true,
-            showControls: true,
-            showLegend: false,
-            tooltips: false,
-            color: ['#2c3e50', '#e74c3c', '#3498db', '#f5a503', '#2980b9'],
-            controlsData: {
-                groupedName: '그룹',
-                stackedName: '스택'
-            },
-            autoResize: true
-        },
         chart,
         self;
 
@@ -56,7 +38,6 @@
                 console.log(d);
             });
 
-            this.isNotFirst = true;
         },
         render: function (options) {
             var self = this,
@@ -69,17 +50,37 @@
 
                 chart = self[options.chartType + 'Chart'](target, options);
 
-                chart.showControls(options.showControls)
-                    .showLegend(options.showLegend)
-                    .tooltips(options.tooltips)
+                chart.tooltips(options.tooltips)
                     .color(function (d, i) {
                         return options.color[i % colorLength];
-                    })
-                    .tooltips(options.tooltips)
-                    .controlsData(options.controlsData);
+                    });
 
-                // Draw chart
-                target.datum(options.data)
+                if('line' === options.chartType) {
+                    chart.lines.color(options.data.map(function(d,i) {
+                        console.log(i);
+                        return d.color || options.color[i % colorLength];
+                    }));
+                }
+
+                if('pie' === options.chartType ) {
+
+                } else {
+                    if('linePlusBar' === options.chartType ) {
+                        chart.xAxis
+                            .showMaxMin(options.showMaxMin)
+                            .tickFormat(d3.format(options.format));
+
+                        chart.y1Axis.tickFormat(d3.format(options.format));
+                        chart.y2Axis.tickFormat(d3.format(options.format));
+                    } else {
+                        chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+                        chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+                    }
+                }
+
+                target.attr('width', options.width)
+                    .attr('height', options.height)
+                    .datum(options.data)
                     .transition()
                     .duration(500)
                     .each('end', function () {
@@ -89,11 +90,11 @@
 
                 typeof chart.afterRender === 'function' && chart.afterRender('render');
 
-                chart.multibar.dispatch.on('animated', function (d) {
+                chart.multibar && chart.multibar.dispatch.on('animated', function (d) {
                     $(self.el).trigger('animationEnd', d);
                 });
 
-                chart.multibar.dispatch.on('lastAnimated', function (d) {
+                chart.multibar && chart.multibar.dispatch.on('lastAnimated', function (d) {
                     $(self.el).trigger('complete', d);
                 });
 
@@ -103,34 +104,27 @@
 
         barChart: function (target, options) {
             var self = this;
-            var chart = nv.models.multiBarChart();
+            chart = nv.models.multiBarChart();
 
-            chart.yAxis.tickFormat(d3.format(options.format));
+            chart.showLegend(options.showLegend)
+                .showControls(options.showControls)
+                .controlsData(options.controlsData);
 
             chart.afterRender = function (eventType) {
                 if (!options.showValues) {
                     return false;
                 }
 
-                var xAxis = target.select('.nv-x.nv-axis');
-                var yAxis = target.select('.nv-y.nv-axis');
-                var barsWrap = target.select('.nv-barsWrap');
-                var xAxisTranslate = self.util.getTranslateJson(xAxis);
-
-                xAxis.attr('transform', 'translate(0, ' + (xAxisTranslate.y + ('resize' === eventType ? 10 : 20)) + ')');
-                yAxis.attr('transform', 'translate(0, 20)');
-                barsWrap.attr('transform', 'translate(0, 20)');
-
                 target.select('.nv-showValuesWrap').remove();
 
-                if (chart.multibar.stacked()) {
+                if (chart.multibar && chart.multibar.stacked()) {
                     target.select('.nv-showValuesWrap').remove();
                     return false;
                 }
 
-                var groups = target.select(".nv-barsWrap .nv-groups");
+                var groups = target.select('.nv-barsWrap .nv-groups');
                 var showValuesWrap = groups.append('svg:g').attr('class', 'nv-showValuesWrap');
-                groups[0][0].parentNode.setAttribute("clip-path", "");
+                groups[0][0].parentNode.setAttribute('clip-path', '');
 
                 showValuesWrap.style({
                     opacity: 1
@@ -138,25 +132,25 @@
 
                 var animateEnd = function (e, d) {
                     var rect = d3.select(d.target);
-                    var text = showValuesWrap.append("svg:text").attr("class", "nv-value");
+                    var text = showValuesWrap.append('svg:text').attr('class', 'nv-value');
 
-                    var x = parseInt(rect.attr("x")) + parseInt(rect.attr("width")) / 2;
-                    var y = rect.attr("y") - 7;
-                    var width = rect.attr("width");
-                    var height = rect.attr("height");
+                    var x = parseInt(rect.attr('x')) + parseInt(rect.attr('width')) / 2;
+                    var y = rect.attr('y') - 1;
+                    var width = rect.attr('width');
+                    var height = rect.attr('height');
 
-                    if (!(text.attr("x") == x
-                        && text.attr("y") == y
-                        && text.attr("width") == width
-                        && text.attr("height") == height) || status === "update") {
+                    if (!(text.attr('x') == x
+                        && text.attr('y') == y
+                        && text.attr('width') == width
+                        && text.attr('height') == height) || status === 'update') {
                         text.attr({
-                            "opacity": 0,
-                            "x": x,
-                            "y": y,
-                            "width": width,
-                            "height": height,
-                            "text-anchor": "middle",
-                            "transform": rect.attr("transform")
+                            'opacity': 0,
+                            'x': x,
+                            'y': y,
+                            'width': width,
+                            'height': height,
+                            'text-anchor': 'middle',
+                            'transform': rect.attr('transform')
                         }).transition().attr({
                                 opacity: 1
                             })
@@ -167,7 +161,6 @@
                         });
                     }
 
-                    e.stopPropagation();
                     return e;
                 };
 
@@ -177,24 +170,15 @@
 
             return chart;
         },
-
         stackedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarChart()
+                chart = nv.models.multiBarChart()
                     .showControls(options.showControls)
                     .showLegend(options.showLegend)
                     .tooltips(options.tooltips);
 
                 chart.stacked(true);
-
-//                chart.xAxis
-//                    .axisLabel(options.xAxisLabel)
-//                    .tickFormat(d3.format(',f'));
-//
-//                chart.yAxis
-//                    .axisLabel(options.yAxisLabel)
-//                    .tickFormat(d3.format(',.1f'));
 
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
@@ -207,7 +191,7 @@
         groupedBarChart: function (target, options) {
             self = this;
             nv.addGraph(function () {
-                var chart = nv.models.multiBarChart()
+                chart = nv.models.multiBarChart()
                     .showControls(options.showControls)
                     .showLegend(options.showLegend)
                     .tooltips(options.tooltips);
@@ -223,179 +207,33 @@
             });
         },
         lineChart: function (target, options) {
-            self = this;
-            // Wrapping in nv.addGraph allows for '0 timeout render', stors rendered charts in nv.graphs, and may do more in the future... it's NOT required
-            nv.addGraph(function () {
-                var chart = nv.models.lineChart()
-                    .showControls(options.showControls)
-                    .showLegend(options.showLegend)
-                    .tooltips(options.tooltips);
+            chart = nv.models.lineChart()
+                .showLegend(options.showLegend);
 
-                target.datum(options.data)
-                    .transition().duration(500)
-                    .call(chart);
-
-                self.util.applyBindEvent(target, options, chart, self.$el);
-
-                return chart;
-            });
+            return chart;
         },
         pieChart: function (target, options) {
-            self = this;
-            var width = 500,
-                height = 500;
-
-            nv.addGraph(function () {
-                var chart = nv.models.pieChart()
-                    .showControls(options.showControls)
-                    .showLegend(options.showLegend)
-                    .tooltips(options.tooltips);
-
-                target.datum([options.data])
-                    .transition().duration(1200)
-                    .attr('width', width)
-                    .attr('height', height)
-                    .call(chart);
-
-                // inline Style로 추가되는 스타일 제거
-                $.each(target.selectAll('.nv-slice > .nv-label > text')[0], function (index, item) {
-                    $(item).removeAttr('style');
-                });
-
-                self.util.applyBindEvent(target, options, chart, self.$el);
-
-                return chart;
-            });
+            chart = nv.models.pieChart()
+                .showLegend(options.showLegend)
+                .tooltips(options.tooltips);
+            
+            return chart;
         },
         horizontalBarChart: function (target, options) {
-            var chart = nv.models.multiBarHorizontalChart()
+            chart = nv.models.multiBarHorizontalChart()
                 .showValues(options.showValues)
-                .showControls(options.showControls)
                 .showLegend(options.showLegend)
-                .color(function () {
-                })
-                .valueFormat(function (d) {
-                    var format = d3.format('.0f');
-                    return format(d);
-                })
-                .tooltips(options.tooltips);
-
-            chart.yAxis.tickFormat(d3.format('.0f'));
-
-            target.datum(options.data)
-                .transition()
-                .duration(500)
-                .each('end', function () {
-                    $(target).trigger('shown');
-                })
-                .call(chart);
+                .valueFormat(d3.format(options.format))
+                .tooltips(options.tooltips)
+                .controlsData(options.controlsData);
 
             return chart;
 
         },
-        linePlusBarChart: function (target) {
-            self = this;
-            var data = [
-                {
-                    'key': 'Quantity',
-                    'bar': true,
-                    'values': [
-                        [ 1136005200000 , 1271000.0] ,
-                        [ 1138683600000 , 1271000.0] ,
-                        [ 1141102800000 , 1271000.0] ,
-                        [ 1143781200000 , 0] ,
-                        [ 1146369600000 , 310] ,
-
-                        [ 1149048000000 , 123410] ,
-                        [ 1151640000000 , 53340] ,
-                        [ 1154318400000 , 4320] ,
-                        [ 1156996800000 , 0] ,
-                        [ 1159588800000 , 3899486.0] ,
-
-                        [ 1162270800000 , 3899486.0] ,
-                        [ 1164862800000 , 3899486.0] ,
-                        [ 1167541200000 , 3564700.0] ,
-                        [ 1170219600000 , 3564700.0] ,
-                        [ 1172638800000 , 3564700.0] ,
-
-                        [ 1175313600000 , 2648493.0] ,
-                        [ 1177905600000 , 2648493.0] ,
-                        [ 1180584000000 , 2648493.0] ,
-                        [ 1183176000000 , 2522993.0] ,
-                        [ 1185854400000 , 2522993.0]
-                    ]
-                },
-                {
-                    'key': 'Price',
-                    'values': [
-                        [ 1136005200000 , 71.89] ,
-                        [ 1138683600000 , 75.51] ,
-                        [ 1141102800000 , 68.49] ,
-                        [ 1143781200000 , 62.72] ,
-                        [ 1146369600000 , 70.39] ,
-
-                        [ 1149048000000 , 59.77] ,
-                        [ 1151640000000 , 57.27] ,
-                        [ 1154318400000 , 67.96] ,
-                        [ 1156996800000 , 67.85] ,
-                        [ 1159588800000 , 76.98] ,
-
-                        [ 1162270800000 , 81.08] ,
-                        [ 1164862800000 , 91.66] ,
-                        [ 1167541200000 , 84.84] ,
-                        [ 1170219600000 , 85.73] ,
-                        [ 1172638800000 , 84.61] ,
-
-                        [ 1175313600000 , 92.91] ,
-                        [ 1177905600000 , 99.8] ,
-                        [ 1180584000000 , 121.191] ,
-                        [ 1183176000000 , 122.04] ,
-                        [ 1185854400000 , 131.76] ,
-
-                        [ 1188532800000 , 138.48] ,
-                        [ 1191124800000 , 153.47] ,
-                        [ 1193803200000 , 189.95] ,
-                        [ 1196398800000 , 182.22] ,
-                        [ 1199077200000 , 198.08]
-                    ]
-                }
-            ];
-
-            nv.addGraph(function () {
-                var chart = nv.models.linePlusBarChart()
-                    .x(function (d, i) {
-                        return i
-                    })
-                    .y(function (d) {
-                        return d[1]
-                    })
-                    .color(d3.scale.category10().range());
-
-                chart.xAxis
-                    .showMaxMin(false)
-                    .tickFormat(function (d) {
-                        var dx = data[0].values[d] && data[0].values[d][0] || 0;
-                        return d3.time.format('%x')(new Date(dx))
-                    });
-
-                chart.y1Axis
-                    .tickFormat(d3.format(',f'));
-
-                chart.y2Axis
-                    .tickFormat(function (d) {
-                        return '$' + d3.format(',f')(d)
-                    });
-
-                chart.bars.forceY([0]);
-
-                if (target.select('svg').length > 0 && target.select('svg')[0][0] === null) {
-                    target = target.append('svg:svg')
-                } else {
-                    target = target.select('svg');
-                }
-
-                return chart;
-            });
+        linePlusBarChart: function () {
+            chart = nv.models.linePlusBarChart();
+            chart.bars.forceY([0]);
+            return chart;
         },
         lineFocusChart: function (target) {
             self = this;
@@ -434,7 +272,7 @@
             }
 
             nv.addGraph(function () {
-                var chart = nv.models.lineWithFocusChart();
+                chart = nv.models.lineWithFocusChart();
 
                 chart.xAxis
                     .tickFormat(d3.format(',f'));
@@ -492,7 +330,30 @@
     };
 
     $.fn.featuredChart = function (options) {
+        var defaultOptions = {
+            chartType: 'bar',
+            lineType: 'basis',
+            width: 500,
+            height: 500,
+            xAxisLabel: 'X축',
+            yAxisLabel: 'Y축',
+            format: ".0f",
+            data: {},
+            showMaxMin: true,
+            showValues: true,
+            showControls: true,
+            showLegend: true,
+            tooltips: true,
+            color: ['#2c3e50', '#e74c3c', '#3498db', '#f5a503', '#7c569f', '#75483e', '#bf64a3', '#6b6b6b'],
+            controlsData: {
+                groupedName: '그룹',
+                stackedName: '스택'
+            },
+            autoResize: true
+        };
+
         options = $.extend(true, defaultOptions, options);
+
         return this.each(function () {
             var $this = $(this);
             var data = $this.data(pluginName);
@@ -523,6 +384,7 @@
             dataUrl && $.getJSON(dataUrl).success(function (json) {
                 $(self)[pluginName]({
                     chartType: $(self).data('chartType'),
+                    format: $(self).data('chartFormat'),
                     data: json
                 });
             });

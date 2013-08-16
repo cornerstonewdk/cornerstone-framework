@@ -101,7 +101,6 @@ define([
         },
 
         updateChart: function () {
-//            this.activeChartDataApi();
             this.activeChartPlugin();
             this.activeChartView();
         },

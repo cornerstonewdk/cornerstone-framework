@@ -1,30 +1,34 @@
 [
 	{
-		"key": "One",
+		"x": "One",
 		"y": 5
 	},
 	{
-		"key": "Two",
+		"x": "Two",
 		"y": 2
 	},
 	{
-		"key": "Three",
+		"x": "Three",
 		"y": 9
 	},
 	{
-		"key": "Four",
+		"x": "Four",
 		"y": 7
 	},
 	{
-		"key": "Five",
+		"x": "Five",
 		"y": 4
 	},
 	{
-		"key": "Six",
+		"x": "Six",
 		"y": 3
 	},
 	{
-		"key": "Seven",
+		"x": "Seven",
 		"y": 0.5
-	}
+	},
+    {
+        "x":"Not Available",
+        "y":5.1387322875705
+    }
 ]
