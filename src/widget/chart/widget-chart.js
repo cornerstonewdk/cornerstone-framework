@@ -15,17 +15,14 @@
             lineType: 'basis',
             xAxisLabel: null,
             yAxisLabel: null,
-            width: 960,
-            height: 600,
-            margin: [0, 0, 0, 0],
-            padding: [0, 0, 0, 0],
+            format: ".0f",
             data: {},
             showValues: true,
             showControls: true,
-            showLegend: true,
+            showLegend: false,
             tooltips: false,
-            control: {
-                active: 'grouped',
+            color: ['#2c3e50', '#e74c3c', '#3498db', '#f5a503', '#2980b9'],
+            controlsData: {
                 groupedName: '그룹',
                 stackedName: '스택'
             },
@@ -34,9 +31,11 @@
         chart,
         self;
 
+    // TODO animation 중에 control, legend 이벤트를 막는다.
     var FeaturedChart = function (element, options) {
         this.el = element;
         this.$el = $(element);
+        this.options = options;
 
         nv.dev = false;
 
@@ -45,22 +44,17 @@
 
     FeaturedChart.prototype = {
         beforeRender: function (target, options) {
-            if (this.isNotFirst) {
-                options.control = $.extend({}, options.control, {
-                    active: $(this.el).find('.nv-controlsWrap .nv-series:not(.disabled)').data('control')
-                });
-            }
-        },
-        afterRender: function (target, options) {
-            this.util.customControl(target, options);
 
+        },
+        afterRender: function (target, options, chart) {
             this.$el.data('currentChart', chart);
             this.$el.data('currentChartControl', options.control);
 
             this.util.applyBindEvent(target, options, chart, this.$el);
 
-            target.select('.nv-controlsWrap').style('display', [options.showControls ? 'block' : 'none']);
-            target.select('.nv-legendWrap').style('display', [options.showLegend ? 'block' : 'none']);
+            target.on("stateChange", function (d) {
+                console.log(d);
+            });
 
             this.isNotFirst = true;
         },
@@ -68,45 +62,119 @@
             var self = this,
                 target = this.util.getTarget(d3.select(this.el));
 
-            nv.addGraph(function() {
-                console.log(self, target, options);
+            nv.addGraph((function (self, target, options) {
+                var colorLength = options.color.length;
+
                 self.beforeRender(target, options);
 
                 chart = self[options.chartType + 'Chart'](target, options);
 
-                console.log(self.$el. target, options);
-                typeof chart.multibar === 'function' && chart.multibar.dispatch.on('barsAnimated', function (d) {
-                    $(self.el).trigger('animationEnd', d);
+                chart.showControls(options.showControls)
+                    .showLegend(options.showLegend)
+                    .tooltips(options.tooltips)
+                    .color(function (d, i) {
+                        return options.color[i % colorLength];
+                    })
+                    .tooltips(options.tooltips)
+                    .controlsData(options.controlsData);
 
-                    console.log('animationEnd', d);
-                    if (options.data.length - 1 === d.index) {
-                        if (d.series.values.length - 1 === d.data.series) {
-                            console.log('comeplete');
-                            $(self.el).trigger('compelete');
-                        }
-                    }
+                // Draw chart
+                target.datum(options.data)
+                    .transition()
+                    .duration(500)
+                    .each('end', function () {
+                        $(target).trigger('shown');
+                    })
+                    .call(chart);
+
+                typeof chart.afterRender === 'function' && chart.afterRender('render');
+
+                chart.multibar.dispatch.on('animated', function (d) {
+                    $(self.el).trigger('animationEnd', d);
                 });
 
-                self.afterRender(target, options);
-            });
+                chart.multibar.dispatch.on('lastAnimated', function (d) {
+                    $(self.el).trigger('complete', d);
+                });
+
+                self.afterRender(target, options, chart);
+            })(self, target, options));
         },
-        // TODO Bar 그래프의 트랜지션이 완료될 때 event trigger 발생 필요
+
         barChart: function (target, options) {
-            var chart = nv.models.multiBarChart()
-                    .showControls(options.showControls)
-                    .showLegend(options.showLegend)
-                    .tooltips(options.tooltips);
+            var self = this;
+            var chart = nv.models.multiBarChart();
 
-            chart.stacked(options.control.active !== 'grouped');
-            chart.yAxis.tickFormat(d3.format('.0f'));
+            chart.yAxis.tickFormat(d3.format(options.format));
 
-            target.datum(options.data)
-                .transition()
-                .duration(500)
-                .each('end', function () {
-                    $(target).trigger('shown');
-                })
-                .call(chart);
+            chart.afterRender = function (eventType) {
+                if (!options.showValues) {
+                    return false;
+                }
+
+                var xAxis = target.select('.nv-x.nv-axis');
+                var yAxis = target.select('.nv-y.nv-axis');
+                var barsWrap = target.select('.nv-barsWrap');
+                var xAxisTranslate = self.util.getTranslateJson(xAxis);
+
+                xAxis.attr('transform', 'translate(0, ' + (xAxisTranslate.y + ('resize' === eventType ? 10 : 20)) + ')');
+                yAxis.attr('transform', 'translate(0, 20)');
+                barsWrap.attr('transform', 'translate(0, 20)');
+
+                target.select('.nv-showValuesWrap').remove();
+
+                if (chart.multibar.stacked()) {
+                    target.select('.nv-showValuesWrap').remove();
+                    return false;
+                }
+
+                var groups = target.select(".nv-barsWrap .nv-groups");
+                var showValuesWrap = groups.append('svg:g').attr('class', 'nv-showValuesWrap');
+                groups[0][0].parentNode.setAttribute("clip-path", "");
+
+                showValuesWrap.style({
+                    opacity: 1
+                });
+
+                var animateEnd = function (e, d) {
+                    var rect = d3.select(d.target);
+                    var text = showValuesWrap.append("svg:text").attr("class", "nv-value");
+
+                    var x = parseInt(rect.attr("x")) + parseInt(rect.attr("width")) / 2;
+                    var y = rect.attr("y") - 7;
+                    var width = rect.attr("width");
+                    var height = rect.attr("height");
+
+                    if (!(text.attr("x") == x
+                        && text.attr("y") == y
+                        && text.attr("width") == width
+                        && text.attr("height") == height) || status === "update") {
+                        text.attr({
+                            "opacity": 0,
+                            "x": x,
+                            "y": y,
+                            "width": width,
+                            "height": height,
+                            "text-anchor": "middle",
+                            "transform": rect.attr("transform")
+                        }).transition().attr({
+                                opacity: 1
+                            })
+                            .text(d3.format(options.format)(rect.data()[0].y));
+                    } else {
+                        text.attr({
+                            opacity: 1
+                        });
+                    }
+
+                    e.stopPropagation();
+                    return e;
+                };
+
+                $(self.el).off('animationEnd._barChart').on('animationEnd._barChart', animateEnd);
+                return eventType;
+            };
+
             return chart;
         },
 
@@ -204,14 +272,14 @@
                 .showValues(options.showValues)
                 .showControls(options.showControls)
                 .showLegend(options.showLegend)
+                .color(function () {
+                })
                 .valueFormat(function (d) {
                     var format = d3.format('.0f');
                     return format(d);
                 })
                 .tooltips(options.tooltips);
 
-
-            chart.stacked(options.control.active !== 'grouped');
             chart.yAxis.tickFormat(d3.format('.0f'));
 
             target.datum(options.data)
@@ -225,7 +293,7 @@
             return chart;
 
         },
-        linePlusBarChart: function (target, options) {
+        linePlusBarChart: function (target) {
             self = this;
             var data = [
                 {
@@ -329,7 +397,7 @@
                 return chart;
             });
         },
-        lineFocusChart: function (target, options) {
+        lineFocusChart: function (target) {
             self = this;
             function data() {
                 return stream_layers(3, 10 + Math.random() * 200, .1).map(function (data, i) {
@@ -361,16 +429,6 @@
                 });
             }
 
-            /* Another layer generator using gamma distributions. */
-            function stream_waves(n, m) {
-                return d3.range(n).map(function (i) {
-                    return d3.range(m).map(function (j) {
-                        var x = 20 * j / m - i / 3;
-                        return 2 * x * Math.exp(-.5 * x);
-                    }).map(stream_index);
-                });
-            }
-
             function stream_index(d, i) {
                 return {x: i, y: Math.max(0, d)};
             }
@@ -398,17 +456,15 @@
         },
 
         util: {
-            customControl: function (target, options) {
-                target.selectAll('.nv-controlsWrap .nv-series').each(function (item, i) {
-                    var _parent = d3.select(this);
-                    if (i === 0) {
-                        _parent.attr('data-control', 'grouped').select('text').text(options.control.groupedName);
-                    } else {
-                        _parent.attr('data-control', 'stacked').select('text').text(options.control.stackedName);
-                    }
-                });
+            getTranslateJson: function (target) {
+                try {
+                    return JSON.parse(target.attr('transform').replace('translate(', '{"x":')
+                        .replace(',', ',"y":')
+                        .replace(')', '}'))
+                } catch (e) {
+                    return {x: 0, y: 0};
+                }
             },
-
             getTarget: function (target) {
                 if (target.select('svg').length > 0 && target.select('svg')[0][0] === null) {
                     target = target.append('svg:svg')
@@ -418,13 +474,18 @@
                 return target;
             },
 
-            // TODO legend 클릭으로 필터링시 수직 차트에서 Bar 그래프가 겹치는 문제
-            // TODO Group/Stacked 클릭 후 데이터 변경시 Group으로만 초기화되는 문제
-            applyBindEvent: function (target, options, chart, $el) {
-                var self = this;
+            applyBindEvent: function (target, options, chart) {
+                chart.dispatch.on('stateChange', function () {
+                    setTimeout(function () {
+                        typeof chart.afterRender === 'function' && chart.afterRender('stateChange');
+                    }, 0);
+                });
 
                 !options.autoResize || nv.utils.windowResize(function () {
                     chart.update();
+                    setTimeout(function () {
+                        typeof chart.afterRender === 'function' && chart.afterRender('resize');
+                    }, 0);
                 });
             }
         }

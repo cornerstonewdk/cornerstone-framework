@@ -15,7 +15,7 @@ define([
             showControls: true,
             showLegend: true,
             tooltips: true,
-            control: {
+            controlData: {
                 active: 'grouped',
                 groupedName: '그룹',
                 stackedName: '스택'
