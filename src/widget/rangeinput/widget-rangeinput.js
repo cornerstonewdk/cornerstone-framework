@@ -104,7 +104,7 @@
             var def = input.clone().wrap("<div/>").parent().html(),
                 clone = $(def.replace(/type/i, "type=tel data-orig-type"));
 
-            clone.addClass("figure inline");
+            clone.addClass("figure inline form-control");
             clone.val(conf.value);
             input.replaceWith(clone);
             input = clone;
