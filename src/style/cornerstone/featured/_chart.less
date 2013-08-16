@@ -764,50 +764,34 @@ Interactive Layer
 }
 
 
-// Color preset
-//.nv-group,
-//.nv-series {
-//  .chart-color-style(5, 1);
-//}
-//
-//.widget-chart {
-//  &.preset2 {
-//    .nv-group,
-//    .nv-series {
-//      .chart-color-style(5, 2);
-//    }
-//  }
-//  &.preset3 {
-//    .nv-group,
-//    .nv-series {
-//      .chart-color-style(5, 3);
-//    }
-//  }
-//}
-//.bar,
-//.legend li{
-//  .chart3d-color-style(5, 1);
-//}
-//
-//.nv-linePlusBar {
-//  .nv-barsWrap {
-//    .chart-color-preset(1, 2);
-//    rect {
-//      fill: @bar-color;
-//      stroke: @bar-color;
-//    }
-//  }
-//  .nv-linesWrap {
-//    .chart-color-preset(2, 2);
-//    .nv-group {
-//      stroke-opacity: 1;
-//      fill-opacity: 0.5;
-//      fill: @bar-color;
-//      stroke: @bar-color;
-//    }
-//  }
-//}
+.nv-barsWrap text {
+  font-size: 9px;
+}
 
+// Color preset
+.nv-group,
+.nv-series {
+  .chart-color-style(5, 1);
+}
+
+.widget-chart {
+  &.preset2 {
+    .nv-group,
+    .nv-series {
+      .chart-color-style(5, 2);
+    }
+  }
+  &.preset3 {
+    .nv-group,
+    .nv-series {
+      .chart-color-style(5, 3);
+    }
+  }
+}
+.bar,
+.legend li{
+  .chart3d-color-style(5, 1);
+}
 
 // Placeholder
 .linechart-color-style (@index, @preset-index) when (@index > 0) {
