@@ -1,3 +1,12 @@
+.scrollview {
+  position: relative;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+}
+
 .scroll-header, .scroll-footer {
   position: fixed;
   z-index: 100;
@@ -12,16 +21,6 @@
 .scroll-footer .nav-bot {
   margin-bottom: 0;
   padding: 0;
-}
-
-.scrollview {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  overflow: auto;
-  width: 100%;
 }
 
 .scroller {

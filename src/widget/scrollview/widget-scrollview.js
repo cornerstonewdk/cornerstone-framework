@@ -33,6 +33,9 @@
 
 	var Plugin = function (element, options) {
 		this.defaultOptions = {
+            scrollbars: true,
+            mouseWheel: true,
+            interactiveScrollbars: true,
 			formFields: undefined,
 			pullDownID: undefined,
 			pullUpID: undefined,
@@ -102,6 +105,7 @@
 				pullUpEl.removeClass("flip loading");
 			}
 		};
+
 		var onScrollMove = function () {
 			pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
 			pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
@@ -122,6 +126,7 @@
 			}
 		};
 		var onScrollEnd = function () {
+            console.log(3);
 			pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
 			pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
 			pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
