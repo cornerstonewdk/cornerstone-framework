@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-3">
+		<div class="list-group">
+			{{#each collection}}
+				{{#if section}}<h4>{{section}}</h4>{{/if}}
+				{{#if secondDepth}}<a class="list-group-item" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
+				{{#if thirdDepth}}<a class="list-group-item thirdDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
+				{{#if fourthDepth}}<a class="list-group-item fourthDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
+			{{/each}}
+		</div>
+	</div>
+	<div class="col-9">
+		<div class="doc-content">{{{model.content}}}</div>
+		<div class="alert alert-info"><a href="http://www.sktelecom.com" target="_blank">SKTELECOM</a>에 의해 작성된 <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">Cornerstone 개발자 문서</a>는 <a href="http://creativecommons.org/licenses/by/3.0/deed.ko" target="_blank">크리에이티브 커먼즈 저작자표시 3.0 라이선스</a>에 따라 이용할 수 있습니다.</div>
+	</div>
+</div>

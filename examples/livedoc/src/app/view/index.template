@@ -1,0 +1,22 @@
+{{#each this}}
+	<div class="row">
+		{{#if section}}
+			<div class="col-12 well">
+				<h4>{{section}}</h4>
+			</div>
+		{{/if}}
+		{{#if secondDepth}}<div class="col-11 col-offset-1 well">{{/if}}
+		{{#if thirdDepth}}<div class="col-10 col-offset-2 well">{{/if}}
+		{{#if fourthDepth}}<div class="col-9 col-offset-3 well">{{/if}}
+			<div class="media">
+				<a class="pull-left" href="#{{id}}">
+					<img class="media-object" src="images/{{thumbnail}}"/>
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">{{title}}</h4>
+					{{outline}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/each}}
