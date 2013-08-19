@@ -103,9 +103,9 @@
 
 .navbar-icon {
   li {
-    > a {
+    & > a {
       font-size: 0;
-      > .glyphicon {
+      & > .glyphicon {
         line-height: 0;
       }
     }
@@ -123,6 +123,27 @@
     .search-query {
       margin: 3px 0 0 0;
     }
+  }
+}
+
+
+@media (max-width: @screen-phone-max) {
+  .navbar-icon {
+    li {
+      & > a {
+        font-size: @font-size-base;
+      }
+    }
+  }
+}
+
+.navbar-form, .navbar-collapse {
+  border: none;
+}
+
+.navbar-toggle {
+  &:hover, &:focus {
+    background-color: transparent;
   }
 }
 

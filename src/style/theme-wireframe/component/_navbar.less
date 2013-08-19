@@ -23,7 +23,7 @@
       & > .glyphicon,
       & > .glyphicon:before {
         position: relative;
-        top: 4px;
+        top: 3px;
       }
     }
   }
@@ -38,6 +38,30 @@
 
   .navbar-form {
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: @screen-phone-max) {
+  .navbar-icon {
+    li {
+      & > a {
+        font-size: @font-size-base;
+        & > .glyphicon,
+        & > .glyphicon:before {
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+.navbar-form, .navbar-collapse {
+  border: none;
+}
+
+.navbar-toggle {
+  &:hover, &:focus {
+    background-color: transparent;
   }
 }
 

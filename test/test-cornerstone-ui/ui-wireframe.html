@@ -797,10 +797,10 @@
     <div class="col col-lg-12">
         <h3 class="title">Default NavBar</h3>
 
-        <div class="navbar">
+        <nav class="navbar" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-responsive-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -809,45 +809,43 @@
                 <a class="navbar-brand" href="#">Title</a>
             </div>
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse navbar-ex1-collapse collapse" style="height: 10px;">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
-                                class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Dropdown header</li>
                             <li><a href="#">Separated link</a></li>
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form pull-right" action="#">
-                    <input type="text" class="form-control col-lg-8" placeholder="Search">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <ul class="nav navbar-nav pull-right">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
-                                class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
+            </div><!-- /.navbar-collapse -->
+        </nav>
     </div>
     <div class="col col-lg-12">
         <h3 class="title"><span class="label label-success">New</span> Text + Icon Navbar</h3>
@@ -855,15 +853,16 @@
         <div class="navbar">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-responsive-collapse">
+                        data-target=".navbar-responsive-collapse2">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="#">Title</a>
             </div>
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse3">
+            <div class="navbar-collapse collapse navbar-responsive-collapse2">
                 <ul class="nav navbar-nav">
                     <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Link</a></li>
@@ -880,18 +879,20 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form pull-right" action="#">
-                    <input type="text" class="form-control col-lg-8" placeholder="Search">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span>Link</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                                class="glyphicon glyphicon-pencil"></span>Dropdown <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                         </ul>
                     </li>
@@ -906,7 +907,7 @@
         <div class="navbar navbar-icon">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-responsive-collapse">
+                        data-target=".navbar-responsive-collapse3">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -915,7 +916,7 @@
                 <a class="navbar-brand" href="#">Title</a>
             </div>
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse4">
+            <div class="navbar-collapse collapse navbar-responsive-collapse3">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Link</a></li>
@@ -932,21 +933,20 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-search"></span>Search</a></li>
-                </ul>
-                <form class="navbar-form navbar-search pull-right" action="#">
-                    <input type="text" class="form-control" placeholder="Search">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span>Link</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                                class="glyphicon glyphicon-pencil"></span>Dropdown <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                         </ul>
                     </li>

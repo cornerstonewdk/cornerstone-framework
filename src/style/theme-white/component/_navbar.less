@@ -45,9 +45,8 @@
 .navbar-icon {
   li {
     > a {
-      min-height: 50px;
       font-size: 0;
-      > .glyphicon {
+      & > .glyphicon {
         line-height: 0;
       }
     }
@@ -75,6 +74,26 @@
 
   .navbar-nav:not(.pull-right) > li > a {
     border-right: 1px solid #b6b6b6;
+  }
+}
+
+@media (max-width: @screen-phone-max) {
+  .navbar-icon {
+    li {
+      & > a {
+        font-size: @font-size-base;
+      }
+    }
+  }
+}
+
+.navbar-form, .navbar-collapse {
+  border: none;
+}
+
+.navbar-toggle {
+  &:hover, &:focus {
+    background-color: transparent;
   }
 }
 
