@@ -22,7 +22,7 @@
 
             <div class="panel-heading">신규 라인 + 바 차트</div>
 
-            <h3 class="title">jQuery Plugin</h3>
+            <!--<h3 class="title">jQuery Plugin</h3>-->
             <div id="linePlusBar1" class="widget-chart"></div>
 
             <!--<h3 class="title">Backbone View</h3>-->

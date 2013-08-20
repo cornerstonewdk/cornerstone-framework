@@ -98,7 +98,7 @@
 
             <div class="panel-heading">신규 수평 차트</div>
 
-            <h3 class="title">jQuery Plugin</h3>
+            <!--<h3 class="title">jQuery Plugin</h3>-->
             <div id="horizontalBar1" class="widget-chart"></div>
 
             <!--<h3 class="title">Backbone View</h3>-->
@@ -113,7 +113,7 @@
 
             <div class="panel-heading">기존 수직 차트</div>
 
-            <h3 class="title">jQuery Plugin</h3>
+            <!--<h3 class="title">jQuery Plugin</h3>-->
             <div id="bar1" class="widget-chart"></div>
 
             <!--<h3 class="title">Backbone View</h3>-->
