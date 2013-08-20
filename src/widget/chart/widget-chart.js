@@ -131,7 +131,7 @@
                     var text = showValuesWrap.append('svg:text').attr('class', 'nv-value');
 
                     var x = parseInt(rect.attr('x')) + parseInt(rect.attr('width')) / 2;
-                    var y = rect.attr('y') - 1;
+                    var y = rect.attr('y') - 2;
                     var width = rect.attr('width');
                     var height = rect.attr('height');
 

@@ -25,11 +25,11 @@
             <h3 class="title">jQuery Plugin</h3>
             <div id="linePlusBar1" class="widget-chart"></div>
 
-            <h3 class="title">Backbone View</h3>
-            <div id="linePlusBar2" class="widget-chart"></div>
+            <!--<h3 class="title">Backbone View</h3>-->
+            <!--<div id="linePlusBar2" class="widget-chart"></div>-->
 
-            <h3 class="title">Data-API</h3>
-            <div class="widget-chart" data-featured="chart" data-chart-type="linePlusBar" data-chart-bind="data/sample-line.json" data-chart-format=".2f"></div>
+            <!--<h3 class="title">Data-API</h3>-->
+            <!--<div class="widget-chart" data-featured="chart" data-chart-type="linePlusBar" data-chart-bind="data/sample-line.json" data-chart-format=".2f"></div>-->
         </div>
     </div>
 </div>
