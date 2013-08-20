@@ -10,16 +10,17 @@
 }
 
 .navbar-nav {
-  & > li {
-    & > a {
-      &:hover, &:focus {
-        color: #1f8fb9;
-        text-shadow: 0 0 2px #fff;
-        font-weight: bold;
+  a {
+    color: @navbar-default-link-color;
+    &:hover, &:focus {
+      color: @navbar-default-link-color;
+      .caret {
+        border-top-color: @navbar-default-link-color;
+        border-bottom-color: @navbar-default-link-color;
       }
-      &:active {
-        .navbar-nav-active();
-      }
+    }
+    &:active {
+      .navbar-nav-active();
     }
   }
   & > .active {
@@ -69,11 +70,8 @@
 
 @media screen and (min-width: 768px) {
   .navbar-brand {
+    color: @text-color;
     margin-left: 0;
-  }
-
-  .navbar-nav:not(.pull-right) > li > a {
-    border-right: 1px solid #b6b6b6;
   }
 }
 
@@ -144,7 +142,6 @@
     text-decoration: none;
     > .glyphicon {
       display: block;
-      margin-bottom: -5px;
       padding: 10px 0 0 0;
       font-size: (@font-size-base * 1.5);
     }
