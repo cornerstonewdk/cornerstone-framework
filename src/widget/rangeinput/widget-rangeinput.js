@@ -101,13 +101,7 @@
 
         // Replace built-in range input (type attribute cannot be changed)
         if (input.attr("type") == 'range') {
-            var def = input.clone().wrap("<div/>").parent().html(),
-                clone = $(def.replace(/type/i, "type=tel data-orig-type"));
-
-            clone.addClass("figure inline form-control");
-            clone.val(conf.value);
-            input.replaceWith(clone);
-            input = clone;
+            input.addClass("figure inline form-control").val(conf.value).attr('type','tel').attr('data-orig-type','range');
         }
 
         input.addClass(css.input);
