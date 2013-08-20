@@ -410,10 +410,10 @@ describe('Cornerstone event extend test', function() {
             it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
                 require(['widget-rangeinput'], function(WidgetRangeInput) {
                     input_0 = new WidgetRangeInput({
-                        el: 'input[type="range"]:eq(0)'
+                        el: '#range1'
                     });
                     input_1 = new WidgetRangeInput({
-                        el: 'input[type="range"]:eq(1)',
+                        el: '#range2',
                         'progress': true
                     });
                     input_2 = new WidgetRangeInput({
@@ -430,53 +430,146 @@ describe('Cornerstone event extend test', function() {
                 });
             });
 
+            
+            it('start, move, end 이벤트가 핸들을 움직였을 때 발생하여야 한다.',function(){
 
-            it('start, move, end 이벤트', function() {
-            	$('input[data-plugin="rangeinput"], #range3').on('start.cs.rangeInput', function(e) {
-                console.log('start', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('start');
-            }).on('move.cs.rangeInput', function(e) {
-                console.log('move', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('move');
-            }).on('end.cs.rangeInput', function(e) {
-                console.log('end', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('end');
+                input_0.$el.on('start.cs.rangeInput', function(e) {
+                    console.log('start', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('start');
+                }).on('move.cs.rangeInput', function(e) {
+                    console.log('move', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('move');
+                }).on('end.cs.rangeInput', function(e) {
+                    console.log('end', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('end');
+                });
+
+                input_1.$el.on('start.cs.rangeInput', function(e) {
+                    console.log('start', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('start');
+                }).on('move.cs.rangeInput', function(e) {
+                    console.log('move', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('move');
+                }).on('end.cs.rangeInput', function(e) {
+                    console.log('end', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('end');
+                });
+
+                input_2.$el.on('start.cs.rangeInput', function(e) {
+                    console.log('start', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('start');
+                }).on('move.cs.rangeInput', function(e) {
+                    console.log('move', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('move');
+                }).on('end.cs.rangeInput', function(e) {
+                    console.log('end', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('end');
+                });
             });
-                // console.log( input_0.$el );
-                // input_0.$el.on('start.cs.rangeInput', function(e) {
-                //         console.log('start', e);
-                //         expect(e).to.be.an.instanceof($.Event);
-                //         expect(e.type).to.be.equal('start');
-                //     }).on('move.cs.rangeInput', function(e) {
-                //         console.log('move', e);
-                //         expect(e).to.be.an.instanceof($.Event);
-                //         expect(e.type).to.be.equal('move');
-                //     }).on('end.cs.rangeInput', function(e) {
-                //         console.log('end', e);
-                //         expect(e).to.be.an.instanceof($.Event);
-                //         expect(e.type).to.be.equal('end');
-                //     })
-                // inputArr.each(function() {
-                // 	console.log(this.$el);
-                //     this.$el.on('start.cs.rangeInput', function(e) {
-                //         console.log('start', e);
-                //         expect(e).to.be.an.instanceof($.Event);
-                //         expect(e.type).to.be.equal('start');
-                //     }).on('move.cs.rangeInput', function(e) {
-                //         console.log('move', e);
-                //         expect(e).to.be.an.instanceof($.Event);
-                //         expect(e.type).to.be.equal('move');
-                //     }).on('end.cs.rangeInput', function(e) {
-                //         console.log('end', e);
-                //         expect(e).to.be.an.instanceof($.Event);
-                //         expect(e.type).to.be.equal('end');
-                //     })
-                // });
+            // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
+        });
+    
+        describe('widget-sign', function(){
+            var sign;
 
-                // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
+            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+                require(['widget-sign'], function(WidgetSign) {
+                    sign = new WidgetSign({
+                        el: '#signature'
+                    });
+                    sign.render();
+                    expect(sign).to.be.an.instanceof(Backbone.View);
+                    done();
+                });
+            });
+
+            it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.',function(){
+                sign.$el.on('start.cs.sign',function(e){
+                    console.log('start', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('start');
+                }).on('move.cs.sign',function(e){
+                    console.log('move', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('move');
+                }).on('end.cs.sign',function(e){
+                    console.log('end', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('end');
+                });
+            });
+
+            // it('서명을 완료한 후 이미지로 보기를 눌렀을 때 이미지가 복사되어야 한다.',function(done){
+            //     // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
+            //     $("button.show-sign").on('click', function (e) {
+            //         var data = $("#signature").sign("getData", "image"); // Base64 형태의 이미지 데이터 리턴
+            //         $("div.widget-sign-viewer").html($("<img/>", {
+            //             src: "data:" + data
+            //         }));
+            //         done();
+            //     }).click();
+            // });
+            // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
+        });
+
+        describe('widget-motioncaptcha',function(){
+            var captcha;
+
+            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+                require(['widget-motioncaptcha'], function(WidgetMotioncaptcha) {
+                    $("#motion-captcha button").off('click').on("click", function (e) {
+                        $("#mc-canvas").remove();
+                        $("<canvas/>", {
+                            "id": "mc-canvas",
+                            "class": "mc-canvas"
+                        }).appendTo($("#motion-captcha-example"));
+                        captcha = new WidgetMotioncaptcha({
+                            el: '#mc-canvas'
+                        });
+                        captcha.render({
+                            errorMsg: '다시 시도해주세요.',
+                            successMsg: '성공',
+                            onSuccess: function () {
+                                console.log("성공");
+                            }
+                        });
+                        expect(captcha).to.be.an.instanceof(Backbone.View);
+                        done();
+                    }).click();
+                });
+            });
+
+            it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.',function(){
+                captcha.$el.on('start.cs.motionCaptcha',function(e){
+                    console.log('start', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('start');
+                }).on('move.cs.motionCaptcha',function(e){
+                    console.log('move', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('move');
+                }).on('end.cs.motionCaptcha',function(e){
+                    console.log('end', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('end');
+                }).on('fail.cs.motionCaptcha',function(e){
+                    console.log('fail', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('fail');
+                }).on('success.cs.motionCaptcha',function(e){
+                    console.log('success', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('success');
+                });
             });
         });
 
