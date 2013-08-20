@@ -11,7 +11,7 @@ MIT License <http://www.opensource.org/licenses/mit-license.php>
         // AMD
         define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
             factory( $, root, doc );
-            return Backbone.view.extend( {
+            return Backbone.View.extend( {
             	render: function () {
             		this.$el.sign( this.options );
             		return this;
