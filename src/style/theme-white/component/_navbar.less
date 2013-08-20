@@ -77,7 +77,7 @@
   }
 }
 
-@media (max-width: @screen-phone-max) {
+@media (max-width: @screen-sm-max) {
   .navbar-icon {
     li {
       & > a {
@@ -140,7 +140,7 @@
   }
 
   a {
-    color: @navbar-link-color;
+    color: @navbar-default-link-color;
     text-decoration: none;
     > .glyphicon {
       display: block;
@@ -203,32 +203,32 @@
           padding: 3px 20px 3px 5px;
 
           &:hover, &:active {
-            color: @navbar-link-hover-color;
-            background: @navbar-link-hover-bg;
+            color: @navbar-default-link-hover-color;
+            background: @navbar-default-link-hover-bg;
           }
         }
       }
 
       > li > a {
-        color: @navbar-link-color;
+        color: @navbar-default-link-color;
         border-radius: @border-radius-base;
       }
       > li > a:hover,
       > li > a:focus {
-        color: @navbar-link-hover-color;
-        background-color: @navbar-link-hover-bg;
+        color: @navbar-default-link-hover-color;
+        background-color: @navbar-default-link-hover-bg;
       }
       > .active > a,
       > .active > a:hover,
       > .active > a:focus {
-        color: @navbar-link-active-color;
-        background-color: @navbar-link-active-bg;
+        color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-active-bg;
       }
       > .disabled > a,
       > .disabled > a:hover,
       > .disabled > a:focus {
-        color: @navbar-link-disabled-color;
-        background-color: @navbar-link-disabled-bg;
+        color: @navbar-default-link-disabled-color;
+        background-color: @navbar-default-link-disabled-bg;
       }
 
     }
