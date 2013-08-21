@@ -3,6 +3,7 @@ require.config({
         "backbone": "../../../grunt-dist/lib/backbone/backbone-min",
         "blackbird": "../../../grunt-dist/lib/blackbird/blackbird",
         "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap.min",
+        "datatable": "../../../grunt-dist/lib/DataTables/jquery.dataTables.min",
         "d3": "../../../grunt-dist/lib/d3/d3.v3.min",
         "device": "../../../grunt-dist/src/device/srt-0.9",
         "form-view": "../../../grunt-dist/src/mvc/view/form-view/form",
@@ -13,6 +14,7 @@ require.config({
         "iscroll": "../../../grunt-dist/lib/iscroll-5/iscroll",
         "jquery": "../../../grunt-dist/lib/jquery/jquery-2.0.2.min",
         "jquery.hammer": "../../../grunt-dist/lib/jquery.hammer/jquery.hammer",
+        "jquery.hotkeys": "../../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys",
         "jsonp": "../../../grunt-dist/src/util/jsonp/jsonp",
         "launcher": "../../../grunt-dist/src/launcher/launcher",
         "logging": "../../../grunt-dist/src/util/logging/logging",
@@ -68,6 +70,15 @@ require.config({
         "d3": {
             "exports": "d3"
         },
+        "device": {
+            "exports": "device"
+        },
+        "datatable": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "datatable"
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -106,6 +117,11 @@ require.config({
             "deps": [
                 "jquery",
                 "hammer"
+            ]
+        },
+        "jquery.hotkeys": {
+            "deps": [
+                "jquery"
             ]
         },
         "jsonp": {
@@ -223,6 +239,7 @@ require.config({
             "deps": [
                 "backbone",
                 "underscore",
+                "datatable",
                 "jquery"
             ],
             "exports": "widget-datatable"
