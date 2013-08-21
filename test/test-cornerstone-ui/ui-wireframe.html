@@ -128,23 +128,952 @@
         </ul>
     </div>
 </nav>
-
 <div class="container">
 
-<section id="baseCSS" class="col col-lg-12">
+    <section id="baseCSS">
 
-<div class="page-header row">
-    <h1 class="title">Base CSS</h1>
+        <div class="page-header">
+            <h1 class="title">Base CSS</h1>
+        </div>
+
+        <section>
+    <div class="page-header">
+        <h1 id="grid">Grid system</h1>
+    </div>
+    <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
+    <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.</p>
+    <div class="bs-docs-grid">
+        <div class="row show-grid">
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-md-8">.col-md-8</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-md-6">.col-md-6</div>
+            <div class="col-md-6">.col-md-6</div>
+        </div>
+    </div>
+
+    <h3 id="grid-example-mixed">Example: Mobile and desktop</h3>
+    <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
+    <div class="bs-docs-grid">
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-8">.col-xs-12 col-md-8</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-6">.col-xs-6</div>
+            <div class="col-xs-6">.col-xs-6</div>
+        </div>
+    </div>
+
+    <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, desktops</h3>
+    <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
+    <div class="bs-docs-grid">
+        <div class="row show-grid">
+            <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+            <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+            <!-- Optional: clear the XS cols if their content doesn't match in height -->
+            <div class="clearfix visible-xs"></div>
+            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        </div>
+    </div>
+
+    <h3 id="grid-offsetting">Offsetting columns</h3>
+    <p>Move columns to the right using <code>.col-md-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-md-offset-4</code> moves <code>.col-md-4</code> over four columns.</p>
+    <div class="bs-docs-grid">
+        <div class="row show-grid">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+        </div>
+    </div>
+
+    <h3 id="grid-nesting">Nesting columns</h3>
+    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-md-*</code> columns within an existing <code>.col-md-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+    <div class="row show-grid">
+        <div class="col-md-9">
+            Level 1: .col-md-9
+            <div class="row show-grid">
+                <div class="col-md-6">
+                    Level 2: .col-md-6
+                </div>
+                <div class="col-md-6">
+                    Level 2: .col-md-6
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 id="grid-column-ordering">Column ordering</h3>
+    <p>Easily change the order of our built-in grid columns with <code>.col-md-push-*</code> and <code>.col-md-pull-*</code> modifier classes.</p>
+    <div class="row show-grid">
+        <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+        <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+    </div>
+</section>
+        <section>
+    <div class="page-header">
+        <h1 id="type">Typography</h1>
+    </div>
+
+    <!-- Headings -->
+    <h2 id="type-headings">Headings</h2>
+    <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+
+    <div class="bs-example bs-example-type">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td><h1>h1. Bootstrap heading</h1></td>
+                <td>Semibold 36px</td>
+            </tr>
+            <tr>
+                <td><h2>h2. Bootstrap heading</h2></td>
+                <td>Semibold 30px</td>
+            </tr>
+            <tr>
+                <td><h3>h3. Bootstrap heading</h3></td>
+                <td>Semibold 24px</td>
+            </tr>
+            <tr>
+                <td><h4>h4. Bootstrap heading</h4></td>
+                <td>Semibold 18px</td>
+            </tr>
+            <tr>
+                <td><h5>h5. Bootstrap heading</h5></td>
+                <td>Semibold 14px</td>
+            </tr>
+            <tr>
+                <td><h6>h6. Bootstrap heading</h6></td>
+                <td>Semibold 12px</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+        <section>
+    <div class="page-header">
+        <h1 id="code">Code</h1>
+    </div>
+
+    <h2>Inline</h2>
+
+    <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+
+    For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+
+    <h2>Basic block</h2>
+
+    <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for
+        proper rendering.</p>
+
+    <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+</section>
+        <section>
+<div class="page-header">
+    <h1 id="tables">Tables</h1>
 </div>
 
-<!-- Buttons
-  ================================================== -->
-<section id="buttons" class="row">
-    <header class="page-header">
-        <h2 class="title">Buttons</h2>
-    </header>
-    <div class="col col-lg-12">
-        <h3 class="title">Buttons example</h3>
+<h2 id="tables-example">Basic example</h2>
+
+<p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to
+    any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other
+    plugins like calendars and date pickers, we've opted to isolate our custom table styles.</p>
+
+<div class="bs-example">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="tables-striped">Striped rows</h2>
+
+<p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+
+<div class="bs-callout bs-callout-danger">
+    <h4>Cross-browser compatibility</h4>
+
+    <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet
+        Explorer 8.</p>
+</div>
+<div class="bs-example">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="tables-bordered">Bordered table</h2>
+
+<p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p>
+
+<div class="bs-example">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td rowspan="2">1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@TwBootstrap</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="tables-hover-rows">Hover rows</h2>
+
+<p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+
+<div class="bs-example">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="tables-condensed">Condensed table</h2>
+
+<p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
+
+<div class="bs-example">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="tables-contextual-classes">Contextual classes</h2>
+
+<p>Use contextual classes to color table rows or individual cells.</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <colgroup>
+            <col class="col-lg-1">
+            <col class="col-lg-7">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>Class</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <code>.active</code>
+            </td>
+            <td>Applies the hover color to a particular row or cell</td>
+        </tr>
+        <tr>
+            <td>
+                <code>.success</code>
+            </td>
+            <td>Indicates a successful or positive action</td>
+        </tr>
+        <tr>
+            <td>
+                <code>.warning</code>
+            </td>
+            <td>Indicates a warning that might need attention</td>
+        </tr>
+        <tr>
+            <td>
+                <code>.danger</code>
+            </td>
+            <td>Indicates a dangerous or potentially negative action</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="bs-example">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Column heading</th>
+            <th>Column heading</th>
+            <th>Column heading</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="active">
+            <td>1</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr class="success">
+            <td>3</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr class="warning">
+            <td>5</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr class="danger">
+            <td>7</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="tables-responsive">Responsive tables</h2>
+
+<p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll
+    horizontally up to small devices (under 768px). When viewing on anything larger than 768px wide, you will not see
+    any difference in these tables.</p>
+
+<div class="bs-example">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>
+</section>
+        <section>
+<div class="page-header">
+    <h1 id="forms">Forms</h1>
+</div>
+
+<h2 id="forms-example">Basic example</h2>
+
+<p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>
+    &lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width:
+    100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
+
+<form class="bs-example" role="form">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Check me out
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<h2 id="forms-inline">Inline form</h2>
+
+<p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
+
+<div class="bs-callout bs-callout-danger">
+    <h4>Requires custom widths</h4>
+
+    <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set
+        a width on the form controls used within.</p>
+</div>
+<div class="bs-callout bs-callout-danger">
+    <h4>Always add labels</h4>
+
+    <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline
+        forms, you can hide the labels using the <code>.sr-only</code> class.</p>
+</div>
+<form class="bs-example form-inline" role="form">
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword2">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+
+<h2 id="forms-horizontal">Horizontal form</h2>
+
+<p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding
+    <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no
+    need for <code>.row</code>.</p>
+
+<form class="bs-example form-horizontal">
+    <div class="form-group">
+        <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+
+        <div class="col-lg-10">
+            <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+
+        <div class="col-lg-10">
+            <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-default">Sign in</button>
+        </div>
+    </div>
+</form>
+
+<h2 id="forms-controls">Supported controls</h2>
+
+<p>Examples of standard form controls supported in an example form layout.</p>
+
+<h3>Inputs</h3>
+
+<p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>,
+    <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>,
+    <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and
+    <code>color</code>.</p>
+
+<div class="bs-callout bs-callout-danger">
+    <h4>Type declaration required</h4>
+
+    <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
+</div>
+<form class="bs-example">
+    <input type="text" class="form-control" placeholder="Text input">
+</form>
+
+<h3>Textarea</h3>
+
+<p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+
+<form class="bs-example">
+    <textarea class="form-control" rows="3"></textarea>
+</form>
+
+<h3>Checkboxes and radios</h3>
+
+<p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from
+    many.</p>
+<h4>Default (stacked)</h4>
+
+<form class="bs-example">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="">
+            Option one is this and that&mdash;be sure to include why it's great
+        </label>
+    </div>
+    <br>
+
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+        </label>
+    </div>
+</form>
+
+<h4>Inline checkboxes</h4>
+
+<p>Use <code>.checkbox-inline</code> or <code>.radio-inline</code> class to a series of checkboxes or radios for
+    controls appear on the same line.</p>
+
+<form class="bs-example">
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+</form>
+
+<h3>Selects</h3>
+
+<p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
+
+<form class="bs-example">
+    <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+    <br>
+    <select multiple class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+</form>
+
+<h2 id="forms-controls-static">Static control</h2>
+
+<p>When you need to place plain text next to a form label within a horizontal form, use the
+    <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
+
+<form class="bs-example form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Email</label>
+
+        <div class="col-lg-10">
+            <p class="form-control-static">email@example.com</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+
+        <div class="col-lg-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+</form>
+
+<h2 id="forms-control-states">Form states</h2>
+
+<p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
+
+<h3 id="forms-input-focus">Input focus</h3>
+
+<p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its
+    place for <code>:focus</code>.</p>
+
+<form class="bs-example">
+    <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+</form>
+
+<h3 id="forms-disabled-inputs">Disabled inputs</h3>
+
+<p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+
+<form class="bs-example">
+    <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
+</form>
+
+<h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
+
+<p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the
+    <code>&lt;fieldset&gt;</code> at once.</p>
+
+<div class="bs-callout bs-callout-warning">
+    <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
+
+    <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their
+        functionality. Use custom JavaScript to disable links here.</p>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+    <h4>Cross-browser compatibility</h4>
+
+    <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 9 and below don't actually support the
+        <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the
+        fieldset in these browsers.</p>
+</div>
+
+<form class="bs-example">
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledTextInput">Disabled input</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+        </div>
+        <div class="form-group">
+            <label for="disabledSelect">Disabled select menu</label>
+            <select id="disabledSelect" class="form-control">
+                <option>Disabled select</option>
+            </select>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Can't check this
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>
+
+<h3 id="forms-validation">Validation states</h3>
+
+<p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>,
+    <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>,
+    and <code>.help-block</code> within that element will receive the validation styles.</p>
+
+<form class="bs-example">
+    <div class="form-group has-success">
+        <label class="control-label" for="inputSuccess">Input with success</label>
+        <input type="text" class="form-control" id="inputSuccess">
+    </div>
+    <div class="form-group has-warning">
+        <label class="control-label" for="inputWarning">Input with warning</label>
+        <input type="text" class="form-control" id="inputWarning">
+    </div>
+    <div class="form-group has-error">
+        <label class="control-label" for="inputError">Input with error</label>
+        <input type="text" class="form-control" id="inputError">
+    </div>
+</form>
+
+<h2 id="forms-control-sizes">Control sizing</h2>
+
+<p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like
+    <code>.col-lg-*</code>.</p>
+
+<h3>Height sizing</h3>
+
+<p>Create larger or smaller form controls that match button sizes.</p>
+
+<form class="bs-example bs-example-control-sizing">
+    <div class="controls docs-input-sizes">
+        <input class="form-control input-lg" type="text" placeholder=".input-lg">
+        <input type="text" class="form-control" placeholder="Default input">
+        <input class="form-control input-sm" type="text" placeholder=".input-sm">
+
+        <select class="form-control input-lg">
+            <option value="">.input-lg</option>
+        </select>
+        <select class="form-control">
+            <option value="">Default select</option>
+        </select>
+        <select class="form-control input-sm">
+            <option value="">.input-sm</option>
+        </select>
+    </div>
+</form>
+
+<h3>Column sizing</h3>
+
+<p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
+
+<form class="bs-example" style="padding-bottom: 15px;">
+    <div class="row">
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder=".col-lg-2">
+        </div>
+        <div class="col-lg-3">
+            <input type="text" class="form-control" placeholder=".col-lg-3">
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" placeholder=".col-lg-4">
+        </div>
+    </div>
+</form>
+
+<h2 id="forms-help-text">Help text</h2>
+
+<p>Block level help text for form controls.</p>
+
+<form class="bs-example">
+    <input type="text" class="form-control">
+    <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+</form>
+
+</section>
+        <section>
+    <div class="page-header">
+        <h1 id="buttons">Buttons</h1>
+    </div>
+
+    <h2 id="buttons-options">Options</h2>
+
+    <p>Use any of the available button classes to quickly create a styled button.</p>
+
+    <div class="bs-example">
         <button type="button" class="btn btn-default">Default</button>
         <button type="button" class="btn btn-primary">Primary</button>
         <button type="button" class="btn btn-success">Success</button>
@@ -154,382 +1083,128 @@
         <button type="button" class="btn btn-link">Link</button>
     </div>
 
-    <div class="col col-lg-12">
-        <h3 class="title">Button sizes</h3>
-        <button type="button" class="btn btn-primary btn-lg">Large button</button>
-        <button type="button" class="btn btn-default btn-lg">Large button</button>
+    <h2 id="buttons-sizes">Sizes</h2>
+
+    <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for
+        additional sizes.</p>
+
+    <div class="bs-example">
+        <p>
+            <button type="button" class="btn btn-primary btn-lg">Large button</button>
+            <button type="button" class="btn btn-default btn-lg">Large button</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary">Default button</button>
+            <button type="button" class="btn btn-default">Default button</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary btn-sm">Small button</button>
+            <button type="button" class="btn btn-default btn-sm">Small button</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+            <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+        </p>
     </div>
 
+    <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding
+        <code>.btn-block</code>.</p>
 
-    <div class="col col-lg-12">
-        <h3 class="title">Disabled state</h3>
-
-        <div class="col col-6">
-            <h4>Button element</h4>
-            <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+    <div class="bs-example">
+        <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+            <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+            <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
         </div>
-        <div class="col col-6">
-            <h4>Anchor element</h4>
-            <a href="#" class="btn btn-primary btn-lg disabled">Link</a>
-        </div>
     </div>
-</section>
 
-<!-- Table
-  ================================================== -->
-<section id="tables" class="row">
-    <header class="page-header">
-        <h2 class="title">Tables</h2>
-        <small>
-            <a href="http://cornerstone.sktelecom.com/cornertest/test-ui/components5.html" target="_blank">
-                <span class="label label-info">이전 버전과 비교하기<span class="glyphicon glyphicon-share-alt"></span></span>
-            </a>
-        </small>
-    </header>
-    <div class="col col-lg-12">
-        <h3 class="title">Basic</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
+    <h2 id="buttons-disabled">Disabled state</h2>
+
+    <p>Make buttons look unclickable by fading them back 50%.</p>
+
+    <h3>Button element</h3>
+
+    <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+
+    <p class="bs-example">
+        <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
+        <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+    </p>
+
+    <div class="bs-callout bs-callout-danger">
+        <h4>Cross-browser compatibility</h4>
+
+        <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and
+            below will render text gray with a nasty text-shadow that we cannot fix.</p>
     </div>
-    <div class="col col-lg-12">
-        <h3 class="title">Striped</h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
+
+    <h3>Anchor element</h3>
+
+    <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+
+    <p class="bs-example">
+        <a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
+        <a href="#" class="btn btn-default btn-lg disabled">Link</a>
+    </p>
+
+    <p>
+        We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no
+        prefix is required.
+    </p>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>Link functionality not impacted</h4>
+
+        <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom
+            JavaScript to disable links here.</p>
     </div>
-    <div class="col col-lg-12">
-        <h3 class="title">Bordered</h3>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td rowspan="2">1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr class="warning">
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@TwBootstrap</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col col-lg-12">
-        <h3 class="title">Hover</h3>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="success">
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col col-lg-12">
-        <h3 class="title">Condensed</h3>
-        <table class="table table-condensed">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr class="danger">
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
+
+
+    <h2 id="buttons-tags">Button tags</h2>
+
+    <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code>
+        element.</p>
+
+    <form class="bs-example">
+        <a class="btn btn-default" href="#">Link</a>
+        <button class="btn btn-default" type="submit">Button</button>
+        <input class="btn btn-default" type="button" value="Input">
+        <input class="btn btn-default" type="submit" value="Submit">
+    </form>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>Cross-browser rendering</h4>
+
+        <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever
+            possible</strong> to ensure matching cross-browser rendering.</p>
+
+        <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a>
+            that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons,
+            causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
 </section>
-
-<!-- Grid system
-  ================================================== -->
-<section id="grid-system" class="row">
-    <header class="page-header">
-        <h2 class="title">Grid system</h2>
-    </header>
-    <div class="col col-lg-12">
-        <h3 class="title">Stacked-to-horizontal</h3>
-
-        <div class="row show-grid">
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-            <div class="col-md-1">1</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-md-8">8</div>
-            <div class="col-md-4">4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-md-4">4</div>
-            <div class="col-md-4">4</div>
-            <div class="col-md-4">4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-md-6">6</div>
-            <div class="col-md-6">6</div>
-        </div>
+        <section>
+    <div class="page-header">
+        <h1 id="images">Images</h1>
     </div>
 
-    <div class="col col-lg-12">
-        <h3 class="title">Combining mobile with desktop</h3>
+    <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
 
-        <div class="row show-grid">
-            <div class="col-xs-12 col-md-8">8</div>
-            <div class="col-xs-6 col-md-4">4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-xs-6 col-md-4">4</div>
-            <div class="col-xs-6 col-md-4">4</div>
-            <div class="col-xs-6 col-md-4">4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-xs-6 col-md-6">6</div>
-            <div class="col-xs-6 col-md-6">6</div>
-        </div>
+    <div class="bs-callout bs-callout-danger">
+        <h4>Cross-browser compatibility</h4>
+
+        <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
+    </div>
+    <div class="bs-example bs-example-images">
+        <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-rounded"
+             alt="A generic square placeholder image with rounded corners">
+        <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-circle"
+             alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
+        <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-thumbnail"
+             alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
     </div>
 
-    <div class="col col-lg-12">
-        <h3 class="title">Mobile, tablet, and desktop</h3>
-
-        <div class="row show-grid">
-            <div class="col-xs-12 col-sm-8 col-md-8">.col-xs-12 .col-sm-8 .col-md-8</div>
-            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-            <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-        </div>
-        <div class="row show-grid">
-            <div class="col-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
-            <div class="col-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
-        </div>
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title">Offsetting columns</h3>
-
-        <div class="row show-grid">
-            <div class="col-md-4">4</div>
-            <div class="col-md-4 col-md-offset-4">4 offset 4</div>
-        </div>
-        <!-- /row -->
-        <div class="row show-grid">
-            <div class="col-md-3 col-md-offset-3">3 offset 3</div>
-            <div class="col-md-3 col-md-offset-3">3 offset 3</div>
-        </div>
-        <!-- /row -->
-        <div class="row show-grid">
-            <div class="col-md-6 col-md-offset-3">6 offset 3</div>
-        </div>
-        <!-- /row -->
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title">Nesting columns</h3>
-
-        <div class="row show-grid">
-            <div class="col-md-9">
-                Level 1: 9 columns
-                <div class="row show-grid">
-                    <div class="col-md-6">
-                        Level 2: 6 columns
-                    </div>
-                    <div class="col-md-6">
-                        Level 2: 6 columns
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col col-lg-12">
-        <h3 class="title">Column ordering</h3>
-
-        <div class="row show-grid">
-            <div class="col-md-9 col-md-push-3">9</div>
-            <div class="col-md-3 col-md-pull-9">3</div>
-        </div>
-    </div>
 </section>
-
-<!-- Typography
-  ================================================== -->
-<section id="base-typography" class="row">
-    <header class="page-header">
-        <h2 class="title">Typography</h2>
-    </header>
-    <div class="col col-lg-12">
-        <h1>Hello, world!</h1>
-
-        <h2>Hello, world!</h2>
-
-        <h3>Hello, world!</h3>
-
-        <h4>Hello, world!</h4>
-
-        <h5>Hello, world!</h5>
-
-        <h6>Hello, world!</h6>
-    </div>
-</section>
-
-<!-- Code
-  ================================================== -->
-<section id="code" class="row">
-    <header class="page-header">
-        <h2 class="title">Code</h2>
-    </header>
-    <div class="col col-lg-12">
-        <div class="bs-example">
-            For example, <code>&lt;section&gt;</code> should be wrapped as inline.
-        </div>
-    </div>
-</section>
-
-<!-- Images
-  ================================================== -->
-<section id="images" class="row">
-    <header class="page-header">
-        <h2 class="title">Images</h2>
-    </header>
-    <div class="col col-lg-4">
-        <img data-src="holder.js/140x140" class="img-rounded" alt="140x140"
-             src="images/image_140x140.png">
-    </div>
-    <div class="col col-lg-4">
-        <img data-src="holder.js/140x140" class="img-circle" alt="140x140"
-             src="images/image_140x140.png">
-    </div>
-    <div class="col col-lg-4">
-        <img data-src="holder.js/140x140" class="img-thumbnail" alt="140x140"
-             src="images/image_140x140.png">
-    </div>
-</section>
-</section>
+    </section>
 
 <section id="component" class="col col-lg-12">
 
@@ -3484,6 +4159,7 @@
 <script type="text/javascript" src="../../grunt-dist/lib/spin/spin.js"></script>
 <script type="text/javascript" src="../../src/widget/spinner/widget-spinner.js"></script>
 <script type="text/javascript" src="../../grunt-dist/lib/typeahead/typeahead.js"></script>
+<script type="text/javascript" src="../../lib/bootstrap-select/bootstrap-select.js"></script>
 <!-- Widget Featured -->
 <script type="text/javascript" src="../../grunt-dist/lib/d3/d3.v3.min.js"></script>
 <script type="text/javascript" src="../../grunt-dist/lib/nvd3/nv.d3.js"></script>
@@ -3498,5 +4174,10 @@
 <script type="text/javascript" src="../../src/widget/scrollview/widget-scrollview.js"></script>
 <script type="text/javascript" src="../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys.js"></script>
 <script type="text/javascript" src="../../src/widget/editor/widget-editor.js"></script>
-<script type="text/javascript" src="js/main.js"></script></body>
+<script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript">
+    $('.selectpicker').selectpicker();
+</script>
+</body>
 </html>
