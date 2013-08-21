@@ -8,12 +8,12 @@
  *  License :
  */
 
-(function (root, doc, wysihtml5, factory) {
+(function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD Hybrid 포맷
         define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
-            factory($, root, doc, wysihtml5);
-            return Backbone.view.extend({
+            factory($, root, doc);
+            return Backbone.View.extend({
                 render: function () {
                     this.$el.featuredEditor(this.options);
                     return this;
@@ -22,9 +22,9 @@
         });
     } else {
         // Browser globals
-        factory(root.jQuery, root, doc, wysihtml5);
+        factory(root.jQuery, root, doc);
     }
-}(window, document, window.wysihtml5, function ($, window, document, wysi) {
+}(window, document, function ($, window, document) {
 
     "use strict";
 
