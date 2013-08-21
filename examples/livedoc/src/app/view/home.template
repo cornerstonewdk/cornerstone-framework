@@ -1,6 +1,6 @@
 <div class="row">
 	{{#each this}}
-		<div class="col-4 home-col">
+		<div class="col-lg-4 col-md-4 col-sm-4 home-col">
 			<div class="well">
 				<div class="media">
 					<a class="pull-left" href="#{{id}}">

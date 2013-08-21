@@ -8,14 +8,6 @@ define( [ 'backbone', 'template!view/home' ], function( Backbone, template ) {
 		render: function() {
 			this.$el.html( template( this.collection.toJSON() ) );
 			return this;
-		},
-
-		events: {
-			'click button.next': 'nextPage'
-		},
-
-		nextPage: function() {
-			location.href = '#page2';
 		}
 	} );
 } );

@@ -1,5 +1,17 @@
-<div class="list-group">
+<div class="row">
 	{{#each this}}
-	<a href="#{{id}}" class="list-group-item">{{id}}</a>
+		<div class="col-lg-4 col-md-4 col-sm-4 home-col">
+			<div class="well">
+				<div class="media">
+					<a class="pull-left" href="#{{id}}">
+						<img class="media-object" src="images/{{thumbnail}}"/>
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">{{title}}</h4>
+						{{outline}}
+					</div>
+				</div>
+			</div>
+		</div>
 	{{/each}}
 </div>

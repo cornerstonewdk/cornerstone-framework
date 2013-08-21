@@ -149,3 +149,27 @@
   background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
   background-repeat: repeat-x;
 }
+
+//
+// Cornerstone Util
+// --------------------------------------------------
+
+// 변수값이 있는 경우만 적용
+.cs-mixin(@mixin-name, @value) when not (@value = "") {
+  .result(@mixin-name) when (@mixin-name = box-shadow) { .box-shadow(@value); }
+  .result(@mixin-name) when (@mixin-name = background-image) { .background-image(@value); }
+
+  // 적용
+  .result(@mixin-name);
+}
+.cs-property(@property-name, @value) when not (@value = "") {
+  .result(@property-name) when (@property-name = border) { border: @value; }
+  .result(@property-name) when (@property-name = border-radius) { border-radius: @value; }
+  .result(@property-name) when (@property-name = background) { background: @value; }
+  .result(@property-name) when (@property-name = background-color) { background-color: @value; }
+  .result(@property-name) when (@property-name = background-size) { background-size: @value; }
+  .result(@property-name) when (@property-name = color) { color: @value; }
+
+  // 적용
+  .result(@property-name);
+}

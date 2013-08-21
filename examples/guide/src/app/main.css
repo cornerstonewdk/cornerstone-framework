@@ -1,3 +1,29 @@
 body {
 	padding-top: 70px;
 }
+
+.home-col, .tags-col {
+	padding-right: 5px;
+}
+
+.home-col .well {
+	height: 174px;
+	overflow: hidden;
+}
+
+.media img {
+	width: 64px;
+	height: 64px;
+}
+
+a.thirdDepth {
+	padding-left: 30px;
+}
+
+a.fourthDepth {
+	padding-left: 45px;
+}
+
+div.doc-content {
+	margin-bottom: 50px;
+}

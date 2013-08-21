@@ -1,6 +1,6 @@
 <div class="row">
 	{{#each this}}
-		<div class="col-4 tags-col">
+		<div class="col-lg-4 col-md-4 col-sm-4 tags-col">
 			<div class="panel panel-info">
 				<div class="panel-heading">{{tag}}</div>
 				<div class="list-group">
