@@ -8,17 +8,28 @@
 	</head>
 	<body>
 		<div class="navbar navbar-inverse navbar-fixed-top">
-			<a class="navbar-brand" href="#">Home</a>
-			<ul class="nav navbar-nav">
-				<li id="nav-index"><a href="#index">목차</a></li>
-				<li id="nav-tags"><a href="#tags">태그별 모음</a></li>
-			</ul>
-			<p class="navbar-text pull-right">Powered by <a class="navbar-link" href="http://cornerstone.sktelecom.com">Cornerstone</a></p>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main">
+					<span class="sr-only">메뉴 보기</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Home</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-main">
+				<ul class="nav navbar-nav">
+					<li id="nav-index"><a href="#index">목차</a></li>
+					<li id="nav-tags"><a href="#tags">태그별 모음</a></li>
+				</ul>
+				<p class="navbar-text pull-right">Powered by <a class="navbar-link" href="http://cornerstone.sktelecom.com">Cornerstone</a></p>
+			</div>
 		</div>
 		<div class="container">
 			<section id="page-home"></section>
 			<section id="page-index"></section>
 			<section id="page-tags"></section>
+			<section id="page-detail"></section>
 		</div>
 
 		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>

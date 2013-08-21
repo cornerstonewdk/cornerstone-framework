@@ -1,7 +1,14 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">Page 3</div>
-	<p>세번째 페이지 입니다.</p>
-	<div class="btn-group">
-		<button type="button" class="btn btn-success prev">이전</button>
-	</div>
+<div class="row">
+	{{#each this}}
+		<div class="col-lg-4 col-md-4 col-sm-4 tags-col">
+			<div class="panel panel-info">
+				<div class="panel-heading">{{tag}}</div>
+				<div class="list-group">
+					{{#each docs}}
+						<a class="list-group-item" href="#{{id}}">{{title}}</a>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	{{/each}}
 </div>

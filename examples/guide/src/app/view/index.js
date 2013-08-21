@@ -6,21 +6,8 @@ define( [ 'backbone', 'template!view/index' ], function( Backbone, template ) {
 		el: 'section#page-index',
 
 		render: function() {
-			this.$el.html( template() );
+			this.$el.html( template( this.collection.toJSON() ) );
 			return this;
-		},
-
-		events: {
-			'click button.prev': 'prevPage',
-			'click button.next': 'nextPage'
-		},
-
-		prevPage: function() {
-			location.href = '#page1';
-		},
-
-		nextPage: function() {
-			location.href = '#page3';
 		}
 	} );
 } );

@@ -45,11 +45,25 @@ module.exports = function( grunt ) {
 		},
 
 		copy: {
-			dist: {
+			src: {
 				expand: true,
 				cwd: '<%= path.src %>',
 				src: [ 'cornerstone/**/*', '**/images/**/*', '**/fonts/**/*', '**/*.html', '**/*.template' ],
 				dest: '<%= path.dist %>'
+			},
+			docImage: {
+				expand: true,
+				flatten: true,
+				cwd: '<%= path.doc %>',
+				src: [ '**/images/**/*' ],
+				dest: '<%= path.dist %>/images'
+			},
+			docSample: {
+				expand: true,
+				flatten: true,
+				cwd: '<%= path.doc %>',
+				src: [ '**/sample/**/*' ],
+				dest: '<%= path.dist %>/sample'
 			}
 		},
 
