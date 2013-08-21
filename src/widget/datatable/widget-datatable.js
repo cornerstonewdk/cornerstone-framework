@@ -10,9 +10,10 @@
 
 (function (root, doc, factory) {
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
-    if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
+    // if (typeof Cornerstone === "object" && typeof define === "function" && define.amd) {
+    if ( typeof define === "function" && define.amd ) {
         // AMD Hybrid 포맷
-        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
+        define([ "backbone", "underscore", "jquery", "datatable" ], function (Backbone, _, $) {
             factory($, root, doc);
             return Backbone.View.extend({
                 initialize:function () {
@@ -65,7 +66,7 @@
             var rowData = $( this ).closest( 'table' ).data( 'featuredDataTable' ).fnGetData( this );
             $( this ).trigger( 'itemClick.cs.datatables', { 'data': rowData } );
         } );
-        return dt;
+        return dt.data( 'featuredDataTable');
     };
 
     /* 기본 클래스명 정의 */
