@@ -572,6 +572,60 @@ describe('Cornerstone event extend test', function() {
                 });
             });
         });
+        
+        describe('widget-datatable',function(){
+            var table;
+            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+                require(['widget-datatable'], function(WidgetDatatable) {
+                    var Model = Backbone.Model.extend({
+                        url:"data/sample-datatables.json"
+                    });
+                    table = new WidgetDatatable({
+                        el: '#test-datatables',
+                        model: new Model
+                    });
+                    table.render();
+                    expect(table).to.be.an.instanceof(Backbone.View);
+                    done();
+                });
+            });
+
+            it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
+                table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
+                    console.log('itemClick.cs.datatables', result);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('itemClick');
+                    expect(e.namespace).to.be.equal('cs.datatables');
+                    expect(result).to.be.an('object')
+                    expect(result.data).to.be.instanceof(Array);
+                    done();
+                });
+                table.$el.find('tr:eq(2)').click();
+            });
+        });
+
+        describe('widget-editor',function(){
+            var editor;
+            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+                require(['widget-editor'], function(WidgetEditor) {
+                    editor = new WidgetEditor({
+                        el: '#textarea'
+                    });
+                    editor.render();
+                    expect(editor).to.be.an.instanceof(Backbone.View);
+                    done();
+                });
+            });
+
+            it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function(done) {
+                editor.$el.on('blur', function(e) {
+                    console.log('editor blur', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('blur');
+                    done();
+                }).focus().blur();
+            });
+        });
 
     });
 
