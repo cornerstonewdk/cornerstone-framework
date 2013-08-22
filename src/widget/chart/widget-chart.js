@@ -80,7 +80,7 @@
                     .transition()
                     .duration(500)
                     .each('end', function () {
-                        $(target).trigger('shown');
+                        $(self.el).trigger('shown');
                     })
                     .call(chart);
 
@@ -395,10 +395,10 @@
     });
 
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
-    if (typeof root.define === 'function' && root.define.amd && typeof root.Cornerstone === 'object') {
+    if (typeof root.define === 'function' && root.define.amd) {
         var define = root.define;
         // AMD. Register as an anonymous module.
-        define([ 'jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
+        define([ 'jquery', 'underscore', 'backbone', 'd3', 'nv'], function ($, _, Backbone) {
             return Backbone.View.extend({
                 model: new Backbone.Model(),
                 initialize: function () {
