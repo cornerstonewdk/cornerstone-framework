@@ -3751,136 +3751,74 @@
     </div>
 </section>
 
-        <section id="mobile-navbar" class="row">
+        <section id="mobile-navbar">
     <header class="page-header">
-        <h1>
-             Navbar For Mobile
-        </h1>
+        <h1>Mobile Navbar</h1>
     </header>
-    <div class="col col-lg-6">
-        <h3 class="title">
-            Navbar For mobile(support: webkit)
-        </h3>
-        <ul class="navbar navbar-mobile">
-            <li>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>
+                Default
+            </h3>
+            <ul class="navbar navbar-mobile">
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <span class="text">about</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="text">favorites</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-download-alt"></span>
+                        <span class="text">downloads</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col col-lg-6">
+            <h3>
+                Another markup
+            </h3>
+
+            <div class="navbar navbar-mobile navbar-mobile-primary">
                 <a href="#">
                     <span class="glyphicon glyphicon-info-sign"></span>
                     <span class="text">about</span>
                 </a>
-            </li>
-            <li>
                 <a href="#">
                     <span class="glyphicon glyphicon-star"></span>
                     <span class="text">favorites</span>
                 </a>
-            </li>
-            <li class="active">
-                <a href="#">
+                <a href="#" class="active">
                     <span class="glyphicon glyphicon-download-alt"></span>
                     <span class="text">downloads</span>
                 </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col col-lg-6">
-        <h3 class="title">
-            Navbar For mobile(Another markup)
-        </h3>
-
-        <div class="navbar navbar-mobile navbar-mobile-primary">
-            <a href="#">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                <span class="text">about</span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="text">favorites</span>
-            </a>
-            <a href="#" class="active">
-                <span class="glyphicon glyphicon-download-alt"></span>
-                <span class="text">downloads</span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-cog"></span>
-                <span class="text">settings</span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-user"></span>
-                <span class="text">user</span>
-            </a>
-        </div>
-    </div>
-
-</section>        <section id="cornerstone-list" class="row">
-<header class="page-header">
-    <h1> Cornerstone List</h1>
-</header>
-<div class="col col-lg-12">
-    <h3 class="title">Default Lists</h3>
-
-    <div class="panel">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Panel heading</div>
-        <div class="panel-body">
-            <ul class="list-group list-group-flush list-group-cornerstone">
-                <li class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">17</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Cras justo odio
-                </li>
-                <li class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">2</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Dapibus ac facilisis in
-                </li>
-                <li class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">1</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Morbi leo risus
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="panel">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Panel heading</div>
-        <div class="panel-body">
-            <div class="list-group list-group-flush list-group-cornerstone">
-                <a class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">17</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Cras justo odio
+                <a href="#">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="text">settings</span>
                 </a>
-                <a class="list-group-item active">
-                    <div class="pull-right">
-                        <span class="badge">2</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Dapibus ac facilisis in
-                </a>
-                <a class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">1</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Morbi leo risus
+                <a href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="text">user</span>
                 </a>
             </div>
         </div>
     </div>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title">Panel Group</h3>
 
-    <div class="panel-group">
+</section>        <section id="cornerstone-list">
+<header class="page-header">
+    <h1> Cornerstone List</h1>
+</header>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Default Lists</h3>
+
         <div class="panel">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
@@ -3910,11 +3848,42 @@
                 </ul>
             </div>
         </div>
+        <div class="panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <div class="list-group list-group-flush list-group-cornerstone">
+                    <a class="list-group-item">
+                        <div class="pull-right">
+                            <span class="badge">17</span>
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        Cras justo odio
+                    </a>
+                    <a class="list-group-item active">
+                        <div class="pull-right">
+                            <span class="badge">2</span>
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        Dapibus ac facilisis in
+                    </a>
+                    <a class="list-group-item">
+                        <div class="pull-right">
+                            <span class="badge">1</span>
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        Morbi leo risus
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr>
-    <div class="panel-group">
-        <div class="panels">
+</div>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Panel Group</h3>
 
+        <div class="panel-group">
             <div class="panel">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Panel heading</div>
@@ -3944,190 +3913,233 @@
                     </ul>
                 </div>
             </div>
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading panel-sub-heading">Panel heading</div>
-                <div class="panel-body">
-                    <div class="list-group list-group-flush list-group-cornerstone">
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">17</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Cras justo odio
-                        </a>
-                        <a class="list-group-item active">
-                            <div class="pull-right">
-                                <span class="badge">2</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Dapibus ac facilisis in
-                        </a>
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">1</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Morbi leo risus
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title">Nav list</h3>
+        <hr>
+        <div class="panel-group">
+            <div class="panels">
 
-    <div class="panel-group panel-nav-group">
-        <div class="panels">
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading">Panel heading</div>
-                <div class="panel-body">
-                    <ul class="list-group list-group-flush list-group-cornerstone">
-                        <li class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">17</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item active">
-                            <div class="pull-right">
-                                <span class="badge">2</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">1</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Morbi leo risus
-                        </li>
-                    </ul>
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush list-group-cornerstone">
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </li>
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading panel-sub-heading">Panel heading</div>
-                <div class="panel-body">
-                    <div class="list-group list-group-flush list-group-cornerstone">
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">17</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Cras justo odio
-                        </a>
-                        <a class="list-group-item active">
-                            <div class="pull-right">
-                                <span class="badge">2</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Dapibus ac facilisis in
-                        </a>
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">1</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Morbi leo risus
-                        </a>
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading panel-sub-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <div class="list-group list-group-flush list-group-cornerstone">
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </a>
+                            <a class="list-group-item active">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </a>
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</section>        <section id="vertically-grouped" class="row">
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Nav list</h3>
+
+        <div class="panel-group panel-nav-group">
+            <div class="panels">
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush list-group-cornerstone">
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </li>
+                            <li class="list-group-item active">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading panel-sub-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <div class="list-group list-group-flush list-group-cornerstone">
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </a>
+                            <a class="list-group-item active">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </a>
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>        <section id="vertically-grouped">
     <header class="page-header">
         <h1> Vertically Grouped</h1>
     </header>
-    <div class="col col-lg12">
-        <h3 class="title">
-            Vertically grouped buttons
-        </h3>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped buttons
+            </h3>
 
-        <div class="btn-group-vertical">
-            <button class="btn btn-default">cat</button>
-            <button class="btn btn-default">dog</button>
-            <button class="btn btn-default">monkey</button>
-            <button class="btn btn-default">rabbit</button>
+            <div class="btn-group-vertical">
+                <button class="btn btn-default">cat</button>
+                <button class="btn btn-default">dog</button>
+                <button class="btn btn-default">monkey</button>
+                <button class="btn btn-default">rabbit</button>
+            </div>
         </div>
     </div>
-    <div class="col col-lg12">
-        <h3 class="title">
-            Vertically grouped radio
-        </h3>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped radio
+            </h3>
 
-        <ul class="list-group list-group-radio">
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option1">
-                    <span class="control"></span>
-                    cat
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option2" checked>
-                    <span class="control"></span>
-                    dog
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option3">
-                    <span class="control"></span>
-                    monkey
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option4" disabled>
-                    <span class="control"></span>
-                    rabbit
-                </label>
-            </li>
-        </ul>
+            <ul class="list-group list-group-radio">
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option1">
+                        <span class="control"></span>
+                        cat
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option2" checked>
+                        <span class="control"></span>
+                        dog
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option3">
+                        <span class="control"></span>
+                        monkey
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option4" disabled>
+                        <span class="control"></span>
+                        rabbit
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col col-lg12">
-        <h3 class="title">
-            Vertically grouped checkbox
-        </h3>
-        <ul class="list-group list-group-checkbox">
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option1">
-                    <span class="control"></span>
-                    dog
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option2">
-                    <span class="control placeholder"></span>
-                    cat
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option3" checked>
-                    <span class="control"></span>
-                    monkey
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option3" disabled>
-                    <span class="control"></span>
-                    rabbit
-                </label>
-            </li>
-        </ul>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped checkbox
+            </h3>
+            <ul class="list-group list-group-checkbox">
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option1">
+                        <span class="control"></span>
+                        dog
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option2">
+                        <span class="control placeholder"></span>
+                        cat
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option3" checked>
+                        <span class="control"></span>
+                        monkey
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option3" disabled>
+                        <span class="control"></span>
+                        rabbit
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>
 
