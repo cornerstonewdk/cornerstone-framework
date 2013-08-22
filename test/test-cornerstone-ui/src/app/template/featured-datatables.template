@@ -1,0 +1,23 @@
+<!-- Datatables
+  ================================================== -->
+<section id="featured-datatables">
+    <header class="page-header">
+        <h2>Datatables</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-12">
+            <table class="table table-striped" data-featured="datatable" data-datatable-bind="data/sample-datatables.json">
+                <thead>
+                <tr>
+                    <th>Rendering engine</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

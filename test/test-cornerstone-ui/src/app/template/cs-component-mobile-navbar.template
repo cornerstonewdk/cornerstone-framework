@@ -1,0 +1,61 @@
+<section id="mobile-navbar">
+    <header class="page-header">
+        <h1>Mobile Navbar</h1>
+    </header>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>
+                Default
+            </h3>
+            <ul class="navbar navbar-mobile">
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <span class="text">about</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="text">favorites</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-download-alt"></span>
+                        <span class="text">downloads</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col col-lg-6">
+            <h3>
+                Another markup
+            </h3>
+
+            <div class="navbar navbar-mobile navbar-mobile-primary">
+                <a href="#">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    <span class="text">about</span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="text">favorites</span>
+                </a>
+                <a href="#" class="active">
+                    <span class="glyphicon glyphicon-download-alt"></span>
+                    <span class="text">downloads</span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="text">settings</span>
+                </a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="text">user</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>

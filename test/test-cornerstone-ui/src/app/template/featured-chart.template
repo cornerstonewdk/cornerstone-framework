@@ -1,0 +1,28 @@
+<!-- Chart
+  ================================================== -->
+<section id="featured-chart">
+    <header class="page-header">
+        <h2>Chart</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>바차트</h3>
+
+            <div data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json"
+                 style="height: 500px"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>라인차트</h3>
+
+            <div data-featured="chart" data-chart-type="line" data-chart-bind="data/sample-line.json"
+                 style="height: 300px"></div>
+        </div>
+        <div class="col col-lg-6">
+            <h3>파이차트</h3>
+
+            <div data-featured="chart" data-chart-type="pie" data-chart-bind="data/sample-pie.json"></div>
+        </div>
+    </div>
+</section>

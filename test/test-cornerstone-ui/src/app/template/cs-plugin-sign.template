@@ -1,0 +1,19 @@
+<!-- Sign
+  ================================================== -->
+<section id="sign">
+    <header class="page-header">
+        <h2>Sign</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-12">
+            <div class="widget-sign">
+                <div id="signature" class="sign"></div>
+                <div id="tools">
+                    <button class="btn btn-default show-sign">이미지로 보기</button>
+                    <button class="btn btn-danger reset-sign">리셋하기</button>
+                </div>
+                <div class="widget-sign-viewer" title="이미지를 보여줄 영역"></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+
+<section>
+    <div class="page-header">
+        <h1 id="code">Code</h1>
+    </div>
+
+    <h2>Inline</h2>
+
+    <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+
+    For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+
+    <h2>Basic block</h2>
+
+    <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for
+        proper rendering.</p>
+
+    <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+</section>
