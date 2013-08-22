@@ -22,6 +22,10 @@ define([
 				);
 				require(['../app/lib/holder']);
 				require(['widget-rangeinput']);
+				require(['widget-sign'], function() {
+					$("#signature").length && $("#signature").sign();
+				});
+				require(['widget-spinner']);
 			});
 			return this;
 		},

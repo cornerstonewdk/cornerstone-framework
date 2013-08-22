@@ -36,6 +36,10 @@ var jam = {
             "main": "multipage.js"
         },
         {
+            "name": "spin",
+            "location": "../cornerstone/spin"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -61,9 +65,24 @@ var jam = {
             "main": "validation.js"
         },
         {
+            "name": "widget-datepicker",
+            "location": "../cornerstone/widget-datepicker",
+            "main": "widget-datepicker.js"
+        },
+        {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-sign",
+            "location": "../cornerstone/widget-sign",
+            "main": "widget-sign.js"
+        },
+        {
+            "name": "widget-spinner",
+            "location": "../cornerstone/widget-spinner",
+            "main": "widget-spinner.js"
         },
         {
             "name": "widget-touch",
@@ -139,6 +158,15 @@ var jam = {
             ],
             "exports": "validation-view"
         },
+        "widget-datepicker": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-datepicker"
+        },
         "widget-rangeinput": {
             "deps": [
                 "backbone",
@@ -147,6 +175,23 @@ var jam = {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-sign": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-sign"
+        },
+        "widget-spinner": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "spin"
+            ],
+            "exports": "widget-spinner"
         },
         "widget-touch": {
             "deps": [
@@ -196,6 +241,10 @@ if (typeof require !== "undefined" && require.config) {
             "main": "multipage.js"
         },
         {
+            "name": "spin",
+            "location": "../cornerstone/spin"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -221,9 +270,24 @@ if (typeof require !== "undefined" && require.config) {
             "main": "validation.js"
         },
         {
+            "name": "widget-datepicker",
+            "location": "../cornerstone/widget-datepicker",
+            "main": "widget-datepicker.js"
+        },
+        {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-sign",
+            "location": "../cornerstone/widget-sign",
+            "main": "widget-sign.js"
+        },
+        {
+            "name": "widget-spinner",
+            "location": "../cornerstone/widget-spinner",
+            "main": "widget-spinner.js"
         },
         {
             "name": "widget-touch",
@@ -298,6 +362,15 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "validation-view"
         },
+        "widget-datepicker": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-datepicker"
+        },
         "widget-rangeinput": {
             "deps": [
                 "backbone",
@@ -306,6 +379,23 @@ if (typeof require !== "undefined" && require.config) {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-sign": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-sign"
+        },
+        "widget-spinner": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "spin"
+            ],
+            "exports": "widget-spinner"
         },
         "widget-touch": {
             "deps": [
@@ -355,6 +445,10 @@ else {
             "main": "multipage.js"
         },
         {
+            "name": "spin",
+            "location": "../cornerstone/spin"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -380,9 +474,24 @@ else {
             "main": "validation.js"
         },
         {
+            "name": "widget-datepicker",
+            "location": "../cornerstone/widget-datepicker",
+            "main": "widget-datepicker.js"
+        },
+        {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-sign",
+            "location": "../cornerstone/widget-sign",
+            "main": "widget-sign.js"
+        },
+        {
+            "name": "widget-spinner",
+            "location": "../cornerstone/widget-spinner",
+            "main": "widget-spinner.js"
         },
         {
             "name": "widget-touch",
@@ -457,6 +566,15 @@ else {
             ],
             "exports": "validation-view"
         },
+        "widget-datepicker": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-datepicker"
+        },
         "widget-rangeinput": {
             "deps": [
                 "backbone",
@@ -465,6 +583,23 @@ else {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-sign": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-sign"
+        },
+        "widget-spinner": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "spin"
+            ],
+            "exports": "widget-spinner"
         },
         "widget-touch": {
             "deps": [

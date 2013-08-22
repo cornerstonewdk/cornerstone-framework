@@ -10,6 +10,9 @@
 			"form-view": "*",
 			"validation-view": "*",
 			"widget-rangeinput": "*",
+			"widget-sign": "*",
+			"widget-spinner": "*",
+			"widget-datepicker": "*",
 			"multipage-router": "*"
 		}
 	}
