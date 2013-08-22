@@ -8,8 +8,22 @@
  */
 
 (function (root, doc, factory) {
-    factory(root.jQuery, root, doc);
-}(this, document, function (jQuery, window, document, undefined) {
+    if ( typeof define === "function" && define.amd ) {
+        // AMD
+        define( [ 'backbone', 'underscore', 'jquery', 'spin' ], function ( Backbone, _, $, Spinner ) {
+            factory( $, root, doc, Spinner );
+            return Backbone.View.extend( {
+                render: function () {
+                    this.$el.spinner( this.options );
+                    return this;
+                }
+            } );
+        } );
+    } else {
+        // None AMD
+        factory( root.jQuery, root, doc, root.Spinner );
+    }
+}(this, document, function (jQuery, window, document, Spinner) {
 
     var hasTouch = ('ontouchstart' in window);
 
