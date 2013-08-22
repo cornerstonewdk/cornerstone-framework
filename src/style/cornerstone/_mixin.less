@@ -158,16 +158,25 @@
 .cs-mixin(@mixin-name, @value) when not (@value = "") {
   .result(@mixin-name) when (@mixin-name = box-shadow) { .box-shadow(@value); }
   .result(@mixin-name) when (@mixin-name = background-image) { .background-image(@value); }
-
   // 적용
   .result(@mixin-name);
 }
 .cs-property(@property-name, @value) when not (@value = "") {
+  .result(@property-name) when (@property-name = margin) { margin: @value; }
+
+  .result(@property-name) when (@property-name = padding) { padding: @value; }
+
   .result(@property-name) when (@property-name = border) { border: @value; }
+  .result(@property-name) when (@property-name = border-top) { border: @value; }
+  .result(@property-name) when (@property-name = border-right) { border-right: @value; }
+  .result(@property-name) when (@property-name = border-bottom) { border-bottom: @value; }
+  .result(@property-name) when (@property-name = border-left) { border-left: @value; }
   .result(@property-name) when (@property-name = border-radius) { border-radius: @value; }
+
   .result(@property-name) when (@property-name = background) { background: @value; }
   .result(@property-name) when (@property-name = background-color) { background-color: @value; }
   .result(@property-name) when (@property-name = background-size) { background-size: @value; }
+
   .result(@property-name) when (@property-name = color) { color: @value; }
 
   // 적용
