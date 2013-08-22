@@ -163,8 +163,8 @@
 }
 .cs-property(@property-name, @value) when not (@value = "") {
   .result(@property-name) when (@property-name = margin) { margin: @value; }
-
   .result(@property-name) when (@property-name = padding) { padding: @value; }
+  .result(@property-name) when (@property-name = display) { display: @value; }
 
   .result(@property-name) when (@property-name = border) { border: @value; }
   .result(@property-name) when (@property-name = border-top) { border: @value; }
@@ -174,9 +174,11 @@
   .result(@property-name) when (@property-name = border-radius) { border-radius: @value; }
 
   .result(@property-name) when (@property-name = background) { background: @value; }
+  .result(@property-name) when (@property-name = background-image) { background-image: @value; }
   .result(@property-name) when (@property-name = background-color) { background-color: @value; }
   .result(@property-name) when (@property-name = background-size) { background-size: @value; }
 
+  .result(@property-name) when (@property-name = text-decoration) { text-decoration: @value; }
   .result(@property-name) when (@property-name = color) { color: @value; }
 
   // 적용
