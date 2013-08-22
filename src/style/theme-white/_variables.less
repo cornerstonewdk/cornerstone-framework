@@ -19,20 +19,6 @@
 @font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base: @font-family-sans-serif;
 
-// Range Input
-// --------------------------------------------------
-@slider-outer-bg: rgba(0, 0, 0, 0.2);
-@slider-outer-bg2: rgba(255, 255, 255, 0.05);
-@slider-outer-radius: 10px;
-@slider-inner-bg: #868686;
-@slider-inner-radius: 20px;
-
-@slider-handle-outer-bg: @gray-lighter;
-@slider-handle-inner-bg: @brand-primary;
-@slider-handle-radius: 50px;
-
-@slider-progress-bg: @brand-primary;
-
 // Forms
 // -------------------------
 @input-bg: rgba(34, 34, 34, 0.64);
@@ -138,7 +124,7 @@
 @alert-success-bg: @state-success-bg;
 @alert-info-bg: @state-info-bg;
 
-// Button
+// Button: Component 스타일 상속
 // Collapse
 @collapse-background-image: "";
 
@@ -157,7 +143,60 @@
 @collapse-heading-body-bg: "";
 
 // Carousel
+@carousel-control-margin-top: -30px;
+@carousel-control-margin-left: -30px;
+@carousel-control-width: 60px;
+@carousel-control-height: 60px;
+@carousel-control-font-size: 35px;
+
+@carousel-indicators-margin: 0 5px;
+@carousel-indicators-width: 15px;
+@carousel-indicators-height: 15px;
+@carousel-indicators-border: 1px solid rgba(0, 0, 0, 0.2);
+@carousel-indicators-border-radius: 15px;
+@carousel-indicators-bg: #919191;
+@carousel-indicators-box-shadow: ~"inset 0 2px 2px #000";
+@carousel-indicators-active-bg: #46b2da;
+
 // RangeInput
+@slider-margin: 0px 0 20px 0;
+@slider-padding: 6px 0 7px 0;
+@slider-border-radius: 10px;
+@slider-background-image: ~"linear-gradient(top, #b6b6b6 0%, #b6b6b6 100%)";
+
+@slider-after-margin: 1px 6px 0 6px;
+@slider-after-width: auto;
+@slider-after-height: 9px;
+@slider-after-border-radius: 20px;
+@slider-after-bg: #868686;
+@slider-after-box-shadow: ~"inset 0 1px 2px rgba(0,0,0,.25)";
+
+@slider-bar-height: 13px;
+@slider-bar-margin: -1px 6px 0 6px;
+@slider-bar-border-radius: 20px;
+@slider-bar-bg: @brand-primary;
+@slider-bar-box-shadow: ~"inset 0 1px 4px rgba(0,0,0, 0.4)";
+@slider-bar-background-image: ~"linear-gradient(bottom, #2a92b9 0%, #40aad2 100%)";
+
+@slide-handle-top: -2px;
+@slide-handle-padding: 0;
+@slide-handle-margin-right: 15px;
+@slide-handle-width: 27px;
+@slide-handle-height: 27px;
+@slide-handle-border: 1px solid rgba(0, 0, 0, 0.5);
+@slide-handle-border-radius: 27px;
+@slide-handle-background-color: "";
+@slide-handle-background-image: ~"linear-gradient(bottom, #cec8c5 0%, #efe9e9 100%)";
+@slide-handle-box-shadow: ~"0 1px 2px rgba(1,1,1,.25), inset 0 2px 1px rgba(255,255,255,.5)";
+
+@slide-handle-after-top: 3px;
+@slide-handle-after-left: 3px;
+@slide-handle-after-width: 19px;
+@slide-handle-after-height: 19px;
+@slide-handle-after-background-color: #c1c1c1;
+@slide-handle-after-background-image: ~"linear-gradient(bottom, #ede9e9 0%, #ede9e9 0.27%, #cec8c5 100%)";
+@slide-handle-after-box-shadow: ~"0 -1px 0 #ede9e9, inset 0 1px 2px rgba(0,0,0,.14)";
+
 // Sign
 // Spinner
 // Motion Captcha

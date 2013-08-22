@@ -1,0 +1,80 @@
+.slider {
+  position: relative;
+  .cs-property(margin, @slider-margin);
+  .cs-property(padding, @slider-padding);
+  .cs-property(border-radius, @slider-border-radius);
+  .cs-mixin(background-image, @slider-background-image);
+
+  &:after {
+    display: block;
+    .cs-property(margin, @slider-after-margin);
+    .cs-property(width, @slider-after-width);
+    .cs-property(height, @slider-after-height);
+    .cs-property(border-radius, @slider-after-border-radius);
+    .cs-property(background, @slider-after-bg);
+    .cs-mixin(box-shadow, @slider-after-box-shadow);
+    content: "";
+  }
+
+  .slider-bar {
+    position: absolute;
+    .cs-property(height, @slider-bar-height);
+    .cs-property(margin, @slider-bar-margin);
+    .cs-property(border-radius, @slider-bar-border-radius);
+    .cs-property(background-color, @slider-bar-bg);
+    .cs-mixin(background-image, @slider-bar-background-image);
+    .cs-mixin(box-shadow, @slider-bar-box-shadow);
+  }
+
+  .slide-handle {
+    position: absolute;
+    .cs-property(top, @slide-handle-top);
+    .cs-property(padding, @slide-handle-padding);
+    .cs-property(margin-right, @slide-handle-margin-right);
+    .cs-property(width, @slide-handle-width);
+    .cs-property(height, @slide-handle-height);
+    .cs-property(border, @slide-handle-border);
+    .cs-property(border-radius, @slide-handle-border-radius);
+    .cs-property(background-color, @slide-handle-background-color);
+    .cs-mixin(box-shadow, @slide-handle-box-shadow);
+
+    &:after {
+      position: absolute;
+      .cs-property(top, @slide-handle-after-top);
+      .cs-property(left, @slide-handle-after-left);
+      .cs-property(width, @slide-handle-after-width);
+      .cs-property(height, @slide-handle-after-height);
+      .cs-property(border-radius, @slide-handle-border-radius);
+      .cs-property(background-color, @slide-handle-after-background-color);
+      .cs-mixin(background-image, @slide-handle-after-background-image);
+      .cs-mixin(box-shadow, @slide-handle-after-box-shadow);
+      z-index: 1;
+      content: "";
+    }
+  }
+}
+
+// 범위 수치가 표시되는 입력상자 스타일
+input[type=tel].widget-range {
+  &.figure {
+    float: right;
+    margin: -5px 0 0 0;
+    padding: 5px;
+    width: 45px;
+    background: none;
+    box-shadow: none;
+    color: @text-color;
+    text-align: center;
+    font-size: 16px;
+
+    &.max-10 {
+      width: 35px;
+    }
+    &.max-1000 {
+      width: 55px;
+    }
+    &.max-10000 {
+      width: 65px;
+    }
+  }
+}
