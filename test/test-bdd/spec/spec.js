@@ -215,102 +215,70 @@ describe('Cornerstone event extend test', function() {
                 });
             });
         });
+    });
 
-        describe('carousel', function() {
-            var cs;
+    describe('carousel', function() {
+        var cs;
 
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-carousel'], function(WidgetCarousel) {
-                    cs = new WidgetCarousel({
-                        el: '#carousel-example-generic'
-                    });
-                    cs.render();
-                    expect(cs).to.be.an.instanceof(Backbone.View);
-                    $('#btnCsStart').click(function() {
-                        cs.$el.carousel('cycle')
-                    });
-                    done();
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-carousel'], function(WidgetCarousel) {
+                cs = new WidgetCarousel({
+                    el: '#carousel-example-generic'
                 });
-            });
-
-            it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
-                cs.$el.on('play.cs.carousel', function(e) {
-                    console.log('play.cs.carousel 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('play');
-                    done();
-                }).carousel('pause');
-                this.timeout(2000);
-                setTimeout(function() {
-                    cs.$el.carousel('cycle');
-                }, 1000);
-            });
-
-            it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
-                cs.$el.on('pause.cs.carousel', function(e) {
-                    console.log('pause.cs.carousel 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('pause');
-                    done();
+                cs.render();
+                expect(cs).to.be.an.instanceof(Backbone.View);
+                $('#btnCsStart').click(function() {
+                    cs.$el.carousel('cycle')
                 });
-                this.timeout(2000);
-                setTimeout(function() {
-                    cs.$el.carousel('pause');
-                }, 1000);
+                done();
             });
         });
 
-        describe('widget-tooltip', function() {
-            var tooltips;
+        it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
+            cs.$el.on('play.cs.carousel', function(e) {
+                console.log('play.cs.carousel 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('play');
+                done();
+            }).carousel('pause');
+            this.timeout(2000);
+            setTimeout(function() {
+                cs.$el.carousel('cycle');
+            }, 1000);
+        });
 
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-tooltip'], function(WidgetTooltip) {
-                    tooltips = new WidgetTooltip({
-                        el: '[data-toggle=tooltip]'
-                    });
-                    tooltips.render();
-                    expect(tooltips).to.be.an.instanceof(Backbone.View);
-                    done();
-                });
+        it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
+            cs.$el.on('pause.cs.carousel', function(e) {
+                console.log('pause.cs.carousel 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('pause');
+                done();
             });
+            this.timeout(2000);
+            setTimeout(function() {
+                cs.$el.carousel('pause');
+            }, 1000);
+        });
+    });
 
+    describe('widget-tooltip', function() {
+        var tooltips;
 
-            it('첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
-                tooltips.$el.each(function() {
-                    $(this).on('show.bs.tooltip', function(e) {
-                        console.log('show.bs.tooltip 발생');
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('show');
-                    }).on('shown.bs.tooltip', function(e) {
-                        console.log('shown.bs.tooltip 발생');
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('shown');
-                        done();
-                    });
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-tooltip'], function(WidgetTooltip) {
+                tooltips = new WidgetTooltip({
+                    el: '[data-toggle=tooltip]'
                 });
-                $(tooltips.$el[0]).mouseover();
+                tooltips.render();
+                expect(tooltips).to.be.an.instanceof(Backbone.View);
+                done();
             });
+        });
 
-            it('첫번째 버튼에 마우스 오버를 해제하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
 
-                tooltips.$el.each(function() {
-                    $(this).on('hide.bs.tooltip', function(e) {
-                        console.log('hide.bs.tooltip 발생');
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('hide');
-                    }).on('hidden.bs.tooltip', function(e) {
-                        console.log('hidden.bs.tooltip 발생');
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('hidden');
-                        done();
-                    });
-                });
-                $(tooltips.$el[0]).mouseout();
-            });
-
-            it('세번째 버튼에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
-                $(tooltips.$el[3]).off('show.bs.tooltip').off('shown.bs.tooltip').off('hide.bs.tooltip').off('hidden.bs.tooltip');
-                $(tooltips.$el[3]).on('show.bs.tooltip', function(e) {
+        it('첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
+            tooltips.$el.each(function() {
+                $(this).on('show.bs.tooltip', function(e) {
                     console.log('show.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
@@ -318,7 +286,16 @@ describe('Cornerstone event extend test', function() {
                     console.log('shown.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
-                }).on('hide.bs.tooltip', function(e) {
+                    done();
+                });
+            });
+            $(tooltips.$el[0]).mouseover();
+        });
+
+        it('첫번째 버튼에 마우스 오버를 해제하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
+
+            tooltips.$el.each(function() {
+                $(this).on('hide.bs.tooltip', function(e) {
                     console.log('hide.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('hide');
@@ -327,306 +304,465 @@ describe('Cornerstone event extend test', function() {
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('hidden');
                     done();
-                }).mouseover().mouseout();
+                });
+            });
+            $(tooltips.$el[0]).mouseout();
+        });
+
+        it('세번째 버튼에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
+            $(tooltips.$el[3]).off('show.bs.tooltip').off('shown.bs.tooltip').off('hide.bs.tooltip').off('hidden.bs.tooltip');
+            $(tooltips.$el[3]).on('show.bs.tooltip', function(e) {
+                console.log('show.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('show');
+            }).on('shown.bs.tooltip', function(e) {
+                console.log('shown.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('shown');
+            }).on('hide.bs.tooltip', function(e) {
+                console.log('hide.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hide');
+            }).on('hidden.bs.tooltip', function(e) {
+                console.log('hidden.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hidden');
+                done();
+            }).mouseover().mouseout();
+        });
+    });
+
+    describe('widget-popover', function() {
+        var popovers;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-popover'], function(WidgetPopover) {
+                popovers = new WidgetPopover({
+                    el: '[data-toggle=popover]'
+                });
+                popovers.render();
+                expect(popovers).to.be.an.instanceof(Backbone.View);
+                done();
             });
         });
 
-        describe('widget-popover', function() {
-            var popovers;
-
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-popover'], function(WidgetPopover) {
-                    popovers = new WidgetPopover({
-                        el: '[data-toggle=popover]'
-                    });
-                    popovers.render();
-                    expect(popovers).to.be.an.instanceof(Backbone.View);
-                    done();
-                });
-            });
-
-            it('첫번째 버튼을 클릭하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
-                popovers.$el.each(function() {
-                    $(this).on('show.bs.popover', function(e) {
-                        console.log('show.bs.popover 발생');
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('show');
-                    }).on('shown.bs.popover', function(e) {
-                        console.log('shown.bs.popover 발생');
-                        e.preventDefault();
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('shown');
-                        done();
-                    });
-                });
-                $(popovers.$el[0]).click();
-            });
-
-            it('첫번째 버튼을 다시 클릭하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
-
-                popovers.$el.each(function() {
-                    $(this).on('hide.bs.popover', function(e) {
-                        console.log('hide.bs.popover 발생');
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('hide');
-                    }).on('hidden.bs.popover', function(e) {
-                        console.log('hidden.bs.popover 발생');
-                        e.preventDefault();
-                        expect(e).to.be.an.instanceof($.Event);
-                        expect(e.type).to.be.equal('hidden');
-                        done();
-                    });
-                });
-                $(popovers.$el[0]).click();
-            });
-
-            it('세번째 버튼에 클릭 2회시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
-                $(popovers.$el[2]).off('show.bs.popover').off('shown.bs.popover').off('hide.bs.popover').off('hidden.bs.popover');
-                $(popovers.$el[2]).on('show.bs.popover', function(e) {
+        it('첫번째 버튼을 클릭하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
+            popovers.$el.each(function() {
+                $(this).on('show.bs.popover', function(e) {
                     console.log('show.bs.popover 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
                 }).on('shown.bs.popover', function(e) {
                     console.log('shown.bs.popover 발생');
+                    e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
-                }).on('hide.bs.popover', function(e) {
+                    done();
+                });
+            });
+            $(popovers.$el[0]).click();
+        });
+
+        it('첫번째 버튼을 다시 클릭하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
+
+            popovers.$el.each(function() {
+                $(this).on('hide.bs.popover', function(e) {
                     console.log('hide.bs.popover 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('hide');
                 }).on('hidden.bs.popover', function(e) {
                     console.log('hidden.bs.popover 발생');
+                    e.preventDefault();
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('hidden');
                     done();
-                }).click().click();
+                });
+            });
+            $(popovers.$el[0]).click();
+        });
+
+        it('세번째 버튼에 클릭 2회시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
+            $(popovers.$el[2]).off('show.bs.popover').off('shown.bs.popover').off('hide.bs.popover').off('hidden.bs.popover');
+            $(popovers.$el[2]).on('show.bs.popover', function(e) {
+                console.log('show.bs.popover 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('show');
+            }).on('shown.bs.popover', function(e) {
+                console.log('shown.bs.popover 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('shown');
+            }).on('hide.bs.popover', function(e) {
+                console.log('hide.bs.popover 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hide');
+            }).on('hidden.bs.popover', function(e) {
+                console.log('hidden.bs.popover 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hidden');
+                done();
+            }).click().click();
+        });
+    });
+
+    describe('widget-rageinput', function() {
+
+        var input_0, input_1, input_2;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-rangeinput'], function(WidgetRangeInput) {
+                input_0 = new WidgetRangeInput({
+                    el: '#range1'
+                });
+                input_1 = new WidgetRangeInput({
+                    el: '#range2',
+                    'progress': true
+                });
+                input_2 = new WidgetRangeInput({
+                    el: '#range3',
+                    'inputShow': true
+                });
+                input_0.render();
+                input_1.render();
+                input_2.render();
+                expect(input_0).to.be.an.instanceof(Backbone.View);
+                expect(input_1).to.be.an.instanceof(Backbone.View);
+                expect(input_2).to.be.an.instanceof(Backbone.View);
+                done();
             });
         });
 
-        describe('widget-rageinput', function() {
 
-            var input_0, input_1, input_2;
+        it('start, move, end 이벤트가 핸들을 움직였을 때 발생하여야 한다.', function() {
 
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-rangeinput'], function(WidgetRangeInput) {
-                    input_0 = new WidgetRangeInput({
-                        el: '#range1'
+            input_0.$el.on('start.cs.rangeInput', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.rangeInput', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.rangeInput', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+            });
+
+            input_1.$el.on('start.cs.rangeInput', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.rangeInput', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.rangeInput', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+            });
+
+            input_2.$el.on('start.cs.rangeInput', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.rangeInput', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.rangeInput', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+            });
+        });
+        // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
+    });
+
+    describe('widget-sign', function() {
+        var sign;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-sign'], function(WidgetSign) {
+                sign = new WidgetSign({
+                    el: '#signature'
+                });
+                sign.render();
+                expect(sign).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+
+        it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
+            sign.$el.on('start.cs.sign', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.sign', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.sign', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+            });
+        });
+
+        // it('서명을 완료한 후 이미지로 보기를 눌렀을 때 이미지가 복사되어야 한다.',function(done){
+        //     // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
+        //     $("button.show-sign").on('click', function (e) {
+        //         var data = $("#signature").sign("getData", "image"); // Base64 형태의 이미지 데이터 리턴
+        //         $("div.widget-sign-viewer").html($("<img/>", {
+        //             src: "data:" + data
+        //         }));
+        //         done();
+        //     }).click();
+        // });
+        // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
+    });
+
+    describe('widget-motioncaptcha', function() {
+        var captcha;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-motioncaptcha'], function(WidgetMotioncaptcha) {
+                $("#motion-captcha button").off('click').on("click", function(e) {
+                    $("#mc-canvas").remove();
+                    $("<canvas/>", {
+                        "id": "mc-canvas",
+                        "class": "mc-canvas"
+                    }).appendTo($("#motion-captcha-example"));
+                    captcha = new WidgetMotioncaptcha({
+                        el: '#mc-canvas'
                     });
-                    input_1 = new WidgetRangeInput({
-                        el: '#range2',
-                        'progress': true
+                    captcha.render({
+                        errorMsg: '다시 시도해주세요.',
+                        successMsg: '성공',
+                        onSuccess: function() {
+                            console.log("성공");
+                        }
                     });
-                    input_2 = new WidgetRangeInput({
-                        el: '#range3',
-                        'inputShow': true
-                    });
-                    input_0.render();
-                    input_1.render();
-                    input_2.render();
-                    expect(input_0).to.be.an.instanceof(Backbone.View);
-                    expect(input_1).to.be.an.instanceof(Backbone.View);
-                    expect(input_2).to.be.an.instanceof(Backbone.View);
+                    expect(captcha).to.be.an.instanceof(Backbone.View);
+                    done();
+                }).click();
+            });
+        });
+
+        it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
+            captcha.$el.on('start.cs.motionCaptcha', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.motionCaptcha', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.motionCaptcha', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+            }).on('fail.cs.motionCaptcha', function(e) {
+                console.log('fail', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('fail');
+            }).on('success.cs.motionCaptcha', function(e) {
+                console.log('success', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('success');
+            });
+        });
+    });
+
+    describe('widget-datatable', function() {
+        var table;
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-datatable'], function(WidgetDatatable) {
+                var Model = Backbone.Model.extend({
+                    url: "data/sample-datatables.json"
+                });
+                table = new WidgetDatatable({
+                    el: '#test-datatables',
+                    model: new Model
+                });
+                table.render();
+                expect(table).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+
+        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
+            table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
+                console.log('itemClick.cs.datatables', result);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('itemClick');
+                expect(e.namespace).to.be.equal('cs.datatables');
+                expect(result).to.be.an('object')
+                expect(result.data).to.be.instanceof(Array);
+                done();
+            });
+            table.$el.find('tr:eq(2)').click();
+        });
+    });
+
+    describe('widget-editor', function() {
+        var editor;
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-editor'], function(WidgetEditor) {
+                editor = new WidgetEditor({
+                    el: '#textarea'
+                });
+                editor.render();
+                expect(editor).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+
+        it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function(done) {
+            editor.$el.on('blur', function(e) {
+                console.log('editor blur', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('blur');
+                done();
+            }).focus().blur();
+        });
+    });
+
+    describe('widget-typeahead', function() {
+        var typeahead, dMenu;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-typeahead'], function(WidgetTypeahead) {
+                typeahead = new WidgetTypeahead({
+                    el: 'input.typeahead',
+                    name: 'countries',
+                    prefetch: 'data/typeahead-countries.json',
+                    limit: 10    
+                });
+                typeahead.render();
+                expect(typeahead).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+
+        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function() {
+            $("input.typeahead").focus();
+            typeahead.$el.val('korea');
+            var e = jQuery.Event("input.tt");
+            e.which = e.keycode = 65;
+            typeahead.$el.trigger(e);
+            dMenu = typeahead.$el.closest('.twitter-typeahead').find('.tt-dropdown-menu');
+            expect(dMenu).to.not.be.undefined;
+            expect(dMenu.find('.tt-suggestion').length).to.equal(2);
+        });
+
+        it('검색된 2개의 결과물중 2번째 "South Korea"를 클릭하면 selected이벤트가 발생하여야 한다.', function(done) {
+            typeahead.$el.on('selected.cs.typeahead', function(e, datum, dataset) {
+                console.log(e, datum, dataset);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('selected');
+                expect(e.namespace).to.be.equal('cs.typeahead');
+                expect(datum.value).to.be.equal('South Korea');
+                expect(dataset).to.be.equal('countries');
+                done();
+            });
+            dMenu.find('.tt-suggestion:eq(1)').click();
+        });
+
+        it('직접 테스트를 하기위해 기존 이벤트(selected의 값 비교 로직) 제거 후 재바인딩', function() {
+            typeahead.$el.off('selected.cs.typeahead').on('selected.cs.typeahead', function(e, datum, dataset) {
+                console.log(e, datum, dataset);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('selected');
+                expect(e.namespace).to.be.equal('cs.typeahead');
+                expect(dataset).to.be.equal('countries');
+            });
+        });
+    });
+
+    describe('widget-spinner',function(){
+        var body_spinner, inner_spinner;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-spinner'], function(WidgetSpinner) {
+                body_spinner = new WidgetSpinner({
+                    el: 'body'   
+                });
+                body_spinner.$el.on('show.cs.spinner', function(e) {
+                    console.log('show spinner');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('show');
+                    expect(e.namespace).to.be.equal('cs.spinner');
+                }).on('shown.cs.spinner', function(e) {
+                    console.log('shown spinner');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('shown');
+                    expect(e.namespace).to.be.equal('cs.spinner');
                     done();
                 });
-            });
-
-            
-            it('start, move, end 이벤트가 핸들을 움직였을 때 발생하여야 한다.',function(){
-
-                input_0.$el.on('start.cs.rangeInput', function(e) {
-                    console.log('start', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('start');
-                }).on('move.cs.rangeInput', function(e) {
-                    console.log('move', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('move');
-                }).on('end.cs.rangeInput', function(e) {
-                    console.log('end', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('end');
-                });
-
-                input_1.$el.on('start.cs.rangeInput', function(e) {
-                    console.log('start', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('start');
-                }).on('move.cs.rangeInput', function(e) {
-                    console.log('move', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('move');
-                }).on('end.cs.rangeInput', function(e) {
-                    console.log('end', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('end');
-                });
-
-                input_2.$el.on('start.cs.rangeInput', function(e) {
-                    console.log('start', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('start');
-                }).on('move.cs.rangeInput', function(e) {
-                    console.log('move', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('move');
-                }).on('end.cs.rangeInput', function(e) {
-                    console.log('end', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('end');
-                });
-            });
-            // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
-        });
-    
-        describe('widget-sign', function(){
-            var sign;
-
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-sign'], function(WidgetSign) {
-                    sign = new WidgetSign({
-                        el: '#signature'
-                    });
-                    sign.render();
-                    expect(sign).to.be.an.instanceof(Backbone.View);
-                    done();
-                });
-            });
-
-            it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.',function(){
-                sign.$el.on('start.cs.sign',function(e){
-                    console.log('start', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('start');
-                }).on('move.cs.sign',function(e){
-                    console.log('move', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('move');
-                }).on('end.cs.sign',function(e){
-                    console.log('end', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('end');
-                });
-            });
-
-            // it('서명을 완료한 후 이미지로 보기를 눌렀을 때 이미지가 복사되어야 한다.',function(done){
-            //     // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
-            //     $("button.show-sign").on('click', function (e) {
-            //         var data = $("#signature").sign("getData", "image"); // Base64 형태의 이미지 데이터 리턴
-            //         $("div.widget-sign-viewer").html($("<img/>", {
-            //             src: "data:" + data
-            //         }));
-            //         done();
-            //     }).click();
-            // });
-            // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
-        });
-
-        describe('widget-motioncaptcha',function(){
-            var captcha;
-
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-motioncaptcha'], function(WidgetMotioncaptcha) {
-                    $("#motion-captcha button").off('click').on("click", function (e) {
-                        $("#mc-canvas").remove();
-                        $("<canvas/>", {
-                            "id": "mc-canvas",
-                            "class": "mc-canvas"
-                        }).appendTo($("#motion-captcha-example"));
-                        captcha = new WidgetMotioncaptcha({
-                            el: '#mc-canvas'
-                        });
-                        captcha.render({
-                            errorMsg: '다시 시도해주세요.',
-                            successMsg: '성공',
-                            onSuccess: function () {
-                                console.log("성공");
-                            }
-                        });
-                        expect(captcha).to.be.an.instanceof(Backbone.View);
-                        done();
-                    }).click();
-                });
-            });
-
-            it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.',function(){
-                captcha.$el.on('start.cs.motionCaptcha',function(e){
-                    console.log('start', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('start');
-                }).on('move.cs.motionCaptcha',function(e){
-                    console.log('move', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('move');
-                }).on('end.cs.motionCaptcha',function(e){
-                    console.log('end', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('end');
-                }).on('fail.cs.motionCaptcha',function(e){
-                    console.log('fail', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('fail');
-                }).on('success.cs.motionCaptcha',function(e){
-                    console.log('success', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('success');
-                });
+                body_spinner.render();
+                expect(body_spinner).to.be.an.instanceof(Backbone.View);
             });
         });
         
-        describe('widget-datatable',function(){
-            var table;
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-datatable'], function(WidgetDatatable) {
-                    var Model = Backbone.Model.extend({
-                        url:"data/sample-datatables.json"
-                    });
-                    table = new WidgetDatatable({
-                        el: '#test-datatables',
-                        model: new Model
-                    });
-                    table.render();
-                    expect(table).to.be.an.instanceof(Backbone.View);
-                    done();
-                });
+        it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
+            body_spinner.$el.on('hide.cs.spinner', function(e) {
+                console.log('hide spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hide');
+                expect(e.namespace).to.be.equal('cs.spinner');
+            }).on('hidden.cs.spinner', function(e) {
+                console.log('hidden spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hidden');
+                expect(e.namespace).to.be.equal('cs.spinner');
+                done();
             });
-
-            it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
-                table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
-                    console.log('itemClick.cs.datatables', result);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('itemClick');
-                    expect(e.namespace).to.be.equal('cs.datatables');
-                    expect(result).to.be.an('object')
-                    expect(result.data).to.be.instanceof(Array);
-                    done();
-                });
-                table.$el.find('tr:eq(2)').click();
-            });
+            // $('body.spinner-outer-bg').click();
+            body_spinner.$el.spinner();
         });
 
-        describe('widget-editor',function(){
-            var editor;
-            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-                require(['widget-editor'], function(WidgetEditor) {
-                    editor = new WidgetEditor({
-                        el: '#textarea'
-                    });
-                    editor.render();
-                    expect(editor).to.be.an.instanceof(Backbone.View);
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-spinner'], function(WidgetSpinner) {
+                inner_spinner = new WidgetSpinner({
+                    el: '#loadingCircle'   
+                });
+                inner_spinner.$el.on('show.cs.spinner', function(e) {
+                    e.stopPropagation();
+                    console.log('inner show spinner');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('show');
+                    expect(e.namespace).to.be.equal('cs.spinner');
+                }).on('shown.cs.spinner', function(e) {
+                    e.stopPropagation();
+                    console.log('inner shown spinner');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('shown');
+                    expect(e.namespace).to.be.equal('cs.spinner');
                     done();
                 });
-            });
-
-            it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function(done) {
-                editor.$el.on('blur', function(e) {
-                    console.log('editor blur', e);
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('blur');
-                    done();
-                }).focus().blur();
+                inner_spinner.render();
+                expect(inner_spinner).to.be.an.instanceof(Backbone.View);
             });
         });
-
+        
+        it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
+            inner_spinner.$el.on('hide.cs.spinner', function(e) {
+                e.stopPropagation();
+                console.log('inner hide spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hide');
+                expect(e.namespace).to.be.equal('cs.spinner');
+            }).on('hidden.cs.spinner', function(e) {
+                e.stopPropagation();
+                console.log('inner hidden spinner');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hidden');
+                expect(e.namespace).to.be.equal('cs.spinner');
+                done();
+            });
+            inner_spinner.$el.spinner();
+        });
     });
 
 });
