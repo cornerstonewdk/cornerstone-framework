@@ -12,7 +12,9 @@
 			"widget-rangeinput": "*",
 			"widget-sign": "*",
 			"widget-spinner": "*",
+			"widget-motioncaptcha": "*",
 			"widget-datepicker": "*",
+			"widget-typeahead": "*",
 			"multipage-router": "*"
 		}
 	}

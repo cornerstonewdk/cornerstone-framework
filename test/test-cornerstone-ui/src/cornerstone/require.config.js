@@ -37,7 +37,8 @@ var jam = {
         },
         {
             "name": "spin",
-            "location": "../cornerstone/spin"
+            "location": "../cornerstone/spin",
+            "main": "spin.js"
         },
         {
             "name": "style",
@@ -55,6 +56,11 @@ var jam = {
             "main": "transition.js"
         },
         {
+            "name": "typeahead",
+            "location": "../cornerstone/typeahead",
+            "main": "typeahead.js"
+        },
+        {
             "name": "underscore",
             "location": "../cornerstone/underscore",
             "main": "underscore-min.js"
@@ -68,6 +74,11 @@ var jam = {
             "name": "widget-datepicker",
             "location": "../cornerstone/widget-datepicker",
             "main": "widget-datepicker.js"
+        },
+        {
+            "name": "widget-motioncaptcha",
+            "location": "../cornerstone/widget-motioncaptcha",
+            "main": "widget-motioncaptcha.js"
         },
         {
             "name": "widget-rangeinput",
@@ -88,6 +99,11 @@ var jam = {
             "name": "widget-touch",
             "location": "../cornerstone/widget-touch",
             "main": "widget-touch.js"
+        },
+        {
+            "name": "widget-typeahead",
+            "location": "../cornerstone/widget-typeahead",
+            "main": "widget-typeahead.js"
         }
     ],
     "version": "0.2.17",
@@ -128,6 +144,12 @@ var jam = {
             ],
             "exports": "multipage-router"
         },
+        "spin": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "spin"
+        },
         "style": {
             "deps": [
                 "jquery"
@@ -146,6 +168,11 @@ var jam = {
                 "jquery"
             ],
             "exports": "Transition"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ]
         },
         "underscore": {
             "exports": "_"
@@ -166,6 +193,14 @@ var jam = {
                 "bootstrap"
             ],
             "exports": "widget-datepicker"
+        },
+        "widget-motioncaptcha": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-motioncaptcha"
         },
         "widget-rangeinput": {
             "deps": [
@@ -198,6 +233,11 @@ var jam = {
                 "jquery"
             ],
             "exports": "widget-touch"
+        },
+        "widget-typeahead": {
+            "deps": [
+                "typeahead"
+            ]
         }
     }
 };
@@ -242,7 +282,8 @@ if (typeof require !== "undefined" && require.config) {
         },
         {
             "name": "spin",
-            "location": "../cornerstone/spin"
+            "location": "../cornerstone/spin",
+            "main": "spin.js"
         },
         {
             "name": "style",
@@ -260,6 +301,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "transition.js"
         },
         {
+            "name": "typeahead",
+            "location": "../cornerstone/typeahead",
+            "main": "typeahead.js"
+        },
+        {
             "name": "underscore",
             "location": "../cornerstone/underscore",
             "main": "underscore-min.js"
@@ -273,6 +319,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "widget-datepicker",
             "location": "../cornerstone/widget-datepicker",
             "main": "widget-datepicker.js"
+        },
+        {
+            "name": "widget-motioncaptcha",
+            "location": "../cornerstone/widget-motioncaptcha",
+            "main": "widget-motioncaptcha.js"
         },
         {
             "name": "widget-rangeinput",
@@ -293,6 +344,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "widget-touch",
             "location": "../cornerstone/widget-touch",
             "main": "widget-touch.js"
+        },
+        {
+            "name": "widget-typeahead",
+            "location": "../cornerstone/widget-typeahead",
+            "main": "widget-typeahead.js"
         }
     ],
     "shim": {
@@ -332,6 +388,12 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "multipage-router"
         },
+        "spin": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "spin"
+        },
         "style": {
             "deps": [
                 "jquery"
@@ -350,6 +412,11 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "Transition"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ]
         },
         "underscore": {
             "exports": "_"
@@ -370,6 +437,14 @@ if (typeof require !== "undefined" && require.config) {
                 "bootstrap"
             ],
             "exports": "widget-datepicker"
+        },
+        "widget-motioncaptcha": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-motioncaptcha"
         },
         "widget-rangeinput": {
             "deps": [
@@ -402,6 +477,11 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "widget-touch"
+        },
+        "widget-typeahead": {
+            "deps": [
+                "typeahead"
+            ]
         }
     }
 });
@@ -446,7 +526,8 @@ else {
         },
         {
             "name": "spin",
-            "location": "../cornerstone/spin"
+            "location": "../cornerstone/spin",
+            "main": "spin.js"
         },
         {
             "name": "style",
@@ -464,6 +545,11 @@ else {
             "main": "transition.js"
         },
         {
+            "name": "typeahead",
+            "location": "../cornerstone/typeahead",
+            "main": "typeahead.js"
+        },
+        {
             "name": "underscore",
             "location": "../cornerstone/underscore",
             "main": "underscore-min.js"
@@ -477,6 +563,11 @@ else {
             "name": "widget-datepicker",
             "location": "../cornerstone/widget-datepicker",
             "main": "widget-datepicker.js"
+        },
+        {
+            "name": "widget-motioncaptcha",
+            "location": "../cornerstone/widget-motioncaptcha",
+            "main": "widget-motioncaptcha.js"
         },
         {
             "name": "widget-rangeinput",
@@ -497,6 +588,11 @@ else {
             "name": "widget-touch",
             "location": "../cornerstone/widget-touch",
             "main": "widget-touch.js"
+        },
+        {
+            "name": "widget-typeahead",
+            "location": "../cornerstone/widget-typeahead",
+            "main": "widget-typeahead.js"
         }
     ],
     "shim": {
@@ -536,6 +632,12 @@ else {
             ],
             "exports": "multipage-router"
         },
+        "spin": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "spin"
+        },
         "style": {
             "deps": [
                 "jquery"
@@ -554,6 +656,11 @@ else {
                 "jquery"
             ],
             "exports": "Transition"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ]
         },
         "underscore": {
             "exports": "_"
@@ -574,6 +681,14 @@ else {
                 "bootstrap"
             ],
             "exports": "widget-datepicker"
+        },
+        "widget-motioncaptcha": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-motioncaptcha"
         },
         "widget-rangeinput": {
             "deps": [
@@ -606,6 +721,11 @@ else {
                 "jquery"
             ],
             "exports": "widget-touch"
+        },
+        "widget-typeahead": {
+            "deps": [
+                "typeahead"
+            ]
         }
     }
 };
