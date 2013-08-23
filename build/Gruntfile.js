@@ -56,7 +56,8 @@ module.exports = function ( grunt ) {
 							'<%= path.source %>**', 
 							'!<%= path.source %>style/**',
 							'<%= path.source %>style/**/package.json',
-							'!<%= path.source %>style/bootstrap3/package.json'
+							'!<%= path.source %>style/bootstrap3/package.json',
+							'!<%= path.source %>style/bootstrap3/**'
 						],
 						dest: '<%= path.dist %>src'
 					},

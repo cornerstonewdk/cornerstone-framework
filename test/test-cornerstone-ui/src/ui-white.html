@@ -4,10 +4,10 @@
     <title>Cornerstone UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <link id="baseStyle" rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
+    <link id="baseStyle" rel="stylesheet" href="../../../grunt-dist/lib/bootstrap/css/bootstrap.css"/>
 
-    <link rel="stylesheet" href="../../grunt-dist/src/style/theme-wireframe/cornerstone.css"/>
-    <link rel="stylesheet" href="style/demo.css"/>
+    <link rel="stylesheet" href="../../../grunt-dist/src/style/theme-white/cornerstone.css"/>
+    <link rel="stylesheet" href="app/main.css"/>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -136,7 +136,7 @@
             <h1 class="title">Base CSS</h1>
         </header>
 
-         
+        
 <section>
     <div class="page-header">
         <h1 id="grid">Grid system</h1>
@@ -246,7 +246,7 @@
         <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
     </div>
 </section>
-         
+        
 <section>
     <div class="page-header">
         <h1 id="type">Typography</h1>
@@ -287,7 +287,7 @@
         </table>
     </div>
 </section>
-         
+        
 <section>
     <div class="page-header">
         <h1 id="code">Code</h1>
@@ -306,7 +306,7 @@
 
     <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 </section>
-         
+        
 <section>
 <div class="page-header">
     <h1 id="tables">Tables</h1>
@@ -708,7 +708,7 @@
     <!-- /.table-responsive -->
 </div>
 </section>
-         
+        
 <section>
 <div class="page-header">
     <h1 id="forms">Forms</h1>
@@ -1069,7 +1069,7 @@
 </form>
 
 </section>
-         
+        
 <section>
     <div class="page-header">
         <h1 id="buttons">Buttons</h1>
@@ -1188,7 +1188,7 @@
             causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
 </section>
-         
+        
 <section>
     <div class="page-header">
         <h1 id="images">Images</h1>
@@ -1547,7 +1547,7 @@
         <h1 id="btn-groups">Button groups</h1>
     </div>
     <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript
-        radio and checkbox style behavior with <a href="../javascript/#buttons">our buttons plugin</a>.</p>
+        radio and checkbox style behavior with <a href="../javascript#buttons">our buttons plugin</a>.</p>
 
     <div class="bs-callout bs-callout-info">
         <h4>Tooltips &amp; popovers in button groups require special setting</h4>
@@ -2269,7 +2269,7 @@
         </ul>
     </div>
     <h2 id="nav-dropdowns">Using dropdowns</h2>
-    <p>Add dropdown menus with a little extra HTML and the <a href="../javascript/#dropdowns">dropdowns JavaScript plugin</a>.</p>
+    <p>Add dropdown menus with a little extra HTML and the <a href="../javascript#dropdowns">dropdowns JavaScript plugin</a>.</p>
 
     <h3>Tabs with dropdowns</h3>
     <div class="bs-example">
@@ -3038,7 +3038,7 @@
     <div class="page-header">
         <h1 id="thumbnails">Thumbnails</h1>
     </div>
-    <p class="lead">Extend Bootstrap's <a href="../css/#grid">grid system</a> with the thumbnail component to easily display
+    <p class="lead">Extend Bootstrap's <a href="../css#grid">grid system</a> with the thumbnail component to easily display
         grids of images, videos, text, and more.</p>
 
     <h3 id="thumbnails-default">Default example</h3>
@@ -3182,7 +3182,7 @@
         <h1 id="alerts">Alerts</h1>
     </div>
     <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible
-        alert messages. For inline dismissal, use the <a href="../javascript/#js-alerts">alerts jQuery plugin</a>.</p>
+        alert messages. For inline dismissal, use the <a href="../javascript#js-alerts">alerts jQuery plugin</a>.</p>
 
     <h2 id="alerts-examples">Examples</h2>
     <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g.,
@@ -5494,7 +5494,9 @@
                    data-range-options='{"inputShow":false,"progress":true}'/>
         </div>
         <div class="col col-lg-4">
-            <input id="range3" type="range" value="99999" min="0" max="99999" step="1000" class="widget-range max-10000"/>
+            <input data-plugin="rangeinput" type="range" value="99999" min="0" max="99999"
+                   step="1000" class="widget-range max-10000"
+                   data-range-options='{"inputShow":true,"progress":true}'/>
         </div>
     </div>
 </section>        <!-- Sign
@@ -6150,38 +6152,38 @@
 
 </div>
 
-<script type="text/javascript" src="../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.hammer.js"></script>
 <script type="text/javascript" src="js/vendor/helper.js"></script>
 <script type="text/javascript" src="js/vendor/holder.js"></script>
 <!-- Widget Plugin -->
-<script type="text/javascript" src="../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/touch/widget-touch.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/alert/widget-alert.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/carousel/widget-carousel.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/collapse/widget-collapse.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/datepicker/widget-datepicker.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/popover/widget-popover.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/rangeinput/widget-rangeinput.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/sign/widget-sign.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/tooltip/widget-tooltip.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/spin/spin.js"></script>
-<script type="text/javascript" src="../../src/widget/spinner/widget-spinner.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/typeahead/typeahead.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/touch/widget-touch.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/alert/widget-alert.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/carousel/widget-carousel.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/collapse/widget-collapse.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/datepicker/widget-datepicker.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/popover/widget-popover.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/rangeinput/widget-rangeinput.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/sign/widget-sign.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/tooltip/widget-tooltip.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/spin/spin.js"></script>
+<script type="text/javascript" src="../../../src/widget/spinner/widget-spinner.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/typeahead/typeahead.js"></script>
 <!-- Widget Featured -->
-<script type="text/javascript" src="../../grunt-dist/lib/d3/d3.v3.min.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/nvd3/nv.d3.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/chart/widget-chart.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/DataTables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/datatable/widget-datatable.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/infinity/infinity.min.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/listview/widget-listview.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/media/mediaelement-and-player.min.js"></script>
-<script type="text/javascript" src="../../grunt-dist/src/widget/media/widget-media.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/iscroll-5/iscroll.js"></script>
-<script type="text/javascript" src="../../src/widget/scrollview/widget-scrollview.js"></script>
-<script type="text/javascript" src="../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys.js"></script>
-<script type="text/javascript" src="../../src/widget/editor/widget-editor.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/d3/d3.v3.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/nvd3/nv.d3.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/chart/widget-chart.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/DataTables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/datatable/widget-datatable.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/infinity/infinity.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/listview/widget-listview.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/media/mediaelement-and-player.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/src/widget/media/widget-media.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/iscroll-5/iscroll.js"></script>
+<script type="text/javascript" src="../../../src/widget/scrollview/widget-scrollview.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="../../../src/widget/editor/widget-editor.js"></script>
 <script type="text/javascript" src="js/main.js"></script></body>
 </html>

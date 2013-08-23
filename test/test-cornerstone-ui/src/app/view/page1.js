@@ -9,30 +9,8 @@ define([
 
 		el: 'section#page1',
 
-		render: function (id) {
-			var self = this;
-
-			require(['template!../app/template/' + id], function (example) {
-				var title = $.trim(id).replace('cs-','').replace(/-/gi,' ');
-				self.$el.html(
-					template({
-						pageTitle: title,
-						exampleHtml: example()
-					})
-				);
-				require(['../app/lib/holder']);
-				require(['widget-rangeinput']);
-				require(['widget-sign'], function() {
-					$("#signature").length && $("#signature").sign();
-				});
-				require(['widget-spinner']);
-				require(['widget-datepicker'], function() {
-					$("#date-picker1, #date-picker2").datetimepicker({
-						firstDisable: true,
-						changeDisplay: true
-					});
-				});
-			});
+		render: function () {
+			this.$el.html(template());
 			return this;
 		},
 
