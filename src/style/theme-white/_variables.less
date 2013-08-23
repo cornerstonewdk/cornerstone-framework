@@ -1,10 +1,9 @@
 //
 // Cornerstone Variables
 // --------------------------------------------------
-
-// Master Color
-// -------------------------
+@theme: white;
 @brand-primary: #2d95bb;
+@brand-primary-darken5: darken(@brand-primary, 5%);
 @text-color: #666;
 @text-color-inverse: #FFF;
 @font-size-base: 16px;
@@ -197,10 +196,20 @@
 @slide-handle-after-background-image: ~"linear-gradient(bottom, #ede9e9 0%, #ede9e9 0.27%, #cec8c5 100%)";
 @slide-handle-after-box-shadow: ~"0 -1px 0 #ede9e9, inset 0 1px 2px rgba(0,0,0,.14)";
 
-// Sign
-// Spinner
-// Motion Captcha
 // Date Picker
+@datetimepicker-margin: 0;
+@datetimepicker-padding: 0;
+@datetimepicker-background-color: #FFF;
+
+@datetimepicker-li-a-line-height: 15px;
+@datetimepicker-li-a-border-radius: 0 0 4px 4px;
+@datetimepicker-li-a-background-image: ~"linear-gradient(top, rgb(249, 249, 249), rgb(237, 237, 237))";
+
+@datetimepicker-td-background: @gray-lighter;
+@datetimepicker-td-span-width: 55px;
+@datetimepicker-td-span-hover-background: @gray-lighter;
+
+@datetimepicker-thead-th-hover-background: @gray-lighter;
 
 // Typeahead
 @typeahead-minwidth: 250px;

@@ -26,6 +26,12 @@ define([
 					$("#signature").length && $("#signature").sign();
 				});
 				require(['widget-spinner']);
+				require(['widget-datepicker'], function() {
+					$("#date-picker1, #date-picker2").datetimepicker({
+						firstDisable: true,
+						changeDisplay: true
+					});
+				});
 			});
 			return this;
 		},
