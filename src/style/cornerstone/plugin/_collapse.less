@@ -1,0 +1,34 @@
+.panel-collapse {
+  .cs-property(background-image, @collapse-background-image);
+
+  .panel-heading {
+    .cs-property(padding, @collapse-heading-padding);
+    .cs-property(border, @collapse-heading-border);
+    .cs-property(background-color, @collapse-heading-bg);
+
+    .accordion-toggle {
+      .cs-property(display, @collapse-toggle-display);
+      .cs-property(padding, @collapse-toggle-padding);
+      .cs-mixin(background-image, @collapse-toggle-background-image);
+      .cs-mixin(box-shadow, @collapse-toggle-box-shadow);
+      .cs-property(text-decoration, @collapse-toggle-text-decoration);
+      .cs-property(color, @collapse-toggle-color);
+    }
+  }
+
+  & .panel-heading + & .panel-body {
+    .cs-property(border, @collapse-heading-body-border);
+    .cs-property(background-color, @collapse-heading-body-bg);
+  }
+
+  & > .panel {
+    .panel-heading:before {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .accordion-toggle {
+    cursor: pointer;
+  }
+}

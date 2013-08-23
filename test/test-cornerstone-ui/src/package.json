@@ -1,0 +1,19 @@
+{
+	"jam": {
+		"baseUrl": "app",
+		"packageDir": "cornerstone",
+		"dependencies": {
+			"launcher": "*",
+			"template": "*",
+			"style": "*",
+			"bootstrap": "*",
+			"form-view": "*",
+			"validation-view": "*",
+			"widget-rangeinput": "*",
+			"widget-sign": "*",
+			"widget-spinner": "*",
+			"widget-datepicker": "*",
+			"multipage-router": "*"
+		}
+	}
+}

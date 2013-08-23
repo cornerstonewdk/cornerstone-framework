@@ -1,0 +1,23 @@
+<!-- RangeInput
+  ================================================== -->
+<section id="rangeInput">
+    <header class="page-header">
+        <h2>RangeInput</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-4">
+            <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
+                   class="widget-range"/>
+        </div>
+        <div class="col col-lg-4">
+            <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+                   class="widget-range"
+                   data-range-options='{"inputShow":false,"progress":true}'/>
+        </div>
+        <div class="col col-lg-4">
+            <input data-plugin="rangeinput" type="range" value="99999" min="0" max="99999"
+                   step="1000" class="widget-range max-10000"
+                   data-range-options='{"inputShow":true,"progress":true}'/>
+        </div>
+    </div>
+</section>

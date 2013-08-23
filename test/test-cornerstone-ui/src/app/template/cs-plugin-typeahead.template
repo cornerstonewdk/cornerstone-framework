@@ -1,0 +1,18 @@
+<!-- Typeahead
+  ================================================== -->
+<section id="typeahead">
+    <header class="page-header">
+        <h2>Typeahead</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-12">
+            <div class="example example-countries">
+                <h2 class="example-name">Countries</h2>
+
+                <p class="example-description">Prefetches data, stores it in localStorage, and searches it on the client</p>
+
+                <input class="typeahead form-control" type="text" placeholder="countries">
+            </div>
+        </div>
+    </div>
+</section>

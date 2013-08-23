@@ -158,16 +158,47 @@
 .cs-mixin(@mixin-name, @value) when not (@value = "") {
   .result(@mixin-name) when (@mixin-name = box-shadow) { .box-shadow(@value); }
   .result(@mixin-name) when (@mixin-name = background-image) { .background-image(@value); }
-
   // 적용
   .result(@mixin-name);
 }
 .cs-property(@property-name, @value) when not (@value = "") {
+  .result(@property-name) when (@property-name = position) { position: @value; }
+  .result(@property-name) when (@property-name = z-index) { z-index: @value; }
+  .result(@property-name) when (@property-name = top) { top: @value; }
+  .result(@property-name) when (@property-name = right) { right: @value; }
+  .result(@property-name) when (@property-name = rbottomight) { bottom: @value; }
+  .result(@property-name) when (@property-name = left) { left: @value; }
+
+  .result(@property-name) when (@property-name = margin) { margin: @value; }
+  .result(@property-name) when (@property-name = margin-top) { margin-top: @value; }
+  .result(@property-name) when (@property-name = margin-right) { margin-right: @value; }
+  .result(@property-name) when (@property-name = margin-bottom) { margin-bottom: @value; }
+  .result(@property-name) when (@property-name = margin-left) { margin-left: @value; }
+
+  .result(@property-name) when (@property-name = padding) { padding: @value; }
+  .result(@property-name) when (@property-name = padding-top) { padding-top: @value; }
+  .result(@property-name) when (@property-name = padding-right) { padding-right: @value; }
+  .result(@property-name) when (@property-name = padding-bottom) { padding-bottom: @value; }
+  .result(@property-name) when (@property-name = padding-left) { padding-left: @value; }
+
+  .result(@property-name) when (@property-name = display) { display: @value; }
+  .result(@property-name) when (@property-name = width) { width: @value; }
+  .result(@property-name) when (@property-name = height) { height: @value; }
+
   .result(@property-name) when (@property-name = border) { border: @value; }
+  .result(@property-name) when (@property-name = border-top) { border: @value; }
+  .result(@property-name) when (@property-name = border-right) { border-right: @value; }
+  .result(@property-name) when (@property-name = border-bottom) { border-bottom: @value; }
+  .result(@property-name) when (@property-name = border-left) { border-left: @value; }
   .result(@property-name) when (@property-name = border-radius) { border-radius: @value; }
+
   .result(@property-name) when (@property-name = background) { background: @value; }
+  .result(@property-name) when (@property-name = background-image) { background-image: @value; }
   .result(@property-name) when (@property-name = background-color) { background-color: @value; }
   .result(@property-name) when (@property-name = background-size) { background-size: @value; }
+
+  .result(@property-name) when (@property-name = font-size) { font-size: @value; }
+  .result(@property-name) when (@property-name = text-decoration) { text-decoration: @value; }
   .result(@property-name) when (@property-name = color) { color: @value; }
 
   // 적용

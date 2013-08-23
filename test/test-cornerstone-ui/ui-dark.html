@@ -82,13 +82,13 @@
                     <li><a href="#plugins">Plugins</a></li>
                     <li class="divider"></li>
                     <li><a href="#modals">Modals</a></li>
-                    <li><a href="#dropdown">Dropdown</a></li>
+                    <li><a href="#dropdowns">Dropdown</a></li>
                     <li><a href="#scrollspy">ScrollSpy</a></li>
-                    <li><a href="#tab">Tab</a></li>
+                    <li><a href="#tabs">Tab</a></li>
                     <li><a href="#tooltip">Tooltip</a></li>
 
                     <li><a href="#popover">Popover</a></li>
-                    <li><a href="#alert">Alert</a></li>
+                    <li><a href="#alerts">Alert</a></li>
                     <li><a href="#button">Button</a></li>
                     <li><a href="#collapse">Collapse</a></li>
                     <li><a href="#carousel">Carousel</a></li>
@@ -136,7 +136,7 @@
             <h1 class="title">Base CSS</h1>
         </header>
 
-        
+         
 <section>
     <div class="page-header">
         <h1 id="grid">Grid system</h1>
@@ -246,7 +246,7 @@
         <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
     </div>
 </section>
-        
+         
 <section>
     <div class="page-header">
         <h1 id="type">Typography</h1>
@@ -287,7 +287,7 @@
         </table>
     </div>
 </section>
-        
+         
 <section>
     <div class="page-header">
         <h1 id="code">Code</h1>
@@ -306,7 +306,7 @@
 
     <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 </section>
-        
+         
 <section>
 <div class="page-header">
     <h1 id="tables">Tables</h1>
@@ -708,7 +708,7 @@
     <!-- /.table-responsive -->
 </div>
 </section>
-        
+         
 <section>
 <div class="page-header">
     <h1 id="forms">Forms</h1>
@@ -1069,7 +1069,7 @@
 </form>
 
 </section>
-        
+         
 <section>
     <div class="page-header">
         <h1 id="buttons">Buttons</h1>
@@ -1188,7 +1188,7 @@
             causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
 </section>
-        
+         
 <section>
     <div class="page-header">
         <h1 id="images">Images</h1>
@@ -2615,169 +2615,171 @@
 </div>
 
 </section>
-        <div class="col col-lg-12">
-    <h3>Default NavBar</h3>
+        <section>
+    <div class="col col-lg-12">
+        <h3>Default NavBar</h3>
 
-    <nav class="navbar" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Title</a>
-        </div>
+        <nav class="navbar" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Title</a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-collapse navbar-ex1-collapse collapse" style="height: 10px;">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </nav>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title"> Text + Icon Navbar</h3>
-
-    <div class="navbar">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-responsive-collapse2">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Title</a>
-        </div>
-
-        <div class="navbar-collapse collapse navbar-responsive-collapse2">
-            <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Link</a></li>
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-file"></span>Link</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-cog"></span>Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse navbar-ex1-collapse collapse" style="height: 10px;">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
     </div>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title"> Icon Navbar</h3>
+    <div class="col col-lg-12">
+        <h3 class="title"> Text + Icon Navbar</h3>
 
-    <div class="navbar navbar-icon">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-responsive-collapse3">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Title</a>
-        </div>
+        <div class="navbar">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-responsive-collapse2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Title</a>
+            </div>
 
-        <div class="navbar-collapse collapse navbar-responsive-collapse3">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Link</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-file"></span>Link</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-cog"></span>Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="navbar-collapse collapse navbar-responsive-collapse2">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Link</a></li>
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-file"></span>Link</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                                class="glyphicon glyphicon-cog"></span>Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-</div>        
+    <div class="col col-lg-12">
+        <h3 class="title"> Icon Navbar</h3>
+
+        <div class="navbar navbar-icon">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-responsive-collapse3">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Title</a>
+            </div>
+
+            <div class="navbar-collapse collapse navbar-responsive-collapse3">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Link</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-file"></span>Link</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                                class="glyphicon glyphicon-cog"></span>Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </div>
+</section>        
 <section>
     <div class="page-header">
         <h1 id="breadcrumbs">Breadcrumbs
@@ -3751,136 +3753,74 @@
     </div>
 </section>
 
-        <section id="mobile-navbar" class="row">
+        <section id="mobile-navbar">
     <header class="page-header">
-        <h1>
-             Navbar For Mobile
-        </h1>
+        <h1>Mobile Navbar</h1>
     </header>
-    <div class="col col-lg-6">
-        <h3 class="title">
-            Navbar For mobile(support: webkit)
-        </h3>
-        <ul class="navbar navbar-mobile">
-            <li>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>
+                Default
+            </h3>
+            <ul class="navbar navbar-mobile">
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <span class="text">about</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="text">favorites</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-download-alt"></span>
+                        <span class="text">downloads</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col col-lg-6">
+            <h3>
+                Another markup
+            </h3>
+
+            <div class="navbar navbar-mobile navbar-mobile-primary">
                 <a href="#">
                     <span class="glyphicon glyphicon-info-sign"></span>
                     <span class="text">about</span>
                 </a>
-            </li>
-            <li>
                 <a href="#">
                     <span class="glyphicon glyphicon-star"></span>
                     <span class="text">favorites</span>
                 </a>
-            </li>
-            <li class="active">
-                <a href="#">
+                <a href="#" class="active">
                     <span class="glyphicon glyphicon-download-alt"></span>
                     <span class="text">downloads</span>
                 </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col col-lg-6">
-        <h3 class="title">
-            Navbar For mobile(Another markup)
-        </h3>
-
-        <div class="navbar navbar-mobile navbar-mobile-primary">
-            <a href="#">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                <span class="text">about</span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="text">favorites</span>
-            </a>
-            <a href="#" class="active">
-                <span class="glyphicon glyphicon-download-alt"></span>
-                <span class="text">downloads</span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-cog"></span>
-                <span class="text">settings</span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-user"></span>
-                <span class="text">user</span>
-            </a>
-        </div>
-    </div>
-
-</section>        <section id="cornerstone-list" class="row">
-<header class="page-header">
-    <h1> Cornerstone List</h1>
-</header>
-<div class="col col-lg-12">
-    <h3 class="title">Default Lists</h3>
-
-    <div class="panel">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Panel heading</div>
-        <div class="panel-body">
-            <ul class="list-group list-group-flush list-group-cornerstone">
-                <li class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">17</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Cras justo odio
-                </li>
-                <li class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">2</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Dapibus ac facilisis in
-                </li>
-                <li class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">1</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Morbi leo risus
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="panel">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Panel heading</div>
-        <div class="panel-body">
-            <div class="list-group list-group-flush list-group-cornerstone">
-                <a class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">17</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Cras justo odio
+                <a href="#">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="text">settings</span>
                 </a>
-                <a class="list-group-item active">
-                    <div class="pull-right">
-                        <span class="badge">2</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Dapibus ac facilisis in
-                </a>
-                <a class="list-group-item">
-                    <div class="pull-right">
-                        <span class="badge">1</span>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    Morbi leo risus
+                <a href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="text">user</span>
                 </a>
             </div>
         </div>
     </div>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title">Panel Group</h3>
 
-    <div class="panel-group">
+</section>        <section id="cornerstone-list">
+<header class="page-header">
+    <h1> Cornerstone List</h1>
+</header>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Default Lists</h3>
+
         <div class="panel">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
@@ -3910,11 +3850,42 @@
                 </ul>
             </div>
         </div>
+        <div class="panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <div class="list-group list-group-flush list-group-cornerstone">
+                    <a class="list-group-item">
+                        <div class="pull-right">
+                            <span class="badge">17</span>
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        Cras justo odio
+                    </a>
+                    <a class="list-group-item active">
+                        <div class="pull-right">
+                            <span class="badge">2</span>
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        Dapibus ac facilisis in
+                    </a>
+                    <a class="list-group-item">
+                        <div class="pull-right">
+                            <span class="badge">1</span>
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        Morbi leo risus
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr>
-    <div class="panel-group">
-        <div class="panels">
+</div>
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Panel Group</h3>
 
+        <div class="panel-group">
             <div class="panel">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Panel heading</div>
@@ -3944,190 +3915,233 @@
                     </ul>
                 </div>
             </div>
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading panel-sub-heading">Panel heading</div>
-                <div class="panel-body">
-                    <div class="list-group list-group-flush list-group-cornerstone">
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">17</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Cras justo odio
-                        </a>
-                        <a class="list-group-item active">
-                            <div class="pull-right">
-                                <span class="badge">2</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Dapibus ac facilisis in
-                        </a>
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">1</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Morbi leo risus
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-</div>
-<div class="col col-lg-12">
-    <h3 class="title">Nav list</h3>
+        <hr>
+        <div class="panel-group">
+            <div class="panels">
 
-    <div class="panel-group panel-nav-group">
-        <div class="panels">
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading">Panel heading</div>
-                <div class="panel-body">
-                    <ul class="list-group list-group-flush list-group-cornerstone">
-                        <li class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">17</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Cras justo odio
-                        </li>
-                        <li class="list-group-item active">
-                            <div class="pull-right">
-                                <span class="badge">2</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">1</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Morbi leo risus
-                        </li>
-                    </ul>
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush list-group-cornerstone">
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </li>
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="panel">
-                <!-- Default panel contents -->
-                <div class="panel-heading panel-sub-heading">Panel heading</div>
-                <div class="panel-body">
-                    <div class="list-group list-group-flush list-group-cornerstone">
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">17</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Cras justo odio
-                        </a>
-                        <a class="list-group-item active">
-                            <div class="pull-right">
-                                <span class="badge">2</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Dapibus ac facilisis in
-                        </a>
-                        <a class="list-group-item">
-                            <div class="pull-right">
-                                <span class="badge">1</span>
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </div>
-                            Morbi leo risus
-                        </a>
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading panel-sub-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <div class="list-group list-group-flush list-group-cornerstone">
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </a>
+                            <a class="list-group-item active">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </a>
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</section>        <section id="vertically-grouped" class="row">
+<div class="row">
+    <div class="col col-lg-12">
+        <h3>Nav list</h3>
+
+        <div class="panel-group panel-nav-group">
+            <div class="panels">
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush list-group-cornerstone">
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </li>
+                            <li class="list-group-item active">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading panel-sub-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <div class="list-group list-group-flush list-group-cornerstone">
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">17</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Cras justo odio
+                            </a>
+                            <a class="list-group-item active">
+                                <div class="pull-right">
+                                    <span class="badge">2</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Dapibus ac facilisis in
+                            </a>
+                            <a class="list-group-item">
+                                <div class="pull-right">
+                                    <span class="badge">1</span>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                Morbi leo risus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>        <section id="vertically-grouped">
     <header class="page-header">
         <h1> Vertically Grouped</h1>
     </header>
-    <div class="col col-lg12">
-        <h3 class="title">
-            Vertically grouped buttons
-        </h3>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped buttons
+            </h3>
 
-        <div class="btn-group-vertical">
-            <button class="btn btn-default">cat</button>
-            <button class="btn btn-default">dog</button>
-            <button class="btn btn-default">monkey</button>
-            <button class="btn btn-default">rabbit</button>
+            <div class="btn-group-vertical">
+                <button class="btn btn-default">cat</button>
+                <button class="btn btn-default">dog</button>
+                <button class="btn btn-default">monkey</button>
+                <button class="btn btn-default">rabbit</button>
+            </div>
         </div>
     </div>
-    <div class="col col-lg12">
-        <h3 class="title">
-            Vertically grouped radio
-        </h3>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped radio
+            </h3>
 
-        <ul class="list-group list-group-radio">
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option1">
-                    <span class="control"></span>
-                    cat
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option2" checked>
-                    <span class="control"></span>
-                    dog
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option3">
-                    <span class="control"></span>
-                    monkey
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-radio">
-                    <input name="radio1" type="radio" value="option4" disabled>
-                    <span class="control"></span>
-                    rabbit
-                </label>
-            </li>
-        </ul>
+            <ul class="list-group list-group-radio">
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option1">
+                        <span class="control"></span>
+                        cat
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option2" checked>
+                        <span class="control"></span>
+                        dog
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option3">
+                        <span class="control"></span>
+                        monkey
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option4" disabled>
+                        <span class="control"></span>
+                        rabbit
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col col-lg12">
-        <h3 class="title">
-            Vertically grouped checkbox
-        </h3>
-        <ul class="list-group list-group-checkbox">
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option1">
-                    <span class="control"></span>
-                    dog
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option2">
-                    <span class="control placeholder"></span>
-                    cat
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option3" checked>
-                    <span class="control"></span>
-                    monkey
-                </label>
-            </li>
-            <li class="list-group-item">
-                <label class="input-checkbox">
-                    <input type="checkbox" value="option3" disabled>
-                    <span class="control"></span>
-                    rabbit
-                </label>
-            </li>
-        </ul>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped checkbox
+            </h3>
+            <ul class="list-group list-group-checkbox">
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option1">
+                        <span class="control"></span>
+                        dog
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option2">
+                        <span class="control placeholder"></span>
+                        cat
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option3" checked>
+                        <span class="control"></span>
+                        monkey
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option3" disabled>
+                        <span class="control"></span>
+                        rabbit
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>
 
@@ -5164,7 +5178,7 @@
 <p>Using the collapse plugin, we built a simple accordion by extending the panel component.</p>
 
 <div class="bs-example">
-    <div class="panel-group" id="accordion">
+    <div class="panel-group panel-collapse" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -6138,7 +6152,6 @@
 
 <script type="text/javascript" src="../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.hammer.js"></script>
-<script type="text/javascript" src="js/vendor/jquery.smooth-scroll.min.js"></script>
 <script type="text/javascript" src="js/vendor/helper.js"></script>
 <script type="text/javascript" src="js/vendor/holder.js"></script>
 <!-- Widget Plugin -->

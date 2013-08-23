@@ -6,11 +6,6 @@
             e.preventDefault();
         });
 
-        // 컴포넌트 요소 이동
-        $("#nav-component a").smoothScroll({
-            offset: -50
-        });
-
         // 툴팁 Data API
         $("[data-toggle=tooltip]").tooltip();
         $("[data-toggle=popover]").popover();
