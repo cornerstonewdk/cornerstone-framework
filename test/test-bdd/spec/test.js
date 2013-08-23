@@ -683,6 +683,16 @@ describe('Cornerstone event extend test case', function() {
             });
             dMenu.find('.tt-suggestion:eq(1)').click();
         });
+
+        it('직접 테스트를 하기위해 기존 이벤트(selected의 값 비교 로직) 제거 후 재바인딩', function() {
+            ta.off('selected.cs.typeahead').on('selected.cs.typeahead', function(e, datum, dataset) {
+                console.log(e, datum, dataset);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('selected');
+                expect(e.namespace).to.be.equal('cs.typeahead');
+                expect(dataset).to.be.equal('countries');
+            });
+        });
     });
 
     describe('widget-spinner', function() {
@@ -758,6 +768,13 @@ describe('Cornerstone event extend test case', function() {
             });
             $('#loadingCircle.spinner-outer-bg').click();
         });
+    });
+
+    describe('widget-chart', function () {
+        var chartHTML = '<section id="chart" class="row"><header class="page-header"><h2 class="title">Chart</h2></header><div class="col col-lg-4"><h3 class="title">바차트</h3><div data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json" style="height: 300px"></div></div><div class="col col-lg-4"><h3 class="title">라인차트</h3><div data-featured="chart" data-chart-type="line" data-chart-bind="data/sample-line.json" style="height: 300px"></div></div><div class="col col-lg-4"><h3 class="title">파이차트</h3><div data-featured="chart" data-chart-type="pie" data-chart-bind="data/sample-pie.json" style="height: 300px"></div></div></section>';
+        $('#mocha-fixture').append(chartHTML);
+        
+
 
 
     });

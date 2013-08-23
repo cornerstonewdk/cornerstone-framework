@@ -4,7 +4,7 @@
         // AMD
         define( [ 'backbone', 'underscore', 'jquery', 'typeahead' ], function ( Backbone, _, $, typeahead ) {
             factory( $, root, doc );
-            return Backbone.view.extend( {
+            return Backbone.View.extend( {
             	render: function () {
             		this.$el.typeahead( this.options );
             		return this;

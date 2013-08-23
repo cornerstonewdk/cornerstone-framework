@@ -20,7 +20,7 @@ require.config({
         "logging": "../../../grunt-dist/src/util/logging/logging",
         "media": "../../../grunt-dist/lib/media/mediaelement-and-player.min",
         "multipage-route": "../../../grunt-dist/src/mvc/router/multipage-route/multipage",
-        "nv": "../../../grunt-dist/lib/nv/nv.d3.min",
+        "nv": "../../../grunt-dist/lib/nvd3/nv.d3",
         "skt": "../../../grunt-dist/src/util/skt/skt",
         "spin": "../../../grunt-dist/lib/spin/spin",
         "style": "../../../grunt-dist/src/loader/style/style",
@@ -28,6 +28,7 @@ require.config({
         "theme-dark": "../../../grunt-dist/src/style/theme-dark",
         "theme-white": "../../../grunt-dist/src/style/theme-white",
         "transition": "../../../grunt-dist/src/util/transition/transition",
+        "typeahead": "../../../grunt-dist/lib/typeahead/typeahead",
         "underscore": "../../../grunt-dist/lib/underscore/underscore-min",
         "validation-view": "../../../grunt-dist/src/mvc/view/validation-view/validation",
         "widget-alert": "../../../grunt-dist/src/widget/alert/widget-alert",
@@ -47,7 +48,8 @@ require.config({
         "widget-sign": "../../../grunt-dist/src/widget/sign/widget-sign",
         "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
         "widget-tooltip": "../../../grunt-dist/src/widget/tooltip/widget-tooltip",
-        "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch"
+        "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch",
+        "widget-typeahead": "../../../grunt-dist/src/widget/typeahead/widget-typeahead"
     },
     "shim": {
         "backbone": {
@@ -167,6 +169,9 @@ require.config({
             ],
             "exports": "style"
         },
+        "spin": {
+            "exports": "spin"
+        },
         "template": {
             "deps": [
                 "jquery",
@@ -179,6 +184,12 @@ require.config({
                 "jquery"
             ],
             "exports": "Transition"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "typeahead"
         },
         "underscore": {
             "exports": "_"
@@ -346,13 +357,21 @@ require.config({
                 "jquery"
             ],
             "exports": "widget-touch"
-        }
+        },
+        "widget-typeahead": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "typeahead"
+            ],
+            "exports": "widget-typeahead"
+        },
     }
 });
 
 require( [ 'jquery','spec' ], function( $ ) {
 	// INITIALIZE THE RUN
-	console.log($, mocha );
 	$(document).on('click', 'a[href="#"], [type="submit"]', function(e) {
         e.preventDefault();
     });
