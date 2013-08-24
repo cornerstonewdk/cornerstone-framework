@@ -1,4 +1,9 @@
 .well {
+  .well-style(@theme);
+}
+
+// Placeholder
+.well-style(@theme) when (@theme = white) {
   border: 1px solid #b6b6b6;
   border-radius: 5px;
   background-color: #fdfdfd;

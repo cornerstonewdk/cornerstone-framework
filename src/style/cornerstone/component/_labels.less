@@ -1,13 +1,13 @@
-//
-// Labels & Badge
-// --------------------------------------------------
-
 .label, .badge {
-  .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
+  .cs-mixin(box-shadow, @lb-box-shadow);
 }
 
 .badge {
-  padding-bottom: 3.5px;
+  .cs-property(padding-bottom, @badge-padding-bottom);
+}
+
+.badge-primary {
+  .label-variant(@label-primary-bg);
 }
 
 .badge-success {

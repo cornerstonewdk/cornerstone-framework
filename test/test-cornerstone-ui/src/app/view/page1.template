@@ -9,7 +9,7 @@
                 <h3 class="title">화이트 UI</h3>
                 <p></p>
                 <p>
-                    <a class="btn btn-primary" href="#/plugin-button">이동</a>
+                    <a class="btn btn-primary" href="#/css-buttons">이동</a>
                     <a target="_blank" class="btn btn-primary" href="ui-white.html">전체 UI 보기</a>
                 </p>
             </div>
@@ -24,7 +24,7 @@
                 <h3 class="title">다크 UI</h3>
                 <p></p>
                 <p>
-                    <a class="btn btn-primary" href="dark.html#/plugin-button">이동</a>
+                    <a class="btn btn-primary" href="dark.html#/css-buttons">이동</a>
                     <a target="_blank" class="btn btn-primary" href="ui-dark.html">전체 UI 보기</a>
                 </p>
             </div>
@@ -39,7 +39,7 @@
                 <h3 class="title">와이어프레임 UI</h3>
                 <p></p>
                 <p>
-                    <a class="btn btn-primary" href="wireframe.html#/plugin-button">이동</a>
+                    <a class="btn btn-primary" href="wireframe.html#/css-buttons">이동</a>
                     <a target="_blank" class="btn btn-primary" href="ui-wireframe.html">전체 UI 보기</a>
                 </p>
             </div>

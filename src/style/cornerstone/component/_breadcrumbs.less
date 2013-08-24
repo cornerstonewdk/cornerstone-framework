@@ -1,0 +1,52 @@
+.breadcrumb {
+  .cs-property(margin, @breadcrumb-margin);
+  .cs-property(padding, @breadcrumb-padding);
+  .cs-property(border, @breadcrumb-border);
+  .cs-property(border-radius, @breadcrumb-border-radius);
+  .cs-property(background-color, @breadcrumb-background-color);
+  .cs-mixin(background-image, @breadcrumb-background-image);
+  .cs-mixin(box-shadow, @breadcrumb-box-shadow);
+
+  & > li {
+    .cs-property(padding, @breadcrumb-li-padding);
+    &+ li:before {
+      .cs-property(margin, @breadcrumb-li-before-margin);
+      .cs-property(padding, @breadcrumb-li-before-padding);
+      .cs-property(content, @breadcrumb-li-before-content);
+    }
+    &:after {
+      .cs-property(position, @breadcrumb-li-after-position);
+      .cs-property(margin-top, @breadcrumb-li-after-margin-top);
+      .cs-property(margin-left, @breadcrumb-li-after-margin-left);
+      .cs-property(padding, @breadcrumb-li-after-padding);
+      .cs-property(width, @breadcrumb-li-after-width);
+      .cs-property(height, @breadcrumb-li-after-height);
+      .cs-property(background, @breadcrumb-li-after-background);
+      .cs-property(color, @breadcrumb-li-after-color);
+      .cs-property(content, @breadcrumb-li-after-content);
+    }
+
+    a {
+      .cs-property(color, @breadcrumb-li-a-color);
+      .cs-property(text-decoration, @breadcrumb-li-a-text-decoration);
+      .cs-property(text-shadow, @breadcrumb-li-a-text-shadow);
+    }
+  }
+
+  & > .active {
+    .cs-property(color, @breadcrumb-active-color);
+    .breadcrumb-active(@theme);
+  }
+}
+
+// Placeholder
+.breadcrumb-active(@theme) when (@theme = white) {
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, .54);
+  background: url(images/breadcrumb-bg-active.png) repeat-x;
+  &:after {
+    content: "";
+    background-image: url(images/breadcrumb-arrow-active.png);
+    margin-left: 15px;
+    width: 16px;
+  }
+}
