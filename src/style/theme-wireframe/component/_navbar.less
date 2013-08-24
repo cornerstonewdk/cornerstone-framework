@@ -1,22 +1,6 @@
 //
 // NavBar
 // --------------------------------------------------
-@navbar-border: 1px solid #b6b6b6;
-@navbar-background: "";
-@navbar-background-image: "";
-@navbar-shadow: "";
-@navbar-text-color: "";
-
-.navbar {
-  padding-right: 5px;
-  padding-left: 5px;
-  .cs-property(border, @navbar-border);
-  .cs-property(background, @navbar-background);
-  .cs-mixin(background-image, @navbar-background-image);
-  .cs-mixin(box-shadow, @navbar-shadow);
-  .cs-property(color, @navbar-text-color);
-}
-
 .navbar-icon {
   li {
     & > a {
@@ -53,16 +37,6 @@
         }
       }
     }
-  }
-}
-
-.navbar-form, .navbar-collapse {
-  border: none;
-}
-
-.navbar-toggle {
-  &:hover, &:focus {
-    background-color: transparent;
   }
 }
 

@@ -1,11 +1,16 @@
 //
 // NavBar
 // --------------------------------------------------
-@navbar-border: 1px solid #b6b6b6;
+@navbar-border: none;
 @navbar-background: url(images/noisy-texture-100x100.png) repeat left top #35363a;
 @navbar-background-image: "";
 @navbar-shadow: "";
 @navbar-text-color: #C0C0C0;
+
+.navbar {
+  padding-right: 5px;
+  padding-left: 5px;
+}
 
 .navbar {
   padding-right: 5px;
@@ -15,24 +20,17 @@
   .cs-mixin(background-image, @navbar-background-image);
   .cs-mixin(box-shadow, @navbar-shadow);
   .cs-property(color, @navbar-text-color);
-}
-
-.navbar {
-  padding-right: 5px;
-  padding-left: 5px;
-  border: 1px solid #b6b6b6;
-  border: none;
-  background: @navbar-background;
-  color: @navbar-text-color;
 
   &:not(.navbar-mobile):before {
     position: absolute;
     #cs-gradient > .vertical(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.05));
     .box-shadow(~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)");
     top: 0;
+    left: 0;
     display: block;
     width: 100%;
     height: 100%;
+    z-index: -1;
     content: "";
   }
 
