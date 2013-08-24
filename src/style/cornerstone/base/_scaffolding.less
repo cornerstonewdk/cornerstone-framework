@@ -1,0 +1,37 @@
+body {
+  .cs-property(background, @body-background);
+  .cs-property(color, @body-color);
+}
+
+code {
+  .cs-property(padding, @code-padding);
+  .cs-property(background-color, @code-background-color);
+  .cs-property(color, @code-color);
+  .cs-property(white-space, @code-white-space);
+}
+
+.blind {
+  position: absolute;
+  visibility: visible;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  text-indent: -3000em;
+  font-size: 0;
+  line-height: 0;
+}
+
+hr {
+  .cs-property(margin, @hr-margin);
+  .cs-property(border, @hr-border);
+}
+
+a, button, td, th, select {
+  &:focus {
+    outline: 0;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

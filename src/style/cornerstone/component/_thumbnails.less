@@ -1,0 +1,61 @@
+.thumbnail,
+.img-thumbnail {
+  .cs-property(position, @thumbnail-position);
+  .cs-property(margin-bottom, @thumbnail-margin-bottom);
+  .cs-property(padding, @thumbnail-padding);
+  .cs-property(border, @thumbnail-border);
+  .cs-property(border-radius, @thumbnail-border-radius);
+  .cs-property(background-image, @thumbnail-background-image);
+  .cs-property(background-size, @thumbnail-background-size);
+  .cs-mixin(box-shadow, @thumbnail-box-shadow);
+  .cs-property(z-index, @thumbnail-z-index);
+
+  &.gray {
+    .cs-property(padding, @thumbnail-gray-padding);
+    .cs-property(border, @thumbnail-gray-border);
+    .cs-property(border-radius, @thumbnail-gray-border-radius);
+    .thumbnail-gray-background-image(@theme);
+    .cs-mixin(box-shadow, @thumbnail-gray-box-shadow);
+    .cs-property(color, @thumbnail-gray-color);
+    .caption, .title {
+      .cs-property(color, @thumbnail-gray-title-color);
+    }
+
+    .thumbnail-gray-mask(@theme);
+  }
+}
+
+a.thumbnail,
+a.img-thumbnail {
+  &:hover, &:focus {
+    .cs-property(border, @thumbnail-a-hover-border);
+  }
+}
+
+// Placeholder
+.thumbnail-gray-background-image(@theme) when (@theme = white) {
+  .cs-mixin(background-image, @thumbnail-gray-background-image);
+}
+
+.thumbnail-gray-background-image(@theme) {
+  .cs-property(background-image, @thumbnail-gray-background-image);
+}
+
+.thumbnail-gray-mask(@theme) when (@theme = white) {
+  .mask {
+    position: relative;
+    &  > img {
+      border-radius: 0 0 5px 5px;
+    }
+    &:after {
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      content: "";
+      .box-shadow(~"0 0 3px #fff, inset 0 3px 4px rgba(0,0,0,.19)");
+    }
+  }
+}

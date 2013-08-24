@@ -42,4 +42,14 @@
             </li>
         </ul>
     </div>
+
+    <h3>Available variations</h3>
+    <div class="bs-example">
+        <span class="badge badge-default">Default</span>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-info">Info</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-danger">Danger</span>
+    </div>
 </section>
