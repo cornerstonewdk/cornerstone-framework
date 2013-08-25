@@ -11,13 +11,6 @@
 @state-success-bg: #77bf5b;
 @state-danger-bg: #d16354;
 
-// Typography
-// -------------------------
-@font-family-sans-serif: "NanumGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif: Georgia, "Times New Roman", Times, serif;
-@font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base: @font-family-sans-serif;
-
 // Forms
 // -------------------------
 @input-bg: rgba(34, 34, 34, 0.64);
@@ -48,22 +41,6 @@
 @flip-on-bg: #28869e;
 @flip-off-bg: #2f2f2f;
 
-@state-warning-text: #000;
-@state-warning-bg: #d0ad49;
-@state-warning-border: darken(spin(@state-warning-bg, -10), 3%);
-
-@state-danger-text: #000;
-@state-danger-bg: #ce6357;
-@state-danger-border: darken(spin(@state-danger-bg, -10), 3%);
-
-@state-success-text: #000;
-@state-success-bg: #79be60;
-@state-success-border: darken(spin(@state-success-bg, -10), 5%);
-
-@state-info-text: #000;
-@state-info-bg: #4d88d2;
-@state-info-border: darken(spin(@state-info-bg, -10), 7%);
-
 // Navbar
 // -------------------------
 @navbar-default-link-color: @text-color;
@@ -91,9 +68,44 @@
 @code-white-space: nowrap;
 
 // Typography
+@font-family-sans-serif: "NanumGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif: Georgia, "Times New Roman", Times, serif;
+@font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
 @title-color: #656565;
 
 // Tables
+@table-bg: #f5f5f5;
+@table-border: 1px solid #cbcbcb;
+@table-head-bg: #878787;
+@table-head-color: #000;
+@table-head-border-bottom: 2px solid #878787;
+@table-head-background-image: ~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)";
+
+@table-hover-background-image: ~"linear-gradient(top, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.07) 100%)";
+@table-active-background-image: @table-hover-background-image;
+
+@table-td-border-top: "";
+
+@table-striped-td-background-color: "";
+
+@table-bordered-td-border: "";
+@table-bordered-td-border-top: @table-bordered-td-border;
+
+@table-hover-td-background-color: "";
+
+@table-warning-color: #FFF;
+@table-warning-bg: #d0ad49;
+@table-warning-border: 1px solid darken(spin(@table-warning-bg, -10), 3%);
+
+@table-danger-color: #FFF;
+@table-danger-bg: #ce6357;
+@table-danger-border: 1px solid darken(spin(@table-danger-bg, -10), 3%);
+
+@table-success-color: #FFF;
+@table-success-bg: #79be60;
+@table-success-border: 1px solid darken(spin(@table-success-bg, -10), 5%);
+
 // Forms
 // Buttons
 @btn-default-bg: #FFF;
