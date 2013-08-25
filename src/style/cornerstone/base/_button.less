@@ -1,0 +1,113 @@
+.btn {
+  .cs-property(border, @btn-border);
+  .cs-property(border-radius, @btn-border-radius);
+  .cs-mixin(box-shadow, @btn-box-shadow);
+  .cs-property(color, @btn-color);
+  .user-select();
+}
+
+.btn.active,
+.btn:active {
+  .cs-mixin(background-image, @btn-active-background-image);
+  .cs-mixin(box-shadow, @btn-active-box-shadow);
+}
+
+.btn-default {
+  .btn-styles(@btn-default-bg, @btn-default-color);
+}
+
+.btn-primary {
+  .btn-styles(@btn-primary-bg);
+}
+
+.btn-success {
+  .btn-styles(@btn-success-bg);
+}
+
+.btn-warning {
+  .btn-styles(@btn-warning-bg);
+}
+
+.btn-danger {
+  .btn-styles(@btn-danger-bg);
+}
+
+.btn-info {
+  .btn-styles(@btn-info-bg);
+}
+
+.btn-link {
+  border-radius: 0;
+  color: #428bca;
+  font-weight: normal;
+  cursor: pointer;
+  &, &:hover, &:focus, &:active {
+    border-color: transparent;
+    background-image: none;
+    .box-shadow(none);
+    color: #428bca;
+  }
+}
+
+.btn-link, .btn-link:active, .btn-link[disabled], fieldset[disabled] .btn-link {
+  background-color: transparent;
+  .box-shadow(none);
+}
+
+@media (min-width: @screen-sm) {
+  .btn:hover {
+    .cs-mixin(background-image, @btn-hover-background-image);
+  }
+
+  .btn-default {
+    .btn-hover-styles(@btn-default-bg, @btn-default-color);
+  }
+
+  .btn-primary {
+    .btn-hover-styles(@btn-primary-bg);
+  }
+
+  .btn-success {
+    .btn-hover-styles(@btn-success-bg);
+  }
+
+  .btn-warning {
+    .btn-hover-styles(@btn-warning-bg);
+  }
+
+  .btn-danger {
+    .btn-hover-styles(@btn-danger-bg);
+  }
+
+  .btn-info {
+    .btn-hover-styles(@btn-info-bg);
+  }
+
+  .btn-link, .btn-link:hover {
+    background-image: none;
+  }
+}
+
+// Placeholder
+.btn-styles(@btn-bg: @btn-default-bg, @color: "") {
+  @end-color: darken(@btn-bg, 10%);
+  .background-image(~"linear-gradient(top, @{btn-bg} 0%, @{end-color} 100%)");
+  &, &:hover, &:focus {
+    border-color: darken(@btn-bg, 25%);
+    background-color: @btn-bg;
+    .cs-property(color, @color);
+  }
+
+  .active,
+  &:active {
+    border-color: darken(@btn-bg, 25%);
+    background-color: @btn-bg;
+  }
+}
+
+.btn-hover-styles(@btn-bg: @btn-default-bg, @color: "") {
+  @end-color: darken(@btn-bg, 5%);
+  &:hover, &:focus {
+    .background-image(~"linear-gradient(top, @{btn-bg} 25%, @{end-color} 75%)");
+  }
+}

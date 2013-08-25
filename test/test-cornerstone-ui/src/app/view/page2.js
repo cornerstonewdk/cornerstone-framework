@@ -13,7 +13,8 @@ define([
             var self = this;
 
             require(['template!../app/template/' + id], function (example) {
-                var title = $.trim(id).replace('cs-','').replace(/-/gi,' ');
+                var title = $.trim(id).replace(/css-|cs-/gi, '')
+                    .replace('cs-','').replace(/-/gi,' ');
                 self.$el.html(
                     template({
                         pageTitle: title,
