@@ -1,7 +1,7 @@
 Cornerstone Framework
 ===================
 
-소개
+소개 
 ---
 Cornerstone Framework은 모바일 및 데스크탑 환경에서 동작하는 고품질의 웹 페이지 또는 웹 앱을 제작할 수 있는 Client-side Framework이다.
 
