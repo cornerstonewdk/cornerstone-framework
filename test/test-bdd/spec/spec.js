@@ -20,7 +20,7 @@ describe('Cornerstone event extend test', function() {
 
             it('버튼 클릭시 toggleOn 이벤트가 발생해야 한다', function(done) {
                 sTgBtn.$el.on('toggleOn.cs.button', function(e) {
-                    console.log('싱글 토글 버튼 toggleOn 발생');
+                    console.log('싱글 토글 버튼 toggleOn 발생', e);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.equal('toggleOn');
                     done();
@@ -33,7 +33,7 @@ describe('Cornerstone event extend test', function() {
 
             it('이미 토글되어 있는 버튼 클릭시 toggleOff 이벤트가 발생해야 한다.', function(done) {
                 sTgBtn.$el.on('toggleOff.cs.button', function(e) {
-                    console.log('싱글 토글 버튼 toggleOff 발생');
+                    console.log('싱글 토글 버튼 toggleOff 발생', e);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.equal('toggleOff');
                     done();
@@ -236,7 +236,7 @@ describe('Cornerstone event extend test', function() {
 
         it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
             cs.$el.on('play.cs.carousel', function(e) {
-                console.log('play.cs.carousel 발생');
+                console.log('play.cs.carousel 발생', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('play');
                 done();
@@ -637,7 +637,7 @@ describe('Cornerstone event extend test', function() {
                     el: 'input.typeahead',
                     name: 'countries',
                     prefetch: 'data/typeahead-countries.json',
-                    limit: 10    
+                    limit: 10
                 });
                 typeahead.render();
                 expect(typeahead).to.be.an.instanceof(Backbone.View);
@@ -680,13 +680,13 @@ describe('Cornerstone event extend test', function() {
         });
     });
 
-    describe('widget-spinner',function(){
+    describe('widget-spinner', function() {
         var body_spinner, inner_spinner;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-spinner'], function(WidgetSpinner) {
                 body_spinner = new WidgetSpinner({
-                    el: 'body'   
+                    el: 'body'
                 });
                 body_spinner.$el.on('show.cs.spinner', function(e) {
                     console.log('show spinner');
@@ -704,7 +704,7 @@ describe('Cornerstone event extend test', function() {
                 expect(body_spinner).to.be.an.instanceof(Backbone.View);
             });
         });
-        
+
         it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
             body_spinner.$el.on('hide.cs.spinner', function(e) {
                 console.log('hide spinner');
@@ -725,7 +725,7 @@ describe('Cornerstone event extend test', function() {
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-spinner'], function(WidgetSpinner) {
                 inner_spinner = new WidgetSpinner({
-                    el: '#loadingCircle'   
+                    el: '#loadingCircle'
                 });
                 inner_spinner.$el.on('show.cs.spinner', function(e) {
                     e.stopPropagation();
@@ -745,7 +745,7 @@ describe('Cornerstone event extend test', function() {
                 expect(inner_spinner).to.be.an.instanceof(Backbone.View);
             });
         });
-        
+
         it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
             inner_spinner.$el.on('hide.cs.spinner', function(e) {
                 e.stopPropagation();
@@ -763,6 +763,215 @@ describe('Cornerstone event extend test', function() {
             });
             inner_spinner.$el.spinner();
         });
+    });
+
+    describe('widget-chart', function() {
+        var barChart, lineChart, pieChart;
+        describe('barChart', function() {
+            it('barChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-bar.json'
+                    });
+
+                    barChart = new WidgetChart({
+                        el: 'div.barChart',
+                        chartOptions: {
+                            chartType: 'bar'
+                        },
+                        model: new Model
+                    });
+
+                    barChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('barChart shown', e);
+                        done();
+                    });
+                    barChart.render();
+                    expect(barChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+
+            it('각각의 바에 에니메이션이 끝날때 마다 animationEnd가 발생하고 모두 완료된 후 complete 이벤트가 발생되어야 한다.', function() {
+                barChart.$el.on('animationEnd', function(e) {
+                    e.stopPropagation();
+                    console.log('barChart animationEnd', e);
+                });
+                barChart.$el.on('complete', function(e) {
+                    e.stopPropagation();
+                    console.log('barChart animation complete', e);
+
+                });
+                barChart.$el.find('g.nv-series:eq(1)').click();
+            });
+        });
+
+        describe('lineChart', function() {
+            it('lineChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-line.json'
+                    });
+
+                    lineChart = new WidgetChart({
+                        el: 'div.lineChart',
+                        chartOptions: {
+                            chartType: 'line'
+                        },
+                        model: new Model
+                    });
+
+                    lineChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('lineChart shown', e);
+                        done();
+                    });
+                    lineChart.render();
+                    expect(lineChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+
+        describe('pieChart', function() {
+            it('pieChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-pie.json'
+                    });
+
+                    pieChart = new WidgetChart({
+                        el: 'div.pieChart',
+                        chartOptions: {
+                            chartType: 'pie'
+                        },
+                        model: new Model
+                    });
+
+                    pieChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('pieChart shown', e);
+                        done();
+                    });
+                    pieChart.render();
+                    expect(pieChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+    });
+
+    describe('widget-scrollview', function() {
+        // var srcollviewHTML = '<section id="scroll-view" class="demo-scroll-view" title="ScrollView"><header class="page-header"><h2 class="title">ScrollView</h2></header><div class="row"><h3 class="title">기본 스크롤뷰</h3><div class="col col-12"><div id="scrollView1" class="scrollview"><div class="scroller"><ul class="list-group"><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li></ul></div></div></div></div></section>';
+        // $('#mocha-fixture').append(srcollviewHTML);
+
+        it('스크롤뷰를 아래로 당길때 pullDown 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰를 위로 당길때 pullUp 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 새로고쳐질 때 refresh 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 움직이기 시작할 때 start 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 움직이고 있을 때 move 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 움직임이 멎을 때 end 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰에 터치가 되었을때 touchStart 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰에 터치해제 되었을때 touchEnd 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 제거될 때 destory 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+    });
+
+    describe('widget-listview', function() {
+        var listviewHTML = '<section id="list-view" title="ListView" class="row">' + '<header class="page-header">' + '<h2 class="title">ListView</h2>' + '</header>' + '<div class="row">' + '<div class="list-view-wrapper">' + '<div id="listView" class="list-view">' + '<ul class="list-group">' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '</ul>' + '</div>' + '</div>' + '<p>' + '<button id="addItem" class="btn btn-default">더보기</button>' + '</p>' + '</div>' + '</section>'
+        $('#mocha-fixture').append(listviewHTML);
+        //
+        // 리스트뷰 피처드
+        // --------------------------------------------------
+        var $el = $('#listView');
+        var isLoading = false;
+        var html;
+
+        // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+        $el.length && $el.featuredListView({
+            optimization: true,
+            spinner: "#endless-loader"
+        });
+
+        // AJAX로 데이터를 가져오는 함수
+
+        function getItem() {
+            if (isLoading) {
+                return false;
+            }
+
+            isLoading = true;
+
+            var request = $.ajax({
+                url: "data/sample-list.json",
+                type: "GET",
+                dataType: "json"
+            });
+
+            request.done(function(json) {
+                html = '<ul class="list-group">';
+                if (typeof json === "object" && json.items.length > 0) {
+                    $(json.items).each(function(i) {
+                        html += '<li class="list-group-item">';
+                        html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
+                        html += '   <span class="badge">' + this.published + '</span>';
+                        html += this.title;
+                        html += '</li>';
+                    });
+                    html += "</ul>";
+                    $el.featuredListView("addItem", html);
+                }
+                html = "";
+                isLoading = false;
+            });
+
+            request.fail(function(jqXHR, textStatus) {
+                console.log("Request failed: " + textStatus);
+                isLoading = false;
+            });
+
+        }
+
+        // 아이템 추가
+        $("#addItem").on("click", function(e) {
+            getItem();
+        });
+
+        it('scrollEnd 이벤트', function() {
+            $el.on('scrollEnd.cs.listView', function(e) {
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('scrollEnd');
+                expect(e.namespace).to.be.equal('cs.listView');
+            });
+
+            // TODO 스크롤을 마지막 까지 내려야한다. / 현재 window scroll에 걸려있는 문제가 있음
+        });
+
+
     });
 
 });
