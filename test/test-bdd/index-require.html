@@ -22,12 +22,43 @@
         <div id="mocha" class="row"></div>
         <div id="mocha-fixture">
             <section id="plugins" class="col col-lg-12">
-                <header class="page-header row">
-                    <h1 class="title">Plugins</h1>
-                </header>
-                플러그인 위젯은 유용도가 높은 UI 요소 중 순수 HTML/CSS 만으로 구현이 어려운 경우 javascript를 사용해 기능적인 면을 추가한 위젯이다.
-                <!-- Button
-  ================================================== -->
+                <!-- Alert -->
+                <section id="alert" class="row">
+                    <header class="page-header">
+                        <h2 class="title">Alert</h2>
+                        <small>
+                            <a href="http://cornerstone.sktelecom.com/cornertest/test-ui/components5.html" target="_blank">
+                                <span class="label label-info">이전 버전과 비교하기
+                                    <span class="glyphicon glyphicon-share-alt"></span>
+                                </span>
+                            </a>
+                        </small>
+                    </header>
+                    <div class="col col-lg-12">
+                        <div class="alert alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <h4>Warning!</h4>
+
+                            <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. <a href="#" class="btn-link">Link</a>
+                            </p>
+                        </div>
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Oh snap!</strong>Change a few things up and try submitting again. <a href="#" class="btn-link">Link</a>
+                        </div>
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Well done!</strong>You successfully read this important alert message. <a href="#" class="btn-link">Link</a>
+                        </div>
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Heads up!</strong>This alert needs your attention, but it's <a href="#" class="btn-link">Link</a>
+                            not super important.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Button -->
                 <section id="button" title="Button">
                     <header class="page-header">
                         <h2 class="title">Button</h2>
@@ -38,7 +69,6 @@
                             <h3 class="title">Single Toggle Button</h3>
                             <button id="single-toggle-button" type="button" class="btn btn-primary">Single toggle</button>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col col-lg-6 col-12">
@@ -86,8 +116,7 @@
                     </div>
                 </section>
 
-                <!-- Carousel
-  ================================================== -->
+                <!-- Carousel -->
                 <section id="carousel" class="row">
                     <header class="page-header">
                         <h2 class="title">Carousel</h2>
@@ -121,120 +150,82 @@
                     <button id="btnCsStart" type="button" class="btn btn-default">캐로셀 스타트</button>
                 </section>
 
-
-
-
-                <!-- Tooltip
-  ================================================== -->
-                <section id="tooltip" class="row">
+                <!-- Chart -->
+                <section id="chart" class="row">
                     <header class="page-header">
-                        <h2 class="title">Tooltip</h2>
+                        <h2 class="title">Chart</h2>
                     </header>
                     <div class="col col-lg-12">
-                        <div class="well" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you
-            probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have
-                a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a>
-                            freegan cred raw denim single-origin coffee viral.
-                        </div>
+                        <h3 class="title">바차트</h3>
 
-                        <h3 class="title">Four directions</h3>
-                        <ul class="demo-tooltips">
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a>
-                            </li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a>
-                            </li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on
-                bottom</a>
-                            </li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a>
-                            </li>
-                        </ul>
+                        <div class="barChart" style="height: 500px"></div>
+                    </div>
+                    <div class="col col-lg-6">
+                        <h3 class="title">라인차트</h3>
+
+                        <div class="lineChart" style="height: 300px"></div>
+                    </div>
+                    <div class="col col-lg-6">
+                        <h3 class="title">파이차트</h3>
+
+                        <div class="pieChart" style="height: 300px"></div>
                     </div>
                 </section>
 
-                <!-- Popover
-  ================================================== -->
-                <section id="popover" class="row">
+                <!-- Collapse -->
+                <section id="collapse" class="row">
                     <header class="page-header">
-                        <h2 class="title">Popover</h2>
+                        <h2 class="title">Collapse</h2>
                     </header>
                     <div class="col col-lg-12">
-                        <a href="#" class="btn btn-lg btn-danger" data-placement="top" data-toggle="popover" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">Click
-            to toggle popover</a>
-
-                        <h3 class="title">Four directions</h3>
-
-                        <div class="bs-example tooltip-demo">
-                            <ul class="demo-tooltips">
-                                <li><a href="#" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover
-                    on top</a>
-                                </li>
-                                <li><a href="#" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a>
-                                </li>
-                                <li><a href="#" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover
-                    on left</a>
-                                </li>
-                                <li><a href="#" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- RangeInput
-  ================================================== -->
-                <section id="rangeInput" class="row">
-                    <header class="page-header">
-                        <h2 class="title">RangeInput</h2>
-                    </header>
-                    <div class="col col-lg-4">
-                        <input id="range1" type="range" value="51" min="1" max="100" step="0.1" class="widget-range" />
-                    </div>
-                    <div class="col col-lg-4">
-                        <input id="range2" type="range" value="10" min="0" max="100" class="widget-range" data-range-options='{"inputShow":false,"progress":true}' />
-                    </div>
-                    <div class="col col-lg-4">
-                        <input id="range3" type="range" value="99999" min="0" max="99999" step="1000" class="widget-range max-10000" />
-                    </div>
-                </section>
-
-                                <!-- Sign
-  ================================================== -->
-                <section id="sign" class="row">
-                    <header class="page-header">
-                        <h2 class="title">Sign</h2>
-                    </header>
-                    <div class="col col-lg-12">
-                        <div class="widget-sign">
-                            <div id="signature" class="sign"></div>
-                            <div id="tools">
-                                <button class="btn btn-default show-sign">이미지로 보기</button>
-                                <button class="btn btn-danger reset-sign">리셋하기</button>
+                        <div class="panel-group panel-collapse" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-parent="#accordion" href="#collapseOne">
+                        Collapsible Group Item #1
+                    </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse in">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widget-sign-viewer" title="이미지를 보여줄 영역"></div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-parent="#accordion" href="#collapseTwo">
+                        Collapsible Group Item #2
+                    </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-parent="#accordion" href="#collapseThree">
+                        Collapsible Group Item #3
+                    </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Motion Captcha
-  ================================================== -->
-                <section id="motion-captcha" class="row">
-                    <header class="page-header">
-                        <h2 class="title">Motion Captcha</h2>
-                    </header>
-                    <div class="col col-lg-12">
-                        <div id="motion-captcha-example" class="widget-motioncaptcha">
-                            <p>폼 전송을 위해 도형을 그려주세요. :
-                                <button class="btn btn-default">
-                                    <span class="glyphicon glyphicon-refresh"></span>
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Datatables
-  ================================================== -->
+                <!-- Datatables -->
                 <section id="datatables" class="row">
                     <header class="page-header">
                         <h2 class="title">Datatables</h2>
@@ -249,14 +240,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                             </tbody>
                         </table>
                     </div>
                 </section>
 
-                <!-- Editor
-  ================================================== -->
+                <!-- Date Picker -->
+                <section id="date-picker" class="row">
+                    <header class="page-header">
+                        <h2 class="title">Date Picker</h2>
+                    </header>
+                    <div class="col col-lg-12">
+                        <div class="col col-lg-6">
+                            <h3 class="title">DatePicker(입력상자):</h3>
+                            <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
+                                <span class="input-group-addon add-on">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col col-lg-6">
+                            <h3 class="title">DatePicker(아이콘):</h3>
+
+                            <div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon add-on">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- dropdown -->
+
+                <!-- Editor -->
                 <section id="editor" class="row">
                     <header class="page-header">
                         <h2 class="title">Editor</h2>
@@ -341,208 +360,307 @@
                     </div>
                 </section>
 
-                <!-- Typeahead
-  ================================================== -->
-                <section id="typeahead" class="row">
+                <!-- ListView -->
+                <section id="list-view" class="row">
                     <header class="page-header">
-                        <h2 class="title">Typeahead</h2>
-                        <small>
-                            <span class="label label-warning">Update</span>Bootstrap 3에서 Drop된 상태이지만, 코너스톤에서 이전 버전보다 조금 더 기능이 강화된 Typeahead 제공
-                        </small>
+                        <h2 class="title">ListView</h2>
                     </header>
-                    <div class="col col-lg-12">
-                        <div class="example example-countries">
-                            <h2 class="example-name">Countries</h2>
+                    <div class="list-view-wrapper">
+                        <div id="listView" class="list-view">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Cras justo odio
+                                    <div class="pull-right">
+                                        <span class="badge">14</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Cras justo odio
+                                    <div class="pull-right">
+                                        <span class="badge">14</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Cras justo odio
+                                    <div class="pull-right">
+                                        <span class="badge">14</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Cras justo odio
+                                    <div class="pull-right">
+                                        <span class="badge">14</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Cras justo odio
+                                    <div class="pull-right">
+                                        <span class="badge">14</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Cras justo odio
+                                    <div class="pull-right">
+                                        <span class="badge">14</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Dapibus ac facilisis in
+                                    <div class="pull-right">
+                                        <span class="badge">2</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Morbi leo risus
+                                    <div class="pull-right">
+                                        <span class="badge">1</span>
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>
+                        <button id="addItem" class="btn btn-default">더보기</button>
+                    </p>
+                </section>
 
-                            <p class="example-description">Prefetches data, stores it in localStorage, and searches it on the client</p>
+                <!-- Media
+                <section id="media">
+                    <header class="page-header">
+                        <h2 class="title">Media</h2>
+                    </header>
+                    <div class="row">
+                        <div class="col col-lg-12">
+                            <div class="panel">
+                                <div class="panel-heading">MP4</div>
+                                <video data-featured="media" data-option-width="100%" data-option-height="100%">
+                                    <source type="video/mp4" src="data/sample-media.mp4"/>
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-lg-12">
+                            <div class="panel">
+                                <div class="panel-heading">MP3</div>
+                                <audio data-featured="media" data-option-width="100%"
+                                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
+                            </div>
+                        </div>
 
-                            <input class="typeahead form-control" type="text" placeholder="countries">
+                        <div class="col col-lg-4">
+                            <div class="panel">
+                                <div class="panel-heading">MP4</div>
+                                <video data-featured="media" data-option-width="100%" data-option-height="100%">
+                                    <source type="video/mp4" src="data/sample-media.mp4"/>
+                                </video>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4">
+                            <div class="panel">
+                                <div class="panel-heading">Youtube</div>
+                                <video data-featured="media" data-option-width="100%" data-option-height="100%" preload="none">
+                                    <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI"/>
+                                </video>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4">
+                            <div class="panel">
+                                <div class="panel-heading">Radio</div>
+                                <audio width="100%" controls="control" data-featured="media"
+                                src="http://109.74.195.10:8000/stream.mp3?redirected=1"
+                                type="audio/mp4"/>
+                            </div>
                         </div>
                     </div>
                 </section>
+                -->
 
-                <!-- Spinner
-  ================================================== -->
-                <section class="row">
-                    <!-- TODO Spin.js로 변경 -->
-                    <div id="spinner" class="col col-lg-12">
-                        <header class="page-header">
-                            <h2 class="title">Spinner</h2>
-                        </header>
-                        <div id="loadingCircle">
-                            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn btn-default">전체 페이지
-                로더</a>
-                            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn btn-info">일부
-                영역 로더</a>
+                <!-- modal -->
 
-                            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#spinner" class="btn btn-info">섹션
-                영역 로더</a>
-                        </div>
-                    </div>
-                </section>
-
-                                <!-- Chart
-  ================================================== -->
-                <section id="chart" class="row">
+                <!-- Motion Captcha -->
+                <section id="motion-captcha" class="row">
                     <header class="page-header">
-                        <h2 class="title">Chart</h2>
+                        <h2 class="title">Motion Captcha</h2>
                     </header>
                     <div class="col col-lg-12">
-                        <h3 class="title">바차트</h3>
-
-                        <div class="barChart" style="height: 500px"></div>
-                    </div>
-                    <div class="col col-lg-6">
-                        <h3 class="title">라인차트</h3>
-
-                        <div class="lineChart" style="height: 300px"></div>
-                    </div>
-                    <div class="col col-lg-6">
-                        <h3 class="title">파이차트</h3>
-
-                        <div class="pieChart" style="height: 300px"></div>
-                    </div>
-                </section>
-
-                <!-- Alert
-  ================================================== -->
-                <section id="alert" class="row">
-                    <header class="page-header">
-                        <h2 class="title">Alert</h2>
-                        <small>
-                            <a href="http://cornerstone.sktelecom.com/cornertest/test-ui/components5.html" target="_blank">
-                                <span class="label label-info">이전 버전과 비교하기
-                                    <span class="glyphicon glyphicon-share-alt"></span>
-                                </span>
-                            </a>
-                        </small>
-                    </header>
-                    <div class="col col-lg-12">
-                        <div class="alert alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <h4>Warning!</h4>
-
-                            <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. <a href="#" class="btn-link">Link</a>
+                        <div id="motion-captcha-example" class="widget-motioncaptcha">
+                            <p>폼 전송을 위해 도형을 그려주세요. :
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                </button>
                             </p>
                         </div>
-                        <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>Oh snap!</strong>Change a few things up and try submitting again. <a href="#" class="btn-link">Link</a>
-                        </div>
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>Well done!</strong>You successfully read this important alert message. <a href="#" class="btn-link">Link</a>
-                        </div>
-                        <div class="alert alert-info">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>Heads up!</strong>This alert needs your attention, but it's <a href="#" class="btn-link">Link</a>
-                            not super important.
-                        </div>
                     </div>
                 </section>
 
-
-
-                <!-- Collapse
-  ================================================== -->
-                <section id="collapse" class="row">
+                <!-- Popover -->
+                <section id="popover" class="row">
                     <header class="page-header">
-                        <h2 class="title">Collapse</h2>
+                        <h2 class="title">Popover</h2>
                     </header>
                     <div class="col col-lg-12">
-                        <div class="accordion" id="accordion2">
-                            <div class="accordion-group">
-                                <div class="accordion-heading">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                        Collapsible Group Item #1
-                    </a>
-                                </div>
-                                <div id="collapseOne" class="accordion-body collapse in">
-                                    <div class="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-group">
-                                <div class="accordion-heading">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                        Collapsible Group Item #2
-                    </a>
-                                </div>
-                                <div id="collapseTwo" class="accordion-body collapse">
-                                    <div class="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-group">
-                                <div class="accordion-heading">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                        Collapsible Group Item #3
-                    </a>
-                                </div>
-                                <div id="collapseThree" class="accordion-body collapse">
-                                    <div class="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
+                        <a href="#" class="btn btn-lg btn-danger" data-placement="top" data-toggle="popover" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">Click
+            to toggle popover</a>
+
+                        <h3 class="title">Four directions</h3>
+
+                        <div class="bs-example tooltip-demo">
+                            <ul class="demo-tooltips">
+                                <li><a href="#" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover
+                    on top</a>
+                                </li>
+                                <li><a href="#" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a>
+                                </li>
+                                <li><a href="#" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover
+                    on left</a>
+                                </li>
+                                <li><a href="#" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </section>
 
-
-
-                
-
-
-
-                
-
-                
-
-                <!-- Date Picker
-  ================================================== -->
-                <section id="date-picker" class="row">
+                <!-- RangeInput -->
+                <section id="rangeInput" class="row">
                     <header class="page-header">
-                        <h2 class="title">Date Picker</h2>
+                        <h2 class="title">RangeInput</h2>
                     </header>
-                    <div class="col col-lg-12">
-                        <div class="col col-lg-6">
-                            <h3 class="title">DatePicker(입력상자):</h3>
-
-                            <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
-                                <span class="input-group-addon add-on">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col col-lg-6">
-                            <h3 class="title">DatePicker(아이콘):</h3>
-
-                            <div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
-                                <span class="input-group-addon add-on">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
-                            </div>
-                        </div>
+                    <div class="col col-lg-4">
+                        <input id="range1" type="range" value="51" min="1" max="100" step="0.1" class="widget-range" />
+                    </div>
+                    <div class="col col-lg-4">
+                        <input id="range2" type="range" value="10" min="0" max="100" class="widget-range" data-range-options='{"inputShow":false,"progress":true}' />
+                    </div>
+                    <div class="col col-lg-4">
+                        <input id="range3" type="range" value="99999" min="0" max="99999" step="1000" class="widget-range max-10000" />
                     </div>
                 </section>
 
-                
+                <!-- scrollspy -->
 
-            </section>
-
-            <section id="featured" class="col col-lg-12">
-                <header class="page-header row">
-                    <h1 class="title">Featured</h1>
-                </header>
-                피처드 위젯은 플러그인 위젯보다 기능적인 면에서 많은 기능을 제공하는 위젯이다.
-
-                <!-- ScrollView
-  ================================================== -->
+                <!-- ScrollView -->
                 <section id="scroll-view" class="demo-scroll-view" title="ScrollView">
                     <header class="page-header">
                         <h2 class="title">ScrollView</h2>
@@ -735,250 +853,89 @@
                     </div>
                 </section>
 
-                <!-- ListView
-  ================================================== -->
-                <section id="list-view" class="row">
+                <!-- Sign -->
+                <section id="sign" class="row">
                     <header class="page-header">
-                        <h2 class="title">ListView</h2>
+                        <h2 class="title">Sign</h2>
                     </header>
-                    <div class="list-view-wrapper">
-                        <div id="listView" class="list-view">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Cras justo odio
-                                    <div class="pull-right">
-                                        <span class="badge">14</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Cras justo odio
-                                    <div class="pull-right">
-                                        <span class="badge">14</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Cras justo odio
-                                    <div class="pull-right">
-                                        <span class="badge">14</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Cras justo odio
-                                    <div class="pull-right">
-                                        <span class="badge">14</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Cras justo odio
-                                    <div class="pull-right">
-                                        <span class="badge">14</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Cras justo odio
-                                    <div class="pull-right">
-                                        <span class="badge">14</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                    <div class="pull-right">
-                                        <span class="badge">2</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    Morbi leo risus
-                                    <div class="pull-right">
-                                        <span class="badge">1</span>
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </div>
-                                </li>
-                            </ul>
+                    <div class="col col-lg-12">
+                        <div class="widget-sign">
+                            <div id="signature" class="sign"></div>
+                            <div id="tools">
+                                <button class="btn btn-default show-sign">이미지로 보기</button>
+                                <button class="btn btn-danger reset-sign">리셋하기</button>
+                            </div>
+                            <div class="widget-sign-viewer" title="이미지를 보여줄 영역"></div>
                         </div>
                     </div>
-                    <p>
-                        <button id="addItem" class="btn btn-default">더보기</button>
-                    </p>
                 </section>
 
-                <!-- Media
-  ==================================================
-<section id="media">
-    <header class="page-header">
-        <h2 class="title">Media</h2>
-    </header>
-    <div class="row">
-        <div class="col col-lg-12">
-            <div class="panel">
-                <div class="panel-heading">MP4</div>
-                <video data-featured="media" data-option-width="100%" data-option-height="100%">
-                    <source type="video/mp4" src="data/sample-media.mp4"/>
-                </video>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-lg-12">
-            <div class="panel">
-                <div class="panel-heading">MP3</div>
-                <audio data-featured="media" data-option-width="100%"
-                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
-            </div>
-        </div>
+                <!-- Spinner -->
+                <section class="row">
+                    <div id="spinner" class="col col-lg-12">
+                        <header class="page-header">
+                            <h2 class="title">Spinner</h2>
+                        </header>
+                        <div id="loadingCircle">
+                            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="body" class="btn btn-default">전체 페이지
+                로더</a>
+                            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#loadingCircle" class="btn btn-info">일부
+                영역 로더</a>
 
-        <div class="col col-lg-4">
-            <div class="panel">
-                <div class="panel-heading">MP4</div>
-                <video data-featured="media" data-option-width="100%" data-option-height="100%">
-                    <source type="video/mp4" src="data/sample-media.mp4"/>
-                </video>
-            </div>
-        </div>
-        <div class="col col-lg-4">
-            <div class="panel">
-                <div class="panel-heading">Youtube</div>
-                <video data-featured="media" data-option-width="100%" data-option-height="100%" preload="none">
-                    <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI"/>
-                </video>
-            </div>
-        </div>
-        <div class="col col-lg-4">
-            <div class="panel">
-                <div class="panel-heading">Radio</div>
-                <audio width="100%" controls="control" data-featured="media"
-                src="http://109.74.195.10:8000/stream.mp3?redirected=1"
-                type="audio/mp4"/>
-            </div>
-        </div>
-    </div>
-</section>-->
+                            <a data-plugin="spinner" data-spinner-type="show" data-spinner-target="#spinner" class="btn btn-info">섹션
+                영역 로더</a>
+                        </div>
+                    </div>
+                </section>
 
-                
+                <!-- tab -->
 
+                <!-- Tooltip -->
+                <section id="tooltip" class="row">
+                    <header class="page-header">
+                        <h2 class="title">Tooltip</h2>
+                    </header>
+                    <div class="col col-lg-12">
+                        <div class="well" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you
+            probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have
+                a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a>
+                            freegan cred raw denim single-origin coffee viral.
+                        </div>
 
+                        <h3 class="title">Four directions</h3>
+                        <ul class="demo-tooltips">
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a>
+                            </li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a>
+                            </li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on
+                bottom</a>
+                            </li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-                
+                <!-- Typeahead -->
+                <section id="typeahead" class="row">
+                    <header class="page-header">
+                        <h2 class="title">Typeahead</h2>
+                        <small>
+                            <span class="label label-warning">Update</span>Bootstrap 3에서 Drop된 상태이지만, 코너스톤에서 이전 버전보다 조금 더 기능이 강화된 Typeahead 제공
+                        </small>
+                    </header>
+                    <div class="col col-lg-12">
+                        <div class="example example-countries">
+                            <h2 class="example-name">Countries</h2>
+
+                            <p class="example-description">Prefetches data, stores it in localStorage, and searches it on the client</p>
+
+                            <input class="typeahead form-control" type="text" placeholder="countries">
+                        </div>
+                    </div>
+                </section>
             </section>
-
         </div>
     </div>
     <script src="js/mocha.js" type="text/javascript" charset="utf-8"></script>

@@ -6,7 +6,7 @@
             factory($, root, doc);
             return Backbone.View.extend({
                 render: function() {
-                    this.$el.alert(this.options);
+                    this.$el.modal(this.options);
                     return this;
                 }
             });
