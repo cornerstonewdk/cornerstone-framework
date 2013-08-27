@@ -11,6 +11,11 @@ var jam = {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "d3",
+            "location": "../cornerstone/d3",
+            "main": "d3.v3.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -34,6 +39,11 @@ var jam = {
             "name": "multipage-router",
             "location": "../cornerstone/multipage-router",
             "main": "multipage.js"
+        },
+        {
+            "name": "nv",
+            "location": "../cornerstone/nv",
+            "main": "nv.d3.min.js"
         },
         {
             "name": "spin",
@@ -69,6 +79,11 @@ var jam = {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-chart",
+            "location": "../cornerstone/widget-chart",
+            "main": "widget-chart.js"
         },
         {
             "name": "widget-datepicker",
@@ -119,6 +134,9 @@ var jam = {
                 "jquery"
             ]
         },
+        "d3": {
+            "exports": "d3"
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -143,6 +161,12 @@ var jam = {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
         },
         "spin": {
             "deps": [
@@ -184,6 +208,16 @@ var jam = {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
         },
         "widget-datepicker": {
             "deps": [
@@ -256,6 +290,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "d3",
+            "location": "../cornerstone/d3",
+            "main": "d3.v3.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -279,6 +318,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "multipage-router",
             "location": "../cornerstone/multipage-router",
             "main": "multipage.js"
+        },
+        {
+            "name": "nv",
+            "location": "../cornerstone/nv",
+            "main": "nv.d3.min.js"
         },
         {
             "name": "spin",
@@ -314,6 +358,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-chart",
+            "location": "../cornerstone/widget-chart",
+            "main": "widget-chart.js"
         },
         {
             "name": "widget-datepicker",
@@ -363,6 +412,9 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ]
         },
+        "d3": {
+            "exports": "d3"
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -387,6 +439,12 @@ if (typeof require !== "undefined" && require.config) {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
         },
         "spin": {
             "deps": [
@@ -428,6 +486,16 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
         },
         "widget-datepicker": {
             "deps": [
@@ -500,6 +568,11 @@ else {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "d3",
+            "location": "../cornerstone/d3",
+            "main": "d3.v3.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -523,6 +596,11 @@ else {
             "name": "multipage-router",
             "location": "../cornerstone/multipage-router",
             "main": "multipage.js"
+        },
+        {
+            "name": "nv",
+            "location": "../cornerstone/nv",
+            "main": "nv.d3.min.js"
         },
         {
             "name": "spin",
@@ -558,6 +636,11 @@ else {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-chart",
+            "location": "../cornerstone/widget-chart",
+            "main": "widget-chart.js"
         },
         {
             "name": "widget-datepicker",
@@ -607,6 +690,9 @@ else {
                 "jquery"
             ]
         },
+        "d3": {
+            "exports": "d3"
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -631,6 +717,12 @@ else {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
         },
         "spin": {
             "deps": [
@@ -672,6 +764,16 @@ else {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
         },
         "widget-datepicker": {
             "deps": [
