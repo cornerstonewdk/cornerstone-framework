@@ -9,6 +9,7 @@ define([
 
         el: 'section#page1',
         sampleDataUrl: "data/sample-bar.json",
+        sampleLineDataUrl: "data/sample-line.json",
         iChangeCount: 1,
         chartOption: {
             animate: false,
@@ -118,17 +119,24 @@ define([
                 dataType: "json",
                 success: function (data) {
 
-                    var options = $.extend(true, self.chartOption, {
+                    self.$el.find("#bar1").featuredChart({
                         chartType: "bar",
                         data: data
                     });
-                    self.$el.find("#bar1").featuredChart(options);
 
-                    options = $.extend(true, self.chartOption, {
+                    self.$el.find("#horizontalBar1").featuredChart({
                         chartType: "horizontalBar",
                         data: data
                     });
-                    self.$el.find("#horizontalBar1").featuredChart(options);
+                }
+            });
+            $.ajax(self.sampleLineDataUrl, {
+                dataType: "json",
+                success: function (data) {
+                    self.$el.find("#line1").featuredChart({
+                        chartType: "line",
+                        data: data
+                    });
                 }
             });
         },
@@ -155,6 +163,17 @@ define([
 
             barChart.render();
             horizontalBarChart.render();
+
+            // Backbone View 방식 적용
+            var LineModel = Backbone.Model.extend({
+                url: this.sampleLineDataUrl
+            });
+            var lineChart = new Chart({
+                el: "#line2",
+                model: new LineModel(),
+                chartOptions: $.extend({}, self.chartOption, {chartType: "line"})
+            });
+            lineChart.render();
         }
     });
 });

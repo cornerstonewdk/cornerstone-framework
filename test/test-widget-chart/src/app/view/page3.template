@@ -43,9 +43,26 @@
                 </tbody>
             </table>
         </div>
+
     </div>
+
+    <div id="linePlusBar1" class="widget-chart"></div>
     <div class="btn-group">
         <button type="button" class="btn btn-success prev">이전</button>
         <button type="button" class="btn btn-success next">다음</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-12">
+        <div class="panel panel-primary view-chart">
+
+            <div class="panel-heading">3D 바 차트</div>
+
+            <!--<h3 class="title">jQuery Plugin</h3>-->
+            <div id="bar3d1" class="widget-chart">
+
+            </div>
+        </div>
     </div>
 </div>

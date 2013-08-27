@@ -10,6 +10,7 @@
     'use strict';
     var root = this;
     var pluginName = 'featuredChart',
+        isDebug = true,
         chart,
         self;
 
@@ -40,62 +41,71 @@
             var self = this,
                 target = this.util.getTarget(d3.select(this.el));
 
-            nv.addGraph((function (self, target, options) {
-                var colorLength = options.color.length;
+            if (options.chartType.match(/.*bar3d.*/gi)) {
 
-                chart = self[options.chartType + 'Chart'](target, options);
+                self[options.chartType + 'Chart'](target, options);
 
-                chart.tooltips(options.tooltips)
-                    .color(function (d, i) {
-                        return options.color[i % colorLength];
+
+            } else {
+                nv.addGraph((function (self, target, options) {
+                    var colorLength = options.color.length;
+
+                    chart = self[options.chartType + 'Chart'](target, options);
+
+                    chart.tooltips(options.tooltips)
+                        .color(function (d, i) {
+                            return options.color[i % colorLength];
+                        });
+
+                    if ('line' === options.chartType) {
+                        console.log(options);
+                    }
+
+                    if ('pie' === options.chartType) {
+
+                    } else {
+                        if ('linePlusBar' === options.chartType) {
+                            chart.xAxis
+                                .showMaxMin(options.showMaxMin)
+                                .tickFormat(d3.format(options.format));
+
+                            chart.y1Axis.tickFormat(d3.format(options.format));
+                            chart.y2Axis.tickFormat(d3.format(options.format));
+                        } else {
+                            chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+                            chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+                        }
+                    }
+
+                    chart = options.beforeRender(target, options, chart);
+
+                    target.attr('width', options.width)
+                        .attr('height', options.height)
+                        .datum(options.data)
+                        .transition()
+                        .duration(500)
+                        .each('end', function () {
+                            $(self.el).trigger('shown');
+                            isDebug && isDebug && console.log('shown');
+                        })
+                        .call(chart);
+
+                    typeof chart.afterRender === 'function' && chart.afterRender('render');
+
+                    chart.multibar && chart.multibar.dispatch.on('animated', function (d) {
+                        $(self.el).trigger('animationEnd', d);
                     });
 
-                if('line' === options.chartType) {
-                    chart.lines.color(options.data.map(function(d,i) {
-                        return d.color || options.color[i % colorLength];
-                    }));
-                }
+                    chart.multibar && chart.multibar.dispatch.on('lastAnimated', function (d) {
+                        $(self.el).trigger('complete', d);
+                        isDebug && console.log('complete', d);
+                    });
 
-                if('pie' === options.chartType ) {
+                    self.afterRender(target, options, chart);
+                })(self, target, options));
+            }
 
-                } else {
-                    if('linePlusBar' === options.chartType ) {
-                        chart.xAxis
-                            .showMaxMin(options.showMaxMin)
-                            .tickFormat(d3.format(options.format));
-
-                        chart.y1Axis.tickFormat(d3.format(options.format));
-                        chart.y2Axis.tickFormat(d3.format(options.format));
-                    } else {
-                        chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-                        chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
-                    }
-                }
-
-                chart = options.beforeRender(target, options, chart);
-
-                target.attr('width', options.width)
-                    .attr('height', options.height)
-                    .datum(options.data)
-                    .transition()
-                    .duration(500)
-                    .each('end', function () {
-                        $(self.el).trigger('shown');
-                    })
-                    .call(chart);
-
-                typeof chart.afterRender === 'function' && chart.afterRender('render');
-
-                chart.multibar && chart.multibar.dispatch.on('animated', function (d) {
-                    $(self.el).trigger('animationEnd', d);
-                });
-
-                chart.multibar && chart.multibar.dispatch.on('lastAnimated', function (d) {
-                    $(self.el).trigger('complete', d);
-                });
-
-                self.afterRender(target, options, chart);
-            })(self, target, options));
+            return this;
         },
 
         barChart: function (target, options) {
@@ -106,7 +116,11 @@
                 .showControls(options.showControls)
                 .controlsData(options.controlsData);
 
+            console.log(chart.multibar);
+
             chart.afterRender = function (eventType) {
+                var chart = this;
+
                 if (!options.showValues) {
                     return false;
                 }
@@ -115,6 +129,7 @@
 
                 if (chart.multibar && chart.multibar.stacked()) {
                     target.select('.nv-showValuesWrap').remove();
+                    $(self.el).off('animationEnd._barChart');
                     return false;
                 }
 
@@ -127,6 +142,7 @@
                 });
 
                 var animateEnd = function (e, d) {
+
                     var rect = d3.select(d.target);
                     var text = showValuesWrap.append('svg:text').attr('class', 'nv-value');
 
@@ -138,7 +154,7 @@
                     if (!(text.attr('x') == x
                         && text.attr('y') == y
                         && text.attr('width') == width
-                        && text.attr('height') == height) || status === 'update') {
+                        && text.attr('height') == height)) {
                         text.attr({
                             'opacity': 0,
                             'x': x,
@@ -212,7 +228,7 @@
             chart = nv.models.pieChart()
                 .showLegend(options.showLegend)
                 .tooltips(options.tooltips);
-            
+
             return chart;
         },
         horizontalBarChart: function (target, options) {
@@ -288,6 +304,110 @@
                 return chart;
             });
         },
+        bar3dChart: function (target, options) {
+            console.log(target, options, this.$el);
+
+            var bars = [];
+            var figureContainer = $('<div id="figure"></div>');
+            var graphContainer = $('<div class="graph"></div>');
+            var barContainer = $('<div class="bars"></div>');
+            var data = $(options.data);
+            var container = this.$el;
+            var chartData;
+            var chartYMax;
+            var columnGroups;
+
+            // Timer variables
+            var barTimer;
+            var graphTimer;
+
+            // 3D setup
+            var graphTransform;
+            var keyToggled = true;
+            var xRotation = 0;
+            var yRotation = 0;
+            var initXRotation = 15;
+            var initYRotation = 25;
+            var endXRotation = -20;
+            var endYRotation = -15;
+            var rotationAmount = 45;
+
+            // Create table data object
+            var dataObject = {
+                // Get numerical data from table cells
+                chartData: function () {
+                    var chartData = [];
+                    data.each(function () {
+                        console.log(this);
+                        chartData.push($(this).text());
+                    });
+                    console.log('chartData', chartData);
+                    return chartData;
+                },
+                // Get heading data from table caption
+                chartHeading: function () {
+                    var chartHeading = data.find('caption').text();
+                    console.log('chartHeading', chartHeading);
+                    return chartHeading;
+                },
+                // Get legend data from table body
+                chartLegend: function () {
+                    var chartLegend = [];
+                    // Find th elements in table body - that will tell us what items go in the main legend
+                    data.find('tbody th').each(function () {
+                        chartLegend.push($(this).text());
+                    });
+                    console.log('chartLegend', chartLegend);
+                    return chartLegend;
+                },
+                // Get highest value for y-axis scale
+                chartYMax: function () {
+                    var chartData = this.chartData();
+                    // Round off the value
+                    var chartYMax = Math.ceil(Math.max.apply(Math, chartData) / 1000) * 1000;
+                    console.log('chartYMax', chartYMax);
+                    return chartYMax;
+                },
+                // Get y-axis data from table cells
+                yLegend: function () {
+                    var chartYMax = this.chartYMax();
+                    var yLegend = [];
+                    // Number of divisions on the y-axis
+                    var yAxisMarkings = 5;
+                    // Add required number of y-axis markings in order from 0 - max
+                    for (var i = 0; i < yAxisMarkings; i++) {
+                        yLegend.unshift(((chartYMax * i) / (yAxisMarkings - 1)) / 1000);
+                    }
+                    console.log('yLegend', yLegend);
+                    return yLegend;
+                },
+                // Get x-axis data from table header
+                xLegend: function () {
+                    var xLegend = [];
+                    // Find th elements in table header - that will tell us what items go in the x-axis legend
+                    data.find('thead th').each(function () {
+                        xLegend.push($(this).text());
+                    });
+                    console.log('xLegend', xLegend);
+                    return xLegend;
+                },
+                // Sort data into groups based on number of columns
+                columnGroups: function () {
+                    var columnGroups = [];
+                    // Get number of columns from first row of table body
+                    var columns = data.find('tbody tr:eq(0) td').length;
+                    for (var i = 0; i < columns; i++) {
+                        columnGroups[i] = [];
+                        data.find('tbody tr').each(function () {
+                            columnGroups[i].push($(this).find('td').eq(i).text());
+                        });
+                    }
+                    console.log('columnGroups', columnGroups);
+                    return columnGroups;
+                }
+            };
+            dataObject.chartData();
+        },
 
         util: {
             getTranslateJson: function (target) {
@@ -346,7 +466,7 @@
                 stackedName: '스택'
             },
             autoResize: true,
-            beforeRender: function(target, options, chart) {
+            beforeRender: function (target, options, chart) {
                 return chart;
             }
         };
