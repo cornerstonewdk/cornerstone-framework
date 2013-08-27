@@ -1,5 +1,22 @@
 describe('Cornerstone event extend test', function() {
 
+    describe('widget-alert', function(){
+        var alert;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-alert'],function(WidgetAlert){
+                $('div.alert').each(function(i){
+                    var view = new WidgetAlert({
+                        el: this
+                    });
+                    expect(view).to.be.an.instanceof(Backbone.View);
+                    console.log(i,$('div.alert').length);
+                    i === $('div.alert').length - 1 && done();
+                });
+            });
+        });
+    });
+
     describe('widget-button', function() {
 
         describe('single toggle button', function() {
@@ -902,74 +919,75 @@ describe('Cornerstone event extend test', function() {
     });
 
     describe('widget-listview', function() {
-        var listviewHTML = '<section id="list-view" title="ListView" class="row">' + '<header class="page-header">' + '<h2 class="title">ListView</h2>' + '</header>' + '<div class="row">' + '<div class="list-view-wrapper">' + '<div id="listView" class="list-view">' + '<ul class="list-group">' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '</ul>' + '</div>' + '</div>' + '<p>' + '<button id="addItem" class="btn btn-default">더보기</button>' + '</p>' + '</div>' + '</section>'
-        $('#mocha-fixture').append(listviewHTML);
-        //
-        // 리스트뷰 피처드
-        // --------------------------------------------------
-        var $el = $('#listView');
-        var isLoading = false;
-        var html;
 
-        // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
-        $el.length && $el.featuredListView({
-            optimization: true,
-            spinner: "#endless-loader"
-        });
+        // var listviewHTML = '<section id="list-view" title="ListView" class="row">' + '<header class="page-header">' + '<h2 class="title">ListView</h2>' + '</header>' + '<div class="row">' + '<div class="list-view-wrapper">' + '<div id="listView" class="list-view">' + '<ul class="list-group">' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '</ul>' + '</div>' + '</div>' + '<p>' + '<button id="addItem" class="btn btn-default">더보기</button>' + '</p>' + '</div>' + '</section>'
+        // $('#mocha-fixture').append(listviewHTML);
+        // //
+        // // 리스트뷰 피처드
+        // // --------------------------------------------------
+        // var $el = $('#listView');
+        // var isLoading = false;
+        // var html;
 
-        // AJAX로 데이터를 가져오는 함수
+        // // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
+        // $el.length && $el.featuredListView({
+        //     optimization: true,
+        //     spinner: "#endless-loader"
+        // });
 
-        function getItem() {
-            if (isLoading) {
-                return false;
-            }
+        // // AJAX로 데이터를 가져오는 함수
 
-            isLoading = true;
+        // function getItem() {
+        //     if (isLoading) {
+        //         return false;
+        //     }
 
-            var request = $.ajax({
-                url: "data/sample-list.json",
-                type: "GET",
-                dataType: "json"
-            });
+        //     isLoading = true;
 
-            request.done(function(json) {
-                html = '<ul class="list-group">';
-                if (typeof json === "object" && json.items.length > 0) {
-                    $(json.items).each(function(i) {
-                        html += '<li class="list-group-item">';
-                        html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
-                        html += '   <span class="badge">' + this.published + '</span>';
-                        html += this.title;
-                        html += '</li>';
-                    });
-                    html += "</ul>";
-                    $el.featuredListView("addItem", html);
-                }
-                html = "";
-                isLoading = false;
-            });
+        //     var request = $.ajax({
+        //         url: "data/sample-list.json",
+        //         type: "GET",
+        //         dataType: "json"
+        //     });
 
-            request.fail(function(jqXHR, textStatus) {
-                console.log("Request failed: " + textStatus);
-                isLoading = false;
-            });
+        //     request.done(function(json) {
+        //         html = '<ul class="list-group">';
+        //         if (typeof json === "object" && json.items.length > 0) {
+        //             $(json.items).each(function(i) {
+        //                 html += '<li class="list-group-item">';
+        //                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
+        //                 html += '   <span class="badge">' + this.published + '</span>';
+        //                 html += this.title;
+        //                 html += '</li>';
+        //             });
+        //             html += "</ul>";
+        //             $el.featuredListView("addItem", html);
+        //         }
+        //         html = "";
+        //         isLoading = false;
+        //     });
 
-        }
+        //     request.fail(function(jqXHR, textStatus) {
+        //         console.log("Request failed: " + textStatus);
+        //         isLoading = false;
+        //     });
 
-        // 아이템 추가
-        $("#addItem").on("click", function(e) {
-            getItem();
-        });
+        // }
 
-        it('scrollEnd 이벤트', function() {
-            $el.on('scrollEnd.cs.listView', function(e) {
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('scrollEnd');
-                expect(e.namespace).to.be.equal('cs.listView');
-            });
+        // // 아이템 추가
+        // $("#addItem").on("click", function(e) {
+        //     getItem();
+        // });
 
-            // TODO 스크롤을 마지막 까지 내려야한다. / 현재 window scroll에 걸려있는 문제가 있음
-        });
+        // it('scrollEnd 이벤트', function() {
+        //     $el.on('scrollEnd.cs.listView', function(e) {
+        //         expect(e).to.be.an.instanceof($.Event);
+        //         expect(e.type).to.be.equal('scrollEnd');
+        //         expect(e.namespace).to.be.equal('cs.listView');
+        //     });
+
+        //     // TODO 스크롤을 마지막 까지 내려야한다. / 현재 window scroll에 걸려있는 문제가 있음
+        // });
 
 
     });
