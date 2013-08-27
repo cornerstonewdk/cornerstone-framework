@@ -23,7 +23,7 @@
     var Alert = $.fn.alert.Constructor;
 
     Alert.prototype.close = function(e) {
-        console.log('changed');
+        
         var $this = $(this)
         var selector = $this.attr('data-target')
 
