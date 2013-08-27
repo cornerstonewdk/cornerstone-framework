@@ -1,16 +1,15 @@
 describe('Cornerstone event extend test', function() {
 
-    describe('widget-alert', function(){
+    describe('widget-alert', function() {
         var alert;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-alert'],function(WidgetAlert){
-                $('div.alert').each(function(i){
+            require(['widget-alert'], function(WidgetAlert) {
+                $('div.alert').each(function(i) {
                     var view = new WidgetAlert({
                         el: this
                     });
                     expect(view).to.be.an.instanceof(Backbone.View);
-                    console.log(i,$('div.alert').length);
                     i === $('div.alert').length - 1 && done();
                 });
             });
@@ -278,74 +277,274 @@ describe('Cornerstone event extend test', function() {
         });
     });
 
-    describe('widget-tooltip', function() {
-        var tooltips;
+    describe('widget-chart', function() {
+        var barChart, lineChart, pieChart;
+        describe('barChart', function() {
+            it('barChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-bar.json'
+                    });
+
+                    barChart = new WidgetChart({
+                        el: 'div.barChart',
+                        chartOptions: {
+                            chartType: 'bar'
+                        },
+                        model: new Model
+                    });
+
+                    barChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('barChart shown', e);
+                        done();
+                    });
+                    barChart.render();
+                    expect(barChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+
+            it('각각의 바에 에니메이션이 끝날때 마다 animationEnd가 발생하고 모두 완료된 후 complete 이벤트가 발생되어야 한다.', function() {
+                barChart.$el.on('animationEnd', function(e) {
+                    e.stopPropagation();
+                    console.log('barChart animationEnd', e);
+                });
+                barChart.$el.on('complete', function(e) {
+                    e.stopPropagation();
+                    console.log('barChart animation complete', e);
+
+                });
+                barChart.$el.find('g.nv-series:eq(1)').click();
+            });
+        });
+
+        describe('lineChart', function() {
+            it('lineChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-line.json'
+                    });
+
+                    lineChart = new WidgetChart({
+                        el: 'div.lineChart',
+                        chartOptions: {
+                            chartType: 'line'
+                        },
+                        model: new Model
+                    });
+
+                    lineChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('lineChart shown', e);
+                        done();
+                    });
+                    lineChart.render();
+                    expect(lineChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+
+        describe('pieChart', function() {
+            it('pieChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-pie.json'
+                    });
+
+                    pieChart = new WidgetChart({
+                        el: 'div.pieChart',
+                        chartOptions: {
+                            chartType: 'pie'
+                        },
+                        model: new Model
+                    });
+
+                    pieChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('pieChart shown', e);
+                        done();
+                    });
+                    pieChart.render();
+                    expect(pieChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+    });
+
+    describe('widget-collapse', function() {
+        var collapse;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-tooltip'], function(WidgetTooltip) {
-                tooltips = new WidgetTooltip({
-                    el: '[data-toggle=tooltip]'
+            require(['widget-collapse'],function(WidgetCollapse){
+                collapse = new WidgetCollapse({
+                    el: '#collapseOne'
                 });
-                tooltips.render();
-                expect(tooltips).to.be.an.instanceof(Backbone.View);
+                collapse.render();
+                expect(collapse).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
 
+        it('첫번 째 패널은 콜랩스가 작동하여야 한다.',function( done ){
+            this.timeout(2000);
+            var hasInClass = collapse.$el.hasClass('in');
 
-        it('첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
-            tooltips.$el.each(function() {
-                $(this).on('show.bs.tooltip', function(e) {
-                    console.log('show.bs.tooltip 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('show');
-                }).on('shown.bs.tooltip', function(e) {
-                    console.log('shown.bs.tooltip 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('shown');
+            collapse.$el.parent().find('a.accordion-toggle').click(function(e){
+                e.preventDefault();
+                hasInClass = !hasInClass;
+                collapse.$el.collapse('toggle');
+                setTimeout(function() {
+                    expect(hasInClass).to.not.equal(collapse.$el.hasClass('in'));
                     done();
-                });
+                }, 1000);
             });
-            $(tooltips.$el[0]).mouseover();
+            collapse.$el.parent().find('a.accordion-toggle').trigger('click');
         });
+    });
 
-        it('첫번째 버튼에 마우스 오버를 해제하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
-
-            tooltips.$el.each(function() {
-                $(this).on('hide.bs.tooltip', function(e) {
-                    console.log('hide.bs.tooltip 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('hide');
-                }).on('hidden.bs.tooltip', function(e) {
-                    console.log('hidden.bs.tooltip 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('hidden');
-                    done();
+    describe('widget-datatable', function() {
+        var table;
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-datatable'], function(WidgetDatatable) {
+                var Model = Backbone.Model.extend({
+                    url: "data/sample-datatables.json"
                 });
-            });
-            $(tooltips.$el[0]).mouseout();
-        });
-
-        it('세번째 버튼에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
-            $(tooltips.$el[3]).off('show.bs.tooltip').off('shown.bs.tooltip').off('hide.bs.tooltip').off('hidden.bs.tooltip');
-            $(tooltips.$el[3]).on('show.bs.tooltip', function(e) {
-                console.log('show.bs.tooltip 발생');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('show');
-            }).on('shown.bs.tooltip', function(e) {
-                console.log('shown.bs.tooltip 발생');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('shown');
-            }).on('hide.bs.tooltip', function(e) {
-                console.log('hide.bs.tooltip 발생');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('hide');
-            }).on('hidden.bs.tooltip', function(e) {
-                console.log('hidden.bs.tooltip 발생');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('hidden');
+                table = new WidgetDatatable({
+                    el: '#test-datatables',
+                    model: new Model
+                });
+                table.render();
+                expect(table).to.be.an.instanceof(Backbone.View);
                 done();
-            }).mouseover().mouseout();
+            });
+        });
+
+        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
+            table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
+                console.log('itemClick.cs.datatables', result);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('itemClick');
+                expect(e.namespace).to.be.equal('cs.datatables');
+                expect(result).to.be.an('object')
+                expect(result.data).to.be.instanceof(Array);
+                done();
+            });
+            table.$el.find('tr:eq(2)').click();
+        });
+    });
+
+    describe('widget-datepicker', function() {
+        var datepicker;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+
+        });
+    });
+
+    describe('widget-dropdown', function() {
+        var dropdown;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+
+        });
+    });
+
+    describe('widget-editor', function() {
+        var editor;
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-editor'], function(WidgetEditor) {
+                editor = new WidgetEditor({
+                    el: '#textarea'
+                });
+                editor.render();
+                expect(editor).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+
+        it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function(done) {
+            editor.$el.on('blur', function(e) {
+                console.log('editor blur', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('blur');
+                done();
+            }).focus().blur();
+        });
+    });
+
+    describe('widget-listview', function() {
+        var listview;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+
+        });
+    });
+
+    describe('widget-media', function() {
+        var media;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+
+        });
+    });
+
+    describe('widget-modal', function() {
+        var modal;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+
+        });
+    });
+
+    describe('widget-motioncaptcha', function() {
+        var captcha;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-motioncaptcha'], function(WidgetMotioncaptcha) {
+                $("#motion-captcha button").off('click').on("click", function(e) {
+                    $("#mc-canvas").remove();
+                    $("<canvas/>", {
+                        "id": "mc-canvas",
+                        "class": "mc-canvas"
+                    }).appendTo($("#motion-captcha-example"));
+                    captcha = new WidgetMotioncaptcha({
+                        el: '#mc-canvas'
+                    });
+                    captcha.render({
+                        errorMsg: '다시 시도해주세요.',
+                        successMsg: '성공',
+                        onSuccess: function() {
+                            console.log("성공");
+                        }
+                    });
+                    expect(captcha).to.be.an.instanceof(Backbone.View);
+                    done();
+                }).click();
+            });
+        });
+
+        it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
+            captcha.$el.on('start.cs.motionCaptcha', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.motionCaptcha', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.motionCaptcha', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+            }).on('fail.cs.motionCaptcha', function(e) {
+                console.log('fail', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('fail');
+            }).on('success.cs.motionCaptcha', function(e) {
+                console.log('success', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('success');
+            });
         });
     });
 
@@ -496,6 +695,56 @@ describe('Cornerstone event extend test', function() {
         // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
     });
 
+    describe('widget-scrollspy', function() {
+        var scrollspy;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+
+        });
+    });
+
+    describe('widget-scrollview', function() {
+        // var srcollviewHTML = '<section id="scroll-view" class="demo-scroll-view" title="ScrollView"><header class="page-header"><h2 class="title">ScrollView</h2></header><div class="row"><h3 class="title">기본 스크롤뷰</h3><div class="col col-12"><div id="scrollView1" class="scrollview"><div class="scroller"><ul class="list-group"><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li></ul></div></div></div></div></section>';
+        // $('#mocha-fixture').append(srcollviewHTML);
+
+        it('스크롤뷰를 아래로 당길때 pullDown 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰를 위로 당길때 pullUp 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 새로고쳐질 때 refresh 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 움직이기 시작할 때 start 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 움직이고 있을 때 move 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 움직임이 멎을 때 end 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰에 터치가 되었을때 touchStart 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰에 터치해제 되었을때 touchEnd 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+        it('스크롤뷰가 제거될 때 destory 이벤트가 발생하여야 한다.', function() {
+
+        });
+
+    });
+
     describe('widget-sign', function() {
         var sign;
 
@@ -537,164 +786,6 @@ describe('Cornerstone event extend test', function() {
         //     }).click();
         // });
         // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
-    });
-
-    describe('widget-motioncaptcha', function() {
-        var captcha;
-
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-motioncaptcha'], function(WidgetMotioncaptcha) {
-                $("#motion-captcha button").off('click').on("click", function(e) {
-                    $("#mc-canvas").remove();
-                    $("<canvas/>", {
-                        "id": "mc-canvas",
-                        "class": "mc-canvas"
-                    }).appendTo($("#motion-captcha-example"));
-                    captcha = new WidgetMotioncaptcha({
-                        el: '#mc-canvas'
-                    });
-                    captcha.render({
-                        errorMsg: '다시 시도해주세요.',
-                        successMsg: '성공',
-                        onSuccess: function() {
-                            console.log("성공");
-                        }
-                    });
-                    expect(captcha).to.be.an.instanceof(Backbone.View);
-                    done();
-                }).click();
-            });
-        });
-
-        it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
-            captcha.$el.on('start.cs.motionCaptcha', function(e) {
-                console.log('start', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('start');
-            }).on('move.cs.motionCaptcha', function(e) {
-                console.log('move', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('move');
-            }).on('end.cs.motionCaptcha', function(e) {
-                console.log('end', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('end');
-            }).on('fail.cs.motionCaptcha', function(e) {
-                console.log('fail', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('fail');
-            }).on('success.cs.motionCaptcha', function(e) {
-                console.log('success', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('success');
-            });
-        });
-    });
-
-    describe('widget-datatable', function() {
-        var table;
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-datatable'], function(WidgetDatatable) {
-                var Model = Backbone.Model.extend({
-                    url: "data/sample-datatables.json"
-                });
-                table = new WidgetDatatable({
-                    el: '#test-datatables',
-                    model: new Model
-                });
-                table.render();
-                expect(table).to.be.an.instanceof(Backbone.View);
-                done();
-            });
-        });
-
-        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
-            table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
-                console.log('itemClick.cs.datatables', result);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('itemClick');
-                expect(e.namespace).to.be.equal('cs.datatables');
-                expect(result).to.be.an('object')
-                expect(result.data).to.be.instanceof(Array);
-                done();
-            });
-            table.$el.find('tr:eq(2)').click();
-        });
-    });
-
-    describe('widget-editor', function() {
-        var editor;
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-editor'], function(WidgetEditor) {
-                editor = new WidgetEditor({
-                    el: '#textarea'
-                });
-                editor.render();
-                expect(editor).to.be.an.instanceof(Backbone.View);
-                done();
-            });
-        });
-
-        it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function(done) {
-            editor.$el.on('blur', function(e) {
-                console.log('editor blur', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('blur');
-                done();
-            }).focus().blur();
-        });
-    });
-
-    describe('widget-typeahead', function() {
-        var typeahead, dMenu;
-
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-typeahead'], function(WidgetTypeahead) {
-                typeahead = new WidgetTypeahead({
-                    el: 'input.typeahead',
-                    name: 'countries',
-                    prefetch: 'data/typeahead-countries.json',
-                    limit: 10
-                });
-                typeahead.render();
-                expect(typeahead).to.be.an.instanceof(Backbone.View);
-                done();
-            });
-        });
-
-        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function() {
-            $("input.typeahead").focus();
-            typeahead.$el.val('korea');
-            var e = jQuery.Event("input.tt");
-            e.which = e.keycode = 65;
-            typeahead.$el.trigger(e);
-            dMenu = typeahead.$el.closest('.twitter-typeahead').find('.tt-dropdown-menu');
-            expect(dMenu).to.not.be.undefined;
-            expect(dMenu.find('.tt-suggestion').length).to.equal(2);
-        });
-
-        it('검색된 2개의 결과물중 2번째 "South Korea"를 클릭하면 selected이벤트가 발생하여야 한다.', function(done) {
-            typeahead.$el.on('selected.cs.typeahead', function(e, datum, dataset) {
-                console.log(e, datum, dataset);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('selected');
-                expect(e.namespace).to.be.equal('cs.typeahead');
-                expect(datum.value).to.be.equal('South Korea');
-                expect(dataset).to.be.equal('countries');
-                done();
-            });
-            dMenu.find('.tt-suggestion:eq(1)').click();
-        });
-
-        it('직접 테스트를 하기위해 기존 이벤트(selected의 값 비교 로직) 제거 후 재바인딩', function() {
-            typeahead.$el.off('selected.cs.typeahead').on('selected.cs.typeahead', function(e, datum, dataset) {
-                console.log(e, datum, dataset);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('selected');
-                expect(e.namespace).to.be.equal('cs.typeahead');
-                expect(dataset).to.be.equal('countries');
-            });
-        });
     });
 
     describe('widget-spinner', function() {
@@ -782,214 +873,139 @@ describe('Cornerstone event extend test', function() {
         });
     });
 
-    describe('widget-chart', function() {
-        var barChart, lineChart, pieChart;
-        describe('barChart', function() {
-            it('barChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
-                require(['widget-chart'], function(WidgetChart) {
-                    var Model = Backbone.Model.extend({
-                        url: 'data/sample-bar.json'
-                    });
+    describe('widget-tab', function() {
+        var tab;
 
-                    barChart = new WidgetChart({
-                        el: 'div.barChart',
-                        chartOptions: {
-                            chartType: 'bar'
-                        },
-                        model: new Model
-                    });
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
 
-                    barChart.$el.on('shown', function(e) {
-                        e.stopPropagation();
-                        console.log('barChart shown', e);
-                        done();
-                    });
-                    barChart.render();
-                    expect(barChart).to.be.an.instanceof(Backbone.View);
+        });
+    });
+
+    describe('widget-tooltip', function() {
+        var tooltips;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-tooltip'], function(WidgetTooltip) {
+                tooltips = new WidgetTooltip({
+                    el: '[data-toggle=tooltip]'
                 });
-            });
-
-            it('각각의 바에 에니메이션이 끝날때 마다 animationEnd가 발생하고 모두 완료된 후 complete 이벤트가 발생되어야 한다.', function() {
-                barChart.$el.on('animationEnd', function(e) {
-                    e.stopPropagation();
-                    console.log('barChart animationEnd', e);
-                });
-                barChart.$el.on('complete', function(e) {
-                    e.stopPropagation();
-                    console.log('barChart animation complete', e);
-
-                });
-                barChart.$el.find('g.nv-series:eq(1)').click();
+                tooltips.render();
+                expect(tooltips).to.be.an.instanceof(Backbone.View);
+                done();
             });
         });
 
-        describe('lineChart', function() {
-            it('lineChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
-                require(['widget-chart'], function(WidgetChart) {
-                    var Model = Backbone.Model.extend({
-                        url: 'data/sample-line.json'
-                    });
-
-                    lineChart = new WidgetChart({
-                        el: 'div.lineChart',
-                        chartOptions: {
-                            chartType: 'line'
-                        },
-                        model: new Model
-                    });
-
-                    lineChart.$el.on('shown', function(e) {
-                        e.stopPropagation();
-                        console.log('lineChart shown', e);
-                        done();
-                    });
-                    lineChart.render();
-                    expect(lineChart).to.be.an.instanceof(Backbone.View);
+        it('첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
+            tooltips.$el.each(function() {
+                $(this).on('show.bs.tooltip', function(e) {
+                    console.log('show.bs.tooltip 발생');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('show');
+                }).on('shown.bs.tooltip', function(e) {
+                    console.log('shown.bs.tooltip 발생');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('shown');
+                    done();
                 });
+            });
+            $(tooltips.$el[0]).mouseover();
+        });
+
+        it('첫번째 버튼에 마우스 오버를 해제하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
+
+            tooltips.$el.each(function() {
+                $(this).on('hide.bs.tooltip', function(e) {
+                    console.log('hide.bs.tooltip 발생');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('hide');
+                }).on('hidden.bs.tooltip', function(e) {
+                    console.log('hidden.bs.tooltip 발생');
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('hidden');
+                    done();
+                });
+            });
+            $(tooltips.$el[0]).mouseout();
+        });
+
+        it('세번째 버튼에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
+            $(tooltips.$el[3]).off('show.bs.tooltip').off('shown.bs.tooltip').off('hide.bs.tooltip').off('hidden.bs.tooltip');
+            $(tooltips.$el[3]).on('show.bs.tooltip', function(e) {
+                console.log('show.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('show');
+            }).on('shown.bs.tooltip', function(e) {
+                console.log('shown.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('shown');
+            }).on('hide.bs.tooltip', function(e) {
+                console.log('hide.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hide');
+            }).on('hidden.bs.tooltip', function(e) {
+                console.log('hidden.bs.tooltip 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('hidden');
+                done();
+            }).mouseover().mouseout();
+        });
+    });
+
+    describe('widget-typeahead', function() {
+        var typeahead, dMenu;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-typeahead'], function(WidgetTypeahead) {
+                typeahead = new WidgetTypeahead({
+                    el: 'input.typeahead',
+                    name: 'countries',
+                    prefetch: 'data/typeahead-countries.json',
+                    limit: 10
+                });
+                typeahead.render();
+                expect(typeahead).to.be.an.instanceof(Backbone.View);
+                done();
             });
         });
 
-        describe('pieChart', function() {
-            it('pieChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
-                require(['widget-chart'], function(WidgetChart) {
-                    var Model = Backbone.Model.extend({
-                        url: 'data/sample-pie.json'
-                    });
+        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function() {
+            $("input.typeahead").focus();
+            typeahead.$el.val('korea');
+            var e = jQuery.Event("input.tt");
+            e.which = e.keycode = 65;
+            typeahead.$el.trigger(e);
+            dMenu = typeahead.$el.closest('.twitter-typeahead').find('.tt-dropdown-menu');
+            expect(dMenu).to.not.be.undefined;
+            expect(dMenu.find('.tt-suggestion').length).to.equal(2);
+        });
 
-                    pieChart = new WidgetChart({
-                        el: 'div.pieChart',
-                        chartOptions: {
-                            chartType: 'pie'
-                        },
-                        model: new Model
-                    });
+        it('검색된 2개의 결과물중 2번째 "South Korea"를 클릭하면 selected이벤트가 발생하여야 한다.', function(done) {
+            typeahead.$el.on('selected.cs.typeahead', function(e, datum, dataset) {
+                console.log(e, datum, dataset);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('selected');
+                expect(e.namespace).to.be.equal('cs.typeahead');
+                expect(datum.value).to.be.equal('South Korea');
+                expect(dataset).to.be.equal('countries');
+                done();
+            });
+            dMenu.find('.tt-suggestion:eq(1)').click();
+        });
 
-                    pieChart.$el.on('shown', function(e) {
-                        e.stopPropagation();
-                        console.log('pieChart shown', e);
-                        done();
-                    });
-                    pieChart.render();
-                    expect(pieChart).to.be.an.instanceof(Backbone.View);
-                });
+        it('직접 테스트를 하기위해 기존 이벤트(selected의 값 비교 로직) 제거 후 재바인딩', function() {
+            typeahead.$el.off('selected.cs.typeahead').on('selected.cs.typeahead', function(e, datum, dataset) {
+                console.log(e, datum, dataset);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('selected');
+                expect(e.namespace).to.be.equal('cs.typeahead');
+                expect(dataset).to.be.equal('countries');
             });
         });
     });
 
-    describe('widget-scrollview', function() {
-        // var srcollviewHTML = '<section id="scroll-view" class="demo-scroll-view" title="ScrollView"><header class="page-header"><h2 class="title">ScrollView</h2></header><div class="row"><h3 class="title">기본 스크롤뷰</h3><div class="col col-12"><div id="scrollView1" class="scrollview"><div class="scroller"><ul class="list-group"><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Dapibus ac facilisis in<div class="pull-right"><span class="badge">2</span><span class="glyphicon glyphicon-chevron-right"></span></div></li><li class="list-group-item">Morbi leo risus<div class="pull-right"><span class="badge">1</span><span class="glyphicon glyphicon-chevron-right"></span></div></li></ul></div></div></div></div></section>';
-        // $('#mocha-fixture').append(srcollviewHTML);
-
-        it('스크롤뷰를 아래로 당길때 pullDown 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰를 위로 당길때 pullUp 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰가 새로고쳐질 때 refresh 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰가 움직이기 시작할 때 start 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰가 움직이고 있을 때 move 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰가 움직임이 멎을 때 end 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰에 터치가 되었을때 touchStart 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰에 터치해제 되었을때 touchEnd 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-        it('스크롤뷰가 제거될 때 destory 이벤트가 발생하여야 한다.', function() {
-
-        });
-
-    });
-
-    describe('widget-listview', function() {
-
-        // var listviewHTML = '<section id="list-view" title="ListView" class="row">' + '<header class="page-header">' + '<h2 class="title">ListView</h2>' + '</header>' + '<div class="row">' + '<div class="list-view-wrapper">' + '<div id="listView" class="list-view">' + '<ul class="list-group">' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">14</span>' + 'Cras justo odio' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">2</span>' + 'Dapibus ac facilisis in' + '</li>' + '<li class="list-group-item">' + '<span class="glyphicon glyphicon-chevron-right"></span>' + '<span class="badge">1</span>' + 'Morbi leo risus' + '</li>' + '</ul>' + '</div>' + '</div>' + '<p>' + '<button id="addItem" class="btn btn-default">더보기</button>' + '</p>' + '</div>' + '</section>'
-        // $('#mocha-fixture').append(listviewHTML);
-        // //
-        // // 리스트뷰 피처드
-        // // --------------------------------------------------
-        // var $el = $('#listView');
-        // var isLoading = false;
-        // var html;
-
-        // // ID가 listView이 엘리먼트에 ListView 피쳐드 적용
-        // $el.length && $el.featuredListView({
-        //     optimization: true,
-        //     spinner: "#endless-loader"
-        // });
-
-        // // AJAX로 데이터를 가져오는 함수
-
-        // function getItem() {
-        //     if (isLoading) {
-        //         return false;
-        //     }
-
-        //     isLoading = true;
-
-        //     var request = $.ajax({
-        //         url: "data/sample-list.json",
-        //         type: "GET",
-        //         dataType: "json"
-        //     });
-
-        //     request.done(function(json) {
-        //         html = '<ul class="list-group">';
-        //         if (typeof json === "object" && json.items.length > 0) {
-        //             $(json.items).each(function(i) {
-        //                 html += '<li class="list-group-item">';
-        //                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
-        //                 html += '   <span class="badge">' + this.published + '</span>';
-        //                 html += this.title;
-        //                 html += '</li>';
-        //             });
-        //             html += "</ul>";
-        //             $el.featuredListView("addItem", html);
-        //         }
-        //         html = "";
-        //         isLoading = false;
-        //     });
-
-        //     request.fail(function(jqXHR, textStatus) {
-        //         console.log("Request failed: " + textStatus);
-        //         isLoading = false;
-        //     });
-
-        // }
-
-        // // 아이템 추가
-        // $("#addItem").on("click", function(e) {
-        //     getItem();
-        // });
-
-        // it('scrollEnd 이벤트', function() {
-        //     $el.on('scrollEnd.cs.listView', function(e) {
-        //         expect(e).to.be.an.instanceof($.Event);
-        //         expect(e.type).to.be.equal('scrollEnd');
-        //         expect(e.namespace).to.be.equal('cs.listView');
-        //     });
-
-        //     // TODO 스크롤을 마지막 까지 내려야한다. / 현재 window scroll에 걸려있는 문제가 있음
-        // });
 
 
-    });
+
+
 
 });
