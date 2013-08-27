@@ -24,8 +24,24 @@
  * =========================================================
  */
 
-(function ($) {
-
+;
+( function ( root, doc, factory ) {
+    if ( typeof define === "function" && define.amd ) {
+        // AMD
+        define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
+            factory( $, root, doc );
+            return Backbone.View.extend( {
+            	render: function () {
+            		this.$el.datetimepicker( this.options );
+            		return this;
+            	}
+            } );
+        } );
+    } else {
+        // None AMD
+        factory( root.jQuery, root, doc );
+    }
+} ( window, document, function ( $, window, document ) {
 	var i, j, btsSelectors = {
 		wrapper: ".input-group", // .input-prepend, .input-apped -> .inpup-group
 		addOn: ".input-group-addon", // .add-on -> .input-group-addon
@@ -128,6 +144,7 @@
 			this.place();
 			this.$element.trigger({
 				type: 'show',
+				namespace: 'cs.datepicker',
 				date: this._date
 			});
 			this._attachDatePickerGlobalEvents();
@@ -160,6 +177,7 @@
 			this.set();
 			this.$element.trigger({
 				type: 'hide',
+				namespace: 'cs.datepicker',
 				date: this._date
 			});
 			this._detachDatePickerGlobalEvents();
@@ -299,6 +317,7 @@
 		notifyChange: function () {
 			this.$element.trigger({
 				type: 'changeDate',
+				namespace: 'cs.datepicker',
 				date: this.getDate(),
 				localDate: this.getLocalDate()
 			});
@@ -1443,4 +1462,4 @@
 						'</div>' : '')
 			);
 	};
-})(window.jQuery);
+} ) );
