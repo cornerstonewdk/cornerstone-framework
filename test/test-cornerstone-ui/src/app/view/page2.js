@@ -12,7 +12,8 @@ define([
         render: function (id) {
             var self = this;
 
-            require(['template!../app/template/' + id], function (example) {
+            require([
+                'template!../app/template/' + id], function (example) {
                 var title = $.trim(id).replace(/css-|cs-/gi, '')
                     .replace('cs-','').replace(/-/gi,' ');
                 self.$el.html(
@@ -93,6 +94,10 @@ define([
                             changeDisplay: true
                         });
                     });
+                }
+
+                if(id.match(".*chart")) {
+                    require(['widget-chart']);
                 }
             });
             return this;

@@ -124,3 +124,35 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col col-lg-6">
+        <div class="panel panel-primary view-chart">
+
+            <div class="panel-heading">리인 차트 Plugin</div>
+
+            <!--<h3 class="title">jQuery Plugin</h3>-->
+            <div id="line1" class="widget-chart"></div>
+
+            <!--<h3 class="title">Backbone View</h3>-->
+            <!--<div id="horizontalBar2" class="widget-chart"></div>-->
+
+            <!--<h3 class="title">Data-API</h3>-->
+            <!--<div class="widget-chart" data-featured="chart" data-chart-type="horizontalBar" data-chart-bind="data/sample-bar.json"></div>-->
+        </div>
+    </div>
+    <div class="col col-lg-6">
+        <div class="panel panel-primary view-chart">
+
+            <div class="panel-heading">리인 차트 View</div>
+
+            <!--<h3 class="title">jQuery Plugin</h3>-->
+            <div id="line2" class="widget-chart"></div>
+
+            <!--<h3 class="title">Backbone View</h3>-->
+            <!--<div id="bar2" class="widget-chart"></div>-->
+
+            <!--<h3 class="title">Data-API</h3>-->
+            <!--<div class="widget-chart" data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json"></div>-->
+        </div>
+    </div>
+</div>

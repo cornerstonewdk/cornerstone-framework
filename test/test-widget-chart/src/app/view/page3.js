@@ -1,11 +1,13 @@
 define([
     'backbone',
+    'widget-chart',
     'template!view/page3'
-], function (Backbone, template) {
+], function (Backbone, Chart, template) {
 
     return Backbone.View.extend({
 
         el: 'section#page3',
+        sampleDataUrl: "data/sample-bar.json",
 
         render: function () {
             var self = this;
@@ -30,7 +32,7 @@ define([
         },
 
         active3DChart: function () {
-            "use strict";
+            var self = this;
             /**
              *    Animated Graph Tutorial for Smashing Magazine
              *    July 2011
@@ -41,13 +43,24 @@ define([
              *
              *    Example 5 - 3D Animated Bar Chart via CSS Transforms (WebKit Only)
              */
+            $.ajax({
+                url: self.sampleDataUrl,
+                dataType: "json",
+                success: function (data) {
+                    self.$el.find("#bar3d1").featuredChart({
+                        chartType: "bar3d",
+                        format: '.2f',
+                        data: data,
+                        beforeRender: function(target, options, chart) {
+                            console.log(chart);
+                            return chart;
+                        }
+                    });
+                }
+            });
 
             $(document).ready(function () {
-
                 // Create our graph from the data table and specify a container to put the graph in
-                createGraph('#data-table', '.chart');
-
-                // Here be graphs
                 function createGraph(data, container) {
                     // Declare some common variables and container elements
                     var bars = [];
@@ -83,11 +96,13 @@ define([
                             data.find('tbody td').each(function () {
                                 chartData.push($(this).text());
                             });
+                            console.log('chartData', chartData);
                             return chartData;
                         },
                         // Get heading data from table caption
                         chartHeading: function () {
                             var chartHeading = data.find('caption').text();
+                            console.log('chartHeading', chartHeading);
                             return chartHeading;
                         },
                         // Get legend data from table body
@@ -97,6 +112,7 @@ define([
                             data.find('tbody th').each(function () {
                                 chartLegend.push($(this).text());
                             });
+                            console.log('chartLegend', chartLegend);
                             return chartLegend;
                         },
                         // Get highest value for y-axis scale
@@ -104,6 +120,7 @@ define([
                             var chartData = this.chartData();
                             // Round off the value
                             var chartYMax = Math.ceil(Math.max.apply(Math, chartData) / 1000) * 1000;
+                            console.log('chartYMax', chartYMax);
                             return chartYMax;
                         },
                         // Get y-axis data from table cells
@@ -116,6 +133,7 @@ define([
                             for (var i = 0; i < yAxisMarkings; i++) {
                                 yLegend.unshift(((chartYMax * i) / (yAxisMarkings - 1)) / 1000);
                             }
+                            console.log('yLegend', yLegend);
                             return yLegend;
                         },
                         // Get x-axis data from table header
@@ -125,6 +143,7 @@ define([
                             data.find('thead th').each(function () {
                                 xLegend.push($(this).text());
                             });
+                            console.log('xLegend', xLegend);
                             return xLegend;
                         },
                         // Sort data into groups based on number of columns
@@ -138,6 +157,7 @@ define([
                                     columnGroups[i].push($(this).find('td').eq(i).text());
                                 });
                             }
+                            console.log('columnGroups', columnGroups);
                             return columnGroups;
                         }
                     }
@@ -291,6 +311,7 @@ define([
                     // Finally, display graph via reset function
                     resetGraph();
                 }
+                createGraph('#data-table', '.chart');
             });
         }
     });
