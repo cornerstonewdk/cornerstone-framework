@@ -382,7 +382,7 @@
                         var values = this["values"];
                         var valuesLength = this["values"].length;
 
-                        if(prevLength < valuesLength) {
+                        if (prevLength < valuesLength) {
                             $(this["values"]).each(function () {
                                 xLegend.push(d3.format(options.format)(this["x"]));
                             });
@@ -390,6 +390,7 @@
 
                         prevLength = valuesLength;
                     });
+                    console.log("xLegend", xLegend);
                     return xLegend;
                 },
                 // Sort data into groups based on number of columns
@@ -400,7 +401,7 @@
                         var values = this["values"];
                         columnGroups[i] = [];
                         // 00 10 20 01 11 21 02 12 22
-                        $(values).each(function(j) {
+                        $(values).each(function (j) {
                             columnGroups[i].push(d3.format(options.format)(data[j]["values"][i]["y"]));
                         });
                     });
@@ -451,7 +452,12 @@
 
             // Add x-axis to graph
             var xLegend = dataObject.xLegend();
-            var xAxisList = $('<ul class="x-axis"></ul>');
+
+            console.log('xLegend length', xLegend);
+
+            var xAxisList = $('<ul class="x-axis"></ul>').css({
+                width: xLegend.length * 180
+            });
             $.each(xLegend, function (i) {
                 var listItem = $('<li><span>' + this + '</span></li>')
                     .appendTo(xAxisList);
@@ -460,7 +466,9 @@
 
             // Add y-axis to graph
             var yLegend = dataObject.yLegend();
-            var yAxisList = $('<ul class="y-axis"></ul>');
+            var yAxisList = $('<ul class="y-axis"></ul>').css({
+                width: xLegend.length * 180
+            });
             $.each(yLegend, function (i) {
                 var listItem = $('<li><span>' + this + '</span></li>')
                     .appendTo(yAxisList);
@@ -468,7 +476,17 @@
             yAxisList.appendTo(graphContainer);
 
             // Add bars to graph
-            barContainer.appendTo(graphContainer);
+            barContainer.css({
+                width: xLegend.length * 180
+            }).appendTo(graphContainer);
+
+            //
+            target.css({
+                width: xLegend.length * 180
+            });
+            target.$parent.css({
+                width: xLegend.length * 180
+            });
 
             // Add graph to graph container
             graphContainer.appendTo(figureContainer);
@@ -570,12 +588,18 @@
                 }
             },
             getTarget: function (target, options) {
+                var $parent;
                 if (options.chartType.match(/bar3d.*/gi)) {
                     // 3D 차트용 타겟 셀렉터
                     if ($(target[0][0]).find(".bar3d").length === 0) {
                         $(target[0][0]).html($("<div/>", {"class": "bar3d"}));
                     }
                     target = $(target[0][0]).find(".bar3d");
+                    !target.hasClass("chart") && target.addClass("chart");
+                    console.log(target);
+
+                    $parent = target.closest(".widget-chart");
+                    !$parent.hasClass("widget-chart3d") && $parent.addClass("widget-chart3d");
                 } else {
                     // SVG용 타겟 셀럭터
                     if (target.select("svg").length > 0 && target.select("svg")[0][0] === null) {

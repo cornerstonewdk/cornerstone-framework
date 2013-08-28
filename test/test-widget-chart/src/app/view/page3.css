@@ -1,297 +1,331 @@
-#page3 {
-  /* Table */
+.widget-chart3d {
+    height: 600px;
+    margin: 0 auto;
+    width: 900px;
+    -webkit-transform: scale(0.75);
+    -webkit-perspective: 900;
+    overflow: visible;
+}
 
-  /* Toggle */
+.widget-chart3d .toggles {
+    background: #ebebeb;
+    color: #545454;
+    height: 20px;
+    padding: 15px;
+}
 
-  /* Graph */
+.widget-chart3d .toggles p {
+    margin: 0;
+}
 
-  /* Graph bars */
+.widget-chart3d .toggles a {
+    background: #222;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+    padding: 0 6px;
+    text-decoration: none;
+}
 
-  /* Legend bars */
+.widget-chart3d .toggles a:hover {
+    background: #666;
+}
 
+.widget-chart3d #reset-graph-button {
+    float: right;
 }
-#page3 .panel {
-  min-height: 600px;
+
+.widget-chart3d #wrapper {
+    height: 600px;
+    margin: 0 auto;
+    width: 900px;
+    -webkit-transform: scale(0.75);
+    -webkit-perspective: 900;
 }
-#page3 #data-table {
-  display: none;
+
+.widget-chart3d #wrapper h2 {
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    -webkit-transform: translateZ(80px);
 }
-#page3 .toggles {
-  background: #ebebeb;
-  color: #545454;
-  height: 20px;
-  padding: 15px;
+
+.widget-chart3d .chart {
+    height: 100%;
+    width: 100%;
+    -webkit-transition: all 3s ease-out;
+    -webkit-transform: rotateX(15deg) rotateY(25deg);
+    -webkit-transform-style: preserve-3d;
 }
-#page3 .toggles p {
-  margin: 0;
+
+.widget-chart3d #figure {
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
 }
-#page3 .toggles a {
-  background: #222;
-  border-radius: 3px;
-  color: #fff;
-  display: block;
-  float: left;
-  margin: 0 10px 0 0;
-  padding: 0 6px;
-  text-decoration: none;
+
+.widget-chart3d #figure ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-#page3 .toggles a:hover {
-  background: #666;
+
+.widget-chart3d .graph {
+    height: 480px;
+    position: relative;
+    width: 900px;
 }
-#page3 #reset-graph-button {
-  float: right;
+
+.widget-chart3d .legend {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    bottom: 60px;
+    font-size: 16px;
+    position: absolute;
+    text-align: left;
+    height: 40px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: translateZ(65px);
+    right: 0;
 }
-#page3 #wrapper {
-  height: 600px;
-  margin: 0 auto;
-  width: 900px;
-  -webkit-transform: scale(0.75);
-  -webkit-perspective: 900;
+
+.widget-chart3d .legend li {
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 0;
+    padding: 10px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: translateZ(10px);
 }
-#page3 #wrapper h2 {
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-  -webkit-transform: translateZ(80px);
+
+.widget-chart3d .legend span.icon {
+    background-position: 50% 0;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 0 10px 0 0;
+    width: 20px;
+    -webkit-transform-style: preserve-3d;
 }
-#page3 .chart {
-  height: 100%;
-  width: 100%;
-  -webkit-transition: all 3s ease-out;
-  -webkit-transform: rotateX(15deg) rotateY(25deg);
-  -webkit-transform-style: preserve-3d;
+
+.widget-chart3d .x-axis {
+    background: rgba(0, 0, 0, 0.27);
+    bottom: 0;
+    color: #fff;
+    font-size: 18px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.2) 0 2px 0;
+    width: 900px;
+    -webkit-transform: rotateX(90deg) translateZ(-50px) translateY(30px);
 }
-#page3 #figure {
-  height: 100%;
-  width: 100%;
-  -webkit-transform-style: preserve-3d;
+
+.widget-chart3d .x-axis li {
+    float: left;
+    height: 20px;
+    margin: 62px 15px 0 15px;
+    padding: 5px 0;
+    width: 150px;
 }
-#page3 #figure ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+
+.widget-chart3d .y-axis {
+    background: rgba(0, 0, 0, 0.09);
+    color: #555;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    text-align: right;
+    width: 900px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: translateZ(-20px);
 }
-#page3 .graph {
-  height: 480px;
-  position: relative;
-  width: 900px;
+
+.widget-chart3d .y-axis li {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    display: block;
+    height: 95px;
+    padding: 0;
 }
-#page3 .legend {
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  bottom: 60px;
-  font-size: 16px;
-  position: absolute;
-  text-align: left;
-  width: 900px;
-  height: 40px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: translateZ(65px);
+
+.widget-chart3d .y-axis li span {
+    background: rgba(0, 0, 0, 0.18);
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    display: block;
+    font-size: 18px;
+    height: 95px;
+    line-height: 36px;
+    margin: -1px 0 0 0;
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: rotateY(90deg) translateX(-50px) translateZ(-50px);
 }
-#page3 .legend li {
-  display: block;
-  float: left;
-  height: 20px;
-  margin: 0;
-  padding: 10px 60px;
-  width: 300px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: translateZ(10px);
+
+.widget-chart3d .bars {
+    float: left;
+    height: 480px;
+    position: relative;
+    width: 900px;
+    z-index: 10;
+    -webkit-transform: translateZ(15px);
+    -webkit-transform-style: preserve-3d;
 }
-#page3 .legend span.icon {
-  background-position: 50% 0;
-  border-radius: 2px;
-  display: block;
-  float: left;
-  height: 20px;
-  margin: 0 10px 0 0;
-  width: 20px;
-  -webkit-transform-style: preserve-3d;
+
+.widget-chart3d .bar-group {
+    float: left;
+    height: 100%;
+    margin: 0 15px;
+    position: relative;
+    width: 150px;
 }
-#page3 .x-axis {
-  background: rgba(0, 0, 0, 0.27);
-  bottom: 0;
-  color: #fff;
-  font-size: 18px;
-  height: 100px;
-  position: absolute;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 0;
-  width: 900px;
-  -webkit-transform: rotateX(90deg) translateZ(-50px) translateY(30px);
+
+.widget-chart3d .bar {
+    bottom: 1px;
+    cursor: pointer;
+    height: 0;
+    position: absolute;
+    text-align: center;
+    width: 42px;
+    -webkit-transition: all 0.8s ease-out;
 }
-#page3 .x-axis li {
-  float: left;
-  height: 20px;
-  margin: 62px 15px 0 15px;
-  padding: 5px 0;
-  width: 150px;
+
+.widget-chart3d .bar span {
+    color: #fff;
+    display: block;
+    font-size: 24px;
+    left: -11px;
+    opacity: 0;
+    position: relative;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 2px 5px;
+    margin-top: 10px;
+    width: 64px;
+    -webkit-transition: all 0.4s ease-out;
+    -webkit-transform: translateZ(-21px) scale(0);
 }
-#page3 .y-axis {
-  background: rgba(0, 0, 0, 0.09);
-  color: #555;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  text-align: right;
-  width: 900px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: translateZ(-20px);
+
+.widget-chart3d .bar:hover span {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateZ(24px) scale(1);
 }
-#page3 .y-axis li {
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-  display: block;
-  height: 95px;
-  padding: 0;
+
+.widget-chart3d .bar.fig0 {
+    left: 0;
 }
-#page3 .y-axis li span {
-  background: rgba(0, 0, 0, 0.18);
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-  display: block;
-  font-size: 18px;
-  height: 95px;
-  line-height: 36px;
-  margin: -1px 0 0 0;
-  position: absolute;
-  text-align: center;
-  width: 100px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: rotateY(90deg) translateX(-50px) translateZ(-50px);
+
+.widget-chart3d .bar.fig1 {
+    left: 54px;
 }
-#page3 .bars {
-  float: left;
-  height: 480px;
-  position: relative;
-  width: 900px;
-  z-index: 10px;
-  -webkit-transform: translateZ(15px);
-  -webkit-transform-style: preserve-3d;
+
+.widget-chart3d .bar.fig2 {
+    left: 108px;
 }
-#page3 .bar-group {
-  float: left;
-  height: 100%;
-  margin: 0 15px;
-  position: relative;
-  width: 150px;
+
+.widget-chart3d #figure h4 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 480px;
+    text-align: center;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: rotateZ(-90deg) translateY(-260px) translateZ(80px) translateX(-230px);
 }
-#page3 .bar {
-  bottom: 1px;
-  cursor: pointer;
-  height: 0;
-  position: absolute;
-  text-align: center;
-  width: 42px;
-  -webkit-transition: all 0.8s ease-out;
+
+.widget-chart3d .fig0 {
+    background: none;
 }
-#page3 .bar span {
-  color: #fff;
-  display: block;
-  font-size: 24px;
-  left: -11px;
-  opacity: 0;
-  position: relative;
-  text-shadow: rgba(0, 0, 0, 0.6) 0 2px 5px;
-  margin-top: 10px;
-  width: 64px;
-  -webkit-transition: all 0.4s ease-out;
-  -webkit-transform: translateZ(-21px) scale(0);
+
+.widget-chart3d .fig1 {
+    background: none;
 }
-#page3 .bar:hover span {
-  display: block;
-  opacity: 1;
-  -webkit-transform: translateZ(24px) scale(1);
+
+.widget-chart3d .fig2 {
+    background: none;
 }
-#page3 .bar.fig0 {
-  left: 0;
+
+.widget-chart3d .face {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    position: absolute;
+    width: 42px;
+    -webkit-box-sizing: border-box;
 }
-#page3 .bar.fig1 {
-  left: 54px;
+
+.widget-chart3d .top {
+    height: 42px;
+    top: 0;
+    -webkit-transform: rotateX(90deg) translateZ(21px);
 }
-#page3 .bar.fig2 {
-  left: 108px;
+
+.widget-chart3d .front {
+    bottom: 0;
+    height: 100%;
+    -webkit-transform: translateZ(21px);
 }
-#page3 #figure h4 {
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 480px;
-  text-align: center;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: rotateZ(-90deg) translateY(-260px) translateZ(80px) translateX(-230px);
+
+.widget-chart3d .right {
+    bottom: 0;
+    height: 100%;
+    -webkit-transform: rotateY(90deg) translateZ(21px);
 }
-#page3 .fig0 {
-  background: none;
+
+.widget-chart3d .left {
+    bottom: 0;
+    height: 100%;
+    -webkit-transform: rotateY(-90deg) translateZ(21px);
 }
-#page3 .fig1 {
-  background: none;
+
+.widget-chart3d .back {
+    bottom: 0;
+    height: 100%;
+    -webkit-transform: rotateY(180deg) translateZ(21px);
 }
-#page3 .fig2 {
-  background: none;
+
+.widget-chart3d .bottom {
+    bottom: 0;
+    height: 42px;
+    -webkit-transform: rotateX(90deg) translateZ(-21px);
 }
-#page3 .face {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #ffffff;
-  position: absolute;
-  width: 42px;
-  -webkit-box-sizing: border-box;
+
+.widget-chart3d .legend .face {
+    height: 20px;
+    width: 20px;
 }
-#page3 .top {
-  height: 42px;
-  top: 0;
-  -webkit-transform: rotateX(90deg) translateZ(21px);
+
+.widget-chart3d .legend .top {
+    height: 10px;
+    -webkit-transform: rotateX(90deg) translateZ(5px);
 }
-#page3 .front {
-  bottom: 0;
-  height: 100%;
-  -webkit-transform: translateZ(21px);
+
+.widget-chart3d .legend .front {
+    height: 20px;
+    -webkit-transform: translateZ(5px);
 }
-#page3 .right {
-  bottom: 0;
-  height: 100%;
-  -webkit-transform: rotateY(90deg) translateZ(21px);
+
+.widget-chart3d .legend .right {
+    width: 10px;
+    -webkit-transform: rotateY(90deg) translateZ(15px);
 }
-#page3 .left {
-  bottom: 0;
-  height: 100%;
-  -webkit-transform: rotateY(-90deg) translateZ(21px);
+
+.widget-chart3d .legend .left {
+    width: 10px;
+    -webkit-transform: rotateY(-90deg) translateZ(5px);
 }
-#page3 .back {
-  bottom: 0;
-  height: 100%;
-  -webkit-transform: rotateY(180deg) translateZ(21px);
+
+.widget-chart3d .legend .back {
+    height: 20px;
+    -webkit-transform: rotateY(180deg) translateZ(5px);
 }
-#page3 .bottom {
-  bottom: 0;
-  height: 42px;
-  -webkit-transform: rotateX(90deg) translateZ(-21px);
-}
-#page3 .legend .face {
-  height: 20px;
-  width: 20px;
-}
-#page3 .legend .top {
-  height: 10px;
-  -webkit-transform: rotateX(90deg) translateZ(5px);
-}
-#page3 .legend .front {
-  height: 20px;
-  -webkit-transform: translateZ(5px);
-}
-#page3 .legend .right {
-  width: 10px;
-  -webkit-transform: rotateY(90deg) translateZ(15px);
-}
-#page3 .legend .left {
-  width: 10px;
-  -webkit-transform: rotateY(-90deg) translateZ(5px);
-}
-#page3 .legend .back {
-  height: 20px;
-  -webkit-transform: rotateY(180deg) translateZ(5px);
-}
-#page3 .legend .bottom {
-  height: 10px;
-  -webkit-transform: rotateX(90deg) translateZ(-5px);
+
+.widget-chart3d .legend .bottom {
+    height: 10px;
+    -webkit-transform: rotateX(90deg) translateZ(-5px);
 }
