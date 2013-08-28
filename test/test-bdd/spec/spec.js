@@ -436,17 +436,36 @@ describe('Cornerstone event extend test', function() {
     describe('widget-datepicker', function() {
         var datepicker;
 
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
-
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-datepicker'],function(WidgetDatepicker){
+                console.log(WidgetDatepicker);
+                datepicker = new WidgetDatepicker({
+                    el: '#date-picker1'
+                });
+                datepicker.render();
+                expect(datepicker).to.be.an.instanceof(Backbone.View);
+                done();
+            });
         });
     });
 
     describe('widget-dropdown', function() {
         var dropdown;
 
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
-
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-dropdown'],function(WidgetDropdown){
+                dropdown = new WidgetDropdown({
+                    el: '#dropdown .btn-group:first-child > button'
+                });
+                dropdown.render();
+                expect(dropdown).to.be.an.instanceof(Backbone.View);
+                console.log(dropdown);
+                done();
+            });
         });
+        it('test',function(){
+            $('#dropdown .btn-group:first-child > button').click().click();
+        })
     });
 
     describe('widget-editor', function() {
