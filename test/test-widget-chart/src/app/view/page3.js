@@ -96,13 +96,11 @@ define([
                             data.find('tbody td').each(function () {
                                 chartData.push($(this).text());
                             });
-                            console.log('chartData', chartData);
                             return chartData;
                         },
                         // Get heading data from table caption
                         chartHeading: function () {
                             var chartHeading = data.find('caption').text();
-                            console.log('chartHeading', chartHeading);
                             return chartHeading;
                         },
                         // Get legend data from table body
@@ -112,7 +110,6 @@ define([
                             data.find('tbody th').each(function () {
                                 chartLegend.push($(this).text());
                             });
-                            console.log('chartLegend', chartLegend);
                             return chartLegend;
                         },
                         // Get highest value for y-axis scale
@@ -120,7 +117,6 @@ define([
                             var chartData = this.chartData();
                             // Round off the value
                             var chartYMax = Math.ceil(Math.max.apply(Math, chartData) / 1000) * 1000;
-                            console.log('chartYMax', chartYMax);
                             return chartYMax;
                         },
                         // Get y-axis data from table cells
