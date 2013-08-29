@@ -449,25 +449,20 @@ describe('Cornerstone event extend test', function() {
     //     });
     // });
 
-    describe('widget-dropdown', function() {
-        var dropdown;
+    // describe('widget-dropdown', function() {
+    //     var dropdown;
 
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-dropdown'],function(WidgetDropdown){
-                dropdown = new WidgetDropdown({
-                    el: '#dropdown .btn-group:first-child > button',
-                    widgetOption: 'toggle'
-                });
-                dropdown.render('toggle');
-                expect(dropdown).to.be.an.instanceof(Backbone.View);
-                console.log(dropdown);
-                done();
-            });
-        });
-        it('test',function(){
-            // $('#dropdown .btn-group:first-child > button').click().click();
-        })
-    });
+    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+    //         require(['widget-dropdown'],function(WidgetDropdown){
+    //             dropdown = new WidgetDropdown({
+    //                 el: '#dropdown .btn-group:first-child > button'
+    //             });
+    //             dropdown.render();
+    //             expect(dropdown).to.be.an.instanceof(Backbone.View);
+    //             done();
+    //         });
+    //     });
+    // });
 
     // describe('widget-editor', function() {
     //     var editor;
@@ -500,13 +495,21 @@ describe('Cornerstone event extend test', function() {
     //     });
     // });
 
-    // describe('widget-media', function() {
-    //     var media;
+    describe('widget-media', function() {
+        var media;
 
-    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
-
-    //     });
-    // });
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-media'],function(WidgetMedia){
+                var MediaModel = Backbone.Model.extend({
+                    alwaysShowControls: true
+                }); 
+                media = new WidgetMedia();
+                $('#test').html(media.render());
+                expect(media).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+    });
 
     // describe('widget-modal', function() {
     //     var modal;
