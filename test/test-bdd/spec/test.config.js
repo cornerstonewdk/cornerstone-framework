@@ -2,7 +2,7 @@ require.config({
     "paths": {
         "backbone": "../../../grunt-dist/lib/backbone/backbone-min",
         "blackbird": "../../../grunt-dist/lib/blackbird/blackbird",
-        "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap.min",
+        "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap",
         "datatable": "../../../grunt-dist/lib/DataTables/jquery.dataTables.min",
         "d3": "../../../grunt-dist/lib/d3/d3.v3.min",
         "device": "../../../grunt-dist/src/device/srt-0.9",
@@ -38,9 +38,11 @@ require.config({
         "widget-collapse": "../../../grunt-dist/src/widget/collapse/widget-collapse",
         "widget-datatable": "../../../grunt-dist/src/widget/datatable/widget-datatable",
         "widget-datepicker": "../../../grunt-dist/src/widget/datepicker/widget-datepicker",
+        "widget-dropdown": "../../../grunt-dist/src/widget/dropdown/widget-dropdown",
         "widget-editor": "../../../grunt-dist/src/widget/editor/widget-editor",
         "widget-listview": "../../../grunt-dist/src/widget/listview/widget-listview",
         "widget-media": "../../../grunt-dist/src/widget/media/widget-media",
+        "widget-modal": "../../../grunt-dist/src/widget/modal/widget-modal",
         "widget-motioncaptcha": "../../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha",
         "widget-popover": "../../../grunt-dist/src/widget/popover/widget-popover",
         "widget-rangeinput": "../../../grunt-dist/src/widget/rangeinput/widget-rangeinput",
@@ -264,6 +266,16 @@ require.config({
             ],
             "exports": "widget-datepicker"
         },
+        "widget-dropdown": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-dropdown"
+        },
+
         "widget-editor": {
             "deps": [
                 "backbone",
@@ -290,6 +302,15 @@ require.config({
                 "media"
             ],
             "exports": "widget-media"
+        },
+        "widget-modal": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-modal"
         },
         "widget-motioncaptcha": {
             "deps": [

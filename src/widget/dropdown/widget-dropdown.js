@@ -6,6 +6,7 @@
             factory( $, root, doc );
             return Backbone.View.extend( {
             	render: function () {
+                    if(!this.$el.data('toggle')) this.$el.attr('data-toggle','dropdown');
             		this.$el.dropdown( this.options );
             		return this;
             	}
