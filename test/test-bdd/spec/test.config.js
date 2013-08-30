@@ -46,6 +46,7 @@ require.config({
         "widget-motioncaptcha": "../../../grunt-dist/src/widget/motioncaptcha/widget-motioncaptcha",
         "widget-popover": "../../../grunt-dist/src/widget/popover/widget-popover",
         "widget-rangeinput": "../../../grunt-dist/src/widget/rangeinput/widget-rangeinput",
+        "widget-scrollspy": "../../../grunt-dist/src/widget/scrollspy/widget-scrollspy",
         "widget-scrollview": "../../../grunt-dist/src/widget/scrollview/widget-scrollview",
         "widget-sign": "../../../grunt-dist/src/widget/sign/widget-sign",
         "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
@@ -337,6 +338,15 @@ require.config({
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollspy": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-scrollspy"
         },
         "widget-scrollview": {
             "deps": [

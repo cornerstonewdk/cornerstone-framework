@@ -511,32 +511,32 @@ describe('Cornerstone event extend test', function() {
     //     });
     // });
 
-    describe('widget-modal', function() {
-        var modal;
+    // describe('widget-modal', function() {
+    //     var modal;
 
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-modal'],function(WidgetModal){
-                modal = new WidgetModal({
-                    el: '#myModal'
-                });
-                modal.render();
-                expect(modal).to.be.an.instanceof(Backbone.View);
-                $('#btnModalToggle').click(function(){
-                    modal.$el.modal('toggle');
-                });
-                done();
-            });
-        });
+    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+    //         require(['widget-modal'],function(WidgetModal){
+    //             modal = new WidgetModal({
+    //                 el: '#myModal'
+    //             });
+    //             modal.render();
+    //             expect(modal).to.be.an.instanceof(Backbone.View);
+    //             $('#btnModalToggle').click(function(){
+    //                 modal.$el.modal('toggle');
+    //             });
+    //             done();
+    //         });
+    //     });
 
-        it('modal이 적용된 후 토글을 실행하였을 때 modal이 사라져야 한다.',function(done){
-            modal.$el.modal('toggle');
-            this.timeout(2000);
-            setTimeout(function() {
-                expect(modal.$el.data('bs.modal').$backdrop).to.be.equal(null);
-                done()
-            }, 500);
-        });
-    });
+    //     it('modal이 적용된 후 토글을 실행하였을 때 modal이 사라져야 한다.',function(done){
+    //         modal.$el.modal('toggle');
+    //         this.timeout(2000);
+    //         setTimeout(function() {
+    //             expect(modal.$el.data('bs.modal').$backdrop).to.be.equal(null);
+    //             done()
+    //         }, 500);
+    //     });
+    // });
 
     // describe('widget-motioncaptcha', function() {
     //     var captcha;
@@ -739,9 +739,16 @@ describe('Cornerstone event extend test', function() {
 
     // describe('widget-scrollspy', function() {
     //     var scrollspy;
-
-    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
-
+    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+    //         require(['widget-scrollspy'], function(WidgetScrollSpy){
+    //             scrollspy = new WidgetScrollSpy({
+    //                 el: '.scrollspy-example',
+    //                 target: '#navbar-example2'
+    //             });
+    //             scrollspy.render();
+    //             expect(scrollspy).to.be.an.instanceof(Backbone.View);
+    //             done();
+    //         });
     //     });
     // });
 
