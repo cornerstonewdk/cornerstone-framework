@@ -621,12 +621,12 @@
                     </header>
                     <div class="row">
                         <div id="test1" class="col col-lg-6">
-                            <!-- <div class="panel">
+                            <div class="panel">
                                 <div class="panel-heading">MP4</div>
                                 <video data-option-width="100%" data-option-height="100%">
                                     <source type="video/mp4" src="data/sample-media.mp4"/>
                                 </video>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="col col-lg-6">
                             <div class="panel">
@@ -638,21 +638,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col col-lg-6">
+                        <div class="col col-lg-12">
                             <div class="panel">
                                 <div class="panel-heading">MP3</div>
                                 <audio data-featured="media" data-option-width="100%"
                                        src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
                             </div>
                         </div>
-                        <div class="col col-lg-6">
-                            <div class="panel">
-                                <div class="panel-heading">MP3</div>
-                                <audio width="100%" controls="control" data-featured="media"
-                                src="http://109.74.195.10:8000/stream.mp3?redirected=1"
-                                type="audio/mp4"/>
-                            </div>
-                        </div>
+
                         <!--
                         <div class="col col-lg-4">
                             <div class="panel">
@@ -683,6 +676,40 @@
                 </section>
 
                 <!-- modal -->
+                <section id="modal">
+                    <header class="page-header">
+                        <h2 class="title">Modal</h2>
+                    </header>
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <div id="myModal" class="modal fade">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      ...
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <button id="btnModalToggle" type="button" class="btn btn-default">Modal Toggle</button>
+                        </div>
+                    </div>
+                </section>
+
+
+                
 
                 <!-- Motion Captcha -->
                 <section id="motion-captcha" class="row">
