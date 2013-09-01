@@ -1,17 +1,21 @@
 .widget-chart3d {
-    height: 600px;
-    margin: 0 auto;
+    padding-left: 10px;
     width: 900px;
+    height: 600px;
+    -webkit-transform-origin: 0 0;
+}
+
+.widget-chart3d .wrapper {
+    position: absolute;
     -webkit-transform: scale(0.75);
-    -webkit-perspective: 900;
-    overflow: visible;
+    -webkit-perspective: 1440;
 }
 
 .widget-chart3d .toggles {
+    padding: 15px;
+    height: 20px;
     background: #ebebeb;
     color: #545454;
-    height: 20px;
-    padding: 15px;
 }
 
 .widget-chart3d .toggles p {
@@ -19,13 +23,13 @@
 }
 
 .widget-chart3d .toggles a {
-    background: #222;
-    border-radius: 3px;
-    color: #fff;
     display: block;
     float: left;
     margin: 0 10px 0 0;
     padding: 0 6px;
+    border-radius: 3px;
+    background: #222;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -37,175 +41,161 @@
     float: right;
 }
 
-.widget-chart3d #wrapper {
-    height: 600px;
-    margin: 0 auto;
-    width: 900px;
-    -webkit-transform: scale(0.75);
-    -webkit-perspective: 900;
-}
-
-.widget-chart3d #wrapper h2 {
-    font-size: 24px;
-    line-height: 30px;
-    text-align: center;
-    -webkit-transform: translateZ(80px);
-}
-
 .widget-chart3d .chart {
-    height: 100%;
     width: 100%;
+    height: 100%;
     -webkit-transition: all 3s ease-out;
     -webkit-transform: rotateX(15deg) rotateY(25deg);
     -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d #figure {
-    height: 100%;
     width: 100%;
+    height: 100%;
     -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d #figure ul {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .widget-chart3d .graph {
-    height: 480px;
     position: relative;
     width: 900px;
+    height: 480px;
 }
 
 .widget-chart3d .legend {
-    background: rgba(0, 0, 0, 0.08);
-    border-radius: 4px;
-    bottom: 60px;
-    font-size: 16px;
     position: absolute;
-    text-align: left;
-    height: 40px;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transform: translateZ(65px);
     right: 0;
+    bottom: -50px;
+    height: 40px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.08);
+    text-align: left;
+    font-size: 16px;
+    -webkit-transform: translateZ(65px);
+    -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .legend li {
     display: block;
     float: left;
-    height: 20px;
     margin: 0;
     padding: 10px;
-    -webkit-transform-style: preserve-3d;
+    height: 20px;
     -webkit-transform: translateZ(10px);
+    -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .legend span.icon {
-    background-position: 50% 0;
-    border-radius: 2px;
     display: block;
     float: left;
-    height: 20px;
     margin: 0 10px 0 0;
     width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background-position: 50% 0;
     -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .x-axis {
-    background: rgba(0, 0, 0, 0.27);
-    bottom: 0;
-    color: #fff;
-    font-size: 18px;
-    height: 100px;
     position: absolute;
+    bottom: 0;
+    width: 900px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.27);
+    color: #fff;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.2) 0 2px 0;
-    width: 900px;
+    font-size: 18px;
     -webkit-transform: rotateX(90deg) translateZ(-50px) translateY(30px);
 }
 
 .widget-chart3d .x-axis li {
     float: left;
-    height: 20px;
     margin: 62px 15px 0 15px;
     padding: 5px 0;
     width: 150px;
+    height: 20px;
 }
 
 .widget-chart3d .y-axis {
-    background: rgba(0, 0, 0, 0.09);
-    color: #555;
-    margin: 0;
-    padding: 0;
     position: absolute;
     top: 0;
-    text-align: right;
+    margin: 0;
+    padding: 0;
     width: 900px;
-    -webkit-transform-style: preserve-3d;
+    background: rgba(0, 0, 0, 0.09);
+    color: #555;
+    text-align: right;
     -webkit-transform: translateZ(-20px);
+    -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .y-axis li {
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
     display: block;
-    height: 95px;
     padding: 0;
+    height: 95px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .widget-chart3d .y-axis li span {
-    background: rgba(0, 0, 0, 0.18);
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
-    display: block;
-    font-size: 18px;
-    height: 95px;
-    line-height: 36px;
-    margin: -1px 0 0 0;
     position: absolute;
-    text-align: center;
+    display: block;
+    margin: -1px 0 0 0;
     width: 100px;
-    -webkit-transform-style: preserve-3d;
+    height: 95px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.18);
+    text-align: center;
+    font-size: 18px;
+    line-height: 36px;
     -webkit-transform: rotateY(90deg) translateX(-50px) translateZ(-50px);
+    -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .bars {
-    float: left;
-    height: 480px;
     position: relative;
-    width: 900px;
     z-index: 10;
+    float: left;
+    margin-left: 15px;
+    width: 900px;
+    height: 480px;
     -webkit-transform: translateZ(15px);
     -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .bar-group {
-    float: left;
-    height: 100%;
-    margin: 0 15px;
     position: relative;
+    float: left;
+    margin: 0 15px;
     width: 150px;
+    height: 100%;
 }
 
 .widget-chart3d .bar {
-    bottom: 1px;
-    cursor: pointer;
-    height: 0;
     position: absolute;
-    text-align: center;
+    bottom: 1px;
     width: 42px;
+    height: 0;
+    text-align: center;
+    cursor: pointer;
     -webkit-transition: all 0.8s ease-out;
 }
 
 .widget-chart3d .bar span {
-    color: #fff;
-    display: block;
-    font-size: 24px;
-    left: -11px;
-    opacity: 0;
     position: relative;
-    text-shadow: rgba(0, 0, 0, 0.6) 0 2px 5px;
+    left: -11px;
+    display: block;
     margin-top: 10px;
     width: 64px;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 2px 5px;
+    font-size: 24px;
+    opacity: 0;
     -webkit-transition: all 0.4s ease-out;
     -webkit-transform: translateZ(-21px) scale(0);
 }
@@ -229,14 +219,14 @@
 }
 
 .widget-chart3d #figure h4 {
-    font-size: 16px;
+    position: absolute;
     margin: 0;
     padding: 0;
-    position: absolute;
     width: 480px;
     text-align: center;
-    -webkit-transform-style: preserve-3d;
+    font-size: 16px;
     -webkit-transform: rotateZ(-90deg) translateY(-260px) translateZ(80px) translateX(-230px);
+    -webkit-transform-style: preserve-3d;
 }
 
 .widget-chart3d .fig0 {
@@ -252,16 +242,16 @@
 }
 
 .widget-chart3d .face {
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    width: 42px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: #ffffff;
-    position: absolute;
-    width: 42px;
-    -webkit-box-sizing: border-box;
 }
 
 .widget-chart3d .top {
-    height: 42px;
     top: 0;
+    height: 42px;
     -webkit-transform: rotateX(90deg) translateZ(21px);
 }
 
@@ -296,8 +286,8 @@
 }
 
 .widget-chart3d .legend .face {
-    height: 20px;
     width: 20px;
+    height: 20px;
 }
 
 .widget-chart3d .legend .top {
@@ -328,4 +318,17 @@
 .widget-chart3d .legend .bottom {
     height: 10px;
     -webkit-transform: rotateX(90deg) translateZ(-5px);
+}
+
+.widget-horizontal-bar .wrapper {
+    -webkit-transform: scale(0.75) rotateZ(90deg);
+    -webkit-perspective: 1440;
+}
+
+.widget-horizontal-bar  .y-axis li span {
+    right: 0;
+    margin-top: -1px;
+    margin-right: -160px;
+    background: none;
+    -webkit-transform: rotateZ(-10deg) rotateY(0deg) translateX(-53px) translateY(-18px) translateZ(0px);
 }

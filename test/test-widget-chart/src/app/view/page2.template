@@ -1,35 +1,19 @@
-<div class="row">
-    <div class="col col-lg-12">
-        <div class="panel">
-            <div class="panel-heading">차트 제어</div>
-            <form id="control-chart" class="form-horizontal" class="#">
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        <div class="pull-right">
-                            <!--<button class="btn btn-default js-change-data">데이터변경</button>-->
-                            <button type="button" class="btn btn-success prev">이전</button>
-                            <button type="button" class="btn btn-success next">다음</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="panel panel-primary">
+    <div class="btn-group">
+        <button type="button" class="btn btn-success prev">이전</button>
+        <button type="button" class="btn btn-success next">다음</button>
     </div>
 </div>
-<div class="row">
-    <div class="col col-lg-12">
-        <div class="panel panel-primary view-chart">
+<div class="panel panel-primary view-chart">
 
-            <div class="panel-heading">신규 라인 + 바 차트</div>
+    <div class="panel-heading">신규 라인 + 바 차트</div>
 
-            <!--<h3 class="title">jQuery Plugin</h3>-->
-            <div id="linePlusBar1" class="widget-chart"></div>
+    <!--<h3 class="title">jQuery Plugin</h3>-->
+    <div id="linePlusBar1" class="widget-chart"></div>
 
-            <!--<h3 class="title">Backbone View</h3>-->
-            <!--<div id="linePlusBar2" class="widget-chart"></div>-->
+    <!--<h3 class="title">Backbone View</h3>-->
+    <!--<div id="linePlusBar2" class="widget-chart"></div>-->
 
-            <!--<h3 class="title">Data-API</h3>-->
-            <!--<div class="widget-chart" data-featured="chart" data-chart-type="linePlusBar" data-chart-bind="data/sample-line.json" data-chart-format=".2f"></div>-->
-        </div>
-    </div>
+    <!--<h3 class="title">Data-API</h3>-->
+    <!--<div class="widget-chart" data-featured="chart" data-chart-type="linePlusBar" data-chart-bind="data/sample-line.json" data-chart-format=".2f"></div>-->
 </div>

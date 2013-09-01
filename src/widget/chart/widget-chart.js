@@ -22,6 +22,8 @@
 
         nv.dev = false;
 
+        this.util.initialize();
+
         this.render(options);
     };
 
@@ -303,11 +305,13 @@
             });
         },
         bar3dChart: function (target, options) {
+            var self = this;
             var bars = [];
             var figureContainer = $('<div id="figure"></div>');
             var graphContainer = $('<div class="graph"></div>');
             var barContainer = $('<div class="bars"></div>');
             var data = $(options.data);
+            var dataLength = data.length;
             var container = target;
             var chartData;
             var chartYMax;
@@ -325,25 +329,26 @@
             var initXRotation = 15;
             var initYRotation = 25;
             var endXRotation = -20;
-            var endYRotation = -15;
+            var endYRotation = $.isNumeric(options.endYRotation) ? options.endYRotation : -15;
             var rotationAmount = 45;
+            var barInnerWidth = 52;
+            var barGroupWidth = barInnerWidth * dataLength + data[0].values.length * 12;
+            var barGroupInnerWidth = barInnerWidth * dataLength;
 
-            // Create table data object
             var dataObject = {
                 // Get numerical data from table cells
                 chartData: function () {
                     var chartData = [];
                     data.each(function () {
                         $(this["values"]).each(function () {
-                            chartData.push(d3.format(options.format)(this["y"]));
+                            chartData.push(d3.format(options.format)(this.y));
                         });
                     });
                     return chartData;
                 },
                 // Get heading data from table caption
                 chartHeading: function () {
-                    var chartHeading = options.title;
-                    return chartHeading;
+                    return options.title;
                 },
                 // Get legend data from table body
                 chartLegend: function () {
@@ -355,10 +360,7 @@
                 },
                 // Get highest value for y-axis scale
                 chartYMax: function () {
-                    var chartData = this.chartData();
-                    // Round off the value
-                    var chartYMax = Math.ceil(Math.max.apply(Math, chartData) / 1000) * 1000;
-                    return chartYMax;
+                    return Math.ceil(Math.max.apply(Math, this.chartData()) / 1000) * 1000;
                 },
                 // Get y-axis data from table cells
                 yLegend: function () {
@@ -368,9 +370,8 @@
                     var yAxisMarkings = 5;
                     // Add required number of y-axis markings in order from 0 - max
                     for (var i = 0; i < yAxisMarkings; i++) {
-                        yLegend.unshift(((chartYMax * i) / (yAxisMarkings - 1)) / 1000);
+                        yLegend.unshift(d3.format(options.format)(((chartYMax * i) / (yAxisMarkings - 1))));
                     }
-                    console.log("yLegend", yLegend);
                     return yLegend;
                 },
                 // Get x-axis data from table header
@@ -381,7 +382,6 @@
                     data.each(function () {
                         var values = this["values"];
                         var valuesLength = this["values"].length;
-
                         if (prevLength < valuesLength) {
                             $(this["values"]).each(function () {
                                 xLegend.push(d3.format(options.format)(this["x"]));
@@ -390,27 +390,24 @@
 
                         prevLength = valuesLength;
                     });
-                    console.log("xLegend", xLegend);
                     return xLegend;
                 },
                 // Sort data into groups based on number of columns
                 columnGroups: function () {
                     var columnGroups = [];
+                    var resultGroups = [];
 
                     data.each(function (i) {
-                        var values = this["values"];
-                        columnGroups[i] = [];
-                        // 00 10 20 01 11 21 02 12 22
-                        $(values).each(function (j) {
-                            columnGroups[i].push(d3.format(options.format)(data[j]["values"][i]["y"]));
+                        columnGroups[i] = $.map(this.values, function (val, i) {
+                            return d3.format(options.format)(val.y);
                         });
                     });
 
-                    console.log("columnGroups", columnGroups);
+                    columnGroups = columnGroups.transpose();
+
                     return columnGroups;
                 }
             };
-            // Useful variables for accessing table data
             chartData = dataObject.chartData();
             chartYMax = dataObject.chartYMax();
             columnGroups = dataObject.columnGroups();
@@ -420,7 +417,9 @@
             // Loop through column groups, adding bars as we go
             $.each(columnGroups, function (i) {
                 // Create bar group container
-                var barGroup = $('<div class="bar-group"></div>');
+                var barGroup = $('<div class="bar-group"></div>').css({
+                    width: barGroupInnerWidth
+                });
                 // Add bars inside each column
                 for (var j = 0, k = columnGroups[i].length; j < k; j++) {
                     // Create bar object to store properties (label, height, code etc.) and add it to array
@@ -429,6 +428,9 @@
                     barObj.label = this[j];
                     barObj.height = Math.floor(barObj.label / chartYMax * 100) + '%';
                     barObj.bar = $('<div class="bar fig' + j + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div><span>' + barObj.label + '</span></div>')
+                        .css({
+                            left: (barInnerWidth * j) + "px"
+                        })
                         .appendTo(barGroup);
                     bars.push(barObj);
                 }
@@ -445,7 +447,7 @@
             var chartLegend = dataObject.chartLegend();
             var legendList = $('<ul class="legend"></ul>');
             $.each(chartLegend, function (i) {
-                var listItem = $('<li><span class="icon fig' + i + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div></span>' + this + '</li>')
+                $('<li><span class="icon fig' + i + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div></span>' + this + '</li>')
                     .appendTo(legendList);
             });
             legendList.appendTo(figureContainer);
@@ -453,39 +455,37 @@
             // Add x-axis to graph
             var xLegend = dataObject.xLegend();
 
-            console.log('xLegend length', xLegend);
-
             var xAxisList = $('<ul class="x-axis"></ul>').css({
-                width: xLegend.length * 180
+                width: xLegend.length * barGroupWidth
             });
-            $.each(xLegend, function (i) {
-                var listItem = $('<li><span>' + this + '</span></li>')
-                    .appendTo(xAxisList);
+            $.each(xLegend, function () {
+                $('<li><span>' + this + '</span></li>').css({
+                    width: barGroupInnerWidth
+                }).appendTo(xAxisList);
             });
             xAxisList.appendTo(graphContainer);
 
             // Add y-axis to graph
             var yLegend = dataObject.yLegend();
             var yAxisList = $('<ul class="y-axis"></ul>').css({
-                width: xLegend.length * 180
+                width: xLegend.length * barGroupWidth
             });
-            $.each(yLegend, function (i) {
-                var listItem = $('<li><span>' + this + '</span></li>')
-                    .appendTo(yAxisList);
+            $.each(yLegend, function () {
+                $('<li><span>' + this + '</span></li>').appendTo(yAxisList);
             });
             yAxisList.appendTo(graphContainer);
 
             // Add bars to graph
             barContainer.css({
-                width: xLegend.length * 180
+                width: xLegend.length * barGroupWidth
             }).appendTo(graphContainer);
 
             //
             target.css({
-                width: xLegend.length * 180
+                width: xLegend.length * barGroupWidth
             });
             target.$parent.css({
-                width: xLegend.length * 180
+                width: xLegend.length * barGroupWidth
             });
 
             // Add graph to graph container
@@ -510,6 +510,7 @@
 
             // Reset graph settings and prepare for display
             function resetGraph() {
+                self.util.applyBindEvent(target, options);
                 // Turn off transitions for instant reset
                 $.each(bars, function (i) {
                     $(bars[i].bar).stop().css({'height': 0, '-webkit-transition': 'none'});
@@ -530,26 +531,6 @@
                 }, 500);
             }
 
-            // Helper functions
-
-            // Call resetGraph() when button is clicked to start graph over
-            $('#reset-graph-button').click(function () {
-                resetGraph();
-                return false;
-            });
-
-            // Toggle keyboard rotation
-            $('#toggle-keys-button').click(function () {
-                if (keyToggled) {
-                    keyToggled = false;
-                    $(this).text('Keyboard OFF');
-                } else {
-                    keyToggled = true;
-                    $(this).text('Keyboard ON');
-                }
-                return false;
-            });
-
             // Handle arrow key rotation
             $(document).keydown(function () {
                 if (keyToggled) {
@@ -567,7 +548,6 @@
                             xRotation -= rotationAmount;
                             break;
                     }
-                    ;
                     graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
                     container.css('-webkit-transform', graphTransform);
                 }
@@ -576,8 +556,51 @@
             // Finally, display graph via reset function
             resetGraph();
         },
+        horizontalBar3dChart: function (target, options) {
+            var $parent = target.closest(".widget-chart3d");
+            !$parent.hasClass("widget-horizontal-bar") && $parent.addClass("widget-horizontal-bar");
+            options.endYRotation = 0;
+            this.bar3dChart(target, options);
+        },
 
         util: {
+            initialize: function () {
+                Array.prototype.transpose = function () {
+
+                    // Calculate the width and height of the Array
+                    var a = this,
+                        w = a.length ? a.length : 0,
+                        h = a[0] instanceof Array ? a[0].length : 0;
+
+                    // In case it is a zero matrix, no transpose routine needed.
+                    if (h === 0 || w === 0) {
+                        return [];
+                    }
+
+                    /**
+                     * @var {Number} i Counter
+                     * @var {Number} j Counter
+                     * @var {Array} t Transposed data is stored in this array.
+                     */
+                    var i, j, t = [];
+
+                    // Loop through every item in the outer array (height)
+                    for (i = 0; i < h; i++) {
+
+                        // Insert a new row (array)
+                        t[i] = [];
+
+                        // Loop through every item per item in outer array (width)
+                        for (j = 0; j < w; j++) {
+
+                            // Save transposed data.
+                            t[i][j] = a[j][i];
+                        }
+                    }
+
+                    return t;
+                };
+            },
             getTranslateJson: function (target) {
                 try {
                     return JSON.parse(target.attr("transform").replace("translate(", '{"x":')
@@ -592,11 +615,10 @@
                 if (options.chartType.match(/bar3d.*/gi)) {
                     // 3D 차트용 타겟 셀렉터
                     if ($(target[0][0]).find(".bar3d").length === 0) {
-                        $(target[0][0]).html($("<div/>", {"class": "bar3d"}));
+                        $(target[0][0]).html($("<div/>", {"class": "wrapper"}).html($("<div/>", {"class": "bar3d"})));
                     }
                     target = $(target[0][0]).find(".bar3d");
                     !target.hasClass("chart") && target.addClass("chart");
-                    console.log(target);
 
                     $parent = target.closest(".widget-chart");
                     !$parent.hasClass("widget-chart3d") && $parent.addClass("widget-chart3d");
@@ -612,29 +634,68 @@
             },
 
             applyBindEvent: function (target, options, chart) {
-                chart.dispatch.on("stateChange", function (e) {
-                    isDebug && console.log("New State:", JSON.stringify(e));
+                if (options.chartType.match(/.*bar3d/gi)) {
+                    var resizeChart = function () {
+                        var $target = target.closest(".widget-chart3d");
+                        var rate = window.innerWidth / target.width();
 
-                    console.log(target.$parent);
-                    // 애니매이션 중 이벤트 방지
-                    !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
+                        rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
+                        console.log(target.$parent.parent().width(), target.width(), rate);
+                        if (rate < 1) {
+                            var $target = target.closest(".widget-chart3d");
+                            $target.css({
+                                width: target.width() * 0.9,
+                                webkitTransform: "scale(" + rate + ")"
+                            });
 
-                    setTimeout(function () {
-                        typeof chart.afterRender === "function" && chart.afterRender("stateChange");
+                            console.log(target.width(), rate);
 
-                        // 바차트외의 경우 complete 이벤트가 발생하지 않아 afterRender 후 이벤트 방지 overlay 제거
-                        typeof chart.multibar !== "function" && target.$parent.hasClass("overlay")
-                        && target.$parent.removeClass("overlay");
+                            if("horizontalBar3d" === options.chartType) {
+                                $target.find(".wrapper").css({
+                                    marginBottom: -target.width() * 0.1
+                                })
+                            } else {
+                                $target.find(".wrapper").css({
+                                    marginLeft: -target.width() * 0.1
+                                });
+                            }
+                        } else {
+                            $target.removeAttr("style");
+                            $target.find(".wrapper").removeAttr("style");
+                        }
+                    }
+                    resizeChart();
+                    $(window).on("resize._chart", function () {
+                        resizeChart();
+                    });
+                } else {
+                    chart.dispatch.on("stateChange", function (e) {
 
-                    }, 10);
-                });
+                        isDebug && console.log("New State:", JSON.stringify(e));
 
-                !options.autoResize || nv.utils.windowResize(function () {
-                    chart.update();
-                    setTimeout(function () {
-                        typeof chart.afterRender === "function" && chart.afterRender("resize");
-                    }, 10);
-                });
+                        console.log(target.$parent);
+                        // 애니매이션 중 이벤트 방지
+                        !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
+
+                        setTimeout(function () {
+                            typeof chart.afterRender === "function" && chart.afterRender("stateChange");
+
+                            // 바차트외의 경우 complete 이벤트가 발생하지 않아 afterRender 후 이벤트 방지 overlay 제거
+                            typeof chart.multibar !== "function" && target.$parent.hasClass("overlay")
+                            && target.$parent.removeClass("overlay");
+
+                        }, 10);
+                    });
+
+                    !options.autoResize || nv.utils.windowResize(function () {
+
+
+                        chart.update();
+                        setTimeout(function () {
+                            typeof chart.afterRender === "function" && chart.afterRender("resize");
+                        }, 10);
+                    });
+                }
             }
         }
     };
