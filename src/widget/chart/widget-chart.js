@@ -22,8 +22,6 @@
 
         nv.dev = false;
 
-        this.util.initialize();
-
         this.render(options);
     };
 
@@ -403,7 +401,7 @@
                         });
                     });
 
-                    columnGroups = columnGroups.transpose();
+                    columnGroups = self.util.transpose(columnGroups);
 
                     return columnGroups;
                 }
@@ -485,7 +483,7 @@
                 width: xLegend.length * barGroupWidth
             });
             target.$parent.css({
-                width: xLegend.length * barGroupWidth
+                width: xLegend.length * barGroupWidth - 100
             });
 
             // Add graph to graph container
@@ -580,42 +578,39 @@
         },
 
         util: {
-            initialize: function () {
-                Array.prototype.transpose = function () {
+            transpose: function (array) {
+                // Calculate the width and height of the Array
+                var a = array,
+                    w = a.length ? a.length : 0,
+                    h = a[0] instanceof Array ? a[0].length : 0;
 
-                    // Calculate the width and height of the Array
-                    var a = this,
-                        w = a.length ? a.length : 0,
-                        h = a[0] instanceof Array ? a[0].length : 0;
+                // In case it is a zero matrix, no transpose routine needed.
+                if (h === 0 || w === 0) {
+                    return [];
+                }
 
-                    // In case it is a zero matrix, no transpose routine needed.
-                    if (h === 0 || w === 0) {
-                        return [];
+                /**
+                 * @var {Number} i Counter
+                 * @var {Number} j Counter
+                 * @var {Array} t Transposed data is stored in this array.
+                 */
+                var i, j, t = [];
+
+                // Loop through every item in the outer array (height)
+                for (i = 0; i < h; i++) {
+
+                    // Insert a new row (array)
+                    t[i] = [];
+
+                    // Loop through every item per item in outer array (width)
+                    for (j = 0; j < w; j++) {
+
+                        // Save transposed data.
+                        t[i][j] = a[j][i];
                     }
+                }
 
-                    /**
-                     * @var {Number} i Counter
-                     * @var {Number} j Counter
-                     * @var {Array} t Transposed data is stored in this array.
-                     */
-                    var i, j, t = [];
-
-                    // Loop through every item in the outer array (height)
-                    for (i = 0; i < h; i++) {
-
-                        // Insert a new row (array)
-                        t[i] = [];
-
-                        // Loop through every item per item in outer array (width)
-                        for (j = 0; j < w; j++) {
-
-                            // Save transposed data.
-                            t[i][j] = a[j][i];
-                        }
-                    }
-
-                    return t;
-                };
+                return t;
             },
             getTranslateJson: function (target) {
                 try {
@@ -659,8 +654,8 @@
 
                         if (rate < 1) {
                             var $target = target.closest(".widget-chart3d");
+
                             $target.css({
-                                width: target.width() * 0.9,
                                 marginBottom: -target.height() * (1 - rate) * 1.2,
                                 webkitTransform: "scale(" + rate + ")"
                             });
@@ -668,7 +663,7 @@
                             if ("horizontalBar3d" === options.chartType) {
                                 $target.find(".wrapper").css({
                                     webkitTransform: "scale(0.75) rotateZ(90deg) translateY(" + target.width() * 0.15 + "px)"
-                                })
+                                });
                             } else {
                                 $target.find(".wrapper").css({
                                     marginLeft: -target.width() * 0.1
@@ -678,9 +673,14 @@
                             $target.removeAttr("style");
                             $target.find(".wrapper").removeAttr("style");
                         }
-                    }
+
+                        $target.css({
+                            width: target.width() * 0.9
+                        });
+                    };
+
                     resizeChart();
-                    $(window).on("resize._chart", function () {
+                    $(window).off("resize._chart").on("resize._chart", function () {
                         resizeChart();
                     });
                 } else {
