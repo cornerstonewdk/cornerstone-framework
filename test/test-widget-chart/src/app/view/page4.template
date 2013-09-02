@@ -1,6 +1,7 @@
 <div class="panel panel-primary">
     <div class="btn-group">
         <button type="button" class="btn btn-success prev">이전</button>
+        <button type="button" class="btn btn-success next">다음</button>
     </div>
 </div>
 <div class="panel panel-primary view-chart">

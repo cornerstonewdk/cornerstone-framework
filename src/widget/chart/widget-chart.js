@@ -14,7 +14,6 @@
         chart,
         self;
 
-    // TODO animation 중에 control, legend 이벤트를 막는다.
     var FeaturedChart = function (element, options) {
         this.el = element;
         this.$el = $(element);
@@ -29,6 +28,11 @@
         afterRender: function (target, options, chart) {
             this.$el.data("currentChart", chart);
             this.$el.data("currentChartControl", options.control);
+
+            var groups = target.selectAll(".nv-groups");
+            $(groups[0]).each(function () {
+                $(this).parent().attr("clip-path", "");
+            });
 
             this.util.applyBindEvent(target, options, chart, this.$el);
         },
@@ -245,62 +249,58 @@
             chart.bars.forceY([0]);
             return chart;
         },
-        lineFocusChart: function (target) {
-            self = this;
-            function data() {
-                return stream_layers(3, 10 + Math.random() * 200, .1).map(function (data, i) {
-                    return {
-                        key: "Stream" + i,
-                        values: data
-                    };
-                });
-            }
+        lineFocusChart: function (target, options) {
+            chart = nv.models.lineWithFocusChart();
 
-            /* Inspired by Lee Byron"s test data generator. */
-            function stream_layers(n, m, o) {
-                if (arguments.length < 3) o = 0;
-                function bump(a) {
-                    var x = 1 / (.1 + Math.random()),
-                        y = 2 * Math.random() - .5,
-                        z = 10 / (.1 + Math.random());
-                    for (var i = 0; i < m; i++) {
-                        var w = (i / m - y) * z;
-                        a[i] += x * Math.exp(-w * w);
+            chart.xAxis.tickFormat(d3.format(options.format));
+            chart.yAxis.tickFormat(d3.format(options.format));
+            chart.y2Axis.tickFormat(d3.format(options.format));
+            chart.afterRender = function (eventType) {
+                function onBrush(extent) {
+                    var brush = d3.svg.brush();
+                    var brushExtent = chart.brushExtent;
+                    var extent = extent ? extent : chart.x2Axis.scale().domain();
+                    var lines = chart.lines;
+
+                    //The brush extent cannot be less than one.  If it is, don't update the line chart.
+                    if (Math.abs(extent[0] - extent[1]) <= 1) {
+                        return;
                     }
+
+                    chart.dispatch.brush({extent: extent, brush: brush});
+
+                    // Update Main (Focus)
+                    var focusLinesWrap = target.select('.nv-focus .nv-linesWrap')
+                        .datum(options.data.filter(function(d) { return !d.disabled })
+                                .map(function(d,i) {
+                                    return {
+                                        key: d.key,
+                                        values: d.values.filter(function(d,i) {
+                                            return lines.x()(d,i) >= extent[0] && lines.x()(d,i) <= extent[1];
+                                        })
+                                    }
+                                })
+                        );
+                    focusLinesWrap.transition().call(lines);
+
+                    // Update Main (Focus) Axes
+                    target.select('.nv-focus .nv-x.nv-axis').transition().call(chart.xAxis);
+                    target.select('.nv-focus .nv-y.nv-axis').transition().call(chart.yAxis);
                 }
+                onBrush();
 
-                return d3.range(n).map(function () {
-                    var a = [], i;
-                    for (i = 0; i < m; i++) a[i] = o + o * Math.random();
-                    for (i = 0; i < 5; i++) bump(a);
-                    return a.map(stream_index);
-                });
-            }
+                setTimeout(function() {
+                    onBrush([0, 10]);
+                }, 1000);
+                setTimeout(function() {
+                    onBrush([10, 20]);
+                }, 2000);
+                setTimeout(function() {
+                    onBrush([90, 99]);
+                }, 3000);
+            };
 
-            function stream_index(d, i) {
-                return {x: i, y: Math.max(0, d)};
-            }
-
-            nv.addGraph(function () {
-                chart = nv.models.lineWithFocusChart();
-
-                chart.xAxis
-                    .tickFormat(d3.format(",f"));
-
-                chart.yAxis
-                    .tickFormat(d3.format(",.2f"));
-
-                chart.y2Axis
-                    .tickFormat(d3.format(",.2f"));
-
-                target = self.util.getTarget(target, options);
-
-                target.datum(data())
-                    .transition().duration(500)
-                    .call(chart);
-
-                return chart;
-            });
+            return chart;
         },
         bar3dChart: function (target, options) {
             var self = this;
@@ -311,7 +311,6 @@
             var data = $(options.data);
             var dataLength = data.length;
             var container = target;
-            var chartData;
             var chartYMax;
             var columnGroups;
 
@@ -393,10 +392,9 @@
                 // Sort data into groups based on number of columns
                 columnGroups: function () {
                     var columnGroups = [];
-                    var resultGroups = [];
 
                     data.each(function (i) {
-                        columnGroups[i] = $.map(this.values, function (val, i) {
+                        columnGroups[i] = $.map(this.values, function (val) {
                             return d3.format(options.format)(val.y);
                         });
                     });
@@ -406,7 +404,6 @@
                     return columnGroups;
                 }
             };
-            chartData = dataObject.chartData();
             chartYMax = dataObject.chartYMax();
             columnGroups = dataObject.columnGroups();
 
@@ -502,12 +499,18 @@
                     barTimer = setTimeout(function () {
                         i++;
                         displayGraph(bars, i);
+                        $(self.el).trigger("animationEnd");
+
+                        if (bars.length === i + 1) {
+                            $(self.el).trigger("complete");
+                        }
                     }, 100);
                 }
             }
 
             // Reset graph settings and prepare for display
             function resetGraph() {
+                $(self.el).trigger("shown");
                 self.util.applyBindEvent(target, options);
                 // Turn off transitions for instant reset
                 $.each(bars, function (i) {
@@ -579,33 +582,18 @@
 
         util: {
             transpose: function (array) {
-                // Calculate the width and height of the Array
-                var a = array,
-                    w = a.length ? a.length : 0,
-                    h = a[0] instanceof Array ? a[0].length : 0;
+                var w = array.length ? array.length : 0,
+                    h = array[0] instanceof Array ? array[0].length : 0;
 
-                // In case it is a zero matrix, no transpose routine needed.
                 if (h === 0 || w === 0) {
                     return [];
                 }
 
-                /**
-                 * @var {Number} i Counter
-                 * @var {Number} j Counter
-                 * @var {Array} t Transposed data is stored in this array.
-                 */
                 var i, j, t = [];
 
-                // Loop through every item in the outer array (height)
                 for (i = 0; i < h; i++) {
-
-                    // Insert a new row (array)
                     t[i] = [];
-
-                    // Loop through every item per item in outer array (width)
                     for (j = 0; j < w; j++) {
-
-                        // Save transposed data.
                         t[i][j] = a[j][i];
                     }
                 }
@@ -653,8 +641,6 @@
                         rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
 
                         if (rate < 1) {
-                            var $target = target.closest(".widget-chart3d");
-
                             $target.css({
                                 marginBottom: -target.height() * (1 - rate) * 1.2,
                                 webkitTransform: "scale(" + rate + ")"
@@ -684,10 +670,8 @@
                         resizeChart();
                     });
                 } else {
-                    chart.dispatch.on("stateChange", function (e) {
-
+                    var stateChange = function (e) {
                         isDebug && console.log("New State:", JSON.stringify(e));
-
                         // 애니매이션 중 이벤트 방지
                         !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
 
@@ -699,11 +683,11 @@
                             && target.$parent.removeClass("overlay");
 
                         }, 10);
-                    });
+                    };
+
+                    chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
 
                     !options.autoResize || nv.utils.windowResize(function () {
-
-
                         chart.update();
                         setTimeout(function () {
                             typeof chart.afterRender === "function" && chart.afterRender("resize");
