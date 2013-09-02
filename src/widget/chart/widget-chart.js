@@ -307,7 +307,7 @@
         bar3dChart: function (target, options) {
             var self = this;
             var bars = [];
-            var figureContainer = $('<div id="figure"></div>');
+            var figureContainer = $('<div class="figure"></div>');
             var graphContainer = $('<div class="graph"></div>');
             var barContainer = $('<div class="bars"></div>');
             var data = $(options.data);
@@ -536,16 +536,32 @@
                 if (keyToggled) {
                     switch (event.keyCode) {
                         case 37: // Left
-                            yRotation -= rotationAmount;
+                            if("bar3d" === options.chartType) {
+                                yRotation -= rotationAmount;
+                            } else {
+                                xRotation -= rotationAmount;
+                            }
                             break;
                         case 38: // Up
-                            xRotation += rotationAmount;
+                            if("bar3d" === options.chartType) {
+                                xRotation += rotationAmount;
+                            } else {
+                                yRotation -= rotationAmount;
+                            }
                             break;
                         case 39: // Right
-                            yRotation += rotationAmount;
+                            if("bar3d" === options.chartType) {
+                                yRotation += rotationAmount;
+                            } else {
+                                xRotation += rotationAmount;
+                            }
                             break;
                         case 40: // Down
-                            xRotation -= rotationAmount;
+                            if("bar3d" === options.chartType) {
+                                xRotation -= rotationAmount;
+                            } else {
+                                yRotation += rotationAmount;
+                            }
                             break;
                     }
                     graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
@@ -634,6 +650,7 @@
             },
 
             applyBindEvent: function (target, options, chart) {
+                // TODO width 폭이 좁아질 때 scale로 인한 아래 불필요한 여백 처리 필요
                 if (options.chartType.match(/.*bar3d/gi)) {
                     var resizeChart = function () {
                         var $target = target.closest(".widget-chart3d");
