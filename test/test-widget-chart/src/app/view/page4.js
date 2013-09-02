@@ -1,27 +1,54 @@
+define([
+    'backbone',
+    'widget-chart',
+    'template!view/page4'
+], function (Backbone, Chart, template) {
 
-define( [ 'backbone', 'template!view/page4' ], function( Backbone, template ) {
-	
-	return Backbone.View.extend( {
+    return Backbone.View.extend({
 
-		el: 'section#page4',
+        el: 'section#page4',
+        sampleDataUrl: "data/sample-bar.json",
 
-		render: function() {
-			this.$el.html( template() );
-            window.activeDataApi(this.$el);
-			return this;
-		},
+        render: function () {
+            var self = this;
+            require(['style!view/page4'], function () {
+                self.$el.html(template());
+                self.active3DChart();
+            });
+            return this;
+        },
 
         events: {
             'click button.prev': 'prevPage',
             'click button.next': 'nextPage'
         },
 
-        prevPage: function() {
+        prevPage: function () {
             location.href = '#page3';
         },
 
-        nextPage: function() {
+        nextPage: function () {
             location.href = '#page5';
+        },
+
+        active3DChart: function () {
+            var self = this;
+
+            $.ajax({
+                url: self.sampleDataUrl,
+                dataType: "json",
+                success: function (data) {
+                    self.$el.find("#horizontalBar3d").featuredChart({
+                        chartType: "horizontalBar3d",
+                        format: '.2f',
+                        data: data,
+                        beforeRender: function (target, options, chart) {
+                            console.log(chart);
+                            return chart;
+                        }
+                    });
+                }
+            });
         }
-	} );
-} );
+    });
+});

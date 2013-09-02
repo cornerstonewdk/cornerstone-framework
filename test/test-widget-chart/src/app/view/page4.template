@@ -1,28 +1,15 @@
 <div class="panel panel-primary">
-	<div class="panel-heading">기존 차트</div>
-
-    <section id="chart" class="row">
-        <div class="col col-lg-4">
-            <h3 class="title">바차트</h3>
-
-            <div data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json"
-                 style="height: 300px"></div>
-        </div>
-        <div class="col col-lg-4">
-            <h3 class="title">라인차트</h3>
-
-            <div data-featured="chart" data-chart-type="line" data-chart-bind="data/sample-line.json"
-                 style="height: 300px"></div>
-        </div>
-        <div class="col col-lg-4">
-            <h3 class="title">파이차트</h3>
-
-            <div data-featured="chart" data-chart-type="pie" data-chart-bind="data/sample-pie.json"
-                 style="height: 300px"></div>
-        </div>
-    </section>
     <div class="btn-group">
         <button type="button" class="btn btn-success prev">이전</button>
-        <button type="button" class="btn btn-success next">다음</button>
     </div>
+</div>
+<div class="panel panel-primary view-chart">
+
+    <div class="panel-heading">3D 수평 바 차트</div>
+
+    <div id="horizontalBar3d" class="widget-chart"></div>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae rem tempora tenetur voluptatem!
+    </p>
 </div>

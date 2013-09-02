@@ -307,7 +307,7 @@
         bar3dChart: function (target, options) {
             var self = this;
             var bars = [];
-            var figureContainer = $('<div id="figure"></div>');
+            var figureContainer = $('<div class="figure"></div>');
             var graphContainer = $('<div class="graph"></div>');
             var barContainer = $('<div class="bars"></div>');
             var data = $(options.data);
@@ -536,16 +536,32 @@
                 if (keyToggled) {
                     switch (event.keyCode) {
                         case 37: // Left
-                            yRotation -= rotationAmount;
+                            if ("bar3d" === options.chartType) {
+                                yRotation -= rotationAmount;
+                            } else {
+                                xRotation -= rotationAmount;
+                            }
                             break;
                         case 38: // Up
-                            xRotation += rotationAmount;
+                            if ("bar3d" === options.chartType) {
+                                xRotation += rotationAmount;
+                            } else {
+                                yRotation -= rotationAmount;
+                            }
                             break;
                         case 39: // Right
-                            yRotation += rotationAmount;
+                            if ("bar3d" === options.chartType) {
+                                yRotation += rotationAmount;
+                            } else {
+                                xRotation += rotationAmount;
+                            }
                             break;
                         case 40: // Down
-                            xRotation -= rotationAmount;
+                            if ("bar3d" === options.chartType) {
+                                xRotation -= rotationAmount;
+                            } else {
+                                yRotation += rotationAmount;
+                            }
                             break;
                     }
                     graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
@@ -558,7 +574,7 @@
         },
         horizontalBar3dChart: function (target, options) {
             var $parent = target.closest(".widget-chart3d");
-            !$parent.hasClass("widget-horizontal-bar") && $parent.addClass("widget-horizontal-bar");
+            !$parent.hasClass("widget-chart3d-hbar") && $parent.addClass("widget-chart3d-hbar");
             options.endYRotation = 0;
             this.bar3dChart(target, options);
         },
@@ -640,19 +656,18 @@
                         var rate = window.innerWidth / target.width();
 
                         rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
-                        console.log(target.$parent.parent().width(), target.width(), rate);
+
                         if (rate < 1) {
                             var $target = target.closest(".widget-chart3d");
                             $target.css({
                                 width: target.width() * 0.9,
+                                marginBottom: -target.height() * (1 - rate) * 1.2,
                                 webkitTransform: "scale(" + rate + ")"
                             });
 
-                            console.log(target.width(), rate);
-
-                            if("horizontalBar3d" === options.chartType) {
+                            if ("horizontalBar3d" === options.chartType) {
                                 $target.find(".wrapper").css({
-                                    marginBottom: -target.width() * 0.1
+                                    webkitTransform: "scale(0.75) rotateZ(90deg) translateY(" + target.width() * 0.15 + "px)"
                                 })
                             } else {
                                 $target.find(".wrapper").css({
@@ -673,7 +688,6 @@
 
                         isDebug && console.log("New State:", JSON.stringify(e));
 
-                        console.log(target.$parent);
                         // 애니매이션 중 이벤트 방지
                         !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
 

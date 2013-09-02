@@ -42,23 +42,11 @@ define([
                         chartType: "bar3d",
                         format: '.2f',
                         data: data,
-                        beforeRender: function(target, options, chart) {
+                        beforeRender: function (target, options, chart) {
                             console.log(chart);
                             return chart;
                         }
                     });
-                    self.$el.find("#horizontalBar3d").featuredChart({
-                        chartType: "horizontalBar3d",
-                        format: '.2f',
-                        data: data,
-                        beforeRender: function(target, options, chart) {
-                            console.log(chart);
-                            return chart;
-                        }
-                    });
-
-
-
                 }
             });
         }
