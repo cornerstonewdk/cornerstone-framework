@@ -655,14 +655,18 @@
                                     marginLeft: -target.width() * 0.1
                                 });
                             }
+
+                            $target.css({
+                                width: target.width() * 0.9
+                            });
                         } else {
                             $target.removeAttr("style");
                             $target.find(".wrapper").removeAttr("style");
-                        }
 
-                        $target.css({
-                            width: target.width() * 0.9
-                        });
+                            $target.css({
+                                width: target.width()
+                            });
+                        }
                     };
 
                     resizeChart();
