@@ -6,13 +6,6 @@
 </div>
 <div class="panel panel-primary view-chart">
 
-    <div class="panel-heading">3D 수평 바 차트</div>
-
-    <div id="horizontalBar3d" class="widget-chart"></div>
-</div>
-
-<div class="panel panel-primary view-chart">
-
     <div class="panel-heading">3D 바 차트</div>
 
     <div id="bar3d" class="widget-chart"></div>
