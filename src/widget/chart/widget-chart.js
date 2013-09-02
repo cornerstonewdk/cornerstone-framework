@@ -249,12 +249,56 @@
             chart.bars.forceY([0]);
             return chart;
         },
-        lineFocusChart: function () {
+        lineFocusChart: function (target, options) {
             chart = nv.models.lineWithFocusChart();
 
             chart.xAxis.tickFormat(d3.format(",f"));
             chart.yAxis.tickFormat(d3.format(",.2f"));
             chart.y2Axis.tickFormat(d3.format(",.2f"));
+            chart.afterRender = function (eventType) {
+                function onBrush(extent) {
+                    var brush = d3.svg.brush();
+                    var brushExtent = chart.brushExtent;
+                    var extent = extent ? extent : chart.x2Axis.scale().domain();
+                    var lines = chart.lines;
+
+                    //The brush extent cannot be less than one.  If it is, don't update the line chart.
+                    if (Math.abs(extent[0] - extent[1]) <= 1) {
+                        return;
+                    }
+
+                    chart.dispatch.brush({extent: extent, brush: brush});
+
+                    // Update Main (Focus)
+                    var focusLinesWrap = target.select('.nv-focus .nv-linesWrap')
+                        .datum(options.data.filter(function(d) { return !d.disabled })
+                                .map(function(d,i) {
+                                    return {
+                                        key: d.key,
+                                        values: d.values.filter(function(d,i) {
+                                            return lines.x()(d,i) >= extent[0] && lines.x()(d,i) <= extent[1];
+                                        })
+                                    }
+                                })
+                        );
+                    focusLinesWrap.transition().call(lines);
+
+                    // Update Main (Focus) Axes
+                    target.select('.nv-focus .nv-x.nv-axis').transition().call(chart.xAxis);
+                    target.select('.nv-focus .nv-y.nv-axis').transition().call(chart.yAxis);
+                }
+                onBrush();
+
+                setTimeout(function() {
+                    onBrush([0, 10]);
+                }, 1000);
+                setTimeout(function() {
+                    onBrush([10, 20]);
+                }, 2000);
+                setTimeout(function() {
+                    onBrush([90, 99]);
+                }, 3000);
+            };
 
             return chart;
         },
