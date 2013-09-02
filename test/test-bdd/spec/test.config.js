@@ -50,6 +50,7 @@ require.config({
         "widget-scrollview": "../../../grunt-dist/src/widget/scrollview/widget-scrollview",
         "widget-sign": "../../../grunt-dist/src/widget/sign/widget-sign",
         "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
+        "widget-tab": "../../../grunt-dist/src/widget/tab/widget-tab",
         "widget-tooltip": "../../../grunt-dist/src/widget/tooltip/widget-tooltip",
         "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch",
         "widget-typeahead": "../../../grunt-dist/src/widget/typeahead/widget-typeahead"
@@ -373,6 +374,15 @@ require.config({
                 "spin"
             ],
             "exports": "widget-spinner"
+        },
+        "widget-tab": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-tab"
         },
         "widget-tooltip": {
             "deps": [
