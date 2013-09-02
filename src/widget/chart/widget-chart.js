@@ -252,9 +252,9 @@
         lineFocusChart: function (target, options) {
             chart = nv.models.lineWithFocusChart();
 
-            chart.xAxis.tickFormat(d3.format(",f"));
-            chart.yAxis.tickFormat(d3.format(",.2f"));
-            chart.y2Axis.tickFormat(d3.format(",.2f"));
+            chart.xAxis.tickFormat(d3.format(options.format));
+            chart.yAxis.tickFormat(d3.format(options.format));
+            chart.y2Axis.tickFormat(d3.format(options.format));
             chart.afterRender = function (eventType) {
                 function onBrush(extent) {
                     var brush = d3.svg.brush();
