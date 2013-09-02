@@ -14,7 +14,6 @@
         chart,
         self;
 
-    // TODO animation 중에 control, legend 이벤트를 막는다.
     var FeaturedChart = function (element, options) {
         this.el = element;
         this.$el = $(element);
@@ -31,7 +30,7 @@
             this.$el.data("currentChartControl", options.control);
 
             var groups = target.selectAll(".nv-groups");
-            $(groups[0]).each(function() {
+            $(groups[0]).each(function () {
                 $(this).parent().attr("clip-path", "");
             });
 
@@ -250,7 +249,7 @@
             chart.bars.forceY([0]);
             return chart;
         },
-        lineFocusChart: function (target) {
+        lineFocusChart: function () {
             chart = nv.models.lineWithFocusChart();
 
             chart.xAxis.tickFormat(d3.format(",f"));
@@ -268,7 +267,6 @@
             var data = $(options.data);
             var dataLength = data.length;
             var container = target;
-            var chartData;
             var chartYMax;
             var columnGroups;
 
@@ -350,10 +348,9 @@
                 // Sort data into groups based on number of columns
                 columnGroups: function () {
                     var columnGroups = [];
-                    var resultGroups = [];
 
                     data.each(function (i) {
-                        columnGroups[i] = $.map(this.values, function (val, i) {
+                        columnGroups[i] = $.map(this.values, function (val) {
                             return d3.format(options.format)(val.y);
                         });
                     });
@@ -363,7 +360,6 @@
                     return columnGroups;
                 }
             };
-            chartData = dataObject.chartData();
             chartYMax = dataObject.chartYMax();
             columnGroups = dataObject.columnGroups();
 
@@ -459,12 +455,18 @@
                     barTimer = setTimeout(function () {
                         i++;
                         displayGraph(bars, i);
+                        $(self.el).trigger("animationEnd");
+
+                        if (bars.length === i + 1) {
+                            $(self.el).trigger("complete");
+                        }
                     }, 100);
                 }
             }
 
             // Reset graph settings and prepare for display
             function resetGraph() {
+                $(self.el).trigger("shown");
                 self.util.applyBindEvent(target, options);
                 // Turn off transitions for instant reset
                 $.each(bars, function (i) {
@@ -536,33 +538,18 @@
 
         util: {
             transpose: function (array) {
-                // Calculate the width and height of the Array
-                var a = array,
-                    w = a.length ? a.length : 0,
-                    h = a[0] instanceof Array ? a[0].length : 0;
+                var w = array.length ? array.length : 0,
+                    h = array[0] instanceof Array ? array[0].length : 0;
 
-                // In case it is a zero matrix, no transpose routine needed.
                 if (h === 0 || w === 0) {
                     return [];
                 }
 
-                /**
-                 * @var {Number} i Counter
-                 * @var {Number} j Counter
-                 * @var {Array} t Transposed data is stored in this array.
-                 */
                 var i, j, t = [];
 
-                // Loop through every item in the outer array (height)
                 for (i = 0; i < h; i++) {
-
-                    // Insert a new row (array)
                     t[i] = [];
-
-                    // Loop through every item per item in outer array (width)
                     for (j = 0; j < w; j++) {
-
-                        // Save transposed data.
                         t[i][j] = a[j][i];
                     }
                 }
@@ -610,8 +597,6 @@
                         rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
 
                         if (rate < 1) {
-                            var $target = target.closest(".widget-chart3d");
-
                             $target.css({
                                 marginBottom: -target.height() * (1 - rate) * 1.2,
                                 webkitTransform: "scale(" + rate + ")"
@@ -641,10 +626,8 @@
                         resizeChart();
                     });
                 } else {
-                    chart.dispatch.stateChange && chart.dispatch.on("stateChange", function (e) {
-
+                    var stateChange = function (e) {
                         isDebug && console.log("New State:", JSON.stringify(e));
-
                         // 애니매이션 중 이벤트 방지
                         !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
 
@@ -656,7 +639,9 @@
                             && target.$parent.removeClass("overlay");
 
                         }, 10);
-                    });
+                    };
+
+                    chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
 
                     !options.autoResize || nv.utils.windowResize(function () {
                         chart.update();
