@@ -594,7 +594,7 @@
                 for (i = 0; i < h; i++) {
                     t[i] = [];
                     for (j = 0; j < w; j++) {
-                        t[i][j] = a[j][i];
+                        t[i][j] = array[j][i];
                     }
                 }
 
