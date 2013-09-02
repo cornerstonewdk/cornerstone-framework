@@ -9,4 +9,8 @@
     <div class="panel-heading">3D 바 차트</div>
 
     <div id="bar3d" class="widget-chart"></div>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae rem tempora tenetur voluptatem!
+    </p>
 </div>
