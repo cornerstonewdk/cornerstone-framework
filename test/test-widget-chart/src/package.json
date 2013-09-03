@@ -12,7 +12,8 @@
             "form-view": "*",
             "validation-view": "*",
             "multipage-router": "*",
-            "widget-chart": "*"
+            "widget-chart": "*",
+            "widget-touch": "*"
         }
     }
 }

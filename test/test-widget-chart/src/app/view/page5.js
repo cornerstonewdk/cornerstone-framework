@@ -1,12 +1,13 @@
 define([
-    'backbone',
-    'widget-chart',
-    'template!view/page5'
+    "backbone",
+    "widget-chart",
+    "template!view/page5",
+    "widget-touch"
 ], function (Backbone, Chart, template) {
 
     return Backbone.View.extend({
 
-        el: 'section#page5',
+        el: "section#page5",
         sampleDataUrl: "data/sample-line.json",
 
         render: function () {
@@ -17,16 +18,16 @@ define([
         },
 
         events: {
-            'click button.prev': 'prevPage',
-            'click button.next': 'nextPage'
+            "click button.prev": "prevPage",
+            "click button.next": "nextPage"
         },
 
         prevPage: function () {
-            location.href = '#page4';
+            location.href = "#page4";
         },
 
         nextPage: function () {
-            location.href = '#page6';
+            location.href = "#page6";
         },
 
         activeChart: function () {
@@ -38,11 +39,8 @@ define([
                 success: function (data) {
                     self.$el.find("#lineFocus").featuredChart({
                         chartType: "lineFocus",
-                        format: '.2f',
-                        data: data,
-                        beforeRender: function (target, options, chart) {
-                            return chart;
-                        }
+                        format: ".2f",
+                        data: data
                     });
                 }
             });

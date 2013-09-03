@@ -77,7 +77,8 @@
                         }
                     }
 
-                    chart = options.beforeRender(target, options, chart);
+                    var customChart = options.beforeRender(target, options, chart);
+                    chart = typeof customChart === "function" ? customChart : chart;
 
                     target.attr("width", options.width)
                         .attr("height", options.height)
@@ -255,11 +256,10 @@
             chart.xAxis.tickFormat(d3.format(options.format));
             chart.yAxis.tickFormat(d3.format(options.format));
             chart.y2Axis.tickFormat(d3.format(options.format));
-            chart.afterRender = function (eventType) {
+            chart.afterRender = function () {
                 function onBrush(extent) {
+                    extent = extent ? extent : chart.x2Axis.scale().domain();
                     var brush = d3.svg.brush();
-                    var brushExtent = chart.brushExtent;
-                    var extent = extent ? extent : chart.x2Axis.scale().domain();
                     var lines = chart.lines;
 
                     //The brush extent cannot be less than one.  If it is, don't update the line chart.
@@ -271,33 +271,49 @@
 
                     // Update Main (Focus)
                     var focusLinesWrap = target.select('.nv-focus .nv-linesWrap')
-                        .datum(options.data.filter(function(d) { return !d.disabled })
-                                .map(function(d,i) {
-                                    return {
-                                        key: d.key,
-                                        values: d.values.filter(function(d,i) {
-                                            return lines.x()(d,i) >= extent[0] && lines.x()(d,i) <= extent[1];
-                                        })
-                                    }
-                                })
+                        .datum(options.data.filter(function (d) {
+                            return !d.disabled
+                        }).map(function (d) {
+                                return {
+                                    key: d.key,
+                                    values: d.values.filter(function (d, i) {
+                                        return lines.x()(d, i) >= extent[0] && lines.x()(d, i) <= extent[1];
+                                    })
+                                }
+                            })
                         );
                     focusLinesWrap.transition().call(lines);
 
                     // Update Main (Focus) Axes
                     target.select('.nv-focus .nv-x.nv-axis').transition().call(chart.xAxis);
                     target.select('.nv-focus .nv-y.nv-axis').transition().call(chart.yAxis);
+                    return extent
                 }
-                onBrush();
 
-                setTimeout(function() {
-                    onBrush([0, 10]);
-                }, 1000);
-                setTimeout(function() {
-                    onBrush([10, 20]);
-                }, 2000);
-                setTimeout(function() {
-                    onBrush([90, 99]);
-                }, 3000);
+                target.$parent.swipe();
+                var xDomain = chart.x2Axis.scale().domain();
+                var unit = 10;
+                var extent = [xDomain[0], xDomain[0] + unit];
+                var changeDomain = function(d, obj) {
+                    if(!obj.direction.match(/left|right/gi)) {
+                        return false;
+                    }
+
+                    var minDomain = extent[0] + 10 * (obj.direction === "left" ? 1 : -1);
+                    var maxDomain = extent[1] + 10 * (obj.direction === "left" ? 1 : -1);
+
+                    minDomain = xDomain[0] >= minDomain ? xDomain[0] : minDomain;
+                    maxDomain = xDomain[1] <= maxDomain ? xDomain[1] : maxDomain;
+                    extent = [minDomain, maxDomain];
+                    extent = onBrush(extent);
+                    if(typeof extent === "undefined") {
+                        extent = obj.direction === "left"
+                            ? [xDomain[1] - unit, xDomain[1]]
+                            : [xDomain[0], xDomain[0] + unit];
+                    }
+                }
+
+                target.$parent.on("swipe", changeDomain);
             };
 
             return chart;

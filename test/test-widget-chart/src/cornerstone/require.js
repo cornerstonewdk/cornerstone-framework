@@ -2084,6 +2084,11 @@ var jam = {
             "name": "widget-chart",
             "location": "../cornerstone/widget-chart",
             "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-touch",
+            "location": "../cornerstone/widget-touch",
+            "main": "widget-touch.js"
         }
     ],
     "version": "0.2.17",
@@ -2177,6 +2182,12 @@ var jam = {
                 "nv"
             ],
             "exports": "widget-chart"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
         }
     }
 };
@@ -2267,6 +2278,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "widget-chart",
             "location": "../cornerstone/widget-chart",
             "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-touch",
+            "location": "../cornerstone/widget-touch",
+            "main": "widget-touch.js"
         }
     ],
     "shim": {
@@ -2359,6 +2375,12 @@ if (typeof require !== "undefined" && require.config) {
                 "nv"
             ],
             "exports": "widget-chart"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
         }
     }
 });
@@ -2449,6 +2471,11 @@ else {
             "name": "widget-chart",
             "location": "../cornerstone/widget-chart",
             "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-touch",
+            "location": "../cornerstone/widget-touch",
+            "main": "widget-touch.js"
         }
     ],
     "shim": {
@@ -2541,6 +2568,12 @@ else {
                 "nv"
             ],
             "exports": "widget-chart"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
         }
     }
 };
