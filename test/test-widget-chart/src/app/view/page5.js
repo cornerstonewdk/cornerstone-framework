@@ -42,6 +42,14 @@ define([
                         format: ".2f",
                         data: data
                     });
+
+                    require([
+                        "vendor/hammer.fakemultitouch",
+                        "vendor/hammer.showtouches"
+                    ], function() {
+                        Hammer.plugins.fakeMultitouch();
+                        Hammer.plugins.showTouches();
+                    });
                 }
             });
         }

@@ -316,10 +316,12 @@
 
                 var changeUnit = function(e) {
                     console.log(e);
+                    unit = 5;
                 };
 
                 target.$parent.hammer().off("swipe._chart").on("swipe._chart", changeDomain);
-                target.$parent.hammer().off("zoom._chart").on("zoom._chart", changeUnit);
+                target.$parent.hammer().off("pinchin._chart").on("pinchin._chart", changeUnit);
+                target.$parent.hammer().off("pinchout._chart").on("pinchout._chart", changeUnit);
             };
 
             return chart;
