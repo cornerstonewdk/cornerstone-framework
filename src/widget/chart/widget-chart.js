@@ -290,30 +290,36 @@
                     return extent
                 }
 
-                target.$parent.swipe();
                 var xDomain = chart.x2Axis.scale().domain();
                 var unit = 10;
                 var extent = [xDomain[0], xDomain[0] + unit];
-                var changeDomain = function(d, obj) {
-                    if(!obj.direction.match(/left|right/gi)) {
+                var changeDomain = function(e) {
+                    var direction = e.gesture.direction;
+                    if(!direction.match(/left|right/gi)) {
                         return false;
                     }
 
-                    var minDomain = extent[0] + 10 * (obj.direction === "left" ? 1 : -1);
-                    var maxDomain = extent[1] + 10 * (obj.direction === "left" ? 1 : -1);
+                    var minDomain = extent[0] + 10 * (direction === "left" ? 1 : -1);
+                    var maxDomain = extent[1] + 10 * (direction === "left" ? 1 : -1);
 
                     minDomain = xDomain[0] >= minDomain ? xDomain[0] : minDomain;
                     maxDomain = xDomain[1] <= maxDomain ? xDomain[1] : maxDomain;
                     extent = [minDomain, maxDomain];
                     extent = onBrush(extent);
                     if(typeof extent === "undefined") {
-                        extent = obj.direction === "left"
+                        extent = direction === "left"
                             ? [xDomain[1] - unit, xDomain[1]]
                             : [xDomain[0], xDomain[0] + unit];
                     }
-                }
+                    console.log(extent);
+                };
 
-                target.$parent.on("swipe", changeDomain);
+                var changeUnit = function(e) {
+                    console.log(e);
+                };
+
+                target.$parent.hammer().off("swipe._chart").on("swipe._chart", changeDomain);
+                target.$parent.hammer().off("zoom._chart").on("zoom._chart", changeUnit);
             };
 
             return chart;

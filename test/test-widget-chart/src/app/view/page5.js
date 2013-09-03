@@ -2,7 +2,7 @@ define([
     "backbone",
     "widget-chart",
     "template!view/page5",
-    "widget-touch"
+    "jquery.hammer"
 ], function (Backbone, Chart, template) {
 
     return Backbone.View.extend({
