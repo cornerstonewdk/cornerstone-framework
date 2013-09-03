@@ -150,24 +150,59 @@
                 </section>
 
                 <!-- Chart -->
-                <section id="chart" class="row">
+                <section id="chart">
                     <header class="page-header">
                         <h2 class="title">Chart</h2>
                     </header>
-                    <div class="col col-lg-12">
-                        <h3 class="title">바차트</h3>
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <h3 class="title">수직 바차트</h3>
 
-                        <div class="barChart" style="height: 500px"></div>
+                            <div class="barChart" style="height: 500px"></div>
+                        </div>
+                        <div class="col col-lg-6">
+                            <h3 class="title">수평 바차트</h3>
+
+                            <div class="horizontalBarChart" style="height: 500px"></div>
+                        </div>
                     </div>
-                    <div class="col col-lg-6">
-                        <h3 class="title">라인차트</h3>
+                    <div class="row">
+                        <div class="col col-lg-12">
+                            <h3 class="title">라인 + 바차트</h3>
 
-                        <div class="lineChart" style="height: 300px"></div>
+                            <div class="linePlusBarChart" style="height: 300px"></div>
+                        </div>
                     </div>
-                    <div class="col col-lg-6">
-                        <h3 class="title">파이차트</h3>
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <h3 class="title">라인차트</h3>
 
-                        <div class="pieChart" style="height: 300px"></div>
+                            <div class="lineChart" style="height: 300px"></div>
+                        </div>
+                        <div class="col col-lg-6">
+                            <h3 class="title">파이차트</h3>
+
+                            <div class="pieChart" style="height: 300px"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <h3 class="title">라인차트</h3>
+
+                            <div class="bar3dChart widget-chart3d" style="height: 600px"></div>
+                        </div>
+                        <div class="col col-lg-6">
+                            <h3 class="title">파이차트</h3>
+
+                            <div class="horizontal3dBarChart widget-chart3d" style="height: 600px"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-lg-12">
+                            <h3 class="title"라인 포커스차트</h3>
+
+                            <div class="lineFocusChart widget-chart" style="height: 300px"></div>
+                        </div>
                     </div>
                 </section>
 
@@ -265,78 +300,109 @@
                 <!-- dropdown -->
                 <section id="dropdown" class="row">
                     <header class="page-header">
-                        <h2 class="title">Dropdown<h2>
+                        <h2 class="title">Dropdown
+                            <h2>
                     </header>
                     <div class="col col-lg-12">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle">Default <span
-                                    class="caret"></span></button>
+                            <button type="button" class="btn btn-default dropdown-toggle">Default
+                                <span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /btn-group -->
                         <div class="btn-group">
-                            <button type="button" id="btn1" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Primary <span
-                                    class="caret"></span></button>
+                            <button type="button" id="btn1" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Primary
+                                <span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /btn-group -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span
-                                    class="caret"></span></button>
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success
+                                <span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /btn-group -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info <span
-                                    class="caret"></span></button>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info
+                                <span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /btn-group -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning <span
-                                    class="caret"></span></button>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning
+                                <span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /btn-group -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger <span
-                                    class="caret"></span></button>
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger
+                                <span class="caret"></span>
+                            </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /btn-group -->
@@ -619,58 +685,20 @@
                         <h2 class="title">Media</h2>
                     </header>
                     <div class="row">
-                        <div id="test1" class="col col-lg-6">
+                        <div class="col col-lg-6">
                             <div class="panel">
                                 <div class="panel-heading">MP4</div>
                                 <video data-option-width="100%" data-option-height="100%">
-                                    <source type="video/mp4" src="data/sample-media.mp4"/>
+                                    <source type="video/mp4" src="data/sample-media.mp4" />
                                 </video>
                             </div>
                         </div>
                         <div class="col col-lg-6">
                             <div class="panel">
-                                <div class="panel-heading">MP4</div>
-                                <video data-featured="media" data-option-width="100%" data-option-height="100%">
-                                    <source type="video/mp4" src="data/sample-media.mp4"/>
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-lg-12">
-                            <div class="panel">
                                 <div class="panel-heading">MP3</div>
-                                <audio data-featured="media" data-option-width="100%"
-                                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
+                                <audio data-option-width="100%" src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
                             </div>
                         </div>
-
-                        <!--
-                        <div class="col col-lg-4">
-                            <div class="panel">
-                                <div class="panel-heading">MP4</div>
-                                <video data-featured="media" data-option-width="100%" data-option-height="100%">
-                                    <source type="video/mp4" src="data/sample-media.mp4"/>
-                                </video>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4">
-                            <div class="panel">
-                                <div class="panel-heading">Youtube</div>
-                                <video data-featured="media" data-option-width="100%" data-option-height="100%" preload="none">
-                                    <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI"/>
-                                </video>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4">
-                            <div class="panel">
-                                <div class="panel-heading">Radio</div>
-                                <audio width="100%" controls="control" data-featured="media"
-                                src="http://109.74.195.10:8000/stream.mp3?redirected=1"
-                                type="audio/mp4"/>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </section>
 
@@ -683,20 +711,22 @@
                         <div class="col col-lg-6">
                             <div id="myModal" class="modal fade">
                                 <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                      <h4 class="modal-title">Modal title</h4>
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Modal title</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                      ...
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                  </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
                             </div>
                         </div>
                     </div>
@@ -708,7 +738,7 @@
                 </section>
 
 
-                
+
 
                 <!-- Motion Captcha -->
                 <section id="motion-captcha" class="row">
@@ -777,48 +807,54 @@
                     </header>
                     <div class="col col-12">
                         <div class="bs-example">
-        <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project Name</a>
-            </div>
-            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
-                <ul class="nav navbar-nav">
-                    <li><a href="#fat">@fat</a></li>
-                    <li><a href="#mdo">@mdo</a></li>
-                    <li class="dropdown">
-                        <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
-                            <li><a href="#one" tabindex="-1">one</a></li>
-                            <li><a href="#two" tabindex="-1">two</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#three" tabindex="-1">three</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- data-spy="scroll" data-target="#navbar-example2"  -->
-        <div data-offset="0" class="scrollspy-example">
-            <h4 id="fat">@fat</h4>
-            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <h4 id="mdo">@mdo</h4>
-            <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
-            <h4 id="one">one</h4>
-            <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
-            <h4 id="two">two</h4>
-            <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
-            <h4 id="three">three</h4>
-            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
-            </p>
-        </div>
-    </div><!-- /example -->
+                            <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
+                                <div class="navbar-header">
+                                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Project Name</a>
+                                </div>
+                                <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="#fat">@fat</a>
+                                        </li>
+                                        <li><a href="#mdo">@mdo</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
+                                                <li><a href="#one" tabindex="-1">one</a>
+                                                </li>
+                                                <li><a href="#two" tabindex="-1">two</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a href="#three" tabindex="-1">three</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <!-- data-spy="scroll" data-target="#navbar-example2"  -->
+                            <div data-offset="0" class="scrollspy-example">
+                                <h4 id="fat">@fat</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                                <h4 id="mdo">@mdo</h4>
+                                <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+                                <h4 id="one">one</h4>
+                                <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+                                <h4 id="two">two</h4>
+                                <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+                                <h4 id="three">three</h4>
+                                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                                <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /example -->
 
                     </div>
                 </section>
@@ -1059,13 +1095,17 @@
                     <div class="col col-lg-12">
                         <div class="bs-example bs-example-tabs">
                             <ul id="myTab" class="nav nav-tabs">
-                                <li class="active"><a href="#home">Home</a></li>
-                                <li><a href="#profile">Profile</a></li>
+                                <li class="active"><a href="#home">Home</a>
+                                </li>
+                                <li><a href="#profile">Profile</a>
+                                </li>
                                 <li class="dropdown">
                                     <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                                        <li><a href="#dropdown1" tabindex="-1">@fat</a></li>
-                                        <li><a href="#dropdown2" tabindex="-1">@mdo</a></li>
+                                        <li><a href="#dropdown1" tabindex="-1">@fat</a>
+                                        </li>
+                                        <li><a href="#dropdown2" tabindex="-1">@mdo</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
