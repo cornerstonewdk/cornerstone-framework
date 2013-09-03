@@ -164,7 +164,6 @@ describe('Cornerstone event extend test', function() {
 
             it('세번째 체크 박스를 클릭했을 때 toggleOff 이벤트가 발생하여야 하고 두번째 체크박스만 .active를 가져야 한다.', function(done) {
                 checkbox.$el.off('toggleOn.cs.button').off('toggleOff.cs.button');
-                // 
                 checkbox.$el.on('toggleOff.cs.button', function(e, el) {
                     console.log('toggleOff 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
@@ -282,7 +281,7 @@ describe('Cornerstone event extend test', function() {
     });
 
     describe('widget-chart', function() {
-        var barChart, lineChart, pieChart;
+        var barChart, lineChart, pieChart, horizontalBarChart, linePlusBarChart, bar3dChart, horizontal3dBarChart, lineFocusChart;
         describe('barChart', function() {
             it('barChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
@@ -319,6 +318,59 @@ describe('Cornerstone event extend test', function() {
                     done();
                 });
                 // barChart.$el.find('g.nv-series:eq(1)').click();
+            });
+        });
+        
+        describe('horizontalBarChart',function(){
+            it('horizontalBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.',function(done){
+                require(['widget-chart'],function(WidgetChart){
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-bar.json'
+                    });
+
+                    horizontalBarChart = new WidgetChart({
+                        el: 'div.horizontalBarChart',
+                        chartOptions: {
+                            chartType: 'horizontalBar'
+                        },
+                        model: new Model
+                    });
+
+                    horizontalBarChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('horizontalBarChart shown', e);
+                        done();
+                    });
+                    horizontalBarChart.render();
+                    expect(horizontalBarChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+
+        describe('linePlusBarChart',function(){
+            it('linePlusBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.',function(done){
+                require(['widget-chart'],function(WidgetChart){
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-line1.json'
+                    });
+
+                    linePlusBarChart = new WidgetChart({
+                        el: 'div.linePlusBarChart',
+                        chartOptions: {
+                            chartType: "linePlusBar",
+                            format: '.2f'
+                        },
+                        model: new Model
+                    });
+
+                    linePlusBarChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('linePlusBarChart shown', e);
+                        done();
+                    });
+                    linePlusBarChart.render();
+                    expect(linePlusBarChart).to.be.an.instanceof(Backbone.View);
+                });
             });
         });
 
@@ -370,6 +422,87 @@ describe('Cornerstone event extend test', function() {
                     });
                     pieChart.render();
                     expect(pieChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+
+        describe('bar3dChart', function() {
+            it('bar3dChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-bar.json'
+                    });
+
+                    bar3dChart = new WidgetChart({
+                        el: 'div.bar3dChart',
+                        chartOptions: {
+                            chartType: "bar3d",
+                            format: '.2f'
+                        },
+                        model: new Model
+                    });
+
+                    // bar3dChart.$el.on('shown', function(e) {
+                    //     e.stopPropagation();
+                    //     console.log('bar3dChart shown', e);
+                    //     done();
+                    // });
+                    bar3dChart.render();
+                    expect(bar3dChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+
+        describe('horizontal3dBarChart', function() {
+            it('horizontal3dBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-bar.json'
+                    });
+
+                    horizontal3dBarChart = new WidgetChart({
+                        el: 'div.horizontal3dBarChart',
+                        chartOptions: {
+                            chartType: "horizontalBar3d",
+                            format: '.2f'
+                        },
+                        model: new Model
+                    });
+
+                    // horizontal3dBarChart.$el.on('shown', function(e) {
+                    //     e.stopPropagation();
+                    //     console.log('horizontal3dBarChart shown', e);
+                    //     done();
+                    // });
+                    horizontal3dBarChart.render();
+                    expect(horizontal3dBarChart).to.be.an.instanceof(Backbone.View);
+                });
+            });
+        });
+        
+        describe('lineFocusChart', function() {
+            it('lineFocusChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
+                    var Model = Backbone.Model.extend({
+                        url: 'data/sample-line.json'
+                    });
+
+                    lineFocusChart = new WidgetChart({
+                        el: 'div.lineFocusChart',
+                        chartOptions: {
+                            chartType: "lineFocus",
+                            format: '.2f'
+                        },
+                        model: new Model
+                    });
+
+                    // lineFocusChart.$el.on('shown', function(e) {
+                    //     e.stopPropagation();
+                    //     console.log('lineFocusChart shown', e);
+                    //     done();
+                    // });
+                    lineFocusChart.render();
+                    expect(lineFocusChart).to.be.an.instanceof(Backbone.View);
                 });
             });
         });
@@ -425,7 +558,7 @@ describe('Cornerstone event extend test', function() {
 
         it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
             this.timeout(2000);
-            setTimeout(function(){},1000);
+            setTimeout(function(){},500);
             table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
                 console.log('itemClick.cs.datatables', result);
                 expect(e).to.be.an.instanceof($.Event);
@@ -502,16 +635,20 @@ describe('Cornerstone event extend test', function() {
     // });
 
     describe('widget-media', function() {
-        var media;
+        var media1, media2;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-media'],function(WidgetMedia){
-                var MediaModel = Backbone.Model.extend({
-                    alwaysShowControls: true
-                }); 
-                media = new WidgetMedia();
-                $('#test').html(media.render());
-                expect(media).to.be.an.instanceof(Backbone.View);
+                media1 = new WidgetMedia({
+                    el: '#media .panel:first-child video'
+                });
+                media1.render();
+                expect(media1).to.be.an.instanceof(Backbone.View);
+                media2 = new WidgetMedia({
+                    el: '#media .panel:nth-child(1) audio'
+                });
+                media2.render();
+                expect(media2).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
