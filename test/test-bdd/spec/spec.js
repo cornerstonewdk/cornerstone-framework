@@ -442,11 +442,11 @@ describe('Cornerstone event extend test', function() {
                         model: new Model
                     });
 
-                    // bar3dChart.$el.on('shown', function(e) {
-                    //     e.stopPropagation();
-                    //     console.log('bar3dChart shown', e);
-                    //     done();
-                    // });
+                    bar3dChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('bar3dChart shown', e);
+                        done();
+                    });
                     bar3dChart.render();
                     expect(bar3dChart).to.be.an.instanceof(Backbone.View);
                 });
@@ -469,11 +469,11 @@ describe('Cornerstone event extend test', function() {
                         model: new Model
                     });
 
-                    // horizontal3dBarChart.$el.on('shown', function(e) {
-                    //     e.stopPropagation();
-                    //     console.log('horizontal3dBarChart shown', e);
-                    //     done();
-                    // });
+                    horizontal3dBarChart.$el.on('shown', function(e) {
+                        e.stopPropagation();
+                        console.log('horizontal3dBarChart shown', e);
+                        done();
+                    });
                     horizontal3dBarChart.render();
                     expect(horizontal3dBarChart).to.be.an.instanceof(Backbone.View);
                 });
@@ -503,6 +503,7 @@ describe('Cornerstone event extend test', function() {
                     // });
                     lineFocusChart.render();
                     expect(lineFocusChart).to.be.an.instanceof(Backbone.View);
+                    
                 });
             });
         });
@@ -514,28 +515,30 @@ describe('Cornerstone event extend test', function() {
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-collapse'],function(WidgetCollapse){
                 collapse = new WidgetCollapse({
-                    el: '#collapseOne'
+                    el: '#accordion .collapse',
+                    parent: '#accordion',
+                    toggle: false
                 });
                 collapse.render();
+                $('#collapse a.accordion-toggle').click(function(e){
+                    e.preventDefault();
+                    $( $( this ).attr('href') ).collapse('toggle');
+                });
                 expect(collapse).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
 
-        it('첫번 째 패널은 콜랩스가 작동하여야 한다.',function( done ){
+        it('두번째 패널을 클릭 시 은 콜랩스가 작동하여야 한다.',function( done ){
             this.timeout(2000);
-            var hasInClass = collapse.$el.hasClass('in');
 
-            collapse.$el.parent().find('a.accordion-toggle').click(function(e){
+            $('#collapse a.accordion-toggle:eq(1)').click( function (e) {
                 e.preventDefault();
-                hasInClass = !hasInClass;
-                collapse.$el.collapse('toggle');
                 setTimeout(function() {
-                    expect(hasInClass).to.not.equal(collapse.$el.hasClass('in'));
+                    expect($('#collapseTwo').hasClass('in')).to.be.true;
                     done();
                 }, 1000);
-            });
-            collapse.$el.parent().find('a.accordion-toggle').trigger('click');
+            } ).click();
         });
     });
 
