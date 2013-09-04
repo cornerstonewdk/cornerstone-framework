@@ -2031,11 +2031,6 @@ var jam = {
             "main": "form.js"
         },
         {
-            "name": "hammer",
-            "location": "../cornerstone/hammer",
-            "main": "hammer.js"
-        },
-        {
             "name": "handlebars",
             "location": "../cornerstone/handlebars",
             "main": "handlebars.js"
@@ -2044,11 +2039,6 @@ var jam = {
             "name": "jquery",
             "location": "../cornerstone/jquery",
             "main": "jquery-2.0.2.min.js"
-        },
-        {
-            "name": "jquery.hammer",
-            "location": "../cornerstone/jquery.hammer",
-            "main": "jquery.hammer.js"
         },
         {
             "name": "launcher",
@@ -2137,12 +2127,6 @@ var jam = {
         },
         "jquery": {
             "exports": "jquery"
-        },
-        "jquery.hammer": {
-            "deps": [
-                "jquery",
-                "hammer"
-            ]
         },
         "multipage-router": {
             "deps": [
@@ -2241,11 +2225,6 @@ if (typeof require !== "undefined" && require.config) {
             "main": "form.js"
         },
         {
-            "name": "hammer",
-            "location": "../cornerstone/hammer",
-            "main": "hammer.js"
-        },
-        {
             "name": "handlebars",
             "location": "../cornerstone/handlebars",
             "main": "handlebars.js"
@@ -2254,11 +2233,6 @@ if (typeof require !== "undefined" && require.config) {
             "name": "jquery",
             "location": "../cornerstone/jquery",
             "main": "jquery-2.0.2.min.js"
-        },
-        {
-            "name": "jquery.hammer",
-            "location": "../cornerstone/jquery.hammer",
-            "main": "jquery.hammer.js"
         },
         {
             "name": "launcher",
@@ -2346,12 +2320,6 @@ if (typeof require !== "undefined" && require.config) {
         },
         "jquery": {
             "exports": "jquery"
-        },
-        "jquery.hammer": {
-            "deps": [
-                "jquery",
-                "hammer"
-            ]
         },
         "multipage-router": {
             "deps": [
@@ -2450,11 +2418,6 @@ else {
             "main": "form.js"
         },
         {
-            "name": "hammer",
-            "location": "../cornerstone/hammer",
-            "main": "hammer.js"
-        },
-        {
             "name": "handlebars",
             "location": "../cornerstone/handlebars",
             "main": "handlebars.js"
@@ -2463,11 +2426,6 @@ else {
             "name": "jquery",
             "location": "../cornerstone/jquery",
             "main": "jquery-2.0.2.min.js"
-        },
-        {
-            "name": "jquery.hammer",
-            "location": "../cornerstone/jquery.hammer",
-            "main": "jquery.hammer.js"
         },
         {
             "name": "launcher",
@@ -2555,12 +2513,6 @@ else {
         },
         "jquery": {
             "exports": "jquery"
-        },
-        "jquery.hammer": {
-            "deps": [
-                "jquery",
-                "hammer"
-            ]
         },
         "multipage-router": {
             "deps": [
