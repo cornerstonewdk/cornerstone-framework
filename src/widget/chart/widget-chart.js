@@ -253,9 +253,6 @@
             chart.yAxis.tickFormat(d3.format(options.format));
             chart.y2Axis.tickFormat(d3.format(options.format));
             chart.afterRender = function () {
-                if (HAS_TOUCH) {
-                    target.select(".nv-context").remove();
-                }
                 function onBrush(extent) {
                     extent = extent ? extent : [0, 99];//chart.x2Axis.scale().domain();
                     var brush = d3.svg.brush();
@@ -291,7 +288,7 @@
                 }
 
                 var xDomain = chart.x2Axis.scale().domain();
-                var unit = 2;
+                var unit = xDomain[1] * 0.1;
                 var extent = [xDomain[0], xDomain[0] + unit];
                 var changeDomain = function (e) {
                     var minDomain, maxDomain;
@@ -319,7 +316,9 @@
                     maxDomain = minDomain > maxDomain ? minDomain + unit : maxDomain;
 
                     extent = [minDomain, maxDomain];
+
                     extent = onBrush(extent);
+
                     if (typeof extent === "undefined") {
                         extent = direction === "left"
                             ? [xDomain[1] - unit, xDomain[1]]
@@ -327,19 +326,7 @@
                     }
                 };
 
-                var changeUnit = function (e) {
-                    if ("pinchin" === e.type) {
-                        unit = unit * 1.1;
-                    } else if ("pinchout" === e.type) {
-                        unit = unit * 0.9;
-                    }
-                    unit = unit >= 1 ? unit : 1;
-                    changeDomain(e);
-                };
-
                 target.$parent.hammer().off("swipe._chart").on("swipe._chart", changeDomain);
-                target.$parent.hammer().off("pinchin._chart").on("pinchin._chart", changeUnit);
-                target.$parent.hammer().off("pinchout._chart").on("pinchout._chart", changeUnit);
 
                 self.util.removeClip(target);
             };
