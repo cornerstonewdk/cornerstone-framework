@@ -2,7 +2,7 @@ define([
     "backbone",
     "widget-chart",
     "template!view/page5",
-    "jquery.hammer"
+    "widget-touch"
 ], function (Backbone, Chart, template) {
 
     return Backbone.View.extend({
@@ -38,18 +38,12 @@ define([
                 dataType: "json",
                 success: function (data) {
                     self.$el.find("#lineFocus").featuredChart({
+                        tooltips: false,
                         chartType: "lineFocus",
                         format: ".2f",
                         data: data
                     });
 
-                    require([
-                        "vendor/hammer.fakemultitouch",
-                        "vendor/hammer.showtouches"
-                    ], function() {
-                        Hammer.plugins.fakeMultitouch();
-                        Hammer.plugins.showTouches();
-                    });
                 }
             });
         }

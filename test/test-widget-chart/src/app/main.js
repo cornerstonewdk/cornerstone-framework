@@ -11,7 +11,7 @@ define([
     'backbone',
     'multipage-router',
     'bootstrap',
-    'bootstrap-select',
+    'vendor/helper',
     'style!main' ], function (Page1View, Page2View, Page3View, Page4View, Page5View, Backbone, MultipageRouter) {
     return {
         launch: function () {
