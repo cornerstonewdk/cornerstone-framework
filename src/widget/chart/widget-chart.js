@@ -337,7 +337,7 @@
                     changeDomain(e);
                 };
 
-                target.$parent.hammer().off("drag._chart").on("drag._chart", changeDomain);
+                target.$parent.hammer().off("swipe._chart").on("swipe._chart", changeDomain);
                 target.$parent.hammer().off("pinchin._chart").on("pinchin._chart", changeUnit);
                 target.$parent.hammer().off("pinchout._chart").on("pinchout._chart", changeUnit);
 
