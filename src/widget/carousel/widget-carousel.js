@@ -21,11 +21,8 @@
      스와이프 기능을 사용할 Carousel 영역에 data-slide="swipe" 를 선언하므로 작동
      */
     var HAS_TOUCH = ('ontouchstart' in window);
-    var Carousel;
 
-    function Carousel() {}
-
-    Carousel = $.fn.carousel.Constructor;
+    var Carousel = $.fn.carousel.Constructor;
 
     Carousel.prototype.activeSwipe = function() {
         var self;
@@ -73,7 +70,35 @@
         return this
     }
 
+    Carousel.prototype.loadImg = function() {
+        var self = this;
+        var imgLength = this.$element.find('.carousel-inner img').length;
+        var loadCompleteCnt = 0;
+        console.log(imgLength,loadCompleteCnt);
+        this.$element.find('img').on('load.cs.img',function(e){
+            console.log(e);
+            loadCompleteCnt += 1;
+            console.log('compare',imgLength,loadCompleteCnt);
+            if(imgLength == loadCompleteCnt) self.$element.trigger('complete.cs.carousel');
+        });
+    }
+
     $.fn.carousel.Constructor = Carousel;
+
+    $.fn.carousel = function (option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.carousel')
+      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var action  = typeof option == 'string' ? option : options.slide
+
+      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
+      if (typeof option == 'number') data.to(option)
+      else if (action) data[action]()
+      else if (options.interval) data.pause().cycle()
+      if (typeof option !== 'string') data.loadImg()
+    })
+  }
 
     /**
      * 터치기반인 경우 Swipe 활성화
