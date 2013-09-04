@@ -8,8 +8,9 @@
  */
 (function () {
     "use strict";
-    var root = this;
-    var pluginName = "featuredChart",
+    var root = this,
+        pluginName = "featuredChart",
+        HAS_TOUCH = ('ontouchstart' in window),
         isDebug = true,
         chart,
         self;
@@ -28,13 +29,8 @@
         afterRender: function (target, options, chart) {
             this.$el.data("currentChart", chart);
             this.$el.data("currentChartControl", options.control);
-
-            var groups = target.selectAll(".nv-groups");
-            $(groups[0]).each(function () {
-                $(this).parent().attr("clip-path", "");
-            });
-
-            this.util.applyBindEvent(target, options, chart, this.$el);
+            this.util.removeClip(target);
+            this.util.applyBindEvent(target, options, chart);
         },
         render: function (options) {
             var self = this,
@@ -112,7 +108,6 @@
 
             return this;
         },
-
         barChart: function (target, options) {
             var self = this;
             chart = nv.models.multiBarChart();
@@ -138,7 +133,6 @@
 
                 var groups = target.select(".nv-barsWrap .nv-groups");
                 var showValuesWrap = groups.append("svg:g").attr("class", "nv-showValuesWrap");
-                groups[0][0].parentNode.setAttribute("clip-path", "");
 
                 showValuesWrap.style({
                     opacity: 1
@@ -179,6 +173,7 @@
                     return e;
                 };
 
+                self.util.removeClip(target);
                 $(self.el).off("animationEnd._barChart").on("animationEnd._barChart", animateEnd);
                 return eventType;
             };
@@ -251,18 +246,22 @@
             return chart;
         },
         lineFocusChart: function (target, options) {
+            var self = this;
             chart = nv.models.lineWithFocusChart();
 
             chart.xAxis.tickFormat(d3.format(options.format));
             chart.yAxis.tickFormat(d3.format(options.format));
             chart.y2Axis.tickFormat(d3.format(options.format));
             chart.afterRender = function () {
+                if (HAS_TOUCH) {
+                    target.select(".nv-context").remove();
+                }
                 function onBrush(extent) {
-                    extent = extent ? extent : chart.x2Axis.scale().domain();
+                    extent = extent ? extent : [0, 99];//chart.x2Axis.scale().domain();
                     var brush = d3.svg.brush();
                     var lines = chart.lines;
 
-                    //The brush extent cannot be less than one.  If it is, don't update the line chart.
+                    // The brush extent cannot be less than one.  If it is, don't update the line chart.
                     if (Math.abs(extent[0] - extent[1]) <= 1) {
                         return;
                     }
@@ -287,41 +286,62 @@
                     // Update Main (Focus) Axes
                     target.select('.nv-focus .nv-x.nv-axis').transition().call(chart.xAxis);
                     target.select('.nv-focus .nv-y.nv-axis').transition().call(chart.yAxis);
+
                     return extent
                 }
 
                 var xDomain = chart.x2Axis.scale().domain();
-                var unit = 10;
+                var unit = 2;
                 var extent = [xDomain[0], xDomain[0] + unit];
-                var changeDomain = function(e) {
+                var changeDomain = function (e) {
+                    var minDomain, maxDomain;
                     var direction = e.gesture.direction;
-                    if(!direction.match(/left|right/gi)) {
+                    if (!direction.match(/left|right/gi)) {
                         return false;
                     }
 
-                    var minDomain = extent[0] + 10 * (direction === "left" ? 1 : -1);
-                    var maxDomain = extent[1] + 10 * (direction === "left" ? 1 : -1);
+                    if ("pinchin" === e.type) {
+                        minDomain = extent[0];
+                        maxDomain = extent[1] + unit;
+                    } else if ("pinchout" === e.type) {
+                        minDomain = extent[0];
+                        maxDomain = extent[1] - unit;
+                    } else if ("left" === direction) {
+                        minDomain = extent[1];
+                        maxDomain = extent[1] + unit;
+                    } else if ("right" === direction) {
+                        minDomain = extent[0] - unit;
+                        maxDomain = extent[0];
+                    }
 
                     minDomain = xDomain[0] >= minDomain ? xDomain[0] : minDomain;
                     maxDomain = xDomain[1] <= maxDomain ? xDomain[1] : maxDomain;
+                    maxDomain = minDomain > maxDomain ? minDomain + unit : maxDomain;
+
                     extent = [minDomain, maxDomain];
                     extent = onBrush(extent);
-                    if(typeof extent === "undefined") {
+                    if (typeof extent === "undefined") {
                         extent = direction === "left"
                             ? [xDomain[1] - unit, xDomain[1]]
                             : [xDomain[0], xDomain[0] + unit];
                     }
-                    console.log(extent);
                 };
 
-                var changeUnit = function(e) {
-                    console.log(e);
-                    unit = 5;
+                var changeUnit = function (e) {
+                    if ("pinchin" === e.type) {
+                        unit = unit * 1.1;
+                    } else if ("pinchout" === e.type) {
+                        unit = unit * 0.9;
+                    }
+                    unit = unit >= 1 ? unit : 1;
+                    changeDomain(e);
                 };
 
-                target.$parent.hammer().off("swipe._chart").on("swipe._chart", changeDomain);
+                target.$parent.hammer().off("drag._chart").on("drag._chart", changeDomain);
                 target.$parent.hammer().off("pinchin._chart").on("pinchin._chart", changeUnit);
                 target.$parent.hammer().off("pinchout._chart").on("pinchout._chart", changeUnit);
+
+                self.util.removeClip(target);
             };
 
             return chart;
@@ -624,6 +644,12 @@
 
                 return t;
             },
+            removeClip: function (target) {
+                var groups = target.selectAll(".nv-groups");
+                $(groups[0]).each(function () {
+                    $(this).parent().attr("clip-path", "");
+                });
+            },
             getTranslateJson: function (target) {
                 try {
                     return JSON.parse(target.attr("transform").replace("translate(", '{"x":')
@@ -657,6 +683,8 @@
             },
 
             applyBindEvent: function (target, options, chart) {
+                var self = this;
+
                 if (options.chartType.match(/.*bar3d/gi)) {
                     var resizeChart = function () {
                         var $target = target.closest(".widget-chart3d");
@@ -702,7 +730,6 @@
                         isDebug && console.log("New State:", JSON.stringify(e));
                         // 애니매이션 중 이벤트 방지
                         !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
-
                         setTimeout(function () {
                             typeof chart.afterRender === "function" && chart.afterRender("stateChange");
 
