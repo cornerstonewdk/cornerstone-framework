@@ -297,13 +297,7 @@
                         return false;
                     }
 
-                    if ("pinchin" === e.type) {
-                        minDomain = extent[0];
-                        maxDomain = extent[1] + unit;
-                    } else if ("pinchout" === e.type) {
-                        minDomain = extent[0];
-                        maxDomain = extent[1] - unit;
-                    } else if ("left" === direction) {
+                    if ("left" === direction) {
                         minDomain = extent[1];
                         maxDomain = extent[1] + unit;
                     } else if ("right" === direction) {

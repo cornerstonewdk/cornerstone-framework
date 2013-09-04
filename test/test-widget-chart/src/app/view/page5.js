@@ -33,11 +33,14 @@ define([
         activeChart: function () {
             var self = this;
 
+            MBP.preventZoom();
+            MBP.preventScrolling();
             $.ajax({
                 url: self.sampleDataUrl,
                 dataType: "json",
                 success: function (data) {
                     self.$el.find("#lineFocus").featuredChart({
+                        tooltips: false,
                         chartType: "lineFocus",
                         format: ".2f",
                         data: data
