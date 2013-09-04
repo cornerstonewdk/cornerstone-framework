@@ -2,7 +2,7 @@ define([
     "backbone",
     "widget-chart",
     "template!view/page5",
-    "jquery.hammer"
+    "widget-touch"
 ], function (Backbone, Chart, template) {
 
     return Backbone.View.extend({
@@ -33,8 +33,6 @@ define([
         activeChart: function () {
             var self = this;
 
-            MBP.preventZoom();
-            MBP.preventScrolling();
             $.ajax({
                 url: self.sampleDataUrl,
                 dataType: "json",
@@ -46,13 +44,6 @@ define([
                         data: data
                     });
 
-                    require([
-                        "vendor/hammer.fakemultitouch",
-                        "vendor/hammer.showtouches"
-                    ], function() {
-                        Hammer.plugins.fakeMultitouch();
-                        Hammer.plugins.showTouches();
-                    });
                 }
             });
         }

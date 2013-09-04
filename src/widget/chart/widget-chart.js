@@ -247,6 +247,7 @@
         },
         lineFocusChart: function (target, options) {
             var self = this;
+            target.$parent.swipe();
             chart = nv.models.lineWithFocusChart();
 
             chart.xAxis.tickFormat(d3.format(options.format));
@@ -290,9 +291,9 @@
                 var xDomain = chart.x2Axis.scale().domain();
                 var unit = xDomain[1] * 0.1;
                 var extent = [xDomain[0], xDomain[0] + unit];
-                var changeDomain = function (e) {
+                var changeDomain = function (e, obj) {
                     var minDomain, maxDomain;
-                    var direction = e.gesture.direction;
+                    var direction = obj.direction;
                     if (!direction.match(/left|right/gi)) {
                         return false;
                     }
@@ -318,9 +319,12 @@
                             ? [xDomain[1] - unit, xDomain[1]]
                             : [xDomain[0], xDomain[0] + unit];
                     }
+
+                    e.preventDefault();
+                    e.stopPropagation();
                 };
 
-                target.$parent.hammer().off("swipe._chart").on("swipe._chart", changeDomain);
+                target.$parent.off("swipe._chart").on("swipe._chart", changeDomain);
 
                 self.util.removeClip(target);
             };
