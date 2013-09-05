@@ -563,6 +563,46 @@
                 }, 500);
             }
 
+            target.$parent.swipe();
+            var changeView = function (e, obj) {
+                switch (obj.direction) {
+                    case "left": // Left
+                        if ("bar3d" === options.chartType) {
+                            yRotation -= rotationAmount;
+                        } else {
+                            xRotation -= rotationAmount;
+                        }
+                        break;
+                    case "up": // Up
+                        if ("bar3d" === options.chartType) {
+                            xRotation += rotationAmount;
+                        } else {
+                            yRotation -= rotationAmount;
+                        }
+                        break;
+                    case "right": // Right
+                        if ("bar3d" === options.chartType) {
+                            yRotation += rotationAmount;
+                        } else {
+                            xRotation += rotationAmount;
+                        }
+                        break;
+                    case "down": // Down
+                        if ("bar3d" === options.chartType) {
+                            xRotation -= rotationAmount;
+                        } else {
+                            yRotation += rotationAmount;
+                        }
+                        break;
+                }
+                graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
+                container.css('-webkit-transform', graphTransform);
+
+                e.preventDefault();
+                e.stopPropagation();
+            };
+            target.$parent.off("swipe._chart").on("swipe._chart", changeView);
+
             // Handle arrow key rotation
             $(document).keydown(function () {
                 if (keyToggled) {
