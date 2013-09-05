@@ -1,53 +1,5 @@
 describe('Cornerstone event extend test', function() {
 
-    describe('carousel', function() {
-        var cs;
-
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-carousel'], function(WidgetCarousel) {
-                cs = new WidgetCarousel({
-                    el: '.carousel'
-                });
-                 cs.$el.on('complete.cs.carousel',function(){
-                    console.log('complete!!!!!!!!!!!');
-                });
-                cs.render();
-               
-                expect(cs).to.be.an.instanceof(Backbone.View);
-                $('#btnCsStart').click(function() {
-                    cs.$el.carousel('cycle')
-                });
-                done();
-            });
-        });
-
-        it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
-            cs.$el.on('play.cs.carousel', function(e) {
-                console.log('play.cs.carousel 발생', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('play');
-                done();
-            }).carousel('pause');
-            this.timeout(2000);
-            setTimeout(function() {
-                cs.$el.carousel('cycle');
-            }, 1000);
-        });
-
-        it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
-            cs.$el.on('pause.cs.carousel', function(e) {
-                console.log('pause.cs.carousel 발생');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('pause');
-                done();
-            });
-            this.timeout(2000);
-            setTimeout(function() {
-                cs.$el.carousel('pause');
-            }, 1000);
-        });
-    });
-
     describe('widget-alert', function() {
         var alert1, alert2;
 
@@ -284,7 +236,52 @@ describe('Cornerstone event extend test', function() {
         // });
     });
 
+    describe('carousel', function() {
+        var cs;
 
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-carousel'], function(WidgetCarousel) {
+                cs = new WidgetCarousel({
+                    el: '.carousel'
+                });
+                 cs.$el.on('complete.cs.carousel',function(e){
+                    console.log('carousel img load complete.',e);
+                });
+                cs.render();
+                expect(cs).to.be.an.instanceof(Backbone.View);
+                $('#btnCsStart').click(function() {
+                    cs.$el.carousel('cycle')
+                });
+                done();
+            });
+        });
+
+        it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
+            cs.$el.on('play.cs.carousel', function(e) {
+                console.log('play.cs.carousel 발생', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('play');
+                done();
+            }).carousel('pause');
+            this.timeout(2000);
+            setTimeout(function() {
+                cs.$el.carousel('cycle');
+            }, 1000);
+        });
+
+        it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
+            cs.$el.on('pause.cs.carousel', function(e) {
+                console.log('pause.cs.carousel 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('pause');
+                done();
+            });
+            this.timeout(2000);
+            setTimeout(function() {
+                cs.$el.carousel('pause');
+            }, 1000);
+        });
+    });
 
     describe('widget-chart', function() {
         var barChart, lineChart, pieChart, horizontalBarChart, linePlusBarChart, bar3dChart, horizontal3dBarChart, lineFocusChart;

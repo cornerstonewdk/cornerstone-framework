@@ -72,14 +72,8 @@
 
     Carousel.prototype.loadImg = function() {
         var self = this;
-        var imgLength = this.$element.find('.carousel-inner img').length;
-        var loadCompleteCnt = 0;
-        console.log(imgLength,loadCompleteCnt);
-        this.$element.find('img').on('load.cs.img',function(e){
-            console.log(e);
-            loadCompleteCnt += 1;
-            console.log('compare',imgLength,loadCompleteCnt);
-            if(imgLength == loadCompleteCnt) self.$element.trigger('complete.cs.carousel');
+        this.$element.find('.carousel-inner img').off('load.cs.carousel').on('load.cs.carousel',function(){
+            self.$element.trigger('complete.cs.carousel');
         });
     }
 
