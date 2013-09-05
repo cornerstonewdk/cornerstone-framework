@@ -36,8 +36,13 @@
             this.util.applyBindEvent(target, options, chart, this);
         },
         render: function (options) {
-            var self = this,
-                target = this.util.getTarget(d3.select(this.el), options);
+            if(!navigator.userAgent.toLowerCase().match(/webkit/gi)
+                && options.chartType.match(/.*bar3d.*/gi)) {
+                options.chartType = options.chartType.replace("3d", "");
+            }
+
+            var self = this;
+            var target = this.util.getTarget(d3.select(this.el), options);
             target.$parent = this.$el;
 
             if (options.chartType.match(/.*bar3d.*/gi)) {
@@ -258,13 +263,12 @@
             chart.y2Axis.tickFormat(d3.format(options.format));
             chart.afterRender = function () {
                 function onBrush(extent) {
-                    extent = extent ? extent : [0, 99];//chart.x2Axis.scale().domain();
+                    extent = extent ? extent : chart.x2Axis.scale().domain();
                     var brush = d3.svg.brush();
                     var lines = chart.lines;
 
-                    // The brush extent cannot be less than one.  If it is, don't update the line chart.
                     if (Math.abs(extent[0] - extent[1]) <= 1) {
-                        return;
+                        return extent;
                     }
 
                     chart.dispatch.brush({extent: extent, brush: brush});
@@ -325,6 +329,8 @@
 
                     e.preventDefault();
                     e.stopPropagation();
+
+                    return extent;
                 };
 
                 target.$parent.off("swipe._chart").on("swipe._chart", changeDomain);
