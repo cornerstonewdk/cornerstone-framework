@@ -381,10 +381,6 @@
                     });
                     return chartData;
                 },
-                // Get heading data from table caption
-                chartHeading: function () {
-                    return options.title;
-                },
                 // Get legend data from table body
                 chartLegend: function () {
                     var chartLegend = [];
@@ -470,11 +466,6 @@
                 // Add bar groups to graph
                 barGroup.appendTo(barContainer);
             });
-
-            // Add heading to graph
-            var chartHeading = dataObject.chartHeading();
-            var heading = $('<h4>' + chartHeading + '</h4>');
-            heading.appendTo(figureContainer);
 
             // Add legend to graph
             var chartLegend = dataObject.chartLegend();
@@ -750,9 +741,6 @@
     $.fn.featuredChart = function (options) {
         var defaultOptions = {
             chartType: "bar",
-            lineType: "basis",
-            width: 500,
-            height: 500,
             xAxisLabel: "X축",
             yAxisLabel: "Y축",
             format: ".0f",
@@ -762,7 +750,6 @@
             showControls: true,
             showLegend: true,
             tooltips: true,
-            title: "",
             color: ["#2c3e50", "#e74c3c", "#3498db", "#f5a503", "#7c569f", "#75483e", "#bf64a3", "#6b6b6b"],
             controlsData: {
                 groupedName: "그룹",

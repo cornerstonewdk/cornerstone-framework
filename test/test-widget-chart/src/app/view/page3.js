@@ -10,11 +10,8 @@ define([
         sampleDataUrl: "data/sample-bar.json",
 
         render: function () {
-            var self = this;
-            require(['style!view/page3'], function () {
-                self.$el.html(template());
-                self.active3DChart();
-            });
+            this.$el.html(template());
+            this.active3DChart();
             return this;
         },
 

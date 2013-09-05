@@ -1,8 +1,7 @@
 define([
     'backbone',
     'template!view/page1',
-    'widget-chart',
-    'style!view/page1'
+    'widget-chart'
 ], function (Backbone, template, Chart) {
 
     return Backbone.View.extend({
@@ -113,28 +112,12 @@ define([
 
         activeChartPlugin: function () {
             var self = this;
-            // jQuery Plugin 방식 적용
             $.ajax({
                 url: self.sampleDataUrl,
                 dataType: "json",
                 success: function (data) {
-
-                    self.$el.find("#bar1").featuredChart({
-                        chartType: "bar",
-                        data: data
-                    });
-
                     self.$el.find("#horizontalBar1").featuredChart({
                         chartType: "horizontalBar",
-                        data: data
-                    });
-                }
-            });
-            $.ajax(self.sampleLineDataUrl, {
-                dataType: "json",
-                success: function (data) {
-                    self.$el.find("#line1").featuredChart({
-                        chartType: "line",
                         data: data
                     });
                 }
