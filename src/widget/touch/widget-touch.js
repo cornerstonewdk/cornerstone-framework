@@ -267,6 +267,7 @@
         }
     };
 
+
     /**
      ### 사용법
      $().drag
@@ -300,6 +301,37 @@
     $.fn.swipe = function (option) {
         var touch = new Touch();
         return touch.swipe($(this), option);
+    };
+
+    /**
+     ### 사용법
+     $().doubletap
+
+     @method $().doubletap
+     @param option 이벤트 핸들링 함수
+     @param delay 더블탭 간격 시간
+     @return {jQuery} chainable jQuery 클래스
+     */
+    $.fn.doubletap = function(doubleTapHandler, delay){
+        delay = (delay == null) ? 300 : delay;
+
+        this.on(_has_touch ? 'touchend' : 'click', function(event){
+            var now = new Date().getTime();
+
+            // the first time this will make delta a negative number
+            var lastTouch = $(this).data('lastTouch') || now + 1;
+            var delta = now - lastTouch;
+            if(delta < delay && 0 < delta){
+                // After we detct a doubletap, start over
+                $(this).data('lastTouch', null);
+
+                if(doubleTapHandler !== null && typeof doubleTapHandler === 'function'){
+                    doubleTapHandler(event);
+                }
+            }else{
+                $(this).data('lastTouch', now);
+            }
+        });
     };
 
 }));

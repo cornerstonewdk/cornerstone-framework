@@ -542,7 +542,7 @@
             // Reset graph settings and prepare for display
             function resetGraph() {
                 $(self.el).trigger("shown");
-                self.util.applyBindEvent3DChart(target, options);
+                self.util.applyBindEvent3dChart(target, options);
                 // Turn off transitions for instant reset
                 $.each(bars, function (i) {
                     $(bars[i].bar).stop().css({'height': 0, '-webkit-transition': 'none'});
@@ -560,48 +560,8 @@
                     graphTransform = 'rotateX(' + endXRotation + 'deg) rotateY(' + endYRotation + 'deg)';
                     container.css({'-webkit-transform': graphTransform, '-webkit-transition': 'all 2.8s ease-out'});
                     displayGraph(bars, 0);
-                }, 500);
+                }, 100);
             }
-
-            target.$parent.swipe();
-            var changeView = function (e, obj) {
-                switch (obj.direction) {
-                    case "left": // Left
-                        if ("bar3d" === options.chartType) {
-                            yRotation -= rotationAmount;
-                        } else {
-                            xRotation -= rotationAmount;
-                        }
-                        break;
-                    case "up": // Up
-                        if ("bar3d" === options.chartType) {
-                            xRotation += rotationAmount;
-                        } else {
-                            yRotation -= rotationAmount;
-                        }
-                        break;
-                    case "right": // Right
-                        if ("bar3d" === options.chartType) {
-                            yRotation += rotationAmount;
-                        } else {
-                            xRotation += rotationAmount;
-                        }
-                        break;
-                    case "down": // Down
-                        if ("bar3d" === options.chartType) {
-                            xRotation -= rotationAmount;
-                        } else {
-                            yRotation += rotationAmount;
-                        }
-                        break;
-                }
-                graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
-                container.css('-webkit-transform', graphTransform);
-
-                e.preventDefault();
-                e.stopPropagation();
-            };
-            target.$parent.off("swipe._chart").on("swipe._chart", changeView);
 
             // Handle arrow key rotation
             $(document).keydown(function () {
@@ -643,6 +603,54 @@
 
             // Finally, display graph via reset function
             resetGraph();
+
+            if(typeof $.fn.swipe === "function") {
+                target.$parent.swipe();
+                var changeView = function (e, obj) {
+                    switch (obj.direction) {
+                        case "left": // Left
+                            if ("bar3d" === options.chartType) {
+                                yRotation -= rotationAmount;
+                            } else {
+                                xRotation -= rotationAmount;
+                            }
+                            break;
+                        case "up": // Up
+                            if ("bar3d" === options.chartType) {
+                                xRotation += rotationAmount;
+                            } else {
+                                yRotation -= rotationAmount;
+                            }
+                            break;
+                        case "right": // Right
+                            if ("bar3d" === options.chartType) {
+                                yRotation += rotationAmount;
+                            } else {
+                                xRotation += rotationAmount;
+                            }
+                            break;
+                        case "down": // Down
+                            if ("bar3d" === options.chartType) {
+                                xRotation -= rotationAmount;
+                            } else {
+                                yRotation += rotationAmount;
+                            }
+                            break;
+                    }
+                    graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
+                    container.css('-webkit-transform', graphTransform);
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
+                target.$parent.off("swipe._chart").on("swipe._chart", changeView);
+            }
+
+            if(typeof $.fn.doubletap === "function") {
+                target.$parent.doubletap(function() {
+                    resetGraph();
+                });
+            }
         },
         horizontalBar3dChart: function (target, options) {
             var $parent = target.closest(".widget-chart3d");
@@ -708,7 +716,6 @@
                 }
                 return target;
             },
-
             applyBindEvent: function (target, options, chart, object) {
                 var stateChange = function (e) {
                     isDebug && console.log("New State:", JSON.stringify(e));
@@ -758,7 +765,7 @@
                     }, 500);
                 });
             },
-            applyBindEvent3DChart: function (target, options) {
+            applyBindEvent3dChart: function (target, options) {
                 var resizeChart = function () {
                     var $target = target.closest(".widget-chart3d");
                     var rate = window.innerWidth / target.width();
@@ -795,8 +802,23 @@
                 };
 
                 resizeChart();
-                $(window).off("resize._chart").on("resize._chart", function () {
-                    resizeChart();
+                if(HAS_TOUCH) {
+                    window.onorientationchange = function (e) {
+                        !options.autoResize || resizeChart();
+                    };
+                } else {
+                    // window resize가 완료될 때 차트 resize 함수 실행
+                    $(window).off("resizeEnd._chart").on("resizeEnd._chart", function(e) {
+                        !options.autoResize || resizeChart();
+                    });
+                }
+
+                // Window Resize Trigger
+                $(window).off("resize._chart").on("resize._chart", function() {
+                    if(this.resizeTO) clearTimeout(this.resizeTO);
+                    this.resizeTO = setTimeout(function() {
+                        $(this).trigger('resizeEnd');
+                    }, 500);
                 });
             }
         }
