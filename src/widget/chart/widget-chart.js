@@ -10,7 +10,6 @@
     "use strict";
     var root = this,
         pluginName = "featuredChart",
-        HAS_TOUCH = ('ontouchstart' in window),
         isDebug = true,
         chart,
         self;
@@ -29,8 +28,12 @@
         afterRender: function (target, options, chart) {
             this.$el.data("currentChart", chart);
             this.$el.data("currentChartControl", options.control);
+
+            var controlsWrap = target.select('.nv-controlsWrap');
+            controlsWrap.attr("transform", "translate(-55," + this.util.getTranslateJson(controlsWrap).y + ")");
+
             this.util.removeClip(target);
-            this.util.applyBindEvent(target, options, chart);
+            this.util.applyBindEvent(target, options, chart, this);
         },
         render: function (options) {
             var self = this,
@@ -193,7 +196,7 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyBindEvent(target, options, chart, self.$el);
+                self.util.applyBindEvent(target, options, chart, self);
 
                 return chart;
             });
@@ -211,7 +214,7 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyBindEvent(target, options, chart, self.$el);
+                self.util.applyBindEvent(target, options, chart, self);
 
                 return chart;
             });
@@ -540,7 +543,7 @@
             // Reset graph settings and prepare for display
             function resetGraph() {
                 $(self.el).trigger("shown");
-                self.util.applyBindEvent(target, options);
+                self.util.applyBindEvent3DChart(target, options);
                 // Turn off transitions for instant reset
                 $.each(bars, function (i) {
                     $(bars[i].bar).stop().css({'height': 0, '-webkit-transition': 'none'});
@@ -667,73 +670,73 @@
                 return target;
             },
 
-            applyBindEvent: function (target, options, chart) {
-                var self = this;
+            applyBindEvent: function (target, options, chart, object) {
+                var stateChange = function (e) {
+                    isDebug && console.log("New State:", JSON.stringify(e));
+                    // 애니매이션 중 이벤트 방지
+                    !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
+                    setTimeout(function () {
+                        typeof chart.afterRender === "function" && chart.afterRender("stateChange");
 
-                if (options.chartType.match(/.*bar3d/gi)) {
-                    var resizeChart = function () {
-                        var $target = target.closest(".widget-chart3d");
-                        var rate = window.innerWidth / target.width();
+                        // 바차트외의 경우 complete 이벤트가 발생하지 않아 afterRender 후 이벤트 방지 overlay 제거
+                        typeof chart.multibar !== "function" && target.$parent.hasClass("overlay")
+                        && target.$parent.removeClass("overlay");
 
-                        rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
+                        object.afterRender(target, options, chart);
+                    }, 10);
+                };
 
-                        if (rate < 1) {
-                            $target.css({
-                                marginBottom: -target.height() * (1 - rate) * 1.2,
-                                webkitTransform: "scale(" + rate + ")"
-                            });
+                var resize = function () {
+                    chart.update();
+                    setTimeout(function () {
+                        typeof chart.afterRender === "function" && chart.afterRender("resize");
+                        object.afterRender(target, options, chart);
+                    }, 10);
+                };
 
-                            if ("horizontalBar3d" === options.chartType) {
-                                $target.find(".wrapper").css({
-                                    webkitTransform: "scale(0.75) rotateZ(90deg) translateY(" + target.width() * 0.15 + "px)"
-                                });
-                            } else {
-                                $target.find(".wrapper").css({
-                                    marginLeft: -target.width() * 0.1
-                                });
-                            }
+                chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
+                !options.autoResize || nv.utils.windowResize(resize);
+            },
+            applyBindEvent3DChart: function (target, options) {
+                var resizeChart = function () {
+                    var $target = target.closest(".widget-chart3d");
+                    var rate = window.innerWidth / target.width();
 
-                            $target.css({
-                                width: target.width() * 0.9
+                    rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
+
+                    if (rate < 1) {
+                        $target.css({
+                            marginBottom: -target.height() * (1 - rate) * 1.2,
+                            webkitTransform: "scale(" + rate + ")"
+                        });
+
+                        if ("horizontalBar3d" === options.chartType) {
+                            $target.find(".wrapper").css({
+                                webkitTransform: "scale(0.75) rotateZ(90deg) translateY(" + target.width() * 0.15 + "px)"
                             });
                         } else {
-                            $target.removeAttr("style");
-                            $target.find(".wrapper").removeAttr("style");
-
-                            $target.css({
-                                width: target.width()
+                            $target.find(".wrapper").css({
+                                marginLeft: -target.width() * 0.1
                             });
                         }
-                    };
 
+                        $target.css({
+                            width: target.width() * 0.9
+                        });
+                    } else {
+                        $target.removeAttr("style");
+                        $target.find(".wrapper").removeAttr("style");
+
+                        $target.css({
+                            width: target.width()
+                        });
+                    }
+                };
+
+                resizeChart();
+                $(window).off("resize._chart").on("resize._chart", function () {
                     resizeChart();
-                    $(window).off("resize._chart").on("resize._chart", function () {
-                        resizeChart();
-                    });
-                } else {
-                    var stateChange = function (e) {
-                        isDebug && console.log("New State:", JSON.stringify(e));
-                        // 애니매이션 중 이벤트 방지
-                        !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
-                        setTimeout(function () {
-                            typeof chart.afterRender === "function" && chart.afterRender("stateChange");
-
-                            // 바차트외의 경우 complete 이벤트가 발생하지 않아 afterRender 후 이벤트 방지 overlay 제거
-                            typeof chart.multibar !== "function" && target.$parent.hasClass("overlay")
-                            && target.$parent.removeClass("overlay");
-
-                        }, 10);
-                    };
-
-                    chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
-
-                    !options.autoResize || nv.utils.windowResize(function () {
-                        chart.update();
-                        setTimeout(function () {
-                            typeof chart.afterRender === "function" && chart.afterRender("resize");
-                        }, 10);
-                    });
-                }
+                });
             }
         }
     };
