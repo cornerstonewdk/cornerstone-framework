@@ -3,7 +3,7 @@
         <div class="panel">
             <div class="panel-heading">옵션 제어</div>
             <div class="panel-body">
-                <div class="btn-group">
+                <div class="btn-group pull-right">
                     <button type="button" class="btn btn-success next">다음 페이지</button>
                 </div>
             </div>
@@ -16,6 +16,11 @@
             <div class="panel-heading">신규 수평 차트</div>
             <div class="panel-body">
                 <div id="horizontalBar1" class="widget-chart"></div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur
+                    cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae
+                    rem tempora tenetur voluptatem!
+                </p>
             </div>
         </div>
     </div>

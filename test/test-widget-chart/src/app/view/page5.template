@@ -1,16 +1,27 @@
-<div class="panel panel-primary">
-    <div class="btn-group">
-        <button type="button" class="btn btn-success prev">이전</button>
-        <button type="button" class="btn btn-success next">다음</button>
+<div class="row">
+    <div class="col col-lg-12">
+        <div class="panel">
+            <div class="panel-heading">옵션 제어</div>
+            <div class="panel-body">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-success prev">이전 페이지</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="panel panel-primary view-chart">
-
-    <div class="panel-heading">라인 포커스 차트</div>
-
-    <div id="lineFocus" class="widget-chart"></div>
-
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae rem tempora tenetur voluptatem!
-    </p>
+<div class="row">
+    <div class="col col-lg-12">
+        <div class="panel panel-primary view-chart">
+            <div class="panel-heading">라인 포커스 차트</div>
+            <div class="panel-body">
+                <div id="lineFocus" class="widget-chart"></div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur
+                    cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae
+                    rem tempora tenetur voluptatem!
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

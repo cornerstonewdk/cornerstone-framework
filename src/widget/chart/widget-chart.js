@@ -641,7 +641,7 @@
             removeClip: function (target) {
                 var groups = target.selectAll(".nv-groups");
                 $(groups[0]).each(function () {
-                    $(this).parent().attr("clip-path", "");
+                    $(this).parent().removeAttr("clip-path");
                 });
             },
             getTranslateJson: function (target) {
