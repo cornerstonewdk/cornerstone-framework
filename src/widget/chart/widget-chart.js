@@ -44,6 +44,7 @@
             var self = this;
             var target = this.util.getTarget(d3.select(this.el), options);
             target.$parent = this.$el;
+            target.$parent.swipe();
 
             if (options.chartType.match(/.*bar3d.*/gi)) {
 
@@ -255,7 +256,6 @@
         },
         lineFocusChart: function (target, options) {
             var self = this;
-            target.$parent.swipe();
             chart = nv.models.lineWithFocusChart();
 
             chart.xAxis.tickFormat(d3.format(options.format));
