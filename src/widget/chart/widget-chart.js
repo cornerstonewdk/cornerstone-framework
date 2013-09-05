@@ -10,6 +10,7 @@
     "use strict";
     var root = this,
         pluginName = "featuredChart",
+        HAS_TOUCH = ('ontouchstart' in window),
         isDebug = true,
         chart,
         self;
@@ -44,7 +45,6 @@
             var self = this;
             var target = this.util.getTarget(d3.select(this.el), options);
             target.$parent = this.$el;
-            target.$parent.swipe();
 
             if (options.chartType.match(/.*bar3d.*/gi)) {
 
@@ -262,6 +262,8 @@
             chart.yAxis.tickFormat(d3.format(options.format));
             chart.y2Axis.tickFormat(d3.format(options.format));
             chart.afterRender = function () {
+                target.$parent.swipe();
+
                 function onBrush(extent) {
                     extent = extent ? extent : chart.x2Axis.scale().domain();
                     var brush = d3.svg.brush();
@@ -683,16 +685,38 @@
                     }, 10);
                 };
 
-                var resize = function () {
+                var resize = function (e) {
+                    console.log(e);
                     chart.update();
                     setTimeout(function () {
                         typeof chart.afterRender === "function" && chart.afterRender("resize");
                         object.afterRender(target, options, chart);
                     }, 10);
+                    e.preventDefault();
+                    e.stopPropagation();
                 };
 
                 chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
-                !options.autoResize || nv.utils.windowResize(resize);
+
+                if(HAS_TOUCH) {
+                    window.onorientationchange = function (e) {
+                        !options.autoResize || resize(e);
+                    };
+                } else {
+                    // window resize가 완료될 때 차트 resize 함수 실행
+                    $(window).off("resizeEnd._chart").on("resizeEnd._chart", function(e) {
+                        !options.autoResize || resize(e);
+                    });
+                }
+
+
+                // Window Resize Trigger
+                $(window).off("resize._chart").on("resize._chart", function() {
+                    if(this.resizeTO) clearTimeout(this.resizeTO);
+                    this.resizeTO = setTimeout(function() {
+                        $(this).trigger('resizeEnd');
+                    }, 500);
+                });
             },
             applyBindEvent3DChart: function (target, options) {
                 var resizeChart = function () {
