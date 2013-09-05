@@ -1,4 +1,4 @@
-describe('Cornerstone event extend test', function() {
+describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() {
 
     describe('widget-carousel', function() {
         var cs;
