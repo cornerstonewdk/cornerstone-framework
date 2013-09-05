@@ -13,9 +13,10 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/hom
 			docs.on( 'sync', function() {
 
 				// order 속성 순으로 정렬
-				docs.sortBy( function( doc ) {
+				docs.comparator = function( doc ) {
 					return doc.get( 'order' );
-				} );
+				};
+				docs.sort();
 
 				// 부가 정보 만들기
 				docs.each( function( doc ) {
