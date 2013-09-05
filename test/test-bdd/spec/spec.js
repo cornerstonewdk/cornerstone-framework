@@ -1,5 +1,55 @@
 describe('Cornerstone event extend test', function() {
 
+    describe('widget-carousel', function() {
+        var cs;
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            this.timeout(6000);
+            require(['widget-carousel'], function(WidgetCarousel) {
+                cs = new WidgetCarousel({
+                    el: '#carousel-example-generic'
+                });
+                cs.$el.on('complete.cs.carousel', function(e) {
+                    e.stopPropagation();
+                    console.log('carousel img load complete.', e);
+                    done();
+                });
+                cs.render();
+                expect(cs).to.be.an.instanceof(Backbone.View);
+                $('#btnCsStart').click(function() {
+                    cs.$el.carousel('cycle')
+                });
+                
+            });
+        });
+
+        it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
+            cs.$el.on('play.cs.carousel', function(e) {
+                console.log('play.cs.carousel 발생', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('play');
+                done();
+            }).carousel('pause');
+            this.timeout(2000);
+            setTimeout(function() {
+                cs.$el.carousel('cycle');
+            }, 1000);
+        });
+
+        it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
+            cs.$el.on('pause.cs.carousel', function(e) {
+                console.log('pause.cs.carousel 발생');
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('pause');
+                done();
+            });
+            this.timeout(2000);
+            setTimeout(function() {
+                cs.$el.carousel('pause');
+            }, 1000);
+        });
+    });
+
     describe('widget-alert', function() {
         var alert1, alert2;
 
@@ -19,14 +69,14 @@ describe('Cornerstone event extend test', function() {
             });
         });
 
-        it('내부 버튼에(button.close) 클릭 리스너를 바인딩 하여 뷰에 플러그인 동작이 되는지 확인한다.',function(done){
-            alert1.$el.find('button.close').click(function(e){
+        it('내부 버튼에(button.close) 클릭 리스너를 바인딩 하여 뷰에 플러그인 동작이 되는지 확인한다.', function(done) {
+            alert1.$el.find('button.close').click(function(e) {
                 alert1.$el.alert('close');
                 expect(alert1.$el.css('display')).to.equal('none');
                 done();
             }).click();
 
-            alert2.$el.find('button.close').click(function(e){
+            alert2.$el.find('button.close').click(function(e) {
                 alert2.$el.alert('close');
             });
         });
@@ -187,98 +237,87 @@ describe('Cornerstone event extend test', function() {
             });
         });
 
-        // describe('radio', function() {
-        //     var radio;
-        //     var radioLabel0, radioLabel1, radioLabel2;
+        describe('radio', function() {
+            var radio;
+            var radioLabel0, radioLabel1, radioLabel2;
 
-        //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-        //         require(['widget-button'], function(WidgetButton) {
-        //             radio = new WidgetButton({
-        //                 el: '#radio-toggle'
-        //             });
-        //             radio.render();
-        //             radioLabel0 = radio.$el.find('label:eq(0)');
-        //             radioLabel1 = radio.$el.find('label:eq(1)');
-        //             radioLabel2 = radio.$el.find('label:eq(2)');
-        //             expect(radio).to.be.an.instanceof(Backbone.View);
-        //             done();
-        //         });
-        //     });
+            it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+                require(['widget-button'], function(WidgetButton) {
+                    radio = new WidgetButton({
+                        el: '#radio-toggle'
+                    });
+                    radio.render();
+                    radioLabel0 = radio.$el.find('label:eq(0)');
+                    radioLabel1 = radio.$el.find('label:eq(1)');
+                    radioLabel2 = radio.$el.find('label:eq(2)');
+                    expect(radio).to.be.an.instanceof(Backbone.View);
+                    done();
+                });
+            });
 
-        //     it('첫번째 라디오 버튼 클릭 시 toggleOn 이벤트가 발생하여야 한다.', function(done) {
-        //         radio.$el.on('toggleOn.cs.button', function(e, el) {
-        //             console.log('toggleOn 발생', el);
-        //             expect(e).to.be.an.instanceof($.Event);
-        //             expect(e.type).to.be.equal('toggleOn');
-        //             expect(el).to.not.be.undefined;
-        //             done();
-        //         });
-        //         radioLabel0.click();
-        //     });
+            it('첫번째 라디오 버튼 클릭 시 toggleOn 이벤트가 발생하여야 한다.', function(done) {
+                radio.$el.on('toggleOn.cs.button', function(e, el) {
+                    console.log('toggleOn 발생', el);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    expect(el).to.not.be.undefined;
+                    done();
+                });
+                radioLabel0.click();
+            });
 
-        //     it('첫번째 라디오 버튼은 .active를 가져야하며 나머지는 .active를 가지면 안된다.', function() {
-        //         expect(radioLabel0.hasClass('active')).to.be.ok;
-        //         expect(radioLabel1.hasClass('active')).to.not.be.ok;
-        //         expect(radioLabel2.hasClass('active')).to.not.be.ok;
-        //     });
+            it('첫번째 라디오 버튼은 .active를 가져야하며 나머지는 .active를 가지면 안된다.', function() {
+                expect(radioLabel0.hasClass('active')).to.be.ok;
+                expect(radioLabel1.hasClass('active')).to.not.be.ok;
+                expect(radioLabel2.hasClass('active')).to.not.be.ok;
+            });
 
-        //     it('두번째 라디오 버튼을 클릭 시 toggleOff와 toggleOn이 동시에 발생하여야 한다.', function(done) {
-        //         radio.$el.on('toggleOff.cs.button', function(e, el) {
-        //             console.log('toggleOff 발생', e, el);
-        //             expect(e).to.be.an.instanceof($.Event);
-        //             expect(e.type).to.be.equal('toggleOff');
-        //             expect(el).to.not.be.undefined;
-        //             done();
-        //         });
-        //         radioLabel1.click();
-        //     });
-
-        // });
+            it('두번째 라디오 버튼을 클릭 시 toggleOff와 toggleOn이 동시에 발생하여야 한다.', function(done) {
+                radio.$el.on('toggleOff.cs.button', function(e, el) {
+                    console.log('toggleOff 발생', e, el);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOff');
+                    expect(el).to.not.be.undefined;
+                    done();
+                }).off('toggleOn.cs.button').on('toggleOn.cs.button', function(e, el) {
+                    console.log('toggleOn 발생', el);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('toggleOn');
+                    expect(el).to.not.be.undefined;
+                });
+                radioLabel1.click();
+            });
+        });
     });
 
-    describe('carousel', function() {
-        var cs;
+
+
+    describe('widget-collapse', function() {
+        var collapse;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-carousel'], function(WidgetCarousel) {
-                cs = new WidgetCarousel({
-                    el: '.carousel'
+            require(['widget-collapse'], function(WidgetCollapse) {
+                collapse = new WidgetCollapse({
+                    el: '#accordion .collapse',
+                    parent: '#accordion',
+                    toggle: false
                 });
-                 cs.$el.on('complete.cs.carousel',function(e){
-                    console.log('carousel img load complete.',e);
+                collapse.render();
+                $('#collapse a.accordion-toggle').click(function(e) {
+                    e.preventDefault();
+                    $($(this).attr('href')).collapse('toggle');
                 });
-                cs.render();
-                expect(cs).to.be.an.instanceof(Backbone.View);
-                $('#btnCsStart').click(function() {
-                    cs.$el.carousel('cycle')
-                });
+                expect(collapse).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
 
-        it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
-            cs.$el.on('play.cs.carousel', function(e) {
-                console.log('play.cs.carousel 발생', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('play');
-                done();
-            }).carousel('pause');
+        it('두번째 패널을 클릭 시 은 콜랩스가 작동하여야 한다.', function(done) {
             this.timeout(2000);
+            $('#collapse a.accordion-toggle:eq(1)').click();
             setTimeout(function() {
-                cs.$el.carousel('cycle');
-            }, 1000);
-        });
-
-        it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
-            cs.$el.on('pause.cs.carousel', function(e) {
-                console.log('pause.cs.carousel 발생');
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('pause');
+                expect($('#collapseTwo').hasClass('in')).to.be.true;
                 done();
-            });
-            this.timeout(2000);
-            setTimeout(function() {
-                cs.$el.carousel('pause');
             }, 1000);
         });
     });
@@ -323,10 +362,10 @@ describe('Cornerstone event extend test', function() {
                 // barChart.$el.find('g.nv-series:eq(1)').click();
             });
         });
-        
-        describe('horizontalBarChart',function(){
-            it('horizontalBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.',function(done){
-                require(['widget-chart'],function(WidgetChart){
+
+        describe('horizontalBarChart', function() {
+            it('horizontalBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
                         url: 'data/sample-bar.json'
                     });
@@ -350,9 +389,9 @@ describe('Cornerstone event extend test', function() {
             });
         });
 
-        describe('linePlusBarChart',function(){
-            it('linePlusBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.',function(done){
-                require(['widget-chart'],function(WidgetChart){
+        describe('linePlusBarChart', function() {
+            it('linePlusBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
+                require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
                         url: 'data/sample-line1.json'
                     });
@@ -482,67 +521,33 @@ describe('Cornerstone event extend test', function() {
                 });
             });
         });
-        
-        describe('lineFocusChart', function() {
-            it('lineFocusChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
-                require(['widget-chart'], function(WidgetChart) {
-                    var Model = Backbone.Model.extend({
-                        url: 'data/sample-line.json'
-                    });
 
-                    lineFocusChart = new WidgetChart({
-                        el: 'div.lineFocusChart',
-                        chartOptions: {
-                            chartType: "lineFocus",
-                            format: '.2f'
-                        },
-                        model: new Model
-                    });
+        // describe('lineFocusChart', function() {
+        //     it('lineFocusChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function() {
+        //         require(['widget-chart'], function(WidgetChart) {
+        //             var Model = Backbone.Model.extend({
+        //                 url: 'data/sample-line.json'
+        //             });
 
-                    // lineFocusChart.$el.on('shown', function(e) {
-                    //     e.stopPropagation();
-                    //     console.log('lineFocusChart shown', e);
-                    //     done();
-                    // });
-                    lineFocusChart.render();
-                    expect(lineFocusChart).to.be.an.instanceof(Backbone.View);
-                    
-                });
-            });
-        });
-    });
+        //             lineFocusChart = new WidgetChart({
+        //                 el: 'div.lineFocusChart',
+        //                 chartOptions: {
+        //                     chartType: "lineFocus",
+        //                     format: '.2f'
+        //                 },
+        //                 model: new Model
+        //             });
 
-    describe('widget-collapse', function() {
-        var collapse;
-
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-collapse'],function(WidgetCollapse){
-                collapse = new WidgetCollapse({
-                    el: '#accordion .collapse',
-                    parent: '#accordion',
-                    toggle: false
-                });
-                collapse.render();
-                $('#collapse a.accordion-toggle').click(function(e){
-                    e.preventDefault();
-                    $( $( this ).attr('href') ).collapse('toggle');
-                });
-                expect(collapse).to.be.an.instanceof(Backbone.View);
-                done();
-            });
-        });
-
-        it('두번째 패널을 클릭 시 은 콜랩스가 작동하여야 한다.',function( done ){
-            this.timeout(2000);
-
-            $('#collapse a.accordion-toggle:eq(1)').click( function (e) {
-                e.preventDefault();
-                setTimeout(function() {
-                    expect($('#collapseTwo').hasClass('in')).to.be.true;
-                    done();
-                }, 1000);
-            } ).click();
-        });
+        //             // lineFocusChart.$el.on('shown', function(e) {
+        //             //     e.stopPropagation();
+        //             //     console.log('lineFocusChart shown', e);
+        //             //     done();
+        //             // });
+        //             lineFocusChart.render();
+        //             expect(lineFocusChart).to.be.an.instanceof(Backbone.View);
+        //         });
+        //     });
+        // });
     });
 
     describe('widget-datatable', function() {
@@ -564,7 +569,7 @@ describe('Cornerstone event extend test', function() {
 
         it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
             this.timeout(2000);
-            setTimeout(function(){},500);
+            setTimeout(function() {}, 500);
             table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
                 console.log('itemClick.cs.datatables', result);
                 expect(e).to.be.an.instanceof($.Event);
@@ -582,7 +587,7 @@ describe('Cornerstone event extend test', function() {
         var datepicker;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-datepicker'],function(WidgetDatepicker){
+            require(['widget-datepicker'], function(WidgetDatepicker) {
                 console.log(WidgetDatepicker);
                 datepicker = new WidgetDatepicker({
                     el: '#date-picker1',
@@ -596,17 +601,40 @@ describe('Cornerstone event extend test', function() {
     });
 
     describe('widget-dropdown', function() {
-        var dropdown;
+        var dropdown1, dropdown2;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-dropdown'],function(WidgetDropdown){
-                dropdown = new WidgetDropdown({
+            require(['widget-dropdown'], function(WidgetDropdown) {
+                dropdown1 = new WidgetDropdown({
                     el: '#dropdown .btn-group:first-child > button'
                 });
-                dropdown.render();
-                expect(dropdown).to.be.an.instanceof(Backbone.View);
+                dropdown1.render();
+                expect(dropdown1).to.be.an.instanceof(Backbone.View);
+                dropdown2 = new WidgetDropdown({
+                    el: '#dropdown .btn-group:nth-child(2) > button'
+                });
+                dropdown2.render();
+                expect(dropdown2).to.be.an.instanceof(Backbone.View);
                 done();
             });
+        });
+
+        it('첫번째 드랍다운 버튼을 눌렀을 때 메뉴가 펼쳐져야 한다.',function(done){
+            dropdown1.$el.click(function(e){
+                expect($(this).parent().hasClass('open')).to.be.true;
+                done();
+            }).click();
+        });
+
+        it('첫번째 드랍다운 메뉴가 펼쳐져 있을 때 버튼을 누르면 메뉴가 접혀야 한다.',function(done){
+            this.timeout(600);
+            dropdown1.$el.off('click').click(function(e){
+                setTimeout(function(){
+                    expect($(this).parent().hasClass('open')).to.be.false;
+                    $(this).off('click');
+                    done();
+                },500);
+            }).click();
         });
     });
 
@@ -645,7 +673,7 @@ describe('Cornerstone event extend test', function() {
         var media1, media2;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-media'],function(WidgetMedia){
+            require(['widget-media'], function(WidgetMedia) {
                 media1 = new WidgetMedia({
                     el: '#media .panel:first-child video'
                 });
@@ -665,20 +693,20 @@ describe('Cornerstone event extend test', function() {
         var modal;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-modal'],function(WidgetModal){
+            require(['widget-modal'], function(WidgetModal) {
                 modal = new WidgetModal({
                     el: '#myModal'
                 });
                 modal.render();
                 expect(modal).to.be.an.instanceof(Backbone.View);
-                $('#btnModalToggle').click(function(){
+                $('#btnModalToggle').click(function() {
                     modal.$el.modal('toggle');
                 });
                 done();
             });
         });
 
-        it('modal이 적용된 후 토글을 실행하였을 때 modal이 사라져야 한다.',function(done){
+        it('modal이 적용된 후 토글을 실행하였을 때 modal이 사라져야 한다.', function(done) {
             modal.$el.modal('toggle');
             this.timeout(2000);
             setTimeout(function() {
@@ -741,74 +769,67 @@ describe('Cornerstone event extend test', function() {
     });
 
     describe('widget-popover', function() {
-        var popovers;
+        var singlePop, topPop, bottomPop;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-popover'], function(WidgetPopover) {
-                popovers = new WidgetPopover({
-                    el: '[data-toggle=popover]'
+                singlePop = new WidgetPopover({
+                    el: '#popover > div > a',
+                    placement: 'top',
+                    content: 'single popover testing'
                 });
-                popovers.render();
-                expect(popovers).to.be.an.instanceof(Backbone.View);
+                singlePop.render();
+                expect(singlePop).to.be.an.instanceof(Backbone.View);
+                topPop = new WidgetPopover({
+                    el: '#popover > div > div > ul > li:nth-child(1) > a',
+                    placement: 'top',
+                    content: 'top popover test'
+                });
+                topPop.render();
+                expect(topPop).to.be.an.instanceof(Backbone.View);
+                bottomPop = new WidgetPopover({
+                    el: '#popover > div > div > ul > li:nth-child(2) > a',
+                    placement: 'bottom',
+                    content: 'bottom popover test'
+                });
+                bottomPop.render();
+                expect(bottomPop).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
 
-        it('첫번째 버튼을 클릭하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
-            popovers.$el.each(function() {
-                $(this).on('show.bs.popover', function(e) {
-                    console.log('show.bs.popover 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('show');
-                }).on('shown.bs.popover', function(e) {
-                    console.log('shown.bs.popover 발생');
-                    e.preventDefault();
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('shown');
-                    done();
-                });
-            });
-            $(popovers.$el[0]).click();
-        });
-
-        it('첫번째 버튼을 다시 클릭하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
-
-            popovers.$el.each(function() {
-                $(this).on('hide.bs.popover', function(e) {
-                    console.log('hide.bs.popover 발생');
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('hide');
-                }).on('hidden.bs.popover', function(e) {
-                    console.log('hidden.bs.popover 발생');
-                    e.preventDefault();
-                    expect(e).to.be.an.instanceof($.Event);
-                    expect(e.type).to.be.equal('hidden');
-                    done();
-                });
-            });
-            $(popovers.$el[0]).click();
-        });
-
-        it('세번째 버튼에 클릭 2회시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
-            $(popovers.$el[2]).off('show.bs.popover').off('shown.bs.popover').off('hide.bs.popover').off('hidden.bs.popover');
-            $(popovers.$el[2]).on('show.bs.popover', function(e) {
+        it('싱글 팝오버 버튼을 클릭하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
+            singlePop.$el.on('show.bs.popover', function(e) {
                 console.log('show.bs.popover 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
             }).on('shown.bs.popover', function(e) {
                 console.log('shown.bs.popover 발생');
+                e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('shown');
-            }).on('hide.bs.popover', function(e) {
+                done();
+            });
+            singlePop.$el.click();
+        });
+
+        it('첫번째 버튼을 다시 클릭하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
+            this.timeout(1000);
+            singlePop.$el.on('hide.bs.popover', function(e) {
                 console.log('hide.bs.popover 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
             }).on('hidden.bs.popover', function(e) {
                 console.log('hidden.bs.popover 발생');
+                e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
                 done();
-            }).click().click();
+            });
+            setTimeout(function(){
+                singlePop.$el.click();    
+            },500);
+            
         });
     });
 
@@ -890,7 +911,7 @@ describe('Cornerstone event extend test', function() {
     describe('widget-scrollspy', function() {
         var scrollspy;
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-scrollspy'], function(WidgetScrollSpy){
+            require(['widget-scrollspy'], function(WidgetScrollSpy) {
                 scrollspy = new WidgetScrollSpy({
                     el: '.scrollspy-example',
                     target: '#navbar-example2'
@@ -1075,39 +1096,60 @@ describe('Cornerstone event extend test', function() {
     describe('widget-tab', function() {
         var tab;
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-tab'],function(WidgetTab){
+            require(['widget-tab'], function(WidgetTab) {
                 tab = new WidgetTab({
                     el: '#myTab'
                 });
                 tab.render();
 
-                $('#myTab a').click(function (e) {
-                  e.preventDefault()
-                  $(this).tab('show')
+                $('#myTab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
                 })
 
                 expect(tab).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
+
+        it('프로파일 탭을 클릭했을 때 2번째 탭이 보여야 한다.',function(done){
+            this.timeout(1000);
+            tab.$el.find('a[href="#profile"]').click();
+            setTimeout(function(){
+                expect($('#myTabContent > #profile').hasClass('active in')).to.be.true;
+                done();
+            },500);
+        })
     });
 
     describe('widget-tooltip', function() {
-        var tooltips;
-
+        var singleTooltip, leftTooltip, rightTooltip;
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-tooltip'], function(WidgetTooltip) {
-                tooltips = new WidgetTooltip({
-                    el: '[data-toggle=tooltip]'
+                singleTooltip = new WidgetTooltip({
+                    el: '#tooltip div.well > a',
+                    placement: 'top'
                 });
-                tooltips.render();
-                expect(tooltips).to.be.an.instanceof(Backbone.View);
+                singleTooltip.render();
+                expect(singleTooltip).to.be.an.instanceof(Backbone.View);
+                leftTooltip = new WidgetTooltip({
+                    el: '#tooltip ul.demo-tooltips > li:nth-child(2) > a',
+                    placement: 'left'
+                });
+                leftTooltip.render();
+                expect(leftTooltip).to.be.an.instanceof(Backbone.View);
+                rightTooltip = new WidgetTooltip({
+                    el: '#tooltip ul.demo-tooltips > li:nth-child(1) > a',
+                    placement: 'right'
+                });
+                rightTooltip.render();
+                expect(rightTooltip).to.be.an.instanceof(Backbone.View);
                 done();
             });
         });
 
         it('첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
-            tooltips.$el.each(function() {
+            singleTooltip.$el.each(function() {
                 $(this).on('show.bs.tooltip', function(e) {
                     console.log('show.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
@@ -1119,12 +1161,12 @@ describe('Cornerstone event extend test', function() {
                     done();
                 });
             });
-            $(tooltips.$el[0]).mouseover();
+            $(singleTooltip.$el[0]).mouseover();
         });
 
         it('첫번째 버튼에 마우스 오버를 해제하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
 
-            tooltips.$el.each(function() {
+            singleTooltip.$el.each(function() {
                 $(this).on('hide.bs.tooltip', function(e) {
                     console.log('hide.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
@@ -1136,12 +1178,11 @@ describe('Cornerstone event extend test', function() {
                     done();
                 });
             });
-            $(tooltips.$el[0]).mouseout();
+            $(singleTooltip.$el[0]).mouseout();
         });
 
-        it('세번째 버튼에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
-            $(tooltips.$el[3]).off('show.bs.tooltip').off('shown.bs.tooltip').off('hide.bs.tooltip').off('hidden.bs.tooltip');
-            $(tooltips.$el[3]).on('show.bs.tooltip', function(e) {
+        it('왼쪽 툴팁에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
+            leftTooltip.$el.on('show.bs.tooltip', function(e) {
                 console.log('show.bs.tooltip 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
