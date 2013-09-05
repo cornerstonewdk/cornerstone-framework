@@ -969,7 +969,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         var sign;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-sign'], function(WidgetSign) {
+            require(['widget-sign','jqeury.hammer','faketouch','showtouch'], function(WidgetSign,Hammer) {
+                Hammer.plugins.fakeMultitouch();
+                Hammer.plugins.showTouches();
+
+                console.log(Hammer.plugins);
                 sign = new WidgetSign({
                     el: '#signature'
                 });

@@ -1,5 +1,7 @@
 require.config({
     "paths": {
+        "faketouch": "../js/hammer.fakemultitouch",
+        "showtouch": "../js/hammer.showtouches",
         "backbone": "../../../grunt-dist/lib/backbone/backbone-min",
         "blackbird": "../../../grunt-dist/lib/blackbird/blackbird",
         "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap",
@@ -104,6 +106,9 @@ require.config({
             ],
             "exports": "gesture-view"
         },
+        "hammer": {
+            "exports": "hammer"
+        },
         "handlebars": {
             "exports": "Handlebars"
         },
@@ -123,7 +128,8 @@ require.config({
             "deps": [
                 "jquery",
                 "hammer"
-            ]
+            ],
+            "exports": "jquery.hammer"
         },
         "jquery.hotkeys": {
             "deps": [
@@ -408,6 +414,16 @@ require.config({
             ],
             "exports": "widget-typeahead"
         },
+        "faketouch": {
+            "deps": [
+                "jquery.hammer",
+            ]
+        },
+        "showtouch": {
+            "deps": [
+                "jquery.hammer",
+            ]
+        }
     }
 });
 
