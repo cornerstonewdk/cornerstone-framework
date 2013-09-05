@@ -11,9 +11,8 @@ define([
         sampleDataUrl: "data/sample-line.json",
 
         render: function () {
-            var self = this;
-            self.$el.html(template());
-            self.activeChart();
+            this.$el.html(template());
+            this.activeChart();
             return this;
         },
 

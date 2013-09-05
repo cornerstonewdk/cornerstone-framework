@@ -1,105 +1,27 @@
 <div class="row">
     <div class="col col-lg-12">
         <div class="panel">
-            <form id="control-chart" class="form-horizontal" class="#">
-                <!--<div class="form-group">-->
-                <!--<div class="col col-3">-->
-                <!--<label class="control-label">Control 사용</label>-->
-                <!--</div>-->
-                <!--<div class="col col-3">-->
-                <!--<label class="control-label">색상</label>-->
-                <!--</div>-->
-                <!--<div class="col col-3">-->
-                <!--<label class="control-label">X 축(구현 중)</label>-->
-                <!--</div>-->
-                <!--<div class="col col-3">-->
-                <!--<label class="control-label">Y 축(구현 중)</label>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-3">-->
-                <!--<select class="form-control" name="select-showControls">-->
-                <!--<option value="1">Y</option>-->
-                <!--<option value="0">N</option>-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--<div class="col-3">-->
-                <!--<select class="form-control" name="select-color">-->
-                <!--<option value="">색상 1</option>-->
-                <!--<option value="preset2">색상 2</option>-->
-                <!--<option value="preset3">색상 3</option>-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--<div class="col-3">-->
-                <!--<select class="form-control" name="select-unit">-->
-                <!--<option value="">단위 선택</option>-->
-                <!--<option value="04d">정수(4자리수 0000)</option>-->
-                <!--<option value=".2f">소수(2자리 1.23)</option>-->
-                <!--<option value="1,000">천단위 (1,000)</option>-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--<div class="col-3">-->
-                <!--<select class="form-control" name="select-unit">-->
-                <!--<option value="">단위 선택</option>-->
-                <!--<option value="04d">정수(4자리수 0000)</option>-->
-                <!--<option value=".2f">소수(2자리 1.23)</option>-->
-                <!--<option value="1,000">천단위 (1,000)</option>-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col col-6">-->
-                <!--<label class="control-label">Control 이름</label>-->
-                <!--</div>-->
-                <!--<div class="col col-3">-->
-                <!--<label class="control-label">범례 사용</label>-->
-                <!--</div>-->
-                <!--<div class="col col-3">-->
-                <!--<label class="control-label">툴팁 사용</label>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-3">-->
-                <!--<input class="form-control" type="text" value="그룹" name="groupedName"/>-->
-                <!--</div>-->
-                <!--<div class="col-3">-->
-                <!--<input class="form-control" type="text" value="스택" name="stackedName"/>-->
-                <!--</div>-->
-                <!--<div class="col-3">-->
-                <!--<select class="form-control" name="select-showLegend">-->
-                <!--<option value="1">Y</option>-->
-                <!--<option value="0">N</option>-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--<div class="col-3">-->
-                <!--<select class="form-control" name="select-tooltips">-->
-                <!--<option value="1">Y</option>-->
-                <!--<option value="0">N</option>-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--</div>-->
-                <div class="btn-group">
-                    <!--<button class="btn btn-default js-change-data">데이터변경</button>-->
-                    <!--<button type="submit" class="btn btn-info js-submit">적용</button>-->
-                    <button type="button" class="btn btn-success next">다음</button>
+            <div class="panel-heading">옵션 제어</div>
+            <div class="panel-body">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-success next">다음 페이지</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col col-lg-6">
+    <div class="col col-lg-12">
         <div class="panel panel-primary view-chart">
-
             <div class="panel-heading">신규 수평 차트</div>
-            <div id="horizontalBar1" class="widget-chart"></div>
-        </div>
-    </div>
-    <div class="col col-lg-6">
-        <div class="panel panel-primary view-chart">
-
-            <div class="panel-heading">기존 수직 차트</div>
-            <div id="bar1" class="widget-chart"></div>
+            <div class="panel-body">
+                <div id="horizontalBar1" class="widget-chart"></div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur
+                    cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae
+                    rem tempora tenetur voluptatem!
+                </p>
+            </div>
         </div>
     </div>
 </div>

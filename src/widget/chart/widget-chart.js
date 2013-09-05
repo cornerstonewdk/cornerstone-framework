@@ -29,12 +29,21 @@
         afterRender: function (target, options, chart) {
             this.$el.data("currentChart", chart);
             this.$el.data("currentChartControl", options.control);
+
+            var controlsWrap = target.select('.nv-controlsWrap');
+            controlsWrap.attr("transform", "translate(-55," + this.util.getTranslateJson(controlsWrap).y + ")");
+
             this.util.removeClip(target);
-            this.util.applyBindEvent(target, options, chart);
+            this.util.applyBindEvent(target, options, chart, this);
         },
         render: function (options) {
-            var self = this,
-                target = this.util.getTarget(d3.select(this.el), options);
+            if(!navigator.userAgent.toLowerCase().match(/webkit/gi)
+                && options.chartType.match(/.*bar3d.*/gi)) {
+                options.chartType = options.chartType.replace("3d", "");
+            }
+
+            var self = this;
+            var target = this.util.getTarget(d3.select(this.el), options);
             target.$parent = this.$el;
 
             if (options.chartType.match(/.*bar3d.*/gi)) {
@@ -193,7 +202,7 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyBindEvent(target, options, chart, self.$el);
+                self.util.applyBindEvent(target, options, chart, self);
 
                 return chart;
             });
@@ -211,7 +220,7 @@
                 target.datum(options.data)
                     .transition().duration(500).call(chart);
 
-                self.util.applyBindEvent(target, options, chart, self.$el);
+                self.util.applyBindEvent(target, options, chart, self);
 
                 return chart;
             });
@@ -247,21 +256,21 @@
         },
         lineFocusChart: function (target, options) {
             var self = this;
-            target.$parent.swipe();
             chart = nv.models.lineWithFocusChart();
 
             chart.xAxis.tickFormat(d3.format(options.format));
             chart.yAxis.tickFormat(d3.format(options.format));
             chart.y2Axis.tickFormat(d3.format(options.format));
             chart.afterRender = function () {
+                target.$parent.swipe();
+
                 function onBrush(extent) {
-                    extent = extent ? extent : [0, 99];//chart.x2Axis.scale().domain();
+                    extent = extent ? extent : chart.x2Axis.scale().domain();
                     var brush = d3.svg.brush();
                     var lines = chart.lines;
 
-                    // The brush extent cannot be less than one.  If it is, don't update the line chart.
                     if (Math.abs(extent[0] - extent[1]) <= 1) {
-                        return;
+                        return extent;
                     }
 
                     chart.dispatch.brush({extent: extent, brush: brush});
@@ -322,6 +331,8 @@
 
                     e.preventDefault();
                     e.stopPropagation();
+
+                    return extent;
                 };
 
                 target.$parent.off("swipe._chart").on("swipe._chart", changeDomain);
@@ -371,10 +382,6 @@
                         });
                     });
                     return chartData;
-                },
-                // Get heading data from table caption
-                chartHeading: function () {
-                    return options.title;
                 },
                 // Get legend data from table body
                 chartLegend: function () {
@@ -462,11 +469,6 @@
                 barGroup.appendTo(barContainer);
             });
 
-            // Add heading to graph
-            var chartHeading = dataObject.chartHeading();
-            var heading = $('<h4>' + chartHeading + '</h4>');
-            heading.appendTo(figureContainer);
-
             // Add legend to graph
             var chartLegend = dataObject.chartLegend();
             var legendList = $('<ul class="legend"></ul>');
@@ -540,7 +542,7 @@
             // Reset graph settings and prepare for display
             function resetGraph() {
                 $(self.el).trigger("shown");
-                self.util.applyBindEvent(target, options);
+                self.util.applyBindEvent3dChart(target, options);
                 // Turn off transitions for instant reset
                 $.each(bars, function (i) {
                     $(bars[i].bar).stop().css({'height': 0, '-webkit-transition': 'none'});
@@ -558,7 +560,7 @@
                     graphTransform = 'rotateX(' + endXRotation + 'deg) rotateY(' + endYRotation + 'deg)';
                     container.css({'-webkit-transform': graphTransform, '-webkit-transition': 'all 2.8s ease-out'});
                     displayGraph(bars, 0);
-                }, 500);
+                }, 100);
             }
 
             // Handle arrow key rotation
@@ -601,6 +603,54 @@
 
             // Finally, display graph via reset function
             resetGraph();
+
+            if(typeof $.fn.swipe === "function") {
+                target.$parent.swipe();
+                var changeView = function (e, obj) {
+                    switch (obj.direction) {
+                        case "left": // Left
+                            if ("bar3d" === options.chartType) {
+                                yRotation -= rotationAmount;
+                            } else {
+                                xRotation -= rotationAmount;
+                            }
+                            break;
+                        case "up": // Up
+                            if ("bar3d" === options.chartType) {
+                                xRotation += rotationAmount;
+                            } else {
+                                yRotation -= rotationAmount;
+                            }
+                            break;
+                        case "right": // Right
+                            if ("bar3d" === options.chartType) {
+                                yRotation += rotationAmount;
+                            } else {
+                                xRotation += rotationAmount;
+                            }
+                            break;
+                        case "down": // Down
+                            if ("bar3d" === options.chartType) {
+                                xRotation -= rotationAmount;
+                            } else {
+                                yRotation += rotationAmount;
+                            }
+                            break;
+                    }
+                    graphTransform = 'rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
+                    container.css('-webkit-transform', graphTransform);
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
+                target.$parent.off("swipe._chart").on("swipe._chart", changeView);
+            }
+
+            if(typeof $.fn.doubletap === "function") {
+                target.$parent.doubletap(function() {
+                    resetGraph();
+                });
+            }
         },
         horizontalBar3dChart: function (target, options) {
             var $parent = target.closest(".widget-chart3d");
@@ -632,7 +682,7 @@
             removeClip: function (target) {
                 var groups = target.selectAll(".nv-groups");
                 $(groups[0]).each(function () {
-                    $(this).parent().attr("clip-path", "");
+                    $(this).parent().removeAttr("clip-path");
                 });
             },
             getTranslateJson: function (target) {
@@ -666,74 +716,110 @@
                 }
                 return target;
             },
+            applyBindEvent: function (target, options, chart, object) {
+                var stateChange = function (e) {
+                    isDebug && console.log("New State:", JSON.stringify(e));
+                    // 애니매이션 중 이벤트 방지
+                    !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
+                    setTimeout(function () {
+                        typeof chart.afterRender === "function" && chart.afterRender("stateChange");
 
-            applyBindEvent: function (target, options, chart) {
-                var self = this;
+                        // 바차트외의 경우 complete 이벤트가 발생하지 않아 afterRender 후 이벤트 방지 overlay 제거
+                        typeof chart.multibar !== "function" && target.$parent.hasClass("overlay")
+                        && target.$parent.removeClass("overlay");
 
-                if (options.chartType.match(/.*bar3d/gi)) {
-                    var resizeChart = function () {
-                        var $target = target.closest(".widget-chart3d");
-                        var rate = window.innerWidth / target.width();
+                        object.afterRender(target, options, chart);
+                    }, 10);
+                };
 
-                        rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
+                var resize = function (e) {
+                    console.log(e);
+                    chart.update();
+                    setTimeout(function () {
+                        typeof chart.afterRender === "function" && chart.afterRender("resize");
+                        object.afterRender(target, options, chart);
+                    }, 10);
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
 
-                        if (rate < 1) {
-                            $target.css({
-                                marginBottom: -target.height() * (1 - rate) * 1.2,
-                                webkitTransform: "scale(" + rate + ")"
-                            });
+                chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
 
-                            if ("horizontalBar3d" === options.chartType) {
-                                $target.find(".wrapper").css({
-                                    webkitTransform: "scale(0.75) rotateZ(90deg) translateY(" + target.width() * 0.15 + "px)"
-                                });
-                            } else {
-                                $target.find(".wrapper").css({
-                                    marginLeft: -target.width() * 0.1
-                                });
-                            }
-
-                            $target.css({
-                                width: target.width() * 0.9
-                            });
-                        } else {
-                            $target.removeAttr("style");
-                            $target.find(".wrapper").removeAttr("style");
-
-                            $target.css({
-                                width: target.width()
-                            });
-                        }
+                if(HAS_TOUCH) {
+                    window.onorientationchange = function (e) {
+                        !options.autoResize || resize(e);
                     };
-
-                    resizeChart();
-                    $(window).off("resize._chart").on("resize._chart", function () {
-                        resizeChart();
-                    });
                 } else {
-                    var stateChange = function (e) {
-                        isDebug && console.log("New State:", JSON.stringify(e));
-                        // 애니매이션 중 이벤트 방지
-                        !target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
-                        setTimeout(function () {
-                            typeof chart.afterRender === "function" && chart.afterRender("stateChange");
-
-                            // 바차트외의 경우 complete 이벤트가 발생하지 않아 afterRender 후 이벤트 방지 overlay 제거
-                            typeof chart.multibar !== "function" && target.$parent.hasClass("overlay")
-                            && target.$parent.removeClass("overlay");
-
-                        }, 10);
-                    };
-
-                    chart.dispatch["stateChange"] && chart.dispatch.on("stateChange", stateChange);
-
-                    !options.autoResize || nv.utils.windowResize(function () {
-                        chart.update();
-                        setTimeout(function () {
-                            typeof chart.afterRender === "function" && chart.afterRender("resize");
-                        }, 10);
+                    // window resize가 완료될 때 차트 resize 함수 실행
+                    $(window).off("resizeEnd._chart").on("resizeEnd._chart", function(e) {
+                        !options.autoResize || resize(e);
                     });
                 }
+
+
+                // Window Resize Trigger
+                $(window).off("resize._chart").on("resize._chart", function() {
+                    if(this.resizeTO) clearTimeout(this.resizeTO);
+                    this.resizeTO = setTimeout(function() {
+                        $(this).trigger('resizeEnd');
+                    }, 500);
+                });
+            },
+            applyBindEvent3dChart: function (target, options) {
+                var resizeChart = function () {
+                    var $target = target.closest(".widget-chart3d");
+                    var rate = window.innerWidth / target.width();
+
+                    rate = rate > 1 ? target.$parent.parent().width() / target.width() : rate;
+
+                    if (rate < 1) {
+                        $target.css({
+                            marginBottom: -target.height() * (1 - rate) * 1.2,
+                            webkitTransform: "scale(" + rate + ")"
+                        });
+
+                        if ("horizontalBar3d" === options.chartType) {
+                            $target.find(".wrapper").css({
+                                webkitTransform: "scale(0.75) rotateZ(90deg) translateY(" + target.width() * 0.15 + "px)"
+                            });
+                        } else {
+                            $target.find(".wrapper").css({
+                                marginLeft: -target.width() * 0.1
+                            });
+                        }
+
+                        $target.css({
+                            width: target.width() * 0.9
+                        });
+                    } else {
+                        $target.removeAttr("style");
+                        $target.find(".wrapper").removeAttr("style");
+
+                        $target.css({
+                            width: target.width()
+                        });
+                    }
+                };
+
+                resizeChart();
+                if(HAS_TOUCH) {
+                    window.onorientationchange = function (e) {
+                        !options.autoResize || resizeChart();
+                    };
+                } else {
+                    // window resize가 완료될 때 차트 resize 함수 실행
+                    $(window).off("resizeEnd._chart").on("resizeEnd._chart", function(e) {
+                        !options.autoResize || resizeChart();
+                    });
+                }
+
+                // Window Resize Trigger
+                $(window).off("resize._chart").on("resize._chart", function() {
+                    if(this.resizeTO) clearTimeout(this.resizeTO);
+                    this.resizeTO = setTimeout(function() {
+                        $(this).trigger('resizeEnd');
+                    }, 500);
+                });
             }
         }
     };
@@ -741,11 +827,8 @@
     $.fn.featuredChart = function (options) {
         var defaultOptions = {
             chartType: "bar",
-            lineType: "basis",
-            width: 500,
-            height: 500,
-            xAxisLabel: "X축",
-            yAxisLabel: "Y축",
+            xAxisLabel: "",
+            yAxisLabel: "",
             format: ".0f",
             data: {},
             showMaxMin: true,
@@ -753,7 +836,6 @@
             showControls: true,
             showLegend: true,
             tooltips: true,
-            title: "",
             color: ["#2c3e50", "#e74c3c", "#3498db", "#f5a503", "#7c569f", "#75483e", "#bf64a3", "#6b6b6b"],
             controlsData: {
                 groupedName: "그룹",
