@@ -765,8 +765,8 @@
     $.fn.featuredChart = function (options) {
         var defaultOptions = {
             chartType: "bar",
-            xAxisLabel: "X축",
-            yAxisLabel: "Y축",
+            xAxisLabel: "",
+            yAxisLabel: "",
             format: ".0f",
             data: {},
             showMaxMin: true,
