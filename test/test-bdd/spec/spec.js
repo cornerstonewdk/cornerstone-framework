@@ -4,7 +4,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         var cs;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            this.timeout(6000);
+            this.timeout(7000);
             require(['widget-carousel'], function(WidgetCarousel) {
                 cs = new WidgetCarousel({
                     el: '#carousel-example-generic'
@@ -325,6 +325,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     describe('widget-chart', function() {
         var barChart, lineChart, pieChart, horizontalBarChart, linePlusBarChart, bar3dChart, horizontal3dBarChart, lineFocusChart;
         describe('barChart', function() {
+            this.timeout(3000);
             it('barChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -364,6 +365,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('horizontalBarChart', function() {
+            this.timeout(1000);
             it('horizontalBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -390,6 +392,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('linePlusBarChart', function() {
+            this.timeout(1000);
             it('linePlusBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -417,6 +420,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('lineChart', function() {
+            this.timeout(1000);
             it('lineChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -443,6 +447,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('pieChart', function() {
+            this.timeout(1000);
             it('pieChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -469,6 +474,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('bar3dChart', function() {
+            this.timeout(1000);
             it('bar3dChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -496,6 +502,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('horizontal3dBarChart', function() {
+            this.timeout(1000);
             it('horizontal3dBarChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -742,28 +749,101 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 }).click();
             });
         });
-
-        it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
+        
+        it('캡차을 그릴때 start, move, end 이벤트가 발생하여야 한다. 또한 캡차를 잘못그려 fail 이벤트도 발생하여야 한다.', function(done) {
+            this.timeout(2000);
             captcha.$el.on('start.cs.motionCaptcha', function(e) {
+                e.stopPropagation();
                 console.log('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.motionCaptcha', function(e) {
+                e.stopPropagation();
                 console.log('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.motionCaptcha', function(e) {
+                e.stopPropagation();
                 console.log('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
+                done();
             }).on('fail.cs.motionCaptcha', function(e) {
+                e.stopPropagation();
                 console.log('fail', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('fail');
             }).on('success.cs.motionCaptcha', function(e) {
+                e.stopPropagation();
                 console.log('success', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('success');
+            });
+            require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
+
+                Hammer.HAS_POINTEREVENTS = false;
+                Hammer.HAS_TOUCHEVENTS = true;
+
+                var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
+                var el = document.getElementById('mc-canvas');
+
+                var faker = new FakeTouches(el);
+                var hammertime = new Hammer(el);
+
+                var all_events = ["touch", "release", "hold", "tap", "doubletap",
+                    "dragstart", "drag", "dragend", "dragleft", "dragright",
+                    "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
+                    "swipeup", "swipedown", "transformstart", "transform",
+                    "transformend", "rotate", "pinch", "pinchin", "pinchout"
+                ];
+
+                // keep track of what events are triggered
+                var triggered_events = {};
+                hammertime.on(all_events.join(" "), function(ev) {
+                    triggered_events[ev.type] = ev;
+                });
+
+                function testGesture(gesture, expect_events, callback) {
+                    // reset triggered events
+                    triggered_events = {};
+
+                    // trigger the gesture faker
+                    faker.triggerGesture(gesture, function() {
+                        var expect = expect_events.split(" ");
+                        var events = Object.keys(triggered_events);
+                        // _.each(triggered_events, function(ev, name) {
+                        //     testEventData(name, ev);
+                        // });
+
+                        // trigger callback with true/false is all the events are triggered
+                        // if also any other events are triggered it is false
+                        var success = (events.length === expect.length);
+
+                        // error msg
+                        var msg = gesture + " detected";
+                        if (!success) {
+                            msg = gesture + " error. Events thrown: " + events.join(" ");
+                        }
+
+                        // maybe something happens after the end, so wait a moment
+                        callback(success, msg);
+                    });
+                };
+
+                var gesture_tests = {
+                    'Hold': 'touch hold release',
+                    'Tap': 'touch tap release',
+                    'DoubleTap': 'touch tap doubletap release',
+                    'DragRight': 'touch drag dragstart dragright dragend release',
+                    'SwipeRight': 'touch drag dragstart dragright dragend swipe swiperight release',
+                    'Rotate': 'touch transform transformstart transformend rotate release',
+                    'PinchIn': 'touch transform transformstart transformend pinch pinchin release',
+                    'PinchOut': 'touch transform transformstart transformend pinch pinchout release'
+                };
+
+                testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
+                    console.log(success, msg);
+                });
             });
         });
     });
@@ -860,9 +940,8 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             });
         });
 
-
-        it('start, move, end 이벤트가 핸들을 움직였을 때 발생하여야 한다.', function() {
-
+        it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
+            this.timeout(1000);
             input_0.$el.on('start.cs.rangeInput', function(e) {
                 console.log('start', e);
                 expect(e).to.be.an.instanceof($.Event);
@@ -875,7 +954,224 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 console.log('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
+                done();
             });
+            require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
+
+                Hammer.HAS_POINTEREVENTS = false;
+                Hammer.HAS_TOUCHEVENTS = true;
+
+                var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
+                var el = $('#range1').parent().find('> .slider > button')[0];
+                
+
+                var faker = new FakeTouches(el);
+                var hammertime = new Hammer(el);
+                console.log(hammertime);
+
+                var all_events = ["touch", "release", "hold", "tap", "doubletap",
+                    "dragstart", "drag", "dragend", "dragleft", "dragright",
+                    "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
+                    "swipeup", "swipedown", "transformstart", "transform",
+                    "transformend", "rotate", "pinch", "pinchin", "pinchout"
+                ];
+
+                // keep track of what events are triggered
+                var triggered_events = {};
+                hammertime.on(all_events.join(" "), function(ev) {
+                    triggered_events[ev.type] = ev;
+                });
+                console.log(hammertime);
+
+                function testGesture(gesture, expect_events, callback) {
+                    // reset triggered events
+                    triggered_events = {};
+
+                    // trigger the gesture faker
+                    faker.triggerGesture(gesture, function() {
+                        var expect = expect_events.split(" ");
+                        var events = Object.keys(triggered_events);
+                        console.log(expect,events);
+
+                        // trigger callback with true/false is all the events are triggered
+                        // if also any other events are triggered it is false
+                        var success = (events.length === expect.length);
+
+                        // error msg
+                        var msg = gesture + " detected";
+                        if (!success) {
+                            msg = gesture + " error. Events thrown: " + events.join(" ");
+                        }
+
+                        // maybe something happens after the end, so wait a moment
+                        callback(success, msg);
+                    });
+                };
+
+                var gesture_tests = {
+                    'DragRight': 'touch drag dragstart dragright dragend release'
+                };
+
+                testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
+                    console.log(success, msg);
+                });
+            });
+        });
+
+        it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
+            this.timeout(1000);
+            input_1.$el.on('start.cs.rangeInput', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.rangeInput', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.rangeInput', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+                done();
+            });
+            require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
+
+                Hammer.HAS_POINTEREVENTS = false;
+                Hammer.HAS_TOUCHEVENTS = true;
+
+                var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
+                var el = $('#range2').parent().find('> .slider > button')[0];
+                
+
+                var faker = new FakeTouches(el);
+                var hammertime = new Hammer(el);
+
+                var all_events = ["touch", "release", "hold", "tap", "doubletap",
+                    "dragstart", "drag", "dragend", "dragleft", "dragright",
+                    "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
+                    "swipeup", "swipedown", "transformstart", "transform",
+                    "transformend", "rotate", "pinch", "pinchin", "pinchout"
+                ];
+
+                // keep track of what events are triggered
+                var triggered_events = {};
+                hammertime.on(all_events.join(" "), function(ev) {
+                    triggered_events[ev.type] = ev;
+                });
+
+                function testGesture(gesture, expect_events, callback) {
+                    // reset triggered events
+                    triggered_events = {};
+
+                    // trigger the gesture faker
+                    faker.triggerGesture(gesture, function() {
+                        var expect = expect_events.split(" ");
+                        var events = Object.keys(triggered_events);
+
+                        // trigger callback with true/false is all the events are triggered
+                        // if also any other events are triggered it is false
+                        var success = (events.length === expect.length);
+
+                        // error msg
+                        var msg = gesture + " detected";
+                        if (!success) {
+                            msg = gesture + " error. Events thrown: " + events.join(" ");
+                        }
+
+                        // maybe something happens after the end, so wait a moment
+                        callback(success, msg);
+                    });
+                };
+
+                var gesture_tests = {
+                    'DragRight': 'touch drag dragstart dragright dragend release'
+                };
+
+                testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
+                    console.log(success, msg);
+                });
+            });
+        });
+    
+        it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
+            this.timeout(1000);
+            input_2.$el.on('start.cs.rangeInput', function(e) {
+                console.log('start', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
+            }).on('move.cs.rangeInput', function(e) {
+                console.log('move', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
+            }).on('end.cs.rangeInput', function(e) {
+                console.log('end', e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
+                done();
+            });
+            require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
+
+                Hammer.HAS_POINTEREVENTS = false;
+                Hammer.HAS_TOUCHEVENTS = true;
+
+                var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
+                var el = $('#range3').parent().find('> .slider > button')[0];
+                
+
+                var faker = new FakeTouches(el);
+                var hammertime = new Hammer(el);
+
+                var all_events = ["touch", "release", "hold", "tap", "doubletap",
+                    "dragstart", "drag", "dragend", "dragleft", "dragright",
+                    "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
+                    "swipeup", "swipedown", "transformstart", "transform",
+                    "transformend", "rotate", "pinch", "pinchin", "pinchout"
+                ];
+
+                // keep track of what events are triggered
+                var triggered_events = {};
+                hammertime.on(all_events.join(" "), function(ev) {
+                    triggered_events[ev.type] = ev;
+                });
+
+                function testGesture(gesture, expect_events, callback) {
+                    // reset triggered events
+                    triggered_events = {};
+
+                    // trigger the gesture faker
+                    faker.triggerGesture(gesture, function() {
+                        var expect = expect_events.split(" ");
+                        var events = Object.keys(triggered_events);
+
+                        // trigger callback with true/false is all the events are triggered
+                        // if also any other events are triggered it is false
+                        var success = (events.length === expect.length);
+
+                        // error msg
+                        var msg = gesture + " detected";
+                        if (!success) {
+                            msg = gesture + " error. Events thrown: " + events.join(" ");
+                        }
+
+                        // maybe something happens after the end, so wait a moment
+                        callback(success, msg);
+                    });
+                };
+
+                var gesture_tests = {
+                    'DragRight': 'touch drag dragstart dragright dragend release'
+                };
+
+                testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
+                    console.log(success, msg);
+                });
+            });
+        });
+
+
+        it('start, move, end 이벤트가 핸들을 움직였을 때 발생하여야 한다.', function() {
+
+            
 
             input_1.$el.on('start.cs.rangeInput', function(e) {
                 console.log('start', e);
@@ -969,11 +1265,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         var sign;
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-sign','jqeury.hammer','faketouch','showtouch'], function(WidgetSign,Hammer) {
-                Hammer.plugins.fakeMultitouch();
-                Hammer.plugins.showTouches();
-
-                console.log(Hammer.plugins);
+            require(['widget-sign'], function(WidgetSign) {
                 sign = new WidgetSign({
                     el: '#signature'
                 });
@@ -983,22 +1275,93 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             });
         });
 
-        it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
-            sign.$el.on('start.cs.sign', function(e) {
-                console.log('start', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('start');
-            }).on('move.cs.sign', function(e) {
-                console.log('move', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('move');
-            }).on('end.cs.sign', function(e) {
-                console.log('end', e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('end');
-            });
-        });
+        // it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
+        //     this.timeout(5000);
+        //     sign.$el.on('start.cs.sign', function(e) {
+        //         console.log('start', e);
+        //         expect(e).to.be.an.instanceof($.Event);
+        //         expect(e.type).to.be.equal('start');
+        //     }).on('move.cs.sign', function(e) {
+        //         console.log('move', e);
+        //         expect(e).to.be.an.instanceof($.Event);
+        //         expect(e.type).to.be.equal('move');
+        //     }).on('end.cs.sign', function(e) {
+        //         console.log('end', e);
+        //         expect(e).to.be.an.instanceof($.Event);
+        //         expect(e.type).to.be.equal('end');
+        //     });
 
+        //     require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
+
+        //         Hammer.HAS_POINTEREVENTS = true;
+        //         Hammer.HAS_TOUCHEVENTS = false;
+
+        //         var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
+        //         // var el = document.getElementById('mc-canvas');
+        //         // console.log($('#signature > canvas').childNodes[1]);
+        //         // var el = $('#signature > canvas')[0];
+        //         var el = document.getElementById('signature').childNodes[2];
+                
+        //         console.log(el);
+
+        //         var faker = new FakeTouches(el);
+        //         var hammertime = new Hammer(el);
+
+        //         var all_events = ["touch", "release", "hold", "tap", "doubletap",
+        //             "dragstart", "drag", "dragend", "dragleft", "dragright",
+        //             "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
+        //             "swipeup", "swipedown", "transformstart", "transform",
+        //             "transformend", "rotate", "pinch", "pinchin", "pinchout"
+        //         ];
+
+        //         // keep track of what events are triggered
+        //         var triggered_events = {};
+        //         hammertime.on(all_events.join(" "), function(ev) {
+        //             triggered_events[ev.type] = ev;
+        //         });
+
+        //         function testGesture(gesture, expect_events, callback) {
+        //             // reset triggered events
+        //             triggered_events = {};
+
+        //             // trigger the gesture faker
+        //             faker.triggerGesture(gesture, function() {
+        //                 var expect = expect_events.split(" ");
+        //                 var events = Object.keys(triggered_events);
+        //                 // _.each(triggered_events, function(ev, name) {
+        //                 //     testEventData(name, ev);
+        //                 // });
+
+        //                 // trigger callback with true/false is all the events are triggered
+        //                 // if also any other events are triggered it is false
+        //                 var success = (events.length === expect.length);
+
+        //                 // error msg
+        //                 var msg = gesture + " detected";
+        //                 if (!success) {
+        //                     msg = gesture + " error. Events thrown: " + events.join(" ");
+        //                 }
+
+        //                 // maybe something happens after the end, so wait a moment
+        //                 callback(success, msg);
+        //             });
+        //         };
+
+        //         var gesture_tests = {
+        //             'Hold': 'touch hold release',
+        //             'Tap': 'touch tap release',
+        //             'DoubleTap': 'touch tap doubletap release',
+        //             'DragRight': 'touch drag dragstart dragright dragend release',
+        //             'SwipeRight': 'touch drag dragstart dragright dragend swipe swiperight release',
+        //             'Rotate': 'touch transform transformstart transformend rotate release',
+        //             'PinchIn': 'touch transform transformstart transformend pinch pinchin release',
+        //             'PinchOut': 'touch transform transformstart transformend pinch pinchout release'
+        //         };
+        //         testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
+        //             console.log(success, msg);
+        //         });
+        //     });
+        // });
         // it('서명을 완료한 후 이미지로 보기를 눌렀을 때 이미지가 복사되어야 한다.',function(done){
         //     // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
         //     $("button.show-sign").on('click', function (e) {

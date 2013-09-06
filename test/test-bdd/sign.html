@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mocha Spec Runner</title>
+    <link rel="stylesheet" href="css/mocha.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../grunt-dist/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../grunt-dist/src/style/theme-white/cornerstone.css" />
+    <style type="text/css">
+    #mocha-stats li.progress {
+        height: 42px;
+    }
+    .scrollspy-example {
+        position: relative;
+        height: 200px;
+        margin-top: 10px;
+        overflow: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Required for browser reporter -->
+    <div class="container">
+        <div id="mocha" class="row"></div>
+        <div id="mocha-fixture">
+            <section id="plugins" class="col col-lg-12">
+                <!-- Sign -->
+                <section id="sign" class="row">
+                    <header class="page-header">
+                        <h2 class="title">Sign</h2>
+                    </header>
+                    <div class="col col-lg-12">
+                        <div class="widget-sign">
+                            <div id="signature" class="sign"></div>
+                            <div id="tools">
+                                <button class="btn btn-default show-sign">이미지로 보기</button>
+                                <button class="btn btn-danger reset-sign">리셋하기</button>
+                            </div>
+                            <div class="widget-sign-viewer" title="이미지를 보여줄 영역"></div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    <script src="js/mocha.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/chai.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+    // Setup
+    mocha.setup('bdd');
+    mocha.reporter('html');
+    mocha.setup({
+        ignoreLeaks: true
+    });
+    var expect = chai.expect;
+    </script>
+
+    <!-- include source files here... -->
+
+    <!-- Spec files -->
+    <script data-main="spec/sign.config.js" src="js/require.js"></script>
+
+</body>
+
+</html>

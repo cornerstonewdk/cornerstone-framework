@@ -67,7 +67,7 @@
 
         var moves = 0;
         var interval = setInterval(function() {
-            if (moves == 10) {
+            if (moves == 15) {
                 self.triggerEnd();
                 clearInterval(interval);
                 if (callback) {
