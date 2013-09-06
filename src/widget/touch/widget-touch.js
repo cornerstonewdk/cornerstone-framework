@@ -60,9 +60,11 @@
 
         getTouchPageXY:function (e) {
             if (e.type.match("touch.*")) {
-                touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-                e.pageX = touch.pageX;
-                e.pageY = touch.pageY;
+                if ( e.originalEvent.touches.length > 0 ) {
+                    touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                    e.pageX = touch.pageX;
+                    e.pageY = touch.pageY;    
+                }
             }
         },
 
