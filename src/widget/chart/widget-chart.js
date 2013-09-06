@@ -733,7 +733,6 @@
 				};
 
 				var resize = function (e) {
-					console.log(e);
 					chart.update();
 					setTimeout(function () {
 						typeof chart.afterRender === "function" && chart.afterRender("resize");
@@ -758,9 +757,9 @@
 
 
 				// Window Resize Trigger
-				$(window).off("resize._chart").on("resize._chart", function () {
-					if (this.resizeTO) clearTimeout(this.resizeTO);
-					this.resizeTO = setTimeout(function () {
+				$(window).off("resize._chart").on("resize._chart", function (e) {
+					if (e.target.resizeTO) clearTimeout(e.target.resizeTO);
+					e.target.resizeTO = setTimeout(function () {
 						$(this).trigger('resizeEnd');
 					}, 500);
 				});
@@ -828,9 +827,9 @@
 				}
 
 				// Window Resize Trigger
-				$(window).off("resize._chart").on("resize._chart", function () {
-					if (this.resizeTO) clearTimeout(this.resizeTO);
-					this.resizeTO = setTimeout(function () {
+				$(window).off("resize._chart").on("resize._chart", function (e) {
+					if (e.target.resizeTO) clearTimeout(e.target.resizeTO);
+					e.target.resizeTO = setTimeout(function () {
 						$(this).trigger('resizeEnd');
 					}, 500);
 				});
