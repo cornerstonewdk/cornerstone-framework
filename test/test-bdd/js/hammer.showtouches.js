@@ -1,4 +1,15 @@
-(function(Hammer) {
+;
+(function(root, doc, factory) {
+    if (typeof define === "function" && define.amd) {
+        // AMD
+        define(['hammer'], function(Hammer) {
+            factory(root, doc, Hammer);
+        });
+    } else {
+        // None AMD
+        factory(root, doc, root.Hammer);
+    }
+}(window, document, function(window, document) {
     /**
      * ShowTouches gesture
      * show all touch on the screen by placing elements at there pageX and pageY
@@ -67,4 +78,4 @@
             }
         });
     };
-})(window.Hammer);
+}));
