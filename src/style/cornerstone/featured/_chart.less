@@ -1,7 +1,7 @@
 .widget-chart {
   margin: 0;
-  padding: 0;
   margin-left: -10px;
+  padding: 0;
   min-width: 290px;
   height: 300px;
 
@@ -796,8 +796,6 @@ Interactive Layer
   position: relative;
   overflow: hidden;
   padding-left: 10px;
-  width: 900px;
-  height: 600px;
   -webkit-transform-origin: 0 0;
 }
 
@@ -1117,11 +1115,12 @@ Interactive Layer
 }
 
 .widget-chart3d-hbar {
-  padding: 20px 0 0 0;
+  min-height: 140px;
 }
 
 .widget-chart3d-hbar .wrapper {
-  -webkit-transform: scale(0.75) rotateZ(90deg);
+  -webkit-transform: scale(0.75) rotateZ(90deg) translate(30px, -600px);
+  -webkit-transform-origin: 0 0;
   -webkit-perspective: 1440;
 }
 
@@ -1149,8 +1148,8 @@ Interactive Layer
   -webkit-transform: translateZ(24px) scale(1) rotateZ(-90deg);
 }
 
-.widget-chart3d-hbar .figure .legend {
-  -webkit-transform: translateX(-455px) translateY(-186px) translateZ(0) rotateZ(-90deg);
+.widget-chart3d .figure .legend {
+  -webkit-transform-origin: 0 0;
 }
 
 // Color preset
