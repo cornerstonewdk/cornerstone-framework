@@ -1,7 +1,8 @@
 require.config({
     "paths": {
-        "faketouch": "../js/hammer.fakemultitouch",
-        "showtouch": "../js/hammer.showtouches",
+        "faketouches": "../js/faketouches",
+        "showtouches": "../js/hammer.showtouches",
+        "gestures": "../js/gestures",
         "backbone": "../../../grunt-dist/lib/backbone/backbone-min",
         "blackbird": "../../../grunt-dist/lib/blackbird/blackbird",
         "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap",
@@ -54,10 +55,24 @@ require.config({
         "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
         "widget-tab": "../../../grunt-dist/src/widget/tab/widget-tab",
         "widget-tooltip": "../../../grunt-dist/src/widget/tooltip/widget-tooltip",
-        "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch",
+        "widget-touch": "../../../src/widget/touch/widget-touch",
         "widget-typeahead": "../../../grunt-dist/src/widget/typeahead/widget-typeahead"
     },
     "shim": {
+        "faketouches": {
+            "exports": "faketouches"
+        },
+        "showtouches": {
+            "deps": [
+                "hammer"
+            ]
+        },
+        "gestures": {
+            "deps": [
+                "faketouches"
+            ],
+            "exports": "gestures"
+        },
         "backbone": {
             "deps": [
                 "underscore"
@@ -413,16 +428,6 @@ require.config({
                 "typeahead"
             ],
             "exports": "widget-typeahead"
-        },
-        "faketouch": {
-            "deps": [
-                "jquery.hammer",
-            ]
-        },
-        "showtouch": {
-            "deps": [
-                "jquery.hammer",
-            ]
         }
     }
 });
