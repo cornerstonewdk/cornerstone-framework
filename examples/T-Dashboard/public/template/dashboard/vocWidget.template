@@ -1,3 +1,2 @@
-<div class="lists scroller">
-	<ul id="vocWidgetList" class="lists-con"></ul>
-</div>
+<ul id="vocWidgetList" class="list-group list-group-flush list-group-cornerstone">
+</ul>

@@ -1,1 +1,3 @@
-<li data-id="{{pricePlanId}}">{{pricePlanName}}</li>
+<li data-id="{{pricePlanId}}" class="list-group-item">
+	{{pricePlanName}}
+</li>

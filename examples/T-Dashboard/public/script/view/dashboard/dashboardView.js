@@ -2,7 +2,7 @@ define(
 	[
 		'jquery', 
 		'backbone',
-		'view/dashboard/twitterWidget', 
+		//'view/dashboard/twitterWidget', 
 		'view/dashboard/youtubeWidget', 
 		'view/dashboard/vocSatisfactionWidget', 
 		'view/dashboard/vocWidget', 
@@ -17,7 +17,7 @@ define(
 	], function(
 		$, 
 		Backbone, 
-		TwitterWidget,
+		//TwitterWidget,
 		YoutubeWidget, 
 		VocSatisfactionWidget, 
 		VocWidget, 
@@ -188,8 +188,8 @@ define(
 			$('#reportChart').parent().spinner('hide');
 			
 			//트위터 그리기
-			var twitterWidget = new TwitterWidget();
-			twitterWidget.render();
+			// var twitterWidget = new TwitterWidget();
+			// twitterWidget.render();
 			
 			//blog 그리기
 			var blogWidget = new BlogWidget();
