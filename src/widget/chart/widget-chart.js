@@ -11,6 +11,11 @@
 	var root = this,
 		pluginName = "featuredChart",
 		HAS_TOUCH = ('ontouchstart' in window),
+		eventName = {
+			shown: "shown.cs.chart",
+			animationEnd: "animationEnd.cs.chart",
+			complete: "shown.cs.chart"
+		},
 		isDebug = true,
 		chart,
 		self;
@@ -28,13 +33,16 @@
 	FeaturedChart.prototype = {
 		afterRender: function (target, options, chart) {
 			this.$el.data("currentChart", chart);
-			this.$el.data("currentChartControl", options.control);
+			this.$el.data("currentChartControlsData", options.controlsData);
 
 			var controlsWrap = target.select('.nv-controlsWrap');
 			controlsWrap.attr("transform", "translate(-55," + this.util.getTranslateJson(controlsWrap).y + ")");
 
 			this.util.removeClip(target);
 			this.util.applyBindEvent(target, options, chart, this);
+		},
+		update: function (options) {
+			this.render(options);
 		},
 		render: function (options) {
 			if (!navigator.userAgent.toLowerCase().match(/webkit/gi)
@@ -47,10 +55,7 @@
 			target.$parent = this.$el;
 
 			if (options.chartType.match(/.*bar3d.*/gi)) {
-
 				self[options.chartType + "Chart"](target, options);
-
-
 			} else {
 				nv.addGraph((function (self, target, options) {
 					var colorLength = options.color.length;
@@ -66,21 +71,7 @@
 						isDebug && console.log(options);
 					}
 
-					if ("pie" === options.chartType) {
-
-					} else {
-						if ("linePlusBar" === options.chartType) {
-							chart.xAxis
-								.showMaxMin(options.showMaxMin)
-								.tickFormat(d3.format(options.format));
-
-							chart.y1Axis.tickFormat(d3.format(options.format));
-							chart.y2Axis.tickFormat(d3.format(options.format));
-						} else {
-							chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-							chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
-						}
-					}
+					self.util.activeAxisLabel(target, options, chart);
 
 					var customChart = options.beforeRender(target, options, chart);
 					chart = typeof customChart === "function" ? customChart : chart;
@@ -91,21 +82,29 @@
 						.transition()
 						.duration(500)
 						.each("end", function () {
-							$(self.el).trigger("shown");
+							$(self.el).trigger(eventName.shown);
 
-							isDebug && isDebug && console.log("shown");
+							isDebug && isDebug && console.log(eventName.shown);
+
+							if (options.chartType.match(/line/gi) || !options.chartType.match(/bar.*|horizontalBar.*/gi)) {
+								$(self.el).trigger(eventName.complete);
+
+								isDebug && isDebug && console.log(eventName.complete);
+							}
 						})
 						.call(chart);
 
 					typeof chart.afterRender === "function" && chart.afterRender("render");
 
 					chart.multibar && chart.multibar.dispatch.on("animated", function (d) {
-						$(self.el).trigger("animationEnd", d);
+						$(self.el).trigger(eventName.animationEnd, {target: d.target, data: d.data});
+
+						isDebug && console.log(eventName.animationEnd);
 					});
 
-					chart.multibar && chart.multibar.dispatch.on("lastAnimated", function (d) {
-						$(self.el).trigger("complete", d);
-						isDebug && console.log("complete", d);
+					chart.multibar && chart.multibar.dispatch.on("lastAnimated", function () {
+						$(self.el).trigger(eventName.complete);
+						isDebug && console.log(eventName.complete);
 
 						target.$parent.hasClass("overlay") && target.$parent.removeClass("overlay");
 					});
@@ -249,9 +248,13 @@
 			return chart;
 
 		},
-		linePlusBarChart: function () {
+		linePlusBarChart: function (target, options) {
 			chart = nv.models.linePlusBarChart();
 			chart.bars.forceY([0]);
+			chart.xAxis.showMaxMin(options.showMaxMin).tickFormat(d3.format(options.format));
+			chart.y1Axis.tickFormat(d3.format(options.format));
+			chart.y2Axis.tickFormat(d3.format(options.format));
+
 			return chart;
 		},
 		lineFocusChart: function (target, options) {
@@ -530,10 +533,14 @@
 					barTimer = setTimeout(function () {
 						i++;
 						displayGraph(bars, i);
-						$(self.el).trigger("animationEnd");
+						$(self.el).trigger(eventName.animationEnd);
 
-						if (bars.length === i + 1) {
-							$(self.el).trigger("complete");
+						isDebug && isDebug && console.log(eventName.animationEnd);
+
+						if (bars.length === i) {
+							$(self.el).trigger(eventName.complete);
+
+							isDebug && isDebug && console.log(eventName.complete);
 						}
 					}, 100);
 				}
@@ -541,7 +548,7 @@
 
 			// Reset graph settings and prepare for display
 			function resetGraph() {
-				$(self.el).trigger("shown");
+				isDebug && isDebug && console.log(eventName.shown);
 				self.util.applyBindEvent3dChart(target, options);
 				// Turn off transitions for instant reset
 				$.each(bars, function (i) {
@@ -600,6 +607,8 @@
 					container.css('-webkit-transform', graphTransform);
 				}
 			});
+
+			$(self.el).trigger(eventName.shown);
 
 			// Finally, display graph via reset function
 			resetGraph();
@@ -716,11 +725,31 @@
 				}
 				return target;
 			},
+			activeAxisLabel: function (target, options, chart) {
+				if ("horizontalBar" === options.chartType) {
+					chart.margin({top: 30, right: 20, bottom: 50, left: 90});
+					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+				} else if ("linePlusBar" === options.chartType) {
+					chart.margin({top: 30, right: 90, bottom: 50, left: 90});
+					chart.xAxis.showMaxMin(options.showMaxMin).axisLabel(options.xAxisLabel);
+					chart.y1Axis.axisLabel(options.yAxisLabel);
+					chart.y2Axis.axisLabel(options.y2AxisLabel);
+				} else if ("lineFocus" === options.chartType) {
+					chart.margin({top: 30, right: 20, bottom: 50, left: 90});
+					chart.xAxis.showMaxMin(options.showMaxMin).axisLabel(options.xAxisLabel);
+					chart.yAxis.axisLabel(options.yAxisLabel);
+				} else {
+					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+				}
+			},
 			applyBindEvent: function (target, options, chart, object) {
 				var stateChange = function (e) {
 					isDebug && console.log("New State:", JSON.stringify(e));
 					// 애니매이션 중 이벤트 방지
 					!target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
+
 					setTimeout(function () {
 						typeof chart.afterRender === "function" && chart.afterRender("stateChange");
 
@@ -754,7 +783,6 @@
 						!options.autoResize || resize(e);
 					});
 				}
-
 
 				// Window Resize Trigger
 				$(window).off("resize._chart").on("resize._chart", function (e) {
@@ -840,8 +868,9 @@
 	$.fn.featuredChart = function (options) {
 		var defaultOptions = {
 			chartType: "bar",
-			xAxisLabel: "",
-			yAxisLabel: "",
+			xAxisLabel: "X",
+			yAxisLabel: "Y",
+			y2AxisLabel: "Y2",
 			format: ".0f",
 			data: {},
 			showMaxMin: true,
@@ -907,7 +936,7 @@
 	if (typeof root.define === "function" && root.define.amd) {
 		var define = root.define;
 		// AMD. Register as an anonymous module.
-		define([ "jquery", "underscore", "backbone", "d3", "nv"], function ($, _, Backbone) {
+		define([ "jquery", "underscore", "backbone", "d3", "nv", "widget-touch"], function ($, _, Backbone) {
 			return Backbone.View.extend({
 				model: new Backbone.Model(),
 				initialize: function () {
