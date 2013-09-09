@@ -11,6 +11,11 @@
 	var root = this,
 		pluginName = "featuredChart",
 		HAS_TOUCH = ('ontouchstart' in window),
+		eventName = {
+			shown: "shown.cs.chart",
+			animationEnd: "animationEnd.cs.chart",
+			complete: "shown.cs.chart"
+		},
 		isDebug = true,
 		chart,
 		self;
@@ -76,15 +81,15 @@
 						.datum(options.data)
 						.transition()
 						.duration(500)
-						.each("end", function (d) {
-							$(self.el).trigger("shown");
+						.each("end", function () {
+							$(self.el).trigger(eventName.shown);
 
-							isDebug && isDebug && console.log("shown");
+							isDebug && isDebug && console.log(eventName.shown);
 
 							if (options.chartType.match(/line/gi) || !options.chartType.match(/bar.*|horizontalBar.*/gi)) {
-								$(self.el).trigger("complete");
+								$(self.el).trigger(eventName.complete);
 
-								isDebug && isDebug && console.log("complete");
+								isDebug && isDebug && console.log(eventName.complete);
 							}
 						})
 						.call(chart);
@@ -92,14 +97,14 @@
 					typeof chart.afterRender === "function" && chart.afterRender("render");
 
 					chart.multibar && chart.multibar.dispatch.on("animated", function (d) {
-						$(self.el).trigger("animationEnd", {target: d.target, data: d.data});
+						$(self.el).trigger(eventName.animationEnd, {target: d.target, data: d.data});
 
-						isDebug && console.log("animationEnd");
+						isDebug && console.log(eventName.animationEnd);
 					});
 
-					chart.multibar && chart.multibar.dispatch.on("lastAnimated", function (d) {
-						$(self.el).trigger("complete");
-						isDebug && console.log("complete");
+					chart.multibar && chart.multibar.dispatch.on("lastAnimated", function () {
+						$(self.el).trigger(eventName.complete);
+						isDebug && console.log(eventName.complete);
 
 						target.$parent.hasClass("overlay") && target.$parent.removeClass("overlay");
 					});
@@ -528,14 +533,14 @@
 					barTimer = setTimeout(function () {
 						i++;
 						displayGraph(bars, i);
-						$(self.el).trigger("animationEnd");
+						$(self.el).trigger(eventName.animationEnd);
 
-						isDebug && isDebug && console.log("animationEnd");
+						isDebug && isDebug && console.log(eventName.animationEnd);
 
 						if (bars.length === i) {
-							$(self.el).trigger("complete");
+							$(self.el).trigger(eventName.complete);
 
-							isDebug && isDebug && console.log("complete");
+							isDebug && isDebug && console.log(eventName.complete);
 						}
 					}, 100);
 				}
@@ -543,9 +548,7 @@
 
 			// Reset graph settings and prepare for display
 			function resetGraph() {
-				$(self.el).trigger("shown");
-
-				isDebug && isDebug && console.log("shown");
+				isDebug && isDebug && console.log(eventName.shown);
 				self.util.applyBindEvent3dChart(target, options);
 				// Turn off transitions for instant reset
 				$.each(bars, function (i) {
@@ -604,6 +607,8 @@
 					container.css('-webkit-transform', graphTransform);
 				}
 			});
+
+			$(self.el).trigger(eventName.shown);
 
 			// Finally, display graph via reset function
 			resetGraph();
