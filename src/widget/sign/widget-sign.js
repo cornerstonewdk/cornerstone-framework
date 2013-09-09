@@ -365,8 +365,6 @@ MIT License <http://www.opensource.org/licenses/mit-license.php>
 		this.data = storageObject // we expect this to be an instance of Array
 		this.context = context
 
-		console.log('check',this.data,this.context);
-
 		if (storageObject.length){
 			// we have data to render
 			var numofstrokes = storageObject.length

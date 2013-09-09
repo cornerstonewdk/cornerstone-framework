@@ -4,7 +4,7 @@ require.config({
         "showtouches": "../js/hammer.showtouches",
         "gestures": "../js/gestures",
         "backbone": "../../../grunt-dist/lib/backbone/backbone-min",
-        "blackbird": "../../../grunt-dist/lib/blackbird/blackbird",
+        "blackbird": "../../../grunt-dist/lib/blackbirdjs/blackbird",
         "bootstrap": "../../../grunt-dist/lib/bootstrap/js/bootstrap",
         "datatable": "../../../grunt-dist/lib/DataTables/jquery.dataTables.min",
         "d3": "../../../grunt-dist/lib/d3/d3.v3.min",
@@ -160,7 +160,8 @@ require.config({
         "logging": {
             "deps": [
                 "blackbird"
-            ]
+            ],
+            "exports": "logging"
         },
         "media": {
             "deps": [
@@ -432,7 +433,20 @@ require.config({
     }
 });
 
-require( [ 'jquery','spec' ], function( $ ) {
+require( [ 'jquery', 'logging', 'spec' ], function( $, Logging ) {
+    Logging.config( {
+        defaultLevel: 'debug',
+        debug: 'screen',
+        info: 'screen',
+        warn: 'screen',
+        error: 'screen',
+        time: 'screen'
+    } );
+
+    window.Logging = Logging;
+    
+    $('#blackbird').css({'margin-top': '60px'});
+
 	// INITIALIZE THE RUN
 	$(document).on('click', 'a[href="#"], [type="submit"]', function(e) {
         e.preventDefault();

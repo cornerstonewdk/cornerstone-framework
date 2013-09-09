@@ -1,5 +1,5 @@
 describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() {
-
+    
     describe('widget-carousel', function() {
         var cs;
 
@@ -11,7 +11,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 });
                 cs.$el.on('complete.cs.carousel', function(e) {
                     e.stopPropagation();
-                    console.log('carousel img load complete.', e);
+                    Logging.info('carousel img load complete.', e);
                     done();
                 });
                 cs.render();
@@ -25,7 +25,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
             cs.$el.on('play.cs.carousel', function(e) {
-                console.log('play.cs.carousel 발생', e);
+                Logging.info('play.cs.carousel 발생', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('play');
                 done();
@@ -38,7 +38,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('케로셀이 멈출 때 pause 이벤트가 발생하여야 한다.', function(done) {
             cs.$el.on('pause.cs.carousel', function(e) {
-                console.log('pause.cs.carousel 발생');
+                Logging.info('pause.cs.carousel 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('pause');
                 done();
@@ -102,7 +102,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             it('버튼 클릭시 toggleOn 이벤트가 발생해야 한다', function(done) {
                 sTgBtn.$el.on('toggleOn.cs.button', function(e) {
-                    console.log('싱글 토글 버튼 toggleOn 발생', e);
+                    Logging.info('싱글 토글 버튼 toggleOn 발생', e);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.equal('toggleOn');
                     done();
@@ -115,7 +115,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             it('이미 토글되어 있는 버튼 클릭시 toggleOff 이벤트가 발생해야 한다.', function(done) {
                 sTgBtn.$el.on('toggleOff.cs.button', function(e) {
-                    console.log('싱글 토글 버튼 toggleOff 발생', e);
+                    Logging.info('싱글 토글 버튼 toggleOff 발생', e);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.equal('toggleOff');
                     done();
@@ -148,7 +148,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             it('첫번째 체크 박스를 클릭했을 때 toggleOn 이벤트가 발생하여야 한다.', function(done) {
                 checkbox.$el.on('toggleOn.cs.button', function(e, el) {
-                    console.log('toggleOn 발생', el);
+                    Logging.info('toggleOn 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
                     expect(el).to.not.be.undefined;
@@ -165,7 +165,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             it('선택된 첫번째 체크 박스를 클릭했을 때 toggleOff 이벤트가 발생하여야 한다.', function(done) {
                 checkbox.$el.on('toggleOff.cs.button', function(e, el) {
-                    console.log('toggleOff 발생', el);
+                    Logging.info('toggleOff 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
                     expect(el).to.not.be.undefined;
@@ -184,7 +184,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 checkbox.$el.off('toggleOn.cs.button').off('toggleOff.cs.button');
 
                 checkbox.$el.on('toggleOn.cs.button', function(e, el) {
-                    console.log('toggleOn 발생', el);
+                    Logging.info('toggleOn 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
                     expect(el).to.not.be.undefined;
@@ -200,7 +200,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 checkbox.$el.off('toggleOn.cs.button').off('toggleOff.cs.button');
 
                 checkbox.$el.on('toggleOn.cs.button', function(e, el) {
-                    console.log('toggleOn 발생', el);
+                    Logging.info('toggleOn 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
                     expect(el).to.not.be.undefined;
@@ -215,7 +215,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             it('세번째 체크 박스를 클릭했을 때 toggleOff 이벤트가 발생하여야 하고 두번째 체크박스만 .active를 가져야 한다.', function(done) {
                 checkbox.$el.off('toggleOn.cs.button').off('toggleOff.cs.button');
                 checkbox.$el.on('toggleOff.cs.button', function(e, el) {
-                    console.log('toggleOff 발생', el);
+                    Logging.info('toggleOff 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
                     expect(el).to.not.be.undefined;
@@ -230,9 +230,9 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             it('기존 테스트용 이벤트 리스너를 초기화 한다.', function() {
                 checkbox.$el.off('toggleOn.cs.button').off('toggleOff.cs.button');
                 checkbox.$el.on('toggleOff.cs.button', function(e, el) {
-                    console.log('toggleOff 발생', el);
+                    Logging.info('toggleOff 발생', el);
                 }).on('toggleOn.cs.button', function(e, el) {
-                    console.log('toggleOn 발생', el);
+                    Logging.info('toggleOn 발생', el);
                 });
             });
         });
@@ -257,7 +257,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             it('첫번째 라디오 버튼 클릭 시 toggleOn 이벤트가 발생하여야 한다.', function(done) {
                 radio.$el.on('toggleOn.cs.button', function(e, el) {
-                    console.log('toggleOn 발생', el);
+                    Logging.info('toggleOn 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
                     expect(el).to.not.be.undefined;
@@ -274,13 +274,13 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             it('두번째 라디오 버튼을 클릭 시 toggleOff와 toggleOn이 동시에 발생하여야 한다.', function(done) {
                 radio.$el.on('toggleOff.cs.button', function(e, el) {
-                    console.log('toggleOff 발생', e, el);
+                    Logging.info('toggleOff 발생', e, el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOff');
                     expect(el).to.not.be.undefined;
                     done();
                 }).off('toggleOn.cs.button').on('toggleOn.cs.button', function(e, el) {
-                    console.log('toggleOn 발생', el);
+                    Logging.info('toggleOn 발생', el);
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('toggleOn');
                     expect(el).to.not.be.undefined;
@@ -342,7 +342,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     barChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('barChart shown', e);
+                        Logging.info('barChart shown', e);
                         done();
                     });
                     barChart.render();
@@ -353,11 +353,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             it('각각의 바에 에니메이션이 끝날때 마다 animationEnd가 발생하고 모두 완료된 후 complete 이벤트가 발생되어야 한다.', function(done) {
                 barChart.$el.on('animationEnd', function(e) {
                     e.stopPropagation();
-                    console.log('barChart animationEnd', e);
+                    Logging.info('barChart animationEnd', e);
                 });
                 barChart.$el.on('complete', function(e) {
                     e.stopPropagation();
-                    console.log('barChart animation complete', e);
+                    Logging.info('barChart animation complete', e);
                     done();
                 });
                 // barChart.$el.find('g.nv-series:eq(1)').click();
@@ -382,7 +382,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     horizontalBarChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('horizontalBarChart shown', e);
+                        Logging.info('horizontalBarChart shown', e);
                         done();
                     });
                     horizontalBarChart.render();
@@ -410,7 +410,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     linePlusBarChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('linePlusBarChart shown', e);
+                        Logging.info('linePlusBarChart shown', e);
                         done();
                     });
                     linePlusBarChart.render();
@@ -437,7 +437,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     lineChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('lineChart shown', e);
+                        Logging.info('lineChart shown', e);
                         done();
                     });
                     lineChart.render();
@@ -464,7 +464,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     pieChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('pieChart shown', e);
+                        Logging.info('pieChart shown', e);
                         done();
                     });
                     pieChart.render();
@@ -492,7 +492,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     bar3dChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('bar3dChart shown', e);
+                        Logging.info('bar3dChart shown', e);
                         done();
                     });
                     bar3dChart.render();
@@ -520,7 +520,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     horizontal3dBarChart.$el.on('shown', function(e) {
                         e.stopPropagation();
-                        console.log('horizontal3dBarChart shown', e);
+                        Logging.info('horizontal3dBarChart shown', e);
                         done();
                     });
                     horizontal3dBarChart.render();
@@ -547,7 +547,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         //             // lineFocusChart.$el.on('shown', function(e) {
         //             //     e.stopPropagation();
-        //             //     console.log('lineFocusChart shown', e);
+        //             //     Logging.info('lineFocusChart shown', e);
         //             //     done();
         //             // });
         //             lineFocusChart.render();
@@ -578,7 +578,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             this.timeout(2000);
             setTimeout(function() {}, 500);
             table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
-                console.log('itemClick.cs.datatables', result);
+                Logging.info('itemClick.cs.datatables', result);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('itemClick');
                 expect(e.namespace).to.be.equal('cs.datatables');
@@ -595,7 +595,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
             require(['widget-datepicker'], function(WidgetDatepicker) {
-                console.log(WidgetDatepicker);
                 datepicker = new WidgetDatepicker({
                     el: '#date-picker1',
                     format: 'yyyy-MM-dd hh:mm:ss'
@@ -660,7 +659,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('에디터에 포커스를 잃으면 blur 이벤트가 발생하여야 한다.', function(done) {
             editor.$el.on('blur', function(e) {
-                console.log('editor blur', e);
+                Logging.info('editor blur', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('blur');
                 done();
@@ -741,7 +740,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         errorMsg: '다시 시도해주세요.',
                         successMsg: '성공',
                         onSuccess: function() {
-                            console.log("성공");
+                            Logging.info("성공");
                         }
                     });
                     expect(captcha).to.be.an.instanceof(Backbone.View);
@@ -754,28 +753,28 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             this.timeout(2000);
             captcha.$el.on('start.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
-                console.log('start', e);
+                Logging.info('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
-                console.log('move', e);
+                Logging.info('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
-                console.log('end', e);
+                Logging.info('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
                 done();
             }).on('fail.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
-                console.log('fail', e);
+                Logging.info('fail', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('fail');
             }).on('success.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
-                console.log('success', e);
+                Logging.info('success', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('success');
             });
@@ -842,7 +841,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 };
 
                 testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
-                    console.log(success, msg);
+                    Logging.info(success, msg);
                 });
             });
         });
@@ -880,11 +879,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('싱글 팝오버 버튼을 클릭하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
             singlePop.$el.on('show.bs.popover', function(e) {
-                console.log('show.bs.popover 발생');
+                Logging.info('show.bs.popover 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
             }).on('shown.bs.popover', function(e) {
-                console.log('shown.bs.popover 발생');
+                Logging.info('shown.bs.popover 발생');
                 e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('shown');
@@ -896,11 +895,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         it('첫번째 버튼을 다시 클릭하면 hide,hidden 이벤트가 발생하여야 한다.', function(done) {
             this.timeout(1000);
             singlePop.$el.on('hide.bs.popover', function(e) {
-                console.log('hide.bs.popover 발생');
+                Logging.info('hide.bs.popover 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
             }).on('hidden.bs.popover', function(e) {
-                console.log('hidden.bs.popover 발생');
+                Logging.info('hidden.bs.popover 발생');
                 e.preventDefault();
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
@@ -943,15 +942,15 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
             this.timeout(1000);
             input_0.$el.on('start.cs.rangeInput', function(e) {
-                console.log('start', e);
+                Logging.info('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.rangeInput', function(e) {
-                console.log('move', e);
+                Logging.info('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.rangeInput', function(e) {
-                console.log('end', e);
+                Logging.info('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
                 done();
@@ -963,11 +962,9 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                 var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
                 var el = $('#range1').parent().find('> .slider > button')[0];
-                
 
                 var faker = new FakeTouches(el);
                 var hammertime = new Hammer(el);
-                console.log(hammertime);
 
                 var all_events = ["touch", "release", "hold", "tap", "doubletap",
                     "dragstart", "drag", "dragend", "dragleft", "dragright",
@@ -981,7 +978,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 hammertime.on(all_events.join(" "), function(ev) {
                     triggered_events[ev.type] = ev;
                 });
-                console.log(hammertime);
 
                 function testGesture(gesture, expect_events, callback) {
                     // reset triggered events
@@ -991,7 +987,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     faker.triggerGesture(gesture, function() {
                         var expect = expect_events.split(" ");
                         var events = Object.keys(triggered_events);
-                        console.log(expect,events);
 
                         // trigger callback with true/false is all the events are triggered
                         // if also any other events are triggered it is false
@@ -1013,7 +1008,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 };
 
                 testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
-                    console.log(success, msg);
+                    Logging.info(success, msg);
                 });
             });
         });
@@ -1021,15 +1016,15 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
             this.timeout(1000);
             input_1.$el.on('start.cs.rangeInput', function(e) {
-                console.log('start', e);
+                Logging.info('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.rangeInput', function(e) {
-                console.log('move', e);
+                Logging.info('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.rangeInput', function(e) {
-                console.log('end', e);
+                Logging.info('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
                 done();
@@ -1088,7 +1083,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 };
 
                 testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
-                    console.log(success, msg);
+                    Logging.info(success, msg);
                 });
             });
         });
@@ -1096,15 +1091,15 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
             this.timeout(1000);
             input_2.$el.on('start.cs.rangeInput', function(e) {
-                console.log('start', e);
+                Logging.info('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.rangeInput', function(e) {
-                console.log('move', e);
+                Logging.info('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.rangeInput', function(e) {
-                console.log('end', e);
+                Logging.info('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
                 done();
@@ -1163,7 +1158,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 };
 
                 testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
-                    console.log(success, msg);
+                    Logging.info(success, msg);
                 });
             });
         });
@@ -1174,29 +1169,29 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             
 
             input_1.$el.on('start.cs.rangeInput', function(e) {
-                console.log('start', e);
+                Logging.info('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.rangeInput', function(e) {
-                console.log('move', e);
+                Logging.info('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.rangeInput', function(e) {
-                console.log('end', e);
+                Logging.info('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
             });
 
             input_2.$el.on('start.cs.rangeInput', function(e) {
-                console.log('start', e);
+                Logging.info('start', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('start');
             }).on('move.cs.rangeInput', function(e) {
-                console.log('move', e);
+                Logging.info('move', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('move');
             }).on('end.cs.rangeInput', function(e) {
-                console.log('end', e);
+                Logging.info('end', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
             });
@@ -1278,15 +1273,15 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         // it('서명을 그릴때 start, move, end 이벤트가 발생하여야 한다.', function() {
         //     this.timeout(5000);
         //     sign.$el.on('start.cs.sign', function(e) {
-        //         console.log('start', e);
+        //         Logging.info('start', e);
         //         expect(e).to.be.an.instanceof($.Event);
         //         expect(e.type).to.be.equal('start');
         //     }).on('move.cs.sign', function(e) {
-        //         console.log('move', e);
+        //         Logging.info('move', e);
         //         expect(e).to.be.an.instanceof($.Event);
         //         expect(e.type).to.be.equal('move');
         //     }).on('end.cs.sign', function(e) {
-        //         console.log('end', e);
+        //         Logging.info('end', e);
         //         expect(e).to.be.an.instanceof($.Event);
         //         expect(e.type).to.be.equal('end');
         //     });
@@ -1298,11 +1293,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         //         var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
         //         // var el = document.getElementById('mc-canvas');
-        //         // console.log($('#signature > canvas').childNodes[1]);
+        //         // Logging.info($('#signature > canvas').childNodes[1]);
         //         // var el = $('#signature > canvas')[0];
         //         var el = document.getElementById('signature').childNodes[2];
                 
-        //         console.log(el);
+        //         Logging.info(el);
 
         //         var faker = new FakeTouches(el);
         //         var hammertime = new Hammer(el);
@@ -1358,7 +1353,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         //             'PinchOut': 'touch transform transformstart transformend pinch pinchout release'
         //         };
         //         testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
-        //             console.log(success, msg);
+        //             Logging.info(success, msg);
         //         });
         //     });
         // });
@@ -1384,12 +1379,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     el: 'body'
                 });
                 body_spinner.$el.on('show.cs.spinner', function(e) {
-                    console.log('show spinner');
+                    Logging.info('show spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
                     expect(e.namespace).to.be.equal('cs.spinner');
                 }).on('shown.cs.spinner', function(e) {
-                    console.log('shown spinner');
+                    Logging.info('shown spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
                     expect(e.namespace).to.be.equal('cs.spinner');
@@ -1402,12 +1397,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
             body_spinner.$el.on('hide.cs.spinner', function(e) {
-                console.log('hide spinner');
+                Logging.info('hide spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
                 expect(e.namespace).to.be.equal('cs.spinner');
             }).on('hidden.cs.spinner', function(e) {
-                console.log('hidden spinner');
+                Logging.info('hidden spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
                 expect(e.namespace).to.be.equal('cs.spinner');
@@ -1424,13 +1419,13 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 });
                 inner_spinner.$el.on('show.cs.spinner', function(e) {
                     e.stopPropagation();
-                    console.log('inner show spinner');
+                    Logging.info('inner show spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
                     expect(e.namespace).to.be.equal('cs.spinner');
                 }).on('shown.cs.spinner', function(e) {
                     e.stopPropagation();
-                    console.log('inner shown spinner');
+                    Logging.info('inner shown spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
                     expect(e.namespace).to.be.equal('cs.spinner');
@@ -1444,13 +1439,13 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
             inner_spinner.$el.on('hide.cs.spinner', function(e) {
                 e.stopPropagation();
-                console.log('inner hide spinner');
+                Logging.info('inner hide spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
                 expect(e.namespace).to.be.equal('cs.spinner');
             }).on('hidden.cs.spinner', function(e) {
                 e.stopPropagation();
-                console.log('inner hidden spinner');
+                Logging.info('inner hidden spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
                 expect(e.namespace).to.be.equal('cs.spinner');
@@ -1518,11 +1513,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         it('첫번째 버튼에 마우스를 오버하면 show,shown 이벤트가 발생하여야 한다.', function(done) {
             singleTooltip.$el.each(function() {
                 $(this).on('show.bs.tooltip', function(e) {
-                    console.log('show.bs.tooltip 발생');
+                    Logging.info('show.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
                 }).on('shown.bs.tooltip', function(e) {
-                    console.log('shown.bs.tooltip 발생');
+                    Logging.info('shown.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
                     done();
@@ -1535,11 +1530,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             singleTooltip.$el.each(function() {
                 $(this).on('hide.bs.tooltip', function(e) {
-                    console.log('hide.bs.tooltip 발생');
+                    Logging.info('hide.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('hide');
                 }).on('hidden.bs.tooltip', function(e) {
-                    console.log('hidden.bs.tooltip 발생');
+                    Logging.info('hidden.bs.tooltip 발생');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('hidden');
                     done();
@@ -1550,19 +1545,19 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('왼쪽 툴팁에 마우스 오버 및 해제시 이벤트가 순서대로 발생하여야 한다. show -> shown -> hide -> hidden', function(done) {
             leftTooltip.$el.on('show.bs.tooltip', function(e) {
-                console.log('show.bs.tooltip 발생');
+                Logging.info('show.bs.tooltip 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('show');
             }).on('shown.bs.tooltip', function(e) {
-                console.log('shown.bs.tooltip 발생');
+                Logging.info('shown.bs.tooltip 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('shown');
             }).on('hide.bs.tooltip', function(e) {
-                console.log('hide.bs.tooltip 발생');
+                Logging.info('hide.bs.tooltip 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
             }).on('hidden.bs.tooltip', function(e) {
-                console.log('hidden.bs.tooltip 발생');
+                Logging.info('hidden.bs.tooltip 발생');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
                 done();
@@ -1600,7 +1595,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('검색된 2개의 결과물중 2번째 "South Korea"를 클릭하면 selected이벤트가 발생하여야 한다.', function(done) {
             typeahead.$el.on('selected.cs.typeahead', function(e, datum, dataset) {
-                console.log(e, datum, dataset);
+                Logging.info(e, datum, dataset);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('selected');
                 expect(e.namespace).to.be.equal('cs.typeahead');
@@ -1613,7 +1608,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('직접 테스트를 하기위해 기존 이벤트(selected의 값 비교 로직) 제거 후 재바인딩', function() {
             typeahead.$el.off('selected.cs.typeahead').on('selected.cs.typeahead', function(e, datum, dataset) {
-                console.log(e, datum, dataset);
+                Logging.info(e, datum, dataset);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('selected');
                 expect(e.namespace).to.be.equal('cs.typeahead');
