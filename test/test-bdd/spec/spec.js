@@ -1264,6 +1264,19 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 sign = new WidgetSign({
                     el: '#signature'
                 });
+                sign.$el.on('start.cs.sign', function(e) {
+                    Logging.info('start', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('start');
+                }).on('move.cs.sign', function(e) {
+                    Logging.info('move', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('move');
+                }).on('end.cs.sign', function(e) {
+                    Logging.info('end', e);
+                    expect(e).to.be.an.instanceof($.Event);
+                    expect(e.type).to.be.equal('end');
+                });
                 sign.render();
                 expect(sign).to.be.an.instanceof(Backbone.View);
                 done();
