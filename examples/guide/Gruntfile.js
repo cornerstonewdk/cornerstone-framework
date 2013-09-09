@@ -17,7 +17,7 @@ module.exports = function( grunt ) {
 		// 경로 설정
 		path: {
 			src: 'src',
-			doc: '../../doc',
+			doc: 'doc',
 			dist: 'dist',
 			test: 'test'
 		},
@@ -48,7 +48,7 @@ module.exports = function( grunt ) {
 			src: {
 				expand: true,
 				cwd: '<%= path.src %>',
-				src: [ 'cornerstone/**/*', '**/images/**/*', '**/fonts/**/*', '**/*.html', '**/*.template' ],
+				src: [ 'cornerstone/**/*', 'lib/**/*', '**/images/**/*', '**/fonts/**/*', '**/*.html', '**/*.template' ],
 				dest: '<%= path.dist %>'
 			},
 			docImage: {
@@ -121,7 +121,7 @@ module.exports = function( grunt ) {
 				tasks: [ 'markdown' ]
 			},
 			rest: {
-				files: [ '<%= path.src %>/cornerstone/**/*', '<%= path.src %>/**/images/**/*', '<%= path.src %>/**/fonts/**/*', '<%= path.src %>/**/*.html', '<%= path.src %>/**/*.template' ],
+				files: [ '<%= path.src %>/cornerstone/**/*', '<%= path.src %>/lib/**/*', '<%= path.src %>/**/images/**/*', '<%= path.src %>/**/fonts/**/*', '<%= path.src %>/**/*.html', '<%= path.src %>/**/*.template' ],
 				tasks: [ 'copy' ]
 			}
 		},

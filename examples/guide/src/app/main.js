@@ -1,100 +1,92 @@
+require.config( {
+	packages: [
+		{
+			name: 'impress',
+			location: '../lib/impress',
+			main: 'impress.js'
+		}
+	],
+
+	shim: {
+		impress: {
+			exports: 'impress'
+		}
+	}
+} );
 
 /**
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/home', 'view/index', 'view/tags', 'view/detail', 'bootstrap', 'style!main' ], function( $, Backbone, MultipageRouter, Documents, HomeView, IndexView, TagsView, DetailView ) {
+define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!templates/main', 'template!templates/slide', 'bootstrap', 'style!main' ], function( $, Backbone, impress, Documents, mainTemplate, slideTemplate ) {
 	return {
 		launch: function() {
 
 			var docs = new Documents();
 
+			function renderDocuments( documents, y ) {
+
+				// 슬라이드 사이의 각도
+				var step = 360 / documents.length;
+				// 중심축으로부터의 거리
+				var radius = documents.length * 150;
+
+				documents.each( function( doc, i ) {
+
+					// 슬라이드의 기울어진 각도
+					var angle = i * step;
+
+					// 슬라이드의 좌표 계산
+					var x = Math.round( radius * Math.sin( angle / 180 * Math.PI ) );
+					var z = Math.round( radius * Math.cos( angle / 180 * Math.PI ) );
+
+					$( '#impress' ).append( slideTemplate( { x: x, y: y, z: z, angle: angle, doc: doc.toJSON() } ) );
+				} );
+			}
+
 			// 모든 데이터를 다 받아오고 나면
 			docs.on( 'sync', function() {
 
 				// order 속성 순으로 정렬
-				docs.sortBy( function( doc ) {
+				docs.comparator = function( doc ) {
 					return doc.get( 'order' );
-				} );
+				};
+				docs.sort();
 
-				// 부가 정보 만들기
-				docs.each( function( doc ) {
-					var order = doc.get( 'order' );
-					if ( order.length == 2 ) doc.set( 'secondDepth', true );
-					else if ( order.length == 3 ) doc.set( 'thirdDepth', true );
-					else if ( order.length == 4 ) doc.set( 'fourthDepth', true );
-				} );
+				// 기본 마크업들을 렌더링한다.
+				$( '#navbar-top' ).after( mainTemplate() );
 
-				// Router
-				var MainRouter = MultipageRouter.extend( {
-				
-					pages: {
-						'home': {
-							fragment: [ '', 'home' ],
-							el: '#page-home',
-							render: function() {
-								new HomeView( { collection: docs } ).render();
-							},
-							active: function() {
-								$( '#nav-index' ).removeClass( 'active' );
-								$( '#nav-tags' ).removeClass( 'active' );
-							}
-						},
-						'index': {
-							fragment: 'index',
-							el: '#page-index',
-							render: function() {
-								new IndexView( { collection: docs } ).render();
-							},
-							active: function() {
-								$( '#nav-index' ).addClass( 'active' );
-								$( '#nav-tags' ).removeClass( 'active' );
-							}
-						},
-						'tags': {
-							fragment: 'tags',
-							el: '#page-tags',
-							render: function() {
-								new TagsView( { collection: docs } ).render();
-							},
-							active: function() {
-								$( '#nav-index' ).removeClass( 'active' );
-								$( '#nav-tags' ).addClass( 'active' );
-							}
-						},
-						'default': {
-							render: function( path ) {
+				// 터치 기기에서는 메시지를 바꾼다.
+				if ( 'ontouchstart' in document.documentElement )
+					$( '.hint p' ).html( '화면 왼쪽, 오른쪽을 탭해서 이동하세요.' );
 
-								var doc = docs.get( path );
+				// 그룹별(Framework, Runtime, DevEnv)로 분류해서 렌더링
+				renderDocuments( new Documents( docs.where( { group: 1 } ) ), 0 );
+				renderDocuments( new Documents( docs.where( { group: 2 } ) ), 1000 );
+				renderDocuments( new Documents( docs.where( { group: 3 } ) ), 2000 );
 
-								if ( !doc ) {
-									alert( 'Page not found' );
-									history.back();
-									return;
-								}
+				impress().init();
 
-								new DetailView( { collection: docs, model: doc } ).render();
-							},
-							active: function() {
-								$( '#nav-index' ).removeClass( 'active' );
-								$( '#nav-tags' ).removeClass( 'active' );
-								$( '#page-detail' ).show();
-							},
-							inactive: function() {
-								$( '#page-detail' ).hide();
-							}
+				$( '#radio-on' ).click( function() {
+					$( document ).on( 'mousemove', function( event ) {
+						if ( event.clientY > 50 ) {
+							$( '#impress' ).css( 'margin-top', 0 );
+							$( '#navbar-top' ).hide();
 						}
-					},
-					
-					transitions: {
-						'home:index': 'fade',
-						'home:tags': 'fade',
-						'index:tags': 'fade'
-					},
+						else {
+							$( '#impress' ).css( 'margin-top', 25 );
+							$( '#navbar-top' ).show();
+						}
+					} );
 				} );
 
-				new MainRouter();
-				Backbone.history.start();
+				$( '#radio-off' ).click( function() {
+					$( document ).off( 'mousemove' );
+				} );
+
+				$( 'ul.dropdown-menu' ).on( 'mousemove', function( event ) {
+					event.stopPropagation();
+				} );
 			} );
 
 			docs.fetch();
