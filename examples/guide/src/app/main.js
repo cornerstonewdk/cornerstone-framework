@@ -18,7 +18,7 @@ require.config( {
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!templates/main', 'template!templates/slide', 'bootstrap', 'style!main' ], function( $, Backbone, impress, Documents, mainTemplate, slideTemplate ) {
+define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!templates/main', 'template!templates/menu', 'template!templates/slide', 'bootstrap', 'style!main' ], function( $, Backbone, impress, Documents, mainTemplate, menuTemplate, slideTemplate ) {
 	return {
 		launch: function() {
 
@@ -60,10 +60,18 @@ define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!template
 				if ( 'ontouchstart' in document.documentElement )
 					$( '.hint p' ).html( '화면 왼쪽, 오른쪽을 탭해서 이동하세요.' );
 
-				// 그룹별(Framework, Runtime, DevEnv)로 분류해서 렌더링
-				renderDocuments( new Documents( docs.where( { group: 1 } ) ), 0 );
-				renderDocuments( new Documents( docs.where( { group: 2 } ) ), 1000 );
-				renderDocuments( new Documents( docs.where( { group: 3 } ) ), 2000 );
+				// 그룹별로 분류
+				var docs1 = new Documents( docs.where( { group: 1 } ) );	// Framework
+				var docs2 = new Documents( docs.where( { group: 2 } ) );	// Runtime
+				var docs3 = new Documents( docs.where( { group: 3 } ) );	// Development Environment
+
+				// 메뉴 그리기
+				$( '.navbar-nav' ).html( menuTemplate( { docs1: docs1.toJSON(), docs2: docs2.toJSON(), docs3: docs3.toJSON() } ) );
+
+				// 각 그룹을 층별로 렌더링
+				renderDocuments( docs1, 0 );
+				renderDocuments( docs2, 1000 );
+				renderDocuments( docs3, 2000 );
 
 				impress().init();
 
