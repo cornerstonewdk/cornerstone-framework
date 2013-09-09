@@ -29,7 +29,7 @@ define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!template
 				// 슬라이드 사이의 각도
 				var step = 360 / documents.length;
 				// 중심축으로부터의 거리
-				var radius = documents.length * 150;
+				var radius = documents.length * 170;
 
 				documents.each( function( doc, i ) {
 

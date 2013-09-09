@@ -145,7 +145,7 @@ body {
 .slide {
     display: block;
 
-    min-width: 900px;
+    width: 1000px;
     min-height: 700px;
 
     padding: 40px 60px;
