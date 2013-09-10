@@ -30,7 +30,7 @@ html lang: 'ko', ->
 		link rel: 'stylesheet', href: './dist/ui/theme/white/css/cornerstone.css'
 		link rel: 'stylesheet', href: './livedocument.css'
 
-		script src: './dist/lib/jquery-1.8.1.min.js'
+		script src: './dist/lib/jquery-1.10.2.min.js'
 		script src: './dist/ui/widget-plugins.js'
 		
 		text "<script type='text/javascript'>"
