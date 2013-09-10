@@ -8,17 +8,18 @@
  */
 (function () {
 	"use strict";
-	var root = this,
-		pluginName = "featuredChart",
-		HAS_TOUCH = ('ontouchstart' in window),
-		eventName = {
-			shown: "shown.cs.chart",
-			animationEnd: "animationEnd.cs.chart",
-			complete: "shown.cs.chart"
-		},
-		isDebug = true,
-		chart,
-		self;
+
+	var chart, self;
+	var root = this;
+	var pluginName = "featuredChart";
+	var HAS_TOUCH = ('ontouchstart' in window);
+	var eventName = {
+		shown: "shown.cs.chart",
+		animationEnd: "animationEnd.cs.chart",
+		complete: "shown.cs.chart"
+	};
+	var isDebug = true;
+
 
 	var FeaturedChart = function (element, options) {
 		this.el = element;
@@ -40,9 +41,6 @@
 
 			this.util.removeClip(target);
 			this.util.applyBindEvent(target, options, chart, this);
-		},
-		update: function (options) {
-			this.render(options);
 		},
 		render: function (options) {
 			if (!navigator.userAgent.toLowerCase().match(/webkit/gi)
@@ -123,6 +121,8 @@
 			chart.showLegend(options.showLegend)
 				.showControls(options.showControls)
 				.controlsData(options.controlsData);
+
+			"stacked" === options.controlsData.active && chart.stacked(true);
 
 			chart.afterRender = function (eventType) {
 				var chart = this;
@@ -241,9 +241,12 @@
 			chart = nv.models.multiBarHorizontalChart()
 				.showValues(options.showValues)
 				.showLegend(options.showLegend)
+				.showControls(options.showControls)
 				.valueFormat(d3.format(options.format))
 				.tooltips(options.tooltips)
 				.controlsData(options.controlsData);
+
+			"stacked" === options.controlsData.active && chart.stacked(true);
 
 			return chart;
 
@@ -251,6 +254,7 @@
 		linePlusBarChart: function (target, options) {
 			chart = nv.models.linePlusBarChart();
 			chart.bars.forceY([0]);
+			chart.showLegend(options.showLegend);
 			chart.xAxis.showMaxMin(options.showMaxMin).tickFormat(d3.format(options.format));
 			chart.y1Axis.tickFormat(d3.format(options.format));
 			chart.y2Axis.tickFormat(d3.format(options.format));
@@ -264,6 +268,8 @@
 			chart.xAxis.tickFormat(d3.format(options.format));
 			chart.yAxis.tickFormat(d3.format(options.format));
 			chart.y2Axis.tickFormat(d3.format(options.format));
+			chart.showLegend(options.showLegend);
+
 			chart.afterRender = function () {
 				target.$parent.swipe();
 
@@ -372,7 +378,7 @@
 			var endYRotation = $.isNumeric(options.endYRotation) ? options.endYRotation : -15;
 			var rotationAmount = 45;
 			var barInnerWidth = 52;
-			var barGroupWidth = barInnerWidth * dataLength + data[0].values.length * 12;
+			var barGroupWidth = barInnerWidth * dataLength + (12 * dataLength);
 			var barGroupInnerWidth = barInnerWidth * dataLength;
 
 			var dataObject = {
@@ -396,7 +402,9 @@
 				},
 				// Get highest value for y-axis scale
 				chartYMax: function () {
-					return Math.ceil(Math.max.apply(Math, this.chartData()) / 1000) * 1000;
+					var max = Math.max.apply(Math, this.chartData());
+					var length = Math.pow(10, max.toString().length - 2);
+					return Math.ceil(Math.max.apply(Math, this.chartData()) / length) * length;
 				},
 				// Get y-axis data from table cells
 				yLegend: function () {
@@ -408,6 +416,7 @@
 					for (var i = 0; i < yAxisMarkings; i++) {
 						yLegend.unshift(d3.format(options.format)(((chartYMax * i) / (yAxisMarkings - 1))));
 					}
+					console.log(yLegend);
 					return yLegend;
 				},
 				// Get x-axis data from table header
@@ -473,13 +482,15 @@
 			});
 
 			// Add legend to graph
-			var chartLegend = dataObject.chartLegend();
-			var legendList = $('<ul class="legend"></ul>');
-			$.each(chartLegend, function (i) {
-				$('<li><span class="icon fig' + i + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div></span>' + this + '</li>')
-					.appendTo(legendList);
-			});
-			legendList.appendTo(figureContainer);
+			if(options.showLegend) {
+				var chartLegend = dataObject.chartLegend();
+				var legendList = $('<ul class="legend"></ul>');
+				$.each(chartLegend, function (i) {
+					$('<li><span class="icon fig' + i + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div></span>' + this + '</li>')
+						.appendTo(legendList);
+				});
+				legendList.appendTo(figureContainer);
+			}
 
 			// Add x-axis to graph
 			var xLegend = dataObject.xLegend();
@@ -726,19 +737,28 @@
 				return target;
 			},
 			activeAxisLabel: function (target, options, chart) {
+				var left = 0;
+				var right = 0;
 				if ("horizontalBar" === options.chartType) {
-					chart.margin({top: 30, right: 20, bottom: 50, left: 90});
 					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
 					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+
+					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
+					chart.margin({top: 30, right: 10, bottom: 50, left: left});
 				} else if ("linePlusBar" === options.chartType) {
-					chart.margin({top: 30, right: 90, bottom: 50, left: 90});
 					chart.xAxis.showMaxMin(options.showMaxMin).axisLabel(options.xAxisLabel);
 					chart.y1Axis.axisLabel(options.yAxisLabel);
 					chart.y2Axis.axisLabel(options.y2AxisLabel);
+
+					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 35;
+					right = $.trim(options.y2AxisLabel).length > 0 ? 85 : 50;
+					chart.margin({top: 30, right: right, bottom: 50, left: left});
 				} else if ("lineFocus" === options.chartType) {
-					chart.margin({top: 30, right: 20, bottom: 50, left: 90});
 					chart.xAxis.showMaxMin(options.showMaxMin).axisLabel(options.xAxisLabel);
 					chart.yAxis.axisLabel(options.yAxisLabel);
+
+					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
+					chart.margin({top: 30, right: 30, bottom: 50, left: left});
 				} else {
 					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
 					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
@@ -865,14 +885,14 @@
 		}
 	};
 
-	$.fn.featuredChart = function (options) {
+	$.fn.featuredChart = function (options, updateData) {
 		var defaultOptions = {
 			chartType: "bar",
-			xAxisLabel: "X",
-			yAxisLabel: "Y",
-			y2AxisLabel: "Y2",
+			xAxisLabel: "",
+			yAxisLabel: "",
+			y2AxisLabel: "",
 			format: ".0f",
-			data: {},
+			data: [],
 			showMaxMin: true,
 			showValues: true,
 			showControls: true,
@@ -880,6 +900,7 @@
 			tooltips: true,
 			color: ["#2c3e50", "#e74c3c", "#3498db", "#f5a503", "#7c569f", "#75483e", "#bf64a3", "#6b6b6b"],
 			controlsData: {
+				active: "grouped",
 				groupedName: "그룹",
 				stackedName: "스택"
 			},
@@ -889,20 +910,27 @@
 			}
 		};
 
-		options = $.extend(true, defaultOptions, options);
-
 		return this.each(function () {
 			var $this = $(this);
 			var data = $this.data(pluginName);
 
-			// 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
-			if (typeof options === "string") {
-				data[options](data.options);
-			} else if (typeof options === "object" && typeof data === "object") {
-				data.render(options);
-			} else {
+			if (!data) {
+				// 최초 플러그인 생성
+				options = $.extend(true, defaultOptions, options);
+
+				if (!options.data.length) {
+					isDebug && console.log("데이터가 없습니다");
+				}
+
 				data = new FeaturedChart(this, options);
 				$this.data(pluginName, data);
+			} else {
+				// 플러그인이 생성된 상태에서 데이터 업데이트
+				options = $.extend(true, defaultOptions, options);
+
+				$this.html("");
+				data.options = options;
+				data.render(data.options);
 			}
 		});
 	};
@@ -940,27 +968,21 @@
 			return Backbone.View.extend({
 				model: new Backbone.Model(),
 				initialize: function () {
-					_.bindAll(this, "render");
-				},
-				updateChart: function (view) {
-					view.model.clear();
-					view.model.fetch({
-						success: function (model) {
-							var data = [];
-							$.each(model.toJSON(), function (i, obj) {
-								data.push(obj);
-							});
-							view.options.chartOptions = $.extend({}, view.options.chartOptions, {data: data});
-
-							view.$el.featuredChart(view.options.chartOptions);
-						}
-					});
+					this.model.on("change", this.render, this);
 				},
 				render: function () {
-					this.updateChart(this);
+					var data = [];
+					$.each(this.model.toJSON(), function (i, obj) {
+						data.push(obj);
+					});
+					this.options.chartOptions.data = data;
+
+					this.$el.featuredChart(this.options.chartOptions);
+
 					return this;
 				}
 			});
 		});
 	}
+
 }).call(this);

@@ -1,12 +1,12 @@
 define([
-	'backbone',
-	'template!view/page1',
-	'widget-chart'
+	"backbone",
+	"template!view/page1",
+	"widget-chart"
 ], function (Backbone, template, Chart) {
 
 	return Backbone.View.extend({
 
-		el: 'section#page1',
+		el: "section#page1",
 		sampleDataUrl: "data/sample-bar.json",
 		chartOptions: {
 			chartType: "horizontalBar",
@@ -14,9 +14,9 @@ define([
 			showLegend: true,
 			tooltips: true,
 			controlsData: {
-				active: 'grouped',
-				groupedName: '그룹',
-				stackedName: '스택'
+				active: "grouped",
+				groupedName: "그룹",
+				stackedName: "스택"
 			}
 		},
 
@@ -28,50 +28,24 @@ define([
 			return this;
 		},
 
-		// Data-API 방식 적용
-		activeChartDataApi: function () {
-			window.Cornerstone.widget.activeDataApi();
-		},
-
-		// Plugin 방식
-		activeChartPlugin: function () {
-			var self = this;
-			$.ajax({
-				url: self.sampleDataUrl,
-				dataType: "json",
-				success: function (data) {
-					self.chartOptions.data = data;
-					self.$el.find("#horizontalBar").featuredChart(self.chartOptions);
-				}
-			});
-		},
-
-		// Backbone View 방식
-		activeChartView: function () {
-			var self = this;
-
-			// Backbone View 방식 적용
-			var Model = Backbone.Model.extend({
-				url: this.sampleDataUrl
-			});
-
-			var horizontalBarChart = new Chart({
-				el: "#horizontalBar",
-				model: new Model(),
-				chartOptionss: $.extend({}, self.chartOptions, {chartType: "horizontalBar"})
-			});
-
-			horizontalBarChart.render();
-		},
-
 		events: {
-			'click button.next': 'nextPage',
-			'click #controlSubmit': 'controlSubmit',
-			'click .js-change-data': 'changeData'
+			"click button.next": "nextPage",
+			"change #type": "changeType",
+			"click #controlSubmit": "controlSubmit",
+			"click #changeData button": "changeData"
 		},
 
 		nextPage: function () {
-			location.href = '#page2';
+			location.href = "#page2";
+		},
+
+		changeType: function(e) {
+			var $target = $(e.target);
+			var type = this.$el.find("#type").val();
+			this[type]();
+
+			e.preventDefault();
+			e.stopPropagation();
 		},
 
 		controlSubmit: function (e) {
@@ -88,7 +62,6 @@ define([
 				var useControl = $form.find("#useControl").val();
 				var useLegend = $form.find("#useLegend").val();
 				var useTooltip = $form.find("#useTooltip").val();
-				var changeData = $form.find("#changeData").val();
 
 				this.chartOptions.controlsData.groupedName = controlGrouped;
 				this.chartOptions.controlsData.stackedName = controlStacked;
@@ -100,13 +73,73 @@ define([
 				this.chartOptions.showLegend = parseInt(useLegend) ? true : false;
 				this.chartOptions.tooltips = parseInt(useTooltip) ? true : false;
 
-				if(this.sampleDataUrl === "data/" + changeData) {
-					this[type]();
-				} else {
-					this.sampleDataUrl = "data/" + changeData;
-
-				}
+				this[type]();
 			}
+
+			e.preventDefault();
+			e.stopPropagation();
+		},
+
+		changeData: function (e) {
+			var $target = $(e.target);
+			var type = this.$el.find("#type").val();
+			var chartUrl = $target.data("chartUrl");
+
+			this.sampleDataUrl = chartUrl;
+			if ("activeChartView" === type) {
+				type = type.replace("active", "update");
+			}
+			this[type]();
+			e.preventDefault();
+			e.stopPropagation();
+		},
+
+		// Data-API 방식 적용
+		activeChartDataApi: function () {
+			window.Cornerstone.widget.activeDataApi();
+		},
+		updateChartDataApi: function() {
+
+		},
+
+		// Plugin 방식
+		activeChartPlugin: function () {
+			var self = this;
+			$.ajax({
+				url: self.sampleDataUrl,
+				dataType: "json",
+				success: function (data) {
+					this.serverData = data;
+				},
+				complete: function() {
+					self.chartOptions.data = this.serverData;
+					self.$el.find("#horizontalBar").featuredChart(self.chartOptions);
+				}
+			});
+		},
+
+		// Backbone View 방식
+		activeChartView: function () {
+			// Backbone View 방식 적용
+			var Model = Backbone.Model.extend({
+				url: this.sampleDataUrl
+			});
+
+			this.chartModel = new Model();
+
+			this.chart = new Chart({
+				el: "#horizontalBar",
+				model: this.chartModel,
+				chartOptions: this.chartOptions
+			});
+
+			this.chartModel.clear();
+			this.chartModel.fetch();
+		},
+		updateChartView: function() {
+			this.chartModel.url = this.sampleDataUrl;
+			this.chartModel.clear();
+			this.chartModel.fetch();
 		}
 	});
 });

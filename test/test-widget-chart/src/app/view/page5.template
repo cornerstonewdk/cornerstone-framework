@@ -3,9 +3,67 @@
         <div class="panel">
             <div class="panel-heading">옵션 제어</div>
             <div class="panel-body">
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-success prev">이전 페이지</button>
-                </div>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="type">구현 방식</label>
+                        <select name="type" class="form-control" id="type">
+                            <option value="activeChartPlugin">Plugin 방식</option>
+                            <option value="activeChartView">Backbone View 방식</option>
+                            <option value="activeChartDataApi">DATA-API 방식</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="xAxisName">X축 이름</label>
+                                <input type="text" name="xAxisName" class="form-control" id="xAxisName" placeholder="X축"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="yAxisName">Y축 이름</label>
+                                <input type="text" name="yAxisName" class="form-control" id="yAxisName" placeholder="Y축">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="useLegend">범례 사용</label>
+                                <select name="useLegend" class="form-control" id="useLegend">
+                                    <option value="1">사용</option>
+                                    <option value="0">사용 안함</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="useTooltip">툴팁 사용</label>
+                                <select name="useTooltip" class="form-control" id="useTooltip">
+                                    <option value="1">사용</option>
+                                    <option value="0">사용 안함</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div>
+                                    <label>데이터변경</label>
+                                </div>
+                                <div id="changeData" class="btn-group">
+                                    <button class="btn btn-info" data-chart-url="data/sample-line.json">9개</button>
+                                    <button class="btn btn-info" data-chart-url="data/sample-line2.json">30개</button>
+                                    <button class="btn btn-info" data-chart-url="data/sample-line3.json">60개</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="controlSubmit" type="submit" class="btn btn-default">옵션적용</button>
+
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-success prev">이전</button>
+                        <button type="button" class="btn btn-success next">다음</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
