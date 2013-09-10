@@ -9,7 +9,6 @@
                         <select name="type" class="form-control" id="type">
                             <option value="activeChartPlugin">Plugin 방식</option>
                             <option value="activeChartView">Backbone View 방식</option>
-                            <option value="activeChartDataApi">DATA-API 방식</option>
                         </select>
                     </div>
                     <div class="form-group">

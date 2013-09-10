@@ -9,7 +9,7 @@
 (function () {
 	"use strict";
 
-	var chart, self;
+	var chart;
 	var root = this;
 	var pluginName = "featuredChart";
 	var HAS_TOUCH = ('ontouchstart' in window);
@@ -114,6 +114,8 @@
 
 			return this;
 		},
+
+		// Cornerstone 1.0
 		barChart: function (target, options) {
 			var self = this;
 			chart = nv.models.multiBarChart();
@@ -121,8 +123,6 @@
 			chart.showLegend(options.showLegend)
 				.showControls(options.showControls)
 				.controlsData(options.controlsData);
-
-			"stacked" === options.controlsData.active && chart.stacked(true);
 
 			chart.afterRender = function (eventType) {
 				var chart = this;
@@ -189,40 +189,17 @@
 			return chart;
 		},
 		stackedBarChart: function (target, options) {
-			self = this;
-			nv.addGraph(function () {
-				chart = nv.models.multiBarChart()
-					.showControls(options.showControls)
-					.showLegend(options.showLegend)
-					.tooltips(options.tooltips);
-
-				chart.stacked(true);
-
-				target.datum(options.data)
-					.transition().duration(500).call(chart);
-
-				self.util.applyBindEvent(target, options, chart, self);
-
-				return chart;
-			});
+			options.controlsData.active = "stacked";
+			var chart = this.barChart(target, options);
+			chart.showControls(false);
+			chart.stacked(true);
+			return chart;
 		},
 		groupedBarChart: function (target, options) {
-			self = this;
-			nv.addGraph(function () {
-				chart = nv.models.multiBarChart()
-					.showControls(options.showControls)
-					.showLegend(options.showLegend)
-					.tooltips(options.tooltips);
-
-				chart.stacked(false);
-
-				target.datum(options.data)
-					.transition().duration(500).call(chart);
-
-				self.util.applyBindEvent(target, options, chart, self);
-
-				return chart;
-			});
+			options.controlsData.active = "grouped";
+			var chart = this.barChart(target, options);
+			chart.showControls(false);
+			return chart;
 		},
 		lineChart: function (target, options) {
 			chart = nv.models.lineChart()
@@ -237,6 +214,8 @@
 
 			return chart;
 		},
+
+		// Cornerstone 2.0
 		horizontalBarChart: function (target, options) {
 			chart = nv.models.multiBarHorizontalChart()
 				.showValues(options.showValues)
@@ -246,10 +225,20 @@
 				.tooltips(options.tooltips)
 				.controlsData(options.controlsData);
 
-			"stacked" === options.controlsData.active && chart.stacked(true);
-
 			return chart;
-
+		},
+		stackedHorizontalBarChart: function (target, options) {
+			options.controlsData.active = "stacked";
+			var chart = this.horizontalBarChart(target, options);
+			chart.showControls(false);
+			chart.stacked(true);
+			return chart;
+		},
+		groupedHorizontalBarChart: function (target, options) {
+			options.controlsData.active = "grouped";
+			var chart = this.horizontalBarChart(target, options);
+			chart.showControls(false);
+			return chart;
 		},
 		linePlusBarChart: function (target, options) {
 			chart = nv.models.linePlusBarChart();
@@ -378,7 +367,6 @@
 			var endYRotation = $.isNumeric(options.endYRotation) ? options.endYRotation : -15;
 			var rotationAmount = 45;
 			var barInnerWidth = 52;
-			var barGroupWidth = barInnerWidth * dataLength + (12 * dataLength);
 			var barGroupInnerWidth = barInnerWidth * dataLength;
 
 			var dataObject = {
@@ -403,7 +391,7 @@
 				// Get highest value for y-axis scale
 				chartYMax: function () {
 					var max = Math.max.apply(Math, this.chartData());
-					var length = Math.pow(10, max.toString().length - 2);
+					var length = Math.pow(10, max.toString().replace(/\..*/gi, "").length - 1);
 					return Math.ceil(Math.max.apply(Math, this.chartData()) / length) * length;
 				},
 				// Get y-axis data from table cells
@@ -416,7 +404,6 @@
 					for (var i = 0; i < yAxisMarkings; i++) {
 						yLegend.unshift(d3.format(options.format)(((chartYMax * i) / (yAxisMarkings - 1))));
 					}
-					console.log(yLegend);
 					return yLegend;
 				},
 				// Get x-axis data from table header
@@ -482,7 +469,7 @@
 			});
 
 			// Add legend to graph
-			if(options.showLegend) {
+			if (options.showLegend) {
 				var chartLegend = dataObject.chartLegend();
 				var legendList = $('<ul class="legend"></ul>');
 				$.each(chartLegend, function (i) {
@@ -494,9 +481,10 @@
 
 			// Add x-axis to graph
 			var xLegend = dataObject.xLegend();
+			var barContainerWidth = xLegend.length * barGroupInnerWidth + (xLegend.length * 30);
 
 			var xAxisList = $('<ul class="x-axis"></ul>').css({
-				width: xLegend.length * barGroupWidth
+				width: barContainerWidth
 			});
 			$.each(xLegend, function () {
 				$('<li><span>' + this + '</span></li>').css({
@@ -508,7 +496,7 @@
 			// Add y-axis to graph
 			var yLegend = dataObject.yLegend();
 			var yAxisList = $('<ul class="y-axis"></ul>').css({
-				width: xLegend.length * barGroupWidth
+				width: barContainerWidth
 			});
 			$.each(yLegend, function () {
 				$('<li><span>' + this + '</span></li>').appendTo(yAxisList);
@@ -517,15 +505,15 @@
 
 			// Add bars to graph
 			barContainer.css({
-				width: xLegend.length * barGroupWidth
+				width: barContainerWidth
 			}).appendTo(graphContainer);
 
 			//
 			target.css({
-				width: xLegend.length * barGroupWidth
+				width: barContainerWidth
 			});
 			target.$parent.css({
-				width: xLegend.length * barGroupWidth - 100
+				width: barContainerWidth
 			});
 
 			// Add graph to graph container
@@ -885,7 +873,7 @@
 		}
 	};
 
-	$.fn.featuredChart = function (options, updateData) {
+	$.fn.featuredChart = function (options) {
 		var defaultOptions = {
 			chartType: "bar",
 			xAxisLabel: "",

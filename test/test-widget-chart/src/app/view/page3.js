@@ -77,14 +77,6 @@ define([
 			e.stopPropagation();
 		},
 
-		// Data-API 방식 적용
-		activeChartDataApi: function () {
-			window.Cornerstone.widget.activeDataApi();
-		},
-		updateChartDataApi: function () {
-
-		},
-
 		// Plugin 방식
 		activeChartPlugin: function () {
 			var self = this;
@@ -115,11 +107,12 @@ define([
 				model: this.chartModel,
 				chartOptions: this.chartOptions
 			});
-
+			this.chartModel.clear();
 			this.chartModel.fetch();
 		},
 		updateChartView: function () {
 			this.chartModel.url = this.sampleDataUrl;
+			this.chartModel.clear();
 			this.chartModel.fetch();
 		}
 	});

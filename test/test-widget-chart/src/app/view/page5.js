@@ -91,14 +91,6 @@ define([
 			e.stopPropagation();
 		},
 
-		// Data-API 방식 적용
-		activeChartDataApi: function () {
-			window.Cornerstone.widget.activeDataApi();
-		},
-		updateChartDataApi: function () {
-
-		},
-
 		// Plugin 방식
 		activeChartPlugin: function () {
 			var self = this;
