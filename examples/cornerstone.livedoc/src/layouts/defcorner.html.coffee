@@ -88,6 +88,10 @@ html lang: 'ko', ->
                         'Cornerstone'
                     div '.nav-collapse.collapse', ->
                         ul '.nav', ->
+                            li 'class':'inactive', 'id':'cornerstonehome', ->
+                                a href:'http://cornerstone.sktelecom.com', title:'Cornerstone Home', ->
+                                    i ".icon-th-large", ""
+                                    "Cornerstone"
                             @getCollection('pages').toJSON().forEach (page) =>
                                     linkClass = 'inactive'
                                     #linkClass = if @document.url = page.url then 'active' else 'inactive'
