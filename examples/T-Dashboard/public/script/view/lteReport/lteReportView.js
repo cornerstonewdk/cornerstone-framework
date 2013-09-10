@@ -32,7 +32,8 @@ define([
 			
 			for(var branchCode in this.branchList) {
 				var branchInfo = this.branchList[branchCode];
-				$('ul[data-branchlist]').append('<li><a data-branchcode="' + branchCode + '">' + branchInfo['name'] + '</a></li>');
+
+				$('ul[data-branchlist]').append('<li class="list-group-item"><a data-branchcode="' + branchCode + '">' + branchInfo['name'] + '</a></li>');
 			}
 			
 			$('a[data-branchcode="' + this.selectedBranch + '"]').parent().addClass('active');
@@ -43,20 +44,29 @@ define([
 		 * 이벤트 정의
 		 */
 		events: {
-			'click a[data-branchcode]': 'menuClick',
+			
+			'click ul[data-branchlist] > li': 'menuClick'
 		},
 		
 		/*
 		 * 지점 클릭
 		 */
 		menuClick: function(e) {
+			
 			var prevBranch = this.selectedBranch;
-			this.selectedBranch = $(e.target).attr('data-branchcode');
+			if( e.target.tagName === 'A' )
+				this.selectedBranch = $(e.target).attr('data-branchcode');
+			else 
+				this.selectedBranch = $(e.target).find('a').attr('data-branchcode');
 			
 			if(prevBranch == this.selectedBranch) return;
 			
-			$('ul.nav.nav-list > li').removeClass('active');
-			$(e.target).parent().addClass('active');
+			$('#lteReport ul.list-group > li').removeClass('active');
+
+			if( e.target.tagName === 'A' )
+				$(e.target).parent().addClass('active');
+			else 
+				$(e.target).addClass('active');
 			
 			this.changeBranchInfo(this.selectedBranch);
 		},
