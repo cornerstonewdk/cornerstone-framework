@@ -1,16 +1,19 @@
 define([
 	"backbone",
 	"widget-chart",
-	"template!view/page3"
+	"template!view/page7",
+	"widget-touch"
 ], function (Backbone, Chart, template) {
 
 	return Backbone.View.extend({
 
-		el: "section#page3",
-		sampleDataUrl: "data/sample-bar.json",
+		el: "section#page7",
+		sampleDataUrl: "data/sample-line.json",
 		chartOptions: {
-			chartType: "bar3d",
-			showLegend: true
+			chartType: "line",
+			showControls: true,
+			showLegend: true,
+			tooltips: true
 		},
 
 		render: function () {
@@ -22,20 +25,21 @@ define([
 		events: {
 			"click button.prev": "prevPage",
 			"click button.next": "nextPage",
-			"change #type": "changeType", 
+			"change #type": "changeType",
 			"click #controlSubmit": "controlSubmit",
 			"click #changeData button": "changeData"
 		},
 
 		prevPage: function () {
-			location.href = "#page2";
+			location.href = "#page6";
 		},
 
 		nextPage: function () {
-			location.href = "#page4";
+			location.href = "#page8";
 		},
 
-		changeType: function(e) {
+		changeType: function (e) {
+			var $target = $(e.target);
 			var type = this.$el.find("#type").val();
 			this[type]();
 
@@ -50,9 +54,20 @@ define([
 
 			if (options.length) {
 				var type = $form.find("#type").val();
+				var xAxisName = $form.find("#xAxisName").val();
+				var yAxisName = $form.find("#yAxisName").val();
+				var y2AxisName = $form.find("#y2AxisName").val();
+				var useControl = $form.find("#useControl").val();
 				var useLegend = $form.find("#useLegend").val();
+				var useTooltip = $form.find("#useTooltip").val();
 
+				this.chartOptions.xAxisLabel = xAxisName;
+				this.chartOptions.yAxisLabel = yAxisName;
+				this.chartOptions.y2AxisLabel = y2AxisName;
+
+				this.chartOptions.showControls = parseInt(useControl) ? true : false;
 				this.chartOptions.showLegend = parseInt(useLegend) ? true : false;
+				this.chartOptions.tooltips = parseInt(useTooltip) ? true : false;
 
 				this[type]();
 			}
@@ -64,7 +79,9 @@ define([
 		changeData: function (e) {
 			var $target = $(e.target);
 			var type = this.$el.find("#type").val();
-			this.sampleDataUrl = $target.data("chartUrl");
+			var chartUrl = $target.data("chartUrl");
+
+			this.sampleDataUrl = chartUrl;
 			if ("activeChartView" === type) {
 				type = type.replace("active", "update");
 			}
@@ -84,7 +101,7 @@ define([
 				},
 				complete: function () {
 					self.chartOptions.data = this.serverData;
-					self.$el.find("#bar3d").featuredChart(self.chartOptions);
+					self.$el.find("#line").featuredChart(self.chartOptions);
 				}
 			});
 		},
@@ -99,10 +116,11 @@ define([
 			this.chartModel = new Model();
 
 			this.chart = new Chart({
-				el: "#bar3d",
+				el: "#line",
 				model: this.chartModel,
 				chartOptions: this.chartOptions
 			});
+
 			this.chartModel.clear();
 			this.chartModel.fetch();
 		},

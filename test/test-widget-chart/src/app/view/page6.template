@@ -15,14 +15,12 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <label for="controlGrouped">Grouped 이름</label>
-                                <input type="text" name="controlGrouped" class="form-control" id="controlGrouped"
-                                       maxlength="5"
+                                <input type="text" name="controlGrouped" class="form-control" id="controlGrouped" maxlength="5"
                                        value="그룹"/>
                             </div>
                             <div class="col-xs-6">
                                 <label for="controlStacked">Stacked 이름</label>
-                                <input type="text" name="controlStacked" class="form-control" id="controlStacked"
-                                       maxlength="5"
+                                <input type="text" name="controlStacked" class="form-control" id="controlStacked" maxlength="5"
                                        value="스택">
                             </div>
                         </div>
@@ -31,13 +29,11 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <label for="xAxisName">X축 이름</label>
-                                <input type="text" name="xAxisName" class="form-control" id="xAxisName"
-                                       placeholder="X축"/>
+                                <input type="text" name="xAxisName" class="form-control" id="xAxisName" placeholder="X축"/>
                             </div>
                             <div class="col-xs-6">
                                 <label for="yAxisName">Y축 이름</label>
-                                <input type="text" name="yAxisName" class="form-control" id="yAxisName"
-                                       placeholder="Y축">
+                                <input type="text" name="yAxisName" class="form-control" id="yAxisName" placeholder="Y축">
                             </div>
                         </div>
                     </div>
@@ -84,6 +80,7 @@
                     <button id="controlSubmit" type="submit" class="btn btn-default">옵션적용</button>
 
                     <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-success prev">이전</button>
                         <button type="button" class="btn btn-success next">다음</button>
                     </div>
                 </form>
@@ -94,9 +91,9 @@
 <div class="row">
     <div class="col col-lg-12">
         <div class="panel panel-primary view-chart">
-            <div class="panel-heading">신규 수평 바 차트</div>
+            <div class="panel-heading">수직 바 차트</div>
             <div class="panel-body">
-                <div id="horizontalBar" class="widget-chart"></div>
+                <div id="bar" class="widget-chart"></div>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur
                     cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae
@@ -107,13 +104,13 @@
                     <div class="col-lg-6">
                         <h3>Grouped 수평 바 차트</h3>
 
-                        <div class="widget-chart" data-featured="chart" data-chart-type="groupedHorizontalBar"
+                        <div class="widget-chart" data-featured="chart" data-chart-type="groupedBar"
                              data-chart-bind="data/sample-bar2.json"></div>
                     </div>
                     <div class="col-lg-6">
                         <h3>Stacked 수직 바 차트</h3>
 
-                        <div class="widget-chart" data-featured="chart" data-chart-type="stackedHorizontalBar"
+                        <div class="widget-chart" data-featured="chart" data-chart-type="stackedBar"
                              data-chart-bind="data/sample-bar2.json"></div>
                     </div>
                 </div>

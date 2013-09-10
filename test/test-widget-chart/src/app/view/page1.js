@@ -24,6 +24,7 @@ define([
 			this.$el.html(template());
 
 			this.activeChartPlugin();
+			window.Cornerstone.widget.activeDataApi();
 
 			return this;
 		},
@@ -40,7 +41,6 @@ define([
 		},
 
 		changeType: function(e) {
-			var $target = $(e.target);
 			var type = this.$el.find("#type").val();
 			this[type]();
 

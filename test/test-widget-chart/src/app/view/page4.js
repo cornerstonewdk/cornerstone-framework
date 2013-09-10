@@ -36,7 +36,6 @@ define([
 		},
 
 		changeType: function(e) {
-			var $target = $(e.target);
 			var type = this.$el.find("#type").val();
 			this[type]();
 

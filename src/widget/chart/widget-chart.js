@@ -56,6 +56,7 @@
 				self[options.chartType + "Chart"](target, options);
 			} else {
 				nv.addGraph((function (self, target, options) {
+					console.log(self.$el);
 					var colorLength = options.color.length;
 
 					chart = self[options.chartType + "Chart"](target, options);
@@ -727,29 +728,38 @@
 			activeAxisLabel: function (target, options, chart) {
 				var left = 0;
 				var right = 0;
-				if ("horizontalBar" === options.chartType) {
+
+				if ("bar" === options.chartType) {
+					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+
+					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
+					chart.margin({top: 30, right: 10, bottom: 50, left: left});
+				} else if ("horizontalBar" === options.chartType) {
 					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
 					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
 
 					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
 					chart.margin({top: 30, right: 10, bottom: 50, left: left});
 				} else if ("linePlusBar" === options.chartType) {
-					chart.xAxis.showMaxMin(options.showMaxMin).axisLabel(options.xAxisLabel);
-					chart.y1Axis.axisLabel(options.yAxisLabel);
-					chart.y2Axis.axisLabel(options.y2AxisLabel);
+					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+					chart.y1Axis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+					chart.y2Axis.tickFormat(d3.format(options.format)).axisLabel(options.y2AxisLabel);
 
 					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 35;
 					right = $.trim(options.y2AxisLabel).length > 0 ? 85 : 50;
 					chart.margin({top: 30, right: right, bottom: 50, left: left});
-				} else if ("lineFocus" === options.chartType) {
-					chart.xAxis.showMaxMin(options.showMaxMin).axisLabel(options.xAxisLabel);
-					chart.yAxis.axisLabel(options.yAxisLabel);
+				} else if ("lineFocus" === options.chartType || "line" === options.chartType) {
+					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
 
 					left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
 					chart.margin({top: 30, right: 30, bottom: 50, left: left});
 				} else {
-					chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-					chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+					if ("pie" !== options.chartType) {
+						chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+						chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+					}
 				}
 			},
 			applyBindEvent: function (target, options, chart, object) {
@@ -787,13 +797,13 @@
 					};
 				} else {
 					// window resize가 완료될 때 차트 resize 함수 실행
-					$(window).off("resizeEnd._chart").on("resizeEnd._chart", function (e) {
+					$(window).on("resizeEnd._chart", function (e) {
 						!options.autoResize || resize(e);
 					});
 				}
 
 				// Window Resize Trigger
-				$(window).off("resize._chart").on("resize._chart", function (e) {
+				$(window).on("resize._chart", function (e) {
 					if (e.target.resizeTO) clearTimeout(e.target.resizeTO);
 					e.target.resizeTO = setTimeout(function () {
 						$(this).trigger('resizeEnd');
@@ -857,13 +867,13 @@
 					};
 				} else {
 					// window resize가 완료될 때 차트 resize 함수 실행
-					$(window).off("resizeEnd._chart").on("resizeEnd._chart", function () {
+					$(window).on("resizeEnd._chart", function () {
 						!options.autoResize || resizeChart();
 					});
 				}
 
 				// Window Resize Trigger
-				$(window).off("resize._chart").on("resize._chart", function (e) {
+				$(window).on("resize._chart", function (e) {
 					if (e.target.resizeTO) clearTimeout(e.target.resizeTO);
 					e.target.resizeTO = setTimeout(function () {
 						$(this).trigger('resizeEnd');

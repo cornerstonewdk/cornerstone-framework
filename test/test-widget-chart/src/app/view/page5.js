@@ -9,7 +9,6 @@ define([
 
 		el: "section#page5",
 		sampleDataUrl: "data/sample-line.json",
-		sampleDataUrl: "data/sample-line.json",
 		chartOptions: {
 			chartType: "lineFocus",
 			showControls: true,
@@ -40,7 +39,6 @@ define([
 		},
 
 		changeType: function (e) {
-			var $target = $(e.target);
 			var type = this.$el.find("#type").val();
 			this[type]();
 
@@ -80,9 +78,7 @@ define([
 		changeData: function (e) {
 			var $target = $(e.target);
 			var type = this.$el.find("#type").val();
-			var chartUrl = $target.data("chartUrl");
-
-			this.sampleDataUrl = chartUrl;
+			this.sampleDataUrl = $target.data("chartUrl");
 			if ("activeChartView" === type) {
 				type = type.replace("active", "update");
 			}
