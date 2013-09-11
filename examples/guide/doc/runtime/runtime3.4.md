@@ -74,7 +74,6 @@
 	</tr>
 </table>
 
-![](./images/K-4.jpg)
 
 
 

@@ -71,8 +71,6 @@
 	</tr>
 </table>
 
-![](./images/K-3.jpg)
-
 
 
 

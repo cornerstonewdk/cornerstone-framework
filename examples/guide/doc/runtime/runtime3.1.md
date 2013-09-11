@@ -1,7 +1,7 @@
 <!--
 {
 	"id": "3",
-	"title": "Cornerstone Runtime 소개 – 정의",
+	"title": "Cornerstone Runtime 소개",
 	"group": 2,
 	"order": 3
 }

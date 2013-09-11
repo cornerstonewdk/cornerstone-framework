@@ -1,7 +1,7 @@
 <!--
 {
 	"id": "5",
-	"title": "개발 환경 설정 실습 및 Hello World 실행",
+	"title": "개발 환경 설정 실습 및 예제",
 	"group": 2,
 	"order": 11
 }
