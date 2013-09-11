@@ -3,13 +3,15 @@ define([
 		'backbone', 
 		'util/dummyDataUtil', 
 		'template!../template/pricePlan/makePricePlan', 
+		'template!../template/pricePlan/modal', 
 		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
 ], function(
 		$, 
 		Backbone, 
 		DummyDataUtil, 
-		template
+		template,
+		modalTemplate
 ){
 	var MakePricePolicyView = Backbone.View.extend({
 		
@@ -92,14 +94,17 @@ define([
 			this.$dropProductTypeZone = $('div#dropProductTypeZone');		//상품조건 드랍존
 			this.$dropDiscountTypeZone = $('div#dropDiscountTypeZone');		//할인조건 드랍존
 			this.$dropCommTypeZone = $('div#dropCommTypeZone');				//회선조건 드랍존
-			$('div[ data-dragObject]').drag({drag:false}).on("drag",function (e, y, x) {
-                $(this).css({
-                    top: y,
-                    left: x
-                });
-            }).on("dragEnd", function(e){	//드레그 오브젝트 설정
-				self.dropEvent(e);
-			});
+
+			$('div[data-dragObject]').each( function () {
+				$( this ).drag({drag:true}).on("drag",function (e, y, x) {
+					$(this).css( {
+						top: y,
+						left: x
+					} );
+				} ).on("dragEnd", function(e){	//드레그 오브젝트 설정
+					self.dropEvent(e);
+				} );
+			} )
 			
 			//조건에 따라 새로 만들던지 기존것 재현하여 편집할 수 있도록 처리
 			if(this.selectPlanData != null) {	//수정일때 데이터서 로딩
@@ -161,7 +166,6 @@ define([
 			'click button#saveButton': 'clickedSaveButton',
 			'click button.removeButton': 'clickedRemoveButton',
 			'click button#makePlan-backButton': 'onClickedBackButton',
-			
 			'click button#voiceModalCancel': 'onClickedVoiceModalCancel',
 			'click button#voiceModalOK': 'onClickedVoiceModalOK',
 			'click button#dataModalCancel': 'onClickedDataModalCancel',
@@ -379,7 +383,15 @@ define([
 						var ctype = $dragObj.attr('data-customertype');
 						if(ctype == 'basic') {	//일반의 경우 나머지 3개와 같이 할 수 없다.
 							if(self.getSelectObjectList(self.$dropCustomerTypeZone).length > 0){
-								alert('일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 다른 조건을 삭제 후 다시 시도하여 주세요!');
+								var html = modalTemplate({
+										title: '경고',
+										body: '일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 다른 조건을 삭제 후 다시 시도하여 주세요!',
+										name: 'customertype'
+									});
+								this.el.append($(html).modal());
+								this.$el.find('.modal.customertype').on('hide.bs.modal',function(){
+									$(this).remove();
+								});
 								self.reverseObject($dragObj);
 								return;	
 							}
@@ -387,7 +399,15 @@ define([
 							var list = self.getSelectObjectList(self.$dropCustomerTypeZone);
 							for(var i = 0; i < list.length; i++) {
 								if($(list[i]).attr('data-customertype') == 'basic') {
-									alert('일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 일반 조건을 삭제 후 다시 시도하여 주세요!');
+									var html = modalTemplate({
+										title: '경고',
+										body: '일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 다른 조건을 삭제 후 다시 시도하여 주세요!',
+										name: 'customertype'
+									});
+									this.el.append($(html).modal());
+									this.$el.find('.modal.customertype').on('hide.bs.modal',function(){
+										$(this).remove();
+									});
 									self.reverseObject($dragObj);
 									return;	
 								}
@@ -401,7 +421,6 @@ define([
 					case 'discounttype':
 						break;
 				}
-
 				self.moveToDropZone($dragObj, $dropZone);
 			} else {
 				self.reverseObject($dragObj);
@@ -415,6 +434,7 @@ define([
 		
 		//드레그중인 오브젝트 되돌리기
 		reverseObject: function($dragObj) {
+			console.log($dragObj)
 			$dragObj.animate({
 				top:0,
 				left:-12,

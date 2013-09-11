@@ -6,6 +6,7 @@
 		'template!../template/voc/voc',
 		'template!../template/voc/vocListCell',
 		'template!../template/voc/vocInfo', 
+		'template!../template/voc/vocHistoryCell',
 		'widget-scrollview', 
 		'style!../style/voc/vocStyle'
 ], function(
@@ -15,7 +16,8 @@
 		DummyDataUtil, 
 		template,
 		cellTemplate,
-		vocInfoTemplate
+		vocInfoTemplate,
+		vocHistoryCellTemplate
 ){
 	var VocView = Backbone.View.extend({
 		el : 'div#contentsView',
@@ -88,11 +90,11 @@
 			var historyList = this.$el.find('#vocHistory');
 			for(var i = 0; i < this.vocList.length; i++) {
 				if(this.vocList[i]['customerId'] == selectVocData['customerId'] && this.vocList[i]['vocId'] != selectVocData['vocId']) {
-					if (this.vocList[i]['customerSatisfaction'] === '만족') {
-						historyList.append('<li>' + '<span class="label label-success">' + this.vocList[i]['customerSatisfaction'] + '</span>' + ' ' + this.vocList[i]['vocRequest'] + '</li>');
-					} else {
-						historyList.append('<li>' + '<span class="label label-warning">' + this.vocList[i]['customerSatisfaction'] + '</span>' + ' ' + this.vocList[i]['vocRequest'] + '</li>');
-					}
+					historyList.append(vocHistoryCellTemplate({
+						'customerSatisfaction': this.vocList[i]['customerSatisfaction'], 
+						'vocRequest': this.vocList[i]['vocRequest'], 
+						'success': this.vocList[i]['customerSatisfaction'] === '만족' ? 'success' : 'danger'
+					}));
 				}
 			}
 		},
@@ -107,11 +109,7 @@
 			}
 			
 			$('li.active[data-voclist]').removeClass('active').removeAttr("style");
-			$('li[data-voclist="' + selectedVocId + '"]').addClass('active').css({
-                boxShadow:"none",
-                background: "#2a6b8d",
-                color: "#FFF"
-            });
+			$('li[data-voclist="' + selectedVocId + '"]').addClass('active');
 			
 			this.loadVocDetailData(selectedVocId);
 		},

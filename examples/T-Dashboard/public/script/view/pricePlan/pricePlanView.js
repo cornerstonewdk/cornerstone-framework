@@ -29,14 +29,17 @@ define([
 		events: {
 			'click button#makePricePlan': 'onClickedMakePricePlan',
 			'click a[data-plan]': 'planSelect',
+			'click #pricePlanList > li': 'planSelect',
 			'click button#modifyButton': 'onClickedModifyButton',
 		},
 		
 		planSelect: function(e) {
-			this.planSelectProc($(e.target));
+			var target = e.target.tagName === 'A' ? $(e.target) : $(e.target).find('a');
+			this.planSelectProc(target);
 		},
 		
 		planSelectProc: function($selectedObj) {
+			
 			var pricePlanId = $selectedObj.attr('data-plan');
 			this.selectedPricePlan = pricePlanId;
 			
@@ -56,22 +59,23 @@ define([
 			$('div#dropCustomerTypeZone > div[data-show="false"]').remove();
 			
 			var producTypeList = data['producttype'];
+
 			for(var i = 0; i < producTypeList.length; i++) {
 				var ptype = producTypeList[i];
 				$('div[data-producttype="' + ptype['value'] + '"]').attr('data-show', 'true');
-				$('div[data-producttype="' + ptype['value'] + '"]').addClass('span' + Math.ceil(12 / producTypeList.length));
+				// $('div[data-producttype="' + ptype['value'] + '"]').addClass('span' + Math.ceil(12 / producTypeList.length));
 				switch(ptype['value']) {
 					case 'voice':
-						$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 분)');
+						$('div[data-producttype="' + ptype['value'] + '"] ').find('.panel-collapse p').html('(' + ptype['extraData'] + ' 분)');
 						break;
 					case 'data':
-						$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' GB)');
+						$('div[data-producttype="' + ptype['value'] + '"]').find('.panel-collapse p').html('(' + ptype['extraData'] + ' GB)');
 						break;
 					case 'message':
-						$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 건)');
+						$('div[data-producttype="' + ptype['value'] + '"]').find('.panel-collapse p').html('(' + ptype['extraData'] + ' 건)');
 						break;
 					case 'roaming':
-						$('div[data-producttype="' + ptype['value'] + '"] > p').html('(' + ptype['extraData'] + ' 분)');
+						$('div[data-producttype="' + ptype['value'] + '"]').find('.panel-collapse p').html('(' + ptype['extraData'] + ' 분)');
 						break;
 				}
 			}
@@ -92,6 +96,10 @@ define([
 				$('div[data-discounttype="' + dtype['value'] + '"]').addClass('span' + Math.ceil(12 / discountTypeList.length));
 			}
 			$('div#dropDiscountTypeZone > div[data-show="false"]').remove();
+
+			$('button[data-toggle="popover"]').each(function(){
+				$( this ).popover('show');
+			});
 		},
 		
 		onClickedModifyButton: function(e) {
@@ -111,7 +119,7 @@ define([
 			
 			for(var pricePlanId in pricePlanList) {
 				var pricePlan = pricePlanList[pricePlanId];
-				$('ul#pricePlanList').append('<li><a data-plan="' + pricePlan['pricePlanId'] + '">' + pricePlan['pricePlanName'] + '</a></li>');
+				$('ul#pricePlanList').append('<li class="list-group-item"><a data-plan="' + pricePlan['pricePlanId'] + '">' + pricePlan['pricePlanName'] + '</a></li>');
 			}
 			
 			if(!this.selectedPricePlanId) {

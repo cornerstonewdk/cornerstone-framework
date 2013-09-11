@@ -1,19 +1,16 @@
-<div class="container" id="voc">
-	<div class="row">
-		<!-- left menu -->
-		<div class="span3">
-			<div class="well sidebar-nav" >
-				<div id="vocScrollView" class="scrollview" >
-					<div class="lists scroller">
-						<ul id="vocList" class="lists-con">
-						</ul>
-					</div>
-				</div>
-			</div>
+<div id="voc" class="row">
+	<div class="col-xs-12 col-md-3">
+		<div class="panel-group">
+    		<div class="panel">
+        		<!-- Default panel contents -->
+        		<div class="panel-heading">VOC 목록</div>
+        		<div class="panel-body">
+		            <ul id="vocList" class="list-group list-group-flush list-group-cornerstone">
+		            </ul>
+		        </div>
+	        </div>
 		</div>
-		
-		<!-- desktop contents -->
-		<div class="span9 voc-area" id="vocData">
-		</div>
+	</div>
+	<div id="vocData" class="col-xs-12 col-md-9 voc-area">
 	</div>
 </div>
