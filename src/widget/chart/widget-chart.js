@@ -56,7 +56,6 @@
 				self[options.chartType + "Chart"](target, options);
 			} else {
 				nv.addGraph((function (self, target, options) {
-					console.log(self.$el);
 					var colorLength = options.color.length;
 
 					chart = self[options.chartType + "Chart"](target, options);
@@ -764,7 +763,7 @@
 			},
 			applyBindEvent: function (target, options, chart, object) {
 				var stateChange = function (e) {
-					isDebug && console.log("New State:", JSON.stringify(e));
+					isDebug && console.log("상태:", JSON.stringify(e));
 					// 애니매이션 중 이벤트 방지
 					!target.$parent.hasClass("overlay") && target.$parent.addClass("overlay");
 
