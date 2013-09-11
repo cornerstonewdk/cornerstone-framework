@@ -3,20 +3,20 @@
 		"baseUrl": "app",
 		"packageDir": "cornerstone",
 		"dependencies": {
-			"launcher": "*",
-			"template": "*",
-			"style": "*",
-			"bootstrap": "*",
-			"form-view": "*",
-			"validation-view": "*",
-			"widget-rangeinput": "*",
-			"widget-sign": "*",
-			"widget-spinner": "*",
-			"widget-motioncaptcha": "*",
-			"widget-datepicker": "*",
-			"widget-typeahead": "*",
-            "widget-chart": "*",
-			"multipage-router": "*"
+			"launcher": "2.0.0",
+			"template": "2.0.0",
+			"style": "2.0.0",
+			"bootstrap": "3.0.0",
+			"form-view": "2.0.0",
+			"validation-view": "2.0.0",
+			"widget-rangeinput": "2.0.0",
+			"widget-sign": "2.0.0",
+			"widget-spinner": "2.0.0",
+			"widget-motioncaptcha": "2.0.0",
+			"widget-datepicker": "2.0.0",
+			"widget-typeahead": "2.0.0",
+			"widget-chart": "2.0.0",
+			"multipage-router": "2.0.0"
 		}
 	}
 }

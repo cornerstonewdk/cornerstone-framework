@@ -9,7 +9,6 @@
                         <select name="type" class="form-control" id="type">
                             <option value="activeChartPlugin">Plugin 방식</option>
                             <option value="activeChartView">Backbone View 방식</option>
-                            <option value="activeChartDataApi">DATA-API 방식</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -17,11 +16,13 @@
                             <div class="col-xs-6">
                                 <label for="controlGrouped">Grouped 이름</label>
                                 <input type="text" name="controlGrouped" class="form-control" id="controlGrouped"
+                                       maxlength="5"
                                        value="그룹"/>
                             </div>
                             <div class="col-xs-6">
                                 <label for="controlStacked">Stacked 이름</label>
                                 <input type="text" name="controlStacked" class="form-control" id="controlStacked"
+                                       maxlength="5"
                                        value="스택">
                             </div>
                         </div>
@@ -30,11 +31,13 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <label for="xAxisName">X축 이름</label>
-                                <input type="text" name="xAxisName" class="form-control" id="xAxisName" value="XXX"/>
+                                <input type="text" name="xAxisName" class="form-control" id="xAxisName"
+                                       placeholder="X축"/>
                             </div>
                             <div class="col-xs-6">
                                 <label for="yAxisName">Y축 이름</label>
-                                <input type="text" name="yAxisName" class="form-control" id="yAxisName" value="YYY">
+                                <input type="text" name="yAxisName" class="form-control" id="yAxisName"
+                                       placeholder="Y축">
                             </div>
                         </div>
                     </div>
@@ -66,12 +69,14 @@
                                 </select>
                             </div>
                             <div class="col-xs-6">
-                                <label for="changeData">데이터변경</label>
-                                <select name="changeData" class="form-control" id="changeData">
-                                    <option value="sample-bar.json">3개</option>
-                                    <option value="sample-bar2.json">9개</option>
-                                    <option value="sample-bar3.json">30개</option>
-                                </select>
+                                <div>
+                                    <label>데이터변경</label>
+                                </div>
+                                <div id="changeData" class="btn-group">
+                                    <button class="btn btn-info" data-chart-url="data/sample-bar.json">3개</button>
+                                    <button class="btn btn-info" data-chart-url="data/sample-bar2.json">9개</button>
+                                    <button class="btn btn-info" data-chart-url="data/sample-bar3.json">30개</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +84,7 @@
                     <button id="controlSubmit" type="submit" class="btn btn-default">옵션적용</button>
 
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-success next">다음 페이지</button>
+                        <button type="button" class="btn btn-success next">다음</button>
                     </div>
                 </form>
             </div>
@@ -89,7 +94,7 @@
 <div class="row">
     <div class="col col-lg-12">
         <div class="panel panel-primary view-chart">
-            <div class="panel-heading">신규 수평 차트</div>
+            <div class="panel-heading">신규 수평 바 차트</div>
             <div class="panel-body">
                 <div id="horizontalBar" class="widget-chart"></div>
                 <p>
@@ -97,6 +102,25 @@
                     cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae
                     rem tempora tenetur voluptatem!
                 </p>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Grouped 수평 바 차트</h3>
+
+                        <div class="widget-chart" data-featured="chart" data-chart-type="groupedHorizontalBar"
+                             data-chart-bind="data/sample-bar2.json"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Stacked 수직 바 차트</h3>
+
+                        <div class="widget-chart" data-featured="chart" data-chart-type="stackedHorizontalBar"
+                             data-chart-bind="data/sample-bar2.json"></div>
+                    </div>
+                </div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor eum harum tenetur. At autem dolor ex
+                    iure mollitia. Ab corporis, eligendi magnam nemo odit quibusdam sed totam! Excepturi, quia
+                    reiciendis!</p>
             </div>
         </div>
     </div>

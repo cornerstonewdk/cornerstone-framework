@@ -5,24 +5,41 @@
         <h2>Chart</h2>
     </header>
     <div class="row">
-        <div class="col col-lg-12">
-            <h3>바차트</h3>
+        <div class="col col-lg-6">
+            <h3>3D 바 차트</h3>
+            <div class="widget-chart" data-featured="chart" data-chart-type="bar3d" data-chart-bind="data/sample-bar.json"></div>
+        </div>
+        <div class="col col-lg-6">
+            <h3>3D 수평 바 차트</h3>
 
-            <div data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json"
-                 style="height: 500px"></div>
+            <div class="widget-chart" data-featured="chart" data-chart-type="horizontalBar3d" data-chart-bind="data/sample-bar.json"></div>
         </div>
     </div>
     <div class="row">
         <div class="col col-lg-6">
-            <h3>라인차트</h3>
-
-            <div data-featured="chart" data-chart-type="line" data-chart-bind="data/sample-line.json"
-                 style="height: 300px"></div>
+            <h3>바 차트</h3>
+            <div class="widget-chart" data-featured="chart" data-chart-type="bar" data-chart-bind="data/sample-bar.json"></div>
         </div>
         <div class="col col-lg-6">
-            <h3>파이차트</h3>
+            <h3>수평 바 차트</h3>
+            <div class="widget-chart" data-featured="chart" data-chart-type="horizontalBar" data-chart-bind="data/sample-bar.json"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>라인 차트</h3>
+            <div class="widget-chart" data-featured="chart" data-chart-type="line" data-chart-bind="data/sample-line.json"></div>
+        </div>
+        <div class="col col-lg-6">
+            <h3>라인 + 바 차트</h3>
 
-            <div data-featured="chart" data-chart-type="pie" data-chart-bind="data/sample-pie.json"></div>
+            <div class="widget-chart" data-featured="chart" data-chart-type="linePlusBar" data-chart-bind="data/sample-line.json"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>라인 포커스 차트</h3>
+            <div class="widget-chart" data-featured="chart" data-chart-type="lineFocus" data-chart-bind="data/sample-line.json"></div>
         </div>
     </div>
 </section>

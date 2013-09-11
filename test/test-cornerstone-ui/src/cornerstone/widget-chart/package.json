@@ -7,8 +7,8 @@
 			"backbone": "1.0.0",
 			"underscore": "1.4.4",
 			"jquery": "2.0.2",
-			"d3": "3.0.0",
-			"nv": "0.0.1"
+			"nv": "1.1.11b",
+            "widget-touch": "2.0.0"
 		},
 		"main": "widget-chart.js",
 		"shim": {
