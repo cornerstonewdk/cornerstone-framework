@@ -6,7 +6,7 @@
 	<p>스페이스 바 또는 화살표 키를 이용해서 이동하세요.</p>
 </div>
 <div id="impress">
-	<div id="title" class="step" data-x="0" data-y="-1000" data-z="0" data-rotate-x="90" data-scale="4">
+	<div id="title" class="step" data-x="0" data-y="-3000" data-z="0" data-rotate-x="90" data-scale="4">
 		<h1>Cornerstone</h1>
 		<h1>Developer Guide</h1>
 		<p class="copyright">Copyright &copy; 2012-2013 SKTELECOM Co., Ltd. All Rights Reserved.</p>
