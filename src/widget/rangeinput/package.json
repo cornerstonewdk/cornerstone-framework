@@ -7,7 +7,7 @@
 			"backbone": "1.0.0",
 			"underscore": "1.4.4",
 			"jquery": "2.0.2",
-			"widget-touch": "1.0.0"
+			"widget-touch": "2.0.0"
 		},
 		"main": "widget-rangeinput.js",
 		"shim": {
