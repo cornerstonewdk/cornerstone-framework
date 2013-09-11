@@ -52,7 +52,7 @@ var jam = {
         {
             "name": "nv",
             "location": "../cornerstone/nv",
-            "main": "nv.d3.min.js"
+            "main": "nv.d3.js"
         },
         {
             "name": "style",
@@ -246,7 +246,7 @@ if (typeof require !== "undefined" && require.config) {
         {
             "name": "nv",
             "location": "../cornerstone/nv",
-            "main": "nv.d3.min.js"
+            "main": "nv.d3.js"
         },
         {
             "name": "style",
@@ -439,7 +439,7 @@ else {
         {
             "name": "nv",
             "location": "../cornerstone/nv",
-            "main": "nv.d3.min.js"
+            "main": "nv.d3.js"
         },
         {
             "name": "style",
