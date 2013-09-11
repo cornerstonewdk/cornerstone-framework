@@ -888,7 +888,7 @@
 			xAxisLabel: "",
 			yAxisLabel: "",
 			y2AxisLabel: "",
-			format: ".0f",
+			format: ".1f",
 			data: [],
 			showMaxMin: true,
 			showValues: true,
