@@ -4,7 +4,7 @@
 	"description": "Jsonp util via jquery",
 	"jam": {
 		"dependencies": {
-			"jquery": "2.0.2"
+			"jquery": "1.10.2"
 		},
 		"main": "jsonp.js",
 		"shim": {
