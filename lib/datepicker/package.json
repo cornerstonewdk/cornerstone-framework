@@ -5,7 +5,7 @@
 	"jam": {
 		"dependencies": {
 			"bootstrap": "3.0.0",
-			"jquery": "2.0.2"
+			"jquery": "1.10.2"
 		},
 		"main": "bootstrap-datepicker.js",
 		"shim": {
