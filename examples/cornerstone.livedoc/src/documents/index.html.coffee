@@ -1,5 +1,5 @@
 ---
-name: 'HOME'
+name: '처음'
 linkTitle: 'home'
 pageOrder: 1
 layout: 'page'
