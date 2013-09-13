@@ -37,7 +37,7 @@
         keyboard:false,
         progress:false,
         speed:100,
-        inputShow:false,
+        showInput:false,
         css:{
             input:'range',
             slider:'slider',
@@ -107,7 +107,7 @@
         input.addClass(css.input);
 
         // input UI를 노출시키고 싶지 않은 경우 처리
-        if (!conf.inputShow) {
+        if (!conf.showInput) {
             input.css({
                 display:"none"
             });
@@ -441,7 +441,7 @@
 //
 //            $(this).addClass("range-android").parent().addClass("range-android");
 //
-//            if (typeof options === "object" && options.inputShow) {
+//            if (typeof options === "object" && options.showInput) {
 //                var $rangeTarget = $(this), $numTarget = $("<input type='tel' value='" + $rangeTarget.val() + "' class='widget-range btn-block figure range inline' />");
 //
 //                $rangeTarget.on("change", function () {
