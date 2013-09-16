@@ -6,7 +6,7 @@
 		"dependencies": {
 			"jquery": "1.10.2"
 		},
-		"main": "infinity.js",
+		"main": "infinity.min.js",
 		"shim": {
 			"deps": [ "jquery" ],
 			"exports": "infinity"

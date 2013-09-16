@@ -6,11 +6,11 @@
     </header>
     <div class="row">
         <div class="col col-lg-6">
-            <h3>3D 바 차트</h3>
+            <h3>3D 바 차트 Webkit</h3>
             <div class="widget-chart" data-featured="chart" data-chart-type="bar3d" data-chart-bind="data/sample-bar.json"></div>
         </div>
         <div class="col col-lg-6">
-            <h3>3D 수평 바 차트</h3>
+            <h3>3D 수평 바 차트 Webkit</h3>
 
             <div class="widget-chart" data-featured="chart" data-chart-type="horizontalBar3d" data-chart-bind="data/sample-bar.json"></div>
         </div>

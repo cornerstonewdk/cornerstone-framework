@@ -26,6 +26,16 @@ var jam = {
             "main": "handlebars.js"
         },
         {
+            "name": "infinity",
+            "location": "../cornerstone/infinity",
+            "main": "infinity.js"
+        },
+        {
+            "name": "iscroll",
+            "location": "../cornerstone/iscroll",
+            "main": "iscroll.js"
+        },
+        {
             "name": "jquery",
             "location": "../cornerstone/jquery",
             "main": "jquery-2.0.2.min.js"
@@ -91,6 +101,11 @@ var jam = {
             "main": "widget-datepicker.js"
         },
         {
+            "name": "widget-listview",
+            "location": "../cornerstone/widget-listview",
+            "main": "widget-listview.js"
+        },
+        {
             "name": "widget-motioncaptcha",
             "location": "../cornerstone/widget-motioncaptcha",
             "main": "widget-motioncaptcha.js"
@@ -99,6 +114,11 @@ var jam = {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-scrollview",
+            "location": "../cornerstone/widget-scrollview",
+            "main": "widget-scrollview.js"
         },
         {
             "name": "widget-sign",
@@ -149,6 +169,15 @@ var jam = {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "infinity": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "infinity"
+        },
+        "iscroll": {
+            "exports": "iScroll"
         },
         "jquery": {
             "exports": "jquery"
@@ -228,6 +257,15 @@ var jam = {
             ],
             "exports": "widget-datepicker"
         },
+        "widget-listview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "infinity"
+            ],
+            "exports": "widget-listview"
+        },
         "widget-motioncaptcha": {
             "deps": [
                 "backbone",
@@ -244,6 +282,15 @@ var jam = {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
         },
         "widget-sign": {
             "deps": [
@@ -305,6 +352,16 @@ if (typeof require !== "undefined" && require.config) {
             "main": "handlebars.js"
         },
         {
+            "name": "infinity",
+            "location": "../cornerstone/infinity",
+            "main": "infinity.js"
+        },
+        {
+            "name": "iscroll",
+            "location": "../cornerstone/iscroll",
+            "main": "iscroll.js"
+        },
+        {
             "name": "jquery",
             "location": "../cornerstone/jquery",
             "main": "jquery-2.0.2.min.js"
@@ -370,6 +427,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "widget-datepicker.js"
         },
         {
+            "name": "widget-listview",
+            "location": "../cornerstone/widget-listview",
+            "main": "widget-listview.js"
+        },
+        {
             "name": "widget-motioncaptcha",
             "location": "../cornerstone/widget-motioncaptcha",
             "main": "widget-motioncaptcha.js"
@@ -378,6 +440,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-scrollview",
+            "location": "../cornerstone/widget-scrollview",
+            "main": "widget-scrollview.js"
         },
         {
             "name": "widget-sign",
@@ -427,6 +494,15 @@ if (typeof require !== "undefined" && require.config) {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "infinity": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "infinity"
+        },
+        "iscroll": {
+            "exports": "iScroll"
         },
         "jquery": {
             "exports": "jquery"
@@ -506,6 +582,15 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "widget-datepicker"
         },
+        "widget-listview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "infinity"
+            ],
+            "exports": "widget-listview"
+        },
         "widget-motioncaptcha": {
             "deps": [
                 "backbone",
@@ -522,6 +607,15 @@ if (typeof require !== "undefined" && require.config) {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
         },
         "widget-sign": {
             "deps": [
@@ -583,6 +677,16 @@ else {
             "main": "handlebars.js"
         },
         {
+            "name": "infinity",
+            "location": "../cornerstone/infinity",
+            "main": "infinity.js"
+        },
+        {
+            "name": "iscroll",
+            "location": "../cornerstone/iscroll",
+            "main": "iscroll.js"
+        },
+        {
             "name": "jquery",
             "location": "../cornerstone/jquery",
             "main": "jquery-2.0.2.min.js"
@@ -648,6 +752,11 @@ else {
             "main": "widget-datepicker.js"
         },
         {
+            "name": "widget-listview",
+            "location": "../cornerstone/widget-listview",
+            "main": "widget-listview.js"
+        },
+        {
             "name": "widget-motioncaptcha",
             "location": "../cornerstone/widget-motioncaptcha",
             "main": "widget-motioncaptcha.js"
@@ -656,6 +765,11 @@ else {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-scrollview",
+            "location": "../cornerstone/widget-scrollview",
+            "main": "widget-scrollview.js"
         },
         {
             "name": "widget-sign",
@@ -705,6 +819,15 @@ else {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "infinity": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "infinity"
+        },
+        "iscroll": {
+            "exports": "iScroll"
         },
         "jquery": {
             "exports": "jquery"
@@ -784,6 +907,15 @@ else {
             ],
             "exports": "widget-datepicker"
         },
+        "widget-listview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "infinity"
+            ],
+            "exports": "widget-listview"
+        },
         "widget-motioncaptcha": {
             "deps": [
                 "backbone",
@@ -800,6 +932,15 @@ else {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
         },
         "widget-sign": {
             "deps": [
