@@ -18,7 +18,7 @@ thumbnail: '6.3.00.iOS.png'
 ### iOS Runtime 하이브리드앱 개발 환경
 
  - 다음 링크에서 iOS 용 코너스톤 런타임을 다운로드 받을 수 있다.
- - [iOS 용 코너스톤 런타임 (iOS용 하이브리드앱 개발환경) 다운로드](http://cornerstone.sktelecom.com/download/cornerstone-runtime-iOS-0.9.0.zip) 
+ - [iOS 용 코너스톤 런타임 (iOS용 하이브리드앱 개발환경) 다운로드](http://cornerstone.sktelecom.com/download/cornerstone-runtime-iOS-0.9.2.zip) 
  - iOS용 하이브리드앱 개발환경은 Xcode 버전 4.6.2, Mac OSX 버전 10.7.4 Lion 기준으로 개발되었으며 iOS 버전은 6.1 이다.
 
 ### iOS Runtime 하이브리드앱 개발 환경 구조  
@@ -31,7 +31,7 @@ thumbnail: '6.3.00.iOS.png'
 
 -	**www** : 하이브리드앱의 저장 위치 
 -	**www/index.html** : 하이브리드앱의 첫 실행 파일
--	**www/SRT-0.9.1.js** : Cornerstone Runtime Java Script Library
+-	**www/SRT-0.9.2.js** : Cornerstone Runtime Java Script Library
 
 3) SRT_Template/Resources - 하이브리드앱에 필요한 리소스를 저장하는 위치
 
@@ -53,13 +53,13 @@ thumbnail: '6.3.00.iOS.png'
 
 ![](./images/openproject.jpg)
 
-**step 2.**  하이브리드앱 개발자는 www 폴더 내부에 .html , .js , .css 와 같은 웹앱을 작성하여야 하며 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.1.js는 template 기본 파일**이다. 
+**step 2.**  하이브리드앱 개발자는 www 폴더 내부에 .html , .js , .css 와 같은 웹앱을 작성하여야 하며 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.2.js는 template 기본 파일**이다. 
 
 ![](./images/index.jpg)
 
 -	특정 웹페이지 내부에서 Runtime에서 제공하는 DeviceAPI를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
  
-	`<script type="text/javascript" charset="utf-8" src="./path/SRT-0.9.1.js"></script>`
+	`<script type="text/javascript" charset="utf-8" src="./path/SRT-0.9.2.js"></script>`
 
 **step 3.**  Resources/icons 폴더 내부에 하이브리드앱 개발자가 사용하고자 하는 아이콘 이미지를 프로젝트에 추가한다. 기본으로 설정된 icon 파일 이름은 **icon**이며 기본 설정일 경우 Device 에 따라 적용되는 icon 파일 이름은 아래와 같다. icon 파일 이름 설정 방법은 **step 5.** 에서 다룬다.
 

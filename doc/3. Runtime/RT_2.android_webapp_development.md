@@ -18,7 +18,7 @@ thumbnail: '6.2.00.android.png'
 ### Android Runtime 하이브리드앱 개발 환경 
 
  - 다음 링크에서 Android 용 코너스톤 런타임을 다운로드 받을 수 있다. 
- - [Android 용 코너스톤 런타임 (Android 용 하이브리드앱 개발환경) 다운로드](http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.0.zip) 
+ - [Android 용 코너스톤 런타임 (Android 용 하이브리드앱 개발환경) 다운로드](http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.2.zip) 
 
 
 ### Android Runtime 하이브리드앱 개발 환경 구조 
@@ -56,7 +56,7 @@ thumbnail: '6.2.00.android.png'
 
 ![](./images/src.png)
 
-**step 2.**  하이브리드앱 개발자는 assets 폴더 내부에 .html , .js , .css 와 같은 하이브리드앱 소스 파일을 작성하여야 하며 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.1.js는 하이브리드앱 개발 환경 Template의 기본 포함된 파일**이다. 
+**step 2.**  하이브리드앱 개발자는 assets 폴더 내부에 .html , .js , .css 와 같은 하이브리드앱 소스 파일을 작성하여야 하며 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.2.js는 하이브리드앱 개발 환경 Template의 기본 포함된 파일**이다. 
 
 ![](./images/src2.png)
 
@@ -73,7 +73,7 @@ thumbnail: '6.2.00.android.png'
 	
 -	특정 웹페이지 내부에서 Runtime Device API를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
  
-		<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.2.js"></script>
 
 	> 하이브리드앱에서의 Device 의 해상도에 상관 없이 스크린에 Fix되게 출력하는 방법
 

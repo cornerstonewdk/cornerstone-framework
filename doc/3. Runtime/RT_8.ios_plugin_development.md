@@ -29,7 +29,7 @@ thumbnail: '6.8.00.iOS.png'
 
 -	**www** : 웹리소스의 저장 위치 
 -	**www/index.html** : 하이브리드앱의 첫 실행 파일
--	**www/SRT-0.9.1.js** : Cornerstone Runtime Java Script Library
+-	**www/SRT-0.9.2.js** : Cornerstone Runtime Java Script Library
 
 3) SRT_Template/Resources - 하이브리드앱에 필요한 리소스를 저장하는 위치
 
@@ -200,13 +200,13 @@ thumbnail: '6.8.00.iOS.png'
 
 	
 
-**step 5.** 하이브리드앱의 시작파일은 반드시 index.html 이어야 한다. **SRT-0.9.1.js는 template 기본 파일**이다. 
+**step 5.** 하이브리드앱의 시작파일은 반드시 index.html 이어야 한다. **SRT-0.9.2.js는 template 기본 파일**이다. 
 
 ![](./images/index.jpg)
 
 -	특정 웹페이지 내부에서 Device API를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
  
-	`<script type="text/javascript" charset="utf-8" src="./SRT-0.9.1.js"></script>`
+	`<script type="text/javascript" charset="utf-8" src="./SRT-0.9.2.js"></script>`
 
 -	특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
 
@@ -222,7 +222,7 @@ thumbnail: '6.8.00.iOS.png'
 	<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" context="width-divice-width, initial-scele-1.0, user-scalble=no">
-	<script type="text/javascript" charset="utf-8" src="./SRT-0.9.1.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./SRT-0.9.2.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./pageloadingplugin.js"></script>
 	<title>PageLoadingPlugin</title>
 	<script type="text/javascript">
