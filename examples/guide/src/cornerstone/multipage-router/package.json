@@ -6,8 +6,8 @@
 		"dependencies": {
 			"backbone": "1.0.0",
 			"underscore": "1.4.4",
-			"jquery": "2.0.2",
-			"transition": "1.0.0"
+			"jquery": "1.10.2",
+			"transition": "2.0.0"
 		},
 		"main": "multipage.js",
 		"shim": {

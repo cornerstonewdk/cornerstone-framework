@@ -23,7 +23,7 @@ var jam = {
         {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.2.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -158,7 +158,7 @@ if (typeof require !== "undefined" && require.config) {
         {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.2.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -292,7 +292,7 @@ else {
         {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.2.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
