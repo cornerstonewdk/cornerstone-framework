@@ -4,6 +4,7 @@ define([
 		'util/dummyDataUtil', 
 		'template!../template/pricePlan/makePricePlan', 
 		'template!../template/pricePlan/modal', 
+		'template!../template/pricePlan/modalBody', 
 		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
 ], function(
@@ -11,7 +12,8 @@ define([
 		Backbone, 
 		DummyDataUtil, 
 		template,
-		modalTemplate
+		modalTemplate,
+		modalBodyTemplate
 ){
 	var MakePricePolicyView = Backbone.View.extend({
 		
@@ -166,14 +168,71 @@ define([
 			'click button#saveButton': 'clickedSaveButton',
 			'click button.removeButton': 'clickedRemoveButton',
 			'click button#makePlan-backButton': 'onClickedBackButton',
-			'click button#voiceModalCancel': 'onClickedVoiceModalCancel',
-			'click button#voiceModalOK': 'onClickedVoiceModalOK',
-			'click button#dataModalCancel': 'onClickedDataModalCancel',
-			'click button#dataModalOK': 'onClickedDataModalOK',
-			'click button#messageModalCancel': 'onClickedMessageModalCancel',
-			'click button#messageModalOK': 'onClickedMessageModalOK',
-			'click button#roamingModalCancel': 'onClickedRoamingModalCancel',
-			'click button#roamingModalOK': 'onClickedRoamingModalOK',
+			'click button.js-edit-producttype': 'editProductType',
+			'click button.js-modal-save': 'saveExtraData'
+		},
+
+		/* 이벤트 editProductType,saveExtraData 로 통합
+		'click button#voiceModalCancel': 'onClickedVoiceModalCancel',
+		'click button#voiceModalOK': 'onClickedVoiceModalOK',
+		'click button#dataModalCancel': 'onClickedDataModalCancel',
+		'click button#dataModalOK': 'onClickedDataModalOK',
+		'click button#messageModalCancel': 'onClickedMessageModalCancel',
+		'click button#messageModalOK': 'onClickedMessageModalOK',
+		'click button#roamingModalCancel': 'onClickedRoamingModalCancel',
+		'click button#roamingModalOK': 'onClickedRoamingModalOK',
+		*/
+
+		editProductType: function( e ) {
+			var data = {
+				voice: {
+					title: '상품조건 > 음성',
+					value: 0,
+					min: 0,
+					max: 1000,
+					step: 10
+				},
+				data: {
+					title: '상품조건 > 데이터',
+					value: 0,
+					min: 0.0,
+					max: 10.0,
+					step: 0.1
+				},
+				message: {
+					title: '상품조건 > 메세징',
+					value: 0,
+					min: 0,
+					max: 1000,
+					step: 100
+				},
+				roaming: {
+					title: '로밍',
+					value: 0,
+					min: 0,
+					max: 1000,
+					step: 100
+				}
+			};
+			
+			// js-edit-producttype 클래스를 지닌 버튼을 클릭 시 해당 모달을 보여준다.
+			var product = $( e.target ).closest('[data-dragobject="producttype"]');
+			var productType = product.data('producttype');
+			data[productType].value = product.data('extradata');
+			data[productType].type = productType;
+			
+			// 1. 모달 형태를 셋팅하고
+			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
+			$('#modal').html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
+			$('#modal').modal();
+		},
+
+		saveExtraData: function ( e ) {
+			console.log($( e.target ).data('type'),$('#modal input').val());
+			console.log($('div[data-producttype="' + $( e.target ).data('type') + '"]').data('extradata'));
+			$('div[data-producttype="' + $( e.target ).data('type') + '"]').data('extradata', $('#modal input').val());
+			console.log($('div[data-producttype="' + $( e.target ).data('type') + '"]').data('extradata'));
+			$('div[data-producttype="' + $( e.target ).data('type') + '"] > p').html('(' + $('#modal input').val() + ') GB');
 		},
 		
 		/*
@@ -247,7 +306,7 @@ define([
 			for(var i = 0; i < productList.length; i++) {
 				var $pdata = $(productList[i]);
 				var ptype = $pdata.attr('data-producttype');
-				var pdata = $('#'+ ptype+ 'Data').val();
+				var pdata = $pdata.data('extradata');
 				productType.push({
 					'value': ptype,
 					'extraData': pdata,
@@ -458,16 +517,16 @@ define([
 					var productType = $obj.attr('data-producttype');
 					switch(productType) {
 						case 'voice':
-							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#voiceModal">내용편집</button>');
+							$obj.append('<button type="button" class="modifyButton js-edit-producttype">내용편집</button>');
 							break;
 						case 'data':
-							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#dataModal">내용편집</button>');
+							$obj.append('<button type="button" class="modifyButton js-edit-producttype">내용편집</button>');
 							break;
 						case 'message':
-							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#messageModal">내용편집</button>');
+							$obj.append('<button type="button" class="modifyButton js-edit-producttype">내용편집</button>');
 							break;
 						case 'roaming':
-							$obj.append('<button class="modifyButton" data-toggle="modal" data-target="#roamingModal">내용편집</button>');
+							$obj.append('<button type="button" class="modifyButton js-edit-producttype">내용편집</button>');
 							break;
 					}
 					break;
@@ -480,34 +539,34 @@ define([
 			$obj.append('<button class="removeButton">x</button>');
 		},
 		
-		onClickedVoiceModalCancel: function(e) {
-			$('input#voiceData').val($('div[data-producttype="voice"]').attr('data-extradata')).change();
-		},
-		onClickedVoiceModalOK: function(e) {
-			$('div[data-producttype="voice"]').attr('data-extradata', $('input#voiceData').val());
-			$('div[data-producttype="voice"] > p').html('(' + $('input#voiceData').val() + ') 분');
-		},
-		onClickedDataModalCancel: function(e) {
-			$('input#dataData').val($('div[data-producttype="data"]').attr('data-extradata')).change();
-		},
-		onClickedDataModalOK: function(e) {
-			$('div[data-producttype="data"]').attr('data-extradata', $('input#dataData').val());
-			$('div[data-producttype="data"] > p').html('(' + $('input#dataData').val() + ') GB');
-		},
-		onClickedMessageModalCancel: function(e) {
-			$('input#messageData').val($('div[data-producttype="message"]').attr('data-extradata')).change();
-		},
-		onClickedMessageModalOK: function(e) {
-			$('div[data-producttype="message"]').attr('data-extradata', $('input#messageData').val());
-			$('div[data-producttype="message"] > p').html('(' + $('input#messageData').val() + ') 건');
-		},
-		onClickedRoamingModalCancel: function(e) {
-			$('input#roamingData').val($('div[data-producttype="roaming"]').attr('data-extradata')).change();
-		},
-		onClickedRoamingModalOK: function(e) {
-			$('div[data-producttype="roaming"]').attr('data-extradata', $('input#roamingData').val());
-			$('div[data-producttype="roaming"] > p').html('(' + $('input#roamingData').val() + ') 분');
-		},
+		// onClickedVoiceModalCancel: function(e) {
+		// 	$('input#voiceData').val($('div[data-producttype="voice"]').attr('data-extradata')).change();
+		// },
+		// onClickedVoiceModalOK: function(e) {
+		// 	$('div[data-producttype="voice"]').attr('data-extradata', $('input#voiceData').val());
+		// 	$('div[data-producttype="voice"] > p').html('(' + $('input#voiceData').val() + ') 분');
+		// },
+		// onClickedDataModalCancel: function(e) {
+		// 	$('input#dataData').val($('div[data-producttype="data"]').attr('data-extradata')).change();
+		// },
+		// onClickedDataModalOK: function(e) {
+		// 	$('div[data-producttype="data"]').attr('data-extradata', $('input#dataData').val());
+		// 	$('div[data-producttype="data"] > p').html('(' + $('input#dataData').val() + ') GB');
+		// },
+		// onClickedMessageModalCancel: function(e) {
+		// 	$('input#messageData').val($('div[data-producttype="message"]').attr('data-extradata')).change();
+		// },
+		// onClickedMessageModalOK: function(e) {
+		// 	$('div[data-producttype="message"]').attr('data-extradata', $('input#messageData').val());
+		// 	$('div[data-producttype="message"] > p').html('(' + $('input#messageData').val() + ') 건');
+		// },
+		// onClickedRoamingModalCancel: function(e) {
+		// 	$('input#roamingData').val($('div[data-producttype="roaming"]').attr('data-extradata')).change();
+		// },
+		// onClickedRoamingModalOK: function(e) {
+		// 	$('div[data-producttype="roaming"]').attr('data-extradata', $('input#roamingData').val());
+		// 	$('div[data-producttype="roaming"] > p').html('(' + $('input#roamingData').val() + ') 분');
+		// },
 		
 	});
 	

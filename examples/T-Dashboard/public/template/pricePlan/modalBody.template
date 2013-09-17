@@ -1,0 +1,9 @@
+<div id="inputRange" title="Input Range" class="widget-container">
+	<div class="span12">
+		<div class="dash-widget no-padding widget-rangeinput slider-box">
+			<label>
+				<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range btn-block inline"/>
+			</label>
+		</div>
+	</div>
+</div>
