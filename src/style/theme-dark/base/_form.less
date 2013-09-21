@@ -23,7 +23,9 @@ select,
 select.form-control,
 textarea,
 textarea.form-control,
-input[type] {
+input[type=text],
+input[type=radio],
+input[type=checkbox] {
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
   background-color: @input-bg;
@@ -448,8 +450,6 @@ select.form-control{
         position: absolute;
         display: inline-block;
         padding: 4px 10px 1px 4px;
-        width: 20px;
-        height: 29px;
         color: #737373;
         content: "\e013";
         font-weight: 400;
