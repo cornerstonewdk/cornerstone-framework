@@ -45,8 +45,8 @@ define([
                 }
             });
 
-            $(document).on('click', '#page2 a', function (e) {
-                e.preventDefault();
+            $(document).on("click", "#page2 a[href]:not([data-bypass]),[type=submit]:not([data-bypass])", function (evt) {
+                evt.preventDefault();
             });
 
             $('#nav-component .dropdown-menu a').on('click', function () {

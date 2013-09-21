@@ -5487,16 +5487,15 @@
     </header>
     <div class="row">
         <div class="col col-lg-4">
-            <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
-                   class="widget-range"/>
+            <input type="range"  class="widget-range"/>
         </div>
         <div class="col col-lg-4">
-            <input type="range" data-plugin="rangeinput" value="10" min="0" max="100"
+            <input type="range" value="10" min="0" max="100"
                    class="widget-range"
                    data-range-options='{"inputShow":false,"progress":true}'/>
         </div>
         <div class="col col-lg-4">
-            <input data-plugin="rangeinput" type="range" value="99999" min="0" max="99999"
+            <input type="range" value="99999" min="0" max="99999"
                    step="1000" class="widget-range max-10000"
                    data-range-options='{"inputShow":true,"progress":true}'/>
         </div>
@@ -5616,7 +5615,6 @@
     </header>
     <div class="row">
         <div class="col col-lg-12">
-
             <div class="list-view-wrapper">
                 <div id="listView" class="list-view">
                     <ul class="list-group">
@@ -5794,7 +5792,7 @@
         </div>
     </div>
     <p>
-        <button id="addItem" class="btn btn-default">더보기</button>
+        <button class="btn btn-default js-addItem">더보기</button>
     </p>
 </section>
         <!-- ScrollView
@@ -6107,11 +6105,11 @@
     </header>
     <div class="row">
         <div class="col col-lg-6">
-            <h3>3D 바 차트</h3>
+            <h3>3D 바 차트 Webkit</h3>
             <div class="widget-chart" data-featured="chart" data-chart-type="bar3d" data-chart-bind="data/sample-bar.json"></div>
         </div>
         <div class="col col-lg-6">
-            <h3>3D 수평 바 차트</h3>
+            <h3>3D 수평 바 차트 Webkit</h3>
 
             <div class="widget-chart" data-featured="chart" data-chart-type="horizontalBar3d" data-chart-bind="data/sample-bar.json"></div>
         </div>
@@ -6171,7 +6169,7 @@
 
 </div>
 
-<script type="text/javascript" src="../../../grunt-dist/lib/jquery/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../../../grunt-dist/lib/jquery/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.hammer.js"></script>
 <script type="text/javascript" src="js/vendor/helper.js"></script>
 <script type="text/javascript" src="js/vendor/holder.js"></script>

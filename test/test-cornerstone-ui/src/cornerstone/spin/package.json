@@ -4,7 +4,7 @@
 	"description": "An animated CSS3 loading spinner",
 	"jam": {
 		"dependencies": {
-			"jquery": "2.0.2"
+			"jquery": "1.10.2"
 		},
 		"main": "spin.js",
 		"shim": {
