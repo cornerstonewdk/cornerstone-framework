@@ -8,12 +8,21 @@
 @text-color-inverse: #000;
 @font-size-base: 16px;
 
-// Typography
-// -------------------------
-@font-family-sans-serif: "NanumGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif: Georgia, "Times New Roman", Times, serif;
-@font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base: @font-family-sans-serif;
+@state-warning-color: #FFF;
+@state-warning-bg: #993f08;
+@state-warning-border: darken(spin(@state-warning-bg, -10), 3%);
+
+@state-danger-color: #FFF;
+@state-danger-bg: #b91636;
+@state-danger-border: darken(spin(@state-danger-bg, -10), 3%);
+
+@state-success-color: #FFF;
+@state-success-bg: #3f842a;
+@state-success-border: darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-color: #FFF;
+@state-info-bg: #3a87ad;
+@state-info-border: darken(spin(@state-info-bg, -10), 7%);
 
 // Forms
 // -------------------------
@@ -44,22 +53,6 @@
 
 @flip-on-bg: #28869e;
 @flip-off-bg: #2f2f2f;
-
-@state-warning-text: #c76b16;
-@state-warning-bg: #993f08;
-@state-warning-border: darken(spin(@state-warning-bg, -10), 3%);
-
-@state-danger-text: #000;
-@state-danger-bg: #b91636;
-@state-danger-border: darken(spin(@state-danger-bg, -10), 3%);
-
-@state-success-text: #000;
-@state-success-bg: #3f842a;
-@state-success-border: darken(spin(@state-success-bg, -10), 5%);
-
-@state-info-text: #000;
-@state-info-bg: #3a87ad;
-@state-info-border: darken(spin(@state-info-bg, -10), 7%);
 
 // Nav
 // -------------------------
@@ -134,8 +127,8 @@
 @table-head-border-bottom: "";
 @table-head-background-image: "";
 
-@table-hover-background-image: ~"linear-gradient(top, rgba(51,51,51,.6) 0%, rgba(51,51,51,.6) 100%)";
-@table-active-background-image: @table-hover-background-image;
+@table-hover-background-color: rgba(51,51,51,.5);
+@table-active-background-color: rgba(51,51,51,.6);
 
 @table-td-border-top: 1px solid #232223;
 
@@ -145,18 +138,6 @@
 @table-bordered-td-border-top: @table-bordered-td-border;
 
 @table-hover-td-background-color: transparent;
-
-@table-warning-color: #FFF;
-@table-warning-bg: #993f08;
-@table-warning-border: 1px solid @table-warning-bg;
-
-@table-danger-color: #FFF;
-@table-danger-bg: #b91636;
-@table-danger-border: 1px solid @table-danger-bg;
-
-@table-success-color: #FFF;
-@table-success-bg: #3f842a;
-@table-success-border: 1px solid @table-success-bg;
 
 // Forms
 // Buttons

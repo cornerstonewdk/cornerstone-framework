@@ -7,9 +7,22 @@
 @text-color: #777;
 @text-color-inverse: #FFF;
 @font-size-base: 16px;
+
+@state-warning-color: #FFF;
 @state-warning-bg: #d1ad40;
-@state-success-bg: #77bf5b;
+@state-warning-border: darken(spin(@state-warning-bg, -10), 3%);
+
+@state-danger-color: #FFF;
 @state-danger-bg: #d16354;
+@state-danger-border: darken(spin(@state-danger-bg, -10), 3%);
+
+@state-success-color: #FFF;
+@state-success-bg: #77bf5b;
+@state-success-border: darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-color: #FFF;
+@state-info-bg: #2669bb;
+@state-info-border: darken(spin(@state-info-bg, -10), 7%);
 
 // Forms
 // -------------------------
@@ -82,8 +95,8 @@
 @table-head-border-bottom: 2px solid #878787;
 @table-head-background-image: ~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)";
 
-@table-hover-background-image: ~"linear-gradient(top, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.07) 100%)";
-@table-active-background-image: @table-hover-background-image;
+@table-hover-background-color: rgba(0, 0, 0, 0.1);
+@table-active-background-color: rgba(0, 0, 0, 0.2);
 
 @table-td-border-top: "";
 
@@ -93,18 +106,6 @@
 @table-bordered-td-border-top: @table-bordered-td-border;
 
 @table-hover-td-background-color: "";
-
-@table-warning-color: #FFF;
-@table-warning-bg: #d0ad49;
-@table-warning-border: 1px solid darken(spin(@table-warning-bg, -10), 3%);
-
-@table-danger-color: #FFF;
-@table-danger-bg: #ce6357;
-@table-danger-border: 1px solid darken(spin(@table-danger-bg, -10), 3%);
-
-@table-success-color: #FFF;
-@table-success-bg: #79be60;
-@table-success-border: 1px solid darken(spin(@table-success-bg, -10), 5%);
 
 // Forms
 // Buttons

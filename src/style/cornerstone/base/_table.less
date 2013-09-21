@@ -17,7 +17,7 @@
 
   & > tbody > tr.active {
     & > td, & > th {
-      .cs-mixin(background-image, @table-active-background-image);
+      .cs-property(background-color, @table-active-background-color);
     }
   }
 
@@ -25,7 +25,9 @@
   .table-draw-state(success);
   .table-draw-state(warning);
   .table-draw-state(danger);
+  .table-draw-state(info);
 }
+
 .table thead>tr>th,
 .table tbody>tr>th,
 .table tfoot>tr>th,
@@ -51,6 +53,7 @@
 .table-bordered>tfoot>tr>td {
   .cs-property(border, @table-bordered-td-border);
 }
+
 .table-bordered caption+thead tr:first-child th,
 .table-bordered colgroup+thead tr:first-child th,
 .table-bordered thead:first-child tr:first-child th,
@@ -69,7 +72,7 @@
   .table-hover {
     & > tbody > tr:hover {
       & > td, & > th {
-        .cs-mixin(background-image, @table-hover-background-image);
+        .cs-property(background-color, @table-hover-background-color);
       }
     }
   }
@@ -77,8 +80,8 @@
 
 // Placeholder
 .table-draw-state(@state: warning) {
-  @state-bg: ~"@{table-@{state}-bg}";
-  @state-color: ~"@{table-@{state}-color}";
+  @state-bg: ~"@{state-@{state}-bg}";
+  @state-color: ~"@{state-@{state}-color}";
   & > tbody > tr {
     & > td.@{state},
     & > th.@{state},
@@ -86,6 +89,17 @@
       .cs-property(border, @state-bg);
       .cs-property(background-color, @state-bg);
       .cs-property(color, @state-color);
+    }
+  }
+
+  &.table-hover {
+    & > tbody > tr:hover {
+      & > td.@{state},
+      & > th.@{state},
+      &.@{state} > td {
+        .cs-property(background-color, @state-bg);
+        opacity: 0.7;
+      }
     }
   }
 }
