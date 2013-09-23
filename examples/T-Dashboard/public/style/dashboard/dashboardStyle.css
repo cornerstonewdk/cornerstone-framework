@@ -133,16 +133,18 @@ div[data-featured="scrollView"] {
 #dashboard_container .widget2 {
 	padding: 0;
 }
-#dashboard_container .lists li .name {
+#dashboard_container li .name {
 	width: 60px;
 	display: inline-block;
+	text-align: left;
 }
-#dashboard_container .lists li .txt-con {
+#dashboard_container li .txt-con {
 	width: 150px;
 	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	text-align: left;
 }
 #dashboard_container .lists li .txt-con2 {
 	width: 220px;
@@ -162,5 +164,5 @@ div[data-featured="scrollView"] {
 }
 
 #dashboard_container li {
-	line-height: 18px;
+	line-height: 21px;
 }

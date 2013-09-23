@@ -5,7 +5,7 @@ define([
 		'template!../template/pricePlan/makePricePlan', 
 		'template!../template/pricePlan/modal', 
 		'template!../template/pricePlan/modalBody', 
-		'dateTimePicker',
+		'widget-datepicker',
 		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
 ], function(

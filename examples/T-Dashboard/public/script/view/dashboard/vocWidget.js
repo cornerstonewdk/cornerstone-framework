@@ -24,7 +24,7 @@
 			
 			$(this.el).html(template());
 			
-			this.redrawVocList(DummyDataUtil.getNewlyVocData(5));
+			this.redrawVocList(DummyDataUtil.getNewlyVocData(6));
 			
 			//매 5초마다 업데이트 하여 실시간으로 데이터가 들어오는것처럼 한다.
 			this.vocListUpdateTimer = setInterval(function() {
@@ -62,7 +62,7 @@
 			DummyDataUtil.addRandomeVocData(DummyDataUtil.randomNumber(1, 3));
 			
 			//데이터를 새로 가져와서 표시해줌
-			this.redrawVocList(DummyDataUtil.getNewlyVocData(5));
+			this.redrawVocList(DummyDataUtil.getNewlyVocData(6));
 		},
 		
 	});
