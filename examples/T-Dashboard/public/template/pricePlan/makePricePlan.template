@@ -12,22 +12,20 @@
 		<div class="panel-group">
 			<div class="panel">
         		<div class="panel-heading">고객 조건</div>
-        		<div class="panel-body">
-        			<ul class="list-group dragMenu">
-						<li class="list-group-item" data-menu-customertype="basic">
-							<div data-dragObject="customertype" data-customertype="basic">일반</div>
-						</li>
-						<li class="list-group-item" data-menu-customertype="woman">
-							<div data-dragObject="customertype" data-customertype="woman">여성</div>
-						</li>
-						<li class="list-group-item" data-menu-customertype="ting">
-							<div data-dragObject="customertype" data-customertype="ting">팅</div>
-						</li>
-						<li class="list-group-item" data-menu-customertype="silver">
-							<div data-dragObject="customertype" data-customertype="silver">실버</div>
-						</li>
-					</ul>
-		        </div>
+    			<ul class="list-group dragMenu">
+					<li class="list-group-item" data-menu-customertype="basic">
+						<div data-dragObject="customertype" data-customertype="basic">일반</div>
+					</li>
+					<li class="list-group-item" data-menu-customertype="woman">
+						<div data-dragObject="customertype" data-customertype="woman">여성</div>
+					</li>
+					<li class="list-group-item" data-menu-customertype="ting">
+						<div data-dragObject="customertype" data-customertype="ting">팅</div>
+					</li>
+					<li class="list-group-item" data-menu-customertype="silver">
+						<div data-dragObject="customertype" data-customertype="silver">실버</div>
+					</li>
+				</ul>
 	        </div>
 		</div>
 		<br/>
@@ -35,22 +33,20 @@
 		<div class="panel-group">
 			<div class="panel">
         		<div class="panel-heading">상품 조건</div>
-        		<div class="panel-body">
-		            <ul class="list-group dragMenu">
-		            	<li class="list-group-item" data-menu-producttype="voice">
-							<div data-dragObject="producttype" data-producttype="voice" data-extradata="0">음성<p>(0) 분</p></div>
-						</li>
-						<li class="list-group-item" data-menu-producttype="data">
-							<div data-dragObject="producttype" data-producttype="data" data-extradata="0">데이터<p>(0) GB</p></div>
-						</li>
-						<li class="list-group-item" data-menu-producttype="message">
-							<div data-dragObject="producttype" data-producttype="message" data-extradata="0">메세징<p>(0) 건</p></div>
-						</li>
-						<li class="list-group-item" data-menu-producttype="roaming">
-							<div data-dragObject="producttype" data-producttype="roaming" data-extradata="0">로밍<p>(0) 분</p></div>
-						</li>
-		            </ul>
-		        </div>
+	            <ul class="list-group dragMenu">
+	            	<li class="list-group-item" data-menu-producttype="voice">
+						<div data-dragObject="producttype" data-producttype="voice" data-extradata="0">음성<p>(0) 분</p></div>
+					</li>
+					<li class="list-group-item" data-menu-producttype="data">
+						<div data-dragObject="producttype" data-producttype="data" data-extradata="0">데이터<p>(0) GB</p></div>
+					</li>
+					<li class="list-group-item" data-menu-producttype="message">
+						<div data-dragObject="producttype" data-producttype="message" data-extradata="0">메세징<p>(0) 건</p></div>
+					</li>
+					<li class="list-group-item" data-menu-producttype="roaming">
+						<div data-dragObject="producttype" data-producttype="roaming" data-extradata="0">로밍<p>(0) 분</p></div>
+					</li>
+	            </ul>
 	        </div>
 		</div>
 		<br/>
@@ -58,16 +54,14 @@
 		<div class="panel-group">
 			<div class="panel">
         		<div class="panel-heading">회선 조건</div>
-        		<div class="panel-body">
-		            <ul class="list-group dragMenu">
-		            	<li class="list-group-item" data-menu-commtype="3g">
-							<div data-dragObject="commtype" data-commtype="3g">3G</div>
-						</li>
-						<li class="list-group-item" data-menu-commtype="lte">
-							<div data-dragObject="commtype" data-commtype="lte">LTE</div>
-						</li>
-		            </ul>
-		        </div>
+	            <ul class="list-group dragMenu">
+	            	<li class="list-group-item" data-menu-commtype="3g">
+						<div data-dragObject="commtype" data-commtype="3g">3G</div>
+					</li>
+					<li class="list-group-item" data-menu-commtype="lte">
+						<div data-dragObject="commtype" data-commtype="lte">LTE</div>
+					</li>
+	            </ul>
 	        </div>
 		</div>
 		</br>
@@ -75,25 +69,23 @@
 		<div class="panel-group">
 			<div class="panel">
         		<div class="panel-heading">할인 조건</div>
-        		<div class="panel-body">
-		            <ul class="list-group dragMenu">
-		            	<li class="list-group-item" data-menu-discounttype="double">
-							<div data-dragObject="discounttype" data-discounttype="double">더블할인</div>
-						</li>
-						<li class="list-group-item" data-menu-discounttype="special">
-							<div data-dragObject="discounttype" data-discounttype="special">스페셜할인</div>
-						</li>
-						<li class="list-group-item" data-menu-discounttype="good">
-							<div data-dragObject="discounttype" data-discounttype="good">우량할인</div>
-						</li>
-						<li class="list-group-item" data-menu-discounttype="tfamily">
-							<div data-dragObject="discounttype" data-discounttype="tfamily">T끼리 온가족할인</div>
-						</li>
-						<li class="list-group-item" data-menu-discounttype="lteplus">
-							<div data-dragObject="discounttype" data-discounttype="lteplus">LTE 플러스할인</div>
-						</li>
-		            </ul>
-		        </div>
+	            <ul class="list-group dragMenu">
+	            	<li class="list-group-item" data-menu-discounttype="double">
+						<div data-dragObject="discounttype" data-discounttype="double">더블할인</div>
+					</li>
+					<li class="list-group-item" data-menu-discounttype="special">
+						<div data-dragObject="discounttype" data-discounttype="special">스페셜할인</div>
+					</li>
+					<li class="list-group-item" data-menu-discounttype="good">
+						<div data-dragObject="discounttype" data-discounttype="good">우량할인</div>
+					</li>
+					<li class="list-group-item" data-menu-discounttype="tfamily">
+						<div data-dragObject="discounttype" data-discounttype="tfamily">T끼리 온가족할인</div>
+					</li>
+					<li class="list-group-item" data-menu-discounttype="lteplus">
+						<div data-dragObject="discounttype" data-discounttype="lteplus">LTE 플러스할인</div>
+					</li>
+	            </ul>
 	        </div>
 		</div>
 	</div>
