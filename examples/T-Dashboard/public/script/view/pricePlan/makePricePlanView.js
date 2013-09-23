@@ -228,11 +228,25 @@ define([
 		},
 
 		saveExtraData: function ( e ) {
-			console.log($( e.target ).data('type'),$('#modal input').val());
-			console.log($('div[data-producttype="' + $( e.target ).data('type') + '"]').data('extradata'));
-			$('div[data-producttype="' + $( e.target ).data('type') + '"]').data('extradata', $('#modal input').val());
-			console.log($('div[data-producttype="' + $( e.target ).data('type') + '"]').data('extradata'));
-			$('div[data-producttype="' + $( e.target ).data('type') + '"] > p').html('(' + $('#modal input').val() + ') GB');
+			var productType = $( e.target ).data('type');
+			var typeStr;
+
+			switch( productType ) {
+				case 'voice':
+					typeStr = '분';
+					break;
+				case 'data':
+					typeStr = 'GB';
+					break;
+				case 'message':
+					typeStr = '건';
+					break;
+				default:
+					typeStr = 'GB';
+			}
+
+			$('div[data-producttype="' + productType + '"]').data('extradata', $('#modal input').val());
+			$('div[data-producttype="' + productType + '"] > p').html('(' + $('#modal input').val() + ' ' + typeStr + ')');
 		},
 		
 		/*
