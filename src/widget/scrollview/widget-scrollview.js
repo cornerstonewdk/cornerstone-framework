@@ -13,7 +13,7 @@
 		// AMD Hybrid 포맷
 		define(["backbone", "underscore", "jquery"], function (Backbone, _, $) {
 			factory($, root, doc);
-			return Backbone.view.extend({
+			return Backbone.View.extend({
 				render: function () {
 					this.$el.featuredScrollView(this.options);
 					return this;
@@ -48,7 +48,7 @@
 		this.formCheck();
 		this.pullToRefresh();
 
-		this.iscroll = new IScroll(this.$el[0], options);
+		this.iscroll = new iScroll(this.$el[0], options);
 		return this;
 	};
 

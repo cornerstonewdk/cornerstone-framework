@@ -117,7 +117,9 @@ define([
                 // 피처드
                 // 스크롤뷰
                 if (id.match(/.*scrollview/gi)) {
-                    require(['widget-scrollview']);
+                    require(['widget-scrollview'], function(ScrollView) {
+                        $("#scrollView1,#scrollView2").featuredScrollView();
+                    });
                 }
                 // 리스트뷰
                 if (id.match(/.*listview/gi)) {
