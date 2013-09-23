@@ -37,6 +37,10 @@
     .cs-property(color, @breadcrumb-active-color);
     .breadcrumb-active(@theme);
   }
+
+  & > li + li:before {
+    content: "";
+  }
 }
 
 // Placeholder
