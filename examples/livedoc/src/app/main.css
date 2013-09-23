@@ -27,3 +27,89 @@ a.fourthDepth {
 div.doc-content {
 	margin-bottom: 50px;
 }
+
+/* 테마 소스에 포함 해야함 */
+.thumbnail.gray {
+    padding-bottom: 10px;
+}
+.thumbnail.gray img {
+    width: 100%;
+}
+.thumbnail .mask {
+    height: 200px;
+    overflow: hidden;
+}
+
+
+.thumbnail .caption {
+    height: 96px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.tags-col .panel-heading {
+    text-transform: capitalize;
+}
+
+/* Markdown Style */
+.doc-content a, .doc-content a:visited {
+    color: #09c;
+}
+
+.doc-content a:hover {
+    color: #336699;
+    text-decoration: none;
+}
+
+.doc-content h1 {
+    margin: 0px 0px 10px;
+    font-weight: bold;
+}
+
+.doc-content h2 {
+    border-bottom: 2px dotted #ccc;
+    margin: 5px 0px 15px;
+}
+
+.doc-content h6 {
+    color: #09c;
+}
+
+.doc-content blockquote {
+    background: #efefef;
+    padding: 5px 10px;
+    border: solid 1px #ddd;
+    margin: 15px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    color:  #333;
+
+}
+
+.doc-content ul, ol {
+    margin-bottom: 15px;
+}
+
+.doc-content li {
+    padding: 3px;
+}
+
+
+
+.doc-content code {
+    background-color: #f1f1f1;
+    color: #336699;
+}
+
+.doc-content pre {
+    background-color: #f1f1f1;
+}
+
+.doc-content pre > code {
+    margin: 0px;
+    padding: 5px;
+    border: 0px;
+    background-color: #f1f1f1;
+}

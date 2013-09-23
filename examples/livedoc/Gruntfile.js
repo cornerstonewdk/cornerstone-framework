@@ -150,6 +150,10 @@ module.exports = function( grunt ) {
 				var meta = JSON.parse( mdContent.match( /<!--([\s\S]+?)-->/ )[ 1 ] );
 				// HTML로 변환 후
 				meta[ 'content' ] = marked( mdContent );
+
+				meta[ 'content' ] = meta[ 'content' ]
+					.replace(/<table>/gi, '<table class="table table-striped table-hover table-responsive">');
+				
 				// 메타 정보와 함께 객체에 저장
 				documents.push( meta );
 			}
