@@ -1,16 +1,14 @@
 <div class="row">
 	{{#each this}}
 	<div class="col-lg-4 col-md-4 col-sm-4 home-col">
-		<a class="pull-left" href="#{{id}}">
-			<div class="thumbnail gray">
-				<div class="mask">
-					<img alt="" src="images/{{thumbnail}}" >
-				</div>
+		<a class="thumbnail gray" href="#{{id}}">
+			<div class="mask">
+				<img alt="" src="images/{{thumbnail}}" >
+			</div>
 
-				<div class="caption">
-					<h3 class="media-heading">{{title}}</h3>
-					{{outline}}
-				</div>
+			<div class="caption">
+				<h3 class="media-heading">{{title}}</h3>
+				<span class="ellipsis">{{outline}}</span>
 			</div>
 		</a>
 	</div>
