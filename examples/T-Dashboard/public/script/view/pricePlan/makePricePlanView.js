@@ -5,6 +5,7 @@ define([
 		'template!../template/pricePlan/makePricePlan', 
 		'template!../template/pricePlan/modal', 
 		'template!../template/pricePlan/modalBody', 
+		'dateTimePicker',
 		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
 ], function(
@@ -160,7 +161,13 @@ define([
 			}
 			
 			$("input[type=range]").rangeinput({"inputShow":true,"progress":true});
-			$('.datepicker').datepicker({language: "ko"});
+			// $('.datepicker').datepicker({language: "ko"});
+			$("#date-picker1").datetimepicker({
+	            firstDisable: true,
+	            changeDisplay: true,
+	            pickTime: false,
+	            format: 'yyyy-mm-dd'
+        	});
 		},
 		
 		//이벤트 정의
@@ -299,7 +306,7 @@ define([
 			} else {
 				data['pricePlanId'] = this.selectPlanData['pricePlanId'];
 				data['makeDate'] = this.selectPlanData['makeDate'];
-				data['applyDate'] = this.selectPlanData['applyDate'];
+				data['applyDate'] = this.selectPlanData['applyDate'] = $('#applyDate').val();
 			}
 			
 			data['pricePlanName'] = pricePlanName;

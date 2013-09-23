@@ -117,21 +117,22 @@
 				<div class="well well-billie">
 					<h4 class="date">정책 적용일</h3>
 					<hr/>
-					<div>
-						<div class="input-append date datepicker" data-date="{{applyDate}}" data-date-format="yyyy-mm-dd">
-							<input size="16" type="text" value="{{applyDate}}" readonly id="applyDate">
-							<span class="add-on"><i class="icon-calendar"></i></span>
-						</div>
-					</div>
+					<div class="input-group input-append date" id="date-picker1">
+		                <input data-format="yyyy-mm-dd" class="form-control" size="16" type="text" value="{{applyDate}}" readonly id="applyDate">
+		                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+		            </div>
 				</div>
 			</div>
 			<!-- 정책 작성일 -->
 			<div class="col-xs-6">
 				<div class="well well-billie">
 					<div id="makeDate">
-						<h3 class="typo-pressed date">정책 작성일</h3>
-						<hr class="hr-pressed" />
-						<input type="text" placeholder="{{makeData}}" disabled>
+						<h4 class="date">정책 작성일</h3>
+						<hr/>
+						<div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
+			                <input class="form-control" size="16" type="text" value="{{makeData}}" disabled>
+			                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+			            </div>
 					</div>
 				</div>
 			</div>

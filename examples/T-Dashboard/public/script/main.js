@@ -11,6 +11,7 @@ requirejs.config({
 		"pricePlanView": "view/pricePlan/pricePlanView",
 		"vocView": "view/voc/vocView",
 		"makePricePlanView": "view/pricePlan/makePricePlanView",
+        "dateTimePicker": Cornerstone.PATH + "lib/datepicker/widget-datepicker"
 	},
 	
 	shim: {
@@ -50,6 +51,10 @@ requirejs.config({
         "makePricePlanView": {
         	deps:["app-container"]
         },
+
+        "dateTimePicker": {
+            deps:["jquery","bootstrap"]
+        }
 	}
 });
 

@@ -4,9 +4,12 @@
     		<div class="panel">
         		<!-- Default panel contents -->
         		<div class="panel-heading">VOC 목록</div>
+        		
         		<div class="panel-body">
-		            <ul id="vocList" class="list-group list-group-flush list-group-cornerstone">
-		            </ul>
+	        		<div class="scrollView" data-featured="scrollview">
+			            <ul id="vocList" class="list-group list-group-flush list-group-cornerstone">
+			            </ul>
+			        </div>
 		        </div>
 	        </div>
 		</div>
