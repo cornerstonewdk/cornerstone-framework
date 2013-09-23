@@ -90,10 +90,10 @@
 		
 		for(var i = 0; i < this.itemList.length; i++) {
 			var item = this.itemList[i];
-			this.el.append('<li><a href="#' + item['route'] + '">' + item['title'] + '</a>' + (i == (this.itemList.length - 1) ? '' : '<span class="divider">/</span>') + '</li>');	
+			this.el.append('<li><a href="#' + item['route'] + '">' + item['title'] + '</a>' + (i == (this.itemList.length - 1) ? '' : '<span class="divider"></span>') + '</li>');	
 		}
 		
-		$('ul.breadcrumb > li:last-child > a').addClass('active');
+		// $('ul.breadcrumb > li:last-child > a').addClass('active');
 	};
 	
 	return new BreadcrumbManager();

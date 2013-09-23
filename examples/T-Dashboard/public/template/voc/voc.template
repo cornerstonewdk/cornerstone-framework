@@ -1,6 +1,6 @@
 <div id="voc" class="row">
 	<div class="col-xs-12 col-md-3 sideBar">
-		<div class="panel-group">
+		<div class="panel-group side-bar">
     		<div class="panel">
         		<div class="panel-heading">VOC 목록</div>
         		<div class="panel-body">

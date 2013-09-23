@@ -214,7 +214,7 @@ define([
 					step: 100
 				},
 				roaming: {
-					title: '로밍',
+					title: '상품조건 > 로밍',
 					value: 0,
 					min: 0,
 					max: 1000,
@@ -463,15 +463,13 @@ define([
 						var ctype = $dragObj.attr('data-customertype');
 						if(ctype == 'basic') {	//일반의 경우 나머지 3개와 같이 할 수 없다.
 							if(self.getSelectObjectList(self.$dropCustomerTypeZone).length > 0){
-								var html = modalTemplate({
-										title: '경고',
-										body: '일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 다른 조건을 삭제 후 다시 시도하여 주세요!',
-										name: 'customertype'
-									});
-								this.el.append($(html).modal());
-								this.$el.find('.modal.customertype').on('hide.bs.modal',function(){
-									$(this).remove();
-								});
+								var obj = {
+									title: '경고',
+									body: '일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 다른 조건을 삭제 후 다시 시도하여 주세요!',
+									alert: true
+								};
+								$('#modal').html($(modalTemplate(obj))).find('.modal-body > p').html(modalBodyTemplate(obj));
+								$('#modal').modal();
 								self.reverseObject($dragObj);
 								return;	
 							}
@@ -479,15 +477,13 @@ define([
 							var list = self.getSelectObjectList(self.$dropCustomerTypeZone);
 							for(var i = 0; i < list.length; i++) {
 								if($(list[i]).attr('data-customertype') == 'basic') {
-									var html = modalTemplate({
+									var obj = {
 										title: '경고',
 										body: '일반의 경우 다른 고객 조건과 겹칠 수 없습니다. 다른 조건을 삭제 후 다시 시도하여 주세요!',
-										name: 'customertype'
-									});
-									this.el.append($(html).modal());
-									this.$el.find('.modal.customertype').on('hide.bs.modal',function(){
-										$(this).remove();
-									});
+										alert: true
+									};
+									$('#modal').html($(modalTemplate(obj))).find('.modal-body > p').html(modalBodyTemplate(obj));
+									$('#modal').modal();
 									self.reverseObject($dragObj);
 									return;	
 								}
@@ -558,36 +554,7 @@ define([
 			}
 		
 			$obj.append('<button class="removeButton">x</button>');
-		},
-		
-		// onClickedVoiceModalCancel: function(e) {
-		// 	$('input#voiceData').val($('div[data-producttype="voice"]').attr('data-extradata')).change();
-		// },
-		// onClickedVoiceModalOK: function(e) {
-		// 	$('div[data-producttype="voice"]').attr('data-extradata', $('input#voiceData').val());
-		// 	$('div[data-producttype="voice"] > p').html('(' + $('input#voiceData').val() + ') 분');
-		// },
-		// onClickedDataModalCancel: function(e) {
-		// 	$('input#dataData').val($('div[data-producttype="data"]').attr('data-extradata')).change();
-		// },
-		// onClickedDataModalOK: function(e) {
-		// 	$('div[data-producttype="data"]').attr('data-extradata', $('input#dataData').val());
-		// 	$('div[data-producttype="data"] > p').html('(' + $('input#dataData').val() + ') GB');
-		// },
-		// onClickedMessageModalCancel: function(e) {
-		// 	$('input#messageData').val($('div[data-producttype="message"]').attr('data-extradata')).change();
-		// },
-		// onClickedMessageModalOK: function(e) {
-		// 	$('div[data-producttype="message"]').attr('data-extradata', $('input#messageData').val());
-		// 	$('div[data-producttype="message"] > p').html('(' + $('input#messageData').val() + ') 건');
-		// },
-		// onClickedRoamingModalCancel: function(e) {
-		// 	$('input#roamingData').val($('div[data-producttype="roaming"]').attr('data-extradata')).change();
-		// },
-		// onClickedRoamingModalOK: function(e) {
-		// 	$('div[data-producttype="roaming"]').attr('data-extradata', $('input#roamingData').val());
-		// 	$('div[data-producttype="roaming"] > p').html('(' + $('input#roamingData').val() + ') 분');
-		// },
+		}
 		
 	});
 	

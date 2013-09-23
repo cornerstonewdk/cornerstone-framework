@@ -1,7 +1,12 @@
-#pricePlanContents .hr-pressed {
-	position: relative;
-	top: -15px;
-	margin: 0;
+#pricePlan .side-bar {
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+@media all and (max-width: 767px) {
+	#pricePlan .side-bar {
+		margin-left: 0px;
+	}
 }
 
 #pricePlanContents .typo-pressed-price {
@@ -15,76 +20,16 @@
 	margin-bottom: 0;
 }
 
-#pricePlanContents .contents {
-	z-index: -10;
-	position: relative;
+.no-padding-phone {
+	padding: 0 15px;
 }
 
-#pricePlanContents .contents .date .well,
-#pricePlanContents .dropZone .well {
-	background-color: white;
+@media all and (max-width: 767px) {
+	.no-padding-phone {
+		padding: 0px;
+	}
 }
 
-#pricePlanContents .contents .well-shadow:before,
-#pricePlanContents .contents .well-shadow:after {
-	top : 50%;
-	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.65);   
-	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.65);
-	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.65);
+.well-height-77 {
+	height: 77px;
 }
-
-#pricePlanContents .dropZone {
-	margin: 0;
-	font-color: lightgray;
-	font-weight: bold;
-	font-size: 1.4em;
-	text-align: center;
-}
-
-/*
- * 드랍존의 스타일
- */
- /*
-#pricePlanContents .dropZone {
-	position: relative;
-	padding: 10px;
-	background-color: #666;
-	border: solid 1px;
-	border-radius:4px;
-}
-*/
-
-/*
- * 드레그 오브젝트가 드랍존으로 왔을때의 스타일 변경
- */
- /*
-#pricePlanContents .dropZone > div {
-	border: solid 1px;
-	padding: 20px;
-	background-color: #FFF;
-	border-radius:4px;
-	text-align:center;
-	font-size:16px;
-	font-weight:bold;
-	color: #05121D;	/*글씨색상 변경
-}
-#pricePlanContents .dropZone > div > p {
-	padding-top:3px;
-	font-size:14px;
-	font-weight:normal;
-	display: block;
-}
-
-#pricePlanContents .prod-name2 {
-	text-align:left;
-}
-#pricePlanContents .prod-name2 label {
-	line-height:180%; 
-	font-size:26px;
-	padding-right:10px;
-}
-
-#pricePlanContents .prod-form2 input, .prod-form2 .btn {
-	vertical-align: top;
-}
-*/

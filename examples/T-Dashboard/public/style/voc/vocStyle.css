@@ -1,7 +1,17 @@
 #voc .scrollview {
-	height: 400px;
+	height: 390px;
 }
 
-#voc .sideBar .panel-body {
+#voc .side-bar .panel-body {
 	padding: 0;
+}
+
+#voc .side-bar {
+	margin-left: 10px;
+}
+
+@media all and (max-width: 767px) {
+	#voc .side-bar {
+		margin-left: 0px;
+	}
 }

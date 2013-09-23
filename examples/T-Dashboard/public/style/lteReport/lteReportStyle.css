@@ -4,6 +4,19 @@ div[data-timechart], div[data-devicechart] {
 
 #lteReport .branch {
 	font-color: black;
-	height: 400px;
+	height: 340px;
 }
 
+#lteReport .panel-group {
+	margin-bottom: 20px;
+}
+
+#lteReport .side-bar {
+	margin-left: 10px;
+}
+
+@media all and (max-width: 767px) {
+	#lteReport .side-bar {
+		margin-left: 0px;
+	}
+}

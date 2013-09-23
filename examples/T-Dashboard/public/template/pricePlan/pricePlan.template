@@ -1,8 +1,9 @@
 <div id="pricePlan" class="row">
 	<div class="col-xs-12 col-md-3">
-		<div class="panel-group">
-			<button class="btn btn-primary hidden-phone" id="makePricePlan" type="button" style="width: 100%">새로운 정책</button>
-			<br />
+		<div class="panel-group side-bar">
+			<div class="hidden-xs">
+				<button class="btn btn-primary" id="makePricePlan" type="button" style="width: 100%">새로운 정책</button>
+			</div>
 			<br />
     		<div class="panel">
         		<!-- 정책 목록 -->

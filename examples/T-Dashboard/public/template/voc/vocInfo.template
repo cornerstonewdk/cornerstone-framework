@@ -39,23 +39,23 @@
 		</ul>
 		-->
 	</div>
-	<!-- VOC 접수내용 + 조치내용 -->
-	<div class="col col-xs-6 col-md-6">
-		<div class="well well-shadow well-billie">
-			<h4>VOC 접수내용</h4>
-			<p>{{vocRequest}}</p>
-			<h4>조치 내용</h3>
-			<p>{{vocResponse}}</p>
+</div>
+<!-- VOC 접수내용 + 조치내용 -->
+<div class="col col-xs-6 col-md-6">
+	<div class="well well-shadow well-billie">
+		<h4>VOC 접수내용</h4>
+		<p>{{vocRequest}}</p>
+		<h4>조치 내용</h3>
+		<p>{{vocResponse}}</p>
+	</div>
+</div>
+<!-- VOC 이력 -->
+<div class="col col-xs-6 col-md-6">
+	<div class="well well-shadow well-billie">
+		<h4>VOC 이력</h3>
+		<div>
+			<ul id="vocHistory" class="list-group">
+			</ul>
 		</div>
 	</div>
-	<!-- VOC 이력 -->
-	<div class="col col-xs-6 col-md-6">
-		<div class="well well-shadow well-billie">
-			<h4>VOC 이력</h3>
-			<div>
-				<ul id="vocHistory" class="list-group">
-				</ul>
-			</div>
-		</div>
-	</div>	
-</div>
+</div>	
