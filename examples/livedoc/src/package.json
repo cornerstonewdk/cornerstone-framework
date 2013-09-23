@@ -9,7 +9,8 @@
       "bootstrap": "*",
       "form-view": "*",
       "validation-view": "*",
-      "multipage-router": "*"
+      "multipage-router": "*",
+      "theme-white": "*"
     }
   }
 }

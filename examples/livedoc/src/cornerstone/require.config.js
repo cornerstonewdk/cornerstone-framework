@@ -46,6 +46,10 @@ var jam = {
             "main": "template.js"
         },
         {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
+        },
+        {
             "name": "transition",
             "location": "../cornerstone/transition",
             "main": "transition.js"
@@ -181,6 +185,10 @@ if (typeof require !== "undefined" && require.config) {
             "main": "template.js"
         },
         {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
+        },
+        {
             "name": "transition",
             "location": "../cornerstone/transition",
             "main": "transition.js"
@@ -313,6 +321,10 @@ else {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
         },
         {
             "name": "transition",
