@@ -13,7 +13,9 @@ requirejs.config({
 		"makePricePlanView": "view/pricePlan/makePricePlanView",
         "widget-datepicker": Cornerstone.PATH + "ui/datepicker/widget-datepicker",
         "iScroll": Cornerstone.PATH + "lib/iscroll-4/iscroll",
-        "widget-scrollview": Cornerstone.PATH + "ui/scrollview/widget-scrollview"
+        "widget-scrollview": Cornerstone.PATH + "ui/scrollview/widget-scrollview",
+        "widget-touch": Cornerstone.PATH + "ui/touch/widget-touch",
+        "widget-rangeinput": Cornerstone.PATH + "ui/rangeinput/widget-rangeinput"
 	},
 	
 	shim: {
@@ -62,6 +64,13 @@ requirejs.config({
             deps:["jquery","iScroll"]
         },
 
+        "widget-touch": {
+            deps:["jquery"]
+        },
+
+        "widget-rangeinput": {
+            deps:["widget-touch"]
+        },        
 	}
 });
 

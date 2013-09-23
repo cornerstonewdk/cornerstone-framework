@@ -5,16 +5,19 @@ define([
 		'template!../template/pricePlan/makePricePlan', 
 		'template!../template/pricePlan/modal', 
 		'template!../template/pricePlan/modalBody', 
+		'widget-rangeinput',
 		'widget-datepicker',
 		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
+		
 ], function(
 		$, 
 		Backbone, 
 		DummyDataUtil, 
 		template,
 		modalTemplate,
-		modalBodyTemplate
+		modalBodyTemplate,
+		WidgetRangeInput
 ){
 	var MakePricePolicyView = Backbone.View.extend({
 		
@@ -160,7 +163,7 @@ define([
 				this.moveToDropZone($('div[data-producttype="voice"]'), this.$dropProductTypeZone);
 			}
 			
-			$("input[type=range]").rangeinput({"inputShow":true,"progress":true});
+			
 			// $('.datepicker').datepicker({language: "ko"});
 			$("#date-picker1").datetimepicker({
 	            firstDisable: true,
@@ -231,6 +234,12 @@ define([
 			// 1. 모달 형태를 셋팅하고
 			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
 			$('#modal').html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
+			if( $('#modal').find('input[type="range"]').length > 0 ) {
+				console.log($.fn.rangeinput);
+				// (new WidgetRangeInput({ el: '#modal .widget-range' })).render();
+				// $("#modal .widget-range").rangeinput();
+				// $('#modal input[type="range"]').rangeinput({"inputShow":false,"progress":true});
+			}
 			$('#modal').modal();
 		},
 

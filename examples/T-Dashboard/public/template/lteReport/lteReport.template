@@ -11,14 +11,20 @@
 	        </div>
 		</div>
 	</div>
-	<div class="col-xs-12 col-md-9">
+	<div class="col-xs-12 col-md-9 no-padding-phone">
+		<div class="col-xs-12 col-md-4 visible-xs height-80">
+			<div class="branch">
+				<h2 data-branchname>강남지점(신)</h2>
+				<p data-branchresult>오늘 현재까지 개통수 37대</p>
+			</div>
+		</div>
 		<div class="col-xs-12 col-md-12">
 			<div class="well well-shadow well-creampaper">
 				<div data-timechart></div>
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-4">
-			<div class="well well-shadow well-creampaper branch">
+			<div class="well well-shadow well-creampaper branch hidden-xs">
 				<h2 data-branchname>강남지점(신)</h2>
 				<p data-branchresult>오늘 현재까지 개통수 37대</p>
 			</div>

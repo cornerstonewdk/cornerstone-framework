@@ -8,10 +8,14 @@
 
 #voc .side-bar {
 	margin-left: 10px;
+	margin-bottom: 20px;
 }
 
 @media all and (max-width: 767px) {
 	#voc .side-bar {
 		margin-left: 0px;
+	}
+	.voc-area {
+		padding: 0;
 	}
 }
