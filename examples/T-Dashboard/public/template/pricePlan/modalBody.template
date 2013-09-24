@@ -3,7 +3,6 @@
 		{{#if alert}}
 			{{body}}        
         {{else}}
-        	
 			<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range"/>
         {{/if}}
 	</div>

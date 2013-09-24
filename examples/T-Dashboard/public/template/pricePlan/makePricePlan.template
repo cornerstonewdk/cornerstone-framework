@@ -6,7 +6,7 @@
 
 <div id="makePricePlan" class="hidden-xs">
 	<!-- 좌측 메뉴 영역 -->
-	<div class="col-xs-3">
+	<div class="col-xs-3 side-bar">
 		<!-- 고객 조건 -->
 		<div class="panel-group">
 			<div class="panel">

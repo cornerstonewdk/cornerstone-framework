@@ -5,19 +5,16 @@ define([
 		'template!../template/pricePlan/makePricePlan', 
 		'template!../template/pricePlan/modal', 
 		'template!../template/pricePlan/modalBody', 
-		'widget-rangeinput',
 		'widget-datepicker',
 		'style!../style/pricePlan/makePricePlanStyle',
 		'widget-plugins'
-		
 ], function(
 		$, 
 		Backbone, 
 		DummyDataUtil, 
 		template,
 		modalTemplate,
-		modalBodyTemplate,
-		WidgetRangeInput
+		modalBodyTemplate
 ){
 	var MakePricePolicyView = Backbone.View.extend({
 		
@@ -101,6 +98,7 @@ define([
 			this.$dropDiscountTypeZone = $('div#dropDiscountTypeZone');		//할인조건 드랍존
 			this.$dropCommTypeZone = $('div#dropCommTypeZone');				//회선조건 드랍존
 
+			// TODO rangeinput과 충돌
 			$('div[data-dragObject]').each( function () {
 				$( this ).drag({drag:true}).on("drag",function (e, y, x) {
 					$(this).css( {
@@ -200,28 +198,32 @@ define([
 					value: 0,
 					min: 0,
 					max: 1000,
-					step: 10
+					step: 10,
+					alert: false
 				},
 				data: {
 					title: '상품조건 > 데이터',
 					value: 0,
 					min: 0.0,
 					max: 10.0,
-					step: 0.1
+					step: 0.1,
+					alert: false
 				},
 				message: {
 					title: '상품조건 > 메세징',
 					value: 0,
 					min: 0,
 					max: 1000,
-					step: 100
+					step: 100,
+					alert: false
 				},
 				roaming: {
 					title: '상품조건 > 로밍',
 					value: 0,
 					min: 0,
 					max: 1000,
-					step: 100
+					step: 100,
+					alert: false
 				}
 			};
 			
@@ -235,10 +237,7 @@ define([
 			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
 			$('#modal').html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
 			if( $('#modal').find('input[type="range"]').length > 0 ) {
-				console.log($.fn.rangeinput);
-				// (new WidgetRangeInput({ el: '#modal .widget-range' })).render();
-				// $("#modal .widget-range").rangeinput();
-				// $('#modal input[type="range"]').rangeinput({"inputShow":false,"progress":true});
+				$("#modal .widget-range").rangeinput();
 			}
 			$('#modal').modal();
 		},
