@@ -6,12 +6,11 @@
 		"dependencies": {
 			"backbone": "1.0.0",
 			"underscore": "1.4.4",
-			"jquery": "1.10.2",
-            "spin": "1.3.0"
+			"jquery": "1.10.2"
 		},
 		"main": "widget-spinner.js",
 		"shim": {
-			"deps": [ "backbone", "underscore", "jquery", "spin" ],
+			"deps": [ "backbone", "underscore", "jquery" ],
 			"exports": "widget-spinner"
 		}
 	}

@@ -1,31 +1,75 @@
-.spinner-outer-bg {
-  &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10000;
-    margin-top: -10px;
-    padding: 10px 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    content: "";
-    opacity: 0.5;
-  }
-
-  .spinner {
-    position: relative;
-    z-index: 2000000000;
-  }
+/* Loading Circle */
+.widget-spinner {
+  position: relative;
+  overflow: hidden;
 }
-body.spinner-outer-bg {
-  &:after {
-    position: fixed;
-  }
+body.widget-spinner {
+  position: static;
+}
 
-  & > .spinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+.widget-spinner:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+}
+
+.widget-spinner-icon {
+  background-image: url(images/spinner.gif);
+  background-size: 50px;
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50px;
+
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  z-index: 10000;
+}
+
+.widget-spinner-icon2 {
+  background: url(images/spinner.png);
+  background-size: 50px;
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50px;
+
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+
+  -webkit-transform: rotate(360deg);
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+
+  z-index: 10000;
+}
+
+
+body > .widget-spinner-icon, body > .widget-spinner-icon2 {
+  position: fixed;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
   }
 }

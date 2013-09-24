@@ -2029,7 +2029,7 @@ var jam = {
         {
             "name": "infinity",
             "location": "../cornerstone/infinity",
-            "main": "infinity.js"
+            "main": "infinity.min.js"
         },
         {
             "name": "iscroll",
@@ -2055,11 +2055,6 @@ var jam = {
             "name": "nv",
             "location": "../cornerstone/nv",
             "main": "nv.d3.js"
-        },
-        {
-            "name": "spin",
-            "location": "../cornerstone/spin",
-            "main": "spin.js"
         },
         {
             "name": "style",
@@ -2198,12 +2193,6 @@ var jam = {
             ],
             "exports": "nv"
         },
-        "spin": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "spin"
-        },
         "style": {
             "deps": [
                 "jquery"
@@ -2305,8 +2294,7 @@ var jam = {
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery",
-                "spin"
+                "jquery"
             ],
             "exports": "widget-spinner"
         },
@@ -2355,7 +2343,7 @@ if (typeof require !== "undefined" && require.config) {
         {
             "name": "infinity",
             "location": "../cornerstone/infinity",
-            "main": "infinity.js"
+            "main": "infinity.min.js"
         },
         {
             "name": "iscroll",
@@ -2381,11 +2369,6 @@ if (typeof require !== "undefined" && require.config) {
             "name": "nv",
             "location": "../cornerstone/nv",
             "main": "nv.d3.js"
-        },
-        {
-            "name": "spin",
-            "location": "../cornerstone/spin",
-            "main": "spin.js"
         },
         {
             "name": "style",
@@ -2523,12 +2506,6 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "nv"
         },
-        "spin": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "spin"
-        },
         "style": {
             "deps": [
                 "jquery"
@@ -2630,8 +2607,7 @@ if (typeof require !== "undefined" && require.config) {
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery",
-                "spin"
+                "jquery"
             ],
             "exports": "widget-spinner"
         },
@@ -2680,7 +2656,7 @@ else {
         {
             "name": "infinity",
             "location": "../cornerstone/infinity",
-            "main": "infinity.js"
+            "main": "infinity.min.js"
         },
         {
             "name": "iscroll",
@@ -2706,11 +2682,6 @@ else {
             "name": "nv",
             "location": "../cornerstone/nv",
             "main": "nv.d3.js"
-        },
-        {
-            "name": "spin",
-            "location": "../cornerstone/spin",
-            "main": "spin.js"
         },
         {
             "name": "style",
@@ -2848,12 +2819,6 @@ else {
             ],
             "exports": "nv"
         },
-        "spin": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "spin"
-        },
         "style": {
             "deps": [
                 "jquery"
@@ -2955,8 +2920,7 @@ else {
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery",
-                "spin"
+                "jquery"
             ],
             "exports": "widget-spinner"
         },
