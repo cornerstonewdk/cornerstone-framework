@@ -239,10 +239,12 @@ define([
 			console.log(data[productType]);
 
 			var $modal = $('#modal');
+			var $inputRange = $modal.find('input');
 			$modal.html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
-
+			$inputRange.hide();
 			$modal.modal();
 			$modal.on("shown.bs.modal", function(e) {
+				inputRange.show();
 				var $range = $('#modal').find('.widget-range');
 				$range.rangeinput({inputShow: true, progress: true});
 			});
