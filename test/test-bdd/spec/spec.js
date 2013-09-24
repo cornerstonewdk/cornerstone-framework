@@ -340,22 +340,22 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    barChart.$el.on('shown', function(e) {
+                    barChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('barChart shown', e);
                         done();
                     });
-                    barChart.render();
+                    barChart.model.fetch();
                     expect(barChart).to.be.an.instanceof(Backbone.View);
                 });
             });
 
             it('각각의 바에 에니메이션이 끝날때 마다 animationEnd가 발생하고 모두 완료된 후 complete 이벤트가 발생되어야 한다.', function(done) {
-                barChart.$el.on('animationEnd', function(e) {
+                barChart.$el.on('animationEnd.cs.chart', function(e) {
                     e.stopPropagation();
                     Logging.info('barChart animationEnd', e);
                 });
-                barChart.$el.on('complete', function(e) {
+                barChart.$el.on('complete.cs.chart', function(e) {
                     e.stopPropagation();
                     Logging.info('barChart animation complete', e);
                     done();
@@ -380,12 +380,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    horizontalBarChart.$el.on('shown', function(e) {
+                    horizontalBarChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('horizontalBarChart shown', e);
                         done();
                     });
-                    horizontalBarChart.render();
+                    horizontalBarChart.model.fetch();
                     expect(horizontalBarChart).to.be.an.instanceof(Backbone.View);
                 });
             });
@@ -408,12 +408,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    linePlusBarChart.$el.on('shown', function(e) {
+                    linePlusBarChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('linePlusBarChart shown', e);
                         done();
                     });
-                    linePlusBarChart.render();
+                    linePlusBarChart.model.fetch();
                     expect(linePlusBarChart).to.be.an.instanceof(Backbone.View);
                 });
             });
@@ -435,12 +435,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    lineChart.$el.on('shown', function(e) {
+                    lineChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('lineChart shown', e);
                         done();
                     });
-                    lineChart.render();
+                    lineChart.model.fetch();
                     expect(lineChart).to.be.an.instanceof(Backbone.View);
                 });
             });
@@ -462,12 +462,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    pieChart.$el.on('shown', function(e) {
+                    pieChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('pieChart shown', e);
                         done();
                     });
-                    pieChart.render();
+                    pieChart.model.fetch();
                     expect(pieChart).to.be.an.instanceof(Backbone.View);
                 });
             });
@@ -490,12 +490,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    bar3dChart.$el.on('shown', function(e) {
+                    bar3dChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('bar3dChart shown', e);
                         done();
                     });
-                    bar3dChart.render();
+                    bar3dChart.model.fetch();
                     expect(bar3dChart).to.be.an.instanceof(Backbone.View);
                 });
             });
@@ -518,12 +518,12 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                         model: new Model
                     });
 
-                    horizontal3dBarChart.$el.on('shown', function(e) {
+                    horizontal3dBarChart.$el.on('shown.cs.chart', function(e) {
                         e.stopPropagation();
                         Logging.info('horizontal3dBarChart shown', e);
                         done();
                     });
-                    horizontal3dBarChart.render();
+                    horizontal3dBarChart.model.fetch();
                     expect(horizontal3dBarChart).to.be.an.instanceof(Backbone.View);
                 });
             });
