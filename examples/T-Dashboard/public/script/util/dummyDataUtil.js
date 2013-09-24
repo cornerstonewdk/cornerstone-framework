@@ -264,7 +264,7 @@ define(function(require) {
 				'customerLevel': 'VIP',
 				'customerDevice': 'iPhone4S',
 				'customerPricePlan': 'LTE95',
-				'customerSatisfaction': '불만족'
+				'customerSatisfaction': '만족'
 			},
 			'2': {
 				'customerId': 'bbbbb',
@@ -272,7 +272,7 @@ define(function(require) {
 				'customerLevel': 'Royal',
 				'customerDevice': 'GalaxyS3',
 				'customerPricePlan': 'LTE75',
-				'customerSatisfaction': '불만족'
+				'customerSatisfaction': '만족'
 			},
 			'3': {
 				'customerId': 'ccccc',
@@ -303,28 +303,28 @@ define(function(require) {
 		var vocDB = {
 			'1': {
 				'vocId': '1',
-				'vocRequest': '핸드폰 전원이 안켜져요',
-				'vocResponse': '배터리를 충전하세요',
+				'vocRequest': 'LTEA 전송속도가 생각보다 더 빨리나오는데요?',
+				'vocResponse': '해당 속도가 평균적인 속도입니다 ^^.',
 				'vocState': 'C',
 			},
 			'2': {
 				'vocId': '1',
-				'vocRequest': '자꾸 다운되요',
-				'vocResponse': '왜 그럴까요?',
+				'vocRequest': '고객센터 직원을 칭찬하고 싶은데 어떻게 해야하나요?',
+				'vocResponse': '홈페이지에 직원추천하기 메뉴에서 칭찬해주실 수 있습니다.',
 				'vocState': 'C',
 			},
 			'3': {
 				'vocId': '1',
-				'vocRequest': '환불 되나요?',
-				'vocResponse': '안됩니다.',
+				'vocRequest': '타 통신사에서 SKT로 번호이동을 하고싶은데요.',
+				'vocResponse': '전문 상담직원이 고객님께 즉시 연락드리겠습니다.',
 				'vocState': 'C',
 			},
 			'4': {
 				'vocId': '1',
-				'vocRequest': '너무 느려요 어떻게 빨라지게 하나요?',
-				'vocResponse': '그런거 없어요~ 그냥 참고 쓰세요',
+				'vocRequest': '독도에서 살고있는데 SKT 핸드폰이 터질까요?',
+				'vocResponse': '물론이죠. 독도 및 국내 대부분의 섬에서 만족스러운 통화 품질을 기대하실 수 있습니다.',
 				'vocState': 'C',
-			},
+			}
 		};
 		
 		var tempVocArray = new Array();
