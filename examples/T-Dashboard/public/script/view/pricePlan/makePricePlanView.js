@@ -237,14 +237,15 @@ define([
 			// 1. 모달 형태를 셋팅하고
 			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
 			console.log(data[productType]);
-			$('#modal').html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
-			if( $('#modal').find('input[type="range"]').length > 0 ) {
-				
-				
-			}
-			$('#modal').modal();
-			console.log($('#modal').find('input[type="range"]').val());
-			$('#modal').find('.widget-range').rangeinput({progress:true,value:500});
+
+			var $modal = $('#modal');
+			$modal.html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
+
+			$modal.modal();
+			$modal.on("shown.bs.modal", function(e) {
+				var $range = $('#modal').find('.widget-range');
+				$range.rangeinput({inputShow: true, progress: true});
+			});
 		},
 
 		saveExtraData: function ( e ) {
