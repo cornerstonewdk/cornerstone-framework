@@ -3,7 +3,11 @@
 		{{#if alert}}
 			{{body}}        
         {{else}}
-			<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range"/>
+			<div class="widget-rangeinput slider-box">
+            	<label>
+					<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range btn-block inline"/>
+				</label>
+			</div>
         {{/if}}
 	</div>
 </div>

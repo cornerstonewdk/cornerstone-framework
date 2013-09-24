@@ -7,7 +7,8 @@ define([
 		'template!../template/pricePlan/modalBody', 
 		'widget-datepicker',
 		'style!../style/pricePlan/makePricePlanStyle',
-		'widget-plugins'
+		'widget-plugins',
+		
 ], function(
 		$, 
 		Backbone, 
@@ -100,7 +101,7 @@ define([
 
 			// TODO rangeinput과 충돌
 			$('div[data-dragObject]').each( function () {
-				$( this ).drag({drag:true}).on("drag",function (e, y, x) {
+				$( this ).drag({drag:false}).on("drag",function (e, y, x) {
 					$(this).css( {
 						top: y,
 						left: x
@@ -235,11 +236,15 @@ define([
 			
 			// 1. 모달 형태를 셋팅하고
 			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
+			console.log(data[productType]);
 			$('#modal').html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
 			if( $('#modal').find('input[type="range"]').length > 0 ) {
-				$("#modal .widget-range").rangeinput();
+				
+				
 			}
 			$('#modal').modal();
+			console.log($('#modal').find('input[type="range"]').val());
+			$('#modal').find('.widget-range').rangeinput({progress:true,value:500});
 		},
 
 		saveExtraData: function ( e ) {
