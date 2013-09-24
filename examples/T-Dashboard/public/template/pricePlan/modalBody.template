@@ -3,11 +3,8 @@
 		{{#if alert}}
 			{{body}}        
         {{else}}
-        	<div class="dash-widget no-padding widget-rangeinput slider-box">
-			<label>
-				<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range btn-block inline"/>
-			</label>
-		</div>
+        	
+			<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range"/>
         {{/if}}
 	</div>
 </div>

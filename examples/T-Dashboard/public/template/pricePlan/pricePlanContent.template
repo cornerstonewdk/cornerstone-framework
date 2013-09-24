@@ -56,7 +56,7 @@
 		            </div>
 		            <div id="collapseOne" class="panel-collapse collapse in">
 		                <div class="panel-body">
-		                    음성<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 음성 통화량을 소진 시 매 10초마다 9원의 추가 이용료가 부가됩니다.
+		                    음성<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 음성 통화량을 소진 시 추가 이용료가 부가됩니다.
 		                </div>
 		            </div>
 		        </div>
@@ -70,7 +70,7 @@
 		            </div>
 		            <div id="collapseTwo" class="panel-collapse collapse">
 		                <div class="panel-body">
-		                	데이터<p class="typo-number">0</p>
+		                	데이터<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 데이터 요금이 부가됩니다.
 	                	</div>
 		            </div>
 		        </div>
@@ -84,7 +84,7 @@
 		            </div>
 		            <div id="collapseThree" class="panel-collapse collapse">
 		                <div class="panel-body">
-		                    메세징<p class="typo-number">0</p>
+		                    메세징<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 문자 소진 시 추가 요금이 부가됩니다.
 		                </div>
 		            </div>
 		        </div>
@@ -98,7 +98,7 @@
 		            </div>
 		            <div id="collapseFour" class="panel-collapse collapse">
 		                <div class="panel-body">
-		                    로밍<p class="typo-number">0</p>
+		                    로밍<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 데이터 요금이 부가됩니다.
 		                </div>
 		            </div>
 		        </div>

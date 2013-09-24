@@ -4,7 +4,6 @@
 	<button type="button" class="btn btn-danger" id="makePlan-backButton">뒤로</button>
 </div>
 
-
 <div id="makePricePlan" class="hidden-xs">
 	<!-- 좌측 메뉴 영역 -->
 	<div class="col-xs-3">
