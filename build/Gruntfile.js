@@ -164,42 +164,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'up', function ( arg1, arg2 ) {
-		var done = this.async();
-		var dirPath;
-
-		if ( arguments.length === 0 ) {
-			grunt.log.writeln('Error : Need path info of package.json');
-			return false;
-		} 
-
-		dirPath = arg1 + ':/' + arg2;
-		
-		grunt.file.recurse( dirPath, function callback( abspath, rootdir, subdir, filename ) { 
-			if ( filename == 'package.json' ) {
-
-				var child = cp.exec( 'jam publish ' + rootdir + ' --force --repository ' + pathInfo.repo);
-
-				child.stdin.setEncoding( 'utf-8' );
-				child.stdout.pipe( process.stdout );
-
-				child.stdout.on( 'data', function( chunk ) {
-
-					if ( chunk.substr( -10 ) == 'Username: ' )
-						child.stdin.write( admin.id + '\n' );
-					else if ( chunk.substr( -10 ) == 'Password: ' )
-						child.stdin.write( admin.pass + '\n' );
-					else {
-						setTimeout( function () {
-							done();	
-						}, 1000 );
-						
-					}
-				} );
-			}
-		} );
-	} );
-
 	grunt.registerTask( 'findPackages', function () {
 		grunt.file.recurse( pathInfo.dist, function callback( abspath, rootdir, subdir, filename ) { 
 			if ( filename == 'package.json' ) packages.push( rootdir + subdir );
