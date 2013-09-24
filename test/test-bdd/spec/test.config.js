@@ -15,7 +15,7 @@ require.config({
         "handlebars": "../../../grunt-dist/lib/handlebars/handlebars",
         "infinity": "../../../grunt-dist/lib/infinity/infinity",
         "iscroll": "../../../grunt-dist/lib/iscroll-5/iscroll",
-        "jquery": "../../../grunt-dist/lib/jquery/jquery-2.0.2.min",
+        "jquery": "../../../grunt-dist/lib/jquery/jquery-1.10.2.min",
         "jquery.hammer": "../../../grunt-dist/lib/jquery.hammer/jquery.hammer",
         "jquery.hotkeys": "../../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys",
         "jsonp": "../../../grunt-dist/src/util/jsonp/jsonp",
@@ -25,7 +25,6 @@ require.config({
         "multipage-route": "../../../grunt-dist/src/mvc/router/multipage-route/multipage",
         "nv": "../../../grunt-dist/lib/nvd3/nv.d3",
         "skt": "../../../grunt-dist/src/util/skt/skt",
-        "spin": "../../../grunt-dist/lib/spin/spin",
         "style": "../../../grunt-dist/src/loader/style/style",
         "template": "../../../grunt-dist/src/loader/template/template",
         "theme-dark": "../../../grunt-dist/src/style/theme-dark",
@@ -194,9 +193,6 @@ require.config({
                 "jquery"
             ],
             "exports": "style"
-        },
-        "spin": {
-            "exports": "spin"
         },
         "template": {
             "deps": [
@@ -392,8 +388,7 @@ require.config({
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery",
-                "spin"
+                "jquery"
             ],
             "exports": "widget-spinner"
         },
