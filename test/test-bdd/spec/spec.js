@@ -1404,6 +1404,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     done();
                 });
                 body_spinner.render();
+                body_spinner.$el.spinner('show');
                 expect(body_spinner).to.be.an.instanceof(Backbone.View);
             });
         });
@@ -1422,7 +1423,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 done();
             });
             // $('body.spinner-outer-bg').click();
-            body_spinner.$el.spinner();
+            body_spinner.$el.spinner('hide');
         });
 
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
@@ -1445,6 +1446,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     done();
                 });
                 inner_spinner.render();
+                inner_spinner.$el.spinner('show');
                 expect(inner_spinner).to.be.an.instanceof(Backbone.View);
             });
         });
@@ -1464,7 +1466,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 expect(e.namespace).to.be.equal('cs.spinner');
                 done();
             });
-            inner_spinner.$el.spinner();
+            inner_spinner.$el.spinner('hide');
         });
     });
 
