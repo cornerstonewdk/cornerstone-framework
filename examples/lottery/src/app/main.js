@@ -59,7 +59,7 @@ define( [ 'jquery', 'underscore', 'backbone', 'multipage-router', 'template!msg'
 				event.preventDefault();
 
 				// 슬롯머신을 돌리고 일정 시간 후에 멈춘다.
-				var equation = $( '#equation' ).removeClass( 'done' ).addClass( 'three' );
+				var equation = $( '#equation' ).removeClass( 'done' ).addClass( 'seven' );
 				setTimeout( function() { equation.addClass( 'done' ); }, 3000 );
 
 				setTimeout( function() {
