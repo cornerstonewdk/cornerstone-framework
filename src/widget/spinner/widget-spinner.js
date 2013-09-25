@@ -10,8 +10,8 @@
 (function (root, doc, factory) {
     if ( typeof define === "function" && define.amd ) {
         // AMD
-        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $, Spinner ) {
-            factory( $, root, doc, Spinner );
+        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
+            factory( $, root, doc );
             return Backbone.View.extend( {
                 render: function () {
                     this.$el.spinner( this.options );
@@ -21,9 +21,9 @@
         } );
     } else {
         // None AMD
-        factory( root.jQuery, root, doc, root.Spinner );
+        factory( root.jQuery, root, doc );
     }
-}(this, document, function (jQuery, window, document, Spinner) {
+}(this, document, function (jQuery, window, document) {
 
 	var hasTouch = ('ontouchstart' in window);
 
@@ -36,38 +36,11 @@
 		this.options = $.extend({}, $.fn.spinner.defaults, options);
 	};
 
-	Spinner.prototype.setState = function (state) {
-		var d = "disabled"
-			, $el = this.$element
-			, data = $el.data()
-			, val = $el.is("input") ? "val" : "html";
-
-		state = state + "Text";
-		data.resetText || $el.data("resetText", $el[val]());
-
-		$el[val](data[state] || this.options[state]);
-
-		// push to event loop to allow forms to submit
-		setTimeout(function () {
-			state == "loadingText" ?
-				$el.addClass(d).attr(d, d) :
-				$el.removeClass(d).removeAttr(d)
-		}, 0)
-	};
-
-	Spinner.prototype.toggle = function () {
-		var $parent = this.$element.parent("[data-toggle='buttons-radio']");
-
-		$parent && $parent
-			.find(".active")
-			.removeClass("active");
-
-		this.$element.toggleClass("active")
-	};
-
 	Spinner.prototype.show = function () {
+		this.$element.trigger($.Event('show.cs.spinner'));
 		this.$element.addClass("widget-spinner").append("<div class='widget-spinner-icon" + (hasTouch ? 2 : "" ) + "'></div>");
-	};
+		this.$element.trigger($.Event('shown.cs.spinner'));
+	}; 
 
 	Spinner.prototype.showText = function () {
 		var text = this.$element.data("spinner-text");
@@ -88,7 +61,9 @@
 	};
 
 	Spinner.prototype.hide = function () {
+		this.$element.trigger($.Event('hide.cs.spinner'));
 		this.$element, this.$element.removeClass("widget-spinner").find(".widget-spinner-icon" + (hasTouch ? 2 : "" )).remove();
+		this.$element.trigger($.Event('hidden.cs.spinner'));
 	};
 
 //    Spinner.prototype.destroy = function () {
@@ -113,8 +88,6 @@
 				data.show();
 			} else if (option == "hide") {
 				data.hide();
-			} else if (option) {
-				data.setState(option)
 			}
 		});
 	};
@@ -124,7 +97,6 @@
 	};
 
 	$.fn.spinner.Constructor = Spinner;
-
 
 	$(function () {
 		$(document).on("click.Spinner.data-api", "[data-plugin^=spinner]", function (e) {
