@@ -12,8 +12,8 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
 
 			this.scrollView = this.$el.find( '#scrollView' ).css( {
-				height: 300
-			} ).featuredScrollView();
+				height: window.innerHeight
+			} ).featuredScrollView( { bounce: false } ).data( 'featuredScrollView' );
 
 			this.inActiveEvent();
 			this.activeEvent();
@@ -21,13 +21,24 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			return this;
 		},
 
-		// TODO 메뉴의 포지션을 계산해서 스크롤 위치를 수정한다.
 		update: function () {
 			// 초기화
 			this.$el.find( '.list-group-item ' ).removeClass( 'active' );
+
+			// 현재 메뉴 액티브
 			var $currentItem = this.$( '[data-id=' + this.model.id + ']' );
 			$currentItem.addClass( 'active' );
-			console.log($currentItem);
+
+			// 현재 메뉴로 스크롤 위치 변경
+			if ( this.scrollView.$el.find( ' > div:last-child' ).css( 'position' ) === 'absolute' ) {
+				var currentScrollY = ($currentItem.index() - 1) * -Math.abs( $currentItem.height() );
+
+				currentScrollY = currentScrollY > this.scrollView.iscroll.maxScrollY
+					? currentScrollY
+					: this.scrollView.iscroll.maxScrollY;
+
+				this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
+			}
 		},
 
 		inActiveEvent: function () {
