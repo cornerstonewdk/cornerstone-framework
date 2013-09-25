@@ -1,5 +1,5 @@
 
-define( [ 'backbone', 'template!view/detail' ], function( Backbone, template ) {
+define( [ 'backbone', 'widget-scrollview', 'template!view/detail' ], function( Backbone, ScrollView, template ) {
 	
 	return Backbone.View.extend( {
 
@@ -12,6 +12,9 @@ define( [ 'backbone', 'template!view/detail' ], function( Backbone, template ) {
 		render: function() {
 			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
 			this.$( '[data-id=' + this.model.id + ']' ).addClass( 'active' );
+
+			this.$el.find("#scrollView").featuredScrollView();
+
 			return this;
 		}
 	} );
