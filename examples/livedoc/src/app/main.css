@@ -28,6 +28,12 @@ div.doc-content {
     margin-bottom: 50px;
 }
 
+/* Live Doc 전용 스타일*/
+.container {
+    width: 100%;
+    max-width: 100%;
+}
+
 /* TODO 테마 소스에 포함 해야함 */
 .thumbnail.gray {
     padding-bottom: 10px;
