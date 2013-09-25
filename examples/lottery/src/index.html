@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Project</title>
+		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="app/main.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<section id="section-home" class="page" data-url="home" data-default-page="true">
+			<div class="container">
+				<p id="p-msg"></p>
+				<a class="btn btn-lg btn-primary btn-block" href="#pick">추첨</a>
+			</div>
+		</section>
+		<section id="section-pick" class="page" data-url="pick">
+			<div class="container">
+				<div id="equation" class="done">
+					<span class="drink spinner"></span>
+					<span class="drink spinner"></span>
+					<span class="drink spinner"></span>
+					<div id="shoulder"><div id="arm"></div>
+				</div>
+
+				<div id="modal-done" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<h4 class="modal-title">추첨이 완료되었습니다!</h4>
+							</div>
+							<div class="modal-footer">
+								<a class="btn btn-default" href="#home">계속 추첨</a>
+								<a id="btn-call" class="btn btn-primary">당첨자에게 전화 걸기</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
+	</body>
+</html>

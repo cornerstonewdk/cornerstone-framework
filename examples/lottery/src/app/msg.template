@@ -1,0 +1,5 @@
+{{#if winCount}}
+	총 <span id="entry-count">0</span> 명이 응모하셨고, 그 중에 <span id="win-count">0</span> 명이 당첨되셨습니다.
+{{else}}
+	총 <span id="entry-count">0</span> 명이 응모하셨습니다.
+{{/if}}
