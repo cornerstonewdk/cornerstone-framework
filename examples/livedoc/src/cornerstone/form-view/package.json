@@ -5,8 +5,8 @@
 	"jam": {
 		"dependencies": {
 			"backbone": "1.0.0",
-			"jquery": "2.0.3",
-			"validation-view": "1.0.0",
+			"jquery": "1.10.2",
+			"validation-view": "2.0.0",
 			"bootstrap": "3.0.0"
 		},
 		"main": "form.js",

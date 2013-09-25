@@ -2022,9 +2022,14 @@ var jam = {
             "main": "handlebars.js"
         },
         {
+            "name": "iscroll",
+            "location": "../cornerstone/iscroll",
+            "main": "iscroll.js"
+        },
+        {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.3.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -2064,6 +2069,11 @@ var jam = {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-scrollview",
+            "location": "../cornerstone/widget-scrollview",
+            "main": "widget-scrollview.js"
         }
     ],
     "version": "0.2.17",
@@ -2092,6 +2102,9 @@ var jam = {
         "handlebars": {
             "exports": "Handlebars"
         },
+        "iscroll": {
+            "exports": "iScroll"
+        },
         "jquery": {
             "exports": "jquery"
         },
@@ -2133,6 +2146,15 @@ var jam = {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
         }
     }
 };
@@ -2161,9 +2183,14 @@ if (typeof require !== "undefined" && require.config) {
             "main": "handlebars.js"
         },
         {
+            "name": "iscroll",
+            "location": "../cornerstone/iscroll",
+            "main": "iscroll.js"
+        },
+        {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.3.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -2203,6 +2230,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-scrollview",
+            "location": "../cornerstone/widget-scrollview",
+            "main": "widget-scrollview.js"
         }
     ],
     "shim": {
@@ -2229,6 +2261,9 @@ if (typeof require !== "undefined" && require.config) {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "iscroll": {
+            "exports": "iScroll"
         },
         "jquery": {
             "exports": "jquery"
@@ -2271,6 +2306,15 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
         }
     }
 });
@@ -2299,9 +2343,14 @@ else {
             "main": "handlebars.js"
         },
         {
+            "name": "iscroll",
+            "location": "../cornerstone/iscroll",
+            "main": "iscroll.js"
+        },
+        {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.3.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -2341,6 +2390,11 @@ else {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-scrollview",
+            "location": "../cornerstone/widget-scrollview",
+            "main": "widget-scrollview.js"
         }
     ],
     "shim": {
@@ -2367,6 +2421,9 @@ else {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "iscroll": {
+            "exports": "iScroll"
         },
         "jquery": {
             "exports": "jquery"
@@ -2409,6 +2466,15 @@ else {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-scrollview": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "iscroll"
+            ],
+            "exports": "widget-scrollview"
         }
     }
 };
