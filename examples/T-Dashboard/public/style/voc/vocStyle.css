@@ -19,3 +19,8 @@
 		padding: 0;
 	}
 }
+
+#voc table {
+	table-layout: fixed;
+	word-break: break-all;
+}

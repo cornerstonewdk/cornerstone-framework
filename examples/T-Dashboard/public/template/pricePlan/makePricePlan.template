@@ -11,7 +11,7 @@
 		<div class="panel-group">
 			<div class="panel panel-info">
         		<div class="panel-heading">
-        			<h3 class="panel-title">고객 조건</h3>
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 고객 조건</h3>
         		</div>
     			<ul class="list-group dragMenu">
 					<li class="list-group-item" data-menu-customertype="basic">
@@ -34,7 +34,7 @@
 		<div class="panel-group">
 			<div class="panel panel-success">
         		<div class="panel-heading">
-        			<h3 class="panel-title">상품 조건</h3>
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-gift"></span> 상품 조건</h3>
         		</div>
 	            <ul class="list-group dragMenu">
 	            	<li class="list-group-item" data-menu-producttype="voice">
@@ -57,7 +57,7 @@
 		<div class="panel-group">
 			<div class="panel panel-warning">
         		<div class="panel-heading">
-        			<h3 class="panel-title">회선 조건</h3>
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-repeat"></span> 회선 조건</h3>
     			</div>
 	            <ul class="list-group dragMenu">
 	            	<li class="list-group-item" data-menu-commtype="3g">
@@ -74,7 +74,7 @@
 		<div class="panel-group">
 			<div class="panel panel-danger">
         		<div class="panel-heading">
-        			<h3 class="panel-title">할인 조건</h3>
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-arrow-down"></span> 할인 조건</h3>
     			</div>
 	            <ul class="list-group dragMenu">
 	            	<li class="list-group-item" data-menu-discounttype="double">

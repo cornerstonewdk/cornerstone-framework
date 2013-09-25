@@ -2,35 +2,35 @@
 	<div id="dashboard_container">
 		<div class="panel panel-primary dashboardItem" id="dashboard_lte">
             <div class="panel-heading">
-                <h3 class="panel-title">LTE 개통 통계</h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-stats"></span> LTE 개통 통계</h3>
             </div>
             <div class="panel-body" id="reportChart">
             </div>
         </div>
         <div class="panel panel-warning dashboardItem" data-widgettitle="dashboard_voc">
             <div class="panel-heading">
-                <h3 class="panel-title">접수 VOC</h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 접수 VOC</h3>
             </div>
             <div class="panel-body" id="vocWidget">
             </div>
         </div>
         <div class="panel panel-danger dashboardItem" data-widgettitle="dashboard_voc">
             <div class="panel-heading">
-                <h3 class="panel-title">금일 VOC 만족율</h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-thumbs-up"></span> 금일 VOC 만족율</h3>
             </div>
             <div class="panel-body" id="vocSatisfactionWidget">
             </div>
         </div>
         <div class="panel panel-success dashboardItem" id="dashboard_policy">
             <div class="panel-heading">
-                <h3 class="panel-title">정책</h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt"></span> 정책</h3>
             </div>
             <div class="panel-body" id="planWidget">
             </div>
         </div>
         <div class="panel panel-info dashboardItem">
             <div class="panel-heading">
-                <h3 class="panel-title">블로그</h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> 블로그</h3>
             </div>
             <div class="panel-body" id="blogWidget">
             </div>
@@ -46,7 +46,7 @@
         -->
         <div class="panel panel-warnning dashboardItem">
             <div class="panel-heading">
-                <h3 class="panel-title">유튜브</h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-hd-video"></span> 유튜브</h3>
             </div>
             <div class="panel-body" id="youtubeWedget">
             </div>
