@@ -3,7 +3,7 @@
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'backbone', 'multipage-router', 'template!msg', 'bootstrap', 'style!main' ], function( Backbone, MultipageRouter, msgTemplate ) {
+define( [ 'jquery', 'underscore', 'backbone', 'multipage-router', 'template!msg', 'bootstrap', 'style!main' ], function( $, _, Backbone, MultipageRouter, msgTemplate ) {
 	return {
 		launch: function() {
 
