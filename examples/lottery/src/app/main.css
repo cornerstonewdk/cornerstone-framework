@@ -29,13 +29,13 @@ body {
   -webkit-transform-origin: center center;
   -webkit-transform-style: preserve-3d;
   -webkit-transform: perspective(1000px) rotateX(-25deg) rotateY(-60deg);
-  margin: 150px 150px;
+  margin-top: auto;
+  margin-bottom: auto;
   height: 100px;
   width: 100px;
   top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
+  right: 150px;
 }
 .box:hover .side:nth-child(6) .lid:nth-child(1) {
   -webkit-transform: rotateY(-220deg);
@@ -187,8 +187,8 @@ body {
 
 ul.animation, ul.animation li {
   position: absolute;
-  top: 200px;
-  left: 200px;
+  top: 50%;
+  left: 68%;
 }
 
 ul.animation {
