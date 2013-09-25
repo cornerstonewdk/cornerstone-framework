@@ -1,26 +1,26 @@
-define( [ 'backbone', 'widget-scrollview', 'template!view/detail' ], function ( Backbone, ScrollView, template ) {
+define( [ 'backbone', 'template!view/detail' ], function ( Backbone, template ) {
 
 	return Backbone.View.extend( {
 
-		el: 'section#page-detail',
+		el: '#detail-content',
 
 		initialize: function () {
 
 		},
 
 		render: function () {
-			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
-			this.$( '[data-id=' + this.model.id + ']' ).addClass( 'active' );
+			var self = this;
 
-			this.$el.find( "#scrollView" ).featuredScrollView();
-
+			// 상세페이지 랜더링
+			this.$el.html( template( { model: this.model.toJSON() } ) );
 			this.customMarkdown();
+
 			return this;
 		},
 
 		customMarkdown: function () {
-			var $docContent = this.$el.find( ".doc-content" );
-			$docContent.find( "table" ).addClass( "table table-bordered table-hover table-striped" )
+			var $docContent = this.$el.find( '.doc-content' );
+			$docContent.find( 'table' ).addClass( 'table table-bordered table-hover table-striped' )
 				.wrap( $( '<div/>', {'class': 'table-responsive'} ) );
 		}
 	} );

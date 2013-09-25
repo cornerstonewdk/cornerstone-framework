@@ -28,6 +28,29 @@ div.doc-content {
     margin-bottom: 50px;
 }
 
+/* Live Doc 전용 스타일*/
+.container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.detail-scrollview {
+    padding-bottom: 150px;
+}
+@media(min-width: 768px) {
+    .detail-scrollview {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 5px;
+    }
+}
+
+.home-col .thumbnail {
+    min-height: 330px;
+    max-height: 330px;
+}
+
 /* TODO 테마 소스에 포함 해야함 */
 .thumbnail.gray {
     padding-bottom: 10px;
