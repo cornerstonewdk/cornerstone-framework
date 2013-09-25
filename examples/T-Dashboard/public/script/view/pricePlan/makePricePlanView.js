@@ -425,7 +425,6 @@ define([
 		//내용 수정 버튼 눌렷을때 처리
 		clickedModifyButton: function(e) {
 			var $obj = $(e.target).parent();
-			console.log($obj);
 		},
 		
 		//드롭 이벤트 처리
@@ -526,12 +525,10 @@ define([
 		
 		//드레그중인 오브젝트 되돌리기
 		reverseObject: function($dragObj) {
-			console.log($dragObj)
 			$dragObj.animate({
 				top:0,
 				left:-12,
 			}, function () {
-				// console.log('ani done!');
 			});	
 		},
 		
