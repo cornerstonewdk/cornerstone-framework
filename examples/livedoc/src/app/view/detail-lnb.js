@@ -12,7 +12,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
 
 			this.scrollView = this.$el.find( '#scrollView' ).css( {
-				height: window.innerHeight / 1.5
+				height: 300
 			} ).featuredScrollView();
 
 			this.inActiveEvent();
