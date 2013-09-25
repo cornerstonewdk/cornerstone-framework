@@ -236,15 +236,15 @@ define([
 			
 			// 1. 모달 형태를 셋팅하고
 			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
-			console.log(data[productType]);
 
 			var $modal = $('#modal');
-			var $inputRange = $modal.find('input');
 			$modal.html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
+
+			var $inputRange = $modal.find('input');
 			$inputRange.hide();
 			$modal.modal();
 			$modal.on("shown.bs.modal", function(e) {
-				inputRange.show();
+				$inputRange.show();
 				var $range = $('#modal').find('.widget-range');
 				$range.rangeinput({inputShow: true, progress: true});
 			});
