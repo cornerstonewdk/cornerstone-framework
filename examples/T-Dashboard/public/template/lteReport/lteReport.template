@@ -3,7 +3,9 @@
 		<div class="panel-group side-bar">
     		<div class="panel">
         		<!-- Default panel contents -->
-        		<div class="panel-heading">지점</div>
+        		<div class="panel-heading">
+        			<h3 class="panel-title">지점</h3>
+        		</div>
         		<div class="panel-body">
 		            <ul class="list-group list-group-flush list-group-cornerstone" data-branchlist>
 		            </ul>

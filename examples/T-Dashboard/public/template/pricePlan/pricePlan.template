@@ -7,7 +7,9 @@
 			<br />
     		<div class="panel">
         		<!-- 정책 목록 -->
-        		<div class="panel-heading">정책 목록</div>
+        		<div class="panel-heading">
+        			<h3 class="panel-title">정책 목록</h3>
+        		</div>
         		<div class="panel-body">
 		            <ul id="pricePlanList" class="list-group list-group-flush list-group-cornerstone">
 		            </ul>
