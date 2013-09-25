@@ -17,7 +17,7 @@ module.exports = function( grunt ) {
 		// 경로 설정
 		path: {
 			src: 'src',
-			doc: '../../doc',
+			doc: 'documents',
 			dist: 'dist',
 			test: 'test'
 		},

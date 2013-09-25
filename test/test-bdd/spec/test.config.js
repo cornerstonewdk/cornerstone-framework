@@ -14,7 +14,7 @@ require.config({
         "hammer": "../../../grunt-dist/lib/hammer/hammer",
         "handlebars": "../../../grunt-dist/lib/handlebars/handlebars",
         "infinity": "../../../grunt-dist/lib/infinity/infinity",
-        "iscroll": "../../../grunt-dist/lib/iscroll-5/iscroll",
+        "iscroll": "../../../grunt-dist/lib/iscroll-4/iscroll",
         "jquery": "../../../grunt-dist/lib/jquery/jquery-1.10.2.min",
         "jquery.hammer": "../../../grunt-dist/lib/jquery.hammer/jquery.hammer",
         "jquery.hotkeys": "../../../grunt-dist/lib/jquery.hotkeys/jquery.hotkeys",
@@ -49,9 +49,9 @@ require.config({
         "widget-popover": "../../../grunt-dist/src/widget/popover/widget-popover",
         "widget-rangeinput": "../../../grunt-dist/src/widget/rangeinput/widget-rangeinput",
         "widget-scrollspy": "../../../grunt-dist/src/widget/scrollspy/widget-scrollspy",
-        "widget-scrollview": "../../../grunt-dist/src/widget/scrollview/widget-scrollview",
+        "widget-scrollview": "../../../src/widget/scrollview/widget-scrollview",
         "widget-sign": "../../../grunt-dist/src/widget/sign/widget-sign",
-        "widget-spinner": "../../../src/widget/spinner/widget-spinner",
+        "widget-spinner": "../../../grunt-dist/src/widget/spinner/widget-spinner",
         "widget-tab": "../../../grunt-dist/src/widget/tab/widget-tab",
         "widget-tooltip": "../../../grunt-dist/src/widget/tooltip/widget-tooltip",
         "widget-touch": "../../../grunt-dist/src/widget/touch/widget-touch",
@@ -133,7 +133,7 @@ require.config({
             "exports": "infinity"
         },
         "iscroll": {
-            "exports": "iScroll"
+            "exports": "iscroll"
         },
         "jquery": {
             "exports": "jquery"
