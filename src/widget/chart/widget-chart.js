@@ -16,7 +16,7 @@
 	var eventName = {
 		shown: "shown.cs.chart",
 		animationEnd: "animationEnd.cs.chart",
-		complete: "shown.cs.chart"
+		complete: "complete.cs.chart"
 	};
 	var isDebug = true;
 
