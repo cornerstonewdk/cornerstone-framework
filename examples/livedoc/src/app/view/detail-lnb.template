@@ -1,0 +1,10 @@
+<div id="scrollView" class="detail-scrollview">
+	<div class="list-group">
+		{{#each collection}}
+		{{#if section}}<h4>{{section}}</h4>{{/if}}
+		{{#if secondDepth}}<a class="list-group-item" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
+		{{#if thirdDepth}}<a class="list-group-item thirdDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
+		{{#if fourthDepth}}<a class=" list-group-itemfourthDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
+		{{/each}}
+	</div>
+</div>
