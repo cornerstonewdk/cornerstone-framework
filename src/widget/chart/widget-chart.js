@@ -18,7 +18,7 @@
 		animationEnd: "animationEnd.cs.chart",
 		complete: "complete.cs.chart"
 	};
-	var isDebug = true;
+	var isDebug = false;
 
 
 	var FeaturedChart = function (element, options) {
