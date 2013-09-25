@@ -2,12 +2,12 @@ body {
 	padding-top: 20px;
 
 	background:
-		linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
-		linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
-		linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
-		linear-gradient(45deg, #ECEDDC 25%, transparent 25%);	
+		linear-gradient(135deg, #98d1f0 25%, transparent 25%) -50px 0,
+		linear-gradient(225deg, #98d1f0 25%, transparent 25%) -50px 0,
+		linear-gradient(315deg, #98d1f0 25%, transparent 25%),
+		linear-gradient(45deg, #98d1f0 25%, transparent 25%);
 	background-size: 100px 100px;
-	background-color: #EC173A;	
+	background-color: #b4dfff;
 }
 
 .page {
@@ -115,10 +115,10 @@ body {
   box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.2);
 }
 #equation .drink {
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("http://media.balsamiq.com/img/hashtaghot/drinks.jpg");
-  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("http://media.balsamiq.com/img/hashtaghot/drinks.jpg");
-  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("http://media.balsamiq.com/img/hashtaghot/drinks.jpg");
-  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("http://media.balsamiq.com/img/hashtaghot/drinks.jpg");
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
   width: 80px;
   background-size: 80px auto;
   background-position: 0, 0 20px;

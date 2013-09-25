@@ -9,8 +9,10 @@
 	<div class="col-xs-3 side-bar">
 		<!-- 고객 조건 -->
 		<div class="panel-group">
-			<div class="panel">
-        		<div class="panel-heading">고객 조건</div>
+			<div class="panel panel-info">
+        		<div class="panel-heading">
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 고객 조건</h3>
+        		</div>
     			<ul class="list-group dragMenu">
 					<li class="list-group-item" data-menu-customertype="basic">
 						<div data-dragObject="customertype" data-customertype="basic">일반</div>
@@ -30,8 +32,10 @@
 		<br/>
 		<!-- 상품 조건 -->
 		<div class="panel-group">
-			<div class="panel">
-        		<div class="panel-heading">상품 조건</div>
+			<div class="panel panel-success">
+        		<div class="panel-heading">
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-gift"></span> 상품 조건</h3>
+        		</div>
 	            <ul class="list-group dragMenu">
 	            	<li class="list-group-item" data-menu-producttype="voice">
 						<div data-dragObject="producttype" data-producttype="voice" data-extradata="0">음성<p>(0) 분</p></div>
@@ -51,8 +55,10 @@
 		<br/>
 		<!-- 회선 조건 -->
 		<div class="panel-group">
-			<div class="panel">
-        		<div class="panel-heading">회선 조건</div>
+			<div class="panel panel-warning">
+        		<div class="panel-heading">
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-repeat"></span> 회선 조건</h3>
+    			</div>
 	            <ul class="list-group dragMenu">
 	            	<li class="list-group-item" data-menu-commtype="3g">
 						<div data-dragObject="commtype" data-commtype="3g">3G</div>
@@ -66,8 +72,10 @@
 		</br>
 		<!-- 할인 조건 -->
 		<div class="panel-group">
-			<div class="panel">
-        		<div class="panel-heading">할인 조건</div>
+			<div class="panel panel-danger">
+        		<div class="panel-heading">
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-arrow-down"></span> 할인 조건</h3>
+    			</div>
 	            <ul class="list-group dragMenu">
 	            	<li class="list-group-item" data-menu-discounttype="double">
 						<div data-dragObject="discounttype" data-discounttype="double">더블할인</div>

@@ -236,15 +236,15 @@ define([
 			
 			// 1. 모달 형태를 셋팅하고
 			// 2. data의 종류에 따라 body template을 불러와서 .modal-body > p 의 html영역에 넣어준다.
-			console.log(data[productType]);
 
 			var $modal = $('#modal');
-			var $inputRange = $modal.find('input');
 			$modal.html($(modalTemplate(data[productType]))).find('.modal-body > p').html(modalBodyTemplate(data[productType]));
+
+			var $inputRange = $modal.find('input');
 			$inputRange.hide();
 			$modal.modal();
 			$modal.on("shown.bs.modal", function(e) {
-				inputRange.show();
+				$inputRange.show();
 				var $range = $('#modal').find('.widget-range');
 				$range.rangeinput({inputShow: true, progress: true});
 			});
@@ -425,7 +425,6 @@ define([
 		//내용 수정 버튼 눌렷을때 처리
 		clickedModifyButton: function(e) {
 			var $obj = $(e.target).parent();
-			console.log($obj);
 		},
 		
 		//드롭 이벤트 처리
@@ -526,12 +525,10 @@ define([
 		
 		//드레그중인 오브젝트 되돌리기
 		reverseObject: function($dragObj) {
-			console.log($dragObj)
 			$dragObj.animate({
 				top:0,
 				left:-12,
 			}, function () {
-				// console.log('ani done!');
 			});	
 		},
 		

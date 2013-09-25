@@ -19,3 +19,12 @@
 		padding: 0;
 	}
 }
+
+#voc table {
+	table-layout: fixed;
+	word-break: break-all;
+}
+
+#vocHistory h5 {
+	line-height: 25px;
+}

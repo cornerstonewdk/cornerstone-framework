@@ -166,3 +166,7 @@ div[data-featured="scrollView"] {
 #dashboard_container li {
 	line-height: 21px;
 }
+
+#blogWidget li {
+	line-height: 20px;	
+}

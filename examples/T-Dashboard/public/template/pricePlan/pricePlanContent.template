@@ -19,13 +19,27 @@
 		<div>
 			<h4>정책</h4>
 			<hr/>
-			<div style="text-align:center;">
-				<button class="btn btn-danger" data-toggle="popover" data-placement="left" data-title="해당 정책이 최초 시작된 일자" data-content="{{applyDate}}">
-					정책 적용일
-				</button> 
-				<button class="btn btn-warning" data-toggle="popover" data-placement="right" data-title="해당 정책을 최초 작성한 일자"  data-content="{{makeDate}}">
-					정책 작성일
-				</button>
+			<div class="row" style="text-align:center;">
+				<div class="panel-group col-xs-6">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">정책 적용일</h3>
+						</div>
+						<div class="panel-body">
+							{{applyDate}}
+						</div>
+					</div>
+				</div>
+				<div class="panel-group col-xs-6">
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h3 class="panel-title">정책 작성일</h3>
+						</div>
+						<div class="panel-body">
+							{{makeDate}}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<br/>
