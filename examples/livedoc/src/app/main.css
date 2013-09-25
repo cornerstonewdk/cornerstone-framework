@@ -46,6 +46,11 @@ div.doc-content {
     }
 }
 
+.home-col .thumbnail {
+    min-height: 330px;
+    max-height: 330px;
+}
+
 /* TODO 테마 소스에 포함 해야함 */
 .thumbnail.gray {
     padding-bottom: 10px;
