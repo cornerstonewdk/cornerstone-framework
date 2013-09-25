@@ -10,7 +10,8 @@
       "form-view": "*",
       "validation-view": "*",
       "multipage-router": "*",
-      "theme-white": "*"
+      "theme-white": "*",
+      "widget-scrollview": "*"
     }
   }
 }

@@ -7,8 +7,8 @@ body {
 }
 
 .home-col .well {
-    height: 174px;
     overflow: hidden;
+    height: 174px;
 }
 
 .media img {
@@ -28,20 +28,22 @@ div.doc-content {
     margin-bottom: 50px;
 }
 
-/* 테마 소스에 포함 해야함 */
+/* TODO 테마 소스에 포함 해야함 */
 .thumbnail.gray {
     padding-bottom: 10px;
 }
+
 .thumbnail.gray:hover {
     text-decoration: none;
 }
+
 .thumbnail.gray img {
     width: 100%;
 }
 
 .thumbnail .mask {
-    height: 200px;
     overflow: hidden;
+    height: 200px;
 }
 
 .thumbnail.gray .mask img {
@@ -49,10 +51,10 @@ div.doc-content {
 }
 
 .ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
     display: block;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
     white-space: pre;
 }
 
@@ -76,8 +78,8 @@ div.doc-content {
 }
 
 .doc-content h2 {
-    border-bottom: 2px dotted #ccc;
     margin: 5px 0px 15px;
+    border-bottom: 2px dotted #ccc;
 }
 
 .doc-content h6 {
@@ -85,13 +87,13 @@ div.doc-content {
 }
 
 .doc-content blockquote {
-    background: #efefef;
+    margin: 15px;
     padding: 5px 10px;
     border: solid 1px #ddd;
-    margin: 15px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
+    background: #efefef;
     color: #333;
 
 }
