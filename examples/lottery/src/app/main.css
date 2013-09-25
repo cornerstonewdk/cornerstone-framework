@@ -18,7 +18,399 @@ body {
 	font-size: 20px;
 	text-align: center;
 	color: black;
+	margin-top: 350px;
 }
+
+/* ====================== 선물상자 ====================== */
+
+.box {
+  position: absolute;
+  -webkit-transform-origin: center center;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: perspective(1000px) rotateX(-25deg) rotateY(-60deg);
+  margin: 150px auto;
+  height: 100px;
+  width: 100px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.box:hover .side:nth-child(6) .lid:nth-child(1) {
+  -webkit-transform: rotateY(-220deg);
+}
+.box:hover .side:nth-child(6) .lid:nth-child(2) {
+  -webkit-transform: rotateY(220deg);
+}
+
+.side {
+  background: #da1159;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  -webkit-transform-origin: center center;
+  border-radius: 2px;
+  -webkit-transform-style: preserve-3d;
+}
+.side:before {
+  width: 20px;
+  background: #fafafa;
+  content: " ";
+  margin: auto;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+.side:nth-child(1) {
+  -webkit-transform-origin: bottom center;
+  -webkit-transform: rotateX(0deg) translateZ(50px);
+}
+.side:nth-child(2) {
+  -webkit-transform-origin: bottom center;
+  -webkit-transform: rotateX(0deg) translateZ(-50px);
+}
+.side:nth-child(3) {
+  -webkit-transform-origin: bottom center;
+  -webkit-transform: rotateY(90deg) translateZ(50px);
+}
+.side:nth-child(4) {
+  -webkit-transform-origin: bottom center;
+  -webkit-transform: rotateY(90deg) translateZ(-50px);
+}
+.side:nth-child(5) {
+  -webkit-transform: rotateX(-90deg) translateZ(50px);
+}
+.side:nth-child(6) {
+  background: transparent;
+  box-shadow: 0 0 0;
+  -webkit-transform: rotateX(90deg) translateZ(50px);
+}
+.side:nth-child(6):before {
+  content: none;
+}
+.side:nth-child(6) .lid {
+  background: #da1159;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 50px;
+  -webkit-transform-origin: left center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  transition-property: -webkit-transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  z-index: 10;
+}
+.side:nth-child(6) .lid:before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 20px;
+  background: #fafafa;
+  margin: auto;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+.side:nth-child(6) .lid:after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: #fafafa;
+}
+.side:nth-child(6) .lid:nth-child(2) {
+  -webkit-transform-origin: right center;
+  right: 0;
+  left: 50px;
+}
+.side:nth-child(6) .lid:nth-child(2):after {
+  left: 0;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes openAndCloseLeft {
+  from {
+    -webkit-transform: rotateY(-220deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(0deg);
+  }
+}
+
+@-webkit-keyframes openAndCloseRight {
+  from {
+    -webkit-transform: rotateY(220deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(0deg);
+  }
+}
+
+.box {
+  opacity: 0;
+  -webkit-animation: fadeIn 0.6s ease 0.3s;
+  -webkit-animation-fill-mode: both;
+}
+.box .side:nth-child(6) .lid:nth-child(1) {
+  -webkit-animation: openAndCloseLeft 0.6s ease 0.9s;
+  -webkit-animation-fill-mode: both;
+}
+.box .side:nth-child(6) .lid:nth-child(2) {
+  -webkit-animation: openAndCloseRight 0.6s ease 0.9s;
+  -webkit-animation-fill-mode: both;
+}
+
+/* ====================== 배경 애니메이션 ====================== */
+
+ul.animation, ul.animation li {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+}
+
+ul.animation {
+  width: 400px;
+  height: 400px;
+  margin: -200px 0 0 -200px;
+  list-style: none;
+  -webkit-animation: breathe 10s infinite ease both;
+}
+
+ul.animation li {
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 20px;
+  box-shadow: inset 0px 0px 5px #64e6ff, 0px 0px 2px rgba(255, 255, 255, 0.5), 0px 0px 10px #00bff3;
+  background: #00bff3;
+  opacity: 0.60;
+  -webkit-animation-name: clockwise;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+ul.animation li:nth-child(even) {
+  -webkit-animation-direction: reverse;
+}
+
+ul.animation li:nth-child(3n+3) {
+  -webkit-animation-duration: 40s;
+  opacity: 0.80;
+}
+
+ul.animation li:nth-child(4n+4) {
+  -webkit-animation-duration: 30s;
+  opacity: 0.40;
+}
+
+ul.animation li:nth-child(1) {
+  -webkit-animation-delay: -1s;
+}
+
+ul.animation li:nth-child(2) {
+  -webkit-animation-delay: -2s;
+}
+
+ul.animation li:nth-child(3) {
+  -webkit-animation-delay: -3s;
+}
+
+ul.animation li:nth-child(4) {
+  -webkit-animation-delay: -4s;
+}
+
+ul.animation li:nth-child(5) {
+  -webkit-animation-delay: -5s;
+}
+
+ul.animation li:nth-child(6) {
+  -webkit-animation-delay: -6s;
+}
+
+ul.animation li:nth-child(7) {
+  -webkit-animation-delay: -7s;
+}
+
+ul.animation li:nth-child(8) {
+  -webkit-animation-delay: -8s;
+}
+
+ul.animation li:nth-child(9) {
+  -webkit-animation-delay: -9s;
+}
+
+ul.animation li:nth-child(10) {
+  -webkit-animation-delay: -10s;
+}
+
+ul.animation li:nth-child(11) {
+  -webkit-animation-delay: -11s;
+}
+
+ul.animation li:nth-child(12) {
+  -webkit-animation-delay: -12s;
+}
+
+ul.animation li:nth-child(13) {
+  -webkit-animation-delay: -13s;
+}
+
+ul.animation li:nth-child(14) {
+  -webkit-animation-delay: -14s;
+}
+
+ul.animation li:nth-child(15) {
+  -webkit-animation-delay: -15s;
+}
+
+ul.animation li:nth-child(16) {
+  -webkit-animation-delay: -16s;
+}
+
+ul.animation li:nth-child(17) {
+  -webkit-animation-delay: -17s;
+}
+
+ul.animation li:nth-child(18) {
+  -webkit-animation-delay: -18s;
+}
+
+ul.animation li:nth-child(19) {
+  -webkit-animation-delay: -19s;
+}
+
+ul.animation li:nth-child(20) {
+  -webkit-animation-delay: -20s;
+}
+
+ul.animation li:nth-child(21) {
+  -webkit-animation-delay: -21s;
+}
+
+ul.animation li:nth-child(22) {
+  -webkit-animation-delay: -22s;
+}
+
+ul.animation li:nth-child(23) {
+  -webkit-animation-delay: -23s;
+}
+
+ul.animation li:nth-child(24) {
+  -webkit-animation-delay: -24s;
+}
+
+ul.animation li:nth-child(25) {
+  -webkit-animation-delay: -25s;
+}
+
+ul.animation li:nth-child(26) {
+  -webkit-animation-delay: -26s;
+}
+
+ul.animation li:nth-child(27) {
+  -webkit-animation-delay: -27s;
+}
+
+ul.animation li:nth-child(28) {
+  -webkit-animation-delay: -28s;
+}
+
+ul.animation li:nth-child(29) {
+  -webkit-animation-delay: -29s;
+}
+
+ul.animation li:nth-child(30) {
+  -webkit-animation-delay: -30s;
+}
+
+ul.animation li:nth-child(31) {
+  -webkit-animation-delay: -31s;
+}
+
+ul.animation li:nth-child(32) {
+  -webkit-animation-delay: -32s;
+}
+
+ul.animation li:nth-child(33) {
+  -webkit-animation-delay: -33s;
+}
+
+ul.animation li:nth-child(34) {
+  -webkit-animation-delay: -34s;
+}
+
+ul.animation li:nth-child(35) {
+  -webkit-animation-delay: -35s;
+}
+
+ul.animation li:nth-child(36) {
+  -webkit-animation-delay: -36s;
+}
+
+ul.animation li:nth-child(37) {
+  -webkit-animation-delay: -37s;
+}
+
+ul.animation li:nth-child(38) {
+  -webkit-animation-delay: -38s;
+}
+
+ul.animation li:nth-child(39) {
+  -webkit-animation-delay: -39s;
+}
+
+ul.animation li:nth-child(40) {
+  -webkit-animation-delay: -40s;
+}
+
+@-webkit-keyframes breathe {
+  0% {
+    -webkit-transform: scale(0.75);
+  }
+
+  50% {
+    -webkit-transform: scale(1.25);
+  }
+
+  100% {
+    -webkit-transform: scale(0.75);
+  }
+}
+
+@-webkit-keyframes clockwise {
+  0% {
+    -webkit-transform: rotate(0deg) translate(-100px) rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg) translate(-100px) rotate(-360deg);
+  }
+}
+
+/* ====================== 슬롯머신 ====================== */
 
 /* Mixins */
 @-moz-keyframes spin {
@@ -74,7 +466,7 @@ body {
 #equation {
   position: absolute;
   left: 50%;
-  margin-left: -50px;
+  margin-left: -100px;
   top: 50%;
   margin-top: -80px;
 }
@@ -115,14 +507,32 @@ body {
   box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.2);
 }
 #equation .drink {
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
-  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
-  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
-  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
   width: 80px;
   background-size: 80px auto;
   background-position: 0, 0 20px;
 }
+
+#equation .drink:nth-child(1) {
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image001.png");
+}
+
+#equation .drink:nth-child(2) {
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image002.png");
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image002.png");
+  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image002.png");
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image002.png");
+}
+
+#equation .drink:nth-child(3) {
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image003.png");
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image003.png");
+  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image003.png");
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.6) 100%), url("images/image003.png");
+}
+
 #equation .drink:before {
   width: 100px;
 }
