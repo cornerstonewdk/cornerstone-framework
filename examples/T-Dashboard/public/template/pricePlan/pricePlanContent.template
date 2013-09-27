@@ -59,26 +59,64 @@
 		<div>
 			<h4>상품 조건</h4>
 			<hr/>
-			<ul id="dropProductTypeZone" class="nav nav-tabs">
-	            <li class="active"><a data-toggle="tab" data-show="false" data-producttype="voice" href="#voice">음성</a></li>
-	            <li><a href="#data" data-toggle="tab" data-show="false" data-producttype="data">데이터</a></li>
-	            <li><a href="#message" data-toggle="tab" data-show="false" data-producttype="message">메세징</a></li>
-	            <li><a href="#roaming" data-toggle="tab" data-show="false" data-producttype="roaming">로밍</a></li>
-	        </ul>
-	        <div id="myTabContent" class="tab-content">
-	            <div class="tab-pane fade in active" id="voice" data-show="false" data-producttype="voice" data-extradata="0">
-	                <p>음성<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 음성 통화량을 소진 시 추가 이용료가 부가됩니다.</p>
-	            </div>
-	            <div class="tab-pane fade" id="data" data-show="false" data-producttype="data" data-extradata="0">
-	                <p>데이터<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 데이터 요금이 부가됩니다.</p>
-	            </div>
-	            <div class="tab-pane fade" id="message" data-show="false" data-producttype="message" data-extradata="0">
-	                <p>메세징<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 문자 소진 시 추가 요금이 부가됩니다.</p>
-	            </div>
-	            <div class="tab-pane fade" id="roaming" data-show="false" data-producttype="roaming" data-extradata="0">
-	                <p>로밍<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 로밍 요금이 부가됩니다.</p>
-	            </div>
-	        </div>
+			<div class="panel-group panel-collapse" id="dropProductTypeZone">
+		        <div class="panel panel-default" data-show="false" data-producttype="voice" data-extradata="0">
+		            <div class="panel-heading">
+		                <h4 class="panel-title">
+		                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#dropProductTypeZone" href="#collapseOne">
+		                        음성
+		                    </a>
+		                </h4>
+		            </div>
+		            <div id="collapseOne" class="panel-collapse collapse in">
+		                <div class="panel-body">
+		                    음성<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 음성 통화량을 소진 시 추가 이용료가 부가됩니다.
+		                </div>
+		            </div>
+		        </div>
+		        <div class="panel panel-default" data-show="false" data-producttype="data" data-extradata="0">
+		            <div class="panel-heading">
+		                <h4 class="panel-title">
+		                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#dropProductTypeZone" href="#collapseTwo">
+		                        데이터
+		                    </a>
+		                </h4>
+		            </div>
+		            <div id="collapseTwo" class="panel-collapse collapse">
+		                <div class="panel-body">
+		                	데이터<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 데이터 요금이 부가됩니다.
+	                	</div>
+		            </div>
+		        </div>
+		        <div class="panel panel-default" data-show="false" data-producttype="message" data-extradata="0">
+		            <div class="panel-heading">
+		                <h4 class="panel-title">
+		                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#dropProductTypeZone" href="#collapseThree">
+		                        메세징
+		                    </a>
+		                </h4>
+		            </div>
+		            <div id="collapseThree" class="panel-collapse collapse">
+		                <div class="panel-body">
+		                    메세징<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 문자 소진 시 추가 요금이 부가됩니다.
+		                </div>
+		            </div>
+		        </div>
+		        <div class="panel panel-default" data-show="false" data-producttype="roaming" data-extradata="0">
+		            <div class="panel-heading">
+		                <h4 class="panel-title">
+		                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#dropProductTypeZone" href="#collapseFour">
+		                        로밍
+		                    </a>
+		                </h4>
+		            </div>
+		            <div id="collapseFour" class="panel-collapse collapse">
+		                <div class="panel-body">
+		                    로밍<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 데이터 요금이 부가됩니다.
+		                </div>
+		            </div>
+		        </div>
+			</div>
 		</div>
 		<br/>
 		<!-- 회선 조건 -->

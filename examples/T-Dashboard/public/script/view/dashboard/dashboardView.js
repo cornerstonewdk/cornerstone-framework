@@ -30,6 +30,63 @@ define(
 		el : 'div#contentsView',
 		
 		initialize: function() {
+            // 화면회전시 랜더링을 정상완료하지 못하는 경우가 생기므로 resize 이벤트를 강제적으로 1회 0.5 후 발생시킨다.
+            /*
+            $(window).on('orientationchange', orientationChangeHandler);
+            function orientationChangeHandler(e) {
+                setTimeout(function() {
+                    $(window).trigger('resize');
+                }, 500);
+            }
+            */
+            if (navigator.userAgent.match("Android")) {
+                    var width = navigator.userAgent.match("SHV-E160S") ? 360 : 320
+                    var height = 600;
+
+                    // 화면회전시 랜더링을 정상완료하지 못하는 경우가 생기므로 resize 이벤트를 강제적으로 발생
+                    var isVertical = true;
+
+                    $("body").css({
+                        width: $("body").width() * 2
+                    });
+
+                    $("body > .wrapper").css({
+                        width: width
+                    });
+
+                    $(window).on('orientationchange', orientationChangeHandler);
+                    function orientationChangeHandler(e) {
+                        switch (window.orientation) {
+                            case 0:
+                            case 180:
+                                isVertical = true;
+                                break;
+                            case -90:
+                            case 90:
+                                isVertical = false;
+                                break;
+
+                        }
+                        if (!isVertical) {
+                            $("body").addClass("width2x");
+                        } else {
+                            $("body").removeClass("width2x");
+                        }
+                        $(window).trigger("my_resize", isVertical);
+                    }
+
+                    $(window).on("my_resize", function (e, isVertical) {
+                        /**
+                         * 400(360) * 640(600)
+                         * 360(320) * 640(600)
+                         *
+                         */
+                        $("body > .wrapper").css({
+                            width:isVertical ? width : height
+                        });
+                    });
+                }
+
 		},
 		
 		/*

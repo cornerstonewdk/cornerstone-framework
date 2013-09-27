@@ -62,25 +62,24 @@ define([
 
 			for(var i = 0; i < producTypeList.length; i++) {
 				var ptype = producTypeList[i];
-
-				$('[data-producttype="' + ptype['value'] + '"]').attr('data-show', 'true');
+				$('div[data-producttype="' + ptype['value'] + '"]').attr('data-show', 'true');
 				// $('div[data-producttype="' + ptype['value'] + '"]').addClass('span' + Math.ceil(12 / producTypeList.length));
 				switch(ptype['value']) {
 					case 'voice':
-						$('div[data-producttype="' + ptype['value'] + '"] ').find('p.typo-number').html('(' + ptype['extraData'] + ' 분)');
+						$('div[data-producttype="' + ptype['value'] + '"] ').find('.panel-collapse p').html('(' + ptype['extraData'] + ' 분)');
 						break;
 					case 'data':
-						$('div[data-producttype="' + ptype['value'] + '"]').find('p.typo-number').html('(' + ptype['extraData'] + ' GB)');
+						$('div[data-producttype="' + ptype['value'] + '"]').find('.panel-collapse p').html('(' + ptype['extraData'] + ' GB)');
 						break;
 					case 'message':
-						$('div[data-producttype="' + ptype['value'] + '"]').find('p.typo-number').html('(' + ptype['extraData'] + ' 건)');
+						$('div[data-producttype="' + ptype['value'] + '"]').find('.panel-collapse p').html('(' + ptype['extraData'] + ' 건)');
 						break;
 					case 'roaming':
-						$('div[data-producttype="' + ptype['value'] + '"]').find('p.typo-number').html('(' + ptype['extraData'] + ' 분)');
+						$('div[data-producttype="' + ptype['value'] + '"]').find('.panel-collapse p').html('(' + ptype['extraData'] + ' 분)');
 						break;
 				}
 			}
-			$('#dropProductTypeZone li > a[data-show="false"]').closest('li').remove();
+			$('div#dropProductTypeZone > div[data-show="false"]').remove();
 			
 			var commTypeList = data['commtype'];
 			for(var i = 0; i < commTypeList.length; i++) {
