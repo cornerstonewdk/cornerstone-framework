@@ -28,8 +28,13 @@
 	.no-padding-phone {
 		padding: 0px;
 	}
+
+	.nav-tabs>li>a {
+		padding: 10px 10px;
+	}
 }
 
 .well-height-77 {
 	height: 77px;
 }
+
