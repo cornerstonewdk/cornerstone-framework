@@ -9,18 +9,17 @@
  */
 
 // Core variables and mixins
+@import "_variables";
 @import "../bootstrap3/less/variables";
-@import "../theme-wireframe/_variables";
-@import "variables";
-@import "bootswatch";
+@import "../cornerstone/skin/_migration-variables";
 @import "../bootstrap3/less/mixins";
 
 
-// Reset
+  // Reset
 @import "../bootstrap3/less/normalize.less";
 @import "../bootstrap3/less/print.less";
 
-// Core CSS
+  // Core CSS
 @import "../bootstrap3/less/scaffolding.less";
 @import "../bootstrap3/less/type.less";
 @import "../bootstrap3/less/code.less";
@@ -30,7 +29,7 @@
 @import "../bootstrap3/less/forms.less";
 @import "../bootstrap3/less/buttons.less";
 
-// Components: common
+  // Components: common
 @import "../bootstrap3/less/component-animations.less";
 @import "../bootstrap3/less/input-groups.less";
 @import "../bootstrap3/less/dropdowns.less";
@@ -39,7 +38,7 @@
 @import "../bootstrap3/less/wells.less";
 @import "../bootstrap3/less/close.less";
 
-// Components: Nav
+  // Components: Nav
 @import "../bootstrap3/less/navs.less";
 @import "../bootstrap3/less/navbar.less";
 @import "../bootstrap3/less/button-groups.less";
@@ -47,12 +46,12 @@
 @import "../bootstrap3/less/pagination.less";
 @import "../bootstrap3/less/pager.less";
 
-// Components: Popovers
+  // Components: Popovers
 @import "../bootstrap3/less/modals.less";
 @import "../bootstrap3/less/tooltip.less";
 @import "../bootstrap3/less/popovers.less";
 
-// Components: Misc
+  // Components: Misc
 @import "../bootstrap3/less/alerts.less";
 @import "../bootstrap3/less/thumbnails.less";
 @import "../bootstrap3/less/media.less";
@@ -62,10 +61,10 @@
 @import "../bootstrap3/less/carousel.less";
 @import "../bootstrap3/less/jumbotron.less";
 
-// Utility classes
+  // Utility classes
 @import "../bootstrap3/less/utilities.less"; // Has to be last to override when necessary
 @import "../bootstrap3/less/responsive-utilities.less";
 
-// Cornerstone UI
+  // Cornerstone UI
 @import "../cornerstone/_mixin";
 @import "../theme-wireframe/_style";
