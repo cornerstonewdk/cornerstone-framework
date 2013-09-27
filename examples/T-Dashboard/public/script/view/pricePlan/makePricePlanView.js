@@ -265,7 +265,7 @@ define([
 					typeStr = '건';
 					break;
 				default:
-					typeStr = 'GB';
+					typeStr = '분';
 			}
 
 			$('div[data-producttype="' + productType + '"]').data('extradata', $('#modal input').val());
