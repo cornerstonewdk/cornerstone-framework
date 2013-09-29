@@ -934,12 +934,8 @@
 
 	$.fn.featuredChart.Constructor = FeaturedChart;
 
-	root.Cornerstone = root.Cornerstone || {};
-	root.Cornerstone.widget = root.Cornerstone.widget || {};
-	root.Cornerstone.widget.activeDataApi = function ($el) {
-		$el = $el && $el.length ? $el.find("[data-featured=chart]") : $("[data-featured=chart]");
-		// DATA API (HTML5 Data Attribute)
-		$el.each(function () {
+	$(function () {
+		$("[data-featured=chart]").each(function () {
 			var self = this,
 				dataUrl = $(this).data("chartBind");
 
@@ -951,10 +947,6 @@
 				});
 			});
 		});
-	};
-
-	$(function () {
-		root.Cornerstone.widget.activeDataApi();
 	});
 
 	// 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.

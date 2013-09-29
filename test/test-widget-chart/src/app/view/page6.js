@@ -24,7 +24,18 @@ define([
 		render: function () {
 			this.$el.html(template());
 			this.activeChartPlugin();
-			window.Cornerstone.widget.activeDataApi();
+			$("[data-featured=chart]").each(function () {
+				var self = this,
+					dataUrl = $(this).data("chartBind");
+
+				dataUrl && $.getJSON(dataUrl).success(function (json) {
+					$.fn.featuredChart && $(self).featuredChart({
+						chartType: $(self).data("chartType"),
+						format: $(self).data("chartFormat"),
+						data: json
+					});
+				});
+			});
 			return this;
 		},
 
