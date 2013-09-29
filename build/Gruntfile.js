@@ -96,6 +96,24 @@ module.exports = function ( grunt ) {
 						cwd: '<%= path.source %>style/images/',
 						src: [ '**' ],
 						dest: '<%= path.dist %>src/style/skin-united/images'
+					},
+					{
+						expand: true,
+						cwd: '<%= path.source %>style/bootstrap3/fonts',
+						src: [ '**' ],
+						dest: '<%= path.dist %>src/style/skin-cerulean/fonts'
+					},
+					{
+						expand: true,
+						cwd: '<%= path.source %>style/bootstrap3/fonts',
+						src: [ '**' ],
+						dest: '<%= path.dist %>src/style/skin-flatly/fonts'
+					},
+					{
+						expand: true,
+						cwd: '<%= path.source %>style/bootstrap3/fonts',
+						src: [ '**' ],
+						dest: '<%= path.dist %>src/style/skin-united/fonts'
 					}
 				]
 			}
