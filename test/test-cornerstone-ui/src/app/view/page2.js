@@ -14,7 +14,7 @@ define([
 			var self = this;
 
 			require(['template!../app/template/' + id], function (example) {
-				var title = $.trim(id).replace(/css-|cs-/gi, '').replace('cs-', '').replace(/-/gi, ' ');
+				var title = $.trim(id).replace(/css-|cs-/, '').replace('cs-', '').replace(/-/, ' ');
 				self.$el.html(
 					template({
 						pageTitle: title,
@@ -23,7 +23,7 @@ define([
 				);
 
 				// 이미지 썸네일 holder.js
-				if (id.match(/.*carousel|.*images|.*thumbnails|.*media-object/gi)) {
+				if (id.match(/.*carousel|.*images|.*thumbnails|.*media-object/)) {
 					require(['../app/lib/holder'], function () {
 						Holder.run();
 					});
@@ -47,7 +47,7 @@ define([
 				// 콜랩스
 				// 캐로셀
 				// 범위 입력상자
-				if (id.match(/.*range-input/gi)) {
+				if (id.match(/.*range-input/)) {
 					require(['widget-rangeinput'], function () {
 						$(".widget-range").rangeinput({
 							showInput: true
@@ -55,13 +55,13 @@ define([
 					});
 				}
 				// 싸인
-				if (id.match(/.*sign/gi)) {
+				if (id.match(/.*sign/)) {
 					require(['widget-sign'], function () {
 						$("#signature").length && $("#signature").sign();
 					});
 				}
 				// 스피너
-				if (id.match(/.*spinner/gi)) {
+				if (id.match(/.*spinner/)) {
 					require(['widget-spinner'], function() {
 						$("[data-plugin='spinner']").on("click", function (e) {
 							e.preventDefault();
@@ -74,7 +74,7 @@ define([
 					});
 				}
 				// 모션캡챠
-				if (id.match(/.*motion-captcha/gi)) {
+				if (id.match(/.*motion-captcha/)) {
 					require(['widget-motioncaptcha'], function () {
 						$("#motion-captcha button").on("click", function (e) {
 							$("#mc-canvas").remove();
@@ -103,7 +103,7 @@ define([
 					});
 				}
 				// 날짜 입력상자
-				if (id.match(/.*datepicker/gi)) {
+				if (id.match(/.*datepicker/)) {
 					require(['widget-datepicker'], function () {
 						$("#date-picker1, #date-picker2").datetimepicker({
 							firstDisable: true,
@@ -112,7 +112,7 @@ define([
 					});
 				}
 				// 자동완성
-				if (id.match(/.*typeahead/gi)) {
+				if (id.match(/.*typeahead/)) {
 					require(['widget-typeahead'], function () {
 						$('.example-countries .typeahead').typeahead({
 							name: 'countries',
@@ -125,13 +125,13 @@ define([
 
 				// 피처드
 				// 스크롤뷰
-				if (id.match(/.*scrollview/gi)) {
+				if (id.match(/.*scrollview/)) {
 					require(['widget-scrollview'], function (ScrollView) {
 						$("#scrollView1,#scrollView2").featuredScrollView();
 					});
 				}
 				// 리스트뷰
-				if (id.match(/.*listview/gi)) {
+				if (id.match(/.*listview/)) {
 					require(['widget-listview'], function () {
 						$(".js-addItem").on("click", function (e) {
 							getItem();
@@ -196,9 +196,18 @@ define([
 					});
 				}
 				// 미디어
+				if (id.match(/featured-media/)) {
+					require(['widget-media'], function () {
+					});
+				}
 				// 에디터
+				if (id.match(/.*editor/)) {
+					require(['widget-editor'], function () {
+						$("#editorExample").featuredEditor();
+					})
+				}
 				// 차트
-				if (id.match(/.*chart/gi)) {
+				if (id.match(/.*chart/)) {
 					require(['widget-chart']);
 				}
 				// 데이터테이블
