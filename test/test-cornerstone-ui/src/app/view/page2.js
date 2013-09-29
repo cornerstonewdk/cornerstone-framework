@@ -1,20 +1,20 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'template!view/page2',
-	'style!view/page2',
+	"jquery",
+	"underscore",
+	"backbone",
+	"template!view/page2",
+	"style!view/page2",
 	"widget-rangeinput"
 ], function ($, _, Backbone, template) {
 	return Backbone.View.extend({
 
-		el: 'section#page2',
+		el: "section#page2",
 
 		render: function (id) {
 			var self = this;
 
-			require(['template!../app/template/' + id], function (example) {
-				var title = $.trim(id).replace(/css-|cs-/, '').replace('cs-', '').replace(/-/, ' ');
+			require(["template!../app/template/" + id], function (example) {
+				var title = $.trim(id).replace(/css-|cs-/, "").replace("cs-", "").replace(/-/, " ");
 				self.$el.html(
 					template({
 						pageTitle: title,
@@ -24,7 +24,7 @@ define([
 
 				// 이미지 썸네일 holder.js
 				if (id.match(/.*carousel|.*images|.*thumbnails|.*media-object/)) {
-					require(['../app/lib/holder'], function () {
+					require(["app/lib/holder"], function () {
 						Holder.run();
 					});
 				}
@@ -34,7 +34,7 @@ define([
 				// 드롭다운
 
 				// 스크롤스파이
-				$('[data-spy="scroll"]').each(function () {
+				$("[data-spy=scroll]").each(function () {
 					var $spy = $(this);
 					$spy.scrollspy($spy.data())
 				});
@@ -48,7 +48,7 @@ define([
 				// 캐로셀
 				// 범위 입력상자
 				if (id.match(/.*range-input/)) {
-					require(['widget-rangeinput'], function () {
+					require(["widget-rangeinput"], function () {
 						$(".widget-range").rangeinput({
 							showInput: true
 						});
@@ -56,14 +56,14 @@ define([
 				}
 				// 싸인
 				if (id.match(/.*sign/)) {
-					require(['widget-sign'], function () {
+					require(["widget-sign"], function () {
 						$("#signature").length && $("#signature").sign();
 					});
 				}
 				// 스피너
 				if (id.match(/.*spinner/)) {
-					require(['widget-spinner'], function() {
-						$("[data-plugin='spinner']").on("click", function (e) {
+					require(["widget-spinner"], function() {
+						$("[data-plugin=spinner]").on("click", function (e) {
 							e.preventDefault();
 							var self = this;
 							var target = $(this).data("spinnerTarget");
@@ -75,28 +75,28 @@ define([
 				}
 				// 모션캡챠
 				if (id.match(/.*motion-captcha/)) {
-					require(['widget-motioncaptcha'], function () {
+					require(["widget-motioncaptcha"], function () {
 						$("#motion-captcha button").on("click", function (e) {
 							$("#mc-canvas").remove();
 							$("<canvas/>", {
 								"id": "mc-canvas",
 								"class": "mc-canvas"
 							}).appendTo($("#motion-captcha-example")).motioncaptcha({
-									errorMsg: '다시 시도해주세요.',
-									successMsg: '성공',
+									errorMsg: "다시 시도해주세요.",
+									successMsg: "성공",
 									onSuccess: function () {
 										console.log("성공");
 									}
-								}).on('start.cs.motionCaptcha',function (e) {
-									console.log('start.cs.motionCaptcha', e);
-								}).on('move.cs.motionCaptcha',function (e) {
-									console.log('move.cs.motionCaptcha', e);
-								}).on('end.cs.motionCaptcha',function (e) {
-									console.log('end.cs.motionCaptcha', e);
-								}).on('success.cs.motionCaptcha',function (e) {
-									console.log('success 이벤트 감지', e);
-								}).on('fail.cs.motionCaptcha', function (e) {
-									console.log('fail 이벤트 감지', e);
+								}).on("start.cs.motionCaptcha",function (e) {
+									console.log("start.cs.motionCaptcha", e);
+								}).on("move.cs.motionCaptcha",function (e) {
+									console.log("move.cs.motionCaptcha", e);
+								}).on("end.cs.motionCaptcha",function (e) {
+									console.log("end.cs.motionCaptcha", e);
+								}).on("success.cs.motionCaptcha",function (e) {
+									console.log("success 이벤트 감지", e);
+								}).on("fail.cs.motionCaptcha", function (e) {
+									console.log("fail 이벤트 감지", e);
 								});
 						});
 						$("#motion-captcha button").trigger("click");
@@ -104,7 +104,7 @@ define([
 				}
 				// 날짜 입력상자
 				if (id.match(/.*datepicker/)) {
-					require(['widget-datepicker'], function () {
+					require(["widget-datepicker"], function () {
 						$("#date-picker1, #date-picker2").datetimepicker({
 							firstDisable: true,
 							changeDisplay: true
@@ -113,10 +113,10 @@ define([
 				}
 				// 자동완성
 				if (id.match(/.*typeahead/)) {
-					require(['widget-typeahead'], function () {
-						$('.example-countries .typeahead').typeahead({
-							name: 'countries',
-							prefetch: 'data/typeahead-countries.json',
+					require(["widget-typeahead"], function () {
+						$(".example-countries .typeahead").typeahead({
+							name: "countries",
+							prefetch: "data/typeahead-countries.json",
 							limit: 10
 						});
 					});
@@ -126,18 +126,18 @@ define([
 				// 피처드
 				// 스크롤뷰
 				if (id.match(/.*scrollview/)) {
-					require(['widget-scrollview'], function (ScrollView) {
+					require(["widget-scrollview"], function (ScrollView) {
 						$("#scrollView1,#scrollView2").featuredScrollView();
 					});
 				}
 				// 리스트뷰
 				if (id.match(/.*listview/)) {
-					require(['widget-listview'], function () {
+					require(["widget-listview"], function () {
 						$(".js-addItem").on("click", function (e) {
 							getItem();
 						});
 
-						var $el = $('#listView');
+						var $el = $("#listView");
 						var isLoading = false;
 						var html;
 
@@ -169,16 +169,16 @@ define([
 							});
 
 							request.done(function (json) {
-								html = '<ul class="list-group">';
+								html = "<ul class='list-group'>";
 								if (typeof json === "object" && json.items.length > 0) {
 									$(json.items).each(function (i) {
-										html += '<li class="list-group-item">';
+										html += "<li class='list-group-item'>";
 										html += this.title;
-										html += '   <div class="pull-right">'
-										html += '   <span class="badge">' + this.published + '</span>';
-										html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
-										html += '   </div>';
-										html += '</li>';
+										html += "   <div class='pull-right'>"
+										html += "   <span class='badge'>" + this.published + "</span>";
+										html += "   <span class='glyphicon glyphicon-chevron-right'></span>";
+										html += "   </div>";
+										html += "</li>";
 									});
 									html += "</ul>";
 									$el.featuredListView("addItem", html);
@@ -197,30 +197,32 @@ define([
 				}
 				// 미디어
 				if (id.match(/featured-media/)) {
-					require(['widget-media'], function () {
-					});
+					require(["widget-media"]);
 				}
 				// 에디터
 				if (id.match(/.*editor/)) {
-					require(['widget-editor'], function () {
+					require(["widget-editor"], function () {
 						$("#editorExample").featuredEditor();
 					})
 				}
 				// 차트
 				if (id.match(/.*chart/)) {
-					require(['widget-chart']);
+					require(["widget-chart"]);
 				}
 				// 데이터테이블
+				if (id.match(/.*datatable/)) {
+					require(["widget-datatable"]);
+				}
 			});
 			return this;
 		},
 
 		events: {
-			'click button.next': 'nextPage'
+			"click button.next": "nextPage"
 		},
 
 		nextPage: function () {
-			location.href = '#page2';
+			location.href = "#page2";
 		}
 	});
 });
