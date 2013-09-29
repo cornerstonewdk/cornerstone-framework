@@ -16,6 +16,11 @@ var jam = {
             "main": "d3.v3.min.js"
         },
         {
+            "name": "datatable",
+            "location": "../cornerstone/datatable",
+            "main": "jquery.dataTables.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -227,6 +232,11 @@ var jam = {
         "d3": {
             "exports": "d3"
         },
+        "datatable": {
+            "deps": [
+                "jquery"
+            ]
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -359,7 +369,8 @@ var jam = {
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery"
+                "jquery",
+                "datatable"
             ],
             "exports": "widget-datatable"
         },
@@ -524,6 +535,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "d3.v3.min.js"
         },
         {
+            "name": "datatable",
+            "location": "../cornerstone/datatable",
+            "main": "jquery.dataTables.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -734,6 +750,11 @@ if (typeof require !== "undefined" && require.config) {
         "d3": {
             "exports": "d3"
         },
+        "datatable": {
+            "deps": [
+                "jquery"
+            ]
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -866,7 +887,8 @@ if (typeof require !== "undefined" && require.config) {
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery"
+                "jquery",
+                "datatable"
             ],
             "exports": "widget-datatable"
         },
@@ -1031,6 +1053,11 @@ else {
             "main": "d3.v3.min.js"
         },
         {
+            "name": "datatable",
+            "location": "../cornerstone/datatable",
+            "main": "jquery.dataTables.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -1241,6 +1268,11 @@ else {
         "d3": {
             "exports": "d3"
         },
+        "datatable": {
+            "deps": [
+                "jquery"
+            ]
+        },
         "form-view": {
             "deps": [
                 "backbone",
@@ -1373,7 +1405,8 @@ else {
             "deps": [
                 "backbone",
                 "underscore",
-                "jquery"
+                "jquery",
+                "datatable"
             ],
             "exports": "widget-datatable"
         },
