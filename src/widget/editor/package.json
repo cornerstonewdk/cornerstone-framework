@@ -7,8 +7,7 @@
 			"backbone": "1.0.0",
 			"underscore": "1.4.4",
 			"jquery": "1.10.2",
-			"jquery.hotkeys": "1.0.5",
-			"wysihtml5": "0.3.0"
+			"jquery.hotkeys": "1.0.5"
 		},
 		"main": "widget-editor.js",
 		"shim": {
