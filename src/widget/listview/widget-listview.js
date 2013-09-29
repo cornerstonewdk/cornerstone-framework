@@ -16,33 +16,26 @@
 			return Backbone.View.extend({
 				tagName: "ul",
 				initialize: function () {
-					_.bindAll(this, "render");
+					this.listenTo(collection, "change", this.render);
+					this.listenTo(collection, "reset", this.render);
 				},
 
-				addItem: function (view, collection) {
+				addItem: function () {
 					var html = document.createElement(this.tagName);
-					collection.each(function (model) {
-						$(html).append(new view.options.itemView({model: model}).render().el);
+					this.collection.each(function (model) {
+						$(html).append(new this.options.itemView({model: model}).render().el);
 					});
-					view.$el.featuredListView("addItem", html);
+					this.$el.featuredListView("addItem", html);
 				},
 
 				removeItem: function ($target, aNumbers) {
 					return this.$el.featuredListView("removeItem", $target, aNumbers);
 				},
 
-				updateListView: function (view) {
-					view.collection.fetch({
-						success: function (collection) {
-							view.addItem(view, collection);
-						}
-					});
-				},
-
 				render: function () {
 					this.$el.featuredListView(this.options);
 
-					this.updateListView(this);
+					this.addItem();
 
 					return this;
 				}

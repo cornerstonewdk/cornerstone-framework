@@ -957,7 +957,8 @@
 			return Backbone.View.extend({
 				model: new Backbone.Model(),
 				initialize: function () {
-					this.model.on("change", this.render, this);
+					this.listenTo(model, "change", this.render);
+					this.listenTo(model, "reset", this.render);
 				},
 				render: function () {
 					var data = [];
