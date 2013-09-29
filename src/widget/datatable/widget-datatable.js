@@ -55,7 +55,7 @@
         var defaultOptions = {
             "bProcessing":false,
             sPaginationType:"bootstrap",
-            sDom:"<'row'<'col col-lg-8 col-12'l><'col col-lg-4 col-12'f>r>t<'row'<'col col-12'i><'col col-12'p>>",
+            sDom:"<'row'<'col-lg-8 col-sm-12'l><'col col-lg-4 col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>",
             oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수", sInfo:"총 레코드 수:_TOTAL_ (시작 번호:_START_, 끝 번호:_END_)"}
         };
 
