@@ -5,7 +5,7 @@
 	"jam": {
 		"main": "jquery-1.10.2.min.js",
 		"shim": {
-			"exports": "jquery"
+			"exports": "jQuery"
 		}
 	}
 }

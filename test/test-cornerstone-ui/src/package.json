@@ -10,15 +10,32 @@
 			"form-view": "2.0.0",
 			"validation-view": "2.0.0",
 			"multipage-router": "2.0.0",
+
+			"widget-modal": "2.0.0",
+			"widget-dropdown": "2.0.0",
+			"widget-scrollspy": "2.0.0",
+			"widget-tab": "2.0.0",
+			"widget-tooltip": "2.0.0",
+
+			"widget-popover": "2.0.0",
+			"widget-alert": "2.0.0",
+			"widget-button": "2.0.0",
+			"widget-collapse": "2.0.0",
+			"widget-carousel": "2.0.0",
+
 			"widget-rangeinput": "2.0.0",
 			"widget-sign": "2.0.0",
 			"widget-spinner": "2.0.0",
 			"widget-motioncaptcha": "2.0.0",
 			"widget-datepicker": "2.0.0",
 			"widget-typeahead": "2.0.0",
-			"widget-chart": "2.0.0",
+
 			"widget-scrollview": "2.0.0",
-			"widget-listview": "2.0.0"
+			"widget-listview": "2.0.0",
+			"widget-media": "2.0.0",
+			"widget-editor": "2.0.0",
+			"widget-chart": "2.0.0",
+			"widget-datatable": "2.0.0"
 		}
 	}
 }

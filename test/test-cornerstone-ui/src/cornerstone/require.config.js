@@ -41,9 +41,19 @@ var jam = {
             "main": "jquery-1.10.2.min.js"
         },
         {
+            "name": "jquery.hotkeys",
+            "location": "../cornerstone/jquery.hotkeys",
+            "main": "jquery.hotkeys.js"
+        },
+        {
             "name": "launcher",
             "location": "../cornerstone/launcher",
             "main": "launcher.js"
+        },
+        {
+            "name": "media",
+            "location": "../cornerstone/media",
+            "main": "mediaelement-and-player.min.js"
         },
         {
             "name": "multipage-router",
@@ -86,9 +96,34 @@ var jam = {
             "main": "validation.js"
         },
         {
+            "name": "widget-alert",
+            "location": "../cornerstone/widget-alert",
+            "main": "widget-alert.js"
+        },
+        {
+            "name": "widget-button",
+            "location": "../cornerstone/widget-button",
+            "main": "widget-button.js"
+        },
+        {
+            "name": "widget-carousel",
+            "location": "../cornerstone/widget-carousel",
+            "main": "widget-carousel.js"
+        },
+        {
             "name": "widget-chart",
             "location": "../cornerstone/widget-chart",
             "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-collapse",
+            "location": "../cornerstone/widget-collapse",
+            "main": "widget-collapse.js"
+        },
+        {
+            "name": "widget-datatable",
+            "location": "../cornerstone/widget-datatable",
+            "main": "widget-datatable.js"
         },
         {
             "name": "widget-datepicker",
@@ -96,9 +131,29 @@ var jam = {
             "main": "widget-datepicker.js"
         },
         {
+            "name": "widget-dropdown",
+            "location": "../cornerstone/widget-dropdown",
+            "main": "widget-dropdown.js"
+        },
+        {
+            "name": "widget-editor",
+            "location": "../cornerstone/widget-editor",
+            "main": "widget-editor.js"
+        },
+        {
             "name": "widget-listview",
             "location": "../cornerstone/widget-listview",
             "main": "widget-listview.js"
+        },
+        {
+            "name": "widget-media",
+            "location": "../cornerstone/widget-media",
+            "main": "widget-media.js"
+        },
+        {
+            "name": "widget-modal",
+            "location": "../cornerstone/widget-modal",
+            "main": "widget-modal.js"
         },
         {
             "name": "widget-motioncaptcha",
@@ -106,9 +161,19 @@ var jam = {
             "main": "widget-motioncaptcha.js"
         },
         {
+            "name": "widget-popover",
+            "location": "../cornerstone/widget-popover",
+            "main": "widget-popover.js"
+        },
+        {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-scrollspy",
+            "location": "../cornerstone/widget-scrollspy",
+            "main": "widget-scrollspy.js"
         },
         {
             "name": "widget-scrollview",
@@ -124,6 +189,16 @@ var jam = {
             "name": "widget-spinner",
             "location": "../cornerstone/widget-spinner",
             "main": "widget-spinner.js"
+        },
+        {
+            "name": "widget-tab",
+            "location": "../cornerstone/widget-tab",
+            "main": "widget-tab.js"
+        },
+        {
+            "name": "widget-tooltip",
+            "location": "../cornerstone/widget-tooltip",
+            "main": "widget-tooltip.js"
         },
         {
             "name": "widget-touch",
@@ -175,7 +250,17 @@ var jam = {
             "exports": "iScroll"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
+        },
+        "jquery.hotkeys": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "media": {
+            "deps": [
+                "jquery"
+            ]
         },
         "multipage-router": {
             "deps": [
@@ -227,6 +312,31 @@ var jam = {
             ],
             "exports": "validation-view"
         },
+        "widget-alert": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-button": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-carousel": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-carousel"
+        },
         "widget-chart": {
             "deps": [
                 "backbone",
@@ -237,6 +347,22 @@ var jam = {
             ],
             "exports": "widget-chart"
         },
+        "widget-collapse": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-datatable": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-datatable"
+        },
         "widget-datepicker": {
             "deps": [
                 "backbone",
@@ -245,6 +371,23 @@ var jam = {
                 "bootstrap"
             ],
             "exports": "widget-datepicker"
+        },
+        "widget-dropdown": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-editor": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hotkeys"
+            ],
+            "exports": "widget-editor"
         },
         "widget-listview": {
             "deps": [
@@ -255,6 +398,23 @@ var jam = {
             ],
             "exports": "widget-listview"
         },
+        "widget-media": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "media"
+            ],
+            "exports": "widget-media"
+        },
+        "widget-modal": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
         "widget-motioncaptcha": {
             "deps": [
                 "backbone",
@@ -262,6 +422,15 @@ var jam = {
                 "jquery"
             ],
             "exports": "widget-motioncaptcha"
+        },
+        "widget-popover": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-popover"
         },
         "widget-rangeinput": {
             "deps": [
@@ -271,6 +440,14 @@ var jam = {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollspy": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
         },
         "widget-scrollview": {
             "deps": [
@@ -296,6 +473,23 @@ var jam = {
                 "jquery"
             ],
             "exports": "widget-spinner"
+        },
+        "widget-tab": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-tooltip": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-tooltip"
         },
         "widget-touch": {
             "deps": [
@@ -355,9 +549,19 @@ if (typeof require !== "undefined" && require.config) {
             "main": "jquery-1.10.2.min.js"
         },
         {
+            "name": "jquery.hotkeys",
+            "location": "../cornerstone/jquery.hotkeys",
+            "main": "jquery.hotkeys.js"
+        },
+        {
             "name": "launcher",
             "location": "../cornerstone/launcher",
             "main": "launcher.js"
+        },
+        {
+            "name": "media",
+            "location": "../cornerstone/media",
+            "main": "mediaelement-and-player.min.js"
         },
         {
             "name": "multipage-router",
@@ -400,9 +604,34 @@ if (typeof require !== "undefined" && require.config) {
             "main": "validation.js"
         },
         {
+            "name": "widget-alert",
+            "location": "../cornerstone/widget-alert",
+            "main": "widget-alert.js"
+        },
+        {
+            "name": "widget-button",
+            "location": "../cornerstone/widget-button",
+            "main": "widget-button.js"
+        },
+        {
+            "name": "widget-carousel",
+            "location": "../cornerstone/widget-carousel",
+            "main": "widget-carousel.js"
+        },
+        {
             "name": "widget-chart",
             "location": "../cornerstone/widget-chart",
             "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-collapse",
+            "location": "../cornerstone/widget-collapse",
+            "main": "widget-collapse.js"
+        },
+        {
+            "name": "widget-datatable",
+            "location": "../cornerstone/widget-datatable",
+            "main": "widget-datatable.js"
         },
         {
             "name": "widget-datepicker",
@@ -410,9 +639,29 @@ if (typeof require !== "undefined" && require.config) {
             "main": "widget-datepicker.js"
         },
         {
+            "name": "widget-dropdown",
+            "location": "../cornerstone/widget-dropdown",
+            "main": "widget-dropdown.js"
+        },
+        {
+            "name": "widget-editor",
+            "location": "../cornerstone/widget-editor",
+            "main": "widget-editor.js"
+        },
+        {
             "name": "widget-listview",
             "location": "../cornerstone/widget-listview",
             "main": "widget-listview.js"
+        },
+        {
+            "name": "widget-media",
+            "location": "../cornerstone/widget-media",
+            "main": "widget-media.js"
+        },
+        {
+            "name": "widget-modal",
+            "location": "../cornerstone/widget-modal",
+            "main": "widget-modal.js"
         },
         {
             "name": "widget-motioncaptcha",
@@ -420,9 +669,19 @@ if (typeof require !== "undefined" && require.config) {
             "main": "widget-motioncaptcha.js"
         },
         {
+            "name": "widget-popover",
+            "location": "../cornerstone/widget-popover",
+            "main": "widget-popover.js"
+        },
+        {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-scrollspy",
+            "location": "../cornerstone/widget-scrollspy",
+            "main": "widget-scrollspy.js"
         },
         {
             "name": "widget-scrollview",
@@ -438,6 +697,16 @@ if (typeof require !== "undefined" && require.config) {
             "name": "widget-spinner",
             "location": "../cornerstone/widget-spinner",
             "main": "widget-spinner.js"
+        },
+        {
+            "name": "widget-tab",
+            "location": "../cornerstone/widget-tab",
+            "main": "widget-tab.js"
+        },
+        {
+            "name": "widget-tooltip",
+            "location": "../cornerstone/widget-tooltip",
+            "main": "widget-tooltip.js"
         },
         {
             "name": "widget-touch",
@@ -488,7 +757,17 @@ if (typeof require !== "undefined" && require.config) {
             "exports": "iScroll"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
+        },
+        "jquery.hotkeys": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "media": {
+            "deps": [
+                "jquery"
+            ]
         },
         "multipage-router": {
             "deps": [
@@ -540,6 +819,31 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "validation-view"
         },
+        "widget-alert": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-button": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-carousel": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-carousel"
+        },
         "widget-chart": {
             "deps": [
                 "backbone",
@@ -550,6 +854,22 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "widget-chart"
         },
+        "widget-collapse": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-datatable": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-datatable"
+        },
         "widget-datepicker": {
             "deps": [
                 "backbone",
@@ -558,6 +878,23 @@ if (typeof require !== "undefined" && require.config) {
                 "bootstrap"
             ],
             "exports": "widget-datepicker"
+        },
+        "widget-dropdown": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-editor": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hotkeys"
+            ],
+            "exports": "widget-editor"
         },
         "widget-listview": {
             "deps": [
@@ -568,6 +905,23 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "widget-listview"
         },
+        "widget-media": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "media"
+            ],
+            "exports": "widget-media"
+        },
+        "widget-modal": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
         "widget-motioncaptcha": {
             "deps": [
                 "backbone",
@@ -575,6 +929,15 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "widget-motioncaptcha"
+        },
+        "widget-popover": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-popover"
         },
         "widget-rangeinput": {
             "deps": [
@@ -584,6 +947,14 @@ if (typeof require !== "undefined" && require.config) {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollspy": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
         },
         "widget-scrollview": {
             "deps": [
@@ -609,6 +980,23 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "widget-spinner"
+        },
+        "widget-tab": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-tooltip": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-tooltip"
         },
         "widget-touch": {
             "deps": [
@@ -668,9 +1056,19 @@ else {
             "main": "jquery-1.10.2.min.js"
         },
         {
+            "name": "jquery.hotkeys",
+            "location": "../cornerstone/jquery.hotkeys",
+            "main": "jquery.hotkeys.js"
+        },
+        {
             "name": "launcher",
             "location": "../cornerstone/launcher",
             "main": "launcher.js"
+        },
+        {
+            "name": "media",
+            "location": "../cornerstone/media",
+            "main": "mediaelement-and-player.min.js"
         },
         {
             "name": "multipage-router",
@@ -713,9 +1111,34 @@ else {
             "main": "validation.js"
         },
         {
+            "name": "widget-alert",
+            "location": "../cornerstone/widget-alert",
+            "main": "widget-alert.js"
+        },
+        {
+            "name": "widget-button",
+            "location": "../cornerstone/widget-button",
+            "main": "widget-button.js"
+        },
+        {
+            "name": "widget-carousel",
+            "location": "../cornerstone/widget-carousel",
+            "main": "widget-carousel.js"
+        },
+        {
             "name": "widget-chart",
             "location": "../cornerstone/widget-chart",
             "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-collapse",
+            "location": "../cornerstone/widget-collapse",
+            "main": "widget-collapse.js"
+        },
+        {
+            "name": "widget-datatable",
+            "location": "../cornerstone/widget-datatable",
+            "main": "widget-datatable.js"
         },
         {
             "name": "widget-datepicker",
@@ -723,9 +1146,29 @@ else {
             "main": "widget-datepicker.js"
         },
         {
+            "name": "widget-dropdown",
+            "location": "../cornerstone/widget-dropdown",
+            "main": "widget-dropdown.js"
+        },
+        {
+            "name": "widget-editor",
+            "location": "../cornerstone/widget-editor",
+            "main": "widget-editor.js"
+        },
+        {
             "name": "widget-listview",
             "location": "../cornerstone/widget-listview",
             "main": "widget-listview.js"
+        },
+        {
+            "name": "widget-media",
+            "location": "../cornerstone/widget-media",
+            "main": "widget-media.js"
+        },
+        {
+            "name": "widget-modal",
+            "location": "../cornerstone/widget-modal",
+            "main": "widget-modal.js"
         },
         {
             "name": "widget-motioncaptcha",
@@ -733,9 +1176,19 @@ else {
             "main": "widget-motioncaptcha.js"
         },
         {
+            "name": "widget-popover",
+            "location": "../cornerstone/widget-popover",
+            "main": "widget-popover.js"
+        },
+        {
             "name": "widget-rangeinput",
             "location": "../cornerstone/widget-rangeinput",
             "main": "widget-rangeinput.js"
+        },
+        {
+            "name": "widget-scrollspy",
+            "location": "../cornerstone/widget-scrollspy",
+            "main": "widget-scrollspy.js"
         },
         {
             "name": "widget-scrollview",
@@ -751,6 +1204,16 @@ else {
             "name": "widget-spinner",
             "location": "../cornerstone/widget-spinner",
             "main": "widget-spinner.js"
+        },
+        {
+            "name": "widget-tab",
+            "location": "../cornerstone/widget-tab",
+            "main": "widget-tab.js"
+        },
+        {
+            "name": "widget-tooltip",
+            "location": "../cornerstone/widget-tooltip",
+            "main": "widget-tooltip.js"
         },
         {
             "name": "widget-touch",
@@ -801,7 +1264,17 @@ else {
             "exports": "iScroll"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
+        },
+        "jquery.hotkeys": {
+            "deps": [
+                "jquery"
+            ]
+        },
+        "media": {
+            "deps": [
+                "jquery"
+            ]
         },
         "multipage-router": {
             "deps": [
@@ -853,6 +1326,31 @@ else {
             ],
             "exports": "validation-view"
         },
+        "widget-alert": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-button": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-carousel": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-carousel"
+        },
         "widget-chart": {
             "deps": [
                 "backbone",
@@ -863,6 +1361,22 @@ else {
             ],
             "exports": "widget-chart"
         },
+        "widget-collapse": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-datatable": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "widget-datatable"
+        },
         "widget-datepicker": {
             "deps": [
                 "backbone",
@@ -871,6 +1385,23 @@ else {
                 "bootstrap"
             ],
             "exports": "widget-datepicker"
+        },
+        "widget-dropdown": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-editor": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hotkeys"
+            ],
+            "exports": "widget-editor"
         },
         "widget-listview": {
             "deps": [
@@ -881,6 +1412,23 @@ else {
             ],
             "exports": "widget-listview"
         },
+        "widget-media": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "media"
+            ],
+            "exports": "widget-media"
+        },
+        "widget-modal": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
         "widget-motioncaptcha": {
             "deps": [
                 "backbone",
@@ -888,6 +1436,15 @@ else {
                 "jquery"
             ],
             "exports": "widget-motioncaptcha"
+        },
+        "widget-popover": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-popover"
         },
         "widget-rangeinput": {
             "deps": [
@@ -897,6 +1454,14 @@ else {
                 "widget-touch"
             ],
             "exports": "widget-rangeinput"
+        },
+        "widget-scrollspy": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
         },
         "widget-scrollview": {
             "deps": [
@@ -922,6 +1487,23 @@ else {
                 "jquery"
             ],
             "exports": "widget-spinner"
+        },
+        "widget-tab": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ]
+        },
+        "widget-tooltip": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "bootstrap"
+            ],
+            "exports": "widget-tooltip"
         },
         "widget-touch": {
             "deps": [
