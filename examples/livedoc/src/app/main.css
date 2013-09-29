@@ -30,8 +30,8 @@ div.doc-content {
 
 /* Live Doc 전용 스타일*/
 .container {
-    width: 100%;
-    max-width: 100%;
+    width: 95%;
+    max-width: 95%;
 }
 
 .detail-scrollview {
@@ -143,4 +143,37 @@ div.doc-content {
     padding: 5px;
     border: 0px;
     background-color: #f1f1f1;
+}
+
+#floating-detail-menu {
+    position: fixed; 
+
+    border: solid 1px red;
+
+    top: 70px; 
+    left: 30px; 
+}
+
+#detail-menu-open-arrow {
+    position: fixed;
+    z-index: 10;
+
+    border: 10px solid transparent;
+            
+    left: 5px;
+    top: 50%;
+    margin-top: -16px;
+    border-left: 16px solid #333;     
+}
+
+#detail-menu-close-arrow {
+    position: fixed;
+    z-index: 10;
+
+    border: 10px solid transparent;
+
+    left: -5px;
+    top: 50%;
+    margin-top: -16px;
+    border-right: 16px solid #333;
 }
