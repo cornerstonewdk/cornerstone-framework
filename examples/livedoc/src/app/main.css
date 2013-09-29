@@ -47,8 +47,8 @@ div.doc-content {
 }
 
 .home-col .thumbnail {
-    min-height: 330px;
-    max-height: 330px;
+    min-height: 340px;
+    max-height: 340px;
 }
 
 /* TODO 테마 소스에 포함 해야함 */
