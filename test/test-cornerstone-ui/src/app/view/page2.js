@@ -201,17 +201,35 @@ define([
 				}
 				// 에디터
 				if (id.match(/.*editor/)) {
-					require(["widget-editor"], function () {
-						$("#editorExample").featuredEditor();
-					})
+					require(["widget-editor"]);
+					$("[data-featured=editor]").each(function () {
+						$.fn.featuredEditor &&  $(this).featuredEditor();
+					});
 				}
 				// 차트
 				if (id.match(/.*chart/)) {
 					require(["widget-chart"]);
+					$("[data-featured=chart]").each(function () {
+						var self = this,
+							dataUrl = $(this).data("chartBind");
+
+						dataUrl && $.getJSON(dataUrl).success(function (json) {
+							$.fn.featuredChart && $(self).featuredChart({
+								chartType: $(self).data("chartType"),
+								format: $(self).data("chartFormat"),
+								data: json
+							});
+						});
+					});
 				}
 				// 데이터테이블
 				if (id.match(/.*datatable/)) {
 					require(["widget-datatable"]);
+					$("[data-featured=datatable]").each(function () {
+						$.fn.featuredDataTable && $(this).featuredDataTable({
+							"sAjaxSource":$(this).data("datatableBind")
+						});
+					});
 				}
 			});
 			return this;

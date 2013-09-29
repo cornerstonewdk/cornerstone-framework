@@ -17,7 +17,6 @@ define([
             app = window.app = {
                 changeStyle: function () {
                     var myStyle = localStorage.getItem("cs-style");
-                    console.log(myStyle);
                     var $baseStyle = $("#baseStyle");
                     var $customStyle = $("#customStyle");
                     $customStyle.remove();
