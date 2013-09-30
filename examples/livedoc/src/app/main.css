@@ -147,7 +147,7 @@ div.doc-content {
 #floating-detail-menu {
     position: fixed; 
 
-    border: solid 1px red;
+    border: solid 1px transparent;
 
     top: 70px; 
     left: 30px; 
