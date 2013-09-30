@@ -259,6 +259,7 @@
 			chart.y2Axis.tickFormat(d3.format(options.format));
 			chart.showLegend(options.showLegend);
 
+			chart.brushExtent = 100;
 			chart.afterRender = function () {
 				target.$parent.swipe();
 
