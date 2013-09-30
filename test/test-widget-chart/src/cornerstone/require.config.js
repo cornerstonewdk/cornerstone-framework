@@ -11,15 +11,6 @@ var jam = {
             "main": "js/bootstrap.min.js"
         },
         {
-            "name": "bootstrap-glyphicons",
-            "location": "../cornerstone/bootstrap-glyphicons"
-        },
-        {
-            "name": "bootstrap-select",
-            "location": "../cornerstone/bootstrap-select",
-            "main": "bootstrap-select.min.js"
-        },
-        {
             "name": "d3",
             "location": "../cornerstone/d3",
             "main": "d3.v3.min.js"
@@ -37,7 +28,7 @@ var jam = {
         {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.2.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -63,6 +54,10 @@ var jam = {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
         },
         {
             "name": "transition",
@@ -103,11 +98,6 @@ var jam = {
                 "jquery"
             ]
         },
-        "bootstrap-select": {
-            "deps": [
-                "jquery"
-            ]
-        },
         "d3": {
             "exports": "d3"
         },
@@ -125,7 +115,7 @@ var jam = {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -205,15 +195,6 @@ if (typeof require !== "undefined" && require.config) {
             "main": "js/bootstrap.min.js"
         },
         {
-            "name": "bootstrap-glyphicons",
-            "location": "../cornerstone/bootstrap-glyphicons"
-        },
-        {
-            "name": "bootstrap-select",
-            "location": "../cornerstone/bootstrap-select",
-            "main": "bootstrap-select.min.js"
-        },
-        {
             "name": "d3",
             "location": "../cornerstone/d3",
             "main": "d3.v3.min.js"
@@ -231,7 +212,7 @@ if (typeof require !== "undefined" && require.config) {
         {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.2.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -257,6 +238,10 @@ if (typeof require !== "undefined" && require.config) {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
         },
         {
             "name": "transition",
@@ -296,11 +281,6 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ]
         },
-        "bootstrap-select": {
-            "deps": [
-                "jquery"
-            ]
-        },
         "d3": {
             "exports": "d3"
         },
@@ -318,7 +298,7 @@ if (typeof require !== "undefined" && require.config) {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -398,15 +378,6 @@ else {
             "main": "js/bootstrap.min.js"
         },
         {
-            "name": "bootstrap-glyphicons",
-            "location": "../cornerstone/bootstrap-glyphicons"
-        },
-        {
-            "name": "bootstrap-select",
-            "location": "../cornerstone/bootstrap-select",
-            "main": "bootstrap-select.min.js"
-        },
-        {
             "name": "d3",
             "location": "../cornerstone/d3",
             "main": "d3.v3.min.js"
@@ -424,7 +395,7 @@ else {
         {
             "name": "jquery",
             "location": "../cornerstone/jquery",
-            "main": "jquery-2.0.2.min.js"
+            "main": "jquery-1.10.2.min.js"
         },
         {
             "name": "launcher",
@@ -450,6 +421,10 @@ else {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
         },
         {
             "name": "transition",
@@ -489,11 +464,6 @@ else {
                 "jquery"
             ]
         },
-        "bootstrap-select": {
-            "deps": [
-                "jquery"
-            ]
-        },
         "d3": {
             "exports": "d3"
         },
@@ -511,7 +481,7 @@ else {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
