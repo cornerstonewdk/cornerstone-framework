@@ -144,13 +144,26 @@ div.doc-content {
     background-color: #f1f1f1;
 }
 
+#detail-lnb {
+    z-index: 10;
+}
+
 #floating-detail-menu {
     position: fixed; 
 
-    border: solid 1px transparent;
+    border: solid 1px #aaaaaa;
 
     top: 70px; 
     left: 30px; 
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-color: white;
+
+    height: 50%;
+
+    overflow: hidden;
 }
 
 #detail-menu-open-arrow {
