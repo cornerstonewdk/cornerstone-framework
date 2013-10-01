@@ -11,8 +11,14 @@
 (function (root, doc, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD Hybrid 포맷
-        define(["jquery", "style!" + Cornerstone.PATH + "ui/widget-scrollview"], function ($) {
-            return factory($, root, doc);
+        define(["backbone", "underscore", "jquery"], function (Backbone, _, $) {
+            factory($, root, doc);
+            return Backbone.View.extend({
+                render: function () {
+                    this.$el.featuredScrollView(this.options);
+                    return this;
+                }
+            });
         });
     } else {
         // Browser globals
@@ -22,25 +28,26 @@
 
     var pluginName = "featuredScrollView",
         myScroll, pullDownEl, pullDownOffset,
-        pullUpEl, pullUpOffset,
-        defaultOptions = {
-            formFields:undefined,
-            pullDownID:undefined,
-            pullUpID:undefined,
-            pullDownAction:undefined,
-            pullUpAction:undefined
-        };
+        pullUpEl, pullUpOffset;
+
 
     var Plugin = function (element, options) {
-        var self = this;
-        this.options = options = $.extend(true, defaultOptions, options);
+        this.defaultOptions = {
+            scrollbars: true,
+            mouseWheel: true,
+            interactiveScrollbars: true,
+            formFields: undefined,
+            pullDownAction: undefined,
+            pullUpAction: undefined
+        };
+        this.options = options = $.extend(true, this.defaultOptions, options);
         this.$el = $(element);
 
         this.formCheck();
         this.pullToRefresh();
 
         this.iscroll = new iScroll(this.$el[0], options);
-
+        return this;
     };
 
     Plugin.prototype.refresh = function () {
@@ -62,66 +69,77 @@
             // 배열로 예외처리할 폼 엘리먼트를 tagName과 비교한다.
             $.grep(self.options.formFields, function (n, i) {
                 isNotField = isNotField && target.tagName != n;
-//                console.log(target.tagName, n, target.tagName != n, isNotField);
             });
 
             if (isNotField)
                 e.preventDefault();
         };
-        defaultOptions.onBeforeScrollStart = onBeforeScrollStart;
+        this.defaultOptions.onBeforeScrollStart = onBeforeScrollStart;
     };
 
     // Pull to refresh
     Plugin.prototype.pullToRefresh = function () {
-        if (!(this.options != null && typeof this.options.pullDownID === "string" && typeof this.options.pullUpID === "string")) {
+        var self = this;
+        pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
+        pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
+
+        if (!(this.options && pullDownEl.length && pullUpEl.length)) {
             return false;
         }
 
-        var self = this;
-        pullDownEl = document.getElementById(this.options.pullDownID);
-        pullDownOffset = pullDownEl.offsetHeight;
-        pullUpEl = document.getElementById(this.options.pullUpID);
-        pullUpOffset = pullUpEl.offsetHeight;
+        pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
+        pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
 
         var topOffset = pullDownOffset;
         var onRefresh = function () {
-            if (pullDownEl.className.match('loading')) {
-                pullDownEl.className = '';
-            } else if (pullUpEl.className.match('loading')) {
-                pullUpEl.className = '';
+            pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
+            pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
+            pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
+            pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
+            if (pullDownEl && pullDownEl.attr("class").match('loading')) {
+                pullDownEl.removeClass("flip loading");
+            } else if (pullUpEl && pullUpEl.attr("class").match('loading')) {
+                pullUpEl.removeClass("flip loading");
             }
         };
+
         var onScrollMove = function () {
-            if (this.y > 5 && !pullDownEl.className.match('flip')) {
-                pullDownEl.className = 'flip';
+            pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
+            pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
+            pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
+            pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
+            if (this.y > 5 && pullDownEl && !pullDownEl.attr("class").match('flip')) {
+                pullDownEl.addClass("flip");
                 this.minScrollY = 0;
-            } else if (this.y < 5 && pullDownEl.className.match('flip')) {
-                pullDownEl.className = '';
+            } else if (this.y < 5 && pullDownEl && pullDownEl.attr("class").match('flip')) {
+                pullDownEl.removeClass("flip loading");
                 this.minScrollY = -pullDownOffset;
-            } else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
-                pullUpEl.className = 'flip';
+            } else if (this.y < (this.maxScrollY - 5) && pullUpEl && !pullUpEl.attr("class").match('flip')) {
+                pullUpEl.addClass("flip");
                 this.maxScrollY = this.maxScrollY;
-            } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
-                pullUpEl.className = '';
+            } else if (this.y > (this.maxScrollY + 5) && pullUpEl && pullUpEl.attr("class").match('flip')) {
+                pullUpEl.removeClass("flip loading");
                 this.maxScrollY = pullUpOffset;
             }
         };
         var onScrollEnd = function () {
-            if (pullDownEl.className.match('flip')) {
-                pullDownEl.className = 'loading';
-//                    pullDownEl.querySelector('.pullDownLabel').innerHTML = '로딩 중...';
-                self.options.pullDownAction();	// Execute custom function (ajax call?)
-            } else if (pullUpEl.className.match('flip')) {
-                pullUpEl.className = 'loading';
-//                    pullUpEl.querySelector('.pullUpLabel').innerHTML = '로딩 중...';
-                self.options.pullUpAction();	// Execute custom function (ajax call?)
+            pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
+            pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
+            pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
+            pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
+            if (pullDownEl && pullDownEl.attr("class").match('flip')) {
+                pullDownEl.addClass("loading");
+                self.options.pullDownAction && self.options.pullDownAction();
+            } else if (pullDownEl && pullUpEl.attr("class").match('flip')) {
+                pullUpEl.addClass("loading");
+                self.options.pullUpAction && self.options.pullUpAction();
             }
         };
 
-        defaultOptions.topOffset = topOffset;
-        defaultOptions.onRefresh = onRefresh;
-        defaultOptions.onScrollMove = onScrollMove;
-        defaultOptions.onScrollEnd = onScrollEnd;
+        this.defaultOptions.topOffset = topOffset;
+        this.defaultOptions.onRefresh = onRefresh;
+        this.defaultOptions.onScrollMove = onScrollMove;
+        this.defaultOptions.onScrollEnd = onScrollEnd;
     };
 
     // 스크롤뷰 플러그인 랩핑 및 기본값 설정
