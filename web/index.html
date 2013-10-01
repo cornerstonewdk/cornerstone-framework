@@ -33,24 +33,28 @@
     <!-- START TOP MENU -->
     <!-- ################-->
     <nav class="nav-top">
-      <div class="navbar navbar-static-top" id="topnavbar">
+      <div class="navbar navbar-static-top">
         <!-- navbar-fixed-top -->
-        <div class="navbar-inner" id="navbartop">
-          <div class="container"> <a class="brand" href="http://cornerstone.sktelecom.com"> <span><i class="fa-icon-circle-arrow-down"></i> Cornerstone</span>
-            <!--<img src="assets/img/Logo.png" alt="Logo">-->
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </a>
-            <div id="main-nav" class="scroller-spy">
-              <nav class="nav-collapse collapse" >
-                <ul class="nav" id="nav">
-                  <li><a href="https://github.com/cornerstonewdk/" target="_blank">저장소</a></li>
-                  <li><a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">매뉴얼 문서</a></li>
-                  <li><a href="http://cornerstone.sktelecom.com/guide/" target="_blank">가이드 문서</a></li>
-                  <li><a href="http://blog.cornerstone.sktelecom.com/" target="_blank">블로그</a></li>
-                  <li><a href="http://cornerstone.sktelecom.com/event/" target="_blank">이벤트</a></li>
-                  <!--<li><a href="#price-section">Price</a> </li>
-        <li><a href="#contact-section">Contact</a> </li>-->
-                </ul>
-              </nav>
+            <a class="brand" href="http://cornerstone.sktelecom.com">
+              <span><i class="fa-icon-circle-arrow-down"></i> Cornerstone</span>
+              <!--<img src="assets/img/Logo.png" alt="Logo">-->
+            </a>
+            <div class="nav-collapse collapse" >
+              <ul class="nav" id="nav">
+                <li><a href="https://github.com/cornerstonewdk/" target="_blank">저장소</a></li>
+                <li><a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">매뉴얼 문서</a></li>
+                <li><a href="http://cornerstone.sktelecom.com/guide/" target="_blank">가이드 문서</a></li>
+                <li><a href="http://blog.cornerstone.sktelecom.com/" target="_blank">블로그</a></li>
+                <li><a href="http://cornerstone.sktelecom.com/event/" target="_blank">이벤트</a></li>
+              </ul>
+            </div>
             </div>
           </div>
         </div>
@@ -92,27 +96,25 @@
     <!-- /SERVICE SECTION-->
     <section  id="download-section" class="section-2-0">
       <div class="bg-wraper">
-        <div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
-                <div class="active item">
-                  <a href="http://cornerstone.sktelecom.com/event/#contest">
-                    <img src="assets/img/banner-gongmo.png" alt="배너 이미지">
-                  </a>
-                </div>
-            </div>
-            <div class="download">
-                <p class="text-center download-links hidden-phone">Download Links</p>
-                <p class="text-center hidden-phone">
-                    <a href="http://cornerstone.sktelecom.com/download/cornerstone-framework-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Framework']);">Framework</a>
-                    <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Runtime Android']);">Android<br>Runtime</a>
-                    <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-iOS-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Runtime iOS']);">iOS<br>Runtime</a>
-                </p>
-            </div>
-            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+        <div class="text-center">
+            <a href="http://cornerstone.sktelecom.com/event/#contest">
+              <img src="assets/img/banner-gongmo.png" alt="배너 이미지">
+            </a>
+        </div>
+        <div class="row">    
+          <div class="download">
+              <p class="text-center download-links hidden-phone">Download Links</p>
+              <p class="text-center hidden-phone">
+                  <a href="http://cornerstone.sktelecom.com/download/cornerstone-framework-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Framework']);">Framework</a>
+                  <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Runtime Android']);">Android<br>Runtime</a>
+                  <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-iOS-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Runtime iOS']);">iOS<br>Runtime</a>
+              </p>
+          </div>
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
         </div>
       </div>
-      </section>
+    </section>
       <section  id="features-section" class="section-2">
         <div class="container">
           <div class="row-fluid">
@@ -339,18 +341,65 @@
       <div class="container">
         <div class="row-fluid">
           <div class="hidden-phone hidden-tablet">
-            <div class="offset3 sapn2">
-            <div class="circ-wrap footer-social-icon"> <a href="https://github.com/cornerstonewdk/" target="_blank"><img src="assets/img/git_icon.png" alt="github"> <span class="text-center">github</span></a> </div> </div>
-           <div class="sapn2">
-            <div class="circ-wrap footer-social-icon"> <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank"><img src="assets/img/doc_icon.png" alt="doc"> <span class="text-center">doc</span></a> </div></div>
+            <div class="offset2 sapn2">
+              <div class="circ-wrap footer-social-icon"> 
+                <a href="https://github.com/cornerstonewdk/" target="_blank">
+                  <img src="assets/img/git_icon.png" alt="github"> 
+                  <span class="text-center">github</span>
+                </a> 
+              </div>
+            </div>
             <div class="sapn2">
-            <div class="circ-wrap footer-social-icon"> <a href="http://blog.cornerstone.sktelecom.com/" target="_blank"><img src="assets/img/blog_icon.png" alt="blog"> <span class="text-center">blog</span></a></div> </div>
-            <div class="sapn3"></div>
+              <div class="circ-wrap footer-social-icon">
+                <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">
+                  <img src="assets/img/doc_icon.png" alt="doc">
+                  <span class="text-center">doc</span>
+                </a>
+              </div>
+            </div>
+            <div class="sapn2">
+              <div class="circ-wrap footer-social-icon">
+                <a href="http://cornerstone.sktelecom.com/guide/" target="_blank">
+                  <img src="assets/img/doc_icon.png" alt="guide">
+                  <span class="text-center">guide</span>
+                </a>
+              </div>
+            </div>
+            <div class="sapn2">
+              <div class="circ-wrap footer-social-icon">
+                <a href="http://blog.cornerstone.sktelecom.com/" target="_blank">
+                  <img src="assets/img/blog_icon.png" alt="blog">
+                  <span class="text-center">blog</span>
+                </a>
+              </div>
+            </div>
+            <div class="sapn2"></div>
           </div>
           <div class="footer-tablet-only footer-phone-only hidden-desktop">
-            <div class="inline-block-footer"> <a href="https://github.com/cornerstonewdk/" target="_blank"><img src="assets/img/git_icon.png" alt="github"><br>github</a> </div>
-            <div class="inline-block-footer"> <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank"><img src="assets/img/doc_icon.png" alt="doc"><br>doc</a> </div>
-            <div class="inline-block-footer"> <a href="http://blog.cornerstone.sktelecom.com/" target="_blank"><img src="assets/img/blog_icon.png" alt="blog"><br>blog</a> </div>
+            <div class="inline-block-footer"> 
+              <a href="https://github.com/cornerstonewdk/" target="_blank">
+                <img src="assets/img/git_icon.png" alt="github">
+                <br>github
+              </a>
+            </div>
+            <div class="inline-block-footer">
+              <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">
+                <img src="assets/img/doc_icon.png" alt="doc">
+                <br>doc
+              </a>
+            </div>
+            <div class="inline-block-footer">
+              <a href="http://cornerstone.sktelecom.com/guide/" target="_blank">
+                <img src="assets/img/doc_icon.png" alt="guide">
+                <br>guide
+              </a>
+            </div>
+            <div class="inline-block-footer">
+              <a href="http://blog.cornerstone.sktelecom.com/" target="_blank">
+                <img src="assets/img/blog_icon.png" alt="blog">
+                <br>blog
+              </a> 
+            </div>
           </div>
         </div>
       </div>
@@ -379,6 +428,7 @@
   <script  src="assets/js/jquery.scrollTo-1.4.2-min.js"></script>
   <script  src="assets/js/jquery.parallax-1.1.3.js"></script>
 
+  <script src="assets/js/custom.js"></script>
   <script >
     jQuery(document).ready(function(){
       // jQuery('#nav').localScroll(1000);
@@ -400,6 +450,7 @@
       jQuery('#slogan-section-1').parallax("50%", 0.3);
     })
   </script>
+
   <script>
     jQuery('#features-section .parallax-point-event').bind('inview', function (event, visible) {
       if (visible == true) {
@@ -416,6 +467,7 @@
       }
     });
   </script>
+
   <script>
     jQuery('#slogan-section-1').bind('inview', function (event, visible) {
       if (visible == true) {
@@ -425,6 +477,7 @@
       }
     });
   </script>
+
   <script>
     jQuery('#slogan-section-2 .parallax-point-event').bind('inview', function (event, visible) {
       if (visible == true) {
@@ -438,6 +491,7 @@
       }
     });
   </script>
+
   <script>
     jQuery('#slogan-section-3').bind('inview', function (event, visible) {
       if (visible == true) {
@@ -447,6 +501,7 @@
       }
     });
   </script>
+
   <script>
     jQuery('#header-section').bind('inview', function (event, visible) {
       if (visible == true) {
@@ -458,24 +513,23 @@
       }
     });
   </script>
+
   <script>
     var hero = jQuery('#header-section .hero-unit');
-      jQuery(window).scroll(function () {
-          if (jQuery(this).scrollTop() > 550) {
-            hero.addClass("hide");  
-          } else {
-            hero.removeClass("hide"); 
-          }
-        });
+    jQuery(window).scroll(function () {
+      if (jQuery(this).scrollTop() > 550) {
+        hero.addClass("hide");  
+      } else {
+        hero.removeClass("hide"); 
+      }
+    });
   </script>
 
   <script>
     // Basic FitVids Test
     jQuery(".container").fitVids();  
   </script>
-  <script>
-    jQuery('.carousel').carousel()
-  </script>
+
   <script>
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-37188645-1']);
