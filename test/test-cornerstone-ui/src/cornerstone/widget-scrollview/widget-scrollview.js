@@ -24,7 +24,7 @@
             {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
             {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
             {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
-            {"eventName": "destory", "callbackName": "onDestroy"}
+            {"eventName": "destroy", "callbackName": "onDestroy"}
         ],
         myScroll, pullDownEl, pullDownOffset,
         pullUpEl, pullUpOffset;
@@ -69,7 +69,7 @@
             var _callback = options[event.callbackName];
             options[event.callbackName] = function() {
                 if(typeof _callback === "function") {
-                    _callback();
+                    _callback.call(this, arguments);
                 } else {
                     _callback = function() {};
                 }
@@ -77,6 +77,11 @@
             };
         });
         return options
+    };
+
+    Plugin.prototype.destroy = function () {
+        this.iscroll.destroy();
+        this.$el.data(pluginName, null);
     };
 
     Plugin.prototype.refresh = function () {

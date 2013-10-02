@@ -13,39 +13,86 @@
 
     var root = this,
         pluginName = "featuredScrollView",
+        events = [
+            {"eventName": "pullDown", "callbackName": "pullDownAction"},
+            {"eventName": "pullUp", "callbackName": "pullUpAction"},
+            {"eventName": "refresh", "callbackName": "onRefresh"},
+            {"eventName": "beforeScrollStart", "callbackName": "onBeforeScrollStart"},
+            {"eventName": "scrollStart", "callbackName": "onScrollStart"},
+            {"eventName": "beforeScrollMove", "callbackName": "onBeforeScrollMove"},
+            {"eventName": "scrollMove", "callbackName": "onScrollMove"},
+            {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
+            {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
+            {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
+            {"eventName": "destroy", "callbackName": "onDestroy"}
+        ],
         myScroll, pullDownEl, pullDownOffset,
         pullUpEl, pullUpOffset;
 
 
     var Plugin = function (element, options) {
-        this.defaultOptions = {
+        var defaultOptions = {
             scrollbars: true,
             mouseWheel: true,
             scrollbarClass: "scrollViewBar",
             interactiveScrollbars: true,
             formFields: undefined,
             pullDownAction: undefined,
-            pullUpAction: undefined
+            pullUpAction: undefined,
+            onRefresh: undefined,
+            onBeforeScrollStart: undefined,
+            onScrollStart: undefined,
+            onBeforeScrollMove: undefined,
+            onScrollMove: undefined,
+            onBeforeScrollEnd: undefined,
+            onScrollEnd: undefined,
+            onTouchEnd: undefined,
+            onDestroy: undefined
         };
-        this.options = options = $.extend( true, this.defaultOptions, options );
-        this.$el = $( element );
+
+        this.$el = $(element);
+        this.options = $.extend(true, defaultOptions, options);
 
         this.formCheck();
         this.pullToRefresh();
 
-        this.iscroll = new iScroll( this.$el[0], options );
+        this.options = this.addEventListener(this.options);
+
+        this.iscroll = new iScroll(this.$el[0], this.options);
         return this;
     };
-    Plugin.prototype.refresh = function () {
-        this.iscroll.refresh();
+
+    Plugin.prototype.addEventListener = function(options) {
+        var self = this;
+        $(events).each(function() {
+            var event = this;
+            var _callback = options[event.callbackName];
+            options[event.callbackName] = function() {
+                if(typeof _callback === "function") {
+                    _callback.call(this, arguments);
+                } else {
+                    _callback = function() {};
+                }
+                self.$el.trigger(event.eventName);
+            };
+        });
+        return options
     };
+
     Plugin.prototype.destroy = function () {
         this.iscroll.destroy();
         this.$el.data(pluginName, null);
     };
+
+    Plugin.prototype.refresh = function () {
+        this.iscroll.refresh();
+    };
+
+    // TODO onDestroy 필요
+
     // 폼 엘리먼트인 경우 드래그로 입력박스 터치불가한 문제를 해결
     Plugin.prototype.formCheck = function () {
-        if ( !(!$.isEmptyObject( this.options ) && $.isArray( this.options.formFields ) && this.options.formFields.length > 0) ) {
+        if (!(!$.isEmptyObject(this.options) && $.isArray(this.options.formFields) && this.options.formFields.length > 0)) {
             return false;
         }
         var self = this;
@@ -53,14 +100,14 @@
         var onBeforeScrollStart = function (e) {
             var target = e.target;
             var isNotField = true;
-            while ( target.nodeType != 1 ) target = target.parentNode;
+            while (target.nodeType != 1) target = target.parentNode;
 
             // 배열로 예외처리할 폼 엘리먼트를 tagName과 비교한다.
-            $.grep( self.options.formFields, function (n, i) {
+            $.grep(self.options.formFields, function (n, i) {
                 isNotField = isNotField && target.tagName != n;
-            } );
+            });
 
-            if ( isNotField )
+            if (isNotField)
                 e.preventDefault();
         };
         this.defaultOptions.onBeforeScrollStart = onBeforeScrollStart;
@@ -69,10 +116,10 @@
     // Pull to refresh
     Plugin.prototype.pullToRefresh = function () {
         var self = this;
-        pullDownEl = self.$el.find( '[data-featured-scrollview="pullDown"]' );
-        pullUpEl = self.$el.find( '[data-featured-scrollview="pullUp"]' );
+        pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
+        pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
 
-        if ( !(this.options && pullDownEl.length && pullUpEl.length) ) {
+        if (!(this.options && pullDownEl.length && pullUpEl.length)) {
             return false;
         }
 
@@ -81,75 +128,75 @@
 
         var topOffset = pullDownOffset;
         var onRefresh = function () {
-            pullDownEl = self.$el.find( '[data-featured-scrollview="pullDown"]' );
+            pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
             pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
-            pullUpEl = self.$el.find( '[data-featured-scrollview="pullUp"]' );
+            pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
             pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
-            if ( pullDownEl && pullDownEl.attr( "class" ).match( 'loading' ) ) {
-                pullDownEl.removeClass( "flip loading" );
-            } else if ( pullUpEl && pullUpEl.attr( "class" ).match( 'loading' ) ) {
-                pullUpEl.removeClass( "flip loading" );
+            if (pullDownEl && pullDownEl.attr("class").match('loading')) {
+                pullDownEl.removeClass("flip loading");
+            } else if (pullUpEl && pullUpEl.attr("class").match('loading')) {
+                pullUpEl.removeClass("flip loading");
             }
         };
 
         var onScrollMove = function () {
-            pullDownEl = self.$el.find( '[data-featured-scrollview="pullDown"]' );
+            pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
             pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
-            pullUpEl = self.$el.find( '[data-featured-scrollview="pullUp"]' );
+            pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
             pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
-            if ( this.y > 5 && pullDownEl && !pullDownEl.attr( "class" ).match( 'flip' ) ) {
-                pullDownEl.addClass( "flip" );
+            if (this.y > 5 && pullDownEl && !pullDownEl.attr("class").match('flip')) {
+                pullDownEl.addClass("flip");
                 this.minScrollY = 0;
-            } else if ( this.y < 5 && pullDownEl && pullDownEl.attr( "class" ).match( 'flip' ) ) {
-                pullDownEl.removeClass( "flip loading" );
+            } else if (this.y < 5 && pullDownEl && pullDownEl.attr("class").match('flip')) {
+                pullDownEl.removeClass("flip loading");
                 this.minScrollY = -pullDownOffset;
-            } else if ( this.y < (this.maxScrollY - 5) && pullUpEl && !pullUpEl.attr( "class" ).match( 'flip' ) ) {
-                pullUpEl.addClass( "flip" );
+            } else if (this.y < (this.maxScrollY - 5) && pullUpEl && !pullUpEl.attr("class").match('flip')) {
+                pullUpEl.addClass("flip");
                 this.maxScrollY = this.maxScrollY;
-            } else if ( this.y > (this.maxScrollY + 5) && pullUpEl && pullUpEl.attr( "class" ).match( 'flip' ) ) {
-                pullUpEl.removeClass( "flip loading" );
+            } else if (this.y > (this.maxScrollY + 5) && pullUpEl && pullUpEl.attr("class").match('flip')) {
+                pullUpEl.removeClass("flip loading");
                 this.maxScrollY = pullUpOffset;
             }
         };
         var onScrollEnd = function () {
-            pullDownEl = self.$el.find( '[data-featured-scrollview="pullDown"]' );
+            pullDownEl = self.$el.find('[data-featured-scrollview="pullDown"]');
             pullDownOffset = pullDownEl && pullDownEl[0].offsetHeight;
-            pullUpEl = self.$el.find( '[data-featured-scrollview="pullUp"]' );
+            pullUpEl = self.$el.find('[data-featured-scrollview="pullUp"]');
             pullUpOffset = pullUpEl && pullUpEl[0].offsetHeight;
-            if ( pullDownEl && pullDownEl.attr( "class" ).match( 'flip' ) ) {
-                pullDownEl.addClass( "loading" );
+            if (pullDownEl && pullDownEl.attr("class").match('flip')) {
+                pullDownEl.addClass("loading");
                 self.options.pullDownAction && self.options.pullDownAction();
-            } else if ( pullDownEl && pullUpEl.attr( "class" ).match( 'flip' ) ) {
-                pullUpEl.addClass( "loading" );
+            } else if (pullDownEl && pullUpEl.attr("class").match('flip')) {
+                pullUpEl.addClass("loading");
                 self.options.pullUpAction && self.options.pullUpAction();
             }
         };
 
-        this.defaultOptions.topOffset = topOffset;
-        this.defaultOptions.onRefresh = onRefresh;
-        this.defaultOptions.onScrollMove = onScrollMove;
-        this.defaultOptions.onScrollEnd = onScrollEnd;
+        this.options.topOffset = topOffset;
+        this.options.onRefresh = onRefresh;
+        this.options.onScrollMove = onScrollMove;
+        this.options.onScrollEnd = onScrollEnd;
     };
 
     // 스크롤뷰 플러그인 랩핑 및 기본값 설정
     $.fn[pluginName] = function (options) {
-        return this.each( function () {
-            var $this = $( this );
-            var data = $this.data( pluginName );
+        return this.each(function () {
+            var $this = $(this);
+            var data = $this.data(pluginName);
 
             // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
-            if ( !data ) {
-                $this.data( pluginName, (data = new Plugin( this, options )) )
+            if (!data) {
+                $this.data(pluginName, (data = new Plugin(this, options)))
             }
 
             // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
-            if ( typeof options == 'string' ) {
-                data[options]( data.options );
+            if (typeof options == 'string') {
+                data[options](data.options);
             }
-        } );
+        });
     };
 
-    $( function () {
+    $(function () {
         /**
          * DATA API (HTML5 Data Attribute)
          */
@@ -165,11 +212,8 @@
         define( ["backbone", "underscore", "jquery"], function (Backbone, _, $) {
 
             return Backbone.View.extend( {
-                initialize: function () {
-                    _.extend( this, this.$el.featuredScrollView( this.options ).data( "featuredScrollView" ) );
-                },
                 render: function () {
-                    this.refresh();
+                    _.extend( this, this.$el.featuredScrollView( this.options ).data( "featuredScrollView" ) );
                     return this;
                 }
             } );
