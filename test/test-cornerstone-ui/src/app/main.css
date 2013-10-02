@@ -36,13 +36,6 @@ img {
     height: 200px;
 }
 
-#scrollView4 {
-    overflow: hidden;
-    margin-top: -50px;
-    width: 300px;
-    height: 100px;
-}
-
 .list-view-wrapper {
     height: 200px;
 }
