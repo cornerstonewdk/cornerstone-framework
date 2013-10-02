@@ -2089,7 +2089,7 @@ var jam = {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -2223,7 +2223,7 @@ if (typeof require !== "undefined" && require.config) {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -2357,7 +2357,7 @@ else {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [

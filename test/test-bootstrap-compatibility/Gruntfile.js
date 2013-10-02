@@ -154,7 +154,7 @@ module.exports = function (grunt) {
 							if (defaultStyle.match("skin-*")) {
 								return 'grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
 							} else {
-								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../grunt-dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
+								return 'grunt-dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="../../dist/src/style/' + defaultStyle + '/cornerstone.css" rel="stylesheet">';
 							}
 						}
 					}

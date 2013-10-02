@@ -5,7 +5,6 @@
 *.eco
 *.swp
 admin.json
-grunt-dist
 examples/tetris-together/node_modules
 examples/T-Dashboard/node_modules
 examples/cornerstone.docpad/node_modules
