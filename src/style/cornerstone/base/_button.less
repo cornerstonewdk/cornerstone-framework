@@ -98,8 +98,7 @@
     .cs-property(color, @color);
   }
 
-  .active,
-  &:active {
+  &:active, &.active, .open &.dropdown-toggle {
     border-color: darken(@btn-bg, 25%);
     background-color: @btn-bg;
   }
