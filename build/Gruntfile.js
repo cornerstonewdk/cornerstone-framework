@@ -13,7 +13,7 @@ module.exports = function ( grunt ) {
 	var pathInfo = {
 		source: '../src/',
 		lib: '../lib/',
-		dist: '../grunt-dist/',
+		dist: '../dist/',
 		repo: 'http://cornerstone.sktelecom.com/couchdb/repository'
 	};
 

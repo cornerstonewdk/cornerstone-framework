@@ -7,7 +7,7 @@
 
   The MIT License - Copyright (c) 2008 Blackbird Project
 */
-#blackbird { margin:0; padding:0; position:fixed; _position:absolute; font:11px/1.3 Consolas, 'Lucida Console', Monaco, monospace; _border:2px solid #BBB; z-index: 65535; }
+#blackbird { margin:0; padding:0; position:fixed; _position:absolute; font:11px/1.3 Consolas, 'Lucida Console', Monaco, monospace; _border:2px solid #BBB;  }
 #blackbird.bbTopLeft { top:0; left:0; _top:expression(eval(document.documentElement.scrollTop+8)); _left:expression(eval(document.documentElement.scrollLeft+8)); }
 #blackbird.bbTopRight { top:0; right:0; }
 * html .bbTopRight { right:auto; top:expression(eval(document.documentElement.scrollTop+8)); left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-document.getElementById('blackbird').offsetWidth-8)); }
@@ -79,6 +79,6 @@
 
 #blackbird .footer div { height:50px; float:left; _background-color:#000; _height:30px; }
 #blackbird .footer div.left { background-position:bottom left; _width:100%  !important; }
-  #blackbird .footer div.left label { display:block;color:#BBB;margin:8px 0 0 16px; position:relative; font-family:Arial,sans-serif; _margin:4px 0 0 8px; font-size: 12px;}
+  #blackbird .footer div.left label { display:block;color:#BBB;margin:8px 0 0 16px; position:relative; font-family:Arial,sans-serif; _margin:4px 0 0 8px;}
     #blackbird .footer div.left label input { padding:0;vertical-align:middle; }
 #blackbird .footer div.right { background-position:bottom right; width:150px; _width:0; }

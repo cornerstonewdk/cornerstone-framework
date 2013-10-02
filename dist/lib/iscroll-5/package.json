@@ -1,0 +1,11 @@
+{
+	"name": "iscroll",
+	"version": "5.0.4",
+	"description": "Smooth scrolling for the web",
+	"jam": {
+		"main": "iscroll.js",
+		"shim": {
+			"exports": "IScroll"
+		}
+	}
+}

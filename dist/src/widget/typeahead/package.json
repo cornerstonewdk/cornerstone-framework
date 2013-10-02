@@ -1,0 +1,14 @@
+{
+    "name": "widget-typeahead",
+    "version": "2.0.0",
+    "description": "twitter typeahead extend event",
+    "jam": {
+        "dependencies": {
+            "typeahead": "0.9.3"
+        },
+        "main": "widget-typeahead.js",
+        "shim": {
+            "deps": [ "typeahead" ]
+        }
+    }
+}
