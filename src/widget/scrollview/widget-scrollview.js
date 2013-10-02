@@ -13,14 +13,15 @@
 
     var root = this,
         pluginName = "featuredScrollView",
+        eventNamespace = ".cs.scrollView",
         events = [
             {"eventName": "pullDown", "callbackName": "pullDownAction"},
             {"eventName": "pullUp", "callbackName": "pullUpAction"},
             {"eventName": "refresh", "callbackName": "onRefresh"},
             {"eventName": "beforeScrollStart", "callbackName": "onBeforeScrollStart"},
-            {"eventName": "scrollStart", "callbackName": "onScrollStart"},
+            {"eventName": "start", "callbackName": "onScrollStart"},
             {"eventName": "beforeScrollMove", "callbackName": "onBeforeScrollMove"},
-            {"eventName": "scrollMove", "callbackName": "onScrollMove"},
+            {"eventName": "move", "callbackName": "onScrollMove"},
             {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
             {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
             {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
@@ -73,7 +74,7 @@
                 } else {
                     _callback = function() {};
                 }
-                self.$el.trigger(event.eventName);
+                self.$el.trigger(event.eventName + eventNamespace);
             };
         });
         return options
