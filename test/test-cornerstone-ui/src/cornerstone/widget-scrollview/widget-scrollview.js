@@ -27,32 +27,76 @@
 }(this, document, function ($, window, document) {
 
     var pluginName = "featuredScrollView",
+        events = [
+            {"eventName": "pullDown", "callbackName": "pullDownAction"},
+            {"eventName": "pullUp", "callbackName": "pullUpAction"},
+            {"eventName": "refresh", "callbackName": "onRefresh"},
+            {"eventName": "beforeScrollStart", "callbackName": "onBeforeScrollStart"},
+            {"eventName": "scrollStart", "callbackName": "onScrollStart"},
+            {"eventName": "beforeScrollMove", "callbackName": "onBeforeScrollMove"},
+            {"eventName": "scrollMove", "callbackName": "onScrollMove"},
+            {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
+            {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
+            {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
+            {"eventName": "destory", "callbackName": "onDestroy"}
+        ],
         myScroll, pullDownEl, pullDownOffset,
         pullUpEl, pullUpOffset;
 
 
     var Plugin = function (element, options) {
-        this.defaultOptions = {
+        var defaultOptions = {
             scrollbars: true,
             mouseWheel: true,
             interactiveScrollbars: true,
             formFields: undefined,
             pullDownAction: undefined,
-            pullUpAction: undefined
+            pullUpAction: undefined,
+            onRefresh: undefined,
+            onBeforeScrollStart: undefined,
+            onScrollStart: undefined,
+            onBeforeScrollMove: undefined,
+            onScrollMove: undefined,
+            onBeforeScrollEnd: undefined,
+            onScrollEnd: undefined,
+            onTouchEnd: undefined,
+            onDestroy: undefined
         };
-        this.options = options = $.extend(true, this.defaultOptions, options);
+
         this.$el = $(element);
+        this.options = $.extend(true, defaultOptions, options);
 
         this.formCheck();
         this.pullToRefresh();
 
-        this.iscroll = new iScroll(this.$el[0], options);
+        this.options = this.addEventListener(this.options);
+
+        this.iscroll = new iScroll(this.$el[0], this.options);
         return this;
+    };
+
+    Plugin.prototype.addEventListener = function(options) {
+        var self = this;
+        $(events).each(function() {
+            var event = this;
+            var _callback = options[event.callbackName];
+            options[event.callbackName] = function() {
+                if(typeof _callback === "function") {
+                    _callback();
+                } else {
+                    _callback = function() {};
+                }
+                self.$el.trigger(event.eventName);
+            };
+        });
+        return options
     };
 
     Plugin.prototype.refresh = function () {
         this.iscroll.refresh();
     };
+
+    // TODO onDestroy 필요
 
     // 폼 엘리먼트인 경우 드래그로 입력박스 터치불가한 문제를 해결
     Plugin.prototype.formCheck = function () {
@@ -136,10 +180,10 @@
             }
         };
 
-        this.defaultOptions.topOffset = topOffset;
-        this.defaultOptions.onRefresh = onRefresh;
-        this.defaultOptions.onScrollMove = onScrollMove;
-        this.defaultOptions.onScrollEnd = onScrollEnd;
+        this.options.topOffset = topOffset;
+        this.options.onRefresh = onRefresh;
+        this.options.onScrollMove = onScrollMove;
+        this.options.onScrollEnd = onScrollEnd;
     };
 
     // 스크롤뷰 플러그인 랩핑 및 기본값 설정
