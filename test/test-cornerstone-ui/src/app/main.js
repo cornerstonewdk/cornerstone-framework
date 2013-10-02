@@ -34,38 +34,47 @@ define([
                 localStorage.setItem("cs-style", "theme-white");
             }
 
-            // Router
-            MainRouter = MultipageRouter.extend({
-                pages: {
-                    "page1": {
-                        fragment: [ "", "page1" ],
-                        el: "#page1",
-                        render: function () {
-                            new Page1View().render();
-                        },
-                        active: function () {
-                            this.releasePage("#page1");
-                        }
-                    },
-                    "page2": {
-                        fragment: [ ":id", "page2" ],
-                        el: "#page2",
-                        render: function (id) {
-                            new Page2View().render(id);
-                        },
-                        active: function () {
-                            this.releasePage("#page2");
-                        }
-                    }
+            MainRouter = Backbone.Router.extend({
+                routes: {
+                    ":id": "page2"
                 },
-                transitions: {
-                    "page1:page2": "slide"
-                },
-
-                releasePage: function (currentPage) {
-                    return $(".container > section:not(" + currentPage + ")").html("");
+                page2: function(id) {
+                    console.log(id);
+                    new Page2View().render(id);
                 }
-            });
+            })
+            // Router
+//            MainRouter = MultipageRouter.extend({
+//                pages: {
+//                    "page1": {
+//                        fragment: [ "", "page1" ],
+//                        el: "#page1",
+//                        render: function () {
+//                            new Page1View().render();
+//                        },
+//                        active: function () {
+//                            this.releasePage("#page1");
+//                        }
+//                    },
+//                    "page2": {
+//                        fragment: [ ":id", "page2" ],
+//                        el: "#page2",
+//                        render: function (id) {
+//                            new Page2View().render(id);
+//                        },
+//                        active: function () {
+//                            this.releasePage("#page2");
+//                        }
+//                    }
+//                },
+//                transitions: {
+//                    "page1:page2": "slide"
+//                },
+//
+//                releasePage: function (currentPage) {
+//                    return $(".container > section:not(" + currentPage + ")").html("");
+//                }
+//            });
 
             $(document).on("click", "[data-style]", function (e) {
                 e.preventDefault();
