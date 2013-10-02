@@ -612,21 +612,22 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //     });
     // });
 
-    // describe('widget-datepicker', function() {
-    //     var datepicker;
+    describe('widget-datepicker', function() {
+        var datepicker;
 
-    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-    //         require(['widget-datepicker'], function(WidgetDatepicker) {
-    //             datepicker = new WidgetDatepicker({
-    //                 el: '#date-picker1',
-    //                 format: 'yyyy-MM-dd hh:mm:ss'
-    //             });
-    //             datepicker.render();
-    //             expect(datepicker).to.be.an.instanceof(Backbone.View);
-    //             done();
-    //         });
-    //     });
-    // });
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-datepicker'], function(WidgetDatepicker) {
+                datepicker = new WidgetDatepicker({
+                    el: '#date-picker1',
+                    format: 'yyyy-MM-dd hh:mm:ss',
+                    startDate: new Date()
+                });
+                datepicker.render();
+                expect(datepicker).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
+    });
 
     // describe('widget-dropdown', function() {
     //     var dropdown1, dropdown2;
