@@ -151,6 +151,8 @@ define([
                                 console.log("pullUp", e);
                             }).on("refresh", function (e) {
                                 console.log("refresh", e);
+                            }).on("destroy", function (e) {
+                                console.log("destroy", e);
                             });
                     });
                 }
