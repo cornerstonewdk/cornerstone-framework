@@ -15,7 +15,6 @@
   .cs-property(font-size, @carousel-control-font-size);
 }
 
-
 .carousel-indicators {
   & > li {
     .cs-property(margin, @carousel-indicators-margin);
@@ -27,6 +26,9 @@
     .cs-mixin(box-shadow, @carousel-indicators-box-shadow);
     &.active {
       .cs-property(background-color, @carousel-indicators-active-bg);
+      margin: 0 5px;
+      width: 15px;
+      height: 15px;
     }
   }
 }

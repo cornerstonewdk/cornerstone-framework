@@ -23,11 +23,9 @@ define([
                 );
 
                 // 이미지 썸네일 holder.js
-                if (id.match(/.*carousel|.*images|.*thumbnails|.*media-object/)) {
-                    require(["app/lib/holder"], function () {
-                        Holder.run();
-                    });
-                }
+                require(["lib/holder"], function () {
+                    Holder.run();
+                });
 
                 // 플러그인
                 // 모달
@@ -41,9 +39,24 @@ define([
 
                 // 탭
                 // 툴팁
+                if (id.match(/.*tooltip/)) {
+                    require(["widget-tooltip"]);
+                }
                 // 팝오버
+                if (id.match(/.*popover/)) {
+                    require(["widget-popover"]);
+                }
                 // 경고창
                 // 버튼
+                if (id.match(/.*button/)) {
+                    $('#fat-btn').click(function () {
+                        var btn = $(this)
+                        btn.button('loading')
+                        setTimeout(function () {
+                            btn.button('reset')
+                        }, 3000)
+                    })
+                }
                 // 콜랩스
                 // 캐로셀
                 // 범위 입력상자
@@ -58,6 +71,31 @@ define([
                 if (id.match(/.*sign/)) {
                     require(["widget-sign"], function () {
                         $("#signature").length && $("#signature").sign();
+
+                        // 이미지로 보기, 이미지로 다운로드하기, 리셋하기.
+                        $("button.show-sign").on('click', function (e) {
+                            var data = $("#signature").sign("getData", "image"); // Base64 형태의 이미지 데이터 리턴
+                            $("div.widget-sign-viewer").html($("<img/>", {
+                                src: "data:" + data
+                            }));
+                            console.log(data);
+                        });
+
+                        // 초기화
+                        $("button.reset-sign").on('click', function (e) {
+                            $("#signature").sign("reset"); // 초기화
+                            $(".widget-sign-viewer img").remove();
+                        });
+
+                        // sign 플로그인 이벤트 확장
+                        $("#signature").on('start.cs.sign',function (e) {
+                            console.log('start.cs.sign', e);
+                        }).on('move.cs.sign',function (e) {
+                                console.log('move.cs.sign', e);
+                            }).on('end.cs.sign', function (e) {
+                                console.log('end.cs.sign', e);
+                            });
+
                     });
                 }
                 // 스피너
@@ -137,21 +175,34 @@ define([
                             }).on("destroy", function (e) {
                                 console.log("destroy", e);
                             });
+
                         $("#scrollView2").featuredScrollView({
+                            scrollbarClass: ""
+                        }).on("pullDown",function (e) {
+                                console.log("pullDown", e);
+                            }).on("pullUp",function (e) {
+                                console.log("pullUp", e);
+                            }).on("refresh",function (e) {
+                                console.log("refresh", e);
+                            }).on("destroy", function (e) {
+                                console.log("destroy", e);
+                            });
+
+                        $("#scrollView3").featuredScrollView({
                             pullDownAction: function () {
                                 setTimeout(function () {
-                                    $("#scrollView2").featuredScrollView("refresh");
+                                    $("#scrollView3").featuredScrollView("refresh");
                                 }, 500);
                             },
                             pullUpAction: function () {
                                 // ajax로 데이터바인딩이 완료될때 꼭 스크롤뷰 새로고침이 필요함.
                                 setTimeout(function () {
                                     // 임시 엘리먼트를 추가한다.
-                                    var $el = $("#scrollView2").find(".list-group");
+                                    var $el = $("#scrollView3").find(".list-group");
                                     for (i = 0; i < 10; i++) {
                                         $el.append('<li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li>');
                                     }
-                                    $("#scrollView2").featuredScrollView("refresh");
+                                    $("#scrollView3").featuredScrollView("refresh");
                                 }, 500);
                             }
                         }).on("pullDown",function (e) {
@@ -166,7 +217,7 @@ define([
 
 
                         var scrollView = new ScrollView({
-                            el: "#scrollView3",
+                            el: "#scrollView4",
                             pullDownAction: function () {
                                 setTimeout(function () {
                                     scrollView.refresh();

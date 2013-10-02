@@ -146,7 +146,6 @@
 			
 			$( document ).on( 'click', ':not([data-transition])', function( e ) {
 				delete self.dataTransitions[ self.currentPageId ];
-				e.stopPropagation();
 			} );
 			
 			// 여기서 extend 된 Router들의 initialize가 실행된다.
