@@ -8,51 +8,87 @@
  *  License :
  */
 
-(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD Hybrid 포맷
-        define(["backbone", "underscore", "jquery"], function (Backbone, _, $) {
-            factory($, root, doc);
-            return Backbone.View.extend({
-                render: function () {
-                    this.$el.featuredScrollView(this.options);
-                    return this;
-                }
-            });
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
-}(this, document, function ($, window, document) {
+(function () {
+    "use strict";
 
-    var pluginName = "featuredScrollView",
+    var root = this,
+        pluginName = "featuredScrollView",
+        events = [
+            {"eventName": "pullDown", "callbackName": "pullDownAction"},
+            {"eventName": "pullUp", "callbackName": "pullUpAction"},
+            {"eventName": "refresh", "callbackName": "onRefresh"},
+            {"eventName": "beforeScrollStart", "callbackName": "onBeforeScrollStart"},
+            {"eventName": "scrollStart", "callbackName": "onScrollStart"},
+            {"eventName": "beforeScrollMove", "callbackName": "onBeforeScrollMove"},
+            {"eventName": "scrollMove", "callbackName": "onScrollMove"},
+            {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
+            {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
+            {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
+            {"eventName": "destroy", "callbackName": "onDestroy"}
+        ],
         myScroll, pullDownEl, pullDownOffset,
         pullUpEl, pullUpOffset;
 
 
     var Plugin = function (element, options) {
-        this.defaultOptions = {
+        var defaultOptions = {
             scrollbars: true,
             mouseWheel: true,
+            scrollbarClass: "scrollViewBar",
             interactiveScrollbars: true,
             formFields: undefined,
             pullDownAction: undefined,
-            pullUpAction: undefined
+            pullUpAction: undefined,
+            onRefresh: undefined,
+            onBeforeScrollStart: undefined,
+            onScrollStart: undefined,
+            onBeforeScrollMove: undefined,
+            onScrollMove: undefined,
+            onBeforeScrollEnd: undefined,
+            onScrollEnd: undefined,
+            onTouchEnd: undefined,
+            onDestroy: undefined
         };
-        this.options = options = $.extend(true, this.defaultOptions, options);
+
         this.$el = $(element);
+        this.options = $.extend(true, defaultOptions, options);
 
         this.formCheck();
         this.pullToRefresh();
 
-        this.iscroll = new iScroll(this.$el[0], options);
+        this.options = this.addEventListener(this.options);
+
+        this.iscroll = new iScroll(this.$el[0], this.options);
         return this;
+    };
+
+    Plugin.prototype.addEventListener = function(options) {
+        var self = this;
+        $(events).each(function() {
+            var event = this;
+            var _callback = options[event.callbackName];
+            options[event.callbackName] = function() {
+                if(typeof _callback === "function") {
+                    _callback.call(this, arguments);
+                } else {
+                    _callback = function() {};
+                }
+                self.$el.trigger(event.eventName);
+            };
+        });
+        return options
+    };
+
+    Plugin.prototype.destroy = function () {
+        this.iscroll.destroy();
+        this.$el.data(pluginName, null);
     };
 
     Plugin.prototype.refresh = function () {
         this.iscroll.refresh();
     };
+
+    // TODO onDestroy 필요
 
     // 폼 엘리먼트인 경우 드래그로 입력박스 터치불가한 문제를 해결
     Plugin.prototype.formCheck = function () {
@@ -136,10 +172,10 @@
             }
         };
 
-        this.defaultOptions.topOffset = topOffset;
-        this.defaultOptions.onRefresh = onRefresh;
-        this.defaultOptions.onScrollMove = onScrollMove;
-        this.defaultOptions.onScrollEnd = onScrollEnd;
+        this.options.topOffset = topOffset;
+        this.options.onRefresh = onRefresh;
+        this.options.onScrollMove = onScrollMove;
+        this.options.onScrollEnd = onScrollEnd;
     };
 
     // 스크롤뷰 플러그인 랩핑 및 기본값 설정
@@ -164,8 +200,23 @@
         /**
          * DATA API (HTML5 Data Attribute)
          */
-        $("[data-featured=scrollView]").each(function (i) {
-            $(this)[pluginName]();
-        });
-    });
-}));
+        $( "[data-featured=scrollView]" ).each( function (i) {
+            $( this )[pluginName]();
+        } );
+    } );
+
+    // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
+    if ( typeof root.define === "function" && root.define.amd ) {
+        var define = root.define;
+        // AMD Hybrid 포맷
+        define( ["backbone", "underscore", "jquery"], function (Backbone, _, $) {
+
+            return Backbone.View.extend( {
+                render: function () {
+                    _.extend( this, this.$el.featuredScrollView( this.options ).data( "featuredScrollView" ) );
+                    return this;
+                }
+            } );
+        } );
+    }
+}).call( this );
