@@ -127,7 +127,16 @@ define([
                 // 스크롤뷰
                 if (id.match(/.*scrollview/)) {
                     require(["widget-scrollview"], function (ScrollView) {
-                        $("#scrollView1").featuredScrollView();
+                        $("#scrollView1").featuredScrollView()
+                            .on("pullDown",function (e) {
+                                console.log("pullDown", e);
+                            }).on("pullUp",function (e) {
+                                console.log("pullUp", e);
+                            }).on("refresh",function (e) {
+                                console.log("refresh", e);
+                            }).on("destroy", function (e) {
+                                console.log("destroy", e);
+                            });
                         $("#scrollView2").featuredScrollView({
                             pullDownAction: function () {
                                 setTimeout(function () {
@@ -147,13 +156,36 @@ define([
                             }
                         }).on("pullDown",function (e) {
                                 console.log("pullDown", e);
-                            }).on("pullUp", function (e) {
+                            }).on("pullUp",function (e) {
                                 console.log("pullUp", e);
-                            }).on("refresh", function (e) {
+                            }).on("refresh",function (e) {
                                 console.log("refresh", e);
                             }).on("destroy", function (e) {
                                 console.log("destroy", e);
                             });
+
+
+                        var scrollView = new ScrollView({
+                            el: "#scrollView3",
+                            pullDownAction: function () {
+                                setTimeout(function () {
+                                    scrollView.refresh();
+                                }, 500);
+                            },
+                            pullUpAction: function () {
+                                // ajax로 데이터바인딩이 완료될때 꼭 스크롤뷰 새로고침이 필요함.
+                                setTimeout(function () {
+                                    // 임시 엘리먼트를 추가한다.
+                                    var $el = scrollView.$el.find(".list-group");
+                                    for (i = 0; i < 10; i++) {
+                                        $el.append('<li class="list-group-item">Cras justo odio<div class="pull-right"><span class="badge">14</span><span class="glyphicon glyphicon-chevron-right"></span></div></li>');
+                                    }
+                                    scrollView.refresh();
+                                }, 500);
+                            }
+                        });
+                        scrollView.render();
+
                     });
                 }
                 // 리스트뷰
