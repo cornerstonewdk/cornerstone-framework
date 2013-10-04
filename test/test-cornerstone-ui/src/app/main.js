@@ -22,10 +22,10 @@ define([
                     $customStyle.remove();
 
                     if (myStyle.match(/theme/)) {
-                        $baseStyle.attr("href", "../../../grunt-dist/lib/bootstrap/css/bootstrap.css");
-                        $baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../../grunt-dist/src/style/' + myStyle + '/cornerstone.css"/>');
+                        $baseStyle.attr("href", "../../../dist/lib/bootstrap/css/bootstrap.css");
+                        $baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../../dist/src/style/' + myStyle + '/cornerstone.css"/>');
                     } else {
-                        $baseStyle.attr("href", "../../../grunt-dist/src/style/" + myStyle + "/cornerstone.css");
+                        $baseStyle.attr("href", "../../../dist/src/style/" + myStyle + "/cornerstone.css");
                     }
                 }
             };
