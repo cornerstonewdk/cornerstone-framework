@@ -105,7 +105,7 @@ var jam = {
             "exports": "iScroll"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -265,7 +265,7 @@ if (typeof require !== "undefined" && require.config) {
             "exports": "iScroll"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -425,7 +425,7 @@ else {
             "exports": "iScroll"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
