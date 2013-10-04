@@ -189,7 +189,8 @@ div.doc-content {
     left: 5px;
     top: 50%;
     margin-top: -16px;
-    border-left: 16px solid #333;     
+    border-left: 16px solid #333;
+    cursor: pointer;
 }
 
 #detail-menu-close-arrow {
@@ -202,4 +203,5 @@ div.doc-content {
     top: 50%;
     margin-top: -16px;
     border-right: 16px solid #333;
+    cursor: pointer;
 }
