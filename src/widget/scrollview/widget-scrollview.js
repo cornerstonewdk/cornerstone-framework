@@ -57,22 +57,32 @@
         this.formCheck();
         this.pullToRefresh();
 
+        // 기본 스크롤이 있는 페이지에 Nested하게 ScrollView를 사용하는 경우 스크롤뷰에서 move할 때 기본 스크롤이 움직이지 않도록 함.
+        this.$el.off("touchmove" + eventNamespace).on("touchmove" + eventNamespace, function (e) {
+            console.log(e.target.type);
+            if (e.target.type === "range") {
+                return;
+            }
+            e.preventDefault();
+        });
+
         this.options = this.addEventListener(this.options);
 
         this.iscroll = new iScroll(this.$el[0], this.options);
         return this;
     };
 
-    Plugin.prototype.addEventListener = function(options) {
+    Plugin.prototype.addEventListener = function (options) {
         var self = this;
-        $(events).each(function() {
+        $(events).each(function () {
             var event = this;
             var _callback = options[event.callbackName];
-            options[event.callbackName] = function() {
-                if(typeof _callback === "function") {
+            options[event.callbackName] = function () {
+                if (typeof _callback === "function") {
                     _callback.call(this, arguments);
                 } else {
-                    _callback = function() {};
+                    _callback = function () {
+                    };
                 }
                 self.$el.trigger(event.eventName + eventNamespace);
             };
@@ -82,6 +92,7 @@
 
     Plugin.prototype.destroy = function () {
         this.iscroll.destroy();
+        this.$el.off("touchmove" + eventNamespace);
         this.$el.data(pluginName, null);
     };
 
@@ -201,23 +212,23 @@
         /**
          * DATA API (HTML5 Data Attribute)
          */
-        $( "[data-featured=scrollView]" ).each( function (i) {
-            $( this )[pluginName]();
-        } );
-    } );
+        $("[data-featured=scrollView]").each(function (i) {
+            $(this)[pluginName]();
+        });
+    });
 
     // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
-    if ( typeof root.define === "function" && root.define.amd ) {
+    if (typeof root.define === "function" && root.define.amd) {
         var define = root.define;
         // AMD Hybrid 포맷
-        define( ["backbone", "underscore", "jquery"], function (Backbone, _, $) {
+        define(["backbone", "underscore", "jquery"], function (Backbone, _, $) {
 
-            return Backbone.View.extend( {
+            return Backbone.View.extend({
                 render: function () {
-                    _.extend( this, this.$el.featuredScrollView( this.options ).data( "featuredScrollView" ) );
+                    _.extend(this, this.$el.featuredScrollView(this.options).data("featuredScrollView"));
                     return this;
                 }
-            } );
-        } );
+            });
+        });
     }
-}).call( this );
+}).call(this);
