@@ -5,18 +5,25 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 		el: '#detail-lnb',
 
 		initialize: function () {
+			var self = this;
+
 			this.render();
+
+			$( window ).on("resize", function () {
+				self.$el.find( '#scrollView' ).css( {
+					height: window.innerHeight - 70,
+					width: 198
+				} );
+			})
 		},
 
 		render: function () {
 			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
 
 			this.scrollView = this.$el.find( '#scrollView' ).css( {
-				height: window.innerHeight
-			} ).featuredScrollView( { bounce: false } ).data( 'featuredScrollView' );
-
-			this.inActiveEvent();
-			this.activeEvent();
+				height: window.innerHeight - 70,
+				width: 195
+			} ).featuredScrollView().data( 'featuredScrollView' );
 
 			return this;
 		},
@@ -40,36 +47,5 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 				this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
 			}
 		},
-
-		inActiveEvent: function () {
-			var $scrollView = this.$el.find( '#scrollView' );
-			$scrollView.off( 'mouseover.detail' );
-			$scrollView.off( 'mouseout.detail' );
-			$( window ).off( 'mousewheel.detail DOMMouseScroll.detail' );
-			$( window ).off( 'scroll.detail' );
-		},
-
-		activeEvent: function () {
-			var self = this;
-			var $scrollView = this.$el.find( '#scrollView' );
-
-			// 스크롤뷰와 윈도우 기본 스크롤이 독립적으로 동작하도록 수정
-			$scrollView.on( 'mouseover.detail',function ( e ) {
-				$( window ).on( 'mousewheel.detail DOMMouseScroll.detail', function ( e ) {
-					var delta = e.wheelDelta || -e.detail;
-					this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-					e.preventDefault();
-				} );
-			} ).on( 'mouseout.detail', function ( e ) {
-					$( window ).off( 'mousewheel.detail DOMMouseScroll.detail' );
-				} );
-
-			// LNB가 따라다니도록 TOP 값을 윈도우 기본 스크롤 수 업데이트
-			$( window ).on( 'scroll.detail', function ( e ) {
-				self.$el.find( '#scrollView' ).css( {
-					top: e.currentTarget.scrollY
-				} );
-			} );
-		}
 	} );
 } );
