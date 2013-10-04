@@ -63,7 +63,7 @@
                 if ( e.originalEvent.touches.length > 0 ) {
                     touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
                     e.pageX = touch.pageX;
-                    e.pageY = touch.pageY;    
+                    e.pageY = touch.pageY;
                 }
             }
         },
@@ -304,6 +304,11 @@
         var touch = new Touch();
         return touch.swipe($(this), option);
     };
+
+    /**
+     * 모바일에서 Active 효과 활성화
+     */
+    document.addEventListener('touchstart', function() {}, false);
 
     /**
      ### 사용법
