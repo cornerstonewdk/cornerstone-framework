@@ -66,6 +66,18 @@
             e.preventDefault();
         });
 
+        // ScrollView 영역에서 마우스 휠이벤트가 발생할때 기본 스크롤이 같이 움직이지 않도록 함
+        $(window).off("mousewheel" + eventNamespace + " DOMMouseScroll" + eventNamespace);
+        this.$el.off("mouseover" + eventNamespace).on("mouseover" + eventNamespace,function () {
+            $(window).on("mousewheel" + eventNamespace + " DOMMouseScroll" + eventNamespace, function (e) {
+                var delta = e.wheelDelta || -e.detail;
+                this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+                e.preventDefault();
+            });
+        }).off("mouseout" + eventNamespace).on("mouseout" + eventNamespace, function () {
+                $(window).off("mousewheel" + eventNamespace + " DOMMouseScroll" + eventNamespace);
+            });
+
         this.options = this.addEventListener(this.options);
 
         this.iscroll = new iScroll(this.$el[0], this.options);
@@ -93,6 +105,9 @@
     Plugin.prototype.destroy = function () {
         this.iscroll.destroy();
         this.$el.off("touchmove" + eventNamespace);
+        this.$el.off("mouseover" + eventNamespace);
+        this.$el.off("mouseout" + eventNamespace);
+        $(window).off("mousewheel" + eventNamespace + " DOMMouseScroll" + eventNamespace);
         this.$el.data(pluginName, null);
     };
 
