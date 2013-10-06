@@ -62,9 +62,10 @@ define([
                 // 범위 입력상자
                 if (id.match(/.*range-input/)) {
                     require(["widget-rangeinput"], function () {
-                        $(".widget-range").rangeinput({
-                            showInput: true
-                        });
+                        $(".widget-range").each(function() {
+                            var $el = $(this);
+                            $el.rangeinput($el.data("rangeOptions"));
+                        })
                     });
                 }
                 // 싸인

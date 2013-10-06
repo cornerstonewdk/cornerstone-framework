@@ -11,12 +11,12 @@
         <div class="col col-lg-4">
             <input type="range" value="10" min="0" max="100"
                    class="widget-range"
-                   data-range-options='{"inputShow":false,"progress":true}'/>
+                   data-range-options='{"showInput":false,"progress":true}'/>
         </div>
         <div class="col col-lg-4">
             <input type="range" value="99999" min="0" max="99999"
                    step="1000" class="widget-range max-10000"
-                   data-range-options='{"inputShow":true,"progress":true}'/>
+                   data-range-options='{"showInput":true,"progress":true}'/>
         </div>
     </div>
 </section>
