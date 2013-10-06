@@ -43,8 +43,10 @@
             this.$el.data("currentChart", chart);
             this.$el.data("currentChartControlsData", options.controlsData);
 
-            var controlsWrap = target.select('.nv-controlsWrap');
-            controlsWrap.attr("transform", "translate(-55," + this.util.getTranslateJson(controlsWrap).y + ")");
+            if(!navigator.userAgent.match(/MSIE/)) {
+                var controlsWrap = target.select('.nv-controlsWrap');
+                controlsWrap.attr("transform", "translate(-55," + this.util.getTranslateJson(controlsWrap).y + ")");
+            }
 
             this.util.removeClip(target);
             this.util.applyBindEvent(target, options, chart, this);
