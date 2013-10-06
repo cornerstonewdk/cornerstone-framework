@@ -27,6 +27,7 @@ define([
 		events: {
 			"click button.prev": "prevPage",
 			"click button.next": "nextPage",
+            "change #type": "changeType",
 			"click #controlSubmit": "controlSubmit",
 			"click #changeData button": "changeData"
 		},
