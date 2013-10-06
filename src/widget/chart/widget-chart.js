@@ -12,13 +12,12 @@
     if (typeof define === 'function' && define.amd)
         define([ "jquery", "underscore", "backbone", "d3", "nv", "widget-touch" ], factory);
     else
-        root.MultipageRouter = factory(root.$, root._, root.Backbone,  root.d3, root.nv);
+        root.Chart = factory(root.$, root._, root.Backbone,  root.d3, root.nv);
 
 })(window, function ($, _, Backbone, d3, nv) {
     "use strict";
 
     var chart;
-    var root = this;
     var pluginName = "featuredChart";
     var HAS_TOUCH = ('ontouchstart' in window);
     var eventName = {
@@ -960,7 +959,7 @@
         });
     });
 
-    return Backbone.View.extend({
+    return Backbone ? Backbone.View.extend({
         model: new Backbone.Model(),
         initialize: function () {
             this.listenTo(this.model, "change", this.render);
@@ -977,5 +976,5 @@
 
             return this;
         }
-    });
+    }) : FeaturedChart;
 });
