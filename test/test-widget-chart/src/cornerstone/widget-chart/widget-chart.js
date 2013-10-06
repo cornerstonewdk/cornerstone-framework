@@ -177,8 +177,13 @@
                             "transform": rect.attr("transform")
                         }).transition().attr({
                                 opacity: 1
-                            })
-                            .text(d3.format(options.format)(rect.data()[0].y));
+                            });
+                        if(typeof options.valueFormat === "string") {
+                            text.text(d3.format(options.valueFormat)(rect.data()[0].y));
+                        } else {
+                            text.text(rect.data()[0].y);
+                        }
+
                     } else {
                         text.attr({
                             opacity: 1
@@ -228,9 +233,11 @@
                 .showValues(options.showValues)
                 .showLegend(options.showLegend)
                 .showControls(options.showControls)
-                .valueFormat(d3.format(options.format))
                 .tooltips(options.tooltips)
                 .controlsData(options.controlsData);
+
+            if(typeof options.valueFormat === "string")
+                chart.valueFormat(d3.format(options.valueFormat));
 
             return chart;
         },
@@ -251,9 +258,19 @@
             chart = nv.models.linePlusBarChart();
             chart.bars.forceY([0]);
             chart.showLegend(options.showLegend);
-            chart.xAxis.showMaxMin(options.showMaxMin).tickFormat(d3.format(options.format));
-            chart.y1Axis.tickFormat(d3.format(options.format));
-            chart.y2Axis.tickFormat(d3.format(options.format));
+
+            if(typeof options.xFormat === "string") {
+                chart.xAxis.showMaxMin(options.showMaxMin).tickFormat(d3.format(options.xFormat));
+            } else {
+                chart.xAxis.showMaxMin(options.showMaxMin);
+            }
+
+            if(typeof options.yFormat === "string")
+                chart.y1Axis.tickFormat(d3.format(options.yFormat));
+
+
+            if(typeof options.y2Format === "string")
+                chart.y2Axis.tickFormat(d3.format(options.y2Format));
 
             return chart;
         },
@@ -261,9 +278,15 @@
             var self = this;
             chart = nv.models.lineWithFocusChart();
 
-            chart.xAxis.tickFormat(d3.format(options.format));
-            chart.yAxis.tickFormat(d3.format(options.format));
-            chart.y2Axis.tickFormat(d3.format(options.format));
+            if(typeof options.xFormat === "string")
+                chart.xAxis.tickFormat(d3.format(options.xFormat));
+
+            if(typeof options.yFormat === "string")
+                chart.yAxis.tickFormat(d3.format(options.yFormat));
+
+            if(typeof options.y2Format === "string")
+                chart.y2Axis.tickFormat(d3.format(options.y2Format));
+
             chart.showLegend(options.showLegend);
 
             chart.brushExtent = 100;
@@ -385,7 +408,12 @@
                     var chartData = [];
                     data.each(function () {
                         $(this["values"]).each(function () {
-                            chartData.push(d3.format(options.format)(this.y));
+                            if(typeof options.valueFormat === "string") {
+                                chartData.push(d3.format(options.valueFormat)(this.y));
+                            } else {
+                                chartData.push(this.y);
+                            }
+
                         });
                     });
                     return chartData;
@@ -412,7 +440,11 @@
                     var yAxisMarkings = 5;
                     // Add required number of y-axis markings in order from 0 - max
                     for (var i = 0; i < yAxisMarkings; i++) {
-                        yLegend.unshift(d3.format(options.format)(((chartYMax * i) / (yAxisMarkings - 1))));
+                        if(typeof options.yFormat === "string") {
+                            yLegend.unshift(d3.format(options.yFormat)(((chartYMax * i) / (yAxisMarkings - 1))));
+                        } else {
+                            yLegend.unshift((chartYMax * i) / (yAxisMarkings - 1));
+                        }
                     }
                     return yLegend;
                 },
@@ -426,7 +458,11 @@
                         var valuesLength = this["values"].length;
                         if (prevLength < valuesLength) {
                             $(this["values"]).each(function () {
-                                xLegend.push(d3.format(options.format)(this["x"]));
+                                if(typeof options.xFormat === "string") {
+                                    xLegend.push(d3.format(options.xFormat)(this["x"]));
+                                } else {
+                                    xLegend.push(this["x"]);
+                                }
                             });
                         }
 
@@ -440,7 +476,7 @@
 
                     data.each(function (i) {
                         columnGroups[i] = $.map(this.values, function (val) {
-                            return d3.format(options.format)(val.y);
+                            return typeof options.valueFormat === "string" ? d3.format(options.valueFormat)(val.y) : val.y;
                         });
                     });
 
@@ -739,35 +775,68 @@
                 var right = 0;
 
                 if ("bar" === options.chartType) {
-                    chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-                    chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+                    chart.xAxis.axisLabel(options.xAxisLabel);
+                    chart.yAxis.axisLabel(options.yAxisLabel);
+
+                    if(typeof options.xFormat === "string")
+                        chart.xAxis.tickFormat(d3.format(options.xFormat));
+
+                    if(typeof options.yFormat === "string")
+                        chart.yAxis.tickFormat(d3.format(options.yFormat));
 
                     left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
                     chart.margin({top: 30, right: 10, bottom: 50, left: left});
                 } else if ("horizontalBar" === options.chartType) {
-                    chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
-                    chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
+                    chart.xAxis.axisLabel(options.yAxisLabel);
+                    chart.yAxis.axisLabel(options.xAxisLabel);
+
+                    if(typeof options.xFormat === "string")
+                        chart.xAxis.tickFormat(d3.format(options.xFormat));
+
+                    if(typeof options.yFormat === "string")
+                        chart.yAxis.tickFormat(d3.format(options.yFormat));
 
                     left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
                     chart.margin({top: 30, right: 10, bottom: 50, left: left});
                 } else if ("linePlusBar" === options.chartType) {
-                    chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-                    chart.y1Axis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
-                    chart.y2Axis.tickFormat(d3.format(options.format)).axisLabel(options.y2AxisLabel);
+                    chart.xAxis.axisLabel(options.xAxisLabel);
+                    chart.y1Axis.axisLabel(options.yAxisLabel);
+                    chart.y2Axis.axisLabel(options.y2AxisLabel);
+
+                    if(typeof options.xFormat === "string")
+                        chart.xAxis.tickFormat(d3.format(options.xFormat));
+
+                    if(typeof options.yFormat === "string")
+                        chart.y1Axis.tickFormat(d3.format(options.yFormat));
+
+                    if(typeof options.y2Format === "string")
+                        chart.y2Axis.tickFormat(d3.format(options.y2Format));
 
                     left = $.trim(options.yAxisLabel).length > 0 ? 75 : 35;
                     right = $.trim(options.y2AxisLabel).length > 0 ? 85 : 50;
                     chart.margin({top: 30, right: right, bottom: 50, left: left});
                 } else if ("lineFocus" === options.chartType || "line" === options.chartType) {
-                    chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-                    chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+                    chart.xAxis.axisLabel(options.xAxisLabel);
+                    chart.yAxis.axisLabel(options.yAxisLabel);
+
+                    if(typeof options.xFormat === "string")
+                        chart.xAxis.tickFormat(d3.format(options.xFormat));
+
+                    if(typeof options.yFormat === "string")
+                        chart.yAxis.tickFormat(d3.format(options.yFormat));
 
                     left = $.trim(options.yAxisLabel).length > 0 ? 75 : 50;
                     chart.margin({top: 30, right: 30, bottom: 50, left: left});
                 } else {
                     if ("pie" !== options.chartType) {
-                        chart.xAxis.tickFormat(d3.format(options.format)).axisLabel(options.xAxisLabel);
-                        chart.yAxis.tickFormat(d3.format(options.format)).axisLabel(options.yAxisLabel);
+                        chart.xAxis.axisLabel(options.xAxisLabel);
+                        chart.yAxis.axisLabel(options.yAxisLabel);
+
+                        if(typeof options.xFormat === "string")
+                            chart.xAxis.tickFormat(d3.format(options.xFormat));
+
+                        if(typeof options.yFormat === "string")
+                            chart.yAxis.tickFormat(d3.format(options.yFormat));
                     }
                 }
             },
@@ -898,7 +967,10 @@
             xAxisLabel: "",
             yAxisLabel: "",
             y2AxisLabel: "",
-            format: ".1f",
+            valueFormat: ".1f", // null인 경우 d3.format을 사용하지 않는다.
+            xFormat: ".1f", // null인 경우 d3.format을 사용하지 않는다.
+            yFormat: ".1f", // null인 경우 d3.format을 사용하지 않는다.
+            y2Format: ".1f", // null인 경우 d3.format을 사용하지 않는다.
             data: [],
             showMaxMin: true,
             showValues: true,
