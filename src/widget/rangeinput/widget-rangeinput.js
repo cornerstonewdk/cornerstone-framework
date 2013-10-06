@@ -26,26 +26,6 @@
         factory( root.jQuery, root, doc );
     }
 }(this, document, function (jQuery, window, document, undefined) {
-    var defaultOptions = {
-        min:0,
-        max:100,
-        step:'any',
-        steps:0,
-        value:0,
-        precision:undefined,
-        vertical:0,
-        keyboard:false,
-        progress:false,
-        speed:100,
-        showInput:false,
-        css:{
-            input:'range',
-            slider:'slider',
-            progress:'slider-bar',
-            handle:'slide-handle'
-        }
-    };
-
     function round(value, precision) {
         var n = Math.pow(10, precision);
         return Math.round(value * n) / n;
@@ -112,12 +92,8 @@
                 display:"none"
             });
         } else {
-            root.addClass("inline");
-            root.css({
-                width:root.width() - (input.width() * 2),
-                marginRight:input.width() * 0.25,
-                float:"left"
-            });
+            input.addClass(css.inputGrid);
+            root.addClass(css.sliderGrid);
         }
 
         var fire = $(self).add(input), fireOnSlide = true;
@@ -300,7 +276,7 @@
 
 
         }).on("drag",function (e, y, x) {
-                
+
                 var distance = 0;
                 if (input.is(":disabled")) {
                     return false;
@@ -414,15 +390,42 @@
         return type && type == 'range' || !!$(el).filter("input").data("rangeinput");
     };
 
+    // Window Resize Trigger
+    $(window).on("resize._rangeInput", function (e) {
+        if (e.target.resizeTO) clearTimeout(e.target.resizeTO);
+        e.target.resizeTO = setTimeout(function () {
+            $(this).trigger('resizeEnd');
+        }, 500);
+    });
+
     // jQuery plugin implementation
     $.fn.rangeinput = function (conf) {
+        var defaultOptions = {
+            min:0,
+            max:100,
+            step:'any',
+            steps:0,
+            value:0,
+            precision:undefined,
+            vertical:0,
+            keyboard:false,
+            progress:false,
+            speed:100,
+            showInput:false,
+            css:{
+                input:'range',
+                inputGrid: 'col-xs-3',
+                slider:'slider',
+                sliderGrid: 'col-xs-9',
+                progress:'slider-bar',
+                handle:'slide-handle'
+            }
+        };
 
-        // already installed
         if (this.data("rangeinput")) {
             return this;
         }
 
-        // extend configuration with globals
         conf = $.extend(true, {}, defaultOptions, conf);
 
         var els;
@@ -435,35 +438,7 @@
 
         return els ? els : this;
     };
-//    if (navigator.userAgent.match("Android")) {
-//        $("input[type=range]").each(function (i) {
-//            var options = $(this).data("rangeOptions");
-//
-//            $(this).addClass("range-android").parent().addClass("range-android");
-//
-//            if (typeof options === "object" && options.showInput) {
-//                var $rangeTarget = $(this), $numTarget = $("<input type='tel' value='" + $rangeTarget.val() + "' class='widget-range btn-block figure range inline' />");
-//
-//                $rangeTarget.on("change", function () {
-//                    $numTarget.val($(this).val());
-//                });
-//
-//                $numTarget.insertAfter($rangeTarget).on("change", function (e) {
-//                    $rangeTarget.val($(this).val());
-//                });
-//
-//                $rangeTarget.addClass("inline");
-//                $rangeTarget.css({
-//                    width:$rangeTarget.width() - ($numTarget.width() * 2),
-//                    marginRight:$numTarget.width() * 0.2,
-//                    float:"left"
-//                });
-//
-//                $numTarget.removeClass("btn-block");
-//
-//            }
-//        });
-//    } else {
+
     $(function () {
         $("[data-plugin^='rangeinput']").each(function (i) {
             var options = $(this).data("rangeOptions");
