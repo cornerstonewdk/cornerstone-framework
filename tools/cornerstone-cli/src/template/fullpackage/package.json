@@ -24,17 +24,22 @@
       "widget-collapse": "*",
       "widget-datatable": "*",
       "widget-datepicker": "*",
+      "widget-dropdown": "*",
       "widget-editor": "*",
       "widget-listview": "*",
       "widget-media": "*",
+      "widget-modal": "*",
       "widget-motioncaptcha": "*",
       "widget-popover": "*",
       "widget-rangeinput": "*",
+      "widget-scrollspy": "*",
       "widget-scrollview": "*",
       "widget-sign": "*",
       "widget-spinner": "*",
+      "widget-tab": "*",
       "widget-tooltip": "*",
-      "widget-touch": "*"
+      "widget-touch": "*",
+      "widget-typeahead": "*"
     }
   }
 }
