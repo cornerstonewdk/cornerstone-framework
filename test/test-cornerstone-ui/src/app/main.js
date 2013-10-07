@@ -4,12 +4,12 @@
  */
 define([
     "jquery",
-    "view/page1",
-    "view/page2",
     "backbone",
     "multipage-router",
+    "view/page1",
+    "view/page2",
     "bootstrap",
-    "style!main" ], function ($, Page1View, Page2View, Backbone, MultipageRouter) {
+    "style!main" ], function ($, Backbone, MultipageRouter, Page1View, Page2View) {
     return {
         launch: function () {
             var app, MainRouter;
