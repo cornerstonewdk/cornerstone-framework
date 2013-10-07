@@ -203,10 +203,10 @@ div.doc-content {
 }
 @media(max-width: 1024px) {
     #floating-detail-menu {
-        width: 238px;
+        width: 230px;
     }
     #floating-detail-menu-background {
-        width: 245px;
+        width: 238px;
     }
 }
 /*
@@ -247,7 +247,6 @@ div.doc-content {
     #floating-detail-menu {
         position: static;
         width: 104%;
-        height: 250px;
 
         border: solid 1px #aaaaaa;
 
@@ -263,5 +262,16 @@ div.doc-content {
     }
     #detail-menu-close-arrow {
         top: 200px;
+    }
+}
+@media(max-width: 640px) {
+    #floating-detail-menu {
+        width: 106%;
+    }
+}
+@media(max-width: 420px) {
+    #floating-detail-menu {
+        width: 105%;
+        -webkit-border-radius: 3px;
     }
 }
