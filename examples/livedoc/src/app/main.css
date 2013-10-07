@@ -271,7 +271,7 @@ div.doc-content {
 }
 @media(max-width: 420px) {
     #floating-detail-menu {
-        width: 105%;
+        width: 106%;
         -webkit-border-radius: 3px;
     }
 }
