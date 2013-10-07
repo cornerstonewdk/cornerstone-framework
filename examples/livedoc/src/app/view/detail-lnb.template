@@ -33,7 +33,7 @@
 		$( "#detail-menu-open-arrow" ).fadeOut(100);
 		$( "#detail-menu-close-arrow" ).fadeIn(500);
 		$( '#detail-lnb' ).css( {
-				height: 250
+				height: 260
 		} );
 	});
 

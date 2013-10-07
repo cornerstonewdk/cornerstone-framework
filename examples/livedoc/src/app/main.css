@@ -144,8 +144,6 @@ div.doc-content {
     background-color: #f1f1f1;
 }
 
-#scrollview {
-}
 #floating-detail-menu {
     position: fixed; 
 
@@ -179,27 +177,6 @@ div.doc-content {
 
     -webkit-border-radius: 15px;
 }
-@media(max-width: 1024px) {
-    #floating-detail-menu {
-        width: 240px;
-    }
-    #floating-detail-menu-background {
-        width: 250px;
-    }
-}
-@media(max-width: 768px) {
-    #floating-detail-menu {
-        width: 90%;
-        height: 44.8%;
-        height: 239px;
-    }
-    #floating-detail-menu-background {
-        width: 92%;
-        height: 45%;
-        height: 240px;
-    }
-}
-
 #detail-menu-open-arrow {
     position: fixed;
     z-index: 10;
@@ -212,7 +189,6 @@ div.doc-content {
     border-left: 16px solid #333;
     cursor: pointer;
 }
-
 #detail-menu-close-arrow {
     position: fixed;
     z-index: 10;
@@ -224,4 +200,36 @@ div.doc-content {
     margin-top: -16px;
     border-right: 16px solid #333;
     cursor: pointer;
+}
+@media(max-width: 1024px) {
+    #floating-detail-menu {
+        width: 240px;
+    }
+    #floating-detail-menu-background {
+        width: 245px;
+    }
+}
+@media(max-width: 767px) {
+    #floating-detail-menu {
+        width: 90%;
+        height: 239px;
+    }
+    #floating-detail-menu-background {
+        width: 92%;
+        height: 240px;
+    }
+    #detail-menu-open-arrow {
+        top: 200px;
+    }
+    #detail-menu-close-arrow {
+        top: 200px;
+    }
+}
+@media(max-width: 520px) {
+    #floating-detail-menu {
+        width: 88%;
+    }
+    #floating-detail-menu-background {
+        width: 90%;
+    }
 }
