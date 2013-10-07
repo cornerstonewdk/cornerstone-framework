@@ -4,7 +4,7 @@
 	"description": "A fork of the cool Blackbird logging utility",
 	"jam": {
 		"dependencies": {
-			"style": "1.0.0"
+			"style": "2.0.0"
 		},
 		"main": "blackbird.js",
 		"shim": {
