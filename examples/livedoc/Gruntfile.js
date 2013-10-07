@@ -48,7 +48,7 @@ module.exports = function( grunt ) {
 			src: {
 				expand: true,
 				cwd: '<%= path.src %>',
-				src: [ 'cornerstone/**/*', '**/images/**/*', '**/fonts/**/*', '**/*.html', '**/*.template' ],
+				src: [ 'cornerstone/**/*', '**/images/**/*', '**/fonts/**/*', '**/*.html', '**/*.template','data/*' ],
 				dest: '<%= path.dist %>'
 			},
 			docImage: {
