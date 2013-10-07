@@ -612,22 +612,22 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //     });
     // });
 
-    describe('widget-datepicker', function() {
-        var datepicker;
+    // describe('widget-datepicker', function() {
+    //     var datepicker;
 
-        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-datepicker'], function(WidgetDatepicker) {
-                datepicker = new WidgetDatepicker({
-                    el: '#date-picker1',
-                    format: 'yyyy-MM-dd hh:mm:ss',
-                    startDate: new Date()
-                });
-                datepicker.render();
-                expect(datepicker).to.be.an.instanceof(Backbone.View);
-                done();
-            });
-        });
-    });
+    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+    //         require(['widget-datepicker'], function(WidgetDatepicker) {
+    //             datepicker = new WidgetDatepicker({
+    //                 el: '#date-picker1',
+    //                 format: 'yyyy-MM-dd hh:mm:ss',
+    //                 startDate: new Date()
+    //             });
+    //             datepicker.render();
+    //             expect(datepicker).to.be.an.instanceof(Backbone.View);
+    //             done();
+    //         });
+    //     });
+    // });
 
     // describe('widget-dropdown', function() {
     //     var dropdown1, dropdown2;
@@ -983,7 +983,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //             Hammer.HAS_POINTEREVENTS = false;
     //             Hammer.HAS_TOUCHEVENTS = true;
 
-    //             var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
     //             var el = $('#range1').parent().find('> .slider > button')[0];
 
     //             var faker = new FakeTouches(el);
@@ -1057,7 +1056,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //             Hammer.HAS_POINTEREVENTS = false;
     //             Hammer.HAS_TOUCHEVENTS = true;
 
-    //             var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
     //             var el = $('#range2').parent().find('> .slider > button')[0];
                 
 
@@ -1110,8 +1108,8 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //             });
     //         });
     //     });
-    
-    //     it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
+        
+    //     it('두번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
     //         this.timeout(1000);
     //         input_2.$el.on('start.cs.rangeInput', function(e) {
     //             Logging.info('start', e);
@@ -1132,9 +1130,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //             Hammer.HAS_POINTEREVENTS = false;
     //             Hammer.HAS_TOUCHEVENTS = true;
 
-    //             var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
     //             var el = $('#range3').parent().find('> .slider > button')[0];
-                
 
     //             var faker = new FakeTouches(el);
     //             var hammertime = new Hammer(el);
@@ -1185,41 +1181,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //             });
     //         });
     //     });
-
-
-    //     it('start, move, end 이벤트가 핸들을 움직였을 때 발생하여야 한다.', function() {
-
-            
-
-    //         input_1.$el.on('start.cs.rangeInput', function(e) {
-    //             Logging.info('start', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('start');
-    //         }).on('move.cs.rangeInput', function(e) {
-    //             Logging.info('move', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('move');
-    //         }).on('end.cs.rangeInput', function(e) {
-    //             Logging.info('end', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('end');
-    //         });
-
-    //         input_2.$el.on('start.cs.rangeInput', function(e) {
-    //             Logging.info('start', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('start');
-    //         }).on('move.cs.rangeInput', function(e) {
-    //             Logging.info('move', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('move');
-    //         }).on('end.cs.rangeInput', function(e) {
-    //             Logging.info('end', e);
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('end');
-    //         });
-    //     });
-    //     // TODO 강제로 핸들을 드래그 시키는 방법이 필요하다.
     // });
 
     // describe('widget-scrollspy', function() {
@@ -1252,7 +1213,84 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             });
         });   
 
-        it('스크롤뷰를 아래로 당길때 pullDown 이벤트가 발생하여야 한다.', function() {
+        it('스크롤뷰를 아래로 당길때 pullDown 이벤트가 발생하여야 한다.', function(done) {
+
+            this.timeout(2000);
+
+            scrollView.$el.on('beforeScrollStart.cs.scrollView',function(e){
+                console.log('beforeScrollStart',e );
+            }).on('start.cs.scrollView',function(e){
+                console.log('start',e );
+            }).on('beforeScrollMove.cs.scrollView',function(e){
+                console.log('beforeScrollMove',e );
+            }).on('move.cs.scrollView',function(e){
+                console.log('move',e );
+            }).on('beforeScrollEnd.cs.scrollView',function(e){
+                console.log('beforeScrollEnd',e );
+            }).on('scrollEnd.cs.scrollView',function(e){
+                console.log('scrollEnd',e );
+                done();
+            }).on('touchEnd.cs.scrollView',function(e){
+                console.log('touchEnd',e );
+            });
+
+            require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
+
+                Hammer.HAS_POINTEREVENTS = false;
+                Hammer.HAS_TOUCHEVENTS = true;
+
+                var el = scrollView.$el.find('li.list-group-item:nth-child(4)')[0];
+
+                var faker = new FakeTouches(el);
+                var hammertime = new Hammer(el);
+
+                var all_events = ["touch", "release", "hold", "tap", "doubletap",
+                    "dragstart", "drag", "dragend", "dragleft", "dragright",
+                    "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
+                    "swipeup", "swipedown", "transformstart", "transform",
+                    "transformend", "rotate", "pinch", "pinchin", "pinchout"
+                ];
+
+                // keep track of what events are triggered
+                var triggered_events = {};
+                hammertime.on(all_events.join(" "), function(ev) {
+                    triggered_events[ev.type] = ev;
+                });
+
+                function testGesture(gesture, expect_events, callback) {
+                    // reset triggered events
+                    triggered_events = {};
+
+                    // trigger the gesture faker
+                    faker.triggerGesture(gesture, function() {
+                        var expect = expect_events.split(" ");
+                        var events = Object.keys(triggered_events);
+
+                        // trigger callback with true/false is all the events are triggered
+                        // if also any other events are triggered it is false
+                        console.log(events.length,expect.length);
+                        var success = (events.length === expect.length);
+
+                        // error msg
+                        var msg = gesture + " detected";
+                        if (!success) {
+                            msg = gesture + " error. Events thrown: " + events.join(" ");
+                        }
+
+                        // maybe something happens after the end, so wait a moment
+                        callback(success, msg);
+                    });
+                };
+
+                var gesture_tests = {
+                    'DragUp': 'touch drag dragstart dragup dragend release'
+                };
+
+                testGesture('DragUp', gesture_tests['DragUp'], function(success, msg) {
+                    console.log(success, msg);
+                    Logging.info(success, msg);
+                });
+            });
 
         });
 

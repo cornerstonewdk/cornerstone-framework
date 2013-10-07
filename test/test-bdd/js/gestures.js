@@ -80,6 +80,28 @@
         }, 30);
     };
 
+    Gestures.DragUp = function(callback) {
+        var self = this;
+        self.setTouches([
+            [50, 50]
+        ]);
+        self.triggerStart();
+
+        var moves = 0;
+        var interval = setInterval(function() {
+            if (moves == 15) {
+                self.triggerEnd();
+                clearInterval(interval);
+                if (callback) {
+                    callback();
+                }
+                return;
+            }
+            self.moveBy(0, -6);
+            moves++;
+        }, 30);
+    };
+
     Gestures.SwipeRight = function(callback) {
         var self = this;
         self.setTouches([
