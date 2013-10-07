@@ -144,6 +144,8 @@ div.doc-content {
     background-color: #f1f1f1;
 }
 
+#scrollview {
+}
 #floating-detail-menu {
     position: fixed; 
 
@@ -154,7 +156,7 @@ div.doc-content {
     padding-right: 20px;
     padding-top: 1px;
 
-    height: 84.9%;
+    height: 84.8%;
 
     overflow: hidden;
 
@@ -164,8 +166,6 @@ div.doc-content {
 #floating-detail-menu-background {
     position: fixed;
     background-color: #f1f1f1;
-    width: 100px;
-    height: 100px;
 
     z-index: 5;
 
@@ -173,11 +173,31 @@ div.doc-content {
     left: 30px;
 
     height: 85%;
-    width: 250px;
+    width: 320px;
 
     border: solid 1px #aaaaaa;
 
     -webkit-border-radius: 15px;
+}
+@media(max-width: 1024px) {
+    #floating-detail-menu {
+        width: 240px;
+    }
+    #floating-detail-menu-background {
+        width: 250px;
+    }
+}
+@media(max-width: 768px) {
+    #floating-detail-menu {
+        width: 90%;
+        height: 44.8%;
+        height: 239px;
+    }
+    #floating-detail-menu-background {
+        width: 92%;
+        height: 45%;
+        height: 240px;
+    }
 }
 
 #detail-menu-open-arrow {
