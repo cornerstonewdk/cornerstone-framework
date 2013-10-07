@@ -11,8 +11,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 
 			$( window ).on("resize", function () {
 				self.$el.find( '#scrollView' ).css( {
-					height: window.innerHeight - 70,
-					width: 198
+					height: window.innerHeight - 70
 				} );
 			})
 		},
@@ -21,8 +20,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
 
 			this.scrollView = this.$el.find( '#scrollView' ).css( {
-				height: window.innerHeight - 70,
-				width: 195
+				height: window.innerHeight - 70
 			} ).featuredScrollView().data( 'featuredScrollView' );
 
 			return this;

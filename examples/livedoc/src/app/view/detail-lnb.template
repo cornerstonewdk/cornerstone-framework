@@ -21,8 +21,8 @@
 	$( "#detail-menu-close-arrow" ).hide();
 
 	$( "#detail-menu-open-arrow" ).click( function () {
-		$( "#detail-lnb" ).removeClass().addClass("col-lg-3 col-md-3 col-sm-3");
-		$( "#detail-content" ).removeClass().addClass("col-lg-9 col-md-9 col-sm-9");
+		$( "#detail-lnb" ).removeClass().addClass("col-lg-4 col-md-4 col-sm-4");
+		$( "#detail-content" ).removeClass().addClass("col-lg-8 col-md-8 col-sm-8");
 
 		$( "#floating-detail-menu" ).fadeIn(500, function () {
 			$( '#scrollView' ).css( {
@@ -32,6 +32,9 @@
 		$( "#floating-detail-menu-background" ).fadeIn(500);
 		$( "#detail-menu-open-arrow" ).fadeOut(100);
 		$( "#detail-menu-close-arrow" ).fadeIn(500);
+		$( '#detail-lnb' ).css( {
+				height: 250
+		} );
 	});
 
 	$( "#detail-menu-close-arrow" ).click( function () {
@@ -40,7 +43,9 @@
 		$( "#detail-menu-open-arrow" ).fadeIn(500);
 		$( "#detail-menu-close-arrow" ).hide();
 
-		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0");
+		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0").css( {
+				height: 1
+		} );
 		$( "#detail-content" ).removeClass().addClass("col-lg-12 col-md-12 col-sm-12");
 	});
 </script>
