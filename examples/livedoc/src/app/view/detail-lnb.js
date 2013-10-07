@@ -10,18 +10,28 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			this.render();
 
 			$( window ).on("resize", function () {
-				self.$el.find( '#scrollView' ).css( {
-					height: window.innerHeight - 70
-				} );
+				if (window.innerWidth >= 768)
+					self.$el.find( '#scrollView' ).css( {
+						height: window.innerHeight - 70
+					} );
+				else
+					self.$el.find( '#scrollView' ).css( {
+						height: window.innerHeight / 2
+					} );
 			})
 		},
 
 		render: function () {
 			this.$el.html( template( { collection: this.collection.toJSON(), model: this.model.toJSON() } ) );
 
-			this.scrollView = this.$el.find( '#scrollView' ).css( {
-				height: window.innerHeight - 70
-			} ).featuredScrollView().data( 'featuredScrollView' );
+			if (window.innerWidth >= 768)
+				this.scrollView = this.$el.find( '#scrollView' ).css( {
+					height: window.innerHeight - 70
+				} ).featuredScrollView().data( 'featuredScrollView' );
+			else
+				this.scrollView = this.$el.find( '#scrollView' ).css( {
+					height: window.innerHeight / 2
+				} ).featuredScrollView().data( 'featuredScrollView' );
 
 			return this;
 		},

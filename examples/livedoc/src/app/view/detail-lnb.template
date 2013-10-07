@@ -1,5 +1,5 @@
 <div id="floating-detail-menu">
-	<div id="scrollView" class="detail-scroll">
+	<div id="scrollView">
 		<div class="list-group">
 			{{#each collection}}
 				{{#if section}}<h4>{{section}}</h4>{{/if}}
@@ -25,15 +25,20 @@
 		$( "#detail-content" ).removeClass().addClass("col-lg-8 col-md-8 col-sm-8");
 
 		$( "#floating-detail-menu" ).fadeIn(500, function () {
-			$( '#scrollView' ).css( {
-				height: window.innerHeight
-			} ).featuredScrollView("refresh");
+			if (window.innerWidth >= 768)
+				$( '#scrollView' ).css( {
+					height: window.innerHeight - 70
+				} ).featuredScrollView("refresh");
+			else
+				$( '#scrollView' ).css( {
+					height: window.innerHeight / 2
+				} ).featuredScrollView("refresh");
 		});
 		$( "#floating-detail-menu-background" ).fadeIn(500);
 		$( "#detail-menu-open-arrow" ).fadeOut(100);
 		$( "#detail-menu-close-arrow" ).fadeIn(500);
 		$( '#detail-lnb' ).css( {
-				height: 260
+				//height: 260
 		} );
 	});
 
@@ -44,7 +49,7 @@
 		$( "#detail-menu-close-arrow" ).hide();
 
 		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0").css( {
-				height: 1
+				//height: 1
 		} );
 		$( "#detail-content" ).removeClass().addClass("col-lg-12 col-md-12 col-sm-12");
 	});

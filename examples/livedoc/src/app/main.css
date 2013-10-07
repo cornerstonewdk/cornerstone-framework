@@ -203,12 +203,13 @@ div.doc-content {
 }
 @media(max-width: 1024px) {
     #floating-detail-menu {
-        width: 240px;
+        width: 230px;
     }
     #floating-detail-menu-background {
-        width: 245px;
+        width: 238px;
     }
 }
+/*
 @media(max-width: 767px) {
     #floating-detail-menu {
         width: 90%;
@@ -239,5 +240,38 @@ div.doc-content {
     }
     #floating-detail-menu-background {
         width: 84%;
+    }
+}
+*/
+@media(max-width: 767px) {
+    #floating-detail-menu {
+        position: static;
+        width: 104%;
+
+        border: solid 1px #aaaaaa;
+
+        -webkit-border-radius: 15px;
+
+        margin-bottom: 10px;
+    }
+    #floating-detail-menu-background {
+        visibility: hidden;
+    }
+    #detail-menu-open-arrow {
+        top: 200px;
+    }
+    #detail-menu-close-arrow {
+        top: 200px;
+    }
+}
+@media(max-width: 640px) {
+    #floating-detail-menu {
+        width: 106%;
+    }
+}
+@media(max-width: 420px) {
+    #floating-detail-menu {
+        width: 106%;
+        -webkit-border-radius: 3px;
     }
 }
