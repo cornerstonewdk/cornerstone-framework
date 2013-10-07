@@ -233,3 +233,11 @@ div.doc-content {
         width: 90%;
     }
 }
+@media(max-width: 360px) {
+    #floating-detail-menu {
+        width: 82%;
+    }
+    #floating-detail-menu-background {
+        width: 84%;
+    }
+}
