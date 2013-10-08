@@ -9,12 +9,9 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 cs = new WidgetCarousel({
                     el: '#carousel-example-generic'
                 });
-                cs.$el.on('complete.cs.carousel', function(e) {
-                    Logging.info('complete.cs.carousel', e);
-                    done();
-                });
                 cs.render();
                 expect(cs).to.be.an.instanceof(Backbone.View);
+                done()
                 $('#btnCsStart').click(function() {
                     cs.$el.carousel('cycle')
                 });
@@ -24,7 +21,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('케로셀이 플레이 될때 play 이벤트가 발생하여야 한다.', function(done) {
             cs.$el.on('play.cs.carousel', function(e) {
-                console.log(e,e.type)
                 Logging.info('play.cs.carousel', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('play');
@@ -600,10 +596,9 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //         this.timeout(2000);
     //         setTimeout(function() {}, 500);
     //         table.$el.on('itemClick.cs.datatables', 'tr', function(e, datum, dataset) {
-    //             Logging.info('itemClick.cs.datatables', datum, dataset );
+    //             Logging.info('itemClick.cs.datatables', datum, dataset );`
     //             expect(e).to.be.an.instanceof($.Event);
     //             expect(e.type).to.be.equal('itemClick');
-    //             expect(e.namespace).to.be.equal('cs.datatables');
     //             expect(result).to.be.an('object')
     //             expect(result.data).to.be.instanceof(Array);
     //             done();
@@ -755,7 +750,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     $("<canvas/>", {
                         "id": "mc-canvas",
                         "class": "mc-canvas"
-                    }).appendTo($("#motion-captcha-example"));
+                    }).css({"float":"left"}).appendTo($("#motion-captcha-example"));
                     captcha = new WidgetMotioncaptcha({
                         el: '#mc-canvas'
                     });
@@ -772,8 +767,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             });
         });
         
-        it('캡차을 그릴때 start, move, end 이벤트가 발생하여야 한다. 또한 캡차를 잘못그려 fail 이벤트도 발생하여야 한다.', function(done) {
-            this.timeout(3000);
+        it('캡차을 그릴때 start, move, end 이벤트가 발생하여야 한다. 또한 캡차를 잘못그려 fail 이벤트도 발생하여야 한다.', function() {
             captcha.$el.on('start.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
                 Logging.info('start.cs.motionCaptcha', e);
@@ -789,7 +783,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 Logging.info('end.cs.motionCaptcha', e);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('end');
-                done();
             }).on('fail.cs.motionCaptcha', function(e) {
                 e.stopPropagation();
                 Logging.info('fail.cs.motionCaptcha', e);
@@ -799,67 +792,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 e.stopPropagation();
                 Logging.info('success.cs.motionCaptcha', e);
                 expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('success');
-            });
-            require(['hammer','faketouches','showtouches', 'gestures'], function(Hammer, FakeTouches) {
-
-                Hammer.HAS_POINTEREVENTS = false;
-                Hammer.HAS_TOUCHEVENTS = true;
-
-                var set_faketouches_type = FakeTouches.TOUCH_EVENTS;
-                var el = document.getElementById('mc-canvas');
-
-                var faker = new FakeTouches(el);
-                var hammertime = new Hammer(el);
-
-                var all_events = ["touch", "release", "hold", "tap", "doubletap",
-                    "dragstart", "drag", "dragend", "dragleft", "dragright",
-                    "dragup", "dragdown", "swipe", "swipeleft", "swiperight",
-                    "swipeup", "swipedown", "transformstart", "transform",
-                    "transformend", "rotate", "pinch", "pinchin", "pinchout"
-                ];
-
-                // keep track of what events are triggered
-                var triggered_events = {};
-                hammertime.on(all_events.join(" "), function(ev) {
-                    triggered_events[ev.type] = ev;
-                });
-
-                function testGesture(gesture, expect_events, callback) {
-                    // reset triggered events
-                    triggered_events = {};
-
-                    // trigger the gesture faker
-                    faker.triggerGesture(gesture, function() {
-                        var expect = expect_events.split(" ");
-                        var events = Object.keys(triggered_events);
-                        // _.each(triggered_events, function(ev, name) {
-                        //     testEventData(name, ev);
-                        // });
-
-                        // trigger callback with true/false is all the events are triggered
-                        // if also any other events are triggered it is false
-                        var success = (events.length === expect.length);
-
-                        // error msg
-                        var msg = gesture + " detected";
-                        if (!success) {
-                            msg = gesture + " error. Events thrown: " + events.join(" ");
-                        }
-
-                        // maybe something happens after the end, so wait a moment
-                        callback(success, msg);
-                    });
-                };
-
-                var gesture_tests = {
-                    'DragRight': 'touch drag dragstart dragright dragend release'
-                };
-
-                testGesture('DragRight', gesture_tests['DragRight'], function(success, msg) {
-                    Logging.info(success, msg);
-                });
-            });
+           });
         });
     });
 
@@ -1238,43 +1171,75 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
             scrollView.$el.on('beforeScrollStart.cs.scrollView',function(e){
                 Logging.info('1st scrollview beforeScrollStart.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('beforeScrollStart');
             }).on('start.cs.scrollView',function(e){
                 Logging.info('1st scrollview start.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
             }).on('beforeScrollMove.cs.scrollView',function(e){
                 Logging.info('1st scrollview beforeScrollMove.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('beforeScrollMove');
             }).on('move.cs.scrollView',function(e){
                 Logging.info('1st scrollview move.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
             }).on('beforeScrollEnd.cs.scrollView',function(e){
                 Logging.info('1st scrollview beforeScrollEnd.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('end');
             }).on('scrollEnd.cs.scrollView',function(e){
                 Logging.info('1st scrollview scrollEnd.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('scrollEnd');
             }).on('touchEnd.cs.scrollView',function(e){
                 Logging.info('1st scrollview touchEnd.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('touchEnd');
             });
         });
 
         it('2번 째 스크롤뷰를 제어할 때 1번 스크롤뷰와 동일한 이벤트 및 pullDown(pullDown El이 보여진 상태에서 아래로 당길때), pullUp(pullUp El이 보여진 상태에서 위로 당길때), refresh 이벤트가 발생하여야 한다.', function() {
             pullDownScrollView.$el.on('beforeScrollStart.cs.scrollView',function(e){
                 Logging.info('2nd scrollview beforeScrollStart',e );
-            }).on('beforeScrollStart.cs.scrollView',function(e){
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('beforeScrollStart');
+            }).on('start.cs.scrollView',function(e){
                 Logging.info('2nd scrollview start.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('start');
             }).on('beforeScrollMove.cs.scrollView',function(e){
                 Logging.info('2nd scrollview beforeScrollMove.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('beforeScrollMove');
             }).on('move.cs.scrollView',function(e){
                 Logging.info('2nd scrollview move.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('move');
             }).on('beforeScrollEnd.cs.scrollView',function(e){
                 Logging.info('2nd scrollview beforeScrollEnd.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('beforeScrollEnd');
             }).on('scrollEnd.cs.scrollView',function(e){
                 Logging.info('2nd scrollview scrollEnd.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('scrollEnd');
             }).on('touchEnd.cs.scrollView',function(e){
                 Logging.info('2nd scrollview touchEnd.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('touchEnd');
             }).on('pullUp.cs.scrollView',function(e){
                 Logging.info('2nd scrollview pullUp.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('pullUp');
                 setTimeout(function () {
                     pullDownScrollView.refresh();
                 }, 500);
             }).on('pullDown.cs.scrollView',function(e){
                 Logging.info('2nd scrollview pullDown.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('pullDown');
                 setTimeout(function () {
                     // 임시 엘리먼트를 추가한다.
                     var $el = pullDownScrollView.$el.find(".list-group");
@@ -1285,6 +1250,8 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 }, 500);
             }).on('refresh.cs.scrollView',function(e){
                 Logging.info('2nd scrollview refresh.cs.scrollView',e );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('refresh');
             });
         });
 
@@ -1343,12 +1310,10 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     Logging.info('body show.cs.spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
-                    expect(e.namespace).to.be.equal('cs.spinner');
                 }).on('shown.cs.spinner', function(e) {
                     Logging.info('body shown.cs.spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
-                    expect(e.namespace).to.be.equal('cs.spinner');
                     done();
                 });
                 body_spinner.render();
@@ -1359,18 +1324,17 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('전체 영역 스피너가 보여질 때 백그라운드를 클릭 시 hide, hidden 이벤트가 순차적으로 일어나야한다.', function(done) {
             body_spinner.$el.on('hide.cs.spinner', function(e) {
+                e.stopPropagation();
                 Logging.info('body hide.cs.spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
-                expect(e.namespace).to.be.equal('cs.spinner');
             }).on('hidden.cs.spinner', function(e) {
+                e.stopPropagation();
                 Logging.info('body hidden.cs.spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
-                expect(e.namespace).to.be.equal('cs.spinner');
                 done();
             });
-            // $('body.spinner-outer-bg').click();
             body_spinner.$el.spinner('hide');
         });
 
@@ -1384,13 +1348,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                     Logging.info('inner show.cs.spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('show');
-                    expect(e.namespace).to.be.equal('cs.spinner');
                 }).on('shown.cs.spinner', function(e) {
                     e.stopPropagation();
                     Logging.info('inner shown.cs.spinner');
                     expect(e).to.be.an.instanceof($.Event);
                     expect(e.type).to.be.equal('shown');
-                    expect(e.namespace).to.be.equal('cs.spinner');
                     done();
                 });
                 inner_spinner.render();
@@ -1405,13 +1367,11 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 Logging.info('inner hide.cs.spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hide');
-                expect(e.namespace).to.be.equal('cs.spinner');
             }).on('hidden.cs.spinner', function(e) {
                 e.stopPropagation();
                 Logging.info('inner hidden.cs.spinner');
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('hidden');
-                expect(e.namespace).to.be.equal('cs.spinner');
                 done();
             });
             inner_spinner.$el.spinner('hide');
@@ -1582,7 +1542,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 Logging.info('selected.cs.typeahead', e, datum, dataset);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('selected');
-                expect(e.namespace).to.be.equal('cs.typeahead');
                 expect(datum.value).to.be.equal('South Korea');
                 expect(dataset).to.be.equal('countries');
                 done();
@@ -1595,7 +1554,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 Logging.info('selected.cs.typeahead', e, datum, dataset);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('selected');
-                expect(e.namespace).to.be.equal('cs.typeahead');
                 expect(dataset).to.be.equal('countries');
             });
         });
