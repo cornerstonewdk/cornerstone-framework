@@ -70,13 +70,6 @@
         return this
     }
 
-    Carousel.prototype.loadImg = function() {
-        var self = this;
-        this.$element.find('.carousel-inner img').off('load.cs.carousel').on('load.cs.carousel',function(){
-            self.$element.trigger('complete.cs.carousel');
-        });
-    }
-
     $.fn.carousel.Constructor = Carousel;
 
     $.fn.carousel = function (option) {
@@ -90,7 +83,6 @@
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
-      if (typeof option !== 'string') data.loadImg()
     })
   }
 
