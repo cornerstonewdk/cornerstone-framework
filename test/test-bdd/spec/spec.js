@@ -596,7 +596,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     //         this.timeout(2000);
     //         setTimeout(function() {}, 500);
     //         table.$el.on('itemClick.cs.datatables', 'tr', function(e, datum, dataset) {
-    //             Logging.info('itemClick.cs.datatables', datum, dataset );`
+    //             Logging.info('itemClick.cs.datatables', datum, dataset );
     //             expect(e).to.be.an.instanceof($.Event);
     //             expect(e.type).to.be.equal('itemClick');
     //             expect(result).to.be.an('object')
@@ -685,13 +685,94 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
     });
 
-    // describe('widget-listview', function() {
-    //     var listview;
+    describe('widget-listview', function() {
+        var listview;
+        var isLoading = false;
+        var html;
+        var $el;
 
-    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function() {
+        // function getItem() {
+        //     isLoading = true;
 
-    //     });
-    // });
+        //     var request = $.ajax({
+        //         url: "data/sample-list.json",
+        //         type: "GET",
+        //         dataType: "json"
+        //     });
+
+        //     request.done(function (json) {
+        //         html = '<ul class="list-group">';
+        //         if (typeof json === "object" && json.items.length > 0) {
+        //             $(json.items).each(function () {
+        //                 html += '<li class="list-group-item">';
+        //                 html += this.title;
+        //                 html += '   <div class="pull-right">';
+        //                 html += '   <span class="badge">" + this.published + "</span>';
+        //                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
+        //                 html += '   </div>';
+        //                 html += '</li>';
+        //             });
+        //             html += "</ul>";
+        //             listview.$el.featuredListView("addItem", html);
+        //         }
+        //         html = "";
+        //         isLoading = false;
+        //     });
+
+        //     request.fail(function (jqXHR, textStatus) {
+        //         console.log("Request failed: " + textStatus);
+        //         isLoading = false;
+        //     });
+        //     return true;
+        // }
+
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-listview'],function(WidgetListView){
+                
+            //     var ItemList = Backbone.Collection.extend({
+            //         model: Backbone.Model.extend(),
+            //         url:"data/sample-list.json"
+            //     });
+
+            //     listview = new WidgetListView({
+            //         el: "#listview",
+            //         collection: new ItemList(),
+            //         $scroller: $("#listview").closest(".list-view-wrapper"),
+            //         optimization: true,
+            //         scrollEndAction: function () {
+            //             console.log("scrollEndAction");
+            //             getItem();
+            //         }
+            //     });
+            //     listview.render();
+            //     expect(listview).to.be.an.instanceof(Backbone.View);
+            
+
+                $el = $('#listView');
+                done();
+            });
+        });
+
+
+        it('plugin방식으로 적용 후 스크롤을 마지막으로 보냈을 때 scrollend 이벤트가 발생하여야 한다.',function(done){
+            $el.featuredListView({
+                $scroller: $el.closest(".list-view-wrapper"),
+                optimization: true,
+                scrollEndAction: function () {
+                    console.log("scrollEndAction");
+                }
+            });
+
+            $el.on("scrollEnd.cs.liveView", function (e) {
+                Logging.info("scrollEnd.cs.liveView",e);
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('scrollEnd');
+                done();
+            });
+
+            $el.closest(".list-view-wrapper").scrollTop(2000);
+        })
+    });
 
     describe('widget-media', function() {
         var media1, media2;
