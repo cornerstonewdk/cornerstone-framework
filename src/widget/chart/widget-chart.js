@@ -6,7 +6,7 @@
  *  Author: 김우섭
  *  License :
  */
-(function (root, factory) {
+;(function (root, factory) {
 
     // Require.js가 있을 경우
     if (typeof define === 'function' && define.amd)
