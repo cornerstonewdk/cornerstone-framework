@@ -153,6 +153,7 @@
     });
 
     return Backbone && Backbone.View.extend({
+        model: new Backbone.Model(),
         initialize: function () {
             this.listenTo(this.model, "change", this.render);
             this.listenTo(this.model, "reset", this.render);
@@ -163,7 +164,7 @@
                 this.dataTable = this.$el.featuredDataTable(this.options);
             }
 
-            this.options = $.extend({}, this.options, this.toJSON());
+            this.options = $.extend({}, this.model.options, this.model.toJSON());
             this.dataTable.fnClearTable();
             this.dataTable.fnAddData(view.options.aaData);
             this.dataTable.fnDraw();
