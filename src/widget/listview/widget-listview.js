@@ -16,8 +16,8 @@
 			return Backbone.View.extend({
 				tagName: "ul",
 				initialize: function () {
-					this.listenTo(collection, "change", this.render);
-					this.listenTo(collection, "reset", this.render);
+					this.listenTo(this.collection, "change", this.render);
+					this.listenTo(this.collection, "reset", this.render);
 				},
 
 				addItem: function () {
