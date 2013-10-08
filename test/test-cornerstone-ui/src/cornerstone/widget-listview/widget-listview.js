@@ -1,7 +1,209 @@
 /*
-    Cornerstone Framework v0.9.1
+ *  Project: SKT HTML5 Framework
+ *  CodeName : CornerStone
+ *  FileName : featured-listview.js
+ *  Description: 리스트뷰는 코너스톤 UI에 맞게 기본적으로 설정하며, DATA-API를 사용해서 스크립트 사용없이 마크업
+ *  속성만으로 작동되도록 구현함.
+ *  Author: 김우섭
+ *  License :
+ */
 
-    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
-    Released under the Apache License, Version 2.0
-*/
-!function(a,b,c){"function"==typeof define&&define.amd?define(["backbone","underscore","jquery"],function(d,e,f){return c(f,a,b),d.View.extend({tagName:"ul",initialize:function(){this.listenTo(collection,"change",this.render),this.listenTo(collection,"reset",this.render)},addItem:function(){var a=document.createElement(this.tagName);this.collection.each(function(b){f(a).append(new this.options.itemView({model:b}).render().el)}),this.$el.featuredListView("addItem",a)},removeItem:function(a,b){return this.$el.featuredListView("removeItem",a,b)},render:function(){return this.$el.featuredListView(this.options),this.addItem(),this}})}):c(a.jQuery,a,b)}(this,document,function(a,b,c){var d,e,f,g="featuredListView",h=function(g,h){var i=this;f={$scroller:a(b),optimization:!0,SCROLL_THROTTLE:0,scrollEndAction:function(){}},this.$el=a(g),this.options=h=a.extend(!0,f,h),infinity.config.SCROLL_THROTTLE=this.options.SCROLL_THROTTLE,d=infinity.ListView,e=infinity.ListItem,this.$el.each(function(){if(h.optimization){var b=i.$el.html();i.$el.html("");var c=new d(a(this));a(this).data("listView",c),i.$el.data("listView").append(b),b=""}}),this.scrollHeight=navigator.userAgent.match(":*iPhone:*")&&!b.navigator.standalone?60:0;var j=0;h.$scroller.on("scroll",function(d){d.target.tagName?a(this)[0].scrollHeight-a(this).scrollTop()==a(this).outerHeight()&&(h.scrollEndAction(),console.log("nested",i.$el),i.$el.trigger("scrollEnd.cs.liveView")):(j=navigator.userAgent.match("Android")?a(b).scrollTop()+100:a(b).scrollTop(),j>=a(c).height()-a(b).height()-i.scrollHeight&&(h.scrollEndAction(),console.log("window",i.$el),i.$el.trigger("scrollEnd.cs.liveView")))})};return h.prototype.addItem=function(b,c){b.optimization?this.$el.data("listView").append(a(c)):this.$el.append(c),this.$el.trigger("listView.addItem.done")},h.prototype.removeItem=function(c,d,e){var f,g,h,i,j,k=0;if(c.optimization){if("undefined"==typeof e)for(i=this.$el.data("listView").find(d),f=0,h=i.length;h>f;f++)i[f].remove();else for(i=this.$el.data("listView").find(d),f=0,h=i.length;h>f;f++){for(g in e)j=i[f].$el.find("[data-list-itemid='"+e[g]+"']"),k+=j.height(),j.remove();i[f].parent.height=i[f].parent.height-k}b.scrollTo(b.scrollX,b.scrollY-a(c.spinner).height())}else{if("undefined"==typeof e)d.remove();else for(f in e)d.find("[data-list-itemid='"+e[f]+"']").remove();b.scrollTo(b.scrollX,b.scrollY-a(c.spinner).height())}this.refresh(),this.$el.trigger("listView.removeItem.done")},h.prototype.refresh=function(){var c=this.$el.data("listView"),d=0;a(c.pages).each(function(){d+=this.height}),c.height=d,this.$el.children("div").css({height:c.height}),b.scrollTo(b.scrollX,b.scrollY-a(options.spinner).height())},h.prototype.scrollHandler=function(){this.$el.data("listView").scrollHandler()},a.fn[g]=function(b,c,d){return this.each(function(){var e=a(this),f=e.data(g);f||e.data(g,f=new h(this,b)),"string"==typeof b&&f[b](f.options,c,d)})},a.fn[g].Constructor=h,a(function(){a("[data-featured=listView]").each(function(){a(this)[g]()})}),h});
+(function (root, doc, factory) {
+    if (typeof define === "function" && define.amd) {
+
+        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
+            factory($, root, doc);
+            return Backbone.View.extend({
+                tagName: "ul",
+                initialize: function () {
+                    this.listenTo(collection, "change", this.render);
+                    this.listenTo(collection, "reset", this.render);
+                },
+
+                addItem: function () {
+                    var html = document.createElement(this.tagName);
+                    this.collection.each(function (model) {
+                        $(html).append(new this.options.itemView({model: model}).render().el);
+                    });
+                    this.$el.featuredListView("addItem", html);
+                },
+
+                removeItem: function ($target, aNumbers) {
+                    return this.$el.featuredListView("removeItem", $target, aNumbers);
+                },
+
+                render: function () {
+                    this.$el.featuredListView(this.options);
+
+                    this.addItem();
+
+                    return this;
+                }
+            });
+        });
+    } else {
+        // Browser globals
+        factory(root.jQuery, root, doc);
+    }
+}(this, document, function ($, window, document) {
+    var pluginName = "featuredListView",
+    ListView,
+    ListItem,
+    defaultOptions;
+
+    var Plugin = function (element, options) {
+        var self = this;
+        defaultOptions = {
+            $scroller: $(window),
+            optimization: true,
+            SCROLL_THROTTLE: 0,
+            scrollEndAction: function () {
+
+            }
+        };
+        this.$el = $(element);
+        this.options = options = $.extend(true, defaultOptions, options);
+
+        infinity.config.SCROLL_THROTTLE = this.options.SCROLL_THROTTLE;
+        ListView = infinity.ListView;
+        ListItem = infinity.ListItem;
+
+        this.$el.each(function () {
+            if (options.optimization) {
+                var html = self.$el.html();
+                self.$el.html("");
+
+                // 리스트뷰 최적화를 위해 Infinity 적용
+                var listView = new ListView($(this));
+                $(this).data('listView', listView);
+                self.$el.data('listView').append(html);
+
+                // HTML 초기화
+                html = "";
+            }
+        });
+
+        this.scrollHeight = navigator.userAgent.match(":*iPhone:*") && !window.navigator.standalone ? 60 : 0;
+        var scrollTop = 0;
+        options.$scroller.on("scroll", function (e) {
+            if(e.target.tagName) {
+                if ($(this)[0].scrollHeight - $(this).scrollTop() == $(this).outerHeight()) {
+                    options.scrollEndAction();
+                    console.log("nested", self.$el);
+                    self.$el.trigger("scrollEnd.cs.liveView");
+                }
+            } else {
+                scrollTop = navigator.userAgent.match("Android") ? $(window).scrollTop() + 100 : $(window).scrollTop();
+                if (scrollTop >= ($(document).height() - $(window).height() - self.scrollHeight)) {
+                    options.scrollEndAction();
+                    console.log("window", self.$el);
+                    self.$el.trigger("scrollEnd.cs.liveView");
+                }
+            }
+        });
+    };
+
+    Plugin.prototype.addItem = function (options, html) {
+
+        if (options.optimization) {
+            console.log(this.$el.data('listView'));
+            this.$el.data('listView').cleanup();
+            this.$el.data('listView').append($(html));
+        } else {
+            this.$el.append(html);
+        }
+
+        // 리스트 아이템 추가를 완료할 때 이벤트를 발생시킨다.
+        this.$el.trigger("listView.addItem.done");
+    };
+
+    Plugin.prototype.removeItem = function (options, page, items) {
+        var i, j;
+        var height = 0;
+        var length;
+        var listItems;
+        var target;
+        if (options.optimization) {
+            if (typeof items === "undefined") {
+                listItems = this.$el.data('listView').find(page);
+                for (i = 0, length = listItems.length; i < length; i++) {
+                    listItems[i].remove();
+                }
+            } else {
+                listItems = this.$el.data('listView').find(page);
+                for (i = 0, length = listItems.length; i < length; i++) {
+                    for (j in items) {
+                        target = listItems[i].$el.find("[data-list-itemid='" + items[j] + "']");
+                        height += target.height();
+                        target.remove();
+                    }
+                    listItems[i].parent.height = listItems[i].parent.height - height;
+                }
+            }
+
+            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
+        } else {
+            if (typeof items === "undefined") {
+                page.remove();
+            } else {
+                for (i in items) {
+                    page.find("[data-list-itemid='" + items[i] + "']").remove();
+                }
+            }
+
+            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
+        }
+
+        this.refresh();
+        // 리스트 아이템 삭제를 완료할때 이벤트를 발생시킨다.
+        this.$el.trigger("listView.removeItem.done");
+    };
+
+    Plugin.prototype.refresh = function () {
+        var listView = this.$el.data('listView');
+        var height = 0;
+
+        $(listView.pages).each(function () {
+            height += this.height;
+        });
+        listView.height = height;
+        this.$el.children("div").css({"height": listView.height});
+
+        window.scrollTo(window.scrollX, window.scrollY - $(options.spinner).height());
+    };
+
+    Plugin.prototype.scrollHandler = function () {
+        this.$el.data('listView').scrollHandler();
+    };
+
+    // 프로토타입 클래스로 정의된 객체를 플러그인과 연결시킨다.
+    $.fn[pluginName] = function (options, page, items) {
+        return this.each(function () {
+            var $this = $(this);
+            var data = $this.data(pluginName);
+
+            // 초기 실행된 경우 플러그인을 해당 엘리먼트에 data 등록
+            if (!data) {
+                $this.data(pluginName, (data = new Plugin(this, options)))
+            }
+
+            // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
+            if (typeof options == 'string') {
+                data[options](data.options, page, items);
+            }
+        });
+    };
+
+    $.fn[pluginName].Constructor = Plugin;
+
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=listView]").each(function () {
+            $(this)[pluginName]();
+        });
+    });
+
+    return Plugin;
+}));
