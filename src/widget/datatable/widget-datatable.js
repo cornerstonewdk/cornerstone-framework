@@ -164,9 +164,9 @@
                 this.dataTable = this.$el.featuredDataTable(this.options);
             }
 
-            this.options = $.extend({}, this.model.options, this.model.toJSON());
+            this.options = $.extend({}, this.options, {aaData: this.model.toJSON()});
             this.dataTable.fnClearTable();
-            this.dataTable.fnAddData(view.options.aaData);
+            this.dataTable.fnAddData(this.options.aaData);
             this.dataTable.fnDraw();
             return this;
         }
