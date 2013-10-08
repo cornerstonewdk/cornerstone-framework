@@ -59,7 +59,6 @@
 
         // 기본 스크롤이 있는 페이지에 Nested하게 ScrollView를 사용하는 경우 스크롤뷰에서 move할 때 기본 스크롤이 움직이지 않도록 함.
         this.$el.off("touchmove" + eventNamespace).on("touchmove" + eventNamespace, function (e) {
-            console.log(e.target.type);
             if (e.target.type === "range") {
                 return;
             }
