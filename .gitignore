@@ -22,3 +22,4 @@ tools/cornerstone-cli/build/node_modules
 /Gruntfile.js
 /package.json
 server/SKT_Open_API_Provider/node_modules
+test/test-coverage/coverage

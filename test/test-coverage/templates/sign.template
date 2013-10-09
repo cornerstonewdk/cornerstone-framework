@@ -1,0 +1,14 @@
+<section id="sign" class="row">
+    <header class="page-header">
+        <h2 class="title">Sign(수동 테스트)</h2>
+    </header>
+    <div class="col col-lg-12">
+        <div class="widget-sign">
+            <div id="signature" class="sign"></div>
+            <div id="tools">
+                <button class="btn btn-default show-sign">이미지로 보기</button>
+            </div>
+            <div class="widget-sign-viewer" title="이미지를 보여줄 영역"></div>
+        </div>
+    </div>
+</section>

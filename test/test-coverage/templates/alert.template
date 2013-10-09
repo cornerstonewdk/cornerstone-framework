@@ -1,0 +1,20 @@
+<section id="alert" class="row">
+    <header class="page-header">
+        <h2 class="title">Alert</h2>
+    </header>
+    <div class="col col-lg-12">
+        <div class="alert alert-block">
+            <button type="button" class="close">×</button>
+            <h4>Warning!</h4>
+
+            <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent
+                commodo cursus magna, vel scelerisque nisl consectetur et. <a href="#" class="btn-link">Link</a>
+            </p>
+        </div>
+        <div class="alert alert-danger">
+            <button type="button" class="close">×</button>
+            <strong>Oh snap!</strong>Change a few things up and try submitting again. <a href="#"
+                                                                                         class="btn-link">Link</a>
+        </div>
+    </div>
+</section>

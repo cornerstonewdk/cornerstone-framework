@@ -1,0 +1,18 @@
+<section id="datatables" class="row">
+    <header class="page-header">
+        <h2 class="title">Datatables</h2>
+    </header>
+    <div class="col col-lg-12">
+        <table id="test-datatables" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Rendering engine</th>
+                <th>Browser</th>
+                <th>Platform(s)</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</section>

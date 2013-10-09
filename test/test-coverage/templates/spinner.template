@@ -1,0 +1,10 @@
+<section class="row">
+    <div id="spinner" class="col col-lg-12">
+        <header class="page-header">
+            <h2 class="title">Spinner</h2>
+        </header>
+        <div id="loadingCircle" style="height: 100px;">
+
+        </div>
+    </div>
+</section>

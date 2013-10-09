@@ -1,0 +1,19 @@
+<section id="popover" class="row">
+    <header class="page-header">
+        <h2 class="title">Popover</h2>
+    </header>
+    <div class="col col-lg-12">
+        <a href="#" class="btn btn-lg btn-danger">Click to toggle popover</a>
+
+        <h3 class="title">Four directions</h3>
+
+        <div class="bs-example tooltip-demo">
+            <ul class="demo-tooltips">
+                <li><a href="#" title="Popover on top">Popover on top</a>
+                </li>
+                <li><a href="#" title="Popover on bottom">Popover on bottom</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

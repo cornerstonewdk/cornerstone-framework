@@ -1,0 +1,13 @@
+{
+    "name": "cornerstone-based-project",
+    "version": "0.0.0",
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "karma": "~0.10",
+        "karma-mocha": "~0.1",
+        "karma-coverage": "latest",
+        "grunt-karma": "latest",
+        "matchdep": "latest"
+    }
+}

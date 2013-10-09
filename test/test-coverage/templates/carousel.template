@@ -1,0 +1,22 @@
+<section id="carousel" class="row">
+    <header class="page-header">
+        <h2 class="title">Carousel</h2>
+    </header>
+    <div class="col col-12">
+        <div id="carousel-example-generic" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img alt="First slide" src="http://img.unab.us/2012/11/WatchBattleshipOnline.jpg">
+                </div>
+                <div class="item">
+                    <img alt="Second slide" src="http://eto.co.kr/Data/2012/02/02/N2012020216171939701.jpg">
+                </div>
+                <div class="item">
+                    <img alt="Third slide"
+                         src="http://www.filmofilia.com/wp-content/uploads/2011/07/battleship_movie_02.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="btnCsStart" type="button" class="btn btn-default">캐로셀 스타트</button>
+</section>
