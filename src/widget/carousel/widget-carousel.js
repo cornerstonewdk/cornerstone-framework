@@ -2,7 +2,7 @@
 
     // Require.js가 있을 경우
     if (typeof define === 'function' && define.amd)
-        define([ "jquery", "underscore", "backbone", "bootstrap" ], factory);
+        define([ "jquery", "underscore", "backbone", "bootstrap", "widget-touch" ], factory);
     else
         root.Carousel = factory(root.$, root._, root.Backbone);
 
