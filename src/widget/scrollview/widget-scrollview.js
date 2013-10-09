@@ -8,27 +8,32 @@
  *  License :
  */
 
-(function () {
-    "use strict";
+;(function (root, factory) {
 
-    var root = this,
-        pluginName = "featuredScrollView",
-        eventNamespace = ".cs.scrollView",
-        events = [
-            {"eventName": "pullDown", "callbackName": "pullDownAction"},
-            {"eventName": "pullUp", "callbackName": "pullUpAction"},
-            {"eventName": "refresh", "callbackName": "onRefresh"},
-            {"eventName": "beforeScrollStart", "callbackName": "onBeforeScrollStart"},
-            {"eventName": "start", "callbackName": "onScrollStart"},
-            {"eventName": "beforeScrollMove", "callbackName": "onBeforeScrollMove"},
-            {"eventName": "move", "callbackName": "onScrollMove"},
-            {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
-            {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
-            {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
-            {"eventName": "destroy", "callbackName": "onDestroy"}
-        ],
-        myScroll, pullDownEl, pullDownOffset,
-        pullUpEl, pullUpOffset;
+    // Require.js가 있을 경우
+    if (typeof define === "function" && define.amd)
+        define([ "jquery", "underscore", "backbone", "iscroll" ], factory);
+    else
+        root.ScrollView = factory(root.$, root._, root.Backbone);
+
+}(window, function ($, _, Backbone) {
+    var pluginName = "featuredScrollView",
+    eventNamespace = ".cs.scrollView",
+    events = [
+        {"eventName": "pullDown", "callbackName": "pullDownAction"},
+        {"eventName": "pullUp", "callbackName": "pullUpAction"},
+        {"eventName": "refresh", "callbackName": "onRefresh"},
+        {"eventName": "beforeScrollStart", "callbackName": "onBeforeScrollStart"},
+        {"eventName": "start", "callbackName": "onScrollStart"},
+        {"eventName": "beforeScrollMove", "callbackName": "onBeforeScrollMove"},
+        {"eventName": "move", "callbackName": "onScrollMove"},
+        {"eventName": "beforeScrollEnd", "callbackName": "onBeforeScrollEnd"},
+        {"eventName": "scrollEnd", "callbackName": "onScrollEnd"},
+        {"eventName": "touchEnd", "callbackName": "onTouchEnd"},
+        {"eventName": "destroy", "callbackName": "onDestroy"}
+    ],
+    pullDownEl, pullDownOffset,
+    pullUpEl, pullUpOffset;
 
 
     var Plugin = function (element, options) {
@@ -73,8 +78,8 @@
                 e.preventDefault();
             });
         }).off("mouseout" + eventNamespace).on("mouseout" + eventNamespace, function () {
-                $(window).off("mousewheel" + eventNamespace + " DOMMouseScroll" + eventNamespace);
-            });
+            $(window).off("mousewheel" + eventNamespace + " DOMMouseScroll" + eventNamespace);
+        });
 
         this.options = this.addEventListener(this.options);
 
@@ -230,18 +235,10 @@
         });
     });
 
-    // 코너스톤 MVC 프레임워크인 경우 이 위젯을 모듈화 한다.
-    if (typeof root.define === "function" && root.define.amd) {
-        var define = root.define;
-        // AMD Hybrid 포맷
-        define(["backbone", "underscore", "jquery"], function (Backbone, _, $) {
-
-            return Backbone.View.extend({
-                render: function () {
-                    _.extend(this, this.$el.featuredScrollView(this.options).data("featuredScrollView"));
-                    return this;
-                }
-            });
-        });
-    }
-}).call(this);
+    return Backbone ? Backbone.View.extend({
+        render: function () {
+            _.extend(this, this.$el.featuredScrollView(this.options).data("featuredScrollView"));
+            return this;
+        }
+    }) : Plugin;
+}));

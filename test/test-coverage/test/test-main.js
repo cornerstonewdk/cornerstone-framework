@@ -18,7 +18,7 @@ requirejs.config({
         "datepicker": "lib/datepicker/bootstrap-datepicker",
         "hammer": "lib/hammer/hammer",
         "infinity": "lib/infinity/infinity.min",
-        "iscroll": "lib/iscroll-4/iscrll",
+        "iscroll": "lib/iscroll-4/iscroll",
         "jquery.hammer": "lib/jquery.hammer/jquery.hammer",
         "hotkeys": "lib/jquery.hotkeys",
         "media": "lib/media/mediaelement-and-player.min",
