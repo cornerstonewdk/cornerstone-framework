@@ -7,45 +7,15 @@
  *  Author: 김우섭
  *  License :
  */
+;
+(function (root, factory) {
+    // Require.js가 있을 경우
+    if (typeof define === 'function' && define.amd)
+        define([ "jquery", "underscore", "backbone", "infinity" ], factory);
+    else
+        root.ListView = factory(root.$, root._, root.Backbone);
 
-(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-
-        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
-            factory($, root, doc);
-            return Backbone.View.extend({
-                tagName: "ul",
-                initialize: function () {
-                    this.listenTo(collection, "change", this.render);
-                    this.listenTo(collection, "reset", this.render);
-                },
-
-                addItem: function () {
-                    var html = document.createElement(this.tagName);
-                    this.collection.each(function (model) {
-                        $(html).append(new this.options.itemView({model: model}).render().el);
-                    });
-                    this.$el.featuredListView("addItem", html);
-                },
-
-                removeItem: function ($target, aNumbers) {
-                    return this.$el.featuredListView("removeItem", $target, aNumbers);
-                },
-
-                render: function () {
-                    this.$el.featuredListView(this.options);
-
-                    this.addItem();
-
-                    return this;
-                }
-            });
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
-}(this, document, function ($, window, document) {
+}(window, function ($, _, Backbone) {
     var pluginName = "featuredListView",
     ListView,
     ListItem,
@@ -77,16 +47,13 @@
                 var listView = new ListView($(this));
                 $(this).data('listView', listView);
                 self.$el.data('listView').append(html);
-
-                // HTML 초기화
-                html = "";
             }
         });
 
         this.scrollHeight = navigator.userAgent.match(":*iPhone:*") && !window.navigator.standalone ? 60 : 0;
         var scrollTop = 0;
         options.$scroller.on("scroll", function (e) {
-            if(e.target.tagName) {
+            if (e.target.tagName) {
                 if ($(this)[0].scrollHeight - $(this).scrollTop() == $(this).outerHeight()) {
                     options.scrollEndAction();
                     console.log("nested", self.$el);
@@ -208,5 +175,31 @@
         });
     });
 
-    return Plugin;
+    return Backbone ? Backbone.View.extend({
+        tagName: "ul",
+        initialize: function () {
+            this.listenTo(this.collection, "change", this.render);
+            this.listenTo(this.collection, "reset", this.render);
+        },
+
+        addItem: function () {
+            var html = document.createElement(this.tagName);
+            this.collection.each(function (model) {
+                $(html).append(new this.options.itemView({model: model}).render().el);
+            });
+            this.$el.featuredListView("addItem", html);
+        },
+
+        removeItem: function ($target, aNumbers) {
+            return this.$el.featuredListView("removeItem", $target, aNumbers);
+        },
+
+        render: function () {
+            this.$el.featuredListView(this.options);
+
+            this.addItem();
+
+            return this;
+        }
+    }) : Plugin;
 }));
