@@ -7,30 +7,18 @@
  *  Author: 김우섭
  *  License :
  */
+;(function (root, factory) {
 
-(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD Hybrid 포맷
-        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
-            factory($, root, doc);
-            return Backbone.View.extend({
-                render: function () {
-                    this.$el.featuredEditor(this.options);
-                    return this;
-                }
-            });
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
-}(window, document, function ($, window, document) {
+    // Require.js가 있을 경우
+    if (typeof define === 'function' && define.amd)
+        define([ "jquery", "underscore", "backbone", "bootstrap" ], factory);
+    else
+        root.Editor = factory(root.$, root._, root.Backbone);
 
-    "use strict";
-
+}(window, function ($, _, Backbone) {
     var readFileIntoDataUrl = function (fileInfo) {
         var loader = $.Deferred(),
-            fReader = new FileReader();
+        fReader = new FileReader();
         fReader.onload = function (e) {
             loader.resolve(e.target.result);
         };
@@ -45,139 +33,139 @@
     };
     $.fn.wysiwyg = function (userOptions) {
         var editor = this,
-            selectedRange,
-            options,
-            toolbarBtnSelector,
-            updateToolbar = function () {
-                if (options.activeToolbarClass) {
-                    $(options.toolbarSelector).find(toolbarBtnSelector).each(function () {
-                        var command = $(this).data(options.commandRole);
-                        if (document.queryCommandState(command)) {
-                            $(this).addClass(options.activeToolbarClass);
-                        } else {
-                            $(this).removeClass(options.activeToolbarClass);
-                        }
-                    });
-                }
-            },
-            execCommand = function (commandWithArgs, valueArg) {
-                var commandArr = commandWithArgs.split(' '),
-                    command = commandArr.shift(),
-                    args = commandArr.join(' ') + (valueArg || '');
-                document.execCommand(command, 0, args);
-                updateToolbar();
-            },
-            bindHotkeys = function (hotKeys) {
-                $.each(hotKeys, function (hotkey, command) {
-                    editor.keydown(hotkey,function (e) {
-                        if (editor.attr('contenteditable') && editor.is(':visible')) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            execCommand(command);
-                        }
-                    }).keyup(hotkey, function (e) {
-                            if (editor.attr('contenteditable') && editor.is(':visible')) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                            }
-                        });
-                });
-            },
-            getCurrentRange = function () {
-                var sel = window.getSelection();
-                if (sel.getRangeAt && sel.rangeCount) {
-                    return sel.getRangeAt(0);
-                }
-            },
-            saveSelection = function () {
-                selectedRange = getCurrentRange();
-            },
-            restoreSelection = function () {
-                var selection = window.getSelection();
-                if (selectedRange) {
-                    try {
-                        selection.removeAllRanges();
-                    } catch (ex) {
-                        document.body.createTextRange().select();
-                        document.selection.empty();
-                    }
-
-                    selection.addRange(selectedRange);
-                }
-            },
-            insertFiles = function (files) {
-                editor.focus();
-                $.each(files, function (idx, fileInfo) {
-                    if (/^image\//.test(fileInfo.type)) {
-                        $.when(readFileIntoDataUrl(fileInfo)).done(function (dataUrl) {
-                            execCommand('insertimage', dataUrl);
-                        }).fail(function (e) {
-                                options.fileUploadError("file-reader", e);
-                            });
+        selectedRange,
+        options,
+        toolbarBtnSelector,
+        updateToolbar = function () {
+            if (options.activeToolbarClass) {
+                $(options.toolbarSelector).find(toolbarBtnSelector).each(function () {
+                    var command = $(this).data(options.commandRole);
+                    if (document.queryCommandState(command)) {
+                        $(this).addClass(options.activeToolbarClass);
                     } else {
-                        options.fileUploadError("unsupported-file-type", fileInfo.type);
+                        $(this).removeClass(options.activeToolbarClass);
                     }
                 });
-            },
-            markSelection = function (input, color) {
+            }
+        },
+        execCommand = function (commandWithArgs, valueArg) {
+            var commandArr = commandWithArgs.split(' '),
+            command = commandArr.shift(),
+            args = commandArr.join(' ') + (valueArg || '');
+            document.execCommand(command, 0, args);
+            updateToolbar();
+        },
+        bindHotkeys = function (hotKeys) {
+            $.each(hotKeys, function (hotkey, command) {
+                editor.keydown(hotkey,function (e) {
+                    if (editor.attr('contenteditable') && editor.is(':visible')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        execCommand(command);
+                    }
+                }).keyup(hotkey, function (e) {
+                    if (editor.attr('contenteditable') && editor.is(':visible')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                });
+            });
+        },
+        getCurrentRange = function () {
+            var sel = window.getSelection();
+            if (sel.getRangeAt && sel.rangeCount) {
+                return sel.getRangeAt(0);
+            }
+        },
+        saveSelection = function () {
+            selectedRange = getCurrentRange();
+        },
+        restoreSelection = function () {
+            var selection = window.getSelection();
+            if (selectedRange) {
+                try {
+                    selection.removeAllRanges();
+                } catch (ex) {
+                    document.body.createTextRange().select();
+                    document.selection.empty();
+                }
+
+                selection.addRange(selectedRange);
+            }
+        },
+        insertFiles = function (files) {
+            editor.focus();
+            $.each(files, function (idx, fileInfo) {
+                if (/^image\//.test(fileInfo.type)) {
+                    $.when(readFileIntoDataUrl(fileInfo)).done(function (dataUrl) {
+                        execCommand('insertimage', dataUrl);
+                    }).fail(function (e) {
+                        options.fileUploadError("file-reader", e);
+                    });
+                } else {
+                    options.fileUploadError("unsupported-file-type", fileInfo.type);
+                }
+            });
+        },
+        markSelection = function (input, color) {
+            restoreSelection();
+            if (document.queryCommandSupported('hiliteColor')) {
+                document.execCommand('hiliteColor', 0, color || 'transparent');
+            }
+            saveSelection();
+            input.data(options.selectionMarker, color);
+        },
+        bindToolbar = function (toolbar, options) {
+            toolbar.find(toolbarBtnSelector).click(function () {
                 restoreSelection();
-                if (document.queryCommandSupported('hiliteColor')) {
-                    document.execCommand('hiliteColor', 0, color || 'transparent');
+                editor.focus();
+                execCommand($(this).data(options.commandRole));
+                saveSelection();
+            });
+            toolbar.find('[data-toggle=dropdown]').click(restoreSelection);
+
+            toolbar.find('input[type=text][data-' + options.commandRole + ']').on('webkitspeechchange change',function () {
+                var newValue = this.value;
+                /* ugly but prevents fake double-calls due to selection restoration */
+                this.value = '';
+                restoreSelection();
+                if (newValue) {
+                    editor.focus();
+                    execCommand($(this).data(options.commandRole), newValue);
                 }
                 saveSelection();
-                input.data(options.selectionMarker, color);
-            },
-            bindToolbar = function (toolbar, options) {
-                toolbar.find(toolbarBtnSelector).click(function () {
-                    restoreSelection();
-                    editor.focus();
-                    execCommand($(this).data(options.commandRole));
-                    saveSelection();
-                });
-                toolbar.find('[data-toggle=dropdown]').click(restoreSelection);
-
-                toolbar.find('input[type=text][data-' + options.commandRole + ']').on('webkitspeechchange change',function () {
-                    var newValue = this.value;
-                    /* ugly but prevents fake double-calls due to selection restoration */
-                    this.value = '';
-                    restoreSelection();
-                    if (newValue) {
-                        editor.focus();
-                        execCommand($(this).data(options.commandRole), newValue);
-                    }
-                    saveSelection();
-                }).on('focus',function () {
-                        var input = $(this);
-                        if (!input.data(options.selectionMarker)) {
-                            markSelection(input, options.selectionColor);
-                            input.focus();
-                        }
-                    }).on('blur', function () {
-                        var input = $(this);
-                        if (input.data(options.selectionMarker)) {
-                            markSelection(input, false);
-                        }
-                    });
-                toolbar.find('input[type=file][data-' + options.commandRole + ']').change(function () {
-                    restoreSelection();
-                    if (this.type === 'file' && this.files && this.files.length > 0) {
-                        insertFiles(this.files);
-                    }
-                    saveSelection();
-                    this.value = '';
-                });
-            },
-            initFileDrops = function () {
-                editor.on('dragenter dragover', false)
-                    .on('drop', function (e) {
-                        var dataTransfer = e.originalEvent.dataTransfer;
-                        e.stopPropagation();
-                        e.preventDefault();
-                        if (dataTransfer && dataTransfer.files && dataTransfer.files.length > 0) {
-                            insertFiles(dataTransfer.files);
-                        }
-                    });
-            };
+            }).on('focus',function () {
+                var input = $(this);
+                if (!input.data(options.selectionMarker)) {
+                    markSelection(input, options.selectionColor);
+                    input.focus();
+                }
+            }).on('blur', function () {
+                var input = $(this);
+                if (input.data(options.selectionMarker)) {
+                    markSelection(input, false);
+                }
+            });
+            toolbar.find('input[type=file][data-' + options.commandRole + ']').change(function () {
+                restoreSelection();
+                if (this.type === 'file' && this.files && this.files.length > 0) {
+                    insertFiles(this.files);
+                }
+                saveSelection();
+                this.value = '';
+            });
+        },
+        initFileDrops = function () {
+            editor.on('dragenter dragover', false)
+            .on('drop', function (e) {
+                var dataTransfer = e.originalEvent.dataTransfer;
+                e.stopPropagation();
+                e.preventDefault();
+                if (dataTransfer && dataTransfer.files && dataTransfer.files.length > 0) {
+                    insertFiles(dataTransfer.files);
+                }
+            });
+        };
         options = $.extend({}, $.fn.wysiwyg.defaults, userOptions);
         toolbarBtnSelector = 'a[data-' + options.commandRole + '],button[data-' + options.commandRole + '],input[type=button][data-' + options.commandRole + ']';
         bindHotkeys(options.hotKeys);
@@ -186,14 +174,14 @@
         }
         bindToolbar($(options.toolbarSelector), options);
         editor.attr('contenteditable', true)
-            .on('mouseup keyup mouseout', function () {
-                saveSelection();
-                updateToolbar();
-            });
+        .on('mouseup keyup mouseout', function () {
+            saveSelection();
+            updateToolbar();
+        });
         $(window).bind('touchend', function (e) {
             var isInside = (editor.is(e.target) || editor.has(e.target).length > 0),
-                currentRange = getCurrentRange(),
-                clear = currentRange && (currentRange.startContainer === currentRange.endContainer && currentRange.startOffset === currentRange.endOffset);
+            currentRange = getCurrentRange(),
+            clear = currentRange && (currentRange.startContainer === currentRange.endContainer && currentRange.startOffset === currentRange.endOffset);
             if (!clear || isInside) {
                 saveSelection();
                 updateToolbar();
@@ -228,16 +216,23 @@
         return this.each(function () {
             var $this = $(this);
             var $parent = $this.closest(".widget-editor");
-            var initToolbarBootstrapBindings = function() {
-                var fonts = ['Serif', 'Arial', 'Courier', 'Courier New', 'Helvetica',  'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times'],
-                    fontTarget = $parent.find('[title=Font]').siblings('.dropdown-menu');
+            var initToolbarBootstrapBindings = function () {
+                var fonts = ['Serif', 'Arial', 'Courier', 'Courier New', 'Helvetica', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times'],
+                fontTarget = $parent.find('[title=Font]').siblings('.dropdown-menu');
                 $.each(fonts, function (idx, fontName) {
-                    fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
+                    fontTarget.append($('<li><a data-edit="fontName ' + fontName + '" style="font-family:\'' + fontName + '\'">' + fontName + '</a></li>'));
                 });
-                $parent.find('a[title]').tooltip({container:'body'});
-                $parent.find('.dropdown-menu input').click(function() {return false;})
-                    .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
-                    .keydown('esc', function () {this.value='';$(this).change();});
+                $parent.find('a[title]').tooltip({container: 'body'});
+                $parent.find('.dropdown-menu input').click(function () {
+                    return false;
+                })
+                .change(function () {
+                    $(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');
+                })
+                .keydown('esc', function () {
+                    this.value = '';
+                    $(this).change();
+                });
 
                 $parent.find('[data-role=magic-overlay]').each(function () {
                     var overlay = $(this), target = $(overlay.data('target'));
@@ -245,7 +240,7 @@
                 });
                 if ("onwebkitspeechchange"  in document.createElement("input")) {
                     var editorOffset = $this.offset();
-                    $parent.find('.btn-editor-voice').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$this.innerWidth()-35});
+                    $parent.find('.btn-editor-voice').css('position', 'absolute').offset({top: editorOffset.top, left: editorOffset.left + $this.innerWidth() - 35});
                 } else {
                     $parent.find('.btn-editor-voice').hide();
                 }
@@ -261,5 +256,12 @@
      */
     $("[data-featured=editor]").each(function () {
         $(this).featuredEditor();
+    });
+
+    return Backbone && Backbone.View.extend({
+        render: function () {
+            this.$el.featuredEditor(this.options);
+            return this;
+        }
     });
 }));
