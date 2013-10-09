@@ -7,41 +7,16 @@
  *  Author: 김우섭
  *  License :
  */
+;
+(function (root, factory) {
 
-(function (root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([ "backbone", "underscore", "jquery"], function (Backbone, _, $) {
-            factory($, root);
-            return Backbone.View.extend({
-                tagName: 'div',
+    // Require.js가 있을 경우
+    if (typeof define === 'function' && define.amd)
+        define([ "jquery", "underscore", "backbone", "media" ], factory);
+    else
+        root.Media = factory(root.$, root._, root.Backbone);
 
-                className: 'featured-media',
-
-                model: new Backbone.Model(),
-
-                initialize: function () {
-                    _.bindAll(this, "render");
-                    this.model.on("change", this.render);
-                },
-
-                render: function () {
-                    var data = [];
-                    $.each(this.model.toJSON(), function (i, obj) {
-                        data.push(obj);
-                    });
-
-                    this.$el.featuredMedia(this.options);
-
-                    return this;
-                }
-            });
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery, root, doc);
-    }
-}(window, document, function ($, window, undefined) {
+}(window, function ($, _, Backbone) {
     var mePlayer;
     var pluginName = "featuredMedia";
 
@@ -74,7 +49,7 @@
 
                     // do we have the native dimensions yet?
                     var nativeWidth = (t.media.videoWidth && t.media.videoWidth > 0) ? t.media.videoWidth : t.options.defaultVideoWidth,
-                        nativeHeight = (t.media.videoHeight && t.media.videoHeight > 0) ? t.media.videoHeight : t.options.defaultVideoHeight;
+                    nativeHeight = (t.media.videoHeight && t.media.videoHeight > 0) ? t.media.videoHeight : t.options.defaultVideoHeight;
 
                     if (navigator.userAgent.match("Android")) {
                         nativeWidth = t.options.defaultVideoWidth;
@@ -88,7 +63,7 @@
                     }
 
                     var parentWidth = t.container.parent().width(),
-                        newHeight = parseInt(parentWidth * nativeHeight / nativeWidth, 10);
+                    newHeight = parseInt(parentWidth * nativeHeight / nativeWidth, 10);
 
                     if (t.container.parent()[0].tagName.toLowerCase() === 'body') { // && t.container.siblings().count == 0) {
                         parentWidth = $(window).width();
@@ -98,18 +73,18 @@
                     if (newHeight != 0) {
                         // set outer container size
                         t.container
-                            .width(parentWidth)
-                            .height(newHeight);
+                        .width(parentWidth)
+                        .height(newHeight);
 
                         // set native <video>
                         t.$media
-                            .width('100%')
-                            .height('100%');
+                        .width('100%')
+                        .height('100%');
 
                         // set shims
                         t.container.find('object, embed, iframe')
-                            .width('100%')
-                            .height('100%');
+                        .width('100%')
+                        .height('100%');
 
                         // if shim is ready, send the size to the embeded plugin
                         if (t.isVideo) {
@@ -120,25 +95,25 @@
 
                         // set the layers
                         t.layers.children('.mejs-layer')
-                            .width('100%')
-                            .height('100%');
+                        .width('100%')
+                        .height('100%');
                     }
 
 
                 } else {
 
                     t.container
-                        .width(t.width)
-                        .height(t.height);
+                    .width(t.width)
+                    .height(t.height);
 
                     t.layers.children('.mejs-layer')
-                        .width(t.width)
-                        .height(t.height);
+                    .width(t.width)
+                    .height(t.height);
 
                 }
             };
 
-            mejs.MediaElementPlayer.prototype.updateDuration = function() {
+            mejs.MediaElementPlayer.prototype.updateDuration = function () {
                 var t = this;
 
                 //Toggle the long video class if the video is longer than an hour.
@@ -146,7 +121,7 @@
 
                 if (t.durationD && (t.options.duration > 0 || t.media.duration)) {
                     t.durationD.html(mejs.Utility.secondsToTimeCode(t.options.duration > 0 ? t.options.duration : (isFinite(t.media.duration) ? t.media.duration : 0 ),
-                        t.options.alwaysShowHours, t.options.showTimecodeFrameCount, t.options.framesPerSecond || 25));
+                    t.options.alwaysShowHours, t.options.showTimecodeFrameCount, t.options.framesPerSecond || 25));
                 }
             };
 
@@ -183,5 +158,16 @@
                 rate: $(self).data("mediaRate")
             });
         });
+    });
+
+    return Backbone && Backbone.View.extend({
+        tagName: 'div',
+        className: 'featured-media',
+
+        render: function () {
+            this.$el.featuredMedia(this.options);
+
+            return this;
+        }
     });
 }));
