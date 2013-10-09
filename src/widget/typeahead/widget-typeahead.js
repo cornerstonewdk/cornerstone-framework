@@ -1,34 +1,31 @@
-;
-( function ( root, doc, factory ) {
-    if ( typeof define === "function" && define.amd ) {
-        // AMD
-        define( [ 'backbone', 'underscore', 'jquery', 'typeahead' ], function ( Backbone, _, $, typeahead ) {
-            factory( $, root, doc );
-            return Backbone.View.extend( {
-            	render: function () {
-            		this.$el.typeahead( this.options );
-            		return this;
-            	}
-            } );
-        } );
-    } else {
-        // None AMD
-        factory( root.jQuery, root, doc );
-    }
-} ( window, document, function ( $, window, document ) {
-	/*
+;(function (root, factory) {
+
+    // Require.js가 있을 경우
+    if (typeof define === "function" && define.amd)
+        define([ "jquery", "underscore", "backbone", "typeahead" ], factory);
+    else
+        root.Typeahead = factory(root.$, root._, root.Backbone);
+
+}(window, function ($, _, Backbone) {
+    /*
      typeahead : typeahead내에 typeahead:selected 발생 시 동일한 구조의 selected.cs.typeahead 발생
      */
-	
-	$.fn.twitterTypeahead = $.fn.typeahead;
-        
-    $.fn.typeahead = function ( options ) {
-        return this.each( function () {
-            var $this = $( this );
+    $.fn.twitterTypeahead = $.fn.typeahead;
+
+    $.fn.typeahead = function (options) {
+        return this.each(function () {
+            var $this = $(this);
             $this.twitterTypeahead(options);
-            $this.on('typeahead:selected',function(e, datum, dataset){
-                $this.trigger('selected.cs.typeahead', [ datum, dataset ] );
+            $this.on('typeahead:selected', function (e, datum, dataset) {
+                $this.trigger('selected.cs.typeahead', [ datum, dataset ]);
             });
-        } );
+        });
     };
-} ) );
+
+    return Backbone && Backbone.View.extend({
+        render: function () {
+            this.$el.typeahead(this.options);
+            return this;
+        }
+    });
+}));
