@@ -1,42 +1,30 @@
-;
-( function ( root, doc, factory ) {
-    if ( typeof define === "function" && define.amd ) {
-        // AMD
-        define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
-            factory( $, root, doc );
-            return Backbone.View.extend( {
-            	render: function () {
-            		this.$el.popover( this.options );
-            		return this;
-            	}
-            } );
-        } );
-    } else {
-        // None AMD
-        factory( root.jQuery, root, doc );
-    }
-} ( window, document, function ( $, window, document ) {
-	/*
-	 Popover : DATA-API 방식을 추가함.
-	 */
-	this.Popover = (function () {
-		var Popover;
+;(function (root, factory) {
 
-		function Popover() {
-		}
+    // Require.js가 있을 경우
+    if (typeof define === 'function' && define.amd)
+        define([ "jquery", "underscore", "backbone", "bootstrap" ], factory);
+    else
+        root.Alert = factory(root.$, root._, root.Backbone);
 
-		Popover = $.fn.popover.Constructor;
+}(window, function ($, _, Backbone) {
+    var Popover = $.fn.popover.Constructor;
 
-		/* 확장 코딩 */
-		$.fn.popover.Constructor = Popover;
+    /* 확장 코딩 */
+    $.fn.popover.Constructor = Popover;
 
-		/*
-		 DATA API 기능 추가 예정
-		 */
-		$(function () {
-			$('[data-toggle=popover]').each(function () {
-				$(this).popover();
-			});
-		});
-	})();
-} ) );
+    /*
+     DATA API 기능 추가 예정
+     */
+    $(function () {
+        $('[data-toggle=popover]').each(function () {
+            $(this).popover();
+        });
+    });
+
+    return Backbone ? Backbone.View.extend({
+        render: function () {
+            this.$el.popover(this.options);
+            return this;
+        }
+    }) : Popover;
+}));
