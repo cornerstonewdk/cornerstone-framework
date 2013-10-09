@@ -7,7 +7,7 @@
         root.Dropdown = factory(root.$, root._, root.Backbone);
 
 }(window, function ($, _, Backbone) {
-    return Backbone.View.extend({
+    return Backbone && Backbone.View.extend({
         render: function () {
             if (!this.$el.data('toggle')) this.$el.attr('data-toggle', 'dropdown');
             this.$el.dropdown(this.options);
