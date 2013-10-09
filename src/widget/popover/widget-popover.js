@@ -4,7 +4,7 @@
     if (typeof define === 'function' && define.amd)
         define([ "jquery", "underscore", "backbone", "bootstrap" ], factory);
     else
-        root.Alert = factory(root.$, root._, root.Backbone);
+        root.Popover = factory(root.$, root._, root.Backbone);
 
 }(window, function ($, _, Backbone) {
     var Popover = $.fn.popover.Constructor;
