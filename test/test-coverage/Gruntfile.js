@@ -1,27 +1,49 @@
-'use strict';
-
-var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
-var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
+"use strict";
 
 module.exports = function (grunt) {
     // load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON("package.json"),
+        clean: ["coverage/"],
         karma: {
-            options: {
-                configFile: 'karma.conf.js'
-            },
-            continuous: {
+            unit: {
+                configFile: 'karma.conf.js',
+                runnerPort: 9999,
                 singleRun: true,
-                browsers: ['PhantomJS']
+                browsers: ["Chrome"]
+            }
+        },
+        connect: {
+            options: {
+                port: 9000,
+                hostname: '*'
+            },
+            coverage: {
+                options: {
+                    base: 'coverage',
+                    middleware: function( connect, options ) {
+                        return [
+                            require( 'connect-livereload' )(),
+                            connect.static( options.base ),
+                            connect.directory( options.base )
+                        ];
+                    }
+                }
+            }
+        },
+        open: {
+            server: {
+                path: "http://localhost:<%= connect.options.port %>"
+            }
+        },
+        watch: {
+            options: {
+                livereload: true
             }
         }
     });
 
-    grunt.registerTask('default', ['karma']);
+    grunt.registerTask("default", ["clean", "karma", "connect:coverage", "open", "watch"]);
 };
