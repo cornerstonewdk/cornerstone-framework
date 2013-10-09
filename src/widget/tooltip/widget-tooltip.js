@@ -1,43 +1,30 @@
-;
-( function ( root, doc, factory ) {
-    if ( typeof define === "function" && define.amd ) {
-        // AMD
-        define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function ( Backbone, _, $ ) {
-            factory( $, root, doc );
-            return Backbone.View.extend( {
-            	render: function () {
-            		this.$el.tooltip( this.options );
-            		return this;
-            	}
-            } );
-        } );
-    } else {
-        // None AMD
-        factory( root.jQuery, root, doc );
-    }
-} ( window, document, function ( $, window, document ) {
-	/*
-     Tooltip : DATA-API 방식을 추가함.
+;(function (root, factory) {
+
+    // Require.js가 있을 경우
+    if (typeof define === "function" && define.amd)
+        define([ "jquery", "underscore", "backbone", "bootstrap" ], factory);
+    else
+        root.Tooltip = factory(root.$, root._, root.Backbone);
+
+}(window, function ($, _, Backbone) {
+    var Tooltip = $.fn.tooltip.Constructor;
+
+    /* 확장 코딩 */
+    $.fn.tooltip.Constructor = Tooltip;
+
+    /*
+     DATA API 기능 추가 예정
      */
-	
-	this.Tooltip = (function () {
-        var Tooltip;
-
-        function Tooltip() {
-        }
-
-        Tooltip = $.fn.tooltip.Constructor;
-
-        /* 확장 코딩 */
-        $.fn.tooltip.Constructor = Tooltip;
-
-        /*
-         DATA API 기능 추가 예정
-         */
-        $(function () {
-            $('[data-toggle=tooltip]').each(function () {
-                $(this).tooltip();
-            });
+    $(function () {
+        $('[data-toggle=tooltip]').each(function () {
+            $(this).tooltip();
         });
-    })();
-} ) );
+    });
+
+    return Backbone && Backbone.View.extend({
+        render: function () {
+            this.$el.tooltip(this.options);
+            return this;
+        }
+    });
+}));
