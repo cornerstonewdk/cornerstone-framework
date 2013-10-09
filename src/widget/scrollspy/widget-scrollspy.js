@@ -1,18 +1,16 @@
-;
-(function(root, doc, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD
-        define(['backbone', 'underscore', 'jquery', 'bootstrap'], function(Backbone, _, $) {
-            factory($, root, doc);
-            return Backbone.View.extend({
-                render: function() {
-                    this.$el.scrollspy(this.options);
-                    return this;
-                }
-            });
-        });
-    } else {
-        // None AMD
-        factory(root.jQuery, root, doc);
-    }
-}(window, document, function($, window, document) {}));
+;(function (root, factory) {
+
+    // Require.js가 있을 경우
+    if (typeof define === "function" && define.amd)
+        define([ "jquery", "underscore", "backbone", "bootstrap" ], factory);
+    else
+        root.Scrollspy = factory(root.$, root._, root.Backbone);
+
+}(window, function ($, _, Backbone) {
+    return Backbone && Backbone.View.extend({
+        render: function() {
+            this.$el.scrollspy(this.options);
+            return this;
+        }
+    });
+}));
