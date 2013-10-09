@@ -161,10 +161,10 @@
 
         render: function () {
             if (!this.dataTable) {
-                this.dataTable = this.$el.featuredDataTable(this.options);
+                this.dataTable = this.$el.featuredDataTable(this.options).data("featuredDataTable");
             }
 
-            this.options = $.extend({}, this.options, {aaData: this.model.toJSON()});
+            this.options = $.extend({}, this.options, this.model.toJSON());
             this.dataTable.fnClearTable();
             this.dataTable.fnAddData(this.options.aaData);
             this.dataTable.fnDraw();

@@ -14,7 +14,7 @@ requirejs.config({
         // 라이브러리
         "blackbird": "lib/blackbirdjs/blackbird",
         "d3": "lib/d3/d3.v3.min",
-        "DataTables": "lib/DataTables/jquery.dataTables.min",
+        "datatable": "lib/DataTables/jquery.dataTables.min",
         "datepicker": "lib/datepicker/bootstrap-datepicker",
         "hammer": "lib/hammer/hammer",
         "infinity": "lib/infinity/infinity.min",
@@ -85,6 +85,9 @@ requirejs.config({
         },
         "d3": {
             exports: "d3"
+        },
+        "datatable": {
+            exports: "datatable"
         },
         "logging": ["blackbird"]
     },
