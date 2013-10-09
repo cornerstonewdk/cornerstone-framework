@@ -6,26 +6,15 @@
  *  Author: 김우섭
  *  License :
  */
+;(function (root, factory) {
 
-// 세미콜론은 패키징 작업시 앞쪽 스크립트가 닫지 않은 경우 오류를 사전에 막기 위함
-;
-(function (root, doc, factory) {
-    if ( typeof define === "function" && define.amd ) {
-        // AMD
-        define( [ 'backbone', 'underscore', 'jquery' ], function ( Backbone, _, $ ) {
-            factory( $, root, doc );
-            return Backbone.View.extend( {
-                render: function () {
-                    this.$el.rangeinput( this.options );
-                    return this;
-                }
-            } );
-        } );
-    } else {
-        // None AMD
-        factory( root.jQuery, root, doc );
-    }
-}(this, document, function (jQuery, window, document, undefined) {
+    // Require.js가 있을 경우
+    if (typeof define === "function" && define.amd)
+        define([ "jquery", "underscore", "backbone", "widget-touch" ], factory);
+    else
+        root.RangeInput = factory(root.$, root._, root.Backbone);
+
+}(window, function ($, _, Backbone) {
     function round(value, precision) {
         var n = Math.pow(10, precision);
         return Math.round(value * n) / n;
@@ -48,20 +37,20 @@
 
     function RangeInput(input, conf) {
         var self = this,
-            css = conf.css,
+        css = conf.css,
 
-            root = $("<div><div></div><button></button></div>").data("rangeinput", self),
-            vertical,
-            value, // current value
-            origo, // handle's start point
-            len, // length of the range
-            pos; // current position of the handle
+        root = $("<div><div></div><button></button></div>").data("rangeinput", self),
+        vertical,
+        value, // current value
+        origo, // handle's start point
+        len, // length of the range
+        pos; // current position of the handle
 
         // UI 엘리먼트 생성
         input.before(root);
 
         var handle = root.addClass(css.slider).find("button").addClass(css.handle),
-            progress = root.find("div").addClass(css.progress);
+        progress = root.find("div").addClass(css.progress);
 
         $.each("min,max,step,value".split(","), function (i, key) {
             var val = input.attr(key);
@@ -71,8 +60,8 @@
         });
 
         var range = conf.max - conf.min,
-            step = conf.step == 'any' ? 0 : conf.step,
-            precision = conf.precision;
+        step = conf.step == 'any' ? 0 : conf.step,
+        precision = conf.precision;
 
         if (precision === undefined) {
             precision = step.toString().split(".");
@@ -81,7 +70,7 @@
 
         // Replace built-in range input (type attribute cannot be changed)
         if (input.attr("type") == 'range') {
-            input.addClass("figure inline form-control").val(conf.value).attr('type','tel').attr('data-orig-type','range');
+            input.addClass("figure inline form-control").val(conf.value).attr('type', 'tel').attr('data-orig-type', 'range');
         }
 
         input.addClass(css.input);
@@ -89,7 +78,7 @@
         // input UI를 노출시키고 싶지 않은 경우 처리
         if (!conf.showInput) {
             input.css({
-                display:"none"
+                display: "none"
             });
         } else {
             input.addClass(css.inputGrid);
@@ -163,25 +152,25 @@
             // speed & callback
             // 터치 거리에 따른 가속도값 필요
             var speed = isClick ? conf.speed : 0,
-                callback = isClick ? function () {
-                    evt.type = "change";
-                    fire.trigger(evt, [val]);
-                    self.$input.trigger( e = $.Event('end.cs.rangeInput') );
-                } : null;
+            callback = isClick ? function () {
+                evt.type = "change";
+                fire.trigger(evt, [val]);
+                self.$input.trigger(e = $.Event('end.cs.rangeInput'));
+            } : null;
 
             if (vertical) {
-                handle.animate({top:x}, speed, callback);
+                handle.animate({top: x}, speed, callback);
                 if (conf.progress) {
-                    progress.animate({height:len - x + handle.height() / 2}, speed);
+                    progress.animate({height: len - x + handle.height() / 2}, speed);
                 }
 
             } else {
                 if (navigator.userAgent.match("Android|iPhone")) {
                     handle[0].style["WebkitTransform"] = "translate3d(" + x + "px,0,0)";
                 } else {
-                    handle.animate({left:x}, speed, callback);
+                    handle.animate({left: x}, speed, callback);
                     if (conf.progress) {
-                        progress.animate({width:x + handle.width() / 2}, speed);
+                        progress.animate({width: x + handle.width() / 2}, speed);
                     }
 
                 }
@@ -198,50 +187,50 @@
             }
             self.$input = input;
             self.inputValue = value;
-            self.$input.trigger( e = $.Event('move.cs.rangeInput') );
+            self.$input.trigger(e = $.Event('move.cs.rangeInput'));
             return self;
         }
 
         $.extend(self, {
 
-            getValue:function () {
+            getValue: function () {
                 return value;
             },
 
-            setValue:function (val, e) {
+            setValue: function (val, e) {
                 init();
                 return slide(e || $.Event("api"), undefined, val, true);
             },
 
-            getConf:function () {
+            getConf: function () {
                 return conf;
             },
 
-            getProgress:function () {
+            getProgress: function () {
                 return progress;
             },
 
-            getHandle:function () {
+            getHandle: function () {
                 return handle;
             },
 
-            getInput:function () {
+            getInput: function () {
                 return input;
             },
 
-            step:function (am, e) {
+            step: function (am, e) {
                 e = e || $.Event();
                 var step = conf.step == 'any' ? 1 : conf.step;
                 self.setValue(value + step * (am || 1), e);
             },
 
             // HTML5 compatible name
-            stepUp:function (am) {
+            stepUp: function (am) {
                 return self.step(am || 1);
             },
 
             // HTML5 compatible name
-            stepDown:function (am) {
+            stepDown: function (am) {
                 return self.step(-am || -1);
             }
 
@@ -266,42 +255,42 @@
 
 
         // dragging
-        handle.drag({drag:false}).on("dragStart",function () {
+        handle.drag({drag: false}).on("dragStart",function () {
             /* do some pre- calculations for seek() function. improves performance */
             init();
 
             // avoid redundant event triggering (= heavy stuff)
             fireOnSlide = hasEvent($(self)) || hasEvent(input);
-            self.$input.trigger( e = $.Event('start.cs.rangeInput') );
+            self.$input.trigger(e = $.Event('start.cs.rangeInput'));
 
 
         }).on("drag",function (e, y, x) {
 
-                var distance = 0;
-                if (input.is(":disabled")) {
-                    return false;
-                }
+            var distance = 0;
+            if (input.is(":disabled")) {
+                return false;
+            }
 
-                distance = isNaN(this.prevX) ? x : (x > this.prevX ? x - this.prevX : this.prevX - x);
+            distance = isNaN(this.prevX) ? x : (x > this.prevX ? x - this.prevX : this.prevX - x);
 
-                if(navigator.userAgent.match("Android") && distance < 10) {
-                    slide(e, vertical ? y : x);
-                } else {
-                    slide(e, vertical ? y : x);
-                }
+            if (navigator.userAgent.match("Android") && distance < 10) {
+                slide(e, vertical ? y : x);
+            } else {
+                slide(e, vertical ? y : x);
+            }
 
-                this.prevX = x;
+            this.prevX = x;
 
-            }).on("dragEnd",function (e) {
-                self.$input.val(self.inputValue);
-                if (!e.isDefaultPrevented()) {
-                    e.type = "change";
-                    fire.trigger(e, [value]);
-                }
-                self.$input.trigger( e = $.Event('end.cs.rangeInput') );
-            }).click(function (e) {
-                return e.preventDefault();
-            });
+        }).on("dragEnd",function (e) {
+            self.$input.val(self.inputValue);
+            if (!e.isDefaultPrevented()) {
+                e.type = "change";
+                fire.trigger(e, [value]);
+            }
+            self.$input.trigger(e = $.Event('end.cs.rangeInput'));
+        }).click(function (e) {
+            return e.preventDefault();
+        });
 
         // clicking
         root.click(function (e) {
@@ -310,7 +299,7 @@
             }
             init();
             var fix = vertical ? handle.height() / 2 : handle.width() / 2;
-            self.$input.trigger( $.Event('start.cs.rangeInput') );
+            self.$input.trigger($.Event('start.cs.rangeInput'));
             slide(e, vertical ? len - origo - fix + e.pageY : e.pageX - origo - fix);
             self.$input.val(self.inputValue);
         });
@@ -324,8 +313,8 @@
                 }
 
                 var key = e.keyCode,
-                    up = $([75, 76, 38, 33, 39]).index(key) != -1,
-                    down = $([74, 72, 40, 34, 37]).index(key) != -1;
+                up = $([75, 76, 38, 33, 39]).index(key) != -1,
+                down = $([74, 72, 40, 34, 37]).index(key) != -1;
 
                 if ((up || down) && !(e.shiftKey || e.altKey || e.ctrlKey)) {
 
@@ -344,7 +333,7 @@
 
 
         input.on("change", function (e) {
-            if($(this).css("display") === 'none') {
+            if ($(this).css("display") === 'none') {
                 return false;
             }
             var val = $(this).val();
@@ -355,7 +344,7 @@
 
 
         // HTML5 DOM methods
-        $.extend(input[0], { stepUp:self.stepUp, stepDown:self.stepDown});
+        $.extend(input[0], { stepUp: self.stepUp, stepDown: self.stepDown});
 
 
         // calculate all dimension related stuff
@@ -401,24 +390,24 @@
     // jQuery plugin implementation
     $.fn.rangeinput = function (conf) {
         var defaultOptions = {
-            min:0,
-            max:100,
-            step:'any',
-            steps:0,
-            value:0,
-            precision:undefined,
-            vertical:0,
-            keyboard:false,
-            progress:false,
-            speed:100,
-            showInput:false,
-            css:{
-                input:'range',
+            min: 0,
+            max: 100,
+            step: 'any',
+            steps: 0,
+            value: 0,
+            precision: undefined,
+            vertical: 0,
+            keyboard: false,
+            progress: false,
+            speed: 100,
+            showInput: false,
+            css: {
+                input: 'range',
                 inputGrid: 'col-xs-3',
-                slider:'slider',
+                slider: 'slider',
                 sliderGrid: 'col-xs-9',
-                progress:'slider-bar',
-                handle:'slide-handle'
+                progress: 'slider-bar',
+                handle: 'slide-handle'
             }
         };
 
@@ -445,5 +434,11 @@
             $(this).rangeinput(options);
         });
     });
-//    }
+
+    return Backbone && Backbone.View.extend({
+        render: function () {
+            this.$el.rangeinput(this.options);
+            return this;
+        }
+    });
 }));
