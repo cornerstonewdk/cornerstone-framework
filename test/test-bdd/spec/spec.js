@@ -1269,7 +1269,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             }).on('beforeScrollEnd.cs.scrollView',function(e){
                 Logging.info('1st scrollview beforeScrollEnd.cs.scrollView',e );
                 expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('end');
+                expect(e.type).to.be.equal('beforeScrollEnd');
             }).on('scrollEnd.cs.scrollView',function(e){
                 Logging.info('1st scrollview scrollEnd.cs.scrollView',e );
                 expect(e).to.be.an.instanceof($.Event);
