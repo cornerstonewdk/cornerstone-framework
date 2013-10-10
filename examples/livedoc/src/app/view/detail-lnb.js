@@ -45,15 +45,13 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			$currentItem.addClass( 'active' );
 
 			// 현재 메뉴로 스크롤 위치 변경
-			if ( this.scrollView.$el.find( ' > div:last-child' ).css( 'position' ) === 'absolute' ) {
-				var currentScrollY = ($currentItem.index() - 1) * -Math.abs( $currentItem.height() );
+			var currentScrollY = ($currentItem.index() - 1) * -Math.abs( $currentItem.height() );
 
-				currentScrollY = currentScrollY > this.scrollView.iscroll.maxScrollY
-					? currentScrollY
-					: this.scrollView.iscroll.maxScrollY;
+			currentScrollY = currentScrollY > this.scrollView.iscroll.maxScrollY
+				? currentScrollY
+				: this.scrollView.iscroll.maxScrollY;
 
-				this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
-			}
+			this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
 		},
 	} );
 } );

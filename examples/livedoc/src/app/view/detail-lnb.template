@@ -15,6 +15,15 @@
 <div id="detail-menu-close-arrow"></div>
 
 <script>
+	if (window.innerWidth >= 768)
+		$( '#scrollView' ).css( {
+			height: window.innerHeight - 70
+		} ).featuredScrollView("refresh");
+	else
+		$( '#scrollView' ).css( {
+			height: window.innerHeight / 2
+		} ).featuredScrollView("refresh");
+
 	$( "#floating-detail-menu" ).hide();
 	$( "#floating-detail-menu-background" ).hide();
 	//$( "#detail-menu-open-arrow" ).hide();
@@ -37,9 +46,6 @@
 		$( "#floating-detail-menu-background" ).fadeIn(500);
 		$( "#detail-menu-open-arrow" ).fadeOut(100);
 		$( "#detail-menu-close-arrow" ).fadeIn(500);
-		$( '#detail-lnb' ).css( {
-				//height: 260
-		} );
 	});
 
 	$( "#detail-menu-close-arrow" ).click( function () {
@@ -48,9 +54,7 @@
 		$( "#detail-menu-open-arrow" ).fadeIn(500);
 		$( "#detail-menu-close-arrow" ).hide();
 
-		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0").css( {
-				//height: 1
-		} );
+		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0");
 		$( "#detail-content" ).removeClass().addClass("col-lg-12 col-md-12 col-sm-12");
 	});
 </script>
