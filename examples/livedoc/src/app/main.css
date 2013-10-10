@@ -275,3 +275,8 @@ div.doc-content {
         -webkit-border-radius: 3px;
     }
 }
+
+.jsbin-livecode {
+    width:100%; 
+    height:500px;
+}
