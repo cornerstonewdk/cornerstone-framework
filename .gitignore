@@ -23,4 +23,4 @@ tools/cornerstone-cli/build/node_modules
 /package.json
 server/SKT_Open_API_Provider/node_modules
 test/test-coverage/coverage
-test/test-coverage/coverage/node_modules
+test/test-coverage/node_modules
