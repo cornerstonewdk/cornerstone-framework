@@ -58,9 +58,6 @@ define([
                         }
                     }
                 },
-                transitions: {
-                    "page1:page2": "slide"
-                },
 
                 releasePage: function (currentPage) {
                     return $(".container > section:not(" + currentPage + ")").html("");
