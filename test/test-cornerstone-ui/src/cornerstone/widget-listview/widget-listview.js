@@ -178,6 +178,7 @@
         tagName: "ul",
         collectionItems: "items",
         initialize: function () {
+            this.render();
             this.listenTo(this.collection, "add", this.addOne);
             this.listenTo(this.collection, "reset", this.render);
         },
@@ -202,8 +203,8 @@
         },
 
         render: function () {
-            this.addAll();
             this.$el.featuredListView(this.options);
+            this.addAll();
             return this;
         }
     }) : Plugin;
