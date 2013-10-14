@@ -291,4 +291,7 @@ div.doc-content {
 }
 .toc-topic h4 {
     font-size: 38px;
+    font-family: arial;
+    font-style: oblique;
+    font-weight: bold;
 }
