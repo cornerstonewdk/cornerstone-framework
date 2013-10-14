@@ -1,7 +1,7 @@
 {{#each this}}
 	<div class="row">
 		{{#if section}}
-			<div class="col-lg-12 col-md-12 col-sm-12 well">
+			<div class="col-lg-12 col-md-12 col-sm-12 toc-topic">
 				<h4>{{section}}</h4>
 			</div>
 		{{/if}}
