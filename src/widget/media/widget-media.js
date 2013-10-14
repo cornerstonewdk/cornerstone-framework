@@ -143,7 +143,6 @@
             };
 
             if(typeof options === "string") {
-                console.log(13123);
                 $(this).data("featuredMedia")[options]();
             } else {
                 options = $.extend(true, defaultOptions, options);
