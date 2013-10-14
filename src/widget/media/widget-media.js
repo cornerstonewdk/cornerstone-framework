@@ -26,7 +26,7 @@
             rate: "16:9",
             pauseOtherPlayers: false
         };
-        options = $.extend(true, defaultOptions, options);
+
         return this.each(function () {
             // 4:3, 16:9, 16:10 비율 옵션 추가
             mejs.MediaElementPlayer.prototype.setPlayerSize = function (width, height) {
@@ -142,7 +142,14 @@
                 return url === "100%" ? false : encodeURIComponent(url);
             };
 
-            mePlayer = new mejs.MediaElementPlayer(this, options);
+            if(typeof options === "string") {
+                console.log(13123);
+                $(this).data("featuredMedia")[options]();
+            } else {
+                options = $.extend(true, defaultOptions, options);
+                mePlayer = new mejs.MediaElementPlayer(this, options);
+                $(this).data("featuredMedia", mePlayer);
+            }
         });
     };
 
