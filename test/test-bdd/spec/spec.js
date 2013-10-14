@@ -575,37 +575,37 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
     });
 
-    // describe('widget-datatable', function() {
-    //     var table;
-    //     it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-    //         require(['widget-datatable'], function(WidgetDatatable) {
-    //             var Model = Backbone.Model.extend({
-    //                 url: "data/sample-datatables.json"
-    //             });
-    //             table = new WidgetDatatable({
-    //                 el: '#test-datatables',
-    //                 model: new Model
-    //             });
-    //             table.model.fetch();
-    //             expect(table).to.be.an.instanceof(Backbone.View);
-    //             done();
-    //         });
-    //     });
+    describe('widget-datatable', function() {
+        var table;
+        it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
+            require(['widget-datatable'], function(WidgetDatatable) {
+                var Model = Backbone.Model.extend({
+                    url: "data/sample-datatables.json"
+                });
+                table = new WidgetDatatable({
+                    el: '#test-datatables',
+                    model: new Model
+                });
+                table.model.fetch();
+                expect(table).to.be.an.instanceof(Backbone.View);
+                done();
+            });
+        });
 
-    //     it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
-    //         this.timeout(2000);
-    //         setTimeout(function() {}, 500);
-    //         table.$el.on('itemClick.cs.datatables', 'tr', function(e, datum, dataset) {
-    //             Logging.info('itemClick.cs.datatables', datum, dataset );
-    //             expect(e).to.be.an.instanceof($.Event);
-    //             expect(e.type).to.be.equal('itemClick');
-    //             expect(result).to.be.an('object')
-    //             expect(result.data).to.be.instanceof(Array);
-    //             done();
-    //         });
-    //         table.$el.find('tr:eq(2)').click();
-    //     });
-    // });
+        it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
+            this.timeout(2000);
+            setTimeout(function() {}, 500);
+            table.$el.on('itemClick.cs.datatables', 'tr', function(e, result) {
+                Logging.info('itemClick.cs.datatables', result.data );
+                expect(e).to.be.an.instanceof($.Event);
+                expect(e.type).to.be.equal('itemClick');
+                expect(result).to.be.an('object')
+                expect(result.data).to.be.instanceof(Array);
+                done();
+            });
+            table.$el.find('tr:eq(2)').click();
+        });
+    });
 
     describe('widget-datepicker', function() {
         var datepicker;
@@ -686,92 +686,72 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     });
 
     describe('widget-listview', function() {
-        var listview;
-        var isLoading = false;
-        var html;
-        var $el;
-
-        // function getItem() {
-        //     isLoading = true;
-
-        //     var request = $.ajax({
-        //         url: "data/sample-list.json",
-        //         type: "GET",
-        //         dataType: "json"
-        //     });
-
-        //     request.done(function (json) {
-        //         html = '<ul class="list-group">';
-        //         if (typeof json === "object" && json.items.length > 0) {
-        //             $(json.items).each(function () {
-        //                 html += '<li class="list-group-item">';
-        //                 html += this.title;
-        //                 html += '   <div class="pull-right">';
-        //                 html += '   <span class="badge">" + this.published + "</span>';
-        //                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
-        //                 html += '   </div>';
-        //                 html += '</li>';
-        //             });
-        //             html += "</ul>";
-        //             listview.$el.featuredListView("addItem", html);
-        //         }
-        //         html = "";
-        //         isLoading = false;
-        //     });
-
-        //     request.fail(function (jqXHR, textStatus) {
-        //         console.log("Request failed: " + textStatus);
-        //         isLoading = false;
-        //     });
-        //     return true;
-        // }
-
+        var listView;
+        
         it('requirejs를 이용하여 모듈로 로드하고, Backbone.View의 인스턴스여야 한다.', function(done) {
-            require(['widget-listview'],function(WidgetListView){
-                
-            //     var ItemList = Backbone.Collection.extend({
-            //         model: Backbone.Model.extend(),
-            //         url:"data/sample-list.json"
-            //     });
+            require(['widget-listview','handlebars'],function(WidgetListView,Handlebars){
+                var backboneView = function () {
+                    var ItemList = Backbone.Collection.extend({
+                        model: Backbone.Model.extend(),
+                        url:"data/sample-list.json",
+                        parse: function (response) {
+                            this.imgPath = response.imgPath; // JSON 데이터 중 콜렉션외의 정보를 콜렉션 객체에 추가한다.
+                            return response.items; // JSON 데이터 중 콜렉션 정보를 넘겨준다.
+                        }
+                    });
+                    // 아이템뷰를 만든다.
+                    var html = '{{this.title}}';
+                    html += '<div class="pull-right">';
+                    html += '   <span class="badge">{{this.published}}</span>';
+                    html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
+                    html += '</div>';
 
-            //     listview = new WidgetListView({
-            //         el: "#listview",
-            //         collection: new ItemList(),
-            //         $scroller: $("#listview").closest(".list-view-wrapper"),
-            //         optimization: true,
-            //         scrollEndAction: function () {
-            //             console.log("scrollEndAction");
-            //             getItem();
-            //         }
-            //     });
-            //     listview.render();
-            //     expect(listview).to.be.an.instanceof(Backbone.View);
-            
+                    // 리스트 아이템 뷰 정의
+                    var ItemView = Backbone.View.extend({
+                        tagName: "li",
+                        className: "list-group-item clearfix",
+                        template: Handlebars.compile(html),
 
-                $el = $('#listView');
-                done();
-            });
+                        initialize: function () {
+                            // 목록에 cid 추가를 위해 모델 속성에 cid 추가
+                            this.model.set("cid", this.model.cid);
+
+                            this.listenTo(this.model, "change", this.render);
+                            this.listenTo(this.model, "destroy", this.remove);
+                        },
+                        render: function () {
+                            this.$el.html(this.template(this.model.attributes));
+                            return this;
+                        },
+
+                        remove: function () {
+                            this.$el.remove();
+                        }
+                    });
+
+                    var itemList = new ItemList();
+                    // 리스트뷰 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 리스트뷰를 그린다.
+                    listView = new WidgetListView({
+                        el: "#listView",
+                        collection: itemList,
+                        itemView: ItemView, // 사용자가 정의하는 리스트의 한 Row가 되는 SubView
+                        optimization: true, // 최적화 여부 설정
+                        scrollEndAction: function () { // ScrollEnd인 경우 호출되는 함수를 사용자가 정의
+                            console.log("cb scrollEndAction");
+                            // 동일한 데이터라도 계속 데이터를 쌓고 싶은 경우 reset: true
+                            this.collection.fetch();
+                        }
+                    });
+                    
+                    itemList.fetch();
+                    expect(listView).to.be.an.instanceof(Backbone.View);
+                    done();
+                    // listView.$el.closest(".list-view-wrapper").scrollTop(2000);
+                };
+                backboneView();
+                $('#list-view').find(".js-list-add").off("click").on("click", backboneView);
+             });
         });
-
-
-        it('plugin방식으로 적용 후 스크롤을 마지막으로 보냈을 때 scrollend 이벤트가 발생하여야 한다.',function(done){
-            $el.featuredListView({
-                $scroller: $el.closest(".list-view-wrapper"),
-                optimization: true,
-                scrollEndAction: function () {
-                    console.log("scrollEndAction");
-                }
-            });
-
-            $el.on("scrollEnd.cs.liveView", function (e) {
-                Logging.info("scrollEnd.cs.liveView",e);
-                expect(e).to.be.an.instanceof($.Event);
-                expect(e.type).to.be.equal('scrollEnd');
-                done();
-            });
-
-            $el.closest(".list-view-wrapper").scrollTop(2000);
-        })
     });
 
     describe('widget-media', function() {
