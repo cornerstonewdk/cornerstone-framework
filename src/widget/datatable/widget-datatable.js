@@ -155,19 +155,20 @@
     return Backbone && Backbone.View.extend({
         model: new Backbone.Model(),
         initialize: function () {
+            this.options.bDestroy = this.options.bDestroy || true;
             this.listenTo(this.model, "change", this.render);
             this.listenTo(this.model, "reset", this.render);
         },
 
         render: function () {
+            this.options.activeEmpty && this.$el.empty();
+            this.options = $.extend({}, this.options, this.model.attributes);
+
             if (!this.dataTable) {
                 this.dataTable = this.$el.featuredDataTable(this.options).data("featuredDataTable");
             }
 
-            this.options = $.extend({}, this.options, this.model.toJSON());
-            this.dataTable.fnClearTable();
-            this.dataTable.fnAddData(this.options.aaData);
-            this.dataTable.fnDraw();
+            this.$el.closest(".dataTables_wrapper").find(".dataTables_filter input").addClass("form-control");
             return this;
         }
     });

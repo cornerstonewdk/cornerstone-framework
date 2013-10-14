@@ -1,7 +1,175 @@
 /*
-    Cornerstone Framework v0.9.1
+ *  Project: SKT HTML5 Framework
+ *  CodeName : CornerStone
+ *  FileName : featured-datatable.js
+ *  Description: 데이터테이블을 반응형 웹에 맞는 화면을 보여주고, 코너스톤 UI에 맞게 기본적으로 설정하며, DATA-API를 사용해서 스크립트 사용없이 마크업
+ *  속성만으로 작동되도록 구현함.
+ *  Author: 김우섭
+ *  License :
+ */
+;(function (root, factory) {
 
-    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
-    Released under the Apache License, Version 2.0
-*/
-!function(a,b){"function"==typeof define&&define.amd?define(["jquery","underscore","backbone","datatable"],b):a.Datatable=b(a.$,a._,a.Backbone)}(window,function(a,b,c){var d="featuredDataTable";return a.fn[d]=function(b){var c={bProcessing:!1,sPaginationType:"bootstrap",sDom:"<'row'<'col col-lg-8 col-12'l><'col col-lg-4 col-12'f>r>t<'row'<'col col-12'i><'col col-12'p>>",oLanguage:{sLengthMenu:"_MENU_ 페이지별 레코드수",sInfo:"총 레코드 수:_TOTAL_ (시작 번호:_START_, 끝 번호:_END_)"}};b=a.extend(!0,c,b);var d=a(this).data("featuredDataTable",a(this).dataTable(b));return d.off("click","tr").on("click","tr",function(){var b=a(this).closest("table").data("featuredDataTable").fnGetData(this);a(this).trigger("itemClick.cs.datatables",{data:b})}),d.data("featuredDataTable")},a.extend(a.fn.dataTableExt.oStdClasses,{sSortAsc:"header headerSortDown",sSortDesc:"header headerSortUp",sSortable:"header"}),a.fn.dataTableExt.oApi.fnPagingInfo=function(a){return{iStart:a._iDisplayStart,iEnd:a.fnDisplayEnd(),iLength:a._iDisplayLength,iTotal:a.fnRecordsTotal(),iFilteredTotal:a.fnRecordsDisplay(),iPage:Math.ceil(a._iDisplayStart/a._iDisplayLength),iTotalPages:Math.ceil(a.fnRecordsDisplay()/a._iDisplayLength)}},a.extend(a.fn.dataTableExt.oPagination,{bootstrap:{fnInit:function(b,c,d){var e=function(a){a.preventDefault(),b.oApi._fnPageChange(b,a.data.action)&&d(b)};a(c).append('<ul class="pagination"><li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li><li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li></ul>');var f=a("a",c);a(f[0]).bind("click.DT",{action:"previous"},e),a(f[1]).bind("click.DT",{action:"next"},e)},fnUpdate:function(b,c){var d,e,f,g,h,i=4,j=b.oInstance.fnPagingInfo(),k=b.aanFeatures.p,l=Math.floor(i/2);for(j.iTotalPages<i?(g=1,h=j.iTotalPages):j.iPage<=l?(g=1,h=i):j.iPage>=j.iTotalPages-l?(g=j.iTotalPages-i+1,h=j.iTotalPages):(g=j.iPage-l+1,h=g+i-1),d=0,iLen=k.length;iLen>d;d++){for(a("li:gt(0)",k[d]).filter(":not(:last)").remove(),e=g;h>=e;e++)f=e==j.iPage+1?'class="active"':"",a("<li "+f+'><a href="#" >'+e+"</a></li>").insertBefore(a("li:last",k[d])[0]).bind("click",function(d){d.preventDefault(),b._iDisplayStart=(parseInt(a("a",this).text(),10)-1)*j.iLength,c(b)});0===j.iPage?a("li:first",k[d]).addClass("disabled"):a("li:first",k[d]).removeClass("disabled"),j.iPage===j.iTotalPages-1||0===j.iTotalPages?a("li:last",k[d]).addClass("disabled"):a("li:last",k[d]).removeClass("disabled")}var m=a(".dataTables_filter input");m.hasClass("form-control")||m.addClass("form-control")}}}),a(function(){a("[data-featured=datatable]").each(function(){a(this)[d]({sAjaxSource:a(this).data("datatableBind")})}),a(".dataTables_paginate a").on("click",function(a){a.preventDefault()})}),c&&c.View.extend({model:new c.Model,initialize:function(){this.listenTo(this.model,"change",this.render),this.listenTo(this.model,"reset",this.render)},render:function(){return this.dataTable||(this.dataTable=this.$el.featuredDataTable(this.options).data("featuredDataTable")),this.options=a.extend({},this.options,this.model.toJSON()),this.dataTable.fnClearTable(),this.dataTable.fnAddData(this.options.aaData),this.dataTable.fnDraw(),this}})});
+    // Require.js가 있을 경우
+    if (typeof define === 'function' && define.amd)
+        define([ "jquery", "underscore", "backbone", "datatable" ], factory);
+    else
+        root.Datatable = factory(root.$, root._, root.Backbone);
+
+}(window, function ($, _, Backbone) {
+    var pluginName = "featuredDataTable";
+
+    // 데이터테이블 플러그인 랩핑 및 기본값 설정
+    $.fn[pluginName] = function (options) {
+        var defaultOptions = {
+            "bProcessing": false,
+            sPaginationType: "bootstrap",
+            sDom: "<'row'<'col col-lg-8 col-12'l><'col col-lg-4 col-12'f>r>t<'row'<'col col-12'i><'col col-12'p>>",
+            oLanguage: {sLengthMenu: "_MENU_ 페이지별 레코드수", sInfo: "총 레코드 수:_TOTAL_ (시작 번호:_START_, 끝 번호:_END_)"}
+        };
+
+        options = $.extend(true, defaultOptions, options);
+        var dt = $(this).data('featuredDataTable', $(this).dataTable(options));
+
+        dt.off('click', 'tr').on('click', 'tr', function () {
+            var rowData = $(this).closest('table').data('featuredDataTable').fnGetData(this);
+            $(this).trigger('itemClick.cs.datatables', { 'data': rowData });
+        });
+        return dt.data('featuredDataTable');
+    };
+
+    /* 기본 클래스명 정의 */
+    $.extend($.fn.dataTableExt.oStdClasses, {
+        "sSortAsc": "header headerSortDown",
+        "sSortDesc": "header headerSortUp",
+        "sSortable": "header"
+    });
+
+    /* API method to get paging information */
+    $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
+        return {
+            "iStart": oSettings._iDisplayStart,
+            "iEnd": oSettings.fnDisplayEnd(),
+            "iLength": oSettings._iDisplayLength,
+            "iTotal": oSettings.fnRecordsTotal(),
+            "iFilteredTotal": oSettings.fnRecordsDisplay(),
+            "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+            "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+        };
+    };
+
+    /* 부트스트랩 페이지네이션 스타일링 기능 확장 */
+    $.extend($.fn.dataTableExt.oPagination, {
+        "bootstrap": {
+            "fnInit": function (oSettings, nPaging, fnDraw) {
+                var fnClickHandler = function (e) {
+                    e.preventDefault();
+                    if (oSettings.oApi._fnPageChange(oSettings, e.data.action)) {
+                        fnDraw(oSettings);
+                    }
+                };
+
+                $(nPaging).append(
+                '<ul class="pagination">' +
+                '<li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>' +
+                '<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>' +
+                '</ul>'
+                );
+                var els = $('a', nPaging);
+                $(els[0]).bind('click.DT', { action: "previous" }, fnClickHandler);
+                $(els[1]).bind('click.DT', { action: "next" }, fnClickHandler);
+            },
+
+            "fnUpdate": function (oSettings, fnDraw) {
+                var iListLength = 4;
+                var oPaging = oSettings.oInstance.fnPagingInfo();
+                var an = oSettings.aanFeatures.p;
+                var i, j, sClass, iStart, iEnd, iHalf = Math.floor(iListLength / 2);
+
+                if (oPaging.iTotalPages < iListLength) {
+                    iStart = 1;
+                    iEnd = oPaging.iTotalPages;
+                }
+                else if (oPaging.iPage <= iHalf) {
+                    iStart = 1;
+                    iEnd = iListLength;
+                } else if (oPaging.iPage >= (oPaging.iTotalPages - iHalf)) {
+                    iStart = oPaging.iTotalPages - iListLength + 1;
+                    iEnd = oPaging.iTotalPages;
+                } else {
+                    iStart = oPaging.iPage - iHalf + 1;
+                    iEnd = iStart + iListLength - 1;
+                }
+
+                for (i = 0, iLen = an.length; i < iLen; i++) {
+                    // Remove the middle elements
+                    $('li:gt(0)', an[i]).filter(':not(:last)').remove();
+
+                    // Add the new list items and their event handlers
+                    for (j = iStart; j <= iEnd; j++) {
+                        sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
+                        $('<li ' + sClass + '><a href="#" >' + j + '</a></li>')
+                        .insertBefore($('li:last', an[i])[0])
+                        .bind('click', function (e) {
+                            e.preventDefault();
+                            oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
+                            fnDraw(oSettings);
+                        });
+                    }
+
+                    // Add / remove disabled classes from the static elements
+                    if (oPaging.iPage === 0) {
+                        $('li:first', an[i]).addClass('disabled');
+                    } else {
+                        $('li:first', an[i]).removeClass('disabled');
+                    }
+
+                    if (oPaging.iPage === oPaging.iTotalPages - 1 || oPaging.iTotalPages === 0) {
+                        $('li:last', an[i]).addClass('disabled');
+                    } else {
+                        $('li:last', an[i]).removeClass('disabled');
+                    }
+                }
+
+
+                var $inputFilter = $(".dataTables_filter input");
+                $inputFilter.hasClass("form-control") || $inputFilter.addClass("form-control");
+            }
+        }
+    });
+
+    $(function () {
+        /**
+         * DATA API (HTML5 Data Attribute)
+         */
+        $("[data-featured=datatable]").each(function () {
+            $(this)[pluginName]({
+                "sAjaxSource": $(this).data("datatableBind")
+            });
+        });
+
+        $(".dataTables_paginate a").on("click", function (e) {
+            e.preventDefault();
+        });
+    });
+
+    return Backbone && Backbone.View.extend({
+        model: new Backbone.Model(),
+        initialize: function () {
+            this.options.bDestroy = this.options.bDestroy || true;
+            this.listenTo(this.model, "change", this.render);
+            this.listenTo(this.model, "reset", this.render);
+        },
+
+        render: function () {
+            this.options.activeEmpty && this.$el.empty();
+            this.options = $.extend({}, this.options, this.model.attributes);
+
+            if (!this.dataTable) {
+                this.dataTable = this.$el.featuredDataTable(this.options).data("featuredDataTable");
+            }
+
+            this.$el.closest(".dataTables_wrapper").find(".dataTables_filter input").addClass("form-control");
+            return this;
+        }
+    });
+}));
