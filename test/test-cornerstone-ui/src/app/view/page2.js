@@ -27,7 +27,7 @@ define([
     "widget-datatable",
     "widget-touch",
     "style!view/page2"
-], function ($, _, Backbone, Handlebars, Template, Modal, Dropdown, Scrollspy, Tab, Tooltip, Popover, Alert, Button, Collapse, Carousel, RangeInput, Sign, Spinner, Motioncaptcha, Datepicker, Typeahead, ScrollView, ListView, Editor, Datatable) {
+], function ($, _, Backbone, Handlebars, Template, Modal, Dropdown, Scrollspy, Tab, Tooltip, Popover, Alert, Button, Collapse, Carousel, RangeInput, Sign, Spinner, Motioncaptcha, Datepicker, Typeahead, ScrollView, ListView, Media, Editor, Datatable) {
 
     return Backbone.View.extend({
         el: "section#page2",
@@ -65,6 +65,7 @@ define([
             // Featured
             this.activeScrollView();
             this.activeListView();
+            this.activeMedia();
             this.activeEditor();
             this.activeDatatable();
         },
@@ -304,7 +305,7 @@ define([
                 var ItemList = Backbone.Collection.extend({
                     model: Backbone.Model.extend(),
                     url: "data/sample-list.json",
-                    parse: function(response) {
+                    parse: function (response) {
                         this.imgPath = response.imgPath; // JSON 데이터 중 콜렉션외의 정보를 콜렉션 객체에 추가한다.
                         return response.items; // JSON 데이터 중 콜렉션 정보를 넘겨준다.
                     }
@@ -323,7 +324,7 @@ define([
                     className: "list-group-item clearfix",
                     template: Handlebars.compile(html),
 
-                    initialize: function() {
+                    initialize: function () {
                         // 목록에 cid 추가를 위해 모델 속성에 cid 추가
                         this.model.set("cid", this.model.cid);
 
@@ -332,13 +333,10 @@ define([
                     },
                     render: function () {
                         this.$el.html(this.template(this.model.attributes));
-                        if(this.model.cid === "c7")
-                            this.model.destroy();
                         return this;
                     },
 
-                    remove: function() {
-                        console.log(this.model);
+                    remove: function () {
                         this.$el.remove();
                     }
                 });
@@ -356,12 +354,10 @@ define([
                         this.collection.fetch();
                     }
                 });
-                listView.render();
                 listView.$el.on("scrollEnd.cs.liveView", function () {
                     console.log("window scrollEndEvent");
                 });
                 itemList.fetch();
-                window.mycc = listView.collection;
             };
 
             backboneView();
@@ -369,12 +365,30 @@ define([
             this.$el.find(".js-plugin").off("click").on("click", jQueryPlugin);
             this.$el.find(".js-view").off("click").on("click", backboneView);
         },
+        activeMedia: function () {
+            $("[data-featured=media]").each(function () {
+                $(this).featuredMedia();
+            });
+        },
         activeEditor: function () {
             $("[data-featured=editor]").each(function () {
                 $.fn.featuredEditor && $(this).featuredEditor();
             });
         },
         activeDatatable: function () {
+            if($("#datatable").length) {
+                var Model = Backbone.Model.extend({
+                    url: "data/sample-datatables.json"
+                });
+                var model = new Model();
+
+                var detatable = new Datatable({
+                    el: "#datatable",
+                    model: model
+                });
+                model.fetch();
+            }
+
             $("[data-featured=datatable]").each(function () {
                 $.fn.featuredDataTable && $(this).featuredDataTable({
                     "sAjaxSource": $(this).data("datatableBind")
