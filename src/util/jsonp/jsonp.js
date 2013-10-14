@@ -6,8 +6,7 @@
     if ( typeof define === "function" && define.amd ) {
         // AMD 방식 로딩
 		define( [ "jquery" ], function ( $ ) {
-			factory( $, root, doc );
-			return { get: root.Jsonp.get };
+			return factory( $, root, doc );
 		} );
     } else {
     	// CommonJS 방식 로딩
@@ -48,4 +47,6 @@
 		// 새로 생성한 opt을 가지고 ajax 요청을 수행한다.
 		$.ajax( opt );
 	};
+
+	return Jsonp;
 } ) );
