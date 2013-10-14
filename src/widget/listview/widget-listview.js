@@ -27,6 +27,7 @@
             $scroller: $(window),
             optimization: true,
             SCROLL_THROTTLE: 0,
+            PAGE_TO_SCREEN_RATIO: 3,
             scrollEndAction: function () {
 
             }
@@ -35,6 +36,7 @@
         this.options = options = $.extend(true, defaultOptions, options);
 
         infinity.config.SCROLL_THROTTLE = this.options.SCROLL_THROTTLE;
+        infinity.config.PAGE_TO_SCREEN_RATIO = this.options.PAGE_TO_SCREEN_RATIO;
         ListView = infinity.ListView;
         ListItem = infinity.ListItem;
 
@@ -52,32 +54,29 @@
 
         this.scrollHeight = navigator.userAgent.match(":*iPhone:*") && !window.navigator.standalone ? 60 : 0;
         var scrollTop = 0;
+        var scrollEndTrigger = function() {
+            options.scrollEndAction();
+            self.$el.trigger("scrollEnd.cs.liveView");
+        };
         options.$scroller.on("scroll", function (e) {
             if (e.target.tagName) {
                 if ($(this)[0].scrollHeight - $(this).scrollTop() == $(this).outerHeight()) {
-                    options.scrollEndAction();
-                    console.log("nested", self.$el);
-                    self.$el.trigger("scrollEnd.cs.liveView");
+                    scrollEndTrigger();
                 }
             } else {
                 scrollTop = navigator.userAgent.match("Android") ? $(window).scrollTop() + 100 : $(window).scrollTop();
                 if (scrollTop >= ($(document).height() - $(window).height() - self.scrollHeight)) {
-                    options.scrollEndAction();
-                    console.log("window", self.$el);
-                    self.$el.trigger("scrollEnd.cs.liveView");
+                    scrollEndTrigger();
                 }
             }
         });
     };
 
     Plugin.prototype.addItem = function (options, html) {
-
         if (options.optimization) {
-            console.log(this.$el.data('listView'));
             /**
              * Infinity.js의 Nested Optimazation 기능 소스 기여 필요
              */
-            this.$el.data('listView').cleanup();
             this.$el.data('listView').append($(html));
         } else {
             this.$el.append(html);
@@ -177,28 +176,34 @@
 
     return Backbone ? Backbone.View.extend({
         tagName: "ul",
+        collectionItems: "items",
         initialize: function () {
-            this.listenTo(this.collection, "change", this.render);
+            this.listenTo(this.collection, "add", this.addOne);
             this.listenTo(this.collection, "reset", this.render);
         },
 
-        addItem: function () {
-            var html = document.createElement(this.tagName);
-            this.collection.each(function (model) {
-                $(html).append(new this.options.itemView({model: model}).render().el);
-            });
-            this.$el.featuredListView("addItem", html);
+        addAll: function () {
+            this.options.activeEmpty && this.$el.empty();
+            this.collection.forEach(this.addOne, this);
         },
 
-        removeItem: function ($target, aNumbers) {
-            return this.$el.featuredListView("removeItem", $target, aNumbers);
+        addOne: function(model) {
+            // 최초 생성
+            if(model === this.collection.first())
+                this.$itemViewWrapper = $("<ul/>", {"class": "list-group"});
+
+            var ItemView = this.options.itemView;
+            var itemView = new ItemView({model: model});
+            this.$itemViewWrapper.append(itemView.render().el);
+
+            // 마지막에 추가
+            if(model === this.collection.last())
+                this.$el.featuredListView("addItem", this.$itemViewWrapper);
         },
 
         render: function () {
+            this.addAll();
             this.$el.featuredListView(this.options);
-
-            this.addItem();
-
             return this;
         }
     }) : Plugin;
