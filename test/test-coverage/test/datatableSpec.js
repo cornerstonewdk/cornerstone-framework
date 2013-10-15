@@ -28,8 +28,8 @@ define([
 
         it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function (done) {
             this.timeout(2000);
-            table.$el.on('itemClick.cs.datatables', 'tr', function (e, datum, dataset) {
-                Logging.info('itemClick.cs.datatables', datum, dataset);
+            table.$el.on('itemClick.cs.datatable', 'tr', function (e, datum, dataset) {
+                Logging.info('itemClick.cs.datatable', datum, dataset);
                 expect(e).to.be.an.instanceof($.Event);
                 expect(e.type).to.be.equal('itemClick');
                 expect(datum).to.be.an('object')
