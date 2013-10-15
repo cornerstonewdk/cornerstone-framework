@@ -32,7 +32,7 @@
 
         dt.off('click', 'tr').on('click', 'tr', function () {
             var rowData = $(this).closest('table').data('featuredDataTable').fnGetData(this);
-            $(this).trigger('itemClick.cs.datatables', { 'data': rowData });
+            $(this).trigger('itemClick.cs.datatable', { 'data': rowData });
         });
         return dt.data('featuredDataTable');
     };
