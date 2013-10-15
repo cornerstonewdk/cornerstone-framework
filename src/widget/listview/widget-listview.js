@@ -56,7 +56,7 @@
         var scrollTop = 0;
         var scrollEndTrigger = function() {
             options.scrollEndAction();
-            self.$el.trigger("scrollEnd.cs.liveView");
+            self.$el.trigger("scrollEnd.cs.listView");
         };
         options.$scroller.on("scroll", function (e) {
             if (e.target.tagName) {
