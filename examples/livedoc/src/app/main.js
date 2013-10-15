@@ -84,7 +84,8 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/hom
 								$( '#nav-index' ).removeClass( 'active' );
 								$( '#nav-tags' ).removeClass( 'active' );
 								$( '#page-detail' ).show();
-								$('html, body').animate({ scrollTop : 0 }, "easeOutQuart"); 
+								//$('html, body').animate({ scrollTop : 0 }, "easeOutQuart");
+								$('html, body').scrollTop(0);
 							},
 							inactive: function () {
 								$( '#page-detail' ).hide();
