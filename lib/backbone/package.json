@@ -5,7 +5,7 @@
 	"jam": {
 		"dependencies": {
 			"underscore": "1.4.4",
-			"jquery": "1.10.22"
+			"jquery": "1.10.2"
 		},
 		"main": "backbone-min.js",
 		"shim": {
