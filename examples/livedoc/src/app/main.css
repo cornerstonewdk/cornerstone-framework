@@ -69,10 +69,6 @@ div.doc-content {
     height: 200px;
 }
 
-.thumbnail.gray .mask img {
-    margin-top: -30px;
-}
-
 .ellipsis {
     display: block;
     overflow: hidden;

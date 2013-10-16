@@ -52,6 +52,14 @@ define([
                 Holder.run();
             });
 
+            $('[data-toggle=tooltip]').each(function () {
+                $(this).tooltip();
+            });
+
+            $('[data-toggle=popover]').each(function () {
+                $(this).popover();
+            });
+
             // Plugin
             this.activeScrollspy();
             this.activeButton();
