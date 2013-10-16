@@ -2066,7 +2066,8 @@ var jam = {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -2089,7 +2090,7 @@ var jam = {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -2200,7 +2201,8 @@ if (typeof require !== "undefined" && require.config) {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -2223,7 +2225,7 @@ if (typeof require !== "undefined" && require.config) {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
@@ -2334,7 +2336,8 @@ else {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -2357,7 +2360,7 @@ else {
             "exports": "Handlebars"
         },
         "jquery": {
-            "exports": "jquery"
+            "exports": "jQuery"
         },
         "multipage-router": {
             "deps": [
