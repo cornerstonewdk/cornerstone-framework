@@ -1,0 +1,1 @@
+define(["dummy/calculator"],function(a){var b=a.calculateAge();return{name:"홍길동",age:b,gender:"남"}});

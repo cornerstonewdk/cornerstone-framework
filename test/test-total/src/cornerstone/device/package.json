@@ -1,0 +1,8 @@
+{
+	"name": "device",
+	"version": "0.0.9",
+	"description": "Device API(Runtime)",
+	"jam": {
+		"main": "srt-0.9.js"
+	}
+}

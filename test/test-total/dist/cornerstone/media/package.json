@@ -1,0 +1,14 @@
+{
+	"name": "media",
+	"version": "2.12.0",
+	"description": "HTML5 audio and video players in pure HTML and CSS.",
+	"jam": {
+		"dependencies": {
+			"jquery": "1.10.2"
+		},
+		"main": "mediaelement-and-player.min.js",
+		"shim": {
+			"deps": [ "jquery" ]
+		}
+	}
+}

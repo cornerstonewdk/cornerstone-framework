@@ -1,0 +1,1 @@
+define(["person","logging"],function(a,b){return{check:function(){b.debug("[ 7 ] 전달된 Person name값을 확인 : "+a.name)}}});
