@@ -1,0 +1,65 @@
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#section-list, #section-edit {
+	display: none;
+}
+
+div.tab-pane {
+	padding-top: 10px;
+	position: relative;
+}
+
+div.editor-content {
+	position: relative;
+	z-index: 1;
+}
+
+div.editor-content .row {
+	margin-top: 15px;
+}
+
+div.editor-grid {
+	position: absolute;
+	top: 10px;
+	width: 780px;
+}
+
+div.editor-grid div {
+	height: 760px;
+}
+
+div.editor-grid div:nth-child(odd) {
+	background: #f5f5f5;
+}
+
+div.editor-grid div:nth-child(even) {
+	background: #e2e2e2;
+}
+
+.btn-skt {
+	color: #FCFDFD;
+	background-color: #E14444;
+	border-color: #EDB0B0;
+}
+
+.content-box {
+	border: 1px dashed #7f7f7f;
+	min-height: 30px;
+}
+
+hr {
+	border: 1px solid #3f3f3f;
+}
+
+/* 드래그 하는 동안 helper가 위에 보이도록 조정, helper가 이동하면서 위치에 따라서 폭이 변하지 않도록 고정 */
+.ui-draggable-dragging {
+	z-index: 2;
+	width: 200px;
+}
+
+.list-group-item {
+	cursor: pointer;
+}

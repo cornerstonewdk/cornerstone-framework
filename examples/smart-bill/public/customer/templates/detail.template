@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="skt-navbar">
+		<a href="#" class="btn-left" data-transition="flip"><span class="glyphicon glyphicon-home"></span></a>
+		<h1>{{year}}년 {{month}}월</h1>
+	</div>
+	<div id="div-summary">
+		<span class="title">납부하실 금액</span>
+		<span class="amount">22,000</span>
+		<span class="unit">원</span>
+	</div>
+	<div id="div-detail">
+		{{#each content}}
+			<div class="row">
+				{{#each this}}
+					<div class="col-lg-{{tabletWidth}} col-md-{{tabletWidth}} col-sm-{{phoneWidth}} col-xs-{{phoneWidth}}">
+						{{#if buttonType}}
+							<button type="button" class="btn btn-lg btn-skt btn-block">aaaa</button>
+						{{/if}}
+					</div>
+				{{/each}}
+			</div>
+		{{/each}}
+		<div class="row">
+			<div id="list-detail" class="list-group">
+				{{#each this}}
+					<a href="#detail/{{id}}" class="list-group-item" data-transition="slide">{{year}}년 {{month}}월 청구서</a>
+				{{/each}}
+			</div>
+		</div>
+		<div class="row">
+			<div id="list-detail" class="list-group">
+				{{#each this}}
+					<a href="#detail/{{id}}" class="list-group-item" data-transition="slide">{{year}}년 {{month}}월 청구서</a>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	<div class="skt-navbar-bottom">
+		<div><span class="glyphicon glyphicon-th-large"></span><br/>SKB 홈</div>
+		<div><span class="glyphicon glyphicon-signal"></span><br/>청구요약</div>
+		<div class="active"><span class="glyphicon glyphicon-search"></span><br/>청구상세</div>
+		<div><span class="glyphicon glyphicon-list"></span><br/>납부정보</div>
+		<div><span class="glyphicon glyphicon-usd"></span><br/>요금납부</div>
+	</div>
+</div>

@@ -5,32 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Project</title>
 		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="customer/main.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main">
-					<span class="sr-only">메뉴 보기</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Home</a>
-			</div>
-			<div class="collapse navbar-collapse navbar-main">
-				<ul class="nav navbar-nav">
-					<li><a href="#page2">페이지2</a></li>
-					<li><a href="#page3">페이지3</a></li>
-				</ul>
-				<p class="navbar-text pull-right">Powered by <a class="navbar-link" href="http://cornerstone.sktelecom.com">Cornerstone</a></p>
-			</div>
-		</div>
-		<div class="container">
-			<section id="page1"></section>
-			<section id="page2"></section>
-			<section id="page3"></section>
-		</div>
+		<section id="section-list" data-url="list" data-default-page="true"></section>
+		<section id="section-detail" data-url="detail/:id"></section>
 
-		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
+		<script src="cornerstone/launcher/launcher.js" data-target="customer/main"></script>
 	</body>
 </html>
