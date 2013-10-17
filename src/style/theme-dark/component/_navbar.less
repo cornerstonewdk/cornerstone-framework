@@ -147,9 +147,12 @@
   border: none;
 }
 
-.navbar-toggle {
+.navbar-default .navbar-toggle {
   &:hover, &:focus {
     background-color: transparent;
+  }
+  &.active, &:active {
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
 

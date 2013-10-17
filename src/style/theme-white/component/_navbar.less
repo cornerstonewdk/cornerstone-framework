@@ -106,10 +106,12 @@
 .navbar-form, .navbar-collapse {
   border: none;
 }
-
-.navbar-toggle {
+.navbar-default .navbar-toggle {
   &:hover, &:focus {
     background-color: transparent;
+  }
+  &.active, &:active {
+    background-color: #DDD;
   }
 }
 
