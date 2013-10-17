@@ -2221,7 +2221,8 @@ var jam = {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -2739,7 +2740,8 @@ if (typeof require !== "undefined" && require.config) {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -3257,7 +3259,8 @@ else {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
