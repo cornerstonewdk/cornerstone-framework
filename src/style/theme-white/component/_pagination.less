@@ -11,7 +11,6 @@
 
     & > a {
       display: block;
-      font-size: 20px;
       padding: 5px 12px;
       border: 1px solid #b6b6b6;
       border-radius: 5px;
@@ -31,8 +30,6 @@
       & > a {
         width: auto;
         height: auto;
-        line-height: 13px;
-        padding: 12px 8px 13px 8px;
         & > .glyphicon {
           position: relative;
           display: block;
@@ -49,15 +46,21 @@
       }
     }
 
-    &.active > a,
-    & > a.active,
-    &:first-child > a:active,
-    &:last-child > a:active {
-      color: #6a6a6a;
-      text-shadow: 0 -1px 0 rgba(255, 255, 255, .54);
-      background-color: #fff;
-      .box-shadow(~"0 3px 2px rgba(0,0,0,.11), inset 0 0 4px rgba(0,0,0,.55)");
-      .background-image(~"linear-gradient(bottom, rgba(216,216,216,.72) 36.36%, rgba(216,216,216,.72) 36.88%, rgba(202,202,202,.72) 49.08%, rgba(166,166,166,.72) 106.51%, rgba(48,48,48,.72) 122.08%, rgba(48,48,48,.72) 136.36%)");
+    &:not(.disabled) {
+      &.active > a,
+      &.active > a:hover,
+      &.active > a:focus,
+      & > a.active,
+      & > a:active,
+      &:first-child > a:active,
+      &:last-child > a:active {
+        color: #6a6a6a;
+        text-shadow: 0 -1px 0 rgba(255, 255, 255, .54);
+        border-color: #B6B6B6;
+        background-color: #fff;
+        .box-shadow(~"0 3px 2px rgba(0,0,0,.11), inset 0 0 4px rgba(0,0,0,.55)");
+        .background-image(~"linear-gradient(bottom, rgba(216,216,216,.72) 36.36%, rgba(216,216,216,.72) 36.88%, rgba(202,202,202,.72) 49.08%, rgba(166,166,166,.72) 106.51%, rgba(48,48,48,.72) 122.08%, rgba(48,48,48,.72) 136.36%)");
+      }
     }
   }
 }

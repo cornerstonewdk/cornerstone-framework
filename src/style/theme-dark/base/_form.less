@@ -55,7 +55,6 @@ input[type=checkbox] {
 
 select,
 select.form-control{
-  height: @select-height;
   border: none;
   &:focus {
     outline: 0;
@@ -529,5 +528,11 @@ select.form-control{
   input[disabled] + .control:before, input.disabled + .control:before {
     background-image: url(images/icon-disabled.png);
     background-size: 40px 40px;
+  }
+}
+
+.input-radio, .input-checkbox {
+  & + .form-control {
+    height: 58px;
   }
 }
