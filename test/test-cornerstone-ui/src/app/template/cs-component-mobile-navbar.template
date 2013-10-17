@@ -2,59 +2,109 @@
     <header class="page-header">
         <h1>Mobile Navbar</h1>
     </header>
-    <div class="row">
-        <div class="col col-lg-6">
-            <h3>
-                Default
-            </h3>
-            <ul class="navbar navbar-mobile">
-                <li>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-info-sign"></span>
-                        <span class="text">about</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="text">favorites</span>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="#">
-                        <span class="glyphicon glyphicon-download-alt"></span>
-                        <span class="text">downloads</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col col-lg-6">
-            <h3>
-                Another markup
-            </h3>
+    <p>
+        모바일 Navbar는 Button Groups의 Justified link variation를 사용한다.
+    </p>
 
-            <div class="navbar navbar-mobile navbar-mobile-primary">
-                <a href="#">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    <span class="text">about</span>
-                </a>
-                <a href="#">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="text">favorites</span>
-                </a>
-                <a href="#" class="active">
-                    <span class="glyphicon glyphicon-download-alt"></span>
-                    <span class="text">downloads</span>
-                </a>
-                <a href="#">
-                    <span class="glyphicon glyphicon-cog"></span>
-                    <span class="text">settings</span>
-                </a>
-                <a href="#">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <span class="text">user</span>
-                </a>
-            </div>
+    <div class="bs-example">
+        <div class="navbar-mobile btn-group btn-group-justified">
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">favorites</span>
+            </a>
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-download-alt"></span>
+                <span class="text">downloads</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="bs-example">
+        <div class="navbar-mobile btn-group btn-group-justified">
+            <a href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">favorites</span>
+            </a>
+            <a href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-download-alt"></span>
+                <span class="text">downloads</span>
+            </a>
+        </div>
+    </div>
+    <div class="bs-example">
+        <div class="navbar-mobile btn-group btn-group-justified">
+            <a href="#" class="btn btn-info">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-info">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-info">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">favorites</span>
+            </a>
+            <a href="#" class="btn btn-info">
+                <span class="glyphicon glyphicon-download-alt"></span>
+                <span class="text">downloads</span>
+            </a>
+        </div>
+    </div>
+    <div class="bs-example">
+        <div class="navbar-mobile btn-group btn-group-justified">
+            <a href="#" class="btn btn-success">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-success">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-success">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">favorites</span>
+            </a>
+            <a href="#" class="btn btn-success">
+                <span class="glyphicon glyphicon-download-alt"></span>
+                <span class="text">downloads</span>
+            </a>
+        </div>
+    </div>
+    <div class="bs-example">
+        <div class="navbar-mobile btn-group btn-group-justified">
+            <a href="#" class="btn btn-warning">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-warning">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="text">about</span>
+            </a>
+            <a href="#" class="btn btn-danger">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">favorites</span>
+            </a>
+            <a href="#" class="btn btn-danger">
+                <span class="glyphicon glyphicon-download-alt"></span>
+                <span class="text">downloads</span>
+            </a>
         </div>
     </div>
 
