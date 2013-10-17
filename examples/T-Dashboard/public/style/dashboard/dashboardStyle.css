@@ -170,3 +170,7 @@ div[data-featured="scrollView"] {
 #blogWidget li {
 	line-height: 20px;	
 }
+
+#vocWidgetList li {
+	line-height: 17px;	
+}
