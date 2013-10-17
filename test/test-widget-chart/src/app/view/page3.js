@@ -7,7 +7,7 @@ define([
 	return Backbone.View.extend({
 
 		el: "section#page3",
-		sampleDataUrl: "data/sample-bar.json",
+		sampleDataUrl: "data/sample-bar2.json",
 		chartOptions: {
 			chartType: "bar3d",
 			showLegend: true
