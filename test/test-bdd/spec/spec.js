@@ -594,7 +594,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
             this.timeout(3000);
-            setTimeout(function() {}, 500);
+            setTimeout(function() {}, 2000);
             table.$el.on('itemClick.cs.datatable', 'tr', function(e, result) {
                 Logging.info('itemClick.cs.datatable', result.data );
                 expect(e).to.be.an.instanceof($.Event);
