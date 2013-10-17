@@ -41,56 +41,11 @@
 }
 
 .navbar-mobile {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flexbox;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-
-  > .active {
-    background-color: @navbar-default-link-active-bg;
-    color: @navbar-default-link-active-color;
-  }
-
-  > li {
-    list-style-type: none;
-    .navbar-mobile-list-style();
-  }
-
-  > a {
-    display: block;
-    .navbar-mobile-list-style();
-  }
-
   a {
-    color: @navbar-default-color;
-    text-decoration: none;
     > .glyphicon {
       display: block;
-      margin-bottom: -5px;
       padding: 10px 0 0 0;
       font-size: (@font-size-base * 1.5);
     }
-
-    &:hover:not(.active), &:focus:not(.active) {
-      background-color: @navbar-default-link-hover-bg;
-      color: @navbar-default-link-hover-color;
-    }
   }
-
-  span.text {
-    padding: 0 2px;
-    .ellipsis();
-  }
-}
-
-// Placeholder
-// --------------------------------------------------
-.navbar-mobile-list-style() {
-  text-align: center;
-  padding: 0 0 5px 0;
-  border: 1px solid @table-border-color;
-  width: 100%;
-  .flex();
 }
