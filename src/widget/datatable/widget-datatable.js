@@ -70,8 +70,8 @@
 
                 $(nPaging).append(
                 '<ul class="pagination">' +
-                '<li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>' +
-                '<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>' +
+                '<li class="disabled"><a href="#">&laquo;</a></li>' +
+                '<li><a href="#">&raquo;</a></li>' +
                 '</ul>'
                 );
                 var els = $('a', nPaging);
