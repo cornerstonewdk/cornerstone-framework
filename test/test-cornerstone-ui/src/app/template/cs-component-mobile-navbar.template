@@ -2,9 +2,6 @@
     <header class="page-header">
         <h1>Mobile Navbar</h1>
     </header>
-    <p>
-        모바일 Navbar는 Button Groups의 Justified link variation를 사용한다.
-    </p>
 
     <div class="bs-example">
         <div class="navbar-mobile btn-group btn-group-justified">
