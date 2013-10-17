@@ -33,7 +33,9 @@ a.list-group-item {
   }
   &:active,
   &.active {
-    .activeListStyle();
+    &, &:hover, &:focus {
+      .activeListStyle();
+    }
   }
 }
 

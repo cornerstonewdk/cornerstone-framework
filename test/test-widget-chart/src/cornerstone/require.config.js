@@ -46,6 +46,18 @@ var jam = {
             "main": "nv.d3.js"
         },
         {
+            "name": "skin-cerulean",
+            "location": "../cornerstone/skin-cerulean"
+        },
+        {
+            "name": "skin-flatly",
+            "location": "../cornerstone/skin-flatly"
+        },
+        {
+            "name": "skin-united",
+            "location": "../cornerstone/skin-united"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -56,8 +68,16 @@ var jam = {
             "main": "template.js"
         },
         {
+            "name": "theme-dark",
+            "location": "../cornerstone/theme-dark"
+        },
+        {
             "name": "theme-white",
             "location": "../cornerstone/theme-white"
+        },
+        {
+            "name": "theme-wireframe",
+            "location": "../cornerstone/theme-wireframe"
         },
         {
             "name": "transition",
@@ -89,7 +109,8 @@ var jam = {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -230,6 +251,18 @@ if (typeof require !== "undefined" && require.config) {
             "main": "nv.d3.js"
         },
         {
+            "name": "skin-cerulean",
+            "location": "../cornerstone/skin-cerulean"
+        },
+        {
+            "name": "skin-flatly",
+            "location": "../cornerstone/skin-flatly"
+        },
+        {
+            "name": "skin-united",
+            "location": "../cornerstone/skin-united"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -240,8 +273,16 @@ if (typeof require !== "undefined" && require.config) {
             "main": "template.js"
         },
         {
+            "name": "theme-dark",
+            "location": "../cornerstone/theme-dark"
+        },
+        {
             "name": "theme-white",
             "location": "../cornerstone/theme-white"
+        },
+        {
+            "name": "theme-wireframe",
+            "location": "../cornerstone/theme-wireframe"
         },
         {
             "name": "transition",
@@ -272,7 +313,8 @@ if (typeof require !== "undefined" && require.config) {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -413,6 +455,18 @@ else {
             "main": "nv.d3.js"
         },
         {
+            "name": "skin-cerulean",
+            "location": "../cornerstone/skin-cerulean"
+        },
+        {
+            "name": "skin-flatly",
+            "location": "../cornerstone/skin-flatly"
+        },
+        {
+            "name": "skin-united",
+            "location": "../cornerstone/skin-united"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -423,8 +477,16 @@ else {
             "main": "template.js"
         },
         {
+            "name": "theme-dark",
+            "location": "../cornerstone/theme-dark"
+        },
+        {
             "name": "theme-white",
             "location": "../cornerstone/theme-white"
+        },
+        {
+            "name": "theme-wireframe",
+            "location": "../cornerstone/theme-wireframe"
         },
         {
             "name": "transition",
@@ -455,7 +517,8 @@ else {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },

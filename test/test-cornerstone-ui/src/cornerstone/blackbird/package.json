@@ -1,0 +1,15 @@
+{
+	"name": "blackbird",
+	"version": "1.0.0",
+	"description": "A fork of the cool Blackbird logging utility",
+	"jam": {
+		"dependencies": {
+			"style": "2.0.0"
+		},
+		"main": "blackbird.js",
+		"shim": {
+			"deps": [ "style!blackbird" ],
+			"exports": "log"
+		}
+	}
+}
