@@ -341,6 +341,9 @@
                 self.setValue(val, e);
             }
         });
+        $(window).on("resize._rangeinput", function() {
+            self.setValue(input.val());
+        });
 
 
         // HTML5 DOM methods
@@ -378,14 +381,6 @@
         var type = el.getAttribute("type");
         return type && type == 'range' || !!$(el).filter("input").data("rangeinput");
     };
-
-    // Window Resize Trigger
-    $(window).on("resize._rangeInput", function (e) {
-        if (e.target.resizeTO) clearTimeout(e.target.resizeTO);
-        e.target.resizeTO = setTimeout(function () {
-            $(this).trigger('resizeEnd');
-        }, 500);
-    });
 
     // jQuery plugin implementation
     $.fn.rangeinput = function (conf) {
