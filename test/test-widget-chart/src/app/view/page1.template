@@ -111,7 +111,7 @@
                              data-chart-bind="data/sample-bar2.json"></div>
                     </div>
                     <div class="col-lg-6">
-                        <h3>Stacked 수직 바 차트</h3>
+                        <h3>Stacked 수평 바 차트</h3>
 
                         <div class="widget-chart" data-featured="chart" data-chart-type="stackedHorizontalBar"
                              data-chart-bind="data/sample-bar2.json"></div>
