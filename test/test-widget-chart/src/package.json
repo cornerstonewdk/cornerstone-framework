@@ -8,7 +8,14 @@
             "style": "*",
             "bootstrap": "*",
             "form-view": "*",
+
+            "theme-dark": "*",
             "theme-white": "*",
+            "theme-wireframe": "*",
+            "skin-cerulean": "*",
+            "skin-flatly": "*",
+            "skin-united": "*",
+
             "validation-view": "*",
             "multipage-router": "*",
             "widget-chart": "*"
