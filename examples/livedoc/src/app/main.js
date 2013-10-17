@@ -88,7 +88,7 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/hom
 								$('html, body').scrollTop(0);
 							},
 							inactive: function () {
-								$( '#page-detail' ).hide();
+								$( '#page-detail' ).html( '' ).hide();
 							}
 						}
 					}
