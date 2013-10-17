@@ -20,12 +20,11 @@ define([
                     var $baseStyle = $("#baseStyle");
                     var $customStyle = $("#customStyle");
                     $customStyle.remove();
-
                     if (myStyle.match(/theme/)) {
-                        $baseStyle.attr("href", "../../../dist/lib/bootstrap/css/bootstrap.css");
-                        $baseStyle.after('<link id="customStyle" rel="stylesheet" href="../../../dist/src/style/' + myStyle + '/cornerstone.css"/>');
+                        $baseStyle.attr("href", "cornerstone/bootstrap/css/bootstrap.css");
+                        $baseStyle.after('<link id="customStyle" rel="stylesheet" href="cornerstone/' + myStyle + '/cornerstone.css"/>');
                     } else {
-                        $baseStyle.attr("href", "../../../dist/src/style/" + myStyle + "/cornerstone.css");
+                        $baseStyle.attr("href", "cornerstone/" + myStyle + "/cornerstone.css");
                     }
                 }
             };

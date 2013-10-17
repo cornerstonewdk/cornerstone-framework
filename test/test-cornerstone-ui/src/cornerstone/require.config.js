@@ -6,6 +6,11 @@ var jam = {
             "main": "backbone-min.js"
         },
         {
+            "name": "blackbird",
+            "location": "../cornerstone/blackbird",
+            "main": "blackbird.js"
+        },
+        {
             "name": "bootstrap",
             "location": "../cornerstone/bootstrap",
             "main": "js/bootstrap.min.js"
@@ -21,9 +26,24 @@ var jam = {
             "main": "jquery.dataTables.min.js"
         },
         {
+            "name": "device",
+            "location": "../cornerstone/device",
+            "main": "srt-0.9.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
+        },
+        {
+            "name": "gesture-view",
+            "location": "../cornerstone/gesture-view",
+            "main": "gesture.js"
+        },
+        {
+            "name": "hammer",
+            "location": "../cornerstone/hammer",
+            "main": "hammer.js"
         },
         {
             "name": "handlebars",
@@ -46,14 +66,34 @@ var jam = {
             "main": "jquery-1.10.2.min.js"
         },
         {
+            "name": "jquery.hammer",
+            "location": "../cornerstone/jquery.hammer",
+            "main": "jquery.hammer.js"
+        },
+        {
             "name": "jquery.hotkeys",
             "location": "../cornerstone/jquery.hotkeys",
             "main": "jquery.hotkeys.js"
         },
         {
+            "name": "jsonp",
+            "location": "../cornerstone/jsonp",
+            "main": "jsonp.js"
+        },
+        {
             "name": "launcher",
             "location": "../cornerstone/launcher",
             "main": "launcher.js"
+        },
+        {
+            "name": "lawnchair",
+            "location": "../cornerstone/lawnchair",
+            "main": "lawnchair-0.6.1.min.js"
+        },
+        {
+            "name": "logging",
+            "location": "../cornerstone/logging",
+            "main": "logging.js"
         },
         {
             "name": "media",
@@ -71,14 +111,48 @@ var jam = {
             "main": "nv.d3.js"
         },
         {
+            "name": "skin-cerulean",
+            "location": "../cornerstone/skin-cerulean"
+        },
+        {
+            "name": "skin-flatly",
+            "location": "../cornerstone/skin-flatly"
+        },
+        {
+            "name": "skin-united",
+            "location": "../cornerstone/skin-united"
+        },
+        {
+            "name": "skt",
+            "location": "../cornerstone/skt",
+            "main": "skt.js"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
         },
         {
+            "name": "sync",
+            "location": "../cornerstone/sync",
+            "main": "sync.js"
+        },
+        {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-dark",
+            "location": "../cornerstone/theme-dark"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
+        },
+        {
+            "name": "theme-wireframe",
+            "location": "../cornerstone/theme-wireframe"
         },
         {
             "name": "transition",
@@ -225,6 +299,12 @@ var jam = {
             ],
             "exports": "Backbone"
         },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
         "bootstrap": {
             "deps": [
                 "jquery"
@@ -248,6 +328,15 @@ var jam = {
             ],
             "exports": "form-view"
         },
+        "gesture-view": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hammer"
+            ],
+            "exports": "gesture-view"
+        },
         "handlebars": {
             "exports": "Handlebars"
         },
@@ -263,9 +352,29 @@ var jam = {
         "jquery": {
             "exports": "jQuery"
         },
+        "jquery.hammer": {
+            "deps": [
+                "jquery",
+                "hammer"
+            ]
+        },
         "jquery.hotkeys": {
             "deps": [
                 "jquery"
+            ]
+        },
+        "jsonp": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "Jsonp"
+        },
+        "lawnchair": {
+            "exports": "Lawnchair"
+        },
+        "logging": {
+            "deps": [
+                "blackbird"
             ]
         },
         "media": {
@@ -288,11 +397,23 @@ var jam = {
             ],
             "exports": "nv"
         },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
+        },
         "style": {
             "deps": [
                 "jquery"
             ],
             "exports": "style"
+        },
+        "sync": {
+            "deps": [
+                "backbone",
+                "lawnchair"
+            ],
+            "exports": "sync"
         },
         "template": {
             "deps": [
@@ -526,6 +647,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "backbone-min.js"
         },
         {
+            "name": "blackbird",
+            "location": "../cornerstone/blackbird",
+            "main": "blackbird.js"
+        },
+        {
             "name": "bootstrap",
             "location": "../cornerstone/bootstrap",
             "main": "js/bootstrap.min.js"
@@ -541,9 +667,24 @@ if (typeof require !== "undefined" && require.config) {
             "main": "jquery.dataTables.min.js"
         },
         {
+            "name": "device",
+            "location": "../cornerstone/device",
+            "main": "srt-0.9.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
+        },
+        {
+            "name": "gesture-view",
+            "location": "../cornerstone/gesture-view",
+            "main": "gesture.js"
+        },
+        {
+            "name": "hammer",
+            "location": "../cornerstone/hammer",
+            "main": "hammer.js"
         },
         {
             "name": "handlebars",
@@ -566,14 +707,34 @@ if (typeof require !== "undefined" && require.config) {
             "main": "jquery-1.10.2.min.js"
         },
         {
+            "name": "jquery.hammer",
+            "location": "../cornerstone/jquery.hammer",
+            "main": "jquery.hammer.js"
+        },
+        {
             "name": "jquery.hotkeys",
             "location": "../cornerstone/jquery.hotkeys",
             "main": "jquery.hotkeys.js"
         },
         {
+            "name": "jsonp",
+            "location": "../cornerstone/jsonp",
+            "main": "jsonp.js"
+        },
+        {
             "name": "launcher",
             "location": "../cornerstone/launcher",
             "main": "launcher.js"
+        },
+        {
+            "name": "lawnchair",
+            "location": "../cornerstone/lawnchair",
+            "main": "lawnchair-0.6.1.min.js"
+        },
+        {
+            "name": "logging",
+            "location": "../cornerstone/logging",
+            "main": "logging.js"
         },
         {
             "name": "media",
@@ -591,14 +752,48 @@ if (typeof require !== "undefined" && require.config) {
             "main": "nv.d3.js"
         },
         {
+            "name": "skin-cerulean",
+            "location": "../cornerstone/skin-cerulean"
+        },
+        {
+            "name": "skin-flatly",
+            "location": "../cornerstone/skin-flatly"
+        },
+        {
+            "name": "skin-united",
+            "location": "../cornerstone/skin-united"
+        },
+        {
+            "name": "skt",
+            "location": "../cornerstone/skt",
+            "main": "skt.js"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
         },
         {
+            "name": "sync",
+            "location": "../cornerstone/sync",
+            "main": "sync.js"
+        },
+        {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-dark",
+            "location": "../cornerstone/theme-dark"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
+        },
+        {
+            "name": "theme-wireframe",
+            "location": "../cornerstone/theme-wireframe"
         },
         {
             "name": "transition",
@@ -744,6 +939,12 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "Backbone"
         },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
         "bootstrap": {
             "deps": [
                 "jquery"
@@ -767,6 +968,15 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "form-view"
         },
+        "gesture-view": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hammer"
+            ],
+            "exports": "gesture-view"
+        },
         "handlebars": {
             "exports": "Handlebars"
         },
@@ -782,9 +992,29 @@ if (typeof require !== "undefined" && require.config) {
         "jquery": {
             "exports": "jQuery"
         },
+        "jquery.hammer": {
+            "deps": [
+                "jquery",
+                "hammer"
+            ]
+        },
         "jquery.hotkeys": {
             "deps": [
                 "jquery"
+            ]
+        },
+        "jsonp": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "Jsonp"
+        },
+        "lawnchair": {
+            "exports": "Lawnchair"
+        },
+        "logging": {
+            "deps": [
+                "blackbird"
             ]
         },
         "media": {
@@ -807,11 +1037,23 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "nv"
         },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
+        },
         "style": {
             "deps": [
                 "jquery"
             ],
             "exports": "style"
+        },
+        "sync": {
+            "deps": [
+                "backbone",
+                "lawnchair"
+            ],
+            "exports": "sync"
         },
         "template": {
             "deps": [
@@ -1045,6 +1287,11 @@ else {
             "main": "backbone-min.js"
         },
         {
+            "name": "blackbird",
+            "location": "../cornerstone/blackbird",
+            "main": "blackbird.js"
+        },
+        {
             "name": "bootstrap",
             "location": "../cornerstone/bootstrap",
             "main": "js/bootstrap.min.js"
@@ -1060,9 +1307,24 @@ else {
             "main": "jquery.dataTables.min.js"
         },
         {
+            "name": "device",
+            "location": "../cornerstone/device",
+            "main": "srt-0.9.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
+        },
+        {
+            "name": "gesture-view",
+            "location": "../cornerstone/gesture-view",
+            "main": "gesture.js"
+        },
+        {
+            "name": "hammer",
+            "location": "../cornerstone/hammer",
+            "main": "hammer.js"
         },
         {
             "name": "handlebars",
@@ -1085,14 +1347,34 @@ else {
             "main": "jquery-1.10.2.min.js"
         },
         {
+            "name": "jquery.hammer",
+            "location": "../cornerstone/jquery.hammer",
+            "main": "jquery.hammer.js"
+        },
+        {
             "name": "jquery.hotkeys",
             "location": "../cornerstone/jquery.hotkeys",
             "main": "jquery.hotkeys.js"
         },
         {
+            "name": "jsonp",
+            "location": "../cornerstone/jsonp",
+            "main": "jsonp.js"
+        },
+        {
             "name": "launcher",
             "location": "../cornerstone/launcher",
             "main": "launcher.js"
+        },
+        {
+            "name": "lawnchair",
+            "location": "../cornerstone/lawnchair",
+            "main": "lawnchair-0.6.1.min.js"
+        },
+        {
+            "name": "logging",
+            "location": "../cornerstone/logging",
+            "main": "logging.js"
         },
         {
             "name": "media",
@@ -1110,14 +1392,48 @@ else {
             "main": "nv.d3.js"
         },
         {
+            "name": "skin-cerulean",
+            "location": "../cornerstone/skin-cerulean"
+        },
+        {
+            "name": "skin-flatly",
+            "location": "../cornerstone/skin-flatly"
+        },
+        {
+            "name": "skin-united",
+            "location": "../cornerstone/skin-united"
+        },
+        {
+            "name": "skt",
+            "location": "../cornerstone/skt",
+            "main": "skt.js"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
         },
         {
+            "name": "sync",
+            "location": "../cornerstone/sync",
+            "main": "sync.js"
+        },
+        {
             "name": "template",
             "location": "../cornerstone/template",
             "main": "template.js"
+        },
+        {
+            "name": "theme-dark",
+            "location": "../cornerstone/theme-dark"
+        },
+        {
+            "name": "theme-white",
+            "location": "../cornerstone/theme-white"
+        },
+        {
+            "name": "theme-wireframe",
+            "location": "../cornerstone/theme-wireframe"
         },
         {
             "name": "transition",
@@ -1263,6 +1579,12 @@ else {
             ],
             "exports": "Backbone"
         },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
         "bootstrap": {
             "deps": [
                 "jquery"
@@ -1286,6 +1608,15 @@ else {
             ],
             "exports": "form-view"
         },
+        "gesture-view": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "jquery.hammer"
+            ],
+            "exports": "gesture-view"
+        },
         "handlebars": {
             "exports": "Handlebars"
         },
@@ -1301,9 +1632,29 @@ else {
         "jquery": {
             "exports": "jQuery"
         },
+        "jquery.hammer": {
+            "deps": [
+                "jquery",
+                "hammer"
+            ]
+        },
         "jquery.hotkeys": {
             "deps": [
                 "jquery"
+            ]
+        },
+        "jsonp": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "Jsonp"
+        },
+        "lawnchair": {
+            "exports": "Lawnchair"
+        },
+        "logging": {
+            "deps": [
+                "blackbird"
             ]
         },
         "media": {
@@ -1326,11 +1677,23 @@ else {
             ],
             "exports": "nv"
         },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
+        },
         "style": {
             "deps": [
                 "jquery"
             ],
             "exports": "style"
+        },
+        "sync": {
+            "deps": [
+                "backbone",
+                "lawnchair"
+            ],
+            "exports": "sync"
         },
         "template": {
             "deps": [
