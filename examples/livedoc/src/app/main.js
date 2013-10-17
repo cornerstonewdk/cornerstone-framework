@@ -91,13 +91,13 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/hom
 								$( '#page-detail' ).hide();
 							}
 						}
-					},
-
-					transitions: {
-						'home:index': 'fade',
-						'home:tags': 'fade',
-						'index:tags': 'fade'
 					}
+
+					//transitions: {
+					//	'home:index': 'fade',
+					//	'home:tags': 'fade',
+					//	'index:tags': 'fade'
+					//}
 				} );
 
 				new MainRouter();
