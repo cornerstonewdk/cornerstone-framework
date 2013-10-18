@@ -242,17 +242,7 @@ var jam = {
             "name": "widget-touch",
             "location": "../cornerstone/widget-touch",
             "main": "widget-touch.js"
-        },
-        {
-            "name": "mocha",
-            "location": "../js",
-            "main": "mocha.js"
-        },
-        {
-            "name": "chai",
-            "location": "../js",
-            "main": "chai.js"
-        },
+        }
     ],
     "version": "0.2.17",
     "shim": {
@@ -555,12 +545,6 @@ var jam = {
                 "jquery"
             ],
             "exports": "widget-touch"
-        },
-        "mocha": {
-            "exports": "mocha"
-        },
-        "chai": {
-            "exports": "chai"
         }
     }
 };
@@ -810,16 +794,6 @@ if (typeof require !== "undefined" && require.config) {
             "name": "widget-touch",
             "location": "../cornerstone/widget-touch",
             "main": "widget-touch.js"
-        },
-        {
-            "name": "mocha",
-            "location": "../js",
-            "main": "mocha.js"
-        },
-        {
-            "name": "chai",
-            "location": "../js",
-            "main": "chai.js"
         }
     ],
     "shim": {

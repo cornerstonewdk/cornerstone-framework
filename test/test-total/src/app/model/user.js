@@ -4,10 +4,12 @@ define( [ 'backbone', 'logging' ], function( Backbone, Logging ) {
         defaults: {
             name: '홍길동',
             age: 40,
-            gender: 'male'
+            gender: 'male',
+            init: false
         },
         initialize: function() {
             Logging.debug( '[ 8, 9 ] user created' );
+            this.set( 'init', true );
         },
         validate: function( attrs ) {
         if ( !attrs.name )

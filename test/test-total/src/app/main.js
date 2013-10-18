@@ -3,16 +3,26 @@
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/page1', 'view/page2', 'view/page3', 'backbone', 'multipage-router', 'bootstrap', 'style!main', 'mocha', 'chai' ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter ) {
+define( [ 'view/page1', 
+		  'view/page2', 
+		  'view/page3', 
+		  'backbone', 
+		  'multipage-router', 
+		  'js/chai',
+		  'js/mocha', 
+		  'bootstrap',
+		  'style!main',
+		  'style!css/mocha' 
+		   ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter, chai ) {
 	return {
 		launch: function() {
-
-			mocha.setup('bdd');
-		    mocha.reporter('html');
-		    mocha.setup({
+			
+			window.mocha.setup('bdd');
+		    window.mocha.reporter('html');
+		    window.mocha.setup({
 		        ignoreLeaks: true
 		    });
-		    var expect = chai.expect;
+		    
 			
 			// Router
 			var MainRouter = MultipageRouter.extend( {
@@ -55,6 +65,12 @@ define( [ 'view/page1', 'view/page2', 'view/page3', 'backbone', 'multipage-route
 
 			new MainRouter();
 			Backbone.history.start();
+
+			require(['spec/spec'], function () {
+				if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+			        window.mocha.run();
+			    }
+			} );
 		}	
 	};
 } );
