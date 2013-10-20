@@ -2012,6 +2012,11 @@ var jam = {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "d3",
+            "location": "../cornerstone/d3",
+            "main": "d3.v3.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -2037,6 +2042,11 @@ var jam = {
             "main": "multipage.js"
         },
         {
+            "name": "nv",
+            "location": "../cornerstone/nv",
+            "main": "nv.d3.js"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -2060,6 +2070,16 @@ var jam = {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-chart",
+            "location": "../cornerstone/widget-chart",
+            "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-touch",
+            "location": "../cornerstone/widget-touch",
+            "main": "widget-touch.js"
         }
     ],
     "version": "0.2.17",
@@ -2075,6 +2095,9 @@ var jam = {
             "deps": [
                 "jquery"
             ]
+        },
+        "d3": {
+            "exports": "d3"
         },
         "form-view": {
             "deps": [
@@ -2100,6 +2123,12 @@ var jam = {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
         },
         "style": {
             "deps": [
@@ -2130,6 +2159,22 @@ var jam = {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
         }
     }
 };
@@ -2148,6 +2193,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "d3",
+            "location": "../cornerstone/d3",
+            "main": "d3.v3.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -2173,6 +2223,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "multipage.js"
         },
         {
+            "name": "nv",
+            "location": "../cornerstone/nv",
+            "main": "nv.d3.js"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -2196,6 +2251,16 @@ if (typeof require !== "undefined" && require.config) {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-chart",
+            "location": "../cornerstone/widget-chart",
+            "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-touch",
+            "location": "../cornerstone/widget-touch",
+            "main": "widget-touch.js"
         }
     ],
     "shim": {
@@ -2210,6 +2275,9 @@ if (typeof require !== "undefined" && require.config) {
             "deps": [
                 "jquery"
             ]
+        },
+        "d3": {
+            "exports": "d3"
         },
         "form-view": {
             "deps": [
@@ -2235,6 +2303,12 @@ if (typeof require !== "undefined" && require.config) {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
         },
         "style": {
             "deps": [
@@ -2265,6 +2339,22 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
         }
     }
 });
@@ -2283,6 +2373,11 @@ else {
             "main": "js/bootstrap.min.js"
         },
         {
+            "name": "d3",
+            "location": "../cornerstone/d3",
+            "main": "d3.v3.min.js"
+        },
+        {
             "name": "form-view",
             "location": "../cornerstone/form-view",
             "main": "form.js"
@@ -2308,6 +2403,11 @@ else {
             "main": "multipage.js"
         },
         {
+            "name": "nv",
+            "location": "../cornerstone/nv",
+            "main": "nv.d3.js"
+        },
+        {
             "name": "style",
             "location": "../cornerstone/style",
             "main": "style.js"
@@ -2331,6 +2431,16 @@ else {
             "name": "validation-view",
             "location": "../cornerstone/validation-view",
             "main": "validation.js"
+        },
+        {
+            "name": "widget-chart",
+            "location": "../cornerstone/widget-chart",
+            "main": "widget-chart.js"
+        },
+        {
+            "name": "widget-touch",
+            "location": "../cornerstone/widget-touch",
+            "main": "widget-touch.js"
         }
     ],
     "shim": {
@@ -2345,6 +2455,9 @@ else {
             "deps": [
                 "jquery"
             ]
+        },
+        "d3": {
+            "exports": "d3"
         },
         "form-view": {
             "deps": [
@@ -2370,6 +2483,12 @@ else {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "nv": {
+            "deps": [
+                "d3"
+            ],
+            "exports": "nv"
         },
         "style": {
             "deps": [
@@ -2400,6 +2519,22 @@ else {
                 "jquery"
             ],
             "exports": "validation-view"
+        },
+        "widget-chart": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery",
+                "d3",
+                "nv"
+            ],
+            "exports": "widget-chart"
+        },
+        "widget-touch": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "widget-touch"
         }
     }
 };
