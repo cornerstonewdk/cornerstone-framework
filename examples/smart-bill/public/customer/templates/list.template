@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="skt-navbar">
 		<h1>청구서 목록</h1>
-		<a href="#" class="btn-right"><span class="glyphicon glyphicon-refresh"></span></a>
+		<a id="refresh" href="javascript://" class="btn-right"><span class="glyphicon glyphicon-refresh"></span></a>
 	</div>
 	<div id="list-main" class="list-group">
 		{{#each this}}

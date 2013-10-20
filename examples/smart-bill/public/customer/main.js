@@ -1,50 +1,45 @@
-
 /**
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'jquery', 'backbone', 'multipage-router', 'model/bills', 'template!templates/list', 'template!templates/detail', 'bootstrap' ], function( $, Backbone, MultipageRouter, Bills, listTemplate, detailTemplate ) {
+define( [ 'handlebars', 'jquery', 'backbone', 'multipage-router', 'model/bills', 'view/list', 'view/detail', 'bootstrap' ], function( Handlebars, $, Backbone, MultipageRouter, Bills, ListView, DetailView ) {
 	return {
 		launch: function() {
 
+			function numberFormat( value ) {
+				return value.toString().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' );
+			}
+
+			Handlebars.registerHelper( 'numberFormat', function( value ) {
+				return numberFormat( value );
+			} );
+
+			Handlebars.registerHelper( 'items1Data', function( data, index ) {
+				return numberFormat( data.items1[ index ] );
+			} );
+
+			Handlebars.registerHelper( 'items2Data', function( data, index ) {
+				return numberFormat( data.items2[ index ] );
+			} );
+
 			var bills = new Bills();
 
-			// 목록 화면 ================================================================
-			( function() {
+			bills.on( 'sync', function() {
 				$( '#section-list' ).on( 'render', function() {
-					$( this ).html( listTemplate( bills.toJSON() ) );
+					new ListView( { collection: bills } ).render();
 				} );
 
-				$( '#refresh' ).click( function() {
-					bills.fetch();
-				} );
-
-				bills.on( 'all', function( eventName ) {
-					console.log( 'event: ' + eventName );
-				} );
-
-				// 모든 데이터를 다 받아오고 나면
-				bills.on( 'sync', function() {
-
-					$( window ).resize( function( event ) {
-						// margin(15+15) 포함
-						$( '.editor-grid' ).width( $( '.editor-content' ).width() + 30 );
-					} );
-
-					// Router
-					new ( MultipageRouter.extend( { useDataAttributes: true } ) );
-					Backbone.history.start();
-				} );
-			} )();
-
-			// 상세 화면 ================================================================
-			( function() {
 				$( '#section-detail' ).on( 'render', function( event, id ) {
 					var bill = bills.get( id );
-					$( '#section-detail' ).html( detailTemplate( bill.toJSON() ) );
+					new DetailView( { model: bill } ).render();
+				} ).on( 'inactive', function() {
+					$( '#modal-table, #modal-total, #modal-sum1, #modal-sum2, #modal-sum3, #modal-text, #modal-image, #modal-map, #modal-video, #modal-graph' ).modal( 'hide' );
 				} );
 
-			} )();
+				// Router
+				new ( MultipageRouter.extend( { useDataAttributes: true } ) );
+				Backbone.history.start();
+			} );
 
 			bills.fetch();
 		}	

@@ -92,6 +92,7 @@ body {
 
 #div-detail {
 	margin-top: 120px;
+	padding-bottom: 70px;
 }
 
 #div-detail .row {
@@ -138,4 +139,29 @@ body {
 	color: #FCFDFD;
 	background-color: #E14444;
 	border-color: #EDB0B0;
+}
+
+hr {
+	border: 1px solid #3f3f3f;
+}
+
+.well {
+	font-size: 18px;
+}
+
+.table {
+	background-color: white;
+	font-size: 18px;
+}
+
+.table td {
+	text-align: right;
+}
+
+.table tr.sub {
+	background-color: #f1f1f1;
+}
+
+.table tr.sub th {
+	font-weight: normal;
 }
