@@ -5,9 +5,10 @@
   border-top-color: @text-color;
   border-bottom-color: @text-color;
 }
+
 .nav-tabs {
   border-color: #9d9d9d;
-  & > li{
+  & > li {
     & > a {
       margin-right: 10px;
       padding: 10px 25px;
@@ -19,6 +20,7 @@
       .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
       &:hover, &:focus {
         border: 1px solid #9d9d9d;
+        border-bottom-color: transparent;
         color: #1f8fb9;
         text-shadow: 0 0 2px #fff;
       }
@@ -63,18 +65,15 @@
 
 .nav-pills {
   border-color: #9d9d9d;
-  & > li{
+  & > li {
     & > a {
       margin-right: 10px;
-      padding: 10px 25px;
-      border: 1px solid #9d9d9d;
-      border-radius: 5px;
+      padding-left: 25px;
+      padding-right: 25px;
+      border-color: #9d9d9d;
       background-color: #cbcbcb;
       color: #656565;
-      text-shadow: 0 1px 0 #fff;
-      .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
       &:hover, &:focus {
-        border: 1px solid #9d9d9d;
         color: #1f8fb9;
         text-shadow: 0 0 2px #fff;
       }
@@ -91,7 +90,12 @@
       }
     }
   }
+
+  &.nav-justified > li > a {
+    margin-right: 0px;
+  }
 }
+
 
 
 // Placehoder
@@ -99,7 +103,7 @@
   color: #656565;
   font-weight: bold;
   border: 1px solid #9d9d9d;
-  border-bottom-color: #f3f3f3;
+  border-bottom-color: transparent;
   border-radius: 5px 5px 0 0;
   .background-image(~"linear-gradient(bottom, #f3f3f3 0%, #fff 99.49%, #fff 100%)");
 }
@@ -107,7 +111,7 @@
 .nav-pills-active() {
   color: #454545;
   font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(255,255,255,.54);
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, .54);
   border: 1px solid #9d9d9d;
   border-radius: 5px;
   background-color: #fff;
