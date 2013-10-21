@@ -134,9 +134,8 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 			this.model.set( 'year', parseInt( $( '#select-year' ).val() ) );
 			this.model.set( 'month', parseInt( $( '#select-month' ).val() ) );
 			this.model.on( 'sync', function() {
-				self.collection.add( this.model );
+				self.collection.add( self.model );
 				location.href = '#list';
-				location.reload();
 			} );
 			this.model.save();
 		}
