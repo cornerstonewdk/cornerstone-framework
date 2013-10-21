@@ -351,10 +351,14 @@ describe( '종합 테스트', function () {
     } );
     
     var formView;
+    var formView1;
+    var validateUser;
+    var validateUser1;
     it( 'form view를 이용하여 model값이 표현되고 model의 값과 표시된 값이 동일한지 확인', function ( done ) {
         require( [ 'template!../app/template/userForm', 'form-view' ], function ( formTamplate, FormView ){
-            pageView.$el.find( '.btn-group' ).next().append( formTamplate() );
-            formView = new FormView( { el: '#add-form', model: new UserModel( { name: '트래버', age: 35, job: '노동자' } ) } );
+            validateUser = new UserModel( { name: '트래버', age: 35, job: '노동자', validate:true } );
+            pageView.$el.find( '.btn-group' ).next().append( formTamplate() ).find( 'form' ).attr( 'id', 'add-form' );
+            formView = new FormView( { el: '#add-form', model: validateUser } );
             expect( formView ).to.be.an.instanceof( Backbone.View );
             expect( formView.model.get( 'name' ) ).to.be.equal( formView.$el.find( 'input[name="name"]' ).val() );
             expect( formView.model.get( 'age' ) ).to.be.equal( parseInt( formView.$el.find( 'input[name="age"]' ).val() ) );
@@ -367,53 +371,50 @@ describe( '종합 테스트', function () {
         formView.$el.find( 'input[name="name"]' ).val( '마이클' );
         formView.$el.find( 'input[name="age"]' ).val( '39' );
         formView.$el.find( 'input[name="job"]' ).val( '스파이' );
+
         formView.$el.find( '.js-submit' ).on( 'click', function () {
             var formUser = formView.toModel();
-            expect( formUser.get( 'name' ) ).to.be.equal( '마이클' );
-            expect( parseInt( formUser.get( 'age' ) ) ).to.be.equal( 39 );
-            expect( formUser.get( 'job' ) ).to.be.equal( '스파이' );
+            expect( validateUser.get( 'name' ) ).to.be.equal( '마이클' );
+            expect( parseInt( validateUser.get( 'age' ) ) ).to.be.equal( 39 );
+            expect( validateUser.get( 'job' ) ).to.be.equal( '스파이' );
+            $( this ).off( 'click' );
             done();
             return false;
         } );
          formView.$el.find( '.js-submit' ).click();
     } );
 
-    // it( 'form의 내용이 model 객체에 반영되는지 확인', function ( done ) {
-    //     formView.$el.find( 'input[name="name"]' ).val( '' );
-    //     formView.$el.find( 'input[name="age"]' ).val( '39' );
-    //     formView.$el.find( 'input[name="job"]' ).val( '스파이' );
+    // TODO 모델 validation 확인 -> 툴팁 표시
+    it( 'Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
+        formView.$el.find( 'input[name="name"]' ).val( '' );
 
-    //     formView.$el.find( '.js-submit' ).off('click').on( 'click', function () {
-    //         var formUser = formView.toModel();
-    //         // expect( formUser.get( 'name' ) ).to.be.equal( '마이클' );
-    //         // expect( parseInt( formUser.get( 'age' ) ) ).to.be.equal( 39 );
-    //         // expect( formUser.get( 'job' ) ).to.be.equal( '스파이' );
-    //         done();
-    //         return false;
-    //     } );
-    //      formView.$el.find( '.js-submit' ).click();
-    // } );
+        validateUser.on( 'invalid', function ( model, error ) {
+            expect( model ).to.be.an.instanceof( Backbone.Model );
+            expect( error.attribute ).to.be.equal( 'name' );
+            done();
+        } );
+        
+        formView.$el.find( '.js-submit' ).on( 'click', function () {
+            formView.toModel();
+        } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+         formView.$el.find( '.js-submit' ).click();
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    // TODO input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.
+    it( 'input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.', function () {
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    it( 'validation view를 로드 후 formView에 생성옵션으로 지정, 동작 확인', function ( ) {
+        require( [ 'validation-view', 'template!../app/template/userForm', 'form-view' ], function ( ValidationView, formTamplate, FormView ){
+            validateUser1 = new UserModel( { name: '프랭클린', age: 25, job: '배송업', validate: true } );
+            pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'modify-form' );
+            formView1 = new FormView( { el: '#modify-form', model: validateUser1, validationViewClass: ValidationView } );
+            formView1.$el.find( '.js-submit' ).on( 'click', function () {
+                formView1.toModel();
+            } );
+        } );
+    } );
 
     // it( '', function ( done ) {
     //     require( [ '' ], function (  ){
