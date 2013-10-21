@@ -13,6 +13,7 @@ examples/livedoc/dist
 examples/guide/node_modules
 examples/guide/dist
 examples/smart-bill/node_modules
+examples/smart-bill/public/data
 examples/lottery/node_modules
 examples/lottery/dist
 bower_components
