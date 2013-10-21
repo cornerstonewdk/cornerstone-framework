@@ -47,7 +47,7 @@
           & > .glyphicon {
             border: none;
             background-color: @pagination-arrow-active-bg;
-            .gradient-vertical-without-color(#28c2f3, #0096db);
+            .background-image(~"linear-gradient(to bottom, #0096db, #28c2f3))");
             box-shadow: none;
             color: @pagination-arrow-active-color;
           }
@@ -175,7 +175,7 @@
           border-radius: 15px;
           background-color: #2094B1;
           content: "";
-          .gradient-vertical-without-color(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+          .background-image(~"linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.5)))");
           .box-shadow(~"inset 0 0 2px rgba(255, 255, 255, .2), 0 3px 5px rgba(0, 0, 0, .3)");
         }
       }
