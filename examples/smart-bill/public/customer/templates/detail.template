@@ -82,7 +82,9 @@
 								<div class="well well-sm">{{text}}</div>
 							{{/if}}
 							{{#if image}}
-								<div class="well well-sm">{{text}}</div>
+								<div class="well well-sm">
+									<img src="{{image}}" class="img-thumbnail"/>
+								</div>
 							{{/if}}
 							{{#if map}}
 								<div class="well well-sm">
