@@ -183,12 +183,12 @@ input {
 }
 
 .flip-area {
-  .user-select();
+  .user-select(none);
   position: relative;
   margin: 0;
   padding: 7px;
   border-radius: 25px;
-  #cs-gradient > .vertical(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
+  .background-image(~"linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)");
 
   .flip-btn {
     position: relative;
