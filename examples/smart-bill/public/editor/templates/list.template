@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">청구서 목록</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a id="refresh" href="javascript://"><span class="glyphicon glyphicon-refresh"></span></a></li>
+		</ul>
+	</div>
+	<table class="table table-striped">
+		<tr>
+			<th>청구 년 / 월</th>
+			<th style="width: 100px; text-align: right;">삭제</th>
+		</tr>
+		{{#each this}}
+			<tr>
+				<td>{{year}}년 {{month}}월 청구서</td>
+				<td><button data-id="{{id}}" type="button" class="close" aria-hidden="true">&times;</button></td>
+			</tr>
+		{{/each}}
+	</table>
+	<div class="pull-right">
+		<a class="btn btn-primary" href="#edit" data-transition="flip">새로 만들기</a>
+	</div>
+</div>

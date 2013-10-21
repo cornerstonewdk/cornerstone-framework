@@ -43,15 +43,25 @@ div.editor-grid div:nth-child(even) {
 	color: #FCFDFD;
 	background-color: #E14444;
 	border-color: #EDB0B0;
+	min-height: 30px;
 }
 
 .content-box {
 	border: 1px dashed #7f7f7f;
 	min-height: 30px;
+	padding: 10px;
+	font-size: 14px;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 hr {
-	border: 1px solid #3f3f3f;
+	border: 3px solid #3f3f3f;
 }
 
 /* 드래그 하는 동안 helper가 위에 보이도록 조정, helper가 이동하면서 위치에 따라서 폭이 변하지 않도록 고정 */
@@ -62,4 +72,9 @@ hr {
 
 .list-group-item {
 	cursor: pointer;
+}
+
+#dropzone {
+	border: 1px dashed #e0e0e0;
+	height: 50px;
 }

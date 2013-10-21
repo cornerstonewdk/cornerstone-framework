@@ -56,20 +56,38 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/detail', 'widg
 				}
 			}
 			initGoogleMap( 'map-canvas' );
-			initGoogleMap( 'map-canvas-modal' );
+			$( '#modal-map' ).on( 'shown.bs.modal', function() {
+				initGoogleMap( 'map-canvas-modal' );
+			} );
 
-			// 그래프 렌더링
-			$( '#chart-canvas' ).featuredChart( {
+			var chartOptions = {
 				chartType: 'horizontalBar3d',
 				data: [
 					{
-						key: "그룹 1",
+						key: "통신서비스 금액",
 						values: [
-							{ x: 0, y: 279 },
-							{ x: 2000, y: 340 }
+							{ x: 0, y: this.data.items1Sum }
+						]
+					},
+					{
+						key: "부가사용 금액",
+						values: [
+							{ x: 0, y: this.data.items2Sum }
+						]
+					},
+					{
+						key: "단말기 할부금",
+						values: [
+							{ x: 0, y: this.data.items3Sum }
 						]
 					}
 				]
+			};
+
+			// 그래프 렌더링
+			$( '#chart-canvas' ).featuredChart( chartOptions );
+			$( '#modal-graph' ).on( 'shown.bs.modal', function() {
+				$( '#chart-canvas-modal' ).featuredChart( chartOptions );
 			} );
 			return this;
 		}

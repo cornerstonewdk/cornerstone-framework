@@ -1,0 +1,144 @@
+define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/phone', 'view/tablet' ], function ( _, $, Backbone, template, PhoneView, TabletView ) {
+
+	return Backbone.View.extend( {
+
+		el: '#section-edit',
+
+		events: {
+			'click #btn-save': 'save'
+		},
+
+		initialize: function () {
+			this.model.set( 'tableItems', {
+				'items1': [
+					{ 'name': '월정액', 'negative': false },
+					{ 'name': '요금할인', 'negative': true }
+				],
+				'items2': [
+					{ 'name': '부가서비스이용료', 'negative': false },
+					{ 'name': '소액결제', 'negative': false },
+					{ 'name': '기타금액', 'negative': false }
+				]
+			} );
+			this.model.set( 'content', [
+				[
+					{
+						"phoneWidth": 12,
+						"tabletWidth": 12,
+						"box": true,
+						"table": true
+					}
+				],
+				[
+					{
+						"phoneWidth": 12,
+						"tabletWidth": 12,
+						"divider": true
+					}
+				],
+				[
+					{
+						"phoneWidth": 7,
+						"tabletWidth": 5,
+						"box": true,
+						"total": true
+					},
+					{
+						"phoneWidth": 5,
+						"tabletWidth": 7,
+						"box": true,
+						"text": "안녕하세요."
+					}
+				],
+				[
+					{
+						"phoneWidth": 7,
+						"tabletWidth": 5,
+						"box": true,
+						"video": "http://www.youtube.com/embed/bACAT8BH3E4"
+					},
+					{
+						"phoneWidth": 5,
+						"tabletWidth": 7,
+						"box": true,
+						"map": true
+					}
+				],
+				[
+					{
+						"phoneWidth": 7,
+						"tabletWidth": 5,
+						"box": true,
+						"graph": true
+					},
+					{
+						"phoneWidth": 5,
+						"tabletWidth": 7,
+						"box": true,
+						"video": "http://www.youtube.com/embed/bACAT8BH3E4"
+					}
+				],
+				[
+					{
+						"phoneWidth": 7,
+						"tabletWidth": 5,
+						"button": true,
+						"graph": true
+					},
+					{
+						"phoneWidth": 5,
+						"tabletWidth": 7,
+						"button": true,
+						"video": "http://www.youtube.com/embed/bACAT8BH3E4"
+					}
+				],
+				[
+					{
+						"phoneWidth": 7,
+						"tabletWidth": 5,
+						"button": true,
+						"map": true
+					},
+					{
+						"phoneWidth": 5,
+						"tabletWidth": 7,
+						"button": true,
+						"sum3": true
+					}
+				],
+				[
+					{
+						"phoneWidth": 12,
+						"tabletWidth": 12,
+						"button": true,
+						"table": true
+					}
+				]
+			] );
+		},
+
+		render: function () {
+			// 상세페이지 랜더링
+			this.$el.html( template() );
+			new PhoneView( { model: this.model } ).render();
+			new TabletView( { model: this.model } ).render();
+			// Draggable
+			$( '.list-group-item' ).draggable( { opacity: 0.7, helper: 'clone' } );
+			return this;
+		},
+
+		save: function() {
+
+			var self = this;
+
+			this.model.set( 'year', parseInt( $( '#select-year' ).val() ) );
+			this.model.set( 'month', parseInt( $( '#select-month' ).val() ) );
+			this.model.on( 'sync', function() {
+				self.collection.add( this.model );
+				location.href = '#list';
+				location.reload();
+			} );
+			this.model.save();
+		}
+	} );
+} );

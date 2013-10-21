@@ -53,7 +53,7 @@
         },
         render: function (options) {
             if (!navigator.userAgent.toLowerCase().match(/webkit/gi)
-                && options.chartType.match(/.*bar3d.*/gi)) {
+            && options.chartType.match(/.*bar3d.*/gi)) {
                 options.chartType = options.chartType.replace("3d", "");
             }
 
@@ -70,9 +70,9 @@
                     chart = self[options.chartType + "Chart"](target, options);
 
                     chart.tooltips(options.tooltips)
-                        .color(function (d, i) {
-                            return options.color[i % colorLength];
-                        });
+                    .color(function (d, i) {
+                        return options.color[i % colorLength];
+                    });
 
                     if ("line" === options.chartType) {
                         isDebug && console.log(options);
@@ -84,22 +84,22 @@
                     chart = typeof customChart === "function" ? customChart : chart;
 
                     target.attr("width", options.width)
-                        .attr("height", options.height)
-                        .datum(options.data)
-                        .transition()
-                        .duration(500)
-                        .each("end", function () {
-                            $(self.el).trigger(eventName.shown);
+                    .attr("height", options.height)
+                    .datum(options.data)
+                    .transition()
+                    .duration(500)
+                    .each("end", function () {
+                        $(self.el).trigger(eventName.shown);
 
-                            isDebug && isDebug && console.log(eventName.shown);
+                        isDebug && isDebug && console.log(eventName.shown);
 
-                            if (options.chartType.match(/line/gi) || !options.chartType.match(/bar.*|horizontalBar.*/gi)) {
-                                $(self.el).trigger(eventName.complete);
+                        if (options.chartType.match(/line/gi) || !options.chartType.match(/bar.*|horizontalBar.*/gi)) {
+                            $(self.el).trigger(eventName.complete);
 
-                                isDebug && isDebug && console.log(eventName.complete);
-                            }
-                        })
-                        .call(chart);
+                            isDebug && isDebug && console.log(eventName.complete);
+                        }
+                    })
+                    .call(chart);
 
                     typeof chart.afterRender === "function" && chart.afterRender("render");
 
@@ -130,8 +130,8 @@
             chart = nv.models.multiBarChart();
 
             chart.showLegend(options.showLegend)
-                .showControls(options.showControls)
-                .controlsData(options.controlsData);
+            .showControls(options.showControls)
+            .controlsData(options.controlsData);
 
             chart.afterRender = function (eventType) {
                 var chart = this;
@@ -166,9 +166,9 @@
                     var height = rect.attr("height");
 
                     if (!(text.attr("x") == x
-                        && text.attr("y") == y
-                        && text.attr("width") == width
-                        && text.attr("height") == height)) {
+                    && text.attr("y") == y
+                    && text.attr("width") == width
+                    && text.attr("height") == height)) {
                         text.attr({
                             "opacity": 0,
                             "x": x,
@@ -178,8 +178,8 @@
                             "text-anchor": "middle",
                             "transform": rect.attr("transform")
                         }).transition().attr({
-                                opacity: 1
-                            });
+                            opacity: 1
+                        });
                         if(typeof options.valueFormat === "string") {
                             text.text(d3.format(options.valueFormat)(rect.data()[0].y));
                         } else {
@@ -217,14 +217,14 @@
         },
         lineChart: function (target, options) {
             chart = nv.models.lineChart()
-                .showLegend(options.showLegend);
+            .showLegend(options.showLegend);
 
             return chart;
         },
         pieChart: function (target, options) {
             chart = nv.models.pieChart()
-                .showLegend(options.showLegend)
-                .tooltips(options.tooltips);
+            .showLegend(options.showLegend)
+            .tooltips(options.tooltips);
 
             return chart;
         },
@@ -232,11 +232,11 @@
         // Cornerstone 2.0
         horizontalBarChart: function (target, options) {
             chart = nv.models.multiBarHorizontalChart()
-                .showValues(options.showValues)
-                .showLegend(options.showLegend)
-                .showControls(options.showControls)
-                .tooltips(options.tooltips)
-                .controlsData(options.controlsData);
+            .showValues(options.showValues)
+            .showLegend(options.showLegend)
+            .showControls(options.showControls)
+            .tooltips(options.tooltips)
+            .controlsData(options.controlsData);
 
             if(typeof options.valueFormat === "string")
                 chart.valueFormat(d3.format(options.valueFormat));
@@ -308,17 +308,17 @@
 
                     // Update Main (Focus)
                     var focusLinesWrap = target.select('.nv-focus .nv-linesWrap')
-                        .datum(options.data.filter(function (d) {
-                            return !d.disabled
-                        }).map(function (d) {
-                                return {
-                                    key: d.key,
-                                    values: d.values.filter(function (d, i) {
-                                        return lines.x()(d, i) >= extent[0] && lines.x()(d, i) <= extent[1];
-                                    })
-                                }
+                    .datum(options.data.filter(function (d) {
+                        return !d.disabled
+                    }).map(function (d) {
+                        return {
+                            key: d.key,
+                            values: d.values.filter(function (d, i) {
+                                return lines.x()(d, i) >= extent[0] && lines.x()(d, i) <= extent[1];
                             })
-                        );
+                        }
+                    })
+                    );
                     focusLinesWrap.transition().call(lines);
 
                     // Update Main (Focus) Axes
@@ -357,8 +357,8 @@
 
                         if (typeof extent === "undefined") {
                             extent = direction === "left"
-                                ? [xDomain[1] - unit, xDomain[1]]
-                                : [xDomain[0], xDomain[0] + unit];
+                            ? [xDomain[1] - unit, xDomain[1]]
+                            : [xDomain[0], xDomain[0] + unit];
                         }
 
                         e.preventDefault();
@@ -506,10 +506,10 @@
                     barObj.label = this[j];
                     barObj.height = Math.floor(barObj.label / chartYMax * 100) + '%';
                     barObj.bar = $('<div class="bar fig' + j + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div><span>' + barObj.label + '</span></div>')
-                        .css({
-                            left: (barInnerWidth * j) + "px"
-                        })
-                        .appendTo(barGroup);
+                    .css({
+                        left: (barInnerWidth * j) + "px"
+                    })
+                    .appendTo(barGroup);
                     bars.push(barObj);
                 }
                 // Add bar groups to graph
@@ -522,7 +522,7 @@
                 var legendList = $('<ul class="legend"></ul>');
                 $.each(chartLegend, function (i) {
                     $('<li><span class="icon fig' + i + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div></span>' + this + '</li>')
-                        .appendTo(legendList);
+                    .appendTo(legendList);
                 });
                 legendList.appendTo(figureContainer);
             }
@@ -718,7 +718,7 @@
         util: {
             transpose: function (array) {
                 var w = array.length ? array.length : 0,
-                    h = array[0] instanceof Array ? array[0].length : 0;
+                h = array[0] instanceof Array ? array[0].length : 0;
 
                 if (h === 0 || w === 0) {
                     return [];
@@ -744,8 +744,8 @@
             getTranslateJson: function (target) {
                 try {
                     return JSON.parse(target.attr("transform").replace("translate(", '{"x":')
-                        .replace(",", ',"y":')
-                        .replace(")", '}'))
+                    .replace(",", ',"y":')
+                    .replace(")", '}'))
                 } catch (e) {
                     return {x: 0, y: 0};
                 }
@@ -895,10 +895,12 @@
                     var $target = target.closest(".widget-chart3d");
                     var rate;
 
+                    console.log(window.innerWidth, target.width());
+
                     if ("bar3d" === options.chartType) {
-                        rate = window.innerWidth / target.width();
+                        rate = target.$parent.parent().width() / target.width();
                     } else {
-                        rate = window.innerWidth / (target.height() + target.find(".x-axis").height());
+                        rate = target.$parent.parent().width() / (target.height() + target.find(".x-axis").height());
                     }
 
                     $target.removeAttr("style");
@@ -919,6 +921,7 @@
                                 webkitTransform: "scale(" + rate + ")"
                             });
                         } else {
+                            console.log(rate);
                             $target.css({
                                 width: target.height() * 1.1,
                                 height: target.width(),
@@ -940,7 +943,10 @@
                     }
                 };
 
-                resizeChart();
+                setTimeout(function() {
+                    resizeChart();
+                }, 100);
+
                 if (HAS_TOUCH) {
                     window.onorientationchange = function () {
                         !options.autoResize || resizeChart();
@@ -1021,7 +1027,7 @@
     $(function () {
         $("[data-featured=chart]").each(function () {
             var self = this,
-                dataUrl = $(this).data("chartBind");
+            dataUrl = $(this).data("chartBind");
 
             dataUrl && $.getJSON(dataUrl).success(function (json) {
                 $(self)[pluginName]({

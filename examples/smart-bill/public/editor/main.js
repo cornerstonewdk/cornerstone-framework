@@ -18,15 +18,11 @@ require.config( {
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/page1', 'view/page2', 'view/page3', 'jquery', 'backbone', 'multipage-router', 'model/bills', 'bootstrap', 'jquery-ui' ], function( Page1View, Page2View, Page3View, $, Backbone, MultipageRouter, Bills ) {
+define( [ 'jquery', 'backbone', 'multipage-router', 'model/bills', 'model/bill', 'view/list', 'view/edit', 'bootstrap', 'jquery-ui' ], function( $, Backbone, MultipageRouter, Bills, Bill, ListView, EditView ) {
 	return {
 		launch: function() {
 
 			var bills = new Bills();
-
-			bills.on( 'all', function( eventName ) {
-				console.log( 'event: ' + eventName );
-			} );
 
 			// 모든 데이터를 다 받아오고 나면
 			bills.on( 'sync', function() {
@@ -36,19 +32,20 @@ define( [ 'view/page1', 'view/page2', 'view/page3', 'jquery', 'backbone', 'multi
 					$( '.editor-grid' ).width( $( '.editor-content' ).width() + 30 );
 				} );
 
-				// Draggable
-				$( '.list-group-item' ).draggable( { opacity: 0.7, helper: 'clone' } );
-			} );
+				$( '#section-list' ).on( 'render', function() {
+					new ListView( { collection: bills } ).render();
+				} );
 
-			$( '#refresh' ).click( function() {
-				bills.fetch();
+				$( '#section-edit' ).on( 'render', function() {
+					new EditView( { collection: bills, model: new Bill() } ).render();
+				} );
+
+				// Router
+				new ( MultipageRouter.extend( { useDataAttributes: true } ) );
+				Backbone.history.start();
 			} );
 
 			bills.fetch();
-
-			// Router
-			new ( MultipageRouter.extend( { useDataAttributes: true } ) );
-			Backbone.history.start();
 		}	
 	};
 } );
