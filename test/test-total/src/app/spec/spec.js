@@ -254,16 +254,26 @@ describe( '종합 테스트', function () {
         expect( pageView.$el ).to.be.an( 'object' );
     } );
 
+    var userView2OldAge = 0;
     it( 'userView를 다음과 같이 정의 render 함수를 정의 및 렌더링 실행 후 화면에 보이는 지 확인.', function ( done ) {
         UserView2 = Backbone.View.extend( {
             tagName: 'li',
             className: 'user',
-            render: function() {
-                this.$el.html( '<span>' + this.model.get( 'name' ) + ' / ' + this.model.get( 'age' ) + '</span>' );
+            events: {
+                'click': 'increaseAge'
+            },
+            render: function () {
+                this.$el.html( '<span class="name">' + this.model.get( 'name' ) + '</span>' + ' / <span class="age">' + this.model.get( 'age' ) + '</span>' );
                 return this;
+            },
+            increaseAge: function () {
+                userView2OldAge = parseInt( this.model.get( 'age' ) );
+                this.model.set( 'age', parseInt( this.model.get( 'age' ) ) + 1 );
+                this.render();
             }
         } );
-        var userView2 = new UserView2( { model: user1 } );
+        user1.set( 'male', false );
+        userView2 = new UserView2( { model: user1 } );
         pageView.$el.find( 'ul.users' ).append( userView2.render().el );
 
         expect( userView2 ).to.be.an.instanceof( Backbone.View );
@@ -276,52 +286,112 @@ describe( '종합 테스트', function () {
         } );
     } );
 
+    it( 'view에 이벤트 바인딩 및 동작 확인', function ( done ) {
+        userView2.$el.click( function () {
+            setTimeout( function () {
+                expect( parseInt( userView2.model.get( 'age' ) ) ).to.be.equal( userView2OldAge + 1 );
+                done();    
+            }, 10 );
+        } );
+        userView2.$el.click();
+    } );
 
+    it( 'Touch Event를 포함한 TouchView 클래스를 정의 및 Touch 이벤트 동작확인', function () {
+        // TODO with faketouch
+        // require( [ '' ], function (  ){
+        //     expect(  ).to.be.equal( 'object' );
+        //     done();
+        // });
+    } );
 
-   
+    it( 'Gesture-view를 확장한 TouchView 클래스를 정의 및 Gesture 이벤트 동작확인', function () {
+        // TODO with faketouch
+        // require( [ '' ], function (  ){
+        //     expect(  ).to.be.equal( 'object' );
+        //     done();
+        // });
+    } );
 
+    it( 'userTemplate.template 파일을 작성 및 render 확인, 동적 CSS 로드 확인', function ( done ) {
+        require( [ 'template!../app/template/user', 'jquery', 'style!../app/css/user' ], function ( userTemplate, $ ){
+            var userView3 = new UserView2( { model: new UserModel( { name: '김철수', age: 20, male: true } ), events: null } );
+            userView3.render = function () {
+                this.$el.html( userTemplate( { user: this.model.toJSON() } ) );
+                expect( this.el ).to.be.not.undefined;
+                done();
+                return this;
+            };
+            pageView.$el.find( 'ul.template_users' ).append( userView3.render().el );
+        } );
+    } );
 
-
+    it( 'require.js에 style을 template과 의존성 설정 후 자동 로드 되는지 확인', function ( done ) {
+        requirejs.config( {
+            paths: {
+                'userTemplate1': '../app/template/user1'
+            },
+            shim: {
+                'template!userTemplate1': ['style!../app/css/user1']
+            }
+        } );
+        require( [ 'template!userTemplate1', 'jquery' ], function ( userTemplate1, $ ){
+            var userView4 = new UserView2( { model: new UserModel( { name: '최은수', age: 27, male: false } ), events: null } );
+            userView4.render = function () {
+                this.$el.html( userTemplate1( { user: this.model.toJSON() } ) );
+                var self = this;
+                expect( this.el ).to.be.not.undefined;
+                setTimeout( function () {
+                    expect( self.$el.closest('li').css( 'color' ) ).to.be.equal( 'rgb(0, 128, 0)' );
+                    done();
+                }, 200 );
+                return this;
+            };
+            pageView.$el.find( 'ol.template_users1' ).append( userView4.render().el );
+        } );
+    } );
     
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    var formView;
+    it( 'form view를 이용하여 model값이 표현되고 model의 값과 표시된 값이 동일한지 확인', function ( done ) {
+        require( [ 'template!../app/template/userForm', 'form-view' ], function ( formTamplate, FormView ){
+            pageView.$el.find( '.btn-group' ).next().append( formTamplate() );
+            formView = new FormView( { el: '#add-form', model: new UserModel( { name: '트래버', age: 35, job: '노동자' } ) } );
+            expect( formView ).to.be.an.instanceof( Backbone.View );
+            expect( formView.model.get( 'name' ) ).to.be.equal( formView.$el.find( 'input[name="name"]' ).val() );
+            expect( formView.model.get( 'age' ) ).to.be.equal( parseInt( formView.$el.find( 'input[name="age"]' ).val() ) );
+            expect( formView.model.get( 'job' ) ).to.be.equal( formView.$el.find( 'input[name="job"]' ).val() );
+            done();
+        } );
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    it( 'form의 내용이 model 객체에 반영되는지 확인', function ( done ) {
+        formView.$el.find( 'input[name="name"]' ).val( '마이클' );
+        formView.$el.find( 'input[name="age"]' ).val( '39' );
+        formView.$el.find( 'input[name="job"]' ).val( '스파이' );
+        formView.$el.find( '.js-submit' ).on( 'click', function () {
+            var formUser = formView.toModel();
+            expect( formUser.get( 'name' ) ).to.be.equal( '마이클' );
+            expect( parseInt( formUser.get( 'age' ) ) ).to.be.equal( 39 );
+            expect( formUser.get( 'job' ) ).to.be.equal( '스파이' );
+            done();
+            return false;
+        } );
+         formView.$el.find( '.js-submit' ).click();
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    // it( 'form의 내용이 model 객체에 반영되는지 확인', function ( done ) {
+    //     formView.$el.find( 'input[name="name"]' ).val( '' );
+    //     formView.$el.find( 'input[name="age"]' ).val( '39' );
+    //     formView.$el.find( 'input[name="job"]' ).val( '스파이' );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
+    //     formView.$el.find( '.js-submit' ).off('click').on( 'click', function () {
+    //         var formUser = formView.toModel();
+    //         // expect( formUser.get( 'name' ) ).to.be.equal( '마이클' );
+    //         // expect( parseInt( formUser.get( 'age' ) ) ).to.be.equal( 39 );
+    //         // expect( formUser.get( 'job' ) ).to.be.equal( '스파이' );
     //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
+    //         return false;
+    //     } );
+    //      formView.$el.find( '.js-submit' ).click();
     // } );
 
     // it( '', function ( done ) {

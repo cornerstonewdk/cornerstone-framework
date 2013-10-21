@@ -6,8 +6,15 @@
 		<div>
 			<ul class="users"></ul>
 		</div>
+		<h3>탬플릿을 사용한 사용자 목록</h1>
+		<div>
+			<ul class="template_users"></ul>
+			<ol class="template_users1"></ul>
+		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-success next">다음</button>
+		</div>
+		<div>
 		</div>
 	</div>
 </div>

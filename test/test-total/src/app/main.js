@@ -23,7 +23,6 @@ define( [ 'view/page1',
 		        ignoreLeaks: true
 		    });
 		    
-			
 			// Router
 			var MainRouter = MultipageRouter.extend( {
 			
