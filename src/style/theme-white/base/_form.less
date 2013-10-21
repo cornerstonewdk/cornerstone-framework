@@ -74,7 +74,7 @@
 
 input {
   &.focused {
-    outline: thin dotted 9px;
+    outline: thin;
     border-color: rgba(82, 168, 236, .8);
     .box-shadow(0 0 8px rgba(82, 168, 236, .6));
   }
@@ -98,8 +98,8 @@ input {
   text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
   font-weight: bold;
-  #cs-gradient > .vertical(#f4f4f4, darken(#f4f4f4, 10%));
   .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+  .background-image(~"linear-gradient(to bottom, #f4f4f4 0%, #dbdbdb 100%)");
 
   & > span {
     white-space: pre-line;
