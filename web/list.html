@@ -85,6 +85,18 @@
                     </a>
                 </li>
                 <li>
+                    <a href="#" data-link="smart-bill-admin">
+                        <span class="glyphicon glyphicon-tree-conifer"></span>
+                        스마트 청구서 관리자용
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-link="smart-bill-user">
+                        <span class="glyphicon glyphicon-tree-deciduous"></span>
+                        스마트 청구서 사용자용
+                    </a>
+                </li>
+                <li>
                     <a href="#" data-link="test-page">
                         <span class="glyphicon glyphicon-repeat"></span>
                         Cornerstone 테스트 페이지
@@ -93,7 +105,7 @@
                 <li>
                     <a href="#" data-link="widget-chart">
                         <span class="glyphicon glyphicon-stats"></span>
-                        Cornerstone 테스트 페이지
+                        Widget Chart 테스트 페이지
                     </a>
                 </li>
                 <li>
@@ -142,6 +154,20 @@
                                         <p class="list-group-item-text">
                                             <br/>Cornerstone Framework는 레퍼런스 내용을 Live Document 통해 기능들을 웹상에서 바로 코딩해보고 렌더링 되는 결과물을 한자리에서 눈으로 확인 할 수 있습니다!
 
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item" data-link="smart-bill-admin">
+                                        <h4 class="list-group-item-heading">
+                                            <span class="glyphicon glyphicon-tree-conifer"></span>스마트 청구서 관리자용</h4>
+                                        <p class="list-group-item-text">
+                                            <br/>Cornerstone Framework를 통해서 만든 스마트 청구서 관리자용 예제 웹앱입니다. 청구서 목록을 관리 할 수 있고 새로운 청구서를 작성할 수 있습니다.
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item" data-link="smart-bill-user">
+                                        <h4 class="list-group-item-heading">
+                                            <span class="glyphicon glyphicon-tree-deciduous"></span>스마트 청구서 사용자용</h4>
+                                        <p class="list-group-item-text">
+                                            <br/>Cornerstone Framework를 통해서 만든 스마트 청구서 사용자용 예제 웹앱입니다. 관리자가 생성 한 청구서를 사용자에 맞게 재구성 되어 보여집니다.
                                         </p>
                                     </li>
                                     <li class="list-group-item" data-link="test-page">
@@ -267,7 +293,18 @@
             url: 'http://cornerstone.sktelecom.com/download/',
             name: 'runtime-download',
             preview: false
+        },
+        'smart-bill-admin': {
+            url: 'http://cornerstone.sktelecom.com/2/smart-bill/editor.html',
+            name: 'smart-bill-admin',
+            preview: true
+        },
+        'smart-bill-user': {
+            url: 'http://cornerstone.sktelecom.com/2/smart-bill/',
+            name: 'smart-bill-user',
+            preview: true
         }
+
     };
 
     var loadCount = 0;
