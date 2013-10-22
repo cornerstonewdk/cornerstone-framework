@@ -7,13 +7,6 @@
   .cs-mixin(box-shadow, @dropdown-box-shadow);
 
   li {
-    &:first-child {
-      a {
-        .cs-property(border-top, @dropdown-first-border-top);
-        .cs-property(border-radius, @dropdown-first-border-radius);
-      }
-    }
-
     &:last-child {
       a {
         .cs-property(padding, @dropdown-last-padding);
@@ -27,10 +20,14 @@
       .cs-property(border-top, @dropdown-item-border-top);
       .cs-property(border-radius, @dropdown-item-border-radius);
       .cs-property(color, @dropdown-item-color);
+    }
 
-      &:hover, &:focus {
-        .cs-mixin(background-image, @dropdown-item-hover-background-image);
-      }
+    & > a:hover,
+    & > a:focus,
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      .cs-mixin(background-image, @dropdown-item-hover-background-image);
     }
   }
 
