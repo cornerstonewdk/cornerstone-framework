@@ -60,7 +60,7 @@
 			 *   'from-page-id:to-page-id': { type: 'transition 종류', duration: 시간(ms) }
 			 * }
 			 */
-			if ( this.pages ) {
+			if ( !_.isEmpty( this.pages ) ) {
 				
 				var routes = this.routes = {};
 				
