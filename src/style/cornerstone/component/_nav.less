@@ -1,0 +1,106 @@
+//
+// Nav
+// --------------------------------------------------
+.nav .caret {
+  .cs-property(border-top-color, @nav-caret-border-color);
+  .cs-property(border-bottom-color, @nav-caret-border-color);
+}
+
+.nav-tabs {
+  .cs-property(margin, @nav-tabs-margin);
+  .cs-property(border, @nav-tabs-border);
+  .cs-property(border-color, @nav-tabs-border-color);
+  .cs-property(border-bottom, @nav-tabs-border-bottom);
+  .cs-mixin(box-shadow, @nav-tabs-box-shadow);
+  & > li {
+    & > a {
+      .cs-property(margin-right, @nav-tabs-li-a-margin-right);
+      .cs-property(padding, @nav-tabs-li-a-padding);
+      .cs-property(border, @nav-tabs-li-a-border);
+      .cs-property(border-radius, @nav-tabs-li-a-border-radius);
+      .cs-property(background-color, @nav-tabs-li-a-background-color);
+      .cs-property(color, @nav-tabs-li-a-color);
+      .cs-property(font-size, @nav-tabs-li-a-font-size);
+      .cs-mixin(background-image, @nav-tabs-li-a-background-image);
+      .cs-mixin(box-shadow, @nav-tabs-li-a-box-shadow);
+    }
+    &:not(.disabled) {
+      & > a {
+        &:hover, &:focus {
+          .cs-property(border, @nav-tabs-li-a-hover-border);
+          .cs-property(color, @nav-tabs-li-a-hover-color);
+          .cs-property(background-color, @nav-tabs-li-a-hover-background-color);
+        }
+      }
+    }
+    &:not(.disabled) > a:active,
+    &.active:not(.disabled) > a,
+    &.active:not(.disabled) > a:hover,
+    &.active:not(.disabled) > a:focus,
+    &.active:not(.disabled) > a:active,
+    &.open .dropdown-toggle,
+    &.open .dropdown-toggle:hover,
+    &.open .dropdown-toggle:focus, {
+      .nav-tabs-active();
+    }
+  }
+
+  &.nav-justified {
+    .cs-property(border-bottom, @nav-tabs-justified-border-bottom);
+    & > li:not(.disabled) {
+      .cs-property(border-bottom, @nav-tabs-justified-li-border-bottom);
+      & > a {
+        .cs-property(margin-right, @nav-tabs-justified-li-a-margin-right);
+        .cs-property(border, @nav-tabs-justified-li-a-border);
+        .cs-property(border-bottom, @nav-tabs-justified-li-a-border-bottom);
+      }
+      &:active, &.active {
+        .cs-property(border-bottom, @nav-tabs-justified-li-active-border-bottom);
+      }
+    }
+  }
+}
+
+.nav-pills {
+  .cs-property(border-color, @nav-pills-border-color);
+  & > li {
+    & > a {
+      .cs-property(padding, @nav-pills-li-a-padding);
+      .cs-property(border-color, @nav-pills-li-a-border-color);
+      .cs-property(border, @nav-pills-li-a-border);
+      .cs-property(border-radius, @nav-pills-li-a-border-radius);
+      .cs-property(background-color, @nav-pills-li-a-background-color);
+      .cs-property(color, @nav-pills-li-a-color);
+      .cs-property(margin-top, @nav-pills-li-a-margin-top);
+      .cs-property(margin-bottom, @nav-pills-li-a-margin-bottom);
+      .cs-property(font-size, @nav-pills-li-a-font-size);
+      .cs-mixin(box-shadow, @nav-pills-li-a-box-shadow);
+    }
+    &.disabled {
+      & > a {
+        &:hover, &:focus {
+          .cs-property(background-color, @nav-pills-li-a-background-color);
+        }
+      }
+    }
+    &:not(.disabled) {
+      & > a {
+        &:hover, &:focus {
+          .cs-property(border, @nav-pills-li-a-hover-border);
+          .cs-property(color, @nav-pills-li-a-hover-color);
+          .cs-property(background-color, @nav-pills-li-a-background-color);
+        }
+      }
+      & > a:active,
+      &.active > a,
+      &.active > a:hover,
+      &.active > a:focus,
+      &.active > a:active,
+      &.open .dropdown-toggle,
+      &.open .dropdown-toggle:hover,
+      &.open .dropdown-toggle:focus, {
+        .nav-pills-active();
+      }
+    }
+  }
+}
