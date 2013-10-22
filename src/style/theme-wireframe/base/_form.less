@@ -27,8 +27,8 @@ input {
   position: relative;
   display: inline-block;
   padding: 9px 10px 8px 10px;
-  border: 1px solid @btn-default-bg;
-  background-color: @btn-default-bg;
+  border: 1px solid #CCC;
+  background-color: #CCC;
   color: @btn-default-color;
   text-align: left;
   font-weight: bold;
@@ -51,7 +51,7 @@ input {
       left: 50%;
       margin-left: -11px;
       border-bottom-width: 0;
-      border-top-color: @btn-default-bg;
+      border-top-color: #CCC;
       bottom: -11px;
     }
   }
@@ -62,7 +62,7 @@ input {
       top: 9px;;
       left: -11px;
       border-left-width: 0;
-      border-right-color: @btn-default-bg;
+      border-right-color: #CCC;
     }
   }
 
@@ -72,7 +72,7 @@ input {
       left: 50%;
       margin-left: -11px;
       border-top-width: 0;
-      border-bottom-color: @btn-default-bg;
+      border-bottom-color: #CCC;
       top: -11px;
     }
   }
@@ -84,7 +84,7 @@ input {
       top: 9px;;
       right: -11px;
       border-right-width: 0;
-      border-left-color: @btn-default-bg;
+      border-left-color: #CCC;
     }
   }
 }
@@ -183,12 +183,12 @@ input {
 }
 
 .flip-area {
-  .user-select();
+  .user-select(none);
   position: relative;
   margin: 0;
   padding: 7px;
   border-radius: 25px;
-  #cs-gradient > .vertical(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
+  .background-image(~"linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)");
 
   .flip-btn {
     position: relative;

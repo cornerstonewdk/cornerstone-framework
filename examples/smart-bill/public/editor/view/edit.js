@@ -49,70 +49,6 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 						"box": true,
 						"text": "안녕하세요."
 					}
-				],
-				[
-					{
-						"phoneWidth": 7,
-						"tabletWidth": 5,
-						"box": true,
-						"video": "http://www.youtube.com/embed/bACAT8BH3E4"
-					},
-					{
-						"phoneWidth": 5,
-						"tabletWidth": 7,
-						"box": true,
-						"map": true
-					}
-				],
-				[
-					{
-						"phoneWidth": 7,
-						"tabletWidth": 5,
-						"box": true,
-						"graph": true
-					},
-					{
-						"phoneWidth": 5,
-						"tabletWidth": 7,
-						"box": true,
-						"video": "http://www.youtube.com/embed/bACAT8BH3E4"
-					}
-				],
-				[
-					{
-						"phoneWidth": 7,
-						"tabletWidth": 5,
-						"button": true,
-						"graph": true
-					},
-					{
-						"phoneWidth": 5,
-						"tabletWidth": 7,
-						"button": true,
-						"video": "http://www.youtube.com/embed/bACAT8BH3E4"
-					}
-				],
-				[
-					{
-						"phoneWidth": 7,
-						"tabletWidth": 5,
-						"button": true,
-						"map": true
-					},
-					{
-						"phoneWidth": 5,
-						"tabletWidth": 7,
-						"button": true,
-						"sum3": true
-					}
-				],
-				[
-					{
-						"phoneWidth": 12,
-						"tabletWidth": 12,
-						"button": true,
-						"table": true
-					}
 				]
 			] );
 		},
@@ -134,9 +70,8 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 			this.model.set( 'year', parseInt( $( '#select-year' ).val() ) );
 			this.model.set( 'month', parseInt( $( '#select-month' ).val() ) );
 			this.model.on( 'sync', function() {
-				self.collection.add( this.model );
+				self.collection.add( self.model );
 				location.href = '#list';
-				location.reload();
 			} );
 			this.model.save();
 		}

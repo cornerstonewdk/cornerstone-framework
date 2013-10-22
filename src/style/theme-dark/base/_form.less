@@ -34,7 +34,6 @@ input[type=checkbox] {
   font-size: @form-font-size;
   line-height: @line-height-base;
   .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   &:focus, &.focused {
     outline: 0;
@@ -67,7 +66,7 @@ select.form-control{
   .input-group-addon {
     border: 1px solid #000000;
     .box-shadow(~"inset 0 0 1px rgba(255,255,255,.5), inset 0 1px 1px rgba(255,255,255,.5), 0 3px 3px rgba(0,0,0,.5)");
-    #cs-gradient > .vertical(#5A5D61, #3D4146);
+    .background-image(~"linear-gradient(to bottom, #5a5d61 0%, #3d4146 100%)");
   }
 }
 
@@ -90,7 +89,7 @@ select.form-control{
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
   font-weight: bold;
   font-size: @form-font-size;
-  #cs-gradient > .vertical(#5c6267, darken(#5c6267, 10%));
+  .background-image(~"linear-gradient(to bottom, #5c6267 0%, #44484c 100%)");
 
   & > span {
     white-space: pre-line;
@@ -199,7 +198,7 @@ select.form-control{
 
   .help-inline {
     .box-shadow(~"0 1px 1px rgba(0, 0, 0, 0.7)");
-    #cs-gradient > .vertical(#bf5455, darken(#bf5455, 10%));
+    .background-image(~"linear-gradient(to bottom, #bf5455 0%, #a33d3e 100%)");
     color: darken(#bf5455, 20%);
 
     &.top {
@@ -240,7 +239,7 @@ select.form-control{
 
   .help-inline {
     .box-shadow(~"0 1px 1px rgba(0, 0, 0, 0.7)");
-    #cs-gradient > .vertical(#669357, darken(#669357, 10%));
+    .background-image(~"linear-gradient(to bottom, #669357 0%, #507344 100%)");
     color: darken(#669357, 20%);
 
     &.top {
@@ -280,7 +279,7 @@ select.form-control{
   }
   .help-inline {
     .box-shadow(~"0 1px 1px rgba(0, 0, 0, 0.7)");
-    #cs-gradient > .vertical(#c09853, darken(#c09853, 10%));
+    .background-image(~"linear-gradient(to bottom, #c09853 0%, #a47e3c 100%)");
     color: darken(#c09853, 20%);
     &.top {
       .arrow {
@@ -309,12 +308,12 @@ select.form-control{
 }
 
 .flip-area {
-  .user-select();
+  .user-select(none);
   position: relative;
   margin: 0;
   padding: 7px;
   border-radius: 25px;
-  #cs-gradient > .vertical(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
+  .background-image(~"linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)");
 
   .flip-btn {
     position: relative;
@@ -419,7 +418,7 @@ select.form-control{
 }
 
 .input-checkbox {
-  .user-select();
+  .user-select(none);
   & > input[type=checkbox] {
     display: none;
   }
@@ -432,8 +431,8 @@ select.form-control{
     height: 44px;
     border-radius: 4px;
     vertical-align: middle;
-    #cs-gradient > .vertical(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
     cursor: pointer;
+    .background-image(~"linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)");
     &:before {
       display: inline-block;
       width: 34px;
@@ -485,7 +484,7 @@ select.form-control{
 }
 
 .input-radio {
-  .user-select();
+  .user-select(none);
   & > input[type=radio] {
     display: none;
   }
@@ -498,8 +497,8 @@ select.form-control{
     height: 44px;
     border-radius: 25px;
     vertical-align: middle;
-    #cs-gradient > .vertical(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
     cursor: pointer;
+    .background-image(~"linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)");
     &:before {
       display: inline-block;
       width: 34px;
@@ -522,7 +521,7 @@ select.form-control{
     border-radius: 24px;
     background: #292929;
     content: "";
-    .gradient-vertical-four(#53a3ba, 0%, #2582a1, 39%, #247f9f, 54%, #195366, 100%);
+    .background-image(~"linear-gradient(to bottom, #53A3BA 0%, #2582A1 39%, #247F9F 54%, #195366 100%)");
   }
 
   input[disabled] + .control:before, input.disabled + .control:before {

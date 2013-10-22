@@ -74,7 +74,7 @@
 
 input {
   &.focused {
-    outline: thin dotted 9px;
+    outline: thin;
     border-color: rgba(82, 168, 236, .8);
     .box-shadow(0 0 8px rgba(82, 168, 236, .6));
   }
@@ -98,8 +98,8 @@ input {
   text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
   font-weight: bold;
-  #cs-gradient > .vertical(#f4f4f4, darken(#f4f4f4, 10%));
   .box-shadow(~"0 3px 2px rgba(0,0,0,.18)");
+  .background-image(~"linear-gradient(to bottom, #f4f4f4 0%, #dbdbdb 100%)");
 
   & > span {
     white-space: pre-line;
@@ -355,7 +355,7 @@ input {
 }
 
 .flip-area {
-  .user-select();
+  .user-select(none);
   position: relative;
   margin: 0;
   padding: 7px;
@@ -379,18 +379,13 @@ input {
     .background-image(~"linear-gradient(bottom, #cec8c5 0%, #efe9e9 100%)");
 
     &:after {
-      content: "";
       width: 25px;
       height: 25px;
       border-radius: 50px;
       border: 0;
-      position: absolute;
       left: 5px;
       top: 5px;
       z-index: 1000;
-      background-color: #c1c1c1;
-      .box-shadow(~"0 -1px 0 #ede9e9, inset 0 1px 2px rgba(0,0,0,.14)");
-      .background-image(~"linear-gradient(bottom, #ede9e9 0%, #ede9e9 0.27%, #cec8c5 100%)");
     }
   }
   &.active > .flip-txt,
@@ -452,11 +447,14 @@ input {
   }
 }
 
-.input-checkbox {
-  .user-select();
-  & > input[type=checkbox] {
+.input-radio, .input-checkbox {
+  .user-select(none);
+
+  & > input[type=checkbox],
+  & > input[type=radio], {
     display: none;
   }
+
   & > .control {
     position: relative;
     display: inline-block;
@@ -465,41 +463,44 @@ input {
     width: 35px;
     height: 35px;
     border: 1px solid rgba(0, 0, 0, .25);
-    border-radius: 4px;
     background-color: #d1d1d1;
     vertical-align: middle;
     .box-shadow(~"0 3px 4px rgba(0,0,0,.19), inset 0 1px 1px rgba(255,255,255,.1)");
     .background-image(~"linear-gradient(bottom, #d3d3d3 0%, #d9d9d9 49%, #dfdfdf 50%, #eaeaea 100%)");
     cursor: pointer;
+  }
+
+  input[disabled] + .control, input.disabled + .control {
+    background: transparent url(images/icon-disabled.png);
+    background-size: 40px 40px;
+  }
+
+  & + .form-control {
+    height: 50px;
+  }
+}
+
+.input-checkbox {
+  & > .control {
+    border-radius: 4px;
+
     &.placeholder {
       &:before {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        display: inline-block;
         padding: 0;
         width: 20px;
         height: 29px;
         color: #969696;
-        content: "\e013";
-        font-weight: 400;
-        font-style: normal;
-        font-size: 24px;
-        font-family: 'Glyphicons Halflings', serif;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
       }
     }
   }
 
+  & > .control &.placeholder:before,
   &.active > .control:after,
   &:not(.fast-button) input:checked + .control:after {
     position: absolute;
     top: 4px;
     left: 4px;
     display: inline-block;
-    padding-right: 10px;
-    color: #247dab;
     content: "\e013";
     font-weight: 400;
     font-style: normal;
@@ -509,31 +510,16 @@ input {
     -webkit-font-smoothing: antialiased;
   }
 
-  input[disabled] + .control, input.disabled + .control {
-    background: transparent url(images/icon-disabled.png);
-    background-size: 40px 40px;
+  &.active > .control:after,
+  &:not(.fast-button) input:checked + .control:after {
+    padding-right: 10px;
+    color: #247dab;
   }
 }
 
 .input-radio {
-  .user-select();
-  & > input[type=radio] {
-    display: none;
-  }
   & > .control {
-    position: relative;
-    display: inline-block;
-    margin: 0;
-    padding: 5px;
-    width: 35px;
-    height: 35px;
-    border: 1px solid rgba(0, 0, 0, .25);
     border-radius: 40px;
-    background-color: #d1d1d1;
-    vertical-align: middle;
-    .box-shadow(~"0 3px 4px rgba(0,0,0,.19), inset 0 1px 1px rgba(255,255,255,.1)");
-    .background-image(~"linear-gradient(bottom, #d3d3d3 0%, #d9d9d9 49%, #dfdfdf 50%, #eaeaea 100%)");
-    cursor: pointer;
   }
 
   &.active > .control:after,
@@ -547,11 +533,6 @@ input {
     background-color: #1f8fb9;
     .box-shadow(~"0 1px 0 #fff, 0 0 2px 0 #fff, inset 0 2px 2px rgba(0,0,0,.21)");
     content: "";
-  }
-
-  input[disabled] + .control, input.disabled + .control {
-    background: transparent url(images/icon-disabled.png);
-    background-size: 40px 40px;
   }
 }
 
@@ -568,10 +549,4 @@ select {
   outline: 0;
   display: inline-block;
   .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.27)");
-}
-
-.input-radio, .input-checkbox {
-  & + .form-control {
-    height: 50px;
-  }
 }

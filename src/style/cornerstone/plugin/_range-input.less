@@ -39,7 +39,6 @@
     .cs-mixin(box-shadow, @slide-handle-box-shadow);
 
     &:after {
-      position: absolute;
       .cs-property(top, @slide-handle-after-top);
       .cs-property(left, @slide-handle-after-left);
       .cs-property(width, @slide-handle-after-width);
@@ -48,8 +47,9 @@
       .cs-property(background-color, @slide-handle-after-background-color);
       .cs-mixin(background-image, @slide-handle-after-background-image);
       .cs-mixin(box-shadow, @slide-handle-after-box-shadow);
+      .cs-property(position, @slide-handle-after-position);
+      .cs-property(content, @slide-handle-after-content);
       z-index: 1;
-      content: "";
     }
   }
 }
