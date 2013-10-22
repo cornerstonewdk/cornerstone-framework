@@ -156,7 +156,8 @@ describe( '종합 테스트', function () {
 
     it( 'Backbone.Collection의 extend를 사용하여 Users 클래스를 정의 및 확인한다.', function () {
         Users = Backbone.Collection.extend( {
-            model: UserModel
+            model: UserModel,
+            url: '/users'
         } );
         users1 = new Users();
         expect( Users ).to.be.an( 'function' );
@@ -350,10 +351,8 @@ describe( '종합 테스트', function () {
         } );
     } );
     
-    var formView;
-    var formView1;
-    var validateUser;
-    var validateUser1;
+    var formView, formView1, formView2;
+    var validateUser, validateUser1, validateUser2;
     it( 'form view를 이용하여 model값이 표현되고 model의 값과 표시된 값이 동일한지 확인', function ( done ) {
         require( [ 'template!../app/template/userForm', 'form-view' ], function ( formTamplate, FormView ){
             validateUser = new UserModel( { name: '트래버', age: 35, job: '노동자', validate:true } );
@@ -385,7 +384,7 @@ describe( '종합 테스트', function () {
     } );
 
     // TODO 모델 validation 확인 -> 툴팁 표시
-    it( 'Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
+    it( 'TODO Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
         formView.$el.find( 'input[name="name"]' ).val( '' );
 
         validateUser.on( 'invalid', function ( model, error ) {
@@ -402,10 +401,11 @@ describe( '종합 테스트', function () {
     } );
 
     // TODO input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.
-    it( 'input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.', function () {
+    it( 'TODO input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.', function () {
     } );
 
-    it( 'validation view를 로드 후 formView에 생성옵션으로 지정, 동작 확인', function ( ) {
+    // TODO
+    it( 'TODO validation view를 로드 후 formView에 생성옵션으로 지정, 동작 확인', function ( ) {
         require( [ 'validation-view', 'template!../app/template/userForm', 'form-view' ], function ( ValidationView, formTamplate, FormView ){
             validateUser1 = new UserModel( { name: '프랭클린', age: 25, job: '배송업', validate: true } );
             pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'modify-form' );
@@ -416,32 +416,47 @@ describe( '종합 테스트', function () {
         } );
     } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    // TODO
+    it( 'TODO custom validation view를 사용해 본다.', function ( done ) {
+        require( [ 'view/validationView', 'template!../app/template/userForm', 'form-view' ], function ( CustomValidationView, formTamplate, FormView ){
+            validateUser2 = new UserModel( { name: '데빈', age: 40, job: '공무원', validate: true } );
+            pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'valid-form' );
+            formView2 = new FormView( { el: '#valid-form', model: validateUser2, validationViewClass: CustomValidationView } );
+            pageView.$el.find( '#valid-form input[name="name"]' ).val( '' );
+            formView2.$el.find( '.js-submit' ).on( 'click', function () {
+                formView1.toModel();
+                done();
+            } );
+            formView2.$el.find( '.js-submit' ).click();
+            
+        } );
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    var userCollection;
+    it( 'Collection에 속한 Model이 url을 이어받는지 확인', function (  ) {
+        userCollection = new Users();
+        var usr1 = new UserModel( { id: 1 } ), usr2 = new UserModel( { id: 2 } );
+        userCollection.add( [ usr1, usr2 ] );
+        expect( usr1.url() ).to.be.equal( '/users/1' );
+        expect( usr2.url() ).to.be.equal( '/users/2' );
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    it( 'Model 클래스를 정의하면서 root url 지정이 되는지 확인', function () {
+        var RootTestUser = Backbone.Model.extend( {
+            urlRoot: '/users'
+        } );
+
+        var tempUser = new RootTestUser( { id: 3 } );
+        expect( tempUser.url() ).to.be.equal( '/users/3' )
+    } );
+    // var testUrl = 'https://baas.kinvey.com/appdata/kid_TTuylFz6Oq/users/1';
+    it( 'Model 객체를 생성하면서 root url 지정이 되는지 확인', function () {
+        var RootTestUser1 = Backbone.Model.extend();
+        var tempUser = new RootTestUser1( { id: 100 } );
+        tempUser.urlRoot = 'users/';
+        // expect( tempUser.url() ).to.be.equal( '/users/100' );
+        // tempUser.fetch();
+    } );
 
     // it( '', function ( done ) {
     //     require( [ '' ], function (  ){
