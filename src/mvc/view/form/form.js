@@ -69,10 +69,10 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], 
 				}
 			} );
 			
-			this.model.off( 'error', this._onValidationError, this );
-			this.model.on( 'error', this._onValidationError, this );
+			this.model.off( 'invalid', this._onValidationError, this );
+			this.model.on( 'invalid', this._onValidationError, this );
 			this.model.clear( { silent: true } );
-			this.model.set( values );
+			this.model.set( values, { validate: true } );
 			
 			if ( this.model.isValid() ) this.validation.success();
 			
