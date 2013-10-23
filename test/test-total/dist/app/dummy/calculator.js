@@ -1,1 +1,0 @@
-define(function(){return{calculateAge:function(){return 1e3}}});

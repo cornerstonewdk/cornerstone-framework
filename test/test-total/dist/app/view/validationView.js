@@ -1,1 +1,0 @@
-define(["backbone","logging"],function(a,b){return a.View.extend({initialize:function(){b.debug("validationView init.")},reset:function(){b.debug("유효성 검사전 호출")},success:function(){b.debug("유효성 검사 성공!!")},fail:function(a){console.log("[ 25 ] "+a.message||a),a.attribute&&this.$(":input[name="+a.attribute+"]:first").focus()}})});

@@ -1,3 +1,0 @@
-<span>이름 : {{user.name}}</span>
-<span>나이 : {{user.age}}</span>
-<span>성별 : {{#if user.male}}남자{{else}}여자{{/if}}</span>

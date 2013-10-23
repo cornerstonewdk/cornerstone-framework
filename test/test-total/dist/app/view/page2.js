@@ -1,1 +1,0 @@
-define(["backbone","template!view/page2"],function(a,b){return a.View.extend({el:"section#page2",render:function(){return this.$el.html(b()),this},events:{"click button.prev":"prevPage","click button.next":"nextPage"},prevPage:function(){location.href="#page1"},nextPage:function(){location.href="#page3"}})});

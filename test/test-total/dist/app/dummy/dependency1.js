@@ -1,1 +1,0 @@
-define(["logging"],function(a){a.debug("[ 6 ] dependency1 loaed.");var b={data:1};return window.dependency1=b,b});
