@@ -11,7 +11,6 @@
 .nav-pills > li > a,
 .pager li > a,
 .pager li > span {
-  .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
   border-radius: 5px;
   border-style: solid;
   border-width: 1px;
@@ -24,4 +23,60 @@
   display: inline-block;
   padding-bottom: 9px;
   padding-top: 9px;
+}
+
+.flip-area .active > .flip-txt,
+.flip-area :not(.fast-button) .flip-check:checked + .flip-txt,
+.list-group-item:active,
+.list-group-item.active,
+.pagination-circle.active > a,
+.pagination-circle > a.active,
+.pagination-circle > a:hover,
+.pagination-circle > a:focus,
+.pagination-circle:first-child > a:active,
+.pagination-circle:last-child > a:active,
+.panel-primary > .panel-heading,
+.panel-primary > .panel-heading:before {
+  .background-image(~"linear-gradient(bottom, #2a92b9 0%, #40aad2 100%)");
+}
+
+.navbar,
+.nav-tabs > li > a,
+.nav-pills > li > a,
+.breadcrumb,
+.pagination > li > a,
+.pager li > a,
+.pager li > span,
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span,
+.panel-heading,
+.input-group .input-group-addon,
+.table thead {
+  .background-image(~"linear-gradient(bottom, #e3e3e3 0%, #fff 99.49%, #fff 100%)");
+}
+
+.pagination > li:not(.disabled).active > a,
+.pagination > li:not(.disabled).active > a:hover,
+.pagination > li:not(.disabled).active > a:focus,
+.pagination > li:not(.disabled) > a.active,
+.pagination > li:not(.disabled) > a:active,
+.pagination > li:not(.disabled):first-child > a:active,
+.pagination > li:not(.disabled):last-child > a:active,
+.pagination-circle > li:not(:first-child):not(:last-child) > a,
+.nav-pills > li:not(.disabled) > a:active,
+.nav-pills > li:not(.disabled).active > a,
+.nav-pills > li:not(.disabled).active > a:hover,
+.nav-pills > li:not(.disabled).active > a:focus,
+.nav-pills > li:not(.disabled).active > a:active,
+.nav-pills > li:not(.disabled).open .dropdown-toggle,
+.nav-pills > li:not(.disabled).open .dropdown-toggle:hover,
+.nav-pills > li:not(.disabled).open .dropdown-toggle:focus,
+.navbar-nav .open > a,
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus,
+.pager li:not(.disabled) > a:active{
+  .background-image(~"linear-gradient(bottom, rgba(216,216,216,.72) 36.36%, rgba(216,216,216,.72) 36.88%, rgba(202,202,202,.72) 49.08%, rgba(166,166,166,.72) 106.51%, rgba(48,48,48,.72) 122.08%, rgba(48,48,48,.72) 136.36%)");
 }

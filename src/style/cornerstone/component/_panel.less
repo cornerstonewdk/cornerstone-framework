@@ -1,0 +1,95 @@
+.panel {
+  .cs-property(border, @panel-border);
+  .cs-property(border-radius, @panel-border-radius);
+  .cs-property(color, @panel-color);
+  .cs-property(background-color, @panel-background-color);
+  .cs-mixin(box-shadow, @panel-box-shadow);
+}
+
+.panel-heading, .panel-footer {
+  .cs-property(background-color, @panel-heading-background-color);
+  .cs-mixin(box-shadow, @panel-heading-box-shadow);
+}
+
+.panel-heading {
+  .cs-property(position, @panel-heading-position);
+  .cs-property(border-bottom, @panel-heading-border-bottom);
+  .cs-property(font-weight, @panel-heading-font-weight);
+  .cs-property(font-size, @panel-heading-font-size);
+  &:before {
+    .cs-property(position, @panel-heading-before-position);
+    .cs-property(top, @panel-heading-before-top);
+    .cs-property(left, @panel-heading-before-left);
+    .cs-property(width, @panel-heading-before-width);
+    .cs-property(height, @panel-heading-before-height);
+    .cs-property(border-top-left-radius, @panel-heading-before-border-top-left-radius);
+    .cs-property(background-color, @panel-heading-before-background-color);
+    .cs-property(content, @panel-heading-before-content);
+    .cs-mixin(background-image, @panel-heading-before-background-image);
+  }
+  &:after {
+    .cs-property(position, @panel-heading-after-position);
+    .cs-property(top, @panel-heading-after-top);
+    .cs-property(left, @panel-heading-after-left);
+    .cs-property(width, @panel-heading-after-width);
+    .cs-property(height, @panel-heading-after-height);
+    .cs-property(border-top-left-radius, @panel-heading-after-border-top-left-radius);
+    .cs-property(background, @panel-heading-after-background);
+    .cs-property(content, @panel-heading-after-content);
+  }
+}
+
+.panel-footer {
+  .cs-property(border-top, @panel-footer-border-top);
+  .cs-property(text-shadow, @panel-footer-text-shadow);
+  .cs-property(font-weight, @panel-footer-font-weight);
+  .cs-property(color, @panel-footer-color);
+  .cs-mixin(background-image, @panel-footer-background-image);
+}
+
+.panel-primary {
+  .cs-property(border-color, @panel-primary-border-color);
+  & > .panel-heading {
+    color: @panel-state-color;
+  }
+}
+
+.panel-success {
+  .cs-property(border-color, @panel-success-border-color);
+  & > .panel-heading {
+    color: @panel-state-color;
+    &, &:before {
+      .cs-mixin(background-image, @panel-success-background-image);
+    }
+  }
+}
+
+.panel-warning {
+  .cs-property(border-color, @panel-warning-border-color);
+  & > .panel-heading {
+    color: @panel-state-color;
+    &, &:before {
+      .cs-mixin(background-image, @panel-warning-background-image);
+    }
+  }
+}
+
+.panel-danger {
+  .cs-property(border-color, @panel-danger-border-color);
+  & > .panel-heading {
+    color: @panel-state-color;
+    &, &:before {
+      .cs-mixin(background-image, @panel-danger-background-image);
+    }
+  }
+}
+
+.panel-info {
+  .cs-property(border-color, @panel-info-border-color);
+  & > .panel-heading {
+    color: @panel-state-color;
+    &, &:before {
+      .cs-mixin(background-image, @panel-info-background-image);
+    }
+  }
+}
