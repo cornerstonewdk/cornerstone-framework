@@ -9,7 +9,7 @@
 		<span class="unit">원</span>
 	</div>
 	<div id="div-detail">
-		{{#each bill.content}}
+		{{#each bill.template.content}}
 			<div class="row">
 				{{#each this}}
 					<div class="col-lg-{{tabletWidth}} col-md-{{tabletWidth}} col-sm-{{phoneWidth}} col-xs-{{phoneWidth}}">
@@ -24,7 +24,7 @@
 										<th>통신서비스금액</th>
 										<td>{{numberFormat ../../../../data.items1Sum}}</td>
 									</tr>
-									{{#each ../../../../bill.tableItems.items1}}
+									{{#each ../../../../bill.template.tableItems.items1}}
 										<tr class="sub">
 											<th>{{name}}</th>
 											<td>{{items1Data ../../../../../data @index}}</td>
@@ -34,7 +34,7 @@
 										<th>부가사용금액</th>
 										<td>{{numberFormat ../../../../data.items2Sum}}</td>
 									</tr>
-									{{#each ../../../../bill.tableItems.items2}}
+									{{#each ../../../../bill.template.tableItems.items2}}
 										<tr class="sub">
 											<th>{{name}}</th>
 											<td>{{items2Data ../../../../../data @index}}</td>
@@ -125,7 +125,7 @@
 														<th>통신서비스금액</th>
 														<td>{{numberFormat ../../../../data.items1Sum}}</td>
 													</tr>
-													{{#each ../../../../bill.tableItems.items1}}
+													{{#each ../../../../bill.template.tableItems.items1}}
 														<tr class="sub">
 															<th>{{name}}</th>
 															<td>{{items1Data ../../../../../data @index}}</td>
@@ -135,7 +135,7 @@
 														<th>부가사용금액</th>
 														<td>{{numberFormat ../../../../data.items2Sum}}</td>
 													</tr>
-													{{#each ../../../../bill.tableItems.items2}}
+													{{#each ../../../../bill.template.tableItems.items2}}
 														<tr class="sub">
 															<th>{{name}}</th>
 															<td>{{items2Data ../../../../../data @index}}</td>

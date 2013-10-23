@@ -5,7 +5,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/detail', 'widg
 		el: '#section-detail',
 
 		initialize: function () {
-			var items = this.model.get( 'tableItems' );
+			var items = this.model.get( 'template' ).tableItems;
 			var data = this.data = {
 				items1: [],
 				items2: [],
