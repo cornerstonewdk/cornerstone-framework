@@ -1,6 +1,7 @@
 describe( '종합 테스트', function () {
 
     var expect;
+    var local = window.localStorage;
 
     beforeEach( function () {
     } );
@@ -11,6 +12,7 @@ describe( '종합 테스트', function () {
     it( 'Test init', function ( done ){
         require( [ 'js/chai' ], function ( chai ){
             expect = chai.expect;
+            local.clear();
             done();
         } );
     } );
@@ -90,6 +92,7 @@ describe( '종합 테스트', function () {
             user1 = new User();
             expect( user1 ).to.be.an.instanceof( Backbone.Model );
             expect( user1.get( 'init' ) ).to.be.true;
+
             done();
         });
     } );
@@ -279,7 +282,6 @@ describe( '종합 테스트', function () {
 
         expect( userView2 ).to.be.an.instanceof( Backbone.View );
         expect( userView2.model ).to.be.an.instanceof( Backbone.Model );
-        
         var cnt = pageView.$el.find( 'li' ).length;
         pageView.$el.find( 'li' ).each( function ( idx ) {
             expect( $( this ).hasClass( 'user' ) ).to.be.true;
@@ -297,21 +299,21 @@ describe( '종합 테스트', function () {
         userView2.$el.click();
     } );
 
-    it( 'Touch Event를 포함한 TouchView 클래스를 정의 및 Touch 이벤트 동작확인', function () {
-        // TODO with faketouch
-        // require( [ '' ], function (  ){
-        //     expect(  ).to.be.equal( 'object' );
-        //     done();
-        // });
-    } );
+    // it( 'Touch Event를 포함한 TouchView 클래스를 정의 및 Touch 이벤트 동작확인', function () {
+    //     // TODO with faketouch
+    //     // require( [ '' ], function (  ){
+    //     //     expect(  ).to.be.equal( 'object' );
+    //     //     done();
+    //     // });
+    // } );
 
-    it( 'Gesture-view를 확장한 TouchView 클래스를 정의 및 Gesture 이벤트 동작확인', function () {
-        // TODO with faketouch
-        // require( [ '' ], function (  ){
-        //     expect(  ).to.be.equal( 'object' );
-        //     done();
-        // });
-    } );
+    // it( 'Gesture-view를 확장한 TouchView 클래스를 정의 및 Gesture 이벤트 동작확인', function () {
+    //     // TODO with faketouch
+    //     // require( [ '' ], function (  ){
+    //     //     expect(  ).to.be.equal( 'object' );
+    //     //     done();
+    //     // });
+    // } );
 
     it( 'userTemplate.template 파일을 작성 및 render 확인, 동적 CSS 로드 확인', function ( done ) {
         require( [ 'template!../app/template/user', 'jquery', 'style!../app/css/user' ], function ( userTemplate, $ ){
@@ -428,109 +430,161 @@ describe( '종합 테스트', function () {
         } );
     } );
 
-    // // TODO
-    // it( 'TODO custom validation view를 사용해 본다.', function ( done ) {
-    //     require( [ 'view/validationView', 'template!../app/template/userForm', 'form-view' ], function ( CustomValidationView, formTamplate, FormView ){
-    //         validateUser2 = new UserModel( { name: '데빈', age: 40, job: '공무원', validate: true } );
-    //         pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'valid-form' );
-    //         formView2 = new FormView( { el: '#valid-form', model: validateUser2, validationViewClass: CustomValidationView } );
-    //         pageView.$el.find( '#valid-form input[name="name"]' ).val( '' );
-    //         formView2.$el.find( '.js-submit' ).on( 'click', function () {
-    //             formView2.toModel();
-    //             done();
-    //         } );
-    //         formView2.$el.find( '.js-submit' ).click();
+    // TODO
+    it( 'TODO custom validation view를 사용해 본다.', function ( done ) {
+        require( [ 'view/validationView', 'template!../app/template/userForm', 'form-view' ], function ( CustomValidationView, formTamplate, FormView ){
+            validateUser2 = new UserModel( { name: '데빈', age: 40, job: '공무원', validate: true } );
+            pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'valid-form' );
+            formView2 = new FormView( { el: '#valid-form', model: validateUser2, validationViewClass: CustomValidationView } );
+            pageView.$el.find( '#valid-form input[name="name"]' ).val( '' );
+            formView2.$el.find( '.js-submit' ).on( 'click', function () {
+                formView2.toModel();
+                done();
+            } );
+            formView2.$el.find( '.js-submit' ).click();
             
+        } );
+    } );
+
+    var userCollection;
+    it( 'Collection에 속한 Model이 url을 이어받는지 확인', function () {
+        userCollection = new Users();
+        var usr1 = new UserModel( { id: 1 } ), usr2 = new UserModel( { id: 2 } );
+        userCollection.add( [ usr1, usr2 ] );
+        expect( usr1.url() ).to.be.equal( '/users/1' );
+        expect( usr2.url() ).to.be.equal( '/users/2' );
+    } );
+
+    it( 'Model 클래스를 정의하면서 root url 지정이 되는지 확인', function () {
+        var RootTestUser = Backbone.Model.extend( {
+            urlRoot: '/users'
+        } );
+
+        var tempUser = new RootTestUser( { id: 3 } );
+        expect( tempUser.url() ).to.be.equal( '/users/3' )
+    } );
+    
+    
+    it( 'Model 객체를 생성하면서 root url 지정이 되는지 확인', function () {
+        var RootTestUser1 = Backbone.Model.extend();
+        var tempUser = new RootTestUser1( { id: 100 } );
+        tempUser.urlRoot = 'users/';
+        expect( tempUser.url() ).to.be.equal( 'users/100' );
+    } );
+
+    // // TODO Backbone 동기화의 기본기능이 정상 동작되는지 확인 fetch, save, destory
+    // // it( '', function ( done ) {
+    // //     require( [ '' ], function (  ){
+    // //         expect(  ).to.be.equal( 'object' );
+    // //         done();
+    // //     });
+    // // } );
+
+    // // it( '', function ( done ) {
+    // //     require( [ '' ], function (  ){
+    // //         expect(  ).to.be.equal( 'object' );
+    // //         done();
+    // //     });
+    // // } );
+
+    // // it( '', function ( done ) {
+    // //     require( [ '' ], function (  ){
+    // //         expect(  ).to.be.equal( 'object' );
+    // //         done();
+    // //     });
+    // // } );
+
+    // // it( '', function ( done ) {
+    // //     require( [ '' ], function (  ){
+    // //         expect(  ).to.be.equal( 'object' );
+    // //         done();
+    // //     });
+    // // } );
+    // // it( '', function ( done ) {
+    // //     require( [ '' ], function (  ){
+    // //         expect(  ).to.be.equal( 'object' );
+    // //         done();
+    // //     });
+    // // } );
+
+    it( '동기화 방법이 변경되는지 확인( framework내의 sync로 사용변경 )', function ( done ) {
+        require( [ 'sync' ], function ( Sync ){
+            expect( Sync ).to.be.not.undefined;
+            Backbone.sync = Sync.local;
+            done();
+        });
+    } );
+
+    // TODO 내부적인 루프 발생 - Maximum call stack size exceeded
+    // it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 새로 생성된 모델[save] )', function () {
+    //     user1.save();
+    //     var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
+    //     expect( $syncUser ).to.be.not.undefined;
+    //     expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
+    //     expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
+    //     done()
+    // } );
+
+    // it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 이미 존재하는 모델[update] )', function () {
+    //     user1.set( 'name', '이종석' );
+    //     user1.set( 'age', '20' );
+    //     console.log( 'before save', user1 );
+    //     user1.save();
+    //     var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
+    //     expect( $syncUser ).to.be.not.undefined;
+    //     expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
+    //     expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
+    // } );
+    
+    // TODO 이건 어떻게 처리해야하나??
+    // it( '페이지를 다시 로드해도 초기화 되지 않았는지 확인', function ( done ) {
+    //     require( [ '' ], function (  ){
+    //         expect(  ).to.be.equal( 'object' );
+    //         done();
     //     } );
     // } );
 
-    // var userCollection;
-    // it( 'Collection에 속한 Model이 url을 이어받는지 확인', function (  ) {
-    //     userCollection = new Users();
-    //     var usr1 = new UserModel( { id: 1 } ), usr2 = new UserModel( { id: 2 } );
-    //     userCollection.add( [ usr1, usr2 ] );
-    //     expect( usr1.url() ).to.be.equal( '/users/1' );
-    //     expect( usr2.url() ).to.be.equal( '/users/2' );
-    // } );
+    it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page1 -> page2)', function ( done ) {
+        $( '#page1 button.btn.next' ).click( 
+            function () {
+                setTimeout( function () {
+                expect( $( '#page1' ).css( 'display' ) ).to.be.equal( 'none' );
+                expect( $( '#page2' ).css( 'display' ) ).to.be.equal( 'block' );
+                done();
+            }, 1000 );
+        } ).trigger( 'click' );
+    } );
 
-    // it( 'Model 클래스를 정의하면서 root url 지정이 되는지 확인', function () {
-    //     var RootTestUser = Backbone.Model.extend( {
-    //         urlRoot: '/users'
-    //     } );
 
-    //     var tempUser = new RootTestUser( { id: 3 } );
-    //     expect( tempUser.url() ).to.be.equal( '/users/3' )
-    // } );
-    // // var testUrl = 'https://baas.kinvey.com/appdata/kid_TTuylFz6Oq/users/1';
-    // it( 'Model 객체를 생성하면서 root url 지정이 되는지 확인', function () {
-    //     var RootTestUser1 = Backbone.Model.extend();
-    //     var tempUser = new RootTestUser1( { id: 100 } );
-    //     tempUser.urlRoot = 'users/';
-    //     // expect( tempUser.url() ).to.be.equal( '/users/100' );
-    //     // tempUser.fetch();
-    // } );
+    it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page2 -> page1)', function ( done ) {
+        $( '#page2 button.btn.prev' ).click( 
+            function () {
+                setTimeout( function () {
+                expect( $( '#page2' ).css( 'display' ) ).to.be.equal( 'none' );
+                expect( $( '#page1' ).css( 'display' ) ).to.be.equal( 'block' );
+                done();
+            }, 1000 );
+        } ).trigger( 'click' );
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    it( '#매칭이 실패했을 때 동작하는 default route 확인', function ( done ) {
+        window.location.href = '#asdfasdfaf';
+        setTimeout( function () {
+            expect( $( '#page2' ).css( 'display' ) ).to.be.equal( 'none' );
+            expect( $( '#page1' ).css( 'display' ) ).to.be.equal( 'block' );
+            done();
+        }, 1000 );
+    } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    it( 'URL 패턴에서 :로 시작되는 부분이 파라미터로 분리되어 전달되는 지 확인 및 active 함수가 정상 동작하는지 확인', function ( done ) {
+        window.location.href = '#page3/1';
+        setTimeout( function () {
+            expect( parseInt( $( '#page3 p.js-active' ).text() ) ).to.be.equal( 1 );
+            window.location.href = '#page1';
+            done();
+        }, 1000 );
+    } );
 
     // it( '', function ( done ) {
     //     require( [ '' ], function (  ){

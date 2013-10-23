@@ -1,4 +1,4 @@
-define( [ 'backbone', 'logging', 'jquery' ], function( Backbone, Logging, $ ) {
+define( [ 'backbone', 'jquery' ], function( Backbone, $ ) {
     return Backbone.Model.extend( {
     	//urlRoot: '/users',
         defaults: {

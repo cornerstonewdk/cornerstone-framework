@@ -9,11 +9,12 @@ define( [ 'view/page1',
 		  'backbone', 
 		  'multipage-router', 
 		  'js/chai',
+		  'sync',
 		  'js/mocha', 
 		  'bootstrap',
 		  'style!main',
 		  'style!css/mocha' 
-		   ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter, chai ) {
+		   ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter, chai, Sync ) {
 	return {
 		launch: function() {
 			
@@ -22,7 +23,7 @@ define( [ 'view/page1',
 		    window.mocha.setup({
 		        ignoreLeaks: true
 		    });
-		    
+
 			// Router
 			var MainRouter = MultipageRouter.extend( {
 			
@@ -31,7 +32,11 @@ define( [ 'view/page1',
 						fragment: [ '', 'page1' ],
 						el: '#page1',
 						render: function() {
-							new Page1View().render();
+							if( $( '#page1' ).html().length > 0 ){
+								$( '#page1' ).css( { "display": "block"} );
+							} else {
+								new Page1View().render();	
+							}
 						}
 					},
 					'page2': {
@@ -42,18 +47,21 @@ define( [ 'view/page1',
 						}
 					},
 					'page3': {
-						fragment: 'page3',
+						fragment: 'page3/:id',
 						el: '#page3',
 						render: function() {
 							new Page3View().render();
+						},
+						active: function ( id ) {
+							$( '#page3 p.js-active' ).text( id );
 						}
 					},
 					'default': {
 						active: function( path ) {
-							alert( 'Page not found' );
 							history.back();
 						}
-					}
+					},
+					
 				},
 				
 				transitions: {

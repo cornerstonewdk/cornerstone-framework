@@ -550,7 +550,6 @@ var jam = {
 };
 
 if (typeof require !== "undefined" && require.config) {
-    console.log(2222);
     require.config({
     "packages": [
         {
@@ -1097,12 +1096,17 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "widget-touch"
+        },
+        "mocha": {
+            "exports": "mocha"
+        },
+        "chai": {
+            "exports": "chai"
         }
     }
 });
 }
 else {
-    console.log(11111);
     var require = {
     "packages": [
         {
@@ -1657,14 +1661,3 @@ else {
 if (typeof exports !== "undefined" && typeof module !== "undefined") {
     module.exports = jam;
 }
-
-require( [ 'widget-chart','../../test/spec/spec' ], function( Chart ) {
-    console.log(1)
-    console.log(Chart);
-
-    // If tests run in a real browser
-    // Can alternatively do a check on window.PHANTOMJS
-    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-        mocha.run();
-    }
-});

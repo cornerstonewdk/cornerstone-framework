@@ -1,0 +1,1 @@
+{{user.name}} - {{user.age}} - {{#if user.male}}남자{{else}}여자{{/if}}

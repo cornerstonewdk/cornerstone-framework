@@ -1,1 +1,1 @@
-define(["logging"],function(a){return a.debug("[ 3 ] calculator load."),{calculateAge:function(){return 1e3}}});
+define(function(){return{calculateAge:function(){return 1e3}}});
