@@ -1,4 +1,4 @@
-define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/phone', 'view/tablet' ], function ( _, $, Backbone, template, PhoneView, TabletView ) {
+define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/template', 'view/phone', 'view/tablet' ], function ( _, $, Backbone, template, Template, PhoneView, TabletView ) {
 
 	return Backbone.View.extend( {
 
@@ -9,6 +9,11 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 		},
 
 		initialize: function () {
+		},
+
+		render: function () {
+
+			this.model = new Template();
 			this.model.set( 'tableItems', {
 				'items1': [
 					{ 'name': '월정액', 'negative': false },
@@ -51,9 +56,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 					}
 				]
 			] );
-		},
 
-		render: function () {
 			// 상세페이지 랜더링
 			this.$el.html( template() );
 			new PhoneView( { model: this.model } ).render();
