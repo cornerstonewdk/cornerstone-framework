@@ -27,10 +27,13 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/bills', 'model/bill',
 			// 모든 데이터를 다 받아오고 나면
 			bills.on( 'sync', function() {
 
-				$( window ).resize( function( event ) {
+				function syncWidth() {
 					// margin(15+15) 포함
 					$( '.editor-grid' ).width( $( '.editor-content' ).width() + 30 );
-				} );
+				};
+
+				setTimeout( syncWidth, 100 );
+				$( window ).resize( syncWidth );
 
 				$( '#section-list' ).on( 'render', function() {
 					new ListView( { collection: bills } ).render();
