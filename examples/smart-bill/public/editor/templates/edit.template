@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">청구서 편집</a>
+			<a class="navbar-brand" href="#">서식 편집</a>
 		</div>
 	</div>
 	<div class="row">
@@ -57,7 +57,8 @@
 		</div>
 	</div>
 	<div class="pull-right">
-		<a href="#modal-save" data-toggle="modal" class="btn btn-primary">저장</a>
+		<a href="#modal-save-template" data-toggle="modal" class="btn btn-primary">저장</a>
+		<a href="#" class="btn btn-default">취소</a>
 	</div>
 </div>
 <div class="modal fade" id="modal-edit" role="dialog" aria-hidden="true">
@@ -66,50 +67,25 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="modal-save" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modal-save-template" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">청구서 저장</h4>
+				<h4 class="modal-title">서식 저장</h4>
 			</div>
 			<div class="modal-body">
 				<table class="table table-bordered">
 					<tr>
-						<th>년</th>
+						<th>서식명</th>
 						<td>
-							<select id="select-year" class="form-control">
-								<option value="2013">2013</option>
-								<option value="2014">2014</option>
-								<option value="2015">2015</option>
-								<option value="2016">2016</option>
-								<option value="2017">2017</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>월</th>
-						<td>
-							<select id="select-month" class="form-control">
-								<option value="1">1월</option>
-								<option value="2">2월</option>
-								<option value="3">3월</option>
-								<option value="4">4월</option>
-								<option value="5">5월</option>
-								<option value="6">6월</option>
-								<option value="7">7월</option>
-								<option value="8">8월</option>
-								<option value="9">9월</option>
-								<option value="10">10월</option>
-								<option value="11">11월</option>
-								<option value="12">12월</option>
-							</select>
+							<input id="template-name" type="text" class="form-control"/>
 						</td>
 					</tr>
 				</table>
 			</div>
 			<div class="modal-footer">
-				<button id="btn-save" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+				<button id="btn-save-template" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 			</div>
 		</div>

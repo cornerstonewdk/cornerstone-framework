@@ -5,7 +5,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 		el: '#section-edit',
 
 		events: {
-			'click #btn-save': 'save'
+			'click #btn-save-template': 'save'
 		},
 
 		initialize: function () {
@@ -67,8 +67,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'view/p
 
 			var self = this;
 
-			this.model.set( 'year', parseInt( $( '#select-year' ).val() ) );
-			this.model.set( 'month', parseInt( $( '#select-month' ).val() ) );
+			this.model.set( 'name', $( '#template-name' ).val() );
 			this.model.on( 'sync', function() {
 				self.collection.add( self.model );
 				location.href = '#list';
