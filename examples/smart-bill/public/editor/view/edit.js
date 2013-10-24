@@ -59,10 +59,25 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 
 			// 상세페이지 랜더링
 			this.$el.html( template() );
-			new PhoneView( { model: this.model } ).render();
-			new TabletView( { model: this.model } ).render();
+			var phoneView = new PhoneView( { model: this.model } );
+			var tabletView = new TabletView( { model: this.model } );
+			phoneView.render();
+			tabletView.render();
 			// Draggable
 			$( '.list-group-item' ).draggable( { opacity: 0.7, helper: 'clone' } );
+			// 휴지통
+			$( '#dropzone-trash' ).droppable( {
+				accept: '.editor-content .content-box, .editor-content hr, .editor-content button',
+				tolerance: 'touch',
+				drop: function( event, ui ) {
+					// 현재 Phone, Tablet tab 중에 어느쪽이 활성화되어 있는지 검사
+					if ( $( '#tab-phone' ).hasClass( 'active' ) )
+						phoneView.dropOnTrash( event, ui );
+					else
+						tabletView.dropOnTrash( event, ui );
+				}
+			} );
+
 			return this;
 		},
 

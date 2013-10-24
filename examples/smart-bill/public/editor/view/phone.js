@@ -41,6 +41,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 					item.phoneWidth = parseInt( $( '#modal-edit select' ).val() );
 					self.render();
 				} );
+				// 드래그 앤 드랍으로 이미지 업로드
 				$( '#dropzone' ).on( 'dragover', function( event ) {
 					event.preventDefault();
 					event.stopPropagation();
@@ -66,7 +67,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 			} );
 			// 내용요소를 드래그 앤 드랍할 경우: 항목의 내용 타입이 결정된다.
 			this.$( '.content-box, button' ).droppable( {
-				accept: ':not(.view-item)',
+				accept: '.list-group-item:not(.view-item)',
 				drop: function( event, ui ) {
 
 					var type = ui.draggable.attr( 'data-type' );
@@ -99,7 +100,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 			} );
 			// 화면요소를 드래그 앤 드랍할 경우: 새로운 항목을 추가한다.
 			this.$( '.editor-grid' ).droppable( {
-				accept: '.view-item',
+				accept: '.list-group-item.view-item',
 				drop: function( event, ui ) {
 
 					var type = ui.draggable.attr( 'data-type' );
@@ -114,7 +115,29 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 					self.render();
 				}
 			} );
+			// 추가된 항목은 휴지통으로 끌어놓을 수 있도록 한다.
+			$( '.editor-content .content-box, .editor-content hr, .editor-content button' ).draggable( { cancel: false, opacity: 0.7, helper: 'clone' } );
 			return this;
+		},
+
+		dropOnTrash: function( event, ui ) {
+
+			var self = this;
+
+			var row = parseInt( ui.draggable.parent().parent().attr( 'data-row' ) );
+			var col = parseInt( ui.draggable.parent().attr( 'data-col' ) );
+			var content = this.model.get( 'content' );
+
+			// 컬럼 삭제
+			content[ row ].splice( col, 1 );
+
+			// 행에 컬럼이 하나도 없으면 행도 삭제
+			if ( content[ row ].length == 0 ) content.splice( row, 1 );
+
+			// drop 이벤트 핸들러 안에서 ui.draggable 요소가 없어지면 오류 발생
+			setTimeout( function() {
+				self.render();
+			}, 0 );
 		}
 	} );
 } );
