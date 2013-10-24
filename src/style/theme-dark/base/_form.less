@@ -1,12 +1,11 @@
 .form-control, select {
   border: 1px solid @input-border;
-  border-radius: @input-border-radius;
   background-color: @input-bg;
   color: @form-text-color;
-  vertical-align: middle;
-  font-size: @form-font-size;
   .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.27)");
+}
 
+.form-control {
   &:focus, &.focused {
     outline: 0;
     border-color: rgba(82, 168, 236, .8);
