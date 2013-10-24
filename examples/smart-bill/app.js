@@ -3,7 +3,7 @@ var fs = require( 'fs' );
 var express = require( 'express' );
 var app = express();
 
-const PATH = '/smart-bill';
+const PATH = '/2/smart-bill';
 const PORT = 5050;
 
 // Express 설정
