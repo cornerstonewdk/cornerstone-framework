@@ -12,13 +12,10 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 			var self = this;
 
 			this.$el.html( template( this.model.toJSON() ) );
-			this.$( 'div[data-col]' ).dblclick( function() {
+			this.$( 'div[data-index]' ).dblclick( function() {
 
-				var el = $( this );
-				var row = parseInt( el.parent().attr( 'data-row' ) );
-				var col = parseInt( el.attr( 'data-col' ) );
-
-				var item = self.model.get( 'content' )[ row ][ col ];
+				var index = parseInt( $( this ).attr( 'data-index' ) );
+				var item = self.model.get( 'content' )[ index ];
 
 				// modal의 내용을 만든 후 실행한다.
 				$( '#modal-edit .modal-content' ).html( modalTemplate( item ) );
@@ -71,10 +68,9 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 				drop: function( event, ui ) {
 
 					var type = ui.draggable.attr( 'data-type' );
-					var row = parseInt( $( this ).parent().parent().attr( 'data-row' ) );
-					var col = parseInt( $( this ).parent().attr( 'data-col' ) );
+					var index = parseInt( $( this ).parent().attr( 'data-index' ) );
 
-					var item = self.model.get( 'content' )[ row ][ col ];
+					var item = self.model.get( 'content' )[ index ];
 					delete item.table;
 					delete item.total;
 					delete item.sum1;
@@ -111,7 +107,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 
 					item[ type ] = true;
 
-					self.model.get( 'content' ).push( [ item ] );
+					self.model.get( 'content' ).push( item );
 					self.render();
 				}
 			} );
@@ -123,16 +119,10 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 		dropOnTrash: function( event, ui ) {
 
 			var self = this;
+			var index = parseInt( ui.draggable.parent().attr( 'data-index' ) );
 
-			var row = parseInt( ui.draggable.parent().parent().attr( 'data-row' ) );
-			var col = parseInt( ui.draggable.parent().attr( 'data-col' ) );
-			var content = this.model.get( 'content' );
-
-			// 컬럼 삭제
-			content[ row ].splice( col, 1 );
-
-			// 행에 컬럼이 하나도 없으면 행도 삭제
-			if ( content[ row ].length == 0 ) content.splice( row, 1 );
+			// 항목 삭제
+			this.model.get( 'content' ).splice( index, 1 );
 
 			// drop 이벤트 핸들러 안에서 ui.draggable 요소가 없어지면 오류 발생
 			setTimeout( function() {

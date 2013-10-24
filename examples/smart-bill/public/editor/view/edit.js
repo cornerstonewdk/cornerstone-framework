@@ -26,35 +26,29 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 				]
 			} );
 			this.model.set( 'content', [
-				[
-					{
-						"phoneWidth": 12,
-						"tabletWidth": 12,
-						"box": true,
-						"table": true
-					}
-				],
-				[
-					{
-						"phoneWidth": 12,
-						"tabletWidth": 12,
-						"divider": true
-					}
-				],
-				[
-					{
-						"phoneWidth": 7,
-						"tabletWidth": 5,
-						"box": true,
-						"total": true
-					},
-					{
-						"phoneWidth": 5,
-						"tabletWidth": 7,
-						"box": true,
-						"text": "안녕하세요."
-					}
-				]
+				{
+					"phoneWidth": 12,
+					"tabletWidth": 12,
+					"box": true,
+					"table": true
+				},
+				{
+					"phoneWidth": 12,
+					"tabletWidth": 12,
+					"divider": true
+				},
+				{
+					"phoneWidth": 7,
+					"tabletWidth": 5,
+					"box": true,
+					"total": true
+				},
+				{
+					"phoneWidth": 5,
+					"tabletWidth": 7,
+					"box": true,
+					"text": "안녕하세요."
+				}
 			] );
 
 			// 상세페이지 랜더링

@@ -21,14 +21,18 @@ div.editor-content .row {
 	margin-top: 15px;
 }
 
+div.editor-content .row div {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
 div.editor-grid {
 	position: absolute;
 	top: 10px;
-	width: 780px;
 }
 
 div.editor-grid div {
-	height: 760px;
+	min-height: 740px;
 }
 
 div.editor-grid div:nth-child(odd) {
@@ -62,6 +66,7 @@ div.editor-grid div:nth-child(even) {
 
 hr {
 	border: 3px solid #3f3f3f;
+	margin: 0;
 }
 
 /* 드래그 하는 동안 helper가 위에 보이도록 조정, helper가 이동하면서 위치에 따라서 폭이 변하지 않도록 고정 */
@@ -82,4 +87,9 @@ hr {
 #dropzone-trash {
 	font-size: 32px;
 	float: right;
+}
+
+/* 12 미만의 컬럼 뒤에 12 컬럼이 따라올 경우 위와 겹쳐지는 경우를 해결 */
+.col-lg-12, .col-md-12, .col-sm-12, .col-xs-12 {
+	float: left;
 }
