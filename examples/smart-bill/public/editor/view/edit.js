@@ -1,4 +1,4 @@
-define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/template', 'view/phone', 'view/tablet' ], function ( _, $, Backbone, template, Template, PhoneView, TabletView ) {
+define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/template', 'view/grid' ], function ( _, $, Backbone, template, Template, GridView ) {
 
 	return Backbone.View.extend( {
 
@@ -53,10 +53,9 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 
 			// 상세페이지 랜더링
 			this.$el.html( template() );
-			var phoneView = new PhoneView( { model: this.model } );
-			var tabletView = new TabletView( { model: this.model } );
-			phoneView.render();
-			tabletView.render();
+			this.phoneView = new GridView( { el: '#tab-phone', model: this.model, parent: this, phone: true } );
+			this.tabletView = new GridView( { el: '#tab-tablet', model: this.model, parent: this, phone: false } );
+			this.renderGrid();
 			// Draggable
 			$( '.list-group-item' ).draggable( { opacity: 0.7, helper: 'clone' } );
 			// 휴지통
@@ -73,6 +72,11 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 			} );
 
 			return this;
+		},
+
+		renderGrid: function() {
+			this.phoneView.render();
+			this.tabletView.render();
 		},
 
 		save: function() {
