@@ -3,21 +3,32 @@
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/page1', 
+define( [ 'logging',
+		  'view/page1', 
 		  'view/page2', 
 		  'view/page3', 
 		  'backbone', 
 		  'multipage-router', 
 		  'js/chai',
-		  'sync',
 		  'js/mocha', 
 		  'bootstrap',
 		  'style!main',
 		  'style!css/mocha' 
-		   ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter, chai, Sync ) {
+		   ], function( Logging, Page1View, Page2View, Page3View, Backbone, MultipageRouter, chai ) {
 	return {
 		launch: function() {
-			
+
+			Logging.config( {
+                defaultLevel: 'debug',
+                debug: 'screen',
+                info: 'screen',
+                warn: 'screen',
+                error: 'screen',
+                time: 'screen'
+            } );
+
+            window.Logging = Logging;
+
 			window.mocha.setup('bdd');
 		    window.mocha.reporter('html');
 		    window.mocha.setup({
@@ -61,7 +72,6 @@ define( [ 'view/page1',
 							history.back();
 						}
 					},
-					
 				},
 				
 				transitions: {
@@ -72,7 +82,7 @@ define( [ 'view/page1',
 
 			new MainRouter();
 			Backbone.history.start();
-
+			
 			require(['spec/spec'], function () {
 				if (navigator.userAgent.indexOf('PhantomJS') < 0) {
 			        window.mocha.run();

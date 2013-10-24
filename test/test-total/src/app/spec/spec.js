@@ -1,4 +1,4 @@
-describe( '종합 테스트', function () {
+describe( 'MVC Test', function () {
 
     var expect;
     var local = window.localStorage;
@@ -9,9 +9,10 @@ describe( '종합 테스트', function () {
     afterEach( function () {
     } );
 
-    it( 'Test init', function ( done ){
-        require( [ 'js/chai' ], function ( chai ){
+    it( 'Test 초기화 및 페이지를 다시 로드해도 로컬 스토리지 데이터가 초기화 되지 않았는지 확인', function ( done ){
+        require( [ 'js/chai', 'logging' ], function ( chai, Logging ){
             expect = chai.expect;
+            expect( local.getItem( 'records.c2' ) ).to.be.not.undefined;
             local.clear();
             done();
         } );
@@ -299,22 +300,6 @@ describe( '종합 테스트', function () {
         userView2.$el.click();
     } );
 
-    // it( 'Touch Event를 포함한 TouchView 클래스를 정의 및 Touch 이벤트 동작확인', function () {
-    //     // TODO with faketouch
-    //     // require( [ '' ], function (  ){
-    //     //     expect(  ).to.be.equal( 'object' );
-    //     //     done();
-    //     // });
-    // } );
-
-    // it( 'Gesture-view를 확장한 TouchView 클래스를 정의 및 Gesture 이벤트 동작확인', function () {
-    //     // TODO with faketouch
-    //     // require( [ '' ], function (  ){
-    //     //     expect(  ).to.be.equal( 'object' );
-    //     //     done();
-    //     // });
-    // } );
-
     it( 'userTemplate.template 파일을 작성 및 render 확인, 동적 CSS 로드 확인', function ( done ) {
         require( [ 'template!../app/template/user', 'jquery', 'style!../app/css/user' ], function ( userTemplate, $ ){
             var userView3 = new UserView2( { model: new UserModel( { name: '김철수', age: 20, male: true } ), events: null } );
@@ -472,13 +457,8 @@ describe( '종합 테스트', function () {
         expect( tempUser.url() ).to.be.equal( 'users/100' );
     } );
 
-    // // TODO Backbone 동기화의 기본기능이 정상 동작되는지 확인 fetch, save, destory
-    // // it( '', function ( done ) {
-    // //     require( [ '' ], function (  ){
-    // //         expect(  ).to.be.equal( 'object' );
-    // //         done();
-    // //     });
-    // // } );
+    // TODO Backbone 동기화의 기본기능이 정상 동작되는지 확인 fetch, save, destory
+    
 
     // // it( '', function ( done ) {
     // //     require( [ '' ], function (  ){
@@ -506,6 +486,69 @@ describe( '종합 테스트', function () {
     // //         done();
     // //     });
     // // } );
+
+    var sync; 
+    it( 'collection.fetch() 실행 시 재정의된 readAll 함수가 호출되어야 한다.', function ( done ) {
+        require( [ 'sync' ], function( Sync ) {
+            sync = Sync;
+            Backbone.sync = sync.createSync( {
+                readAll: function( collection, options ) {
+                    expect( collection ).to.be.an.instanceof( Backbone.Collection );
+                    expect( collection.url ).to.be.equal( '/users' );
+                    done();
+                }
+            } );
+            userCollection.fetch();    
+        } );
+    } );
+
+    it( 'model.fetch() 실행 시 재정의된 read 함수가 호출되어야 한다.', function ( done ) {
+        Backbone.sync = sync.createSync( {
+            read: function( model, options ) {
+                expect( model ).to.be.an.instanceof( Backbone.Model );
+                expect( model.url() ).to.be.equal( '/users' );
+                done();
+            }
+        } );
+        user1.fetch();
+    } );
+
+    it( 'model.save() 실행 시 재정의된 create 함수가 호출되어야 한다.( model에 id값이 없을 때 )', function ( done ) {
+        Backbone.sync = sync.createSync( {
+            create: function( model, options ) {
+                expect( model ).to.be.an.instanceof( Backbone.Model );
+                done();
+            }
+        } );
+        var testUser = new UserModel();
+        testUser.save();
+    } );
+
+    it( 'model.save() 실행 시 재정의된 update 함수가 호출되어야 한다.( model에 id값이 있을 때 )', function ( done ) {
+        Backbone.sync = sync.createSync( {
+            update: function( model, options ) {
+                expect( model ).to.be.an.instanceof( Backbone.Model );
+                expect( model.id ).to.be.equal( 200 );
+                done();
+            }
+        } );
+        var testUser = new UserModel();
+        testUser.id = 200;
+        testUser.save();
+    } );
+
+    it( 'model.destroy() 실행 시 재정의된 delete 함수가 호출되어야 한다.', function ( done ) {
+        Backbone.sync = sync.createSync( {
+            delete: function( model, options ) {
+                expect( model ).to.be.an.instanceof( Backbone.Model );
+                expect( model.id ).to.be.equal( 300 );
+                done();
+            }
+        } );
+        var testUser = new UserModel();
+        testUser.id = 300;
+        testUser.destroy();
+    } );
 
     it( '동기화 방법이 변경되는지 확인( framework내의 sync로 사용변경 )', function ( done ) {
         require( [ 'sync' ], function ( Sync ){
@@ -516,14 +559,13 @@ describe( '종합 테스트', function () {
     } );
 
     // TODO 내부적인 루프 발생 - Maximum call stack size exceeded
-    // it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 새로 생성된 모델[save] )', function () {
-    //     user1.save();
-    //     var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
-    //     expect( $syncUser ).to.be.not.undefined;
-    //     expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
-    //     expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
-    //     done()
-    // } );
+    it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 새로 생성된 모델[save] )', function () {
+        user1.save();
+        var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
+        expect( $syncUser ).to.be.not.undefined;
+        expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
+        expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
+    } );
 
     // it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 이미 존재하는 모델[update] )', function () {
     //     user1.set( 'name', '이종석' );
@@ -545,382 +587,49 @@ describe( '종합 테스트', function () {
     // } );
 
     it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page1 -> page2)', function ( done ) {
+        this.timeout( 3000 );
         $( '#page1 button.btn.next' ).click( 
             function () {
                 setTimeout( function () {
                 expect( $( '#page1' ).css( 'display' ) ).to.be.equal( 'none' );
                 expect( $( '#page2' ).css( 'display' ) ).to.be.equal( 'block' );
                 done();
-            }, 1000 );
+            }, 2000 );
         } ).trigger( 'click' );
     } );
 
 
     it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page2 -> page1)', function ( done ) {
+        this.timeout( 3000 );
         $( '#page2 button.btn.prev' ).click( 
             function () {
                 setTimeout( function () {
                 expect( $( '#page2' ).css( 'display' ) ).to.be.equal( 'none' );
                 expect( $( '#page1' ).css( 'display' ) ).to.be.equal( 'block' );
                 done();
-            }, 1000 );
+            }, 2000 );
         } ).trigger( 'click' );
     } );
 
     it( '#매칭이 실패했을 때 동작하는 default route 확인', function ( done ) {
+        this.timeout( 3000 );
         window.location.href = '#asdfasdfaf';
         setTimeout( function () {
             expect( $( '#page2' ).css( 'display' ) ).to.be.equal( 'none' );
             expect( $( '#page1' ).css( 'display' ) ).to.be.equal( 'block' );
             done();
-        }, 1000 );
+        }, 2000 );
     } );
 
-
     it( 'URL 패턴에서 :로 시작되는 부분이 파라미터로 분리되어 전달되는 지 확인 및 active 함수가 정상 동작하는지 확인', function ( done ) {
+        this.timeout( 3000 );
         window.location.href = '#page3/1';
         setTimeout( function () {
             expect( parseInt( $( '#page3 p.js-active' ).text() ) ).to.be.equal( 1 );
             window.location.href = '#page1';
             done();
-        }, 1000 );
+        }, 2000 );
     } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
-
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
 
     // it( '', function ( done ) {
     //     require( [ '' ], function (  ){
