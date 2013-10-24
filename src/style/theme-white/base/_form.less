@@ -1,63 +1,40 @@
-.form-control {
+.form-control, select  {
   border: 1px solid #c3c3c3;
   border-radius: 6px;
   background-color: #fff;
   color: @text-color;
-  .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
 
-}
-
-.input-group {
-  border-radius: 6px;
-  background-color: #fff;
-  .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
-
-  .input-group-addon {
-    background-color: #fff;
-  }
-
-  .form-control:not(:focus) {
-    .box-shadow(~"none");
+  &:focus, &.focused {
+    outline: thin;
+    border-color: rgba(82, 168, 236, .8);
+    .box-shadow(0 0 8px rgba(82, 168, 236, .6));
   }
 }
 
-.input-group-btn {
-  & > .btn:not(.btn-link) {
-    .box-shadow(~"none");
-    &:hover, &:focus, &:active {
-      .box-shadow(~"none");
-    }
-  }
+.form-control, .input-group-addon {
+  .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
 }
 
 .form-search {
-  .input-group {
+  input {
+    display: inline-block;
+    padding: 9px;
     border-radius: 25px;
   }
 
   .input-group-search {
-    .box-shadow(~"none");
-    background: none;
     .form-control {
       border-top-right-radius: 25px;
       border-bottom-right-radius: 25px;
-      background-color: #fff;
-      .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
     }
 
     .input-group-btn {
       margin-left: 5px;
     }
+
     .btn {
-      border-left: 1px solid #b6b6b6;
-      .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
       border-bottom-left-radius: 6px;
       border-top-left-radius: 6px;
-
-      &:hover, &:focus, &:active {
-        border-left: 1px solid #b6b6b6;
-        .box-shadow(~"0 3px 2px rgba(0,0,0,.1)");
-      }
     }
   }
 }
@@ -71,20 +48,7 @@
   }
 }
 
-input {
-  &.focused {
-    outline: thin;
-    border-color: rgba(82, 168, 236, .8);
-    .box-shadow(0 0 8px rgba(82, 168, 236, .6));
-  }
-}
-
-.form-search {
-  input {
-    display: inline-block;
-    padding: 9px;
-    border-radius: 25px;
-  }
+legend {
 }
 
 .help-inline {
@@ -532,19 +496,4 @@ input {
     .box-shadow(~"0 1px 0 #fff, 0 0 2px 0 #fff, inset 0 2px 2px rgba(0,0,0,.21)");
     content: "";
   }
-}
-
-select {
-  width: 100%;
-  height: 40px;
-  padding: 9px 5px;
-  font-size: 18px;
-  line-height: 22px;
-  margin: 0;
-  border: 1px solid @text-color;
-  border-radius: 5px;
-  color: @text-color;
-  outline: 0;
-  display: inline-block;
-  .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.27)");
 }
