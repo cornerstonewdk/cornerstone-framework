@@ -46,10 +46,17 @@
 			</div>
 		</div>
 		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab-phone" data-toggle="tab">Phone 화면</a></li>
-				<li><a href="#tab-tablet" data-toggle="tab">Tablet 화면</a></li>
-			</ul>
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab-phone" data-toggle="tab">Phone 화면</a></li>
+						<li><a href="#tab-tablet" data-toggle="tab">Tablet 화면</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<span id="dropzone-trash" class="glyphicon glyphicon-trash"></span>
+				</div>
+			</div>
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab-phone"></div>
 				<div class="tab-pane" id="tab-tablet"></div>

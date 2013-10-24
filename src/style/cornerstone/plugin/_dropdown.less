@@ -7,6 +7,11 @@
   .cs-mixin(box-shadow, @dropdown-box-shadow);
 
   li {
+    &:first-child {
+      a {
+        .cs-property(border-radius, @dropdown-first-border-radius);
+      }
+    }
     &:last-child {
       a {
         .cs-property(padding, @dropdown-last-padding);
