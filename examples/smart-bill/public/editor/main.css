@@ -93,3 +93,13 @@ hr {
 .col-lg-12, .col-md-12, .col-sm-12, .col-xs-12 {
 	float: left;
 }
+
+.input-group {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.input-group input {
+	width: 300px !important;
+	margin-right: 10px;
+}

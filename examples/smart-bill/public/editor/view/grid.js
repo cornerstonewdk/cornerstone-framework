@@ -14,10 +14,37 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 			this.$( 'div[data-index]' ).dblclick( function() {
 
 				var index = parseInt( $( this ).attr( 'data-index' ) );
+				var tableItems = self.model.get( 'tableItems' );
 				var item = self.model.get( 'content' )[ index ];
+				var itemsMarkup =
+					'<div class="input-group">' +
+					'	<span class="input-group-btn">' +
+					'		<button class="btn btn-success negative" type="button">' +
+					'			<span class="glyphicon glyphicon-plus"></span>' +
+					'		</button>' +
+					'	</span>' +
+					'	<input type="text" class="form-control"/>' +
+					'	<button class="close" type="button">&times;</button>' +
+					'</div>';
 
 				// modal의 내용을 만든 후 실행한다.
-				$( '#modal-edit .modal-content' ).html( modalTemplate( item ) );
+				$( '#modal-edit .modal-content' ).html( modalTemplate( { tableItems: tableItems, item: item } ) );
+				$( '#modal-edit #btn-add-items1' ).click( function() {
+					$( '#modal-edit #list-items1' ).append( itemsMarkup );
+				} );
+				$( '#modal-edit #btn-add-items2' ).click( function() {
+					$( '#modal-edit #list-items2' ).append( itemsMarkup );
+				} );
+				$( '#modal-edit' ).on( 'click', 'button.close', function() {
+					$( this ).parent().remove();
+				} );
+				$( '#modal-edit' ).on( 'click', 'button.negative', function() {
+					var span = $( this ).find( 'span' );
+					if ( span.hasClass( 'glyphicon-plus' ) )
+						span.removeClass( 'glyphicon-plus' ).addClass( 'glyphicon-minus' );
+					else
+						span.removeClass( 'glyphicon-minus' ).addClass( 'glyphicon-plus' );
+				} );
 				$( '#modal-edit select' ).val( self.options.phone ? item.phoneWidth : item.tabletWidth );
 				$( '#modal-edit #btn-modal-save' ).click( function() {
 
