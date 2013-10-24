@@ -1,10 +1,10 @@
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#tab-bills" data-toggle="tab">청구서</a></li>
-		<li><a href="#tab-templates" data-toggle="tab">서식</a></li>
+		<li><a id="a-bills" href="#tab-bills" data-toggle="tab">청구서</a></li>
+		<li class="active"><a href="#tab-templates" data-toggle="tab">서식</a></li>
 	</ul>
 	<div class="tab-content">
-		<div class="tab-pane active" id="tab-bills">
+		<div class="tab-pane" id="tab-bills">
 			<table class="table table-striped">
 				<tr>
 					<th>청구 년 / 월</th>
@@ -27,7 +27,7 @@
 				<a class="btn btn-primary" href="#modal-save-bill" data-toggle="modal">청구서 발행</a>
 			</div>
 		</div>
-		<div class="tab-pane" id="tab-templates">
+		<div class="tab-pane active" id="tab-templates">
 			<table class="table table-striped">
 				<tr>
 					<th>서식명</th>

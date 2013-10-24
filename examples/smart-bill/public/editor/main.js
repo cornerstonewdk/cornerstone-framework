@@ -30,6 +30,7 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/templates', 'model/te
 				bills.on( 'sync', function() {
 
 					var listView = new ListView( { templates: templates, bills: bills } );
+					var editView = new EditView( { collection: templates } );
 
 					function syncWidth() {
 						// margin(15+15) 포함
@@ -43,7 +44,7 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/templates', 'model/te
 					} );
 
 					$( '#section-edit' ).on( 'render', function() {
-						new EditView( { collection: templates, model: new Template() } ).render();
+						editView.render();
 					} ).on( 'active', function() {
 						syncWidth();
 					} );

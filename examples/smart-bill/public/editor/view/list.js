@@ -38,6 +38,7 @@ define( [ 'backbone', 'template!templates/list', 'model/bill' ], function ( Back
 				self.bills.add( bill );
 				$( '#modal-save-bill' ).on( 'hidden.bs.modal', function() {
 					self.render();
+					$( '#a-bills' ).tab( 'show' );
 				} );
 			} );
 			bill.save();
@@ -58,6 +59,7 @@ define( [ 'backbone', 'template!templates/list', 'model/bill' ], function ( Back
 				var bill = this.bills.get( $( event.target ).attr( 'data-id' ) );
 				bill.destroy();
 				this.render();
+				$( '#a-bills' ).tab( 'show' );
 			}
 		}
 	} );
