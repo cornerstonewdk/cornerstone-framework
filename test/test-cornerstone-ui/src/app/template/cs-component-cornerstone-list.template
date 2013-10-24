@@ -7,7 +7,7 @@
         <h3>Default Lists</h3>
 
         <div class="panel-group">
-			<div class="panel">
+			<div class="panel panel-default">
 				<!-- Default panel contents -->
 				<div class="panel-heading">Panel heading</div>
 				<div class="panel-body">
@@ -44,7 +44,7 @@
         <h3>Panel Group</h3>
 
         <div class="panel-group">
-            <div class="panel">
+            <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Panel heading</div>
                 <div class="panel-body">
@@ -78,7 +78,7 @@
         <div class="panel-group">
             <div class="panels">
 
-                <div class="panel">
+                <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">Panel heading</div>
                     <div class="panel-body">
@@ -107,7 +107,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="panel">
+                <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading panel-sub-heading">Panel heading</div>
                     <div class="panel-body">
@@ -146,7 +146,7 @@
 
         <div class="panel-group panel-nav-group">
             <div class="panels">
-                <div class="panel">
+                <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">Panel heading</div>
                     <div class="panel-body">
@@ -175,7 +175,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="panel">
+                <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading panel-sub-heading">Panel heading</div>
                     <div class="panel-body">

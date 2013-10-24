@@ -25,7 +25,10 @@
     .cs-property(color, @list-group-item-glyphicon-color);
   }
 
-  a&:active, a&.active {
+  a&:active,
+  a&.active,
+  a&.active:hover,
+  a&.active:focus {
     .cs-mixin(box-shadow, @list-group-item-active-box-shadow);
     .cs-property(background-color, @list-group-item-active-background-color);
     .cs-property(color, @list-group-item-active-color);
