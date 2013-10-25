@@ -130,7 +130,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 					else if ( type == 'image' )
 						item[ type ] = './images/logo_sktelecom.png';
 					else if ( type == 'video' )
-						item[ type ] = 'http://www.youtube.com/embed/bACAT8BH3E4';
+						item[ type ] = 'bACAT8BH3E4';
 					else
 						item[ type ] = true;
 
