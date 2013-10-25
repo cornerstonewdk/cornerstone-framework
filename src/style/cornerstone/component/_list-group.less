@@ -1,0 +1,79 @@
+.list-group {
+  .cs-mixin(box-shadow, @list-group-box-shadow);
+  .cs-property(border-radius, @list-group-border-radius);
+  .cs-property(color, @list-group-color);
+}
+
+.list-group-item {
+  .cs-property(border-color, @list-group-item-border-color);
+  .cs-property(background-color, @list-group-item-background-color);
+
+  & > .label {
+    .cs-property(float, @list-group-item-label-float);
+  }
+
+  .pull-right {
+    .badge, .label {
+      .cs-property(position, @list-group-item-pull-right-badge-position);
+      .cs-property(top, @list-group-item-pull-right-badge-top);
+    }
+  }
+
+  .glyphicon {
+    .cs-property(display, @list-group-item-glyphicon-display);
+    .cs-property(padding-top, @list-group-item-glyphicon-padding-top);
+    .cs-property(color, @list-group-item-glyphicon-color);
+  }
+
+  a&:active,
+  a&.active,
+  a&.active:hover,
+  a&.active:focus {
+    .cs-mixin(box-shadow, @list-group-item-active-box-shadow);
+    .cs-property(background-color, @list-group-item-active-background-color);
+    .cs-property(color, @list-group-item-active-color);
+    .cs-property(border-color, @list-group-item-active-border-color);
+    .badge, .label {
+      .cs-property(color, @list-group-item-active-badge-color);
+      .cs-property(background-color, @list-group-item-active-badge-background-color);
+    }
+    .glyphicon {
+      .cs-property(color, @list-group-item-active-glyphicon-color);
+    }
+
+    & > .list-group-item-heading {
+      .cs-property(color, @list-group-item-heading-color);
+    }
+  }
+}
+
+.list-group-radio, .list-group-checkbox {
+  .cs-property(border-radius, @list-group-radio-border-radius);
+
+  .list-group-item {
+    .cs-property(border-left, @list-group-radio-list-group-item-border-left);
+    .cs-property(border-right, @list-group-radio-list-group-item-border-right);
+  }
+
+  & > li {
+    .cs-property(z-index, @list-group-radio-li-z-index);
+    .cs-property(float, @list-group-radio-li-float);
+    .cs-property(padding, @list-group-radio-li-padding);
+    .cs-property(width, @list-group-radio-li-width);
+    .cs-property(color, @list-group-radio-li-color);
+    .cs-property(border-top, @list-group-radio-li-border-top);
+    .cs-property(border-bottom, @list-group-radio-li-border-bottom);
+    .cs-property(background-color, @list-group-radio-li-background-color);
+    .cs-mixin(box-shadow, @list-group-radio-li-box-shadow);
+    &:first-child {
+      .cs-property(border-radius, @list-group-radio-li-first-child-border-radius);
+    }
+  }
+
+  label {
+    .cs-property(display, @list-group-radio-label-display);
+    .cs-property(padding, @list-group-radio-label-padding);
+    .cs-property(margin, @list-group-radio-label-margin);
+    .cs-property(font-size, @list-group-radio-label-font-size);
+  }
+}

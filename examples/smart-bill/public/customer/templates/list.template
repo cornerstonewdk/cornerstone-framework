@@ -4,8 +4,12 @@
 		<a id="refresh" href="javascript://" class="btn-right"><span class="glyphicon glyphicon-refresh"></span></a>
 	</div>
 	<div id="list-main" class="list-group">
-		{{#each this}}
-			<a href="#detail/{{id}}" class="list-group-item" data-transition="slide">{{year}}년 {{month}}월 청구서</a>
-		{{/each}}
+		{{#if this}}
+			{{#each this}}
+				<a href="#detail/{{id}}" class="list-group-item" data-transition="slide">{{year}}년 {{month}}월 청구서</a>
+			{{/each}}
+		{{else}}
+			<a href="#" class="list-group-item">발행된 청구서가 없습니다.</a>
+		{{/if}}
 	</div>
 </div>

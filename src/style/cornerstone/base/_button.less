@@ -95,7 +95,7 @@
 .btn-styles(@btn-bg: @btn-default-bg, @color: "") {
   @end-color: darken(@btn-bg, 10%);
   .background-image(~"linear-gradient(top, @{btn-bg} 0%, @{end-color} 100%)");
-  &, &:hover, &:focus {
+  &, &.disabled, &:hover, &:focus {
     border-color: darken(@btn-bg, 25%);
     background-color: @btn-bg;
     .cs-property(color, @color);

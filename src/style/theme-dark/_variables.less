@@ -103,7 +103,7 @@
 @body-color: @text-color;
 
 @hr-margin: 22px 0;
-@hr-border: none;
+@hr-border: 1px solid rgba(0, 0, 0, 0.2);
 
 @code-padding: "";
 @code-background-color: "";
@@ -207,6 +207,68 @@
 @nav-pills-li-a-hover-color: #FFF;
 
 // Navbar
+@navbar-padding-left: 5px;
+@navbar-padding-right: 5px;
+@navbar-border: none;
+@navbar-background: url(images/noisy-texture-100x100.png) repeat left top #35363a;
+@navbar-background-image: "";
+@navbar-shadow: "";
+@navbar-text-color: #C0C0C0;
+
+@navbar-before-box-shadow: ~"inset 0 1px 2px rgba(255,255,255,.3), 0 5px 1px rgba(0,0,0,.5)";
+@navbar-before-background-image: ~"linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.05) 100%)";
+@navbar-before-position: absolute;
+@navbar-before-top: 0;
+@navbar-before-left: 0;
+@navbar-before-z-index: -1;
+@navbar-before-display: block;
+@navbar-before-width: 100%;
+@navbar-before-height: 100%;
+@navbar-before-content: '';
+
+@navbar-nav-a-hover-color: #82E6FF;
+
+@navbar-nav-dropdown-menu-border-radius: 5px 5px 0 0;
+
+@navbar-nav-glyphicon-top: 3px;
+
+@navbar-icon-li-a-font-size: 0;
+@navbar-icon-li-a-line-height: 0;
+
+@navbar-icon-li-a-glyphicon-font-size: 14px;
+
+@navbar-nav-a-hover-sm-color: #777;
+
+@navbar-nav-a-active-sm-padding: 9px 15px;
+@navbar-nav-a-active-sm-margin: 0;
+
+@navbar-icon-li-a-sm-font-size: 14px;
+@navbar-icon-li-a-sm-line-height: 20px;
+
+@navbar-form-border: none;
+
+@navbar-default-navbar-toggle-border-color: #7C7C7C;
+
+@navbar-default-navbar-toggle-hover-background-color: transparent;
+
+@navbar-default-navbar-toggle-active-background-color: rgba(0, 0, 0, 0.3);
+
+@navbar-inverse-background-image: ~"linear-gradient(top, #3B72A2 0%, #2D587D 100%)";
+
+@navbar-inverse-navbar-brand-color: #FFF;
+
+@navbar-inverse-li-a-active-background-image: ~"linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%)";
+@navbar-inverse-li-a-active-box-shadow: ~"inset 0 0 7px rgba(0, 0, 0, 0.7), 0 1px 1px rgba(255, 255, 255, 0.08)";
+@navbar-inverse-li-a-active-background-color: transparent;
+@navbar-inverse-li-a-active-border-radius: 4px;
+@navbar-inverse-li-a-active-padding: 7px 14px 7px 15px;
+@navbar-inverse-li-a-active-margin: 8px 1px 8px 0px;
+@navbar-inverse-li-a-active-color: #FFF;
+
+@navbar-mobile-a-glyphicon-display: block;
+@navbar-mobile-a-glyphicon-padding: 10px 0 0 0;
+@navbar-mobile-a-glyphicon-font-size: (@font-size-base * 1.5);
+
 // Breadcrumb
 @breadcrumb-margin: 0 0 22px;
 @breadcrumb-padding: 1px 15px 1px 25px;
@@ -373,6 +435,58 @@
 // Progress bars
 // Media Object
 // List Group
+@list-group-border-radius: "";
+@list-group-box-shadow: "";
+@list-group-color: @text-color-inverse;
+
+@list-group-item-border-color: "";
+@list-group-item-background-color: #ededed;
+
+@list-group-item-label-float: "";
+
+@list-group-item-pull-right-label-display: "";
+
+@list-group-item-pull-right-badge-position: relative;
+@list-group-item-pull-right-badge-top: -2px;
+
+@list-group-item-glyphicon-display: "";
+@list-group-item-glyphicon-padding-top: "";
+@list-group-item-glyphicon-color: #898a8a;
+
+@list-group-item-active-box-shadow: ~"inset 0 0 5px rgba(0, 0, 0, 0.5)";
+@list-group-item-active-background-color: #2A6B8D;
+@list-group-item-active-color: #FFF;
+@list-group-item-active-border-color: #2A6B8D;
+
+@list-group-item-active-badge-color: #428BCA;
+@list-group-item-active-badge-background-color: #FFF;
+
+@list-group-item-active-glyphicon-color: #FFF;
+
+@list-group-item-heading-color: #FFF;
+
+@list-group-radio-border-radius: 4px;
+
+@list-group-radio-list-group-item-border-left: none;
+@list-group-radio-list-group-item-border-right: none;
+
+@list-group-radio-li-z-index: "";
+@list-group-radio-li-float: "";
+@list-group-radio-li-padding: "";
+@list-group-radio-li-width: "";
+@list-group-radio-li-border-top: 1px solid rgba(255, 255, 255, 0.2);
+@list-group-radio-li-border-bottom: 1px solid #2D2D2D;
+@list-group-radio-li-background-color: rgba(40, 40, 40, 0.31);
+@list-group-radio-li-box-shadow: ~"inset 0 1px 1px rgba(255, 255, 255, .15), inset 0 -1px 1px rgba(0, 0, 0, .3), inset 1px 0 1px rgba(255, 255, 255, .1), inset -1px 0 1px rgba(0, 0, 0, .3)";
+@list-group-radio-li-color: #FFF;
+
+@list-group-radio-li-first-child-border-radius: "";
+
+@list-group-radio-label-display: block;
+@list-group-radio-label-padding: 5px;
+@list-group-radio-label-margin: -10px;
+@list-group-radio-label-font-size: 26px;
+
 // Panel
 @panel-border-radius: "";
 @panel-color: "";
@@ -429,10 +543,42 @@
 @panel-info-border-color: "";
 @panel-info-background-image: "";
 
-// Wells
-// Mobile Navbar
 // Cornerstone List
-// Vertically Grouped
+@list-group-cornerstone-margin: -15px;
+
+@panel-group-background-image: url(images/bg-dot.png);
+@panel-group-padding: 10px;
+@panel-group-border-radius: 6px;
+@panel-group-background-size: 4px;
+
+@panel-group-list-group-item-border-radius: 0;
+
+@panel-group-panel2-margin-top: 0;
+
+@panel-group-panel-margin-bottom: 0;
+@panel-group-panel-border-radius: 0;
+@panel-group-panel-box-shadow: ~"0 0 5px rgba(0, 0, 0, 0.5)";
+
+@panel-group-panels-panel-margin-bottom: -2px;
+
+@panel-group-panel-sub-heading-font-size: (@font-size-base * 0.95);
+
+@panel-group-heading-color: #FFF;
+@panel-group-heading-background-color: #739d1f;
+
+@panel-nav-group-background: none;
+@panel-nav-group-padding: 0;
+
+@panel-nav-group-heading-border-bottom: none;
+@panel-nav-group-heading-background: #242426;
+
+@panel-nav-group-item-border-width: 0;
+
+@panel-nav-group-item-active-color: #FFF;
+@panel-nav-group-item-active-background-color: #9E2222;
+
+
+
 
 // Plugin
 // -------------------------

@@ -1,4 +1,5 @@
 // 중복 스타일 속성을 통합하는 LESS
+
 .flip-area .flip-btn:after,
 .slider .slide-handle:after {
   background-color: #c1c1c1;
@@ -25,10 +26,11 @@
   padding-top: 9px;
 }
 
-.flip-area .active > .flip-txt,
-.flip-area :not(.fast-button) .flip-check:checked + .flip-txt,
-.list-group-item:active,
-.list-group-item.active,
+.flip-area.active > .flip-txt,
+.flip-area:not(.fast-button) .flip-check:checked + .flip-txt,
+.panel-group .list-group-item.active,
+a.list-group-item:active,
+a.list-group-item.active,
 .pagination-circle.active > a,
 .pagination-circle > a.active,
 .pagination-circle > a:hover,
@@ -74,6 +76,7 @@
 .nav-pills > li:not(.disabled).open .dropdown-toggle:hover,
 .nav-pills > li:not(.disabled).open .dropdown-toggle:focus,
 .navbar-nav .open > a,
+.navbar-nav > li > a:active,
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover,
 .navbar-nav > .active > a:focus,

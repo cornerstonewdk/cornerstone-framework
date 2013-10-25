@@ -1,4 +1,4 @@
-define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/template', 'view/phone', 'view/tablet' ], function ( _, $, Backbone, template, Template, PhoneView, TabletView ) {
+define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/template', 'view/grid' ], function ( _, $, Backbone, template, Template, GridView ) {
 
 	return Backbone.View.extend( {
 
@@ -13,6 +13,8 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 
 		render: function () {
 
+			var self = this;
+
 			this.model = new Template();
 			this.model.set( 'tableItems', {
 				'items1': [
@@ -25,44 +27,13 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 					{ 'name': '기타금액', 'negative': false }
 				]
 			} );
-			this.model.set( 'content', [
-				[
-					{
-						"phoneWidth": 12,
-						"tabletWidth": 12,
-						"box": true,
-						"table": true
-					}
-				],
-				[
-					{
-						"phoneWidth": 12,
-						"tabletWidth": 12,
-						"divider": true
-					}
-				],
-				[
-					{
-						"phoneWidth": 7,
-						"tabletWidth": 5,
-						"box": true,
-						"total": true
-					},
-					{
-						"phoneWidth": 5,
-						"tabletWidth": 7,
-						"box": true,
-						"text": "안녕하세요."
-					}
-				]
-			] );
+			this.model.set( 'content', [] );
 
 			// 상세페이지 랜더링
 			this.$el.html( template() );
-			var phoneView = new PhoneView( { model: this.model } );
-			var tabletView = new TabletView( { model: this.model } );
-			phoneView.render();
-			tabletView.render();
+			this.phoneView = new GridView( { el: '#tab-phone', model: this.model, parent: this, phone: true } );
+			this.tabletView = new GridView( { el: '#tab-tablet', model: this.model, parent: this, phone: false } );
+			this.renderGrid();
 			// Draggable
 			$( '.list-group-item' ).draggable( { opacity: 0.7, helper: 'clone' } );
 			// 휴지통
@@ -72,13 +43,18 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 				drop: function( event, ui ) {
 					// 현재 Phone, Tablet tab 중에 어느쪽이 활성화되어 있는지 검사
 					if ( $( '#tab-phone' ).hasClass( 'active' ) )
-						phoneView.dropOnTrash( event, ui );
+						self.phoneView.dropOnTrash( event, ui );
 					else
-						tabletView.dropOnTrash( event, ui );
+						self.tabletView.dropOnTrash( event, ui );
 				}
 			} );
 
 			return this;
+		},
+
+		renderGrid: function() {
+			this.phoneView.render();
+			this.tabletView.render();
 		},
 
 		save: function() {

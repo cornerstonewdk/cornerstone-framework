@@ -5,47 +5,53 @@
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane" id="tab-bills">
-			<table class="table table-striped">
-				<tr>
-					<th>청구 년 / 월</th>
-					<th style="width: 100px; text-align: right;">삭제</th>
-				</tr>
-				{{#if bills}}
-					{{#each bills}}
-						<tr>
-							<td><span class="label label-info">{{template.name}}</span> {{year}}년 {{month}}월 청구서</td>
-							<td><button data-id="{{id}}" type="button" class="close delete-bill" aria-hidden="true">&times;</button></td>
-						</tr>
-					{{/each}}
-				{{else}}
+			<div class="panel panel-success">
+				<div class="panel-heading">청구서 목록</div>
+				<table class="table table-striped">
 					<tr>
-						<td colspan="2">발행된 청구서가 없습니다.</td>
+						<th>청구 년 / 월</th>
+						<th style="width: 100px; text-align: right;">삭제</th>
 					</tr>
-				{{/if}}
-			</table>
+					{{#if bills}}
+						{{#each bills}}
+							<tr>
+								<td><span class="label label-info">{{template.name}}</span> {{year}}년 {{month}}월 청구서</td>
+								<td><button data-id="{{id}}" type="button" class="close delete-bill" aria-hidden="true">&times;</button></td>
+							</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2">발행된 청구서가 없습니다.</td>
+						</tr>
+					{{/if}}
+				</table>
+			</div>
 			<div class="pull-right">
 				<a class="btn btn-primary" href="#modal-save-bill" data-toggle="modal">청구서 발행</a>
 			</div>
 		</div>
 		<div class="tab-pane active" id="tab-templates">
-			<table class="table table-striped">
-				<tr>
-					<th>서식명</th>
-					<th style="width: 100px; text-align: right;">삭제</th>
-				</tr>
-				{{#if templates}}
-					{{#each templates}}
-						<tr>
-							<td>{{name}}</td>
-							<td><button data-id="{{id}}" type="button" class="close delete-template" aria-hidden="true">&times;</button></td>
-						</tr>
-					{{/each}}
-				{{else}}
+			<div class="panel panel-success">
+				<div class="panel-heading">서식 목록</div>
+				<table class="table table-striped">
 					<tr>
-						<td colspan="2">만들어진 서식이 없습니다.</td>
+						<th>서식명</th>
+						<th style="width: 100px; text-align: right;">삭제</th>
 					</tr>
-				{{/if}}
-			</table>
+					{{#if templates}}
+						{{#each templates}}
+							<tr>
+								<td>{{name}}</td>
+								<td><button data-id="{{id}}" type="button" class="close delete-template" aria-hidden="true">&times;</button></td>
+							</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2">만들어진 서식이 없습니다.</td>
+						</tr>
+					{{/if}}
+				</table>
+			</div>
 			<div class="pull-right">
 				<a class="btn btn-primary" href="#edit" data-transition="flip">서식 만들기</a>
 			</div>
