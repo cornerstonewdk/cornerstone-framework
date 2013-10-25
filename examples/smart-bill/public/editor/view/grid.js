@@ -155,9 +155,9 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 				}
 			} );
 			// 추가된 항목은 휴지통으로 끌어놓을 수 있도록 한다.
-			$( '.editor-content .content-box, .editor-content hr, .editor-content button' ).draggable( { cancel: false, opacity: 0.7, helper: 'clone' } );
+			this.$( '.editor-content .content-box, .editor-content hr, .editor-content button' ).draggable( { cancel: false, opacity: 0.7, helper: 'clone' } );
 			// margin(15+15) 포함
-			$( '.editor-grid' ).width( $( '.editor-content' ).width() + 30 );
+			$( '.editor-grid' ).width( $( '.editor-content:visible' ).width() + 30 );
 			return this;
 		},
 
