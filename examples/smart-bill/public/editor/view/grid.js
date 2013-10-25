@@ -39,7 +39,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 					$( this ).parent().remove();
 				} );
 				$( '#modal-edit' ).on( 'click', 'button.negative', function() {
-					var span = $( this ).find( 'span' );
+					var span = $( this ).find( 'span.glyphicon' );
 					if ( span.hasClass( 'glyphicon-plus' ) )
 						span.removeClass( 'glyphicon-plus' ).addClass( 'glyphicon-minus' );
 					else
