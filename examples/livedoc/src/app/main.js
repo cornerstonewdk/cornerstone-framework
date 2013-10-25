@@ -13,7 +13,8 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/hom
 
 				// order 속성 순으로 정렬
 				docs.comparator = function ( doc ) {
-					return doc.get( 'order' );
+					var order = doc.get( 'order' );
+					return order[ 0 ] * 1000 * 1000 + order[ 1 ] * 1000 + ( order[ 2 ] || 0 );
 				};
 				docs.sort();
 
