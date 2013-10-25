@@ -80,8 +80,13 @@ hr {
 }
 
 #dropzone {
-	border: 1px dashed #e0e0e0;
-	height: 50px;
+	border: 1px dashed #d0d0d0;
+	background-color: #efefef;
+	margin-top: 10px;
+	width: 400px;
+	height: 60px;
+	padding: 20px;
+	text-align: center;
 }
 
 #dropzone-trash {

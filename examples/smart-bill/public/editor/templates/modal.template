@@ -87,8 +87,8 @@
 			<tr>
 				<th>이미지</th>
 				<td>
-					<img src="{{image}}" onerror="this.style='display: none;';"/>
-					<div id="dropzone">여기로 이미지 파일을 Drop 하세요.</div>
+					<img src="{{item.image}}"/>
+					<div id="dropzone">이미지를 교체하시려면 여기로 이미지 파일을 끌어다 놓으세요.</div>
 				</td>
 			</tr>
 		{{/if}}
