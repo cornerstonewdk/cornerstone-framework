@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	context="width-divice-width, initial-scele-1.0, user-scalble=no">
+<script type="text/javascript" charset="utf-8" src="../sktjs/SRT-0.1.js"></script>
+<title>Menu</title>
+<script type="text/javascript">
+function MenuCallback1(){
+	alert("menu1 button click");
+}
+function MenuCallback2(){
+	alert("asdgasdgasdgasdg");
+}
+function addMenu(){
+	navigator.menumanager.addMenu("menu1",MenuCallback1);
+}
+function removeMenu(){
+	navigator.menumanager.removeMenu("menu1");
+}
+function addMenu2(){
+	navigator.menumanager.addMenu("menu2",MenuCallback2);
+}
+function removeAll(){
+	navigator.menumanager.removeAll();
+}
+function removeOpenBrowser(){
+	navigator.menumanager.removeMenu("OPENBROWSER");
+}
+function removeRefresh(){
+	navigator.menumanager.removeMenu("REFRESH");
+}
+function removeExitApp(){
+	navigator.menumanager.removeMenu("EXITAPP");
+}
+
+function addExitApp(){
+	navigator.menumanager.addMenu("EXITAPP");
+}
+
+</script>
+</head>
+<hr> Menu API Test<BR>
+<a href="file:///android_asset/www/index.html" >back</a><hr>
+<button onclick="addMenu();">addMenu</button><br>
+<button onclick="removeMenu();">removeMenu</button><br>
+
+<button onclick="addMenu2();">addMenu2</button><br>
+<button onclick="removeAll();">removeAll</button><br>
+<button onclick="removeOpenBrowser();">removeOpenBrowser</button><br>
+<button onclick="removeRefresh();">removeRefresh</button><br>
+<button onclick="removeExitApp();">removeExitApp</button><br>
+<button onclick="addExitApp();">addExitApp</button><br>
+</body>
+</html>

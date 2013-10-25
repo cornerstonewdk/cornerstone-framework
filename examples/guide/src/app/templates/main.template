@@ -1,0 +1,14 @@
+<div class="fallback-message">
+	<p>Internet Explorer에서는 슬라이드가 일렬로 배치됩니다.</p>
+	<p>3D 효과를 경험하시려면 최신 버전의 Firefox, Chrome, Safari를 사용해 주세요.</p>
+</div>
+<div class="hint">
+	<p>스페이스 바 또는 화살표 키를 이용해서 이동하세요.</p>
+</div>
+<div id="impress">
+	<div id="title" class="step" data-x="0" data-y="-3000" data-z="0" data-rotate-x="90" data-scale="4">
+		<h1>Cornerstone</h1>
+		<h1>Developer Guide</h1>
+		<p class="copyright">Copyright &copy; 2012-2013 SKTELECOM Co., Ltd. All Rights Reserved.</p>
+	</div>
+</div>
