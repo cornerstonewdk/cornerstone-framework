@@ -18,19 +18,22 @@ thumbnail: '6.2.00.android.png'
 ### Android Runtime 하이브리드앱 개발 환경 
 
  - 다음 링크에서 Android 용 코너스톤 런타임을 다운로드 받을 수 있다. 
- - [Android 용 코너스톤 런타임 (Android 용 하이브리드앱 개발환경) 다운로드](http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.2.zip) 
+ - [Android 용 코너스톤 런타임 (Android 용 하이브리드앱 개발환경) 다운로드](http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.3.zip) 
 
 
 ### Android Runtime 하이브리드앱 개발 환경 구조 
 
 ![Android Runtime 하이브리드앱 개발 환경 구조](./images/devel.png)
 
+스크린샷에서 보여지는 **HelloSRT** 프로젝트는 이클립스에서 관리하는 .project 파일임으로 개발자가 개발환경에 적합하게 
+변경하여도 무방하다. 
+
 1) src - Plugin 개발시에 작성하는 Java Native Code
 
 2) asset - 실제 하이브리드앱의 웹 리소스 (HTML/CSS/JS/IMG) 와 Runtime Java Script Library 가 저장되는 위치 
 	
 -	**assets/www** : 하이브리드앱의 저장 위치 
--	**assets/www/index.html** : 하이브리드앱의 첫 실행 파일 
+-	**assets/www/index.html** : 하이브리드앱의 첫 실행 파일 , RuntimeStandAlone.java에서 변경가능하다.
 
 3) libs - Webview 를 이용하여 Device 의 단말 접근 기능을 제공하는 Device API가 포팅된 Android Library 위치 
 
@@ -46,7 +49,7 @@ thumbnail: '6.2.00.android.png'
 -	**value/string.xml** : 하이브리드앱의 Name을 설정하는 파일 
 -	**xml/config.xml** : Device의 Orientation(portrait , landscape , auto) , Splash Image , Push 사용 여부 등을 를 설정하는 파일 
 
-6) AndroidManifest.xml : 하나의 Native Application으로써의 고유한 Package 명을 지정하는 파일, 하드웨어 가속 GPU 렌더링 사용여부를 설정하는 파일.
+6) AndroidManifest.xml : **하나의 Native Application으로써의 고유한 Package 명**을 지정하는 파일, 하드웨어 가속 GPU 렌더링 사용여부를 설정하는 파일. Push 기능 , Custom URL 기능을 사용하기 위하여 설정하여야 한다. 
 
 <br>
 
@@ -56,7 +59,7 @@ thumbnail: '6.2.00.android.png'
 
 ![](./images/src.png)
 
-**step 2.**  하이브리드앱 개발자는 assets 폴더 내부에 .html , .js , .css 와 같은 하이브리드앱 소스 파일을 작성하여야 하며 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.2.js는 하이브리드앱 개발 환경 Template의 기본 포함된 파일**이다. 
+**step 2.**  하이브리드앱 개발자는 assets 폴더 내부에 .html , .js , .css 와 같은 하이브리드앱 소스 파일을 작성하여야 하며 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.3.js는 하이브리드앱 개발 환경 Template의 기본 포함된 파일**이다. 
 
 ![](./images/src2.png)
 
@@ -73,7 +76,7 @@ thumbnail: '6.2.00.android.png'
 	
 -	특정 웹페이지 내부에서 Runtime Device API를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
  
-		<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.2.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.3.js"></script>
 
 	> 하이브리드앱에서의 Device 의 해상도에 상관 없이 스크린에 Fix되게 출력하는 방법
 

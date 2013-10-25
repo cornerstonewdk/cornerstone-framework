@@ -42,7 +42,7 @@ thumbnail: '6.1.00.runtime_structure.png'
 -	Java Script Layer는 하이브리드앱에서 사용하기 위한 Java Script API들을 선언 및 정의 하며 이를 Runtime의 Native Layer와 연결하는 역할을 한다.
 
 -	**SRT-x.x.js** 형태로 배포 되며 Runtime이 업데이트 될 때마다 버전명이 올라간다. 
-		> **2013.09.16** 기준 **SRT-0.9.2.js** 배포 
+		> **2013.09.16** 기준 Android - **SRT-0.9.3.js** , iOS - **SRT-0.9.2.js** 배포 
 
 -	**SRT-x.x.js** 는 크게 두가지 역할로 구분된다. 
 
@@ -110,7 +110,7 @@ thumbnail: '6.1.00.runtime_structure.png'
 -	iOS용 하이브리드앱을 개발하기 위해서는 아래와 같은 Project File 들을 세팅하여야 한다. 
 
 	1) SRT_Template-Info.plist
-	- **iOS 어플리케이션 설정**을 위한 프로젝트 파일
+	- **iOS 어플리케이션 설정**을 위한 프로젝트 파일 , 실제 Device에서 보여지는 **하이브리드앱의 이름** 설정
 
 	2) SRT.plist
 	-	**Cornerstone Runtime 설정**을 위한 프로젝트 파일
