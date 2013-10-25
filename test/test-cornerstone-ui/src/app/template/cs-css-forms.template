@@ -169,7 +169,7 @@
     <form>
         <fieldset>
             <legend>Select</legend>
-            <select class="col col-lg-12">
+            <select class="col col-lg-12 form-control">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -205,6 +205,7 @@
             </label>
         </fieldset>
 
+        <!--
         <fieldset>
             <legend>Flip select (required Hammer.js)</legend>
 
@@ -214,7 +215,7 @@
                     <span class="flip-btn"></span>
                 </span>
             </label>
-        </fieldset>
+        </fieldset>-->
     </form>
 
     <hr>
@@ -239,6 +240,7 @@
             </label>
         </fieldset>
 
+        <!--
         <fieldset>
             <legend>Checkbox (required Hammer.js)</legend>
 
@@ -256,7 +258,7 @@
                 <input type="checkbox" value="option3">
                 <span class="control placeholder"></span>
             </label>
-        </fieldset>
+        </fieldset>-->
 
         <fieldset>
             <legend>Radio</legend>
