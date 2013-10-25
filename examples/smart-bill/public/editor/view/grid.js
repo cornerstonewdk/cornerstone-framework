@@ -49,7 +49,20 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 				$( '#modal-edit #btn-modal-save' ).click( function() {
 
 					if ( item.table ) {
-
+						tableItems.items1 = [];
+						tableItems.items2 = [];
+						$( '#modal-edit #list-items1 .input-group' ).each( function() {
+							tableItems.items1.push( {
+								name: $( this ).find( 'input' ).val(),
+								negative: $( this ).find( 'span.glyphicon' ).hasClass( 'glyphicon-minus' )
+							} );
+						} );
+						$( '#modal-edit #list-items2 .input-group' ).each( function() {
+							tableItems.items2.push( {
+								name: $( this ).find( 'input' ).val(),
+								negative: $( this ).find( 'span.glyphicon' ).hasClass( 'glyphicon-minus' )
+							} );
+						} );
 					}
 					else if ( item.text ) {
 						item.text = $( '#modal-edit input' ).val();
