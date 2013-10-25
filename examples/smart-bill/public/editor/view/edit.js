@@ -13,6 +13,8 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 
 		render: function () {
 
+			var self = this;
+
 			this.model = new Template();
 			this.model.set( 'tableItems', {
 				'items1': [
@@ -41,9 +43,9 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/edit', 'model/
 				drop: function( event, ui ) {
 					// 현재 Phone, Tablet tab 중에 어느쪽이 활성화되어 있는지 검사
 					if ( $( '#tab-phone' ).hasClass( 'active' ) )
-						phoneView.dropOnTrash( event, ui );
+						self.phoneView.dropOnTrash( event, ui );
 					else
-						tabletView.dropOnTrash( event, ui );
+						self.tabletView.dropOnTrash( event, ui );
 				}
 			} );
 
