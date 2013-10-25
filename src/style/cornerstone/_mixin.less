@@ -58,7 +58,7 @@
   .result(@property-name) when (@property-name = z-index) { z-index: @value; }
   .result(@property-name) when (@property-name = top) { top: @value; }
   .result(@property-name) when (@property-name = right) { right: @value; }
-  .result(@property-name) when (@property-name = rbottomight) { bottom: @value; }
+  .result(@property-name) when (@property-name = bottom) { bottom: @value; }
   .result(@property-name) when (@property-name = left) { left: @value; }
 
   .result(@property-name) when (@property-name = margin) { margin: @value; }
@@ -74,10 +74,13 @@
   .result(@property-name) when (@property-name = padding-left) { padding-left: @value; }
 
   .result(@property-name) when (@property-name = display) { display: @value; }
+  .result(@property-name) when (@property-name = min-width) { min-width: @value; }
   .result(@property-name) when (@property-name = width) { width: @value; }
+  .result(@property-name) when (@property-name = min-height) { min-height: @value; }
   .result(@property-name) when (@property-name = height) { height: @value; }
 
   .result(@property-name) when (@property-name = border) { border: @value; }
+  .result(@property-name) when (@property-name = border-width) { border-width: @value; }
   .result(@property-name) when (@property-name = border-top) { border-top: @value; }
   .result(@property-name) when (@property-name = border-right) { border-right: @value; }
   .result(@property-name) when (@property-name = border-bottom) { border-bottom: @value; }
@@ -87,7 +90,13 @@
   .result(@property-name) when (@property-name = border-right-color) { border-right-color: @value; }
   .result(@property-name) when (@property-name = border-bottom-color) { border-bottom-color: @value; }
   .result(@property-name) when (@property-name = border-left-color) { border-left-color: @value; }
+  .result(@property-name) when (@property-name = border-top-width) { border-top-width: @value; }
+  .result(@property-name) when (@property-name = border-right-width) { border-right-width: @value; }
+  .result(@property-name) when (@property-name = border-bottom-width) { border-bottom-width: @value; }
+  .result(@property-name) when (@property-name = border-left-width) { border-left-width: @value; }
   .result(@property-name) when (@property-name = border-radius) { border-radius: @value; }
+  .result(@property-name) when (@property-name = border-top-right-radius) { border-top-right-radius: @value; }
+  .result(@property-name) when (@property-name = border-bottom-right-radius) { border-bottom-right-radius: @value; }
 
   .result(@property-name) when (@property-name = background) { background: @value; }
   .result(@property-name) when (@property-name = background-image) { background-image: @value; }
@@ -95,11 +104,20 @@
   .result(@property-name) when (@property-name = background-size) { background-size: @value; }
 
   .result(@property-name) when (@property-name = font-size) { font-size: @value; }
+  .result(@property-name) when (@property-name = font-family) { font-family: @value; }
+  .result(@property-name) when (@property-name = font-weight) { font-weight: @value; }
+  .result(@property-name) when (@property-name = text-shadow) { text-shadow: @value; }
   .result(@property-name) when (@property-name = text-decoration) { text-decoration: @value; }
+  .result(@property-name) when (@property-name = float) { float: @value; }
+  .result(@property-name) when (@property-name = outline) { outline: @value; }
   .result(@property-name) when (@property-name = color) { color: @value; }
   .result(@property-name) when (@property-name = cursor) { cursor: @value; }
   .result(@property-name) when (@property-name = opacity) { opacity: @value; }
   .result(@property-name) when (@property-name = content) { content: @value; }
+  .result(@property-name) when (@property-name = vertical-align) { vertical-align: @value; }
+  .result(@property-name) when (@property-name = line-height) { line-height: @value; }
+  .result(@property-name) when (@property-name = white-space) { white-space: @value; }
+  .result(@property-name) when (@property-name = word-break) { word-break: @value; }
 
   // 적용
   .result(@property-name);
