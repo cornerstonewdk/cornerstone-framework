@@ -80,22 +80,22 @@
 		{{#if item.text}}
 			<tr>
 				<th>텍스트</th>
-				<td><input type="text" class="form-control" value="{{text}}"/></td>
+				<td><input type="text" class="form-control" value="{{item.text}}"/></td>
 			</tr>
 		{{/if}}
 		{{#if item.image}}
 			<tr>
 				<th>이미지</th>
 				<td>
-					<img src="{{image}}" onerror="this.style='display: none;';"/>
-					<div id="dropzone">여기로 이미지 파일을 Drop 하세요.</div>
+					<img src="{{item.image}}"/>
+					<div id="dropzone">이미지를 교체하시려면 여기로 이미지 파일을 끌어다 놓으세요.</div>
 				</td>
 			</tr>
 		{{/if}}
 		{{#if item.video}}
 			<tr>
-				<th>Youtube</th>
-				<td><input type="text" class="form-control" value="{{video}}"/></td>
+				<th>Video ID</th>
+				<td><input type="text" class="form-control" value="{{item.video}}"/></td>
 			</tr>
 		{{/if}}
 	</table>

@@ -34,7 +34,7 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/templates', 'model/te
 
 					function syncWidth() {
 						// margin(15+15) 포함
-						$( '.editor-grid' ).width( $( '.editor-content' ).width() + 30 );
+						$( '.editor-grid' ).width( $( '.editor-content:visible' ).width() + 30 );
 					};
 
 					$( window ).resize( syncWidth );

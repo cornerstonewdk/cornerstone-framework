@@ -25,3 +25,5 @@ tools/cornerstone-cli/build/node_modules
 server/SKT_Open_API_Provider/node_modules
 test/test-total/node_modules
 test/test-total/dist
+test/test-util/node_modules
+test/test-util/dist

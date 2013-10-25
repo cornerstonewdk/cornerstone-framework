@@ -39,7 +39,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 					$( this ).parent().remove();
 				} );
 				$( '#modal-edit' ).on( 'click', 'button.negative', function() {
-					var span = $( this ).find( 'span' );
+					var span = $( this ).find( 'span.glyphicon' );
 					if ( span.hasClass( 'glyphicon-plus' ) )
 						span.removeClass( 'glyphicon-plus' ).addClass( 'glyphicon-minus' );
 					else
@@ -49,7 +49,20 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 				$( '#modal-edit #btn-modal-save' ).click( function() {
 
 					if ( item.table ) {
-
+						tableItems.items1 = [];
+						tableItems.items2 = [];
+						$( '#modal-edit #list-items1 .input-group' ).each( function() {
+							tableItems.items1.push( {
+								name: $( this ).find( 'input' ).val(),
+								negative: $( this ).find( 'span.glyphicon' ).hasClass( 'glyphicon-minus' )
+							} );
+						} );
+						$( '#modal-edit #list-items2 .input-group' ).each( function() {
+							tableItems.items2.push( {
+								name: $( this ).find( 'input' ).val(),
+								negative: $( this ).find( 'span.glyphicon' ).hasClass( 'glyphicon-minus' )
+							} );
+						} );
 					}
 					else if ( item.text ) {
 						item.text = $( '#modal-edit input' ).val();
@@ -58,7 +71,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 						item.image = $( '#modal-edit img' ).attr( 'src' );
 					}
 					else if ( item.video ) {
-						item.text = $( '#modal-edit input' ).val();
+						item.video = $( '#modal-edit input' ).val();
 					}
 
 					if ( self.options.phone )
@@ -117,7 +130,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 					else if ( type == 'image' )
 						item[ type ] = './images/logo_sktelecom.png';
 					else if ( type == 'video' )
-						item[ type ] = 'http://www.youtube.com/embed/bACAT8BH3E4';
+						item[ type ] = 'bACAT8BH3E4';
 					else
 						item[ type ] = true;
 
@@ -142,9 +155,9 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 				}
 			} );
 			// 추가된 항목은 휴지통으로 끌어놓을 수 있도록 한다.
-			$( '.editor-content .content-box, .editor-content hr, .editor-content button' ).draggable( { cancel: false, opacity: 0.7, helper: 'clone' } );
+			this.$( '.editor-content .content-box, .editor-content hr, .editor-content button' ).draggable( { cancel: false, opacity: 0.7, helper: 'clone' } );
 			// margin(15+15) 포함
-			$( '.editor-grid' ).width( $( '.editor-content' ).width() + 30 );
+			$( '.editor-grid' ).width( $( '.editor-content:visible' ).width() + 30 );
 			return this;
 		},
 
