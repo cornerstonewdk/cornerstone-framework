@@ -9,12 +9,11 @@ define( [ 'logging',
 		  'view/page3', 
 		  'backbone', 
 		  'multipage-router', 
-		  'js/chai',
 		  'js/mocha', 
 		  'bootstrap',
 		  'style!main',
 		  'style!css/mocha' 
-		   ], function( Logging, Page1View, Page2View, Page3View, Backbone, MultipageRouter, chai ) {
+		   ], function( Logging, Page1View, Page2View, Page3View, Backbone, MultipageRouter ) {
 	return {
 		launch: function() {
 
@@ -29,9 +28,9 @@ define( [ 'logging',
 
             window.Logging = Logging;
 
-			window.mocha.setup('bdd');
-		    window.mocha.reporter('html');
-		    window.mocha.setup({
+			mocha.setup('bdd');
+		    mocha.reporter('html');
+		    mocha.setup({
 		        ignoreLeaks: true
 		    });
 
@@ -85,7 +84,7 @@ define( [ 'logging',
 			
 			require(['spec/spec'], function () {
 				if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-			        window.mocha.run();
+			        mocha.run();
 			    }
 			} );
 		}	
