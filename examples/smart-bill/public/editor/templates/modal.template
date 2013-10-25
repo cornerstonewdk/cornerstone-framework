@@ -80,7 +80,7 @@
 		{{#if item.text}}
 			<tr>
 				<th>텍스트</th>
-				<td><input type="text" class="form-control" value="{{text}}"/></td>
+				<td><input type="text" class="form-control" value="{{item.text}}"/></td>
 			</tr>
 		{{/if}}
 		{{#if item.image}}
@@ -94,8 +94,8 @@
 		{{/if}}
 		{{#if item.video}}
 			<tr>
-				<th>Youtube</th>
-				<td><input type="text" class="form-control" value="{{video}}"/></td>
+				<th>Video ID</th>
+				<td><input type="text" class="form-control" value="{{item.video}}"/></td>
 			</tr>
 		{{/if}}
 	</table>

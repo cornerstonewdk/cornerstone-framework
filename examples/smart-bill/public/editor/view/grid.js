@@ -71,7 +71,7 @@ define( [ 'underscore', 'jquery', 'backbone', 'template!templates/phone', 'templ
 						item.image = $( '#modal-edit img' ).attr( 'src' );
 					}
 					else if ( item.video ) {
-						item.text = $( '#modal-edit input' ).val();
+						item.video = $( '#modal-edit input' ).val();
 					}
 
 					if ( self.options.phone )
