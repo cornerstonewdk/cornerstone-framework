@@ -50,14 +50,14 @@
 .panel-primary {
   .cs-property(border-color, @panel-primary-border-color);
   & > .panel-heading {
-    color: @panel-state-color;
+    .cs-property(color, @panel-state-color);
   }
 }
 
 .panel-success {
   .cs-property(border-color, @panel-success-border-color);
   & > .panel-heading {
-    color: @panel-state-color;
+    .cs-property(color, @panel-state-color);
     &, &:before {
       .cs-mixin(background-image, @panel-success-background-image);
     }
@@ -67,7 +67,7 @@
 .panel-warning {
   .cs-property(border-color, @panel-warning-border-color);
   & > .panel-heading {
-    color: @panel-state-color;
+    .cs-property(color, @panel-state-color);
     &, &:before {
       .cs-mixin(background-image, @panel-warning-background-image);
     }
@@ -77,7 +77,7 @@
 .panel-danger {
   .cs-property(border-color, @panel-danger-border-color);
   & > .panel-heading {
-    color: @panel-state-color;
+    .cs-property(color, @panel-state-color);
     &, &:before {
       .cs-mixin(background-image, @panel-danger-background-image);
     }
@@ -87,7 +87,7 @@
 .panel-info {
   .cs-property(border-color, @panel-info-border-color);
   & > .panel-heading {
-    color: @panel-state-color;
+    .cs-property(color, @panel-state-color);
     &, &:before {
       .cs-mixin(background-image, @panel-info-background-image);
     }
