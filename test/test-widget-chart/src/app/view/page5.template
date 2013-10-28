@@ -70,7 +70,7 @@
 <div class="row">
     <div class="col col-lg-12">
         <div class="panel panel-primary view-chart">
-            <div class="panel-heading">라인 포커스 차트</div>
+            <div class="panel-heading">신규 라인 포커스 차트</div>
             <div class="panel-body">
                 <div id="lineFocus" class="widget-chart"></div>
                 <p>

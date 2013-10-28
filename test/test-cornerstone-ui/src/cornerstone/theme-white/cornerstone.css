@@ -258,7 +258,7 @@ select {
   background-image: linear-gradient(bottom, #aba7a3 0%, #cdc9c5 100%);
   display: inline-block;
   padding: 0 15px 0 0;
-  min-width: 90px;
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   color: #b0b0b0;

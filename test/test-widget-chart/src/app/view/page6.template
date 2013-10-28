@@ -102,7 +102,7 @@
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Grouped 수평 바 차트</h3>
+                        <h3>Grouped 수직 바 차트</h3>
 
                         <div class="widget-chart" data-featured="chart" data-chart-type="groupedBar"
                              data-chart-bind="data/sample-bar2.json"></div>
