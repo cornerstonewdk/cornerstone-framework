@@ -1,0 +1,501 @@
+.form-control, select {
+  .cs-mixin(box-shadow, @form-control-box-shadow);
+  .cs-property(border, @form-control-border);
+  .cs-property(border-radius, @form-control-border-radius);
+  .cs-property(background-color, @form-control-background-color);
+  .cs-property(color, @form-control-color);
+}
+
+.form-control, .input-group-addon {
+  .cs-mixin(box-shadow, @form-control-input-group-addon);
+}
+
+.form-control {
+  &:focus, &.focused {
+    .cs-mixin(box-shadow, @form-control-focus-box-shadow);
+    .cs-property(outline, @form-control-focus-outline);
+    .cs-property(border-color, @form-control-focus-border-color);
+    .cs-property(color, @form-control-focus-color);
+  }
+
+  &.uneditable-input,
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    .cs-mixin(box-shadow, @form-control-disabled-box-shadow);
+    .cs-property(background-color, @form-control-disabled-background-color);
+    .cs-property(cursor, @form-control-disabled-cursor);
+  }
+}
+
+.form-search {
+  input {
+    .cs-property(display, @form-search-input-display);
+    .cs-property(padding, @form-search-input-padding);
+    .cs-property(border-radius, @form-search-input-border-radius);
+  }
+  .input-group-search {
+    .form-control {
+      .cs-property(border-top-right-radius, @form-search-input-group-search-border-top-right-radius);
+      .cs-property(border-bottom-right-radius, @form-search-input-group-search-border-bottom-right-radius);
+    }
+
+    .input-group-btn {
+      .cs-property(margin-left, @form-search-input-group-btn-margin-left);
+    }
+
+    .btn {
+      .cs-property(border-top-left-radius, @form-search-input-group-search-btn-border-top-left-radius);
+      .cs-property(border-bottom-left-radius, @form-search-input-group-search-btn-border-bottom-left-radius);
+    }
+  }
+}
+
+.control-group {
+  &.disabled {
+    input {
+      .cs-property(background, @control-group-disabled-input-background);
+      .cs-property(background-size, @control-group-disabled-input-background-size);
+    }
+  }
+}
+
+legend {
+  .cs-property(display, @form-legend-display);
+  .cs-property(margin, @form-legend-margin);
+  .cs-property(width, @form-legend-width);
+  .cs-property(border-width, @form-legend-border-width);
+  .cs-property(color, @form-legend-color);
+  .cs-property(text-shadow, @form-legend-text-shadow);
+  .cs-property(font-weight, @form-legend-font-weight);
+  .cs-property(font-size, @form-legend-font-size);
+  .cs-property(line-height, @form-legend-line-height);
+}
+
+.input-group {
+  .input-group-addon {
+    .cs-mixin(box-shadow, @input-group-addon-box-shadow);
+    .cs-mixin(background-image, @input-group-addon-background-image);
+    .cs-property(border, @input-group-addon-border);
+  }
+}
+
+.flip-area {
+  .user-select(none);
+  .cs-mixin(box-shadow, @flip-area-box-shadow);
+  .cs-mixin(background-image, @flip-area-background-image);
+  .cs-property(position, @flip-area-position);
+  .cs-property(margin, @flip-area-margin);
+  .cs-property(padding, @flip-area-padding);
+  .cs-property(border-radius, @flip-area-border-radius);
+
+  .flip-btn {
+    .cs-mixin(box-shadow, @flip-btn-box-shadow);
+    .cs-mixin(background-image, @flip-btn-background-image);
+    .cs-property(position, @flip-btn-position);
+    .cs-property(top, @flip-btn-top);
+    .cs-property(left, @flip-btn-left);
+    .cs-property(float, @flip-btn-float);
+    .cs-property(margin-right, @flip-btn-margin-right);
+    .cs-property(margin-bottom, @flip-btn-margin-bottom);
+    .cs-property(width, @flip-btn-width);
+    .cs-property(height, @flip-btn-height);
+    .cs-property(border, @flip-btn-border);
+    .cs-property(border-radius, @flip-btn-border-radius);
+    .cs-property(background-color, @flip-btn-background-color);
+
+    &:after {
+      .cs-mixin(box-shadow, @flip-btn-after-box-shadow);
+      .cs-property(position, @flip-btn-after-position);
+      .cs-property(top, @flip-btn-after-top);
+      .cs-property(left, @flip-btn-after-left);
+      .cs-property(z-index, @flip-btn-after-z-index);
+      .cs-property(width, @flip-btn-after-width);
+      .cs-property(height, @flip-btn-after-height);
+      .cs-property(border, @flip-btn-after-border);
+      .cs-property(border-radius, @flip-btn-after-border-radius);
+      .cs-property(background-color, @flip-btn-after-background-color);
+      .cs-property(content, @flip-btn-after-content);
+    }
+  }
+  &.active > .flip-txt,
+  &:not(.fast-button) .flip-check:checked + .flip-txt {
+    .cs-mixin(box-shadow, @flip-area-active-box-shadow);
+    .cs-property(display, @flip-area-active-display);
+    .cs-property(padding, @flip-area-active-padding);
+    .cs-property(border, @flip-area-active-border);
+    .cs-property(border-radius, @flip-area-active-border-radius);
+    .cs-property(background-color, @flip-area-active-background-color);
+    .cs-property(color, @flip-area-active-color);
+    .cs-property(text-align, @flip-area-active-text-align);
+    .cs-property(text-shadow, @flip-area-active-text-shadow);
+    .cs-property(font-weight, @flip-area-active-font-weight);
+    .cs-property(font-size, @flip-area-active-font-size);
+    .cs-property(line-height, @flip-area-active-line-height);
+    &:after {
+      .cs-property(display, @flip-area-active-active-display);
+      .cs-property(margin-top, @flip-area-active-active-margin-top);
+      .cs-property(color, @flip-area-active-active-color);
+      .cs-property(content, @flip-area-active-active-content);
+    }
+    & > span {
+      .cs-property(float, @flip-area-active-span-float);
+      .cs-property(margin-right, @flip-area-active-span-margin-right);
+      .cs-property(margin-left, @flip-area-active-span-margin-left);
+    }
+    .flip-btn {
+      .cs-property(right, @flip-area-active-btn-right);
+      .cs-property(left, @flip-area-active-btn-left);
+    }
+  }
+
+  .flip-txt {
+    .cs-mixin(box-shadow, @flip-txt-box-shadow);
+    .cs-mixin(background-image, @flip-txt-background-image);
+    .cs-property(display, @flip-txt-display);
+    .cs-property(padding, @flip-txt-padding);
+    .cs-property(width, @flip-txt-width);
+    .cs-property(min-width, @flip-txt-min-width);
+    .cs-property(border, @flip-txt-border);
+    .cs-property(border-radius, @flip-txt-border-radius);
+    .cs-property(background-color, @flip-txt-border-background-color);
+    .cs-property(color, @flip-txt-color);
+    .cs-property(text-align, @flip-txt-text-align);
+    .cs-property(text-shadow, @flip-txt-text-shadow);
+    .cs-property(font-weight, @flip-txt-font-weight);
+    .cs-property(font-size, @flip-txt-font-size);
+    .cs-property(line-height, @flip-txt-line-height);
+    &:after {
+      .cs-property(display, @flip-txt-after-display);
+      .cs-property(margin-top, @flip-txt-after-margin-top);
+      .cs-property(color, @flip-txt-after-color);
+      .cs-property(content, @flip-txt-after-content);
+    }
+  }
+
+  .flip-check {
+    .cs-property(position, @flip-check-position);
+    .cs-property(left, @flip-check-left);
+  }
+}
+
+.input-radio, .input-checkbox {
+  .user-select(none);
+
+  & > input[type=checkbox],
+  & > input[type=radio] {
+    .cs-property(display, @input-rc-display);
+  }
+  & > .control {
+    .cs-mixin(box-shadow, @input-rc-control-box-shadow);
+    .cs-mixin(background-image, @input-rc-control-background-image);
+    .cs-property(position, @input-rc-control-position);
+    .cs-property(display, @input-rc-control-display);
+    .cs-property(margin, @input-rc-control-margin);
+    .cs-property(padding, @input-rc-control-padding);
+    .cs-property(width, @input-rc-control-width);
+    .cs-property(height, @input-rc-control-height);
+    .cs-property(border, @input-rc-control-border);
+    .cs-property(vertical-align, @input-rc-control-vertical-align);
+    .cs-property(cursor, @input-rc-control-cursor);
+    &:before {
+      .cs-property(box-shadow, @input-rc-control-before-box-shadow);
+      .cs-property(display, @input-rc-control-before-display);
+      .cs-property(width, @input-rc-control-before-width);
+      .cs-property(height, @input-rc-control-before-height);
+      .cs-property(background, @input-rc-control-before-background);
+      .cs-property(content, @input-rc-control-before-content);
+    }
+  }
+
+  input[disabled] + .control, input.disabled + .control {
+    .cs-property(background-image, @input-rc-control-disabled-background-image);
+    .cs-property(background-size, @input-rc-control-disabled-background-size);
+    &:before {
+      .cs-property(background-image, @input-rc-control-disabled-before-background-image);
+      .cs-property(background-size, @input-rc-control-disabled-before-background-size);
+    }
+  }
+
+  & + .form-control {
+    .cs-property(height, @input-rc-form-control-height);
+  }
+}
+
+.input-checkbox {
+  & > .control {
+    &, &:before {
+      .cs-property(border-radius, @input-checkbox-control-border-radius);
+    }
+    &.placeholder {
+      &:before {
+        .cs-property(position, @input-checkbox-placeholder-before-position);
+        .cs-property(top, @input-checkbox-placeholder-before-top);
+        .cs-property(left, @input-checkbox-placeholder-before-left);
+        .cs-property(padding, @input-checkbox-placeholder-before-padding);
+        .cs-property(color, @input-checkbox-placeholder-before-color);
+        .cs-property(content, @input-checkbox-placeholder-before-content);
+        .cs-property(font-weight, @input-checkbox-placeholder-before-font-weight);
+        .cs-property(font-size, @input-checkbox-placeholder-before-font-size);
+        .cs-property(font-family, @input-checkbox-placeholder-before-font-family);
+        .cs-property(line-height, @input-checkbox-placeholder-before-line-height);
+      }
+    }
+  }
+
+  & > .control &.placeholder:before,
+  &.active > .control:after,
+  &:not(.fast-button) input:checked + .control:after {
+    .cs-property(position, @input-checkbox-active-position);
+    .cs-property(top, @input-checkbox-active-top);
+    .cs-property(left, @input-checkbox-active-left);
+    .cs-property(display, @input-checkbox-active-display);
+    .cs-property(padding-right, @input-checkbox-active-padding-right);
+    .cs-property(color, @input-checkbox-active-color);
+    .cs-property(content, @input-checkbox-active-content);
+    .cs-property(font-weight, @input-checkbox-active-font-weight);
+    .cs-property(font-size, @input-checkbox-active-font-size);
+    .cs-property(font-family, @input-checkbox-active-font-family);
+    .cs-property(line-height, @input-checkbox-active-line-height);
+  }
+
+  &.active > .control:after,
+  &:not(.fast-button) input:checked + .control:after {
+    .cs-property(padding-right, @input-checkbox-active-padding-right);
+    .cs-property(color, @input-checkbox-active-color);
+  }
+}
+
+.input-radio {
+  & > .control {
+    .cs-property(border-radius, @input-radio-control-border-radius);
+  }
+
+  &.active > .control:after,
+  &:not(.fast-button) input:checked + .control:after {
+    .cs-mixin(box-shadow, @input-radio-active-box-shadow);
+    .cs-mixin(background-image, @input-radio-active-background-image);
+    .cs-property(position, @input-radio-active-position);
+    .cs-property(top, @input-radio-active-top);
+    .cs-property(left, @input-radio-active-left);
+    .cs-property(width, @input-radio-active-width);
+    .cs-property(height, @input-radio-active-height);
+    .cs-property(border-radius, @input-radio-active-border-radius);
+    .cs-property(background-color, @input-radio-active-background-color);
+    .cs-property(content, @input-radio-active-content);
+  }
+}
+
+.help-inline {
+  .cs-mixin(box-shadow, @help-inline-box-shadow);
+  .cs-mixin(background-image, @help-inline-background-image);
+  .cs-property(background-color, @help-inline-background-color);
+  .cs-property(position, @help-inline-position);
+  .cs-property(display, @help-inline-display);
+  .cs-property(padding, @help-inline-padding);
+  .cs-property(border, @help-inline-border);
+  .cs-property(border-radius, @help-inline-border-radius);
+  .cs-property(color, @help-inline-color);
+  .cs-property(text-align, @help-inline-text-align);
+  .cs-property(text-shadow, @help-inline-text-shadow);
+  .cs-property(font-weight, @help-inline-font-weight);
+
+  & > span {
+    .cs-property(white-space, @help-inline-span-white-space);
+  }
+  .arrow {
+    .cs-property(position, @help-inline-arrow-position);
+    .cs-property(display, @help-inline-arrow-display);
+    .cs-property(width, @help-inline-arrow-width);
+    .cs-property(height, @help-inline-arrow-height);
+    .cs-property(border, @help-inline-arrow-border);
+  }
+
+  &.top {
+    .cs-property(margin, @help-inline-top-margin);
+    .arrow {
+      .cs-property(bottom, @help-inline-top-arrow-bottom);
+      .cs-property(left, @help-inline-top-arrow-left);
+      .cs-property(margin-left, @help-inline-top-arrow-margin-left);
+      .cs-property(border-top-color, @help-inline-top-arrow-border-top-color);
+      .cs-property(border-bottom-width, @help-inline-top-arrow-border-bottom-width);
+      &:after {
+        .cs-property(position, @help-inline-top-arrow-after-position);
+        .cs-property(top, @help-inline-top-arrow-after-top);
+        .cs-property(left, @help-inline-top-arrow-after-left);
+        .cs-property(z-index, @help-inline-top-arrow-after-z-index);
+        .cs-property(border, @help-inline-top-arrow-after-border);
+        .cs-property(border-top-color, @help-inline-top-arrow-after-border-top-color);
+        .cs-property(border-bottom-width, @help-inline-top-arrow-after-border-bottom-width);
+        .cs-property(content, @help-inline-top-arrow-after-content);
+      }
+    }
+  }
+
+  &.right {
+    .cs-property(margin, @help-inline-right-margin);
+    .arrow {
+      .cs-property(top, @help-inline-right-arrow-top);
+      .cs-property(left, @help-inline-right-arrow-left);
+      .cs-property(border-right-color, @help-inline-right-arrow-border-right-color);
+      .cs-property(border-left-width, @help-inline-right-arrow-border-left-width);
+      &:after {
+        .cs-property(position, @help-inline-right-arrow-after-position);
+        .cs-property(top, @help-inline-right-arrow-after-top);
+        .cs-property(left, @help-inline-right-arrow-after-left);
+        .cs-property(z-index, @help-inline-right-arrow-after-z-index);
+        .cs-property(border, @help-inline-right-arrow-after-border);
+        .cs-property(border-right-color, @help-inline-right-arrow-after-border-right-color);
+        .cs-property(border-left-width, @help-inline-right-arrow-after-border-left-width);
+        .cs-property(content, @help-inline-right-arrow-after-content);
+      }
+    }
+  }
+
+  &.bottom {
+    .cs-property(margin, @help-inline-bottom-margin);
+    .arrow {
+      .cs-property(top, @help-inline-bottom-arrow-top);
+      .cs-property(left, @help-inline-bottom-arrow-left);
+      .cs-property(margin-left, @help-inline-bottom-arrow-margin-left);
+      .cs-property(border-top-width, @help-inline-bottom-arrow-border-top-width);
+      .cs-property(border-bottom-color, @help-inline-bottom-arrow-border-bottom-color);
+      &:after {
+        .cs-property(position, @help-inline-bottom-arrow-after-position);
+        .cs-property(top, @help-inline-bottom-arrow-after-top);
+        .cs-property(right, @help-inline-bottom-arrow-after-right);
+        .cs-property(z-index, @help-inline-bottom-arrow-after-z-index);
+        .cs-property(border, @help-inline-bottom-arrow-after-border);
+        .cs-property(border-top-width, @help-inline-bottom-arrow-after-border-top-width);
+        .cs-property(border-bottom-color, @help-inline-bottom-arrow-after-border-bottom-color);
+        .cs-property(content, @help-inline-bottom-arrow-after-content);
+      }
+    }
+  }
+
+  &.left {
+    .cs-property(float, @help-inline-left-float);
+    .cs-property(margin, @help-inline-left-margin);
+    .arrow {
+      .cs-property(top, @help-inline-left-arrow-top);
+      .cs-property(right, @help-inline-left-arrow-right);
+      .cs-property(border-right-width, @help-inline-left-arrow-border-right-width);
+      .cs-property(border-left-color, @help-inline-left-arrow-border-left-color);
+      &:after {
+        .cs-property(position, @help-inline-left-arrow-after-position);
+        .cs-property(top, @help-inline-left-arrow-after-top);
+        .cs-property(right, @help-inline-left-arrow-after-right);
+        .cs-property(z-index, @help-inline-left-arrow-after-z-index);
+        .cs-property(border, @help-inline-left-arrow-after-border);
+        .cs-property(border-right-width, @help-inline-left-arrow-after-border-right-width);
+        .cs-property(border-left-color, @help-inline-left-arrow-after-border-left-color);
+        .cs-property(content, @help-inline-left-arrow-after-content);
+      }
+    }
+  }
+}
+
+.has-error {
+  .help-inline {
+    .cs-mixin(box-shadow, @has-error-help-inline-box-shadow);
+    .cs-mixin(background-image, @has-error-help-inline-background-image);
+    .cs-property(border, @has-error-help-inline-border);
+    .cs-property(background, @has-error-help-inline-background);
+    .cs-property(color, @has-error-help-inline-color);
+    &.top {
+      .arrow {
+        .cs-property(border-top-color, @has-error-top-border-top-color);
+      }
+    }
+
+    &.right {
+      .arrow {
+        .cs-property(border-right-color, @has-error-right-border-right-color);
+      }
+    }
+
+    &.bottom {
+      .arrow {
+        .cs-property(border-bottom-color, @has-error-bottom-border-bottom-color);
+      }
+    }
+
+    &.left {
+      .arrow {
+        .cs-property(border-left-color, @has-error-left-border-left-color);
+      }
+    }
+  }
+}
+
+.has-success {
+  .help-inline {
+    .cs-mixin(box-shadow, @has-success-help-inline-box-shadow);
+    .cs-mixin(background-image, @has-success-help-inline-background-image);
+    .cs-property(border, @has-success-help-inline-border);
+    .cs-property(background, @has-success-help-inline-background);
+    .cs-property(color, @has-success-help-inline-color);
+    &.top {
+      .arrow {
+        .cs-property(border-top-color, @has-success-top-border-top-color);
+      }
+    }
+
+    &.right {
+      .arrow {
+        .cs-property(border-right-color, @has-success-right-border-right-color);
+      }
+    }
+
+    &.bottom {
+      .arrow {
+        .cs-property(border-bottom-color, @has-success-bottom-border-bottom-color);
+      }
+    }
+
+    &.left {
+      .arrow {
+        .cs-property(border-left-color, @has-success-left-border-left-color);
+      }
+    }
+  }
+}
+
+.has-warning {
+  .help-inline {
+    .cs-mixin(box-shadow, @has-warning-help-inline-box-shadow);
+    .cs-mixin(background-image, @has-warning-help-inline-background-image);
+    .cs-property(border, @has-warning-help-inline-border);
+    .cs-property(background, @has-warning-help-inline-background);
+    .cs-property(color, @has-warning-help-inline-color);
+    &.top {
+      .arrow {
+        .cs-property(border-top-color, @has-warning-top-border-top-color);
+      }
+    }
+
+    &.right {
+      .arrow {
+        .cs-property(border-right-color, @has-warning-right-border-right-color);
+      }
+    }
+
+    &.bottom {
+      .arrow {
+        .cs-property(border-bottom-color, @has-warning-bottom-border-bottom-color);
+      }
+    }
+
+    &.left {
+      .arrow {
+        .cs-property(border-left-color, @has-warning-left-border-left-color);
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .help-inline.right, .help-inline.left {
+    .cs-property(margin, @form-help-inline-right-left-margin);
+  }
+}

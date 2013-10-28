@@ -23,7 +23,11 @@ tools/cornerstone-cli/build/node_modules
 /Gruntfile.js
 /package.json
 server/SKT_Open_API_Provider/node_modules
+test/test-cornerstone-ui/node_modules
+test/test-cornerstone-ui/dist
 test/test-total/node_modules
 test/test-total/dist
 test/test-util/node_modules
 test/test-util/dist
+test/test-widget-chart/node_modules
+test/test-widget-chart/dist

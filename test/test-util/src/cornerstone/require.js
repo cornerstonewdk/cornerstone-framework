@@ -2007,6 +2007,11 @@ var jam = {
             "main": "backbone-min.js"
         },
         {
+            "name": "blackbird",
+            "location": "../cornerstone/blackbird",
+            "main": "blackbird.js"
+        },
+        {
             "name": "bootstrap",
             "location": "../cornerstone/bootstrap",
             "main": "js/bootstrap.min.js"
@@ -2037,9 +2042,19 @@ var jam = {
             "main": "launcher.js"
         },
         {
+            "name": "logging",
+            "location": "../cornerstone/logging",
+            "main": "logging.js"
+        },
+        {
             "name": "multipage-router",
             "location": "../cornerstone/multipage-router",
             "main": "multipage.js"
+        },
+        {
+            "name": "skt",
+            "location": "../cornerstone/skt",
+            "main": "skt.js"
         },
         {
             "name": "style",
@@ -2075,6 +2090,12 @@ var jam = {
             ],
             "exports": "Backbone"
         },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
         "bootstrap": {
             "deps": [
                 "jquery"
@@ -2102,6 +2123,11 @@ var jam = {
             ],
             "exports": "Jsonp"
         },
+        "logging": {
+            "deps": [
+                "blackbird"
+            ]
+        },
         "multipage-router": {
             "deps": [
                 "backbone",
@@ -2110,6 +2136,11 @@ var jam = {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
         },
         "style": {
             "deps": [
@@ -2153,6 +2184,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "backbone-min.js"
         },
         {
+            "name": "blackbird",
+            "location": "../cornerstone/blackbird",
+            "main": "blackbird.js"
+        },
+        {
             "name": "bootstrap",
             "location": "../cornerstone/bootstrap",
             "main": "js/bootstrap.min.js"
@@ -2183,9 +2219,19 @@ if (typeof require !== "undefined" && require.config) {
             "main": "launcher.js"
         },
         {
+            "name": "logging",
+            "location": "../cornerstone/logging",
+            "main": "logging.js"
+        },
+        {
             "name": "multipage-router",
             "location": "../cornerstone/multipage-router",
             "main": "multipage.js"
+        },
+        {
+            "name": "skt",
+            "location": "../cornerstone/skt",
+            "main": "skt.js"
         },
         {
             "name": "style",
@@ -2220,6 +2266,12 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "Backbone"
         },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
         "bootstrap": {
             "deps": [
                 "jquery"
@@ -2247,6 +2299,11 @@ if (typeof require !== "undefined" && require.config) {
             ],
             "exports": "Jsonp"
         },
+        "logging": {
+            "deps": [
+                "blackbird"
+            ]
+        },
         "multipage-router": {
             "deps": [
                 "backbone",
@@ -2255,6 +2312,11 @@ if (typeof require !== "undefined" && require.config) {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
         },
         "style": {
             "deps": [
@@ -2298,6 +2360,11 @@ else {
             "main": "backbone-min.js"
         },
         {
+            "name": "blackbird",
+            "location": "../cornerstone/blackbird",
+            "main": "blackbird.js"
+        },
+        {
             "name": "bootstrap",
             "location": "../cornerstone/bootstrap",
             "main": "js/bootstrap.min.js"
@@ -2328,9 +2395,19 @@ else {
             "main": "launcher.js"
         },
         {
+            "name": "logging",
+            "location": "../cornerstone/logging",
+            "main": "logging.js"
+        },
+        {
             "name": "multipage-router",
             "location": "../cornerstone/multipage-router",
             "main": "multipage.js"
+        },
+        {
+            "name": "skt",
+            "location": "../cornerstone/skt",
+            "main": "skt.js"
         },
         {
             "name": "style",
@@ -2365,6 +2442,12 @@ else {
             ],
             "exports": "Backbone"
         },
+        "blackbird": {
+            "deps": [
+                "style!blackbird"
+            ],
+            "exports": "log"
+        },
         "bootstrap": {
             "deps": [
                 "jquery"
@@ -2392,6 +2475,11 @@ else {
             ],
             "exports": "Jsonp"
         },
+        "logging": {
+            "deps": [
+                "blackbird"
+            ]
+        },
         "multipage-router": {
             "deps": [
                 "backbone",
@@ -2400,6 +2488,11 @@ else {
                 "transition"
             ],
             "exports": "multipage-router"
+        },
+        "skt": {
+            "deps": [
+                "jquery"
+            ]
         },
         "style": {
             "deps": [
