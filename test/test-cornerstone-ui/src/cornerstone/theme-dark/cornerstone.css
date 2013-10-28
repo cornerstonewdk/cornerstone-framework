@@ -172,7 +172,7 @@ legend {
 .flip-area .flip-txt {
   display: inline-block;
   padding: 0 15px 0 0;
-  min-width: 90px;
+  width: 100%;
   border: 2px solid #222222;
   border-radius: 20px;
   background-color: #2f2f2f;
