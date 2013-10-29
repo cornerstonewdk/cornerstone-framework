@@ -80,7 +80,7 @@ $(function () {
     window.addEventListener('load', hideAddressBar, false);  // 페이지 로드 되었을 때 실행
     window.addEventListener('orientationchange', hideAddressBar, false); // 화면이 가로/세로 전환되었을 때 실행
 
-    $("#front .btn").live("click", function (e) {
+    $( document ).on("click", "#front .btn",  function (e) {
         var transitionType = $(this).attr("data-transition"),
             inTargetID = "#back",
             outTargetID = "#front";
@@ -100,7 +100,7 @@ $(function () {
         });
     });
 
-    $("#back .btn").live("click", function (e) {
+    $(document).on("click", "#back .btn", function (e) {
         var transitionType = $(this).attr("data-transition"),
             outTargetID = "#back",
             inTargetID = "#front";
