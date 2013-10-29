@@ -195,7 +195,7 @@ describe( 'Util Test', function () {
     } );
 
     describe( 'SKT Open API (과금)', function () {
-        describe( 'client', function () {} );
+
         it( 'MVC Framework를 통해 비동기방식( AMD )으로 정상적으로 로드 되는지 확인', function ( done ) {
             require( [ 'skt' ], function () {
                 expect( SKT ).to.be.not.undefined;
@@ -204,19 +204,46 @@ describe( 'Util Test', function () {
             } );
         } );
 
-        // it( '서버에 요청 전 필수 요소에 대한 유효성 확인을 하는지 확인', function () {
-        //     SKT.authorize( {
-        //         clientId: 'abcd1234',
-        //         redirectUri: 'http://example.com',
-        //         success: function( token ) {
-        //             // 인증이 완료되고 나면 실행된다.
-        //             // token 파라미터로 접근 토큰이 전달된다.
-        //         },
-        //         error: function( err ) {
-        //             // 에러가 발생시 실행된다.
-        //             // err 파라미터로 전달된다.
-        //         }
-        //     } );
-        // } )
+        it( '서버에 요청 전 필수 요소에 대한 유효성 확인을 하는지 확인', function ( done ) {
+            SKT.authorize( {
+                redirectUri: 'http://www.naver.com',
+                success: function( token ) {
+                },
+                error: function( err ) {
+                    expect( err ).to.be.not.undefined;
+                    expect( err.result ).to.be.equal( 'fail' );
+                    expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
+                }
+            } );
+
+            setTimeout( function () {
+                SKT.authorize( {
+                    clientId: '4',
+                    success: function( token ) {
+                    },
+                    error: function( err ) {
+                        expect( err ).to.be.not.undefined;
+                        expect( err.result ).to.be.equal( 'fail' );
+                        expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
+                        done();
+                    }
+                } );
+            }, 500 );
+        } );
+
+        it( '인증이 완료되었을 시 success 콜백 함수에 token이 전달되는지 확인', function ( done ) {
+            this.timeout( 1000 * 10 );
+            SKT.authorize( {
+                clientId: '4',
+                redirectUri: 'redirect.html',
+                success: function( token ) {
+                    expect( token ).to.be.not.undefined;
+                    expect( typeof token ).to.be.an( 'string' );
+                    done();
+                },
+                error: function( err ) {
+                }
+            } );
+        } );
     } );
 } );
