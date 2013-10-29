@@ -303,7 +303,7 @@ define([
                         console.log("window scrollEndAction");
                         getItem($el);
                     }
-                }).on("scrollEnd.cs.liveView", function () {
+                }).on("scrollEnd.cs.listView", function () {
                     console.log("window scrollEndEvent");
                 });
                 getItem($el);
@@ -311,13 +311,9 @@ define([
             var backboneView = function () {
                 // 콜렉션에 데이터를 가져올 url를 설정한다.
                 var ItemList = Backbone.Collection.extend({
-                    model: Backbone.Model.extend(),
-                    url: "data/sample-list.json",
-                    parse: function (response) {
-                        this.imgPath = response.imgPath; // JSON 데이터 중 콜렉션외의 정보를 콜렉션 객체에 추가한다.
-                        return response.items; // JSON 데이터 중 콜렉션 정보를 넘겨준다.
-                    }
+                    url: "data/sample-list.json"
                 });
+                var itemList = new ItemList();
 
                 // 아이템뷰를 만든다.
                 var html = '{{this.title}}';
@@ -328,44 +324,30 @@ define([
 
                 // 리스트 아이템 뷰 정의
                 var ItemView = Backbone.View.extend({
-                    tagName: "li",
-                    className: "list-group-item clearfix",
+                    tagName: "div",
+                    className: "list-group-item",
                     template: Handlebars.compile(html),
-
-                    initialize: function () {
-                        // 목록에 cid 추가를 위해 모델 속성에 cid 추가
-                        this.model.set("cid", this.model.cid);
-
-                        this.listenTo(this.model, "change", this.render);
-                        this.listenTo(this.model, "destroy", this.remove);
-                    },
                     render: function () {
                         this.$el.html(this.template(this.model.attributes));
-                        return this;
-                    },
-
-                    remove: function () {
-                        this.$el.remove();
                     }
                 });
 
-                var itemList = new ItemList();
+                window.myitem = itemList;
+
                 // 리스트뷰 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 리스트뷰를 그린다.
                 var listView = new ListView({
                     el: "#listView",
                     collection: itemList,
                     itemView: ItemView, // 사용자가 정의하는 리스트의 한 Row가 되는 SubView
-                    optimization: true, // 최적화 여부 설정
-                    scrollEndAction: function () { // ScrollEnd인 경우 호출되는 함수를 사용자가 정의
-                        console.log("window scrollEndAction");
-                        // 동일한 데이터라도 계속 데이터를 쌓고 싶은 경우 reset: true
-                        this.collection.fetch();
-                    }
+                    optimization: false
                 });
-                listView.$el.on("scrollEnd.cs.liveView", function () {
+                listView.render();
+
+                listView.$el.on("scrollEnd.cs.listView", function () {
                     console.log("window scrollEndEvent");
+                    listView.collection.fetch({update:true, remove: false});
                 });
-                itemList.fetch();
+                listView.collection.fetch({update:true});
             };
 
             backboneView();

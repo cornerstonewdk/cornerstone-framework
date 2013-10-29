@@ -189,6 +189,7 @@
         },
 
         addOne: function(model) {
+            console.log(model);
             // 최초 생성
             if(model === this.collection.first())
                 this.$itemViewWrapper = $("<ul/>", {"class": "list-group"});

@@ -6,4 +6,4 @@
     </header>
 </section>
 
-<div id="listView" class="list-view list-group"></div>
+<div id="listView" class="list-view"></div>
