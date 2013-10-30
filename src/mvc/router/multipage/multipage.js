@@ -131,7 +131,8 @@
 			// data-transition은 click이 가능한 요소면 어디든 붙일 수 있다.
 			this.dataTransitions = {};
 			
-			$( document ).on( 'click', '[data-transition]', function( e ) {
+			// body 요소의 data-transition은 Transition Utility에서 사용되는 것이므로 제외한다.
+			$( document ).on( 'click', ':not(body)[data-transition]', function( e ) {
 			
 				var transition = {
 					type: $( this ).attr( 'data-transition' )
