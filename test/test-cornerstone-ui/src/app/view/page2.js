@@ -311,12 +311,15 @@ define([
             var backboneView = function () {
                 // 콜렉션에 데이터를 가져올 url를 설정한다.
                 var ItemList = Backbone.Collection.extend({
-                    url: "data/sample-list.json"
+                    url: "data/sample-list.json",
+                    model: Backbone.Model.extend({
+                        idAttribute: "_id" // 기본 id 속성은 id이다. id 명칭을 변경하고 싶을 때 설정
+                    })
                 });
                 var itemList = new ItemList();
 
                 // 아이템뷰를 만든다.
-                var html = '{{this.title}}';
+                var html = '{{_id}}. {{this.title}}';
                 html += '<div class="pull-right">';
                 html += '   <span class="badge">{{this.published}}</span>';
                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
@@ -339,15 +342,17 @@ define([
                     el: "#listView",
                     collection: itemList,
                     itemView: ItemView, // 사용자가 정의하는 리스트의 한 Row가 되는 SubView
-                    optimization: false
+                    optimization: true
                 });
                 listView.render();
 
                 listView.$el.on("scrollEnd.cs.listView", function () {
                     console.log("window scrollEndEvent");
-                    listView.collection.fetch({update:true, remove: false});
+                    itemList.url = "data/sample-list2.json";
+                    itemList.fetch({update: true, remove: false});
+//                    itemList.fetch();
                 });
-                listView.collection.fetch({update:true});
+                itemList.fetch();
             };
 
             backboneView();

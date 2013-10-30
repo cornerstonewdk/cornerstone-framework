@@ -54,11 +54,11 @@
 
         this.scrollHeight = navigator.userAgent.match(":*iPhone:*") && !window.navigator.standalone ? 60 : 0;
         var scrollTop = 0;
-        var scrollEndTrigger = function() {
+        var scrollEndTrigger = function () {
             options.scrollEndAction();
             self.$el.trigger("scrollEnd.cs.listView");
         };
-        options.$scroller.on("scroll", function (e) {
+        options.$scroller.on("scroll.cs.listView", function (e) {
             if (e.target.tagName) {
                 if ($(this)[0].scrollHeight - $(this).scrollTop() == $(this).outerHeight()) {
                     scrollEndTrigger();
@@ -72,55 +72,26 @@
         });
     };
 
-    Plugin.prototype.addItem = function (options, html) {
-        if (options.optimization) {
-            /**
-             * Infinity.js의 Nested Optimazation 기능 소스 기여 필요
-             */
+    Plugin.prototype.addItem = function (html) {
+        if (this.options.optimization) {
             this.$el.data('listView').append($(html));
         } else {
             this.$el.append(html);
         }
+        this.refresh();
 
         // 리스트 아이템 추가를 완료할 때 이벤트를 발생시킨다.
         this.$el.trigger("listView.addItem.done");
     };
 
-    Plugin.prototype.removeItem = function (options, page, items) {
-        var i, j;
-        var height = 0;
-        var length;
-        var listItems;
-        var target;
-        if (options.optimization) {
-            if (typeof items === "undefined") {
-                listItems = this.$el.data('listView').find(page);
-                for (i = 0, length = listItems.length; i < length; i++) {
-                    listItems[i].remove();
-                }
-            } else {
-                listItems = this.$el.data('listView').find(page);
-                for (i = 0, length = listItems.length; i < length; i++) {
-                    for (j in items) {
-                        target = listItems[i].$el.find("[data-list-itemid='" + items[j] + "']");
-                        height += target.height();
-                        target.remove();
-                    }
-                    listItems[i].parent.height = listItems[i].parent.height - height;
-                }
-            }
-
-            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
+    Plugin.prototype.removeItem = function ($item) {
+        if (this.options.optimization) {
+            // TODO
+            var listView = this.$el.data('listView');
+            listView.cleanup();
+            $item.remove();
         } else {
-            if (typeof items === "undefined") {
-                page.remove();
-            } else {
-                for (i in items) {
-                    page.find("[data-list-itemid='" + items[i] + "']").remove();
-                }
-            }
-
-            window.scrollTo(window.scrollX, window.scrollY - ($(options.spinner).height()));
+            $item.remove();
         }
 
         this.refresh();
@@ -129,24 +100,26 @@
     };
 
     Plugin.prototype.refresh = function () {
-        var listView = this.$el.data('listView');
-        var height = 0;
+        if (this.options.optimization) {
+            var height = this.$el.children("div").find("div").eq(0).height();
+            var itemHeight = this.$el.find("[data-list-itemid]").outerHeight() * 1.5;
+            this.$el.find("[data-infinity-pageid]").each(function () {
+                height += $(this).height();
+            });
 
-        $(listView.pages).each(function () {
-            height += this.height;
-        });
-        listView.height = height;
-        this.$el.children("div").css({"height": listView.height});
-
-        window.scrollTo(window.scrollX, window.scrollY - $(options.spinner).height());
-    };
+            if (this.$el.find("[data-infinity-pageid]").length === 3) {
+                height += itemHeight;
+            }
+            this.$el.children("div").css("height", height);
+        }
+    }
 
     Plugin.prototype.scrollHandler = function () {
         this.$el.data('listView').scrollHandler();
     };
 
     // 프로토타입 클래스로 정의된 객체를 플러그인과 연결시킨다.
-    $.fn[pluginName] = function (options, page, items) {
+    $.fn[pluginName] = function (options, _options) {
         return this.each(function () {
             var $this = $(this);
             var data = $this.data(pluginName);
@@ -158,7 +131,7 @@
 
             // 옵션이 문자로 넘어온 경우 함수를 실행시키도록 한다.
             if (typeof options == 'string') {
-                data[options](data.options, page, items);
+                data[options](_options);
             }
         });
     };
@@ -177,30 +150,41 @@
     return Backbone ? Backbone.View.extend({
         tagName: "ul",
         collectionItems: "items",
-        initialize: function () {
-            this.render();
+        initialize: function (options) {
+            this.options = options;
+
             this.listenTo(this.collection, "add", this.addOne);
-            this.listenTo(this.collection, "reset", this.render);
+            this.listenTo(this.collection, "remove", this.removeOne);
+            this.listenTo(this.collection, "reset", this.reset);
         },
 
         addAll: function () {
-            this.options.activeEmpty && this.$el.empty();
             this.collection.forEach(this.addOne, this);
         },
 
-        addOne: function(model) {
-            console.log(model);
-            // 최초 생성
-            if(model === this.collection.first())
-                this.$itemViewWrapper = $("<ul/>", {"class": "list-group"});
+        addOne: function (model) {
+            // reset된 경우 플러그인이 초기화되므로 reset 이후 최초 add 이벤트 때 플러그인 존재여부 검사
+            var plugin = this.$el.data(pluginName);
+            plugin || this.$el.featuredListView(this.options);
 
             var ItemView = this.options.itemView;
             var itemView = new ItemView({model: model});
-            this.$itemViewWrapper.append(itemView.render().el);
+            itemView.render();
+            itemView.$el.attr("data-list-itemid", model.cid);
 
-            // 마지막에 추가
-            if(model === this.collection.last())
-                this.$el.featuredListView("addItem", this.$itemViewWrapper);
+            this.$el.featuredListView("addItem", itemView.el);
+        },
+
+        removeOne: function (model) {
+            var $item = this.$el.find("[data-list-itemid=" + model.cid + "]");
+
+            this.$el.featuredListView("removeItem", $item);
+        },
+
+        reset: function () {
+            this.$el.data(pluginName, null);
+            $(window).off("scroll.cs.listView");
+            this.$el.empty();
         },
 
         render: function () {
