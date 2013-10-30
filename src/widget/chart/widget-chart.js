@@ -895,8 +895,6 @@
                     var $target = target.closest(".widget-chart3d");
                     var rate;
 
-                    console.log(window.innerWidth, target.width());
-
                     if ("bar3d" === options.chartType) {
                         rate = target.$parent.parent().width() / target.width();
                     } else {
@@ -921,7 +919,6 @@
                                 webkitTransform: "scale(" + rate + ")"
                             });
                         } else {
-                            console.log(rate);
                             $target.css({
                                 width: target.height() * 1.1,
                                 height: target.width(),
