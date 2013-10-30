@@ -254,12 +254,11 @@ describe( 'Util Test', function () {
             } );
 
             setTimeout( function () {
-                var $frame = $( $( '#' + SKT.authFrame + ' iframe' ).contents()[ 0 ] );
-                console.log( $frame, $frame.find( '[name="username]' ) );
-                if( $frame.find( '[name="username]' ).length > 0 ) {
-                    console.log(0);
-                    $frame.find( '[name="username]' ).val( 'test' );
-                    $frame.find( '[name="password]' ).val( '1111' );
+                $( '#skt_auth_iframe_9541 iframe' ).contents()
+                var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
+                if( $frame.find( 'input[name="username]' ).length > 0 ) {
+                    $frame.find( 'input[name="username]' ).val( 'test' );
+                    $frame.find( 'input[name="password]' ).val( '1111' );
                     $frame.find( 'input[type="submit"]' ).click();
                 }                
                 setTimeout( function () {
