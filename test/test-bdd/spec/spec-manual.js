@@ -7,13 +7,20 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             require(['widget-listview','handlebars'],function(WidgetListView,Handlebars){
                 var backboneView = function () {
                     var ItemList = Backbone.Collection.extend({
-                        model: Backbone.Model.extend(),
-                        url:"data/sample-list.json",
-                        parse: function (response) {
-                            this.imgPath = response.imgPath; // JSON 데이터 중 콜렉션외의 정보를 콜렉션 객체에 추가한다.
-                            return response.items; // JSON 데이터 중 콜렉션 정보를 넘겨준다.
-                        }
+                        url: "data/sample-list.json",
+                        model: Backbone.Model.extend({
+                            idAttribute: "_id" // 기본 id 속성은 id이다. id 명칭을 변경하고 싶을 때 설정
+                        })
                     });
+                    var itemList = new ItemList();
+
+                    // 아이템뷰를 만든다.
+                    var html = '{{this.title}}';
+                    html += '<div class="pull-right">';
+                    html += '   <span class="badge">{{this.published}}</span>';
+                    html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
+                    html += '</div>';
+
                     // 아이템뷰를 만든다.
                     var html = '{{this.title}}';
                     html += '<div class="pull-right">';
@@ -23,28 +30,14 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
                     // 리스트 아이템 뷰 정의
                     var ItemView = Backbone.View.extend({
-                        tagName: "li",
-                        className: "list-group-item clearfix",
+                        tagName: "div",
+                        className: "list-group-item",
                         template: Handlebars.compile(html),
-
-                        initialize: function () {
-                            // 목록에 cid 추가를 위해 모델 속성에 cid 추가
-                            this.model.set("cid", this.model.cid);
-
-                            this.listenTo(this.model, "change", this.render);
-                            this.listenTo(this.model, "destroy", this.remove);
-                        },
                         render: function () {
                             this.$el.html(this.template(this.model.attributes));
-                            return this;
-                        },
-
-                        remove: function () {
-                            this.$el.remove();
                         }
                     });
 
-                    var itemList = new ItemList();
                     // 리스트뷰 뷰 객체를 생성하고 el에 설정된 타겟에 model객체에 담긴 데이터를 통해 리스트뷰를 그린다.
                     listView = new WidgetListView({
                         el: "#listView",
@@ -57,7 +50,16 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                             this.collection.fetch();
                         }
                     });
-                    
+
+                    listView.render();
+
+                    listView.$el.on("scrollEnd.cs.listView", function () {
+                        console.log("window scrollEndEvent");
+                        itemList.url = "data/sample-list2.json";
+                        itemList.fetch({update: true, remove: false});
+//                    listView.collection.fetch();
+                    });
+
                     itemList.fetch();
                     expect(listView).to.be.an.instanceof(Backbone.View);
                     done();
