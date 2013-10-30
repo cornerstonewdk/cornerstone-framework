@@ -236,11 +236,12 @@ describe( 'Util Test', function () {
         
         // TODO 하기는 서버에 올라가 cross domain문제가 없을 시에만 테스트 가능
         it( '인증이 완료되었을 시 success 콜백 함수에 token이 전달되는지 확인', function ( done ) {
-            this.timeout( 1000 * 5 );
+            this.timeout( 1000 * 10 );
+            var $frame;
             // http://cornerstone.sktelecom.com/2/test/test-util/src/client_redirect.html
             SKT.authorize( {
                 clientId: '7',
-                redirectUri: 'client_redirect.html',
+                redirectUri: 'http://cornerstone.sktelecom.com/2/test-util/client_redirect.html',
                 success: function( token ) {
                     console.log( token );
                     expect( token ).to.be.not.undefined;
@@ -254,19 +255,16 @@ describe( 'Util Test', function () {
             } );
 
             setTimeout( function () {
-                var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents();
-                console.log( $frame, $frame.find( '[name="username]' ) );
-                if( $frame.find( '[name="username]' ).length > 0 ) {
-                    console.log(0);
-                    $frame.find( '[name="username]' ).val( 'test' );
-                    $frame.find( '[name="password]' ).val( '1111' );
+                $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
+                if( $frame.length > 0 ) {
+                    $frame.find( 'input[name="username"]' ).val( 'test' );
+                    $frame.find( 'input[name="password"]' ).val( '1111' );
                     $frame.find( 'input[type="submit"]' ).click();
                 }                
                 setTimeout( function () {
                     $frame.find( 'button[name="allow"]' ).click();
-                    console.log(1);
-                }, 1000 );
-            }, 100 );
+                }, 2000 );
+            }, 2000 );
         } );
 
         it( 'sms 발송 전 유효성 검사 확인', function ( done ) {
