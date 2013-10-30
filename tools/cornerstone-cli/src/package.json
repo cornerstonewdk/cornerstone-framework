@@ -1,7 +1,7 @@
 {
   "name": "cornerstone-cli",
   "description": "Cornerstone Framework의 Command Line Interface",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "author": "손혁진 <hjson@prandy.com>",
   "dependencies": {
     "grunt": "~0.4.1",
