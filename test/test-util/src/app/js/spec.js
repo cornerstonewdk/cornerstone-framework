@@ -243,27 +243,25 @@ describe( 'Util Test', function () {
                 clientId: '7',
                 redirectUri: 'http://cornerstone.sktelecom.com/2/test-util/client_redirect.html',
                 success: function( token ) {
-                    console.log( token );
                     expect( token ).to.be.not.undefined;
                     expect( typeof token ).to.be.an( 'string' );
                     auth_token = token;
                     done();
                 },
                 error: function( err ) {
-                    console.log( err );
                 }
             } );
 
             setTimeout( function () {
                 $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
                 if( $frame.length > 0 ) {
-                    console.log( 'login page' );
                     $frame.find( 'input[name="username"]' ).val( 'test' );
                     $frame.find( 'input[name="password"]' ).val( '1111' );
                     $frame.find( 'input[type="submit"]' ).click();
                 }                
                 setTimeout( function () {
-                    console.log( 'allow page', $frame, $frame.find( 'button[name="allow"]' ) );
+                    // iframe의 url이 바뀌면서 다시 $frame을 다시 정의한다.
+                    $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
                     $frame.find( 'button[name="allow"]' ).click();
                 }, 2000 );
             }, 2000 );
@@ -289,11 +287,10 @@ describe( 'Util Test', function () {
                 to: '01012345678',
                 message: 'test',
                 success: function ( data ) {
-                    console.log( data );
                     expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
-                    // expect( data.resultCode ).to.be.equal( 'success' );
-                    expect( decodeURIComponent( data.message ) ).to.be.equal( 'test' );
+                    expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
+                    expect( decodeURIComponent( data.message ) ).to.be.equal( '정상처리되었습니다' );
                     done();
                 },
                 error: function ( err ) {
@@ -322,10 +319,13 @@ describe( 'Util Test', function () {
                 amount: 10000,
                 to: '01012345678',
                 success: function ( data ) {
-                    console.log( data );
-                    expect( data ).to.be.not.undefined;
+                   expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
-                    // expect( data.resultCode ).to.be.equal( 'success' );
+                    expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
+                    var result = $.parseJSON( data.message );
+                    expect( result.type ).to.be.equal( option.type );
+                    expect( parseInt( result.amount ) ).to.be.equal( option.amount );
+                    expect( result.to ).to.be.equal( option.to );
                     done();
                 },
                 error: function ( err ) {
