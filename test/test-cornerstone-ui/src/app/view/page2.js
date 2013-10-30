@@ -320,14 +320,14 @@ define([
 
                 // 아이템뷰를 만든다.
                 var html = '{{_id}}. {{this.title}}';
-                html += '<div class="pull-right">';
+                html += '<abbr class="pull-right">';
                 html += '   <span class="badge">{{this.published}}</span>';
                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
                 html += '</div>';
 
                 // 리스트 아이템 뷰 정의
                 var ItemView = Backbone.View.extend({
-                    tagName: "div",
+                    tagName: "a",
                     className: "list-group-item",
                     template: Handlebars.compile(html),
                     render: function () {
