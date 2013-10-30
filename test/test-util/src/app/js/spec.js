@@ -254,7 +254,7 @@ describe( 'Util Test', function () {
             } );
 
             setTimeout( function () {
-                var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents();
+                var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
                 console.log( $frame, $frame.find( '[name="username]' ) );
                 if( $frame.find( '[name="username]' ).length > 0 ) {
                     console.log(0);
