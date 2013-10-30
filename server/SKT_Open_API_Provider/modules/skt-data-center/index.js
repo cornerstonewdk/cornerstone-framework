@@ -14,7 +14,8 @@ function SktDataCenter() {
 		'3': {'client_secret': '3secret', 'redirect_uri': 'http://61.250.22.139/api/client_redirect.html'},
 		'4': {'client_secret': '4secret', 'redirect_uri': 'http://localhost:8080/html5/cornerstone-framework/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html'},
 		'5': {'client_secret': '5secret', 'redirect_uri': 'http://127.0.0.1:8080/html5/cornerstone-framework/test/test-skt-api-client/api-with-conerstone-css/client_redirect.html'},
-		'6': {'client_secret': '5secret', 'redirect_uri': 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/'}
+		'6': {'client_secret': '5secret', 'redirect_uri': 'http://61.250.22.139/cornertest/test-skt-api-client/api-with-conerstone-css/'},
+		'7': {'client_secret': '7secret', 'redirect_uri': 'http://cornerstone.sktelecom.com/2/test/test-util/src/client_redirect.html'}
 	};
 	
 	/*
