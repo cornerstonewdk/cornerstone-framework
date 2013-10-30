@@ -248,7 +248,8 @@ var jam = {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -799,7 +800,8 @@ if (typeof require !== "undefined" && require.config) {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
@@ -1096,12 +1098,6 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "widget-touch"
-        },
-        "mocha": {
-            "exports": "mocha"
-        },
-        "chai": {
-            "exports": "chai"
         }
     }
 });
@@ -1356,7 +1352,8 @@ else {
     "shim": {
         "backbone": {
             "deps": [
-                "underscore"
+                "underscore",
+                "jquery"
             ],
             "exports": "Backbone"
         },
