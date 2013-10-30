@@ -74,7 +74,7 @@
 .nav-pills {
   .cs-property(border-color, @nav-pills-border-color);
   & > li {
-    & > a {
+    & > a, &.open > a {
       .cs-property(padding, @nav-pills-li-a-padding);
       .cs-property(border-color, @nav-pills-li-a-border-color);
       .cs-property(border, @nav-pills-li-a-border);
@@ -113,4 +113,5 @@
       }
     }
   }
+
 }
