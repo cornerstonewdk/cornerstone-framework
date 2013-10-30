@@ -209,7 +209,7 @@ describe( 'Util Test', function () {
 
         it( '서버에 요청 전 필수 요소에 대한 유효성 확인을 하는지 확인', function ( done ) {
             SKT.authorize( {
-                redirectUri: 'http://www.naver.com',
+                redirectUri: 'http://www.sktelecom.com',
                 success: function( token ) {
                 },
                 error: function( err ) {
@@ -239,7 +239,7 @@ describe( 'Util Test', function () {
             this.timeout( 1000 * 5 );
             // http://cornerstone.sktelecom.com/2/test/test-util/src/client_redirect.html
             SKT.authorize( {
-                clientId: '4',
+                clientId: '7',
                 redirectUri: 'client_redirect.html',
                 success: function( token ) {
                     console.log( token );
@@ -255,14 +255,16 @@ describe( 'Util Test', function () {
 
             setTimeout( function () {
                 var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents();
+                console.log( $frame, $frame.find( '[name="username]' ) );
                 if( $frame.find( '[name="username]' ).length > 0 ) {
+                    console.log(0);
                     $frame.find( '[name="username]' ).val( 'test' );
                     $frame.find( '[name="password]' ).val( '1111' );
                     $frame.find( 'input[type="submit"]' ).click();
-                    $( 'iframe input[type="submit"]' )
                 }                
                 setTimeout( function () {
                     $frame.find( 'button[name="allow"]' ).click();
+                    console.log(1);
                 }, 1000 );
             }, 100 );
         } );
