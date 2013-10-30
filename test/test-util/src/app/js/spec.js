@@ -20,6 +20,7 @@ describe( 'Util Test', function () {
         } );
 
         it( 'jsonp 요청시 성공했을 때 success 함수가 수행되어야 한다.', function ( done ) {
+            this.timeout( 5000 );
             options = {
                 url: 'http://api.flickr.com/services/feeds/photos_public.gne',
                 data: {
@@ -41,7 +42,7 @@ describe( 'Util Test', function () {
                     alert( 'error' );
                 },
                 callback: 'jsonFlickrFeed',
-                timeout: 5000
+                timeout: 4000
             };
             jsonp.get( options );
         } );
@@ -196,6 +197,8 @@ describe( 'Util Test', function () {
 
     describe( 'SKT Open API (과금)', function () {
 
+        var auth_token;
+
         it( 'MVC Framework를 통해 비동기방식( AMD )으로 정상적으로 로드 되는지 확인', function ( done ) {
             require( [ 'skt' ], function () {
                 expect( SKT ).to.be.not.undefined;
@@ -230,20 +233,103 @@ describe( 'Util Test', function () {
                 } );
             }, 500 );
         } );
-
+        
+        // TODO 하기는 서버에 올라가 cross domain문제가 없을 시에만 테스트 가능
         it( '인증이 완료되었을 시 success 콜백 함수에 token이 전달되는지 확인', function ( done ) {
-            this.timeout( 1000 * 10 );
+            this.timeout( 1000 * 5 );
+            // http://cornerstone.sktelecom.com/2/test/test-util/src/client_redirect.html
             SKT.authorize( {
                 clientId: '4',
-                redirectUri: 'redirect.html',
+                redirectUri: 'client_redirect.html',
                 success: function( token ) {
+                    console.log( token );
                     expect( token ).to.be.not.undefined;
                     expect( typeof token ).to.be.an( 'string' );
+                    auth_token = token;
                     done();
                 },
                 error: function( err ) {
+                    console.log( err );
                 }
             } );
+
+            setTimeout( function () {
+                var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents();
+                if( $frame.find( '[name="username]' ).length > 0 ) {
+                    $frame.find( '[name="username]' ).val( 'test' );
+                    $frame.find( '[name="password]' ).val( '1111' );
+                    $frame.find( 'input[type="submit"]' ).click();
+                    $( 'iframe input[type="submit"]' )
+                }                
+                setTimeout( function () {
+                    $frame.find( 'button[name="allow"]' ).click();
+                }, 1000 );
+            }, 100 );
+        } );
+
+        it( 'sms 발송 전 유효성 검사 확인', function ( done ) {
+            SKT.sendSms( {
+                success: function ( data ) {
+                },
+                error: function ( err ) {
+                    expect( err ).to.be.not.undefined;
+                    expect( err.result ).to.be.equal( 'fail' );
+                    expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
+                    done();
+                }
+            } );
+        } );
+
+        it( 'sms 발송 후 success 함수 수행 확인', function ( done ) {
+            SKT.sendSms( {
+                accessToken: auth_token,
+                from: '01112345678',
+                to: '01012345678',
+                message: 'test',
+                success: function ( data ) {
+                    console.log( data );
+                    expect( data ).to.be.not.undefined;
+                    expect( data.result ).to.be.equal( 'success' );
+                    // expect( data.resultCode ).to.be.equal( 'success' );
+                    expect( decodeURIComponent( data.message ) ).to.be.equal( 'test' );
+                    done();
+                },
+                error: function ( err ) {
+                }
+            } );
+        } );
+
+        it( '과금 요청 전 유효성 검사 확인', function ( done ) {
+            var option = {
+                success: function ( data ) {
+                },
+                error: function ( err ) {
+                    expect( err ).to.be.not.undefined;
+                    expect( err.result ).to.be.equal( 'fail' );
+                    expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
+                    done();
+                }
+            };
+            SKT.pay( option );
+        } );
+
+        it( '과금 요청 후 success 함수 수행 확인', function ( done ) {
+            var option = {
+                accessToken: auth_token,
+                type: 'one-time',
+                amount: 10000,
+                to: '01012345678',
+                success: function ( data ) {
+                    console.log( data );
+                    expect( data ).to.be.not.undefined;
+                    expect( data.result ).to.be.equal( 'success' );
+                    // expect( data.resultCode ).to.be.equal( 'success' );
+                    done();
+                },
+                error: function ( err ) {
+                }
+            };
+            SKT.pay( option );
         } );
     } );
 } );
