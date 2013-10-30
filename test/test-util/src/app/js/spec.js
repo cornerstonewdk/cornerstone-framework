@@ -257,11 +257,13 @@ describe( 'Util Test', function () {
             setTimeout( function () {
                 $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
                 if( $frame.length > 0 ) {
+                    console.log( 'login page' );
                     $frame.find( 'input[name="username"]' ).val( 'test' );
                     $frame.find( 'input[name="password"]' ).val( '1111' );
                     $frame.find( 'input[type="submit"]' ).click();
                 }                
                 setTimeout( function () {
+                    console.log( 'allow page', $frame, $frame.find( 'button[name="allow"]' ) );
                     $frame.find( 'button[name="allow"]' ).click();
                 }, 2000 );
             }, 2000 );
