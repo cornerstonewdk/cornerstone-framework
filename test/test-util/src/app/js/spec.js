@@ -240,7 +240,7 @@ describe( 'Util Test', function () {
             // http://cornerstone.sktelecom.com/2/test/test-util/src/client_redirect.html
             SKT.authorize( {
                 clientId: '7',
-                redirectUri: 'client_redirect.html',
+                redirectUri: 'http://cornerstone.sktelecom.com/2/test-util/client_redirect.html',
                 success: function( token ) {
                     console.log( token );
                     expect( token ).to.be.not.undefined;
@@ -254,18 +254,15 @@ describe( 'Util Test', function () {
             } );
 
             setTimeout( function () {
-                console.log('SKT.authFrame',SKT.authFrame);
                 var $frame = $( '#' + SKT.authFrame + ' iframe' ).contents().find( 'body' );
                 if( $frame.length > 0 ) {
-                    console.log(0,$frame,$frame);
                     $frame.find( 'input[name="username"]' ).val( 'test' );
                     $frame.find( 'input[name="password"]' ).val( '1111' );
                     $frame.find( 'input[type="submit"]' ).click();
                 }                
                 setTimeout( function () {
                     $frame.find( 'button[name="allow"]' ).click();
-                    console.log(1);
-                }, 1000 );
+                }, 2000 );
             }, 100 );
         } );
 
