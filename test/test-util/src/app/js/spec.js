@@ -322,6 +322,8 @@ describe( 'Util Test', function () {
                    expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
                     expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
+
+                    console.log(decodeURIComponent( data.message ));
                     var result = $.parseJSON( decodeURIComponent( data.message ) );
                     expect( result.type ).to.be.equal( option.type );
                     expect( parseInt( result.amount ) ).to.be.equal( option.amount );
