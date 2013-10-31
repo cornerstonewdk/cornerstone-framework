@@ -11,8 +11,8 @@ define( [ 'logging',
 		  'multipage-router', 
 		  'js/mocha', 
 		  'bootstrap',
-		  'style!main',
-		  'style!css/mocha' 
+		  'style!css/mocha',
+		  'style!main'
 		   ], function( Logging, Page1View, Page2View, Page3View, Backbone, MultipageRouter ) {
 	return {
 		launch: function() {
