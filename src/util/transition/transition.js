@@ -7,7 +7,6 @@
  *  License :
  */
 
-
 /*!
  * jQuery Transit - CSS3 transitions and transformations
  * (c) 2011-2012 Rico Sta. Cruz <rico@ricostacruz.com>
@@ -16,21 +15,21 @@
  * http://ricostacruz.com/jquery.transit
  * http://github.com/rstacruz/jquery.transit
  */
-(function($) {
+(function ($) {
     $.transit = {
         version: "0.9.9",
 
         // Map of $.css() keys to values for 'transitionProperty'.
         // See https://developer.mozilla.org/en/CSS/CSS_transitions#Properties_that_can_be_animated
         propertyMap: {
-            marginLeft    : 'margin',
-            marginRight   : 'margin',
-            marginBottom  : 'margin',
-            marginTop     : 'margin',
-            paddingLeft   : 'padding',
-            paddingRight  : 'padding',
-            paddingBottom : 'padding',
-            paddingTop    : 'padding'
+            marginLeft: 'margin',
+            marginRight: 'margin',
+            marginBottom: 'margin',
+            marginTop: 'margin',
+            paddingLeft: 'padding',
+            paddingRight: 'padding',
+            paddingBottom: 'padding',
+            paddingTop: 'padding'
         },
 
         // Will simply transition "instantly" if false
@@ -52,11 +51,15 @@
         var prefixes = ['Moz', 'Webkit', 'O', 'ms'];
         var prop_ = prop.charAt(0).toUpperCase() + prop.substr(1);
 
-        if (prop in div.style) { return prop; }
+        if (prop in div.style) {
+            return prop;
+        }
 
-        for (var i=0; i<prefixes.length; ++i) {
+        for (var i = 0; i < prefixes.length; ++i) {
             var vendorProp = prefixes[i] + prop_;
-            if (vendorProp in div.style) { return vendorProp; }
+            if (vendorProp in div.style) {
+                return vendorProp;
+            }
         }
     }
 
@@ -71,18 +74,18 @@
     var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
     // Check for the browser's transitions support.
-    support.transition      = getVendorPropertyName('transition');
+    support.transition = getVendorPropertyName('transition');
     support.transitionDelay = getVendorPropertyName('transitionDelay');
-    support.transform       = getVendorPropertyName('transform');
+    support.transform = getVendorPropertyName('transform');
     support.transformOrigin = getVendorPropertyName('transformOrigin');
-    support.transform3d     = checkTransform3dSupport();
+    support.transform3d = checkTransform3dSupport();
 
     var eventNames = {
-        'transition':       'transitionEnd',
-        'MozTransition':    'transitionend',
-        'OTransition':      'oTransitionEnd',
+        'transition': 'transitionEnd',
+        'MozTransition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
         'WebkitTransition': 'webkitTransitionEnd',
-        'msTransition':     'MSTransitionEnd'
+        'msTransition': 'MSTransitionEnd'
     };
 
     // Detect the 'transitionend' event needed.
@@ -103,35 +106,35 @@
     // ## $.cssEase
     // List of easing aliases that you can use with `$.fn.transition`.
     $.cssEase = {
-        '_default':       'ease',
-        'in':             'ease-in',
-        'out':            'ease-out',
-        'in-out':         'ease-in-out',
-        'snap':           'cubic-bezier(0,1,.5,1)',
+        '_default': 'ease',
+        'in': 'ease-in',
+        'out': 'ease-out',
+        'in-out': 'ease-in-out',
+        'snap': 'cubic-bezier(0,1,.5,1)',
         // Penner equations
-        'easeOutCubic':   'cubic-bezier(.215,.61,.355,1)',
+        'easeOutCubic': 'cubic-bezier(.215,.61,.355,1)',
         'easeInOutCubic': 'cubic-bezier(.645,.045,.355,1)',
-        'easeInCirc':     'cubic-bezier(.6,.04,.98,.335)',
-        'easeOutCirc':    'cubic-bezier(.075,.82,.165,1)',
-        'easeInOutCirc':  'cubic-bezier(.785,.135,.15,.86)',
-        'easeInExpo':     'cubic-bezier(.95,.05,.795,.035)',
-        'easeOutExpo':    'cubic-bezier(.19,1,.22,1)',
-        'easeInOutExpo':  'cubic-bezier(1,0,0,1)',
-        'easeInQuad':     'cubic-bezier(.55,.085,.68,.53)',
-        'easeOutQuad':    'cubic-bezier(.25,.46,.45,.94)',
-        'easeInOutQuad':  'cubic-bezier(.455,.03,.515,.955)',
-        'easeInQuart':    'cubic-bezier(.895,.03,.685,.22)',
-        'easeOutQuart':   'cubic-bezier(.165,.84,.44,1)',
+        'easeInCirc': 'cubic-bezier(.6,.04,.98,.335)',
+        'easeOutCirc': 'cubic-bezier(.075,.82,.165,1)',
+        'easeInOutCirc': 'cubic-bezier(.785,.135,.15,.86)',
+        'easeInExpo': 'cubic-bezier(.95,.05,.795,.035)',
+        'easeOutExpo': 'cubic-bezier(.19,1,.22,1)',
+        'easeInOutExpo': 'cubic-bezier(1,0,0,1)',
+        'easeInQuad': 'cubic-bezier(.55,.085,.68,.53)',
+        'easeOutQuad': 'cubic-bezier(.25,.46,.45,.94)',
+        'easeInOutQuad': 'cubic-bezier(.455,.03,.515,.955)',
+        'easeInQuart': 'cubic-bezier(.895,.03,.685,.22)',
+        'easeOutQuart': 'cubic-bezier(.165,.84,.44,1)',
         'easeInOutQuart': 'cubic-bezier(.77,0,.175,1)',
-        'easeInQuint':    'cubic-bezier(.755,.05,.855,.06)',
-        'easeOutQuint':   'cubic-bezier(.23,1,.32,1)',
+        'easeInQuint': 'cubic-bezier(.755,.05,.855,.06)',
+        'easeOutQuint': 'cubic-bezier(.23,1,.32,1)',
         'easeInOutQuint': 'cubic-bezier(.86,0,.07,1)',
-        'easeInSine':     'cubic-bezier(.47,0,.745,.715)',
-        'easeOutSine':    'cubic-bezier(.39,.575,.565,1)',
-        'easeInOutSine':  'cubic-bezier(.445,.05,.55,.95)',
-        'easeInBack':     'cubic-bezier(.6,-.28,.735,.045)',
-        'easeOutBack':    'cubic-bezier(.175, .885,.32,1.275)',
-        'easeInOutBack':  'cubic-bezier(.68,-.55,.265,1.55)'
+        'easeInSine': 'cubic-bezier(.47,0,.745,.715)',
+        'easeOutSine': 'cubic-bezier(.39,.575,.565,1)',
+        'easeInOutSine': 'cubic-bezier(.445,.05,.55,.95)',
+        'easeInBack': 'cubic-bezier(.6,-.28,.735,.045)',
+        'easeOutBack': 'cubic-bezier(.175, .885,.32,1.275)',
+        'easeInOutBack': 'cubic-bezier(.68,-.55,.265,1.55)'
     };
 
     // ## 'transform' CSS hook
@@ -144,12 +147,12 @@
     //
     $.cssHooks['transit:transform'] = {
         // The getter returns a `Transform` object.
-        get: function(elem) {
+        get: function (elem) {
             return $(elem).data('transform') || new Transform();
         },
 
         // The setter accepts a `Transform` object or a string.
-        set: function(elem, v) {
+        set: function (elem, v) {
             var value = v;
 
             if (!(value instanceof Transform)) {
@@ -188,10 +191,10 @@
         //     $("#hello").css({ transformOrigin: '0 0' });
         //
         $.cssHooks.transformOrigin = {
-            get: function(elem) {
+            get: function (elem) {
                 return elem.style[support.transformOrigin];
             },
-            set: function(elem, value) {
+            set: function (elem, value) {
                 elem.style[support.transformOrigin] = value;
             }
         };
@@ -202,10 +205,10 @@
         //     $("#hello").css({ transition: 'all 0 ease 0' });
         //
         $.cssHooks.transition = {
-            get: function(elem) {
+            get: function (elem) {
                 return elem.style[support.transition];
             },
-            set: function(elem, value) {
+            set: function (elem, value) {
                 elem.style[support.transition] = value;
             }
         };
@@ -249,7 +252,9 @@
     //     t.toString(true)     //=> "rotate(90deg) scale3d(4,4,0)" (WebKit version)
     //
     function Transform(str) {
-        if (typeof str === 'string') { this.parse(str); }
+        if (typeof str === 'string') {
+            this.parse(str);
+        }
         return this;
     }
 
@@ -260,11 +265,11 @@
         //     t.setFromString('scale', '2,4');
         //     // Same as set('scale', '2', '4');
         //
-        setFromString: function(prop, val) {
+        setFromString: function (prop, val) {
             var args =
-                (typeof val === 'string')  ? val.split(',') :
-                    (val.constructor === Array) ? val :
-                        [ val ];
+            (typeof val === 'string') ? val.split(',') :
+            (val.constructor === Array) ? val :
+            [ val ];
 
             args.unshift(prop);
 
@@ -276,7 +281,7 @@
         //
         //     t.set('scale', 2, 4);
         //
-        set: function(prop) {
+        set: function (prop) {
             var args = Array.prototype.slice.apply(arguments, [1]);
             if (this.setter[prop]) {
                 this.setter[prop].apply(this, args);
@@ -285,7 +290,7 @@
             }
         },
 
-        get: function(prop) {
+        get: function (prop) {
             if (this.getter[prop]) {
                 return this.getter[prop].apply(this);
             } else {
@@ -301,15 +306,15 @@
             //     .css({ rotate: "30deg" })
             //     .css({ rotate: "30deg" })
             //
-            rotate: function(theta) {
+            rotate: function (theta) {
                 this.rotate = unit(theta, 'deg');
             },
 
-            rotateX: function(theta) {
+            rotateX: function (theta) {
                 this.rotateX = unit(theta, 'deg');
             },
 
-            rotateY: function(theta) {
+            rotateY: function (theta) {
                 this.rotateY = unit(theta, 'deg');
             },
 
@@ -318,22 +323,24 @@
             //     .css({ scale: 9 })      //=> "scale(9,9)"
             //     .css({ scale: '3,2' })  //=> "scale(3,2)"
             //
-            scale: function(x, y) {
-                if (y === undefined) { y = x; }
+            scale: function (x, y) {
+                if (y === undefined) {
+                    y = x;
+                }
                 this.scale = x + "," + y;
             },
 
             // ### skewX + skewY
-            skewX: function(x) {
+            skewX: function (x) {
                 this.skewX = unit(x, 'deg');
             },
 
-            skewY: function(y) {
+            skewY: function (y) {
                 this.skewY = unit(y, 'deg');
             },
 
             // ### perspectvie
-            perspective: function(dist) {
+            perspective: function (dist) {
                 this.perspective = unit(dist, 'px');
             },
 
@@ -343,11 +350,11 @@
             //     .css({ x: 4 })       //=> "translate(4px, 0)"
             //     .css({ y: 10 })      //=> "translate(4px, 10px)"
             //
-            x: function(x) {
+            x: function (x) {
                 this.set('translate', x, null);
             },
 
-            y: function(y) {
+            y: function (y) {
                 this.set('translate', null, y);
             },
 
@@ -356,42 +363,58 @@
             //
             //     .css({ translate: '2, 5' })    //=> "translate(2px, 5px)"
             //
-            translate: function(x, y) {
-                if (this._translateX === undefined) { this._translateX = 0; }
-                if (this._translateY === undefined) { this._translateY = 0; }
+            translate: function (x, y) {
+                if (this._translateX === undefined) {
+                    this._translateX = 0;
+                }
+                if (this._translateY === undefined) {
+                    this._translateY = 0;
+                }
 
-                if (x !== null && x !== undefined) { this._translateX = unit(x, 'px'); }
-                if (y !== null && y !== undefined) { this._translateY = unit(y, 'px'); }
+                if (x !== null && x !== undefined) {
+                    this._translateX = unit(x, 'px');
+                }
+                if (y !== null && y !== undefined) {
+                    this._translateY = unit(y, 'px');
+                }
 
                 this.translate = this._translateX + "," + this._translateY;
             }
         },
 
         getter: {
-            x: function() {
+            x: function () {
                 return this._translateX || 0;
             },
 
-            y: function() {
+            y: function () {
                 return this._translateY || 0;
             },
 
-            scale: function() {
+            scale: function () {
                 var s = (this.scale || "1,1").split(',');
-                if (s[0]) { s[0] = parseFloat(s[0]); }
-                if (s[1]) { s[1] = parseFloat(s[1]); }
+                if (s[0]) {
+                    s[0] = parseFloat(s[0]);
+                }
+                if (s[1]) {
+                    s[1] = parseFloat(s[1]);
+                }
 
                 // "2.5,2.5" => 2.5
                 // "2.5,1" => [2.5,1]
                 return (s[0] === s[1]) ? s[0] : s;
             },
 
-            rotate3d: function() {
+            rotate3d: function () {
                 var s = (this.rotate3d || "0,0,0,0deg").split(',');
-                for (var i=0; i<=3; ++i) {
-                    if (s[i]) { s[i] = parseFloat(s[i]); }
+                for (var i = 0; i <= 3; ++i) {
+                    if (s[i]) {
+                        s[i] = parseFloat(s[i]);
+                    }
                 }
-                if (s[3]) { s[3] = unit(s[3], 'deg'); }
+                if (s[3]) {
+                    s[3] = unit(s[3], 'deg');
+                }
 
                 return s;
             }
@@ -399,9 +422,9 @@
 
         // ### parse()
         // Parses from a string. Called on constructor.
-        parse: function(str) {
+        parse: function (str) {
             var self = this;
-            str.replace(/([a-zA-Z0-9]+)\((.*?)\)/g, function(x, prop, val) {
+            str.replace(/([a-zA-Z0-9]+)\((.*?)\)/g, function (x, prop, val) {
                 self.setFromString(prop, val);
             });
         },
@@ -409,17 +432,19 @@
         // ### toString()
         // Converts to a `transition` CSS property string. If `use3d` is given,
         // it converts to a `-webkit-transition` CSS property string instead.
-        toString: function(use3d) {
+        toString: function (use3d) {
             var re = [];
 
             for (var i in this) {
                 if (this.hasOwnProperty(i)) {
                     // Don't use 3D transformations if the browser can't support it.
                     if ((!support.transform3d) && (
-                        (i === 'rotateX') ||
-                            (i === 'rotateY') ||
-                            (i === 'perspective') ||
-                            (i === 'transformOrigin'))) { continue; }
+                    (i === 'rotateX') ||
+                    (i === 'rotateY') ||
+                    (i === 'perspective') ||
+                    (i === 'transformOrigin'))) {
+                        continue;
+                    }
 
                     if (i[0] !== '_') {
                         if (use3d && (i === 'scale')) {
@@ -453,12 +478,14 @@
     function getProperties(props) {
         var re = [];
 
-        $.each(props, function(key) {
+        $.each(props, function (key) {
             key = $.camelCase(key); // Convert "text-align" => "textAlign"
             key = $.transit.propertyMap[key] || $.cssProps[key] || key;
             key = uncamel(key); // Convert back to dasherized
 
-            if ($.inArray(key, re) === -1) { re.push(key); }
+            if ($.inArray(key, re) === -1) {
+                re.push(key);
+            }
         });
 
         return re;
@@ -477,16 +504,20 @@
         var props = getProperties(properties);
 
         // Account for aliases (`in` => `ease-in`).
-        if ($.cssEase[easing]) { easing = $.cssEase[easing]; }
+        if ($.cssEase[easing]) {
+            easing = $.cssEase[easing];
+        }
 
         // Build the duration/easing/delay attributes for it.
         var attribs = '' + toMS(duration) + ' ' + easing;
-        if (parseInt(delay, 10) > 0) { attribs += ' ' + toMS(delay); }
+        if (parseInt(delay, 10) > 0) {
+            attribs += ' ' + toMS(delay);
+        }
 
         // For more properties, add them this way:
         // "margin 200ms ease, padding 200ms ease, ..."
         var transitions = [];
-        $.each(props, function(i, name) {
+        $.each(props, function (i, name) {
             transitions.push(name + ' ' + attribs);
         });
 
@@ -519,8 +550,8 @@
     //       complete: function() { /* ... */ }
     //      });
     //
-    $.fn.transition = $.fn.transit = function(properties, duration, easing, callback) {
-        var self  = this;
+    $.fn.transition = $.fn.transit = function (properties, duration, easing, callback) {
+        var self = this;
         var delay = 0;
         var queue = true;
 
@@ -563,8 +594,12 @@
         }
 
         // Set defaults. (`400` duration, `ease` easing)
-        if (typeof duration === 'undefined') { duration = $.fx.speeds._default; }
-        if (typeof easing === 'undefined')   { easing = $.cssEase._default; }
+        if (typeof duration === 'undefined') {
+            duration = $.fx.speeds._default;
+        }
+        if (typeof easing === 'undefined') {
+            easing = $.cssEase._default;
+        }
 
         duration = toMS(duration);
 
@@ -578,10 +613,14 @@
 
         // If there's nothing to do...
         if (i === 0) {
-            var fn = function(next) {
+            var fn = function (next) {
                 self.css(properties);
-                if (callback) { callback.apply(self); }
-                if (next) { next(); }
+                if (callback) {
+                    callback.apply(self);
+                }
+                if (next) {
+                    next();
+                }
             };
 
             callOrQueue(self, queue, fn);
@@ -591,21 +630,27 @@
         // Save the old transitions of each element so we can restore it later.
         var oldTransitions = {};
 
-        var run = function(nextCall) {
+        var run = function (nextCall) {
             var bound = false;
 
             // Prepare the callback.
-            var cb = function() {
-                if (bound) { self.unbind(transitionEnd, cb); }
+            var cb = function () {
+                if (bound) {
+                    self.unbind(transitionEnd, cb);
+                }
 
                 if (i > 0) {
-                    self.each(function() {
+                    self.each(function () {
                         this.style[support.transition] = (oldTransitions[this] || null);
                     });
                 }
 
-                if (typeof callback === 'function') { callback.apply(self); }
-                if (typeof nextCall === 'function') { nextCall(); }
+                if (typeof callback === 'function') {
+                    callback.apply(self);
+                }
+                if (typeof nextCall === 'function') {
+                    nextCall();
+                }
             };
 
             if ((i > 0) && (transitionEnd) && ($.transit.useTransitionEnd)) {
@@ -618,7 +663,7 @@
             }
 
             // Apply transitions.
-            self.each(function() {
+            self.each(function () {
                 if (i > 0) {
                     this.style[support.transition] = transitionValue;
                 }
@@ -628,14 +673,18 @@
 
         // Defer running. This allows the browser to paint any pending CSS it hasn't
         // painted yet before doing the transitions.
-        var deferredRun = function(next) {
+        var deferredRun = function (next) {
             var i = 0;
 
             // Durations that are too slow will get transitions mixed up.
             // (Tested on Mac/FF 7.0.1)
-            if ((support.transition === 'MozTransition') && (i < 25)) { i = 25; }
+            if ((support.transition === 'MozTransition') && (i < 25)) {
+                i = 25;
+            }
 
-            window.setTimeout(function() { run(next); }, i);
+            window.setTimeout(function () {
+                run(next);
+            }, i);
         };
 
         // Use jQuery's fx queue.
@@ -647,17 +696,19 @@
 
     function registerCssHook(prop, isPixels) {
         // For certain properties, the 'px' should not be implied.
-        if (!isPixels) { $.cssNumber[prop] = true; }
+        if (!isPixels) {
+            $.cssNumber[prop] = true;
+        }
 
         $.transit.propertyMap[prop] = support.transform;
 
         $.cssHooks[prop] = {
-            get: function(elem) {
+            get: function (elem) {
                 var t = $(elem).css('transit:transform');
                 return t.get(prop);
             },
 
-            set: function(elem, value) {
+            set: function (elem, value) {
                 var t = $(elem).css('transit:transform');
                 t.setFromString(prop, value);
 
@@ -671,7 +722,9 @@
     // Converts a camelcase string to a dasherized string.
     // (`marginLeft` => `margin-left`)
     function uncamel(str) {
-        return str.replace(/([A-Z])/g, function(letter) { return '-' + letter.toLowerCase(); });
+        return str.replace(/([A-Z])/g, function (letter) {
+            return '-' + letter.toLowerCase();
+        });
     }
 
     // ### unit(number, unit)
@@ -699,7 +752,9 @@
         var i = duration;
 
         // Allow for string durations like 'fast'.
-        if ($.fx.speeds[i]) { i = $.fx.speeds[i]; }
+        if ($.fx.speeds[i]) {
+            i = $.fx.speeds[i];
+        }
 
         return unit(i, 'ms');
     }
@@ -738,40 +793,40 @@
     };
 
     Launcher.prototype = {
-        defaults:{
-            transitionType:"none", // 화면전환 효과 기본 None(효과 없음)
-            fallbackType:"fade", // IE에서 임시로 사용할 효과
-            autoDisplay:true, // 완료시 자동으로 이전페이지를 감출지 여부
+        defaults: {
+            transitionType: "none", // 화면전환 효과 기본 None(효과 없음)
+            fallbackType: "fade", // IE에서 임시로 사용할 효과
+            autoDisplay: true, // 완료시 자동으로 이전페이지를 감출지 여부
             nested: false, // 네스티드 여부
             animationFade: true, // 트랜지션 중 페이드인아웃
-            inTarget:{
-                el:undefined, // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
-                from:undefined, // 들어오는 페이지의 시작점
-                to:undefined, // 들어오는 페이지의 도착점
-                duration:undefined, // 들어오는 페이지의 애니메이션 시간
-                timing:"ease", // linear ease ease-in ease-out ease-in-out
-                done:function () {
+            inTarget: {
+                el: undefined, // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+                from: undefined, // 들어오는 페이지의 시작점
+                to: undefined, // 들어오는 페이지의 도착점
+                duration: undefined, // 들어오는 페이지의 애니메이션 시간
+                timing: "ease", // linear ease ease-in ease-out ease-in-out
+                done: function () {
 
                 }
             },
-            outTarget:{
-                el:undefined, // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
-                from:undefined, // 나가는 페이지의 시작점
-                to:undefined, // 나가는 페이지의 도착점
-                duration:undefined, // 나가는 페이지의 애니메이션 시간
-                timing:"ease",
-                done:function () {
+            outTarget: {
+                el: undefined, // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+                from: undefined, // 나가는 페이지의 시작점
+                to: undefined, // 나가는 페이지의 도착점
+                duration: undefined, // 나가는 페이지의 애니메이션 시간
+                timing: "ease",
+                done: function () {
 
                 }
             },
-            isReverse:false, // 뒤로가기 여부
-            done:function () {
+            isReverse: false, // 뒤로가기 여부
+            done: function () {
 
             }
         },
 
         // 초기화
-        init:function () {
+        init: function () {
             // 기본 설정과 사용자가 정의한 값을 병합
             this.options.inTarget = $.extend({}, this.defaults.inTarget, this.options.inTarget);
             this.options.outTarget = $.extend({}, this.defaults.outTarget, this.options.outTarget);
@@ -788,7 +843,7 @@
          * @example
          * this.run();
          */
-        run:function () {
+        run: function () {
             var self = this;
             var effect = new Effect(this.options);
 
@@ -818,11 +873,11 @@
          * @example
          * this._before();
          */
-        _before:function () {
+        _before: function () {
 //            console.log("_before")
             var $body = $("body");
             this.$bodyOverflowX = $body.css("overflowX");
-            $body.css({overflowX:"hidden"});
+            $body.css({overflowX: "hidden"});
             $(this.options.inTarget.el).show();
             $(this.options.outTarget.el).show();
 
@@ -848,8 +903,8 @@
          * @example
          * self.launcher._done();
          */
-        _done:function () {
-            $("body").css({overflowX:this.$bodyOverflowX}).attr("data-transition", this.options.transitionType);
+        _done: function () {
+            $("body").css({overflowX: this.$bodyOverflowX}).attr("data-transition", this.options.transitionType);
             var $outTargetEl = $(this.options.outTarget.el).attr("style", "");
             var $inTargetEl = $(this.options.inTarget.el).attr("style", "");
 
@@ -876,23 +931,23 @@
 
     // 화면전환 효과
     Effect.prototype = {
-        inTargetCss:null,
-        outTargetCss:null,
+        inTargetCss: null,
+        outTargetCss: null,
 
         // 초기화
-        init:function (launcher) {
+        init: function (launcher) {
             this.launcher = launcher;
         },
 
         // 페이지별 설정값 병합 유틸리티
-        extend:function (defaultValue, opt) {
+        extend: function (defaultValue, opt) {
             opt.inTarget = $.extend({}, defaultValue.inTarget, opt.inTarget);
             opt.outTarget = $.extend({}, defaultValue.outTarget, opt.outTarget);
             return opt;
         },
 
         // 효과가 없는 경우
-        none:function (opt) {
+        none: function (opt) {
             var self = this;
             $(opt.outTarget.el).hide(function () {
                 opt.outTarget.done();
@@ -903,34 +958,34 @@
         },
 
         // 플립효과
-        flip:function (opt) {
+        flip: function (opt) {
             // 플립 기본 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        from:"90deg",
-                        to:0,
-                        duration:350
-                    },
-                    outTarget:{
-                        from:0,
-                        to:"-90deg",
-                        duration:150
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    from: "90deg",
+                    to: 0,
+                    duration: 350
+                },
+                outTarget: {
+                    from: 0,
+                    to: "-90deg",
+                    duration: 150
+                }
+            };
 
             // 뒤로가기시 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
-                    inTarget:{
-                        from:"-90deg",
-                        to:0,
-                        duration:350
+                    inTarget: {
+                        from: "-90deg",
+                        to: 0,
+                        duration: 350
                     },
-                    outTarget:{
-                        from:0,
-                        to:"90deg",
-                        duration:150
+                    outTarget: {
+                        from: 0,
+                        to: "90deg",
+                        duration: 150
                     }
                 };
             }
@@ -941,39 +996,39 @@
             $(opt.outTarget.el).height();
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                perspective:$(opt.outTarget.el).width() * 2,
-                rotate3d:"0, 1, 0, " + opt.outTarget.from,
-                height:$(window).height() > $(opt.outTarget.el).height() ?
-                    $(opt.outTarget.el).height() : $(window).height(),
-                overflow:"hidden",
-                opacity:1
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                perspective: $(opt.outTarget.el).width() * 2,
+                rotate3d: "0, 1, 0, " + opt.outTarget.from,
+                height: $(window).height() > $(opt.outTarget.el).height() ?
+                $(opt.outTarget.el).height() : $(window).height(),
+                overflow: "hidden",
+                opacity: 1
             };
 
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                perspective:$(opt.inTarget.el).width() * 2,
-                rotate3d:"0, 1, 0, " + opt.inTarget.from,
-                height:$(window).height() > $(opt.inTarget.el).height() ?
-                    $(opt.inTarget.el).height() : $(window).height(),
-                overflow:"hidden",
-                opacity:opt.animationFade ? 0 : 1
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                perspective: $(opt.inTarget.el).width() * 2,
+                rotate3d: "0, 1, 0, " + opt.inTarget.from,
+                height: $(window).height() > $(opt.inTarget.el).height() ?
+                $(opt.inTarget.el).height() : $(window).height(),
+                overflow: "hidden",
+                opacity: opt.animationFade ? 0 : 1
             };
 
             ;
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                rotate3d:"0, 1, 0, " + opt.outTarget.to,
-                opacity:opt.animationFade ? 0 : 1
+                rotate3d: "0, 1, 0, " + opt.outTarget.to,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
                 $(opt.inTarget.el).transit({
-                    rotate3d:"0, 1, 0, " + opt.inTarget.to,
-                    opacity:1
+                    rotate3d: "0, 1, 0, " + opt.inTarget.to,
+                    opacity: 1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
                 });
@@ -982,33 +1037,33 @@
         },
 
         // 회전 효과
-        spin:function (opt) {
+        spin: function (opt) {
             // 회전 기본값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        from:"90deg",
-                        to:0,
-                        duration:550
-                    },
-                    outTarget:{
-                        from:0,
-                        to:"-90deg",
-                        duration:550
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    from: "90deg",
+                    to: 0,
+                    duration: 550
+                },
+                outTarget: {
+                    from: 0,
+                    to: "-90deg",
+                    duration: 550
+                }
+            };
             // 뒤로가기시 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
-                    inTarget:{
-                        from:"-90deg",
-                        to:0,
-                        duration:550
+                    inTarget: {
+                        from: "-90deg",
+                        to: 0,
+                        duration: 550
                     },
-                    outTarget:{
-                        from:0,
-                        to:"90deg",
-                        duration:550
+                    outTarget: {
+                        from: 0,
+                        to: "90deg",
+                        duration: 550
                     }
                 };
             }
@@ -1016,42 +1071,42 @@
             opt = this.extend(defaultValue, opt);
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                perspective:$(opt.outTarget.el).width(),
-                rotate3d:"0, 0, 0, " + opt.outTarget.from,
-                height:$(window).height() > $(opt.inTarget.el).height() ?
-                    $(opt.inTarget.el).height() : $(window).height(),
-                overflow:"hidden",
-                scale:1,
-                opacity:1
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                perspective: $(opt.outTarget.el).width(),
+                rotate: opt.outTarget.from,
+                height: $(window).height() > $(opt.inTarget.el).height() ?
+                $(opt.inTarget.el).height() : $(window).height(),
+                overflow: "hidden",
+                scale: 1,
+                opacity: 1
             };
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                perspective:$(opt.inTarget.el).width(),
-                rotate3d:"0, 0, 0, " + opt.inTarget.from,
-                height:$(window).height() > $(opt.inTarget.el).height() ?
-                    $(opt.inTarget.el).height() : $(window).height(),
-                overflow:"hidden",
-                scale:0,
-                opacity:opt.animationFade ? 0 : 1
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                perspective: $(opt.inTarget.el).width(),
+                rotate: opt.inTarget.from,
+                height: $(window).height() > $(opt.inTarget.el).height() ?
+                $(opt.inTarget.el).height() : $(window).height(),
+                overflow: "hidden",
+                scale: 0,
+                opacity: opt.animationFade ? 0 : 1
             };
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                rotate3d:"0, 0, 0, " + opt.outTarget.to,
-                scale:0,
-                opacity:opt.animationFade ? 0 : 1
+                rotate: opt.outTarget.to,
+                scale: 0,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
-                    scale:1
+                    scale: 1
                 });
                 opt.outTarget.done();
                 $(opt.inTarget.el).transit({
-                    rotate3d:"0, 0, 0, " + opt.inTarget.to,
-                    scale:1,
-                    opacity:1
+                    rotate: opt.inTarget.to,
+                    scale: 1,
+                    opacity: 1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
                 });
@@ -1059,81 +1114,81 @@
         },
 
         // 슬라이드 효과
-        slide:function (opt) {
+        slide: function (opt) {
             // 슬라이드 기본 좌표 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        from:"150%", // width 100%인 경우 UI 상 페이지가 붙는 상태로 보이는 문제를 위해 좌표 20% 증가
-                        to:"0",
-                        duration:550
-                    },
-                    outTarget:{
-                        from:"0",
-                        to:'-150%',
-                        duration:550
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    from: "150%", // width 100%인 경우 UI 상 페이지가 붙는 상태로 보이는 문제를 위해 좌표 20% 증가
+                    to: "0",
+                    duration: 550
+                },
+                outTarget: {
+                    from: "0",
+                    to: '-150%',
+                    duration: 550
+                }
+            };
 
             // 뒤로가기시 슬라이드 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
-                    inTarget:{
-                        from:"-150%",
-                        to:"0",
-                        duration:550
+                    inTarget: {
+                        from: "-150%",
+                        to: "0",
+                        duration: 550
                     },
-                    outTarget:{
-                        from:"0",
-                        to:'150%',
-                        duration:550
+                    outTarget: {
+                        from: "0",
+                        to: '150%',
+                        duration: 550
                     }
                 };
             }
 
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
             // 기본값과 사용자 정의 값 병합
             opt = this.extend(defaultValue, opt);
 
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
-                position:"absolute",
-                width:$(window).width() > $(opt.outTarget.el).width() ?
-                    $(opt.outTarget.el).width() : $(window).width(),
-                height:$(window).height() > $(opt.outTarget.el).height() ?
-                    $(opt.outTarget.el).height() : $(window).height(),
-                transform:"translate(" + opt.outTarget.from + ",0)",
-                opacity:1
+                position: "absolute",
+                width: $(window).width() > $(opt.outTarget.el).width() ?
+                $(opt.outTarget.el).width() : $(window).width(),
+                height: $(window).height() > $(opt.outTarget.el).height() ?
+                $(opt.outTarget.el).height() : $(window).height(),
+                transform: "translate(" + opt.outTarget.from + ",0)",
+                opacity: 1
             };
 
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
-                position:"absolute",
-                width:$(window).width() > $(opt.inTarget.el).width() ?
-                    $(opt.inTarget.el).width() : $(window).width(),
-                height:$(window).height() > $(opt.inTarget.el).height() ?
-                    $(opt.inTarget.el).height() : $(window).height(),
-                transform:"translate(" + opt.inTarget.from + ",0)",
-                opacity:1
+                position: "absolute",
+                width: $(window).width() > $(opt.inTarget.el).width() ?
+                $(opt.inTarget.el).width() : $(window).width(),
+                height: $(window).height() > $(opt.inTarget.el).height() ?
+                $(opt.inTarget.el).height() : $(window).height(),
+                transform: "translate(" + opt.inTarget.from + ",0)",
+                opacity: 1
             };
 
             opt.inTarget.top = $(opt.inTarget.el).css("top");
 
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                x:opt.outTarget.to,
-                opacity:opt.animationFade ? 0 : 1
+                x: opt.outTarget.to,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
             });
 
             // 들어오는 페이지 슬라이드
             $(opt.inTarget.el).css(this.inTargetCss).transit({
-                x:opt.inTarget.to
+                x: opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 // 기본 좌표로 초기화
                 $(opt.outTarget.el).css({
-                    transform:"translate(0,0)"
+                    transform: "translate(0,0)"
                 });
                 self.launcher._done();
             });
@@ -1141,34 +1196,34 @@
         },
 
         // 슬라이드 업 효과
-        slideup:function (opt) {
+        slideup: function (opt) {
             // 슬라이드 기본 좌표 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        from:"100%",
-                        to:"0",
-                        duration:550
-                    },
-                    outTarget:{
-                        from:"0",
-                        to:'-100%',
-                        duration:550
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    from: "100%",
+                    to: "0",
+                    duration: 550
+                },
+                outTarget: {
+                    from: "0",
+                    to: '-100%',
+                    duration: 550
+                }
+            };
 
             // 뒤로가기시 슬라이드 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
-                    inTarget:{
-                        from:"-100%",
-                        to:"0",
-                        duration:550
+                    inTarget: {
+                        from: "-100%",
+                        to: "0",
+                        duration: 550
                     },
-                    outTarget:{
-                        from:"0",
-                        to:'100%',
-                        duration:550
+                    outTarget: {
+                        from: "0",
+                        to: '100%',
+                        duration: 550
                     }
                 };
             }
@@ -1178,38 +1233,38 @@
 
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                transform:"translate(0, " + opt.outTarget.from + ")",
-                height:$(window).height() > $(opt.outTarget.el).height() ?
-                    $(opt.outTarget.el).height() : $(window).height(),
-                opacity:1
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                transform: "translate(0, " + opt.outTarget.from + ")",
+                height: $(window).height() > $(opt.outTarget.el).height() ?
+                $(opt.outTarget.el).height() : $(window).height(),
+                opacity: 1
             };
 
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                transform:"translate(0, " + opt.inTarget.from + ")",
-                height:$(window).height() > $(opt.outTarget.el).height() ?
-                    $(opt.outTarget.el).height() : $(window).height(),
-                opacity:1
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                transform: "translate(0, " + opt.inTarget.from + ")",
+                height: $(window).height() > $(opt.outTarget.el).height() ?
+                $(opt.outTarget.el).height() : $(window).height(),
+                opacity: 1
             };
 
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                y:opt.outTarget.to,
-                opacity:opt.animationFade ? 0 : 1
+                y: opt.outTarget.to,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
-                    transform:"translate(0,0)"
+                    transform: "translate(0,0)"
                 });
                 opt.outTarget.done();
             });
 
             // 들어오는 페이지 슬라이드
             $(opt.inTarget.el).css(this.inTargetCss).transit({
-                y:opt.inTarget.to
+                y: opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
             });
@@ -1217,34 +1272,34 @@
         },
 
         // 슬라이드 다운 효과
-        slidedown:function (opt) {
+        slidedown: function (opt) {
             // 슬라이드 기본 좌표 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        from:"-100%",
-                        to:"0",
-                        duration:550
-                    },
-                    outTarget:{
-                        from:"0",
-                        to:'100%',
-                        duration:550
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    from: "-100%",
+                    to: "0",
+                    duration: 550
+                },
+                outTarget: {
+                    from: "0",
+                    to: '100%',
+                    duration: 550
+                }
+            };
 
             // 뒤로가기시 슬라이드 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
-                    inTarget:{
-                        from:"100%",
-                        to:"0",
-                        duration:550
+                    inTarget: {
+                        from: "100%",
+                        to: "0",
+                        duration: 550
                     },
-                    outTarget:{
-                        from:"0",
-                        to:'-100%',
-                        duration:550
+                    outTarget: {
+                        from: "0",
+                        to: '-100%',
+                        duration: 550
                     }
                 };
             }
@@ -1254,34 +1309,34 @@
 
             // 나가는 페이지 스타일 초기화
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                transform:"translate(0, " + opt.outTarget.from + ")",
-                opacity:1
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                transform: "translate(0, " + opt.outTarget.from + ")",
+                opacity: 1
             };
 
             // 들어오는 페이지 스타일 초기화
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                transform:"translate(0, " + opt.inTarget.from + ")",
-                opacity:1
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                transform: "translate(0, " + opt.inTarget.from + ")",
+                opacity: 1
             };
 
             // 나가는 페이지 슬라이드
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                y:opt.outTarget.to,
-                opacity:opt.animationFade ? 0 : 1
+                y: opt.outTarget.to,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
-                    transform:"translate(0,0)"
+                    transform: "translate(0,0)"
                 });
                 opt.outTarget.done();
             });
 
             // 들어오는 페이지 슬라이드
             $(opt.inTarget.el).css(this.inTargetCss).transit({
-                y:opt.inTarget.to
+                y: opt.inTarget.to
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done();
             });
@@ -1289,43 +1344,43 @@
         },
 
         // 페이드 효과
-        fade:function (opt) {
+        fade: function (opt) {
             // 페이드 기본 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        duration:250
-                    },
-                    outTarget:{
-                        duration:250
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    duration: 250
+                },
+                outTarget: {
+                    duration: 250
+                }
+            };
 
             // 기본값과 사용자 정의 값 병합
             opt = this.extend(defaultValue, opt);
 
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                opacity:1
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                opacity: 1
             };
 
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                opacity:opt.animationFade ? 0 : 1
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                opacity: opt.animationFade ? 0 : 1
             };
 
             // 페이지 스타일 초기화
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                opacity:opt.animationFade ? 0 : 1
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
                 $(opt.inTarget.el).transit({
-                    opacity:1
+                    opacity: 1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
                 });
@@ -1333,57 +1388,57 @@
         },
 
         // 팝 효과
-        pop:function (opt) {
+        pop: function (opt) {
             // 회전 기본 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        duration:350
-                    },
-                    outTarget:{
-                        from:0,
-                        duration:350
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    duration: 350
+                },
+                outTarget: {
+                    from: 0,
+                    duration: 350
+                }
+            };
 
             // 기본값과 사용자 정의 값 병합
             opt = this.extend(defaultValue, opt);
 
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                scale:1,
-                opacity:1,
-                perspective:$(opt.outTarget.el).width(),
-                rotate3d:"0, 0, 0, 0",
-                overflow:"hidden"
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                scale: 1,
+                opacity: 1,
+                perspective: $(opt.outTarget.el).width(),
+                rotate3d: "0, 0, 0, 0",
+                overflow: "hidden"
             };
 
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                scale:0.5,
-                opacity:opt.animationFade ? 0 : 1,
-                perspective:$(opt.outTarget.el).width(),
-                rotate3d:"0, 0, 0, 0",
-                overflow:"hidden"
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                scale: 0.5,
+                opacity: opt.animationFade ? 0 : 1,
+                perspective: $(opt.outTarget.el).width(),
+                rotate3d: "0, 0, 0, 0",
+                overflow: "hidden"
             };
 
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                scale:0.5,
-                opacity:opt.animationFade ? 0 : 1
+                scale: 0.5,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 $(this).css({
-                    scale:1
+                    scale: 1
                 });
                 opt.outTarget.done();
 
                 $(opt.inTarget.el).transit({
-                    scale:1,
-                    opacity:1
+                    scale: 1,
+                    opacity: 1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
                 });
@@ -1391,34 +1446,34 @@
         },
 
         // 전환 효과
-        turn:function (opt) {
+        turn: function (opt) {
             // 회전 기본 값
             var self = this,
-                defaultValue = {
-                    inTarget:{
-                        from:"90deg",
-                        to:0,
-                        duration:350
-                    },
-                    outTarget:{
-                        from:0,
-                        to:"-90deg",
-                        duration:150
-                    }
-                };
+            defaultValue = {
+                inTarget: {
+                    from: "90deg",
+                    to: 0,
+                    duration: 350
+                },
+                outTarget: {
+                    from: 0,
+                    to: "-90deg",
+                    duration: 150
+                }
+            };
 
             // 뒤로가기시 반대 효과 좌표 값
             if (opt.isReverse) {
                 defaultValue = {
-                    inTarget:{
-                        from:"-90deg",
-                        to:0,
-                        duration:350
+                    inTarget: {
+                        from: "-90deg",
+                        to: 0,
+                        duration: 350
                     },
-                    outTarget:{
-                        from:0,
-                        to:"90deg",
-                        duration:150
+                    outTarget: {
+                        from: 0,
+                        to: "90deg",
+                        duration: 150
                     }
                 };
             }
@@ -1428,40 +1483,40 @@
 
             // 나가는 페이지 스타일 초기화 값
             this.outTargetCss = {
-                position:"absolute",
-                width:$(opt.outTarget.el).width(),
-                perspective:$(opt.outTarget.el).width(),
-                rotate3d:"0, 1, 0, " + opt.outTarget.from,
-                transformOrigin:"0 0",
-                opacity:1,
-                height:$(window).height() > $(opt.outTarget.el).height() ?
-                    $(opt.outTarget.el).height() : $(window).height(),
-                overflow:"hidden"
+                position: "absolute",
+                width: $(opt.outTarget.el).width(),
+                perspective: $(opt.outTarget.el).width(),
+                rotate3d: "0, 1, 0, " + opt.outTarget.from,
+                transformOrigin: "0 0",
+                opacity: 1,
+                height: $(window).height() > $(opt.outTarget.el).height() ?
+                $(opt.outTarget.el).height() : $(window).height(),
+                overflow: "hidden"
             };
 
             // 들어오는 페이지 스타일 초기화 값
             this.inTargetCss = {
-                position:"absolute",
-                width:$(opt.inTarget.el).width(),
-                perspective:$(opt.inTarget.el).width(),
-                rotate3d:"0, 1, 0, " + opt.inTarget.from,
-                transformOrigin:"0 0",
-                opacity:opt.animationFade ? 0 : 1,
-                height:$(window).height() > $(opt.outTarget.el).height() ?
-                    $(opt.outTarget.el).height() : $(window).height(),
-                overflow:"hidden"
+                position: "absolute",
+                width: $(opt.inTarget.el).width(),
+                perspective: $(opt.inTarget.el).width(),
+                rotate3d: "0, 1, 0, " + opt.inTarget.from,
+                transformOrigin: "0 0",
+                opacity: opt.animationFade ? 0 : 1,
+                height: $(window).height() > $(opt.outTarget.el).height() ?
+                $(opt.outTarget.el).height() : $(window).height(),
+                overflow: "hidden"
             };
 
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                rotate3d:"0, 1, 0, " + opt.outTarget.to,
-                opacity:opt.animationFade ? 0 : 1
+                rotate3d: "0, 1, 0, " + opt.outTarget.to,
+                opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
                 opt.outTarget.done();
 
                 $(opt.inTarget.el).transit({
-                    rotate3d:"0, 1, 0, " + opt.inTarget.to,
-                    opacity:1
+                    rotate3d: "0, 1, 0, " + opt.inTarget.to,
+                    opacity: 1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
                     self.launcher._done();
                 });

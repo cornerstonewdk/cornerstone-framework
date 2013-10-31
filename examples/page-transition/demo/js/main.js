@@ -10,54 +10,54 @@ $(function () {
     effect.custom1 = function (opt) {
         // 회전 기본 값
         var self = this,
-            defaultValue = {
-                inTarget:{
-                    duration:350
-                },
-                outTarget:{
-                    from:0,
-                    duration:150
-                }
-            };
+        defaultValue = {
+            inTarget: {
+                duration: 350
+            },
+            outTarget: {
+                from: 0,
+                duration: 150
+            }
+        };
 
         // 기본값과 사용자 정의 값 병합
         opt = this.extend(defaultValue, opt);
 
         // 나가는 페이지 스타일 초기화 값
         this.outTargetCss = {
-            position:"absolute",
-            width:$(opt.outTarget.el).width(),
-            scale:1,
-            opacity:1,
-            perspective:$(opt.outTarget.el).width(),
-            rotate3d:"0, 0, 0, 0",
-            overflow:"hidden"
+            position: "absolute",
+            width: $(opt.outTarget.el).width(),
+            scale: 1,
+            opacity: 1,
+            perspective: $(opt.outTarget.el).width(),
+            rotate3d: "0, 0, 0, 0",
+            overflow: "hidden"
         };
 
         // 들어오는 페이지 스타일 초기화 값
         this.inTargetCss = {
-            position:"absolute",
-            width:$(opt.inTarget.el).width(),
-            scale:0.5,
-            opacity:0,
-            perspective:$(opt.outTarget.el).width(),
-            rotate3d:"0, 0, 0, 0",
-            overflow:"hidden"
+            position: "absolute",
+            width: $(opt.inTarget.el).width(),
+            scale: 0.5,
+            opacity: 0,
+            perspective: $(opt.outTarget.el).width(),
+            rotate3d: "0, 0, 0, 0",
+            overflow: "hidden"
         };
 
         $(opt.inTarget.el).css(this.inTargetCss);
         $(opt.outTarget.el).css(this.outTargetCss).transition({
-            scale:0.5,
-            opacity:0
+            scale: 0.5,
+            opacity: 0
         }, opt.outTarget.duration, opt.outTarget.timing, function () {
             $(this).css({
-                scale:1
+                scale: 1
             });
             opt.outTarget.done();
 
             $(opt.inTarget.el).transition({
-                scale:1,
-                opacity:1
+                scale: 1,
+                opacity: 1
             }, opt.inTarget.duration, opt.inTarget.timing, function () {
                 self.launcher._done(opt);
             });
@@ -80,39 +80,39 @@ $(function () {
     window.addEventListener('load', hideAddressBar, false);  // 페이지 로드 되었을 때 실행
     window.addEventListener('orientationchange', hideAddressBar, false); // 화면이 가로/세로 전환되었을 때 실행
 
-    $("#front .btn").live("click", function (e) {
+    $(document).on("click", "#front .btn", function () {
         var transitionType = $(this).attr("data-transition"),
-            inTargetID = "#back",
-            outTargetID = "#front";
+        inTargetID = "#back",
+        outTargetID = "#front";
         Transition.launcher({
-            transitionType:transitionType, // 화면전환 효과 기본 None(효과 없음)
-            inTarget:{
-                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+            transitionType: transitionType, // 화면전환 효과 기본 None(효과 없음)
+            inTarget: {
+                el: inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
-            outTarget:{
-                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+            outTarget: {
+                el: outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
-            isReverse:false, // 뒤로가기 여부
-            done:function () {
+            isReverse: false, // 뒤로가기 여부
+            done: function () {
                 $("#front").removeClass("current");
                 $("#back").addClass("current");
             }
         });
     });
 
-    $("#back .btn").live("click", function (e) {
+    $(document).on("click", "#back .btn", function () {
         var transitionType = $(this).attr("data-transition"),
-            outTargetID = "#back",
-            inTargetID = "#front";
+        outTargetID = "#back",
+        inTargetID = "#front";
         Transition.launcher({
-            inTarget:{
-                el:inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
+            inTarget: {
+                el: inTargetID // 들어오는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
-            outTarget:{
-                el:outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
+            outTarget: {
+                el: outTargetID // 나가는 페이지의 element의 셀렉터나 ID 또는 클래스
             },
-            isReverse:true, // 뒤로가기 여부
-            done:function () {
+            isReverse: true, // 뒤로가기 여부
+            done: function () {
                 $("#front").addClass("current");
                 $("#back").removeClass("current");
             }
