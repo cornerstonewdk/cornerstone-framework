@@ -184,7 +184,7 @@ describe( 'Util Test', function () {
             } );
             $( '#debug-button' ).off( 'click' ).on( 'click', function () {
                 logging.debug( 'Debug 메시지를 로그에 남깁니다.' );
-                expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'profile' ) ).to.be.false;
+                expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'debug' ) ).to.be.false;
             } ).trigger( 'click' );
             setTimeout( function () {
                 $( '#info-button' ).off( 'click' ).on( 'click', function () {
@@ -240,7 +240,7 @@ describe( 'Util Test', function () {
             var $frame;
             SKT.authorize( {
                 clientId: '7',
-                redirectUri: 'http://cornerstone.sktelecom.com/2/test-util/client_redirect.html',
+                redirectUri: 'http://cornerstone.sktelecom.com/2/test/util/client_redirect.html',
                 success: function( token ) {
                     expect( token ).to.be.not.undefined;
                     expect( typeof token ).to.be.an( 'string' );
