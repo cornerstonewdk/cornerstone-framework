@@ -9,8 +9,8 @@ define( [ 'backbone', 'jquery', 'bootstrap' ], function( Backbone, $ ) {
 		 */
 		initialize: function() {
 			// Form과 그 하위의 :input 들에 대해서 tooltip을 설정한다.
-			this.$el.tooltip( { trigger: 'manual', animation: false } );
-			this.$( ':input' ).tooltip( { trigger: 'manual', animation: false } );
+			this.$el.tooltip( { trigger: 'manual', animation: false, container: 'body' } );
+			this.$( ':input' ).tooltip( { trigger: 'manual', animation: false, container: 'body' } );
 			this.reset();
 		},
 		
@@ -19,8 +19,8 @@ define( [ 'backbone', 'jquery', 'bootstrap' ], function( Backbone, $ ) {
 		 * Form을 submit 할 때 마다, 그리고 검증이 성공할 때 실행된다.
 		 */
 		reset: function() {
-			this.$( '.control-group' ).removeClass( 'error' );
-			this.$( '.control-group' ).find( '.help-inline,.help-block' ).text( '' ).hide();
+			this.$( '.form-group' ).removeClass( 'has-error' );
+			this.$( '.form-group' ).find( '.help-block' ).text( '' ).hide();
 			this.$( ':input' ).tooltip( 'hide' ).removeAttr( 'data-invalid' );
 		},
 		
@@ -40,11 +40,11 @@ define( [ 'backbone', 'jquery', 'bootstrap' ], function( Backbone, $ ) {
 			if ( err.attribute ) field = this.$( ':input[name=' + err.attribute + ']:first' );
 			field = field || this.$( ':input:first' );
 			
-			var group = field.parents( '.control-group' );
-			group && group.addClass( 'error' );
+			var group = field.parents( '.form-group' );
+			group && group.addClass( 'has-error' );
 			
-			// help-inline/help-block을 찾아서 메시지를 표시한다. help-inline/help-block이 없으면 tooltip을 사용한다.
-			var help = group.find( '.help-inline,.help-block' );
+			// help-block을 찾아서 메시지를 표시한다. help-block이 없으면 tooltip을 사용한다.
+			var help = group.find( '.help-block' );
 			if ( help && help.length )
 				help.text( err.message || err ).show();
 			else {
