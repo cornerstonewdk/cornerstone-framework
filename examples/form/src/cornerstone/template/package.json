@@ -1,0 +1,16 @@
+{
+	"name": "template",
+	"version": "2.0.0",
+	"description": "template loader",
+	"jam": {
+		"dependencies": {
+			"jquery": "1.10.2",
+			"handlebars": "1.0.0"
+		},
+		"main": "template.js",
+		"shim": {
+			"deps": [ "jquery", "handlebars" ],
+			"exports": "template"
+		}
+	}
+}
