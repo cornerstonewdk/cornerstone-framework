@@ -191,11 +191,15 @@ div.doc-content {
 
     border: 10px solid transparent;
 
-    left: -5px;
+    /*left: -5px;*/
+    left: 355px;
     top: 50%;
     margin-top: -16px;
-    border-right: 16px solid #333;
+    border-left: 16px solid #333;
     cursor: pointer;
+}
+.floating-menu-btn {
+    visibility: hidden;
 }
 @media(max-width: 1024px) {
     #floating-detail-menu {
@@ -203,6 +207,9 @@ div.doc-content {
     }
     #floating-detail-menu-background {
         width: 238px;
+    }
+    #detail-menu-close-arrow {
+        left: 273px;
     }
 }
 /*
@@ -254,10 +261,20 @@ div.doc-content {
         visibility: hidden;
     }
     #detail-menu-open-arrow {
-        top: 200px;
+        /*
+        visibility: hidden;
+        */
     }
     #detail-menu-close-arrow {
-        top: 200px;
+        left: 5px;
+        /*
+        visibility: hidden;
+        */
+    }
+    .floating-menu-btn {
+        /*
+        visibility: visible;
+        */
     }
 }
 @media(max-width: 640px) {
