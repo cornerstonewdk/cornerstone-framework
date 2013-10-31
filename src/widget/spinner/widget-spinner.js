@@ -98,8 +98,12 @@
     });
 
     return Backbone ? Backbone.View.extend({
-        render: function () {
-            this.$el.spinner(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.spinner(methodName);
+            } else {
+                this.$el.spinner(this.options);
+            }
             return this;
         }
     }) : Spinner;

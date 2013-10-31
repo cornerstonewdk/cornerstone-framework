@@ -23,8 +23,12 @@
     };
 
     return Backbone && Backbone.View.extend({
-        render: function () {
-            this.$el.typeahead(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.typeahead(methodName);
+            } else {
+                this.$el.typeahead(this.options);
+            }
             return this;
         }
     });

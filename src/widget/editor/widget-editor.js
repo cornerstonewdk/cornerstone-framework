@@ -259,8 +259,12 @@
     });
 
     return Backbone && Backbone.View.extend({
-        render: function () {
-            this.$el.featuredEditor(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.featuredEditor(methodName);
+            } else {
+                this.$el.featuredEditor(this.options);
+            }
             return this;
         }
     });

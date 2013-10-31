@@ -686,8 +686,12 @@
     }
 
     return Backbone && Backbone.View.extend({
-        render: function () {
-            this.$el.motioncaptcha(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.motioncaptcha(methodName);
+            } else {
+                this.$el.motioncaptcha(this.options);
+            }
             return this;
         }
     });
