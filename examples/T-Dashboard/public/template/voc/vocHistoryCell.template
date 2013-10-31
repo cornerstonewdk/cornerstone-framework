@@ -1,3 +1,0 @@
-<li class="list-group-item">
-	<h5><span class="label label-{{success}}">{{customerSatisfaction}}</span> {{vocRequest}}</h5>
-</li>

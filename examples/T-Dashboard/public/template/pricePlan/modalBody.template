@@ -1,9 +1,0 @@
-<div id="inputRange" title="Input Range" class="widget-container">
-	<div class="span12">
-		{{#if alert}}
-			{{body}}        
-        {{else}}
-			<input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" class="widget-range btn-block inline"/>
-        {{/if}}
-	</div>
-</div>

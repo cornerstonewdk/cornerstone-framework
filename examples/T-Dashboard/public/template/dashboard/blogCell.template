@@ -1,3 +1,0 @@
-<li class="list-group-item">
-	<a href="{{link}}" target="_blannk"  class="txt-con2">{{title}}</a>
-</li>
