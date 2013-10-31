@@ -184,7 +184,7 @@ describe( 'Util Test', function () {
             } );
             $( '#debug-button' ).off( 'click' ).on( 'click', function () {
                 logging.debug( 'Debug 메시지를 로그에 남깁니다.' );
-                expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'profile' ) ).to.be.false;
+                expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'debug' ) ).to.be.false;
             } ).trigger( 'click' );
             setTimeout( function () {
                 $( '#info-button' ).off( 'click' ).on( 'click', function () {
