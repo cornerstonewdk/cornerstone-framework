@@ -240,7 +240,7 @@ describe( 'Util Test', function () {
             var $frame;
             SKT.authorize( {
                 clientId: '7',
-                redirectUri: 'http://cornerstone.sktelecom.com/2/util/client_redirect.html',
+                redirectUri: 'http://cornerstone.sktelecom.com/2/test/util/client_redirect.html',
                 success: function( token ) {
                     expect( token ).to.be.not.undefined;
                     expect( typeof token ).to.be.an( 'string' );
