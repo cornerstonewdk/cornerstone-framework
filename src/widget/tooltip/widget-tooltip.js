@@ -22,8 +22,12 @@
     });
 
     return Backbone && Backbone.View.extend({
-        render: function () {
-            this.$el.tooltip(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.tooltip(methodName);
+            } else {
+                this.$el.tooltip(this.options);
+            }
             return this;
         }
     });

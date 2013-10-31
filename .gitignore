@@ -16,6 +16,12 @@ examples/smart-bill/node_modules
 examples/smart-bill/public/data
 examples/lottery/node_modules
 examples/lottery/dist
+examples/cornerstone-ui/node_modules
+examples/cornerstone-ui/dist
+examples/page-transition/node_modules
+examples/page-transition/dist
+examples/widget-chart/node_modules
+examples/widget-chart/dist
 bower_components
 build/node_modules
 tools/cornerstone-cli/src/node_modules
@@ -23,11 +29,7 @@ tools/cornerstone-cli/build/node_modules
 /Gruntfile.js
 /package.json
 server/SKT_Open_API_Provider/node_modules
-test/test-cornerstone-ui/node_modules
-test/test-cornerstone-ui/dist
 test/test-total/node_modules
 test/test-total/dist
 test/test-util/node_modules
 test/test-util/dist
-test/test-widget-chart/node_modules
-test/test-widget-chart/dist

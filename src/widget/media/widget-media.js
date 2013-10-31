@@ -170,9 +170,12 @@
         tagName: 'div',
         className: 'featured-media',
 
-        render: function () {
-            this.$el.featuredMedia(this.options);
-
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.featuredMedia(methodName);
+            } else {
+                this.$el.featuredMedia(this.options);
+            }
             return this;
         }
     });

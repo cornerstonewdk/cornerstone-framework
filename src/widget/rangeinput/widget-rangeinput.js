@@ -431,8 +431,12 @@
     });
 
     return Backbone && Backbone.View.extend({
-        render: function () {
-            this.$el.rangeinput(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.rangeinput(methodName);
+            } else {
+                this.$el.rangeinput(this.options);
+            }
             return this;
         }
     });

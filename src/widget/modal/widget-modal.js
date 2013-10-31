@@ -8,8 +8,12 @@
 
 }(window, function ($, _, Backbone) {
     return Backbone && Backbone.View.extend({
-        render: function () {
-            this.$el.modal(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.modal(methodName);
+            } else {
+                this.$el.modal(this.options);
+            }
             return this;
         }
     });
