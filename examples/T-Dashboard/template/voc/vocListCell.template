@@ -1,0 +1,4 @@
+<li data-voclist="{{vocId}}" class="list-group-item">
+	<span class="name">{{customerName}}</span> 
+	<span class="txt-con">{{vocRequest}}</span>
+</li>

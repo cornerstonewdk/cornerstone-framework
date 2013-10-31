@@ -1,0 +1,38 @@
+#pricePlan .side-bar {
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+@media all and (max-width: 767px) {
+	#pricePlan .side-bar {
+		margin-left: 0px;
+	}
+}
+
+#pricePlanContents .typo-pressed-price {
+	color: orangered;
+}
+
+#pricePlanContents .typo-number {
+	color: orangered;
+	font-size: 0.7em;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+.no-padding-phone {
+	padding: 0 15px;
+}
+
+@media all and (max-width: 767px) {
+	.no-padding-phone {
+		padding: 0px;
+	}
+	.nav-tabs>li>a {
+		padding: 10px 10px;
+	}
+}
+
+.well-height-77 {
+	height: 77px;
+}

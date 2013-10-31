@@ -1,0 +1,108 @@
+<!-- 요금 정책 -->
+<div class="col-xs-12 col-md-12 no-padding-phone">
+	<!-- 상품명 및 수정 버튼 -->
+	<div class="well well-shadow well-billie well-height-77">
+		<div class="col-xs-10 col-md-10">
+			<h4>
+				상품명 : <span class="pressed-price">{{pricePlanName}}</span> 
+			</h4>
+		</div>
+		<div class="col-xs-2 col-md-2">
+			<button class="btn btn-success hidden-xs pull-right" type="button" id="modifyButton">수정</button>
+		</div>
+		
+	</div>
+</div>
+<div class="col-xs-12 col-md-12 no-padding-phone">
+	<div class="well well-shadow well-billie">
+		<!-- 정책 적용일 및 작성일 -->
+		<div>
+			<h4>정책</h4>
+			<hr/>
+			<div class="row" style="text-align:center;">
+				<div class="panel-group col-xs-6">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">정책 적용일</h3>
+						</div>
+						<div class="panel-body">
+							{{applyDate}}
+						</div>
+					</div>
+				</div>
+				<div class="panel-group col-xs-6">
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h3 class="panel-title">정책 작성일</h3>
+						</div>
+						<div class="panel-body">
+							{{makeDate}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<!-- 고객 조건 -->
+		<div>
+			<h4>고객 조건</h4>
+			<hr/>
+			<div id="dropCustomerTypeZone" class="alert alert-success">
+				<div data-show="false" data-customertype="basic">일반</div>
+				<div data-show="false" data-customertype="woman">여성</div>
+				<div data-show="false" data-customertype="ting">팅</div>
+				<div data-show="false" data-customertype="silver">실버</div>
+			</div>
+		</div>
+		<br/>
+		<!-- 상품 조건 -->
+		<div>
+			<h4>상품 조건</h4>
+			<hr/>
+			<ul id="dropProductTypeZone" class="nav nav-tabs">
+	            <li class="active"><a data-toggle="tab" data-show="false" data-producttype="voice" href="#voice">음성</a></li>
+	            <li><a href="#data" data-toggle="tab" data-show="false" data-producttype="data">데이터</a></li>
+	            <li><a href="#message" data-toggle="tab" data-show="false" data-producttype="message">메세징</a></li>
+	            <li><a href="#roaming" data-toggle="tab" data-show="false" data-producttype="roaming">로밍</a></li>
+	        </ul>
+	        <div id="myTabContent" class="tab-content">
+	            <div class="tab-pane fade in active" id="voice" data-show="false" data-producttype="voice" data-extradata="0">
+	                <p>음성<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 음성 통화량을 소진 시 추가 이용료가 부가됩니다.</p>
+	            </div>
+	            <div class="tab-pane fade" id="data" data-show="false" data-producttype="data" data-extradata="0">
+	                <p>데이터<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 데이터 요금이 부가됩니다.</p>
+	            </div>
+	            <div class="tab-pane fade" id="message" data-show="false" data-producttype="message" data-extradata="0">
+	                <p>메세징<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 문자 소진 시 추가 요금이 부가됩니다.</p>
+	            </div>
+	            <div class="tab-pane fade" id="roaming" data-show="false" data-producttype="roaming" data-extradata="0">
+	                <p>로밍<p class="typo-number">0</p>매월 1일 초기화 되며 기본 제공 데이터 소진 시 추가 로밍 요금이 부가됩니다.</p>
+	            </div>
+	        </div>
+		</div>
+		<br/>
+		<!-- 회선 조건 -->
+		<div class="row">
+			<div class="col-xs-6 col-md-6">
+				<h4>회선 조건</h4>
+				<hr/>
+				<div id="dropCommTypeZone">
+					<div class="well well-shadow" data-show="false" data-commtype="3g">3G</div>
+					<div class="well well-shadow" data-show="false" data-commtype="lte">LTE</div>
+				</div>
+			</div>
+			<!-- 할인 조건 -->
+			<div class="col-xs-6 col-md-6">
+				<h4>할인 조건</h3>
+				<hr/>
+				<div id="dropDiscountTypeZone">
+					<div class="well well-shadow" data-show="false" data-discounttype="double">더블할인</div>
+					<div class="well well-shadow" data-show="false" data-discounttype="special">스페셜할인</div>
+					<div class="well well-shadow" data-show="false" data-discounttype="good">우량할인</div>
+					<div class="well well-shadow" data-show="false" data-discounttype="tfamily">T끼리 온가족할인</div>
+					<div class="well well-shadow" data-show="false" data-discounttype="lteplus">LTE 플러스할인</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

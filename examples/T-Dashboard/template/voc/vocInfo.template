@@ -1,0 +1,48 @@
+<!-- VOC 접수 고객정보 -->
+<div class="col-xs-12 col-md-12">
+	<div class="well well-shadow well-billie">
+		<h4>VOC 접수 고객정보</h4>
+		<table class="table table-hover table-bordered">
+	        <tbody>
+		        <tr class="success">
+		            <td>이름</td>
+		            <td><strong>{{customerName}}</strong> 님</td>
+		        </tr>
+		        <tr>
+		            <td>고객등급</td>
+		            <td>{{customerLevel}}</td>
+		        </tr>
+		        <tr class="success">
+		            <td>사용기기</td>
+		            <td>{{customerDevice}}</td>
+		        </tr>
+		        <tr>
+		            <td>요금제</td>
+		            <td>{{customerPricePlan}}</td>
+		        </tr>
+	        </tbody>
+		</table>
+	</div>
+</div>
+<!-- VOC 접수내용 + 조치내용 -->
+<div class="col-xs-12 col-md-6">
+	<div class="well well-shadow well-billie">
+		<h4>VOC 접수내용</h4>
+		<hr/>
+		<p>{{vocRequest}}</p>
+		<br/>
+		<h4>조치 내용</h3>
+		<hr/>
+		<p>{{vocResponse}}</p>
+	</div>
+</div>
+<!-- VOC 이력 -->
+<div class="col-md-6 hidden-xs">
+	<div class="well well-shadow well-billie">
+		<h4>VOC 이력</h3>
+		<div>
+			<ul id="vocHistory" class="list-group">
+			</ul>
+		</div>
+	</div>
+</div>	

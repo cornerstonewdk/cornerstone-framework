@@ -1,0 +1,22 @@
+<div id="pricePlan" class="row">
+	<div class="col-xs-12 col-md-3">
+		<div class="panel-group side-bar">
+			<div class="hidden-xs">
+				<button class="btn btn-primary" id="makePricePlan" type="button" style="width: 100%">새로운 정책</button>
+			</div>
+			<br />
+    		<div class="panel">
+        		<!-- 정책 목록 -->
+        		<div class="panel-heading">
+        			<h3 class="panel-title"><span class="glyphicon glyphicon-list-alt"></span> 정책 목록</h3>
+        		</div>
+        		<div class="panel-body">
+		            <ul id="pricePlanList" class="list-group list-group-flush list-group-cornerstone">
+		            </ul>
+		        </div>
+	        </div>
+		</div>
+	</div>
+	<div id="pricePlanContents" class="col-xs-12 col-md-9">
+	</div>
+</div>
