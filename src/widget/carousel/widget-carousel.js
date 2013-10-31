@@ -85,8 +85,12 @@
     });
 
     return Backbone ? Backbone.View.extend({
-        render: function () {
-            this.$el.carousel(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.carousel(methodName);
+            } else {
+                this.$el.carousel(this.options);
+            }
             return this;
         }
     }) : Carousel;

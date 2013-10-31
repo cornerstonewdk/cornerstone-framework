@@ -42,8 +42,12 @@
     $.fn.button.Constructor = Button;
 
     return Backbone ? Backbone.View.extend({
-        render: function () {
-            this.$el.button(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.button(methodName);
+            } else {
+                this.$el.button(this.options);
+            }
             return this;
         }
     }) : Button;

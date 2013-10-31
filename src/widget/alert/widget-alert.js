@@ -55,8 +55,12 @@
     $(document).off('click.bs.alert.data-api').on('click.bs.alert.data-api', dismiss, Alert.prototype.close);
 
     return Backbone ? Backbone.View.extend({
-        render: function () {
-            this.$el.alert(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.alert(methodName);
+            } else {
+                this.$el.alert(this.options);
+            }
             return this;
         }
     }) : Alert;

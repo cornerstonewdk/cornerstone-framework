@@ -22,8 +22,12 @@
     });
 
     return Backbone ? Backbone.View.extend({
-        render: function () {
-            this.$el.popover(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.popover(methodName);
+            } else {
+                this.$el.popover(this.options);
+            }
             return this;
         }
     }) : Popover;

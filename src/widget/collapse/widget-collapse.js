@@ -47,8 +47,12 @@
     $.fn.collapse.Constructor = Collapse;
 
     return Backbone ? Backbone.View.extend({
-        render: function () {
-            this.$el.collapse(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.collapse(methodName);
+            } else {
+                this.$el.collapse(this.options);
+            }
             return this;
         }
     }) : Collapse;

@@ -8,9 +8,14 @@
 
 }(window, function ($, _, Backbone) {
     return Backbone && Backbone.View.extend({
-        render: function () {
-            if (!this.$el.data('toggle')) this.$el.attr('data-toggle', 'dropdown');
-            this.$el.dropdown(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.dropdown(methodName);
+            } else {
+                if (!this.$el.data('toggle')) this.$el.attr('data-toggle', 'dropdown');
+                this.$el.dropdown(this.options);
+                return this;
+            }
             return this;
         }
     });

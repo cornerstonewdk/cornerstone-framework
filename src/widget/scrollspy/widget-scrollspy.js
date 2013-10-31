@@ -8,8 +8,12 @@
 
 }(window, function ($, _, Backbone) {
     return Backbone && Backbone.View.extend({
-        render: function() {
-            this.$el.scrollspy(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.scrollspy(methodName);
+            } else {
+                this.$el.scrollspy(this.options);
+            }
             return this;
         }
     });

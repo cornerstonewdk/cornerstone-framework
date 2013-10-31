@@ -8,8 +8,12 @@
 
 }(window, function ($, _, Backbone) {
     return Backbone && Backbone.View.extend({
-        render: function() {
-            this.$el.tab(this.options);
+        render: function(methodName) {
+            if(typeof methodName === "string") {
+                this.$el.tab(methodName);
+            } else {
+                this.$el.tab(this.options);
+            }
             return this;
         }
     });
