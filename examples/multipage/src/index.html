@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>MultipageRouter Test</title>
+		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<style>
+		body {
+			padding-top: 70px;
+		}
+
+		.page {
+			display: none;
+		}
+
+		#code {
+			position: absolute;
+			top: 400px;
+			width: inherit;
+		}
+
+		.tab-pane {
+			padding-top: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">MultipageRouter Test</a>
+			</div>
+		</div>
+		<div class="container">
+			<!-- 사용자 목록 화면 -->
+			<section id="list-section" class="page">
+				<div class="page-header">
+					<h1>사용자 목록</h1>
+				</div>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>이름</th>
+							<th>이메일</th>
+							<th>비밀번호</th>
+							<th>상세보기</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>홍길동</td>
+							<td>h@gmail.com</td>
+							<td>1111</td>
+							<td><a href="#detail/1" class="btn btn-success">상세보기</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="#add" class="btn btn-default">사용자 추가 (기본)</a>
+				<a href="#add" class="btn btn-default" data-transition="flip">사용자 추가 (Flip)</a>
+				<a href="#add" class="btn btn-default" data-transition="slide">사용자 추가 (Slide)</a>
+				<a href="#add" class="btn btn-default" data-transition="fade">사용자 추가 (Fade)</a>
+			</section>
+			<!-- 사용자 추가 화면 -->
+			<section id="add-section" class="page">
+				<div class="page-header">
+					<h1>사용자 추가</h1>
+				</div>
+				<form id="add-form" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">이름</label>
+						<div class="col-lg-10 col-md-10 col-sm-10">
+							<input type="text" class="form-control" id="name" name="name" data-placement="right"/>
+							<span class="help-inline"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="email">이메일</label>
+						<div class="col-lg-10 col-md-10 col-sm-10">
+							<input type="text" class="form-control" id="email" name="email" data-placement="right"/>
+							<span class="help-inline"></span>
+						</div>
+					</div>
+					<a href="#list" class="btn btn-default pull-right">취소</a>
+				</form>
+			</section>
+			<!-- 사용자 상세정보 화면 -->
+			<section id="detail-section" class="page">
+				<div class="page-header">
+					<h1>사용자 상세정보</h1>
+				</div>
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th>이름</th>
+						<td>홍길동</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>h@gmail.com</td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td>1111</td>
+					</tr>
+				</table>
+				
+				<a href="#list" class="btn btn-default">확인</a>
+			</section>
+			<!-- 오류 화면 -->
+			<section id="err-section" class="page hide">
+				<div class="alert alert-error">
+					<h4>오류!</h4>
+					존재하지 않는 주소입니다.
+				</div>
+			</section>
+
+			<div id="code">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#html" data-toggle="tab">index.html</a></li>
+					<li><a href="#js" data-toggle="tab">main.js</a></li>
+				</ul>
+				
+				<div class="tab-content">
+					<div class="tab-pane active" id="html">
+						<pre>
+&lt;!DOCTYPE html>
+&lt;html lang="ko">
+	&lt;head>
+		&lt;meta charset="utf-8"/>
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		&lt;title>MultipageRouter Test&lt;/title>
+		&lt;link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		&lt;style>
+		body {
+			padding-top: 70px;
+		}
+
+		.page {
+			display: none;
+		}
+		&lt;/style>
+	&lt;/head>
+	&lt;body>
+		&lt;div class="navbar navbar-inverse navbar-fixed-top">
+			&lt;div class="navbar-header">
+				&lt;a class="navbar-brand" href="#">MultipageRouter Test&lt;/a>
+			&lt;/div>
+		&lt;/div>
+		&lt;div class="container">
+			&lt;!-- 사용자 목록 화면 -->
+			&lt;section id="list-section" class="page">
+				&lt;div class="page-header">
+					&lt;h1>사용자 목록&lt;/h1>
+				&lt;/div>
+				&lt;table class="table table-striped table-bordered">
+					&lt;thead>
+						&lt;tr>
+							&lt;th>이름&lt;/th>
+							&lt;th>이메일&lt;/th>
+							&lt;th>비밀번호&lt;/th>
+							&lt;th>상세보기&lt;/th>
+						&lt;/tr>
+					&lt;/thead>
+					&lt;tbody>
+						&lt;tr>
+							&lt;td>홍길동&lt;/td>
+							&lt;td>h@gmail.com&lt;/td>
+							&lt;td>1111&lt;/td>
+							&lt;td>&lt;a href="#detail/1" class="btn btn-success">상세보기&lt;/a>&lt;/td>
+						&lt;/tr>
+					&lt;/tbody>
+				&lt;/table>
+				&lt;a href="#add" class="btn btn-default">사용자 추가 (기본)&lt;/a>
+				&lt;a href="#add" class="btn btn-default" data-transition="flip">사용자 추가 (Flip)&lt;/a>
+				&lt;a href="#add" class="btn btn-default" data-transition="slide">사용자 추가 (Slide)&lt;/a>
+				&lt;a href="#add" class="btn btn-default" data-transition="fade">사용자 추가 (Fade)&lt;/a>
+			&lt;/section>
+			&lt;!-- 사용자 추가 화면 -->
+			&lt;section id="add-section" class="page">
+				&lt;div class="page-header">
+					&lt;h1>사용자 추가&lt;/h1>
+				&lt;/div>
+				&lt;form id="add-form" class="form-horizontal">
+					&lt;div class="form-group">
+						&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">이름&lt;/label>
+						&lt;div class="col-lg-10 col-md-10 col-sm-10">
+							&lt;input type="text" class="form-control" id="name" name="name" data-placement="right"/>
+							&lt;span class="help-inline">&lt;/span>
+						&lt;/div>
+					&lt;/div>
+					&lt;div class="form-group">
+						&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="email">이메일&lt;/label>
+						&lt;div class="col-lg-10 col-md-10 col-sm-10">
+							&lt;input type="text" class="form-control" id="email" name="email" data-placement="right"/>
+							&lt;span class="help-inline">&lt;/span>
+						&lt;/div>
+					&lt;/div>
+					&lt;a href="#list" class="btn btn-default pull-right">취소&lt;/a>
+				&lt;/form>
+			&lt;/section>
+			&lt;!-- 사용자 상세정보 화면 -->
+			&lt;section id="detail-section" class="page">
+				&lt;div class="page-header">
+					&lt;h1>사용자 상세정보&lt;/h1>
+				&lt;/div>
+				&lt;table class="table table-striped table-bordered">
+					&lt;tr>
+						&lt;th>이름&lt;/th>
+						&lt;td>홍길동&lt;/td>
+					&lt;/tr>
+					&lt;tr>
+						&lt;th>이메일&lt;/th>
+						&lt;td>h@gmail.com&lt;/td>
+					&lt;/tr>
+					&lt;tr>
+						&lt;th>비밀번호&lt;/th>
+						&lt;td>1111&lt;/td>
+					&lt;/tr>
+				&lt;/table>
+				
+				&lt;a href="#list" class="btn btn-default">확인&lt;/a>
+			&lt;/section>
+			&lt;!-- 오류 화면 -->
+			&lt;section id="err-section" class="page hide">
+				&lt;div class="alert alert-error">
+					&lt;h4>오류!&lt;/h4>
+					존재하지 않는 주소입니다.
+				&lt;/div>
+			&lt;/section>
+		&lt;/div>
+
+		&lt;script src="cornerstone/launcher/launcher.js" data-target="app/main">&lt;/script>
+	&lt;/body>
+&lt;/html></pre>
+					</div>
+					<div class="tab-pane" id="js">
+						<pre>
+/**
+ * main.js
+ * 애플리케이션 메인
+ */
+define( [ 'backbone', 'multipage-router', 'bootstrap' ], function( Backbone, MultipageRouter ) {
+	return {
+		launch: function() {
+
+			// Router
+			var MainRouter = MultipageRouter.extend( {
+			
+				pages: {
+					'list-page': {
+						fragment: [ '', 'list' ],
+						el: '#list-section',
+						render: function() {
+							// 이 페이지가 활성화되고 Transition이 일어나기 전 실행된다. 
+						},
+						active: function() {
+							// 이 페이지가 활성화되고 Transition이 일어나고 나서 실행된다.
+						},
+						inactive: function( nextPageId ) {
+							// 다른 페이지가 활성화되기 전 이 페이지가 비활성화되면서 실행된다.
+						}
+					},
+					'add-page': {
+						fragment: 'add',
+						el: '#add-section'
+					},
+					'detail-page': {
+						fragment: 'detail/:id',
+						el: '#detail-section'
+					},
+					'default': {
+						el: '#err-section'
+					}
+				},
+				
+				transitions: {
+					'list-page:add-page': { type: 'slide', duration: 3000 },
+					'list-page:default': 'slide',
+					'list-page:detail-page': 'flip'
+				}
+			} );
+			
+			new MainRouter();
+			Backbone.history.start();
+		}	
+	};
+} );</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
+	</body>
+</html>

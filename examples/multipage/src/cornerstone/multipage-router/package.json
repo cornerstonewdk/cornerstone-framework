@@ -1,0 +1,18 @@
+{
+	"name": "multipage-router",
+	"version": "2.0.0",
+	"description": "Backbone.Router를 확장하여 여러 페이지로 구성된 웹앱에서 라우팅을 통하여 페이지 이동이 쉽도록 지원한다. 기존의 Router와는 다르게 routes 속성 대신 pages 속성으로 라우팅을 정의한다.",
+	"jam": {
+		"dependencies": {
+			"backbone": "1.0.0",
+			"underscore": "1.4.4",
+			"jquery": "1.10.2",
+			"transition": "2.0.0"
+		},
+		"main": "multipage.js",
+		"shim": {
+			"deps": [ "backbone", "underscore", "jquery", "transition" ],
+			"exports": "multipage-router"
+		}
+	}
+}
