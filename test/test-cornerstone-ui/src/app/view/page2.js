@@ -320,7 +320,7 @@ define([
 
                 // 아이템뷰를 만든다.
                 var html = '{{_id}}. {{this.title}}';
-                html += '<abbr class="pull-right">';
+                html += '<div class="pull-right">';
                 html += '   <span class="badge">{{this.published}}</span>';
                 html += '   <span class="glyphicon glyphicon-chevron-right"></span>';
                 html += '</div>';
