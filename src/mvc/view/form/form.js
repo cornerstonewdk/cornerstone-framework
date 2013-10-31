@@ -29,13 +29,13 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], 
 					
 					if ( _.isArray( value ) )
 						_.each( value, function( item, index ) {
-							self.$( ':input[name=' + key + '][value=' + item + ']' ).attr( 'checked', 'checked' );
+							self.$( ':input[name=' + key + '][value=' + item + ']' ).prop( 'checked', true );
 						} );
 					else
-						self.$( ':input[name=' + key + '][value=' + value + ']' ).attr( 'checked', 'checked' );
+						self.$( ':input[name=' + key + '][value=' + value + ']' ).prop( 'checked', true );
 				}
 				else if ( type && type.toUpperCase() === 'RADIO' )
-					self.$( ':input[name=' + key + '][value=' + value + ']' ).attr( 'checked', 'checked' );
+					self.$( ':input[name=' + key + '][value=' + value + ']' ).prop( 'checked', true );
 				else
 					input.val( value );
 			} );
@@ -69,12 +69,11 @@ define( [ 'backbone', 'underscore', 'jquery', 'validation-view', 'bootstrap' ], 
 				}
 			} );
 			
-			this.model.off( 'invalid', this._onValidationError, this );
-			this.model.on( 'invalid', this._onValidationError, this );
 			this.model.clear( { silent: true } );
-			this.model.set( values, { validate: true } );
+			this.model.set( values );
 			
 			if ( this.model.isValid() ) this.validation.success();
+			else this._onValidationError( this.model, this.model.validationError );
 			
 			return this.model;
 		}
