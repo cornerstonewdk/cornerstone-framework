@@ -183,7 +183,7 @@ describe( 'Util Test', function () {
                 time: 'screen'
             } );
             $( '#debug-button' ).off( 'click' ).on( 'click', function () {
-                logging.info( 'Info 메시지를 로그에 남깁니다.' );
+                logging.debug( 'Debug 메시지를 로그에 남깁니다.' );
                 expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'profile' ) ).to.be.false;
             } ).trigger( 'click' );
             setTimeout( function () {
@@ -238,7 +238,6 @@ describe( 'Util Test', function () {
         it( '인증이 완료되었을 시 success 콜백 함수에 token이 전달되는지 확인', function ( done ) {
             this.timeout( 1000 * 10 );
             var $frame;
-            // http://cornerstone.sktelecom.com/2/test/test-util/src/client_redirect.html
             SKT.authorize( {
                 clientId: '7',
                 redirectUri: 'http://cornerstone.sktelecom.com/2/test-util/client_redirect.html',
