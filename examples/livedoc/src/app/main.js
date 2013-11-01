@@ -101,8 +101,8 @@ define( [ 'jquery', 'backbone', 'multipage-router', 'model/documents', 'view/hom
 					//	'index:tags': 'fade'
 					//}
 				} );
-
-				new MainRouter();
+				window.app = {};
+				window.app.router = new MainRouter();
 				Backbone.history.start();
 			} );
 
