@@ -198,7 +198,7 @@ div.doc-content {
     border-left: 16px solid #333;
     cursor: pointer;
 }
-.floating-menu-btn {
+.floating-menu-hidden-region {
     visibility: hidden;
 }
 @media(max-width: 1024px) {
@@ -308,6 +308,16 @@ div.doc-content {
     font-style: oblique;
     font-weight: bold;
 }
+<<<<<<< HEAD
+
+div#floating-page-navi
+{
+  position:fixed;
+  top:90%;
+  right:5%;
+  z-index: 12;
+=======
 .img_architecture {
     width: 100%;
+>>>>>>> 040f2c80a955e66f258b602d58ef4757be492794
 }
