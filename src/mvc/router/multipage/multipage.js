@@ -63,6 +63,13 @@
 			if ( !_.isEmpty( this.pages ) ) {
 				
 				var routes = this.routes = {};
+
+				// default가 있다면 맨 마지막으로 보낸다.
+				var tmp = this.pages[ 'default' ];
+				if ( tmp ) {
+					this.pages = _.omit( this.pages, 'default' );
+					this.pages[ 'default' ] = tmp;
+				}
 				
 				_.each( this.pages, function( value, key ) {
 				
