@@ -192,7 +192,7 @@ body {
 
 #mocha-stats {
   position: fixed;
-  top: 15px;
+  top: 80px;
   right: 10px;
   font-size: 12px;
   margin: 0;
@@ -202,6 +202,8 @@ body {
 #mocha-stats .progress {
   float: right;
   padding-top: 0;
+  height: 41px;
+  border-radius: 40px;
 }
 
 #mocha-stats em {

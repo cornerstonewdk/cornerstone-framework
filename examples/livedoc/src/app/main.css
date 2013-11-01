@@ -308,6 +308,7 @@ div.doc-content {
     font-style: oblique;
     font-weight: bold;
 }
+<<<<<<< HEAD
 
 div#floating-page-navi
 {
@@ -315,4 +316,8 @@ div#floating-page-navi
   top:90%;
   right:5%;
   z-index: 12;
+=======
+.img_architecture {
+    width: 100%;
+>>>>>>> 040f2c80a955e66f258b602d58ef4757be492794
 }

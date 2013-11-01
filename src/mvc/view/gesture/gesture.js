@@ -17,7 +17,7 @@ define( [ 'backbone', 'underscore', 'jquery', 'jquery.hammer' ], function( Backb
 					var eventName = match[ 1 ], selector = match[ 2 ];
 					
 					// hammer.js에서 처리 가능한 이벤트를 정의한 selector들을 구한다.
-					if ( _.contains( [ 'hold', 'tap', 'doubletap', 'transformstart', 'transform', 'transformend', 'dragstart', 'drag', 'dragend', 'swipe', 'release' ], eventName ) ) {
+					if ( _.contains( [ 'hold', 'tap', 'doubletap', 'transformstart', 'transform', 'transformend', 'dragstart', 'drag', 'dragend', 'dragup', 'dragdown', 'dragleft', 'dragright', 'swipe', 'swipeup', 'swipedown', 'swipeleft', 'swiperight', 'rotate', 'pinch', 'pinchin', 'pinchout', 'touch', 'release' ], eventName ) ) {
 						if ( selectors[ selector ] )
 							selectors[ selector ].push( eventName );
 						else
@@ -30,11 +30,10 @@ define( [ 'backbone', 'underscore', 'jquery', 'jquery.hammer' ], function( Backb
 			
 				var options = hammerOptions ? _.clone( hammerOptions ) : {};
 				
-				options[ 'drag' ] = _.contains( value, 'dragstart' ) || _.contains( value, 'drag' ) || _.contains( value, 'dragend' );
-				options[ 'swipe' ] = _.contains( value, 'swipe' );
-				options[ 'transform' ] = _.contains( value, 'transformstart' ) || _.contains( value, 'transform' ) || _.contains( value, 'transformend' );
-				options[ 'tap' ] = _.contains( value, 'tap' );
-				options[ 'tap_double' ] = _.contains( value, 'doubletap' );
+				options[ 'drag' ] = _.contains( value, 'dragstart' ) || _.contains( value, 'drag' ) || _.contains( value, 'dragend' ) || _.contains( value, 'dragup' ) || _.contains( value, 'dragdown' ) || _.contains( value, 'dragleft' ) || _.contains( value, 'dragright' );
+				options[ 'swipe' ] = _.contains( value, 'swipe' ) || _.contains( value, 'swipeup' ) || _.contains( value, 'swipedown' ) || _.contains( value, 'swipeleft' ) || _.contains( value, 'swiperight' );
+				options[ 'transform' ] = _.contains( value, 'transformstart' ) || _.contains( value, 'transform' ) || _.contains( value, 'transformend' ) || _.contains( value, 'rotate' ) || _.contains( value, 'pinch' ) || _.contains( value, 'pinchin' ) || _.contains( value, 'pinchout' );
+				options[ 'tap' ] = _.contains( value, 'tap' ) || _.contains( value, 'doubletap' );
 				options[ 'hold' ] = _.contains( value, 'hold' );
 				
 				( key ? $el.find( key ) : $el ).hammer( options );

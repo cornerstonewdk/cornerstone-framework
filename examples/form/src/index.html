@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>FormView Example</title>
+		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<style>
+		body {
+			padding-top: 70px;
+		}
+		.tab-pane {
+			padding-top: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">FormView Example</a>
+			</div>
+		</div>
+		<div class="container">
+			<form id="add-form" class="form-horizontal" role="form">
+				<legend>사용자 추가</legend>
+				<div class="form-group">
+					<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">이름</label>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<input type="text" class="form-control" id="name" name="name" data-placement="right"/>
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">이메일</label>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<input type="text" class="form-control" id="email" name="email" data-placement="right"/>
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">비밀번호</label>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<input type="password" class="form-control" id="password" name="password" data-placement="right"/>
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">성별</label>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<label class="radio-inline">
+							<input type="radio" name="gender" value="M" checked="checked"/> 남
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="gender" value="F"/> 여
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">관심분야</label>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<label class="checkbox-inline">
+							<input type="checkbox" name="interest" value="1" data-placement="top"/> 영화
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="interest" value="2"/> 음악
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="interest" value="3"/> 스포츠
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="interest" value="4"/> 여행
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="interest" value="5"/> IT
+						</label>
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary pull-right">사용자 추가</button>
+			</form>
+		</div>
+
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">index.html</a></li>
+				<li><a href="#js1" data-toggle="tab">main.js</a></li>
+				<li><a href="#js2" data-toggle="tab">user.js</a></li>
+				<li><a href="#js3" data-toggle="tab">alert-validation.js</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="html">
+					<pre>
+&lt;!DOCTYPE html>
+&lt;html lang="ko">
+	&lt;head>
+		&lt;meta charset="utf-8"/>
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		&lt;title>FormView Example&lt;/title>
+		&lt;link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		&lt;style>
+		body {
+			padding-top: 70px;
+		}
+		.tab-pane {
+			padding-top: 10px;
+		}
+		&lt;/style>
+	&lt;/head>
+	&lt;body>
+		&lt;div class="navbar navbar-inverse navbar-fixed-top">
+			&lt;div class="navbar-header">
+				&lt;a class="navbar-brand" href="#">FormView Example&lt;/a>
+			&lt;/div>
+		&lt;/div>
+		&lt;div class="container">
+			&lt;form id="add-form" class="form-horizontal" role="form">
+				&lt;legend>사용자 추가&lt;/legend>
+				&lt;div class="form-group">
+					&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">이름&lt;/label>
+					&lt;div class="col-lg-6 col-md-6 col-sm-6">
+						&lt;input type="text" class="form-control" id="name" name="name" data-placement="right"/>
+						&lt;span class="help-block">&lt;/span>
+					&lt;/div>
+				&lt;/div>
+				&lt;div class="form-group">
+					&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">이메일&lt;/label>
+					&lt;div class="col-lg-6 col-md-6 col-sm-6">
+						&lt;input type="text" class="form-control" id="email" name="email" data-placement="right"/>
+						&lt;span class="help-block">&lt;/span>
+					&lt;/div>
+				&lt;/div>
+				&lt;div class="form-group">
+					&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">비밀번호&lt;/label>
+					&lt;div class="col-lg-6 col-md-6 col-sm-6">
+						&lt;input type="password" class="form-control" id="password" name="password" data-placement="right"/>
+						&lt;span class="help-block">&lt;/span>
+					&lt;/div>
+				&lt;/div>
+				&lt;div class="form-group">
+					&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">성별&lt;/label>
+					&lt;div class="col-lg-6 col-md-6 col-sm-6">
+						&lt;label class="radio-inline">
+							&lt;input type="radio" name="gender" value="M" checked="checked"/> 남
+						&lt;/label>
+						&lt;label class="radio-inline">
+							&lt;input type="radio" name="gender" value="F"/> 여
+						&lt;/label>
+					&lt;/div>
+				&lt;/div>
+				&lt;div class="form-group">
+					&lt;label class="col-lg-2 col-md-2 col-sm-2 control-label" for="name">관심분야&lt;/label>
+					&lt;div class="col-lg-6 col-md-6 col-sm-6">
+						&lt;label class="checkbox-inline">
+							&lt;input type="checkbox" name="interest" value="1" data-placement="top"/> 영화
+						&lt;/label>
+						&lt;label class="checkbox-inline">
+							&lt;input type="checkbox" name="interest" value="2"/> 음악
+						&lt;/label>
+						&lt;label class="checkbox-inline">
+							&lt;input type="checkbox" name="interest" value="3"/> 스포츠
+						&lt;/label>
+						&lt;label class="checkbox-inline">
+							&lt;input type="checkbox" name="interest" value="4"/> 여행
+						&lt;/label>
+						&lt;label class="checkbox-inline">
+							&lt;input type="checkbox" name="interest" value="5"/> IT
+						&lt;/label>
+						&lt;span class="help-block">&lt;/span>
+					&lt;/div>
+				&lt;/div>
+				&lt;button type="submit" class="btn btn-primary pull-right">사용자 추가&lt;/button>
+			&lt;/form>
+		&lt;/div>
+
+		&lt;script src="cornerstone/launcher/launcher.js" data-target="app/main">&lt;/script>
+	&lt;/body>
+&lt;/html></pre>
+				</div>
+				<div class="tab-pane" id="js1">
+					<pre>
+
+/**
+ * main.js
+ * 애플리케이션 메인
+ */
+define( [ 'jquery', 'form-view', 'model/user', 'view/alert-validation' ], function( $, FormView, User, AlertValidation ) {
+	return {
+		launch: function() {
+		
+			// FormView를 생성하면서 넘겨주는 model의 값이 form과 동기화되므로 form의 기본값이 된다.
+			var formView = new FormView( {
+				el: '#add-form',
+				model: new User( { name: '홍길동', email: 'default@gmail.com' } ),
+				validationViewClass: AlertValidation
+			} );
+		
+			$( '#add-form' ).submit( function() {
+			
+				var user = formView.toModel();
+	
+				if ( user.isValid() ) {
+					$( this ).prepend( '&lt;div class="alert alert-success">&lt;a href="#" class="close" data-dismiss="alert">&amp;times;&lt;/a>정상적으로 추가되었습니다.&lt;/div>' );
+				}
+	
+				return false;
+			} );
+		}	
+	};
+} );</div>
+				<div class="tab-pane" id="js2">
+					<pre>
+define( [ 'backbone' ], function( Backbone ) {
+
+	return Backbone.Model.extend( {
+
+		validate: function( attrs ) {
+			if ( !attrs.name ) return { attribute: 'name', message: '이름을 입력하세요.' };
+			if ( attrs.name.length > 50 ) return { attribute: 'name', message: '이름이 너무 깁니다.' };
+			if ( !attrs.email ) return { attribute: 'email', message: '이메일을 입력하세요.' };
+			if ( attrs.email.length > 50 ) return { attribute: 'email', message: '이메일이 너무 깁니다.' };
+			if ( !attrs.password ) return { attribute: 'password', message: '비밀번호를 입력하세요.' };
+			if ( attrs.password.length > 50 ) return { attribute: 'password', message: '비밀번호가 너무 깁니다.' };
+			if ( !attrs.interest ) return { attribute: 'interest', message: '관심분야를 선택하세요.' };
+			if ( attrs.interest.length > 3 ) return { attribute: 'interest', message: '최대 3개까지만 선택할 수 있습니다.' };
+		}
+	} );
+} );</pre>
+				</div>
+				<div class="tab-pane" id="js3">
+					<pre>
+define( [ 'backbone', 'underscore', 'jquery', 'bootstrap' ], function( Backbone, _, $ ) {
+
+	// Validation이 성공/실패했을 때 event 발생
+	return Backbone.View.extend( {
+	
+		/**
+		 * 최초 생성될 때(화면이 그려질 때) 한 번만 실행된다.
+		 */
+		initialize: function() {
+		},
+		
+		/**
+		 * Validation을 초기화한다.
+		 * Form을 submit 할 때 마다, 그리고 검증이 성공할 때 실행된다.
+		 */
+		reset: function() {
+			this.$( '.alert' ).remove();
+		},
+		
+		success: function() {
+			this.reset();
+		},
+		
+		/**
+		 * 검증이 실패하면 실행된다.
+		 * Model의 validate 메소드가 여러 error를 리턴하면 (Array) 각각에 대해서 호출된다.
+		 */
+		fail: function( err ) {
+		
+			this.$el.prepend( '&lt;div class="alert alert-danger">&lt;a href="#" class="close" data-dismiss="alert">&amp;times;&lt;/a>' + ( err.message || err ) + '&lt;/div>' );
+		
+			if ( err.attribute ) this.$( ':input[name=' + err.attribute + ']:first' ).focus();
+		}
+	} );
+} );</pre>
+				</div>
+			</div>
+		</div>
+
+		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
+	</body>
+</html>
