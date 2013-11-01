@@ -1151,58 +1151,12 @@ Interactive Layer
 }
 
 // Color preset
-.nv-group,
-.nv-series {
-  .chart-color-style(5, 1);
-}
-
-.widget-chart {
-  &.preset2 {
-    .nv-group,
-    .nv-series {
-      .chart-color-style(5, 2);
-    }
-  }
-  &.preset3 {
-    .nv-group,
-    .nv-series {
-      .chart-color-style(5, 3);
-    }
-  }
-}
-
 .bar,
 .legend li {
   .chart3d-color-style(5, 1);
 }
 
 // Placeholder
-.linechart-color-style (@index, @preset-index) when (@index > 0) {
-  &:nth-child(5n+@{index}) {
-    .chart-color-preset(@index, @preset-index);
-    stroke-opacity: 1;
-    fill-opacity: 0.5;
-    fill: @bar-color;
-    stroke: @bar-color;
-  }
-  .linechart-color-style(@index - 1);
-}
-
-.chart-color-style (@index, @preset-index) when (@index > 0) {
-  &:nth-child(5n+@{index}) {
-    .chart-color-preset(@index, @preset-index);
-
-    rect, circle {
-      fill: @bar-color;
-      stroke: @bar-color;
-    }
-    circle {
-      stroke: #333;
-    }
-  }
-  .chart-color-style(@index - 1, @preset-index);
-}
-
 .chart3d-color-style (@index, @preset-index) when (@index > 0) {
   &:nth-child(5n+@{index}) {
     .chart-color-preset(@index, @preset-index);

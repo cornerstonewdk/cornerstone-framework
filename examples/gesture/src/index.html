@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Gesture Example</title>
+		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<style>
+		body {
+			padding-top: 70px;
+		}
+		
+		div#gesture-area {
+			position: relative;
+			height: 300px;
+			overflow: hidden;
+		}
+		
+		img#image {
+			max-width: none;
+			position: relative;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Gesture Example</a>
+			</div>
+		</div>
+		<div class="container">
+			<div id="gesture-area" class="well">
+				<img id="image" src="images/Landscape.jpg"/>
+			</div>
+		</div>
+
+		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
+	</body>
+</html>

@@ -506,7 +506,16 @@
                     barObj.label = this[j];
                     barObj.height = Math.floor(barObj.label / chartYMax * 100) + '%';
                     barObj.bar = $('<div class="bar fig' + j + '"><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div><div class="face top"></div><div class="face bottom"></div><span>' + barObj.label + '</span></div>')
-                    .css({
+
+
+                    // Add Custom color
+                    var rgb = self.util.hexToRgb(options.color[j % options.color.length]);
+
+                    barObj.bar.find(".face").css({
+                        "background": "-webkit-gradient(linear,left top,left bottom,color-stop(0,rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", 0.8)),color-stop(1,rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", 0.6)))"
+                    });
+
+                    barObj.bar.css({
                         left: (barInnerWidth * j) + "px"
                     })
                     .appendTo(barGroup);
@@ -716,6 +725,20 @@
         },
 
         util: {
+            hexToRgb: function hexToRgb(hex) {
+                // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+                var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+                    return r + r + g + g + b + b;
+                });
+
+                var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
+            },
             transpose: function (array) {
                 var w = array.length ? array.length : 0,
                 h = array[0] instanceof Array ? array[0].length : 0;
