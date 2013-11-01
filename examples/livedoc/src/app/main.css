@@ -179,10 +179,10 @@ div.doc-content {
 
     border: 10px solid transparent;
 
-    left: 5px;
     top: 50%;
-    margin-top: -16px;
+    left: 5px;
     border-left: 16px solid #333;
+    margin-top: -16px;
     cursor: pointer;
 }
 #detail-menu-close-arrow {
@@ -191,11 +191,15 @@ div.doc-content {
 
     border: 10px solid transparent;
 
-    /*left: -5px;*/
-    left: 355px;
     top: 50%;
-    margin-top: -16px;
+    /*left: -5px;*/
+    /*
+    left: 355px;
     border-left: 16px solid #333;
+    */
+    left: 355px;
+    border-right: 16px solid #333;
+    margin-top: -16px;
     cursor: pointer;
 }
 #floating-menu-hidden-region {
