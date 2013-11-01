@@ -1,0 +1,10 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">Page 2</div>
+	<div class="panel-body">
+		<p>두번째 페이지 입니다.</p>
+		<div class="btn-group">
+			<button type="button" class="btn btn-success prev">이전</button>
+			<button type="button" class="btn btn-success next">다음</button>
+		</div>
+	</div>
+</div>
