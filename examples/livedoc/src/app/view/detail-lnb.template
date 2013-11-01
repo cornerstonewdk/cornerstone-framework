@@ -10,9 +10,39 @@
 		</div>
 	</div>
 </div>
+
 <div id="floating-detail-menu-background"></div>
 <div id="detail-menu-open-arrow"></div>
 <div id="detail-menu-close-arrow"></div>
+
+<div id="floating-page-navi" style="float: right;">
+
+	<div class="copy-btn-group" style="display:none;">
+		<a class="btn btn-default btn-left-chevron" href="">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="btn btn-default btn-right-chevron" href="">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+
+	<div class="floating-menu-hidden-region btn-group">
+		<a class="btn btn-default" href=""> Menu </a>
+	</div>
+
+	<div class="btn-group">
+		<a id="page-nav-prev" class="btn btn-default btn-left-chevron" href="">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a id="page-nav-top" class="btn btn-default" href="">
+			Top
+		</a>
+		<a id="page-nav-next" class="btn btn-default btn-right-chevron" href="">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+
+</div>
 
 <script>
 	if (window.innerWidth >= 768)
@@ -56,5 +86,9 @@
 
 		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0");
 		$( "#detail-content" ).removeClass().addClass("col-lg-12 col-md-12 col-sm-12");
+	});
+
+	$( ".floating-menu-btn" ).click( function () {
+
 	});
 </script>
