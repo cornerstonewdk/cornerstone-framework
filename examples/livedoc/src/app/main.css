@@ -198,7 +198,7 @@ div.doc-content {
     border-left: 16px solid #333;
     cursor: pointer;
 }
-.floating-menu-hidden-region {
+#floating-menu-hidden-region {
     visibility: hidden;
 }
 @media(max-width: 1024px) {

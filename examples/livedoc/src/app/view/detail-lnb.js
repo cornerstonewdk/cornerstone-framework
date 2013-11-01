@@ -37,39 +37,6 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 					height: window.innerHeight / 2
 				} ).featuredScrollView().data( 'featuredScrollView' );
 
-			// Comment by JHC, 20131101
-			// 첫 번째 문서인 경우 page-nav-prev (이전문서로 이동하는) 버튼을 제거 한다.
-			if ( this.$el.find( 'a.list-group-item:first' ).hasClass("active") )
-				this.$el.find( '#page-nav-prev' ).remove();
-			// 마지막 문서인 경우 page-nav-next (다음문서로 이동하는) 버튼을 제거 한다.
-			if ( this.$el.find( 'a.list-group-item:last' ).hasClass("active") )
-				this.$el.find( '#page-nav-next' ).remove();
-/*
-			var tocItemList = this.$el.find( 'a.list-group-item' );
-
-			this.$el.find( '#page-nav-prev' ).css( {
-				display: none
-			} );
-
-			if ( tocItemList.length < 2) {
-				this.$el.find( '#page-nav-prev' ).css( {
-					display: none
-				} );
-//				this.$el.find( '#page-nav-prev' ).css( {
-//					display: none;
-//				});
-//				this.$el.find( '#page-nav-next' ).css( {
-//					display: none;
-//				});} 
-
-			else {
-				if ( $( tocItemList[0] ).hasClass("active") )
-					console.log("This Doc is first DOC.");
-				else
-					console.log("This Doc is NOT first DOC.");
-			}
-*/
-
 			return this;
 		},
 
@@ -93,17 +60,16 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			// Comment by JHC, 20131101
 			// 첫 번째 문서인 경우 page-nav-prev (이전문서로 이동하는) 버튼이 보이지 않게 한다.
 			if ( this.$el.find( 'a.list-group-item:first' ).hasClass("active") ) {
-				this.$el.find( '.floating-menu-hidden-region' ).append( this.$el.find( '#page-nav-prev' ) );
+				this.$el.find( '#floating-menu-hidden-region' ).append( this.$el.find( '#page-nav-prev' ) );
 			}
 			// 마지막 문서인 경우 page-nav-next (다음문서로 이동하는) 버튼이 보이지 않게 한다.
 			else if ( this.$el.find( 'a.list-group-item:last' ).hasClass("active") ) {
-				this.$el.find( '.floating-menu-hidden-region' ).append( this.$el.find( '#page-nav-next' ) );		
+				this.$el.find( '#floating-menu-hidden-region' ).append( this.$el.find( '#page-nav-next' ) );		
 			}
 			else {
 				this.$el.find( '#page-nav-top' ).before( this.$el.find( '#page-nav-prev' ) );
 				this.$el.find( '#page-nav-top' ).after( this.$el.find( '#page-nav-next' ) );
 			}
-
 		},
 
 		clickNavNext: function (e) {
