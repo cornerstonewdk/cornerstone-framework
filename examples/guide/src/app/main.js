@@ -99,8 +99,8 @@ define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!template
 
 				if ( navigator.userAgent.match( /firefox/i ) ) {
 					renderFirefox( docs1, 0 );
-					renderFirefox( docs2, 10000 );
-					renderFirefox( docs3, 20000 );
+					renderFirefox( docs2, 12000 );
+					renderFirefox( docs3, 24000 );
 				}
 				else {
 					// 각 그룹을 층별로 렌더링
