@@ -19,6 +19,6 @@
 
 ## 3. 개발 환경 설정 실습 및 Hello World 실행 ##
 
-## 4. Sample App 개발 실습 ##
+## 4. SKT WDK Cornerstone Runtime API 가이드 ##
 
 

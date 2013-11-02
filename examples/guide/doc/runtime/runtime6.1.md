@@ -1,48 +1,18 @@
 <!--
 {
-    "id": "6",
-	"title": "개발 실습 주요 Source. ",
+	"id": "6",
+	"title": "SKT WDK Cornerstone Runtime API 가이드",
 	"group": 2,
-	"order": 16
+	"order": 12
 }
 -->
 
 -----------------------
 
-## 개발 실습 1 - Source.  ##
+# SKT WDK Cornerstone Runtime API 가이드  #
 
 -----------------------
-- 초기 테스트 Directory 만들기 
 
-		function onResolveSuccess(dirEntry) {
-			console.log(dirEntry.fullPath);
-		
-			function success(entry) {
-		    	console.log("entry Name: " + entry.name);
-			}
+**코너스톤 런타임 API를 사용해 만든 8가지 예제들을 가이드 형식으로 보여줍니다.**
 
-			function fail(error) {
-		    	alert("Unable to create new directory: " + error.code);
-			}
-
-			dirEntry.getDirectory("testdirectory", {create: true, exclusive: false}, success, fail);
-		}
-
-		function fail(error) {
-			console.log(error.message);
-		}
-
-		window.resolveLocalFileSystemURI("file://mnt/sdcard", onResolveSuccess, fail);
-		
-
-
- 
-
-
-
-
-
-
-
-
-
+![](./images/2013-09-11-15-28-44.jpg)
