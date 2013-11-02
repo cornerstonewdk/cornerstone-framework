@@ -26,4 +26,4 @@
 
 	} );
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_02_module.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#3>

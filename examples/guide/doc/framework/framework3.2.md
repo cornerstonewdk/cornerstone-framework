@@ -12,29 +12,19 @@
 
 -----------------------
 
-**- 기본적으로 12 column 레이아웃 지원**
+- **기본적으로 12 column 레이아웃 지원**
+- **화면의 폭에 따라서 4가지 크기로 구분 : 큰(lg), 중간(md), 작은(sm), 아주 작은(xs) 디바이스**
 
-**고정 레이아웃**
-
-	<body>
-		<div class=“container”>
-			<div class=“row”>
-				<div class=“span4”></div>
-				<div class=“span8”></div>
-			</div>
+```
+<body>
+	<div class=“container”>
+		<div class=“row”>
+			<div class=“col-lg-4 col-md-5”></div>
+			<div class=“col-lg-8 col-md-7”></div>
 		</div>
-	</body>
+	</div>
+</body>
+```
 
-**유동 레이아웃**
-
-	<body>
-		<div class=“container-fluid”>
-			<div class=“row-fluid”>
-				<div class=“span2”></div>
-				<div class=“span10”></div>
-			</div>
-		</div>
-	</body>
-
-참고 : <http://cornerstone.sktelecom.com/livedoc/3_4_component_form.html>  
-참고 : <http://twitter.github.io/bootstrap/scaffolding.html#layouts>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#4101>  
+참고 : <http://getbootstrap.com/css/#grid>

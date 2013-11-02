@@ -21,4 +21,4 @@
 - 다양한 크기의 화면을 지원하는 반응형 웹
 
 소개 : <http://cornerstone.sktelecom.com/>  
-문서 : <http://cornerstone.sktelecom.com/livedoc/>
+문서 : <http://cornerstone.sktelecom.com/2/livedoc/>

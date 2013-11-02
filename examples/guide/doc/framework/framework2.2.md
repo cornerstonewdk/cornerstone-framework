@@ -12,9 +12,14 @@
 
 -----------------------
 
-**Framework 다운로드**
+**Cornerstone CLI 설치**
 
-- <http://cornerstone.sktelecom.com/download/cornerstone-framework-0.9.1.zip>
+- Node.js 설치 (http://www.nodejs.org/download/)
+- Cornerstone CLI 설치
+
+```
+npm install -g cornerstone-cli
+```
 
 **웹 브라우저**
 

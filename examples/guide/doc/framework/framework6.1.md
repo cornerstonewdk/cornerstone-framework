@@ -30,4 +30,4 @@
 	<a href=“#add” class=“btn” data-transition=“flip” data-duration=“1500”>추가</a>
 	<button class=“btn” data-transition=“fade”>수정</button>
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_13_routing.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#14>

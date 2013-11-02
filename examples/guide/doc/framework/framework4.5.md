@@ -35,4 +35,4 @@
 	new MainRouter();
 	Backbone.history.start();
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_13_routing.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#14>

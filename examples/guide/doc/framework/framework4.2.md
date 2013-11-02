@@ -34,4 +34,4 @@
 		var user = new User();
 	} );
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_05_model.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#6>

@@ -30,4 +30,4 @@
 		{ name: ‘이영수’, age: 20 }
 	] );
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_06_collection.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#7>

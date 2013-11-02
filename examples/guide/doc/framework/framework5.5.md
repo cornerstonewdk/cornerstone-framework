@@ -12,10 +12,11 @@
 
 -----------------------
 
-**- 하나의 HTML 문서 내에 여러 페이지 존재**  
-**- 한번에 하나의 페이지만 화면에 표시**  
-**- 페이지마다 매핑되는 Fragment identifier가 존재**  
-**- 화면 전환 효과**
+- **하나의 HTML 문서 내에 여러 페이지 존재**  
+- **한번에 하나의 페이지만 화면에 표시**  
+- **페이지마다 매핑되는 Fragment identifier가 존재**  
+- **화면 전환 효과**
+- **useDataAttributes: true 옵션을 사용하면 data- 속성으로 선언 가능**
 
 	var MainRouter = MultipageRouter.extend( {
 
@@ -33,4 +34,4 @@
 	new MainRouter();
 	Backbone.history.start();
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_13_routing.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#14>

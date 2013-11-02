@@ -15,17 +15,14 @@
 
 **Bootstrap 기본 테마**
 
-	<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+	<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
 **Dark 테마**
 
-	<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
-	<link href=“cornerstone-framework-0.9.1/ui/theme/dark/css/cornerstone.css” rel=“stylesheet”/>
+	<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="cornerstone/theme-dark/cornerstone.css" rel="stylesheet"/>
 
 **White 테마**
 
-	<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="cornerstone-framework-0.9.1/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
-	<link href=“cornerstone-framework-0.9.1/ui/theme/white/css/cornerstone.css” rel=“stylesheet”/>
+	<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="cornerstone/theme-white/cornerstone.css" rel="stylesheet"/>
