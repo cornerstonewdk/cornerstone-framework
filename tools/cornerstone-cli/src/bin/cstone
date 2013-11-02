@@ -17,14 +17,14 @@ function displayHelp() {
 
 	grunt.log.writeln( ' ' + 'Commands:'.yellow.underline );
 	grunt.log.writeln();
-	grunt.log.writetableln( [ 10, 60 ], [ '    init', '현재 디렉토리에 프로젝트의 기본 골격을 생성한다. 빈 디렉토리에서 실행해야 하며 다음 Option을 지정할 수 있다.'.grey ] );
-	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--noamd', 'Require.js를 사용하지 않는다. 이 옵션이 없으면 Require.js와 Backbone을 사용하는 것으로 기본 골격을 생성한다.'.grey ] );
-	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--theme:[dark/white]', 'Dark/White 테마 중 하나를 선택한다. 이 옵션이 없으면 Bootstrap의 기본 테마를 사용한다.'.grey ] );
-	grunt.log.writetableln( [ 10, 22, 38 ], [ '        ', '--fullpackage', '코너스톤의 모든 패키지를 설치한다. 이 옵션이 없으면 기본적으로 필요한 최소한의 패키지만 설치한다.'.grey ] );
-	grunt.log.writetableln( [ 10, 60 ], [ '        ', '사용 예) ' + 'cstone init --theme:white --fullpackage'.green ] );
-	grunt.log.writetableln( [ 10, 60 ], [ '   build', '프로젝트의 소스 코드로부터 배포본을 생성한다. Gruntfile.js를 수정해서 최적화 옵션과 빌드 방법을 설정할 수 있다.'.grey ] );
-	grunt.log.writetableln( [ 10, 60 ], [ '  server', '개발 중 Preview를 할 수 있는 간이 웹서버의 기능을 수행한다.'.grey ] );
-	grunt.log.writetableln( [ 10, 60 ], [ '    test', '테스트 코드를 실행한다. 테스트 코드는 mocha-phantomjs를 사용해서 작성할 수 있다.'.grey ] );
+	grunt.log.writetableln( [ 10, 40 ], [ '    init', '현재 디렉토리에 프로젝트의 기본 골격을 생성한다. 빈 디렉토리에서 실행해야 하며 다음 Option을 지정할 수 있다.'.grey ] );
+	grunt.log.writetableln( [ 10, 22, 30 ], [ '        ', '--noamd', 'Require.js를 사용하지 않는다. 이 옵션이 없으면 Require.js와 Backbone을 사용하는 것으로 기본 골격을 생성한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 22, 30 ], [ '        ', '--theme:[dark/white]', 'Dark/White 테마 중 하나를 선택한다. 이 옵션이 없으면 Bootstrap의 기본 테마를 사용한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 22, 25 ], [ '        ', '--fullpackage', '코너스톤의 모든 패키지를 설치한다. 이 옵션이 없으면 기본적으로 필요한 최소한의 패키지만 설치한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 50 ], [ '        ', '사용 예) ' + 'cstone init --theme:white --fullpackage'.green ] );
+	grunt.log.writetableln( [ 10, 40 ], [ '   build', '프로젝트의 소스 코드로부터 배포본을 생성한다. Gruntfile.js를 수정해서 최적화 옵션과 빌드 방법을 설정할 수 있다.'.grey ] );
+	grunt.log.writetableln( [ 10, 40 ], [ '  server', '개발 중 Preview를 할 수 있는 간이 웹서버의 기능을 수행한다.'.grey ] );
+	grunt.log.writetableln( [ 10, 40 ], [ '    test', '테스트 코드를 실행한다. 테스트 코드는 mocha-phantomjs를 사용해서 작성할 수 있다.'.grey ] );
 	grunt.log.writeln();
 }
 
