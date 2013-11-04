@@ -205,6 +205,9 @@ div.doc-content {
 #floating-menu-hidden-region {
     visibility: hidden;
 }
+#detail-content {
+    padding-left: 38px;
+}
 @media(max-width: 1024px) {
     #floating-detail-menu {
         width: 230px;
@@ -213,7 +216,10 @@ div.doc-content {
         width: 238px;
     }
     #detail-menu-close-arrow {
-        left: 273px;
+        left: 270px;
+    }
+    #detail-content {
+    padding-left: 38px;
     }
 }
 /*

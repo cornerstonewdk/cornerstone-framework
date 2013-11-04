@@ -38,6 +38,11 @@ define( [ 'logging',
 			var MainRouter = MultipageRouter.extend( {
 			
 				pages: {
+					'default': {
+						active: function( path ) {
+							history.back();
+						}
+					},
 					'page1': {
 						fragment: [ '', 'page1' ],
 						el: '#page1',
@@ -65,12 +70,7 @@ define( [ 'logging',
 						active: function ( id ) {
 							$( '#page3 p.js-active' ).text( id );
 						}
-					},
-					'default': {
-						active: function( path ) {
-							history.back();
-						}
-					},
+					}
 				},
 				
 				transitions: {
