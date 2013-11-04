@@ -5,6 +5,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 		el: '#detail-lnb',
 		events: {
 			"click #page-nav-next": "clickNavNext",
+			"click #page-nav-top": "clickNavTop",
 			"click #page-nav-prev": "clickNavPrev"
 		},
 
@@ -16,7 +17,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			$( window ).on("resize", function () {
 				if (window.innerWidth >= 768)
 					self.$el.find( '#scrollView' ).css( {
-						height: window.innerHeight - 70
+						height: window.innerHeight * 0.847
 					} );
 				else
 					self.$el.find( '#scrollView' ).css( {
@@ -30,7 +31,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 
 			if (window.innerWidth >= 768)
 				this.scrollView = this.$el.find( '#scrollView' ).css( {
-					height: window.innerHeight - 70
+					height: window.innerHeight * 0.847
 				} ).featuredScrollView().data( 'featuredScrollView' );
 			else
 				this.scrollView = this.$el.find( '#scrollView' ).css( {
@@ -55,6 +56,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 				? currentScrollY
 				: this.scrollView.iscroll.maxScrollY;
 
+			currentScrollY = 0;
 			this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
 
 			// Comment by JHC, 20131101
@@ -104,6 +106,11 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			// 맨 첫 번째 문서인 경우 페이지 상에서 'PREVIOUS'버튼을 Disable 하는 것으로 처리 !
 			// 따라서 이전 문서가 없는 경우에 대한 예외처리 코드도 넣지 않음. 
 			location.href = $( lnbList[i-1] ).attr("href"); 
+		},
+		clickNavTop: function (e) {
+			e.preventDefault();
+			// Top버튼 클릭 시 문서상단으로 이동 
+			$('html, body').scrollTop(0);
 		}
 	} );
 } );

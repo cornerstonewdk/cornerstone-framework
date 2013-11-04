@@ -1,12 +1,43 @@
+<script src="http://cornerstone.sktelecom.com/2/dist/src/widget/collapse/widget-collapse.js"></script>
+
 <div id="floating-detail-menu">
 	<div id="scrollView">
 		<div class="list-group">
-			{{#each collection}}
-				{{#if section}}<h4>{{section}}</h4>{{/if}}
-				{{#if secondDepth}}<a class="list-group-item" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
-				{{#if thirdDepth}}<a class="list-group-item thirdDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
-				{{#if fourthDepth}}<a class="list-group-item fourthDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>{{/if}}
-			{{/each}}
+			<div class="panel-group panel-nav-group panel-collapse" id="accordion">
+				<div class="panels">				
+					<div class="panel panel-default lnb-menu-collapse">
+						<div><div><div>
+					{{#each collection}}
+						{{#if section}}
+						
+						</div></div></div>
+						<div class="panel-heading">
+						    <h4 class="panel-title">
+						        <a class="accordion-toggle" href="#section{{id}}">
+						            {{section}}
+						        </a>
+						    </h4>
+						</div>
+						<div id="section{{id}}" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="list-group list-group-flush list-group-cornerstone">
+
+						{{/if}}
+
+						{{#if secondDepth}}
+									<a class="list-group-item" data-id="{{id}}" href="#{{id}}">{{title}}</a>
+						{{/if}}
+						{{#if thirdDepth}}
+									<a class="list-group-item thirdDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>
+						{{/if}}
+						{{#if fourthDepth}}
+									<a class="list-group-item fourthDepth" data-id="{{id}}" href="#{{id}}">{{title}}</a>
+						{{/if}}
+					{{/each}}
+						</div></div></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -38,7 +69,7 @@
 <script>
 	if (window.innerWidth >= 768)
 		$( '#scrollView' ).css( {
-			height: window.innerHeight - 70
+			height: window.innerHeight * 0.847
 		} ).featuredScrollView("refresh");
 	else
 		$( '#scrollView' ).css( {
@@ -57,7 +88,7 @@
 		$( "#floating-detail-menu" ).fadeIn(500, function () {
 			if (window.innerWidth >= 768)
 				$( '#scrollView' ).css( {
-					height: window.innerHeight - 70
+					height: window.innerHeight * 0.847
 				} ).featuredScrollView("refresh");
 			else
 				$( '#scrollView' ).css( {
@@ -79,7 +110,16 @@
 		$( "#detail-content" ).removeClass().addClass("col-lg-12 col-md-12 col-sm-12");
 	});
 
-	$( ".floating-menu-btn" ).click( function () {
-
+	$("#accordion .collapse").collapse({
+		"parent": "#accordion",
+		"toggle": false
 	});
+
+	$("#accordion a.accordion-toggle").click( function(e) {
+		e.preventDefault();
+		$( $(this).attr("href") ).collapse("toggle");
+
+		$( '#scrollView' ).featuredScrollView("refresh");
+	});
+
 </script>

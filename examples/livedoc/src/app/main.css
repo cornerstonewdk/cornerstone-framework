@@ -151,6 +151,7 @@ div.doc-content {
     padding-top: 1px;
 
     height: 84.8%;
+    width: 310px;
 
     overflow: hidden;
 
@@ -329,4 +330,14 @@ div#floating-page-navi
 
 .img_architecture {
     width: 100%;
+}
+
+.lnb-menu-collapsea {
+    background-color: transparent;
+}
+
+#scrollView {
+    /*
+    border: solid 1px red;
+    */
 }
