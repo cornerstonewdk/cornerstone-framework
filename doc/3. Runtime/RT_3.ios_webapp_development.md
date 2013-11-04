@@ -41,8 +41,8 @@
 
 4) SRT_Template/Supporting Files - 하이브리드앱 및 런타임 설정 파일이 위치하는 폴더
 
--	**SRT_Template-Info.plist** : iOS 하이브리드앱을 위한 설정 파일
--	**SRT.plist** : Cornerstone Runtime을 위한 설정 파일
+-	**SRT_Template-Info.plist** : iOS 하이브리드앱을 위한 설정 파일 (App name 설정, Identifier 설정  , Custom URL 설정 등) 
+-	**SRT.plist** : Cornerstone Runtime을 위한 설정 파일 (Plugin 설정) 
 
 <br>
 
@@ -85,7 +85,7 @@
 
 ![](./images/SRTTemplate_info.jpg)
 
-- **Bundle display name** : 어플리케이션 이름
+- **Bundle display name** : 어플리케이션 이름 (Device에 출력되는 이름) 
 - **Icon files / Icon files(iOS5)** : 아이콘 이미지 파일 이름
 - **Bundle identifier** : 어플리케이션 고유 ID. 실제 Device 연동을 위해서는 애플사에 개발자 인증(provisioning profile)을 받아야하며 그때 설정한 ID를 넣는다.
 - **Supported interface orientations / Supported interface orientations(iPad)** : 해당 어플리케이션이 지원하는 화면 회전 허용값. 예를 들어 Portrait(bottom home button)만이 설정되어 있다면 iPad 에서 회전을 하여도 실제로 화면이 회전되지 않는다.

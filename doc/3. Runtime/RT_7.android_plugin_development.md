@@ -331,13 +331,13 @@ Library 위치
 	 `<plugin name="CallLog" value="org.skt.runtime.plugin.CallLogPlugin" />`
 	
 
-**step 5.** 하이브리드앱의 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.2.js는 Plugin 개발 환경 Template의 기본 포함된 파일**이다. 
+**step 5.** 하이브리드앱의 시작 파일은 반드시 index.html 이어야 한다. **SRT-0.9.3.js는 Plugin 개발 환경 Template의 기본 포함된 파일**이다. 
 
 ![](./images/src2.png)
 
 -	특정 웹페이지 내부에서 Device API를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
  
-	`<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.2.js"></script>`
+	`<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.3.js"></script>`
 
 -	특정 웹페이지 내부에서 추가된 Plugin을 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
 
