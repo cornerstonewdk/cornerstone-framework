@@ -369,22 +369,6 @@ describe( 'MVC Test', function () {
          formView.$el.find( '.js-submit' ).trigger( 'click' );
     } );
 
-    it( 'Model에 invalid 이벤트를 연결하고 model값을 변경했을 때 감지 되는지 확인한다.', function ( done ) {
-        validateUser.on( 'invalid', function ( model, error ) {
-            expect( model ).to.be.an.instanceof( Backbone.Model );
-            expect( error.attribute ).to.be.equal( 'name' );
-            done();
-        } );
-
-        formView.$el.find( '.js-submit' ).on( 'click', function () {
-            formView.toModel();
-        } ).trigger( 'click' );
-    } );
-
-    // // TODO input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.
-    // it( 'TODO input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.', function () {
-    // } );
-
     // // TODO
     it( 'TODO validation view를 로드 후 formView에 생성옵션으로 지정, 동작 확인', function ( ) {
         require( [ 'validation-view', 'template!../app/template/userForm', 'form-view' ], function ( ValidationView, formTamplate, FormView ){
@@ -530,14 +514,6 @@ describe( 'MVC Test', function () {
         expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
         expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
     } );
-    
-    // TODO 이건 어떻게 처리해야하나??
-    // it( '페이지를 다시 로드해도 초기화 되지 않았는지 확인', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     } );
-    // } );
 
     it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page1 -> page2)', function ( done ) {
         this.timeout( 3000 );
@@ -584,38 +560,51 @@ describe( 'MVC Test', function () {
         }, 2000 );
     } );
 
-    // TODO 모델 validation 확인 -> 툴팁 표시 ( validation 2회 발생하는 문제 )
-    it( 'Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
-        formView.$el.find( 'input[name="name"]' ).val( '' );
-
+    it( 'input에 data-placement 를 다르게 지정했을 때 툴팁위치가 수정되서 출력되어야 한다.', function ( done ) {
+        formView.$el.find( 'input[name="name"]' ).val( '브라보' );
+        formView.$el.find( 'input[name="age"]' ).val( '' );
         formView.$el.find( '.js-submit' ).on( 'click', function () {
-            setTimeout(function() {
-                $(".tooltip").css("top", $("#inputName").offset().top);
-            }, 500);
             formView.toModel();
-            var $nextEl = formView.$el.find( 'input[name="name"]' ).next();
-            expect( $nextEl ).to.be.not.undefined;
-            expect( $nextEl.hasClass( 'tooltip' ) ).to.be.true;
-            expect( $nextEl.find( '.tooltip-inner' ).text() ).to.be.equal( '이름을 입력하세요.' );
             $( this ).off( 'click' );
-            done();
+            setTimeout(function() {
+                var $tooltip = $( '.tooltip' );
+                console.log( $tooltip );
+                expect( $tooltip ).to.be.not.undefined;
+                expect( $tooltip.find( '.tooltip-inner' ).text() ).to.be.equal( '나이를 입력하세요.' );
+                done();
+            }, 1000);
         } );
 
         formView.$el.find( '.js-submit' ).click();
     } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+    it( 'Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
+        formView.$el.find( 'input[name="name"]' ).val( '' );
+        formView.$el.find( 'input[name="age"]' ).val( 39 );
+        formView.$el.find( '.js-submit' ).on( 'click', function () {
+            formView.toModel();
+            $( this ).off( 'click' );
+            setTimeout(function() {
+                var $tooltip = $( '.tooltip' );
+                expect( $tooltip ).to.be.not.undefined;
+                expect( $tooltip.find( '.tooltip-inner' ).text() ).to.be.equal( '이름을 입력하세요.' );
+                done();
+            }, 500);
+        } );
 
-    // it( '', function ( done ) {
-    //     require( [ '' ], function (  ){
-    //         expect(  ).to.be.equal( 'object' );
-    //         done();
-    //     });
-    // } );
+        formView.$el.find( '.js-submit' ).click();
+    } );
 
+    it( 'Model에 invalid 이벤트를 연결하고 model값을 변경했을 때 감지 되는지 확인한다.', function ( done ) {
+        validateUser.on( 'invalid', function ( model, error ) {
+            expect( model ).to.be.an.instanceof( Backbone.Model );
+            expect( error.attribute ).to.be.equal( 'name' );
+            this.off( 'invalid' );
+            done();
+        } );
+
+        formView.$el.find( '.js-submit' ).on( 'click', function () {
+            formView.toModel();
+        } ).trigger( 'click' );
+    } );
 } );
