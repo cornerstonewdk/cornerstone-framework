@@ -457,36 +457,6 @@ describe( 'MVC Test', function () {
         expect( tempUser.url() ).to.be.equal( 'users/100' );
     } );
 
-    // TODO Backbone 동기화의 기본기능이 정상 동작되는지 확인 fetch, save, destory
-    
-
-    // // it( '', function ( done ) {
-    // //     require( [ '' ], function (  ){
-    // //         expect(  ).to.be.equal( 'object' );
-    // //         done();
-    // //     });
-    // // } );
-
-    // // it( '', function ( done ) {
-    // //     require( [ '' ], function (  ){
-    // //         expect(  ).to.be.equal( 'object' );
-    // //         done();
-    // //     });
-    // // } );
-
-    // // it( '', function ( done ) {
-    // //     require( [ '' ], function (  ){
-    // //         expect(  ).to.be.equal( 'object' );
-    // //         done();
-    // //     });
-    // // } );
-    // // it( '', function ( done ) {
-    // //     require( [ '' ], function (  ){
-    // //         expect(  ).to.be.equal( 'object' );
-    // //         done();
-    // //     });
-    // // } );
-
     var sync; 
     it( 'collection.fetch() 실행 시 재정의된 readAll 함수가 호출되어야 한다.', function ( done ) {
         require( [ 'sync' ], function( Sync ) {
@@ -567,16 +537,16 @@ describe( 'MVC Test', function () {
         expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
     } );
 
-    // it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 이미 존재하는 모델[update] )', function () {
-    //     user1.set( 'name', '이종석' );
-    //     user1.set( 'age', '20' );
-    //     console.log( 'before save', user1 );
-    //     user1.save();
-    //     var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
-    //     expect( $syncUser ).to.be.not.undefined;
-    //     expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
-    //     expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
-    // } );
+    it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 이미 존재하는 모델[update] )', function () {
+        user1.set( 'name', '이종석' );
+        user1.set( 'age', '20' );
+        console.log( 'before save', user1 );
+        user1.save();
+        var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
+        expect( $syncUser ).to.be.not.undefined;
+        expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
+        expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
+    } );
     
     // TODO 이건 어떻게 처리해야하나??
     // it( '페이지를 다시 로드해도 초기화 되지 않았는지 확인', function ( done ) {
