@@ -20,7 +20,7 @@ describe( 'Util Test', function () {
         } );
 
         it( 'jsonp 요청시 성공했을 때 success 함수가 수행되어야 한다.', function ( done ) {
-            this.timeout( 5000 );
+            this.timeout( 1000 * 10 );
             options = {
                 url: 'http://api.flickr.com/services/feeds/photos_public.gne',
                 data: {
@@ -42,7 +42,7 @@ describe( 'Util Test', function () {
                     alert( 'error' );
                 },
                 callback: 'jsonFlickrFeed',
-                timeout: 4000
+                timeout: 1000 * 10
             };
             jsonp.get( options );
         } );
@@ -191,7 +191,7 @@ describe( 'Util Test', function () {
                     expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'info' ) ).to.be.true;
                     done();
                 } ).trigger( 'click' );
-            }, 200 );
+            }, 1000 );
         } );
     } );
 
