@@ -188,6 +188,7 @@ describe( 'Util Test', function () {
             } ).trigger( 'click' );
             setTimeout( function () {
                 $( '#info-button' ).off( 'click' ).on( 'click', function () {
+                    logging.info( 'Info 메시지를 로그에 남깁니다.' );
                     expect( $( '#blackbird .mainBody li:last-child' ).hasClass( 'info' ) ).to.be.true;
                     done();
                 } ).trigger( 'click' );
