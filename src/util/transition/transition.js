@@ -1000,6 +1000,7 @@
                 width: $(opt.outTarget.el).width(),
                 perspective: $(opt.outTarget.el).width() * 2,
                 rotate3d: "0, 1, 0, " + opt.outTarget.from,
+                rotate: 0,
                 height: $(window).height() > $(opt.outTarget.el).height() ?
                 $(opt.outTarget.el).height() : $(window).height(),
                 overflow: "hidden",
@@ -1012,13 +1013,15 @@
                 width: $(opt.inTarget.el).width(),
                 perspective: $(opt.inTarget.el).width() * 2,
                 rotate3d: "0, 1, 0, " + opt.inTarget.from,
+                rotate: 0,
                 height: $(window).height() > $(opt.inTarget.el).height() ?
                 $(opt.inTarget.el).height() : $(window).height(),
                 overflow: "hidden",
                 opacity: opt.animationFade ? 0 : 1
             };
 
-            ;
+            console.log(this.inTargetCss);
+            console.log(this.outTargetCss);
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
                 rotate3d: "0, 1, 0, " + opt.outTarget.to,
@@ -1074,6 +1077,7 @@
                 position: "absolute",
                 width: $(opt.outTarget.el).width(),
                 perspective: $(opt.outTarget.el).width(),
+                rotate3d: "0, 0, 0, 0",
                 rotate: opt.outTarget.from,
                 height: $(window).height() > $(opt.inTarget.el).height() ?
                 $(opt.inTarget.el).height() : $(window).height(),
@@ -1086,6 +1090,7 @@
                 position: "absolute",
                 width: $(opt.inTarget.el).width(),
                 perspective: $(opt.inTarget.el).width(),
+                rotate3d: "0, 0, 0, 0",
                 rotate: opt.inTarget.from,
                 height: $(window).height() > $(opt.inTarget.el).height() ?
                 $(opt.inTarget.el).height() : $(window).height(),
