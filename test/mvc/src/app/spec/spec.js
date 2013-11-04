@@ -369,23 +369,6 @@ describe( 'MVC Test', function () {
          formView.$el.find( '.js-submit' ).trigger( 'click' );
     } );
 
-    // TODO 모델 validation 확인 -> 툴팁 표시 ( validation 2회 발생하는 문제 )
-    it( 'Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
-        formView.$el.find( 'input[name="name"]' ).val( '' );
-
-        formView.$el.find( '.js-submit' ).on( 'click', function () {
-            formView.toModel();
-            var $nextEl = formView.$el.find( 'input[name="name"]' ).next();
-            expect( $nextEl ).to.be.not.undefined;
-            expect( $nextEl.hasClass( 'tooltip' ) ).to.be.true;
-            expect( $nextEl.find( '.tooltip-inner' ).text() ).to.be.equal( '이름을 입력하세요.' );
-            $( this ).off( 'click' );
-            done();
-        } );
-
-         formView.$el.find( '.js-submit' ).click();
-    } );
-
     it( 'Model에 invalid 이벤트를 연결하고 model값을 변경했을 때 감지 되는지 확인한다.', function ( done ) {
         validateUser.on( 'invalid', function ( model, error ) {
             expect( model ).to.be.an.instanceof( Backbone.Model );
@@ -599,6 +582,26 @@ describe( 'MVC Test', function () {
             window.location.href = '#page1';
             done();
         }, 2000 );
+    } );
+
+    // TODO 모델 validation 확인 -> 툴팁 표시 ( validation 2회 발생하는 문제 )
+    it( 'Model 객체에 validate 함수를 구현하고 동작되는지 확인', function ( done ) {
+        formView.$el.find( 'input[name="name"]' ).val( '' );
+
+        formView.$el.find( '.js-submit' ).on( 'click', function () {
+            setTimeout(function() {
+                $(".tooltip").css("top", $("#inputName").offset().top);
+            }, 500);
+            formView.toModel();
+            var $nextEl = formView.$el.find( 'input[name="name"]' ).next();
+            expect( $nextEl ).to.be.not.undefined;
+            expect( $nextEl.hasClass( 'tooltip' ) ).to.be.true;
+            expect( $nextEl.find( '.tooltip-inner' ).text() ).to.be.equal( '이름을 입력하세요.' );
+            $( this ).off( 'click' );
+            done();
+        } );
+
+        formView.$el.find( '.js-submit' ).click();
     } );
 
     // it( '', function ( done ) {
