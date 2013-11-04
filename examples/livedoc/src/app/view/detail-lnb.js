@@ -42,22 +42,35 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 		},
 
 		update: function () {
+            var self = this;
+
 			// 초기화
 			this.$el.find( '.list-group-item ' ).removeClass( 'active' );
 
 			// 현재 메뉴 액티브
+            var menuHeight = 42;
+            // 메뉴 목록 가져오기
+            var $dataId = $("[data-id]");
 			var $currentItem = this.$( '[data-id=' + this.model.id + ']' );
+            
+            // 메뉴 목록 중 활성화 상태의 메뉴 index 찾기
+            $dataId.each(function(i) {
+                if($(this).data("id") === self.model.id) {
+                    $currentItem.data("index", i - 1);
+                }
+            });
 			$currentItem.addClass( 'active' );
 
 			// 현재 메뉴로 스크롤 위치 변경
-			var currentScrollY = ($currentItem.index() - 1) * -Math.abs( $currentItem.height() );
+			var currentScrollY = $currentItem.data("index") * -Math.abs( menuHeight );
 
-			currentScrollY = currentScrollY > this.scrollView.iscroll.maxScrollY
-				? currentScrollY
-				: this.scrollView.iscroll.maxScrollY;
+            // 목록의 상단이나 하단에서 계속 바운싱 애니메이션이 발생하는 문제를 처리하는 조건 문
+            currentScrollY = currentScrollY > this.scrollView.iscroll.maxScrollY
+            ? currentScrollY
+            : this.scrollView.iscroll.maxScrollY;
 
-			currentScrollY = 0;
-			this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
+            // 지정한 Y 지점으로 스크롤 이동
+            this.scrollView.iscroll.scrollTo( 0, currentScrollY, 350 );
 
 			// Comment by JHC, 20131101
 			// 첫 번째 문서인 경우 page-nav-prev (이전문서로 이동하는) 버튼이 보이지 않게 한다.
@@ -66,7 +79,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 			}
 			// 마지막 문서인 경우 page-nav-next (다음문서로 이동하는) 버튼이 보이지 않게 한다.
 			else if ( this.$el.find( 'a.list-group-item:last' ).hasClass("active") ) {
-				this.$el.find( '#floating-menu-hidden-region' ).append( this.$el.find( '#page-nav-next' ) );		
+				this.$el.find( '#floating-menu-hidden-region' ).append( this.$el.find( '#page-nav-next' ) );
 			}
 			else {
 				this.$el.find( '#page-nav-top' ).before( this.$el.find( '#page-nav-prev' ) );
