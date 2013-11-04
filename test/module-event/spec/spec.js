@@ -593,8 +593,8 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
-            this.timeout(3000);
-            setTimeout(function() {}, 2000);
+            this.timeout(1000 * 10);
+            setTimeout(function() {}, 1000 * 3);
             table.$el.on('itemClick.cs.datatable', 'tr', function(e, result) {
                 Logging.info('itemClick.cs.datatable', result.data );
                 expect(e).to.be.an.instanceof($.Event);
@@ -1310,15 +1310,19 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
             });
         });
 
-        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function() {
-            $("input.typeahead").focus();
-            typeahead.$el.val('korea');
-            var e = jQuery.Event("input.tt");
-            e.which = e.keycode = 65;
-            typeahead.$el.trigger(e);
-            dMenu = typeahead.$el.closest('.twitter-typeahead').find('.tt-dropdown-menu');
-            expect(dMenu).to.not.be.undefined;
-            expect(dMenu.find('.tt-suggestion').length).to.equal(2);
+        it('input에 korea라고 넣었을 때 2개의 결과값이 검색되어야 한다.', function( done ) {
+            this.timeout( 1000 * 5 );
+            setTimeout( function () {
+                $("input.typeahead").focus();
+                typeahead.$el.val('korea');
+                var e = jQuery.Event("input.tt");
+                e.which = e.keycode = 65;
+                typeahead.$el.trigger(e);
+                dMenu = typeahead.$el.closest('.twitter-typeahead').find('.tt-dropdown-menu');
+                expect(dMenu).to.not.be.undefined;
+                expect(dMenu.find('.tt-suggestion').length).to.equal(2);
+                done();
+            }, 1000 * 2 );
         });
 
         it('검색된 2개의 결과물중 2번째 "South Korea"를 클릭하면 selected이벤트가 발생하여야 한다.', function(done) {
