@@ -36,4 +36,4 @@
 - active : Transition이 완료된 후에 실행됨
 - inactive : 다른 페이지가 활성화될 경우에 해당 페이지의 render보다 먼저 실행됨
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_13_routing.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#14>

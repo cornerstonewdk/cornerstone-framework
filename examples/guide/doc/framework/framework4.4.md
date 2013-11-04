@@ -41,4 +41,4 @@ var UserView = Backbone.View.extend( {
 } );
 ```
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_07_view.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#8>

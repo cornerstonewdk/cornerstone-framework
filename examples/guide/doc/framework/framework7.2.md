@@ -28,6 +28,6 @@
 	} );
 
 - events 정의 = ‘event [selector]’: ‘handler’
-- 사용 가능한 제스처 이벤트 : tap, doubletap, hold, dragstart, drag, dragend, swipe, transformstart, transform, transformend, release
+- 사용 가능한 제스처 이벤트 : tap, doubletap, hold, dragstart, drag, dragend, dragup, dragdown, dragleft, dragright, swipe, swipeup, swipedown, swipeleft, swiperight, transformstart, transform, transformend, rotate, pinch, pinchin, pinchout, touch, release
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_08_gesture.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#9>

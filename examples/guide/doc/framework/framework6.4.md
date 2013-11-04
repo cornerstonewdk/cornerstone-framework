@@ -20,4 +20,4 @@
 		Backbone.sync = Sync.local;
 	} );
 
-참고 : <http://cornerstone.sktelecom.com/livedoc/2_12_synchronization.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#13>

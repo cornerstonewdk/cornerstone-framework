@@ -17,17 +17,16 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-**디바이스 감지**
+**기기 감지**
 
-- Phone : 폭 767px 이하, Tablet : 폭 768px ~ 979px, Desktop : 폭 980px 이상
+- 큰 기기(lg) : 1200px 이상
+- 중간 기기(md) : 992px ~ 1199px
+- 작은 기기(sm) : 768px ~ 991px
+- 아주 작은 기기(xs) : 768px 미만
 
 **유틸리티 클래스**
 
-- .visible-phone, .visible-tablet, .visible-desktop, .hidden-phone, .hidden-tablet, .hidden-desktop
+- .visible-xs, .visible-sm, .visible-md, .visible-lg, .hidden-xs, .hidden-sm, .hidden-md, .hidden-lg
 
-**레이아웃**
-
-- Phone에서는 Grid syste의 컬럼을 무시하고 한 열로 표시
-
-참고 : <http://cornerstone.sktelecom.com/livedoc/3_4_component_form.html>  
-	<http://cornerstone.sktelecom.com/livedoc/3_3_responsive_web.html>
+참고 : <http://cornerstone.sktelecom.com/2/livedoc/#4101>
+	<http://cornerstone.sktelecom.com/2/livedoc/#4109>
