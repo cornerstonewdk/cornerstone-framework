@@ -46,6 +46,9 @@
         height: 710px;
     }
     @media (max-width:767px) {
+        #list-group .scrollview {
+            height: 120px;
+        }
         .list-group li:not(.active) {
             display:none;
         }
@@ -93,6 +96,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="#" data-link="dev-guide">
+                        <span class="glyphicon glyphicon-road"></span>
+                        스마트 청구서 관리자용
+                    </a>
+                </li>
+                <li>
                     <a href="#" data-link="smart-bill-admin">
                         <span class="glyphicon glyphicon-tree-conifer"></span>
                         스마트 청구서 관리자용
@@ -102,6 +111,12 @@
                     <a href="#" data-link="smart-bill-user">
                         <span class="glyphicon glyphicon-tree-deciduous"></span>
                         스마트 청구서 사용자용
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-link="cornerstone-ui">
+                        <span class="glyphicon glyphicon-tower"></span>
+                        Cornerstone UI
                     </a>
                 </li>
                 <li>
@@ -165,6 +180,13 @@
 
                                             </p>
                                         </li>
+                                        <li class="list-group-item" data-link="dev-guide">
+                                            <h4 class="list-group-item-heading">
+                                                <span class="glyphicon glyphicon-road"></span>개발자 가이드</h4>
+                                            <p class="list-group-item-text">
+                                                <br/>Cornerstone Framework를 처음 접하시는 개발자 분들에게 Step by Step으로 쉽게 따라할 수 있는 가이드 문서가 제공됩니다. 지금 시작해 보세요.
+                                            </p>
+                                        </li>
                                         <li class="list-group-item" data-link="smart-bill-admin">
                                             <h4 class="list-group-item-heading">
                                                 <span class="glyphicon glyphicon-tree-conifer"></span>스마트 청구서 관리자용</h4>
@@ -179,11 +201,18 @@
                                                 <br/>Cornerstone Framework를 통해서 만든 스마트 청구서 사용자용 예제 웹앱입니다. 관리자가 생성 한 청구서를 사용자에 맞게 재구성 되어 보여집니다.
                                             </p>
                                         </li>
+                                        <li class="list-group-item" data-link="cornerstone-ui">
+                                            <h4 class="list-group-item-heading">
+                                                <span class="glyphicon glyphicon-tower"></span>Cornerstone UI</h4>
+                                            <p class="list-group-item-text">
+                                                <br/>Cornerstone Framework 내에서 사용하는 컴포넌트, 위젯를 눈으로 확인할 수 있는 페이지 입니다. 개발시 사용할 컴포넌트, 위젯을 찾아보세요!
+                                            </p>
+                                        </li>
                                         <li class="list-group-item" data-link="test-page">
                                             <h4 class="list-group-item-heading">
                                                 <span class="glyphicon glyphicon-repeat"></span>Cornerstone Test Page</h4>
                                             <p class="list-group-item-text">
-                                                <br/>Cornerstone Framework 내에서 사용하는 컴포넌트, 위젯를 눈으로 확인할 수 있는 페이지 입니다. 개발시 사용할 컴포넌트, 위젯을 찾아보세요!
+                                                <br/>Cornerstone Framework 종합 Test 페이지 입니다. 각 항목 별로 테스트 결과를 확인할 수 있습니다.
                                             </p>
                                         </li>
                                         <li class="list-group-item" data-link="widget-chart">
@@ -313,8 +342,17 @@
             url: 'http://cornerstone.sktelecom.com/2/smart-bill/',
             name: 'smart-bill-user',
             preview: true
+        },
+        'cornerstone-ui': {
+            url: 'http://cornerstone.sktelecom.com/2/cornerstone-ui/',
+            name: 'cornerstone-ui',
+            preview: true
+        },
+        'dev-guide': {
+            url: 'http://cornerstone.sktelecom.com/guide/',
+            name: 'dev-guide',
+            preview: true
         }
-
     };
 
     var loadCount = 0;

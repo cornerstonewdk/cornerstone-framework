@@ -17,16 +17,7 @@
 
 <div id="floating-page-navi" style="float: right;">
 
-	<div class="copy-btn-group" style="display:none;">
-		<a class="btn btn-default btn-left-chevron" href="">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		</a>
-		<a class="btn btn-default btn-right-chevron" href="">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
-	</div>
-
-	<div class="floating-menu-hidden-region btn-group">
+	<div id="floating-menu-hidden-region" class="btn-group">
 		<a class="btn btn-default" href=""> Menu </a>
 	</div>
 

@@ -20,6 +20,10 @@
 			max-width: none;
 			position: relative;
 		}
+
+		.tab-pane {
+			padding-top: 10px;
+		}
 		</style>
 	</head>
 	<body>
@@ -33,6 +37,152 @@
 				<img id="image" src="images/Landscape.jpg"/>
 			</div>
 		</div>
+
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">index.html</a></li>
+				<li><a href="#js1" data-toggle="tab">main.js</a></li>
+				<li><a href="#js2" data-toggle="tab">gesture-area.js</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="html">
+					<pre>
+&lt;!DOCTYPE html>
+&lt;html lang="ko">
+	&lt;head>
+		&lt;meta charset="utf-8"/>
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		&lt;title>Gesture Example&lt;/title>
+		&lt;link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		&lt;style>
+		body {
+			padding-top: 70px;
+		}
+		
+		div#gesture-area {
+			position: relative;
+			height: 300px;
+			overflow: hidden;
+		}
+		
+		img#image {
+			max-width: none;
+			position: relative;
+		}
+		&lt;/style>
+	&lt;/head>
+	&lt;body>
+		&lt;div class="navbar navbar-inverse navbar-fixed-top">
+			&lt;div class="navbar-header">
+				&lt;a class="navbar-brand" href="#">Gesture Example&lt;/a>
+			&lt;/div>
+		&lt;/div>
+		&lt;div class="container">
+			&lt;div id="gesture-area" class="well">
+				&lt;img id="image" src="images/Landscape.jpg"/>
+			&lt;/div>
+		&lt;/div>
+
+		&lt;script src="cornerstone/launcher/launcher.js" data-target="app/main">&lt;/script>
+	&lt;/body>
+&lt;/html></pre>
+				</div>
+				<div class="tab-pane" id="js1">
+					<pre>
+/**
+ * main.js
+ * 애플리케이션 메인
+ */
+define( [ 'view/gesture-area', 'backbone', 'bootstrap' ], function( GestureAreaView, Backbone ) {
+	return {
+		launch: function() {
+			new GestureAreaView();
+		}	
+	};
+} );
+					</pre>
+				</div>
+				<div class="tab-pane" id="js2">
+					<pre>
+define( [ 'gesture-view' ], function( GestureView ) {
+
+	return GestureView.extend( {
+
+		el: 'div#gesture-area',
+
+		initialize: function() {
+			this.$obj = this.$( 'img#image' );
+			
+			this.status = {
+				x: 0,
+				y: 0,
+				scale: 1,
+				rotate: 0	
+			};
+		},
+
+		events: {
+			'doubletap': 'doubletap',
+			'dragstart': 'dragstart',
+			'drag': 'drag',
+			'dragend': 'dragend',
+			'transformstart': 'transformstart',
+			'transform': 'transform',
+			'transformend': 'transformend'
+		},
+		
+		gestureOptions: {
+			prevent_default: true
+		},
+		
+		doubletap: function( event ) {
+			this.applyTransform( { scale: 1.2 } );
+			this.status.scale *= 1.2;
+		},
+		
+		dragstart: function( event ) {
+		},
+		
+		drag: function( event ) {
+			this.applyTransform( { x: event.gesture.deltaX, y: event.gesture.deltaY } );
+			this.lastX = event.gesture.deltaX;
+			this.lastY = event.gesture.deltaY;
+		},
+		
+		dragend: function( event ) {
+			this.status.x += this.lastX;
+			this.status.y += this.lastY;
+		},
+		
+		transformstart: function( event ) {
+		},
+		
+		transform: function( event ) {
+			this.applyTransform( { scale: event.gesture.scale, rotate: event.gesture.rotation } );
+		},
+		
+		transformend: function( event ) {
+			this.status.scale *= event.gesture.scale;
+			this.status.rotate += event.gesture.rotation;
+		},
+		
+		applyTransform: function( delta ) {
+		
+			var t = '';
+			t += 'translateX(' + ( this.status.x + ( delta.x || 0 ) ) + 'px) ';
+			t += 'translateY(' + ( this.status.y + ( delta.y || 0 ) ) + 'px) ';
+			t += 'translateZ(0px) ';
+			t += 'scale(' + ( this.status.scale * ( delta.scale || 1 ) ) + ') ';
+			t += 'rotate(' + ( this.status.rotate + ( delta.rotate || 0 ) ) + 'deg)';
+			
+			this.$obj.css( '-webkit-transform', t );
+		}
+	} );
+} );
+					</pre>
+				</div>
+			</div>
 
 		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
 	</body>
