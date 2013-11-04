@@ -95,6 +95,7 @@
 					height: window.innerHeight / 2
 				} ).featuredScrollView("refresh");
 		});
+
 		$( "#floating-detail-menu-background" ).fadeIn(500);
 		$( "#detail-menu-open-arrow" ).fadeOut(100);
 		$( "#detail-menu-close-arrow" ).fadeIn(500);
@@ -118,8 +119,12 @@
 	$("#accordion a.accordion-toggle").click( function(e) {
 		e.preventDefault();
 		$( $(this).attr("href") ).collapse("toggle");
-
-		$( '#scrollView' ).featuredScrollView("refresh");
 	});
 
+	$(".collapse").on("shown.bs.collapse", function(e) {
+		$( '#scrollView' ).featuredScrollView( "refresh" );
+	})
+	.on("hidden.bs.collapse", function(e) {
+		$( '#scrollView' ).featuredScrollView( "refresh" );
+	});
 </script>
