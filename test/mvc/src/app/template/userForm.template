@@ -8,7 +8,7 @@
   <div class="form-group">
     <label for="inputAge" class="col-lg-2 control-label">나이</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" id="inputAge" name="age" placeholder="나이" data-placement="right">
+      <input type="text" class="form-control" id="inputAge" name="age" placeholder="나이" data-placement="top">
     </div>
   </div>
   <div class="form-group">
