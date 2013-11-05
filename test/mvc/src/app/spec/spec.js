@@ -508,22 +508,33 @@ describe( 'MVC Test', function () {
         expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
     } );
 
-    // it( '컬랙션이 로컬 스토리지와 동기화되는지 확인( collection.fetch )', function () {
-    //     users1.fetch();
-    //     console.log( temp );
-    // } );
+    it( '컬랙션이 로컬 스토리지와 동기화되는지 확인( model.fetch )', function () {
+        var name = '김하늘';
+        var id = user1.id;
+        user1.set( 'name', name );
+        user1.save();
+        user1.clear();
+        expect( user1.get( 'name' ) ).to.be.undefined;
+        user1.id = id;
+        user1.fetch();
+        expect( user1.get( 'name') ).to.be.equal( name );
+    } );
 
-    // it( '컬랙션이 로컬 스토리지와 동기화되는지 확인( model.fetch )', function () {
-    //     var temp = users1.fetch();
-    //     console.log( temp );
-    // } );
+    it( '컬랙션이 로컬 스토리지와 동기화되는지 확인( collection.fetch )', function () {
+        var id = user1.id;
+        var tempCol = new Users();
+        tempCol.fetch();
+        expect( tempCol ).to.be.not.undefined;
+        expect( tempCol.length ).to.be.equal( users2.length );
+        expect( tempCol.get( id ).get( 'name' ) ).to.be.equal( users2.get( id ).get( 'name' ) );
+    } );
 
-    // it( '모델이 로컬 스토리지와 동기화되는지 확인( model.destroy )', function () {
-    //     var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
-    //     user1.destroy();
-    //     console.log($syncUser, user1);
-    //     expect( $syncUser ).to.be.undefined;
-    // } );
+    it( '모델이 로컬 스토리지와 동기화되는지 확인( model.destroy )', function () {
+        var cid = user1.cid;
+        user1.destroy();
+        var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
+        expect( $syncUser ).to.be.null;
+    } );
 
     it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page1 -> page2)', function ( done ) {
         this.timeout( 3000 );

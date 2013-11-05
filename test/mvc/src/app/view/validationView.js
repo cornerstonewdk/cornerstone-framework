@@ -15,7 +15,6 @@ define( [ 'backbone', 'logging' ], function( Backbone, Logging ) {
         },
 
         fail: function( err ) { 
-            console.log( '[ 25 ] ' + err.message || err );
             if ( err.attribute ) this.$( ':input[name=' + err.attribute + ']:first' ).focus();
         }
     } );
