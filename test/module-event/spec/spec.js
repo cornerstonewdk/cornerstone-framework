@@ -595,7 +595,6 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         it('테이블의 row를 클릭했을 때 itemClick 이벤트가 발생하여야 한다.', function(done) {
             this.timeout(1000 * 10);
-            setTimeout(function() {}, 1000 * 3);
             table.$el.on('itemClick.cs.datatable', 'tr', function(e, result) {
                 Logging.info('itemClick.cs.datatable', result.data );
                 expect(e).to.be.an.instanceof($.Event);
@@ -604,7 +603,9 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
                 expect(result.data).to.be.instanceof(Array);
                 done();
             });
-            table.$el.find('tr:eq(2)').click();
+            setTimeout(function() {
+                table.$el.find('tr:eq(2)').click();
+            }, 1000 * 3);
         });
     });
 
