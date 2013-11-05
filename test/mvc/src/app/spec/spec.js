@@ -369,21 +369,16 @@ describe( 'MVC Test', function () {
          formView.$el.find( '.js-submit' ).trigger( 'click' );
     } );
 
-    // // TODO
-    it( 'TODO validation view를 로드 후 formView에 생성옵션으로 지정, 동작 확인', function ( ) {
+    it( 'validation view를 로드 후 formView에 생성옵션으로 지정되는 지 확인', function ( ) {
         require( [ 'validation-view', 'template!../app/template/userForm', 'form-view' ], function ( ValidationView, formTamplate, FormView ){
             validateUser1 = new UserModel( { name: '프랭클린', age: 25, job: '배송업', validate: true } );
             pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'modify-form' );
             formView1 = new FormView( { el: '#modify-form', model: validateUser1, validationViewClass: ValidationView } );
             expect( formView1 ).to.be.an.instanceof( Backbone.View );
-            // formView1.$el.find( '.js-submit' ).on( 'click', function () {
-            //     formView1.toModel();
-            // } );
         } );
     } );
 
-    // TODO
-    it( 'TODO custom validation view를 사용해 본다.', function ( done ) {
+    it( 'custom validation view를 사용해 본다.', function ( done ) {
         require( [ 'view/validationView', 'template!../app/template/userForm', 'form-view' ], function ( CustomValidationView, formTamplate, FormView ){
             validateUser2 = new UserModel( { name: '데빈', age: 40, job: '공무원', validate: true } );
             pageView.$el.find( '#add-form' ).parent().append( formTamplate() ).find( 'form:last-child' ).attr( 'id', 'valid-form' );
@@ -495,8 +490,7 @@ describe( 'MVC Test', function () {
         });
     } );
 
-    // TODO 내부적인 루프 발생 - Maximum call stack size exceeded
-    it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 새로 생성된 모델[save] )', function () {
+    it( '모델이 로컬 스토리지와 동기화되는 지 확인( model.save - 새로 생성된 모델[save] )', function () {
         user1.save();
         var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
         expect( $syncUser ).to.be.not.undefined;
@@ -504,16 +498,32 @@ describe( 'MVC Test', function () {
         expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
     } );
 
-    it( '모델을 로컬 스토리지와 동기화되는 지 확인( model.save - 이미 존재하는 모델[update] )', function () {
+    it( '모델이 로컬 스토리지와 동기화되는 지 확인( model.save - 이미 존재하는 모델[update] )', function () {
         user1.set( 'name', '이종석' );
         user1.set( 'age', '20' );
-        console.log( 'before save', user1 );
         user1.save();
         var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
         expect( $syncUser ).to.be.not.undefined;
         expect( $syncUser.model.name ).to.be.equal( user1.get( 'name' ) );
         expect( $syncUser.model.age ).to.be.equal( user1.get( 'age' ) );
     } );
+
+    // it( '컬랙션이 로컬 스토리지와 동기화되는지 확인( collection.fetch )', function () {
+    //     users1.fetch();
+    //     console.log( temp );
+    // } );
+
+    // it( '컬랙션이 로컬 스토리지와 동기화되는지 확인( model.fetch )', function () {
+    //     var temp = users1.fetch();
+    //     console.log( temp );
+    // } );
+
+    // it( '모델이 로컬 스토리지와 동기화되는지 확인( model.destroy )', function () {
+    //     var $syncUser = $.parseJSON( local.getItem( 'records.' + user1.cid ) );
+    //     user1.destroy();
+    //     console.log($syncUser, user1);
+    //     expect( $syncUser ).to.be.undefined;
+    // } );
 
     it( 'hash fragment를 이용하여 서버요청 없이 분기가 가능한지 확인 (page1 -> page2)', function ( done ) {
         this.timeout( 3000 );
@@ -568,7 +578,6 @@ describe( 'MVC Test', function () {
             $( this ).off( 'click' );
             setTimeout(function() {
                 var $tooltip = $( '.tooltip' );
-                console.log( $tooltip );
                 expect( $tooltip ).to.be.not.undefined;
                 expect( $tooltip.find( '.tooltip-inner' ).text() ).to.be.equal( '나이를 입력하세요.' );
                 done();

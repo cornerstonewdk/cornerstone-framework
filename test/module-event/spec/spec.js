@@ -321,7 +321,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
     describe('widget-chart', function() {
         var barChart, lineChart, pieChart, horizontalBarChart, linePlusBarChart, bar3dChart, horizontal3dBarChart, lineFocusChart;
         describe('barChart', function() {
-            this.timeout(3000);
+            this.timeout(1000 * 10);
             it('barChart가 보여질 때 shown 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -361,7 +361,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('horizontalBarChart', function() {
-            this.timeout(1000);
+            this.timeout(1000*4);
             it('horizontalBarChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -391,7 +391,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('linePlusBarChart', function() {
-            this.timeout(1000);
+            this.timeout(1000*4);
             it('linePlusBarChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -422,7 +422,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('lineChart', function() {
-            this.timeout(1000);
+            this.timeout(1000*4);
             it('lineChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -452,7 +452,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('pieChart', function() {
-            this.timeout(1000);
+            this.timeout(1000*4);
             it('pieChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -482,7 +482,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('bar3dChart', function() {
-            this.timeout(2000);
+            this.timeout(1000*4);
             it('bar3dChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -513,7 +513,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         describe('horizontal3dBarChart', function() {
-            this.timeout(2000);
+            this.timeout(1000*4);
             it('horizontal3dBarChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
@@ -545,6 +545,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
 
         describe('lineFocusChart', function() {
             it('lineFocusChart가 보여질 때 shown, complete 이벤트가 발생하여야 한다.', function(done) {
+                this.timeout(1000*4);
                 require(['widget-chart'], function(WidgetChart) {
                     var Model = Backbone.Model.extend({
                         url: 'data/sample-line.json'
@@ -847,7 +848,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         it('첫번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
-            this.timeout(1000);
+            this.timeout(1000*10);
             input_0.$el.on('start.cs.rangeInput', function(e) {
                 Logging.info('1st rangeinput start.cs.rangeInput', e);
                 expect(e).to.be.an.instanceof($.Event);
@@ -920,7 +921,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
 
         it('두번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
-            this.timeout(1000);
+            this.timeout(1000*10);
             input_1.$el.on('2nd rangeinput start.cs.rangeInput', function(e) {
                 Logging.info('start.cs.rangeInput', e);
                 expect(e).to.be.an.instanceof($.Event);
@@ -994,7 +995,7 @@ describe('Cornerstone 이벤트 확장, view 모듈화 통합 test', function() 
         });
         
         it('세번째 rangeinput의 핸들을 움직였을때 start, move, end 이벤트가 순차적으로 발생하여야 한다.',function(done){
-            this.timeout(1000);
+            this.timeout(1000*10);
             input_2.$el.on('start.cs.rangeInput', function(e) {
                 Logging.info('3rd rangeinput start.cs.rangeInput', e);
                 expect(e).to.be.an.instanceof($.Event);
