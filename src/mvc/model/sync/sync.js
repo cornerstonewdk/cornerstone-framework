@@ -73,7 +73,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 				if ( model.collection ) model.set( { collectionUrl: model.collection.url } );
 				
 				this.save( { key: model.id, model: model.toJSON() }, function( obj ) {
-					options.success( model );
+					options.success( model.toJSON() );
 				} );
 			} );
 		},
@@ -81,7 +81,7 @@ define( [ 'backbone', 'lawnchair' ], function( Backbone, Lawnchair ) {
 		'update': function( model, options ) {
 			new Lawnchair( { adapter: 'dom' }, function() {
 				this.save( { key: model.id, model: model.toJSON() }, function( obj ) {
-					options.success( model );
+					options.success( model.toJSON() );
 				} );
 			} );
 		},
