@@ -4,6 +4,11 @@ require.config( {
 			name: 'impress',
 			location: '../lib/impress',
 			main: 'impress.js'
+		},
+		{
+			name: 'respond',
+			location: '../lib/respond',
+			main: 'respond.min.js'
 		}
 	],
 
@@ -134,6 +139,8 @@ define( [ 'jquery', 'backbone', 'impress', 'model/documents', 'template!template
 			} );
 
 			docs.fetch();
+
+			require( [ 'respond' ] );
 		}	
 	};
 } );
