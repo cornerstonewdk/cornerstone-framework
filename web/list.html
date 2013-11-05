@@ -271,7 +271,7 @@
         <div class="row">
             <h3 class="title"></h3>
             <a href="#">
-                <img class="qrcode" src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{url}}" />
+                <img id="qrcodeImg" class="qrcode" src="http://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{url}}" />
             </a>
         </div>
         <div class="row urlWrapper">
@@ -362,6 +362,11 @@
         $(this).closest('ul').find('li').removeClass('active');
         $(this).addClass('active');
         render($(this));
+        var winWidth = $( window ).width();
+        if( winWidth > 750 && winWidth < 1180 ) {
+            var position = $( '#qrcodeImg' ).offset();
+            $( 'html, body' ).animate( { scrollTop: position.top - 85 }, 500 );
+        }
     });
 
     $('#navbar li > a').click(function(e) {
