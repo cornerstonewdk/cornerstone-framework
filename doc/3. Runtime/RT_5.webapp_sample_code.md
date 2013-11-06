@@ -15,11 +15,11 @@
 
 ----------------------
 
--	아래 링크를 통해 Cornerstone Runtime에서 제공하는 Java Script API 목록을 확인 할 수 있다.  
+- 아래 링크를 통해 Cornerstone Runtime에서 제공하는 Java Script API 목록을 확인 할 수 있다.  
 
 	[./sample/spechtmls.zip](./sample/spechtmls.zip "Runtime DeviceAPI Spec Table")
 
--	아래 링크를 통해 Cornerstone Runtime에서 제공하는 Java Script API 예제를 확인 할 수 있다. 
+- 아래 링크를 통해 Cornerstone Runtime에서 제공하는 Java Script API 예제를 확인 할 수 있다. 
 
 	[./sample/sample.zip](./sample/sample.zip "Runtime DeviceAPI Sample")
 
@@ -190,11 +190,9 @@
 		navigator.menumanager.removeMenu("REFRESH");       // 새로고침 메뉴 삭제 
 		navigator.menumanager.removeMenu("EXITAPP");       // 하이브리드앱 종료 메뉴 삭제 
 
-
 		navigator.menumanager.addMenu ("OPENBROWSER");   // 브라우져로 열기 메뉴 삽입
 		navigator.menumanager.addMenu ("REFRESH");       // 새로고침 메뉴 삽입
 		navigator.menumanager.addMenu ("EXITAPP");       // 하이브리드앱 종료 메뉴 삽입
-
 
 	> example 14. NFC TAG를 읽고 하이브리드앱에 이를 통지하는 Sample (nfc_sample.html) 
 

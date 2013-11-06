@@ -63,7 +63,7 @@
 
 ![](./images/src2.png)
 
--	초기 페이지인 **index.html**을 생성한다. 
+- 초기 페이지인 **index.html**을 생성한다. 
 
 		<html>
 		<head>
@@ -74,7 +74,7 @@
 		</body>
 		</html>
 	
--	특정 웹페이지 내부에서 Runtime Device API를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
+- 특정 웹페이지 내부에서 Runtime Device API를 사용하고 할 때에는 아래와 같이 Java Script Library를 선언한다.
  
 		<script type="text/javascript" charset="utf-8" src="../path/SRT-0.9.3.js"></script>
 
@@ -82,9 +82,9 @@
 
 	- 모바일 웹에서는 Device에 따라 환경적인 차이가 많아서 고려해야 할 사항들이 몇 가지 있다. Webpage를 Device 해상도 별로 제작 할 수 있는 것도 아니고 어떤 Device가 접속했는지를 일일이 구분하여 서버상에서 Page를 내려줄 수 있는 것도 아니다. 이런 크로스브라우징 문제를 해결하기 위해서 Media Query를 사용하기를 권장한다. 
 
-	-	해상도가 다른 Device 에 따라 화면에 Fix하게 출력 하고 싶을 경우 아래와 같이 **Media Query**를 이용하여 Device 해상도에 맞는 CSS를 적용하도록 한다. 
+	- 해상도가 다른 Device 에 따라 화면에 Fix하게 출력 하고 싶을 경우 아래와 같이 **Media Query**를 이용하여 Device 해상도에 맞는 CSS를 적용하도록 한다. 
 
-		>	Style.css Example
+		> Style.css Example
 
 			body {background-color:#000;}
 			/* Galaxy Note 1 */ 
@@ -128,7 +128,7 @@
 
 ![](./images/manifest.png)
 
--	기본적인 Manifest 파일의 형식 
+- 기본적인 Manifest 파일의 형식 
 
 		<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
     	package="co.kr.skt.testapp.test" android:versionName="1.1" android:versionCode="5">
@@ -141,7 +141,7 @@
 
 ![](./images/string.png)
 
--	string.xml
+- string.xml
 
 		<resources>
   		<string name="app_name">테스트 하이브리드앱</string> 
