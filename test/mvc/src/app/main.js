@@ -11,8 +11,7 @@ define( [ 'logging',
 		  'multipage-router', 
 		  'js/mocha', 
 		  'bootstrap',
-		  'style!css/mocha',
-		  'style!main'
+		  'style!css/mocha'
 		   ], function( Logging, Page1View, Page2View, Page3View, Backbone, MultipageRouter ) {
 	return {
 		launch: function() {
@@ -82,7 +81,7 @@ define( [ 'logging',
 			new MainRouter();
 			Backbone.history.start();
 			
-			require(['spec/spec'], function () {
+			require(['spec/spec','style!main'], function () {
 				if (navigator.userAgent.indexOf('PhantomJS') < 0) {
 			        mocha.run();
 			    }

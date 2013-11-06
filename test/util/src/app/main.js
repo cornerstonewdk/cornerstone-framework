@@ -9,7 +9,7 @@ requirejs.config( {
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'view/page1', 'view/page2', 'view/page3', 'backbone', 'multipage-router', 'mocha', 'bootstrap', 'style!main' ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter ) {
+define( [ 'view/page1', 'view/page2', 'view/page3', 'backbone', 'multipage-router', 'mocha', 'bootstrap' ], function( Page1View, Page2View, Page3View, Backbone, MultipageRouter ) {
 	return {
 		launch: function() {
 
@@ -60,7 +60,7 @@ define( [ 'view/page1', 'view/page2', 'view/page3', 'backbone', 'multipage-route
 		        ignoreLeaks: true
 		    });
 
-    		require( [ 'spec' ], function () {
+    		require( [ 'spec', 'style!main' ], function () {
     			if (navigator.userAgent.indexOf('PhantomJS') < 0) {
 			        mocha.run();
 			    }
