@@ -1,7 +1,242 @@
-/*
-    Cornerstone Framework v2.0
+/**
+ * skt.js
+ * SKT Open API ( 향후 서버주소 변경해야 함 )
+ */
+;( function ( $, window ) {
 
-    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
-    Released under the Apache License, Version 2.0
-*/
-!function(a,b){function c(a,b){b?b(a):console.log("handler is not define")}function d(a,b){var d=!1;for(var e in b)a[b[e]]||(c({result:"fail",resultCode:"1",message:b[e]+" is require."},a.error),d=!0);return d}Backbone="undefined"!=typeof exports?exports:b.Backbone={};var e,f=b.SKT={authFrame:void 0},g="http://cornerstone.sktelecom.com",h=g+"/oauth/authorize",i=g+"/sms",j=g+"/payment",k=function(a){this.options=a};f.authorize=function(a){return e=new k(a),e.init(),e},f.authSuccess=function(c){for(var d=c.hash.substr(1).split("&"),g={},h=0;h<d.length;h++){var i=d[h].split("=");g[i[0]]=i[1]}return a("#"+f.authFrame)&&(a("#"+f.authFrame).remove(),f.authFrame=void 0,a(b).off("resize")),g.access_token?(e.success(decodeURIComponent(g.access_token)),void 0):(e.options.error({result:"fail",resultCode:"1",message:"access_token is not valid."}),!1)},k.prototype={defaults:{client_id:void 0,redirect_uri:void 0,response_type:"token"},init:function(){var c=["clientId","redirectUri"];if(d(this.options,c))return!1;var e={client_id:this.options.clientId,redirect_uri:encodeURI(this.options.redirectUri)};if(this.success=this.options.success,a.extend(this.defaults,e),f.authFrame)a("#"+f.authFrame).attr("src",h+"?"+a.param(this.defaults));else{f.authFrame="skt_auth_iframe_"+Math.floor(1e3*Math.random())+1;var g=a("<button>close</button>",{type:"button"}).css({left:"10px",top:"10px",position:"absolute","font-size":"15px"});g.on("click",function(){a("#"+f.authFrame).remove(),f.authFrame=void 0,a(b).off("resize")});var i=a("<div></div>",{id:f.authFrame}).css({"z-index":"10000",left:"0px",top:"0px",width:b.innerWidth+"px",height:b.innerHeight+"px",position:"absolute","background-color":"gray"});a(b).on("resize",function(a){i.css({width:a.currentTarget.innerWidth+"px",height:a.currentTarget.innerHeight+"px"}),j.css({width:a.currentTarget.innerWidth+"px",height:a.currentTarget.innerHeight+"px"})});var j=a("<iframe></iframe>",{src:h+"?"+a.param(this.defaults)}).css({width:b.innerWidth+"px",height:b.innerHeight+"px","background-color":"gray"});j.appendTo(i),g.appendTo(i),i.appendTo("body")}},success:function(){}},f.sendSms=function(b){var e=["accessToken","from","to","message"];if(d(b,e))return!1;var f={access_token:b.accessToken,from:b.from,to:b.to,message:encodeURIComponent(b.message)};a.ajax({url:i,data:f,dataType:"jsonp",jsonp:"callback",jsonpCallback:"success",timeout:b.timeout||5e3,success:function(a){1==a.resultCode?c(a,b.error):c(a,b.success)},error:function(){c({result:"fail",resultCode:"1",message:"time out."},b.error)}})},f.pay=function(b){var e=["accessToken","type","amount","to"];if("one-time"!==b.type&&"recurring"!==b.type&&e.push("paymentDate"),d(b,e))return!1;var f={access_token:b.accessToken,type:b.type,amount:b.amount,payment_date:b.paymentDate,to:b.to};a.ajax({url:j,data:f,dataType:"jsonp",jsonp:"callback",jsonpCallback:"success",timeout:b.timeout||5e3,success:function(a){1==a.resultCode?c(a,b.error):c(a,b.success)},error:function(){c({result:"fail",resultCode:"1",message:"time out."},b.error)}})}}(jQuery,window);
+	if (typeof exports !== 'undefined') {
+		Backbone = exports;
+	} else {
+		Backbone = window.Backbone = {};
+	}
+
+	// SKT 전역 객체 선언
+	var SKT = window.SKT = { authFrame: undefined };
+	// redirect 정보를 전달받을 객체 선언
+	var SKT_AUTH;
+
+	// 상수 선언
+	// server url은 향후 https 프로토콜로 통신
+	var SERVER_URL = 'http://cornerstone.sktelecom.com';
+	
+	// 변수 선언
+	var authorize_uri = SERVER_URL + '/oauth/authorize',
+		sendSms_uri = SERVER_URL + '/sms',
+		pay_uri = SERVER_URL + '/payment';
+
+	// Authroize 생성자
+	var Authorize = function ( options ) {
+		this.options = options;
+	};
+
+	// SKT.authroize 함수 정의
+	SKT.authorize = function ( options ) {
+		SKT_AUTH = new Authorize( options );
+		SKT_AUTH.init();
+		return SKT_AUTH;
+	};
+
+	// redirectUri 에서 호출할 parent window 함수
+	SKT.authSuccess = function ( loc ) {
+		console.log( 'loc', loc );
+		var arr = loc.hash.substr( 1 ).split('&');
+		var obj = {};
+		for( var i = 0 ; i < arr.length ; i++ ) {
+		    var bits = arr[ i ].split( '=' );
+		    obj[ bits[ 0 ] ] = bits[ 1 ];
+		}
+		console.log( 'obj', obj );
+		// iframe유무 확인 후 iframe 제거
+		if( $( '#' + SKT.authFrame ) ){
+			$( '#' + SKT.authFrame ).remove();
+			SKT.authFrame = undefined;
+			$( window ).off( 'resize' );
+		} 
+
+		// 옵션으로 넘어온 사용자 정의 success 함수 실행
+		if( !obj.access_token ){
+			SKT_AUTH.options.error( { "result": "fail", "resultCode": "1", "message": "access_token is not valid." } );	
+			return false;
+		} else {
+			SKT_AUTH.success( decodeURIComponent( obj.access_token ) );	
+		}
+	};
+
+	Authorize.prototype = {
+		defaults: {
+			client_id: undefined,
+			redirect_uri: undefined,
+			response_type: 'token'
+		},
+		init: function () {
+
+			var def = [ 'clientId', 'redirectUri' ];
+
+			if( requireAttrCheck( this.options, def ) ) return false;
+
+			// 생성시 넘어온 options로 opt를 만든다.
+			var opt = {
+				client_id: this.options.clientId, 
+				redirect_uri: encodeURI( this.options.redirectUri ),
+			};
+
+			// Authorize.success 를 override 한다.
+			this.success = this.options.success;
+
+			$.extend( this.defaults, opt );
+
+			// 동적 삽입용 iframe을 만든다. 이름 중복을 막기위해
+			// id값에 숫자를 랜덤하게 만들어 붙여준다.
+
+			// 윈도우 사이즈가 변화시 + 모바일 기기에서 어떻게 보이는지 확인이 필요
+
+			// iframe 생성
+			if( !SKT.authFrame ){
+				SKT.authFrame = 'skt_auth_iframe_' + Math.floor( Math.random() * 1000 ) + 1;
+				var iframeClose = $( '<button>close</button>', {
+					type: 'button',
+				} ).css( {
+					'left': '10px',
+					'top': '10px',
+					'position': 'absolute',
+					'font-size': '15px'
+				} );
+
+				// iframeClose 버튼에 클릭발생시 iframe을 달아주고 resize 리스너
+				iframeClose.on( 'click', function ( evt ) {
+					$( '#' + SKT.authFrame ).remove();
+					SKT.authFrame = undefined;
+					$( window ).off( 'resize' );
+				} );
+
+				var iframeDiv = $( '<div></div>', { id: SKT.authFrame } ).css( {
+					'z-index': '10000',
+					'left': '0px',
+					'top': '0px',
+					'width': window.innerWidth + 'px',
+					'height': window.innerHeight + 'px',
+					'position': 'absolute',
+					'background-color': 'gray'
+					
+				} );
+
+				// 윈도우 창 사이즈가 변해도 iframe을 계속 화면에 가득차게 유지
+				$( window ).on( 'resize', function ( event ) {
+					iframeDiv.css( {
+						'width': event.currentTarget.innerWidth + 'px',
+						'height': event.currentTarget.innerHeight + 'px'
+					} );
+					iframe.css( {
+						'width': event.currentTarget.innerWidth + 'px',
+						'height': event.currentTarget.innerHeight + 'px'
+					} );
+				} );
+
+				var iframe = $( '<iframe></iframe>', {
+					src: authorize_uri + '?' + $.param( this.defaults )
+				} ).css( {
+					'width': window.innerWidth + 'px',
+					'height': window.innerHeight + 'px',
+					'background-color': 'gray'
+				} );
+
+				// 만들어진 iframe을 body에 심어준다.
+				iframe.appendTo( iframeDiv );
+				iframeClose.appendTo( iframeDiv );
+				iframeDiv.appendTo( 'body' );
+			} else {
+				$( '#' + SKT.authFrame ).attr( 'src', authorize_uri + '?' + $.param( this.defaults ) );
+			}
+		},
+		success: function () {}
+	};
+
+	function callbackHandler( data, handler ){
+		handler ? handler( data ) : console.log( 'handler is not define' );
+	}
+
+	function requireAttrCheck( object, array ){
+		var flag = false;
+		for( var i in array ){
+			if( !object[ array[i] ] ){
+				callbackHandler( { "result": "fail", "resultCode": "1", "message": array[ i ] + " is require." }, object.error );
+				flag = true;
+			}
+		}
+		return flag;
+	}
+
+	SKT.sendSms = function ( options ) {
+		var defaults = [ 'accessToken', 'from', 'to', 'message' ];
+
+		// 넘어온 options값에서 필수 요소가 존재하는지 확인한다.
+		if( requireAttrCheck( options, defaults ) ) return false;
+
+		var params = {
+			access_token: options.accessToken,
+			from: options.from,
+			to: options.to,
+			message: encodeURIComponent( options.message )
+		};
+
+		$.ajax( {
+            url: sendSms_uri,
+            data: params,
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'success',
+            timeout: options.timeout || 1000 * 5,
+            success: function ( data ) {
+            	if( data.resultCode == 1 )
+            		callbackHandler( data, options.error );
+            	else
+            		callbackHandler( data, options.success );
+            },
+            error: function ( jqXHR, textStatus, errorThrown ) {
+            	callbackHandler( { "result": "fail",
+            					   "resultCode": "1",
+            					   "message": "time out." }, options.error );
+			}
+        } );
+	};
+
+	SKT.pay = function ( options ) {
+		
+		var defaults = [ 'accessToken', 'type', 'amount', 'to' ];
+
+		if( !( options.type === 'one-time' || options.type === 'recurring' ) )
+			defaults.push( 'paymentDate' );
+
+		// 넘어온 options값에서 필수 요소가 존재하는지 확인한다.
+		if( requireAttrCheck( options, defaults ) ) return false;
+
+		var params = {
+			access_token: options.accessToken,
+			type: options.type,
+			amount: options.amount,
+			payment_date: options.paymentDate,
+			to: options.to
+		};
+
+		$.ajax( {
+			url: pay_uri,
+			data: params,
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			jsonpCallback: 'success',
+			timeout: options.timeout || 1000 * 5,
+			success: function ( data ) {
+            	if( data.resultCode == 1 )
+            		callbackHandler( data, options.error );
+            	else
+            		callbackHandler( data, options.success );
+            },
+            error: function ( jqXHR, textStatus, errorThrown ) {
+            	callbackHandler( { "result": "fail",
+            					   "resultCode": "1",
+            					   "message": "time out." }, options.error );
+			}
+		} );
+	}
+
+} )( jQuery, window );
