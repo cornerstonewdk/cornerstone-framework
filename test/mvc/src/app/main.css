@@ -1,7 +1,8 @@
 body {
 	padding-top: 70px;
+	padding-bottom: 70px;
 }
-
-#mocha {
-	margin: 20px 0;
+#mocha-stats {
+    top: auto;
+    bottom: 0;
 }

@@ -47,7 +47,7 @@ describe( 'Util Test', function () {
             jsonp.get( options );
         } );
 
-        it( 'jsonp 요청 시 data 옵션 지정 후 요청 시 request query에 정상적으로 파라미터가 전달되는지 확인하고, 요청 실패시 ( timeout ) error 함수가 수행되어야 한다.', function ( done ) {
+        it( 'jsonp 요청 시 data 옵션 지정 후 요청 시 request query에 정상적으로 파라미터가 전달되는지 확인하고, 요청 실패시 error 함수가 수행되어야 한다.', function ( done ) {
             this.timeout( 2000 );
             var time = new Date().getTime();
             jsonp.get( {
@@ -85,7 +85,6 @@ describe( 'Util Test', function () {
                 },
                 error: function ( jqXHR, textStatus, errorThrown ) {
                     expect( jqXHR ).to.be.not.undefined;
-                    expect( textStatus ).to.be.equal( 'timeout' );
                     expect( new Date().getTime() - time ).to.be.below( 2000 );
                     done();
                 },

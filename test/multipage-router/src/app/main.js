@@ -14,7 +14,7 @@ requirejs.config( {
  * main.js
  * 애플리케이션 메인
  */
-define( [ 'backbone', 'multipage-router', 'bootstrap', 'style!main', 'mocha' ], function( Backbone, MultipageRouter ) {
+define( [ 'backbone', 'multipage-router', 'bootstrap', 'mocha' ], function( Backbone, MultipageRouter ) {
 	return {
 		launch: function() {
 
@@ -29,7 +29,7 @@ define( [ 'backbone', 'multipage-router', 'bootstrap', 'style!main', 'mocha' ], 
 		        ignoreLeaks: true
 		    });
 
-    		require( [ 'spec' ], function () {
+    		require( [ 'spec', 'style!main' ], function () {
     			if (navigator.userAgent.indexOf('PhantomJS') < 0) {
 			        mocha.run();
 			    }
