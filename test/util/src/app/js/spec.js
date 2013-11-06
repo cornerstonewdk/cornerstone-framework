@@ -245,7 +245,6 @@ describe( 'Util Test', function () {
                     expect( token ).to.be.not.undefined;
                     expect( typeof token ).to.be.an( 'string' );
                     auth_token = token;
-                    console.log('받은 토큰',auth_token);
                     done();
                 },
                 error: function( err ) {
@@ -281,14 +280,12 @@ describe( 'Util Test', function () {
         } );
 
         it( 'sms 발송 후 success 함수 수행 확인', function ( done ) {
-            console.log('sms 사용할 토큰',auth_token);
             SKT.sendSms( {
                 accessToken: auth_token,
                 from: '01112345678',
                 to: '01012345678',
                 message: 'test',
                 success: function ( data ) {
-                    console.log( data );
                     expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
                     expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
@@ -296,7 +293,6 @@ describe( 'Util Test', function () {
                     done();
                 },
                 error: function ( err ) {
-                    console.log( 'sms err', err );
                 }
             } );
         } );
@@ -316,21 +312,18 @@ describe( 'Util Test', function () {
         } );
 
         it( '과금 요청 후 success 함수 수행 확인', function ( done ) {
-            console.log('pay 사용할 토큰',auth_token);
             var option = {
                 accessToken: auth_token,
                 type: 'one-time',
                 amount: 10000,
                 to: '01012345678',
                 success: function ( data ) {
-                    console.log( data );
                     expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
                     expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
                     done();
                 },
                 error: function ( err ) {
-                    console.log( 'pay err', err );
                 }
             };
             SKT.pay( option );

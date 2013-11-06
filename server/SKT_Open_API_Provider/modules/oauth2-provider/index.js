@@ -176,7 +176,7 @@ OAuth2Provider.prototype.oauth = function() {
 							if(self.listeners('save_access_token').length > 0) {
 								self.emit('save_access_token', user_id, client_id, atok);
 							}
-							atok.access_token = encodeURIComponent(atok.access_token);
+	
 							url += querystring.stringify(atok);
 							//console.log('***' + url);
 							res.writeHead(303, {Location: url});
