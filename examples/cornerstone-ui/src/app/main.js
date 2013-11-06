@@ -78,6 +78,7 @@ define([
 
             $("#nav-component .dropdown-menu a").on("click", function () {
                 $(this).closest(".dropdown").find(".dropdown-toggle").dropdown("toggle");
+                $(this).closest(".navbar-collapse").collapse("toggle");
             });
 
             app.router = new MainRouter();
