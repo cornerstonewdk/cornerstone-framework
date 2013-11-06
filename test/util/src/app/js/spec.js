@@ -266,18 +266,18 @@ describe( 'Util Test', function () {
             }, 2000 );
         } );
 
-        it( 'sms 발송 전 유효성 검사 확인', function ( done ) {
-            SKT.sendSms( {
-                success: function ( data ) {
-                },
-                error: function ( err ) {
-                    expect( err ).to.be.not.undefined;
-                    expect( err.result ).to.be.equal( 'fail' );
-                    expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
-                    done();
-                }
-            } );
-        } );
+        // it( 'sms 발송 전 유효성 검사 확인', function ( done ) {
+        //     SKT.sendSms( {
+        //         success: function ( data ) {
+        //         },
+        //         error: function ( err ) {
+        //             expect( err ).to.be.not.undefined;
+        //             expect( err.result ).to.be.equal( 'fail' );
+        //             expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
+        //             done();
+        //         }
+        //     } );
+        // } );
 
         it( 'sms 발송 후 success 함수 수행 확인', function ( done ) {
             SKT.sendSms( {
@@ -297,19 +297,19 @@ describe( 'Util Test', function () {
             } );
         } );
 
-        it( '과금 요청 전 유효성 검사 확인', function ( done ) {
-            var option = {
-                success: function ( data ) {
-                },
-                error: function ( err ) {
-                    expect( err ).to.be.not.undefined;
-                    expect( err.result ).to.be.equal( 'fail' );
-                    expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
-                    done();
-                }
-            };
-            SKT.pay( option );
-        } );
+        // it( '과금 요청 전 유효성 검사 확인', function ( done ) {
+        //     var option = {
+        //         success: function ( data ) {
+        //         },
+        //         error: function ( err ) {
+        //             expect( err ).to.be.not.undefined;
+        //             expect( err.result ).to.be.equal( 'fail' );
+        //             expect( parseInt( err.resultCode ) ).to.be.equal( 1 );
+        //             done();
+        //         }
+        //     };
+        //     SKT.pay( option );
+        // } );
 
         it( '과금 요청 후 success 함수 수행 확인', function ( done ) {
             var option = {
