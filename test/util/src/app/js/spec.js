@@ -286,6 +286,7 @@ describe( 'Util Test', function () {
                 to: '01012345678',
                 message: 'test',
                 success: function ( data ) {
+                    console.log( data );
                     expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
                     expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
@@ -293,6 +294,7 @@ describe( 'Util Test', function () {
                     done();
                 },
                 error: function ( err ) {
+                    console.log( 'sms err', err );
                 }
             } );
         } );
@@ -318,12 +320,14 @@ describe( 'Util Test', function () {
                 amount: 10000,
                 to: '01012345678',
                 success: function ( data ) {
-                   expect( data ).to.be.not.undefined;
+                    console.log( data );
+                    expect( data ).to.be.not.undefined;
                     expect( data.result ).to.be.equal( 'success' );
                     expect( parseInt( data.resultCode ) ).to.be.equal( 0 );
                     done();
                 },
                 error: function ( err ) {
+                    console.log( 'pay err', err );
                 }
             };
             SKT.pay( option );
