@@ -7,6 +7,7 @@
  *  License :
  */
 
+
 /*!
  * jQuery Transit - CSS3 transitions and transformations
  * (c) 2011-2012 Rico Sta. Cruz <rico@ricostacruz.com>
@@ -861,7 +862,6 @@
                 effect.init(self);
                 effect[self.options.transitionType](self.options);
             } catch (e) {
-//                console.log(e);
                 effect.none(this.options);
             }
         },
@@ -874,7 +874,6 @@
          * this._before();
          */
         _before: function () {
-//            console.log("_before")
             var $body = $("body");
             this.$bodyOverflowX = $body.css("overflowX");
             $body.css({overflowX: "hidden"});
@@ -884,16 +883,6 @@
             if (this.options.isReverse && $body.attr("data-transition") !== undefined) {
                 this.options.transitionType = $body.attr("data-transition");
             }
-
-            // 스크롤로 페이지가 이동된 경우 화면전환시 새로운 페이지의 위치도 이전 페이지 스크롤 위치로 보여지는 문제
-//            if(!this.options.nested) {
-////                $(window).scrollTop(0,0);
-//                this.options.inTarget.top = $(this.options.inTarget.el).css("top");
-//                $(this.options.inTarget.el).css({
-//                    top: $(window).scrollTop()
-//                });
-//            }
-
         },
 
         /**
@@ -916,16 +905,6 @@
 
             this.options.inTarget.done();
             this.options.done();
-
-            // 스크롤로 페이지가 이동된 경우 화면전환시 새로운 페이지의 위치도 이전 페이지 스크롤 위치로 보여지는 문제
-//            if(!this.options.nested) {
-////                $(window).scrollTop(0,0);
-//                $(this.options.inTarget.el).css({
-//                    top: this.options.inTarget.top
-//                });
-//            }
-
-//            console.log("_done");
         }
     };
 
@@ -1000,7 +979,6 @@
                 width: $(opt.outTarget.el).width(),
                 perspective: $(opt.outTarget.el).width() * 2,
                 rotate3d: "0, 1, 0, " + opt.outTarget.from,
-                rotate: 0,
                 height: $(window).height() > $(opt.outTarget.el).height() ?
                 $(opt.outTarget.el).height() : $(window).height(),
                 overflow: "hidden",
@@ -1013,15 +991,12 @@
                 width: $(opt.inTarget.el).width(),
                 perspective: $(opt.inTarget.el).width() * 2,
                 rotate3d: "0, 1, 0, " + opt.inTarget.from,
-                rotate: 0,
                 height: $(window).height() > $(opt.inTarget.el).height() ?
                 $(opt.inTarget.el).height() : $(window).height(),
                 overflow: "hidden",
                 opacity: opt.animationFade ? 0 : 1
             };
 
-            console.log(this.inTargetCss);
-            console.log(this.outTargetCss);
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
                 rotate3d: "0, 1, 0, " + opt.outTarget.to,
@@ -1077,8 +1052,7 @@
                 position: "absolute",
                 width: $(opt.outTarget.el).width(),
                 perspective: $(opt.outTarget.el).width(),
-                rotate3d: "0, 0, 0, 0",
-                rotate: opt.outTarget.from,
+                rotate3d: "1, 1, 1, " + opt.outTarget.from,
                 height: $(window).height() > $(opt.inTarget.el).height() ?
                 $(opt.inTarget.el).height() : $(window).height(),
                 overflow: "hidden",
@@ -1090,8 +1064,7 @@
                 position: "absolute",
                 width: $(opt.inTarget.el).width(),
                 perspective: $(opt.inTarget.el).width(),
-                rotate3d: "0, 0, 0, 0",
-                rotate: opt.inTarget.from,
+                rotate3d: "1, 1, 1, " + opt.inTarget.from,
                 height: $(window).height() > $(opt.inTarget.el).height() ?
                 $(opt.inTarget.el).height() : $(window).height(),
                 overflow: "hidden",
@@ -1100,7 +1073,7 @@
             };
             $(opt.inTarget.el).css(this.inTargetCss);
             $(opt.outTarget.el).css(this.outTargetCss).transit({
-                rotate: opt.outTarget.to,
+                rotate3d: "1, 1, 1, " + opt.outTarget.to,
                 scale: 0,
                 opacity: opt.animationFade ? 0 : 1
             }, opt.outTarget.duration, opt.outTarget.timing, function () {
@@ -1109,7 +1082,7 @@
                 });
                 opt.outTarget.done();
                 $(opt.inTarget.el).transit({
-                    rotate: opt.inTarget.to,
+                    rotate3d: "1, 1, 1, " + opt.inTarget.to,
                     scale: 1,
                     opacity: 1
                 }, opt.inTarget.duration, opt.inTarget.timing, function () {
