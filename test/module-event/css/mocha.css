@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 body {
-  font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 60px 50px;
 }
 
@@ -192,7 +191,7 @@ body {
 
 #mocha-stats {
   position: fixed;
-  top: 15px;
+  top: 80px;
   right: 10px;
   font-size: 12px;
   margin: 0;
@@ -202,6 +201,8 @@ body {
 #mocha-stats .progress {
   float: right;
   padding-top: 0;
+  height: 41px;
+  border-radius: 40px;
 }
 
 #mocha-stats em {
