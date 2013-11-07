@@ -85,6 +85,10 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 				this.$el.find( '#page-nav-top' ).before( this.$el.find( '#page-nav-prev' ) );
 				this.$el.find( '#page-nav-top' ).after( this.$el.find( '#page-nav-next' ) );
 			}
+
+			$( "a.list-group-item.active").parent().parent().parent().addClass( "in" ).css( {
+				height: "auto" 
+			});
 		},
 
 		clickNavNext: function (e) {
@@ -100,7 +104,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 					break;
 			}
 			// 목차가 정렬되어 있으므로 현재 문서링크의 바로 다음 것이 다음 문서링크가 된다.
-			// 마지막 문서인 경우 페이지 상에서 'NEXT'버튼을 Disable 하는 것으로 처리 !
+			// 마지막 문서인 경우 화면에서 'NEXT'버튼을 Disable 하는 것으로 처리 !
 			// 따라서 다음 문서가 없는 경우에 대한 예외처리 코드도 넣지 않음. 
 			location.href = $( lnbList[i+1] ).attr("href");
 		},
@@ -116,7 +120,7 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 					break;
 			}
 			// 현재 문서링크의 바로 앞의 것이 이전 문서링크가 된다.
-			// 맨 첫 번째 문서인 경우 페이지 상에서 'PREVIOUS'버튼을 Disable 하는 것으로 처리 !
+			// 맨 첫 번째 문서인 경우 화면에서 'PREVIOUS'버튼을 Disable 하는 것으로 처리 !
 			// 따라서 이전 문서가 없는 경우에 대한 예외처리 코드도 넣지 않음. 
 			location.href = $( lnbList[i-1] ).attr("href"); 
 		},
