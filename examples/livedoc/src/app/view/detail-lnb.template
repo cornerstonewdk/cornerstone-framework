@@ -99,6 +99,8 @@
 		$( "#floating-detail-menu-background" ).fadeIn(500);
 		$( "#detail-menu-open-arrow" ).fadeOut(100);
 		$( "#detail-menu-close-arrow" ).fadeIn(500);
+
+		localStorage && localStorage.setItem( 'detail-menu-visible', true );
 	});
 
 	$( "#detail-menu-close-arrow" ).click( function () {
@@ -109,6 +111,8 @@
 
 		$( "#detail-lnb" ).removeClass().addClass("col-lg-0 col-md-0 col-sm-0");
 		$( "#detail-content" ).removeClass().addClass("col-lg-12 col-md-12 col-sm-12");
+
+		localStorage && localStorage.setItem( 'detail-menu-visible', false );
 	});
 
 	$("#accordion .collapse").collapse({

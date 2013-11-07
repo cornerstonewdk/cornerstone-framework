@@ -1,231 +1,553 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head lang="ko">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Cornerstone WDK</title>
-        <meta name="description" content="mobile web app development kit cornerstone.">
-        <meta name="viewport" content="width=device-width">
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Cornerstone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles -->
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <!-- !important THIS STYLE CSS ON BOTTOM OF STYLEs LIST-->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- !important THIS STYLE CSS ON BOTTOM OF STYLEs LIST-->
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <!-- <link href="assets/css/prettyPhoto.css" rel="stylesheet"> -->
+  <!-- <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"> -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&amp;subset=latin,latin-ext' rel="stylesheet">
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
 
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
-        <!--[if gt IE 8]><!--><link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-responsive.min.css"><!--<![endif]-->
-        <link rel="stylesheet" href="css/main.css">
-        <!--[if lt IE 9]><link rel="stylesheet" href="css/ie8.css"><![endif]-->
-        <!--[if lt IE 8]><link rel="stylesheet" href="css/ie7.css"><![endif]-->
-        <!--[if lt IE 7]><link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection"><![endif]-->
+<body>
+  <!--START MAIN-WRAPPER-->
 
-        <script src="vendor/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script src="vendor/webfontloader/webfont.js"></script>
-        <script type="text/javascript">
-            WebFont.load({
-                custom: {
-                    families: ['SeoulHangangM', 'SeoulNamsanM'],
-                    urls:['/css/fonts.css']
-                }
-            });
-        </script>
-        <!--[if lt IE 9]><script src="vendor/selectivizr/selectivizr-min.js"></script><![endif]-->
+  <!-- ################-->
+  <!-- START TOP MENU -->
+  <!-- ################-->
+  <nav class="navbar navbar-static-top">
+    <!-- navbar-fixed-top -->
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="http://cornerstone.sktelecom.com">
+          <span><i class="fa-icon-circle-arrow-down"></i> Cornerstone</span>
+          <!--<img src="assets/img/Logo.png" alt="Logo">-->
+        </a>
+        <div class="nav-collapse collapse" >
+          <ul class="nav">
+            <li><a href="https://github.com/cornerstonewdk/" class="js-link" target="_blank">저장소</a></li>
+            <li><a href="http://cornerstone.sktelecom.com/livedoc/" class="js-link" target="_blank">매뉴얼 문서</a></li>
+            <li><a href="http://cornerstone.sktelecom.com/guide/" class="js-link" target="_blank">가이드 문서</a></li>
+            <li><a href="http://blog.cornerstone.sktelecom.com/" class="js-link" target="_blank">블로그</a></li>
+            <li><a href="http://cornerstone.sktelecom.com/event/" class="js-link" target="_blank">이벤트</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <!-- ################-->
+  <!-- END TOP MENU -->
+  <!-- ################-->
+  </nav>
+  <!-- TOP SECTION-->
 
-    </head>
-
-    <body>
-        <!--[if lt IE 8]>
-            <div class="chromeframe">
-                <div class="container">
-                    <p class="alert alert-block">지금 사용하시는 웹 브라우저는 <strong>HTML5와 CSS3의 지원이 미흡하여</strong> 이 페이지의 내용과 모양을 의도와 다르게 볼 수 있습니다. 브라우저를 <a href="http://browsehappy.com/">최신으로 업데이트</a>하거나 <a href="http://www.google.com/chromeframe/?redirect=true">구글에서 제공하는 Chrome Frame</a>을 설치하여 향상된 웹 브라우저 환경을 누려보세요.</p>
-                </div>
+  <header class="headertop needhead" id="header-section">
+    <!-- END HEADER headertop NAV -->
+    <!-- HEADER MARKETING SLOGAN-->
+    <div class="container">
+      <div class="row-fluid">
+        <div class="wrap-hero">
+          <div class="hero-unit text-center">
+            <!--LOGO-->
+            <div class="logo"> 
+              <img src="assets/img/logo_1.png" alt="logo" width="249" height="203"/>
             </div>
-        <![endif]-->
-
-        <nav class="navbar navbar-inverse navbar-fixed-top cs-nav">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <img src="img/logo_cornerstone.png" alt="Corner Stone" class="logo"/>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="#">처음</a></li>
-                            <li><a href="https://github.com/cornerstonewdk/">저장소</a></li>
-                            <li><a href="http://cornerstone.sktelecom.com/livedoc/">문서</a></li>
-                            <li><a href="http://cornerstonewdk.tumblr.com/">블로그</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <!--/ LOGO-->
+            <div class="inner-wrap-hero">
+              <p class="sub-title text-center">세련된 웹앱을 위한 - </p>
+              <h1 class="text-center main-color"> 
+                <span>CORNERSTONE
+                <!--INTRODUCING SCROLL&amp;STRAP!-->
+                </span> <span class="visible-desktop">Highly Mobile-Centered HTML5 Wep App Development Kit</span>
+              </h1>
             </div>
-        </nav>
-            
-        <section class="masthead">
-            <div class="container">
-                <a class="github"href="https://github.com/cornerstonewdk/"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-                <!--
-                <h1 class="title"><span class="slogan">현대적인, 세련된 웹앱을 위한</span><br> Corner Stone WDK</h1>
-                <hr class="bar">
-                <p class="description">Highly Mobile-Centered HTML5 Web App Development Kit</p>
-                -->
-                <img src="img/banner_top.png" alt="Highly Mobile-Centered HTML5 Web App Development Kit Cornerstone" />
-                <div id="myCarousel" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="active item">
-                            <img src="img/banner_01.png" alt="배너 이미지"/>
-                        </div>
-                        <div class="item">
-                            <img src="img/banner_02.png" alt="배너 이미지"/>
-                        </div>
-                        <div class="item">
-                            <img src="img/banner_03.png" alt="배너 이미지"/>
-                        </div>
-                    </div>
-                    <div class="download">
-                        <p>Download Links</p>
-                        <p>
-                            <a href="http://cornerstone.sktelecom.com/download/cornerstone-framework-0.9.1.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.1', 'Download Framework']);">Framework</a>
-                            <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.0.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.1', 'Download Runtime Android']);">Android</br>Runtime</a>
-                            <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-iOS-0.9.0.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.1', 'Download Runtime iOS']);">iOS</br>Runtime</a>
-                        </p>
-                    </div>
-                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-                </div>
+             <div class="header-phone-img hidden-phone">
+              <img src="assets/img/header_phone_img.png" alt="img" width="1121" height="376" />
+             </div>
+            <!--<hr class="half">-->
+          </div>
+        </div>
+        <!-- / HERO UNIT-->
+      </div>
+      <!-- / HERO WRAP-->
+    </div>
+    <!-- / HEADER MARKETING SLOGAN container-->
+  </header>
+  <!--/ TOP SECTION-->
+  <!-- /SERVICE SECTION-->
+
+  <section  id="download-section" class="section-2-0">
+    <div class="bg-wraper">
+      <div class="text-center">
+          <a href="http://cornerstone.sktelecom.com/event/#contest">
+            <img src="assets/img/banner-gongmo.png" alt="배너 이미지">
+          </a>
+      </div>
+      <div class="row">    
+        <div class="download">
+            <p class="text-center download-links hidden-phone">Download Links</p>
+            <p class="text-center hidden-phone">
+                <a href="http://cornerstone.sktelecom.com/download/cornerstone-framework-2.0.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 2.0', 'Download Framework']);">Framework</a>
+                <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-Android-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Runtime Android']);">Android<br>Runtime</a>
+                <a href="http://cornerstone.sktelecom.com/download/cornerstone-runtime-iOS-0.9.2.zip" class="btn btn-large btn-primary btn-download" onclick="_gaq.push(['_trackEvent', 'Download', 'Download 0.9.2', 'Download Runtime iOS']);">iOS<br>Runtime</a>
+            </p>
+        </div>
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+      </div>
+    </div>
+  </section>
+
+  <section  id="features-section" class="section-2">
+    <div class="container">
+      <div class="row-fluid">
+        <!-- PROJECTS HEADER-->
+        <header class="" >
+          <div class="text-center page-header">
+            <h3 class=""> <span class="white">
+              <!-- WHITE SPACE-->
+              코너스톤은</span> </h3>
+          </div>
+        </header>
+      </div>
+    </div>
+    <!-- /SERVICE HEADER-->
+    <div class="container content-3">
+      <div class="content-txt">
+        <p>반응형 웹기술을 적용하여 다양한 크기의 모바일 기기를 효율적으로 지원하고,
+        HTML5 표준을 적극적으로 활용할 수 있는 클라이언트 중심 구조를 제공하며,
+        미려하고 재사용성이 높은 UI 위젯을 제공하는
+        모바일 중심의 고품질 HTML5 웹앱 개발킷입니다. 
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- /FEATURE section-->
+
+  <section class="section-3" id="slogan-section-1">
+    <div class="container">
+      <div class="cleint-saying">Change is happening in the enterprise web app <br>
+        development industry!</div>
+      <div class="cleint-saying-name">Paradaim Shifting, Paul Hammant</div>
+      <!--  FEATURED ITEMS -->
+      <!-- /container-->
+    </div>
+    <div class="heading-scroll">웹이 애플리케이션의 영역으로 발전함에 따라 점차적으로 서버중심의 구조에서<br>
+      풍부한 사용자 경험 제공을 가능하게 하는 클라이언트 중심구조로 패러다임이 변하고 있습니다.</div>
+  </section>
+  <!-- /TEAM SECTION-->
+
+  <section class="" id="team-section">
+    <!-- TEAM HEADER-->
+    <div class="container">
+      <div class="row">
+        <header class="" >
+          <div class=" text-center page-header">
+            <h3> <span class="white"> 웹앱 개발자를 위한 준비된 상차림 </span> </h3>
+          </div>
+        </header>
+      </div>
+    </div>
+    <div class="container team-section" >
+      <div class="row-fluid">
+        <div class="span4"> <img class="marketing-img" src="assets/img/icon_001.png">
+          <p>웹을 가장 잘 이해하는<br>방식으로 구성되었습니다.</p>
+        </div>
+        <div class="span4"> <img class="marketing-img" src="assets/img/icon_002.png">
+          <p>웹을 가장 잘 활용하는<br>기술을 활용하였습니다.</p>
+        </div>
+        <div class="span4"> <img class="marketing-img" src="assets/img/icon_003.png">
+          <p> Best Practice 모던 웹앱을 <br>바로 시작할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+    <!--/CONTAINER-->
+  </section>
+  <!-- /TEAM SECTION-->
+
+  <section class="section-3" id="slogan-section-2">
+    <div class="container">
+      <div class="cleint-saying">Speed is the most important feature<br>
+        in a mobile web app.</div>
+      <div class="cleint-saying-name">Matt Linderman</div>
+      <!--  FEATURED ITEMS -->
+      <!-- /container-->
+    </div>
+    <div class="heading-scroll">웹이 애플리케이션의 영역으로 발전함에 따라 점차적으로 서버중심의 구조에서<br>
+      풍부한 사용자 경험 제공을 가능하게 하는 클라이언트 중심구조로 패러다임이 변하고 있습니다.</div>
+  </section>
+
+  <section class="section-3 white-bg" id="slogan-section-2" >
+    <div class="bg parallax-point-event">
+      <div class="container">   
+      <!-- BADGE FEATURED-->
+      <div class="row-fluid">
+        <div class=" text-center page-header">
+          <h3> <span  class="black"> 반응형 웹 프레임워크 </span> </h3>
+        </div>
+      </div>  
+      <!-- / BADGE FEATURED-->        
+      <!--  FEATURED ITEMS -->
+          <div class="browser-shot-2">
+            <img src="assets/img/SnapShot.png" alt=""/><!-- PLACE YOUR IMAGE HERE -->
+          </div>
+          <div class="browser-shot-1">
+            <img src="assets/img/SnapShot_01.png" alt=""/>
+          </div>
+          <div class="browser-shot-3">
+            <img src="assets/img/SnapShot_02.png" alt=""/>
+          </div>                   
+      <!--  FEATURED ITEMS --> 
+       <div class="color-black">데스크톱 - 타블렛 - 모바일에 이르기까지 반응형 웹 프레임워크 코너스톤</div>            
+      </div><!-- /container-->
+    </div><!-- /row-->
+  </section>
+
+  <section id="portfolio-section">
+    <div class="container">
+      <div class="cleint-saying">Even Google was not rich enough to support<br>
+        all of the different mobile platforms...</div>
+      <div class="cleint-saying-name">Vic Gundotra,<br>
+        the Senior Vice President for Google</div>
+      <!--  FEATURED ITEMS -->
+      <!-- /container-->
+    </div>
+    <div class="heading-scroll">구글조차도 다양한 모바일 단말을 지원하기 위해 모든 앱을 네이티브로 만들기에는 비용상 어려움이 있으며<br>
+      이를 적절히 해결하는 데 웹앱이 커다란 도움이 됩니다.</div>
+    <div class="container">
+      <div class="row">
+        <header class="">
+          <div class="text-center page-header">
+            <h3> <span class="white"> 웹앱 개발자를 위한 준비된 상차림 </span> </h3>
+          </div>
+        </header>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row"> 
+        <div class="text-center span4"><span><img src="assets/img/components_img.png" alt=""></span></div>
+        <div class="text-center span4"><span><img src="assets/img/slider_img.png" alt=""></span> </div>
+        <div class="text-center span4"><span><img src="assets/img/nav_Bar_mob_img.png"></span> </div>
+      </div>
+      <div class="row"> 
+        <div class="text-center span4"><span><img src="assets/img/list_img.png"></span> </div>
+        <div class="text-center span4"><span><img src="assets/img/list_02_img.png"></span> </div>
+        <div class="text-center span4"><span><img src="assets/img/components_img_02.png"></span> </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="price-section">
+    <!-- PRICE SECTION HEADER ############# -->
+    <div class="container">
+      <div class="row-fluid">
+        <header class="">
+          <div class=" text-center page-header">
+            <h3> <span class="black"> 구성과 특징 </span> </h3>
+          </div>
+        </header>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row-fluid about-box">
+        <div class="span3"> <img src="assets/img/web_apps_icon.png"> </div>
+        <div class="span9 web_apps_content_block">
+          <h4>강력한 클라이언트 중심의 웹앱을 작성할 수 있습니다.</h4>
+          <p class=""> 클라이언트 MVC 구조를 갖추어 서버 없이 단독으로 동작하는 클라이언트 웹앱도 쉽게 구현 가능하며, View와 Model을 분리하여 대규모 개발, 분업, 테스팅에 적합합니다. 클라이언트 중심 구조는 특별히 풍부한 사용자 경험을 제공하는데 적합합니다.</p>
+        </div>
+      </div>
+      <div class="row-fluid about-box">
+      <div class="span3 pull-right margin-left"> <img src="assets/img/web_apps_icon_01.png"> </div>
+        <div class="span9 web_apps_content_block margin-left-no">
+          <h4>유연하고 효율성 높은 모듈구조의 웹앱을 <br>
+            작성할 수 있습니다.</h4>
+          <p class="">개발시 필요하다면 전체를 한꺼번에 불러와 앱을 실행시킬 수도, 
+            비동기 형식으로 필요할 때마다 필요한 만큼 불러와 실행시킬 수도 있습니다.
+            Javascript 뿐만 아니라 MVC 구조에서 View 템플릿과 스타일 또한 완전하게 모듈로 분리시켜 웹앱을 작성, 운용할 수 있습니다. 
+            또한 적절한 모듈화는 대규모 코드개발, 분업화와 관리에도 적합합니다. 
+            이제 안정적인 구조에서 코드를 작성하는데만 집중할 수 있습니다.</p>
+        </div>
+        
+      </div>
+      <div class="row-fluid about-box">
+        <div class="span3"> <img src="assets/img/web_apps_icon_02.png"> </div>
+        <div class="span9 web_apps_content_block">
+          <h4>모바일에서 특별히 아름다운 UI와 올바른 스타일링 
+            구조를 제공합니다. </h4>
+          <p class="">모바일기기에서 터치의 감성을 극대화 할 수 있는 질감이 담긴 UI와 다양한 형태의 폼과 버튼 등으로 모바일 친화적인 웹앱을 만들 수 있으며, Twitter의 Bootstrap 라이브러리를 활용하여 MVC로 구조화된 Javascript 코드만큼 안정적이고 읽기 좋은 CSS구조를 제공하며, 이를 확장하여 사용할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="row-fluid about-box">
+        <div class="span3 pull-right margin-left"> <img src="assets/img/web_apps_icon_03.png"> </div>
+        <div class="span9 web_apps_content_block margin-left-no">
+          <h4>이제 CSS로 모양새를 표현하는 웹앱을 만들 수 
+            있습니다.</h4>
+          <p class="">우리는 png, jpg로 웹 페이지를 구성하는 데 익숙해 있습니다. 
+            코너스톤의 모든 UI는 이미지 사용을 최소화 하고 최대한 CSS를 적극적으로 사용하여 모양새를 표현하였습니다. 특별히 코너스톤 UI중 폼의 
+            코드를 유심히 살펴보면 적극적으로 활용된 CSS코드를 확인할 수 있습니다.</p>
+        </div>
+       
+      </div>
+      <div class="row-fluid about-box">
+        <div class="span3"> <img src="assets/img/web_apps_icon_04.png"> </div>
+        <div class="span9 web_apps_content_block">
+          <h4>모바일에서 특별히 빠른 웹앱을 만들 수 있습니다.</h4>
+          <p class="">jQuery Mobile, Sench Touch등 많은 모바일 웹앱 프레임워크가 이미 사용되고 있습니다. 그럼에도 불구하고 코너스톤이 가치있는 이유는 바로 빠른 
+            속도에 있습니다. 모바일 최적화된 CSS, 리스트 View 등 모바일에서 자주 사용하는 UI패턴의 최적화와 다양한 고민을 통해 속도를 향상하였습니다.</p>
+        </div>
+      </div>
+      <div class="row-fluid about-box">
+        <div class="span3 pull-right margin-left"> <img src="assets/img/web_apps_icon_05.png"> </div>
+        <div class="span9 web_apps_content_block margin-left-no">
+          <h4>다양한 크기의 기기를 손쉽게 지원하는 웹앱을 작성할 수 있습니다.</h4>
+          <p class="">CSS의 미디어 쿼리 기능을 적극 활용한 반응형 웹을 만들 수 있으며
+            클라이언트 MVC 라이브러리로 View를 구조화 할수록 다양한 크기의 
+            기기를 손쉽게 지원할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="row-fluid about-box">
+        <div class="span3"> <img src="assets/img/web_apps_icon_06.png"> </div>
+        <div class="span9 web_apps_content_block">
+          <h4>풍부하고 바로 사용해 볼 수 있는 문서를 제공합니다.</h4>
+          <p class="">모던 웹앱에 관심이 있다면 Backbone.js, Require.js 등을 들어보셨을 것입니다. 하지만 아직 한글화된 서적이나 문서가 적은 것이 이러한 기술을 활용하는데 걸림돌이 되었습니다. 
+            이제 한글로 구성된 코너스톤 개발자 
+            문서를 편하게 읽어보면서 문서에서 곧바로 상호작용하는 예제들을 한번씩 
+            실행해 보는 것 만으로 새로운 패러다임을 잘 이해하는 계기가 됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="hidden-phone hidden-tablet">
+          <div class="offset2 sapn2">
+            <div class="circ-wrap footer-social-icon"> 
+              <a href="https://github.com/cornerstonewdk/" target="_blank">
+                <img src="assets/img/git_icon.png" alt="github"> 
+                <span class="text-center">github</span>
+              </a> 
             </div>
-            <div class="bar"></div>
-        </section>
-
-        <section class="marketing why">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <h1>왜 코너스톤인가?</h1>
-                    </div>
-                    <div class="span12">
-                        <ol class="why-list">
-                            <li>
-                                <h2>“Change is happening in the enterprise web app development industry!”</h2>
-                                <p>웹이 애플리케이션의 영역으로 발전함에 따라 점차적으로 서버중심의 구조에서 풍부한 사용자 경험 제공을 가능하게 하는 클라이언트 중심 구조로 패러다임이 변하고 있습니다.</p>
-                                <p><a href="http://css.dzone.com/articles/shift-towards-client-side-mvc"><i class="icon-chevron-right icon-white"></i>“패러다임 쉬프팅 – 클라이언트 사이드 MVC로”, Paul Hammant</a></p>
-                            </li>
-                            <li>
-                                <h2>“Speed is the most important feature in a mobile web app.”</h2>
-                                <p>웹앱에서 빠른 반응성과 속도가 곧 핵심적인 기능의 하나이며, 특별히 모바일에서는 이를 충족하여야 합니다.</p>
-                                <p><a href="http://37signals.com/svn/posts/2280-speed-is-the-most-important-feature-if-your"><i class="icon-chevron-right icon-white"></i>“성공적인 웹앱 위한 10가지 황금률”, Matt Linderman</a></p>
-                            </li>
-                            <li>
-                                <h2>“Even Google was not rich enough to support all of the different mobile platforms...”</h2>
-                                <p>구글조차도 다양한 모바일단말을 지원하기 위해 모든 앱을 네이티브로 만들기에는 비용상 어려움이 있으며 이를 적절히 해결하는데 웹앱이 커다란 도움이 됩니다.</p>
-                                <p><a href="http://blogs.ft.com/tech-blog/2009/07/app-stores-are-not-the-future-says-google"><i class="icon-chevron-right icon-white"></i>“모바일 빗 컨퍼런스 인터뷰”, Vic Gundotra, 구글 부사장</a></p>  
-                            </li>
-                        </ol>
-                    </div>
-                </div>
+          </div>
+          <div class="sapn2">
+            <div class="circ-wrap footer-social-icon">
+              <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">
+                <img src="assets/img/doc_icon.png" alt="doc">
+                <span class="text-center">doc</span>
+              </a>
             </div>
-        </section>
-
-        <hr>
-
-        <section class="marketing ready">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <h1>웹앱 개발자를 위해 <span>준비된 상차림</span></h1>
-                    </div>
-                    <div class="span4">
-                        <img src="img/pictogram_light.png" alt="불빛 픽토그램"/>
-                        <h2>웹을 가장 잘 <strong>이해</strong>하는 <span>방식으로 구성되었습니다.</span></h2>
-                        <p>내용의 HTML, 모양의 CSS, 작동의 Javascript를 그대로 담고 있어 별다른 어려움 없이 적응할 수 있습니다.</p>
-                    </div>
-                    <div class="span4">
-                        <img src="img/pictogram_tool.png" alt="도구 픽토그램"/>
-                        <h2>웹을 가장 잘 <strong>활용</strong>하는 <span>기술을 활용하였습니다.</span></h2>
-                        <p>대표적인 DOM라이브러리 <a href="http://jquery.com/">jQuery</a>, 자바스크립트 유틸리티 라이브러리 <a href="http://underscorejs.org/">Underscore.js</a>, 클라이언트 MVC 프레임워크 <a href="http://backbonejs.org/">Backbone.js</a>, AMD방식의 모듈화 라이브러리 <a href="http://requirejs.org/">Require.js</a>, 템플릿 엔진 <a href="http://handlebarsjs.com/">Handlebars.js</a>, CSS 프레임워크 <a href="http://getbootstrap.com">Bootstrap</a>을 기반으로 하여 작성되어 어떠한 웹앱이던 바로 작성이 가능합니다.</p>
-                   </div>
-                    <div class="span4">
-                        <img src="img/pictogram_mouse.png" alt="마우스 픽토그램"/>
-                        <h2>Best Practice 모던 웹앱을 <span>바로</span> <span><strong>시작</strong>할 수 있습니다.</span></h2>
-                        <p>코너스톤을 구성하고 있는 라이브러리는 새로운 웹시대를 여는 모던 웹 기술로 구성되어 있습니다. 개발자 여러분은 코너스톤을 한번 들여다 보는 것 만으로 앞으로 다가올 웹 기술과 트랜드를 살펴볼 수 있습니다.</p>
-                    </div>
-                </div>
+          </div>
+          <div class="sapn2">
+            <div class="circ-wrap footer-social-icon">
+              <a href="http://cornerstone.sktelecom.com/guide/" target="_blank">
+                <img src="assets/img/doc_icon.png" alt="guide">
+                <span class="text-center">guide</span>
+              </a>
             </div>
-        </section>
-
-        <hr>
-
-        <section class="marketing features">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <h1>구성과 특징</h1>
-                    </div>
-                    <div class="span12">
-                        <ul class="features-list">
-                            <li>
-                                <h2>강력한 클라이언트 중심의 웹앱을 작성할 수 있습니다.</h2>
-                                <p>클라이언트 MVC구조를 갖추어 서버없이 단독으로 동작하는 클라이언트 웹앱 에서부터, 뷰와 구조를 분리하여 대규모 개발, 분업과 테스팅에도 적합합니다. 클라이언트 중심 구조는 특별히 풍부한 사용자 경험을 제공하는데도 적합합니다.</p>
-                            </li>
-                            <li>
-                                <h2>유연하고 효율성 높은 모듈구조의 웹앱을 작성할 수 있습니다.</h2>
-                                <p>개발시 필요하다면 전체를 한꺼번에 불러와 앱을 실행시킬수도, 비동기 형식으로 필요할때 마다 필요한 만큼 불러와 실행시킬수도 있습니다. Javascript뿐만아니라 MVC 구조에서 View 템플릿과 스타일또한 완전하게 모듈로 분리시켜 웹앱을 작성, 운용할 수 있습니다. 또한 적절한 모듈화는 대규모 코드개발, 분업화와 관리에도 적합합니다. 이제 안정적인 구조에서 코드를 작성하는데만 집중할 수 있습니다.</p>
-                            </li>
-                            <li>
-                                <h2>모바일에서 특별히 아름다운 UI와 올바른 스타일링 구조를 제공합니다.</h2>
-                                <p>모바일기기에서 터치의 감성을 극대화 할 수 있는 질감이 담긴 UI, 적절한 크기의 폼과 버튼 등 으로 곧바로 모바일 친화적인 웹앱을 만들 수 있으며, <a href="https://twitter.com/twitteross">twitter</a>의 <a href="http://getbootstrap.com">Bootstrap</a>라이브러리를 활용하여 MVC로 구조화된 Javascript 코드만큼 안정적이고 읽기좋은 CSS구조를 제공하며, 이를 확장하여 사용할 수 있습니다.</p>
-                            </li>
-                            <li>
-                                <h2>이제 CSS로 모양새를 표현하는 웹앱을 만들 수 있습니다.</h2>
-                                <p>우리는 png, jpg로 웹 페이지를 구성하는데 익숙해 있습니다. 코너스톤의 모든 UI는 이미지 사용을 최소화 하고 최대한 CSS를 적극적으로 사용하여 모양새를 표현하였습니다. 특별히 코너스톤 UI중 폼의 코드를 유심히 살펴보면 적극적으로 활용된 CSS 코드를 확인 할 수 있습니다.</p>
-                            </li>
-                            <li>
-                                <h2>모바일에서 특별히 빠른 웹앱을 만들 수 있습니다.</h2>
-                                <p><a href="http://jquerymobile.com/">jQuery Mobile</a>, <a href="http://www.sencha.com/products/touch">Sench Touch</a>등 많은 모바일 웹앱 프레임워크가 이미 사용되고 있습니다. 그럼에도 불구하고 코너스톤이 가치있는 이유는 바로 빠른 속도에 있습니다. 모바일 최적화된 CSS, 리스트 뷰등 모바일에서 자주 사용하는 UI패턴의 최적화와 다양한 고민을 통해 속도를 향상하였습니다. </p>
-                            </li>
-                            <li>
-                                <h2>다양한 크기의 기기를 손쉽게 지원하는 웹앱을 작성할 수 있습니다.</h2>
-                                <p>CSS의 미디어 쿼리 기능을 적극활용한 반응형웹을 만들 수 있으며 클라이언트 MVC 라이브러리로 View를 구조화 할수록 다양한 크기의 기기를 손쉽게 지원할 수 있습니다.</p>
-                            </li>
-                            <li class="ie8">
-                                <h2>풍부하고 바로 사용해 볼 수 있는 문서를 제공합니다.</h2>
-                                <p>모던 웹앱에 관심이 있다면 <a href="http://backbonejs.org/">Backbone.js</a>, <a href="http://requirejs.org/">Require.js</a>등을 들어보셨을것 입니다. 하지만 아직 한글화된 서적이나 문서가 적은것이 이러한 기술을 활용하는데 걸림돌이 되었습니다. 이제 한글로 구성된 코너스톤 개발자 문서를 편하게 읽어보면서 문서에서 곧바로 상호작용하는 예제들을 한번씩 실행해 보는 것 만으로 새로운 웹 페러다임을 잘 이해하는 계기가 됩니다.</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+          <div class="sapn2">
+            <div class="circ-wrap footer-social-icon">
+              <a href="http://blog.cornerstone.sktelecom.com/" target="_blank">
+                <img src="assets/img/blog_icon.png" alt="blog">
+                <span class="text-center">blog</span>
+              </a>
             </div>
-        </section>
+          </div>
+          <div class="sapn2"></div>
+        </div>
+        <div class="footer-tablet-only footer-phone-only hidden-desktop">
+          <div class="inline-block-footer"> 
+            <a href="https://github.com/cornerstonewdk/" target="_blank">
+              <img src="assets/img/git_icon.png" alt="github">
+              <br>github
+            </a>
+          </div>
+          <div class="inline-block-footer">
+            <a href="http://cornerstone.sktelecom.com/livedoc/" target="_blank">
+              <img src="assets/img/doc_icon.png" alt="doc">
+              <br>doc
+            </a>
+          </div>
+          <div class="inline-block-footer">
+            <a href="http://cornerstone.sktelecom.com/guide/" target="_blank">
+              <img src="assets/img/doc_icon.png" alt="guide">
+              <br>guide
+            </a>
+          </div>
+          <div class="inline-block-footer">
+            <a href="http://blog.cornerstone.sktelecom.com/" target="_blank">
+              <img src="assets/img/blog_icon.png" alt="blog">
+              <br>blog
+            </a> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid copyright-block">
+      <div class="span12 text-center">
+        <div class="sk-telecom"><img src="assets/img/sk_telecom.png" alt="sk telecom"></div>
+        <div class="copy-right-txt">COPYRIGHT(C) 2013 BY SKTELECOM CO.,LTD.ALL RIGHTS RESERVED.</div>
+      </div>
+    </div>
+  </footer>
+  <!-- END: FOOTER -->
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <a href="http://www.sktelecom.com/">
-                            <img src="img/logo_sktelecom.png" alt="SKTELECOM logo" />
-                        </a>
-                        <p>COPYRIGHT(C) 2013 BY<span><a href="http://www.sktelecom.com/">&nbsp;SKTELECOM&nbsp;</a></span><span>CO., LTD. ALL RIGHTS RESERVED.</span></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+  <!-- Le javascript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/jquery.js" ></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js" ></script>
+  <!-- 
+  <script src="assets/js/application.js" ></script>
+  <script src="assets/js/jquery.prettyPhoto.js" ></script>
+  <script src="assets/js/jquery.timeago.js" ></script>
+  -->
+  <script src="assets/js/jquery.fitvids.min.js" ></script>
+  <!-- PARALLAX PLUGIN -->
+  <script  src="assets/js/jquery.localscroll-1.2.7-min.js"></script>
+  <script  src="assets/js/jquery.inview.js"></script>
+  <script  src="assets/js/jquery.scrollTo-1.4.2-min.js"></script>
+  <script  src="assets/js/jquery.parallax-1.1.3.js"></script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.8.3.min.js"><\/script>')</script>
+  <script >
+    jQuery(document).ready(function(){
+      // jQuery('#nav').localScroll(1000);
+      // jQuery('#nav2').localScroll(1000);
+      // jQuery('#nav3').localScroll(1000);
+      // jQuery('#nav4').localScroll(1000);
+      // jQuery('#nav5').localScroll(1000);
+      //.parallax(xPosition, speedFactor, outerHeight) options:
+      //xPosition - Horizontal position of the element
+      //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+      //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+      jQuery('#header-section').parallax("50%", 0.1);
+      jQuery('#features-section').parallax("50%", 0.1);
+      jQuery('#team-section').parallax("50%", 0.1);
+      jQuery('.bg').parallax("50%", 0.3);
+      jQuery('#portfolio-section').parallax("50%", 0.3);
+      jQuery('#price-section').parallax("50%", 0.3);
+      jQuery('#contact-section').parallax("50%", 0.1);
+      jQuery('#slogan-section-1').parallax("50%", 0.3);
+    })
+  </script>
 
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+  <script>
+    jQuery('#features-section .parallax-point-event').bind('inview', function (event, visible) {
+      if (visible == true) {
+        jQuery('.effect-box-1').addClass("active");
+        jQuery('.effect-box-2').addClass("active");
+        jQuery('.effect-box-3').addClass("active");
+        jQuery('.effect-box-4').addClass("active");
+      } else {
+        jQuery('.effect-box-1').removeClass("active");
+        jQuery('.effect-box-2').removeClass("active");
+        jQuery('.effect-box-3').removeClass("active");
+        jQuery('.effect-box-4').removeClass("active");
+        //jQuery('.effect-box').unbind('inview');
+      }
+    });
+  </script>
 
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-37188645-1']);
-            _gaq.push(['_trackPageview']);
+  <script>
+    jQuery('#slogan-section-1').bind('inview', function (event, visible) {
+      if (visible == true) {
+        jQuery('.large-slogan').addClass("active");
+      }else{
+        jQuery('.large-slogan').removeClass("active");  
+      }
+    });
+  </script>
 
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-    </body>
+  <script>
+    jQuery('#slogan-section-2 .parallax-point-event').bind('inview', function (event, visible) {
+      if (visible == true) {
+        jQuery('.browser-shot-1').addClass("active");
+        jQuery('.browser-shot-2').addClass("active");
+        jQuery('.browser-shot-3').addClass("active");
+      } else {
+        jQuery('.browser-shot-1').removeClass("active"); 
+        jQuery('.browser-shot-2').removeClass("active");
+        jQuery('.browser-shot-3').removeClass("active");
+      }
+    });
+  </script>
+
+  <script>
+    jQuery('#slogan-section-3').bind('inview', function (event, visible) {
+      if (visible == true) {
+        jQuery('.goprice').addClass("active");
+      } else {
+        jQuery('.goprice').removeClass("active");   
+      }
+    });
+  </script>
+
+  <script>
+    jQuery('#header-section').bind('inview', function (event, visible) {
+      if (visible == true) {
+        jQuery('.gobottom').addClass("active"); 
+        jQuery('.hero-unit h1 span').addClass("active");
+      } else {
+        jQuery('.gobottom').removeClass("active");  
+        jQuery('.hero-unit h1 span').removeClass("active"); 
+      }
+    });
+  </script>
+
+  <script>
+    var hero = jQuery('#header-section .hero-unit');
+    jQuery(window).scroll(function () {
+      if (jQuery(this).scrollTop() > 550) {
+        hero.addClass("hide");  
+      } else {
+        hero.removeClass("hide"); 
+      }
+    });
+  </script>
+
+  <script>
+    // Basic FitVids Test
+    jQuery(".container").fitVids();  
+  </script>
+
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37188645-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <script>
+    jQuery('.js-link').on('click', function() {
+      jQuery('.collapse').collapse('hide');
+    });
+ 
+  </script>
+
+
+
+</body>
 </html>

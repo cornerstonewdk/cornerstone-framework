@@ -38,6 +38,10 @@ define( [ 'backbone', 'widget-scrollview', 'template!view/detail-lnb' ], functio
 					height: window.innerHeight / 2
 				} ).featuredScrollView().data( 'featuredScrollView' );
 
+			// 좌측 메뉴를 보이게 한다.
+			if ( !localStorage || !localStorage.getItem( 'detail-menu-visible' ) || localStorage.getItem( 'detail-menu-visible' ) == 'true' )
+				$( '#detail-menu-open-arrow' ).click();
+
 			return this;
 		},
 
