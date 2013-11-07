@@ -1,0 +1,1240 @@
+.widget-chart {
+  margin: 0 0 0 -10px;
+  padding: 0;
+  min-width: 270px;
+  height: 300px;
+
+  &.bar3d {
+    width: 100%;
+    height: 100%;
+  }
+  &.overlay:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
+}
+
+/********************
+ * HTML CSS
+ */
+
+.chartWrap {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/********************
+  Box shadow and border radius styling
+*/
+.nvtooltip.with-3d-shadow, .with-3d-shadow .nvtooltip {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+/********************
+ * TOOLTIP CSS
+ */
+
+.nvtooltip {
+  position: absolute;
+  z-index: 10000;
+  padding: 1px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  background-color: rgba(255, 255, 255, 1.0);
+  color: @text-color;
+
+  text-align: left;
+  white-space: nowrap;
+  font-size: 13px;
+
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*Give tooltips that old fade in transition by
+    putting a "with-transitions" class on the container div.
+*/
+.nvtooltip.with-transitions, .with-transitions .nvtooltip {
+  -webkit-transition: opacity 250ms linear;
+  -moz-transition: opacity 250ms linear;
+  transition: opacity 250ms linear;
+
+  -webkit-transition-delay: 250ms;
+  -moz-transition-delay: 250ms;
+  transition-delay: 250ms;
+}
+
+.nvtooltip.x-nvtooltip,
+.nvtooltip.y-nvtooltip {
+  padding: 8px;
+}
+
+.nvtooltip h3 {
+  margin: 0;
+  padding: 4px 14px;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+
+  background-color: rgba(247, 247, 247, 0.75);
+
+  text-align: center;
+  font-weight: normal;
+  line-height: 18px;
+}
+
+.nvtooltip p {
+  margin: 0;
+  padding: 5px 14px;
+  text-align: center;
+}
+
+.nvtooltip span {
+  display: inline-block;
+  margin: 2px 0;
+}
+
+.nvtooltip table {
+  margin: 6px;
+}
+
+.nvtooltip table td {
+  padding-right: 9px;
+  padding-bottom: 3px;
+  vertical-align: middle;
+}
+
+.nvtooltip table td.key {
+  font-weight: normal;
+}
+
+.nvtooltip table td.value {
+  text-align: right;
+  font-weight: bold;
+}
+
+.nvtooltip table td.legend-color-guide div {
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+}
+
+.nvtooltip-pending-removal {
+  position: absolute;
+  pointer-events: none;
+}
+
+/********************
+ * SVG CSS
+ */
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  /* Trying to get SVG to act like a greedy block in all browsers */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+svg text {
+  font-size: 12px;
+  fill: @text-color;
+}
+
+svg .title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nvd3 .nv-background {
+  fill: white;
+  fill-opacity: 0;
+  /*
+  pointer-events: none;
+  */
+}
+
+.nvd3.nv-noData {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/**********
+*  Brush
+*/
+
+.nv-brush .extent {
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+/**********
+*  Legend
+*/
+
+.nvd3 .nv-legend .nv-series {
+  cursor: pointer;
+}
+
+.nvd3 .nv-legend .disabled circle {
+  fill-opacity: 0;
+}
+
+/**********
+*  Axes
+*/
+.nvd3 .nv-axis {
+  pointer-events: none;
+}
+
+.nvd3 .nv-axis path {
+  fill: @text-color;
+  stroke: @text-color;
+  stroke-opacity: .75;
+  shape-rendering: crispEdges;
+}
+
+.nvd3 .nv-axis path.domain {
+  stroke-opacity: .75;
+}
+
+.nvd3 .nv-axis.nv-x path.domain {
+  stroke-opacity: 0;
+}
+
+.nvd3 .nv-axis line {
+  fill: none;
+  stroke: #e5e5e5;
+  shape-rendering: crispEdges;
+}
+
+.nvd3 .nv-axis .zero line,
+  /*this selector may not be necessary*/
+.nvd3 .nv-axis line.zero {
+  stroke-opacity: .75;
+}
+
+.nvd3 .nv-axis .nv-axisMaxMin text {
+  font-weight: bold;
+}
+
+.nvd3 .x  .nv-axis .nv-axisMaxMin text,
+.nvd3 .x2 .nv-axis .nv-axisMaxMin text,
+.nvd3 .x3 .nv-axis .nv-axisMaxMin text {
+  text-anchor: middle
+}
+
+/**********
+*  Brush
+*/
+
+.nv-brush .resize path {
+  fill: #eee;
+  stroke: #666;
+}
+
+/**********
+*  Bars
+*/
+
+.nvd3 .nv-bars .negative rect {
+  //zfill: brown;
+}
+
+.nvd3 .nv-bars rect {
+  -webkit-transition: fill-opacity 250ms linear;
+  -moz-transition: fill-opacity 250ms linear;
+
+  transition: fill-opacity 250ms linear;
+  //zfill: steelblue;
+  fill-opacity: .75;
+}
+
+.nvd3 .nv-bars rect.hover {
+  fill-opacity: 1;
+}
+
+.nvd3 .nv-bars .hover rect {
+  fill: lightblue;
+}
+
+.nvd3 .nv-bars text {
+  fill: rgba(0, 0, 0, 0);
+}
+
+.nvd3 .nv-bars .hover text {
+  fill: rgba(0, 0, 0, 1);
+}
+
+/**********
+*  Bars
+*/
+
+.nvd3 .nv-multibar .nv-groups rect,
+.nvd3 .nv-multibarHorizontal .nv-groups rect,
+.nvd3 .nv-discretebar .nv-groups rect {
+  -webkit-transition: fill-opacity 250ms linear;
+
+  -moz-transition: fill-opacity 250ms linear;
+  transition: fill-opacity 250ms linear;
+  stroke-opacity: 0;
+}
+
+.nvd3 .nv-multibar .nv-groups rect:hover,
+.nvd3 .nv-multibarHorizontal .nv-groups rect:hover,
+.nvd3 .nv-discretebar .nv-groups rect:hover {
+  fill-opacity: 1;
+}
+
+.nvd3 .nv-discretebar .nv-groups text,
+.nvd3 .nv-multibarHorizontal .nv-groups text {
+  font-weight: bold;
+  fill: rgba(0, 0, 0, 1);
+  stroke: rgba(0, 0, 0, 0);
+}
+
+/***********
+*  Pie Chart
+*/
+
+.nvd3.nv-pie path {
+  -webkit-transition: fill-opacity 250ms linear, stroke-width 250ms linear, stroke-opacity 250ms linear;
+  -moz-transition: fill-opacity 250ms linear, stroke-width 250ms linear, stroke-opacity 250ms linear;
+  transition: fill-opacity 250ms linear, stroke-width 250ms linear, stroke-opacity 250ms linear;
+  stroke-opacity: 0;
+
+}
+
+.nvd3.nv-pie .nv-slice text {
+  stroke: #000;
+  stroke-width: 0;
+  fill: @text-color;
+  text-anchor: middle;
+}
+
+.nvd3.nv-pie path {
+  stroke: #fff;
+  stroke-width: 1px;
+  stroke-opacity: 1;
+}
+
+.nvd3.nv-pie .hover path {
+  fill-opacity: .7;
+}
+
+.nvd3.nv-pie .nv-label {
+  pointer-events: none;
+}
+
+.nvd3.nv-pie .nv-label rect {
+  fill-opacity: 0;
+  stroke-opacity: 0;
+}
+
+/**********
+* Lines
+*/
+
+.nvd3 .nv-groups path.nv-line {
+  fill: none;
+  stroke-width: 2.5px;
+  /*
+  stroke-linecap: round;
+  shape-rendering: geometricPrecision;
+
+  transition: stroke-width 250ms linear;
+  -moz-transition: stroke-width 250ms linear;
+  -webkit-transition: stroke-width 250ms linear;
+
+  transition-delay: 250ms
+  -moz-transition-delay: 250ms;
+  -webkit-transition-delay: 250ms;
+  */
+}
+
+.nvd3 .nv-groups path.nv-line.nv-thin-line {
+  stroke-width: 1px;
+}
+
+.nvd3 .nv-groups path.nv-area {
+  stroke: none;
+  /*
+  stroke-linecap: round;
+  shape-rendering: geometricPrecision;
+
+  stroke-width: 2.5px;
+  transition: stroke-width 250ms linear;
+  -moz-transition: stroke-width 250ms linear;
+  -webkit-transition: stroke-width 250ms linear;
+
+  transition-delay: 250ms
+  -moz-transition-delay: 250ms;
+  -webkit-transition-delay: 250ms;
+  */
+}
+
+.nvd3 .nv-line.hover path {
+  stroke-width: 6px;
+}
+
+/*
+.nvd3.scatter .groups .point {
+  fill-opacity: 0.1;
+  stroke-opacity: 0.1;
+}
+  */
+
+.nvd3.nv-line .nvd3.nv-scatter .nv-groups .nv-point {
+  fill-opacity: 0;
+  stroke-opacity: 0;
+}
+
+.nvd3.nv-scatter.nv-single-point .nv-groups .nv-point {
+  fill-opacity: .5 !important;
+  stroke-opacity: .5 !important;
+}
+
+.with-transitions .nvd3 .nv-groups .nv-point {
+  -webkit-transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
+  -moz-transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
+  transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
+
+}
+
+.nvd3.nv-scatter .nv-groups .nv-point.hover,
+.nvd3 .nv-groups .nv-point.hover {
+  stroke-width: 7px;
+  fill-opacity: .95 !important;
+  stroke-opacity: .95 !important;
+}
+
+.nvd3 .nv-point-paths path {
+  stroke: #aaa;
+  stroke-opacity: 0;
+  fill: #eee;
+  fill-opacity: 0;
+}
+
+.nvd3 .nv-indexLine {
+  cursor: ew-resize;
+}
+
+/**********
+* Distribution
+*/
+
+.nvd3 .nv-distribution {
+  pointer-events: none;
+}
+
+/**********
+*  Scatter
+*/
+
+/* **Attempting to remove this for useVoronoi(false), need to see if it's required anywhere
+.nvd3 .nv-groups .nv-point {
+  pointer-events: none;
+}
+*/
+
+.nvd3 .nv-groups .nv-point.hover {
+  stroke-width: 20px;
+  stroke-opacity: .5;
+}
+
+.nvd3 .nv-scatter .nv-point.hover {
+  fill-opacity: 1;
+}
+
+/*
+.nv-group.hover .nv-point {
+  fill-opacity: 1;
+}
+*/
+
+/**********
+*  Stacked Area
+*/
+
+.nvd3.nv-stackedarea path.nv-area {
+  -webkit-transition: fill-opacity 250ms linear, stroke-opacity 250ms linear;
+  /*
+  stroke-opacity: .65;
+  fill-opacity: 1;
+  */
+  -moz-transition: fill-opacity 250ms linear, stroke-opacity 250ms linear;
+
+  transition: fill-opacity 250ms linear, stroke-opacity 250ms linear;
+  fill-opacity: .7;
+  stroke-opacity: 0;
+
+  /*
+  transition-delay: 500ms;
+  -moz-transition-delay: 500ms;
+  -webkit-transition-delay: 500ms;
+  */
+
+}
+
+.nvd3.nv-stackedarea path.nv-area.hover {
+  fill-opacity: .9;
+  /*
+  stroke-opacity: .85;
+  */
+}
+
+/*
+.d3stackedarea .groups path {
+  stroke-opacity: 0;
+}
+  */
+
+.nvd3.nv-stackedarea .nv-groups .nv-point {
+  stroke-opacity: 0;
+  fill-opacity: 0;
+}
+
+/*
+.nvd3.nv-stackedarea .nv-groups .nv-point.hover {
+  stroke-width: 20px;
+  stroke-opacity: .75;
+  fill-opacity: 1;
+}*/
+
+/**********
+*  Line Plus Bar
+*/
+
+.nvd3.nv-linePlusBar .nv-bar rect {
+  fill-opacity: .75;
+}
+
+.nvd3.nv-linePlusBar .nv-bar rect:hover {
+  fill-opacity: 1;
+}
+
+/**********
+*  Bullet
+*/
+
+.nvd3.nv-bullet {
+  font: 10px sans-serif;
+}
+
+.nvd3.nv-bullet .nv-measure {
+  fill-opacity: .8;
+}
+
+.nvd3.nv-bullet .nv-measure:hover {
+  fill-opacity: 1;
+}
+
+.nvd3.nv-bullet .nv-marker {
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.nvd3.nv-bullet .nv-markerTriangle {
+  stroke: #000;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
+.nvd3.nv-bullet .nv-tick line {
+  stroke: #666;
+  stroke-width: .5px;
+}
+
+.nvd3.nv-bullet .nv-range.nv-s0 {
+  fill: #eee;
+}
+
+.nvd3.nv-bullet .nv-range.nv-s1 {
+  fill: #ddd;
+}
+
+.nvd3.nv-bullet .nv-range.nv-s2 {
+  fill: #ccc;
+}
+
+.nvd3.nv-bullet .nv-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nvd3.nv-bullet .nv-subtitle {
+  fill: #999;
+}
+
+.nvd3.nv-bullet .nv-range {
+  fill: #bababa;
+  fill-opacity: .4;
+}
+
+.nvd3.nv-bullet .nv-range:hover {
+  fill-opacity: .7;
+}
+
+/**********
+* Sparkline
+*/
+
+.nvd3.nv-sparkline path {
+  fill: none;
+}
+
+.nvd3.nv-sparklineplus g.nv-hoverValue {
+  pointer-events: none;
+}
+
+.nvd3.nv-sparklineplus .nv-hoverValue line {
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+.nvd3.nv-sparklineplus,
+.nvd3.nv-sparklineplus g {
+  pointer-events: all;
+}
+
+.nvd3 .nv-hoverArea {
+  fill-opacity: 0;
+  stroke-opacity: 0;
+}
+
+.nvd3.nv-sparklineplus .nv-xValue,
+.nvd3.nv-sparklineplus .nv-yValue {
+  /*
+  stroke: #666;
+  */
+  font-weight: normal;
+  font-size: .9em;
+  stroke-width: 0;
+}
+
+.nvd3.nv-sparklineplus .nv-yValue {
+  stroke: #f66;
+}
+
+.nvd3.nv-sparklineplus .nv-maxValue {
+  stroke: #2ca02c;
+  fill: #2ca02c;
+}
+
+.nvd3.nv-sparklineplus .nv-minValue {
+  stroke: #d62728;
+  fill: #d62728;
+}
+
+.nvd3.nv-sparklineplus .nv-currentValue {
+  /*
+  stroke: #444;
+  fill: #000;
+  */
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/**********
+* historical stock
+*/
+
+.nvd3.nv-ohlcBar .nv-ticks .nv-tick {
+  stroke-width: 2px;
+}
+
+.nvd3.nv-ohlcBar .nv-ticks .nv-tick.hover {
+  stroke-width: 4px;
+}
+
+.nvd3.nv-ohlcBar .nv-ticks .nv-tick.positive {
+  stroke: #2ca02c;
+}
+
+.nvd3.nv-ohlcBar .nv-ticks .nv-tick.negative {
+  stroke: #d62728;
+}
+
+.nvd3.nv-historicalStockChart .nv-axis .nv-axislabel {
+  font-weight: bold;
+}
+
+.nvd3.nv-historicalStockChart .nv-dragTarget {
+  cursor: move;
+  fill-opacity: 0;
+  stroke: none;
+}
+
+.nvd3 .nv-brush .extent {
+  /*
+  cursor: ew-resize !important;
+  */
+  fill-opacity: 0 !important;
+}
+
+.nvd3 .nv-brushBackground rect {
+  stroke: #000;
+  stroke-width: .4;
+  fill: #fff;
+  fill-opacity: .7;
+}
+
+/**********
+* Indented Tree
+*/
+
+/**
+ * TODO: the following 3 selectors are based on classes used in the example.  I should either make them standard and leave them here, or move to a CSS file not included in the library
+ */
+.nvd3.nv-indentedtree .name {
+  margin-left: 5px;
+}
+
+.nvd3.nv-indentedtree .clickable {
+  color: #08C;
+  cursor: pointer;
+}
+
+.nvd3.nv-indentedtree span.clickable:hover {
+  color: #005580;
+  text-decoration: underline;
+}
+
+.nvd3.nv-indentedtree .nv-childrenCount {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.nvd3.nv-indentedtree .nv-treeicon {
+  cursor: pointer;
+  /*
+  cursor: n-resize;
+  */
+}
+
+.nvd3.nv-indentedtree .nv-treeicon.nv-folded {
+  cursor: pointer;
+  /*
+  cursor: s-resize;
+  */
+}
+
+/**********
+* Parallel Coordinates
+*/
+
+.nvd3 .background path {
+  fill: none;
+  stroke: #ccc;
+  stroke-opacity: .4;
+  shape-rendering: crispEdges;
+}
+
+.nvd3 .foreground path {
+  fill: none;
+  stroke: steelblue;
+  stroke-opacity: .7;
+}
+
+.nvd3 .brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.nvd3 .axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.nvd3 .axis text {
+  text-shadow: 0 1px 0 #fff;
+}
+
+/****
+Interactive Layer
+*/
+.nvd3 .nv-interactiveGuideLine {
+  pointer-events: none;
+}
+
+.nvd3 line.nv-guideline {
+  stroke: #ccc;
+}
+
+.nv-barsWrap text {
+  font-weight: bold;
+  font-size: 9px;
+}
+
+// 3D Chart
+.widget-chart3d {
+  position: relative;
+  overflow: hidden;
+  padding-left: 10px;
+  -webkit-transform-origin: 0 0;
+}
+
+.widget-chart3d .wrapper {
+  position: absolute;
+  -webkit-transform: scale(0.75);
+  -webkit-perspective: 1440;
+}
+
+.widget-chart3d .toggles {
+  padding: 15px;
+  height: 20px;
+  background: #ebebeb;
+  color: #545454;
+}
+
+.widget-chart3d .toggles p {
+  margin: 0;
+}
+
+.widget-chart3d .toggles a {
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0 6px;
+  border-radius: 3px;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+}
+
+.widget-chart3d .toggles a:hover {
+  background: #666;
+}
+
+.widget-chart3d #reset-graph-button {
+  float: right;
+}
+
+.widget-chart3d .chart {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 3s ease-out;
+  -webkit-transform: rotateX(15deg) rotateY(25deg);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .figure {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .figure ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.widget-chart3d .graph {
+  position: relative;
+  width: 900px;
+  height: 480px;
+}
+
+.widget-chart3d .legend {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  height: 40px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  text-align: left;
+  font-size: 16px;
+  -webkit-transform: translateZ(65px);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .legend li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 10px;
+  height: 20px;
+  -webkit-transform: translateZ(10px);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .legend span.icon {
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background-position: 50% 0;
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .x-axis {
+  position: absolute;
+  bottom: 0;
+  width: 900px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.27);
+  color: #fff;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 0;
+  font-size: 18px;
+  -webkit-transform: rotateX(90deg) translateZ(-50px) translateY(30px);
+}
+
+.widget-chart3d .x-axis li {
+  float: left;
+  margin: 62px 15px 0 15px;
+  padding: 5px 0;
+  width: 150px;
+  height: 20px;
+}
+
+.widget-chart3d .y-axis {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 900px;
+  background: rgba(0, 0, 0, 0.09);
+  color: #555;
+  text-align: right;
+  -webkit-transform: translateZ(-20px);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .y-axis li {
+  display: block;
+  padding: 0;
+  height: 95px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.widget-chart3d .y-axis li span {
+  position: absolute;
+  display: block;
+  margin: -1px 0 0 0;
+  width: 100px;
+  height: 95px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.18);
+  text-align: center;
+  font-size: 18px;
+  line-height: 36px;
+  -webkit-transform: rotateY(90deg) translateX(-50px) translateZ(-50px);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .bars {
+  position: relative;
+  z-index: 10;
+  float: left;
+  margin-left: 15px;
+  width: 900px;
+  height: 480px;
+  -webkit-transform: translateZ(15px);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .bar-group {
+  position: relative;
+  float: left;
+  margin: 0 15px;
+  width: 150px;
+  height: 100%;
+}
+
+.widget-chart3d .bar {
+  position: absolute;
+  bottom: 1px;
+  width: 42px;
+  height: 0;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all 0.8s ease-out;
+}
+
+.widget-chart3d .bar span {
+  position: relative;
+  left: -11px;
+  display: block;
+  margin-top: 10px;
+  width: 64px;
+  color: #fff;
+  text-shadow: rgba(0, 0, 0, 0.6) 0 2px 5px;
+  font-size: 24px;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-out;
+  -webkit-transform: translateZ(-21px) scale(0);
+}
+
+.widget-chart3d .bar:hover span {
+  display: block;
+  opacity: 1;
+  -webkit-transform: translateZ(24px) scale(1);
+}
+
+.widget-chart3d .bar.fig0 {
+  left: 0;
+}
+
+.widget-chart3d .bar.fig1 {
+  left: 54px;
+}
+
+.widget-chart3d .bar.fig2 {
+  left: 108px;
+}
+
+.widget-chart3d .figure h4 {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 480px;
+  text-align: center;
+  font-size: 16px;
+  -webkit-transform: rotateZ(-90deg) translateY(-260px) translateZ(80px) translateX(-230px);
+  -webkit-transform-style: preserve-3d;
+}
+
+.widget-chart3d .fig0 {
+  background: none;
+}
+
+.widget-chart3d .fig1 {
+  background: none;
+}
+
+.widget-chart3d .fig2 {
+  background: none;
+}
+
+.widget-chart3d .face {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  width: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.widget-chart3d .top {
+  top: 0;
+  height: 42px;
+  -webkit-transform: rotateX(90deg) translateZ(21px);
+}
+
+.widget-chart3d .front {
+  bottom: 0;
+  height: 100%;
+  -webkit-transform: translateZ(21px);
+}
+
+.widget-chart3d .right {
+  bottom: 0;
+  height: 100%;
+  -webkit-transform: rotateY(90deg) translateZ(21px);
+}
+
+.widget-chart3d .left {
+  bottom: 0;
+  height: 100%;
+  -webkit-transform: rotateY(-90deg) translateZ(21px);
+}
+
+.widget-chart3d .back {
+  bottom: 0;
+  height: 100%;
+  -webkit-transform: rotateY(180deg) translateZ(21px);
+}
+
+.widget-chart3d .bottom {
+  bottom: 0;
+  height: 42px;
+  -webkit-transform: rotateX(90deg) translateZ(-21px);
+}
+
+.widget-chart3d .legend .face {
+  width: 20px;
+  height: 20px;
+}
+
+.widget-chart3d .legend .top {
+  height: 10px;
+  -webkit-transform: rotateX(90deg) translateZ(5px);
+}
+
+.widget-chart3d .legend .front {
+  height: 20px;
+  -webkit-transform: translateZ(5px);
+}
+
+.widget-chart3d .legend .right {
+  width: 10px;
+  -webkit-transform: rotateY(90deg) translateZ(15px);
+}
+
+.widget-chart3d .legend .left {
+  width: 10px;
+  -webkit-transform: rotateY(-90deg) translateZ(5px);
+}
+
+.widget-chart3d .legend .back {
+  height: 20px;
+  -webkit-transform: rotateY(180deg) translateZ(5px);
+}
+
+.widget-chart3d .legend .bottom {
+  height: 10px;
+  -webkit-transform: rotateX(90deg) translateZ(-5px);
+}
+
+.widget-chart3d-hbar {
+  min-height: 340px;
+  margin-left: -20px;
+}
+
+.widget-chart3d-hbar .wrapper {
+  -webkit-transform: scale(0.75) rotateZ(90deg) translate(30px, -600px);
+  -webkit-transform-origin: 0 0;
+  -webkit-perspective: 1440;
+}
+
+.widget-chart3d-hbar .y-axis li span {
+  right: 0;
+  margin-top: -1px;
+  margin-right: -160px;
+  background: none;
+  -webkit-transform: rotateZ(-45deg) rotateY(0deg) translateX(5px) translateY(-65px) translateZ(0px);
+}
+
+.widget-chart3d .bar span,
+.widget-chart3d .bar:hover span {
+  margin-top: -40px;
+  opacity: 1;
+  -webkit-transition: none;
+  -webkit-transform: translateZ(24px) scale(1);
+}
+
+.widget-chart3d-hbar .bar span,
+.widget-chart3d-hbar .bar:hover span {
+  margin-top: -50px;
+  opacity: 1;
+  -webkit-transition: none;
+  -webkit-transform: translateZ(24px) scale(1) rotateZ(-90deg);
+}
+
+.widget-chart3d .figure .legend {
+  -webkit-transform-origin: 0 0;
+}
+
+// Color preset
+.bar,
+.legend li {
+  .chart3d-color-style(5, 1);
+}
+
+// Placeholder
+.chart3d-color-style (@index, @preset-index) when (@index > 0) {
+  &:nth-child(5n+@{index}) {
+    .chart-color-preset(@index, @preset-index);
+
+    @bar-color-top: rgba(red(@bar-color), green(@bar-color), blue(@bar-color), 0.8);
+    @bar-color-bottom: rgba(red(@bar-color), green(@bar-color), blue(@bar-color), 0.6);
+    .top {
+      background: @bar-color-top;
+    }
+
+    .left, .right, .back, .front {
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, @bar-color-top), color-stop(1.0, @bar-color-bottom));
+    }
+
+    .bottom {
+      background: @bar-color-bottom;
+    }
+  }
+  .chart3d-color-style(@index - 1, @preset-index);
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 5) and (@preset-index = 1) {
+  @bar-color: #2980b9;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 4) and (@preset-index = 1) {
+  @bar-color: #f5a503;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 3) and (@preset-index = 1) {
+  @bar-color: #3498db;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 2) and (@preset-index = 1) {
+  @bar-color: #e74c3c;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 1) and (@preset-index = 1) {
+  @bar-color: #2c3e50;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 5) and (@preset-index = 2) {
+  @bar-color: #ff7f66;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 4) and (@preset-index = 2) {
+  @bar-color: #7ecefd;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 3) and (@preset-index = 2) {
+  @bar-color: #f5a503;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 2) and (@preset-index = 2) {
+  @bar-color: #2185c5;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 1) and (@preset-index = 2) {
+  @bar-color: #3e454c;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 5) and (@preset-index = 3) {
+  @bar-color: #FFFFFF;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 4) and (@preset-index = 3) {
+  @bar-color: #6DBCDB;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 3) and (@preset-index = 3) {
+  @bar-color: #D7DADB;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 2) and (@preset-index = 3) {
+  @bar-color: #FC4349;
+}
+
+.chart-color-preset(@index, @preset-index) when (@index = 1) and (@preset-index = 3) {
+  @bar-color: #2C3E50;
+}
+

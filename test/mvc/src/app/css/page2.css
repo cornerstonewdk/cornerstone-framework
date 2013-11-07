@@ -1,0 +1,13 @@
+.touch-area {
+	padding: 10px
+	width: 300px;
+	height: 300px;
+	background-color: green;
+}
+
+.gesture-area {
+	padding: 10px
+	width: 300px;
+	height: 300px;
+	background-color: red;
+}

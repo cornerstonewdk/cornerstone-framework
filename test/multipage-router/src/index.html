@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Project</title>
+		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main">
+					<span class="sr-only">메뉴 보기</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#page1" class="navbar-brand" data-transition="slide" data-duration="1500">Home</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-main">
+				<ul class="nav navbar-nav">
+					<li><a href="#page2" data-transition="flip" data-duration="1500">페이지2</a></li>
+					<li><a href="#page3" data-transition="pop" data-duration="1500">페이지3</a></li>
+				</ul>
+				<p class="navbar-text pull-right">Powered by <a class="navbar-link" href="http://cornerstone.sktelecom.com">Cornerstone</a></p>
+			</div>
+		</div>
+		<div id="mocha">
+		</div>
+		<div class="container">
+			<section id="page1" data-url="page1" data-default-page="true">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Page 1</div>
+					<div class="panel-body">
+						<p>첫번째 페이지 입니다.</p>
+						<div class="btn-group">
+							<a href="#page2" class="btn" data-transition="flip" data-duration="1500">다음</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="page2" data-url="page2">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Page 2</div>
+					<div class="panel-body">
+						<p>두번째 페이지 입니다.</p>
+						<div class="btn-group">
+							<a href="#page1" class="btn" data-transition="slide" data-duration="1500">이전</a>
+							<a href="#page3" class="btn" data-transition="turn" data-duration="1500">다음</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="page3" data-url="page3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Page 3</div>
+					<div class="panel-body">
+						<p>세번째 페이지 입니다.</p>
+						<div class="btn-group">
+							<a href="#page2" class="btn" data-transition="fade" data-duration="1500">이전</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<script src="cornerstone/launcher/launcher.js" data-target="app/main"></script>
+	</body>
+</html>

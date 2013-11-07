@@ -1,0 +1,7 @@
+/*
+    Cornerstone Framework v2.0
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
+define(["backbone","underscore","jquery","validation-view","bootstrap"],function(a,b,c,d){return a.View.extend({initialize:function(){this.render(),this.model.on("change",this.render,this),this.validation=this.options.validationViewClass?new this.options.validationViewClass({el:this.$el}):new d({el:this.$el})},render:function(){var a=this;b.each(this.model.attributes,function(c,d){var e=a.$(":input[name="+d+"]:first");if(e&&e.length){var f=e.attr("type");f&&"CHECKBOX"===f.toUpperCase()?(a.$(":input[name="+d+"]").removeAttr("checked"),b.isArray(c)?b.each(c,function(b){a.$(":input[name="+d+"][value="+b+"]").prop("checked",!0)}):a.$(":input[name="+d+"][value="+c+"]").prop("checked",!0)):f&&"RADIO"===f.toUpperCase()?a.$(":input[name="+d+"][value="+c+"]").prop("checked",!0):e.val(c)}})},_onValidationError:function(a,c){b.isArray(c)?b.each(c,this.validation.fail):this.validation.fail(c)},toModel:function(){this.validation.reset();var a={};return b.each(this.$el.serializeArray(),function(c){a[c.name]?(b.isArray(a[c.name])||(a[c.name]=[a[c.name]]),a[c.name].push(c.value)):a[c.name]=c.value}),this.model.clear({silent:!0}),this.model.set(a),this.model.isValid()?this.validation.success():this._onValidationError(this.model,this.model.validationError),this.model}})});

@@ -1,0 +1,18 @@
+{
+	"name": "widget-alert",
+	"version": "2.0.0",
+	"description": "bootstrap alert 확장",
+	"jam": {
+		"dependencies": {
+			"backbone": "1.0.0",
+			"underscore": "1.4.4",
+			"jquery": "1.10.2",
+			"bootstrap": "3.0.0"
+		},
+		"main": "widget-alert.js",
+		"shim": {
+			"deps": [ "backbone", "underscore", "jquery", "bootstrap" ]
+		},
+		"exports": "widget-alert"
+	}
+}

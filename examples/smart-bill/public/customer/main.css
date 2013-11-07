@@ -1,0 +1,180 @@
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	background-color: #e0e0e0;
+}
+
+#section-list, #section-detail {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	height: 100%;
+}
+
+.skt-navbar {
+	width: 100%;
+	height: 50px;
+	top: 0;
+	left: 0;
+	position: fixed;
+	color: #ffffff;
+	background-color: #ff612b;
+	z-index: 10;
+	font-weight: bold;
+}
+
+.skt-navbar h1 {
+	font-size: 25px;
+	margin-top: 11px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 250px;
+	text-align: center;
+}
+
+.skt-navbar .btn-left {
+	position: absolute;
+	top: 12px;
+	left: 20px;
+	font-size: 20px;
+}
+
+.skt-navbar .btn-right {
+	position: absolute;
+	top: 12px;
+	right: 20px;
+	font-size: 20px;
+}
+
+.skt-navbar-bottom {
+	width: 100%;
+	height: 60px;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	color: #ffffff;
+	z-index: 10;
+}
+
+.skt-navbar-bottom div {
+	width: 20%;
+	height: 100%;
+	float: left;
+	background-color: #353535;
+	text-align: center;
+	padding-top: 7px;
+}
+
+.skt-navbar-bottom div.active {
+	width: 20%;
+	height: 100%;
+	float: left;
+	background-color: #f85d04;
+}
+
+.skt-navbar-bottom .glyphicon {
+	font-size: 20px;
+}
+
+.glyphicon-refresh, .glyphicon-home {
+	color: white;
+}
+
+#list-main {
+	margin-top: 70px;
+}
+
+#div-detail {
+	margin-top: 120px;
+	padding-bottom: 70px;
+}
+
+#div-detail .row {
+	margin-top: 15px;
+}
+
+#div-detail .row div {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#div-summary {
+	width: 100%;
+	height: 50px;
+	top: 50px;
+	left: 0;
+	position: fixed;
+	background-color: white;
+	z-index: 10;
+	font-weight: bold;
+	border-bottom: 3px solid #b0b0b0;
+}
+
+#div-summary .title {
+	position: absolute;
+	color: #9a9a9a;
+	font-size: 23px;
+	top: 8px;
+	left: 20px;
+}
+
+#div-summary .amount {
+	position: absolute;
+	color: #fd6308;
+	font-size: 25px;
+	top: 6px;
+	right: 40px;
+}
+
+#div-summary .unit {
+	position: absolute;
+	color: #565656;
+	font-size: 18px;
+	top: 12px;
+	right: 20px;
+}
+
+.btn-skt {
+	color: #FCFDFD;
+	background-color: #E14444;
+	border-color: #EDB0B0;
+}
+
+hr {
+	border: 1px solid #3f3f3f;
+	margin: 0;
+}
+
+.well {
+	font-size: 18px;
+	margin: 0;
+}
+
+.table {
+	background-color: white;
+	font-size: 18px;
+	margin: 0;
+}
+
+.table td {
+	text-align: right;
+}
+
+.table tr.sub {
+	background-color: #f1f1f1;
+}
+
+.table tr.sub th {
+	font-weight: normal;
+}
+
+/* 12 미만의 컬럼 뒤에 12 컬럼이 따라올 경우 위와 겹쳐지는 경우를 해결 */
+.col-lg-12, .col-md-12, .col-sm-12, .col-xs-12 {
+	float: left;
+}

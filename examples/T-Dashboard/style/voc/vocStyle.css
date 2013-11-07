@@ -1,0 +1,30 @@
+#voc .scrollview {
+	height: 390px;
+}
+
+#voc .side-bar .panel-body {
+	padding: 0;
+}
+
+#voc .side-bar {
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+@media all and (max-width: 767px) {
+	#voc .side-bar {
+		margin-left: 0px;
+	}
+	.voc-area {
+		padding: 0;
+	}
+}
+
+#voc table {
+	table-layout: fixed;
+	word-break: break-all;
+}
+
+#vocHistory h5 {
+	line-height: 25px;
+}

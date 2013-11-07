@@ -1,2 +1,0 @@
-#!/bin/bash
-ps -ef | grep githubsync.sh | grep -v grep | grep -v vi

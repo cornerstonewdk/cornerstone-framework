@@ -1,0 +1,7 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">{{pageTitle}}</div>
+    <div class="panel-body">
+        {{{exampleHtml}}}
+    </div>
+</div>
+{{{exampleHtml2}}}

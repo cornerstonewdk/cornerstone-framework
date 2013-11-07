@@ -1,0 +1,18 @@
+{
+	"name": "widget-button",
+	"version": "2.0.0",
+	"description": "bootstrap button toggle 이벤트 확장",
+	"jam": {
+		"dependencies": {
+			"backbone": "1.0.0",
+			"underscore": "1.4.4",
+			"jquery": "1.10.2",
+			"bootstrap": "3.0.0"
+		},
+		"main": "widget-button.js",
+		"shim": {
+			"deps": [ "backbone", "underscore", "jquery", "bootstrap" ]
+		},
+		"exports": "widget-button"
+	}
+}

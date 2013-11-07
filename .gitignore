@@ -1,10 +1,11 @@
 .DS_store
 .idea
+*.iml
 *.log
 *.eco
 *.swp
-*.iml
-examples/tetris-together/node_modules
-examples/T-Dashboard/node_modules
-examples/cornerstone.docpad/node_modules
-build/node_modules
+admin.json
+examples/smart-bill/public/data
+test/**/dist/
+examples/**/dist/
+node_modules/

@@ -1,0 +1,100 @@
+<div class="container">
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">서식 편집</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">화면 요소</div>
+				<div class="list-group">
+					<div class="list-group-item view-item" data-type="box">
+						<h4 class="list-group-item-heading">Content box</h4>
+						<p class="list-group-item-text">
+							<div class="content-box"></div>
+						</p>
+					</div>
+					<div class="list-group-item view-item" data-type="divider">
+						<h4 class="list-group-item-heading">Divider</h4>
+						<p class="list-group-item-text">
+							<hr/>
+						</p>
+					</div>
+					<div class="list-group-item view-item" data-type="button">
+						<h4 class="list-group-item-heading">Button</h4>
+						<p class="list-group-item-text">
+							<button type="button" class="btn btn-skt btn-block" disabled="disabled">Button</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">내용 요소</div>
+				<ul class="list-group">
+					<li class="list-group-item" data-type="table"><h4 class="list-group-item-heading">요금 테이블</h4></li>
+					<li class="list-group-item" data-type="total"><h4 class="list-group-item-heading">이번달 총계</h4></li>
+					<li class="list-group-item" data-type="sum1"><h4 class="list-group-item-heading">이번달 통신서비스 금액</h4></li>
+					<li class="list-group-item" data-type="sum2"><h4 class="list-group-item-heading">이번달 부가사용 금액</h4></li>
+					<li class="list-group-item" data-type="sum3"><h4 class="list-group-item-heading">이번달 단말기 할부금</h4></li>
+					<li class="list-group-item" data-type="text"><h4 class="list-group-item-heading">텍스트</h4></li>
+					<li class="list-group-item" data-type="image"><h4 class="list-group-item-heading">이미지</h4></li>
+					<li class="list-group-item" data-type="map"><h4 class="list-group-item-heading">구글맵</h4></li>
+					<li class="list-group-item" data-type="video"><h4 class="list-group-item-heading">Youtube</h4></li>
+					<li class="list-group-item" data-type="graph"><h4 class="list-group-item-heading">그래프</h4></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab-phone" data-toggle="tab">Phone 화면</a></li>
+						<li><a href="#tab-tablet" data-toggle="tab">Tablet 화면</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<span id="dropzone-trash" class="glyphicon glyphicon-trash"></span>
+				</div>
+			</div>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-phone"></div>
+				<div class="tab-pane" id="tab-tablet"></div>
+			</div>
+		</div>
+	</div>
+	<div class="pull-right">
+		<a href="#modal-save-template" data-toggle="modal" class="btn btn-primary">저장</a>
+		<a href="#" class="btn btn-default">취소</a>
+	</div>
+</div>
+<div class="modal fade" id="modal-edit" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-save-template" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">서식 저장</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<tr>
+						<th>서식명</th>
+						<td>
+							<input id="template-name" type="text" class="form-control"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button id="btn-save-template" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>

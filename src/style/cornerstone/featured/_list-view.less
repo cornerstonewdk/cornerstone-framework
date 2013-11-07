@@ -1,0 +1,18 @@
+.list-view {
+  margin: 0;
+  .list-group-item {
+    &, &:first-child, &:last-child {
+      border-radius: 0;
+    }
+  }
+  [data-infinity-pageid] {
+    .list-group-item:last-child {
+      border-bottom: none;
+    }
+  }
+  [data-infinity-pageid]:last-child {
+    .list-group-item:last-child {
+      border-bottom: 1px solid @list-group-item-border-color;
+    }
+  }
+}

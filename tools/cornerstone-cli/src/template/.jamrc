@@ -1,0 +1,5 @@
+
+exports.repositories = [
+	'http://cornerstone.sktelecom.com/repository',
+	'http://jamjs.org/repository'
+];

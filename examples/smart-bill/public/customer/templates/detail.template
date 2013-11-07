@@ -1,0 +1,359 @@
+<div class="container">
+	<div class="skt-navbar">
+		<a href="#" class="btn-left" data-transition="flip"><span class="glyphicon glyphicon-home"></span></a>
+		<h1>{{bill.year}}년 {{bill.month}}월</h1>
+	</div>
+	<div id="div-summary">
+		<span class="title">납부하실 금액</span>
+		<span class="amount">{{numberFormat data.total}}</span>
+		<span class="unit">원</span>
+	</div>
+	<div id="div-detail">
+		<div class="row">
+			{{#each bill.template.content}}
+				<div class="col-lg-{{tabletWidth}} col-md-{{tabletWidth}} col-sm-{{phoneWidth}} col-xs-{{phoneWidth}}">
+					{{#if box}}
+						{{#if table}}
+							<table class="table table-bordered">
+								<tr>
+									<th>총계</th>
+									<td>{{numberFormat ../../../data.total}}</td>
+								</tr>
+								<tr>
+									<th>통신서비스금액</th>
+									<td>{{numberFormat ../../../data.items1Sum}}</td>
+								</tr>
+								{{#each ../../../bill.template.tableItems.items1}}
+									<tr class="sub">
+										<th>{{name}}</th>
+										<td>{{items1Data ../../../../data @index}}</td>
+									</tr>
+								{{/each}}
+								<tr>
+									<th>부가사용금액</th>
+									<td>{{numberFormat ../../../data.items2Sum}}</td>
+								</tr>
+								{{#each ../../../bill.template.tableItems.items2}}
+									<tr class="sub">
+										<th>{{name}}</th>
+										<td>{{items2Data ../../../../data @index}}</td>
+									</tr>
+								{{/each}}
+								<tr>
+									<th>단말기할부금</th>
+									<td>{{numberFormat ../../../data.items3Sum}}</td>
+								</tr>
+							</table>
+						{{/if}}
+						{{#if total}}
+							<table class="table table-bordered">
+								<tr>
+									<th>총계</th>
+									<td>{{numberFormat ../../../data.total}}</td>
+								</tr>
+							</table>
+						{{/if}}
+						{{#if sum1}}
+							<table class="table table-bordered">
+								<tr>
+									<th>통신서비스금액</th>
+									<td>{{numberFormat ../../../data.items1Sum}}</td>
+								</tr>
+							</table>
+						{{/if}}
+						{{#if sum2}}
+							<table class="table table-bordered">
+								<tr>
+									<th>부가사용금액</th>
+									<td>{{numberFormat ../../../data.items2Sum}}</td>
+								</tr>
+							</table>
+						{{/if}}
+						{{#if sum3}}
+							<table class="table table-bordered">
+								<tr>
+									<th>단말기할부금</th>
+									<td>{{numberFormat ../../../data.items3Sum}}</td>
+								</tr>
+							</table>
+						{{/if}}
+						{{#if text}}
+							<div class="well well-sm">{{text}}</div>
+						{{/if}}
+						{{#if image}}
+							<div class="well well-sm">
+								<img src="{{image}}" class="img-thumbnail"/>
+							</div>
+						{{/if}}
+						{{#if map}}
+							<div class="well well-sm">
+								<div id="map-canvas" style="width: 100%; height: 200px;"></div>
+							</div>
+						{{/if}}
+						{{#if video}}
+							<div class="well well-sm">
+								<embed type="application/x-shockwave-flash" src="http://www.youtube.com/v/{{video}}" width="100%" height="250" bgcolor="#ffffff" quality="high" movie="http://www.youtube.com/v/{{video}}" wmode="transparent">
+							</div>
+						{{/if}}
+						{{#if graph}}
+							<div class="well well-sm" style="height: 200px;">
+								<div id="chart-canvas" class="widget-chart3d"></div>
+							</div>
+						{{/if}}
+					{{/if}}
+					{{#if divider}}
+						<hr/>
+					{{/if}}
+					{{#if button}}
+						{{#if table}}
+							<a data-toggle="modal" href="#modal-table" class="btn btn-lg btn-skt btn-block">요금 테이블</a>
+							<div class="modal fade" id="modal-table" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">요금 테이블</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table table-bordered">
+												<tr>
+													<th>총계</th>
+													<td>{{numberFormat ../../../data.total}}</td>
+												</tr>
+												<tr>
+													<th>통신서비스금액</th>
+													<td>{{numberFormat ../../../data.items1Sum}}</td>
+												</tr>
+												{{#each ../../../bill.template.tableItems.items1}}
+													<tr class="sub">
+														<th>{{name}}</th>
+														<td>{{items1Data ../../../../data @index}}</td>
+													</tr>
+												{{/each}}
+												<tr>
+													<th>부가사용금액</th>
+													<td>{{numberFormat ../../../data.items2Sum}}</td>
+												</tr>
+												{{#each ../../../bill.template.tableItems.items2}}
+													<tr class="sub">
+														<th>{{name}}</th>
+														<td>{{items2Data ../../../../data @index}}</td>
+													</tr>
+												{{/each}}
+												<tr>
+													<th>단말기할부금</th>
+													<td>{{numberFormat ../../../data.items3Sum}}</td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if total}}
+							<a data-toggle="modal" href="#modal-total" class="btn btn-lg btn-skt btn-block">이번달 총계</a>
+							<div class="modal fade" id="modal-total" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">이번달 총계</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table table-bordered">
+												<tr>
+													<th>총계</th>
+													<td>{{numberFormat ../../../data.total}}</td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if sum1}}
+							<a data-toggle="modal" href="#modal-sum1" class="btn btn-lg btn-skt btn-block">이번달 통신서비스 금액</a>
+							<div class="modal fade" id="modal-sum1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">이번달 통신서비스 금액</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table table-bordered">
+												<tr>
+													<th>통신서비스금액</th>
+													<td>{{numberFormat ../../../data.items1Sum}}</td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if sum2}}
+							<a data-toggle="modal" href="#modal-sum2" class="btn btn-lg btn-skt btn-block">이번달 부가사용 금액</a>
+							<div class="modal fade" id="modal-sum2" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">이번달 부가사용 금액</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table table-bordered">
+												<tr>
+													<th>부가사용금액</th>
+													<td>{{numberFormat ../../../data.items2Sum}}</td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if sum3}}
+							<a data-toggle="modal" href="#modal-sum3" class="btn btn-lg btn-skt btn-block">이번달 단말기 할부금</a>
+							<div class="modal fade" id="modal-sum3" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">이번달 단말기 할부금</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table table-bordered">
+												<tr>
+													<th>단말기할부금</th>
+													<td>{{numberFormat ../../../data.items3Sum}}</td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if text}}
+							<a data-toggle="modal" href="#modal-text" class="btn btn-lg btn-skt btn-block">텍스트</a>
+							<div class="modal fade" id="modal-text" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">텍스트</h4>
+										</div>
+										<div class="modal-body">
+											<p>{{text}}</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if image}}
+							<a data-toggle="modal" href="#modal-image" class="btn btn-lg btn-skt btn-block">이미지</a>
+							<div class="modal fade" id="modal-image" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">이미지</h4>
+										</div>
+										<div class="modal-body">
+											<img src="{{image}}" class="img-thumbnail"/>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if map}}
+							<a data-toggle="modal" href="#modal-map" class="btn btn-lg btn-skt btn-block">지도</a>
+							<div class="modal fade" id="modal-map" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">지도</h4>
+										</div>
+										<div class="modal-body">
+											<div id="map-canvas-modal" style="width: 100%; height: 200px;"></div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if video}}
+							<a data-toggle="modal" href="#modal-video" class="btn btn-lg btn-skt btn-block">동영상</a>
+							<div class="modal fade" id="modal-video" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">동영상</h4>
+										</div>
+										<div class="modal-body">
+											<embed type="application/x-shockwave-flash" src="http://www.youtube.com/v/{{video}}" width="100%" height="250" bgcolor="#ffffff" quality="high" movie="http://www.youtube.com/v/{{video}}" wmode="transparent">
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+						{{#if graph}}
+							<a data-toggle="modal" href="#modal-graph" class="btn btn-lg btn-skt btn-block">그래프</a>
+							<div class="modal fade" id="modal-graph" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">그래프</h4>
+										</div>
+										<div class="modal-body">
+											<div id="chart-canvas-modal" class="widget-chart3d"></div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}
+					{{/if}}
+				</div>
+			{{/each}}
+		</div>
+	</div>
+	<div class="skt-navbar-bottom">
+		<div><span class="glyphicon glyphicon-th-large"></span><br/>SKB 홈</div>
+		<div><span class="glyphicon glyphicon-signal"></span><br/>청구요약</div>
+		<div class="active"><span class="glyphicon glyphicon-search"></span><br/>청구상세</div>
+		<div><span class="glyphicon glyphicon-list"></span><br/>납부정보</div>
+		<div><span class="glyphicon glyphicon-usd"></span><br/>요금납부</div>
+	</div>
+</div>

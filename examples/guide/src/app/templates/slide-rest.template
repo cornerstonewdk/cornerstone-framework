@@ -1,0 +1,3 @@
+<div {{#if doc.id}}id="{{doc.id}}" {{/if}}class="step slide" data-x="{{x}}" data-y="{{y}}" data-z="{{z}}" data-rotate-y="{{angle}}">
+	{{{doc.content}}}
+</div>

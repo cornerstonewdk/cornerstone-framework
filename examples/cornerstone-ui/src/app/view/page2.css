@@ -1,0 +1,7 @@
+#page2 > .panel > .panel-heading {
+    text-transform: capitalize;
+}
+
+#page2 .js-remove {
+    margin-top: -5px;
+}

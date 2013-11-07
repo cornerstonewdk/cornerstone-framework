@@ -1,0 +1,124 @@
+@import "lesshat";
+
+.ellipsis(@width: 100%) {
+  width: @width;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.flex-box() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flexbox;
+}
+.flex(@val: 1) {
+  -webkit-box-flex: @val;
+  -moz-box-flex: @val;
+  box-flex: @val;
+}
+
+.font-face(@name, @fn, @p, @fontWeight:normal) {
+  font-family: '@{name}';
+  src: url('@{p}/@{fn}.eot');
+  // local 속성을 작성할 경우 클라이언트에 해당 글꼴이 있으면 웹폰트를 적용하지 않는다.
+  src: local('NanumGothic'), url('@{p}/@{fn}.eot?#iefix') format('embedded-opentype'), url('@{p}/@{fn}.woff2') format('woff2'), url('@{p}/@{fn}.woff') format('woff'), url('@{p}/@{fn}.ttf') format('truetype');
+  font-weight: @fontWeight;
+  font-style: normal;
+}
+
+.placeholder-color(@color: #FFF) {
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+  &:-moz-placeholder {
+    color: @color;
+  }
+  &::-moz-placeholder {
+    color: @color;
+  }
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+}
+
+//
+// Cornerstone Util
+// --------------------------------------------------
+
+// 변수값이 있는 경우만 적용
+.cs-mixin(@mixin-name, @value) when not (@value = "") {
+  .result(@mixin-name) when (@mixin-name = box-shadow) { .box-shadow(@value); }
+  .result(@mixin-name) when (@mixin-name = background-image) { .background-image(@value); }
+  // 적용
+  .result(@mixin-name);
+}
+.cs-property(@property-name, @value) when not (@value = "") {
+  .result(@property-name) when (@property-name = position) { position: @value; }
+  .result(@property-name) when (@property-name = z-index) { z-index: @value; }
+  .result(@property-name) when (@property-name = top) { top: @value; }
+  .result(@property-name) when (@property-name = right) { right: @value; }
+  .result(@property-name) when (@property-name = bottom) { bottom: @value; }
+  .result(@property-name) when (@property-name = left) { left: @value; }
+
+  .result(@property-name) when (@property-name = margin) { margin: @value; }
+  .result(@property-name) when (@property-name = margin-top) { margin-top: @value; }
+  .result(@property-name) when (@property-name = margin-right) { margin-right: @value; }
+  .result(@property-name) when (@property-name = margin-bottom) { margin-bottom: @value; }
+  .result(@property-name) when (@property-name = margin-left) { margin-left: @value; }
+
+  .result(@property-name) when (@property-name = padding) { padding: @value; }
+  .result(@property-name) when (@property-name = padding-top) { padding-top: @value; }
+  .result(@property-name) when (@property-name = padding-right) { padding-right: @value; }
+  .result(@property-name) when (@property-name = padding-bottom) { padding-bottom: @value; }
+  .result(@property-name) when (@property-name = padding-left) { padding-left: @value; }
+
+  .result(@property-name) when (@property-name = display) { display: @value; }
+  .result(@property-name) when (@property-name = min-width) { min-width: @value; }
+  .result(@property-name) when (@property-name = width) { width: @value; }
+  .result(@property-name) when (@property-name = min-height) { min-height: @value; }
+  .result(@property-name) when (@property-name = height) { height: @value; }
+
+  .result(@property-name) when (@property-name = border) { border: @value; }
+  .result(@property-name) when (@property-name = border-width) { border-width: @value; }
+  .result(@property-name) when (@property-name = border-top) { border-top: @value; }
+  .result(@property-name) when (@property-name = border-right) { border-right: @value; }
+  .result(@property-name) when (@property-name = border-bottom) { border-bottom: @value; }
+  .result(@property-name) when (@property-name = border-left) { border-left: @value; }
+  .result(@property-name) when (@property-name = border-color) { border-color: @value; }
+  .result(@property-name) when (@property-name = border-top-color) { border-top-color: @value; }
+  .result(@property-name) when (@property-name = border-right-color) { border-right-color: @value; }
+  .result(@property-name) when (@property-name = border-bottom-color) { border-bottom-color: @value; }
+  .result(@property-name) when (@property-name = border-left-color) { border-left-color: @value; }
+  .result(@property-name) when (@property-name = border-top-width) { border-top-width: @value; }
+  .result(@property-name) when (@property-name = border-right-width) { border-right-width: @value; }
+  .result(@property-name) when (@property-name = border-bottom-width) { border-bottom-width: @value; }
+  .result(@property-name) when (@property-name = border-left-width) { border-left-width: @value; }
+  .result(@property-name) when (@property-name = border-radius) { border-radius: @value; }
+  .result(@property-name) when (@property-name = border-top-right-radius) { border-top-right-radius: @value; }
+  .result(@property-name) when (@property-name = border-bottom-right-radius) { border-bottom-right-radius: @value; }
+
+  .result(@property-name) when (@property-name = background) { background: @value; }
+  .result(@property-name) when (@property-name = background-image) { background-image: @value; }
+  .result(@property-name) when (@property-name = background-color) { background-color: @value; }
+  .result(@property-name) when (@property-name = background-size) { background-size: @value; }
+
+  .result(@property-name) when (@property-name = font-size) { font-size: @value; }
+  .result(@property-name) when (@property-name = font-family) { font-family: @value; }
+  .result(@property-name) when (@property-name = font-weight) { font-weight: @value; }
+  .result(@property-name) when (@property-name = text-shadow) { text-shadow: @value; }
+  .result(@property-name) when (@property-name = text-decoration) { text-decoration: @value; }
+  .result(@property-name) when (@property-name = float) { float: @value; }
+  .result(@property-name) when (@property-name = outline) { outline: @value; }
+  .result(@property-name) when (@property-name = color) { color: @value; }
+  .result(@property-name) when (@property-name = cursor) { cursor: @value; }
+  .result(@property-name) when (@property-name = opacity) { opacity: @value; }
+  .result(@property-name) when (@property-name = content) { content: @value; }
+  .result(@property-name) when (@property-name = vertical-align) { vertical-align: @value; }
+  .result(@property-name) when (@property-name = line-height) { line-height: @value; }
+  .result(@property-name) when (@property-name = white-space) { white-space: @value; }
+  .result(@property-name) when (@property-name = word-break) { word-break: @value; }
+
+  // 적용
+  .result(@property-name);
+}

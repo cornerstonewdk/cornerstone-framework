@@ -1,0 +1,18 @@
+{
+  "name": "cornerstone-cli",
+  "description": "Cornerstone Framework의 Command Line Interface",
+  "version": "1.0.0",
+  "author": "손혁진 <hjson@prandy.com>",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "underscore": "~1.5.1"
+  },
+  "bin": {
+    "cstone": "bin/cstone",
+    "jamrc-updator": "bin/jamrc-updator"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "install": "npm install -g jamjs && jamrc-updator && npm install -g grunt-cli"
+  }
+}

@@ -1,6 +1,0 @@
-<div class="user">
-    ☆<span>{{user.name}}</span>
-    <span>{{user.age}}</span>
-    <span>{{#if user.gender}}남자{{else}}여자{{/if}}</span>
-    <br><span>[ 21 ] template 적용됨</span>
-</div>

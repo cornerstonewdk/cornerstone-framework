@@ -1,0 +1,65 @@
+.pager {
+  li {
+    & > a,
+    & > span {
+      .cs-mixin(box-shadow, @pager-li-a-box-shadow);
+      .cs-property(display, @pager-li-a-display);
+      .cs-property(padding, @pager-li-a-padding);
+      .cs-property(padding-right, @pager-li-a-padding-right);
+      .cs-property(padding-left, @pager-li-a-padding-left);
+      .cs-property(border, @pager-li-a-border);
+      .cs-property(border-radius, @pager-li-a-border-radius);
+      .cs-property(border-color, @pager-li-a-border-color);
+      .cs-property(background-color, @pager-li-a-background-color);
+      .cs-property(color, @pager-li-a-color);
+      .cs-property(font-weight, @pager-li-a-font-weight);
+      & > .glyphicon:before {
+        .cs-property(position, @pager-li-a-glyphicon-before-position);
+        .cs-property(top, @pager-li-a-glyphicon-before-top);
+      }
+    }
+
+    & > a:hover,
+    & > a:focus {
+      .cs-property(background-color, @pager-li-a-hover-background-color);
+      .cs-property(text-decoration, @pager-li-a-hover-text-decoration);
+      .cs-property(color, @pager-li-a-hover-color);
+    }
+
+    &:not(.disabled) > a:active {
+      .cs-mixin(box-shadow, @pager-li-a-active-box-shadow);
+      .cs-property(background-color, @pager-li-a-active-background-color);
+      .cs-property(text-decoration, @pager-li-a-active-text-decoration);
+      .cs-property(text-shadow, @pager-li-a-active-text-shadow);
+      .cs-property(color, @pager-li-a-active-color);
+    }
+  }
+
+  .next {
+    & > a,
+    & > span {
+      .cs-property(float, @pager-next-a-float);
+    }
+  }
+
+  .previous {
+    & > a,
+    & > span {
+      .cs-property(float, @pager-previous-a-float);
+    }
+  }
+
+  .disabled {
+    & > a,
+    & > a:hover,
+    & > a:focus,
+    & > span {
+      .cs-property(background-color, @pager-disabled-a-background-color);
+      .cs-property(border-color, @pager-disabled-a-border-color);
+      .cs-property(color, @pager-disabled-a-color);
+      .cs-property(font-weight, @pager-disabled-a-font-weight);
+      .cs-property(opacity, @pager-disabled-a-opacity);
+      .cs-property(cursor, @pager-disabled-a-cursor);
+    }
+  }
+}

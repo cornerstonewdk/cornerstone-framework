@@ -1,0 +1,3 @@
+<li data-id="{{pricePlanId}}" class="list-group-item">
+	{{pricePlanName}}
+</li>

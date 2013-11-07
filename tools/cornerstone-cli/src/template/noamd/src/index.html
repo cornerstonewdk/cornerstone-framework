@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Project</title>
+		<link href="cornerstone/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="styles/main.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<!-- 상단 Navigation Bar -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main">
+					<span class="sr-only">메뉴 보기</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Home</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-main">
+				<ul class="nav navbar-nav">
+					<li><a href="#page2">페이지2</a></li>
+					<li><a href="#page3">페이지3</a></li>
+				</ul>
+				<p class="navbar-text pull-right">Powered by <a class="navbar-link" href="http://cornerstone.sktelecom.com">Cornerstone</a></p>
+			</div>
+		</div>
+		<!-- 각 section이 하나의 페이지를 나타낸다. -->
+		<div class="container">
+			<section id="page1" data-url="page1" data-default-page="true"></section>
+			<section id="page2" data-url="page2"></section>
+			<section id="page3" data-url="page3"></section>
+		</div>
+
+		<script src="cornerstone/jquery/jquery-1.10.2.min.js"></script>
+		<script src="cornerstone/bootstrap/js/bootstrap.min.js"></script>
+		<script src="cornerstone/underscore/underscore-min.js"></script>
+		<script src="cornerstone/backbone/backbone-min.js"></script>
+		<script src="cornerstone/transition/transition.js"></script>
+		<script src="cornerstone/multipage-router/multipage.js"></script>
+		<script src="cornerstone/multipage-router/multipage-starter.js"></script>
+		<script src="scripts/main.js"></script>
+	</body>
+</html>

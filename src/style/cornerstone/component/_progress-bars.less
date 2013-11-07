@@ -1,0 +1,32 @@
+.progress {
+  position: relative;
+  border-radius: 10px;
+  background-color: #ddd;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    content: "";
+    .box-shadow(~"inset 0 2px 1px 0 rgba(0, 0, 0, 0.5)");
+  }
+
+  &.progress-striped .progress-bar {
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: @screen-sm-max) {
+  .progress {
+    border-radius: 10px;
+    background-color: #ddd;
+    .box-shadow(~"inset 0 2px 1px 0 rgba(0, 0, 0, 0.5)");
+
+    &:after {
+      display: none;
+    }
+  }
+}

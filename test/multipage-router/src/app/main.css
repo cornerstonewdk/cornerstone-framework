@@ -1,0 +1,14 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+#mocha-stats {
+    top: auto;
+    bottom: 0;
+}
+@media(max-width: 768px) {
+    #mocha-stats .progress canvas {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,15 @@
+{
+	"name": "transition",
+	"version": "2.0.0",
+	"description": "이 플러그인은 화면전환을 실행하기 위한 플러그인이며, 이 플러그인은 jQuery Core Style Guide(http://docs.jquery.com/JQuery_Core_Style_Guidelines)를 준수합니다.",
+	"jam": {
+		"dependencies": {
+			"jquery": "1.10.2"
+		},
+		"main": "transition.js",
+		"shim": {
+			"deps": [ "jquery" ],
+			"exports": "Transition"
+		}
+	}
+}

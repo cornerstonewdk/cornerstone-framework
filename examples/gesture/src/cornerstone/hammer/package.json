@@ -1,0 +1,8 @@
+{
+	"name": "hammer",
+	"version": "1.0.5",
+	"description": "A javascript library for multi-touch gestures",
+	"jam": {
+		"main": "hammer.js"
+	}
+}

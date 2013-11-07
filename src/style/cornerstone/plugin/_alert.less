@@ -1,0 +1,29 @@
+.alert {
+  .cs-property(border, @alert-border);
+  .cs-property(background-color, @alert-warning-bg);
+  .cs-property(color, @alert-color);
+  .cs-mixin(box-shadow, ~"0 1px 1px rgba(0,0,0,.5)");
+
+  .btn-link, .alert-link {
+    color: darken(@alert-warning-bg, 20%);
+    text-decoration: underline;
+  }
+
+  &.alert-danger {
+    .alert-state(@alert-danger-bg);
+  }
+  &.alert-success {
+    .alert-state(@alert-success-bg);
+  }
+  &.alert-info {
+    .alert-state(@alert-info-bg);
+  }
+}
+
+// Placeholder
+.alert-state(@bg: @alert-warning-bg) {
+  background-color: @bg;
+  .btn-link, .alert-link {
+    color: darken(@bg, 20%);
+  }
+}

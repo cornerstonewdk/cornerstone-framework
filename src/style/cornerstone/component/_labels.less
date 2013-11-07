@@ -1,0 +1,27 @@
+.label, .badge {
+  .cs-mixin(box-shadow, @lb-box-shadow);
+}
+
+.badge {
+  .cs-property(padding-bottom, @badge-padding-bottom);
+}
+
+.badge-primary {
+  .label-variant(@label-primary-bg);
+}
+
+.badge-success {
+  .label-variant(@label-success-bg);
+}
+
+.badge-warning {
+  .label-variant(@label-warning-bg);
+}
+
+.badge-danger {
+  .label-variant(@label-danger-bg);
+}
+
+.badge-info {
+  .label-variant(@label-info-bg);
+}

@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col col-lg-12">
+        <div class="panel">
+            <div class="panel-heading">옵션 제어</div>
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="type">구현 방식</label>
+                        <select name="type" class="form-control" id="type">
+                            <option value="activeChartPlugin">Plugin 방식</option>
+                            <option value="activeChartView">Backbone View 방식</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="controlGrouped">Grouped 이름</label>
+                                <input type="text" name="controlGrouped" class="form-control" id="controlGrouped"
+                                       maxlength="5"
+                                       value="그룹"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="controlStacked">Stacked 이름</label>
+                                <input type="text" name="controlStacked" class="form-control" id="controlStacked"
+                                       maxlength="5"
+                                       value="스택">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="xAxisName">X축 이름</label>
+                                <input type="text" name="xAxisName" class="form-control" id="xAxisName"
+                                       placeholder="X축"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="yAxisName">Y축 이름</label>
+                                <input type="text" name="yAxisName" class="form-control" id="yAxisName"
+                                       placeholder="Y축">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="useControl">Control 사용</label>
+                                <select name="useControl" class="form-control" id="useControl">
+                                    <option value="1">사용</option>
+                                    <option value="0">사용 안함</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="useLegend">범례 사용</label>
+                                <select name="useLegend" class="form-control" id="useLegend">
+                                    <option value="1">사용</option>
+                                    <option value="0">사용 안함</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="useTooltip">툴팁 사용</label>
+                                <select name="useTooltip" class="form-control" id="useTooltip">
+                                    <option value="1">사용</option>
+                                    <option value="0">사용 안함</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-6">
+                                <div>
+                                    <label>데이터변경</label>
+                                </div>
+                                <div id="changeData" class="btn-group">
+                                    <button class="btn btn-info" data-chart-url="data/sample-bar.json">3개</button>
+                                    <button class="btn btn-info" data-chart-url="data/sample-bar2.json">9개</button>
+                                    <button class="btn btn-info" data-chart-url="data/sample-bar3.json">30개</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="controlSubmit" type="submit" class="btn btn-default">옵션적용</button>
+
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-success next">다음</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-lg-12">
+        <div class="panel panel-primary view-chart">
+            <div class="panel-heading">신규 수평 바 차트</div>
+            <div class="panel-body">
+                <div id="horizontalBar" class="widget-chart"></div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut, blanditiis, consequuntur
+                    cupiditate deleniti, eaque earum esse eum harum iusto laudantium modi numquam odit quo recusandae
+                    rem tempora tenetur voluptatem!
+                </p>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Grouped 수평 바 차트</h3>
+
+                        <div class="widget-chart" data-featured="chart" data-chart-type="groupedHorizontalBar"
+                             data-chart-bind="data/sample-bar2.json"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Stacked 수평 바 차트</h3>
+
+                        <div class="widget-chart" data-featured="chart" data-chart-type="stackedHorizontalBar"
+                             data-chart-bind="data/sample-bar2.json"></div>
+                    </div>
+                </div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor eum harum tenetur. At autem dolor ex
+                    iure mollitia. Ab corporis, eligendi magnam nemo odit quibusdam sed totam! Excepturi, quia
+                    reiciendis!</p>
+            </div>
+        </div>
+    </div>
+</div>

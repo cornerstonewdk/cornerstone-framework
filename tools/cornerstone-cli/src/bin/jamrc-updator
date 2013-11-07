@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var fs = require( 'fs' );
+var grunt = require( 'grunt' );
+var homeDir = process.env.HOME || process.env.USERPROFILE || process.env.HOMEPATH;
+
+// Home 디렉토리에 .jamrc 파일이 있으면 백업 파일을 삭제하고 백업한다.
+if ( fs.existsSync( homeDir + '/.jamrc' ) ) {
+	try {
+		fs.unlinkSync( homeDir + '/.jamrc.bak' );
+	}
+	catch ( e ) {
+		// .jamrc.bak이 없으면 무시하고 진행한다.
+	}
+	fs.renameSync( homeDir + '/.jamrc', homeDir + '/.jamrc.bak' );
+}
+
+// template의 .jamrc 파일을 Home 디렉토리로 복사한다.
+grunt.file.copy( __dirname + '/../template/.jamrc', homeDir + '/.jamrc' );

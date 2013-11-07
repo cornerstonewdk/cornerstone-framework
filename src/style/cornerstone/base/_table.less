@@ -1,0 +1,105 @@
+.table {
+  .cs-property(border, @table-border);
+  .cs-property(background-color, @table-bg);
+  thead {
+    .cs-property(background-color, @table-head-bg);
+    .cs-mixin(background-image, @table-head-background-image);
+    th {
+      .cs-property(border-bottom, @table-head-border-bottom);
+    }
+
+    tr:last-child {
+      th {
+        .cs-property(border-bottom, @table-head-border-bottom);
+      }
+    }
+  }
+
+  & > tbody > tr.active {
+    & > td, & > th {
+      .cs-property(background-color, @table-active-background-color);
+    }
+  }
+
+  // State
+  .table-draw-state(success);
+  .table-draw-state(warning);
+  .table-draw-state(danger);
+  .table-draw-state(info);
+}
+
+.table thead>tr>th,
+.table tbody>tr>th,
+.table tfoot>tr>th,
+.table thead>tr>td,
+.table tbody>tr>td,
+.table tfoot>tr>td {
+  .cs-property(border-top, @table-td-border-top);
+}
+
+.table-striped {
+  & >tbody>tr:nth-child(odd)>td,
+  &>tbody>tr:nth-child(odd)>th {
+    .cs-property(background-color, @table-striped-td-background-color);
+  }
+}
+
+// Bordered
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+  .cs-property(border, @table-bordered-td-border);
+}
+
+.table-bordered caption+thead tr:first-child th,
+.table-bordered colgroup+thead tr:first-child th,
+.table-bordered thead:first-child tr:first-child th,
+.table-bordered caption+thead tr:first-child td,
+.table-bordered colgroup+thead tr:first-child td,
+.table-bordered thead:first-child tr:first-child td {
+  .cs-property(border-top, @table-bordered-td-border-top);
+}
+
+.table-hover>tbody>tr:hover>td,
+.table-hover>tbody>tr:hover>th {
+  .cs-property(background-color, @table-hover-td-background-color);
+}
+
+@media (min-width: @screen-sm) {
+  .table-hover {
+    & > tbody > tr:hover {
+      & > td, & > th {
+        .cs-property(background-color, @table-hover-background-color);
+      }
+    }
+  }
+}
+
+// Placeholder
+.table-draw-state(@state: warning) {
+  @state-bg: ~"@{state-@{state}-bg}";
+  @state-color: ~"@{state-@{state}-color}";
+  & > tbody > tr {
+    & > td.@{state},
+    & > th.@{state},
+    &.@{state} > td {
+      .cs-property(border, @state-bg);
+      .cs-property(background-color, @state-bg);
+      .cs-property(color, @state-color);
+    }
+  }
+
+  &.table-hover {
+    & > tbody > tr:hover {
+      & > td.@{state},
+      & > th.@{state},
+      &.@{state} > td {
+        .cs-property(background-color, @state-bg);
+        opacity: 0.7;
+      }
+    }
+  }
+}

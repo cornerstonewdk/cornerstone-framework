@@ -1,0 +1,14 @@
+{
+	"name": "bootstrap",
+	"version": "3.0.0",
+	"description": "Twitter bootstrap",
+	"jam": {
+		"dependencies": {
+			"jquery": "1.10.2"
+		},
+		"main": "js/bootstrap.min.js",
+		"shim": {
+			"deps": [ "jquery" ]
+		}
+	}
+}

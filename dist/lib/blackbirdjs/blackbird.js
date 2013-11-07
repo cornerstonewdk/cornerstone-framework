@@ -35,7 +35,7 @@
 	
 	function generateMarkup() { //build markup
 		var spans = [];
-		for ( type in messageTypes ) {
+		for ( var type in messageTypes ) {
 			spans.push( [ '<span class="', type, '" type="', type, '"></span>'].join( '' ) );
 		}
 
@@ -123,7 +123,7 @@
 				var filters = document.getElementById( IDs.filters ).getElementsByTagName( 'SPAN' );
 
 				var active = 0;
-				for ( entry in messageTypes ) {
+				for ( var entry in messageTypes ) {
 					if ( messageTypes[ entry ] ) active++;
 				}
 				var oneActiveFilter = ( active == 1 && messageTypes[ type ] );
@@ -142,7 +142,7 @@
 
 			//build outputList's class from messageTypes object
 			var disabledTypes = [];
-			for ( type in messageTypes ) {
+			for ( var type in messageTypes ) {
 				if ( ! messageTypes[ type ] ) disabledTypes.push( type );
 			}
 			disabledTypes.push( '' );
@@ -178,6 +178,10 @@
 		body.removeChild( bbird );
 		body.appendChild( bbird );
 		bbird.style.display = 'block';
+		//added by Eonasdan/Jonathan Peterson to make dialog box draggable if jquery-ui is detected
+		if (window.jQuery && jQuery.ui && jQuery.ui.version) {
+		        jQuery("#blackbird").draggable({ cancel: "div.main" });
+		}
 	}
 	
 	//sets the position
@@ -214,7 +218,7 @@
 
 	function setState() {
 		var props = [];
-		for ( entry in state ) {
+		for ( var entry in state ) {
 			var value = ( state[ entry ] && state[ entry ].constructor === String ) ? '"' + state[ entry ] + '"' : state[ entry ]; 
 			props.push( entry + ':' + value );
 		}
@@ -225,7 +229,7 @@
 		document.cookie = [ 'blackbird={', props, '}; expires=', expiration.toUTCString() ,';' ].join( '' );
 
 		var newClass = [];
-		for ( word in classes ) {
+		for ( var word in classes ) {
 			newClass.push( classes[ word ] );
 		}
 		bbird.className = newClass.join( ' ' );
@@ -237,7 +241,7 @@
 		return ( match && match[ 1 ] ) ? eval( '(' + match[ 1 ] + ')' ) : { pos:null, size:null, load:null };
 	}
 	
-	//event handler for 'keyup' event for window
+	//event handler for 'keyufor (p' event for window
 	function readKey( evt ) {
 		if ( !evt ) evt = window.event;
 		var code = 113; //F2 key
@@ -274,10 +278,6 @@
 	window[ NAMESPACE ] = {
 		toggle:
 			function() { ( isVisible() ) ? hide() : show(); },
-		show:
-			function() { show(); },
-		hide:
-			function() { hide(); },
 		resize:
 			function() { resize(); },
 		clear:
@@ -308,41 +308,45 @@
 					addMessage( 'profile', label );
 				}
 				return currentTime;
-			},
-		init:
-			function() {
-			
-				if ( this.initialized ) return;
-				
-				var body = document.getElementsByTagName( 'BODY' )[ 0 ];
-				bbird = body.appendChild( generateMarkup() );
-				outputList = bbird.getElementsByTagName( 'OL' )[ 0 ];
-			
-				backgroundImage();
-			
-				//add events
-				addEvent( IDs.checkbox, 'click', clickVis );
-				addEvent( IDs.filters, 'click', clickFilter );
-				addEvent( IDs.controls, 'click', clickControl );
-				addEvent( document, 'keyup', readKey);
-	
-				resize( state.size );
-				reposition( state.pos );
-				show();
-				if ( state.load ) {
-					document.getElementById( IDs.checkbox ).checked = true; 
-				}
-	
-				scrollToBottom();
-	
-				addEvent( window, 'unload', function() {
-					removeEvent( IDs.checkbox, 'click', clickVis );
-					removeEvent( IDs.filters, 'click', clickFilter );
-					removeEvent( IDs.controls, 'click', clickControl );
-					removeEvent( document, 'keyup', readKey );
-				});
-				
-				this.initialized = true;
-			}	
+			}
 	}
+        if(document.body)
+          init();
+        else 
+	  addEvent( window, 'load', init );
+		/* initialize Blackbird when the page loads */
+		function init() {
+			var body = document.getElementsByTagName( 'BODY' )[ 0 ];
+			bbird = body.appendChild( generateMarkup() );
+			outputList = bbird.getElementsByTagName( 'OL' )[ 0 ];
+		
+			backgroundImage();
+		
+			//add events
+			addEvent( IDs.checkbox, 'click', clickVis );
+			addEvent( IDs.filters, 'click', clickFilter );
+			addEvent( IDs.controls, 'click', clickControl );
+			addEvent( document, 'keyup', readKey);
+
+			resize( state.size );
+			reposition( state.pos );
+			if ( state.load ) {
+				show();
+				document.getElementById( IDs.checkbox ).checked = true; 
+			}
+
+			scrollToBottom();
+
+			window[ NAMESPACE ].init = function() {
+				show();
+				// window[ NAMESPACE ].error( [ '<b>', NAMESPACE, '</b> can only be initialized once' ] );
+			}
+
+			addEvent( window, 'unload', function() {
+				removeEvent( IDs.checkbox, 'click', clickVis );
+				removeEvent( IDs.filters, 'click', clickFilter );
+				removeEvent( IDs.controls, 'click', clickControl );
+				removeEvent( document, 'keyup', readKey );
+			});
+		}
 })();

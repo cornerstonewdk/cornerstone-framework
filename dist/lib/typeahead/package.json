@@ -1,0 +1,14 @@
+{
+    "name": "typeahead",
+    "version": "0.9.3",
+    "description": "nspired by twitter.com's autocomplete search functionality, typeahead.js is a fast and fully-featured autocomplete library.",
+    "jam": {
+        "dependencies": {
+            "jquery": "1.10.2"
+        },
+        "main": "typeahead.js",
+        "shim": {
+            "deps": [ "jquery" ]
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "jam": {
+        "dependencies": {
+            "launcher": "*",
+            "template": "*",
+            "style": "*",
+            "form-view": "*",
+            "validation-view": "*",
+            "gesture-view": "*",
+            "multipage-router": "*",
+            "sync": "*",
+            "device": "*",
+            "logging": "*",
+            "jsonp": "*",
+            "skt": "*",
+
+            "theme-dark": "*",
+            "theme-white": "*",
+            "theme-wireframe": "*",
+            "skin-cerulean": "*",
+            "skin-flatly": "*",
+            "skin-united": "*",
+
+            "widget-modal": "*",
+            "widget-dropdown": "*",
+            "widget-scrollspy": "*",
+            "widget-tab": "*",
+            "widget-tooltip": "*",
+
+            "widget-popover": "*",
+            "widget-alert": "*",
+            "widget-button": "*",
+            "widget-collapse": "*",
+            "widget-carousel": "*",
+
+            "widget-rangeinput": "*",
+            "widget-sign": "*",
+            "widget-spinner": "*",
+            "widget-motioncaptcha": "*",
+            "widget-datepicker": "*",
+
+            "widget-typeahead": "*",
+            "widget-scrollview": "*",
+            "widget-listview": "*",
+            "widget-media": "*",
+            "widget-editor": "*",
+
+            "widget-chart": "*",
+            "widget-datatable": "*",
+            "widget-touch": "*"
+        },
+        "baseUrl": "scripts",
+        "packageDir": "cornerstone"
+    }
+}

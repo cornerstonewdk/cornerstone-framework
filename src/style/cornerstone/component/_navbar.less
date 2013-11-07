@@ -1,0 +1,140 @@
+.navbar {
+  .cs-mixin(background-image, @navbar-background-image);
+  .cs-mixin(box-shadow, @navbar-shadow);
+  .cs-property(padding-left, @navbar-padding-left);
+  .cs-property(padding-right, @navbar-padding-right);
+  .cs-property(border, @navbar-border);
+  .cs-property(background, @navbar-background);
+  .cs-property(color, @navbar-text-color);
+
+  &:not(.navbar-mobile):before {
+    .cs-mixin(box-shadow, @navbar-before-box-shadow);
+    .cs-mixin(background-image, @navbar-before-background-image);
+    .cs-property(position, @navbar-before-position);
+    .cs-property(top, @navbar-before-top);
+    .cs-property(left, @navbar-before-left);
+    .cs-property(z-index, @navbar-before-z-index);
+    .cs-property(display, @navbar-before-display);
+    .cs-property(width, @navbar-before-width);
+    .cs-property(height, @navbar-before-height);
+    .cs-property(content, @navbar-before-content);
+  }
+}
+
+.navbar-nav {
+  .navbar-default & > li > a:hover,
+  .navbar-default & > li > a:focus {
+    .cs-property(color, @navbar-nav-a-hover-color);
+  }
+
+  .navbar-default & > .open > a,
+  .navbar-default & > .open > a:hover,
+  .navbar-default & > .open > a:focus,
+  .navbar-default & > li > a:active,
+  .navbar-default & > .active > a,
+  .navbar-default & > .active > a:hover,
+  .navbar-default & > .active > a:focus {
+    .navbar-menu-active();
+  }
+
+  & > li > .dropdown-menu {
+    .cs-property(border-radius, @navbar-nav-dropdown-menu-border-radius);
+  }
+
+  .glyphicon {
+    .cs-property(top, @navbar-nav-glyphicon-top);
+  }
+}
+
+.navbar-icon {
+  & > li {
+    & > a {
+      .cs-property(font-size, @navbar-icon-li-a-font-size);
+      .cs-property(line-height, @navbar-icon-li-a-line-height);
+      & > .glyphicon {
+        .cs-property(font-size, @navbar-icon-li-a-glyphicon-font-size);
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .navbar-nav {
+    .navbar-default & > li > a:hover,
+    .navbar-default & > li > a:focus,
+    .navbar-default & > .open .dropdown-menu > li > a,
+    .navbar-default & > .open .dropdown-menu > li > a:hover,
+    .navbar-default & > .open .dropdown-menu > li > a:focus {
+      .cs-property(color, @navbar-nav-a-hover-sm-color);
+    }
+
+    .navbar-default & > .open > a,
+    .navbar-default & > .open > a:hover,
+    .navbar-default & > .open > a:focus,
+    .navbar-default & > li > a:active,
+    .navbar-default & > .active > a,
+    .navbar-default & > .active > a:hover,
+    .navbar-default & > .active > a:focus {
+      .cs-property(padding, @navbar-nav-a-active-sm-padding);
+      .cs-property(margin, @navbar-nav-a-active-sm-margin);
+    }
+  }
+
+  .navbar-icon {
+    li {
+      & > a {
+        .cs-property(font-size, @navbar-icon-li-a-sm-font-size);
+        .cs-property(line-height, @navbar-icon-li-a-sm-line-height);
+      }
+    }
+  }
+}
+
+.navbar-form, .navbar-collapse {
+  .cs-property(border, @navbar-form-border);
+}
+
+.navbar-default .navbar-toggle {
+  .cs-property(border-color, @navbar-default-navbar-toggle-border-color);
+  &:hover, &:focus {
+    .cs-property(background-color, @navbar-default-navbar-toggle-hover-background-color);
+  }
+  &.active, &:active {
+    .cs-property(background-color, @navbar-default-navbar-toggle-active-background-color);
+  }
+}
+
+.navbar.navbar-inverse {
+  .cs-mixin(background-image, @navbar-inverse-background-image);
+  .navbar-brand,
+  .navbar-nav > li > a {
+    .cs-property(color, @navbar-inverse-navbar-brand-color);
+  }
+
+  .navbar-nav > li > a:active,
+  .navbar-nav > .active > a,
+  .navbar-nav > .active > a:hover,
+  .navbar-nav > .active > a:focus {
+    .cs-mixin(background-image, @navbar-inverse-li-a-active-background-image);
+    .cs-mixin(box-shadow, @navbar-inverse-li-a-active-box-shadow);
+    .cs-property(background-color, @navbar-inverse-li-a-active-background-color);
+    .cs-property(border-radius, @navbar-inverse-li-a-active-border-radius);
+    .cs-property(padding, @navbar-inverse-li-a-active-padding);
+    .cs-property(margin, @navbar-inverse-li-a-active-margin);
+    .cs-property(color, @navbar-inverse-li-a-active-color);
+  }
+
+  .navbar-text, .navbar-link {
+    .cs-property(color, @navbar-inverse-navbar-text-color);
+  }
+}
+
+.navbar-mobile {
+  a {
+    & > .glyphicon {
+      .cs-property(display, @navbar-mobile-a-glyphicon-display);
+      .cs-property(padding, @navbar-mobile-a-glyphicon-padding);
+      .cs-property(font-size, @navbar-mobile-a-glyphicon-font-size);
+    }
+  }
+}

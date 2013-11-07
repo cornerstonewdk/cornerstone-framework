@@ -1,0 +1,119 @@
+<div class="container">
+	<ul class="nav nav-tabs">
+		<li><a id="a-bills" href="#tab-bills" data-toggle="tab">청구서</a></li>
+		<li class="active"><a href="#tab-templates" data-toggle="tab">서식</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane" id="tab-bills">
+			<div class="panel panel-success">
+				<div class="panel-heading">청구서 목록</div>
+				<table class="table table-striped">
+					<tr>
+						<th>청구 년 / 월</th>
+						<th style="width: 100px; text-align: right;">삭제</th>
+					</tr>
+					{{#if bills}}
+						{{#each bills}}
+							<tr>
+								<td><span class="label label-info">{{template.name}}</span> {{year}}년 {{month}}월 청구서</td>
+								<td><button data-id="{{id}}" type="button" class="close delete-bill" aria-hidden="true">&times;</button></td>
+							</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2">발행된 청구서가 없습니다.</td>
+						</tr>
+					{{/if}}
+				</table>
+			</div>
+			<div class="pull-right">
+				<a class="btn btn-primary" href="#modal-save-bill" data-toggle="modal">청구서 발행</a>
+			</div>
+		</div>
+		<div class="tab-pane active" id="tab-templates">
+			<div class="panel panel-success">
+				<div class="panel-heading">서식 목록</div>
+				<table class="table table-striped">
+					<tr>
+						<th>서식명</th>
+						<th style="width: 100px; text-align: right;">삭제</th>
+					</tr>
+					{{#if templates}}
+						{{#each templates}}
+							<tr>
+								<td>{{name}}</td>
+								<td><button data-id="{{id}}" type="button" class="close delete-template" aria-hidden="true">&times;</button></td>
+							</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2">만들어진 서식이 없습니다.</td>
+						</tr>
+					{{/if}}
+				</table>
+			</div>
+			<div class="pull-right">
+				<a class="btn btn-primary" href="#edit" data-transition="flip">서식 만들기</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-save-bill" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">청구서 발행</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<tr>
+						<th>년</th>
+						<td>
+							<select id="select-year" class="form-control">
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>월</th>
+						<td>
+							<select id="select-month" class="form-control">
+								<option value="1">1월</option>
+								<option value="2">2월</option>
+								<option value="3">3월</option>
+								<option value="4">4월</option>
+								<option value="5">5월</option>
+								<option value="6">6월</option>
+								<option value="7">7월</option>
+								<option value="8">8월</option>
+								<option value="9">9월</option>
+								<option value="10">10월</option>
+								<option value="11">11월</option>
+								<option value="12">12월</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>서식</th>
+						<td>
+							<select id="select-template" class="form-control">
+								{{#each templates}}
+									<option value="{{id}}">{{name}}</option>
+								{{/each}}
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button id="btn-save-bill" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>

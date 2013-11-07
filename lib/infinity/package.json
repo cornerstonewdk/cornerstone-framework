@@ -1,0 +1,15 @@
+{
+	"name": "infinity",
+	"version": "1.0.0",
+	"description": "Infinity is a UITableView for the web: it speeds up scrolling through long lists and keeps your infinite feeds smooth and stable for your users. It is small, battle-tested, and highly performant. The code is hosted on Github, and distributed under the BSD License. The annotated source is available, as are demos both with Infinity turned off and on.",
+	"jam": {
+		"dependencies": {
+			"jquery": "1.10.2"
+		},
+		"main": "infinity.min.js",
+		"shim": {
+			"deps": [ "jquery" ],
+			"exports": "infinity"
+		}
+	}
+}

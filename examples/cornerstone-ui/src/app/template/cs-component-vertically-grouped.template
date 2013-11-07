@@ -1,0 +1,94 @@
+<section id="vertically-grouped">
+    <header class="page-header">
+        <h1> Vertically Grouped</h1>
+    </header>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped buttons
+            </h3>
+
+            <div class="btn-group-vertical">
+                <button class="btn btn-default">cat</button>
+                <button class="btn btn-default">dog</button>
+                <button class="btn btn-default">monkey</button>
+                <button class="btn btn-default">rabbit</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped radio
+            </h3>
+
+            <ul class="list-group list-group-radio">
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option1">
+                        <span class="control"></span>
+                        cat
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option2" checked>
+                        <span class="control"></span>
+                        dog
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option3">
+                        <span class="control"></span>
+                        monkey
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-radio">
+                        <input name="radio1" type="radio" value="option4" disabled>
+                        <span class="control"></span>
+                        rabbit
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-12">
+            <h3>
+                Vertically grouped checkbox
+            </h3>
+            <ul class="list-group list-group-checkbox">
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option1">
+                        <span class="control"></span>
+                        dog
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option2">
+                        <span class="control placeholder"></span>
+                        cat
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option3" checked>
+                        <span class="control"></span>
+                        monkey
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label class="input-checkbox">
+                        <input type="checkbox" value="option3" disabled>
+                        <span class="control"></span>
+                        rabbit
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

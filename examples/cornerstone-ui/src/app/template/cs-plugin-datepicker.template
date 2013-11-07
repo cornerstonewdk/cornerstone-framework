@@ -1,0 +1,25 @@
+<!-- Date Picker
+  ================================================== -->
+<section id="date-picker">
+    <header class="page-header">
+        <h2>Date Picker</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h3>DatePicker(입력상자):</h3>
+
+            <div class="input-group input-append date" id="date-picker1" data-date-format="yyyy-mm-dd">
+                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
+                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+        </div>
+        <div class="col col-lg-6">
+            <h3>DatePicker(아이콘):</h3>
+
+            <div class="input-group input-append date" id="date-picker2" data-date-format="yyyy-mm-dd">
+                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                <input class="form-control" size="16" type="text" value="2013-06-24" readonly>
+            </div>
+        </div>
+    </div>
+</section>

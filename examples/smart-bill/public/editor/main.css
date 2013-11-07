@@ -1,0 +1,110 @@
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#section-list, #section-edit {
+	display: none;
+}
+
+div.tab-pane {
+	padding-top: 10px;
+	position: relative;
+}
+
+div.editor-content {
+	position: relative;
+	z-index: 1;
+}
+
+div.editor-content .row {
+	margin-top: 15px;
+}
+
+div.editor-content .row div {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+div.editor-grid {
+	position: absolute;
+	top: 10px;
+}
+
+div.editor-grid div {
+	min-height: 740px;
+}
+
+div.editor-grid div:nth-child(odd) {
+	background: #f5f5f5;
+}
+
+div.editor-grid div:nth-child(even) {
+	background: #e2e2e2;
+}
+
+.btn-skt {
+	color: #FCFDFD;
+	background-color: #E14444;
+	border-color: #EDB0B0;
+	min-height: 30px;
+}
+
+.content-box {
+	border: 1px dashed #7f7f7f;
+	min-height: 30px;
+	padding: 10px;
+	font-size: 14px;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+hr {
+	border: 3px solid #3f3f3f;
+	margin: 0;
+}
+
+/* 드래그 하는 동안 helper가 위에 보이도록 조정, helper가 이동하면서 위치에 따라서 폭이 변하지 않도록 고정 */
+.ui-draggable-dragging {
+	z-index: 2;
+	width: 200px;
+}
+
+.list-group-item {
+	cursor: pointer;
+}
+
+#dropzone {
+	border: 1px dashed #d0d0d0;
+	background-color: #efefef;
+	margin-top: 10px;
+	width: 400px;
+	height: 60px;
+	padding: 20px;
+	text-align: center;
+}
+
+#dropzone-trash {
+	font-size: 32px;
+	float: right;
+}
+
+/* 12 미만의 컬럼 뒤에 12 컬럼이 따라올 경우 위와 겹쳐지는 경우를 해결 */
+.col-lg-12, .col-md-12, .col-sm-12, .col-xs-12 {
+	float: left;
+}
+
+.input-group {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.input-group input {
+	width: 300px !important;
+	margin-right: 10px;
+}

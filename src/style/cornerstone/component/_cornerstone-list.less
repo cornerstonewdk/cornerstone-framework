@@ -1,0 +1,63 @@
+.panel .list-group-cornerstone {
+  .cs-property(margin, @list-group-cornerstone-margin);
+}
+
+.panel-group {
+  .cs-property(background-image, @panel-group-background-image);
+  .cs-property(padding, @panel-group-padding);
+  .cs-property(border-radius, @panel-group-border-radius);
+  .cs-property(background-size, @panel-group-background-size);
+
+  .panel,
+  .list-group-item:first-child,
+  .list-group-item:last-child {
+    .cs-property(border-radius, @panel-group-list-group-item-border-radius);
+  }
+
+  .panel + .panel {
+    .cs-property(margin-top, @panel-group-panel2-margin-top);
+  }
+
+  .panel {
+    .cs-mixin(box-shadow, @panel-group-panel-box-shadow);
+    .cs-property(margin-bottom, @panel-group-panel-margin-bottom);
+    .cs-property(border-radius, @panel-group-panel-border-radius);
+  }
+
+  .panels > .panel {
+    .cs-property(margin-bottom, @panel-group-panels-panel-margin-bottom);
+  }
+
+  .panel-sub-heading {
+    .cs-property(font-size, @panel-group-panel-sub-heading-font-size);
+  }
+}
+
+.panel-group .panel-heading {
+  .cs-property(color, @panel-group-heading-color);
+  .cs-property(background-color, @panel-group-heading-background-color);
+}
+
+.panel-nav-group {
+  .cs-property(background, @panel-nav-group-background);
+  .cs-property(padding, @panel-nav-group-padding);
+  .panel-heading, .panel-footer {
+    .cs-property(border-bottom, @panel-nav-group-heading-border-bottom);
+    .cs-property(background, @panel-nav-group-heading-background);
+  }
+  .list-group-item {
+    .cs-property(border-width, @panel-nav-group-item-border-width);
+    &.active,
+    &.active:hover,
+    &.active:focus {
+      .cs-property(color, @panel-nav-group-item-active-color);
+      .cs-property(background-color, @panel-nav-group-item-active-background-color);
+      .cs-property(border-color, @panel-nav-group-item-active-background-color);
+    }
+  }
+  a.list-group-item:active {
+    .cs-property(color, @panel-nav-group-item-active-color);
+    .cs-property(background-color, @panel-nav-group-item-active-background-color);
+    .cs-property(border-color, @panel-nav-group-item-active-background-color);
+  }
+}

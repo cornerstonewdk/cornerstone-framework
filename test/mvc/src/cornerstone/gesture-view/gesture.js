@@ -1,0 +1,7 @@
+/*
+    Cornerstone Framework v2.0
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
+define(["backbone","underscore","jquery","jquery.hammer"],function(a,b,c){return a.View.extend({constructor:function(){var d=this.gestureOptions,e=c(this.el),f={};this.events&&b.each(this.events,function(a,c){var d=c.match(/^(\S+)\s*(.*)$/),e=d[1],g=d[2];b.contains(["hold","tap","doubletap","transformstart","transform","transformend","dragstart","drag","dragend","dragup","dragdown","dragleft","dragright","swipe","swipeup","swipedown","swipeleft","swiperight","rotate","pinch","pinchin","pinchout","touch","release"],e)&&(f[g]?f[g].push(e):f[g]=[e])}),b.each(f,function(a,c){var f=d?b.clone(d):{};f.drag=b.contains(a,"dragstart")||b.contains(a,"drag")||b.contains(a,"dragend")||b.contains(a,"dragup")||b.contains(a,"dragdown")||b.contains(a,"dragleft")||b.contains(a,"dragright"),f.swipe=b.contains(a,"swipe")||b.contains(a,"swipeup")||b.contains(a,"swipedown")||b.contains(a,"swipeleft")||b.contains(a,"swiperight"),f.transform=b.contains(a,"transformstart")||b.contains(a,"transform")||b.contains(a,"transformend")||b.contains(a,"rotate")||b.contains(a,"pinch")||b.contains(a,"pinchin")||b.contains(a,"pinchout"),f.tap=b.contains(a,"tap")||b.contains(a,"doubletap"),f.hold=b.contains(a,"hold"),(c?e.find(c):e).hammer(f)}),a.View.apply(this,arguments)}})});

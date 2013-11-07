@@ -1,0 +1,78 @@
+{
+	"BaseCSS": [
+		{
+			"name": "Grid system",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Typography",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Grid system",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Code",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Tables",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Forms",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Buttons",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Images",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Helper classes",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		},
+		{
+			"name": "Responsive utilities",
+			"bootstrap2": 1,
+			"cornerstone1": 1,
+			"bootstrap3": 1,
+			"cornerstone2": 1
+		}
+	],
+	"Componenets": [
+	],
+	"Javascript": [
+	]
+}

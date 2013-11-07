@@ -1,1 +1,0 @@
-<li data-voclist="{{vocId}}}"><span class="name">{{customerName}}</span> <span class="txt-con">{{vocRequest}}</span></li>

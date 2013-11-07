@@ -1,0 +1,103 @@
+.pagination {
+  .cs-property(box-shadow, @pagination-box-shadow);
+  .cs-property(padding, @pagination-padding);
+  .cs-property(background-color, @pagination-background-color);
+  & > li {
+    .cs-property(display, @pagination-li-display);
+    .cs-property(margin-left, @pagination-li-margin-left);
+    .cs-property(margin-right, @pagination-li-margin-right);
+    .cs-property(padding, @pagination-li-padding);
+    .cs-property(text-align, @pagination-li-text-align);
+
+    & > a {
+      .cs-mixin(box-shadow, @pagination-li-a-box-shadow);
+      .cs-property(border, @pagination-li-a-border);
+      .cs-property(border-bottom, @pagination-li-a-border-bottom);
+      .cs-property(border-radius, @pagination-li-a-border-radius);
+      .cs-property(background-color, @pagination-li-a-background-color);
+      .cs-property(color, @pagination-li-a-color);
+      &:hover, &:focus {
+        .cs-property(background, @pagination-li-a-hover-background);
+        .cs-property(color, @pagination-li-a-hover-color);
+      }
+    }
+
+    &.disabled > a,
+    &.disabled > a:hover,
+    &.disabled > a:focus {
+      .cs-property(border-color, @pagination-li-disabled-a-border-color);
+      .cs-property(background, @pagination-li-disabled-a-background);
+    }
+
+    &:not(.disabled) {
+      &.active > a,
+      &.active > a:hover,
+      &.active > a:focus,
+      & > a.active,
+      & > a:active,
+      &:first-child > a:active,
+      &:last-child > a:active {
+        .cs-mixin(box-shadow, @pagination-li-active-a-box-shadow);
+        .cs-property(border-color, @pagination-li-active-a-border-color);
+        .cs-property(background-color, @pagination-li-active-a-background-color);
+        .cs-property(color, @pagination-li-active-a-color);
+        .cs-property(font-weight, @pagination-li-active-a-font-weight);
+      }
+    }
+  }
+
+  &.pagination-circle {
+    .cs-property(background, @pagination-circle-background);
+
+    & > li:not(:first-child):not(:last-child) {
+      .cs-property(padding, @pagination-circle-li-padding);
+
+      & > a {
+        .cs-mixin(background-image, @pagination-circle-li-a-background-image);
+        .cs-mixin(box-shadow, @pagination-circle-li-a-box-shadow);
+        .cs-property(padding, @pagination-circle-li-a-padding);
+        .cs-property(width, @pagination-circle-li-a-width);
+        .cs-property(height, @pagination-circle-li-a-height);
+        .cs-property(border, @pagination-circle-li-a-border);
+        .cs-property(border-radius, @pagination-circle-li-a-border-radius);
+        .cs-property(background-color, @pagination-circle-li-a-background-color);
+        .cs-property(font-size, @pagination-circle-li-a-font-size);
+      }
+      &.active > a,
+      & > a:hover,
+      & > a:focus,
+      & > a:active {
+        &:after {
+          .cs-mixin(background-image, @pagination-circle-li-active-a-background-image);
+          .cs-mixin(box-shadow, @pagination-circle-li-active-a-box-shadow);
+          .cs-property(position, @pagination-circle-li-active-a-position);
+          .cs-property(top, @pagination-circle-li-active-a-top);
+          .cs-property(left, @pagination-circle-li-active-a-left);
+          .cs-property(margin, @pagination-circle-li-active-a-margin);
+          .cs-property(width, @pagination-circle-li-active-a-width);
+          .cs-property(height, @pagination-circle-li-active-a-height);
+          .cs-property(border-radius, @pagination-circle-li-active-a-border-radius);
+          .cs-property(background-color, @pagination-circle-li-active-a-background-color);
+          .cs-property(content, @pagination-circle-li-active-a-content);
+        }
+      }
+    }
+
+    &.pagination-lg {
+      & > li:not(:first-child):not(:last-child) {
+        .cs-property(padding, @pagination-circle-lg-li-padding);
+      }
+    }
+
+    &.pagination-sm {
+      & > li:not(:first-child):not(:last-child) {
+        .cs-property(padding, @pagination-circle-sm-padding);
+        & > a {
+          .cs-property(width, @pagination-circle-sm-a-width);
+          .cs-property(height, @pagination-circle-sm-a-height);
+          .cs-property(border-radius, @pagination-circle-sm-a-border-radius);
+        }
+      }
+    }
+  }
+}

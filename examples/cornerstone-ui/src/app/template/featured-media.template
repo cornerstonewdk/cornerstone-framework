@@ -1,0 +1,42 @@
+<!-- Media
+  ================================================== -->
+<section id="featured-media">
+    <header class="page-header">
+        <h2>Media</h2>
+    </header>
+    <div class="row">
+        <div class="col col-lg-6">
+            <div class="panel">
+                <div class="panel-heading">MP4</div>
+                <video data-featured="media" data-option-width="100%" data-option-height="100%">
+                    <source type="video/mp4" src="data/sample-media.mp4"/>
+                </video>
+            </div>
+        </div>
+        <div class="col col-lg-6">
+            <div class="panel">
+                <div class="panel-heading">Youtube</div>
+                <video data-featured="media" data-option-width="100%" data-option-height="100%" preload="none">
+                    <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI"/>
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6">
+            <div class="panel">
+                <div class="panel-heading">MP3</div>
+                <audio data-featured="media" data-option-width="100%"
+                       src="http://mediaelementjs.com/media/AirReview-Landmarks-02-ChasingCorporate.mp3"></audio>
+            </div>
+        </div>
+        <!--<div class="col col-lg-6">-->
+            <!--<div class="panel">-->
+                <!--<div class="panel-heading">Radio</div>-->
+                <!--<audio width="100%" controls="control" data-featured="media"-->
+                       <!--src="http://109.74.195.10:8000/stream.mp3?redirected=1"-->
+                       <!--type="audio/mp4"/>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</section>

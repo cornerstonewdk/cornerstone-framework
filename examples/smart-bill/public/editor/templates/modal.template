@@ -1,0 +1,106 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h4 class="modal-title">
+		{{#if item.table}}요금 테이블{{/if}}
+		{{#if item.total}}이번달 총계{{/if}}
+		{{#if item.sum1}}이번달 통신서비스 금액{{/if}}
+		{{#if item.sum2}}이번달 부가사용 금액{{/if}}
+		{{#if item.sum3}}이번달 단말기 할부금{{/if}}
+		{{#if item.text}}텍스트{{/if}}
+		{{#if item.image}}이미지{{/if}}
+		{{#if item.map}}구글맵{{/if}}
+		{{#if item.video}}Youtube{{/if}}
+		{{#if item.graph}}그래프{{/if}}
+		{{#if item.divider}}Divider{{/if}}
+	</h4>
+</div>
+<div class="modal-body">
+	<table class="table table-bordered">
+		<tr>
+			<th style="width: 150px;">폭</th>
+			<td>
+				<select class="form-control">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+			</td>
+		</tr>
+		{{#if item.table}}
+			<tr>
+				<th>통신서비스금액 <button id="btn-add-items1" type="button" class="btn btn-sm btn-primary">추가</button></th>
+				<td id="list-items1">
+					{{#each tableItems.items1}}
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-success negative" type="button">
+									{{#if negative}}
+										<span class="glyphicon glyphicon-minus"></span>
+									{{else}}
+										<span class="glyphicon glyphicon-plus"></span>
+									{{/if}}
+								</button>
+							</span>
+							<input type="text" class="form-control" value="{{name}}"/>
+							<button class="close" type="button">&times;</button>
+						</div>
+					{{/each}}
+				</td>
+			</tr>
+			<tr>
+				<th>부가사용금액 <button id="btn-add-items2" type="button" class="btn btn-sm btn-primary">추가</button></th>
+				<td id="list-items2">
+					{{#each tableItems.items2}}
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-success negative" type="button">
+									{{#if negative}}
+										<span class="glyphicon glyphicon-minus"></span>
+									{{else}}
+										<span class="glyphicon glyphicon-plus"></span>
+									{{/if}}
+								</button>
+							</span>
+							<input type="text" class="form-control" value="{{name}}"/>
+							<button class="close" type="button">&times;</button>
+						</div>
+					{{/each}}
+				</td>
+			</tr>
+		{{/if}}
+		{{#if item.text}}
+			<tr>
+				<th>텍스트</th>
+				<td><input type="text" class="form-control" value="{{item.text}}"/></td>
+			</tr>
+		{{/if}}
+		{{#if item.image}}
+			<tr>
+				<th>이미지</th>
+				<td>
+					<img src="{{item.image}}"/>
+					<div id="dropzone">이미지를 교체하시려면 여기로 이미지 파일을 끌어다 놓으세요.</div>
+				</td>
+			</tr>
+		{{/if}}
+		{{#if item.video}}
+			<tr>
+				<th>Video ID</th>
+				<td><input type="text" class="form-control" value="{{item.video}}"/></td>
+			</tr>
+		{{/if}}
+	</table>
+</div>
+<div class="modal-footer">
+	<button id="btn-modal-save" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+</div>

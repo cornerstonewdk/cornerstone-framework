@@ -1,0 +1,7 @@
+/*
+    Cornerstone Framework v2.0
+
+    COPYRIGHT(C) 2012 BY SKTELECOM CO., LTD. ALL RIGHTS RESERVED.
+    Released under the Apache License, Version 2.0
+*/
+define(["backbone","lawnchair"],function(a,b){var c={};return c.createSync=function(b){return function(c,d,e){switch(c){case"read":d instanceof a.Collection?b.readAll&&b.readAll(d,e):b.read&&b.read(d,e);break;case"create":b.create&&b.create(d,e);break;case"update":b.update&&b.update(d,e);break;case"delete":b["delete"]&&b["delete"](d,e)}}},c.local=c.createSync({readAll:function(a,c){new b({adapter:"dom"},function(){this.all(function(b){for(var d=[],e=0;e<b.length;e++)b[e].model.collectionUrl===a.url&&d.push(b[e].model);c.success(d)})})},read:function(a,c){new b({adapter:"dom"},function(){this.get(a.id,function(a){a?c.success(a.model):c.error("Record not found")})})},create:function(a,c){new b({adapter:"dom"},function(){a.id||a.set({id:a.cid}),a.collection&&a.set({collectionUrl:a.collection.url}),this.save({key:a.id,model:a.toJSON()},function(){c.success(a.toJSON())})})},update:function(a,c){new b({adapter:"dom"},function(){this.save({key:a.id,model:a.toJSON()},function(){c.success(a.toJSON())})})},"delete":function(a,c){new b({adapter:"dom"},function(){this.remove(a.id,function(){c.success()})})}}),c});

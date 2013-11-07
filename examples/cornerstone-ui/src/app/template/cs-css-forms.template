@@ -1,0 +1,283 @@
+<!-- Forms
+  ================================================== -->
+<section>
+<div class="row">
+
+<div class="col col-lg-4">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Horizontal form</legend>
+            <input class="form-control" type="text" placeholder="Text input" value="Text input">
+
+            <hr>
+
+            <textarea class="form-control" rows="3"></textarea>
+
+            <hr>
+
+            <input class="form-control" type="text" placeholder="Text input" value="Text input">
+
+            <hr>
+
+            <textarea class="form-control" rows="3"></textarea>
+
+            <hr>
+
+            <div class="input-group col col-lg-6">
+                <span class="input-group-addon">@</span>
+                <input class="form-control" size="16" type="text" placeholder="Username">
+            </div>
+
+            <hr>
+
+            <div class="input-group">
+                <input class="form-control" size="16" type="text">
+                <span class="input-group-addon">.00</span>
+            </div>
+
+            <hr>
+
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" size="16" type="text">
+                <span class="input-group-addon">.00</span>
+            </div>
+
+            <hr>
+
+            <div class="input-group col col-lg-12">
+                <input class="form-control" type="text">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                    <button class="btn btn-default" type="button">Options</button>
+                </span>
+            </div>
+
+        </fieldset>
+    </form>
+
+    <hr>
+    <form class="form-search">
+        <fieldset>
+            <legend>Search form</legend>
+
+            <div class="input-group input-group-search col col-lg-10">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+            <hr>
+            <div class="input-group col col-lg-10">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+
+<div class="col col-lg-4">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Text input</legend>
+            <input class="form-control" type="text" placeholder="UNEDITABLE INPUT" disabled>
+            <hr>
+
+            <input class="form-control" type="text" placeholder="TEXT INPUT">
+
+            <hr>
+
+            <input class="form-control focused" id="focusedInput" type="text" placeholder="FOCUSED INPUT">
+
+            <hr>
+
+            <div class="control-group disabled">
+                <div class="controls row">
+                    <div class="col col-sm-7">
+                        <input class="form-control left" type="text" placeholder="DISABLED" disabled>
+                    </div>
+                    <div class="col col-sm-5">
+                        <div class="help-inline right">
+                            <span class="arrow"></span>
+                            <span class="help-message">Not supported</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="control-group has-warning">
+                <div class="controls row">
+                    <div class="col col-sm-5">
+                        <div class="help-inline left">
+                            <span class="arrow"></span>
+                            <span>Warning</span>
+                        </div>
+                    </div>
+                    <div class="col col-sm-7">
+                        <input type="text" class="form-control" placeholder="Warning!">
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="control-group has-error">
+                <div class="controls">
+                    <div class="help-inline top">
+                        <span class="arrow"></span>
+                        <span>Error</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Error!">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="control-group has-success">
+                <div class="controls">
+                    <input type="text" class="form-control" placeholder="Success!">
+
+                    <div class="help-inline bottom">
+                        <span class="arrow"></span>
+                        <span>Success</span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Buttons</legend>
+            <p>
+                <button class="btn btn-default" type="button">BUTTON</button>
+                <button class="btn btn-primary" type="button">BUTTON</button>
+            </p>
+            <hr>
+            <p>
+
+                <button class="btn btn-default disabled" type="button">BUTTON</button>
+                <button class="btn btn-primary disabled" type="button">BUTTON</button>
+            </p>
+        </fieldset>
+    </form>
+</div>
+
+<div class="col col-lg-4">
+    <form>
+        <fieldset>
+            <legend>Select</legend>
+            <select class="col col-lg-12 form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <form>
+        <fieldset>
+            <legend>Rangeinput</legend>
+
+            <input type="range" data-plugin="rangeinput" value="51" min="1" max="100" step="0.1"
+                   class="widget-range"/>
+
+            <hr/>
+
+            <input type="range" data-plugin="rangeinput" value="99999" min="0" max="99999" step="1000"
+                   class="widget-range max-10000"/>
+
+        </fieldset>
+        <fieldset>
+            <legend>Flip select</legend>
+
+            <label class="flip-area">
+                <input type="checkbox" class="flip-check" value="option2" checked>
+                <span class="flip-txt" data-on="ON" data-off="OFF">
+                    <span class="flip-btn"></span>
+                </span>
+            </label>
+        </fieldset>
+
+        <!--
+        <fieldset>
+            <legend>Flip select (required Hammer.js)</legend>
+
+            <label class="flip-area fast-button">
+                <input type="checkbox" class="flip-check" value="option2">
+                <span class="flip-txt" data-on="ON" data-off="OFF">
+                    <span class="flip-btn"></span>
+                </span>
+            </label>
+        </fieldset>-->
+    </form>
+
+    <hr>
+
+    <form class="form-inline">
+        <fieldset>
+            <legend>Checkbox</legend>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option1" disabled>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option2" checked>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option3">
+                <span class="control placeholder"></span>
+            </label>
+        </fieldset>
+
+        <!--
+        <fieldset>
+            <legend>Checkbox (required Hammer.js)</legend>
+
+            <label class="input-checkbox">
+                <input type="checkbox" value="option1" disabled>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox fast-button active">
+                <input type="checkbox" value="option2" checked>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-checkbox  fast-button">
+                <input type="checkbox" value="option3">
+                <span class="control placeholder"></span>
+            </label>
+        </fieldset>-->
+
+        <fieldset>
+            <legend>Radio</legend>
+            <label class="input-radio">
+                <input type="radio" name="radio" value="option1" disabled>
+                <span class="control"></span>
+            </label>
+
+            <label class="input-radio">
+                <input type="radio" name="radio" value="option1">
+                <span class="control"></span>
+            </label>
+
+            <label class="input-radio">
+                <input type="radio" name="radio" value="option1" checked>
+                <span class="control"></span>
+            </label>
+        </fieldset>
+    </form>
+</div>
+</div>
+</section>
