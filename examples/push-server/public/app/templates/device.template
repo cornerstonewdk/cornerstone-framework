@@ -1,0 +1,21 @@
+<div class="list-group-item">
+	<form id="form-device" class="form-inline" role="form">
+		{{#if id}}
+			<input type="hidden" name="id" value="{{id}}"/>
+		{{/if}}
+		<div class="form-group">
+			<input type="text" class="form-control" name="name" placeholder="이름" data-placement="bottom"/>
+		</div>
+		<div class="form-group">
+			<select name="type" class="form-control">
+				<option value="iphone">iphone</option>
+				<option value="android">android</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="token" placeholder="Token" data-placement="bottom"/>
+		</div>
+		<button type="submit" class="btn btn-success" title="저장"><span class="glyphicon glyphicon-ok"></span></button>
+		<button id="btn-cancel" type="button" class="btn btn-danger" title="취소"><span class="glyphicon glyphicon-remove"></span></button>
+	</form>
+</div>

@@ -3,6 +3,8 @@ define( [ 'backbone' ], function( Backbone ) {
 	
 	return Backbone.Model.extend( {
 
+		urlRoot: './devices',
+
 		validate: function( attrs ) {
 			if ( !attrs.name ) return { attribute: 'name', message: '이름을 입력하세요.' };
 			if ( attrs.name.length > 50 ) return { attribute: 'name', message: '이름이 너무 깁니다.' };

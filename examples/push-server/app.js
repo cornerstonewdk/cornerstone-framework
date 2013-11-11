@@ -50,6 +50,23 @@ app.post( PATH + '/devices', function( req, res ) {
 	res.json( newDevice );
 } );
 
+app.put( PATH + '/devices/:id', function( req, res ) {
+
+	var devices = loadDevices();
+	var device = req.body;
+
+	// id가 일치하는 항목을 수정한다.
+	for ( var i = 0; i < devices.length; i++ )
+		if ( devices[ i ].id == req.params.id ) {
+			devices[ i ] = device;
+			break;
+		}
+
+	saveDevices( devices );
+
+	res.json( device );
+} );
+
 app.delete( PATH + '/devices/:id', function( req, res ) {
 
 	var devices = loadDevices();

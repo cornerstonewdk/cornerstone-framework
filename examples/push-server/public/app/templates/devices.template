@@ -1,22 +1,15 @@
-<table class="table table-bordered table-striped">
-	<tr>
-		<th>이름</th>
-		<th>종류</th>
-		<th>Token</th>
-		<th></th>
-	</tr>
+<div class="list-group">
 	{{#if this}}
 		{{#each this}}
-			<tr data-id="{{id}}">
-				<td>{{name}}</td>
-				<td>{{type}}</td>
-				<td>{{token}}</td>
-				<td><button class="close" title="삭제">&times;</button></td>
-			</tr>
+			<a href="javascript://" class="list-group-item" data-id="{{id}}">
+				<button class="close delete" title="삭제">&times;</button>
+				<h4 class="list-group-item-heading">{{name}} <span class="label label-info">{{type}}</span></h4>
+				<p class="list-group-item-text">{{token}}</p>
+			</a>
 		{{/each}}
 	{{else}}
-		<tr>
-			<td colspan="4">등록된 디바이스가 없습니다.</td>
-		</tr>
+		<div class="list-group-item">등록된 디바이스가 없습니다.</div>
 	{{/if}}
-</table>
+</div>
+
+<button id="btn-register" type="button" class="btn btn-default">등록</button>
