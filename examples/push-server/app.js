@@ -84,5 +84,10 @@ app.delete( PATH + '/devices/:id', function( req, res ) {
 	res.json( {} );
 } );
 
+app.post( PATH + '/send', function( req, res ) {
+	console.log( req.body );
+	res.end();
+} );
+
 app.listen( PORT );
 console.log( 'Listening on port ' + PORT );
