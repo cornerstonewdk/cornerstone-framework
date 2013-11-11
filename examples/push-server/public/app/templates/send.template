@@ -1,0 +1,33 @@
+<form id="form-send" class="form-horizontal" role="form">
+	<div class="form-group">
+		<label class="col-lg-2 col-md-2 control-label">회의 제목</label>
+		<div class="col-lg-6 col-md-6">
+			<input class="form-control" name="subject"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 col-md-2 control-label">회의 시간</label>
+		<div class="col-lg-6 col-md-6">
+			<input class="form-control" name="date"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 col-md-2 control-label">메시지</label>
+		<div class="col-lg-6 col-md-6">
+			<input class="form-control" name="message"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 col-md-2 control-label">받는 디바이스</label>
+		<div class="col-lg-6 col-md-6">
+			{{#each this}}
+				<label class="checkbox-inline"><input type="checkbox" name="to" value="{{id}}"/> {{name}}</label>
+			{{/each}}
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-offset-2 col-md-offset-2 col-lg-6 col-md-6">
+			<button type="submit" class="btn btn-default">보내기</button>
+		</div>
+	</div>
+</form>

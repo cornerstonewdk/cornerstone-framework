@@ -1,0 +1,22 @@
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>이름</th>
+		<th>종류</th>
+		<th>Token</th>
+		<th></th>
+	</tr>
+	{{#if this}}
+		{{#each this}}
+			<tr data-id="{{id}}">
+				<td>{{name}}</td>
+				<td>{{type}}</td>
+				<td>{{token}}</td>
+				<td><button class="close" title="삭제">&times;</button></td>
+			</tr>
+		{{/each}}
+	{{else}}
+		<tr>
+			<td colspan="4">등록된 디바이스가 없습니다.</td>
+		</tr>
+	{{/if}}
+</table>
