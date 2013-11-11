@@ -4,7 +4,7 @@ var express = require( 'express' );
 var app = express();
 
 const PATH = '/2/push-server';
-const PORT = 5050;
+const PORT = 5060;
 
 // Express 설정
 app.enable( 'strict routing' );
