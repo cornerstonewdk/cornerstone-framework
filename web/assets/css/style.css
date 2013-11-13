@@ -579,7 +579,6 @@
             z-index: 200;
             margin: 0 auto;
             padding: 40px 0px;
-            min-height: 900px;
             max-width:100%;
             width:100%;
             background:#020403 url(../img/blured-3.gif) 50% 0 fixed;
@@ -1410,9 +1409,6 @@
             min-height:100%;
             min-height: 600px;
             height:100%;
-            
-        
-            top: 300px;
 }
         #slogan-section-2{
             overflow:hidden;
@@ -1760,6 +1756,10 @@ margin-left: auto;
     background-color: dimgray;
     background-image: linear-gradient(to bottom, dimgray, dimgray);
     box-shadow: none;
+}
+
+.section-3-slogan {
+    height:900px;
 }
 
 /* Landscape phones and down */
