@@ -1,6 +1,9 @@
 
 var fs = require( 'fs' );
 var express = require( 'express' );
+var gcm = require( 'node-gcm' );
+var apn = require( 'apn' );
+var key = require( './keystore/key.json' );
 var app = express();
 
 const PATH = '/2/push-server';
@@ -25,6 +28,16 @@ function loadDevices() {
 
 function saveDevices( devices ) {
 	fs.writeFileSync( __dirname + '/public/data/devices.json', JSON.stringify( devices ), { encoding: 'utf8' } );
+}
+
+function getDevice( id ) {
+
+	var devices = loadDevices();
+
+	for ( var i = 0; i < devices.length; i++ )
+		if ( devices[ i ].id == id ) return devices[ i ];
+
+	return null;
 }
 
 app.get( PATH, function( req, res ) {
@@ -85,7 +98,68 @@ app.delete( PATH + '/devices/:id', function( req, res ) {
 } );
 
 app.post( PATH + '/send', function( req, res ) {
-	console.log( req.body );
+
+	// 배열로 변환
+	var toArray = req.body.to instanceof Array ? req.body.to : [ req.body.to ];
+
+	for ( var i = 0; i < toArray.length; i++ ) {
+
+		var device = getDevice( toArray[ i ] );
+
+		// 아이폰인 경우 APNS 사용
+		if ( device.type == 'iphone' ) {
+			var apnConnection = new apn.Connection( {
+				pfx: __dirname + '/keystore/SKT_Runtime_APNS_Cert.p12',
+				passphrase: key.certificatePassword,
+				gateway: 'gateway.sandbox.push.apple.com'
+			} );
+			var note = new apn.Notification();
+
+			note.badge = 0;
+			note.sound = 'default';
+			note.alert = req.body.message;
+			note.payload = { loadurl: 'index.html', query: 'arg1=push&arg2=' + req.body.subject + '&arg3=' + req.body.date };
+
+			apnConnection.on( 'error', function() { console.log( '[Device ' + device.id + '] ERROR' ); } );
+			apnConnection.on( 'socketError', function() { console.log( '[Device ' + device.id + '] SocketError' ); } );
+			apnConnection.on( 'timeout', function() { console.log( '[Device ' + device.id + '] Timeout' ); } );
+			apnConnection.on( 'transmitted', function() { console.log( '[Device ' + device.id + '] Transmitted' ); } );
+			apnConnection.on( 'connected', function() { console.log( '[Device ' + device.id + '] Connected' ); } );
+			apnConnection.on( 'disconnected', function() { console.log( '[Device ' + device.id + '] Disconnected' ); } );
+			apnConnection.on( 'transmissionError', function() { console.log( '[Device ' + device.id + '] TransmissionError' ); } );
+			
+			console.log( '[Device ' + device.id + '] Sending...' );
+
+			apnConnection.pushNotification( note, new apn.Device( device.token ) );
+		}
+		// 안드로이드인 경우 GCM 사용
+		else {
+
+			var message = new gcm.Message( {
+				delayWhileIdle: false,
+				timeToLive: 1800,
+				data: {
+					title: '회의록',
+					message: req.body.message,
+					getURL: 'index.html?arg1=push&arg2=' + req.body.subject + '&arg3=' + req.body.date
+				}
+			} );
+
+			var sender = new gcm.Sender( key.apiKey );
+			
+			console.log( '[Device ' + device.id + '] Sending...' );
+
+			sender.send( message, [ device.token ], 3, function( err, result ) {
+				if ( err ) {
+					console.log( '[Device ' + device.id + '] ERROR ' + JSON.stringify( err ) );
+					return;
+				}
+
+				console.log( '[Device ' + device.id + '] ' + JSON.stringify( result ) );
+			} );
+		}
+	}
+
 	res.end();
 } );
 

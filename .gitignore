@@ -7,6 +7,7 @@
 admin.json
 examples/smart-bill/public/data
 examples/push-server/public/data
+examples/push-server/keystore
 test/**/dist/
 examples/**/dist/
 node_modules/
