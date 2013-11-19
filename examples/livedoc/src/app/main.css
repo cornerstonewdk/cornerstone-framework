@@ -337,3 +337,9 @@ div#floating-page-navi
     border: solid 1px red;
     */
 }
+
+.fixed_table {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
