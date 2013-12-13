@@ -32,6 +32,7 @@
 
 2) asset - 실제 하이브리드앱의 웹 리소스 (HTML/CSS/JS/IMG) 와 Runtime Java Script Library 가 저장되는 위치 
 	
+-	**Corenrstone Runtime은 웹 리소스이름의 대소문자를 구분한다.** index.html 파일의 경우 파일 이름을 전부 소문자로 하지 않으면 파일을 찾을 수 없다는 에러를 발생시키니 유의한다. 
 -	**assets/www** : 하이브리드앱의 저장 위치 
 -	**assets/www/index.html** : 하이브리드앱의 첫 실행 파일 , RuntimeStandAlone.java에서 변경가능하다.
 

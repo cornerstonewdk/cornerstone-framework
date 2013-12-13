@@ -2,8 +2,8 @@
 {
 	"id": 6700 ,
 	
-	"title": "Cornerstone Plugin 개발",
-	"outline": "Cornerstone Plugin 개발에 대한 필요성을 설명 한다.",
+	"title": "Runtime Plugin 개발",
+	"outline": "Runtime Plugin 개발에 대한 필요성을 설명 한다.",
 	
 	"tags" : ["runtime"],
 	"order": [6, 7],
@@ -13,11 +13,11 @@
 
 -----------------------------------------
 
-# Cornerstone Plugin 개발 
+# Runtime Plugin 개발 
 
 ------------------------------------------
 
-## Cornerstone Plugin 개발 개요 
+## Runtime Plugin 개발 개요 
 
 -	일반적인 웹앱은 Device Platform (Android, iOS..)에서 제공하는 Native SDK API를 사용할 수 없다. 따라서 웹앱에서 Device 기능을 사용하고자 한다면 브라우져 및 Runtime에서 제공하는 Java Script Extension API를 사용하여야 한다. 이를 가능하게 하는것이 Cornerstone Runtime 이며 , 이 Cornerstone Runtime 내부에서 HTML5 Spec을 준수하는 API (contact , calendar, file .. etc) 와 추가적인 Additional API (audio, childBrowser..etc) 를 제공한다. 
 
