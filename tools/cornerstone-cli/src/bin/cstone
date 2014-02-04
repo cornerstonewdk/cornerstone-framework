@@ -98,6 +98,9 @@ function doTask( command, options ) {
 			}
 		}
 
+		// 코너스톤 리파지토리를 기본으로 참조하도록 설정
+		grunt.file.copy( __dirname + '/../template/.jamrc', '.jamrc' );
+
 		// 모든 패키지를 설치하도록 설정
 		if ( _.contains( options, '--fullpackage' ) )
 			grunt.file.copy( __dirname + '/../template/fullpackage/package.json', './src/package.json' );
